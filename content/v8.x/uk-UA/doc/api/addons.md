@@ -6,13 +6,13 @@
 
 На даний момент метод реалізації Addons є досить складним і потребує знання декількох компонентів і API :
 
- - V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
+* V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. Вона також служить бібліотекою міжплатформної абстракції, що забезпечує легкий доступ до POSIX на всіх основних ОС для багатьох загальних системних завдань, таких як взаємодія з файловою системою, сокетами, таймерами та системними подіями. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
+* [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. Вона також служить бібліотекою міжплатформної абстракції, що забезпечує легкий доступ до POSIX на всіх основних ОС для багатьох загальних системних завдань, таких як взаємодія з файловою системою, сокетами, таймерами та системними подіями. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
 
- - Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
+* Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
 
- - Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
+* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
 
 Всі наведені нижче приклади доступні для [завантаження](https://github.com/nodejs/node-addon-examples) і можуть використовуватися, як відправна точка для розширеннь.
 
@@ -133,7 +133,6 @@ Each of the examples illustrated in this document make direct use of the Node.js
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
-
 ## N-API
 
 > Stability: 1 - Experimental
@@ -205,7 +204,6 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-
 ### Function arguments
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
@@ -274,7 +272,6 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
-
 
 ### Callbacks
 
@@ -375,7 +372,6 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
 ### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -431,7 +427,6 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
-
 
 ### Wrapping C++ objects
 
@@ -794,7 +789,6 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-
 ### Passing wrapped objects around
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
@@ -969,7 +963,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
+* `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.

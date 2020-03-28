@@ -6,13 +6,13 @@ Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_req
 
 Şu anda, Eklenti uygulama yöntemi oldukça karmaşıktır, çeşitli bileşenlerin ve API'lerin bilgi birikimini gerektirir :
 
- - Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
+* Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
 
- - [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. Ayrıca, bütün büyük işletim sistemlerinde dosya sistemi, soketler, zamanlayıcılar ve sistem olayları ile etkileşimde bulunma gibi birçok genel sistem görevine POSIX benzeri kolay erişim sağlayan, çapraz platformlu bir soyutlama kütüphanesi olarak da işlev görür. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
+* [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. Ayrıca, bütün büyük işletim sistemlerinde dosya sistemi, soketler, zamanlayıcılar ve sistem olayları ile etkileşimde bulunma gibi birçok genel sistem görevine POSIX benzeri kolay erişim sağlayan, çapraz platformlu bir soyutlama kütüphanesi olarak da işlev görür. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
 
- - Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
- - Node.js, OpenSSL dahil olmak üzere bir dizi başka statik olarak bağlı kitaplık içerir. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js, OpenSSL dahil olmak üzere bir dizi başka statik olarak bağlı kitaplık içerir. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -89,7 +89,7 @@ Ardından, derlenmiş `addon.node` dosyasını üretmek için `node-gyp build` k
 
 Bir Node.js Eklentisi yüklemek için `npm install` kullanırken, npm, talep edilen kullanıcı platformu için derlenmiş bir Eklenti sürümü oluşturarak, bu aynı işlem kümesini gerçekleştirmek için kendi paketlenmiş `node-gyp` sürümünü kullanır.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Bir kere oluşturulduktan sonra, ikili Eklenti, kurulmuş `addon.node` modülüne [`require()`](modules.html#modules_require) işaretlenerek Node.js içinde kullanılabilir:
 
 ```js
 // hello.js
@@ -99,7 +99,7 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Lütfen daha fazla bilgi için aşağıdaki örneklere bakın veya üretimdeki bir örnek için <https://github.com/arturadib/node-qt> adresini ziyaret edin.
 
 Derlenmiş ikili Eklenti dosyasına giden kesin yol, nasıl derlendiğine bağlı olarak değişebildiği için (diğer bir deyişle, bazen `./build/Debug/` içinde olabilir), Eklentiler, derlenmiş modülü yüklemek için [bindings](https://github.com/TooTallNate/node-bindings) paketini kullanabilir.
 
@@ -123,16 +123,15 @@ Node.js, V8, libuv ve OpenSSL gibi statik olarak bağlı bir dizi kütüphane ku
 
 ### Eklentileri require() kullanarak yükleme
 
-Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). [`require()`](modules.html#modules_require) işlevi, `.node` dosya uzantısına sahip dosyaları aramak ve bunları dinamik olarak bağlı kitaplıklar olarak başlatmak için yazılmıştır.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
+[`require()`](modules.html#modules_require) çağrıldığı zaman, `.node` uzantısı genellikle ihmal edilebilir ve Node.js yine de Eklentiyi bulacak ve başlatacaktır. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
 
 ## Node.js için Yerel Soyutlamalar
 
 Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. V8 API'nın bir V8 sürümünden bir sonrakine (ve bir büyük Node.js sürümünden bir sonrakine) önemli ölçüde değişebildiğini ve değiştiğini anlamak önemlidir. With each change, Addons may need to be updated and recompiled in order to continue functioning. Node.js sürüm çizelgesi, bu tür değişikliklerin sıklığını ve etkisini en aza indirecek şekilde tasarlanmıştır ancak Node.js'nin V8 API'larının kararlılığını sağlamak için şu anda yapabilecekleri çok az şey vardır.
 
 Node.js için [Yerli Soyutlamalar](https://github.com/nodejs/nan) (veya `nan`), Addon geliştiricilerinin V8 ve Node.js sürümlerinin geçmiş ve gelecekteki sürümleri arasında uyumluluğu korumak için kullanmaları için tavsiye edilen araçlar sağlar. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
-
 
 ## N-API
 
@@ -205,7 +204,6 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-
 ### İşlev argümanları
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
@@ -274,7 +272,6 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
-
 
 ### Geri Aramalar
 
@@ -375,7 +372,6 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
 ### İşlev fabrikası
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -431,7 +427,6 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
-
 
 ### C++ objelerini sarma
 
@@ -690,21 +685,21 @@ using v8::Persistent;
 using v8::String;
 using v8::Value;
 
-Persistent<Function> MyObject::constructor;
+Kalıcı<Function> MyObject::kurucu;
 
-MyObject::MyObject(double value) : value_(value) {
+MyObject::MyObject(çift değer) : value_(değer) {
 }
 
 MyObject::~MyObject() {
 }
 
-void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
-  Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
+void MyObject::Init(Isolate* izole) {
+  // Kurucu şablonunu hazırlayın
+  Lokal<FunctionTemplate> tpl = FunctionTemplate::New(izole, Yeni);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
-  // Prototype
+  // Prototip
   NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
 
   constructor.Reset(isolate, tpl->GetFunction());
@@ -714,8 +709,8 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
-    double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+    // Kurucu olarak çağrıldı: `new MyObject(...)`
+    çift ​​değer = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
     args.GetReturnValue().Set(args.This());
@@ -794,7 +789,6 @@ console.log(obj2.plusOne());
 console.log(obj2.plusOne());
 // Prints: 23
 ```
-
 
 ### Passing wrapped objects around
 
@@ -896,17 +890,17 @@ using v8::Persistent;
 using v8::String;
 using v8::Value;
 
-Persistent<Function> MyObject::constructor;
+Kalıcı<Function> MyObject::kurucu;
 
-MyObject::MyObject(double value) : value_(value) {
+MyObject::MyObject(çift değer) : value_(değer) {
 }
 
 MyObject::~MyObject() {
 }
 
 void MyObject::Init(Isolate* isolate) {
-  // Prepare constructor template
-  Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
+  // Kurucu şablonunu hazırlayın
+  Lokal<FunctionTemplate> tpl = FunctionTemplate::Yeni(isolate, Yeni);
   tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject"));
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
@@ -917,7 +911,7 @@ void MyObject::New(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   if (args.IsConstructCall()) {
-    // Invoked as constructor: `new MyObject(...)`
+    // Kurucu olarak çağrıldı: `new MyObject(...)`
     double value = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
     MyObject* obj = new MyObject(value);
     obj->Wrap(args.This());
@@ -970,7 +964,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
+* `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.

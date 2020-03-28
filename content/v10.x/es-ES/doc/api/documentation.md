@@ -1,6 +1,7 @@
 # Acerca de esta documentación
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 El objetivo de esta documentación es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Cada sección describe un módulo integrado o un concepto de alto nivel.
@@ -31,9 +32,10 @@ Los índices de estabilidad son los siguientes:
 
 > Estabilidad: 2 - Estable. Compatibility with the npm ecosystem is a high priority.
 
-Debe tener precaución al hacer uso de las funcionalidades `Experimental`, particularmente dentro de los módulos que pueden ser usados como dependencias (o dependencias de dependencias) dentro de una aplicación de Node.js. Los usuarios finales pueden no ser conscientes que funcionalidades experimentales están siendo usadas, y por lo tanto, pueden experimentar fallos no esperados o cambios en el comportamiento cuando ocurran modificaciones a la API. Para ayudar a evitar tales sorpresas, funcionalidades `Experimentales` pueden requerir una bandera de la línea de comandos para permitirlas explícitamente, o puede causar que una advertencia del proceso sea emitida. Por defecto, dichas advertencias son impresas en [`stderr`][] y pueden ser manejadas adjuntando a un listener al evento [`'warning'`][].
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Los usuarios finales pueden no ser conscientes que funcionalidades experimentales están siendo usadas, y por lo tanto, pueden experimentar fallos no esperados o cambios en el comportamiento cuando ocurran modificaciones a la API. Para ayudar a evitar tales sorpresas, funcionalidades `Experimentales` pueden requerir una bandera de la línea de comandos para permitirlas explícitamente, o puede causar que una advertencia del proceso sea emitida. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Salida JSON
+
 <!-- YAML
 added: v0.6.12
 -->
@@ -44,6 +46,6 @@ Cada documento `.html` tiene un correspondiente documento `.json` presentando la
 
 ## Syscalls y páginas man
 
-Llamadas de Sistemas como open(2) y read(2) definen la interfaz entre los programas de usuario y el sistema operativo subyacente. Las funciones de Node.js que simplemente envuelven a un syscall, como [`fs.open()`][], lo documentarán. Los documentos enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo funcionan las syscalls.
+Llamadas de Sistemas como open(2) y read(2) definen la interfaz entre los programas de usuario y el sistema operativo subyacente. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. Los documentos enlazan a las páginas man correspondientes (abreviación para páginas manuales) las cuales describen cómo funcionan las syscalls.
 
 La mayoría de las syscalls tienen equivalentes en Windows, pero el comportamiento puede diferir en Windows relativo a Linux y macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).

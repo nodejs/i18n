@@ -1,6 +1,7 @@
 # Opciones de la Línea de Comandos
 
 <!--introduced_in=v5.9.1-->
+
 <!--type=misc-->
 
 Node.js viene con una variedad de opciones de CLI. Estas opciones exponen la depuración incorporada, múltiples formas de ejecutar scripts, y otras opciones útiles de tiempo de ejecución.
@@ -17,11 +18,13 @@ Para ver esta documentación como una página de manual en un terminal, ejecutar
 
 Ejecutar sin argumentos para iniciar el [REPL](repl.html).
 
-_For more info about `node inspect`, please see the [debugger](debugger.html) documentation._
+*For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
 ## Opciones
+
 <!-- YAML
 changes:
+
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/23020
     description: Underscores instead of dashes are now allowed for
@@ -33,6 +36,7 @@ All options, including V8 options, allow words to be separated by both dashes (`
 For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 
 ### `-`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -40,6 +44,7 @@ added: v8.0.0
 Alias para stdin, análogo al uso de - en otras utilidades de línea de comandos, lo que significa que el script lee de stdin, y el resto de las opciones se pasan al script.
 
 ### `--`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -47,6 +52,7 @@ added: v6.11.0
 Indicar el final de las opciones de node. Pasar el resto de los argumentos al script. Si ningún nombre de script o script eval/print es suministrado anteriormente a esto, entonces el siguiente argumento será usado como nombre de archivo del script.
 
 ### `--abort-on-uncaught-exception`
+
 <!-- YAML
 added: v0.10
 -->
@@ -56,17 +62,20 @@ Abortar en lugar de salir de un archivo principal a generar para el análisis po
 Si se utiliza esta bandera, aún se puede configurar para no abortarla mediante [`process.setUncaughtExceptionCaptureCallback()`][] (y aplicarlo mediante del módulo `domain` que se esté utilizando).
 
 ### `--completion-bash`
+
 <!-- YAML
 added: v10.12.0
 -->
 
 Print source-able bash completion script for Node.js.
+
 ```console
 $ node --completion-bash > node_bash_completion
 $ source node_bash_completion
 ```
 
 ### `--enable-fips`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -74,6 +83,7 @@ added: v6.0.0
 Habilita FIPS-compliant cripto al Inicio. (Requiere Node.js para ser construido con `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
+
 <!-- YAML
 added: v8.5.0
 -->
@@ -81,6 +91,7 @@ added: v8.5.0
 Habilita soporte y caché de módulos experimentales ES.
 
 ### `--experimental-repl-await`
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -88,6 +99,7 @@ added: v10.0.0
 Habilita la palabra clave `await` en REPL.
 
 ### `--experimental-vm-modules`
+
 <!-- YAML
 added: v9.6.0
 -->
@@ -95,6 +107,7 @@ added: v9.6.0
 Habilita soporte y caché de módulos experimentales ES en el módulo `vm`.
 
 ### `--experimental-worker`
+
 <!-- YAML
 added: v10.5.0
 -->
@@ -102,6 +115,7 @@ added: v10.5.0
 Enable experimental worker threads using the `worker_threads` module.
 
 ### `--force-fips`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -109,6 +123,7 @@ added: v6.0.0
 Fuerza cripto FIPS-compliant en inicio. (No puede se deshabilitado desde el código del script.) (Mismos requisitos que `--enable-fips`.)
 
 ### `--icu-data-dir=file`
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -116,6 +131,7 @@ added: v0.11.15
 Especifica la ruta de carga datos ICU. (Sobreescribe `NODE_ICU_DATA`.)
 
 ### `--inspect-brk[=[host:]port]`
+
 <!-- YAML
 added: v7.6.0
 -->
@@ -123,6 +139,7 @@ added: v7.6.0
 Activar inspector en `host:port` e interrumpe al inicio del script de usuario. El `host:port` predeterminado es `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
+
 <!-- YAML
 added: v7.6.0
 -->
@@ -134,6 +151,7 @@ El host predeterminado es `127.0.0.1`.
 See the [security warning](#inspector_security) below regarding the `host` parameter usage.
 
 ### `--inspect[=[host:]port]`
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -155,13 +173,23 @@ If you specify a host, make sure that at least one of the following is true: eit
 See the [debugging security implications](https://nodejs.org/en/docs/guides/debugging-getting-started/#security-implications) section for more information.
 
 ### `--loader=file`
+
 <!-- YAML
 added: v9.0.0
 -->
 
 Specify the `file` of the custom [experimental ECMAScript Module](esm.html#esm_loader_hooks) loader.
 
+### `--insecure-http-parser`
+
+<!-- YAML
+added: v10.19.0
+-->
+
+Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow interoperability with non-conformant HTTP implementations. It may also allow request smuggling and other HTTP attacks that rely on invalid headers being accepted. Avoid using this option.
+
 ### `--max-http-header-size=size`
+
 <!-- YAML
 added: v10.15.0
 -->
@@ -169,13 +197,15 @@ added: v10.15.0
 Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 
 ### `--napi-modules`
+
 <!-- YAML
 added: v7.10.0
 -->
 
-This option is a no-op. It is kept for compatibility.
+Esta opción es un no-op. Es mantenido para compatibilidad.
 
 ### `--no-deprecation`
+
 <!-- YAML
 added: v0.8.0
 -->
@@ -183,13 +213,15 @@ added: v0.8.0
 Silencia las advertencias de desaprobación.
 
 ### `--no-force-async-hooks-checks`
+
 <!-- YAML
 added: v9.0.0
 -->
 
-Disables runtime checks for `async_hooks`. These will still be enabled dynamically when `async_hooks` is enabled.
+Deshabilita las verificaciones de tiempo de ejecución para `async_hooks`. Estas seguirán estando habilitadas dinámicamente cuando `async_hooks` esté habilitado.
 
 ### `--no-warnings`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -197,6 +229,7 @@ added: v6.0.0
 Silencia todas las advertencias del proceso (incluyendo las desaprobaciones).
 
 ### `--openssl-config=file`
+
 <!-- YAML
 added: v6.9.0
 -->
@@ -204,15 +237,17 @@ added: v6.9.0
 Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser utilizado para habilitar la criptografía compatible con FIPS si Node.js se construye con `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
+
 <!-- YAML
 added: v8.0.0
 -->
 
 Emite advertencias de desaprobación pendientes.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `--preserve-symlinks`
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -239,9 +274,10 @@ La bandera de línea de comando `--preserve-symlinks` indica a Node.js utilizar 
 
 Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, los módulos *nativos* enlazados simbólicamente pueden fallar al cargar si están enlazadas desde más de una locación en el árbol de dependencia (Node.js podría verlos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que se arroje una excepción).
 
-The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work.  To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
+The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work. To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
 
 ### `--preserve-symlinks-main`
+
 <!-- YAML
 added: v10.2.0
 -->
@@ -255,6 +291,7 @@ Note that `--preserve-symlinks-main` does not imply `--preserve-symlinks`; it is
 See `--preserve-symlinks` for more information.
 
 ### `--prof`
+
 <!-- YAML
 added: v2.0.0
 -->
@@ -262,6 +299,7 @@ added: v2.0.0
 Generate V8 profiler output.
 
 ### `--prof-process`
+
 <!-- YAML
 added: v5.2.0
 -->
@@ -269,6 +307,7 @@ added: v5.2.0
 Procesar la salida del generador de perfiles de V8 generada con la opción V8.
 
 ### `--redirect-warnings=file`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -276,6 +315,7 @@ added: v8.0.0
 Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir una advertencia al archivo, la advertencia será escrita en stderr en su lugar.
 
 ### `--throw-deprecation`
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -283,6 +323,7 @@ added: v0.11.14
 Arroja errores para deprecaciones.
 
 ### `--title=title`
+
 <!-- YAML
 added: v10.7.0
 -->
@@ -290,13 +331,15 @@ added: v10.7.0
 Set `process.title` on startup.
 
 ### `--tls-cipher-list=list`
+
 <!-- YAML
 added: v4.0.0
 -->
 
-Especifica una lista de cifrado TLS predeterminada alternativa. Requires Node.js to be built with crypto support (default).
+Especifica una lista de cifrado TLS predeterminada alternativa. Requiere que Node.js se construya con soporte criptográfico (por defecto).
 
 ### `--trace-deprecation`
+
 <!-- YAML
 added: v0.8.0
 -->
@@ -304,6 +347,7 @@ added: v0.8.0
 Imprime stack traces para desaprobaciones.
 
 ### `--trace-event-categories`
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -311,6 +355,7 @@ added: v7.7.0
 A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
 ### `--trace-event-file-pattern`
+
 <!-- YAML
 added: v9.8.0
 -->
@@ -318,6 +363,7 @@ added: v9.8.0
 Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
 
 ### `--trace-events-enabled`
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -325,6 +371,7 @@ added: v7.7.0
 Permite la recolección de información para el seguimiento de eventos.
 
 ### `--trace-sync-io`
+
 <!-- YAML
 added: v2.1.0
 -->
@@ -332,6 +379,7 @@ added: v2.1.0
 Imprime un stack trace cada vez que un I/O sincrónico es detectado después del primer turno del bucle de evento.
 
 ### `--trace-warnings`
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -339,18 +387,34 @@ added: v6.0.0
 Imprime stack traces para advertencias de proceso (incluye desaprobaciones).
 
 ### `--track-heap-objects`
+
 <!-- YAML
 added: v2.4.0
 -->
 
 Haga un seguimiento de las asignaciones de los objetos del montículo para las fotos instantáneas del montículo.
 
+### `--unhandled-rejections=mode`
+
+<!-- YAML
+added: v10.17.0
+-->
+
+By default all unhandled rejections trigger a warning plus a deprecation warning for the very first unhandled rejection in case no [`unhandledRejection`][] hook is used.
+
+Using this flag allows to change what should happen when an unhandled rejection occurs. One of three modes can be chosen:
+
+- `strict`: Raise the unhandled rejection as an uncaught exception.
+- `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][] hook is set or not but do not print the deprecation warning.
+- `none`: Silence all warnings.
+
 ### `--use-bundled-ca`, `--use-openssl-ca`
+
 <!-- YAML
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
+Usa el almacén de Mozilla CA tal como lo proporciona la versión actual de Node.js o usa el almacén de de CA predeterminado por OpenSSL. El almacén por defecto es seleccionable en el tiempo de construcción.
 
 El almacen combinado CA, como es suministrado por Node.Js, es una instantánea del almacen Mozilla CA que es fija al tiempo de lanzamiento. Es idéntico en todas las plataformas soportadas.
 
@@ -359,6 +423,7 @@ El uso del almacén OpenSSL permite modificaciones externas del almacén. Para l
 Vea `SSL_CERT_DIR` y `SSL_CERT_FILE`.
 
 ### `--v8-options`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -366,6 +431,7 @@ added: v0.1.3
 Imprime opciones de línea de comando V8.
 
 ### `--v8-pool-size=num`
+
 <!-- YAML
 added: v5.10.0
 -->
@@ -374,18 +440,21 @@ Set V8's thread pool size which will be used to allocate background jobs.
 
 If set to `0` then V8 will choose an appropriate size of the thread pool based on the number of online processors.
 
-If the value provided is larger than V8's maximum, then the largest value will be chosen.
+Si el valor proporcionado es mayor que el máximo del V8, entonces se escogerá el mayor valor.
 
 ### `--zero-fill-buffers`
+
 <!-- YAML
 added: v6.0.0
 -->
 
-Automatically zero-fills all newly allocated [`Buffer`][] and [`SlowBuffer`][] instances.
+Rellena con zeros automáticamente todos las instancias [`Buffer`][] y [`SlowBuffer`][] recién asignadas.
 
 ### `-c`, `--check`
+
 <!-- YAML
 added:
+
   - v5.0.0
   - v4.2.0
 changes:
@@ -397,9 +466,11 @@ changes:
 Comprueba la sintaxis del script sin ejecutarlo.
 
 ### `-e`, `--eval "script"`
+
 <!-- YAML
 added: v0.5.2
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
@@ -407,9 +478,10 @@ changes:
 
 Evalúa el siguiente argumento como JavaScript. Los módulos que son predefinidos en el REPL también pueden ser usados en `script`.
 
-On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
+On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. En Powershell o Git bash, `'` y `"` se pueden utilizar.
 
 ### `-h`, `--help`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -417,6 +489,7 @@ added: v0.1.3
 Imprime opciones de línea de comando de nodo. La salida de esta opción es menos detallada que este documento.
 
 ### `-i`, `--interactive`
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -424,9 +497,11 @@ added: v0.7.7
 Abre el REPL incluso si no parece que stdin sea un terminal.
 
 ### `-p`, `--print "script"`
+
 <!-- YAML
 added: v0.6.4
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Built-in libraries are now available as predefined variables.
@@ -435,6 +510,7 @@ changes:
 Idéntico a `-e` pero imprime el resultado.
 
 ### `-r`, `--require module`
+
 <!-- YAML
 added: v1.6.0
 -->
@@ -444,6 +520,7 @@ Precarga el módulo especificado en el inicio.
 Sigue las reglas de resolución del módulo `require()`'. `module` puede ser una ruta a un archivo o un nombre del módulo de nodo.
 
 ### `-v`, `--version`
+
 <!-- YAML
 added: v0.1.3
 -->
@@ -453,6 +530,7 @@ Imprime la versión de node.
 ## Variables de Entorno
 
 ### `NODE_DEBUG=module[,…]`
+
 <!-- YAML
 added: v0.1.32
 -->
@@ -464,6 +542,7 @@ Lista separada con `','` de módulos core que deben imprimir información de dep
 `','`-separated list of core C++ modules that should print debug information.
 
 ### `NODE_DISABLE_COLORS=1`
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -471,6 +550,7 @@ added: v0.3.0
 Cuando se establece a `1`, no se utilizarán colores en el REPL.
 
 ### `NODE_EXTRA_CA_CERTS=file`
+
 <!-- YAML
 added: v7.3.0
 -->
@@ -482,13 +562,15 @@ Tenga en cuenta que ni los certificados bien conocidos ni los extra se utilizan 
 This environment variable is ignored when `node` runs as setuid root or has Linux file capabilities set.
 
 ### `NODE_ICU_DATA=file`
+
 <!-- YAML
 added: v0.11.15
 -->
 
-Data path for ICU (`Intl` object) data. Extenderá los datos enlazados cuando se compilen con soporte de icu pequeño.
+La ruta de datos para los datos ICU (objeto `Intl`). Extenderá los datos enlazados cuando se compilen con soporte de icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -496,13 +578,15 @@ added: v6.11.0
 Cuando se establece a `1`, se silencian las advertencias de proceso.
 
 ### `NODE_OPTIONS=options...`
+
 <!-- YAML
 added: v8.0.0
 -->
 
-Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
+Una lista separada con espacios de opciones de línea de comando. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node.js se cerrará con un error si se utiliza una opción que no está permitida en el entorno, como `-p` o un archivo script.
 
 Node.js options that are allowed are:
+
 - `--enable-fips`
 - `--experimental-modules`
 - `--experimental-repl-await`
@@ -510,6 +594,7 @@ Node.js options that are allowed are:
 - `--experimental-worker`
 - `--force-fips`
 - `--icu-data-dir`
+- `--insecure-http-parser`
 - `--inspect`
 - `--inspect-brk`
 - `--inspect-port`
@@ -533,12 +618,14 @@ Node.js options that are allowed are:
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
+- `--unhandled-rejections`
 - `--use-bundled-ca`
 - `--use-openssl-ca`
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
 Las opciones de V8 que están permitidas son:
+
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
 - `--perf-basic-prof`
@@ -546,24 +633,27 @@ Las opciones de V8 que están permitidas son:
 - `--stack-trace-limit`
 
 ### `NODE_PATH=path[:…]`
+
 <!-- YAML
 added: v0.1.32
 -->
 
 Una lista separada con `':'` de directorios con prefijo a la ruta de búsqueda del módulo.
 
-On Windows, this is a `';'`-separated list instead.
+En Windows, es una lista separada con `';'` en su lugar.
 
 ### `NODE_PENDING_DEPRECATION=1`
+
 <!-- YAML
 added: v8.0.0
 -->
 
 Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 
-Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
+Las desaprobaciones pendientes son generalmente idénticas a una desaprobación de tiempo de ejecución, con la notable excepción de que se *apagan* por defecto y no serán emitidas a menos que se establezca la bandera de línea de comando `--pending-deprecation` o la variable de entorno `NODE_PENDING_DEPRECATION=1`. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
+
 <!-- YAML
 added: v7.1.0
 -->
@@ -571,6 +661,7 @@ added: v7.1.0
 Cuando se establece a `1`, indica al cargador del módulo para preservar enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 ### `NODE_REDIRECT_WARNINGS=file`
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -578,6 +669,7 @@ added: v8.0.0
 Cuando se establece, se emitirán advertencias de proceso al archivo dado en lugar de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir la advertencia al archivo, la advertencia será escrita en stderr en su lugar. Esto es equivalente a utilizar la bandera de línea de comando `--redirect-warnings=file`.
 
 ### `NODE_REPL_HISTORY=file`
+
 <!-- YAML
 added: v3.0.0
 -->
@@ -609,6 +701,7 @@ When set, Node.js will begin outputting [V8 JavaScript code coverage](https://v8
 At this time coverage is only collected in the main thread and will not be output for code executed by worker threads.
 
 ### `OPENSSL_CONF=file`
+
 <!-- YAML
 added: v6.11.0
 -->
@@ -618,22 +711,24 @@ Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, est
 Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno se ignora.
 
 ### `SSL_CERT_DIR=dir`
+
 <!-- YAML
 added: v7.7.0
 -->
 
 Si `--use-openssl-ca` está habilitado, esto lo anula y establece el directorio de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `SSL_CERT_FILE=file`
+
 <!-- YAML
 added: v7.7.0
 -->
 
 Si `--use-openssl-ca` está habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
-Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
+Tenga en cuenta que a menos de que el entorno secundario sea establecido explícitamente, esta variable de entorno será heredado por cualquier proceso secundario, y si usan OpenSSL, puede llevarlos a confiar en los mismos CAs como nodo.
 
 ### `UV_THREADPOOL_SIZE=size`
 

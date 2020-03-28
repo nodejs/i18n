@@ -1,4 +1,4 @@
-# String Decoder
+# Decodificador de Texto
 
 <!--introduced_in=v0.10.0-->
 
@@ -39,6 +39,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ## Clase: StringDecoder
 
 ### new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -48,6 +49,7 @@ added: v0.1.99
 Crea una nueva instancia de `StringDecoder` .
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -60,9 +62,11 @@ Devuelve cualquier entrada restante almacenada en el búfer interno como una str
 Si se proporciona el argumento `buffer`, se realiza una llamada final a `stringDecoder.write()` antes de devolver la entrada restante.
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement

@@ -170,6 +170,11 @@ provided by AsyncHooks itself. The logging should then be skipped when
 it was the logging itself that caused AsyncHooks callback to call. By
 doing this the otherwise infinite recursion is broken.
 
+### Class: `AsyncHook`
+
+The class `AsyncHook` exposes an interface for tracking lifetime events
+of asynchronous operations.
+
 #### `asyncHook.enable()`
 
 * Returns: {AsyncHook} A reference to `asyncHook`.
@@ -858,6 +863,339 @@ for (let i = 0; i < 10; i++) {
   });
 }
 ```
+
+## Class: `AsyncLocalStorage`
+<!-- YAML
+added: v13.10.0
+-->
+
+This class is used to create asynchronous state within callbacks and promise
+chains. It allows storing data throughout the lifetime of a web request
+or any other asynchronous duration. It is similar to thread-local storage
+in other languages.
+
+The following example builds a logger that will always know the current HTTP
+request and uses it to display enhanced logs without needing to explicitly
+provide the current HTTP request to it.
+
+```js
+const { AsyncLocalStorage } = require('async_hooks');
+const http = require('http');
+
+const kReq = 'CURRENT_REQUEST';
+const asyncLocalStorage = new AsyncLocalStorage();
+
+function log(...args) {
+  const store = asyncLocalStorage.getStore();
+  // Make sure the store exists and it contains a request.
+  if (store && store.has(kReq)) {
+    const req = store.get(kReq);
+    // Prints `GET /items ERR could not do something
+    console.log(req.method, req.url, ...args);
+  } else {
+    console.log(...args);
+  }
+}
+
+http.createServer((request, response) => {
+  asyncLocalStorage.run(new Map(), () => {
+    const store = asyncLocalStorage.getStore();
+    store.set(kReq, request);
+    someAsyncOperation((err, result) => {
+      if (err) {
+        log('ERR', err.message);
+      }
+    });
+  });
+})
+.listen(8080);
+```
+
+When having multiple instances of `AsyncLocalStorage`, they are independent
+from each other. It is safe to instantiate this class multiple times.
+
+### `new AsyncLocalStorage()`
+<!-- YAML
+added: v13.10.0
+-->
+
+Creates a new instance of `AsyncLocalStorage`. Store is only provided within a
+`run` or a `runSyncAndReturn` method call.
+
+### `asyncLocalStorage.disable()`
+<!-- YAML
+added: v13.10.0
+-->
+
+This method disables the instance of `AsyncLocalStorage`. All subsequent calls
+to `asyncLocalStorage.getStore()` will return `undefined` until
+`asyncLocalStorage.run()` or `asyncLocalStorage.runSyncAndReturn()`
+is called again.
+
+When calling `asyncLocalStorage.disable()`, all current contexts linked to the
+instance will be exited.
+
+Calling `asyncLocalStorage.disable()` is required before the
+`asyncLocalStorage` can be garbage collected. This does not apply to stores
+provided by the `asyncLocalStorage`, as those objects are garbage collected
+along with the corresponding async resources.
+
+This method is to be used when the `asyncLocalStorage` is not in use anymore
+in the current process.
+
+### `asyncLocalStorage.getStore()`
+<!-- YAML
+added: v13.10.0
+-->
+
+* Returns: {any}
+
+This method returns the current store.
+If this method is called outside of an asynchronous context initialized by
+calling `asyncLocalStorage.run` or `asyncLocalStorage.runAndReturn`, it will
+return `undefined`.
+
+### `asyncLocalStorage.enterWith(store)`
+<!-- YAML
+added: v13.11.0
+-->
+
+* `store` {any}
+
+Calling `asyncLocalStorage.enterWith(store)` will transition into the context
+for the remainder of the current synchronous execution and will persist
+through any following asynchronous calls.
+
+Example:
+
+```js
+const store = { id: 1 };
+asyncLocalStorage.enterWith(store);
+asyncLocalStorage.getStore(); // Returns the store object
+someAsyncOperation(() => {
+  asyncLocalStorage.getStore(); // Returns the same object
+});
+```
+
+This transition will continue for the _entire_ synchronous execution.
+This means that if, for example, the context is entered within an event
+handler subsequent event handlers will also run within that context unless
+specifically bound to another context with an `AsyncResource`.
+
+```js
+const store = { id: 1 };
+
+emitter.on('my-event', () => {
+  asyncLocalStorage.enterWith(store);
+});
+emitter.on('my-event', () => {
+  asyncLocalStorage.getStore(); // Returns the same object
+});
+
+asyncLocalStorage.getStore(); // Returns undefined
+emitter.emit('my-event');
+asyncLocalStorage.getStore(); // Returns the same object
+```
+
+### `asyncLocalStorage.run(store, callback[, ...args])`
+<!-- YAML
+added: v13.10.0
+-->
+
+* `store` {any}
+* `callback` {Function}
+* `...args` {any}
+
+Calling `asyncLocalStorage.run(callback)` will create a new asynchronous
+context. Within the callback function and the asynchronous operations from
+the callback, `asyncLocalStorage.getStore()` will return the object or
+the primitive value passed into the `store` argument (known as "the store").
+This store will be persistent through the following asynchronous calls.
+
+The callback will be ran asynchronously. Optionally, arguments can be passed
+to the function. They will be passed to the callback function.
+
+If an error is thrown by the callback function, it will not be caught by
+a `try/catch` block as the callback is ran in a new asynchronous resource.
+Also, the stacktrace will be impacted by the asynchronous call.
+
+Example:
+
+```js
+const store = { id: 1 };
+asyncLocalStorage.run(store, () => {
+  asyncLocalStorage.getStore(); // Returns the store object
+  someAsyncOperation(() => {
+    asyncLocalStorage.getStore(); // Returns the same object
+  });
+});
+asyncLocalStorage.getStore(); // Returns undefined
+```
+
+### `asyncLocalStorage.exit(callback[, ...args])`
+<!-- YAML
+added: v13.10.0
+-->
+
+* `callback` {Function}
+* `...args` {any}
+
+Calling `asyncLocalStorage.exit(callback)` will create a new asynchronous
+context.
+Within the callback function and the asynchronous operations from the callback,
+`asyncLocalStorage.getStore()` will return `undefined`.
+
+The callback will be ran asynchronously. Optionally, arguments can be passed
+to the function. They will be passed to the callback function.
+
+If an error is thrown by the callback function, it will not be caught by
+a `try/catch` block as the callback is ran in a new asynchronous resource.
+Also, the stacktrace will be impacted by the asynchronous call.
+
+Example:
+
+```js
+asyncLocalStorage.run('store value', () => {
+  asyncLocalStorage.getStore(); // Returns 'store value'
+  asyncLocalStorage.exit(() => {
+    asyncLocalStorage.getStore(); // Returns undefined
+  });
+  asyncLocalStorage.getStore(); // Returns 'store value'
+});
+```
+
+### `asyncLocalStorage.runSyncAndReturn(store, callback[, ...args])`
+<!-- YAML
+added: v13.10.0
+-->
+
+* `store` {any}
+* `callback` {Function}
+* `...args` {any}
+
+This methods runs a function synchronously within a context and return its
+return value. The store is not accessible outside of the callback function or
+the asynchronous operations created within the callback.
+
+Optionally, arguments can be passed to the function. They will be passed to
+the callback function.
+
+If the callback function throws an error, it will be thrown by
+`runSyncAndReturn` too. The stacktrace will not be impacted by this call and
+the context will be exited.
+
+Example:
+
+```js
+const store = { id: 2 };
+try {
+  asyncLocalStorage.runSyncAndReturn(store, () => {
+    asyncLocalStorage.getStore(); // Returns the store object
+    throw new Error();
+  });
+} catch (e) {
+  asyncLocalStorage.getStore(); // Returns undefined
+  // The error will be caught here
+}
+```
+
+### `asyncLocalStorage.exitSyncAndReturn(callback[, ...args])`
+<!-- YAML
+added: v13.10.0
+-->
+
+* `callback` {Function}
+* `...args` {any}
+
+This methods runs a function synchronously outside of a context and return its
+return value. The store is not accessible within the callback function or
+the asynchronous operations created within the callback.
+
+Optionally, arguments can be passed to the function. They will be passed to
+the callback function.
+
+If the callback function throws an error, it will be thrown by
+`exitSyncAndReturn` too. The stacktrace will not be impacted by this call and
+the context will be re-entered.
+
+Example:
+
+```js
+// Within a call to run or runSyncAndReturn
+try {
+  asyncLocalStorage.getStore(); // Returns the store object or value
+  asyncLocalStorage.exitSyncAndReturn(() => {
+    asyncLocalStorage.getStore(); // Returns undefined
+    throw new Error();
+  });
+} catch (e) {
+  asyncLocalStorage.getStore(); // Returns the same object or value
+  // The error will be caught here
+}
+```
+
+### Choosing between `run` and `runSyncAndReturn`
+
+#### When to choose `run`
+
+`run` is asynchronous. It is called with a callback function that
+runs within a new asynchronous call. This is the most explicit behavior as
+everything that is executed within the callback of `run` (including further
+asynchronous operations) will have access to the store.
+
+If an instance of `AsyncLocalStorage` is used for error management (for
+instance, with `process.setUncaughtExceptionCaptureCallback`), only
+exceptions thrown in the scope of the callback function will be associated
+with the context.
+
+This method is the safest as it provides strong scoping and consistent
+behavior.
+
+It cannot be promisified using `util.promisify`. If needed, the `Promise`
+constructor can be used:
+
+```js
+const store = new Map(); // initialize the store
+new Promise((resolve, reject) => {
+  asyncLocalStorage.run(store, () => {
+    someFunction((err, result) => {
+      if (err) {
+        return reject(err);
+      }
+      return resolve(result);
+    });
+  });
+});
+```
+
+#### When to choose `runSyncAndReturn`
+
+`runSyncAndReturn` is synchronous. The callback function will be executed
+synchronously and its return value will be returned by `runSyncAndReturn`.
+The store will only be accessible from within the callback
+function and the asynchronous operations created within this scope.
+If the callback throws an error, `runSyncAndReturn` will throw it and it will
+not be associated with the context.
+
+This method provides good scoping while being synchronous.
+
+#### Usage with `async/await`
+
+If, within an async function, only one `await` call is to run within a context,
+the following pattern should be used:
+
+```js
+async function fn() {
+  await asyncLocalStorage.runSyncAndReturn(new Map(), () => {
+    asyncLocalStorage.getStore().set('key', value);
+    return foo(); // The return value of foo will be awaited
+  });
+}
+```
+
+In this example, the store is only available in the callback function and the
+functions called by `foo`. Outside of `runSyncAndReturn`, calling `getStore`
+will return `undefined`.
 
 [`after` callback]: #async_hooks_after_asyncid
 [`before` callback]: #async_hooks_before_asyncid

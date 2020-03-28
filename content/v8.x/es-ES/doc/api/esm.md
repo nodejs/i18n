@@ -1,4 +1,4 @@
-# Módulos de ECMAScript
+# Módulos ECMAScript
 
 <!--introduced_in=v8.5.0-->
 

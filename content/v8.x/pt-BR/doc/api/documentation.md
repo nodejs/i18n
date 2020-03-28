@@ -1,6 +1,7 @@
 # Sobre esta documentação
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 O objetivo desta documentação é explicar de modo compreensível a API do Node.js, tanto do ponto de vista de referência quanto do ponto de vista conceitual. Cada seção descreve um módulo embutido ou um conceito de alto nível.
@@ -9,7 +10,7 @@ Quando necessário, propriedades de tipos, métodos de argumentos e os argumento
 
 ## Contribuições
 
-Caso encontre um erro nesta documentação, por favor, [abra uma issue](https://github.com/nodejs/node/issues/new) ou então veja [o guia de contribuição](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para instruções de como submeter um patch de correção.
+If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
 Cada arquivo é gerado com base no arquivo `.md` correspondente que fica no diretório: `doc/api/` na estrutura de arquivos do Node.js. A documentação é gerada usando o programa `tools/doc/generate.js`. Um template HTML está localizado em `template.html`.
 
@@ -17,7 +18,7 @@ Cada arquivo é gerado com base no arquivo `.md` correspondente que fica no dire
 
 <!--type=misc-->
 
-Por toda a documentação há indicadores de estabilidade de uma seção. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Algumas já foram bastante testadas, e são tão usadas, que dificilmente mudarão. Outras são recentes e experimentais, ou são tidas como incertas e podem ser re-desenhadas.
+Throughout the documentation are indications of a section's stability. A API do Node.js passa por mudanças, e conforme amadurece, certas partes são mais confiáveis que outras. Algumas já foram bastante testadas, e são tão usadas, que dificilmente mudarão. Outras são recentes e experimentais, ou são tidas como incertas e podem ser re-desenhadas.
 
 Os índices de estabilidade são os seguintes:
 
@@ -45,6 +46,7 @@ is a high priority, and will not be broken unless absolutely necessary.
 *Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Usuários finais podem não estar cientes do uso de funcionalidades experimentais, e assim poderão sofrer com falhas inesperadas, ou mudança de comportamento quando ocorrerem modificações na API. Para evitar surpresas desagradáveis, uma feature `Experimental` deve ser marcada com uma linha de comando para habilitá-la explicitamente, ou então poderá emitir um alerta. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
 ## Saída de JSON
+
 <!-- YAML
 added: v0.6.12
 -->

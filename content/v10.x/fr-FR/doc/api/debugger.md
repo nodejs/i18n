@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-Node.js inclut un utilitaire de débogage out-of-process accessible via un [Inspecteur V8](#debugger_v8_inspector_integration_for_node_js) et le client de débogage intégré. Pour l’utiliser, lancez Node.js avec l’argument `inspect`, suivi par le chemin d’accès du script à déboguer; une invite s’affichera, indiquant le lancement réussi du débogueur :
+Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -23,6 +23,9 @@ debug>
 Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
 
 Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
+
+<!-- eslint-disable no-debugger -->
+
 ```js
 // myscript.js
 global.x = 5;
@@ -152,11 +155,11 @@ debug>
 
 ### Intégration de l'inspecteur V8 pour Node.js
 
-L'intégration de l'inspecteur V8 permet d'attacher les outils de développement de Chrome aux instances de Node.js pour le débogage et le profilage. Elle emploie le [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+L'intégration de l'inspecteur V8 permet d'attacher les outils de développement de Chrome aux instances de Node.js pour le débogage et le profilage. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 L'inspecteur V8 peut être active en passant le flag `--inspect` au démarrage d'une application Node.js. Il est également possible de fournir un port personnalisé avec ce flag, par exemple `--inspect=9222` acceptera les connexions des outils de développement sur le port 9222.
 
-Pour arrêter l'exécution sur la première ligne du code de l'application, passez le flag `--inspect-brk` au lieu du flag `--inspect`.
+To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -165,6 +168,6 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(Dans l'example ci-dessus, l'UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 à la fin de l'URL est généré à la volée, il varie à chaque session de débogage.)
+(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
 
 If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.

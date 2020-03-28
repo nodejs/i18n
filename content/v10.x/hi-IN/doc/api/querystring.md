@@ -12,6 +12,22 @@ The `querystring` module provides utilities for parsing and formatting URL query
 const querystring = require('querystring');
 ```
 
+## querystring.decode()
+
+<!-- YAML
+added: v0.1.99
+-->
+
+The `querystring.decode()` function is an alias for `querystring.parse()`.
+
+## querystring.encode()
+
+<!-- YAML
+added: v0.1.99
+-->
+
+The `querystring.encode()` function is an alias for `querystring.stringify()`.
+
 ## querystring.escape(str)
 
 <!-- YAML
@@ -63,7 +79,7 @@ For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 
 The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified as illustrated in the following example:
+By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified:
 
 ```js
 // Assuming gbkDecodeURIComponent function already exists...
@@ -96,7 +112,7 @@ querystring.stringify({ foo: 'bar', baz: 'qux' }, ';', ':');
 // returns 'foo:bar;baz:qux'
 ```
 
-By default, characters requiring percent-encoding within the query string will be encoded as UTF-8. If an alternative encoding is required, then an alternative `encodeURIComponent` option will need to be specified as illustrated in the following example:
+By default, characters requiring percent-encoding within the query string will be encoded as UTF-8. If an alternative encoding is required, then an alternative `encodeURIComponent` option will need to be specified:
 
 ```js
 // Assuming gbkEncodeURIComponent function already exists,

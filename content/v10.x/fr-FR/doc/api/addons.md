@@ -1,21 +1,22 @@
 # Extensions C++
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Les Extensions C++ sont des objets partagés liés dynamiquement, écrits en C++, qui peuvent être chargés dans Node.js en utilisant la fonction [`require()`](modules.html#modules_require), et utilisés comme s'il s'agissait de modules Node.js ordinaires. Elles sont principalement utilisées pour fournir une interface entre le JavaScript qui s'exécute dans Node.js et des bibliothèques C/C++.
 
-À l'heure actuelle, la façon d'implémenter ces Extensions est plutôt compliquée, et implique la connaissance de plusieurs composants et APIs :
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - V8 : la bibliothèque C++ que Node.js utilise actuellement pour son implémentation de JavaScript. V8 fournit les mécanismes pour créer des objets, appeler des fonctions, etc. L'API de V8 est principalement documentée dans le fichier d'en-tête `v8.h` (`deps/v8/include/v8.h` dans l'arborescence des sources de Node.js), qui est également disponible [en ligne](https://v8docs.nodesource.com/).
+* V8 : la bibliothèque C++ que Node.js utilise actuellement pour son implémentation de JavaScript. V8 fournit les mécanismes pour créer des objets, appeler des fonctions, etc. L'API de V8 est principalement documentée dans le fichier d'en-tête `v8.h` (`deps/v8/include/v8.h` dans l'arborescence des sources de Node.js), qui est également disponible [en ligne](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv) : la bibliothèque C qui implémente la boucle d'événements de Node.js, ses threads de travail et tous les comportements asynchrones de la plateforme. Elle sert également de bibliothèque d'abstraction inter-plateformes, fournissant sur tous les systèmes d'exploitation majeurs un accès facile, de type POSIX, à de nombreuses tâches systèmes communes, telles que l'interaction avec le système de fichiers, les sockets, les timers et les événements système. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle événementielle standard. Les auteurs d'Extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle événementielle avec des entrées/sorties (I/O) ou d'autres tâches de longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
+* [libuv](https://github.com/libuv/libuv) : la bibliothèque C qui implémente la boucle d'événements de Node.js, ses threads de travail et tous les comportements asynchrones de la plateforme. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv fournit aussi une abstraction de threading façon pthreads qui peut être utilisée pour alimenter des extensions asynchrones plus sophistiquées, ayant besoin d'aller au-delà de la boucle événementielle standard. Les auteurs d'Extensions sont encouragés à considérer des manières d'éviter de bloquer la boucle événementielle avec des entrées/sorties (I/O) ou d'autres tâches de longue durée, en déportant le travail via libuv vers des opérations systèmes non-bloquantes, des threads de travail ou une utilisation personnalisée des threads libuv.
 
- - Bibliothèques internes de Node.js. Node.js exporte un certain nombre d'APIs C++ que les Extensions peuvent utiliser — la plus importante de celles-ci étant la classe `node::ObjectWrap`.
+* Bibliothèques internes de Node.js. Node.js exporte un certain nombre d'APIs C++ que les Extensions peuvent utiliser — la plus importante de celles-ci étant la classe `node::ObjectWrap`.
 
- - Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. Ces autres bibliothèques se trouvent dans le répertoire `deps/` de l'arborescence des sources de Node.js. Seuls les symboles de libuv, OpenSSL, V8 et zlib sont délibérément ré-exportés par Node.js et peuvent être utilisés à divers degrés par les Extensions. Voir [Liaison vers les dépendances propres de Node.js](#addons_linking_to_node_js_own_dependencies) pour plus d'informations.
+* Node.js inclut d'autres bibliothèques liées statiquement, dont OpenSSL. Ces autres bibliothèques se trouvent dans le répertoire `deps/` de l'arborescence des sources de Node.js. Seuls les symboles de libuv, OpenSSL, V8 et zlib sont délibérément ré-exportés par Node.js et peuvent être utilisés à divers degrés par les Extensions. Voir [Liaison vers les dépendances propres de Node.js](#addons_linking_to_node_js_own_dependencies) pour plus d'informations.
 
-Tous les exemples qui suivent sont disponibles en [téléchargement](https://github.com/nodejs/node-addon-examples) et peuvent être utilisés comme point de départ pour une Extension.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello world
 
@@ -64,7 +65,7 @@ void Initialize(Local<Object> exports); NODE_MODULE(NODE_GYP_MODULE_NAME, Initia
 
 Il n’y a pas de point-virgule après `NODE_MODULE`, car ce n’est pas une fonction (voir `node.h`).
 
-Le `module_name` doit correspondre au nom de fichier du binaire final (sans le suffixe `.node`).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
 In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
@@ -90,6 +91,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -97,6 +99,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -172,7 +175,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 
 ### Compilation
 
-Une fois le code source écrit, il doit être compilé vers le fichier binaire `addon.node`. Pour ce faire, créez un fichier appelé `binding.gyp` au plus haut niveau de l'arborescence du projet décrivant la configuration de génération du module à l’aide d’un format de type JSON. Ce fichier est utilisé par [node-gyp](https://github.com/nodejs/node-gyp) — un outil écrit spécifiquement pour compiler les extensions Node.js.
+Une fois le code source écrit, il doit être compilé vers le fichier binaire `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Ce fichier est utilisé par [node-gyp](https://github.com/nodejs/node-gyp) — un outil écrit spécifiquement pour compiler les extensions Node.js.
 
 ```json
 {
@@ -185,7 +188,7 @@ Une fois le code source écrit, il doit être compilé vers le fichier binaire `
 }
 ```
 
-Une version de l’utilitaire `node-gyp` est empaquetée et distribuée avec Node.js, incluse dans `npm`. Cette version n'est pas directement disponible pour les développeurs, et n'est présente que pour permettre d’utiliser la commande `npm install` pour compiler et installer des Extensions. Les développeurs qui souhaitent utiliser `node-gyp` directement peuvent l’installer en utilisant la commande `npm install -g node-gyp`. Voir les [instructions d’installation](https://github.com/nodejs/node-gyp#installation) de `node-gyp` pour plus d’informations, incluant les exigences spécifiques à chaque plateforme.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Cette version n'est pas directement disponible pour les développeurs, et n'est présente que pour permettre d’utiliser la commande `npm install` pour compiler et installer des Extensions. Les développeurs qui souhaitent utiliser `node-gyp` directement peuvent l’installer en utilisant la commande `npm install -g node-gyp`. Voir les [instructions d’installation](https://github.com/nodejs/node-gyp#installation) de `node-gyp` pour plus d’informations, incluant les exigences spécifiques à chaque plateforme.
 
 Une fois que le fichier `binding.gyp` a été créé, utilisez `node-gyp configure` pour générer les fichiers de compilation du projet adaptés à la plateforme sur laquelle vous vous trouvez. Ceci va générer un `Makefile` (sur les platesformes Unix) ou un fichier `vcxproj` (sous Windows) dans le répertoire `build/`.
 
@@ -241,11 +244,11 @@ Les [Abstractions Natives pour Node.js](https://github.com/nodejs/nan) (Native A
 
 > Stabilité: 2 - stable
 
-N-API est une API pour la création d’Extensions natives. Elle est indépendante de la plateforme d'exécution JavaScript sous-jacente (p. ex. V8) et est maintenue en tant que partie de Node.js. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Son but est d'isoler les Extensions du moteur JavaScript sous-jacent et de permettre aux modules compilés pour une version d'être exécuté sur les versions suivantes de Node.js sans recompilation. Les Extensions sont compilées/empaquetées avec les mêmes approche/outils décrits dans ce document (node-gyp, etc.). La seule différence est l'ensemble d'APIs utilisé par le code natif. Au lieu d'utiliser les APIs V8 ou les [Abstractions Natives pour Node.js](https://github.com/nodejs/nan), les fonctions disponibles dans la N-API sont employées.
+N-API est une API pour la création d’Extensions natives. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Son but est d'isoler les Extensions du moteur JavaScript sous-jacent et de permettre aux modules compilés pour une version d'être exécuté sur les versions suivantes de Node.js sans recompilation. Les Extensions sont compilées/empaquetées avec les mêmes approche/outils décrits dans ce document (node-gyp, etc.). La seule différence est l'ensemble d'APIs utilisé par le code natif. Au lieu d'utiliser les APIs V8 ou les [Abstractions Natives pour Node.js](https://github.com/nodejs/nan), les fonctions disponibles dans la N-API sont employées.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-Pour utiliser N-API dans l’exemple « Hello world » vu précédemment, remplacez le contenu de `hello.cc` par ce qui suit. Toutes les autres instructions restent les mêmes.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Toutes les autres instructions restent les mêmes.
 
 ```cpp
 // hello.cc using N-API
@@ -298,7 +301,7 @@ Chacun de ces exemples utilise le fichier `binding.gyp` suivant:
 }
 ```
 
-Dans les cas où il y aurait plus d'un fichier `.cc`, ajoutez simplement les noms de fichiers additionnels au tableau `sources`:
+In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
@@ -1107,16 +1110,16 @@ console.log(result);
 
 ### AtExit hooks
 
-Un hook `AtExit` est une fonction qui est appelée après que la boucle évènementielle de Node.js se soit arrêtée mais avant que la machine virtuelle JavaScript soit détruite et que Node.js s'éteigne. Les hooks `AtExit` hooks sont enregistrés en utilisant l'API `node::AtExit`.
+An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. Les hooks `AtExit` hooks sont enregistrés en utilisant l'API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> Un pointeur à passer au callback à la sortie.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
+* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
 Enregistre un hook de sortie qui est exécuté après que la boucle évènementielle de Node. js se soit arrêtée mais avant que la machine virtuelle JavaScript soit détruite.
 
-`AtExit` prend deux paramètres: un pointeur vers un callback à appeler à la sortie, et un pointeur vers des données de contexte non-typées à passer à ce callback.
+`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
 Les callbacks sont exécutés dans l'ordre dernier entré, premier sorti.
 

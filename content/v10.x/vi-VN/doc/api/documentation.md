@@ -1,6 +1,7 @@
 # Giới thiệu về tài liệu
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Tài liệu này sẽ giới thiệu một cách đầy đủ về hệ thống phần mềm Node.js, API, cũng như một số tài liệu tham khảo và những khái niệm. Mỗi một phần sẽ giới thiệu các module được tạo thành và những khái niệm bậc cao khác nhau (Module là một chức năng mà người lập trình tạo ra và có thể "tháo rời").
@@ -25,15 +26,16 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Tính ổn định: 1 - Thử nghiệm. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Tính ổn định: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## JSON Output
+
 <!-- YAML
 added: v0.6.12
 -->

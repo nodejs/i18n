@@ -1,6 +1,7 @@
 # Σχετικά με την Τεκμηρίωση
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Ο σκοπός αυτής της τεκμηρίωσης είναι να εξηγήσει αναλυτικά το Node.js API, τόσο από την πλευρά της αναφοράς όσο και σαν ιδέα. Κάθε τμήμα περιγράφει μια ενσωματωμένη ενότητα ή μια ιδέα υψηλού επιπέδου.
@@ -25,15 +26,16 @@
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Σταθερότητα: 1 - Πειραματικό. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Η χρήση αυτών των χαρακτηριστικών δεν συνιστώνται για χρήση σε περιβάλλοντα παραγωγής. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Σταθερότητα: 2 - Σταθερό. Compatibility with the npm ecosystem is a high priority.
 
-Τα `Πειραματικά` χαρακτηριστικά θα πρέπει να χρησιμοποιούνται με απόλυτη προσοχή, ειδικά σε ενότητες που μπορεί να χρησιμοποιούνται ως εξαρτήσεις (ή εξαρτήσεις εξαρτήσεων) μέσα σε μια εφαρμογή Node.js. Οι τελικοί χρήστες μπορεί να μην γνωρίζουν ότι χρησιμοποιούνται πειραματικά χαρακτηριστικά, και μπορεί να συναντήσουν απρόσμενα σφάλματα ή αλλαγές συμπεριφοράς όταν γίνουν αλλαγές στο API. Για την αποφυγή τέτοιων εκπλήξεων, τα `Πειραματικά` χαρακτηριστικά μπορεί να χρειάζονται μια επιλογή γραμμή εντολών για την ρητή ενεργοποίησή τους, αλλιώς μπορεί να προκαλέσουν μετάδοση προειδοποιήσεων. Από προεπιλογή, αυτές οι προειδοποιήσεις τυπώνονται στο [`stderr`][] και μπορεί να γίνει χειρισμός αυτών, με την σύνδεση ενός ακροατή στο συμβάν [`'warning'`][].
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Οι τελικοί χρήστες μπορεί να μην γνωρίζουν ότι χρησιμοποιούνται πειραματικά χαρακτηριστικά, και μπορεί να συναντήσουν απρόσμενα σφάλματα ή αλλαγές συμπεριφοράς όταν γίνουν αλλαγές στο API. Για την αποφυγή τέτοιων εκπλήξεων, τα `Πειραματικά` χαρακτηριστικά μπορεί να χρειάζονται μια επιλογή γραμμή εντολών για την ρητή ενεργοποίησή τους, αλλιώς μπορεί να προκαλέσουν μετάδοση προειδοποιήσεων. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Έξοδος JSON
+
 <!-- YAML
 added: v0.6.12
 -->

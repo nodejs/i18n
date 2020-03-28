@@ -1,15 +1,15 @@
-@/ / NB(chrisdickinson): si se mueve este archivo, asegúrese de actualizar @/ / tools/doc/html.js para que apunte a la nueva ubicación.
+@// NB(chrisdickinson): if you move this file, be sure to update @// tools/doc/html.js to point at the new location.
 
 <!--introduced_in=v0.10.0-->
 
 * [Acerca de esta documentación](documentation.html)
-* [Usos & Ejemplos](synopsis.html)
+* [Uso y Ejemplo](synopsis.html)
 
 <div class="line"></div>
 
-* [Pruebas de Aserción](assert.html)
-* [Ganchos Asíncronos](async_hooks.html)
-* [Buffer](buffer.html)
+* [Pruebas de Afirmación](assert.html)
+* [Hooks Asincrónicos](async_hooks.html)
+* [Búfer](buffer.html)
 * [Complementos de C++](addons.html)
 * [Complementos de C/C++ - N-API](n-api.html)
 * [Procesos Hijos](child_process.html)
@@ -17,7 +17,7 @@
 * [Opciones de Línea de Comandos](cli.html)
 * [Consola](console.html)
 * [Cripto](crypto.html)
-* [Debugger](debugger.html)
+* [Depurador](debugger.html)
 * [API Obsoletas](deprecations.html)
 * [DNS](dns.html)
 * [Dominio](domain.html)
@@ -34,20 +34,20 @@
 * [Módulos](modules.html)
 * [Net](net.html)
 * [SO](os.html)
-* [Path](path.html)
+* [Ruta de Acceso](path.html)
 * [Funciones de rendimiento](perf_hooks.html)
 * [Proceso](process.html)
-* [Código Púny](punycode.html)
+* [Punycode](punycode.html)
 * [Cadena de búsqueda](querystring.html)
-* [Lectura de línea](readline.html)
+* [Readline](readline.html)
 * [REPL](repl.html)
 * [Flujo](stream.html)
-* [Decodificador de texto](string_decoder.html)
+* [Decodificador de Texto](string_decoder.html)
 * [Temporizadores](timers.html)
 * [TLS/SSL](tls.html)
-* [Seguimiento de eventos](tracing.html)
+* [Seguimiento de Eventos](tracing.html)
 * [TTY](tty.html)
-* [UPD/Datagrama](dgram.html)
+* [Protocolo de datagramas de usuario](dgram.html)
 * [URL](url.html)
 * [Utilidades](util.html)
 * [V8](v8.html)

@@ -4,7 +4,7 @@
 
 在 Node.js 核心中，大多数测试都是 JavaScript 程序，它执行 Node.js 提供的功能并检查其行为是否符合预期。 成功时, 测试应与代码 ` 0 ` 一起退出。 如果存在以下情况, 测试将失败:
 
-- 它通过将 ` exitCode ` 设置为非零数字来退出。
+- 它通过将 ` exitCode ` 设置为非零数字来退出。 
   - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
   - 有时，使用 `process.exit(code)` 可能是适当的。
 - 它从不退出。 在这种情况下，测试运行程序最终将终止测试，因为它设置了最大时间限制。
@@ -110,7 +110,7 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
-### The *common* API
+### *common* API
 
 Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
@@ -168,6 +168,7 @@ const server = http.createServer(common.mustCall(function(req, res) {
 });
 
 ```
+
 #### Countdown 模块
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
@@ -182,7 +183,6 @@ const countdown = new Countdown(2, function() {
 countdown.dec();
 countdown.dec(); // countdown 回调将被立即调用
 ```
-
 
 ### 标记
 
@@ -205,7 +205,7 @@ const freelist = require('internal/freelist');
 - `assert.strictEqual()` 替代 `assert.equal()`
 - `assert.deepStrictEqual()` 替代 `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+在使用 `assert.throws()` 时，如果可能，请提供完整的错误信息：
 
 ```js
 assert.throws(
@@ -254,9 +254,11 @@ Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js
 To improve tests that have been imported this way, please send a PR to the upstream project first. When the proposed change is merged in the upstream project, send another PR here to update Node.js accordingly. Be sure to update the hash in the URL following `WPT Refs:`.
 
 ## C++ Unit test
+
 C++ code can be tested using [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
 ### Adding a new test
+
 The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
 ```c++
@@ -288,20 +290,24 @@ static void at_exit_callback(void* arg) {
 ```
 
 Next add the test to the `sources` in the `cctest` target in node.gyp:
+
 ```console
 'sources': [
   'test/cctest/test_env.cc',
   ...
 ],
 ```
+
 Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
 
 The test can be executed by running the `cctest` target:
+
 ```console
 $ make cctest
 ```
 
 ### Node test fixture
+
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.

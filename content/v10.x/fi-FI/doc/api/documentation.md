@@ -1,6 +1,7 @@
 # Tästä dokumentaatiosta
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Tämän dokumentaation tavoittena on selittää Node.js rajapinta sekä viittauksellisesta että käsitteellisestä näkökulmasta. Jokainen osio kuvaa sisäänrakennetun moduulin tai korkeamman tason käsitteen.
@@ -25,20 +26,21 @@ Vakausindeksit ovat:
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Vakaus: 1 - Kokeellinen. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Piirteen käyttöä ei suositella tuotantoympärisöissä. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Vakaus: 2 - Vakaa. Compatibility with the npm ecosystem is a high priority.
 
-`Kokeellisten` toimintojen käytössä on syytä käyttää harkintaa, erityisesti moduuleissa joita voidaan käyttää riippuvuuksina (tai riippuvuuksien riippuvuuksina) Node.js sovelluksessa. Loppukäyttäjät eivät välttämättä ole tietoisia kokeellisten toimintojen käytöstä ja siksi voivat kokea odottamattomia virheitä tai käyttäytymismuutoksia kun API muutoksia sattuu. Tällaisten yllätysten välttämiseksi, `Kokeelliset` toiminnot voivat vaatia komentorivioption niiden aktivoimista varten, tai voivat aiheuttaa prosessivaroituksen näkymisen. Oleuksena tällaiset varoitukset tulevat [`stderr`][] ja ne voidaan käsitellä lisäämällä kuuntelija [`'warning'`][] tapahtumaan.
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Loppukäyttäjät eivät välttämättä ole tietoisia kokeellisten toimintojen käytöstä ja siksi voivat kokea odottamattomia virheitä tai käyttäytymismuutoksia kun API muutoksia sattuu. Tällaisten yllätysten välttämiseksi, `Kokeelliset` toiminnot voivat vaatia komentorivioption niiden aktivoimista varten, tai voivat aiheuttaa prosessivaroituksen näkymisen. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## JSON Output
+
 <!-- YAML
 added: v0.6.12
 -->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 Jokaisella `.html` dokumentilla on vastaava `.json` dokumentti esittämään saman tiedon rakenteisesti. Tämä toiminto on kokeellinen ja lisätty IDE:lle ja muille työkaluille, jotka käsittelevät dokumentaatiota ohjelmallisesti.
 

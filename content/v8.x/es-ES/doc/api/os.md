@@ -11,6 +11,7 @@ const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -23,6 +24,7 @@ Una constante de strings que define el marcador de fin de línea específico par
 * `\r\n` en Windows
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -31,11 +33,12 @@ added: v0.5.0
 
 El método `os.arch()` devuelve una string que identifica la arquitectura del CPU del sistema operativo para el cual el binario de Node.js fue compilado.
 
-Los posibles valores actuales son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'` y `'x64'`.
+Actualmente, los valores posibles son: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, y `'x64'`.
 
 Es equivalente a [`process.arch`][].
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -45,6 +48,7 @@ added: v6.3.0
 Devuelve un objeto que contiene las constantes específicas del sistema operativo comúnmente utilizadas para códigos de error, señales de procesos, etc. Las constantes específicas actualmente definidas están descritas en [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -57,7 +61,7 @@ Las propiedades incluidas en cada objeto incluyen:
 
 * `model` {string}
 * `speed` {number} (en MHz)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} El número de milisegundos que el CPU ha pasado en el modo de usuario.
   * `nice` {number} El número de milisegundos que el CPU ha pasado en el modo "nice".
   * `sys` {number} El número de milisegundos que el CPU ha pasado en el modo "sys".
@@ -65,6 +69,9 @@ Las propiedades incluidas en cada objeto incluyen:
   * `irq` {number} El número de milisegundos que el CPU ha pasado en el modo "irq".
 
 For example:
+
+<!-- eslint-disable semi -->
+
 ```js
 [
   {
@@ -160,57 +167,78 @@ For example:
 
 *Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()<!-- YAML
+## os.endianness()
+
+<!-- YAML
 added: v0.9.4
--->* Devuelve: {string}
+-->
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+* Devuelve: {string}
 
-Los posibles valores son:
+El método`os.endianness()` devuelve una string que identifica la "endianidad" (cualidad de endian) del CPU *para el cual fue compilado el binario de Node.js*.
+
+Los valores posibles son:
 
 * `'BE'` para big endian (gran endian)
 * `'LE'` para little endian (pequeño endian).
 
-## os.freemem()<!-- YAML
+## os.freemem()
+
+<!-- YAML
 added: v0.3.3
--->* Retorno: {integer}
+-->
 
-El método `os.freemem()` devuelve la cantidad de memoria libre del sistema en bytes como un entero.
+* Retorno: {integer}
 
-## os.homedir()<!-- YAML
+El método `os.freemem()` devuelve la cantidad de memoria del sistema libre, en bytes y como un entero.
+
+## os.homedir()
+
+<!-- YAML
 added: v2.3.0
--->* Devuelve: {string}
+-->
 
-El método `os.homedir()` devuelve el directorio hogar del usuario actual como una línea.
+* Devuelve: {string}
 
-## os.hostname()<!-- YAML
+El método `os.homedir()` devuelve la carpeta de usuario del usuario actual como una string.
+
+## os.hostname()
+
+<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.hostname()` devuelve el nombre del dueño del sistema operativo como una string.
+* Devuelve: {string}
+
+El método `os.hostname()` devuelve el nombre del host del sistema operativo como una string.
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Devuelve: {Array}
 
-El método `os.loadavg()` devuelve un conjunto conteniendo los promedios de carga de 1,5 y 15 minutos.
+El método `os.loadavg()` devuelve un array que contiene los promedios de carga de 1; 5 y 15 minutos.
 
-El promedio de carga es una medida de la actividad del sistema, calculado por el sistema operativo y expresado como un número fraccionario. Como regla general, la carga promedio debería ser idealmente menor que el número de CPUs lógicos en el sistema.
+El promedio de carga es una medida de la actividad del si, calculado por el sistema operativo y expresado como un número fraccionario. Por regla general, el promedio de carga idealmente debería ser menor que el número de CPUs lógicos en el sistema.
 
-La carga promedio es un concepto específico de UNIX con ningún equivalente real en las plataformas Windows. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
+El promedio de carga es un concepto específico de Unix que no tiene ningún equivalente real en las plataformas de Windows. En Windows, el valor de retorno siempre es `[0, 0, 0]`.
 
-## os.networkInterfaces()<!-- YAML
+## os.networkInterfaces()
+
+<!-- YAML
 added: v0.6.0
--->* Devuelve: {Object}
+-->
 
-El método `os.networkInterfaces()` devuelve un objeto conteniendo solamente interfaces en la red que han sido asignados a la dirección de la red.
+* Devuelve: {Object}
 
-Cada tecla en el objeto devuelto identifica la interfaz de red. El valor asociado es un conjunto de objetos donde cada uno describe una dirección asignada a la red.
+El método `os.networkInterfaces()` devuelve un objeto que solo contiene las interfaces de red a las que se les ha asignado una dirección de red.
 
-Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
+Cada clave en el objeto devuelto identifica una interfaz de red. El valor asociado es un array de objetos en el que cada uno describe una dirección de red asignada.
+
+Las propiedades disponibles en la dirección de red asignada incluyen:
 
 * `address` {string} La dirección IPv4 o IPv6 asignada
 * `netmask` {string} La máscara de red IPv4 o IPv6
@@ -218,7 +246,10 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 * `mac` {string} La dirección MAC de la interfaz de red
 * `internal` {boolean} `true` si la interfaz de red es un loopback o una interfaz similar que no sea accesible de manera remota; de otra forma, es `false`
 * `scopeid` {number} El ID numérico del ámbito de IPv6 (solo especificado cuando `family` es `IPv6`)
-* `cidr` {string} La dirección IPv6 o IPv6 asignada con el prefijo de enrutamiento en notación CIDR. Si la `netmask` no es válida, esta propiedad se establece como `null`
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
+
+<!-- eslint-skip -->
+
 ```js
 {
   lo: [
@@ -260,11 +291,15 @@ Las propiedades disponibles en el objeto de dirección de red asignado incluyen:
 }
 ```
 
-## os.platform()<!-- YAML
-added: v0.5.0
--->* Devuelve: {string}
+## os.platform()
 
-El método `os.platform()` devuelve un string identificando la plataforma del sistema operativo como fue colocada durante el tiempo de compilación de Node.js.
+<!-- YAML
+added: v0.5.0
+-->
+
+* Devuelve: {string}
+
+El método `os.platform()` devuelve una string que identifica la plataforma del sistema operativo tal como fue establecida durante el tiempo de compilación de Node.js.
 
 Los posibles valores actuales son:
 
@@ -276,66 +311,85 @@ Los posibles valores actuales son:
 * `'sunos'`
 * `'win32'`
 
-Equivalente para [`process.platform`][].
+Es equivalente a [`process.platform`][].
 
-*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. Sin embargo, el soporte de Android es considerado[ experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) actualmente.
+*Nota*: El valor `'android'` también puede ser devuelto si Node.js fue compilado sobre el sistema operativo Android. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
-## os.release()<!-- YAML
+## os.release()
+
+<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.release()` retorna un string identificando la versión del sistema operativo.
+* Devuelve: {string}
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). En Windows, `GetVersionExW()` es usado. Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para mayor información.
+El método `os.release()` devuelve una string que identifica la versión del sistema operativo.
 
-## os.tmpdir()<!-- YAML
+*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). En Windows, se utiliza `GetVersionExW()`. Por favor, consulte https://en.wikipedia.org/wiki/Uname#Examples para más información.
+
+## os.tmpdir()
+
+<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Devuelve: {string}
+-->
 
-El método `os.tmpdir()` retorna una string que especifica el directorio predeterminado del sistema operativo para los archivos temporales.
+* Devuelve: {string}
+
+El método `os.tmpdir()` devuelve una string que especifica el directorio predeterminado del sistema operativo para los archivos temporales.
 
 ## os.totalmem()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Retorna: {integer}
 
-El método `os.totalmem()` retorna la cantidad total de memoria del sistema en bytes como un entero.
+El método `os.totalmem()` devuelve la cantidad total de memoria del sistema en bytes, como un número entero.
 
-## os.type()<!-- YAML
+## os.type()
+
+<!-- YAML
 added: v0.3.3
--->* Devuelve: {string}
+-->
 
-El método `os.type()` retorna una string identificando el nombre del sistema operativo como es retornado por [uname(3)](https://linux.die.net/man/3/uname). Por ejemplo`'Linux'` en Linux, `'Darwin'` en macOS y `'Windows_NT'` en Windows.
+* Devuelve: {string}
 
-Por favor vea https://en.wikipedia.org/wiki/Uname#Examples para información adicional sobre los resultados de correr [uname(3)](https://linux.die.net/man/3/uname) en distintos sistemas operativos.
+El método `os.type()` retorna una string que identifica el nombre del sistema operativo tal como es devuelto por [uname(3)](https://linux.die.net/man/3/uname). Por ejemplo, `'Linux'` en Linux, `'Darwin'` en macOS y `'Windows_NT'` en Windows.
+
+Por favor consulte https://en.wikipedia.org/wiki/Uname#Examples para obtener información adicional sobre los outputs arrojados por la ejecución de [uname(3)](https://linux.die.net/man/3/uname) en distintos sistemas operativos.
 
 ## os.uptime()
+
 <!-- YAML
 added: v0.3.3
 -->
 
 * Devuelve: {integer}
 
-El método de `os.uptime()` retorna el tiempo de operación del sistema en segundos.
+El método `os.uptime()` devuelve el tiempo de operación del sistema en segundos.
 
 *Nota*: En Windows, el valor devuelto incluye fracciones de segundo. Utilice `Math.floor()` para obtener segundos enteros.
 
-## os.userInfo([options])<!-- YAML
+## os.userInfo([options])
+
+<!-- YAML
 added: v6.0.0
--->* `opciones` {Object}
+-->
+
+* `options` {Object} 
   * `encoding` {string} Codificación de caracteres utilizada para interpretar las strings resultantes. Si `encoding` se establece como `'buffer'`, los valores de `username`, `shell` y `homedir` serán instancias de `Buffer`. **Predeterminado:** `'utf8'`.
 * Retorna: {Object}
 
-El método `os.userInfo()` retorna información acerca del actual usuario efectivo -- en plataformas POSIX, esto es tipicamente un subconjunto en el archivo de contraseñas. El objeto devuelto incluye el `username`, `uid`, `gid`, `shell`, y `homedir`. En Windows, el `uid` y `gid` campos son `-1`, y `shell` es `null`.
+El método `os.userInfo()` devuelve información sobre el usuario efectivo actual — en plataformas POSIX, típicamente es un subconjunto del archivo de contraseña. El objeto devuelto incluye los `username`, `uid`, `gid`, `shell` y `homedir`. En Windows, los campos de `uid` y `gid` son `-1`, y `shell` es `null`.
 
-El valor del `homedir` deveulto por `os.userInfo()` es provisto por el sistema operativo. Esto difiere del resultado de `os.homedir()` el cual consulta distintas variables del entorno para el directorio hogar antes de recurrir a la respuesta del sistema operativo.
+El valor de `homedir` devuelto por `os.userInfo()` es provisto por el sistema operativo. Este difiere del resultado de `os.homedir()`, el cual consulta distintas variables de entorno que afectan a la carpeta de usuario antes de remitirse a la respuesta del sistema operativo.
 
 ## Constantes del OS (Sistema Operativo)
 
@@ -343,12 +397,17 @@ Las siguientes constantes son exportadas por `os.constants`.
 
 *Note*: Not all constants will be available on every operating system.
 
-### Constantes de Señal<!-- YAML
+### Constantes de Señal
+
+<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->Las siguientes constantes son exportadas por `os.constants.signals`:
+-->
+
+Las siguientes constantes de señal son exportadas por `os.constants.signals`:
 
 <table>
   <tr>
@@ -706,7 +765,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOMEM</code></td>
-    <td>Indica que no hay espacio suficiente.</td>
+    <td>Indica que no hay suficiente espacio.</td>
   </tr>
   <tr>
     <td><code>ENOMSG</code></td>
@@ -714,11 +773,11 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOPROTOOPT</code></td>
-    <td>Indica que el protocolo indicado no está disponible.</td>
+    <td>Indica que un protocolo dado no se encuentra disponible.</td>
   </tr>
   <tr>
     <td><code>ENOSPC</code></td>
-    <td>Indica que no hay espacio disponible dentro del dispositivo.</td>
+    <td>Indica que no se dispone de suficiente espacio en el dispositivo.</td>
   </tr>
   <tr>
     <td><code>ENOSR</code></td>
@@ -730,7 +789,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOSYS</code></td>
-    <td>Indica que la función no ha sido implementada.</td>
+    <td>Indica que una función no ha sido implementada.</td>
   </tr>
   <tr>
     <td><code>ENOTCONN</code></td>
@@ -738,19 +797,19 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ENOTDIR</code></td>
-    <td>Indica que la ruta actual no es un directorio.</td>
+    <td>Indica que la ruta no es un directorio.</td>
   </tr>
   <tr>
     <td><code>ENOTEMPTY</code></td>
-    <td>Indica que el directorio actual no está vacío.</td>
+    <td>Indica que el directorio no está vacío.</td>
   </tr>
   <tr>
     <td><code>ENOTSOCK</code></td>
-    <td>Indica que el producto enviado no es un socket.</td>
+    <td>Indica que el elemento dado no es un socket.</td>
   </tr>
   <tr>
     <td><code>ENOTSUP</code></td>
-    <td>Indica que la operación hecha no está soportada.</td>
+    <td>Indica que una operación dada no es soportada.</td>
   </tr>
   <tr>
     <td><code>ENOTTY</code></td>
@@ -771,7 +830,7 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EPERM</code></td>
-    <td>Indica que la operación no esta permitida.</td>
+    <td>Indica que la operación no es permitida.</td>
   </tr>
   <tr>
     <td><code>EPIPE</code></td>
@@ -783,15 +842,15 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>EPROTONOSUPPORT</code></td>
-    <td>Indica que el protocolo no esta soportado.</td>
+    <td>Indica que un protocolo no es soportado.</td>
   </tr>
   <tr>
     <td><code>EPROTOTYPE</code></td>
-    <td>Inidica un tipo incorrecto de protocolo para el socket.</td>
+    <td>Indica un tipo de protocolo incorrecto para un socket.</td>
   </tr>
   <tr>
     <td><code>ERANGE</code></td>
-    <td>Indica que los resultados son demasiado largos.</td>
+    <td>Indica que los resultados son demasiado grandes.</td>
   </tr>
   <tr>
     <td><code>EROFS</code></td>
@@ -815,11 +874,11 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
   <tr>
     <td><code>ETIMEDOUT</code></td>
-    <td>Indica que se agoto el tiempo de conexión.</td>
+    <td>Indica que se agotó el tiempo de espera de la conexión.</td>
   </tr>
   <tr>
     <td><code>ETXTBSY</code></td>
-    <td>Indica que el archivo de texto esta ocupado.</td>
+    <td>Indica que un archivo de texto se encuentra ocupado.</td>
   </tr>
   <tr>
     <td><code>EWOULDBLOCK</code></td>
@@ -831,9 +890,9 @@ Las siguientes constantes de error son exportadas por `os.constants.errno`:
   </tr>
 </table>
 
-#### Constantes de error especificas de Windows
+#### Constantes de Error Específicas de Windows
 
-Los siguientes códigos de error son específicos del sistema operativo windows:
+Los siguientes códigos de error son específicos de el sistema operativo Windows:
 
 <table>
   <tr>
@@ -850,7 +909,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEACCES</code></td>
-    <td>Indica permisos insuficientes para completar la operación.</td>
+    <td>Indica insuficiencia de permisos para completar la operación.</td>
   </tr>
   <tr>
     <td><code>WSAEFAULT</code></td>
@@ -858,7 +917,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEINVAL</code></td>
-    <td>Indica que un argumento invalido fue pasado.</td>
+    <td>Indica que un argumento inválido fue pasado.</td>
   </tr>
   <tr>
     <td><code>WSAEMFILE</code></td>
@@ -866,11 +925,11 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEWOULDBLOCK</code></td>
-    <td>Indica que de manera temporal el recurso no se encuentra disponible.</td>
+    <td>Indica que un recurso no se encuentra disponible temporalmente.</td>
   </tr>
   <tr>
     <td><code>WSAEINPROGRESS</code></td>
-    <td>Indica que una operación está actualmente en curso.</td>
+    <td>Indica que una operación se encuentra en progreso actualmente.</td>
   </tr>
   <tr>
     <td><code>WSAEALREADY</code></td>
@@ -890,7 +949,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEPROTOTYPE</code></td>
-    <td>Indica un tipo incorrecto de protocolo para el socket.</td>
+    <td>Indica el tipo de protocolo equivocado para el socket.</td>
   </tr>
   <tr>
     <td><code>WSAENOPROTOOPT</code></td>
@@ -898,7 +957,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEPROTONOSUPPORT</code></td>
-    <td>Indica que el protocolo no esta soportado.</td>
+    <td>Indica que el protocolo no es soportado.</td>
   </tr>
   <tr>
     <td><code>WSAESOCKTNOSUPPORT</code></td>
@@ -906,7 +965,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEOPNOTSUPP</code></td>
-    <td>Indica que la operación no esta soportada.</td>
+    <td>Indica que la operación no es soportada.</td>
   </tr>
   <tr>
     <td><code>WSAEPFNOSUPPORT</code></td>
@@ -922,7 +981,7 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAEADDRNOTAVAIL</code></td>
-    <td>Indica que la dirección de red no esta disponible.</td>
+    <td>Indica que la dirección de red no se encuentra disponible.</td>
   </tr>
   <tr>
     <td><code>WSAENETDOWN</code></td>
@@ -946,11 +1005,11 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
   </tr>
   <tr>
     <td><code>WSAENOBUFS</code></td>
-    <td>Indica que no hay espacio disponible en el buffer.</td>
+    <td>Indica que no hay espacio de búfer disponible.</td>
   </tr>
   <tr>
     <td><code>WSAEISCONN</code></td>
-    <td>Indica que el socket ya ha sido conectado.</td>
+    <td>Indica que el socket ya se encuentra conectado.</td>
   </tr>
   <tr>
     <td><code>WSAENOTCONN</code></td>
@@ -1086,4 +1145,3 @@ Los siguientes códigos de error son específicos del sistema operativo windows:
     <td></td>
   </tr>
 </table>
-

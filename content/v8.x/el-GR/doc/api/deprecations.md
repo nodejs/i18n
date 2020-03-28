@@ -66,7 +66,7 @@ From time-to-time the deprecation of an API may be reversed. Such action may hap
 
 * [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Δημιουργία `Buffer` με *αρχικοποίηση* μνήμης.
 * [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Create a `Buffer` with *uninitialized* memory.
-* [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
+* [`Buffer.allocUnsafeSlow(size)`][] - Δημιουργία `Buffer` *χωρίς αρχικοποίηση* μνήμης.
 * [`Buffer.from(array)`][] - Δημιουργία `Buffer` με ένα αντίγραφο του `array`
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Create a `Buffer` that wraps the given `arrayBuffer`.
 * [`Buffer.from(buffer)`][] - Δημιουργία `Buffer` που αντιγράφει το `buffer`.
@@ -102,7 +102,7 @@ Within the `cluster` module, the [`worker.suicide`][] property has been deprecat
 
 Type: End-of-life
 
-Η χρήση του  [`crypto.pbkdf2()`][] API αποσύρθηκe στην έκδοση Node.js 6.0 επειδή η μέθοδος χρησιμοποιούσε εξ΄ορισμού το μη προτεινόμενο `'SHA1'` digest. Προηγουμένως, εμφανιζόταν ένα μήνυμα απόσυρσης. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
+Η χρήση του [`crypto.pbkdf2()`][] API αποσύρθηκe στην έκδοση Node.js 6.0 επειδή η μέθοδος χρησιμοποιούσε εξ΄ορισμού το μη προτεινόμενο `'SHA1'` digest. Προηγουμένως, εμφανιζόταν ένα μήνυμα απόσυρσης. Starting in Node.js 8.0.0, calling `crypto.pbkdf2()` or `crypto.pbkdf2Sync()` with an undefined `digest` will throw a `TypeError`.
 
 <a id="DEP0010"></a>
 

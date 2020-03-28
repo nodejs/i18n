@@ -1,10 +1,10 @@
-# Cómo escribir una prueba para el proyecto de Node.js
+# Cómo escribir una prueba para el proyecto Node.js
 
 ## ¿Qué es una prueba?
 
 La mayoría de las pruebas en el núcleo de Node.js son programas de JavaScript que ejercen una funcionalidad proporcionada por Node.js y verifican que se comporte como se espera. Las pruebas deben salir con el código `0` cuando tengan éxito. Una prueba fallará si:
 
-- Se sale al configurar `process.exitCode` a un número distinto de cero.
+- Se sale al configurar `process.exitCode` a un número distinto de cero. 
   - Esto es realizado usualmente haciendo que una aserción arroje un Error no capturado.
   - Ocasionalmente, puede ser apropiado utilizar `process.exit(code)`.
 - Nunca se sale. En este caso, el corredor de prueba terminará la prueba porque establece un límite de tiempo máximo.
@@ -17,7 +17,7 @@ Añadir pruebas cuando:
 
 ## Estructura del directorio de la prueba
 
-Vea [descripción general de la estructura del directorio](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) para obtener un resumen de la prueba & ubicaciones. Al decidir si expandir un archivo de prueba existente o crear uno nuevo, considere revisar los archivos relacionados con el subsistema. Por ejemplo, busque los `test-streams` al escribir una prueba para `lib/streams.js`.
+Vea [descripción general de la estructura del directorio](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) para obtener un resumen de la prueba & ubicaciones. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. Por ejemplo, busque los `test-streams` al escribir una prueba para `lib/streams.js`.
 
 ## Estructura de la prueba
 
@@ -28,8 +28,9 @@ Analicemos esta prueba básica de la suite de prueba de Node.js:
 const common = require('../common');                                   // 2
 const fixtures = require('../common/fixtures');                        // 3
 
-// Esta prueba se asegura de que el http-parser pueda manejar caracteres de UTF-8  // 5
-// en la cabecera de http.                                                 // 6
+// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
+// 5
+// en el encabezado http.                                                 // 6
 
 const assert = require('assert');                                      // 8
 const http = require('http');                                          // 9
@@ -57,11 +58,11 @@ const common = require('../common');
 const fixtures = require('../common/fixtures');
 ```
 
-La primera línea habilita el modo estricto. Todas las pruebas deben ser realizadas en modo estricto a menos que la naturaleza de la prueba requiera que la prueba sea ejecutada sin el.
+La primera línea habilita el modo estricto. Todas las pruebas deben estar en modo estricto, a menos que la naturaleza de la prueba requiera que la prueba se ejecute sin él.
 
-La segunda línea carga el módulo `common`. El [`common` module][] es un módulo ayudante que proporciona herramientas útiles para las pruebas. Algunas funcionalidades comunes han sido extraídas en submódulos, los cuales son requeridos por separado como los accesorios del módulo de aquí.
+La segunda línea carga el módulo `common`. The [`common` module][] is a helper module that provides useful tools for the tests. Some common functionality has been extracted into submodules, which are required separately like the fixtures module here.
 
-Incluso si una prueba no usa funciones u otras propiedades exportadas por `common`, la prueba aún así debe incluir el módulo `common` antes que cualquier otro módulo. Esto es debido a que el módulo `common` incluye código que causará que la prueba falle si la misma filtra variables en el espacio global. En situaciones donde una prueba no usa funciones u otras propiedades exportadas por `common`, inclúyalo sin asignarlo a un identificador:
+Incluso si una prueba no usa funciones u otras propiedades exportadas por `common`, aún así debe incluir el módulo `common` antes que cualquier otro módulo. Esto es debido a que el módulo `common` incluye código que causará que la prueba falle si la misma filtra variables en el espacio global. En situaciones en las que una prueba no use funciones u otras propiedades exportadas por `common`, inclúyalo sin asignarlo a un identificador:
 
 ```javascript
 require('../common');
@@ -70,11 +71,11 @@ require('../common');
 ### **Líneas 5-6**
 
 ```javascript
-// Esta prueba se asegura de que el http-parser pueda manejar caracteres de UTF-8
-// en la cabecera de http.
+// Esta prueba asegura que el http-parser pueda soportar caracteres UTF-8
+// en el encabezado http.
 ```
 
-Una prueba debe iniciar con un comentario que contenga una breve descripción de lo que está diseñada a probar.
+Una prueba debe comenzar con un comentario que contenga una breve descripción de lo que está diseñada para probar.
 
 ### **Líneas 8-9**
 
@@ -87,7 +88,7 @@ La prueba comprueba la funcionalidad en el módulo `http`.
 
 La mayoría de las pruebas usan el módulo `assert` para confirmar las expectativas de la prueba.
 
-Las instrucciones require se ordenan en orden [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) (dígitos, mayúsculas, `_`, minúsculas).
+The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) order (digits, upper case, `_`, lower case).
 
 ### **Líneas 11-22**
 
@@ -101,9 +102,9 @@ Este es el cuerpo de la prueba. Esta prueba es simple, solo prueba que un servid
 
 ### Temporizadores
 
-Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. Existen varias razones para esto. Mayormente, son una fuente de problemas. Para una explicación completa vaya [aquí](https://github.com/nodejs/testing/issues/27).
+Evite usar temporizadores a menos que la prueba esté probando específicamente los temporizadores. Existen varias razones para esto. Mayormente, son una fuente de problemas. Para una explicación completa, vaya [aquí](https://github.com/nodejs/testing/issues/27).
 
-En el evento la prueba necesita un temporizador, considere usar el método `common.platformTimeout()`. Permite configurar tiempos de espera específicos dependiendo de la plataforma. Por ejemplo:
+En el evento en el que una prueba necesite un temporizador, considere utilizar el método `common.platformTimeout()`. Permite configurar tiempos de espera específicos dependiendo de la plataforma. Por ejemplo:
 
 ```javascript
 const timer = setTimeout(fail, common.platformTimeout(4000));
@@ -169,6 +170,7 @@ const server = http.createServer(common.mustCall(function(req, res) {
 });
 
 ```
+
 #### Módulo Countdown
 
 El [módulo Countdown](https://github.com/nodejs/node/tree/master/test/common#countdown-module) común proporciona un mecanismo de cuenta regresiva simple para pruebas que requieran que se realice una acción particular después de un número determinado de tareas completadas (por ejemplo, apagar un servidor HTTP después de un número específico de solicitudes).
@@ -181,9 +183,8 @@ const countdown = new Countdown(2, function() {
 });
 
 countdown.dec();
-countdown.dec(); // La callback countdown será invocada ahora.
+countdown.dec(); // El callback countdown será invocado ahora.
 ```
-
 
 ### Banderas
 
@@ -192,7 +193,7 @@ Algunas pruebas requerirán ejecutar Node.js con banderas de línea de comando e
 ```javascript
 'use strict';
 
-// Banderas: --expose-internals
+// Flags: --expose-internals
 
 require('../common');
 const assert = require('assert');
@@ -213,15 +214,15 @@ assert.throws(
   () => {
     throw new Error('Wrong value');
   },
-  /^Error: Wrong value$/ // En lugar de algo como /Wrong value/
+  /^Error: Wrong value$/ // En lugar de algo como /Valor incorrecto/
 );
 ```
 
-### ES.Next features
+### Funcionalidades ES.Next
 
-Por razones de rendimiento, solo usamos un subconjunto seleccionado de características ES.Next en código JavaScript en el directorio `lib`. Sin embargo, al escribir pruebas, para la facilidad del backporting, se recomienda usar aquellas características ES.Next que pueden ser usadas directamente sin una bandera en [todas las ramas mantenidas](https://github.com/nodejs/lts). [node.green](http://node.green/) enumera funcionalidades disponibles en cada lanzamiento.
+Por consideraciones de rendimiento, solo utilizamos un subconjunto seleccionado de características ES.Next en código de JavaScript en el directorio de `lib`. However, when writing tests, for the ease of backporting, it is encouraged to use those ES.Next features that can be used directly without a flag in [all maintained branches](https://github.com/nodejs/lts). [node.green](http://node.green/) lists available features in each release.
 
-Por ejemplo:
+For example:
 
 - `let` y `const` sobre `var`
 - Literales de plantilla sobre la concatenación de strings
@@ -237,7 +238,7 @@ Por ejemplo, una prueba para el evento `beforeExit` en el objeto `process` puede
 
 ### Pruebas de Plataforma Web
 
-Algunas de las pruebas para la implementación (nombrada `test-whatwg-url-*.js`) son importadas del [Proyecto de Pruebas de Plataforma Web](https://github.com/w3c/web-platform-tests/tree/master/url). Estas pruebas importadas serán envueltas de esta forma:
+Some of the tests for the WHATWG URL implementation (named `test-whatwg-url-*.js`) are imported from the [Web Platform Tests Project](https://github.com/w3c/web-platform-tests/tree/master/url). Estas pruebas importadas serán envueltas de esta forma:
 
 ```js
 /* Las siguientes pruebas son copiadas del WPT. Las modificaciones a ellas deben ser primero upstreamed. Refs:
@@ -254,10 +255,12 @@ Algunas de las pruebas para la implementación (nombrada `test-whatwg-url-*.js`)
 Para mejorar las pruebas que han sido importadas de esta manera, por favor envíe una PR al proyecto upstream primero. Cuando el cambio propuesto se fusione con el proyecto upstream, envíe otro PR aquí para actualizar Node.js en consecuencia. Asegúrese de actualizar el hash en el URL siguiendo las `WPT Refs:`.
 
 ## Prueba de la Unidad C++
-El código C++ puede ser probado utilizando [Google Test](https://github.com/google/googletest). La mayoría de las funcionalidades en Node.js pueden ser probadas utilizando los métodos descritos previamente en este documento. Pero hay casos en donde estos pueden no ser suficientes, por ejemplo, al escribir código para Node.js que sólo será llamado cuando Node.js esté incrustado.
+
+El código C++ puede ser probado usando [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
 ### Añadiendo una nueva prueba
-La prueba de unidad debe ser colocada en `test/cctest` y nombrada con el prefijo `test`, seguido por el nombre de la unidad que está siendo probada. Por ejemplo, el siguiente código será colocado en `test/cctest/test_env.cc`:
+
+The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
 ```c++
 #include "gtest/gtest.h"
@@ -287,21 +290,25 @@ static void at_exit_callback(void* arg) {
 }
 ```
 
-Luego añada la prueba a las `sources` en el objetivo de `cctest` en node.gyp:
+Luego añada la prueba al `sources` en el objetivo `cctest` en node.gyp:
+
 ```console
 'sources': [
   'test/cctest/test_env.cc',
   ...
 ],
 ```
-Note que las únicos recursos que deben ser incluidos en el objetivo de cctest son pruebas reales o archivos de fuente auxiliares. Puede que sea necesario incluir archivos de objeto específicos que sean compilados por el objetivo de `node` y esto puede ser hecho al añadirlos a la sección `libraries` en el objetivo de cctest.
 
-La prueba puede ejecutarse al correr el objetivo de `cctest`:
+Note that the only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
+
+La prueba puede ser realizada al ejecutar el objetivo `cctest`:
+
 ```console
 $ make cctest
 ```
 
 ### Accesorio de prueba de Node
-Hay un [accesorio de pruebas](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) llamado `node_test_fixture.h`, el cual puede ser incluido por las pruebas de unidad. El accesorio se encarga de configurar el ambiente de Node.js y de desmontarlo después de que las pruebas hayan finalizado.
 
-También contiene un ayudante para crear argumentos a ser pasados a Node.js. Dependerá de lo que se esté probando si esto es necesario o no.
+There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
+
+También contiene un ayudante para crear argumentos a ser pasados a Node.js. It will depend on what is being tested if this is required or not.

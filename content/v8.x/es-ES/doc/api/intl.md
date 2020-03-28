@@ -4,13 +4,13 @@
 
 Node.js tiene muchas funciones que facilitan la escritura de programas internacionalizados. Algunas de ellas son:
 
-- Funciones sensibles a la configuración local o que toman en cuenta la codificación Unicode en la [Especificación de Lenguaje ECMAScript](https://tc39.github.io/ecma262/):
-  - [`String.prototype.normalize()`][]
-  - [`String.prototype.toLowerCase()`][]
-  - [`String.prototype.toUpperCase()`][]
-- Todas las funciones descritas en la [Especificación de la API de Internacionalización de ECMAScript](https://tc39.github.io/ecma402/) (también conocida como ECMA-402):
-  - Objeto [`Intl`][]
-  - Métodos sensibles a la configuración local como [`String.prototype.localeCompare()`][] y [`Date.prototype.toLocaleString()`][]
+- Funciones sensibles a la configuración local o que toman en cuenta la codificación Unicode en la [Especificación de Lenguaje ECMAScript](https://tc39.github.io/ecma262/): 
+    - [`String.prototype.normalize()`][]
+    - [`String.prototype.toLowerCase()`][]
+    - [`String.prototype.toUpperCase()`][]
+- Todas las funciones descritas en la [Especificación de la API de Internacionalización de ECMAScript](https://tc39.github.io/ecma402/) (también conocida como ECMA-402): 
+    - Objeto [`Intl`][]
+    - Métodos sensibles a la configuración local como [`String.prototype.localeCompare()`][] y [`Date.prototype.toLocaleString()`][]
 - Soporte de [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs)
 - [`require('buffer').transcode()`][]
 - Una edición de linea mas precisa en [REPL](repl.html#repl_repl)
@@ -49,7 +49,7 @@ Un resumen general de las funciones de Node.js y JavaScript disponibles para cad
 
 ### Desactivar todas las funciones de internacionalización (`none`)
 
-Si se escoge esta opción, la mayoría de las funcionalidades de internacionalización mencionadas anteriormente no estará **disponibles** en el binario `node` resultante.
+Si se escoge esta opción, la mayoría de las funciones de internacionalización mencionadas anteriormente **no estarán disponibles** en el binario de `node` resultante.
 
 ### Compilar con una ICU pre-instalada (`system-icu`)
 
@@ -81,17 +81,17 @@ Este modo proporciona un buen balance entre funciones y tamaño binario, y es el
 
 Si la opción `small-icu` es utilizada, aún es posible proporcionar datos locales adicionales en tiempo de ejecución para que los métodos JS funcionen para todos los locales de ICU. Asumiendo que el archivo de datos está almacenado en `/some/directory`, este puede hacerse disponible para ICU a través de:
 
-* La variable de entorno [`NODE_ICU_DATA`][]:
+- La variable de entorno [`NODE_ICU_DATA`][]:
+    
+    ```shell
+    env NODE_ICU_DATA=/some/directory node
+    ```
 
-  ```shell
-  env NODE_ICU_DATA=/some/directory node
-  ```
-
-* El parámetro CLI de [`--icu-data-dir`][]:
-
-  ```shell
-  node --icu-data-dir=/some/directory
-  ```
+- El parámetro CLI de [`--icu-data-dir`][]:
+    
+    ```shell
+    node --icu-data-dir=/some/directory
+    ```
 
 (Si ambos están especificados, el parámetro CLI de `--icu-data-dir` tendrá precedencia.)
 

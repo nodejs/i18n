@@ -2,15 +2,16 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
-`util` 模块主要用于满足 Node.js 自己内部 API 的需求。 然而，很多实用程序对于应用程序和模块开发者也非常有用。 可以通过如下方式访问：
+`util` 模块主要用于满足 Node.js 自己内部 API 的需求。 然而，很多实用程序对于应用程序和模块开发者也非常有用。 它可以通过如下方式访问：
 
 ```js
 const util = require('util');
 ```
 
 ## util.callbackify(original)
+
 <!-- YAML
 added: v8.2.0
 -->
@@ -18,7 +19,7 @@ added: v8.2.0
 * `original` {Function} 一个 `异步` 函数
 * 返回：{Function} 回调样式的函数
 
-采用 `异步` 函数 （或返回 Promise 的函数）作为参数，并返回遵循错误优先回调样式的函数，即采用 `(err, value) => ...` 形式的回调函数作为最后一个参数。 在回调函数中，第一个参数为拒绝原因 （如果 Promise resolved，则为`null`），第二个参数则为 resolved 值。
+Takes an `async` function (or a function that returns a Promise) and returns a function following the error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the Promise resolved), and the second argument will be the resolved value.
 
 例如：
 
@@ -44,15 +45,16 @@ hello world
 
 *注意*：
 
-* 回调是异步执行的，且将具有有限的栈回溯。 如果回调函数抛出异常，进程将发出一个 [`'uncaughtException'`][] 事件，如果该事件没有被处理，则将退出。
+* 回调是异步执行的，且将具有有限的栈回溯。 If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
 
-* 由于 `null` 作为回调函数的第一个参数具有特殊含义，如果一个被包装的函数拒绝 `Promise` 并返回虚值作为原因，则原始值将被存储于 `reason` 字段，并被包装在 `Error` 中。
+* Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
+  
   ```js
   function fn() {
     return Promise.reject(null);
   }
   const callbackFunction = util.callbackify(fn);
-
+  
   callbackFunction((err, ret) => {
     // When the Promise was rejected with `null` it is wrapped with an Error and
     // the original value is stored in `reason`.
@@ -61,6 +63,7 @@ hello world
   ```
 
 ## util.debuglog(section)
+
 <!-- YAML
 added: v0.11.3
 -->
@@ -90,11 +93,15 @@ FOO 3245: hello from foo [123]
 在 `NODE_DEBUG` 环境变量中可以使用逗号来分隔多个 `section` 名称。 例如：`NODE_DEBUG=fs,net,tls`。
 
 ## util.deprecate(function, string)
+
 <!-- YAML
 added: v0.8.0
 -->
 
 `util.deprecate()` 方法将会包装给定的 `函数` 或类并将其标记为已弃用。
+
+<!-- eslint-disable prefer-rest-params -->
+
 ```js
 const util = require('util');
 
@@ -107,7 +114,7 @@ exports.puts = util.deprecate(function() {
 
 当被调用时，`util.deprecate()` 会返回一个函数，该函数会使用 `process.on('warning')` 事件来发送 `DeprecationWarning`。 在默认情况下，此警告将被发送且只被打印到 `stderr` 一次，即在其首次被调用时。 在警告被发送后，包装的 `函数` 被调用。
 
-If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
+如果 `--no-deprecation` 或 `--no-warnings` 命令行参数被调用，或者在第一个弃用警告前，`process.noDeprecation` 属性被设置为 `true`，`util.deprecate()` 方法不执行任何操作。
 
 如果 `--trace-deprecation` 或 `--trace-warnings` 命令行标志被设置，或者 `process.traceDeprecation` 属性被设置为 `true`，当已弃用的函数被首次调用时，警告和栈追溯将被打印到 `stderr`。
 
@@ -115,13 +122,18 @@ If either the `--no-deprecation` or `--no-warnings` command line flags are used,
 
 `--throw-deprecation` 命令行标志和 `process.throwDeprecation` 属性优先于 `--trace-deprecation` 和 `process.traceDeprecation`。
 
-## util.format(format[, ...args])<!-- YAML
+## util.format(format[, ...args])
+
+<!-- YAML
 added: v0.5.3
 changes:
+
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14558
     description: The `%o` and `%O` specifiers are supported now.
--->* `format` {string} 一个和 `printf` 类似的格式化字符串函数。
+-->
+
+* `format` {string} 一个和 `printf` 类似的格式化字符串函数。
 
 `util.format()` 方法返回一个格式化过的字符串，其首个参数的格式和 `printf` 类似。
 
@@ -161,9 +173,13 @@ util.format(1, 2, 3); // '1 2 3'
 util.format('%% %s'); // '%% %s'
 ```
 
-## util.getSystemErrorName(err)<!-- YAML
+## util.getSystemErrorName(err)
+
+<!-- YAML
 added: v8.12.0
--->* `err` {number}
+-->
+
+* `err` {number}
 * 返回：{string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
@@ -175,18 +191,23 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
-## util.inherits(constructor, superConstructor)<!-- YAML
+## util.inherits(constructor, superConstructor)
+
+<!-- YAML
 added: v0.3.0
 changes:
+
   - version: v5.0.0
     pr-url: https://github.com/nodejs/node/pull/3455
     description: The `constructor` parameter can refer to an ES6 class now.
--->*注意*：不鼓励使用 `util.inherits()`。 请使用 ES6 中的 `class` 和 `extends` 关键字来获取编程语言中的继承支持。 还请注意这两种风格在 [语义上不兼容](https://github.com/nodejs/node/issues/4179)。
+-->
+
+*Note*: Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
 
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-从一个 [构造器](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) 中继承原型方法到另一个构造器。 `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
 
 更为方便的时，`superConstructor` 可以通过 `constructor.super_` 属性进行访问。
 
@@ -235,9 +256,12 @@ stream.write('With ES6');
 
 ```
 
-## util.inspect(object[, options])<!-- YAML
+## util.inspect(object[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
+
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8174
     description: Custom inspection functions can now return `this`.
@@ -251,14 +275,16 @@ changes:
   - version: v6.1.0
     pr-url: https://github.com/nodejs/node/pull/6465
     description: The `showProxy` option is supported now.
--->* `object` {any} 任何 JavaScript 基本类型或对象。
-* `options` {Object}
+-->
+
+* `object` {any} 任何 JavaScript 基本类型或对象。
+* `options` {Object} 
   * `showHidden` {boolean} 如果值为 `true`，`对象` 的不可枚举的符号和属性将被包含在格式化输出的结果中。 **默认:** `false`.
   * `depth` {number} 指定在格式化 `对象` 时进行递归的次数。 这在检查大型复杂对象时非常有用。 默认值为 `2`。 如果想要使其进行无限递归，则传递 `null` 给它。
   * `colors` {boolean} 如果值为 `true`，则输出结果会以 ANSI 颜色代码来格式化。 Colors are customizable, see [Customizing `util.inspect` colors][]. **默认:** `false`.
   * `customInspect` {boolean} 如果值为 `false`，在导出到 `object` 的 `inspect(depth, opts)` 函数不会被调用。 **Default:** `true`.
   * `showProxy` {boolean} 如果值为 `true`，则对象和 `代理`对象的函数会自省来显示它们的 `target` 和 `handler` 对象。 **默认:** `false`.
-  * `maxArrayLength` {number} 指定在格式化时要包含的最大数量的数组和 `TypedArray`。 Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Default:** `100`.
+  * `maxArrayLength` {number} 指定在格式化时要包含的最大数量的数组和 `TypedArray`。 Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **默认值：** `100`.
   * `breakLength` {number} 对象键值被拆分为多行时的长度。 设置为 `Infinity` 会将对象格式化为单行。 **Default:** `60` for legacy compatibility.
 
 `util.inspect()` 方法返回一个代表 `对象` 的字符串，此方法主要是在调试时有用 。 附加的 `选项` 可以更改格式化字符串的某些方面。
@@ -273,21 +299,25 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 值可以提供它们自己的自定义 `inspect(depth, opts)` 函数，当被调用时，它们会在递归检查中接收当前 `深度`，以及传递给 `util.inspect()` 的 options 对象。
 
-### 自定义 `util.inspect` 颜色<!-- type=misc -->`util.inspect` 的带颜色输出 （如果启用）可以通过 `util.inspect.styles` 和 `util.inspect.colors` 属性进行全局性定义。
+### 自定义 `util.inspect` 颜色
+
+<!-- type=misc -->
+
+`util.inspect` 的带颜色输出 （如果启用）可以通过 `util.inspect.styles` 和 `util.inspect.colors` 属性进行全局性定义。
 
 `util.inspect.styles` 是一个将样式名称和 `util.inspect.colors` 中颜色相关联的 map。
 
 默认的样式及其相关联的颜色是：
 
- * `number` - `黄色`
- * `boolean` - `黄色`
- * `string` - `绿色`
- * `date` - `品红色`
- * `regexp` - `红色`
- * `null` - `粗体`
- * `undefined` - `灰色`
- * `special` - `青色` （仅适用于当前函数）
- * `name` - （无样式）
+* `number` - `黄色`
+* `boolean` - `黄色`
+* `string` - `绿色`
+* `date` - `品红色`
+* `regexp` - `红色`
+* `null` - `粗体`
+* `undefined` - `灰色`
+* `special` - `青色` （仅适用于当前函数）
+* `name` - （无样式）
 
 预定义的颜色代码是：`white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` 和 `yellow`。 同时还有 `bold`, `italic`, `underline` 以及 `inverse` 这些代码。
 
@@ -297,7 +327,7 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 <!-- type=misc -->
 
-对象还可以定义自己的 `[util.inspect.custom](depth, opts)` （或等效的但已弃用的 `inspect(depth, opts)`）函数，`util.inspect()` 在检查对象时会调用该自定义函数并使用其结果。
+Objects may also define their own `[util.inspect.custom](depth, opts)` (or the equivalent but deprecated `inspect(depth, opts)`) function that `util.inspect()` will invoke and use the result of when inspecting the object:
 
 ```js
 const util = require('util');
@@ -344,13 +374,21 @@ util.inspect(obj);
 // Returns: "{ bar: 'baz' }"
 ```
 
-### util.inspect.custom<!-- YAML
-added: v6.6.0
--->一个可被用来声明自定义检查函数的符号，请参阅 [对象的自定义检查函数](#util_custom_inspection_functions_on_objects)。
+### util.inspect.custom
 
-### util.inspect.defaultOptions<!-- YAML
+<!-- YAML
+added: v6.6.0
+-->
+
+一个可被用来声明自定义检查函数的符号，请参阅 [对象的自定义检查函数](#util_custom_inspection_functions_on_objects)。
+
+### util.inspect.defaultOptions
+
+<!-- YAML
 added: v6.4.0
--->`defaultOptions` 值允许自定义 `util.inspect` 的默认选项。 这对于 `console.log` 或 `util.format` 类似的函数非常有用，这样的函数会隐式调用 `util.inspect`。 应将其设置为一个包含一个或多个合法 [`util.inspect()`][] 选项的对象。 还支持直接设置选项属性。
+-->
+
+`defaultOptions` 值允许自定义 `util.inspect` 的默认选项。 这对于 `console.log` 或 `util.format` 类似的函数非常有用，这样的函数会隐式调用 `util.inspect`。 应将其设置为一个包含一个或多个合法 [`util.inspect()`][] 选项的对象。 还支持直接设置选项属性。
 
 ```js
 const util = require('util');
@@ -361,12 +399,16 @@ util.inspect.defaultOptions.maxArrayLength = null;
 console.log(arr); // logs the full array
 ```
 
-## util.promisify(original)<!-- YAML
+## util.promisify(original)
+
+<!-- YAML
 added: v8.0.0
--->* `original` {Function}
+-->
+
+* `original` {Function}
 * 返回：{Function}
 
-采用通用的 error-first 回调风格，即采用 `(err, value) => ...` 回调函数作为最后一个参数，并返回一个返回值为 promises 的版本。
+Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
 例如：
 
@@ -396,13 +438,13 @@ async function callStat() {
 }
 ```
 
-如果存在 `original[util.promisify.custom]` 属性，`promisify` 将会返回它的值，请参阅 [自定义 promisified 函数](#util_custom_promisified_functions)。
+If there is an `original[util.promisify.custom]` property present, `promisify` will return its value, see [Custom promisified functions](#util_custom_promisified_functions).
 
-`promisify()` 假定 `original` 是一个在所有情况下都将回调函数作为其最终参数的函数。 如果 `original` 不是一个函数，`promisify()` 会抛出一个错误。 如果 `original` 是一个函数，但其最后参数不是 error-first 风格回调函数，它仍会收到一个 error-first 风格的回调函数作为其最后一个参数。
+`promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
 
 ### 自定义 promisified 函数
 
-使用 `util.promisify.custom` 符号可以覆盖 [`util.promisify()`][] 的返回值：
+Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -420,9 +462,9 @@ console.log(promisified === doSomething[util.promisify.custom]);
 // prints 'true'
 ```
 
-这在当原始函数没有遵循标准格式，也就是把 error-first 回调函数作为最后一个参数的情况下非常有用。
+This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-例如：使用 `(foo, onSuccessCallback, onErrorCallback)` 作为参数的函数：
+For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -431,20 +473,26 @@ doSomething[util.promisify.custom] = (foo) => {
   });
 };
 ```
-如果 `promisify.custom` 已定义但不是一个函数，`promisify()` 会抛出一个错误。
+
+If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
 
 ### util.promisify.custom
+
 <!-- YAML
 added: v8.0.0
 -->
 
 * {symbol}
 
-一个可被用于声明函数中自定义 promisified 变量的符号，请参阅 [自定义 promisified 函数](#util_custom_promisified_functions)。
+A Symbol that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## 类：util.TextDecoder<!-- YAML
+## 类：util.TextDecoder
+
+<!-- YAML
 added: v8.3.0
--->一个实现了 [WHATWG 编码规范](https://encoding.spec.whatwg.org/) 的 `TextDecoder` API。
+-->
+
+一个实现了 [WHATWG 编码规范](https://encoding.spec.whatwg.org/) 的 `TextDecoder` API。
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -458,9 +506,9 @@ string += decoder.decode(); // end-of-stream
 
 ### WHATWG 支持的编码
 
-根据 [WHATWG 编码规范](https://encoding.spec.whatwg.org/)，受 `TextDecoder` API 支持的编码如下表所示。 对于每种编码，可以使用一个或多个别名。
+Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-不同的 Node.js 构建配置支持不同的编码集。 即使对于没有启用 ICU 的 Node.js 构建，也支持最基本的编码集，对于某些编码，只有启用了 ICU 并使用所有 ICU 数据的 Node.js 才被支持 （请参阅 [国际化](intl.html)）。
+不同的 Node.js 构建配置支持不同的编码集。 While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
 #### 没有启用 ICU 时支持的编码
 
@@ -516,27 +564,27 @@ string += decoder.decode(); // end-of-stream
 | `'shift_jis'`      | `'csshiftjis'`, `'ms932'`, `'ms_kanji'`, `'shift-jis'`, `'sjis'`, `'windows-31j'`, `'x-sjis'`                                                                                                                                       |
 | `'euc-kr'`         | `'cseuckr'`, `'csksc56011987'`, `'iso-ir-149'`, `'korean'`, `'ks_c_5601-1987'`, `'ks_c_5601-1989'`, `'ksc5601'`, `'ksc_5601'`, `'windows-949'`                                                                                      |
 
-*注意*：在 [WHATWG 编码规范](https://encoding.spec.whatwg.org/) 中列出的 `'iso-8859-16'` 编码不被支持。
+*Note*: The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) is not supported.
 
 ### new TextDecoder([encoding[, options]])
 
-* `encoding` {string} 标识这个 `TextDecoder` 实例支持的 `编码`。 **Default:** `'utf-8'`.
-* `options` {Object}
+* `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
+* `options` {Object} 
   * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} 当值为 `true` 时，`TextDecoder` 将在解码结果中包括字节顺序标记。 当值为 `false` 时，字节顺序标记将被从输出中删除。 此选项仅在 `encoding` 为 `'utf-8'`, `'utf-16be'` 或 `'utf-16le'` 时被使用。 **默认:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
 
-创建一个新的 `TextDecoder` 实例。 `encoding` 可以指定一个支持的编码或别名。
+创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
-* `input` {ArrayBuffer|DataView|TypedArray} 一个包含已编码数据的 `ArrayBuffer`, `DataView` 或 Typed Array 实例。
-* `options` {Object}
+* `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
+* `options` {Object} 
   * `stream` {boolean} 如果期待额外的数据块，则为 `true`。 **默认:** `false`.
 * 返回：{string}
 
-对 `input` 进行解码并返回一个字符串。 如果 `options.stream` 的值为 `true`， `input` 末尾处的任何不完整字节序列会先在内部缓存，并在下一次调用 `textDecoder.decode()` 后被发送。
+对 `input` 进行解码并返回一个字符串。 If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
-如果 `textDecoder.fatal` 的值为 `true`，一旦发生解码错误会导致抛出 `TypeError`。
+If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
 ### textDecoder.encoding
 
@@ -548,20 +596,21 @@ string += decoder.decode(); // end-of-stream
 
 * {boolean}
 
-如果解码错误导致 `TypeError` 被抛出，则其值为 `true`。
+The value will be `true` if decoding errors result in a `TypeError` being thrown.
 
 ### textDecoder.ignoreBOM
 
 * {boolean}
 
-如果解码结果将会包括字节顺序标记，则该值为 `true`。
+The value will be `true` if the decoding result will include the byte order mark.
 
 ## 类：util.TextEncoder
+
 <!-- YAML
 added: v8.3.0
 -->
 
-[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 所有 `TextEncoder` 的实例只支持 UTF-8 编码。
+[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 All instances of `TextEncoder` only support UTF-8 encoding.
 
 ```js
 const encoder = new TextEncoder();
@@ -573,7 +622,7 @@ const uint8array = encoder.encode('this is some data');
 * `input` {string} 要进行编码的文字。 **Default:** an empty string.
 * 返回：{Uint8Array}
 
-使用 UTF-8 编码 `input` 字符串，并返回包含编码字节的 `Uint8Array`。
+UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
 ### textEncoder.encoding
 
@@ -581,29 +630,38 @@ const uint8array = encoder.encode('this is some data');
 
 `TextEncoder` 实例支持的编码。 始终设置为 `'utf-8'`。
 
-## 已弃用的API
+## 已弃用的 API
 
 以下的 API 已经被弃用，不应再被使用。 现有的应用程序和模块都应被更新，以找到替代方法。
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->> 稳定性：0 - 已弃用：改为使用 [`Object.assign()`]。
+-->
+
+> 稳定性：0 - 已弃用：改为使用 [`Object.assign()`]。
 
 `util._extend()` 方法从未打算在内部 Node.js 模块之外被使用。 尽管如此，但社区还是发现并使用了它。
 
 它已被弃用，不应在新代码中使用。 JavaScript 中具有通过 [`Object.assign()`] 实现的，非常类似的内置功能。
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
+-->
+
+> 稳定性：0 - 已弃用：改为使用 [`console.error()`][]。
 
 * `string` {string} 打印到 `stderr` 的消息
 
 已弃用的 `console.error` 的前身。
 
 ### util.error([...strings])
+
 <!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
@@ -615,10 +673,14 @@ deprecated: v0.11.3
 
 已弃用的 `console.error` 的前身。
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -637,10 +699,14 @@ util.isArray({});
 // Returns: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -658,6 +724,7 @@ util.isBoolean(false);
 ```
 
 ### util.isBuffer(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -680,10 +747,14 @@ util.isBuffer(Buffer.from('hello world'));
 // Returns: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -701,6 +772,7 @@ util.isDate({});
 ```
 
 ### util.isError(object)
+
 <!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
@@ -736,10 +808,14 @@ util.isError(obj);
 // Returns: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -760,6 +836,7 @@ util.isFunction(Bar);
 ```
 
 ### util.isNull(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -783,6 +860,7 @@ util.isNull(null);
 ```
 
 ### util.isNullOrUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -806,6 +884,7 @@ util.isNullOrUndefined(null);
 ```
 
 ### util.isNumber(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -831,6 +910,7 @@ util.isNumber(NaN);
 ```
 
 ### util.isObject(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -840,7 +920,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. 否则，返回 `false`。
+如果给定的 `object` 是一个严格的 `Object`，而不是一个 `Function`，则返回 `true`。 否则，返回 `false`。
 
 ```js
 const util = require('util');
@@ -856,6 +936,7 @@ util.isObject(function() {});
 ```
 
 ### util.isPrimitive(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -890,10 +971,14 @@ util.isPrimitive(new Date());
 // Returns: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -910,10 +995,14 @@ util.isRegExp({});
 // Returns: false
 ```
 
-### util.isString(object)<!-- YAML
+### util.isString(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->
+
+> 稳定性：0 - 已弃用
 
 * `object` {any}
 
@@ -933,6 +1022,7 @@ util.isString(5);
 ```
 
 ### util.isSymbol(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -956,6 +1046,7 @@ util.isSymbol(Symbol('foo'));
 ```
 
 ### util.isUndefined(object)
+
 <!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
@@ -979,10 +1070,14 @@ util.isUndefined(null);
 // Returns: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> 稳定性：0 - 已弃用：改为使用第三方模块。
+-->
+
+> 稳定性：0 - 已弃用：改为使用第三方模块。
 
 * `string` {string}
 
@@ -994,14 +1089,19 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
+-->
+
+> 稳定性：0 - 已弃用：改为使用 [`console.log()`][]。
 
 已弃用的 `console.log` 的前身。
 
 ### util.puts([...strings])
+
 <!-- YAML
 added: v0.3.0
 deprecated: v0.11.3

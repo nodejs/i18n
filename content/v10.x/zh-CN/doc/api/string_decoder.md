@@ -39,6 +39,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ## Class: StringDecoder
 
 ### new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -48,6 +49,7 @@ added: v0.1.99
 创建一个新的 `StringDecoder` 实例。
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -60,9 +62,11 @@ added: v0.9.3
 如果提供了 `buffer` 参数，在返回剩余输入之前将会最后一次调用 `stringDecoder.write()`。
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement

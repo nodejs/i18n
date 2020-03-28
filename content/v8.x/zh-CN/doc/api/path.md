@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
-`path` 模块提供了用于处理文件和目录路径的实用工具。 可以通过如下方式访问：
+`path` 模块提供了用于处理文件和目录路径的实用工具。 可以通过如下方式使用它：
 
 ```js
 const path = require('path');
@@ -51,9 +51,11 @@ path.posix.basename('/tmp/myfile.html');
 * 注意: *在 Windows 系统上，Node.js 遵循单驱动器工作目录的概念。 使用不带反斜线的驱动器路径时, 可以观察到此行为。 例如，`path.resolve('c:\\')` 可能返回与 `path.resolve('c:')` 不同的结果。 请参阅 [此 MSDN 页面](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths) 以获取更多信息。
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -78,6 +80,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 如果 `path` 不是字符串，或者如果给出 `ext` 但不是字符串时，将会抛出 [`TypeError`][]。
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -89,7 +92,7 @@ added: v0.9.3
 * `;` 用于 Windows
 * `:` 用于 POSIX
 
-例如，在 POSIX 系统上，
+例如，在 POSIX 系统上：
 
 ```js
 console.log(process.env.PATH);
@@ -110,9 +113,11 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -130,12 +135,14 @@ path.dirname('/foo/bar/baz/asdf/quux');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-如果 `path` 不是字符串，则抛出 [`TypeError`][]。
+如果 `path` 不是字符串，则会抛出 [`TypeError`][]。
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -168,11 +175,12 @@ path.extname('.index');
 如果 `path` 不是字符串，则抛出 [`TypeError`][]。
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,6 +274,7 @@ path.isAbsolute('.');           // false
 如果 `path` 不是字符串，则抛出 [`TypeError`][]。
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -289,6 +299,7 @@ path.join('foo', {}, 'bar');
 如果任何路径片段不是字符串，则会抛出 [`TypeError`][]。
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
@@ -298,8 +309,7 @@ added: v0.1.23
 
 `path.normalize()` 方法规范化给定的 `path`，解析 `'..'` 和`'.'` 片段。
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform specific path segment separator (`/`on POSIX and`\` on Windows). 尾部的分隔符会被保留。
+当找到多个连续的路径片段分隔符时 (例如：在 POSIX 系统上的 `/`，以及在 Windows 系统上的 `` 或 `/`)，它们将被替换为单个平台特定的路径片段分隔符 (在 POSIX 系统上为 `/`，在 Windows 系统上为 ``)。 尾部的分隔符会被保留。
 
 如果 `path` 为零长度字符串，则会返回 `'.'`，代表当前工作目录。
 
@@ -317,16 +327,17 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Returns: 'C:\\temp\\foo\\'
 ```
 
-Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (`\`):
+由于 Windows 能够识别多种路径分隔符，因此这两种路径分隔符都会被替换为 Windows 的首选分隔符 (``) 实例：
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 // Returns: 'C:\\temp\\foo\\bar'
 ```
 
-如果 `path` 不是字符串，则抛出 [`TypeError`][]。
+如果 `path` 不是字符串，则会抛出 [`TypeError`][]。
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -388,9 +399,10 @@ path.parse('C:\\path\\dir\\file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-如果 `path` 不是字符串，则抛出 [`TypeError`][]。
+如果 `path` 不是字符串，则会抛出 [`TypeError`][]。
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -400,9 +412,11 @@ added: v0.11.15
 `path.posix` 属性提供对 `path` 方法的专门针对 POSIX 系统实现的访问。
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -434,6 +448,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 如果 `from` 或 `to` 不是字符串，则会抛出 [`TypeError`][]。
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -449,7 +464,7 @@ added: v0.3.4
 
 结果路径会被规范化，同时结尾的斜杠会被删除，除非路径被解析为根目录。
 
-长度为零的 `path` 片段将被忽略。
+零长度的 `path` 片段将被忽略。
 
 如果没有传入 `path` 片段，`path.resolve()` 将会返回当前工作目录的绝对路径。
 
@@ -470,6 +485,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 如果任何一个参数不是字符串，则会抛出 [`TypeError`][] 。
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +494,7 @@ added: v0.7.9
 
 提供针对特定平台的路径片段分隔符：
 
-* `\` 在 Windows系统上
+* `` 在 Windows 系统上
 * `/` 在 POSIX 系统上
 
 例如，在 POSIX 系统上：
@@ -495,11 +511,10 @@ added: v0.7.9
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-*Note*: On Windows, both the forward slash (`/`) and backward slash (``\`) are
-accepted as path segment separators; however, the``path`methods only add
-backward slashes (`\`).
+*注意*：在 Windows 系统上，正斜杠 (`/`) 和反斜杠 (``) 都是被接受的路径片段分隔符；但是，`path` 方法只会添加反斜杠 (``) 。
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->

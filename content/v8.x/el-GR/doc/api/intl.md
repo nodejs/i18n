@@ -4,13 +4,13 @@
 
 Η Node.js έχει πολλά χαρακτηριστικά που επιτρέπουν την εύκολη δημιουργία προγραμμάτων σε πολλαπλές γλώσσες. Κάποια από αυτά είναι:
 
-- Συναρτήσεις που είναι Locale-sensitive ή Unicode-aware στις [προδιαγραφές της γλώσσας ECMAScript](https://tc39.github.io/ecma262/):
-  - [`String.prototype.normalize()`][]
-  - [`String.prototype.toLowerCase()`][]
-  - [`String.prototype.toUpperCase()`][]
-- Όλες οι λειτουργίες που περιγράφονται στις [προδιαγραφές του API Πολυγλωσσικής Υποστήριξης ECMAScript](https://tc39.github.io/ecma402/) (γνωστό ως ECMA-402):
-  - [`Intl`][] object
-  - Locale-sensitive μέθοδοι όπως η [`String.prototype.localeCompare()`][] και η [`Date.prototype.toLocaleString()`][]
+- Συναρτήσεις που είναι Locale-sensitive ή Unicode-aware στις [προδιαγραφές της γλώσσας ECMAScript](https://tc39.github.io/ecma262/): 
+    - [`String.prototype.normalize()`][]
+    - [`String.prototype.toLowerCase()`][]
+    - [`String.prototype.toUpperCase()`][]
+- Όλες οι λειτουργίες που περιγράφονται στις [προδιαγραφές του API Πολυγλωσσικής Υποστήριξης ECMAScript](https://tc39.github.io/ecma402/) (γνωστό ως ECMA-402): 
+    - [`Intl`][] object
+    - Locale-sensitive μέθοδοι όπως η [`String.prototype.localeCompare()`][] και η [`Date.prototype.toLocaleString()`][]
 - Υποστήριξη του [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api) για [πολυγλωσσικά ονόματα τομέων](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs)
 - [`require('buffer').transcode()`][]
 - Ακριβέστερη επεξεργασία γραμμών [REPL](repl.html#repl_repl)
@@ -55,13 +55,13 @@
 
 Η node.js μπορεί να συνδεθεί με ένα ICU που είναι ήδη εγκατεστημένο στο σύστημα. Στην πραγματικότητα, οι περισσότερες διανομές Linux έχουν κάποια έκδοση ICU προ-εγκατεστημένη, και αυτή η επιλογή καθιστά δυνατή την επαναχρησιμοποίηση του συνόλου δεδομένων που χρησιμοποιούν άλλα στοιχεία του Λειτουργικού Συστήματος.
 
-Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `system-icu`. Χαρακτηριστικά που απαιτούν πρόσθετα τοπικά δεδομένα του ICU, όπως για παράδειγμα το [`Intl.DateTimeFormat`][] *ίσως* υποστηρίζονται τμηματικά ή πλήρως, ανάλογα με την πληρότητα των δεδομένων του ICU που έχει εγκατασταθεί στο σύστημα.
+Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `system-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][] *may* be fully or partially supported, depending on the completeness of the ICU data installed on the system.
 
 ### Ενσωμάτωση περιορισμένου σετ δεδομένων ICU (`small-icu`)
 
 Αυτή η επιλογή δημιουργεί στατική σύνδεση μεταξύ του σχετικού αρχείου της Node με την βιβλιοθήκη ICU, και συμπεριλαμβάνει ένα υποσύνολο των δεδομένων του ICU (συνήθως μόνο στην Αγγλική Γλώσσα) στο εκτελέσιμο αρχείο `node`.
 
-Οι λειτουργίες που απαιτούν μόνο τη βιβλιοθήκη ICU, όπως για παράδειγμα το [`String.prototype.normalize()`][] και τον [αναλυτή URL WHATWG](url.html#url_the_whatwg_url_api), υποστηρίζονται πλήρως από το `small-icu`. Χαρακτηριστικά που απαιτούν πρόσθετα τοπικά δεδομένα του ICU, όπως το [`Intl.DateTimeFormat`][], γενικά λειτουργούν μόνο στην Αγγλική γλώσσα:
+Functionalities that only require the ICU library itself, such as [`String.prototype.normalize()`][] and the [WHATWG URL parser](url.html#url_the_whatwg_url_api), are fully supported under `small-icu`. Features that require ICU locale data in addition, such as [`Intl.DateTimeFormat`][], generally only work with the English locale:
 
 ```js
 const january = new Date(9e8);
@@ -81,17 +81,17 @@ console.log(spanish.format(january));
 
 Αν χρησιμοποιηθεί η επιλογή `small-icu`, ο διαχειριστής μπορεί να παρέχει περισσότερα δεδομένα γλώσσας κατά την εκτέλεση, έτσι ώστε όλες οι μέθοδοι JS να λειτουργούν σε όλες τις γλώσσες του ICU. Υποθέτοντας ότι το αρχείο δεδομένων είναι αποθηκευμένο στη διαδρομή `/some/directory`, μπορεί να γίνει διαθέσιμο στο ICU μέσω ενός από τους παρακάτω τρόπους:
 
-* Μεταβλητή περιβάλλοντος [`NODE_ICU_DATA`][]:
+- Μεταβλητή περιβάλλοντος [`NODE_ICU_DATA`][]:
+    
+    ```shell
+    env NODE_ICU_DATA=/some/directory node
+    ```
 
-  ```shell
-  env NODE_ICU_DATA=/some/directory node
-  ```
-
-* Παράμετρος Κονσόλας [`--icu-data-dir`][]:
-
-  ```shell
-  node --icu-data-dir=/some/directory
-  ```
+- Παράμετρος Κονσόλας [`--icu-data-dir`][]:
+    
+    ```shell
+    node --icu-data-dir=/some/directory
+    ```
 
 (αν έχουν οριστεί και οι 2 τρόποι, προτεραιότητα έχει η παράμετρος κονσόλας`--icu-data-dir`.)
 

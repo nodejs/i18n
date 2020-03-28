@@ -146,7 +146,7 @@ Note that `'uncaughtException'` is a crude mechanism for exception handling inte
 
 Exceptions thrown from within the event handler will not be caught. Instead the process will exit with a non-zero exit code and the stack trace will be printed. This is to avoid infinite recursion.
 
-Attempting to resume normally after an uncaught exception can be similar to pulling out of the power cord when upgrading a computer -- nine out of ten times nothing happens - but the 10th time, the system becomes corrupted.
+Attempting to resume normally after an uncaught exception can be similar to pulling out of the power cord when upgrading a computer — nine out of ten times nothing happens - but the 10th time, the system becomes corrupted.
 
 The correct use of `'uncaughtException'` is to perform synchronous cleanup of allocated resources (e.g. file descriptors, handles, etc) before shutting down the process. **It is not safe to resume normal operation after `'uncaughtException'`.**
 
@@ -163,7 +163,7 @@ changes:
     description: Not handling Promise rejections has been deprecated.
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8223
-    description: Unhandled Promise rejections have been will now emit
+    description: Unhandled Promise rejections will now emit
                  a process warning.
 -->
 
@@ -271,6 +271,8 @@ See the [`process.emitWarning()`](#process_process_emitwarning_warning_type_code
 
 Signal events will be emitted when the Node.js process receives a signal. Please refer to signal(7) for a listing of standard POSIX signal names such as `SIGINT`, `SIGHUP`, etc.
 
+The signal handler will receive the signal's name (`'SIGINT'`, `'SIGTERM'`, etc.) as the first argument.
+
 The name of each event will be the uppercase common name for the signal (e.g. `'SIGINT'` for `SIGINT` signals).
 
 For example:
@@ -280,11 +282,19 @@ For example:
 process.stdin.resume();
 
 process.on('SIGINT', () => {
-  console.log('Received SIGINT.  Press Control-D to exit.');
+  console.log('Received SIGINT. Press Control-D to exit.');
 });
+
+// Using a single function to handle multiple signals
+function handle(signal) {
+  console.log(`Received ${signal}`);
+}
+
+process.on('SIGINT', handle);
+process.on('SIGTERM', handle);
 ```
 
-* `SIGUSR1` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so will *not* stop the debugger from starting.
+* `SIGUSR1` is reserved by Node.js to start the [debugger](debugger.html). It's possible to install a listener but doing so might interfere with the debugger.
 * `SIGTERM` and `SIGINT` have default handlers on non-Windows platforms that reset the terminal mode before exiting with code `128 + signal number`. If one of these signals has a listener installed, its default behavior will be removed (Node.js will no longer exit).
 * `SIGPIPE` is ignored by default. It can have a listener installed.
 * `SIGHUP` is generated on Windows when the console window is closed, and on other platforms under various similar conditions, see signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
@@ -380,6 +390,8 @@ $ bash -c 'exec -a customArgv0 ./node'
 <!-- YAML
 added: v7.1.0
 -->
+
+* {Object}
 
 If the Node.js process was spawned with an IPC channel (see the [Child Process](child_process.html) documentation), the `process.channel` property is a reference to the IPC channel. If no IPC channel exists, this property is `undefined`.
 
@@ -499,6 +511,20 @@ The `process.cwd()` method returns the current working directory of the Node.js 
 console.log(`Current directory: ${process.cwd()}`);
 ```
 
+## process.debugPort
+
+<!-- YAML
+added: v0.7.2
+-->
+
+* {number}
+
+The port used by Node.js's debugger when enabled.
+
+```js
+process.debugPort = 5858;
+```
+
 ## process.disconnect()
 
 <!-- YAML
@@ -519,9 +545,9 @@ added: 8.0.0
 
 * `warning` {string|Error} The warning to emit.
 * `options` {Object} 
-    * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. Default: `Warning`.
+    * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
     * `code` {string} A unique identifier for the warning instance being emitted.
-    * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. Default `process.emitWarning`
+    * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
     * `detail` {string} Additional text to include with the error.
 
 The `process.emitWarning()` method can be used to emit custom or application specific process warnings. These can be listened for by adding a handler to the [`process.on('warning')`](#process_event_warning) event.
@@ -558,9 +584,9 @@ added: v6.0.0
 -->
 
 * `warning` {string|Error} The warning to emit.
-* `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. Default: `Warning`.
+* `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
 * `code` {string} A unique identifier for the warning instance being emitted.
-* `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. Default `process.emitWarning`
+* `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
 
 The `process.emitWarning()` method can be used to emit custom or application specific process warnings. These can be listened for by adding a handler to the [`process.on('warning')`](#process_event_warning) event.
 
@@ -714,7 +740,7 @@ console.log(process.env.test);
 added: v0.7.7
 -->
 
-* {Object}
+* {Array}
 
 The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
 
@@ -764,7 +790,7 @@ For example:
 added: v0.1.13
 -->
 
-* `code` {integer} The exit code. Defaults to `0`.
+* `code` {integer} The exit code. **Default:** `0`.
 
 The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
 
@@ -958,7 +984,7 @@ added: v0.0.6
 -->
 
 * `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. Defaults to `'SIGTERM'`.
+* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
@@ -990,6 +1016,8 @@ process.kill(process.pid, 'SIGHUP');
 <!-- YAML
 added: v0.1.17
 -->
+
+* {Object}
 
 The `process.mainModule` property provides an alternative way of retrieving [`require.main`][]. The difference is that if the main module changes at runtime, [`require.main`][] may still refer to the original main module in modules that were required before the change occurred. Generally, it's safe to assume that the two refer to the same module.
 
@@ -1175,7 +1203,7 @@ Currently possible values are:
 console.log(`This platform is ${process.platform}`);
 ```
 
-The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#supported-platforms-1).
+The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
 ## process.ppid
 
@@ -1201,6 +1229,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3212
     description: The `lts` property is now supported.
 -->
+
+* {Object}
 
 The `process.release` property returns an Object containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
@@ -1411,9 +1441,7 @@ process.stdin.pipe(process.stdout);
 `process.stdout` and `process.stderr` differ from other Node.js streams in important ways:
 
 1. They are used internally by [`console.log()`][] and [`console.error()`][], respectively.
-2. They cannot be closed ([`end()`][] will throw).
-3. They will never emit the [`'finish'`][] event.
-4. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
+2. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
     * Files: *synchronous* on Windows and POSIX
     * TTYs (Terminals): *asynchronous* on Windows, *synchronous* on POSIX
     * Pipes (and sockets): *synchronous* on Windows, *asynchronous* on POSIX

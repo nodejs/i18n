@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 `assert`模块提供了一组简单的断言测试，可用来测试不变量。
 
@@ -11,9 +11,11 @@
 更多关于平等性的对比，可以参考 [MDN 上 JavaScript 中的相等性判断](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)。
 
 ## Strict 模式
+
 <!-- YAML
 added: V8.13.0
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/17002
     description: Added strict mode to the assert module.
@@ -47,18 +49,22 @@ assert.deepEqual(/a/gi, new Date());
 ```
 
 ## assert(value[, message])
+
 <!-- YAML
 added: v0.5.9
 -->
+
 * `value` {any}
 * `message` {any}
 
 [`assert.ok()`][]的别名。
 
 ## assert.deepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12142
     description: Set and Map content is also compared
@@ -72,6 +78,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -135,9 +142,11 @@ assert.deepEqual(obj1, obj4);
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.deepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 changes:
+
   - version: v8.5.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: Error names and messages are now properly compared
@@ -154,6 +163,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -211,9 +221,11 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -245,9 +257,11 @@ assert.doesNotReject(
 ```
 
 ## assert.doesNotThrow(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/2407
     description: The `message` parameter is respected now.
@@ -255,6 +269,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -303,9 +318,11 @@ assert.doesNotThrow(
 ```
 
 ## assert.equal(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -337,10 +354,13 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 如果两个值不相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.fail(message)
+
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -376,6 +396,7 @@ assert.fail('a', 'b');
 ```
 
 使用 `stackStartFunction` 截断异常的追溯栈的示例：
+
 ```js
 function suppressFrame() {
   assert.fail('a', 'b', undefined, '!==', suppressFrame);
@@ -388,9 +409,11 @@ suppressFrame();
 ```
 
 ## assert.ifError(value)
+
 <!-- YAML
 added: v0.1.97
 -->
+
 * `value` {any}
 
 如果 `value` 为真值，抛出`value`。 当在回调函数中测试 `error` 参数时，这一点很有用。
@@ -411,9 +434,11 @@ assert.ifError(new Error());
 ```
 
 ## assert.notDeepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -464,9 +489,11 @@ assert.notDeepEqual(obj1, obj4);
 如果两个值深度相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -486,9 +513,11 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 如果两个值深度严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -519,9 +548,11 @@ assert.notEqual(1, '1');
 如果两个值相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.notStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -544,9 +575,11 @@ assert.notStrictEqual(1, '1');
 如果两个值严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.ok(value[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `value` {any}
 * `message` {any}
 
@@ -570,9 +603,11 @@ assert.ok(false, 'it\'s false');
 ```
 
 ## assert.strictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -595,9 +630,11 @@ assert.strictEqual(1, '1');
 如果两个值不是严格相等，会抛出一个带有 `message` 属性的 `AssertionError`， 其中该属性的值等于传入的 `message` 参数的值。 如果 `message` 参数未定义，则赋予默认错误消息。
 
 ## assert.rejects(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|Object}
 * `message` {any}
@@ -633,9 +670,11 @@ assert.rejects(
 ```
 
 ## assert.throws(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/23223
     description: The `error` parameter can now be an object as well.
@@ -643,6 +682,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|object}
 * `message` {any}
@@ -709,6 +749,9 @@ assert.throws(
 ```
 
 注意， `error` 不能是一个字符串。 如果提供一个字符串作为第二个参数，那么会认为 `error` 被省略了，并且这个字符串会代替 `message`。 这会导致不容易被发现的错误。 Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
+
 ```js
 function throwingFirst() {
   throw new Error('First');

@@ -145,7 +145,7 @@ The memory requirements for deflate are (in bytes):
 (1 << (windowBits + 2)) + (1 << (memLevel + 9))
 ```
 
-That is: 128K for windowBits=15 + 128K for memLevel = 8 (default values) plus a few kilobytes for small objects.
+That is: 128K for windowBits = 15 + 128K for memLevel = 8 (default values) plus a few kilobytes for small objects.
 
 For example, to reduce the default memory requirements from 256K to 128K, the options should be set to:
 
@@ -155,7 +155,7 @@ const options = { windowBits: 14, memLevel: 7 };
 
 This will, however, generally degrade compression.
 
-The memory requirements for inflate are (in bytes) `1 << windowBits`. That is, 32K for windowBits=15 (default value) plus a few kilobytes for small objects.
+The memory requirements for inflate are (in bytes) `1 << windowBits`. That is, 32K for windowBits = 15 (default value) plus a few kilobytes for small objects.
 
 This is in addition to a single internal output slab buffer of size `chunkSize`, which defaults to 16K.
 
@@ -260,9 +260,9 @@ Each class takes an `options` object. All options are optional.
 
 Note that some options are only relevant when compressing, and are ignored by the decompression classes.
 
-- `flush` {integer} (default: `zlib.constants.Z_NO_FLUSH`)
-- `finishFlush` {integer} (default: `zlib.constants.Z_FINISH`)
-- `chunkSize` {integer} (default: 16\*1024)
+- `flush` {integer} **Default:** `zlib.constants.Z_NO_FLUSH`
+- `finishFlush` {integer} **Default:** `zlib.constants.Z_FINISH`
+- `chunkSize` {integer} **Default:** `16 * 1024`
 - `windowBits` {integer}
 - `level` {integer} (compression only)
 - `memLevel` {integer} (compression only)
@@ -385,7 +385,7 @@ Close the underlying handle.
 added: v0.5.8
 -->
 
-`kind` defaults to `zlib.constants.Z_FULL_FLUSH`.
+- `kind` **Default:** `zlib.constants.Z_FULL_FLUSH`
 
 Flush pending data. Don't call this frivolously, premature flushes negatively impact the effectiveness of the compression algorithm.
 

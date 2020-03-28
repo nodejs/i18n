@@ -1,21 +1,22 @@
 # Розширення С++
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Розширення Node.js ― це динамічно пов'язані спільні об'єкти, написані на мові C++, які можна завантажити в Node.js за допомогою функції [`require()`](modules.html#modules_require), і використовувати так само, як ніби вони є звичайними модулями на Node.js. Вони використовуються в основному, як проміжний інтерфейс між JavaScript та C/C++ бібліотеками Node.js.
 
-На даний момент метод реалізації Addons є досить складним і потребує знання декількох компонентів і API:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
+* V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. Вона також служить бібліотекою міжплатформної абстракції, що забезпечує легкий доступ до POSIX на всіх основних ОС для багатьох загальних системних завдань, таких як взаємодія з файловою системою, сокетами, таймерами та системними подіями. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
+* [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
 
- - Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
+* Внутрішні бібліотеки Node.js. Node.js сам експортує ряд C++ API, які можуть використовуватися в розширеннях. Найважливішим з них є клас `node::ObjectWrap`.
 
- - Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
+* Node.js містить ряд інших статично пов'язаних бібліотек, включаючи OpenSSL. Ці інші бібліотеки знаходяться в каталозі `deps/` у дереві джерел Node.js. Код libuv, OpenSSL, V8 і zlib цілеспрямовано перекспортовується у Node.js та може використовуватися у розширеннях. Додаткову інформацію можна знайти у [Зв'язок з власними залежностями Node.js](#addons_linking_to_node_js_own_dependencies).
 
-Всі наведені нижче приклади доступні для [завантаження](https://github.com/nodejs/node-addon-examples) і можуть використовуватися, як відправна точка для розширеннь.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello world
 
@@ -65,7 +66,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Зауважте, що немає жодної крапки з комою після `NODE_MODULE`, оскільки це не є функцією (див. `node.h`).
 
-`module_name` має збігатися з ім'ям останнього бінарного файлу (за винятком суфікса `.node`).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
 In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
@@ -91,6 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -98,6 +100,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -173,7 +176,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 
 ### Збірка
 
-Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. Для цього створіть файл з назвою `binding.gyp` на верхньому рівні проекту, для описання конфігурації збірки модуля з використанням JSON формату. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
+Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
 
 ```json
 {
@@ -186,7 +189,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 }
 ```
 
-Версія утиліти `node-gyp` поширюється і надається з Node.js через `npm`. Цей інструмент не доступний безпосередньо розробникам для використання і призначений лише для підтримки можливості використання команди `npm install`, компіляції та встановлення розширень. Розробники, які бажають використовувати `node-gyp` безпосередньо на машині, можуть встановити його за допомогою команди `npm install -g node-gyp`. Дивіться [інструкцію з установки](https://github.com/nodejs/node-gyp#installation) `node-gyp` для отримання додаткової інформації, в тому числі вимоги для конкретних платформ.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Цей інструмент не доступний безпосередньо розробникам для використання і призначений лише для підтримки можливості використання команди `npm install`, компіляції та встановлення розширень. Розробники, які бажають використовувати `node-gyp` безпосередньо на машині, можуть встановити його за допомогою команди `npm install -g node-gyp`. Дивіться [інструкцію з установки](https://github.com/nodejs/node-gyp#installation) `node-gyp` для отримання додаткової інформації, в тому числі вимоги для конкретних платформ.
 
 Після створення файлу `binding.gyp` використовуйте `node-gyp configure`, щоб створити відповідні файли збірки проекту для поточної платформи. Це створить або `Makefile` (на платформах Unix), або файл `vcxproj` (на Windows) у каталозі `build/`.
 
@@ -1112,7 +1115,7 @@ An `AtExit` hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
 * `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.

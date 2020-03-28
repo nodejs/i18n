@@ -220,7 +220,7 @@ console.log('b done');
 console.log('main starting');
 const a = require('./a.js');
 const b = require('./b.js');
-console.log('in main, a.done=%j, b.done=%j', a.done, b.done);
+console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
 When `main.js` loads `a.js`, then `a.js` in turn loads `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
@@ -236,7 +236,7 @@ in b, a.done = false
 b done
 in a, b.done = true
 a done
-in main, a.done=true, b.done=true
+in main, a.done = true, b.done = true
 ```
 
 Careful planning is required to allow cyclic module dependencies to work correctly within an application.
@@ -274,7 +274,7 @@ If this was in a folder at `./some-library`, then `require('./some-library')` wo
 
 This is the extent of Node.js's awareness of package.json files.
 
-*Note*: If the file specified by the `"main"` entry of `package.json` is missing and can not be resolved, Node.js will report the entire module as missing with the default error:
+*Note*: If the file specified by the `'main'` entry of `package.json` is missing and can not be resolved, Node.js will report the entire module as missing with the default error:
 
 ```txt
 Error: Cannot find module 'some-library'
@@ -289,7 +289,7 @@ If there is no package.json file present in the directory, then Node.js will att
 
 <!--type=misc-->
 
-If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node will not append `node_modules` to a path already ending in `node_modules`.
+If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node.js will not append `node_modules` to a path already ending in `node_modules`.
 
 If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
 
@@ -436,7 +436,18 @@ added: v0.1.13
 
 * {Function}
 
-To require modules.
+Used to import modules, `JSON`, and local files. Modules can be imported from `node_modules`. Local modules and JSON files can be imported using a relative path (e.g. `./`, `./foo`, `./bar/baz`, `../foo`) that will be resolved against the directory named by [`__dirname`][] (if defined) or the current working directory.
+
+```js
+// Importing a local module:
+const myLocalModule = require('./path/myLocalModule');
+
+// Importing a JSON file:
+const jsonData = require('./path/filename.json');
+
+// Importing a module from node_modules or Node.js built-in module:
+const crypto = require('crypto');
+```
 
 #### require.cache
 
@@ -693,7 +704,7 @@ added: v0.3.7
 
 * {Object}
 
-Provides general utility methods when interacting with instances of `Module` -- the `module` variable often seen in file modules. Accessed via `require('module')`.
+Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
 
 ### module.builtinModules
 

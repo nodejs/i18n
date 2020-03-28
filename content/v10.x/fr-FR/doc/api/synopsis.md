@@ -1,6 +1,7 @@
 # Utilisation
 
 <!--introduced_in=v0.10.0-->
+
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
@@ -8,6 +9,7 @@
 Veuillez consulter le document [Options de ligne de commande](cli.html#cli_command_line_options) pour plus d’informations sur les différentes options et les moyens d’exécuter des scripts avec Node.js.
 
 ## Exemple
+
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
 Les commandes utilisées dans ce document sont montrées commençant par `$` ou `>` pour simuler la façon dont elles seraient affichées dans le terminal de l’utilisateur. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
@@ -45,7 +47,7 @@ Ensuite, créez un nouveau fichier source dans le dossier `projects` et appelez-
 
 En Node.js la pratique standard en matière de style est d'utiliser des tirets (`-`) ou des underscores (`_`) pour séparer plusieurs mots dans les noms de fichier.
 
-Ouvrez `hello-world.js` dans n’importe quel éditeur de texte, selon votre préférence, et collez-y le contenu suivant:
+Open `hello-world.js` in any preferred text editor and paste in the following content:
 
 ```js
 const http = require('http');

@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
-`string_decoder` 模块提供了一个可用于将 `Buffer` 对象解码为字符串的 API，在解码过程中会保留已编码的多字节 UTF-8 和 UTF-16 字符。 可以通过如下方式访问：
+`string_decoder` 模块提供了一个可用于将 `Buffer` 对象解码为字符串的 API，在解码过程中会保留已编码的多字节 UTF-8 和 UTF-16 字符。 它可以通过如下方式访问：
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -37,6 +37,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
 ## 类：new StringDecoder([encoding])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -46,6 +47,7 @@ added: v0.1.99
 创建一个新的 `StringDecoder` 实例。
 
 ### stringDecoder.end([buffer])
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -57,9 +59,11 @@ added: v0.9.3
 如果提供了 `buffer` 参数，在返回剩余输入之前将会最后一次调用 `stringDecoder.write()`。
 
 ### stringDecoder.write(buffer)
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/9618
     description: Each invalid character is now replaced by a single replacement

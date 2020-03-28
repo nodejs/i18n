@@ -36,6 +36,7 @@ Return the URL of the active inspector, or `undefined` if there is none.
 The `inspector.Session` is used for dispatching messages to the V8 inspector back-end and receiving message responses and notifications.
 
 ### Constructor: new inspector.Session()
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -45,6 +46,7 @@ Create a new instance of the `inspector.Session` class. The inspector session ne
 `inspector.Session` is an [`EventEmitter`][] with the following events:
 
 ### Event: 'inspectorNotification'
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -62,6 +64,7 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 It is also possible to subscribe only to notifications with specific method:
 
 ### Event: &lt;inspector-protocol-method&gt;
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -80,6 +83,7 @@ session.on('Debugger.paused', ({ params }) => {
 ```
 
 ### session.connect()
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -87,6 +91,7 @@ added: v8.0.0
 Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
 
 ### session.post(method\[, params\]\[, callback\])
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -108,6 +113,7 @@ The latest version of the V8 inspector protocol is published on the [Chrome DevT
 Node.js inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
 
 ### session.disconnect()
+
 <!-- YAML
 added: v8.0.0
 -->

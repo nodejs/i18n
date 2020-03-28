@@ -31,6 +31,7 @@ rl.question('What do you think of Node.js? ', (answer) => {
 Once this code is invoked, the Node.js application will not terminate until the `readline.Interface` is closed because the interface waits for data to be received on the `input` stream.
 
 ## 类：Interface
+
 <!-- YAML
 added: v0.1.104
 -->
@@ -38,6 +39,7 @@ added: v0.1.104
 `readline.Interface` 类的实例可以通过 `readline.createInterface()` 方法来创建。 每个实例都和单一的 `input` [Readable](stream.html#stream_readable_streams) 流及单一的 `output` [Writable](stream.html#stream_writable_streams) 流相关联。 `output` 流用于为到达的用户输入打印提示符，并从 `input` 流进行读取。
 
 ### 事件：'close'
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -54,6 +56,7 @@ added: v0.1.98
 一旦发出 `'close'` 事件，`readline.Interface` 实例就会结束。
 
 ### 事件：'line'
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -69,6 +72,7 @@ rl.on('line', (input) => {
 ```
 
 ### 事件：'pause'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -87,6 +91,7 @@ rl.on('pause', () => {
 ```
 
 ### 事件：'resume'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -102,6 +107,7 @@ rl.on('resume', () => {
 ```
 
 ### 事件：'SIGCONT'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -119,9 +125,10 @@ rl.on('SIGCONT', () => {
 });
 ```
 
-The `'SIGCONT'` event is _not_ supported on Windows.
+The `'SIGCONT'` event is *not* supported on Windows.
 
 ### 事件：'SIGINT'
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -139,6 +146,7 @@ rl.on('SIGINT', () => {
 ```
 
 ### 事件：'SIGTSTP'
+
 <!-- YAML
 added: v0.7.5
 -->
@@ -159,9 +167,10 @@ rl.on('SIGTSTP', () => {
 });
 ```
 
-The `'SIGTSTP'` event is _not_ supported on Windows.
+The `'SIGTSTP'` event is *not* supported on Windows.
 
 ### rl.close()
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -171,6 +180,7 @@ added: v0.1.98
 Calling `rl.close()` does not immediately stop other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
 ### rl.pause()
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -180,6 +190,7 @@ added: v0.3.4
 调用 `rl.pause()` 并不会立即暂停由 `readline.Interface` 实例发出的其他事件 (包括 `'line'`)。
 
 ### rl.prompt([preserveCursor])
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -193,6 +204,7 @@ added: v0.1.98
 如果在 `readline.Interface` 被创建时，`output` 被设置为 `null` 或 `undefined`，则不会将提示符写入。
 
 ### rl.question(query, callback)
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -217,6 +229,7 @@ rl.question('What is your favorite food? ', (answer) => {
 The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. 调用 `callback`，并将提供的答案作为唯一参数。
 
 ### rl.resume()
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -224,6 +237,7 @@ added: v0.3.4
 如果 `input` 流已被暂停，`rl.resume()` 将会恢复该流。
 
 ### rl.setPrompt(prompt)
+
 <!-- YAML
 added: v0.1.98
 -->
@@ -233,12 +247,13 @@ added: v0.1.98
 `rl.setPrompt()` 方法设置了当 `rl.prompt()` 被调用时，将被写入到 `output` 的提示符。
 
 ### rl.write(data[, key])
+
 <!-- YAML
 added: v0.1.98
 -->
 
 * `data` {string}
-* `key` {Object}
+* `key` {Object} 
   * `ctrl` {boolean} 当值为 `true` 时表示 `<ctrl>`键。
   * `meta` {boolean} 当值为 `true` 时表示 `<Meta>` 键。
   * `shift` {boolean} 当值为 `true` 时表示 `<Shift>` 键。
@@ -261,13 +276,19 @@ rl.write(null, { ctrl: true, name: 'u' });
 The `rl.write()` method will write the data to the `readline` `Interface`'s `input` *as if it were provided by the user*.
 
 ### rl\[Symbol.asyncIterator\]()
+
 <!-- YAML
-added: v10.16.0
+added: v11.4.0
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26989
+    description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> 稳定性：1 - 实验中
+> 稳定性：2 - 稳定
 
-* Returns: {AsyncIterator}
+* 返回：{AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
 
@@ -291,12 +312,13 @@ async function processLineByLine() {
 ```
 
 ## readline.clearLine(stream, dir)
+
 <!-- YAML
 added: v0.7.7
 -->
 
 * `stream` {stream.Writable}
-* `dir` {number}
+* `dir` {number} 
   * `-1` - 从光标向左
   * `1` - 从光标向右
   * `0` - 整行
@@ -304,6 +326,7 @@ added: v0.7.7
 `readline.clearLine()` 方法会从 `dir` 指定的方向清除给定的 [TTY](tty.html) 流的当前行。
 
 ## readline.clearScreenDown(stream)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -313,9 +336,11 @@ added: v0.7.7
 `readline.clearScreenDown()` 方法从当前光标位置向下清除给定的 [TTY](tty.html) 流。
 
 ## readline.createInterface(options)
+
 <!-- YAML
 added: v0.1.98
 changes:
+
   - version: v8.3.0, 6.11.4
     pr-url: https://github.com/nodejs/node/pull/13497
     description: Remove max limit of `crlfDelay` option.
@@ -330,14 +355,14 @@ changes:
     description: The `historySize` option can be `0` now.
 -->
 
-* `options` {Object}
+* `options` {Object} 
   * `input` {stream.Readable} 要侦听的 [Readable](stream.html#stream_readable_streams) 流。 This option is *required*.
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} 用于 Tab 自动补全的可选函数。
   * `terminal` {boolean} 如果 `input` 和 `output` 流应被视为 TTY，并将 ANSI/VT100 转义符写入其中，则值为 `true`。 **Default:** checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} 保留的最大历史记录行数。 要禁用历史记录，将值设置为 `0`。 This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `historySize` {number} 保留的最大历史记录行数。 要禁用历史记录，将值设置为 `0`。 This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **默认值：** `30`.
   * `prompt` {string} 要使用的提示符。 **默认值：** `'> '`.
-  * `crlfDelay` {number} 如果 `\r` 和 `\n` 之间的延迟超过 `crlfDelay` 毫秒, `\r` 和 `\n` 将被视为单独的行尾结束输入。 `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
+  * `crlfDelay` {number} 如果 `\r` 和 `\n` 之间的延迟超过 `crlfDelay` 毫秒, `\r` 和 `\n` 将被视为单独的行尾结束输入。 `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **默认值：** `100`.
   * `removeHistoryDuplicates` {boolean} 如果值为 `true`，则当一个添加到历史记录列表中的新输入行和旧的行重复时，将从列表中删除旧行。 **默认:** `false`.
   * `escapeCodeTimeout` {number} The duration `readline` will wait for a character (when reading an ambiguous key sequence in milliseconds one that can both form a complete key sequence using the input read so far and can take additional input to complete a longer key sequence). **Default:** `500`.
 
@@ -388,6 +413,7 @@ function completer(linePartial, callback) {
 ```
 
 ## readline.cursorTo(stream, x, y)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -399,6 +425,7 @@ added: v0.7.7
 在给定的 [TTY](tty.html) `流`，`readline.cursorTo()` 方法将光标移动到指定的位置。
 
 ## readline.emitKeypressEvents(stream[, interface])
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -421,6 +448,7 @@ if (process.stdin.isTTY)
 ```
 
 ## readline.moveCursor(stream, dx, dy)
+
 <!-- YAML
 added: v0.7.7
 -->

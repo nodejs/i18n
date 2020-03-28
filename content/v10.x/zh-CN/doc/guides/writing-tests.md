@@ -4,7 +4,7 @@
 
 在 Node.js 核心中，大多数测试都是 JavaScript 程序，它执行 Node.js 提供的功能并检查其行为是否符合预期。 成功时, 测试应与代码 ` 0 ` 一起退出。 如果存在以下情况, 测试将失败:
 
-- 它通过将 ` exitCode ` 设置为非零数字来退出。
+- 它通过将 ` exitCode ` 设置为非零数字来退出。 
   - 这通常是通过断言抛出一个未捕获的 Error 来完成的。
   - 有时，使用 `process.exit(code)` 可能是适当的。
 - 它从不退出。 在这种情况下，测试运行程序最终将终止测试，因为它设置了最大时间限制。
@@ -110,7 +110,7 @@ const timer = setTimeout(fail, common.platformTimeout(4000));
 
 will create a 4-second timeout on most platforms but a longer timeout on slower platforms.
 
-### The *common* API
+### *common* API
 
 Make use of the helpers from the `common` module as much as possible. Please refer to the [common file documentation](https://github.com/nodejs/node/tree/master/test/common) for the full details of the helpers.
 
@@ -168,6 +168,7 @@ const server = http.createServer(common.mustCall((req, res) => {
 });
 
 ```
+
 #### Countdown 模块
 
 The common [Countdown module](https://github.com/nodejs/node/tree/master/test/common#countdown-module) provides a simple countdown mechanism for tests that require a particular action to be taken after a given number of completed tasks (for instance, shutting down an HTTP server after a specific number of requests).
@@ -220,7 +221,7 @@ const freelist = require('internal/freelist');
 - `assert.strictEqual()` 替代 `assert.equal()`
 - `assert.deepStrictEqual()` 替代 `assert.deepEqual()`
 
-When using `assert.throws()`, if possible, provide the full error message:
+在使用 `assert.throws()` 时，如果可能，请提供完整的错误信息：
 
 ```js
 assert.throws(
@@ -242,7 +243,6 @@ There have been cases where tests fail without `console.log()`, and then pass wh
 Excessive use of console output is discouraged as it can overwhelm the display, including the Jenkins console and test report displays. Be particularly cautious of output in loops, or other contexts where output may be repeated many times in the case of failure.
 
 In some tests, it can be unclear whether a `console.log()` statement is required as part of the test (message tests, tests that check output from child processes, etc.), or is there as a debug aide. If there is any chance of confusion, use comments to make the purpose clear.
-
 
 ### ES.Next 功能
 
@@ -333,16 +333,19 @@ $ make cctest
 ```
 
 A filter can be applied to run single/multiple test cases:
+
 ```console
 $ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
 ```
 
 `cctest` can also be run directly which can be useful when debugging:
+
 ```console
 $ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
 ```
 
 ### Node.js test fixture
+
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.

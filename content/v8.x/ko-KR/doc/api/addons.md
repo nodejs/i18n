@@ -6,13 +6,13 @@ Node.js의 애드온은 C++로 작성되어 동적으로 링크되는 공유 객
 
 현재, 애드온을 구현하는 것은 꽤나 복잡하며, 다음과 같은 몇몇 컴포넌트와 API에 대한 지식이 요구됩니다 :
 
- - V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8의 API의 대부분이 `v8.h` 헤더 파일(Node.js 소스 트리의 `deps/v8/include/v8.h`)에 문서화되어 있습니다. 이 헤더 파일은 [online](https://v8docs.nodesource.com/)에서 이용 가능합니다.
+* V8: Node.js가 JavaScript 구현을 제공하기 위해 사용 중인 C++ 라이브러리. V8은 객체를 생성하고, 함수를 호출하는 등의 메커니즘을 제공합니다. V8의 API의 대부분이 `v8.h` 헤더 파일(Node.js 소스 트리의 `deps/v8/include/v8.h`)에 문서화되어 있습니다. 이 헤더 파일은 [online](https://v8docs.nodesource.com/)에서 이용 가능합니다.
 
- - [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv는 또한 pthreads-like한 스레딩 추상화를 통해, 표준 이벤트 루프보다 강력하고 세련된 비동기 애드온을 제공합니다. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
+* [libuv](https://github.com/libuv/libuv): Node.js의 이벤트 루프, 워커 스레드와 플랫폼의 모든 비동기적 행위를 구현하는 C 라이브러리. 또한 크로스-플랫폼 추상화 라이브러리의 역할을 함으로써, 주요한 모든 운영 체제의 파일 시스템, 소켓, 타이머, 시스템 이벤트와 같은 많은 일반적인 시스템 작업에 대한 사용하기 쉽고, POSIX-like 한 접근을 가능하게 합니다. libuv는 또한 pthreads-like한 스레딩 추상화를 통해, 표준 이벤트 루프보다 강력하고 세련된 비동기 애드온을 제공합니다. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
- - Node.js 내장 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
+* Node.js 내장 라이브러리. Node.js는 애드온이 사용할 수 있는 많은 수의 C++ API를 노출합니다 &mdash; 그 중 가장 중요한 것은 `node::ObjectWrap` 클래스.
 
- - Node.js는 OpenSSL같은 정적으로 링크된 라이브러리들을 포함 하고 있습니다. 이러한 외부라이브러리들은 Node.js 소스트리의 `deps/` 디렉토리내에 위치합니다. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js는 OpenSSL같은 정적으로 링크된 라이브러리들을 포함 하고 있습니다. 이러한 외부라이브러리들은 Node.js 소스트리의 `deps/` 디렉토리내에 위치합니다. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -133,7 +133,6 @@ Each of the examples illustrated in this document make direct use of the Node.js
 
 The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
-
 ## N-API
 
 > Stability: 1 - Experimental
@@ -205,7 +204,6 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-
 ### Function arguments
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
@@ -274,7 +272,6 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
-
 
 ### Callbacks
 
@@ -375,7 +372,6 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
 ### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
@@ -431,7 +427,6 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
-
 
 ### Wrapping C++ objects
 
@@ -794,7 +789,6 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-
 ### Passing wrapped objects around
 
 In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
@@ -969,7 +963,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
+* `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.

@@ -1,6 +1,8 @@
 # 国际域名编码
+
 <!-- YAML
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7941
     description: Accessing this module will now emit a deprecation warning.
@@ -12,7 +14,7 @@ changes:
 
 **在 Node.js 中绑定的 punycode 模块版本正在被弃用**。 在未来的主要版本的 Node.js 中，此模块将被删除。 Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
-The `punycode` module is a bundled version of the [Punycode.js](https://github.com/bestiejs/punycode.js) module. 可以通过如下方式访问：
+`punycode` 模块是打包后的 [Punycode.js](https://github.com/bestiejs/punycode.js) 模块。 可以通过如下方式访问：
 
 ```js
 const punycode = require('punycode');
@@ -25,6 +27,7 @@ const punycode = require('punycode');
 The `punycode` module is a third-party dependency used by Node.js and made available to developers as a convenience. Fixes or other modifications to the module must be directed to the [Punycode.js](https://github.com/bestiejs/punycode.js) project.
 
 ## punycode.decode(string)
+
 <!-- YAML
 added: v0.5.1
 -->
@@ -39,6 +42,7 @@ punycode.decode('--dqo34k'); // '☃-⌘'
 ```
 
 ## punycode.encode(string)
+
 <!-- YAML
 added: v0.5.1
 -->
@@ -53,6 +57,7 @@ punycode.encode('☃-⌘'); // '--dqo34k'
 ```
 
 ## punycode.toASCII(domain)
+
 <!-- YAML
 added: v0.6.1
 -->
@@ -69,6 +74,7 @@ punycode.toASCII('example.com'); // 'example.com'
 ```
 
 ## punycode.toUnicode(domain)
+
 <!-- YAML
 added: v0.6.1
 -->
@@ -85,11 +91,13 @@ punycode.toUnicode('example.com');       // 'example.com'
 ```
 
 ## punycode.ucs2
+
 <!-- YAML
 added: v0.7.0
 -->
 
 ### punycode.ucs2.decode(string)
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -105,6 +113,7 @@ punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
 ### punycode.ucs2.encode(codePoints)
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -119,10 +128,11 @@ punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
 ```
 
 ## punycode.version
+
 <!-- YAML
 added: v0.6.1
 -->
 
 * {string}
 
-Returns a string identifying the current [Punycode.js](https://github.com/bestiejs/punycode.js) version number.
+返回一个识别当前 [Punycode.js](https://github.com/bestiejs/punycode.js) 版本号的字符串。

@@ -48,12 +48,14 @@ path.posix.basename('/tmp/myfile.html');
 // Devuelve: 'myfile.html'
 ```
 
-*Nota:* en Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. Por ejemplo, `path.resolve('c:\\')` puede potencialmente ocasionar un resultado diferente a `path.resolve('c:')`. Para más información, vea [esta página MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Nota:* En Windows, Node.js sigue el concepto de directorio de trabajo por disco. Este comportamiento puede ser observado cuando se usa una ruta de disco sin un backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. Para más información, consulte [esta página de MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -63,7 +65,7 @@ changes:
 * `ext` {string} Una extensión de archivo opcional
 * Devuelve: {string}
 
-Los métodos `path.basename()` retornan la última porción de un `path`, similar al comando Unix `basename`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
+Los métodos `path.basename()` devuelven la última porción de un `path`, similar al comando Unix `basename`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 For example:
 
@@ -78,6 +80,7 @@ path.basename('/foo/bar/baz/asdf/quux.html', '.html');
 Se produce un [`TypeError`][] si `path` no es una string o si `ext` es dado y no es una string.
 
 ## path.delimiter
+
 <!-- YAML
 added: v0.9.3
 -->
@@ -110,9 +113,11 @@ process.env.PATH.split(path.delimiter);
 ```
 
 ## path.dirname(path)
+
 <!-- YAML
 added: v0.1.16
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -133,9 +138,11 @@ path.dirname('/foo/bar/baz/asdf/quux');
 Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.extname(path)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5348
     description: Passing a non-string as the `path` argument will throw now.
@@ -144,7 +151,7 @@ changes:
 * `path` {string}
 * Devuelve: {string}
 
-El método `path.extname()` retorna la extensión del `path`, desde la última ocurrencia del carácter `.` (punto) hasta el final del string en la última porción del `path`. Si no hay ningún `.` en la última porción del `path`, o si el primer carácter del nombre base del `path` (vea `path.basename()`) es `.`, entonces un string vacío es retornado.
+El método `path.extname()` devuelve la extensión de `path`, desde la última ocurrencia del carácter `.` (punto) hasta el final de la string en la última porción de `path`. Si no hay ningún `.` en la última porción de `path`, o si el primer carácter del nombre base de `path` (vea `path.basename()`) es `.`, entonces una string vacía es devuelta.
 
 For example:
 
@@ -168,11 +175,12 @@ path.extname('.index');
 Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.format(pathObject)
+
 <!-- YAML
 added: v0.11.15
 -->
 
-* `pathObject` {Object}
+* `pathObject` {Object} 
   * `dir` {string}
   * `root` {string}
   * `base` {string}
@@ -180,7 +188,7 @@ added: v0.11.15
   * `ext` {string}
 * Devuelve: {string}
 
-El método `path.format()` retorna un string de ruta de un objeto. Este es el opuesto de [`path.parse()`][].
+El método `path.format()` retorna un string de ruta de un objeto. Esto es lo opuesto de [`path.parse()`][].
 
 Al proporcionar propiedades al `pathObject`, recuerde que hay combinaciones donde una propiedad tiene prioridad sobre otra:
 
@@ -230,6 +238,7 @@ path.format({
 ```
 
 ## path.isAbsolute(path)
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -265,6 +274,7 @@ path.isAbsolute('.');           // false
 Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.join([...paths])
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -272,9 +282,9 @@ added: v0.1.16
 * `...paths` {string} Una secuencia de segmentos de ruta
 * Devuelve: {string}
 
-El método `path.join()` junta a todos los segmentos `path` dados usando el separador específico de plataforma como delimitador, luego normaliza la ruta resultante.
+El método `path.join()` une a todos los segmentos `path` dados usando el separador específico de plataforma como delimitador, luego normaliza la ruta resultante.
 
-Los segmentos `path` sin extensión son ignorados. Si el string de ruta unido es un string sin extensión, entonces `'.'` va a ser retornado, representando al directorio de trabajo actual.
+Los segmentos `path` sin extensión son ignorados. Si la string de ruta unida es una string de longitud cero, entonces `'.'` será devuelto, representando al directorio de trabajo actual.
 
 For example:
 
@@ -289,6 +299,7 @@ path.join('foo', {}, 'bar');
 Un [`TypeError`][] va a ser producido si cualquiera de los segmentos de ruta no es un string.
 
 ## path.normalize(path)
+
 <!-- YAML
 added: v0.1.23
 -->
@@ -298,10 +309,9 @@ added: v0.1.23
 
 El método `path.normalize()` normaliza el `path` dado, resolviendo los segmentos `'..'` y `'.'`.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform specific path segment separator (`/`on POSIX and`\` on Windows). Los separadores de seguimiento son preservados.
+Cuando múltiples carácteres de separación de segmentos de ruta secuenciales son encontrados (p. ej. `/` ya sea en POSIX `` o `/` en Windows), son reemplazados por una sola instancia del separador de segmento de ruta específico de la plataforma (`/` en POSIX y `` en Windows). Los separadores de seguimiento son preservados.
 
-Si el `path` es un string sin extensión, `'.'` es retornado, representando el directorio de trabajo actual.
+Si el `path` es una string de longitud cero, `'.'` es devuelto, representando el directorio de trabajo actual.
 
 Por ejemplo, en POSIX:
 
@@ -317,7 +327,7 @@ path.normalize('C:\\temp\\\\foo\\bar\\..\\');
 // Devuelve: 'C:\\temp\\foo\\'
 ```
 
-Ya que Windows reconoce múltiples separadores de ruta, ambos separadores van a ser reemplazados por instancias del separador preferido de Windows (`\`):
+Ya que Windows reconoce múltiples separadores de ruta, ambos separadores van a ser reemplazados por instancias del separador preferido de Windows (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
@@ -327,6 +337,7 @@ path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
 Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.parse(path)
+
 <!-- YAML
 added: v0.11.15
 -->
@@ -334,7 +345,7 @@ added: v0.11.15
 * `path` {string}
 * Devuelve: {Object}
 
-El método `path.parse()` retorna un objeto cuyas propiedades representan elementos significativos del `path`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
+El método `path.parse()` devuelve un objeto cuyas propiedades representan elementos significativos del `path`. Los separadores de directorios de seguimiento son ignorados, vea [`path.sep`][].
 
 El objeto retornado va a tener las siguientes propiedades:
 
@@ -391,18 +402,21 @@ path.parse('C:\\path\\dir\\file.txt');
 Un [`TypeError`][] es producido si `path` no es un string.
 
 ## path.posix
+
 <!-- YAML
 added: v0.11.15
 -->
 
 * {Object}
 
-La propiedad `path.posix` provee acceso a implementaciones específicas de POSIX de los métodos `path`.
+La propiedad `path.posix` proporciona acceso a implementaciones de POSIX específicas de los métodos `path`.
 
 ## path.relative(from, to)
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8523
     description: On Windows, the leading slashes for UNC paths are now included
@@ -413,9 +427,9 @@ changes:
 * `to` {string}
 * Devuelve: {string}
 
-El método `path.relative()` retorna la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si tanto `from` como `to` se resuelven para la misma ruta (después de llamar `path.resolve()` en cada uno), un string sin extensión es retornado.
+El método `path.relative()` devuelve la ruta relativa de `from` a `to` según el directorio de trabajo actual. Si tanto `from` como `to` se resuelven para la misma ruta (después de llamar a `path.resolve()` en cada uno), un string de longitud cero es devuelto.
 
-Si un string sin extensión es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de los strings sin extensión.
+Si una string de longitud cero es pasado como `from` o `to`, el directorio de trabajo actual será usado en lugar de las strings de longitud cero.
 
 Por ejemplo, en POSIX:
 
@@ -434,6 +448,7 @@ path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
 Un [`TypeError`][] es arrojado si `from` o `to` no son strings.
 
 ## path.resolve([...paths])
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -443,15 +458,15 @@ added: v0.3.4
 
 El método `path.resolve()` resuelve una secuencia de rutas o segmentos de rutas en una ruta absoluta.
 
-La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsecuente `path` antepuesto hasta que una ruta absoluta sea construida. Por ejemplo, dada la secuencia de segmentos de ruta `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')` retornaría `/bar/baz`.
+La secuencia dada de rutas es procesada de derecha a izquierda, con cada subsecuente `path` antepuesto hasta que una ruta absoluta sea construida. Por ejemplo, dada la secuencia de segmentos de ruta: `/foo`, `/bar`, `baz`, llamar a `path.resolve('/foo', '/bar', 'baz')`, devolvería `/bar/baz`.
 
-Si después de procesar todos los segmentos `path` dados, una ruta absoluta aún no ha sido generada, el directorio de trabajo actual es usado.
+Si después de procesar todos los segmentos `path` aún no se ha generado una ruta absoluta, el directorio de trabajo actual es usado.
 
 La ruta resultante es normalizada y los slashes de seguimiento son removidos, a menos que la ruta sea resuelta en el directorio root.
 
 Los segmentos `path` sin extensión son ignorados.
 
-Si ningún segmento de `path` es pasado, `path.resolve()` va a retornar la ruta absoluta del directorio de trabajo actual.
+Si ningún segmento `path` es pasado, `path.resolve()` devolverá la ruta absoluta del directorio de trabajo actual.
 
 For example:
 
@@ -470,6 +485,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
 Un [`TypeError`][] es producido si cualquiera de los argumentos no es un string.
 
 ## path.sep
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -478,7 +494,7 @@ added: v0.7.9
 
 Provee el separador de segmento de ruta específico de la plataforma:
 
-* `\` en Windows
+* `` en Windows
 * `/` en POSIX
 
 Por ejemplo, en POSIX:
@@ -495,15 +511,14 @@ En Windows:
 // Devuelve: ['foo', 'bar', 'baz']
 ```
 
-*Note*: On Windows, both the forward slash (`/`) and backward slash (``\`) are
-accepted as path segment separators; however, the``path`methods only add
-backward slashes (`\`).
+*Nota*: En Windows, tanto la barra inclinada (`/`) como la barra inversa (``) son aceptadas como separadores de segmentos de ruta; sin embargo, los métodos `path` solo agregan barras inversas (``).
 
 ## path.win32
+
 <!-- YAML
 added: v0.11.15
 -->
 
 * {Object}
 
-La propiedad `path.win32` provee acceso a implementaciones específicas para Windows de los métodos `path`.
+La propiedad `path.win32` proporciona acceso a implementaciones específicas para Windows de los métodos `path`.

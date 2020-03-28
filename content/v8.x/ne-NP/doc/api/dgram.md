@@ -92,6 +92,22 @@ added: v0.6.9
 
 Tells the kernel to join a multicast group at the given `multicastAddress` and `multicastInterface` using the `IP_ADD_MEMBERSHIP` socket option. If the `multicastInterface` argument is not specified, the operating system will choose one interface and will add membership to it. To add membership to every available interface, call `addMembership` multiple times, once per interface.
 
+When sharing a UDP socket across multiple `cluster` workers, the `socket.addMembership()` function must be called only once or an `EADDRINUSE` error will occur:
+
+```js
+const cluster = require('cluster');
+const dgram = require('dgram');
+if (cluster.isMaster) {
+  cluster.fork(); // Works ok.
+  cluster.fork(); // Fails with EADDRINUSE.
+} else {
+  const s = dgram.createSocket('udp4');
+  s.bind(1234, () => {
+    s.addMembership('224.0.0.114');
+  });
+}
+```
+
 ### socket.address()
 
 <!-- YAML
@@ -201,7 +217,7 @@ If `multicastInterface` is not specified, the operating system will attempt to d
 added: v8.7.0
 -->
 
-* Returns {number} the `SO_RCVBUF` socket receive buffer size in bytes.
+* Returns: {number} the `SO_RCVBUF` socket receive buffer size in bytes.
 
 ### socket.getSendBufferSize()
 
@@ -209,7 +225,7 @@ added: v8.7.0
 added: v8.7.0
 -->
 
-* Returns {number} the `SO_SNDBUF` socket send buffer size in bytes.
+* Returns: {number} the `SO_SNDBUF` socket send buffer size in bytes.
 
 ### socket.ref()
 
@@ -266,7 +282,7 @@ The only way to know for sure that the datagram has been sent is by using a `cal
 
 Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
 
-Example of sending a UDP packet to a random port on `localhost`;
+Example of sending a UDP packet to a port on `localhost`;
 
 ```js
 const dgram = require('dgram');
@@ -277,7 +293,7 @@ client.send(message, 41234, 'localhost', (err) => {
 });
 ```
 
-Example of sending a UDP packet composed of multiple buffers to a random port on `127.0.0.1`;
+Example of sending a UDP packet composed of multiple buffers to a port on `127.0.0.1`;
 
 ```js
 const dgram = require('dgram');
@@ -479,10 +495,10 @@ changes:
 
 * `options` {Object} Available options are: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. Defaults to `false`.
+  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
   * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
-  * `lookup` {Function} Custom lookup function. Defaults to [`dns.lookup()`][].
+  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
 * Returns: {dgram.Socket}
 

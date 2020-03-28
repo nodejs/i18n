@@ -1,6 +1,7 @@
 # 进程
 
 <!-- introduced_in=v0.10.0 -->
+
 <!-- type=global -->
 
 `process` 是一个 `全局` 对象，它提供当前 Node.js 进程的信息并对其进行控制。 作为一个全局对象，无需使用 `require()` 就可以在 Node.js 应用程序中使用它。
@@ -10,6 +11,7 @@
 `process` 对象是 [`EventEmitter`][] 的实例。
 
 ### 事件：'beforeExit'
+
 <!-- YAML
 added: v0.11.12
 -->
@@ -23,6 +25,7 @@ added: v0.11.12
 除非打算计划额外的工作，`'beforeExit'` *不* 应作为 `'exit'` 事件的替代方法被使用。
 
 ### 事件：'disconnect'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -30,6 +33,7 @@ added: v0.7.7
 如果使用 IPC 通道 (请参阅 [子进程](child_process.html) 和 [集群](cluster.html) 文档) 衍生 Node.js 进程，则在关闭 IPC 通道时会发出 `'disconnect'` 事件。
 
 ### 事件：'exit'
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -62,6 +66,7 @@ process.on('exit', (code) => {
 ```
 
 ### 事件：'message'
+
 <!-- YAML
 added: v0.5.10
 -->
@@ -74,6 +79,7 @@ added: v0.5.10
 The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
 
 ### Event: 'multipleResolves'
+
 <!-- YAML
 added: v10.12.0
 -->
@@ -121,6 +127,7 @@ main().then(console.log);
 ```
 
 ### 事件：'rejectionHandled'
+
 <!-- YAML
 added: v1.4.1
 -->
@@ -152,17 +159,28 @@ process.on('rejectionHandled', (promise) => {
 在此示例中，`unhandledRejections` `Map` 将会随着时间的推移而增长和缩小，从而反映出在开始时未被处理的拒绝随后得到了处理。 可以定期的 (这对长时间运行的应用程序最好) 或在进程退出时 (这对脚本来说是最方便的) 在错误日志中记录此类错误。
 
 ### 事件：'uncaughtException'
+
 <!-- YAML
 added: v0.1.18
+changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/26599
+    description: Added the `origin` argument.
 -->
+
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled rejection or from synchronous errors. Can either be `'uncaughtException'` or `'unhandledRejection'`.
 
 当未捕获的 JavaScript 异常一直冒泡返回到事件循环时，会发出 `'uncaughtException'` 事件。 By default, Node.js handles such exceptions by printing the stack trace to `stderr` and exiting with code 1, overriding any previously set [`process.exitCode`][]. 为 `'uncaughtException'` 事件添加处理程序会覆盖此默认行为。 Alternatively, change the [`process.exitCode`][] in the `'uncaughtException'` handler which will result in the process exiting with the provided exit code. Otherwise, in the presence of such handler the process will exit with 0.
 
-监听器函数被调用时将 `Error` 对象作为唯一参数传入。
-
 ```js
-process.on('uncaughtException', (err) => {
-  fs.writeSync(1, `Caught exception: ${err}\n`);
+process.on('uncaughtException', (err, origin) => {
+  fs.writeSync(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` +
+    `Exception origin: ${origin}`
+  );
 });
 
 setTimeout(() => {
@@ -187,9 +205,11 @@ Attempting to resume normally after an uncaught exception can be similar to pull
 To restart a crashed application in a more reliable way, whether `'uncaughtException'` is emitted or not, an external monitor should be employed in a separate process to detect application failures and recover or restart as needed.
 
 ### 事件：'unhandledRejection'
+
 <!-- YAML
 added: v1.4.1
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/8217
     description: Not handling `Promise` rejections is deprecated.
@@ -199,17 +219,15 @@ changes:
                  a process warning.
 -->
 
+* `reason` {Error|any} 此对象包含了当 promise 被拒绝时的相关信息（通常是一个 [`Error`][] 对象）。
+* `promise` {Promise} The rejected promise.
+
 The `'unhandledRejection'` event is emitted whenever a `Promise` is rejected and no error handler is attached to the promise within a turn of the event loop. 当使用 Promise 编程时，异常被封装为 "rejected promise"。 Rejection 可被 [`promise.catch()`][] 捕获并处理，且在 `Promise` 链中被传播。 `'unhandledRejection'` 事件在检测和跟踪被拒绝的 promise，且 rejection 未被处理的时候非常有用。
 
-使用如下参数调用监听器函数：
-
-* `reason` {Error|any} 此对象包含了当 promise 被拒绝时的相关信息（通常是一个 [`Error`][] 对象）。
-* `p` 被拒绝的 `Promise`。
-
 ```js
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at:', p, 'reason:', reason);
-  // application specific logging, throwing an error, or other logic here
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  // Application specific logging, throwing an error, or other logic here
 });
 
 somePromise.then((res) => {
@@ -229,14 +247,15 @@ const resource = new SomeResource();
 // no .catch or .then on resource.loaded for at least a turn
 ```
 
-在此示例中，可以像在其他 `'unhandledRejection'` 事件中一样，跟踪开发者错误导致的 rejection。 要解决此类错误，可在 `resource.loaded` 中附加一个不做任何操作的 [`.catch(() => { })`][`promise.catch()`] 处理程序，这样就可以阻止发出 `'unhandledRejection'` 事件。 或者，也可以使用 [`'rejectionHandled'`][] 事件。
+在此示例中，可以像在其他 `'unhandledRejection'` 事件中一样，跟踪开发者错误导致的 rejection。 要解决此类错误，可在 `resource.loaded` 中附加一个不做任何操作的 [`.catch(() => { })`][`promise.catch()`] 处理程序，这样就可以阻止发出 `'unhandledRejection'` 事件。
 
 ### 事件：'warning'
+
 <!-- YAML
 added: v6.0.0
 -->
 
-* `warning` {Error} Key properties of the warning are:
+* `warning` {Error} Key properties of the warning are: 
   * `name` {string} The name of the warning. **Default:** `'Warning'`.
   * `message` {string} 系统提供的警告描述。
   * `stack` {string} 当警告触发时，包含代码位置的追溯栈。
@@ -255,7 +274,7 @@ process.on('warning', (warning) => {
 
 默认情况下，Node.js 将把进程警告信息打印到 `stderr`。 `--no-warnings` 命令行选项可被用于阻止默认的控制台输出，但 `process` 对象仍会发出 `'warning'` 事件。
 
-The following example illustrates the warning that is printed to `stderr` when too many listeners have been added to an event:
+如下示例演示了当过多监听器被附加到事件时，将被输出到 `stderr` 的警告信息:
 
 ```txt
 $ node
@@ -294,6 +313,7 @@ The `*-deprecation` command line flags only affect warnings that use the name `'
 ### 信号事件
 
 <!--type=event-->
+
 <!--name=SIGINT, SIGHUP, etc.-->
 
 当 Node.js 进程接收到信号时会发出信号事件。 Please refer to signal(7) for a listing of standard POSIX signal names such as `'SIGINT'`, `'SIGHUP'`, etc.
@@ -334,6 +354,7 @@ process.on('SIGTERM', handle);
 Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
 
 ## process.abort()
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -343,6 +364,7 @@ added: v0.7.0
 This feature is not available in [`Worker`][] threads.
 
 ## process.allowedNodeEnvironmentFlags
+
 <!-- YAML
 added: v10.10.0
 -->
@@ -351,12 +373,12 @@ added: v10.10.0
 
 The `process.allowedNodeEnvironmentFlags` property is a special, read-only `Set` of flags allowable within the [`NODE_OPTIONS`][] environment variable.
 
-`process.allowedNodeEnvironmentFlags` extends `Set`, but overrides `Set.prototype.has` to recognize several different possible flag representations.  `process.allowedNodeEnvironmentFlags.has()` will return `true` in the following cases:
+`process.allowedNodeEnvironmentFlags` extends `Set`, but overrides `Set.prototype.has` to recognize several different possible flag representations. `process.allowedNodeEnvironmentFlags.has()` will return `true` in the following cases:
 
-- Flags may omit leading single (`-`) or double (`--`) dashes; e.g., `inspect-brk` for `--inspect-brk`, or `r` for `-r`.
-- Flags passed through to V8 (as listed in `--v8-options`) may replace one or more *non-leading* dashes for an underscore, or vice-versa; e.g., `--perf_basic_prof`, `--perf-basic-prof`, `--perf_basic-prof`, etc.
-- Flags may contain one or more equals (`=`) characters; all characters after and including the first equals will be ignored; e.g., `--stack-trace-limit=100`.
-- Flags *must* be allowable within [`NODE_OPTIONS`][].
+* Flags may omit leading single (`-`) or double (`--`) dashes; e.g., `inspect-brk` for `--inspect-brk`, or `r` for `-r`.
+* Flags passed through to V8 (as listed in `--v8-options`) may replace one or more *non-leading* dashes for an underscore, or vice-versa; e.g., `--perf_basic_prof`, `--perf-basic-prof`, `--perf_basic-prof`, etc.
+* Flags may contain one or more equals (`=`) characters; all characters after and including the first equals will be ignored; e.g., `--stack-trace-limit=100`.
+* Flags *must* be allowable within [`NODE_OPTIONS`][].
 
 When iterating over `process.allowedNodeEnvironmentFlags`, flags will appear only *once*; each will begin with one or more dashes. Flags passed through to V8 will contain underscores instead of non-leading dashes:
 
@@ -374,6 +396,7 @@ The methods `add()`, `clear()`, and `delete()` of `process.allowedNodeEnvironmen
 If Node.js was compiled *without* [`NODE_OPTIONS`][] support (shown in [`process.config`][]), `process.allowedNodeEnvironmentFlags` will contain what *would have* been allowable.
 
 ## process.arch
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -382,13 +405,14 @@ added: v0.5.0
 
 The `process.arch` property returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-当前的可能值包括：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
+当前可能的值为：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
 
 ```js
 console.log(`This processor architecture is ${process.arch}`);
 ```
 
 ## process.argv
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -423,6 +447,7 @@ $ node process-args.js one two=three four
 ```
 
 ## process.argv0
+
 <!-- YAML
 added: v6.4.0
 -->
@@ -440,6 +465,7 @@ $ bash -c 'exec -a customArgv0 ./node'
 ```
 
 ## process.channel
+
 <!-- YAML
 added: v7.1.0
 -->
@@ -449,6 +475,7 @@ added: v7.1.0
 如果 Node.js 进程是通过 IPC 通道 (请参阅 [子进程](child_process.html) 文档) 衍生的，则 `process.channel` 属性是 IPC 通道的引用。 如果没有 IPC 通道，则此属性值为 `undefined`。
 
 ## process.chdir(directory)
+
 <!-- YAML
 added: v0.1.17
 -->
@@ -470,6 +497,7 @@ try {
 This feature is not available in [`Worker`][] threads.
 
 ## process.config
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -479,6 +507,9 @@ added: v0.7.7
 The `process.config` property returns an `Object` containing the JavaScript representation of the configure options used to compile the current Node.js executable. 这和运行 `./configure` 脚本时生成的 `config.gypi` 文件一样。
 
 可能的输出如下所示：
+
+<!-- eslint-skip -->
+
 ```js
 {
   target_defaults:
@@ -508,20 +539,26 @@ The `process.config` property returns an `Object` containing the JavaScript repr
 
 The `process.config` property is **not** read-only and there are existing modules in the ecosystem that are known to extend, modify, or entirely replace the value of `process.config`.
 
-## process.connected<!-- YAML
+## process.connected
+
+<!-- YAML
 added: v0.7.2
--->* {boolean}
+-->
+
+* {boolean}
 
 如果使用 IPC 通道 (请参阅 [子进程](child_process.html) 和 [集群](cluster.html) 文档) 衍生 Node.js 进程，只要 IPC 通道保持连接，`process.connected` 属性就会返回 `true`，当调用 `process.disconnect()` 后，则返回 `false`。
 
 如果 `process.connected` 的值为 `false`，就不可能通过 IPC 通道使用 `process.send()` 来发送消息。
 
-## process.cpuUsage([previousValue])<!-- YAML
+## process.cpuUsage([previousValue])
+
+<!-- YAML
 added: v6.1.0
--->* `previousValue` {Object} 之前调用 `process.cpuUsage()` 的返回值
-* 返回：{Object}
-    * `user` {integer}
-    * `system` {integer}
+-->
+
+* `previousValue` {Object} 之前调用 `process.cpuUsage()` 的返回值
+* Returns: {Object} * `user` {integer} * `system` {integer}
 
 `process.cpuUsage()` 方法返回包含当前进程的用户及系统 CPU 时间使用情况的对象，该对象包含 `user` 和 `system` 属性，这些属性的值都是以微秒 (百万之一秒) 计的。 这些值分别计算运行用户和系统代码所需的时间，如果在此进程中使用了多个 CPU 处理器，这些值就有可能大于实际使用的时间。
 
@@ -539,41 +576,58 @@ console.log(process.cpuUsage(startUsage));
 // { user: 514883, system: 11226 }
 ```
 
-## process.cwd()<!-- YAML
+## process.cwd()
+
+<!-- YAML
 added: v0.1.8
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `process.cwd()` 方法返回 Node.js 进程的当前工作目录。
 
 ```js
 console.log(`Current directory: ${process.cwd()}`);
 ```
-## process.debugPort<!-- YAML
+
+## process.debugPort
+
+<!-- YAML
 added: v0.7.2
--->* {number}
+-->
+
+* {number}
 
 The port used by Node.js's debugger when enabled.
 
 ```js
 process.debugPort = 5858;
 ```
+
 ## process.disconnect()
+
 <!-- YAML
 added: v0.7.2
 -->
+
 如果使用 IPC 通道 (请参阅 [子进程](child_process.html) 和 [集群](cluster.html) 文档) 衍生 Node.js 进程，`process.disconnect()` 方法会关闭连接父进程的 IPC 通道，以允许在没有任何使子进程活跃的连接时使子进程安全退出。
 
 调用 `process.disconnect()` 的效果就等同于在其父进程上调用 [`ChildProcess.disconnect()`][]。
 
 如果 Node.js 进程不是衍生自 IPC 通道，则 `process.disconnect()` 的值为 `undefined`。
 
-## process.dlopen(module, filename[, flags])<!-- YAML
+## process.dlopen(module, filename[, flags])
+
+<!-- YAML
 added: v0.1.16
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/12794
     description: Added support for the `flags` argument.
--->* `module` {Object}
+-->
+
+* `module` {Object}
 * `filename` {string}
 * `flags` {os.constants.dlopen} **Default:** `os.constants.dlopen.RTLD_LAZY`
 
@@ -594,10 +648,14 @@ process.dlopen(module, require.resolve('binding'),
 module.exports.foo();
 ```
 
-## process.emitWarning(warning[, options])<!-- YAML
+## process.emitWarning(warning[, options])
+
+<!-- YAML
 added: v8.0.0
--->* `warning` {string|Error} 将要发出的警告。
-* `options` {Object}
+-->
+
+* `warning` {string|Error} 将要发出的警告。
+* `options` {Object} 
   * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
   * `code` {string} 将要发出的警告实例的唯一标识符。
   * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
@@ -630,9 +688,13 @@ process.on('warning', (warning) => {
 
 如果将 `warning` 作为 `Error` 对象进行传递，将会忽略 `options` 参数。
 
-## process.emitWarning(warning\[, type[, code]\]\[, ctor\])<!-- YAML
+## process.emitWarning(warning\[, type[, code]\]\[, ctor\])
+
+<!-- YAML
 added: v6.0.0
--->* `warning` {string|Error} 将要发出的警告。
+-->
+
+* `warning` {string|Error} 将要发出的警告。
 * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
 * `code` {string} 将要发出的警告实例的唯一标识符。
 * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
@@ -682,7 +744,7 @@ process.emitWarning(myWarning);
 
 如果 `warning` 不是字符串或 `Error` 对象，则会抛出 `TypeError`。
 
-Note that while process warnings use `Error` objects, the process warning mechanism is **not** a replacement for normal error handling mechanisms.
+注意：尽管进程警告使用 `Error` 对象，但进程警告机制 **不能** 替代正常错误处理机制。
 
 The following additional handling is implemented if the warning `type` is `'DeprecationWarning'`:
 
@@ -707,17 +769,25 @@ emitMyWarning();
 // Emits nothing
 ```
 
-## process.env<!-- YAML
+## process.env
+
+<!-- YAML
 added: v0.1.27
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18990
     description: Implicit conversion of variable value to string is deprecated.
--->* {Object}
+-->
+
+* {Object}
 
 `process.env` 属性返回一个包含用户环境的对象。 请参阅 environ(7)。
 
 此对象的示例看起来就像如下所示：
+
+<!-- eslint-skip -->
+
 ```js
 {
   TERM: 'xterm-256color',
@@ -776,9 +846,13 @@ console.log(process.env.test);
 
 `process.env` is read-only in [`Worker`][] threads.
 
-## process.execArgv<!-- YAML
+## process.execArgv
+
+<!-- YAML
 added: v0.7.7
--->* {string[]}
+-->
+
+* {string[]}
 
 `process.execArgv` 属性返回一组在 Node.js 进程启动时传入的特定于 Node.js 的命令行选项。 这些选项不会出现在 [`process.argv`][] 属性返回的数组中，也不会包含 Node.js 的可执行文件，脚本名称，或脚本名称之后的任何选项中。 在从父进程中衍生子进程并保持和父进程相同的执行环境时，这些选项非常有用。
 
@@ -787,27 +861,44 @@ $ node --harmony script.js --version
 ```
 
 在 `process.execArgv` 中的结果：
+
+<!-- eslint-disable semi -->
+
 ```js
 ['--harmony']
 ```
 
 同时 `process.argv` 的值为：
+
+<!-- eslint-disable semi -->
+
 ```js
 ['/usr/local/bin/node', 'script.js', '--version']
 ```
 
-## process.execPath<!-- YAML
+## process.execPath
+
+<!-- YAML
 added: v0.1.100
--->* {string}
+-->
+
+* {string}
 
 `process.execPath` 属性返回启动 Node.js 进程的可执行文件的绝对路径。
+
+<!-- eslint-disable semi -->
+
 ```js
 '/usr/local/bin/node'
 ```
 
-## process.exit([code])<!-- YAML
+## process.exit([code])
+
+<!-- YAML
 added: v0.1.13
--->* `code` {integer} 退出代码。 **默认值：** `0`。
+-->
+
+* `code` {integer} 退出代码。 **默认值：** `0`。
 
 `process.exit()` 方法指示 Node.js 在终止进程时和退出码 `code` 同步。 如果未提供 `code`，在退出时使用 '成功' 代码 `0`，或者当被设置时使用 `process.exitCode` 的值。 在所有 [`'exit'`] 事件监听器被调用之前，Node.js 不会终止。
 
@@ -850,17 +941,25 @@ if (someConditionNotMet()) {
 
 In [`Worker`][] threads, this function stops the current thread rather than the current process.
 
-## process.exitCode<!-- YAML
+## process.exitCode
+
+<!-- YAML
 added: v0.11.8
--->* {integer}
+-->
+
+* {integer}
 
 当进程正常退出，或在未指定退出码的情况下通过 [`process.exit()`][] 退出时，代表进程退出码的数字。
 
 为 [`process.exit(code)`][`process.exit()`] 指定推出码将会覆盖任何之前对 `process.exitCode` 的设置。
 
-## process.getegid()<!-- YAML
+## process.getegid()
+
+<!-- YAML
 added: v2.0.0
--->`process.getegid()` 方法返回 Node.js 进程的数字形式的有效组标识。 (请参阅 getegid(2)。)
+-->
+
+`process.getegid()` 方法返回 Node.js 进程的数字形式的有效组标识。 (请参阅 getegid(2)。)
 
 ```js
 if (process.getegid) {
@@ -870,9 +969,13 @@ if (process.getegid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-## process.geteuid()<!-- YAML
+## process.geteuid()
+
+<!-- YAML
 added: v2.0.0
--->* 返回：{Object}
+-->
+
+* 返回：{Object}
 
 `process.geteuid()` 方法返回进程的数字形式的有效用户标识。 (请参阅 geteuid(2)。)
 
@@ -884,9 +987,13 @@ if (process.geteuid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-## process.getgid()<!-- YAML
+## process.getgid()
+
+<!-- YAML
 added: v0.1.31
--->* 返回：{Object}
+-->
+
+* 返回：{Object}
 
 `process.getgid()` 返回数字形式的进程有效组标识。 (请参阅 getgid(2)。)
 
@@ -898,17 +1005,25 @@ if (process.getgid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-## process.getgroups()<!-- YAML
+## process.getgroups()
+
+<!-- YAML
 added: v0.9.4
--->* Returns: {integer[]}
+-->
+
+* Returns: {integer[]}
 
 `process.getgroups()` 方法返回包含补充组 ID 的数组。 如果包含了有效组 ID，POSIX 会将其值保留为未定义的，但 Node.js 确保包含有效组 ID。
 
 This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-## process.getuid()<!-- YAML
+## process.getuid()
+
+<!-- YAML
 added: v0.1.28
--->* 返回：{integer}
+-->
+
+* 返回：{integer}
 
 `process.getuid()` 方法返回数字形式的进程用户标识。 (请参阅 getuid(2)。)
 
@@ -920,15 +1035,23 @@ if (process.getuid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android).
 
-## process.hasUncaughtExceptionCaptureCallback()<!-- YAML
+## process.hasUncaughtExceptionCaptureCallback()
+
+<!-- YAML
 added: v9.3.0
--->* 返回：{boolean}
+-->
+
+* 返回：{boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
-## process.hrtime([time])<!-- YAML
+## process.hrtime([time])
+
+<!-- YAML
 added: v0.7.6
--->* `time` {integer[]} The result of a previous call to `process.hrtime()`
+-->
+
+* `time` {integer[]} The result of a previous call to `process.hrtime()`
 * Returns: {integer[]}
 
 This is the legacy version of [`process.hrtime.bigint()`][] before `bigint` was introduced in JavaScript.
@@ -953,9 +1076,13 @@ setTimeout(() => {
 }, 1000);
 ```
 
-## process.hrtime.bigint()<!-- YAML
+## process.hrtime.bigint()
+
+<!-- YAML
 added: v10.7.0
--->* Returns: {bigint}
+-->
+
+* 返回：{bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -975,6 +1102,7 @@ setTimeout(() => {
 ```
 
 ## process.initgroups(user, extraGroup)
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -996,9 +1124,13 @@ console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.kill(pid[, signal])<!-- YAML
+## process.kill(pid[, signal])
+
+<!-- YAML
 added: v0.0.6
--->* `pid` {number} 进程 ID
+-->
+
+* `pid` {number} 进程 ID
 * `signal` {string|number} 要发送的信号，为字符串或数字。 **Default:** `'SIGTERM'`.
 
 `process.kill()` 方法将 `signal` 发送给以 `pid` 标识的进程。
@@ -1024,25 +1156,30 @@ process.kill(process.pid, 'SIGHUP');
 
 When `SIGUSR1` is received by a Node.js process, Node.js will start the debugger. See [Signal Events](#process_signal_events).
 
-## process.mainModule<!-- YAML
+## process.mainModule
+
+<!-- YAML
 added: v0.1.17
--->* {Object}
+-->
+
+* {Object}
 
 `process.mainModule` 属性提供了接收 [`require.main`][] 的替代方法。 其区别在于 ，如果主模块在运行时发生改变，[`require.main`][] 可能仍指向变化之前所依赖的原始主模块。 通常情况下，假定它们引用相同的模块是安全的。
 
 就像 [`require.main`][] 一样，如果没有入口脚本，`process.mainModule` 的值是 `undefined`。
 
-## process.memoryUsage()<!-- YAML
+## process.memoryUsage()
+
+<!-- YAML
 added: v0.1.16
 changes:
+
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9587
     description: Added `external` to the returned object.
--->* 返回：{Object}
-    * `rss` {integer}
-    * `heapTotal` {integer}
-    * `heapUsed` {integer}
-    * `external` {integer}
+-->
+
+* Returns: {Object} * `rss` {integer} * `heapTotal` {integer} * `heapUsed` {integer} * `external` {integer}
 
 `process.memoryUsage()` 方法返回一个以字节为单位度量的，描述 Node.js 进程内存使用的对象。
 
@@ -1053,6 +1190,9 @@ console.log(process.memoryUsage());
 ```
 
 将会生成：
+
+<!-- eslint-skip -->
+
 ```js
 {
   rss: 4935680,
@@ -1062,19 +1202,24 @@ console.log(process.memoryUsage());
 }
 ```
 
-`heapTotal` 和 `heapUsed` 代表的是 V8 的内存使用状况。 `external` 指的是 C++ 对象的内存使用，这些对象绑定到由 V8 管理的 JavaScript 对象。 `rss`, Resident Set Size, is the amount of space occupied in the main memory device (that is a subset of the total allocated memory) for the process, which includes the _heap_, _code segment_ and _stack_.
+`heapTotal` 和 `heapUsed` 代表的是 V8 的内存使用状况。 `external` 指的是 C++ 对象的内存使用，这些对象绑定到由 V8 管理的 JavaScript 对象。 `rss`，驻留集大小，是指为这个进程分配了多少主存储器空间 (它是总共分配内存的子集)，其中包括 *堆*，*代码段*，以及 *栈*。
 
-对象，字符串，和闭包存储在 _堆_ 中。 变量存储于 _栈_ 中，而实际的 JavaScript 代码存储于 _代码段_ 中。
+对象，字符串，和闭包存储在 *堆* 中。 变量存储于 *栈* 中，而实际的 JavaScript 代码存储于 *代码段* 中。
 
 When using [`Worker`][] threads, `rss` will be a value that is valid for the entire process, while the other fields will only refer to the current thread.
 
-## process.nextTick(callback[, ...args])<!-- YAML
+## process.nextTick(callback[, ...args])
+
+<!-- YAML
 added: v0.1.26
 changes:
+
   - version: v1.8.1
     pr-url: https://github.com/nodejs/node/pull/1077
     description: Additional arguments after `callback` are now supported.
--->* `callback` {Function}
+-->
+
+* `callback` {Function}
 * `...args` {any} 当调用 `callback` 时传入的额外参数
 
 `process.nextTick()` 方法将 `callback` 添加到 “下一个时间点的队列”。 一旦当前的事件循环全部完成，则调用下一个时间点队列中的所有回调函数。
@@ -1153,15 +1298,23 @@ function definitelyAsync(arg, cb) {
 
 The next tick queue is completely drained on each pass of the event loop **before** additional I/O is processed. As a result, recursively setting `nextTick()` callbacks will block any I/O from happening, just like a `while(true);` loop.
 
-## process.noDeprecation<!-- YAML
+## process.noDeprecation
+
+<!-- YAML
 added: v0.8.0
--->* {boolean}
+-->
+
+* {boolean}
 
 `process.noDeprecation` 属性指示在当前 Node.js 进程上是否设置了 `--no-deprecation` 标志。 See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
-## process.pid<!-- YAML
+## process.pid
+
+<!-- YAML
 added: v0.1.15
--->* {integer}
+-->
+
+* {integer}
 
 `process.pid` 属性返回进程的 PID。
 
@@ -1169,9 +1322,13 @@ added: v0.1.15
 console.log(`This process is pid ${process.pid}`);
 ```
 
-## process.platform<!-- YAML
+## process.platform
+
+<!-- YAML
 added: v0.1.16
--->* {string}
+-->
+
+* {string}
 
 `process.platform` 属性返回一个用于标识 Node.js 进程运行其上的操作系统平台的字符串。
 
@@ -1191,9 +1348,13 @@ console.log(`This platform is ${process.platform}`);
 
 如果 Node.js 是在 Android 操作系统上构建的，返回值还可能会是 `'android'`。 However, Android support in Node.js [is experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os).
 
-## process.ppid<!-- YAML
+## process.ppid
+
+<!-- YAML
 added: v9.2.0
--->* {integer}
+-->
+
+* {integer}
 
 `process.ppid` 属性返回当前父进程的 PID。
 
@@ -1201,26 +1362,34 @@ added: v9.2.0
 console.log(`The parent process is pid ${process.ppid}`);
 ```
 
-## process.release<!-- YAML
+## process.release
+
+<!-- YAML
 added: v3.0.0
 changes:
+
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3212
     description: The `lts` property is now supported.
--->* {Object}
+-->
+
+* {Object}
 
 The `process.release` property returns an `Object` containing metadata related to the current release, including URLs for the source tarball and headers-only tarball.
 
 `process.release` 包含如下属性：
 
 * `name` {string} 对于 Node.js，此值始终为 `'node'`。 对于传统的 io.js 发行版本，此值是 `'io.js'`。
-* `sourceUrl` {string} 指向包含当前发布版本源代码的 _`.tar.gz`_ 文件的绝对 URL。
-* `headersUrl`{string} 指向仅包含当前发布版本头文件源代码的 _`.tar.gz`_ 文件的绝对 URL。 此文件比完整源文件要小很多，并可被用于编译 Node.js 原生插件。
-* `libUrl` {string} 和系统架构及当前发布版本号相匹配的指向 _`node.lib`_ 文件的绝对 URL。 此文件用于编译 Node.js 原生插件。 _此属性只存在于 Node.js 的 Windows 版本中，在其他平台下不存在。_
-* `lts` {string} a string label identifying the [LTS](https://github.com/nodejs/Release) label for this release. 此属性仅存在于 LTS 发布版本中，在其他发布版本，包括 _当前_ 版本中，其值为 `undefined`。 当前的有效值包括：
-  - `'Argon'` 针对自 4.2.0 开始的 4.x LTS 版本。
-  - `'Boron'` 针对自 6.9.0 开始的 6.x LTS 版本。
-  - `'Carbon'` 针对自 8.9.1 开始的 8.x LTS 版本。
+* `sourceUrl` {string} 指向包含当前发布版本源代码的 *`.tar.gz`* 文件的绝对 URL。
+* `headersUrl`{string} 指向仅包含当前发布版本头文件源代码的 *`.tar.gz`* 文件的绝对 URL。 此文件比完整源文件要小很多，并可被用于编译 Node.js 原生插件。
+* `libUrl` {string} 和系统架构及当前发布版本号相匹配的指向 *`node.lib`* 文件的绝对 URL。 此文件用于编译 Node.js 原生插件。 *此属性只存在于 Node.js 的 Windows 版本中，在其他平台下不存在。*
+* `lts` {string} 用于标识此发布版本的 [LTS](https://github.com/nodejs/Release) 标签的字符串标签。 此属性仅存在于 LTS 发布版本中，在其他发布版本，包括 *当前* 版本中，其值为 `undefined`。 当前的有效值包括： 
+  * `'Argon'` 针对自 4.2.0 开始的 4.x LTS 版本。
+  * `'Boron'` 针对自 6.9.0 开始的 6.x LTS 版本。
+  * `'Carbon'` 针对自 8.9.1 开始的 8.x LTS 版本。
+
+<!-- eslint-skip -->
+
 ```js
 {
   name: 'node',
@@ -1233,9 +1402,13 @@ The `process.release` property returns an `Object` containing metadata related t
 
 在源码树中基于未发布版本的自定义构建中，可能只有 `name` 属性存在。 额外属性可能不存在。
 
-## process.send(message\[, sendHandle[, options]\]\[, callback\])<!-- YAML
+## process.send(message\[, sendHandle[, options]\]\[, callback\])
+
+<!-- YAML
 added: v0.5.9
--->* `message` {Object}
+-->
+
+* `message` {Object}
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
@@ -1247,9 +1420,13 @@ added: v0.5.9
 
 The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
 
-## process.setegid(id)<!-- YAML
+## process.setegid(id)
+
+<!-- YAML
 added: v2.0.0
--->* `id` {string|number} 组名或 ID
+-->
+
+* `id` {string|number} 组名或 ID
 
 `process.setegid()` 方法设置进程的有效组标识符。 (请参阅 setegid(2)。) `id` 可以以数字型 ID 或组名称字符串的方式传递。 如果指定了组名称，则当解析对应的数字 ID 时，此方法是阻塞的。
 
@@ -1267,9 +1444,13 @@ if (process.getegid && process.setegid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.seteuid(id)<!-- YAML
+## process.seteuid(id)
+
+<!-- YAML
 added: v2.0.0
--->* `id` {string|number} 用户名或 ID
+-->
+
+* `id` {string|number} 用户名或 ID
 
 `process.seteuid()` 方法设置进程的有效用户标识符。 (请参阅 seteuid(2)。) `id` 可以以数字型 ID 或用户名字符串的方式传递。 如果指定了用户名，则当解析对应的数字 ID 时，此方法是阻塞的。
 
@@ -1287,9 +1468,13 @@ if (process.geteuid && process.seteuid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.setgid(id)<!-- YAML
+## process.setgid(id)
+
+<!-- YAML
 added: v0.1.31
--->* `id` {string|number} 组名或 ID
+-->
+
+* `id` {string|number} 组名或 ID
 
 `process.setgid()` 方法设置进程的组标识符。 (See setgid(2).) The `id` can be passed as either a numeric ID or a group name string. 如果指定了组名，则当解析对应的数字 ID 时，此方法是阻塞的。
 
@@ -1307,9 +1492,13 @@ if (process.getgid && process.setgid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.setgroups(groups)<!-- YAML
+## process.setgroups(groups)
+
+<!-- YAML
 added: v0.9.4
--->* `groups` {integer[]}
+-->
+
+* `groups` {integer[]}
 
 `process.setgroups()` 方法为当前 Node.js 进程设置补充组 ID。 This is a privileged operation that requires the Node.js process to have `root` or the `CAP_SETGID` capability.
 
@@ -1317,9 +1506,13 @@ added: v0.9.4
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.setuid(id)<!-- YAML
+## process.setuid(id)
+
+<!-- YAML
 added: v0.1.28
--->* `id` {integer | string}
+-->
+
+* `id` {integer | string}
 
 `process.setuid(id)` 方法设置进程的用户标识符。 (See setuid(2).) The `id` can be passed as either a numeric ID or a username string. 如果指定了用户名，则当解析对应的数字 ID 时，此方法是阻塞的。
 
@@ -1337,9 +1530,13 @@ if (process.getuid && process.setuid) {
 
 This function is only available on POSIX platforms (i.e. not Windows or Android). This feature is not available in [`Worker`][] threads.
 
-## process.setUncaughtExceptionCaptureCallback(fn)<!-- YAML
+## process.setUncaughtExceptionCaptureCallback(fn)
+
+<!-- YAML
 added: v9.3.0
--->* `fn` {Function|null}
+-->
+
+* `fn` {Function|null}
 
 The `process.setUncaughtExceptionCaptureCallback()` function sets a function that will be invoked when an uncaught exception occurs, which will receive the exception value itself as its first argument.
 
@@ -1401,11 +1598,11 @@ process.stdin.pipe(process.stdout);
 
 `process.stdout` 和 `process.stderr` 和其他 Node.js 流有重大区别：
 
-1. 它们分别被 [`console.log()`][] 和 [`console.error()`][] 在内部使用。
-2. 写操作是否为同步方式，取决于连接的是什么流以及操作系统是 Windows 还是 POSIX:
-   - 文件：在 Windows 和 POSIX 下都是 *同步方式*
-   - TTYs (终端)：在 Windows 下为 *异步方式*，在 POSIX 下为 *同步方式*
-   - 管道 (和套接字)：在 Windows 下是 *同步方式*，在 POSIX 下是 *异步方式*
+1. They are used internally by [`console.log()`][] and [`console.error()`][], respectively.
+2. Writes may be synchronous depending on what the stream is connected to and whether the system is Windows or POSIX: 
+  * 文件：在 Windows 和 POSIX 下都是 *同步方式*
+  * TTYs (终端)：在 Windows 下为 *异步方式*，在 POSIX 下为 *同步方式*
+  * 管道 (和套接字)：在 Windows 下是 *同步方式*，在 POSIX 下是 *异步方式*
 
 这些行为部分是由于历史原因造成的，改变它们可能会导致向后的不兼容性，其实它们也是部分用户的期待行为。
 
@@ -1416,6 +1613,7 @@ process.stdin.pipe(process.stdout);
 要想检查一个流是否连接到 [TTY](tty.html#tty_tty) 上下文，请检查 `isTTY` 属性。
 
 例如：
+
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
 true
@@ -1429,29 +1627,45 @@ false
 
 请参阅 [TTY](tty.html#tty_tty) 文档以获取更多信息。
 
-## process.throwDeprecation<!-- YAML
+## process.throwDeprecation
+
+<!-- YAML
 added: v0.9.12
--->* {boolean}
+-->
+
+* {boolean}
 
 `process.throwDeprecation` 属性指示在当前的 Node.js 进程上是否设置了 `--throw-deprecation` 标志。 See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
-## process.title<!-- YAML
+## process.title
+
+<!-- YAML
 added: v0.1.104
--->* {string}
+-->
+
+* {string}
 
 `process.title` 属性返回当前进程的标题 (即：返回 `ps` 的当前值)。 将 `process.title` 赋予新的值会更新 `ps` 的当前值。
 
 When a new value is assigned, different platforms will impose different maximum length restrictions on the title. Usually such restrictions are quite limited. For instance, on Linux and macOS, `process.title` is limited to the size of the binary name plus the length of the command line arguments because setting the `process.title` overwrites the `argv` memory of the process. Node.js v0.8 allowed for longer process title strings by also overwriting the `environ` memory but that was potentially insecure and confusing in some (rather obscure) cases.
 
-## process.traceDeprecation<!-- YAML
+## process.traceDeprecation
+
+<!-- YAML
 added: v0.8.0
--->* {boolean}
+-->
+
+* {boolean}
 
 `process.traceDeprecation` 属性指示在当前 Node.js 进程是否设置了 `--trace-deprecation` 标志位。 See the documentation for the [`'warning'` event](#process_event_warning) and the [`emitWarning()` method](#process_process_emitwarning_warning_type_code_ctor) for more information about this flag's behavior.
 
-## process.umask([mask])<!-- YAML
+## process.umask([mask])
+
+<!-- YAML
 added: v0.1.19
--->* `mask` {number}
+-->
+
+* `mask` {number}
 
 `process.umask()` 方法设置或返回 Node.js 进程的文件模式创建掩码。 子进程会从父进程继承此掩码。 在调用时未传入参数的话，会返回当前掩码，否则，umask 方法会设置传入的参数值，同时会返回之前的掩码。
 
@@ -1465,17 +1679,25 @@ console.log(
 
 This feature is not available in [`Worker`][] threads.
 
-## process.uptime()<!-- YAML
+## process.uptime()
+
+<!-- YAML
 added: v0.5.0
--->* 返回：{number}
+-->
+
+* 返回：{number}
 
 `process.uptime()` 方法返回以秒计的当前 Node.js 进程的运行时间。
 
 The return value includes fractions of a second. Use `Math.floor()` to get whole seconds.
 
-## process.version<!-- YAML
+## process.version
+
+<!-- YAML
 added: v0.1.3
--->* {string}
+-->
+
+* {string}
 
 `process.version` 属性返回 Node.js 版本号字符串。
 
@@ -1483,16 +1705,21 @@ added: v0.1.3
 console.log(`Version: ${process.version}`);
 ```
 
-## process.versions<!-- YAML
+## process.versions
+
+<!-- YAML
 added: v0.2.0
 changes:
+
   - version: v4.2.0
     pr-url: https://github.com/nodejs/node/pull/3102
     description: The `icu` property is now supported.
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15785
     description: The `v8` property now includes a Node.js specific suffix.
--->* {Object}
+-->
+
+* {Object}
 
 `process.versions` 属性返回一个包含 Node.js 及其依赖库的版本字符串列表的对象。 `process.versions.modules` 指示当前的 ABI 版本，每当 C++ API 更改时该版本会递增。 Node.js 会拒绝加载针对不同模块 ABI 版本而编译的模块。
 
@@ -1501,6 +1728,9 @@ console.log(process.versions);
 ```
 
 将会生成一个如下所示的类似对象：
+
+<!-- eslint-skip -->
+
 ```js
 { http_parser: '2.7.0',
   node: '8.9.0',

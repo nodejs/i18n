@@ -4,25 +4,27 @@
 
 > 稳定性：2 - 稳定
 
-`os` 模块提供了一些和操作系统相关的实用方法。 可以通过如下方式访问：
+` os ` 模块提供了许多与操作系统相关的实用工具和方法。 使用如下方法引用：
 
 ```js
 const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
 
 * {string}
 
-定义特定于操作系统的行尾结束符字符串常量：
+一个字符串常量， 用于定义操作系统相关的行末标志：
 
 * `\n` 在 POSIX 系统上
-* `\r\n` 在 Windows 系统上
+* `\r\n` 在 Windows系统上
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -33,9 +35,10 @@ added: v0.5.0
 
 当前的可能值包括：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
 
-它们等同于 [`process.arch`][]。
+等同于 [`process.arch`][]。
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -45,6 +48,7 @@ added: v6.3.0
 返回一个包含错误码，进程信号等常用的操作系统特定常量的对象。 目前定义的这些特定常量在 [操作系统常量](#os_os_constants_1) 中被描述。
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -57,12 +61,15 @@ added: v0.3.3
 
 * `model` {string}
 * `speed` {number} (以 MHz 为单位)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} 在用户模式下使用的 CPU 毫秒数。
   * `nice` {number} 在良好模式下使用的 CPU 毫秒数。
   * `sys` {number} 在系统模式下使用的 CPU 毫秒数。
   * `idle` {number} 在空闲模式下使用的 CPU 毫秒数。
   * `irq` {number} 在中断模式下使用的 CPU 毫秒数。
+
+<!-- eslint-disable semi -->
+
 ```js
 [
   {
@@ -158,43 +165,64 @@ added: v0.3.3
 
 Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()<!-- YAML
-added: v0.9.4
--->* 返回：{string}
+## os.endianness()
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+<!-- YAML
+added: v0.9.4
+-->
+
+* 返回：{string}
+
+`os.endianness()` 方法返回用于标识 *Node.js 二进制文件在其中编译的* CPU 字节序格式的字符串。
 
 可能的值包括：
 
 * `'BE'` 为大端格式
 * `'LE'` 为小端格式。
 
-## os.freemem()<!-- YAML
+## os.freemem()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{integer}
+-->
+
+* 返回：{integer}
 
 `os.freemem()` 方法返回以整型数表示的空闲系统内存字节数。
 
-## os.getPriority([pid])<!-- YAML
+## os.getPriority([pid])
+
+<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
+-->
+
+* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
 * 返回：{integer}
 
 The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
 
-## os.homedir()<!-- YAML
+## os.homedir()
+
+<!-- YAML
 added: v2.3.0
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.homedir()` 方法以字符串方式返回当前用户的主目录。
 
-## os.hostname()<!-- YAML
+## os.hostname()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.hostname()` 方法以字符串方式返回操作系统的主机名。
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -207,9 +235,13 @@ added: v0.3.3
 
 平均负载是一个特定于 UNIX 的概念，在 Windows 平台上没有对应概念。 在 Windows 系统上，其返回值始终为 `[0, 0, 0]`。
 
-## os.networkInterfaces()<!-- YAML
+## os.networkInterfaces()
+
+<!-- YAML
 added: v0.6.0
--->* 返回：{Object}
+-->
+
+* 返回：{Object}
 
 `os.networkInterfaces()` 方法返回一个只包含被分配了网址的网络接口的对象。
 
@@ -223,7 +255,10 @@ added: v0.6.0
 * `mac` {string} 网络接口的 MAC 地址
 * `internal` {boolean} 当网络接口为 loopback 或相似的不能远程访问的接口时，其值为 `true`，否则其值为 `false`
 * `scopeid` {number} 数字型的 IPv6 域 ID (只有当 `family` 为`IPv6` 时需要指定)
-* `cidr` {string} 以 CIDR 表示法分配的带有路由前缀的 IPv4 或 IPv6 地址。 If the `netmask` is invalid, this property is set to `null`.
+* `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
+
+<!-- eslint-skip -->
+
 ```js
 {
   lo: [
@@ -267,9 +302,13 @@ added: v0.6.0
 }
 ```
 
-## os.platform()<!-- YAML
+## os.platform()
+
+<!-- YAML
 added: v0.5.0
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.platform()` 方法返回一个在编译 Node.js 时设置的用于标识操作系统平台的字符串。
 
@@ -285,19 +324,27 @@ added: v0.5.0
 
 它们等同于 [`process.platform`][]。
 
-如果 Node.js 是在 Android 操作系统上构建的，返回值还可能会是 `'android'`。 However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
+The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
-## os.release()<!-- YAML
+## os.release()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.release()` 方法返回一个用于标识操作系统版本的字符串。
 
 On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
 
-## os.setPriority([pid, ]priority)<!-- YAML
+## os.setPriority([pid, ]priority)
+
+<!-- YAML
 added: v10.10.0
--->* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
+-->
+
+* `pid` {integer} The process ID to set scheduling priority for. **Default** `0`.
 * `priority` {integer} The scheduling priority to assign to the process.
 
 The `os.setPriority()` method attempts to set the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is used.
@@ -306,45 +353,67 @@ The `priority` input must be an integer between `-20` (high priority) and `19` (
 
 On Windows setting priority to `PRIORITY_HIGHEST` requires elevated user, otherwise the set priority will be silently reduced to `PRIORITY_HIGH`.
 
-## os.tmpdir()<!-- YAML
+## os.tmpdir()
+
+<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.tmpdir()` 方法返回一个字符串，用于标识操作系统中存放临时文件的默认目录。
 
-## os.totalmem()<!-- YAML
+## os.totalmem()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{integer}
+-->
+
+* 返回：{integer}
 
 `os.totalmem()` 方法返回代表系统内存总字节数的整数。
 
-## os.type()<!-- YAML
+## os.type()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 和 [uname(3)](https://linux.die.net/man/3/uname) 的返回值一样，`os.type()` 方法返回一个标识操作系统名称的字符串。 For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取在不同操作系统上运行 [uname(3)](https://linux.die.net/man/3/uname) 时输出的更多信息。
 
-## os.uptime()<!-- YAML
+## os.uptime()
+
+<!-- YAML
 added: v0.3.3
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/20129
     description: The result of this function no longer contains a fraction
                  component on Windows.
--->* 返回：{integer}
+-->
+
+* 返回：{integer}
 
 `os.uptime()` 方法返回以秒计的系统运行时间。
 
-## os.userInfo([options])<!-- YAML
+## os.userInfo([options])
+
+<!-- YAML
 added: v6.0.0
--->* `options` {Object}
+-->
+
+* `options` {Object} 
   * `encoding` {string} 用于解释结果字符串的字符编码。 如果 `encoding` 被设置为 `'buffer'`，则 `username`, `shell`, 和 `homedir` 将会是 `Buffer` 的实例。 **默认值:**`‘utf8'`。
 * 返回：{Object}
 
@@ -358,12 +427,17 @@ The `os.userInfo()` method returns information about the currently effective use
 
 Not all constants will be available on every operating system.
 
-### 信号常量<!-- YAML
+### 信号常量
+
+<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->如下的信号常量由 `os.constants.signals` 导出：
+-->
+
+如下的信号常量由 `os.constants.signals` 导出：
 
 <table>
   <tr>
@@ -1127,9 +1201,13 @@ If available on the operating system, the following constants are exported in `o
   </tr>
 </table>
 
-### Priority Constants<!-- YAML
+### Priority Constants
+
+<!-- YAML
 added: v10.10.0
--->The following process scheduling constants are exported by `os.constants.priority`:
+-->
+
+The following process scheduling constants are exported by `os.constants.priority`:
 
 <table>
   <tr>
@@ -1189,4 +1267,3 @@ added: v10.10.0
     <td></td>
   </tr>
 </table>
-

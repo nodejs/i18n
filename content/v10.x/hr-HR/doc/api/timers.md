@@ -6,7 +6,7 @@
 
 The `timer` module exposes a global API for scheduling functions to be called at some future period of time. Because the timer functions are globals, there is no need to call `require('timers')` to use the API.
 
-The timer functions within Node.js implement a similar API as the timers API provided by Web Browsers but use a different internal implementation that is built around [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick).
+The timer functions within Node.js implement a similar API as the timers API provided by Web Browsers but use a different internal implementation that is built around [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/).
 
 ## Class: Immediate
 
@@ -54,6 +54,18 @@ When called, requests that the Node.js event loop *not* exit so long as the `Tim
 
 By default, all `Timeout` objects are "ref'ed", making it normally unnecessary to call `timeout.ref()` unless `timeout.unref()` had been called previously.
 
+### timeout.refresh()
+
+<!-- YAML
+added: v10.2.0
+-->
+
+* Returns: {Timeout} a reference to `timeout`
+
+Sets the timer's start time to the current time, and reschedules the timer to call its callback at the previously specified duration adjusted to the current time. This is useful for refreshing a timer without allocating a new JavaScript object.
+
+Using this on a timer that has already called its callback will reactivate the timer.
+
 ### timeout.unref()
 
 <!-- YAML
@@ -76,7 +88,7 @@ A timer in Node.js is an internal construct that calls a given function after a 
 added: v0.9.1
 -->
 
-* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick)
+* `callback` {Function} The function to call at the end of this turn of [the Node.js Event Loop](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/)
 * `...args` {any} Optional arguments to pass when the `callback` is called.
 * Returns: {Immediate} for use with [`clearImmediate()`][]
 

@@ -64,7 +64,7 @@ function promiseResolve(asyncId){ }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register
+* `callbacks` {Object} Los [Callbacks de Hook](#async_hooks_hook_callbacks) para registrar 
   * `init` {Function} El [`init` callback][].
   * `before` {Function} El [`before` callback][].
   * `after` {Function} El [`after` callback][].
@@ -107,7 +107,6 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 Si algún callback de `AsyncHook` arroja, la aplicación imprimirá el seguimiento de pilas y saldrá. La ruta de salida sí sigue a una excepción no capturada, pero se eliminan todos los listeners de `uncaughtException`, forzando la salida del proceso. Los callbacks de `'exit'` seguirán siendo llamados a menos que la aplicación se ejecute con `--abort-on-uncaught-exception`, en dado caso un seguimiento de pilas será impreso y la aplicación saldrá, dejando un archivo principal.
 
 El motivo de este comportamiento de manejo de error es que estos callbacks se ejecutan en puntos potencialmente volátiles en el tiempo de vida de un objeto, por ejemplo, durante la construcción y destrucción de una clase. Debido a esto, se considera necesario reducir el proceso rápidamente para evitar una suspensión no intencionada en el futuro. Esto está sujeto a cambios en el futuro si se realiza un análisis comprensivo para asegurar que una excepción pueda seguir el flujo de control normal sin efectos secundarios no intencionados.
-
 
 ##### Impresión en los callbacks de AsyncHooks
 
@@ -156,9 +155,9 @@ Los eventos clave en el tiempo de vida de eventos asincrónicos han sido categor
 * `asyncId` {number} Una ID única para el recurso asincrónico.
 * `type` {string} El tipo del recurso asincrónico.
 * `triggerAsyncId` {number} La ID única del recurso asincrónico en cuyo contexto de ejecución fue creado este recurso asincrónico.
-* `resource` {Object} Referencia al recurso que representa la operación asincrónica, necesita ser liberada durante _destroy_.
+* `resource` {Object} Referencia al recurso que representa la operación asincrónica, necesita ser liberada durante *destroy*.
 
-Se llama cuando se construye una clase que tiene la _posibilidad_ de emitir un evento asincrónico. Esto _no_ significa que la instancia debe llamar a `before`/`after` antes de que `destroy` sea llamado, solo que la posibilidad existe.
+Se llama cuando se construye una clase que tiene la *posibilidad* de emitir un evento asincrónico. Esto *no* significa que la instancia debe llamar a `before`/`after` antes de que `destroy` sea llamado, solo que la posibilidad existe.
 
 Se puede observar este comportamiento al hacer algo como abrir un recurso, y después cerrarlo antes de que el recurso pueda ser utilizado. El siguiente fragmento demuestra esto.
 
@@ -190,8 +189,7 @@ Los usuarios son capaces de definir su propio `type` al utilizar la API pública
 
 ###### `triggerId`
 
-`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
-
+`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. Esto es diferente a `async_hooks.executionAsyncId()`, el cual solamente muestra *cuándo* fue creado un nuevo recurso, mientras que `triggerAsyncId` muestra *por qué* se creó un recurso.
 
 La siguiente es una demostración simple de `triggerAsyncId`:
 
@@ -293,7 +291,7 @@ destroy: 5
 
 *Nota*: Como se ilustra en el ejemplo, `executionAsyncId()` y `execution` especifican el valor del contexto de ejecución actual; el cual está delineado por las llamadas a `before` y `after`.
 
-Utilizar solamente `execution` para hacer un gráfico de la asignación de recursos da como resultado lo siguiente:
+Utilizar `execution` solamente para hacer un gráfico de la asignación de recursos tiene como resultado lo siguiente:
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
@@ -301,8 +299,7 @@ TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 
 El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. El motivo de esto es porque enlazar a un puerto sin un nombre de host es una operación *sincrónica*, pero para mantener una API completamente asincrónica, se coloca el callback del usuario en un `process.nextTick()`.
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
-
+El gráfico solo muestra *cuándo* se creó un recurso, no el *porqué*, así que para rastrear el *porqué* utilice `triggerAsyncId`.
 
 ##### `before(asyncId)`
 
@@ -312,21 +309,19 @@ Cuando se inicia una operación asincrónica (así como un servidor de TCP que r
 
 El callback `before` será llamado de 0 a N veces. El callback `before` generalmente será llamado 0 veces si la operación asincrónica fue cancelada o, por ejemplo, si el servidor de TCP no recibe ninguna conexión. Recursos asincrónicos persistentes como un servidor de TCP generalmente llamarán al callback `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán una sola vez.
 
-
 ##### `after(asyncId)`
 
 * `asyncId` {number}
 
-Es llamado inmediatamente después de que se completa el callback especificado en `before` .
+Se llama inmediatamente después que el callback especificado en `before` se completa.
 
-*Note:* If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
-
+*Nota:* Si ocurre una excepción no capturada durante la ejecución del callback, entonces `after` se ejecutará *después* de que se emita el evento `'uncaughtException'` o se ejecute un manejador de `domain` .
 
 ##### `destroy(asyncId)`
 
 * `asyncId` {number}
 
-Es llamado después de que se destruye el recurso correspondiente a `asyncId`. También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
+Se llama después de que se destruye el recurso correspondiente a `asyncId` . También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
 
 *Nota:* Algunos recursos dependen de la recolección de basura para la limpieza, por lo tanto si se crea un referencia para el objeto de `resource` pasado a `init`, es posible que `destroy` nunca sea llamado, causando una pérdida de memoria en la aplicación. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
 
@@ -336,7 +331,7 @@ Es llamado después de que se destruye el recurso correspondiente a `asyncId`. T
 
 Es llamado cuando la función de `resolve` pasada al constructor de `Promise` es invocada (ya sea de manera directa o a través de otros medios de resolución de una promesa).
 
-Tenga en cuenta que `resolve()` no realiza ningún trabajo sincrónico observable.
+Tenga en cuenta que `resolve()` no hace ningún trabajo sincrónico observable.
 
 *Nota:* Esto no significa necesariamente que la `Promise` se cumplirá o se rechazará en este punto, si la `Promise` fue resuelta asumiendo el estado de otra `Promise`.
 
@@ -346,7 +341,7 @@ Por ejemplo:
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-llama a los siguiente callbacks:
+llama a los siguientes callbacks:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -362,6 +357,7 @@ init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
 <!-- YAML
 added: v8.1.0
 changes:
+
   - version: v8.2.0
     pr-url: https://github.com/nodejs/node/pull/13490
     description: Renamed from currentId
@@ -402,7 +398,7 @@ Tenga en cuenta que los contextos de promesa no podrán recibir executionAsyncId
 
 * Devuelve: {number} La ID del recurso responsable de llamar al callback que está siendo actualmente ejecutado.
 
-Por ejemplo:
+For example:
 
 ```js
 const server = net.createServer((conn) => {
@@ -504,7 +500,7 @@ asyncResource.emitAfter();
 #### `AsyncResource(type[, options])`
 
 * `type` {string} El tipo de evento asincrónico.
-* `opciones` {Object}
+* `options` {Object} 
   * `triggerAsyncId` {number} La ID del contexto de ejecución que creó este evento asincrónico. **Predeterminado:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Inhabilita la función automática `emitDestroy` cuando el objeto es recolectado en la basura. Generalmente, esto no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el asyncId del recurso sea recuperado y las API's sensibles de `emitDestroy` sean llamadas con ello. **Predeterminado:** `false`.
 
@@ -531,6 +527,7 @@ class DBQuery extends AsyncResource {
 ```
 
 #### `asyncResource.runInAsyncScope(fn[, thisArg, ...args])`
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -542,21 +539,25 @@ added: v8.12.0
 Llama a la función proporcionada con los argumentos proporcionados en el contexto de ejecución del recurso asincrónico. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
 
 #### `asyncResource.emitBefore()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
 * Devuelve: {undefined}
 
 Llama a todos los callbacks de `before` para notificar que un nuevo contexto de ejecución asincrónico está siendo accedido. Si se realizan llamadas anidadas a `emitBefore()`, la pila de `asyncId`s será rastreada y desenrollada correctamente.
 
-Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
+Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
 
 #### `asyncResource.emitAfter()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
 
 * Devuelve: {undefined}
