@@ -60,7 +60,7 @@ changes:
 
 <!--type=class-->
 
-The `Console` class can be used to create a simple logger with configurable output streams and can be accessed using either `require('console').Console` or `console.Console` (or their destructured counterparts):
+La classe `Console` peut-être utilisée pour créer un simple logger ayant des flux de sortie configurables et est accessible en utilisant soit `require('console').Console`, soit `console.Console` (ou leurs équivalents déstructurés) :
 
 ```js
 const { Console } = require('console');
@@ -246,9 +246,9 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Par défaut :** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. `null` supprime la limite du nombre de récursions. **Par défaut :** `2`.
-  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Par défaut :** `false`.
+  * `showHidden` {boolean} Si `true`, alors les propriétés non énumérables et de type symbole de l'objet seront aussi montrées. **Par défaut :** `false`.
+  * `depth` {number} Indique à [`util.inspect()`][] le nombre de récursions à effectuer lors du formatage de l'objet. Utile pour inspecter des objets volumineux et complexes. `null` supprime la limite du nombre de récursions. **Par défaut :** `2`.
+  * `colors` {boolean} Si `true`, la sortie sera stylée avec les codes couleur ANSI. Les couleurs sont personnalisables ; voir [customizing `util.inspect()` colors][]. **Par défaut :** `false`.
 
 Utilise [`util.inspect()`][] sur `obj` et écrit la chaîne de retour dans `stdout`. Cette fonction contourne toute fonction personnalisée `inspect()` définie sur `obj`.
 
@@ -283,7 +283,7 @@ added: v8.5.0
 
 Augmente l'indentation des lignes suivantes de deux espaces.
 
-If one or more `label`s are provided, those are printed first without the additional indentation.
+Si un ou plusieurs `label`(s) sont fournis, ceux sont imprimées en premier sans l’indentation supplémentaire.
 
 ### console.groupCollapsed()
 
@@ -291,7 +291,7 @@ If one or more `label`s are provided, those are printed first without the additi
   added: v8.5.0
 -->
 
-An alias for [`console.group()`][].
+Un alias de [`console.group()`][].
 
 ### console.groupEnd()
 
@@ -299,7 +299,7 @@ An alias for [`console.group()`][].
 added: v8.5.0
 -->
 
-Decreases indentation of subsequent lines by two spaces.
+Réduit l'indentation des lignes suivantes de deux espaces.
 
 ### console.info(\[data\]\[, ...args\])
 
@@ -341,7 +341,7 @@ added: v0.1.104
 
 * `label` {string}
 
-Démarre un timer qui peut servir à calculer la durée dune opération. Les timers sont identifiés par un `label` unique. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Les durées des timers sont précises jusque sous la milliseconde.
+Démarre un timer qui peut servir à calculer la durée dune opération. Les timers sont identifiés par un `label` unique. Utilisez le même `label` quand vous appelez [`console.timeEnd()`][] pour arrêter le timer et écrire le temps écoulé en millisecondes dans `stdout`. Les durées des timers sont précises jusque sous la milliseconde.
 
 ### console.timeEnd(label)
 
@@ -408,7 +408,7 @@ La fonction `console.warn()` est un alias pour [`console.error()`][].
 
 ## Méthodes spécifiques à l'inspecteur
 
-The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
+Les méthodes suivantes sont présentées par le moteur V8 dans l'API générale, mais n'affichent rien à moins d'être utilisées en conjonction avec l'[inspecteur](debugger.html) (option `--inspect`).
 
 ### console.dirxml(object)
 
@@ -438,7 +438,7 @@ added: v8.0.0
 
 * `label` {string}
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.profile()` démarre un profilage CPU JavaScript avec un label optionnel, jusqu'à l'appel de [`console.profileEnd()`][]. Le profil est alors ajouté au panneau **Profiles** de l'inspecteur.
 
 ```js
 console.profile('MyLabel');
@@ -453,7 +453,7 @@ console.profileEnd();
 added: v8.0.0
 -->
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. Arrête la session de profilage CPU Javascript courante si une a été démarrée et écrit le rapport dans le panneau **Profiles** de l'inspecteur. Voir [`console.profile()`][] pour un exemple.
 
 ### console.table(array[, columns])
 
@@ -484,7 +484,7 @@ added: v8.0.0
 
 * `label` {string} Defaults to `'default'`.
 
-Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+Cette méthode n'affiche rien à moins d'être utilisée dans l'inspecteur. La méthode `console.timeline()` est la forme obsolète de [`console.time()`][].
 
 ### console.timelineEnd([label])
 
