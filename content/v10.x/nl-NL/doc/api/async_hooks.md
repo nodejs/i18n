@@ -414,7 +414,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Observeer dat belofte contexten standaard geen precieze `triggerAsyncId`s krijgen. Zie de sectie over [promise execution tracking](#async_hooks_promise_execution_tracking).
+Observeer dat belofte contexten standaard geen precieze `triggerAsyncId`s krijgen. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Belofte uitvoering tracering
 
