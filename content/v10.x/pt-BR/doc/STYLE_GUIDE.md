@@ -1,25 +1,25 @@
 # Guia de Estilos
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens.md`. 
+  * Underline em nomes de arquivo são permitidos apenas quando eles estão presentes no tópico que o documento irá descrever (por exemplo, `child_process`).
   * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
 * Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
 * A formatação descrita no `.editorconfig` é preferencial. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
 * Alterações na documentação devem ser verificadas com `make lint-md`.
-* A ortografia preferida é o inglês Americano. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* A ortografia preferida é o inglês Americano. "Capitalize" vs. "Capitalise", "Cor" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Evite pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
   * Pronomes pessoais são aceitáveis na documentação coloquial, como guias.
   * Use pronomes de gênero neutro e substantivos plurais de gênero neutro. 
     * CERTO: "eles(as)", "seus", "lhes", "pessoal", "pessoas", "desenvolvedores(as)"
     * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
-* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
-  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
-  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
+* Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
+  * Dentro do elemento envolto se o elemento de quebra contém uma cláusula completa — um sujeito, verbo e um objeto.
+  * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de uma cláusula.
 * Documentos devem começar com um título de nível 1.
-* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
-* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
+* Dê preferência em afixar links para endereços inline — preferir `[um link][]` ao invés de `[um link](http://exemplo.com)`.
+* Quando documentar APIs, observe que a versão da API foi introduzida no fim da seção. Se uma API foi descontinuada, anotar também a primeira versão que a API foi descontinuada.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
@@ -34,7 +34,9 @@
 * References to methods should be used with parentheses: for example, `socket.end()` instead of `socket.end`.
 * Function arguments or object properties should use the following format:
   
-  * ``* `name` {type|type2} Optional description. **Default:** `value`.`` <!--lint disable maximum-line-length remark-lint-->
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
   
   * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   
