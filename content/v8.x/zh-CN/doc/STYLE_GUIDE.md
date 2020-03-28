@@ -1,7 +1,7 @@
 # 文档规范指南
 
 * 文档使用 markdown 文件编写，命名格式为 `lowercase-with-dashes.md`。 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * 文件名的字下线“_”仅当文件名出现在文档描述的主题中才允许使用（例如 `child_process`）。
   * 某些文件是例外，例如顶级 markdown 文件。
 * Documents should be word-wrapped at 80 characters.
 * 首选 `. editorconfig ` 中描述的格式。 
