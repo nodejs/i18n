@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
+Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_require) fonksiyonu kullanılarak Node.js'ye yüklenebilen ve sıradan bir Node.js modülü gibi kullanılan, dinamik olarak bağlı, paylaşılan nesnelerdir. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
@@ -197,7 +197,7 @@ Ardından, derlenmiş `addon.node` dosyasını üretmek için `node-gyp build` k
 
 Bir Node.js Eklentisi yüklemek için `npm install` kullanırken, npm, talep edilen kullanıcı platformu için derlenmiş bir Eklenti sürümü oluşturarak, bu aynı işlem kümesini gerçekleştirmek için kendi paketlenmiş `node-gyp` sürümünü kullanır.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Bir kere oluşturulduktan sonra, ikili Eklenti, kurulmuş `addon.node` modülüne [`require()`](modules.html#modules_require) işaretlenerek Node.js içinde kullanılabilir:
 
 ```js
 // hello.js
@@ -231,9 +231,9 @@ Node.js, V8, libuv ve OpenSSL gibi statik olarak bağlı bir dizi kütüphane ku
 
 ### Eklentileri require() kullanarak yükleme
 
-Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). [`require()`](modules.html#modules_require) işlevi, `.node` dosya uzantısına sahip dosyaları aramak ve bunları dinamik olarak bağlı kitaplıklar olarak başlatmak için yazılmıştır.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+[`require()`](modules.html#modules_require) çağrıldığı zaman, `.node` uzantısı genellikle ihmal edilebilir ve Node.js yine de Eklentiyi bulacak ve başlatacaktır. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
 
 ## Node.js için Yerel Soyutlamalar
 
