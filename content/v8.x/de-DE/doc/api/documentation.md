@@ -10,7 +10,7 @@ Where appropriate, property types, method arguments, and the arguments provided 
 
 ## Mitwirken
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Wenn in dieser Dokumentation Fehler gefunden werden, senden Sie bitte [ein Problem ein](https://github.com/nodejs/node/issues/new) oder lesen Sie [den Beitrag Anleitung](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) für Anleitungen, wie Sie einen Patch einreichen können.
 
 Jede Datei wird basierend auf der entsprechenden `.md` Datei im Ordner `doc/api/` im Quellbaum von Node.js generiert. Die Dokumentation wird mit dem `tools/doc/generate.js` Programm generiert. Eine HTML-Vorlage befindet sich unter `doc/template.html`.
 
@@ -18,7 +18,7 @@ Jede Datei wird basierend auf der entsprechenden `.md` Datei im Ordner `doc/api/
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. Die Node.js API ändert sich immer noch einigermaßen und da sie reift, sind bestimmte Teile zuverlässiger als andere. Einige sind so bewiesen und sind so darauf angewiesen, dass sie sich nicht jemals bei ändern werden. Andere sind nagelneu und experimentell, oder bekannt als gefährlich und im Prozess der Neugestaltung.
+Überall in der Dokumentation zeigt die Stabilität eines Abschnitts an. Die Node.js API ändert sich immer noch einigermaßen und da sie reift, sind bestimmte Teile zuverlässiger als andere. Einige sind so bewiesen und sind so darauf angewiesen, dass sie sich nicht jemals bei ändern werden. Andere sind nagelneu und experimentell, oder bekannt als gefährlich und im Prozess der Neugestaltung.
 
 Die Stabilitätsindizes lauten wie folgt:
 
