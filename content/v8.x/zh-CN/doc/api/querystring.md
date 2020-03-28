@@ -61,7 +61,7 @@ changes:
 }
 ```
 
-*Note*: The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
+*注意*：`querystring.parse()` 方法返回的对象 *不是* 从 JavaScript `Object` 原型继承来的。 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
 
 默认情况下，查询字符串中的百分比编码字符被假定为使用 UTF-8 编码。 如果使用了替代的字符编码，则需要指定替代的 `decodeURIComponent` 选项，正如如下例子所示：
 
