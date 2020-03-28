@@ -586,7 +586,7 @@ changes:
 
 Tipo: Runtime
 
-La API [`util.print()`][] está desaprobada. Por favor utilice [`console.log()`][] en su lugar.
+La API [`util.print()`][] está desaprobada. Please use [`console.log()`][] instead.
 
 <a id="DEP0027"></a>
 
@@ -687,7 +687,7 @@ changes:
 
 Tipo: Documentation-only
 
-The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
+El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
 
 <a id="DEP0032"></a>
 
@@ -1941,7 +1941,7 @@ changes:
 
 Tipo: Documentation-only
 
-La propiedad [`crypto.fips`][] está desaprobada. Por favor, utilice `crypto.setFips()` y `crypto.getFips()` en su lugar.
+La propiedad [`crypto.fips`][] está desaprobada. Please use `crypto.setFips()` and `crypto.getFips()` instead.
 
 <a id="DEP0094"></a>
 
