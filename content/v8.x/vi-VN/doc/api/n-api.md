@@ -4,7 +4,7 @@
 
 > Tính ổn định: 2 - Stable
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Nó được định hướng nhằm tách biệt thành phần mở rộng đối với các sự thay đổi trong bộ máy JavaScript cơ bản và cho phép các mô-đun được biên soạn một phiên bản có khả năng chạy trên các bản khác nhau của Node.js mà không cần sự biên soạn lại.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -22,7 +22,7 @@ The documentation for N-API is structured as follows:
 - [Object Lifetime Management](#n_api_object_lifetime_management)
 - [Module Registration](#n_api_module_registration)
 - [Working with JavaScript Values](#n_api_working_with_javascript_values)
-- \[Working with JavaScript Values - Abstract Operations\]\[\]
+- [Working with JavaScript Values - Abstract Operations](#n_api_working_with_javascript_values_abstract_operations)
 - [Working with JavaScript Properties](#n_api_working_with_javascript_properties)
 - [Working with JavaScript Functions](#n_api_working_with_javascript_functions)
 - [Object Wrap](#n_api_object_wrap)
