@@ -35,7 +35,7 @@ Additionally, this module includes the utility functions [pipeline](#stream_stre
 
 ### 对象模式
 
-All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
+由 Node.js API 创建的所有流都只适用于字符串和 `Buffer` (或 `Uint8Array`) 对象。 然而，对于流的实现，仍有可能和其他类型的 JavaScript 值 (不包含 `null`，其在流中具有特殊用途) 协同工作。 这些流会以 “对象模式” 进行操作。
 
 在创建流时，使用 `objectMode` 选项会将流实例切换到对象模式。 尝试将现有流切换到对象模式是不安全的。
 
@@ -45,7 +45,7 @@ All streams created by Node.js APIs operate exclusively on strings and `Buffer` 
 
 Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the stream's constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). 对于以对象模式操作的流，`highWaterMark` 指定了对象总数。
+The amount of data potentially buffered depends on the `highWaterMark` option passed into the stream's constructor. 对于正常的流，`highWaterMark` 选项指定了 [字节总数](#stream_highwatermark_discrepancy_after_calling_readable_setencoding)。 对于以对象模式操作的流，`highWaterMark` 指定了对象总数。
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). 如果流的消费者没有调用 [`stream.read()`](#stream_readable_read_size)，数据将会一直处于内部队列中，直到它被消费为止。
 
@@ -316,7 +316,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 对于没有以对象模式运作的流，`chunk` 可能是一个字符串，`Buffer`，或者 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
 * `encoding` {string} The encoding if `chunk` is a string
 * `callback` {Function} 可选的当流结束时的回调函数
 * 返回：{this}
@@ -401,7 +401,7 @@ added: v9.3.0
 
 * {number}
 
-Return the value of `highWaterMark` passed when constructing this `Writable`.
+返回在构造此 `Writable` 流时传入的 `highWaterMark` 值。
 
 ##### writable.writableLength
 
@@ -426,7 +426,7 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 对于没有以对象模式运作的流，`chunk` 可能是一个字符串，`Buffer`，或者 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
 * `encoding` {string} 当 `chunk` 为字符串时的编码
 * `callback` {Function} 当此数据块被刷新时的回调函数
 * 返回：{boolean} 如果流需要等待发出 `'drain'` 事件后才能继续写入额外数据，则返回`false`；否则返回 `true`。
@@ -946,7 +946,7 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|any} Chunk of data to unshift onto the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
+* `chunk` {Buffer|Uint8Array|string|any} 要移回可读队列的数据块。 对于以非对象模式运作的流，`chunk` 必须为字符串, `Buffer` 或 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
 
 `readable.unshift()` 方法将数据块压回内部缓冲区。 此方法在特定情况下非常有用，例如当正在通过代码消费的流需要 "un-consume(撤销消费) " 一定量已被从源中拉取的数据时，这样数据就可被传递给其他方。
 
@@ -1097,7 +1097,7 @@ added: v8.0.0
 
 * `error` {Error}
 
-销毁流并发出 `'error'` 事件。 After this call, the transform stream would release any internal resources. Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback). The default implementation of `_destroy()` for `Transform` also emit `'close'`.
+销毁流并发出 `'error'` 事件。 在此调用之后，转换流会释放任何内部资源。 Implementors should not override this method, but instead implement [`readable._destroy()`](#stream_readable_destroy_err_callback). The default implementation of `_destroy()` for `Transform` also emit `'close'`.
 
 ### stream.finished(stream, callback)
 
@@ -1106,7 +1106,7 @@ added: v10.0.0
 -->
 
 * `stream` {Stream} A readable and/or writable stream.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `callback` {Function} 具有可选 error 参数的回调函数。
 
 A function to get notified when a stream is no longer readable, writable or has experienced an error or a premature close event.
 
@@ -1151,7 +1151,7 @@ added: v10.0.0
 -->
 
 * `...streams` {Stream} Two or more streams to pipe between.
-* `callback` {Function} A callback function that takes an optional error argument.
+* `callback` {Function} 具有可选 error 参数的回调函数。
 
 A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
@@ -1294,13 +1294,13 @@ changes:
   * `highWaterMark` {number} 当 [`stream.write()`](#stream_writable_write_chunk_encoding_callback) 开始返回 `false` 时的缓冲区级别。 **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} Whether to encode `string`s passed to [`stream.write()`](#stream_writable_write_chunk_encoding_callback) to `Buffer`s (with the encoding specified in the [`stream.write()`](#stream_writable_write_chunk_encoding_callback) call) before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). Other types of data are not converted (i.e. `Buffer`s are not decoded into `string`s). Setting to false will prevent `string`s from being converted. **Default:** `true`.
   * `defaultEncoding` {string} The default encoding that is used when no encoding is specified as an argument to [`stream.write()`](#stream_writable_write_chunk_encoding_callback). **默认值:**`‘utf8'`。
-  * `objectMode` {boolean} [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) 是否为合法操作。 When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **默认值：** `false`。
+  * `objectMode` {boolean} [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) 是否为合法操作。 如果流的实现支持，则当被设置时，就可能写入 JavaScript 值，而不是字符串，`Buffer` 或 `Uint8Array`。 **默认:** `false`.
   * `emitClose` {boolean} Whether or not the stream should emit `'close'` after it has been destroyed. **Default:** `true`.
   * `write` {Function} [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) 方法的实现。
   * `writev` {Function} [`stream._writev()`](#stream_writable_writev_chunks_callback) 方法的实现。
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
-  * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
-  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **默认值：** `false`。
+  * `destroy` {Function} [`stream._destroy()`](#stream_writable_destroy_err_callback) 方法的实现。
+  * `final` {Function} [`stream._final()`](#stream_writable_final_callback) 方法的实现。
+  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **默认:** `false`.
 
 <!-- eslint-disable no-useless-constructor -->
 
@@ -1359,7 +1359,7 @@ This function MUST NOT be called by application code directly. It should be impl
 
 必须调用 `callback` 方法，以发出写入成功结束，或失败并出错的消息。 如果调用失败，则传递给 `callback` 的首个参数必须为 `Error` 对象，如果写入成功，则首个参数为 `null`。
 
-All calls to `writable.write()` that occur between the time `writable._write()` is called and the `callback` is called will cause the written data to be buffered. When the `callback` is invoked, the stream might emit a [`'drain'`][] event. If a stream implementation is capable of processing multiple chunks of data at once, the `writable._writev()` method should be implemented.
+在调用 `writable._write()` 和 `callback` 之间，所有对 `writable.write()` 的调用将会导致将被写入的数据被缓存。 When the `callback` is invoked, the stream might emit a [`'drain'`][] event. 如果流的实现有能力一次性处理多块数据，则应实现 `writable._writev()` 方法。
 
 If the `decodeStrings` property is explicitly set to `false` in the constructor options, then `chunk` will remain the same object that is passed to `.write()`, and may be a string rather than a `Buffer`. This is to support implementations that have an optimized handling for certain string data encodings. In that case, the `encoding` argument will indicate the character encoding of the string. Otherwise, the `encoding` argument can be safely ignored.
 
@@ -1383,7 +1383,7 @@ added: v8.0.0
 -->
 
 * `err` {Error} 可能的错误。
-* `callback` {Function} A callback function that takes an optional error argument.
+* `callback` {Function} 具有可选 error 参数的回调函数。
 
 `_destroy()` 方法被 [`writable.destroy()`](#stream_writable_destroy_error) 所调用。 It can be overridden by child classes but it **must not** be called directly.
 
@@ -1393,11 +1393,11 @@ added: v8.0.0
 added: v8.0.0
 -->
 
-* `callback` {Function} Call this function (optionally with an error argument) when finished writing any remaining data.
+* `callback` {Function} 结束写入任何剩余数据时调用此函数 (具有可选的 error 参数)。
 
 `_final()` 方法 **不能** 被直接调用。 It may be implemented by child classes, and if so, will be called by the internal `Writable` class methods only.
 
-This optional function will be called before the stream closes, delaying the `'finish'` event until `callback` is called. This is useful to close resources or write buffered data before a stream ends.
+This optional function will be called before the stream closes, delaying the `'finish'` event until `callback` is called. 这将有助于在流结束前关闭资源并将已缓存数据写入。
 
 #### 写入时错误
 
@@ -1493,12 +1493,12 @@ changes:
 -->
 
 * `options` {Object} 
-  * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
+  * `highWaterMark` {number} 在停止从底层资源中读取之前，能存储在内部缓冲区中的最大 [字节数](#stream_highwatermark_discrepancy_after_calling_readable_setencoding)。 **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} 如果指定，则会使用指定的编码将缓冲区解码为字符串。 **Default:** `null`.
-  * `objectMode` {boolean} 此流是否应以对象流方式运作。 Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **默认值：** `false`。
+  * `objectMode` {boolean} 此流是否应以对象流方式运作。 Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a `Buffer` of size `n`. **默认:** `false`.
   * `read` {Function} [`stream._read()`](#stream_readable_read_size_1) 方法的实现。
-  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
-  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **默认值：** `false`。
+  * `destroy` {Function} [`stream._destroy()`](#stream_readable_destroy_err_callback) 方法的实现。
+  * `autoDestroy` {boolean} Whether this stream should automatically call `.destroy()` on itself after ending. **默认:** `false`.
 
 <!-- eslint-disable no-useless-constructor -->
 
@@ -1572,7 +1572,7 @@ added: v8.0.0
 -->
 
 * `err` {Error} 可能的错误。
-* `callback` {Function} A callback function that takes an optional error argument.
+* `callback` {Function} 具有可选 error 参数的回调函数。
 
 `_destroy()` 方法被 [`readable.destroy()`](#stream_readable_destroy_error) 所调用。 It can be overridden by child classes but it **must not** be called directly.
 
@@ -1586,11 +1586,11 @@ changes:
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|null|any} Chunk of data to push into the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value.
+* `chunk` {Buffer|Uint8Array|string|null|any} 要压入读取队列的数据块。 对于以非对象模式运作的流，`chunk` 必须为字符串, `Buffer` 或 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值。
 * `encoding` {string} 字符串块的编码。 Must be a valid `Buffer` encoding, such as `'utf8'` or `'ascii'`.
 * Returns: {boolean} `true` if additional chunks of data may continue to be pushed; `false` otherwise.
 
-When `chunk` is a `Buffer`, `Uint8Array` or `string`, the `chunk` of data will be added to the internal queue for users of the stream to consume. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
+当 `chunk` 是一个 `Buffer`, `Uint8Array` 或 `字符串` 时，`chunk` 参数中的数据将被添加到内部队列，以便流用户可以消费。 如果把 `null` 传递给 `chunk` 参数就传递了流结尾 (EOF) 的信号，之后数据不能再被写入。
 
 When the `Readable` is operating in paused mode, the data added with `readable.push()` can be read out by calling the [`readable.read()`](#stream_readable_read_size) method when the [`'readable'`][] event is emitted.
 
@@ -1705,10 +1705,10 @@ changes:
 
 * `options` {Object} Passed to both `Writable` and `Readable` constructors. 同时含有如下字段： 
   * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
-  * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **默认值：** `false`。
-  * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **默认值：** `false`。
-  * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. 如果提供了 `highWaterMark`，则不产生任何作用。
-  * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. 如果提供了 `highWaterMark`，则不产生任何作用。
+  * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **默认:** `false`.
+  * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **默认:** `false`.
+  * `readableHighWaterMark` {number} 为流的读取端设置 `highWaterMark`。 如果提供了 `highWaterMark`，则不产生任何效果。
+  * `writableHighWaterMark` {number} 为流的写入端设置 `highWaterMark`。 如果提供了 `highWaterMark`，则不产生任何效果。
 
 <!-- eslint-disable no-useless-constructor -->
 
@@ -1834,7 +1834,7 @@ Care must be taken when using `Transform` streams in that data written to the st
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both `Writable` and `Readable` constructors. 同时含有如下字段： 
+* `options` {Object} Passed to both `Writable` and `Readable` constructors. 同时含有以下字段： 
   * `transform` {Function} [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) 方法的实现。
   * `flush` {Function} [`stream._flush()`](#stream_transform_flush_callback) 方法的实现。
 
@@ -1883,7 +1883,7 @@ const myTransform = new Transform({
 
 #### transform.\_flush(callback)
 
-* `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
+* `callback` {Function} 当剩余数据被刷新时要调用的回调函数 (包含可选的 error 参数和数据)。
 
 This function MUST NOT be called by application code directly. It should be implemented by child classes, and called by the internal `Readable` class methods only.
 
@@ -2072,7 +2072,7 @@ While most applications will almost never need to do this, there are situations 
 
 不推荐使用 `readable.push('')`。
 
-Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. 因为它 *是* 对 [`readable.push()`](#stream_readable_push_chunk_encoding) 的调用，该调用会终止读取过程。 然而，由于参数为空字符串，不会有数据被添加到可读缓冲区，这样用户就没有数据可以消费。
+压入一个零字节字符串，`Buffer` 或 `Uint8Array` 到非对象模式的流中具有有趣的副作用。 因为它 *是* 对 [`readable.push()`](#stream_readable_push_chunk_encoding) 的调用，该调用会终止读取过程。 然而，由于参数为空字符串，不会有数据被添加到可读缓冲区，这样用户就没有数据可以消费。
 
 ### 调用 `readable.setEncoding()` 后 `highWaterMark` 的差异
 
