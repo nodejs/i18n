@@ -10,7 +10,7 @@ Cuando es apropiado, los tipos de propiedades, los argumentos de métodos, y los
 
 ## Contribuyendo
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Si encuentras errores en esta documentación, por favor [abre una nueva incidencia](https://github.com/nodejs/node/issues/new) o revisa [la guia de contribución](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) para obtener ayuda en como enviar un arreglo del error.
 
 Cada archivo es generado basado en el correspondiente archivo `.md` en la carpeta `doc/api/` en el arbol fuente de Node.Js. La documentación es generada usando el programa `tools/doc/generate.js`. Una plantilla de HTML está ubicada en `doc/template.html`.
 
@@ -18,7 +18,7 @@ Cada archivo es generado basado en el correspondiente archivo `.md` en la carpet
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. La API de Node.js está aún, de cierta forma, cambiando, y mientras se vuelve más madura, ciertas partes son más confiables que otras. Algunas están tan bien probadas, y tan confiables, que es muy poco probable que alguna vez vayan a cambiar. Otras son muy recientes y experimentables, o se sabe que son peligrosas y están en proceso de ser rediseñadas.
+A lo largo de la documentación se indica la estabilidad de cada sección. La API de Node.js está aún, de cierta forma, cambiando, y mientras se vuelve más madura, ciertas partes son más confiables que otras. Algunas están tan bien probadas, y tan confiables, que es muy poco probable que alguna vez vayan a cambiar. Otras son muy recientes y experimentables, o se sabe que son peligrosas y están en proceso de ser rediseñadas.
 
 Los índices de estabilidad son los siguientes:
 
