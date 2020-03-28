@@ -23,7 +23,7 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> Tính ổn định: 1 - Thử nghiệm. The feature is not subject to Semantic Versioning rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
+> Tính ổn định: 1 - Thử nghiệm. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
