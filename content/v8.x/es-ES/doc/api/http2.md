@@ -13,7 +13,7 @@ changes:
 
 > Estability: 2 - Estable
 
-El módulo `http2` provee una implementación del protocolo [HTTP/2](https://tools.ietf.org/html/rfc7540) . Se puede acceder al mismo utilizando:
+El módulo `http2` provee una implementación del protocolo [HTTP/2](https://tools.ietf.org/html/rfc7540) . Se puede acceder a través de:
 
 ```js
 const http2 = require('http2');
@@ -21,7 +21,7 @@ const http2 = require('http2');
 
 ## API de Núcleo
 
-The Core API provides a low-level interface designed specifically around support for HTTP/2 protocol features. It is specifically *not* designed for compatibility with the existing [HTTP/1](http.html) module API. However, the [Compatibility API](#http2_compatibility_api) is.
+The Core API provides a low-level interface designed specifically around support for HTTP/2 protocol features. *No* está específicamente diseñada para la compatibilidad con la API existente del módulo [HTTP/1](http.html) . However, the [Compatibility API](#http2_compatibility_api) is.
 
 The `http2` Core API is much more symmetric between client and server than the `http` API. For instance, most events, like `error`, `connect` and `stream`, can be emitted either by client-side code or server-side code.
 
@@ -96,7 +96,7 @@ added: v8.4.0
 
 * Extiende a: {EventEmitter}
 
-Instances of the `http2.Http2Session` class represent an active communications session between an HTTP/2 client and server. Instances of this class are *not* intended to be constructed directly by user code.
+Instances of the `http2.Http2Session` class represent an active communications session between an HTTP/2 client and server. Las instancias de esta clase *no* están destinadas a ser construidas directamente por el código de usuario.
 
 Each `Http2Session` instance will exhibit slightly different behaviors depending on whether it is operating as a server or a client. The `http2session.type` property can be used to determine the mode in which an `Http2Session` is operating. On the server side, user code should rarely have occasion to work with the `Http2Session` object directly, with most actions typically taken through interactions with either the `Http2Server` or `Http2Stream` objects.
 
@@ -151,7 +151,7 @@ added: v8.4.0
 * `code` {integer} El código de error.
 * `id` {integer} The stream id (or `0` if the frame isn't associated with a stream).
 
-The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. If the frame that could not be sent is associated with a specific `Http2Stream`, an attempt to emit `'frameError'` event on the `Http2Stream` is made.
+The `'frameError'` event is emitted when an error occurs while attempting to send a frame on the session. Si el frame no pudo ser enviado se asocia con un `Http2Stream` específico, se realizará un intento para emitir un evento `'frameError'` en el `Http2Stream` .
 
 If the `'frameError'` event is associated with a stream, the stream will be closed and destroyed immediately following the `'frameError'` event. If the event is not associated with a stream, the `Http2Session` will be shut down immediately following the `'frameError'` event.
 
@@ -293,7 +293,7 @@ added: v8.11.2
 
 * `callback` {Function}
 
-Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Once closed, `http2session.destroy()` *might* be called if there are no open `Http2Stream` instances.
+Gracefully closes the `Http2Session`, allowing any existing streams to complete on their own and preventing new `Http2Stream` instances from being created. Una vez cerrado, `http2session.destroy()` *might* ser llamado si no hay instancias de `Http2Stream` abiertas.
 
 If specified, the `callback` function is registered as a handler for the `'close'` event.
 
@@ -363,7 +363,7 @@ added: v8.11.2
 * `lastStreamID` {number} La identificación numérica del último `Http2Stream` procesado
 * `opaqueData` {Buffer|TypedArray|DataView} A `TypedArray` or `DataView` instance containing additional data to be carried within the `GOAWAY` frame.
 
-Transmits a `GOAWAY` frame to the connected peer *without* shutting down the `Http2Session`.
+Transmite un frame `GOAWAY` al peer conectado *sin* apagar la `Http2Session`.
 
 #### http2session.localSettings
 
@@ -395,7 +395,7 @@ added: v8.4.0
 
 * Valor: {boolean}
 
-Indicates whether or not the `Http2Session` is currently waiting for an acknowledgment for a sent `SETTINGS` frame. Will be `true` after calling the `http2session.settings()` method. Will be `false` once all sent SETTINGS frames have been acknowledged.
+Indica si `Http2Session` está esperando actualmente una confirmación para un frame `SETTINGS` enviado o no. Will be `true` after calling the `http2session.settings()` method. Será `false` una vez que todos los frames de CONFIGURACIONES hayan sido reconocidos.
 
 #### http2session.ping([payload, ]callback)
 
@@ -559,17 +559,17 @@ server.on('stream', (stream) => {
 
 Sending an `ALTSVC` frame with a specific stream ID indicates that the alternate service is associated with the origin of the given `Http2Stream`.
 
-The `alt` and origin string *must* contain only ASCII bytes and are strictly interpreted as a sequence of ASCII bytes. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
+El `alt` y la string de origen *deben* contener solamente bytes ASCII, y se interpretan estrictamente como una secuencia de bytes ASCII. The special value `'clear'` may be passed to clear any previously set alternative service for a given domain.
 
 When a string is passed for the `originOrStream` argument, it will be parsed as a URL and the origin will be derived. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
 
-A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
+A `URL` object, or any object with an `origin` property, may be passed as `originOrStream`, in which case the value of the `origin` property will be used. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
 
 #### Especificación de servicios alternativos
 
 The format of the `alt` parameter is strictly defined by [RFC 7838](https://tools.ietf.org/html/rfc7838) as an ASCII string containing a comma-delimited list of "alternative" protocols associated with a specific host and port.
 
-For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. The host and port *must* be contained within the quote (`"`) characters.
+For example, the value `'h2="example.org:81"'` indicates that the HTTP/2 protocol is available on the host `'example.org'` on TCP/IP port 81. El host y el puerto *deben* estar contenidos dentro de los caracteres de (`"`) comillas.
 
 Se pueden especificar múltiples alternativas, por ejemplo: `'h2="example.org:81",
 h2=":82"'`
@@ -603,7 +603,7 @@ server.on('session', (session) => {
 
 When a string is passed as an `origin`, it will be parsed as a URL and the origin will be derived. For instance, the origin for the HTTP URL `'https://example.org/foo/bar'` is the ASCII string `'https://example.org'`. An error will be thrown if either the given string cannot be parsed as a URL or if a valid origin cannot be derived.
 
-A `URL` object, or any object with an `origin` property, may be passed as an `origin`, in which case the value of the `origin` property will be used. The value of the `origin` property *must* be a properly serialized ASCII origin.
+A `URL` object, or any object with an `origin` property, may be passed as an `origin`, in which case the value of the `origin` property will be used. El valor de la propiedad `origin` *debe* ser un origen ASCII serializado de manera apropiada.
 
 Alternatively, the `origins` option may be used when creating a new HTTP/2 server using the `http2.createSecureServer()` method:
 
@@ -655,7 +655,7 @@ added: v8.13.0
 
 * `origins` {string[]}
 
-The `'origin'` event is emitted whenever an `ORIGIN` frame is received by the client. The event is emitted with an array of `origin` strings. The `http2session.originSet` will be updated to include the received origins.
+El evento `'origin'` es emitido cada vez que un frame `ORIGIN` es recibido por el cliente. The event is emitted with an array of `origin` strings. The `http2session.originSet` will be updated to include the received origins.
 
 ```js
 const http2 = require('http2');
@@ -678,7 +678,7 @@ added: v8.4.0
 * `headers` {HTTP/2 Headers Object}
 * `opciones` {Object}
   
-  * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
+  * `endStream` {boolean} `true` si el lado `Http2Stream` *writable* debe ser cerrado inicialmente, como cuando se envía una solicitud `GET` que no debe esperar un cuerpo payload.
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Predeterminado:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
@@ -752,7 +752,7 @@ Todas las instancias de [`Http2Stream`][] se destruyen ya sea cuando:
 * El método de `http2stream.close()` es llamado.
 * Los métodos de `http2stream.destroy()` o `http2session.destroy()` son llamados.
 
-When an `Http2Stream` instance is destroyed, an attempt will be made to send an `RST_STREAM` frame will be sent to the connected peer.
+Cuando se destruye una instancia `Http2Stream`, se hará un intento de enviar un frame `RST_STREAM` al peer conectado.
 
 When the `Http2Stream` instance is destroyed, the `'close'` event will be emitted. Because `Http2Stream` is an instance of `stream.Duplex`, the `'end'` event will also be emitted if the stream data is currently flowing. The `'error'` event may also be emitted if `http2stream.destroy()` was called with an `Error` passed as the first argument.
 
@@ -812,7 +812,7 @@ added: v8.4.0
 
 The `'trailers'` event is emitted when a block of headers associated with trailing header fields is received. The listener callback is passed the [HTTP/2 Headers Object](#http2_headers_object) and flags associated with the headers.
 
-Note that this event might not be emitted if `http2stream.end()` is called before trailers are received and the incoming data is not being read or listened for.
+Tenga en cuenta que este evento podría no emitirse si se llama a ` http2stream.end()` antes de recibir los trailers y no se están leyendo ni escuchando los datos entrantes.
 
 ```js
 stream.on('trailers', (headers, flags) => {
@@ -844,7 +844,7 @@ Se establece a `true` si la instancia de `Http2Stream` fue abortada de manera an
 added: v8.4.0
 -->
 
-* code {number} Entero de 32 bits no firmado que identifica el código de error. **Predeterminado:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
+* code {number} Entero de 32 bits no firmado que identifica el código de error. **Default:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
 * `callback` {Function} An optional function registered to listen for the `'close'` event.
 * Devuelve: {undefined}
 
@@ -979,7 +979,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the
+--> Provides miscellaneous information about the current state of the 
 
 `Http2Stream`.
 
@@ -987,7 +987,7 @@ added: v8.4.0
   * `localWindowSize` {number} The number of bytes the connected peer may send for this `Http2Stream` without receiving a `WINDOW_UPDATE`.
   * `state` {number} A flag indicating the low-level current state of the `Http2Stream` as determined by nghttp2.
   * `localClose` {number} es `true` en caso de que este `Http2Stream` haya sido cerrado de manera local.
-  * `remoteClose` {number} `true` if this `Http2Stream` has been closed remotely.
+  * `remoteClose` {number} `true` si este `Http2Stream` ha sido cerrado de manera remota.
   * `sumDependencyWeight` {number} The sum weight of all `Http2Stream` instances that depend on this `Http2Stream` as specified using `PRIORITY` frames.
   * `weight` {number} El peso de prioridad de esta `Http2Stream`.
 
@@ -1001,7 +1001,7 @@ added: v8.13.0
 
 * `headers` {HTTP/2 Headers Object}
 
-Envía un frame final `HEADERS` al par HTTP / 2 conectado. This method will cause the `Http2Stream` to be immediately closed and must only be called after the `'wantTrailers'` event has been emitted. When sending a request or sending a response, the `options.waitForTrailers` option must be set in order to keep the `Http2Stream` open after the final `DATA` frame so that trailers can be sent.
+Envía un frame final `HEADERS` al par HTTP / 2 conectado. Este método causará que el `Http2Stream` se cierre inmediatamente, y solo debe ser llamado luego de que el evento de `'wantTrailers'` haya sido emitido. When sending a request or sending a response, the `options.waitForTrailers` option must be set in order to keep the `Http2Stream` open after the final `DATA` frame so that trailers can be sent.
 
 ```js
 const http2 = require('http2');
@@ -1033,7 +1033,7 @@ The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used excl
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. This is an instruction that the client should send the request body.
+Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Esta es una instrucción en la cual el cliente debería enviar el cuerpo de la solicitud.
 
 #### Evento: 'headers'
 
@@ -1132,7 +1132,7 @@ added: v8.4.0
 * `options` {Object} 
   * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Predeterminado:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
-* `callback` {Function} Callback that is called once the push stream has been initiated. 
+* `callback` {Function} Callback que es llamada una vez que el push stream ha sido iniciado. 
   * `err` {Error}
   * `pushStream` {ServerHttp2Stream} The returned pushStream object.
   * `headers` {HTTP/2 Headers Object} Headers object the pushStream was initiated with.
@@ -1235,11 +1235,11 @@ The optional `options.statCheck` function may be specified to give user code an 
 
 The `offset` and `length` options may be used to limit the response to a specific range subset. This can be used, for instance, to support HTTP Range requests.
 
-The file descriptor is not closed when the stream is closed, so it will need to be closed manually once it is no longer needed. Note that using the same file descriptor concurrently for multiple streams is not supported and may result in data loss. Re-using a file descriptor after a stream has finished is supported.
+El descriptor de archivos no se cierra cuando se cierra el stream, entonces necesitará cerrarse manualmente una vez que ya no se necesite. Tenga en cuenta que utilizar el mismo descriptor de archivo de manera concurrente para múltiples streams no es soportado y puede resultar en pérdida de datos. Re-using a file descriptor after a stream has finished is supported.
 
 When the `options.waitForTrailers` option is set, the `'wantTrailers'` event will be emitted immediately after queuing the last chunk of payload data to be sent. The `http2stream.sendTrailers()` method can then be used to sent trailing header fields to the peer.
 
-When `options.waitForTrailers` is set, the `Http2Stream` will not automatically close when the final `DATA` frame is transmitted. User code *must* call either `http2stream.sendTrailers()` or `http2stream.close()` to close the `Http2Stream`.
+When `options.waitForTrailers` is set, the `Http2Stream` will not automatically close when the final `DATA` frame is transmitted. El código de usuario *debe* llamar a `http2stream.sendTrailers()` o a `http2stream.close()` para cerrar el `Http2Stream`.
 
 ```js
 const http2 = require('http2');
@@ -1373,9 +1373,9 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente fuese a continuar enviando el cuerpo de la solicitud, o a generar una respuesta de HTTP apropiada (por ejemplo, 400 Bad Request) si el cliente no fuese a continuar enviando el cuerpo de la solicitud.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento sea emitido y manejado, el evento [`'request'`][] no será emitido.
 
 #### Evento: 'request'
 
@@ -1386,7 +1386,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Se emite cada vez que hay una solicitud. Note that there may be multiple requests per session. Vea la [Compatibility API](#http2_compatibility_api).
+Se emite cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltiples solicitudes por sesión. Vea la [Compatibility API](#http2_compatibility_api).
 
 #### Evento: 'session'
 
@@ -1453,7 +1453,7 @@ added: v8.4.0
 
 No permite que el servidor acepte nuevas conexiones. Vea [`net.Server.close()`][].
 
-Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
+Ten en cuenta que esto no es análogo a restringir nuevas peticiones ya que las conexiones HTTP/2 son persistentes. Para lograr un comportamiento similar de cierre elegante, considere también usar [`http2session.close()`] en sesiones activas.
 
 #### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -1492,9 +1492,9 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Manejar este evento implica llamar a [`response.writeContinue()`][] si el cliente fuese a continuar enviando el cuerpo de la solicitud, o a generar una respuesta de HTTP apropiada (por ejemplo, 400 Bad Request) si el cliente no fuese a continuar enviando el cuerpo de la solicitud.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Tenga en cuenta que cuando este evento sea emitido y manejado, el evento [`'request'`][] no será emitido.
 
 #### Evento: 'request'
 
@@ -1505,7 +1505,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Se emite cada vez que hay una solicitud. Note that there may be multiple requests per session. Vea la [Compatibility API](#http2_compatibility_api).
+Se emite cada vez que hay una solicitud. Tenga en cuenta que pueden haber múltiples solicitudes por sesión. Vea la [Compatibility API](#http2_compatibility_api).
 
 #### Evento: 'session'
 
@@ -1582,7 +1582,7 @@ added: v8.4.0
 
 No permite que el servidor acepte nuevas conexiones. Vea [`tls.Server.close()`][].
 
-Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
+Ten en cuenta que esto no es análogo a restringir nuevas peticiones ya que las conexiones HTTP/2 son persistentes. Para lograr un comportamiento similar de cierre elegante, considere también usar [`http2session.close()`] en sesiones activas.
 
 #### server.setTimeout(\[msecs\]\[, callback\])
 
@@ -1600,14 +1600,16 @@ El callback dado, está registrado como un oyente en el evento `'timeout'`.
 
 In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
 
-### http2.createServer(options[, onRequestHandler])<!-- YAML
+### http2.createServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1624,11 +1626,11 @@ changes:
   * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `4`. **Predeterminado:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
-    * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
-    * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
+  * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
+    * `http2.constants.PADDING_STRATEGY_NONE` - Especifica que no se deberá aplicar relleno.
+    * `http2.constants.PADDING_STRATEGY_MAX` - Especifica que la cantidad máxima de relleno, según lo determinado por la implementación interna, deberá ser aplicada.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
-    * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
+    * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Predeterminado:** `100`.
   * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. Vea [Utilización de options.selectPadding](#http2_using_options_selectpadding).
   * `settings` {HTTP/2 Settings Object} The initial settings to send to the remote peer upon connection.
@@ -1663,7 +1665,9 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.createSecureServer(options[, onRequestHandler])<!-- YAML
+### http2.createSecureServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -1674,7 +1678,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1688,15 +1692,15 @@ changes:
   * `maxHeaderListPairs` {number} Establece el número máximo de entradas de encabezado. El valor mínimo es `4`. **Predeterminado:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
-    * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
-    * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
+  * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
+    * `http2.constants.PADDING_STRATEGY_NONE` - Especifica que no se deberá aplicar relleno.
+    * `http2.constants.PADDING_STRATEGY_MAX` - Especifica que la cantidad máxima de relleno, según lo determinado por la implementación interna, deberá ser aplicada.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
-    * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
+    * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Predeterminado:** `100`.
   * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. Vea [Utilización de options.selectPadding](#http2_using_options_selectpadding).
   * `settings` {HTTP/2 Settings Object} The initial settings to send to the remote peer upon connection.
-  * ...: Cualquiera de las opciones de [`tls.createServer()`][] pueden ser proporcionadas. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
+  * ...: Cualquiera de las opciones de [`tls.createServer()`][] pueden ser proporcionadas. Para los servidores, usualmente se requieren las opciones de identidad (`pfx` ó `key`/`cert`).
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} Vea [API de Compatibilidad](#http2_compatibility_api)
 * Devuelve: {Http2SecureServer}
@@ -1726,14 +1730,16 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.connect(authority\[, options\]\[, listener\])<!-- YAML
+### http2.connect(authority\[, options\]\[, listener\])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1748,11 +1754,11 @@ changes:
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Predeterminado:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
-    * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
-    * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
+  * `paddingStrategy` {number} Identifica la estrategia utilizada para determinar la cantidad de relleno a usar para frames de `HEADERS` y `DATA` . **Predeterminado:** `http2.constants.PADDING_STRATEGY_NONE`. El valor puede ser uno de los siguientes: 
+    * `http2.constants.PADDING_STRATEGY_NONE` - Especifica que no se deberá aplicar relleno.
+    * `http2.constants.PADDING_STRATEGY_MAX` - Especifica que la cantidad máxima de relleno, según lo determinado por la implementación interna, deberá ser aplicada.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
-    * `http2.constants.PADDING_STRATEGY_ALIGNED` - Will *attempt* to apply enough padding to ensure that the total frame length, including the 9-byte header, is a multiple of 8. For each frame, however, there is a maximum allowed number of padding bytes that is determined by current flow control state and settings. If this maximum is less than the calculated amount needed to ensure alignment, the maximum will be used and the total frame length will *not* necessarily be aligned at 8 bytes.
+    * `http2.constants.PADDING_STRATEGY_ALIGNED` - *intentará* aplicar suficiente relleno para asegurar que la longitud total del frame, incluyendo el encabezado 9-byte, sea un múltiplo de 8. Sin embargo, para cada frame, hay un número máximo permitido de bytes de relleno que está determinado por el estado actual del control de flujo y las configuraciones. Si este valor máximo es inferior a la cantidad calculada necesaria para asegurar la alineación, el valor máximo será utilizado y la longitud total del frame *no* necesariamente estará alineada en 8 bytes.
   * `peerMaxConcurrentStreams` {number} Sets the maximum number of concurrent streams for the remote peer as if a `SETTINGS` frame had been received. Will be overridden if the remote peer sets its own value for `maxConcurrentStreams`. **Predeterminado:** `100`.
   * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. Vea [Utilización de options.selectPadding](#http2_using_options_selectpadding).
   * `settings` {HTTP/2 Settings Object} The initial settings to send to the remote peer upon connection.
@@ -1886,15 +1892,15 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: The `maxHeaderListSize` setting is now strictly enforced.
---> The
+--> The 
 
 `http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
 
 * `headerTableSize` {number} Specifies the maximum number of bytes used for header compression. El valor mínimo permitido es 0. The maximum allowed value is 2<sup>32</sup>-1. **Predeterminado:** `4,096 octets`.
 * `enablePush` {boolean} Specifies `true` if HTTP/2 Push Streams are to be permitted on the `Http2Session` instances.
-* `initialWindowSize` {number} Specifies the *senders* initial window size for stream-level flow control. El valor mínimo permitido es 0. The maximum allowed value is 2<sup>32</sup>-1. **Predeterminado:** `65,535 bytes`.
+* `initialWindowSize` {number} Especifica el tamaño de la ventana inicial de *senders* para el control de flujo a nivel de stream. El valor mínimo permitido es 0. The maximum allowed value is 2<sup>32</sup>-1. **Predeterminado:** `65,535 bytes`.
 * `maxFrameSize` {number} Especifica el tamaño de la carga útil del frame más grande. El valor mínimo permitido es 16,384. The maximum allowed value is 2<sup>24</sup>-1. **Predeterminado:** `16,384 bytes`.
-* `maxConcurrentStreams` {number} Specifies the maximum number of concurrent streams permitted on an `Http2Session`. There is no default value which implies, at least theoretically, 2<sup>31</sup>-1 streams may be open concurrently at any given time in an `Http2Session`. The minimum value is 0. El valor máximo permitido es 2<sup>31</sup>-1.
+* `maxConcurrentStreams` {number} Specifies the maximum number of concurrent streams permitted on an `Http2Session`. No hay valor predeterminado que implique, al menos teóricamente, que los streams de 2<sup>31</sup>-1 pueden abrirse de manera concurrente en cualquier tiempo dado en una `Http2Session`. The minimum value is 0. El valor máximo permitido es 2<sup>31</sup>-1.
 * `maxHeaderListSize` {number} Specifies the maximum size (uncompressed octets) of header list that will be accepted. El valor mínimo permitido es 0. The maximum allowed value is 2<sup>32</sup>-1. **Predeterminado:** `65535`.
 
 Se ignoran todas las propiedades adicionales del objeto de las configuraciones.
@@ -1915,7 +1921,7 @@ const server = http2.createServer({
 });
 ```
 
-*Note*: The `options.selectPadding` function is invoked once for *every* `HEADERS` and `DATA` frame. Esto tiene un definido impacto notable sobre el rendimiento.
+*Note*: The `options.selectPadding` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
 ### Manejo de Errores
 
@@ -1933,13 +1939,13 @@ Protocol Errors occur when various HTTP/2 protocol constraints are violated. The
 
 The HTTP/2 implementation applies stricter handling of invalid characters in HTTP header names and values than the HTTP/1 implementation.
 
-Header field names are *case-insensitive* and are transmitted over the wire strictly as lower-case strings. The API provided by Node.js allows header names to be set as mixed-case strings (e.g. `Content-Type`) but will convert those to lower-case (e.g. `content-type`) upon transmission.
+Los nombres de los campos de cabecera *no distinguen entre mayúsculas y minúsculas*, y se transmiten sobre el cable estrictamente como strings en minúsculas. The API provided by Node.js allows header names to be set as mixed-case strings (e.g. `Content-Type`) but will convert those to lower-case (e.g. `content-type`) upon transmission.
 
-Header field-names *must only* contain one or more of the following ASCII characters: `a`-`z`, `A`-`Z`, `0`-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
+Los nombres de campo del encabezado *sólo deben contener* uno o más de los siguientes caracteres ASCII: `a`-`z`, `A`-`Z`, `0`-`9`, `!`, `#`, `$`, `%`, `&`, `'`, `*`, `+`, `-`, `.`, `^`, `_`, `` ` `` (backtick), `|`, and `~`.
 
 Using invalid characters within an HTTP header field name will cause the stream to be closed with a protocol error being reported.
 
-Header field values are handled with more leniency but *should* not contain new-line or carriage return characters and *should* be limited to US-ASCII characters, per the requirements of the HTTP specification.
+Los valores de los campos de cabecera se manejan con más indulgencia pero *no deberían* contener caracteres de nueva línea o de retorno y *deberían* estar limitados a caracteres US-ASCII, por los requisitos de la especificación HTTP.
 
 ### Push streams en el cliente
 
@@ -2039,7 +2045,7 @@ req.end('Jane');
 
 ## API de compatibilidad
 
-The Compatibility API has the goal of providing a similar developer experience of HTTP/1 when using HTTP/2, making it possible to develop applications that support both [HTTP/1](http.html) and HTTP/2. This API targets only the **public API** of the [HTTP/1](http.html). However many modules use internal methods or state, and those *are not supported* as it is a completely different implementation.
+The Compatibility API has the goal of providing a similar developer experience of HTTP/1 when using HTTP/2, making it possible to develop applications that support both [HTTP/1](http.html) and HTTP/2. Esta API sólo se dirige a la **API pública** del [HTTP/1](http.html). Sin embargo, varios módulos utilizan métodos o estado internos, y esos *no son soportados* ya que consisten en una implementación completamente diferente.
 
 The following example creates an HTTP/2 server using the compatibility API:
 
@@ -2055,11 +2061,11 @@ const server = http2.createServer((req, res) => {
 
 In order to create a mixed [HTTPS](https.html) and HTTP/2 server, refer to the [ALPN negotiation](#http2_alpn_negotiation) section. No se admite la actualización desde servidores que no sean tls HTTP/1.
 
-The HTTP/2 compatibility API is composed of [`Http2ServerRequest`]() and [`Http2ServerResponse`](). They aim at API compatibility with HTTP/1, but they do not hide the differences between the protocols. As an example, the status message for HTTP codes is ignored.
+La API de compatibilidad de HTTP/2 está compuesta por [`Http2ServerRequest`]() y [`Http2ServerResponse`](). They aim at API compatibility with HTTP/1, but they do not hide the differences between the protocols. As an example, the status message for HTTP codes is ignored.
 
 ### Negociación ALPN
 
-ALPN negotiation allows supporting both [HTTPS](https.html) and HTTP/2 over the same socket. The `req` and `res` objects can be either HTTP/1 or HTTP/2, and an application **must** restrict itself to the public API of [HTTP/1](http.html), and detect if it is possible to use the more advanced features of HTTP/2.
+ALPN negotiation allows supporting both [HTTPS](https.html) and HTTP/2 over the same socket. Los objetos `req` y `res` pueden ser HTTP/1 o HTTP/2, y una aplicación **debe** limitarse a la API pública de [HTTP/1](http.html), y detecta si es posible utilizar las funciones más avanzadas de HTTP/2.
 
 El siguiente ejemplo crea un servidor que soporta a ambos protocolos:
 
@@ -2097,7 +2103,7 @@ added: v8.4.0
 
 A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. It may be used to access a request status, headers, and data.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Implementa la interfaz del [Stream Legible](stream.html#stream_class_stream_readable), así como los siguientes eventos adicionales, métodos, y propiedades.
 
 #### Evento: 'aborted'
 
@@ -2177,9 +2183,9 @@ added: v8.4.0
 
 * {string}
 
-En caso de la solicitud del servidor, la versión HTTP enviada por el cliente. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
+En caso de la solicitud del servidor, la versión HTTP enviada por el cliente. En caso de una respuesta de cliente, la versión HTTP del servidor conectado. Returns `'2.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Además, `message.httpVersionMajor` es el primer entero y `message.httpVersionMinor` es el segundo.
 
 #### request.method
 
@@ -2189,7 +2195,7 @@ added: v8.4.0
 
 * {string}
 
-El método de solicitud como una string. Sólo lectura. Example: `'GET'`, `'DELETE'`.
+El método de solicitud como una string. Sólo lectura. Ejemplo: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2201,7 +2207,7 @@ added: v8.4.0
 
 La lista cruda de solicitudes/cabeceras de respuesta, exactamente como fueron recibidos.
 
-Tenga en cuenta que las claves y los valores están en la misma lista. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Tenga en cuenta que las claves y los valores están en la misma lista. Esto *not* es una lista de tuplas. Entonces, los elementos pares de la lista serían las valores clave, mientras que los elementos impares serían los valores asociados.
 
 Los nombres de los encabezados no están en minúsculas, y los duplicados no están fusionados.
 
@@ -2227,7 +2233,7 @@ added: v8.4.0
 
 * {Array}
 
-The raw request/response trailer keys and values exactly as they were received. Poblado solamente en el evento `'end'` .
+Las claves del trailer y los valores crudos de solicitud/respuesta, exactamente como fueron recibidos. Poblado solamente en el evento `'end'` .
 
 #### request.setTimeout(msecs, callback)
 
@@ -2238,9 +2244,9 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
-If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Si no se añade ningún listener de `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los [`Http2Stream`]()s se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
 Devuelve `request`.
 
@@ -2292,7 +2298,7 @@ added: v8.4.0
 
 * {string}
 
-String de solicitud de URL. This contains only the URL that is present in the actual HTTP request. Si la solicitud es:
+String de solicitud de URL. Esto solo contiene la URL que está presente en la solicitud de HTTP actual. Si la solicitud es:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2301,6 +2307,8 @@ Accept: text/plain\r\n
 ```
 
 Entonces `request.url` será:
+
+<!-- eslint-disable semi -->
 
 ```js
 '/status?name=ryan'
@@ -2346,11 +2354,13 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse<!-- YAML
-added: v8.4.0
--->This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [
+### Clase: http2.Http2ServerResponse
 
-`'request'`][] event.
+<!-- YAML
+added: v8.4.0
+-->
+
+Este objeto es creado internamente por un servidor de HTTP — no por el usuario. Es pasado como el segundo parámetro al evento [`'request'`][].
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. Esto es un [`EventEmitter`][] con los siguientes eventos:
 
@@ -2360,7 +2370,7 @@ The response implements, but does not inherit from, the [Writable Stream](stream
 added: v8.4.0
 -->
 
-Indicates that the underlying [`Http2Stream`]() was terminated before [`response.end()`][] was called or able to flush.
+Indica que el [`Http2Stream`]() subyacente fue eliminado antes de que [`response.end()`][] fuese llamado, o antes de que se hubiera podido vaciar.
 
 #### Evento: 'finish'
 
@@ -2368,7 +2378,7 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Se emite cuando la respuesta ha sido enviada. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. Eso no implica que el cliente haya recibido algo aún.
 
 Después de este evento, no se emitirán más eventos en el objeto de respuesta.
 
@@ -2380,9 +2390,9 @@ added: v8.4.0
 
 * `headers` {Object}
 
-This method adds HTTP trailing headers (a header but at the end of the message) to the response.
+Este método agrega encabezados finales HTTP (un encabezado pero al final del mensaje) a la respuesta.
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 #### response.connection
 
@@ -2404,11 +2414,11 @@ added: v8.4.0
 * `encoding` {string}
 * `callback` {Function}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Este método, `response.end()`, DEBE ser llamado en cada respuesta.
+Este método señala al servidor que todas las cabeceras de respuesta y el cuerpo han sido enviados; y que el servidor debería considerar este mensaje como completo. Este método, `response.end()`, DEBE ser llamado en cada respuesta.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Si se especifica `data`, será equivalente a llamar a [`response.write(data, encoding)`][] seguido por `response.end(callback)`.
 
-If `callback` is specified, it will be called when the response stream is finished.
+Si se especifica el `callback`, será llamado cuando el stream de respuesta haya finalizado.
 
 #### response.finished
 
@@ -2418,7 +2428,7 @@ added: v8.4.0
 
 * {boolean}
 
-Valor booleano que indica si se ha completado la respuesta. Starts as `false`. Después de que [`response.end()`][] se ejecute, el valor será `true`.
+Valor booleano que indica si se ha completado la respuesta. Comienza como `false`. Después de que [`response.end()`][] se ejecute, el valor será `true`.
 
 #### response.getHeader(name)
 
@@ -2465,9 +2475,9 @@ added: v8.4.0
 
 * Devuelve: {Object}
 
-Devuelve una copia superficial de las cabeceras salientes actuales. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. Todos los nombres de las cabeceras están en minúsculas.
+Devuelve una copia superficial de las cabeceras salientes actuales. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
-*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Esto significa que métodos típicos de `Object` tales como `obj.toString()`, `obj.hasOwnProperty()`, entre otros, no están definidos y *no funcionarán*.
 
 Ejemplo:
 
@@ -2530,9 +2540,9 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Por defecto es verdadero.
+Al ser verdadero, la cabecera de Fecha será generada automáticamente y enviada en la respuesta si no está presente en las cabeceras. Por defecto es verdadero.
 
-This should only be disabled for testing; HTTP requires the Date header in responses.
+Esto solo debería inhabilitarse para las pruebas; HTTP requiere el encabezado de Fecha en las respuestas.
 
 #### response.setHeader(name, value)
 
@@ -2543,7 +2553,7 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Establece un único valor de cabecera para cabeceras implícitas. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Establece un único valor de cabecera para cabeceras implícitas. Si este encabezado ya existe en los envíos de encabezados pendientes, su valor será reemplazado. Use an array of strings here to send multiple headers with the same name.
 
 Ejemplo:
 
@@ -2557,7 +2567,7 @@ o
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
@@ -2580,9 +2590,9 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Establece el valor del tiempo de espera de [`Http2Stream`]() a `msecs`. Si se proporciona un callback, entonces se agregará como un listener en el evento `'timeout'` en el objeto de respuesta.
 
-If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
+Si no se añade ningún listener de `'timeout'` a la solicitud, la respuesta, o al servidor, entonces los [`Http2Stream`]()s se destruirán cuando se agote su tiempo de espera. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
 Devuelve `response`.
 
@@ -2625,7 +2635,7 @@ added: v8.4.0
 
 * {number}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
+Cuando se utilizan cabeceras implícitas (sin llamar a [`response.writeHead()`][] explícitamente), esta propiedad controla el código de estado que será enviado al cliente cuando las cabeceras sean vaciadas.
 
 Ejemplo:
 
@@ -2633,7 +2643,7 @@ Ejemplo:
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Después de que la cabecera de respuesta fue enviada al cliente, esta propiedad indica el código de estado que fue enviado.
 
 #### response.statusMessage
 
@@ -2666,19 +2676,19 @@ added: v8.4.0
 * `callback` {Function}
 * Devuelve: {boolean}
 
-If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
+Si este método es llamado y [`response.writeHead()`][] no se ha llamado, entonces cambiará a modo de cabecera implícita y vaciará las cabeceras implícitas.
 
-Esto envía un fragmento del cuerpo de respuesta. This method may be called multiple times to provide successive parts of the body.
+Esto envía un fragmento del cuerpo de respuesta. Este método puede ser llamado varias veces para proporcionar partes sucesivas del cuerpo.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
+Tenga en cuenta que en el módulo `http`, el cuerpo de respuesta se omite cuando la solicitud es una solicitud HEAD. Asimismo, las respuestas `204` y `304` *no deben* incluir un cuerpo de mensaje.
 
-`chunk` puede ser una string o un búfer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. Por defecto, el `encoding` es `'utf8'`. `callback` será llamado cuando este fragmento de datos sea vaciado.
+`chunk` puede ser una string o un búfer. Si `chunk` es una string, el segundo parámetro especificará cómo codificarlo dentro de un stream de bytes. Por defecto, el `encoding` es `'utf8'`. `callback` será llamado cuando este fragmento de datos sea vaciado.
 
 *Note*: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Devuelve como `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
+Devuelve como `true` si todos los datos fueron arrojados con éxito al búfer del núcleo. Devuelve como `false` si todos o parte de los datos fueron puestos en cola en la memoria del usuario. `'drain'` será emitido cuando el búfer esté libre otra vez.
 
 #### response.writeContinue()
 
@@ -2698,7 +2708,7 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Envía una cabecera de respuesta a la solicitud. The status code is a 3-digit HTTP status code, like `404`. El último argumento, `headers`, son las cabeceras de respuesta.
+Envía una cabecera de respuesta a la solicitud. El código de estado es un código de estado HTTP de 3 dígitos, como `404`. El último argumento, `headers`, son las cabeceras de respuesta.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
@@ -2711,7 +2721,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Tenga en cuenta que la Longitud del Contenido es dada en bytes y no en caracteres. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Tenga en cuenta que la Longitud del Contenido es dada en bytes y no en caracteres. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. Sin embargo, cuando reciba mensajes, Node.js rechazará automáticamente los mensajes cuando la longitud del contenido no coincida con el tamaño real del payload.
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
@@ -2729,7 +2739,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Intentar establecer un nombre de campo de cabecera o un valor que contenga caracteres inválidos dará como resultado al lanzamiento de un [`TypeError`][] .
 
 #### response.createPushResponse(headers, callback)
 
@@ -2738,11 +2748,11 @@ added: v8.4.0
 -->
 
 * `headers` {HTTP/2 Headers Object} Un objeto describiendo los encabezados
-* `callback` {Function} Called once `http2stream.pushStream()` is finished, or either when the attempt to create the pushed `Http2Stream` has failed or has been rejected, or the state of `Http2ServerRequest` is closed prior to calling the `http2stream.pushStream()` method 
+* `callback` {Function} Llamada una vez que `http2stream.pushStream()` ha terminado, o bien cuando el intento de crear el pushed `Http2Stream` ha fallado o ha sido rechazado, o el estado de `Http2ServerRequest` está cerrado antes de llamar al `http2stream. método ushStream()` 
   * `err` {Error}
   * `stream` {ServerHttp2Stream} The newly-created `ServerHttp2Stream` object
 
-Call [`http2stream.pushStream()`][] with the given headers, and wrap the given [`Http2Stream`] on a newly created `Http2ServerResponse` as the callback parameter if successful. When `Http2ServerRequest` is closed, the callback is called with an error `ERR_HTTP2_INVALID_STREAM`.
+Llama a [`http2stream.pushStream()`][] con las cabeceras dadas, y envuelve el [`Http2Stream`] dado en una `Http2ServerResponse` recién creado como el parámetro del callback si es exitoso. When `Http2ServerRequest` is closed, the callback is called with an error `ERR_HTTP2_INVALID_STREAM`.
 
 ## Recopilar Métricas de Rendimiento de HTTP/2
 
