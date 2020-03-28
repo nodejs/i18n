@@ -66,7 +66,7 @@
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
+*Nota*: Node.js v8 está cubierto por el [Plan de Soporte a Largo Plazo de Node.js](https://github.com/nodejs/LTS) y estará soportado activamente hasta abril de 2019 y mantenido hasta diciembre de 2019.
 
 <a id="8.17.0"></a>
 
