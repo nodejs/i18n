@@ -1240,7 +1240,7 @@ changes:
 * `sourceUrl` {string} 指向包含当前发布版本源代码的 *`.tar.gz`* 文件的绝对 URL。
 * `headersUrl`{string} 指向仅包含当前发布版本头文件源代码的 *`.tar.gz`* 文件的绝对 URL。 此文件比完整源文件要小很多，并可被用于编译 Node.js 原生插件。
 * `libUrl` {string} 和系统架构及当前发布版本号相匹配的指向 *`node.lib`* 文件的绝对 URL。 此文件用于编译 Node.js 原生插件。 *此属性只存在于 Node.js 的 Windows 版本中，在其他平台下不存在。*
-* `lts` {string} 用于标识此发布版本的 [LTS](https://github.com/nodejs/LTS/) 标签的字符串标签。 This property only exists for LTS releases and is `undefined` for all other release types, including *Current* releases. 当前的有效值包括： 
+* `lts` {string} 用于标识此发布版本的 [LTS](https://github.com/nodejs/LTS/) 标签的字符串标签。 此属性仅存在于 LTS 发布版本中，在其他发布版本，包括 *当前* 版本中，其值为 `undefined`。 当前的有效值包括： 
     * `'Argon'` 针对自 4.2.0 开始的 4.x LTS 版本。
     * `'Boron'` 针对自 6.9.0 开始的 6.x LTS 版本。
     * `'Carbon'` 针对自 8.9.1 开始的 8.x LTS 版本。
@@ -1599,5 +1599,5 @@ console.log(process.versions);
 * `8` - 未使用的。 在 Node.js 的之前版本中，返回码为 8 有时代表一个未被捕获的异常。
 * `9` - **非法参数** - 某个未知选项被指定，或未给必选项提供数值。
 * `10` **内部 JavaScript 运行时错误** - 当引导进程函数被调用时，其内部的 JavaScript 源代码抛出了错误。 这种情况非常罕见，且通常发生在 Node.js 自己的开发过程中。
-* `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
+* `12` **无效的调试参数** - 已设置 `--inspect` 和/或 `--inspect-brk` 选项，但选中的端口号无效或不可用。
 * `>128` **退出信号** - 如果 Node.js 收到了一个严重错误信号，比如：`SIGKILL` 或 `SIGHUP`，在这种情况下其退出码为 `128`, 加上信号代码的值。 这是 POSIX 的标准做法，由于退出码被定义为 7 位整数，且退出信号设置了高位，因此会包含信号代码的值。
