@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
+Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
@@ -14,7 +14,7 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * 内置的 Node.js 库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. 更多信息可查看 [链接到 Node.js 自身的依赖](#addons_linking_to_node_js_own_dependencies) 。
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有 libuv、V8和 zlib 符号是通过 Node.js 特意重新开放的，并且可以通过插件用于各种不同的场景。 更多信息可查看 [链接到 Node.js 自身的依赖](#addons_linking_to_node_js_own_dependencies) 。
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -197,7 +197,7 @@ A version of the `node-gyp` utility is bundled and distributed with Node.js as p
 
 当使用`npm install`安装Node.js插件时，npm使用它自己捆绑的`node-gyp`来执行相同操作，从而为用户要求的平台生成编译后的版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+一旦构建，就可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块，从而在Node.js中使用二进制的插件。
 
 ```js
 // hello.js
@@ -231,9 +231,9 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 ### 使用require() 加载插件
 
-已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 编写[`require()`](modules.html#modules_require)函数的目的就是查找具有`.node`扩展名的文件，并将其初始化为动态链接库。
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. 但有一点需要注意，Node.js会首先尝试定位并加载那些享有相同基本名称的JavaScript文件。 For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+当调用[`require()`](modules.html#modules_require)时，通常可以省略`.node`扩展名，Node.js仍可找到并初始化插件。 但有一点需要注意，Node.js会首先尝试定位并加载那些享有相同基本名称的JavaScript文件。 例如：如果文件`addon.js`和二进制文件`addon.node`在同一个目录下，那么[`require('addon')`](modules.html#modules_require)会优先考虑`addon.js`文件并加载它。
 
 ## Node.js 原生模块抽象接口
 
