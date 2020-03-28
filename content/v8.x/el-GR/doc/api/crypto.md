@@ -4,7 +4,7 @@
 
 > Σταθερότητα: 2 - Σταθερό
 
-The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
+Το module `crypto` παρέχει λειτουργικότητες κρυπτογράφησης για το OpenSSL's hash, το HMAC, λειτουργίες κρυπτογράφης και αποκρυπτογράφησης, συναρτήσεις υπογραφής και επαλήθευσης.
 
 Use `require('crypto')` to access this module.
 
