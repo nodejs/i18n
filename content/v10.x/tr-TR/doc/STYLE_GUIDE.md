@@ -1,7 +1,7 @@
 # Stil Klavuzu
 
 * Dokümantasyon, `lowercase-with-dashes.md` olarak biçimlendirilmiş isimlerle markdown'da yazılmıştır. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Dosya adlarında altçizgilerin bulunmasına yalnızca belgenin açıklayacağı konu içerisinde bulunduklarında izin verilir(ör. `child_process`).
   * Üst düzey markdown dosyaları gibi bazı dosyalar istisnadır.
 * Dokümanlar satır sonuna kadar 80 karakterle sınırlı olmalıdır.
 * `.editorconfig` 'da açıklanan formatlama tercih edilir. 
