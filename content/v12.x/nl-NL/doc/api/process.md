@@ -992,7 +992,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Returns: {bigint}
+-->* Retourneert: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
