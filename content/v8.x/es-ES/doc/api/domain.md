@@ -26,11 +26,11 @@ Los dominios proporcionan una forma de manejar múltiples y diversas operaciones
 
 <!-- type=misc -->
 
-Domain error handlers are not a substitute for closing down a process when an error occurs.
+Los manejadores de errores de dominio no son un substituto para el cierre de un proceso cuando se produce un error.
 
 Por la naturaleza misma de cómo funciona [`throw`][] en JavaScript, casi nunca hay alguna forma segura de "regresar a donde se quedó", sin pérdidas de referencias o crear algún otro tipo de estado frágil e indefinido.
 
-La manera más segura de responder a un error arrojado es cerrar el proceso. Of course, in a normal web server, there may be many open connections, and it is not reasonable to abruptly shut those down because an error was triggered by someone else.
+La manera más segura de responder a un error arrojado es cerrar el proceso. Pueden haber muchas conexiones abiertas en un servidor de web normal y, no es recomendable cerrarlos abruptamente solo porque un error fue provocado por alguien más.
 
 La mejor solución es enviar una respuesta de error a la solicitud que produjo el error, dejando que las otras terminen en su tiempo habitual y deteniendo la escucha de nuevas solicitudes en ese worker.
 
@@ -241,15 +241,15 @@ El Dominio es una clase secundaria de [`EventEmitter`][]. Para manejar los error
 
 * {Array}
 
-Un array de temporizadores y emisores de evento que han sido añadidos explícitamente al dominio.
+Unos temporizadores y emisores de evento que han sido añadidos explícitamente al dominio.
 
 ### domain.add(emisor)
 
 * `emisor`{EventEmitter|Timer} emisor o temporizador a ser agregado al dominio
 
-Agrega explícitamente un emisor al dominio. Si algún manejador de eventos llamado por el emisor arroja un error, o si el emisor emite un evento `'error'`, se enrutará al evento `'error'` del dominio, al igual que con la unión implícita.
+Agrega explícitamente un emisor al dominio. Si cualquier gestor de evento activado por el emisor arroja un error o el transmisor emite un evento de `'error'`, será enrutado para el evento de `'error'` perteneciente al dominio de la misma forma que con el enlazado implícito.
 
-Esto también funciona con los temporizadores que son devueltos desde [`setInterval()`][] y [`setTimeout()`][]. Si su función de callback la arroja, será capturada por el manejador 'error' del dominio.
+Esto también funciona con los temporizadores que se regresan desde [`setInterval()`][] y el [`setTimeout()`][]. Si su función de callback la arroja, será capturada por el manejador 'error' del dominio.
 
 Si el Temporizador o EventEmitter ya está vinculado a un dominio, será removido del mismo y enlazado a éste en su lugar.
 
@@ -258,7 +258,7 @@ Si el Temporizador o EventEmitter ya está vinculado a un dominio, será removid
 * `callback`{Function} La función de callback
 * Devoluciones: {Function} La función enlazada
 
-La función devuelta será un envoltorio alrededor de la función de callback proporcionada. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
+La función devuelta fungirá como envoltura alrededor del callback suministrado. Cuando esta sea llamada, cualquier error que sea arrojado se enrutará hacia el evento de `'error` del dominio.
 
 #### Ejemplo
 
@@ -296,7 +296,7 @@ Si se ha eliminado el dominio en el que se llama a `enter`, éste volverá sin c
 
 ### domain.exit()
 
-El método `exit` sale del dominio actual, llevándolo fuera de la pila de dominios. Cada vez que la ejecución cambie al contexto de una cadena diferente de llamadas asíncronas, es importante asegurarse de que se abandona el dominio actual. La llamada a `exit` delimita el final o una interrupción a la cadena de llamadas asíncronas y operaciones I/O vinculadas a un dominio.
+El método `exit` sale del dominio actual, llevándolo fuera de la pila de dominios. Es importante asegurarse que se abandona el dominio actual al cambiar cualquier tiempo de ejecución hacia el contexto de una cadena diferente de llamadas asincrónicas. La llamada a `exit` delimita el final o una interrupción a la cadena de llamadas asíncronas y operaciones I/O vinculadas a un dominio.
 
 Si hay múltiples dominios anidados enlazados al contexto de ejecución actual, `exit` saldrá de cualquier dominio anidado dentro de este dominio.
 
@@ -311,7 +311,7 @@ Si se ha eliminado el dominio en el que se llama a `exit`, éste volverá sin co
 
 Este método es muy similar a [`domain.bind(callback)`][]. Sin embargo, además de identificar los errores arrojados, también interceptará objetos de [`Error`][] enviados como el primer argumento de la función.
 
-De esta manera, el patrón común `if (err) return callback(err);` puede ser reemplazado con un solo manejador de errores en un solo lugar.
+Así, el patrón común `if (err) return callback(err);` puede ser reemplazado con un solo manejador de error único en un mismo lugar.
 
 #### Ejemplo
 
@@ -343,14 +343,14 @@ d.on('error', (er) => {
 
 * `emitter`{EventEmitter|Timer} Emisor o temporizador a ser eliminado del dominio
 
-Lo opuesto de [`domain.add(emitter)`][]. Elimina el manejo de dominio del emisor especificado.
+Lo opuesto de [`domain.add(emitter)`][]. Revoca el manejo de dominio al emisor especificado.
 
 ### domain.run(fn[, ...args])
 
 * `fn` {Function}
 * `...args` {any}
 
-Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los emisores de evento, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Opcionalmente, los argumentos pueden ser pasados a la función.
+Ejecuta la función suministrada en el contexto del dominio, vinculando implícitamente a todos los emisores de evento, temporizadores y solicitudes de bajo nivel creadas en ese contexto. Los argumentos pueden pasarse hacia la función opcionalmente.
 
 Esta es la forma más básica de utilizar un dominio.
 
