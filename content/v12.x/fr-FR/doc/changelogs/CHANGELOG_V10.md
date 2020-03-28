@@ -6,7 +6,7 @@
 <table>
 <tr>
 <th>LTS 'Dubnium'</th>
-<th title="Previously called 'Stable'">Current</th>
+<th title="Previously called 'Stable'">Courant</th>
 </tr>
 <tr>
 <td valign="top">
