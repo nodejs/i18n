@@ -896,7 +896,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 This release contains security fixes to upgrade OpenSSL to version 1.0.2k.
 
-Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) ha determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web de Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
 ### Cambios notables
 
