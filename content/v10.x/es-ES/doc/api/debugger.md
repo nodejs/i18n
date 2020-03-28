@@ -20,9 +20,11 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+El cliente depurador de Node.js no es un depurador completo, pero un simple paso y una inspección son posibles.
 
-Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+Insertar el extracto ` debugger; ` en el código fuente de un texto habilitará un punto de quiebre en esta posición en el código: 
+
+<!-- eslint-disable no-debugger -->
 
 ```js
 // myscript.js
@@ -77,15 +79,15 @@ break in myscript.js:5
 debug> .exit
 ```
 
-El comando `repl` permite que el código sea evaluado de forma remota. The `next` command steps to the next line. Escriba <0 help</code> para ver qué otros comandos están disponibles.
+El comando `repl` permite que el código sea evaluado de forma remota. El comando `next` pasa a la siguiente línea. Escriba <0 help</code> para ver qué otros comandos están disponibles.
 
-Pressing `enter` without typing a command will repeat the previous debugger command.
+Presionar ` enter` sin escribir un comando repetirá el comando depurador anterior.
 
 ## Monitores
 
-Es posible observar los valores variables y de expresión mientras se hace una depuración. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
+Es posible observar los valores variables y de expresión mientras se hace una depuración. En Cada punto de quiebre, cada expresión de la lista de observadores será evaluada en el contexto actual y mostrada inmediatamente antes de la fuente de lista de codigos del punto de quiebre.
 
-Escribe `watch('my_expression')` para comenzar con una expresión. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
+Escribe `watch('my_expression')` para comenzar con una expresión. El comando `watchers` imprimirá los observadores activos. Para eliminar un monitor, escriba `unwatch('my_expression')`.
 
 ## Comando de referencia
 
@@ -101,11 +103,11 @@ Escribe `watch('my_expression')` para comenzar con una expresión. The command `
 
 * `setBreakpoint()`. `sb()` - Seleccionar punto de interrupción en la línea actual
 * `setBreakpoint(line)`, `sb(line)` - Colocar un punto de interrupción en una línea específica
-* `setBreakpoint('fn()')`, `sb(...)` - Set breakpoint on a first statement in functions body
+* `setBreakpoint('fn()')`, `sb(...)` - Establecer un punto de interrupción en una primera instrucción en las funciones del programa
 * `setBreakpoint('script.js', 1)`, `sb(...)` - Set breakpoint on first line of `script.js`
 * `clearBreakpoint('script.js', 1)`, `cb(...)` - Clear breakpoint in `script.js` on line 1
 
-It is also possible to set a breakpoint in a file (module) that is not loaded yet:
+También es posible establecer un punto de quiebre en un archivo (módulo) que no está cargado todavía:
 
 ```txt
 $ node inspect main.js
@@ -131,10 +133,10 @@ debug>
 ### Información
 
 * `backtrace`, `bt` - Imprimir backtrace del campo de ejecución actual
-* `list(5)` - List scripts source code with 5 line context (5 lines before and after)
+* `list(5)` - Enumere la fuente del código con 5 líneas de contexto (5 líneas antes y después)
 * `watch(expr)` - Agregar expresión a la lista de observación
 * `unwatch(expr)` - Eliminar expresión de la lista de observación
-* `watchers` - List all watchers and their values (automatically listed on each breakpoint)
+* `watchers` - Enumera todos los monitores y sus valores (enumerados automáticamente en cada punto de quiebre)
 * `repl` - Abrir el repl del depurador para la evaluación en el contexto del script de depuración
 * `exec expr` - Ejecuta una expresión en el contexto del script de depuración
 
@@ -153,9 +155,9 @@ debug>
 
 ### Integración del Inspector V8 para Node.js
 
-V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+La integración del Inspector de V8 permite adjuntar Chrome DevTools a las instancias de Node.js para depurar y generar perfiles. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
+El inspector de V8 Inspector se puede habilitar pasando la bandera `--inspect` al iniciar una aplicación Node.js. También es posible suministrar un puerto personalizado con esa bandera, p.ej. `--inspect=9222` aceptará conexiones de DevTools en el puerto 9222.
 
 To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
