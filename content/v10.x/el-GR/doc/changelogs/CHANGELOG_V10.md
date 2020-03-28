@@ -2634,7 +2634,7 @@ Fixes for the following CVEs are included in this release:
   * Upgrade to ICU 62.1 (Unicode 11, CLDR 33.1). [#21728](https://github.com/nodejs/node/pull/21728)
 * **http**: 
   * Added support for passing both `timeout` and `agent` options to `http.request`. [#21204](https://github.com/nodejs/node/pull/21204)
-* **inspector**: 
+* **επιθεωρητής**: 
   * Expose the original console API in `require('inspector').console`. [#21659](https://github.com/nodejs/node/pull/21659)
 * **napi**: 
   * Added experimental support for functions dealing with bigint numbers. [#21226](https://github.com/nodejs/node/pull/21226)
