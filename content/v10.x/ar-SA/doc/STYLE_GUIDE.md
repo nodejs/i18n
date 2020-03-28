@@ -1,7 +1,7 @@
 # دليل الاسلوب
 
 * كتبت الوثائق ب"markdown" والملفات سميت على شكل `lowercase-with-dashes.md`. 
-  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * سطر السفلي في أسماء الملفات مسموح به فقط عندما يكون موجود في موضوع سوف تصفه الوثيقة (مثال: `child_process`).
   * بعض الملفات، مثل ملفات المستوى العالي "markdown"، هي استثناءات.
 * يجب أن تكون المستندات بالكلمات مربوطة في 80 حرف.
 * البنية الموصوف في `.editorconfig` هي المفضلة. 
