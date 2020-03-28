@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
+Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_require) fonksiyonu kullanılarak Node.js'ye yüklenebilen ve sıradan bir Node.js modülü gibi kullanılan, dinamik olarak bağlı, paylaşılan nesnelerdir. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
 
 Şu anda, Eklenti uygulama yöntemi oldukça karmaşıktır, çeşitli bileşenlerin ve API'lerin bilgi birikimini gerektirir :
 
 * Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
 
-* [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
+* [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. Ayrıca, bütün büyük işletim sistemlerinde dosya sistemi, soketler, zamanlayıcılar ve sistem olayları ile etkileşimde bulunma gibi birçok genel sistem görevine POSIX benzeri kolay erişim sağlayan, çapraz platformlu bir soyutlama kütüphanesi olarak da işlev görür. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
 
 * Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
@@ -89,7 +89,7 @@ Ardından, derlenmiş `addon.node` dosyasını üretmek için `node-gyp build` k
 
 Bir Node.js Eklentisi yüklemek için `npm install` kullanırken, npm, talep edilen kullanıcı platformu için derlenmiş bir Eklenti sürümü oluşturarak, bu aynı işlem kümesini gerçekleştirmek için kendi paketlenmiş `node-gyp` sürümünü kullanır.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Bir kere oluşturulduktan sonra, ikili Eklenti, kurulmuş `addon.node` modülüne [`require()`](modules.html#modules_require) işaretlenerek Node.js içinde kullanılabilir:
 
 ```js
 // hello.js
@@ -123,9 +123,9 @@ Node.js, V8, libuv ve OpenSSL gibi statik olarak bağlı bir dizi kütüphane ku
 
 ### Eklentileri require() kullanarak yükleme
 
-Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). [`require()`](modules.html#modules_require) işlevi, `.node` dosya uzantısına sahip dosyaları aramak ve bunları dinamik olarak bağlı kitaplıklar olarak başlatmak için yazılmıştır.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+[`require()`](modules.html#modules_require) çağrıldığı zaman, `.node` uzantısı genellikle ihmal edilebilir ve Node.js yine de Eklentiyi bulacak ve başlatacaktır. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
 
 ## Node.js için Yerel Soyutlamalar
 
@@ -137,7 +137,7 @@ Node.js için [Yerli Soyutlamalar](https://github.com/nodejs/nan) (veya `nan`), 
 
 > Kararlılık: 1 - Deneysel
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API is an API for building native Addons. Temel JavaScript çalışma zamanından bağımsızdır (örn. V8) ve Node.js öğesinin bir parçası olarak korunur. This API will be Application Binary Interface (ABI) stable across version of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
