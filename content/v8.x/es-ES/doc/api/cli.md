@@ -103,7 +103,7 @@ added: v6.3.0
 
 Activar el inspector en host:port. El predeterminado es 127.0.0.1:9229.
 
-V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
+La integración del inspector V8 permite que las herramientas como Chrome DevTools e IDEs depuren y perfilen instancias de Node.js. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome Debugging Protocol](https://chromedevtools.github.io/debugger-protocol-viewer).
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -155,7 +155,7 @@ added: v8.0.0
 
 Emite advertencias de desaprobación pendientes.
 
-*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `--no-warnings`
 
@@ -179,7 +179,7 @@ Enable the experimental `'http2'` module.
 added: v0.10
 -->
 
-Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
+Abortar en lugar de salir de un archivo principal a generar para el análisis post-mortem usando un depurador (como `lldb`, `gdb`, y `mdb`).
 
 ### `--trace-warnings`
 
@@ -195,7 +195,7 @@ Imprime stack traces para advertencias de proceso (incluye desaprobaciones).
 added: v8.0.0
 -->
 
-Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error mientras se intenta escribir la advertencia al archivo, la advertencia será escrita en el stderr en su lugar.
+Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir una advertencia al archivo, la advertencia será escrita en stderr en su lugar.
 
 ### `--trace-sync-io`
 
@@ -203,7 +203,7 @@ Escribe advertencias de proceso al archivo dado en lugar de imprimirlo en stderr
 added: v2.1.0
 -->
 
-Imprime un reporte de los stack traces cada vez que un I/O sincronizado es detectado luego del primer turno del bucle del evento.
+Imprime un stack trace cada vez que un I/O sincrónico es detectado después del primer turno del bucle de evento.
 
 ### `--force-async-hooks-checks`
 
@@ -253,7 +253,7 @@ added: v6.3.0
 
 Instruye al cargador del módulo para preservar los enlaces simbólicos al resolver y almacenar caché en los módulos.
 
-De forma predeterminada, cuando Node.Js carga un módulo de una ruta que está simbólicamente enlazada a una localización diferente en el disco, Node.Js desreferenciará el enlace y usará la "ruta real" actual del módulo en disco tanto como identificador como una ruta root para localizar otros módulos de dependencia. En la mayoría de los casos, este comportamiento predeterminado es aceptable. Sin embargo, cuando se usan dependencias de pares enlazadas simbólicamente, como se muestra en el siguiente ejemplo, el comportamiento predeterminado causa que una excepción sea arrojada si el `moduleA` intenta requerir `moduleB` como una dependencia de pares:
+Por defecto, cuando Node.js carga un módulo desde una ruta que está simbólicamente enlazada a una locación diferente en el disco, Node.js desreferenciará el enlace y utilizará la "ruta real" actual del módulo en el disco como un identificador y como una ruta raíz para localizar otros módulos de dependencia. En la mayoría de los casos, este comportamiento por defecto es aceptado. Sin embargo, al utilizar dependencias de pares enlazadas simbólicamente, como se ilustra en el siguiente ejemplo, el comportamiento por defecto causa una excepción a ser arrojada si el `moduleA` intenta requerir al `moduleB` como una dependencia de pares:
 
 ```text
 {appDir}
@@ -269,9 +269,9 @@ De forma predeterminada, cuando Node.Js carga un módulo de una ruta que está s
      └── package.json
 ```
 
-La bandera de línea de comando `--preserve-symlinks` instruye a Node.Js a usar la ruta symlink para módulos en vez de la ruta real, permitiendo que dependencias de pares enlazadas simbólicamente sean encontradas.
+La bandera de línea de comando `--preserve-symlinks` indica a Node.js utilizar la ruta symlink para módulos en lugar de la ruta real, permitiendo que se encuentren las dependencias de pares enlazadas simbólicamente.
 
-Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, módulos *native* simbólicamente enlazados pueden fallar al cargar si estos se encuentran enlazados desde mas de una localización en el árbol de dependencias (Node.Js observaría a estos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que una excepción sea arrojada).
+Note que, sin embargo, el uso de `--preserve-symlinks` puede tener otros efectos secundarios. Específicamente, los módulos *nativos* enlazados simbólicamente pueden fallar al cargar si están enlazadas desde más de una locación en el árbol de dependencia (Node.js podría verlos como dos módulos separados e intentaría cargar el módulo múltiples veces, causando que se arroje una excepción).
 
 ### `--track-heap-objects`
 
@@ -331,7 +331,7 @@ Fuerza cripto FIPS-compliant en inicio. (No puede ser deshabilitado desde el có
 added: v6.9.0
 -->
 
-Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser usado para habilitar criptografía compatible con los estándares federales de procesamiento de la información (FIPS) si Node.Js es construido con `./configure --openssl-fips`.
+Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser utilizado para habilitar la criptografía compatible con FIPS si Node.js se construye con `./configure --openssl-fips`.
 
 ### `--use-openssl-ca`, `--use-bundled-ca`
 
@@ -341,7 +341,7 @@ added: v7.5.0
 
 Utilizar el almacen predeterminado de OpenSSl CA o usar el almacen combinado Mozilla CA como es suministrado por la versión actual de Node.Js. El almacen predeterminado es seleccionable en el tiempo de construcción.
 
-El uso del almacén OpenSSL permite modificaciones externas del almacén. Para la mayoría de distribuciones Linux y BSD, esta tienda es mantenida por los mantenedores de distribución y los administradores de sistemas. La localización del almacen OpenSSL es dependiente de la configuración de la librería OpenSSl pero esto puede ser alterado en el tiempo de ejecución usando variables de ambiente.
+El uso del almacén OpenSSL permite modificaciones externas del almacén. Para la mayoría de las distribuciones Linux y BSD, este almacén es mantenido por los mantenedores de distribución y los administradores de sistema. La localización del almacen OpenSSL es dependiente de la configuración de la librería OpenSSl pero esto puede ser alterado en el tiempo de ejecución usando variables de ambiente.
 
 El almacen combinado CA, como es suministrado por Node.Js, es una instantánea del almacen Mozilla CA que es fija al tiempo de lanzamiento. Es idéntico en todas las plataformas soportadas.
 
@@ -413,7 +413,7 @@ Cuando se establece a `1`, no se utilizarán colores en el REPL.
 added: v0.11.15
 -->
 
-La ruta de datos para los datos ICU (objeto Inl). Extenderá los datos enlazados cuando se compilen con soporte Icu pequeño.
+La ruta de datos para los datos ICU (objeto Inl). Extenderá los datos enlazados cuando se compilen con soporte de icu pequeño.
 
 ### `NODE_NO_WARNINGS=1`
 
@@ -483,7 +483,7 @@ added: v8.0.0
 
 Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 
-*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
+*Note*: Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Las desaprobaciones pendientes son utilizadas para proporcionar un tipo de mecanismo de "advertencia temprana" selectivo que los desarrolladores pueden aprovechar para detectar usos de API desaprobados.
 
 ### `NODE_PRESERVE_SYMLINKS=1`
 
@@ -491,7 +491,7 @@ Cuando se establece a `1`, emite advertencias de desaprobación pendientes.
 added: v7.1.0
 -->
 
-When set to `1`, instructs the module loader to preserve symbolic links when resolving and caching modules.
+Cuando se establece a `1`, indica al cargador del módulo para preservar enlaces simbólicos al resolver y almacenar caché en los módulos.
 
 ### `NODE_REPL_HISTORY=file`
 
@@ -499,7 +499,7 @@ When set to `1`, instructs the module loader to preserve symbolic links when res
 added: v3.0.0
 -->
 
-Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta por defecto es `~/.node_repl_history`, la cual puede ser sobreescrita por esta variable. Establecer el valor a una string vacía (`''` or `' '`) inhabilita el historial REPL persistente.
+Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta por defecto es `~/.node_repl_history`, la cual es anulada por esta variable. Configurar el valor a una string vacía (`''` o `' '`) inhabilita el historial REPL persistente.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 
@@ -507,9 +507,9 @@ Ruta al archivo utilizado para almacenar el historial REPL persistente. La ruta 
 added: v7.3.0
 -->
 
-Cuando es colocado, el muy conocido "root" CA (como VeriSign) será extendido con los certificados extra en `file`. El archivo debería consistir de uno o más certificados de confianza en el formato PEM. A message will be emitted (once) with [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) if the file is missing or malformed, but any errors are otherwise ignored.
+Cuando es colocado, el muy conocido "root" CA (como VeriSign) será extendido con los certificados extra en `file`. El archivo debería consistir de uno o más certificados de confianza en el formato PEM. Se emitirá un mensaje (una vez) con [`process.emitWarning()`](process.html#process_process_emitwarning_warning_type_code_ctor) si falta el archivo o está malformado, pero cualquier error es ignorado.
 
-Note que ni los certificados bien conocidos ni los extras se utilizan cuando las propiedades de las opciones `ca` son explícitamente especificados por un cliente TLS o HTTPS o un servidor.
+Tenga en cuenta que ni los certificados bien conocidos ni los extra se utilizan cuando la propiedad de opciones `ca` está explícitamente especificada para un servidor o cliente TLS o HTTPS.
 
 ### `OPENSSL_CONF=file`
 
@@ -519,7 +519,7 @@ added: v7.7.0
 
 Carga un archivo de configuración OpenSSL en el arranque. Entre otros usos, esto puede ser usado para habilitar criptografía compatible con los estándares federales de procesamiento de la información (FIPS) si Node.Js es construido con `./configure --openssl-fips`.
 
-Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno es ignorada.
+Si la opción de línea de comando [`--openssl-config`][] es usada, la variable de entorno se ignora.
 
 ### `SSL_CERT_DIR=dir`
 
@@ -527,7 +527,7 @@ Si la opción de línea de comando [`--openssl-config`][] es usada, la variable 
 added: v7.7.0
 -->
 
-Si `--use-openssl-ca` es habilitado, esto lo anula y establece el directorio de OpenSSl que contiene los certificados de confianza.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el directorio de OpenSSL que contiene certificados de confianza.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
@@ -537,7 +537,7 @@ Si `--use-openssl-ca` es habilitado, esto lo anula y establece el directorio de 
 added: v7.7.0
 -->
 
-Si `--use-openssl-ca` es habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
+Si `--use-openssl-ca` está habilitado, esto lo anula y establece el archivo de OpenSSL que contiene certificados de confianza.
 
 *Note*: Be aware that unless the child environment is explicitly set, this environment variable will be inherited by any child processes, and if they use OpenSSL, it may cause them to trust the same CAs as node.
 
@@ -547,15 +547,15 @@ Si `--use-openssl-ca` es habilitado, esto lo anula y establece el archivo de Ope
 added: v8.0.0
 -->
 
-Cuando se establece, se emitirán advertencias de procesos al archivo dado en vez de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si un error ocurre al internar escribir la advertencia al archivo, la advertencia será escrita al stderr en su lugar. Esto es equivalente a usar la bandera de línea de comandos `--redirect-warnings=file`.
+Cuando se establece, se emitirán advertencias de proceso al archivo dado en lugar de imprimirlas en stderr. El archivo será creado si no existe, y se adjuntará si existe. Si ocurre un error al intentar escribir la advertencia al archivo, la advertencia será escrita en stderr en su lugar. Esto es equivalente a utilizar la bandera de línea de comando `--redirect-warnings=file`.
 
 ### `UV_THREADPOOL_SIZE=size`
 
 Set the number of threads used in libuv's threadpool to `size` threads.
 
-Asynchronous system APIs are used by Node.js whenever possible, but where they do not exist, libuv's threadpool is used to create asynchronous node APIs based on synchronous system APIs. APIs de Node.js que utilizan el threadpool son:
+Las APIs de sistema asincrónicas son utilizadas por Node.js cada vez que es posible, pero donde ellas no existan el threadpool de libuv es utilizado para crear APIs de nodo asincrónicas basadas en APIs de sistema sincrónicas. APIs de Node.js que utilizan el threadpool son:
 
-- all `fs` APIs, other than the file watcher APIs and those that are explicitly synchronous
+- todas las APIs `fs`, distintas a las APIs observadoras de archivo y aquellas que son explícitamente sincrónicas
 - `crypto.pbkdf2()`
 - `crypto.randomBytes()`, a menos que sea usada sin un callback
 - `crypto.randomFill()`
