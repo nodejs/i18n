@@ -12,7 +12,7 @@ const async_hooks = require('async_hooks');
 
 ## Terminologie
 
-Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. Een hulpmiddel kan ook worden gesloten voordat de callback wordt aangeroepen. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
+Een asynchrone hulpbron vertegenwoordigt een object met een bijbehorende callback. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. A resource can also be closed before the callback is called. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
 ## Openbare API
 
@@ -425,7 +425,7 @@ const server = net.createServer((conn) => {
 });
 ```
 
-Observeer dat belofte contexten standaard geen precieze triggerAsyncIds krijgen. Zie de sectie over [promise execution tracking](#async_hooks_promise_execution_tracking).
+Observeer dat belofte contexten standaard geen precieze triggerAsyncIds krijgen. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 ## Belofte uitvoering tracering
 
