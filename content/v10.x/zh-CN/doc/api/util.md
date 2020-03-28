@@ -41,9 +41,9 @@ callbackFunction((err, ret) => {
 hello world
 ```
 
-回调是异步执行的，且将具有有限的栈回溯。 If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
+回调是异步执行的，且将具有有限的栈回溯。 如果回调函数抛出异常，进程将发出一个 [`'uncaughtException'`][] 事件，如果该事件没有被处理，则将退出。
 
-Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
+由于 `null` 作为回调函数的第一个参数具有特殊含义，如果一个被包装的函数拒绝 `Promise` 并返回虚值作为原因，则原始值将被存储于 `reason` 字段，并被包装在 `Error` 中。
 
 ```js
 function fn() {
@@ -173,7 +173,7 @@ changes:
 * `%i` - Integer or `BigInt`.
 * `%f` - 单精度浮点数。
 * `%j` - JSON。 如果参数中包含循环引用，将其替换为字符串 `'[Circular]'`。
-* `%o` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
+* `%o` - `Object`. 一个代表对象的字符串，以通用 JavaScript 对象格式来呈现。 Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
 * `%O` - `Object`. A string representation of an object with generic JavaScript object formatting. 类似于没有选项的 `util.inspect()`。 This will show the full object not including non-enumerable properties and proxies.
 * `%%` - 单个百分号 (`'%'`)。 它不使用参数。
 * Returns: {string} The formatted string
@@ -254,7 +254,7 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
+Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. 还请注意这两种风格在 [语义上不兼容](https://github.com/nodejs/node/issues/4179)。
 
 Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
 
@@ -662,13 +662,13 @@ async function callStat() {
 }
 ```
 
-If there is an `original[util.promisify.custom]` property present, `promisify` will return its value, see [Custom promisified functions](#util_custom_promisified_functions).
+如果存在 `original[util.promisify.custom]` 属性，`promisify` 将会返回它的值，请参阅 [自定义 promisified 函数](#util_custom_promisified_functions)。
 
-`promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
+`promisify()` 假定 `original` 是一个在所有情况下都将回调函数作为其最终参数的函数。 如果 `original` 不是一个函数，`promisify()` 会抛出一个错误。 如果 `original` 是一个函数，但其最后参数不是 error-first 风格回调函数，它仍会收到一个 error-first 风格的回调函数作为其最后一个参数。
 
 ### 自定义 promisified 函数
 
-Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
+使用 `util.promisify.custom` 符号可以覆盖 [`util.promisify()`][] 的返回值：
 
 ```js
 const util = require('util');
@@ -686,7 +686,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 // prints 'true'
 ```
 
-This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
+这在当原始函数没有遵循标准格式，也就是把 error-first 回调函数作为最后一个参数的情况下非常有用。
 
 For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
@@ -698,7 +698,7 @@ doSomething[util.promisify.custom] = (foo) => {
 };
 ```
 
-If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
+如果 `promisify.custom` 已定义但不是一个函数，`promisify()` 会抛出一个错误。
 
 ### util.promisify.custom
 
@@ -730,9 +730,9 @@ string += decoder.decode(); // end-of-stream
 
 ### WHATWG 支持的编码
 
-Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
+根据 [WHATWG 编码规范](https://encoding.spec.whatwg.org/)，受 `TextDecoder` API 支持的编码如下表所示。 对于每种编码，可以使用一个或多个别名。
 
-不同的 Node.js 构建配置支持不同的编码集。 While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
+不同的 Node.js 构建配置支持不同的编码集。 即使对于没有启用 ICU 的 Node.js 构建，也支持最基本的编码集，对于某些编码，只有启用了 ICU 并使用所有 ICU 数据的 Node.js 才被支持 （请参阅 [国际化](intl.html)）。
 
 #### 没有启用 ICU 时支持的编码
 
@@ -792,12 +792,12 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
 
 ### new TextDecoder([encoding[, options]])
 
-* `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
+* `encoding` {string} 标识这个 `TextDecoder` 实例支持的 `编码`。 **Default:** `'utf-8'`.
 * `options` {Object} 
   * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **默认:** `false`.
+  * `ignoreBOM` {boolean} 当值为 `true` 时，`TextDecoder` 将在解码结果中包括字节顺序标记。 当值为 `false` 时，字节顺序标记将被从输出中删除。 此选项仅在 `encoding` 为 `'utf-8'`, `'utf-16be'` 或 `'utf-16le'` 时被使用。 **默认:** `false`.
 
-创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
+创建一个新的 `TextDecoder` 实例。 `encoding` 可以指定一个支持的编码或别名。
 
 ### textDecoder.decode([input[, options]])
 
@@ -806,9 +806,9 @@ The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://en
   * `stream` {boolean} 如果期待额外的数据块，则为 `true`。 **默认:** `false`.
 * 返回：{string}
 
-对 `input` 进行解码并返回一个字符串。 If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
+对 `input` 进行解码并返回一个字符串。 如果 `options.stream` 的值为 `true`， `input` 末尾处的任何不完整字节序列会先在内部缓存，并在下一次调用 `textDecoder.decode()` 后被发送。
 
-If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
+如果 `textDecoder.fatal` 的值为 `true`，一旦发生解码错误会导致抛出 `TypeError`。
 
 ### textDecoder.encoding
 
@@ -820,13 +820,13 @@ If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `T
 
 * {boolean}
 
-The value will be `true` if decoding errors result in a `TypeError` being thrown.
+如果解码错误导致 `TypeError` 被抛出，则其值为 `true`。
 
 ### textDecoder.ignoreBOM
 
 * {boolean}
 
-The value will be `true` if the decoding result will include the byte order mark.
+如果解码结果将会包括字节顺序标记，则该值为 `true`。
 
 ## 类：util.TextEncoder
 
@@ -834,7 +834,7 @@ The value will be `true` if the decoding result will include the byte order mark
 added: v8.3.0
 -->
 
-[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 All instances of `TextEncoder` only support UTF-8 encoding.
+[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 所有 `TextEncoder` 的实例只支持 UTF-8 编码。
 
 ```js
 const encoder = new TextEncoder();
@@ -846,7 +846,7 @@ const uint8array = encoder.encode('this is some data');
 * `input` {string} 要进行编码的文字。 **Default:** an empty string.
 * 返回：{Uint8Array}
 
-UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
+使用 UTF-8 编码 `input` 字符串，并返回包含编码字节的 `Uint8Array`。
 
 ### textEncoder.encoding
 
@@ -889,7 +889,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* 返回: {boolean}
 
 Returns `true` if the value is an `arguments` object.
 
@@ -924,7 +924,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* 返回: {boolean}
 
 Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1650,7 +1650,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`util.types.isDate()`][]。
 
 * `object` {any}
 * 返回：{boolean}
@@ -1675,7 +1675,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
+> 稳定性：0 - 已弃用：改为使用 [`util.types.isNativeError()`][]。
 
 * `object` {any}
 * 返回：{boolean}
