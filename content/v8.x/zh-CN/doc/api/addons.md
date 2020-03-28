@@ -2,19 +2,19 @@
 
 <!--introduced_in=v0.10.0-->
 
-Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
+Node.js插件是用C++编写的动态链接的共享对象，可以通过使用[`require()`](modules.html#modules_require)函数加载到Node.js，可以像普通Node.js模块一样使用这些插件。 它们主要被用于提供一个在Node.js中运行的JavaScript和C/C++库之间的接口。
 
 目前，实现插件的方法相当复杂，涉及到多个组件和API的知识：
 
 * V8: 为了提供JavaScript的实现，目前Node.js使用的C++库。 V8提供了创建对象、调用函数等机制。 V8 API的说明主要在`v8.h`头文件(在Node.js源代码中的`deps/v8/include/v8.h`)中，该文件也可[在线访问](https://v8docs.nodesource.com/)。
 
-* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些在标准事件循环之上的更复杂的异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
+* [libuv](https://github.com/libuv/libuv): 实现了Node.js事件循环、worker线程、以及平台的所有异步行为的C库。 它同时也是一个跨平台的抽象库，使得在所有主流操作系统中，就像POSIX一样，可以轻松的访问许多常见的系统任务，比如：和文件系统的交互、sockets、定时器、和系统事件等。 libuv还提供了和pthreads类似的线程抽象，它可以用来支持那些在标准事件循环之上的更复杂的异步插件。 插件作者们被鼓励思考如何避免因为I/O操作或其他耗时任务而导致的事件循环阻塞，要解决这个问题，可以通过使用libuv来将任务转换为非阻塞系统操作、worker线程、或自定义的libuv线程。
 
 * Node.js的内置库。 Node.js 自身开放了一些插件可以使用的 C++ API &mdash; 其中最重要的是 `node::ObjectWrap` 类。
 
-* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
+* Node.js包含了一些其他的静态链接库，比如OpenSSL。 这些库位于Node.js源代码中的`deps/`目录中。 只有 libuv、V8和 zlib 符号是通过 Node.js 特意重新开放的，并且可以通过插件用于各种不同的场景。 请参阅[链接到Node.js自身依赖库](#addons_linking_to_node_js_own_dependencies)以获取更多信息。
 
-All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
+下面的所有示例都可[下载](https://github.com/nodejs/node-addon-examples)，且可被用于插件开发的起点。
 
 ## Hello world
 
@@ -68,7 +68,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 ### 构建
 
-当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. 该文件会被 [node-gyp](https://github.com/nodejs/node-gyp)（专门为编译Node.js 插件而编写的工具） 使用。
+当源代码编写完后，它必须被编译为二进制的`addon.node`文件。 为了实现这个目标，在项目的根目录中创建一个类似JSON格式的文件`binding.gyp`，该文件中包含模块的构建配置信息。 该文件会被 [node-gyp](https://github.com/nodejs/node-gyp)（专门为编译Node.js 插件而编写的工具） 使用。
 
 ```json
 {
@@ -81,7 +81,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 }
 ```
 
-*Note*: A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. 此版本并不是给开发者直接使用的，而是仅用于支持`npm install`命令来编译和安装插件的。 想要直接使用`node-gyp`的开发者可以通过使用命令`npm install -g node-gyp`来安装它。 请查阅`node-gyp` [安装说明](https://github.com/nodejs/node-gyp#installation)来获取更多信息，包括特定平台的要求。
+*注意*：作为`npm`的一部分，`node-gyp`工具的一个版本会和Node.js一起捆绑发布。 此版本并不是给开发者直接使用的，而是仅用于支持`npm install`命令来编译和安装插件的。 想要直接使用`node-gyp`的开发者可以通过使用命令`npm install -g node-gyp`来安装它。 请查阅`node-gyp` [安装说明](https://github.com/nodejs/node-gyp#installation)来获取更多信息，包括特定平台的要求。
 
 一旦`binding.gyp`文件被创建，使用`node-gyp configure`命令在当前平台中生成相应的项目构建文件。 这会生成一个`Makefile` (在Unix平台)，或 `build/`目录中的`vcxproj` (在Windows中)。
 
@@ -89,7 +89,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 当使用`npm install`安装Node.js插件时，npm使用它自己捆绑的`node-gyp`来执行相同操作，从而为用户要求的平台生成编译后的版本。
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+一旦构建，就可以通过将[`require()`](modules.html#modules_require)指向`addon.node`模块，从而在Node.js中使用二进制的插件。
 
 ```js
 // hello.js
@@ -123,9 +123,9 @@ Node.js使用一定数量的诸如V8，libuv，和OpenSSL的静态链接库。 �
 
 ### 使用require() 加载插件
 
-已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+已编译的插件二进制文件的扩展名为`.node` (与之相对的是`.dll` 或 `.so`)。 编写[`require()`](modules.html#modules_require)函数的目的就是查找具有`.node`扩展名的文件，并将其初始化为动态链接库。
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. 但有一点需要注意，Node.js会首先尝试定位并加载那些享有相同基本名称的JavaScript文件。 For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
+当调用[`require()`](modules.html#modules_require)时，通常可以省略`.node`扩展名，Node.js仍可找到并初始化插件。 但有一点需要注意，Node.js会首先尝试定位并加载那些享有相同基本名称的JavaScript文件。 例如：如果文件`addon.js`和二进制文件`addon.node`在同一个目录下，那么[`require('addon')`](modules.html#modules_require)会优先考虑`addon.js`文件并加载它。
 
 ## Node.js原生模块抽象接口
 
@@ -137,9 +137,9 @@ When calling [`require()`](modules.html#modules_require), the `.node` extension 
 
 > 稳定性: 1 - 实验中
 
-N-API是构建原生插件的API。 It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是原生代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
+N-API是构建原生插件的API。 它独立于底层JavaScript运行时（例如，V8），并作为Node.js本身的一部分进行维护。 此API将是稳定的跨Node.js版本的应用程序二进制接口（ABI）。 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。 插件是使用本文档中概述的相同方法/工具（node-gyp等）构建/打包的。 唯一的区别是原生代码使用的API集。 不使用V8或 [Node.js 原生模块抽象接口](https://github.com/nodejs/nan)，而是使用N-API中可用的函数。
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. 所有其它说明保持不变。
+在上述“Hello World”示例中使用N-API，替换 `hello.cc` 中的内容如下。 所有其它说明保持不变。
 
 ```cpp
 // hello.cc using N-API
@@ -177,7 +177,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 ## 插件示例
 
-如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了 V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
+如下是一些旨在帮助开发人员入门的插件示例。 这些示例使用了V8 API。 有关各种 V8 调用的帮助，请参阅在线 [V8 参考](https://v8docs.nodesource.com/)，关于对句柄，作用域，函数模板等概念的介绍，请参阅V8 的 [嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide)。
 
 这些示例都使用以下 `binding.gyp` 文件：
 
