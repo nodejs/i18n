@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Stable
 
-HTTPS es el protocolo de HTTP sobre TLS/SSL. In Node.js this is implemented as a separate module.
+HTTPS es el protocolo de HTTP sobre TLS/SSL. En Node.js, esto se implementa como un módulo separado.
 
 ## Clase: https.Agent
 
@@ -12,7 +12,7 @@ HTTPS es el protocolo de HTTP sobre TLS/SSL. In Node.js this is implemented as a
 added: v0.4.5
 -->
 
-Un objeto Agente para HTTPS similar a [`http.Agent`][]. See [`https.request()`][] for more information.
+Un objeto Agente para HTTPS similar a [`http.Agent`][]. Vea [`https.request()`][] para más información.
 
 ## Clase: https.Server
 
@@ -20,7 +20,7 @@ Un objeto Agente para HTTPS similar a [`http.Agent`][]. See [`https.request()`][
 added: v0.3.4
 -->
 
-This class is a subclass of `tls.Server` and emits events same as [`http.Server`][]. Vea [`http.Server`][] para más información.
+Esta clase es una subclase de `tls.Server` y emite eventos iguales a [`http.Server`][]. Vea [`http.Server`][] para más información.
 
 ### server.close([callback])
 
@@ -173,14 +173,14 @@ changes:
 -->
 
 - `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  - `protocol` **Default:** `https:`
-  - `port` **Predeterminado:** `443`
-  - `agent` **Predeterminado:** `https.globalAgent`
+    - `protocol` **Default:** `https:`
+    - `port` **Predeterminado:** `443`
+    - `agent` **Predeterminado:** `https.globalAgent`
 - `callback` {Function}
 
 Hace una solicitud a un servidor web seguro.
 
-The following additional `options` from [`tls.connect()`][] are also accepted when using a custom [`Agent`][]: `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
+Las siguientes `options` adicionales de [`tls.connect()`][] también son aceptadas cuando se utiliza un [`Agent`][] personalizado: `pfx`, `key`, `passphrase`, `cert`, `ca`, `ciphers`, `rejectUnauthorized`, `secureProtocol`, `servername`
 
 `options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
