@@ -13,7 +13,7 @@ changes:
 
 > Kararlılık: 2 - Kararlı
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. Modülü yüklemek için:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
 ```js
 const http2 = require('http2');
@@ -987,7 +987,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the
+--> Provides miscellaneous information about the current state of the 
 
 `Http2Stream`.
 
@@ -1392,7 +1392,7 @@ If a [`'request'`][] listener is registered or [`http2.createServer()`][] is sup
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
 
 #### Event: 'request'
 
@@ -1511,7 +1511,7 @@ If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
 
 #### Event: 'request'
 
@@ -1617,14 +1617,16 @@ The given callback is registered as a listener on the `'timeout'` event.
 
 In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
 
-### http2.createServer(options[, onRequestHandler])<!-- YAML
+### http2.createServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1680,7 +1682,9 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.createSecureServer(options[, onRequestHandler])<!-- YAML
+### http2.createSecureServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -1691,7 +1695,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1743,14 +1747,16 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.connect(authority\[, options\]\[, listener\])<!-- YAML
+### http2.connect(authority\[, options\]\[, listener\])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1901,7 +1907,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: The `maxHeaderListSize` setting is now strictly enforced.
---> The
+--> The 
 
 `http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
 
@@ -2361,6 +2367,8 @@ Accept: text/plain\r\n
 
 Then `request.url` will be:
 
+<!-- eslint-disable semi -->
+
 ```js
 '/status?name=ryan'
 ```
@@ -2405,11 +2413,13 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse<!-- YAML
-added: v8.4.0
--->This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [
+### Class: http2.Http2ServerResponse
 
-`'request'`][] event.
+<!-- YAML
+added: v8.4.0
+-->
+
+This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 The response inherits from [Stream](stream.html#stream_stream), and additionally implements the following:
 
@@ -2427,7 +2437,7 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Emitted when the response has been sent. Daha spesifik olarak, bu olay cevap başlıklarının ve gövdesinin son bölümü ağ üzerinden aktarım için HTTP/2 çoğullamasına bırakıldığında ortaya çıkar. It does not imply that the client has received anything yet.
 
 Bu olaydan sonra, tepki nesnesine daha fazla olay yayınlanmayacak.
 
@@ -2453,7 +2463,9 @@ added: v8.4.0
 
 See [`response.socket`][].
 
-#### response.end(\[data\]\[, encoding\][, callback])<!-- YAML
+#### response.end(\[data\]\[, encoding\][, callback])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -2473,7 +2485,9 @@ If `data` is specified, it is equivalent to calling [`response.write(data, encod
 
 If `callback` is specified, it will be called when the response stream is finished.
 
-#### response.finished<!-- YAML
+#### response.finished
+
+<!-- YAML
 added: v8.4.0
 -->
 
@@ -2753,7 +2767,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 
-For compatibility with \[HTTP/1\]\[\], a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
+For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
 const body = 'hello world';
