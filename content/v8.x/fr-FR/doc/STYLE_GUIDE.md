@@ -1,11 +1,11 @@
 # Style guide
 
-* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+* La documentation est composée de fichiers markdown, nommés suivant le format `minuscules-avec-tirets.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * Certains fichiers, tels que les fichiers markdown de premier niveau, sont a des exceptions.
 * Les fichiers doivent être limité à 80 caractères par ligne.
 * La mise en forme décrite dans `.editorconfig` est à préférer. 
-  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+  * Un [plugin](http://editorconfig.org/#download) est disponible pour certains éditeurs afin d'appliquer automatiquement ces règles.
 * Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
