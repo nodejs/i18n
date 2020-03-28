@@ -132,21 +132,21 @@ El tipo de lanzamiento debe ser Actual, LTS o de Mantenimiento, dependiendo del 
 
 Be sure that the `<a>` tag, as well as the two headings, are not indented at all.
 
-At the top of each `CHANGELOG_*.md` file, and in the root `CHANGELOG.md` file, there is a table indexing all releases in each major release line. A link to the new release needs to be added to each. Follow the existing examples and be sure to add the release to the *top* of the list.
+Por encima de cada archivo `CHANGELOG_*.md`, y en el archivo `CHANGELOG.md` raíz, hay una tabla que indexa todos los lanzamientos en cada línea de lanzamiento mayor. Es necesario añadir un enlace a cada uno de los nuevos lanzamientos. Siga los ejemplos existentes y asegúrese de añadir el lanzamiento al *comienzo* de la lista.
 
-In the root `CHANGELOG.md` file, the most recent release for each release line is shown in **bold** in the index. When updating the index, please make sure to update the display accordingly by removing the bold styling from the previous release.
+En el archivo raíz de `CHANGELOG.md`, el lanzamiento más reciente para cada línea de lanzamiento se muestra en **negritas** en el índice. Al actualizar el índice, por favor asegúrese de actualizar la pantalla adecuadamente removiendo el estilo en negrita del lanzamiento anterior.
 
 #### Paso 3: Actualiza cualquier etiqueta REPLACEME y DEP00XX en los documentos
 
-If this release includes new APIs then it is necessary to document that they were first added in this version. The relevant commits should already include `REPLACEME` tags as per the example in the [docs README](../tools/doc/README.md). Check for these tags with `grep REPLACEME doc/api/*.md`, and substitute this node version with `sed -i "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g" doc/api/*.md`.
+Si este lanzamiento incluye nuevas APIs, entonces es necesario documentar que fueron añadidas por primera vez en esta versión. Los commits relevantes deberían ya incluir las etiquetas de `REPLACEME` como en el ejemplo en los [documentos README](../tools/doc/README.md). Check for these tags with `grep REPLACEME doc/api/*.md`, and substitute this node version with `sed -i "s/REPLACEME/$VERSION/g" doc/api/*.md` or `perl -pi -e "s/REPLACEME/$VERSION/g" doc/api/*.md`.
 
 *Nota*: `$VERSION` debería tener de prefijo una `v`
 
-If this release includes any new deprecations it is necessary to ensure that those are assigned a proper static deprecation code. These are listed in the docs (see `doc/api/deprecations.md`) and in the source as `DEP00XX`. The code must be assigned a number (e.g. `DEP0012`). Note that this assignment should occur when the PR is landed, but a check will be made when the release built is run.
+Si este lanzamiento incluye cualquier tipo de desaprobación nueva, es necesario asegurarse que esas fueron asignadas a un código de desaprobación estático apropiado. Éstas están listadas en los documentos (vea `doc/api/deprecations.md`) y en la fuente como `DEP00XX`. Al código se le debe asignar un número (p. ej. `DEP0012`). Note that this assignment should occur when the PR is landed, but a check will be made when the release built is run.
 
 ### 4. Crear un Commit de Lanzamiento
 
-The `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h`, and `REPLACEME` changes should be the final commit that will be tagged for the release. Cuando se le hagan commit a esto para gitm usa el siguiente formato de mensaje:
+Los cambios de `CHANGELOG.md`, `doc/changelogs/CHANGELOG_*.md`, `src/node_version.h` y `REPLACEME` deberían ser el commit final que será etiquetado para el lanzamiento. Cuando se le hagan commit a esto para gitm usa el siguiente formato de mensaje:
 
 ```txt
 AAAA-MM-DD, Versión x.y.z (Tipo de Lanzamiento)
