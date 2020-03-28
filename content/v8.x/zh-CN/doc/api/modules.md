@@ -25,11 +25,11 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-`circle.js` 模块导出了 `area()` 和 `circumference()` 函数。 Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+`circle.js` 模块导出了 `area()` 和 `circumference()` 函数。 通过在特殊的 `exports` 对象上指定额外的属性，可将函数和对象添加到模块的根部。
 
 因为模块由 Node.js 包装在一个函数中 (请参阅 [模块包装器](#modules_the_module_wrapper))，因此模块的本地变量将会是私有的。 在此示例中，变量 `PI` 在 `circle.js` 中是私有的。
 
-The `module.exports` property can be assigned a new value (such as a function or object).
+`module.exports` 属性可被赋予一个新的值 (例如一个函数或对象)。
 
 如下所示，`bar.js` 中使用了 `square` 模块，在该模块中导出了 Square 类：
 
@@ -60,7 +60,7 @@ module.exports = class Square {
 
 <!-- type=misc -->
 
-当 Node.js 直接运行一个文件时，`require.main` 会被设为它的 `module`。 That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+当 Node.js 直接运行一个文件时，`require.main` 会被设为它的 `module`。 这意味着可以通过测试 `require.main === module` 来判断一个文件是否被直接运行。
 
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
