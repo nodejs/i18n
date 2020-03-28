@@ -10,7 +10,7 @@ Lorsque approprié, les type de propriétés, les arguments de méthodes et les 
 
 ## Contribuer
 
-If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
+Si des erreurs sont trouvées dans cette documentation, veuillez [ouvrir une issue](https://github.com/nodejs/node/issues/new) ou regarder [le guide de contribution](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) afin d'obtenir des instructions sur la façon de soumettre un correctif.
 
 Chaque fichier est généré en fonction du fichier `.md` correspondant dans le dossier `doc/api/` source de Node.js. La documentation est générée en utilisant le programme `tools/doc/generate.js` . Un modèle HTML est situé dans `doc/template.html`.
 
@@ -18,7 +18,7 @@ Chaque fichier est généré en fonction du fichier `.md` correspondant dans le 
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. L'API Node.js continue à évoluer et pendant cette phase de maturité certaines parties sont plus fiables que d'autres. Certaines sont tellement fiables et éprouvées qu'il est peut probable qu'elles changent à nouveau. D'autres sont toutes neuves et expérimentales ou ne sont pas réputée pour être fiable et sont en cours de refonte.
+Tout au long de la documentation se trouvent des indications sur la stabilité d'une section. L'API Node.js continue à évoluer et pendant cette phase de maturité certaines parties sont plus fiables que d'autres. Certaines sont tellement fiables et éprouvées qu'il est peut probable qu'elles changent à nouveau. D'autres sont toutes neuves et expérimentales ou ne sont pas réputée pour être fiable et sont en cours de refonte.
 
 Les indices de stabilité sont les suivants :
 
