@@ -4,7 +4,7 @@
 
 > Estabilidad: 2 - Estable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Se puede acceder a él utilizando:
+El módulo `util` está diseñado principalmente para soportar las necesidades de las APIs internas de Node.js. Sin embargo, muchas de las utilidades también son útiles para desarrolladores de aplicaciones y módulos. Se puede acceder a él utilizando:
 
 ```js
 const util = require('util');
@@ -68,10 +68,10 @@ hello world
 added: v0.11.3
 -->
 
-* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
+* `section` {string} Una string identificando la porción de la aplicación para la cual la función `debuglog` está siendo creada.
 * Retorna: {Function} La función de registro
 
-The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. Si no, entonces la función retornada es un no-op.
+El método `util.debuglog()` es utilizado para crear una función que condicionalmente escribe mensajes de depuración para `stderr` basándose en la existencia de la variable de entorno `NODE_DEBUG`. Si el nombre de la `section` aparece dentro del valor de esa variable de entorno, entonces la función devuelta opera de manera similar a [`console.error()`][]. Si no, entonces la función retornada es un no-op.
 
 For example:
 
@@ -82,15 +82,15 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
+Si este programa se ejecuta con `NODE_DEBUG=foo` en el entorno, entonces el resultado será algo como:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-donde `3245` es la identificación del proceso. If it is not run with that environment variable set, then it will not print anything.
+donde `3245` es la identificación del proceso. Si no es ejecutado con ese conjunto de variables de entorno, entonces no imprimirá nada.
 
-Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable. Por ejemplo: `NODE_DEBUG=fs,net,tls`.
+Múltiples nombres de la `section` separados con comas pueden ser especificados en la variable de entorno `NODE_DEBUG`. Por ejemplo: `NODE_DEBUG=fs,net,tls`.
 
 ## util.deprecate(function, string)
 
@@ -98,7 +98,9 @@ Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` en
 added: v0.8.0
 -->
 
-The `util.deprecate()` method wraps the given `function` or class in such a way that it is marked as deprecated.
+El método `util.deprecate()` envuelve a la `function` o clase dada de tal manera que es marcada como desaprobada.
+
+<!-- eslint-disable prefer-rest-params -->
 
 ```js
 const util = require('util');
@@ -110,17 +112,19 @@ exports.puts = util.deprecate(function() {
 }, 'util.puts: Use console.log instead');
 ```
 
-When called, `util.deprecate()` will return a function that will emit a `DeprecationWarning` using the `process.on('warning')` event. By default, this warning will be emitted and printed to `stderr` exactly once, the first time it is called. After the warning is emitted, the wrapped `function` is called.
+Cuando sea llamada, `util.deprecate()` devolverá una función que va a emitir una `DeprecationWarning` usando el evento `process.on('warning')`. Por defecto, esta advertencia será emitida e impresa en `stderr` exactamente una vez, la primera vez que sea llamada. Luego de que se emite la advertencia, se llama a la `function` envuelta.
 
-If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
+Si las banderas de línea de comandos `--no-deprecation` o `--nowarnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *antes* de la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
 
-If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
+Si las banderas de línea de comandos `--trace-deprecation` o `--trace-warnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un stack trace son impresos a `stderr` la primera vez que la función desaprobada sea llamada.
 
-If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
+Si la bandera de línea de comandos `--throw-deprecation` está establecida, o la propiedad `process.throwDeprecation` está establecida en `true`, entonces una excepción va a ser arrojada cuando la función desaprobada sea llamada.
 
-The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
+La bandera de línea de comandos `--throw-deprecation` y la propiedad `process.throwDeprecation` tienen prioridad sobre `--trace-deprecation` y `process.traceDeprecation`.
 
-## util.format(format[, ...args])<!-- YAML
+## util.format(format[, ...args])
+
+<!-- YAML
 added: v0.5.3
 changes:
 
@@ -131,50 +135,51 @@ changes:
 
 * `format` {string} Un formato de string parecido a `printf`.
 
-The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
+El método `util.format()` retorna una string con formato usando el primer argumento como un formato parecido a `printf`.
 
-El primer argumento es una string que contiene cero o más tokens de *placeholder*. Each placeholder token is replaced with the converted value from the corresponding argument. Los placeholders soportados son:
+El primer argumento es una string que contiene cero o más tokens de *placeholder*. Cada token de placeholder es reemplazado con el valor convertido del argumento correspondiente. Los placeholders soportados son:
 
 * `%s` - String.
 * `%d` - Número (valor entero o punto flotante).
 * `%i` - Entero.
 * `%f` - Valor de coma flotante.
-* `%j` - JSON. Replaced with the string `'[Circular]'` if the argument contains circular references.
-* `%o` - Objeto. A string representation of an object with generic JavaScript object formatting. Similar a `util.inspect()` con las opciones `{ showHidden: true, depth: 4, showProxy: true }`. Esto mostrará el objeto completo, incluyendo los símbolos no enumerables y las propiedades.
-* `%O` - Objeto. A string representation of an object with generic JavaScript object formatting. Similar a `util.inspect()` sin opciones. Esto mostrará el objeto completo, incluyendo los símbolos no enumerables y las propiedades.
+* `%j` - JSON. Reemplazado con la string `'[Circular]'` si el argumento contiene referencias circulares.
+* `%o` - Objeto. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con las opciones `{ showHidden: true, depth: 4, showProxy: true }`. Esto mostrará el objeto completo, incluyendo los símbolos no enumerables y las propiedades.
+* `%O` - Objeto. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. Esto mostrará el objeto completo, incluyendo los símbolos no enumerables y las propiedades.
 * `%%` - signo de porcentaje individual (`'%'`). Esto no consume un argumento.
 
-If the placeholder does not have a corresponding argument, the placeholder is not replaced.
+Si el placeholder no tiene un argumento correspondiente, no es reemplazado.
 
 ```js
 util.format('%s:%s', 'foo');
 // Retorna: 'foo:%s'
 ```
 
-If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
+Si hay más argumentos pasados al método `util.format()` que el número de placeholders, los argumentos extra son coaccionados en strings, luego concatenados a la string retornada, cada uno delimitado por un espacio. Argumentos excesivos cuyos `typeof` sean `'object'` o `'symbol'` (excepto `null`), serán transformados por `util.inspect()`.
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. Cada argumento es convertido a una string utilizando `util.inspect()`.
+Si el primer argumento no es una string, entonces `util.format()` devuelve una string que es la concatenación de todos los argumentos separados por espacios. Cada argumento es convertido a una string utilizando `util.inspect()`.
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
 ```
 
-If only one argument is passed to `util.format()`, it is returned as it is without any formatting.
+Si solo un argumento es pasado a `util.format()`, este es devuelto tal como está, sin ningún formato.
 
 ```js
 util.format('%% %s'); // '%% %s'
 ```
 
-## util.getSystemErrorName(err)<!-- YAML
+## util.getSystemErrorName(err)
+
+<!-- YAML
 added: v8.12.0
 -->
 
 * `err` {number}
-
 * Devuelve: {string}
 
 Retorna un nombre de string por un código de error numérico que viene de una API de Node.js. El mapeo entre códigos de error y nombres de error es dependiente de la plataforma. Vea [Errores Comunes del Sistema](errors.html#errors_common_system_errors) para los nombres de los errores comunes.
@@ -186,7 +191,9 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
-## util.inherits(constructor, superConstructor)<!-- YAML
+## util.inherits(constructor, superConstructor)
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -200,9 +207,9 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Herede los métodos prototipo de un [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) a otro. The prototype of `constructor` will be set to a new object created from `superConstructor`.
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. El prototipo del `constructor` se establecerá en un nuevo objeto creado a partir de `superConstructor`.
 
-As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
+Como una conveniencia adicional, `superConstructor` será accesible por medio de la propiedad `constructor.super_`.
 
 ```js
 const util = require('util');
@@ -249,7 +256,9 @@ stream.write('With ES6');
 
 ```
 
-## util.inspect(object[, options])<!-- YAML
+## util.inspect(object[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -270,15 +279,15 @@ changes:
 
 * `object` {any} Cualquier primitivo de JavaScript u Objeto.
 * `opciones` {Object} 
-  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:**`false`.
-  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. Esto es útil para inspeccionar objetos grandes y complicados. Por defecto es `2`. Para hacer que se repita indefinidamente pase `null`.
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Los colores son personalizables, vea [Customizing `util.inspect` colors][]. **Default:**`false`.
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Predeterminado:** `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Predeterminado:** `false`.
-  * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Predeterminado:** `100`.
-  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Predeterminado:** `60` para compatibilidad con versiones anteriores.
+  * `showHidden` {boolean} Si es `true`, los símbolos no enumerables y las propiedades de `object` serán incluídos en el resultado formateado. **Default:**`false`.
+  * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. Por defecto es `2`. Para hacer que se repita indefinidamente pase `null`.
+  * `colors` {boolean} Si es `true`, el output va a ser diseñado con códigos de colores ANSI. Los colores son personalizables, vea [Customizing `util.inspect` colors][]. **Default:**`false`.
+  * `customInspect` {boolean} Si es `false`, entonces no se llamarán las funciones `inspect(depth, opts)` personalizadas exportadas en el `object` que se está inspeccionando. **Predeterminado:** `true`.
+  * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` serán analizados para mostrar sus objetos `target` y `handler`. **Predeterminado:** `false`.
+  * `maxArrayLength` {number} Especifica el número máximo de los elementos array y `TypedArray` a incluir al formatear. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Predeterminado:** `100`.
+  * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer en `Infinity` para formatear un objeto como una sola línea. **Predeterminado:** `60` para compatibilidad con versiones anteriores.
 
-The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
+El método `util.inspect()` devuelve una representación de string del `objeto` que es principalmente útil para depuración. Se pueden pasar `options` adicionales que alteran ciertos aspectos de la string formateada.
 
 El siguiente ejemplo inspecciona todas las propiedades del objeto `util`:
 
@@ -288,13 +297,15 @@ const util = require('util');
 console.log(util.inspect(util, { showHidden: true, depth: null }));
 ```
 
-Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
+Los valores pueden proporcionar sus propias funciones `inspect(depth, opts)` personalizadas, cuando son llamadas estas reciben el `depth` actual en una inspección recursiva, así como también el objeto de opción pasado a `util.inspect()`.
 
-### Customizing `util.inspect` colors<!-- type=misc -->Color output (if enabled) of 
+### Personalización de colores `util.inspect`
 
-`util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
+<!-- type=misc -->
 
-`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
+El output de color (si está habilitado) de `util.inspect` es globalmente personalizable a través de las propiedades `util.inspect.styles` y `util.inspect.colors`.
+
+`util.inspect.styles` es un mapa que asocia un nombre de estilo con un color de `util.inspect.colors`.
 
 Los estilos predeterminados y colores asociados son:
 
@@ -308,9 +319,9 @@ Los estilos predeterminados y colores asociados son:
 * `special` - `cyan` (solo aplicado a funciones en este momento)
 * `name` - (sin estilo)
 
-The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
+Los códigos de colores predeterminados son: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` y `yellow`. También hay códigos `bold`, `italic`, `underline` e `inverse`.
 
-Color styling uses ANSI control codes that may not be supported on all terminals.
+El estilo de color usa códigos de control ANSI que pueden no ser soportados en todas las terminales.
 
 ### Funciones de inspección personalizadas en Objetos
 
@@ -349,7 +360,7 @@ util.inspect(box);
 // Retorna: "Box< true >"
 ```
 
-Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
+Las funciones personalizas de `[util.inspect.custom](depth, opts)` usualmente devuelven una string, pero pueden devolver un valor de cualquier tipo, que será formateado de acuerdo a `util.inspect()`.
 
 ```js
 const util = require('util');
@@ -363,17 +374,21 @@ util.inspect(obj);
 // Devuelve: "{ bar: 'baz' }"
 ```
 
-### util.inspect.custom<!-- YAML
+### util.inspect.custom
+
+<!-- YAML
 added: v6.6.0
--->A Symbol that can be used to declare custom inspect functions, see 
+-->
 
-[Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
+Un Símbolo que puede ser utilizado para declarar funciones de inspección personalizadas, vea [Funciones de inspección personalizadas en Objetos](#util_custom_inspection_functions_on_objects).
 
-### util.inspect.defaultOptions<!-- YAML
+### util.inspect.defaultOptions
+
+<!-- YAML
 added: v6.4.0
--->The 
+-->
 
-`defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
+El valor `defaultOptions` permite la personalización de las opciones predeterminadas utilizadas por `util.inspect`. Esto es útil para funciones como `console.log` o `util.format` que implícitamente llaman a `util.inspect`. Debería ser establecido en un objeto conteniendo una o más opciones [`util.inspect()`][] válidas. También se admite establecer directamente propiedades de opciones.
 
 ```js
 const util = require('util');
@@ -384,17 +399,18 @@ util.inspect.defaultOptions.maxArrayLength = null;
 console.log(arr); // registra el array completo
 ```
 
-## util.promisify(original)<!-- YAML
+## util.promisify(original)
+
+<!-- YAML
 added: v8.0.0
 -->
 
 * `original` {Function}
-
 * Devuelve: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-For example:
+Por ejemplo:
 
 ```js
 const util = require('util');
@@ -448,7 +464,7 @@ console.log(promisified === doSomething[util.promisify.custom]);
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-Por ejemplo, con una función que tome `(foo, onSuccessCallback, onErrorCallback)`:
+For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -470,11 +486,13 @@ added: v8.0.0
 
 A Symbol that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## Class: util.TextDecoder<!-- YAML
-added: v8.3.0
--->An implementation of the 
+## Clase: util.TextDecoder
 
-[WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
+<!-- YAML
+added: v8.3.0
+-->
+
+Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/).
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -614,25 +632,29 @@ La codificación soportada por la instancia `TextEncoder`. Siempre configurado p
 
 ## APIs Desaprobadas
 
-Las siguientes APIs han sido desaprobadas y ya no deberían ser usadas. Existing applications and modules should be updated to find alternative approaches.
+Las siguientes APIs han sido desaprobadas y ya no deberían ser usadas. Las aplicaciones y módulos existentes deberían actualizarse para encontrar enfoques alternativos.
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Object.assign()`] instead.
+> Estabilidad: 0 - Desaprobado: Utilice [`Object.assign()`] en su lugar.
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. La comunidad lo encontró y lo utilizó de todas maneras.
+El método `util._extend()` nunca fue pensado para ser utilizado fuera de los módulos internos de Node.js. La comunidad lo encontró y lo utilizó de todas maneras.
 
-Está desaprobado y no debería ser usado en código nuevo. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+Está desaprobado y no debería utilizarse en códigos nuevos. JavaScript viene con funcionabilidades incorporadas muy similares por medio de [`Object.assign()`].
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> Estabilidad: 0 - Desaprobado: Utilice [`console.error()`][] en su lugar.
 
 * `string` {string} El mensaje para imprimir en `stderr`
 
@@ -651,16 +673,20 @@ deprecated: v0.11.3
 
 Predecesor desaprobado de `console.error`.
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desactualización
 
 * `object` {any}
 
 Alias interno para [`Array.isArray`][].
 
-Devuelve `true` si el `object` dado es un `Array`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es un `Array`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -673,14 +699,18 @@ util.isArray({});
 // Devuelve: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desactualización
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un `Boolean`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es un `Boolean`. De lo contrario, retorna `false`.
 
 ```js
 const util = require('util');
@@ -704,7 +734,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un `Buffer`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es un `Buffer`. De lo contrario, retorna `false`.
 
 ```js
 const util = require('util');
@@ -717,14 +747,18 @@ util.isBuffer(Buffer.from('hello world'));
 // Devuelve: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desactualización
 
 * `object` {any}
 
-Devuelve `true` si el `object` es una `Date`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es una `Date`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -748,7 +782,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un [`Error`][]. De lo contrario, retorna `false`.
+Devuelve `true` si el `object` dado es un [`Error`][]. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -761,7 +795,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Devuelve: false
 ```
 
-Tenga en cuenta que este método depende del comportamiento de `Object.prototype.toString()`. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+Tenga en cuenta que este método depende del comportamiento de `Object.prototype.toString()`. Es posible obtener un resultado incorrecto cuando el argumento del `object` manipula a `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -774,14 +808,18 @@ util.isError(obj);
 // Devuelve: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desactualización
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es una `Function`. De lo contrario, retorna `false`.
+Devuelve `true` si el `object` dado es una `Function`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -808,7 +846,7 @@ deprecated: v4.0.0
 
 * `object` {any}
 
-Devuelve `true` si el `object` es estrictamente `null`. De lo contrario, retorna `false`.
+Devuelve `true` si el `object` es estrictamente `null`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -828,11 +866,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es `null` o `undefined`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es `null` o `undefined`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -852,7 +890,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
@@ -878,11 +916,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. De otra manera, devuelve `false`.
+Devuelve `true` si el `objeto` dado es estrictamente un `Object` **y** no una `Function`. De otra manera, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -904,11 +942,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es de un tipo primitivo. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es un tipo primitivo. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -933,14 +971,18 @@ util.isPrimitive(new Date());
 // Devuelve: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un `RegExp`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es una `RegExp`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -953,14 +995,18 @@ util.isRegExp({});
 // Devuelve: false
 ```
 
-### util.isString(object)<!-- YAML
+### util.isString(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un `string`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es una `string`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -982,11 +1028,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es un `Symbol`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es un `Symbol`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1006,11 +1052,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Estabilidad: 0 - Desaprobado
 
 * `object` {any}
 
-Devuelve `true` si el `object` dado es `undefined`. De otra manera, devuelve `false`.
+Devuelve `true` si el `object` dado es `undefined`. De lo contrario, devuelve `false`.
 
 ```js
 const util = require('util');
@@ -1024,14 +1070,18 @@ util.isUndefined(null);
 // Devuelve: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use a third party module instead.
+-->
+
+> Estabilidad: 0 - Desaprobado: Utilice un módulo de terceros en su lugar.
 
 * `string` {string}
 
-The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
+El método `util.log()` imprime la `string` dada en `stdout` con una marca de tiempo incluída.
 
 ```js
 const util = require('util');
@@ -1039,12 +1089,14 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> Estabilidad: 0 - Desaprobado: Utilice [`console.log()`][] en su lugar.
 
 Predecesor desaprobado de `console.log`.
 
@@ -1055,6 +1107,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
+> Estabilidad: 0 - Desaprobado: Utilice [`console.log()`][] en su lugar.
 
 Predecesor desaprobado de `console.log`.
