@@ -13,7 +13,7 @@ changes:
 
 > Σταθερότητα: 2 - Σταθερό
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
 ```js
 const http2 = require('http2');
@@ -907,7 +907,7 @@ added: v8.4.0
 -->
 
 * `options` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Προεπιλογή:** `false`.
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, this stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of this stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
@@ -987,7 +987,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the
+--> Provides miscellaneous information about the current state of the 
 
 `Http2Stream`.
 
@@ -1041,7 +1041,7 @@ The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used excl
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. This is an instruction that the client should send the request body.
+Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Αυτή είναι μια οδηγία που ο πελάτης θα πρέπει να αποστείλει το σώμα του αιτήματος.
 
 #### Event: 'headers'
 
@@ -1390,9 +1390,9 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Ο χειρισμός αυτού του συμβάντος απαιτεί την κλήση του [`response.writeContinue()`][] εάν ο πελάτης πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος, ή να απαντήσει με ένα κατάλληλο μήνυμα (για παράδειγμα '400 Bad Request') εάν ο πελάτης δεν πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
 #### Συμβάν: 'request'
 
@@ -1509,9 +1509,9 @@ added: v8.5.0
 
 If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] is supplied a callback function, the `'checkContinue'` event is emitted each time a request with an HTTP `Expect: 100-continue` is received. If this event is not listened for, the server will automatically respond with a status `100 Continue` as appropriate.
 
-Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
+Ο χειρισμός αυτού του συμβάντος απαιτεί την κλήση του [`response.writeContinue()`][] εάν ο πελάτης πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος, ή να απαντήσει με ένα κατάλληλο μήνυμα (για παράδειγμα '400 Bad Request') εάν ο πελάτης δεν πρέπει να συνεχίσει με την αποστολή του σώματος του αιτήματος.
 
-Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
+Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
 #### Συμβάν: 'request'
 
@@ -1617,14 +1617,16 @@ The given callback is registered as a listener on the `'timeout'` event.
 
 In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
 
-### http2.createServer(options[, onRequestHandler])<!-- YAML
+### http2.createServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1680,7 +1682,9 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.createSecureServer(options[, onRequestHandler])<!-- YAML
+### http2.createSecureServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -1691,7 +1695,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1743,14 +1747,16 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.connect(authority\[, options\]\[, listener\])<!-- YAML
+### http2.connect(authority\[, options\]\[, listener\])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1901,7 +1907,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: The `maxHeaderListSize` setting is now strictly enforced.
---> The
+--> The 
 
 `http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
 
@@ -2137,7 +2143,7 @@ added: v8.4.0
 
 A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. It may be used to access a request status, headers, and data.
 
-It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
+Υλοποιεί τη διεπαφή [Αναγνώσιμης Ροής](stream.html#stream_class_stream_readable) καθώς και τα παρακάτω συμβάντα, τις μεθόδους και τις ιδιότητες.
 
 #### Συμβάν: 'aborted'
 
@@ -2165,7 +2171,7 @@ added: v10.1.0
 
 * {boolean}
 
-The `request.aborted` property will be `true` if the request has been aborted.
+Η ιδιότητα `request.aborted` θα έχει οριστεί ως `true` αν το αίτημα έχει ματαιωθεί.
 
 #### request.authority
 
@@ -2227,9 +2233,9 @@ added: v8.4.0
 
 * {string}
 
-Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
+Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. Στην περίπτωση της απάντηση πελάτη, είναι η έκδοση HTTP του server που έχει συνδεθεί. Returns `'2.0'`.
 
-Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
+Επίσης το `message.httpVersionMajor` είναι το πρώτο integer, και το `message.httpVersionMinor` είναι το δεύτερο.
 
 #### request.method
 
@@ -2251,7 +2257,7 @@ added: v8.4.0
 
 Η λίστα ανεπεξέργαστων κεφαλίδων αιτήματος/απόκρισης, όπως έχουν ληφθεί.
 
-Σημειώστε ότι τα κλειδιά και οι τιμές βρίσκονται στην ίδια λίστα. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
+Σημειώστε ότι τα κλειδιά και οι τιμές βρίσκονται στην ίδια λίστα. *Δεν* είναι μια λίστα πλειάδων. Έτσι, οι μονοί αριθμοί είναι τα κλειδιά, και οι ζυγοί αριθμοί είναι οι αντίστοιχες τιμές τους.
 
 Τα ονόματα κεφαλίδων δεν έχουν μετατραπεί σε πεζούς χαρακτήρες, και τα διπλότυπα δεν έχουν ενωθεί.
 
@@ -2277,7 +2283,7 @@ added: v8.4.0
 
 * {string[]}
 
-The raw request/response trailer keys and values exactly as they were received. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
+Τα κλειδιά ουράς και οι τιμές των ακατέργαστων αιτημάτων αίτησης/απόκρισης, ακριβώς όπως παραλήφθηκαν. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
 #### request.scheme
 
@@ -2299,7 +2305,7 @@ added: v8.4.0
 * `callback` {Function}
 * Επιστρέφει: {http2.Http2ServerRequest}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Sets the [`Http2Stream`]()'s timeout value to `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2351,7 +2357,7 @@ added: v8.4.0
 
 * {string}
 
-String URL αιτήματος. This contains only the URL that is present in the actual HTTP request. Αν το αίτημα είναι:
+String URL αιτήματος. Περιέχει μόνο το URL που είναι παρόν στο αίτημα HTTP. Αν το αίτημα είναι:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2361,11 +2367,13 @@ Accept: text/plain\r\n
 
 Τότε το `request.url` θα είναι:
 
+<!-- eslint-disable semi -->
+
 ```js
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used:
+Για να αναλύσετε το url στα επιμέρους κομμάτια του, μπορεί να χρησιμοποιηθεί το `require('url').parse(request.url)`:
 
 ```txt
 $ node
@@ -2385,7 +2393,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`.
+Για να εξάγετε τις παραμέτρους από το string του ερωτήματος, μπορείτε να χρησιμοποιήσετε την συνάρτηση `require('querystring').parse`, ή μπορείτε να ορίσετε ως `true` την δεύτερη παράμετρο στο `require('url').parse`.
 
 ```txt
 $ node
@@ -2405,11 +2413,13 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse<!-- YAML
-added: v8.4.0
--->This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [
+### Class: http2.Http2ServerResponse
 
-`'request'`][] event.
+<!-- YAML
+added: v8.4.0
+-->
+
+Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
 
 The response inherits from [Stream](stream.html#stream_stream), and additionally implements the following:
 
@@ -2427,7 +2437,7 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Μεταδίδεται όταν έχει αποσταλεί η απόκριση. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
+Μεταδίδεται όταν έχει αποσταλεί η απόκριση. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. Αυτό δεν υπονοεί ότι ο πελάτης έχει παραλάβει οτιδήποτε ακόμα.
 
 Μετά από αυτό το συμβάν, δεν γίνεται μετάδοση άλλων συμβάντων στο αντικείμενο απόκρισης.
 
@@ -2439,9 +2449,9 @@ added: v8.4.0
 
 * `headers` {Object}
 
-This method adds HTTP trailing headers (a header but at the end of the message) to the response.
+Αυτή η μέθοδος προσθέτει τελικές κεφαλίδες HTTP (μια κεφαλίδα στο τέλος του μηνύματος) στην απόκριση.
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
 #### response.connection
 
@@ -2453,7 +2463,9 @@ added: v8.4.0
 
 Δείτε το [`response.socket`][].
 
-#### response.end(\[data\]\[, encoding\][, callback])<!-- YAML
+#### response.end(\[data\]\[, encoding\][, callback])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -2467,19 +2479,21 @@ changes:
 * `callback` {Function}
 * Επιστρέφει: {this}
 
-This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
+Αυτή η μέθοδος αποστέλλει σήμα στον εξυπηρετητή ότι οι κεφαλίδες απόκρισης και το σώμα έχουν αποσταλεί, ο εξυπηρετητής θα πρέπει να θεωρήσει αυτό το μήνυμα ως ολοκληρωμένο. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
 
-If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
+Ο ορισμός του `data`, είναι ισοδύναμος με την κλήση του [`response.write(data, encoding)`][] ακολουθούμενου από `response.end(callback)`.
 
-If `callback` is specified, it will be called when the response stream is finished.
+Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
-#### response.finished<!-- YAML
+#### response.finished
+
+<!-- YAML
 added: v8.4.0
 -->
 
 * {boolean}
 
-Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Starts as `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
+Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Ξεκινάει ως `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
 
 #### response.getHeader(name)
 
@@ -2522,9 +2536,9 @@ added: v8.4.0
 
 * Επιστρέφει: {Object}
 
-Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
+Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Από την στιγμή που χρησιμοποιείται ένα ρηχό αντίγραφο, οι τιμές του πίνακα μπορούν να μεταλλαχθούν χωρίς περαιτέρω κλήσεις στις διάφορες μεθόδους που σχετίζονται με τις κεφαλίδες της ενότητας http. Τα κλειδιά του επιστρεφόμενου αντικειμένου είναι τα ονόματα των κεφαλίδων, και οι τιμές του είναι οι τιμές της αντίστοιχης κεφαλίδας. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
-The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
+Το αντικείμενο που επιστρέφεται από τη μέθοδο `response.getHeaders()` *δεν* κληρονομεί εξ'ολοκλήρου από το `Object` της Javascript. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2543,7 +2557,7 @@ added: v8.4.0
 * `name` {string}
 * Επιστρέφει: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
+Επιστρέφει `true` αν η κεφαλίδα που προσδιορίζεται ως `name` έχει οριστεί στις εξερχόμενες κεφαλίδες. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2581,9 +2595,9 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Από προεπιλογή είναι True.
+Όταν είναι True, η κεφαλίδα της Ημερομηνίας θα δημιουργηθεί με αυτόματο τρόπο και θα αποσταλεί με την απόκριση, αν δεν είναι ήδη ορισμένη ως κεφαλίδα. Από προεπιλογή είναι True.
 
-This should only be disabled for testing; HTTP requires the Date header in responses.
+Αυτό πρέπει να απενεργοποιηθεί μόνο για δοκιμές. Το πρωτόκολλο HTTP απαιτεί την κεφαλίδα της Ημερομηνίας στις αποκρίσεις.
 
 #### response.setHeader(name, value)
 
@@ -2594,7 +2608,7 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
+Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή της θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2606,9 +2620,9 @@ response.setHeader('Content-Type', 'text/html');
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
 // returns content-type = text/plain
@@ -2630,7 +2644,7 @@ added: v8.4.0
 * `callback` {Function}
 * Επιστρέφει: {http2.Http2ServerResponse}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
+Sets the [`Http2Stream`]()'s timeout value to `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2671,13 +2685,13 @@ added: v8.4.0
 
 * {number}
 
-When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
+Όταν χρησιμοποιούνται υπονοούμενες κεφαλίδες (χωρίς δηλαδή την ρητή κλήση του [`response.writeHead()`][]), αυτή η ιδιότητα ελέγχει τον κωδικό κατάστασης που θα αποσταλεί στον πελάτη όταν οι κεφαλίδες εκκαθαριστούν.
 
 ```js
 response.statusCode = 404;
 ```
 
-After response header was sent to the client, this property indicates the status code which was sent out.
+Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει τον κωδικό κατάστασης που έχει αποσταλεί.
 
 #### response.statusMessage
 
@@ -2710,19 +2724,19 @@ added: v8.4.0
 * `callback` {Function}
 * Επιστρέφει: {boolean}
 
-If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
+Αν κληθεί αυτή η μέθοδος και δεν έχει κληθεί το [`response.writeHead()`][], θα γίνει εναλλαγή σε λειτουργία υπονοούμενων κεφαλίδων και θα γίνει εκκαθάριση των υπονοούμενων κεφαλίδων.
 
-Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. This method may be called multiple times to provide successive parts of the body.
+Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
 
-Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
+Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Παρομοίως, οι αποκρίσεις `204` και `304` *δεν πρέπει* να συμπεριλαμβάνουν ένα σώμα απόκρισης.
 
-Το `chunk` μπορεί να είναι ένα string ή ένα buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. To `callback` θα κληθεί όταν αυτό το κομμάτι των δεδομένων εκκαθαριστεί.
+Το `chunk` μπορεί να είναι ένα string ή ένα buffer. Αν το `chunk` είναι string, η δεύτερη παράμετρος καθορίζει πως θα γίνει η κωδικοποίησή του σε μια ροή byte. By default the `encoding` is `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
-This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
+Αυτό είναι το ακατέργαστο σώμα HTTP και δεν έχει καμία σχέση με τις multi-part κωδικοποιήσεις σώματος υψηλότερου επιπέδου, που μπορεί να χρησιμοποιηθούν.
 
-The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
+Την πρώτη φορά που θα κληθεί το [`response.write()`][], θα στείλει τις πληροφορίες κεφαλίδας που βρίσκονται στο buffer, καθώς και το πρώτο κομμάτι δεδομένων στον πελάτη. Τη δεύτερη φορά που θα κληθεί το [`response.write()`][], η Node.js υποθέτει ότι τα δεδομένα θα αποσταλούν ως ροή, κι έτσι στέλνει τα νέα δεδομένα ξεχωριστά. Δηλαδή η απόκριση τοποθετείται στο buffer μόνο μέχρι το πρώτο κομμάτι του σώματος.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
+Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
 #### response.writeContinue()
 
@@ -2749,11 +2763,11 @@ changes:
 * `headers` {Object}
 * Επιστρέφει: {http2.Http2ServerResponse}
 
-Αποστέλλει μια κεφαλίδα απόκρισης στο αίτημα. The status code is a 3-digit HTTP status code, like `404`. Η τελευταία παράμετρος, `headers`, είναι οι κεφαλίδες απόκρισης.
+Αποστέλλει μια κεφαλίδα απόκρισης στο αίτημα. Ο κωδικός κατάστασης είναι ένας 3ψήφιος κωδικός κατάστασης HTTP, όπως το `404`. Η τελευταία παράμετρος, `headers`, είναι οι κεφαλίδες απόκρισης.
 
 Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 
-For compatibility with \[HTTP/1\]\[\], a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
+For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
 const body = 'hello world';
@@ -2766,9 +2780,9 @@ response.writeHead(200, {
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
-If [`response.write()`][] or [`response.end()`][] are called before calling this, the implicit/mutable headers will be calculated and call this function.
+Αν κληθεί το [`response.write()`][] ή το [`response.end()`][] πριν την κλήση του, θα υπολογιστούν οι υπονοούμενες/μεταβαλλόμενες κεφαλίδες και θα γίνει η κλήση αυτής της συνάρτησης.
 
-When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
+Αν έχουν οριστεί κεφαλίδες με το [`response.setHeader()`][], θα συνενωθούν με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][], με τις κεφαλίδες που μεταβιβάζονται στο [`response.writeHead()`][] να έχουν προτεραιότητα.
 
 ```js
 // returns content-type = text/plain
@@ -2780,7 +2794,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
+Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
 #### response.createPushResponse(headers, callback)
 
