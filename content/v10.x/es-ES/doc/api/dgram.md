@@ -309,7 +309,7 @@ client.send([buf1, buf2], 41234, (err) => {
 });
 ```
 
-Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
+Sending multiple buffers might be faster or slower depending on the application and operating system. Es importante ejecutar pruebas de rendimiento para determinar la estrategia óptima en una base de caso por caso. Generally speaking, however, sending multiple buffers is faster.
 
 **Una nota sobre el tamaño de datagrama UDP**
 
@@ -415,7 +415,7 @@ added: v0.3.8
 
 Establece la opción del socket `IP_MULTICAST_TTL`. Mientras que TTL generalmente significa "Tiempo Para Vivir", en este contexto especifica el número de saltos IP que un paquete es permitido viajar, especificamente para tráfico de multidifusión. Cada router o puerta de enlace que reenvía un paquete disminuye el TTL. Si el TTL es disminuido a 0 por un router, no se reenviará.
 
-The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. El predeterminado en la mayoría de los sistemas es `1` pero puede variar.
+El argumento pasado a `socket.setMulticastTTL()` es un número que salta entre 0 y 255. El predeterminado en la mayoría de los sistemas es `1` pero puede variar.
 
 ### socket.setRecvBufferSize(size)
 
