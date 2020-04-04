@@ -2,7 +2,7 @@
 
 **Thank you for volunteering to translate Node.js content to your language!**
 
-By translating Node.js content (website, api, tutorials), you are directly impacting developers around the world. Your efforts will help developers in more countries to learn Node.js! Thank you so much for volunteering your time!
+By translating Node.js content (website, docs, tutorials), you are directly impacting developers around the world. Your efforts will help developers in more countries to learn Node.js! Thank you so much for volunteering your time!
 
 This project adheres to the Contributor Covenant [code of conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to report@nodejs.org.
 
@@ -60,6 +60,6 @@ We propose a few ways to communicate:
 
 Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most of cases. It's standardized and controlled by Node.js community. 
 
-Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for this reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on Github.
+Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for this reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
 
 > NOTE: You don't have to be a member of this group to start translating
