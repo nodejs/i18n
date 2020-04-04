@@ -80,4 +80,4 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 
 ## Joining
 
-If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request. Keep in mind, if you want help with translation only, you don't need to join this group, more info about translators contribution read in [get started](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md) guide.
+If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request. Keep in mind, you don't have to be a member of this group to start translating, more info about translators contribution read in [get started](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md) guide.
