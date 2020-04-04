@@ -1,56 +1,20 @@
-# Node.js Internationalization
+# Node.js i18n
 
 [![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
 
+This repo is a basement of Node.js projects internationalization initiative. Here you can find contribution guides, discuss ideas or join meetings. Here also contains original and translated Node.js API documentation.
+
 ## Contributing
 
-Help us get the documentation translated into your native language and reach more people's hearts.
-**Visit [Crowdin/project/NodeJs](https://crowdin.com/project/nodejs)** and help translating docs
-
-### Languages being Translated
-
-- [Arabic](https://crowdin.com/project/nodejs/ar)
-- [Chinese Simplified](https://crowdin.com/project/nodejs/zh-CN)
-- [Chinese Traditional](https://crowdin.com/project/nodejs/zh-TW)
-- [Croatian](https://crowdin.com/project/nodejs/hr)
-- [Czech](https://crowdin.com/project/nodejs/cs)
-- [Danish](https://crowdin.com/project/nodejs/da)
-- [Dutch](https://crowdin.com/project/nodejs/nl)
-- [Finnish](https://crowdin.com/project/nodejs/fi)
-- [French](https://crowdin.com/project/nodejs/fr)
-- [German](https://crowdin.com/project/nodejs/de)
-- [Greek](https://crowdin.com/project/nodejs/el)
-- [Hebrew](https://crowdin.com/project/nodejs/he)
-- [Hindi](https://crowdin.com/project/nodejs/hi)
-- [Hungarian](https://crowdin.com/project/nodejs/hu)
-- [Indonesian](https://crowdin.com/project/nodejs/id)
-- [Italian](https://crowdin.com/project/nodejs/it)
-- [Japanese](https://crowdin.com/project/nodejs/ja)
-- [Korean](https://crowdin.com/project/nodejs/ko)
-- [Norwegian](https://crowdin.com/project/nodejs/no)
-- [Polish](https://crowdin.com/project/nodejs/pl)
-- [Portuguese](https://crowdin.com/project/nodejs/pt-PT)
-- [Portuguese (Brazil)](https://crowdin.com/project/nodejs/pt-BR)
-- [Romanian](https://crowdin.com/project/nodejs/ro)
-- [Russian](https://crowdin.com/project/nodejs/ru)
-- [Serbian (Latin)](https://crowdin.com/project/nodejs/sr-CS)
-- [Slovak](https://crowdin.com/project/nodejs/sk)
-- [Spanish](https://crowdin.com/project/nodejs/es-ES)
-- [Swedish](https://crowdin.com/project/nodejs/sv-SE)
-- [Thai](https://crowdin.com/project/nodejs/th)
-- [Turkish](https://crowdin.com/project/nodejs/tr)
-- [Ukrainian](https://crowdin.com/project/nodejs/uk)
-- [Vietnamese](https://crowdin.com/project/nodejs/vi)
-
-### CrowdIn Glossary
-
-We have a [CrowdIn Glossary](crowdin-glossary.json) that has some terms which are noted as shared or translatable across the project. If a term is missing, please add it! This glossary will automatically be used by CrowdIn to let translators know about each term when they come across them.
+Help us get the Node.js translated into your native language and reach more people's hearts. Please read next guides before: 
+- [Get started](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md) - basic understanding about translation process
+- [Roles](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md) - inforamtion about roles and ierarchy in Node.js localization process
+- [Teams](https://github.com/nodejs/i18n/blob/master/guides/TEAMS.md) - explain the structure of localization teams and their goals
+- [Crowdin](https://github.com/nodejs/i18n/blob/master/guides/CROWDIN.md) - review functionality of Crowdin that we're using for Node.js
 
 ## About
 
 The Node.js i18n Working Group is dedicated to the support and improvement of both Internationalization (i18n) and Localization (l10n) within the [Node.js](https://github.com/nodejs/node) project. This Working Group serves as a function of the [Node.js Community Committee](https://github.com/nodejs/community-committee).
-
-_Small note: If you do not speak English, go to the [Need Translators?](#need-translators) section._
 
 ### What we're responsible for
 
@@ -73,29 +37,12 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 - The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors.
 - Members of this group are not responsible for performing the act of translation itself.
 
-#### Summary of our Responsibilities
+### Summary of our Responsibilities
 
 1. Supporting l10n groups who are actively translating the content of [Node.js](https://github.com/nodejs/node) into their own languages.
 2. i18n support for [Node.js](https://github.com/nodejs/node), and its related initiatives.
 3. Ensuring i18n compliance with all relevant standards such as [Unicode](https://unicode.org) and [ECMA-402](https://github.com/tc39/ecma402).
 4. Continual refinement and maintenance of the i18n Working Group's processes, platform service accounts, and related module repositories & source code.
-
-### Our Current Trajectory
-
-Please read [this article](https://medium.com/the-node-js-collection/internationalizing-node-js-fe7761798b0a) to get up to speed on our current trajectory.
-
-## Inter-project relationships
-
-In order to ensure best practices, this working group may work directly with representatives of similar and related i18n efforts from other external projects. For example:
-
-- [Electron i18n](https://github.com/electron/i18n)
-- [W3C i18n Working Group](https://www.w3.org/International/core/Overview)
-- [ECMA-402](https://github.com/tc39/ecma402) (Together with ECMA-262, specifies the i18n features of JavaScript)
-- [V8 i18n](https://github.com/v8/v8/wiki/i18n-support) (implements ECMA-402 in Node.js)
-- [Unicode](https://unicode.org):
-  - [The Unicode Standard](https://unicode.org/standard/) (defines how text is encoded)
-  - [CLDR](http://cldr.unicode.org) (Common Locale Data Repository)
-  - [ICU](http://icu-project.org) (C/C++ i18n library used by v8 and Node.js)
 
 ## Current Members
 
@@ -131,50 +78,6 @@ In order to ensure best practices, this working group may work directly with rep
 | Yuki Okushi         | [JohnTitor](https://github.com/JohnTitor)                 | [JustM0nik4](https://twitter.com/JustM0nik4)             |
 | Zeke Sikelianos     | [zeke](https://github.com/zeke)                           | [zeke](https://twitter.com/zeke)                         |
 
-## Current l10n groups we support
-
-- [Arabic (nodejs-ar)](https://github.com/nodejs/nodejs-ar)
-- [Bengali (nodejs-bn)](https://github.com/nodejs/nodejs-bn)
-- [Bulgarian (nodejs-bg)](https://github.com/nodejs/nodejs-bg)
-- [Chinese (nodejs-zh-CN)](https://github.com/nodejs/nodejs-zh-CN)
-- [Czech (nodejs-cs)](https://github.com/nodejs/nodejs-cs)
-- [Danish (nodejs-da)](https://github.com/nodejs/nodejs-da)
-- [Dutch (nodejs-nl)](https://github.com/nodejs/nodejs-nl)
-- [Finnish (nodejs-fi)](https://github.com/nodejs/nodejs-fi)
-- [French (nodejs-fr)](https://github.com/nodejs/nodejs-fr)
-- [Georgian (nodejs-ka)](https://github.com/nodejs/nodejs-ka)
-- [German (nodejs-de)](https://github.com/nodejs/nodejs-de)
-- [Greek (nodejs-el)](https://github.com/nodejs/nodejs-el)
-- [Hebrew (nodejs-he)](https://github.com/nodejs/nodejs-he)
-- [Hindi (nodejs-hi)](https://github.com/nodejs/nodejs-hi)
-- [Hungarian (nodejs-hu)](https://github.com/nodejs/nodejs-hu)
-- [Indonesian (nodejs-id)](https://github.com/nodejs/nodejs-id)
-- [Italian (nodejs-it)](https://github.com/nodejs/nodejs-it)
-- [Japanese (nodejs-ja)](https://github.com/nodejs/nodejs-ja)
-- [Macedonian (nodejs-mk)](https://github.com/nodejs/nodejs-mk)
-- [Malay (nodejs-ms)](https://github.com/nodejs/nodejs-ms)
-- [Norwegian (nodejs-no)](https://github.com/nodejs/nodejs-no)
-- [Persian (nodejs-fa)](https://github.com/nodejs/nodejs-fa)
-- [Polish (nodejs-pl)](https://github.com/nodejs/nodejs-pl)
-- [Portuguese (nodejs-pt)](https://github.com/nodejs/nodejs-pt)
-- [Russian (nodejs-ru)](https://github.com/nodejs/nodejs-ru)
-- [Spanish (nodejs-es)](https://github.com/nodejs/nodejs-es)
-- [Swahili (nodejs-sw)](https://github.com/nodejs/nodejs-sw)
-- [Swedish (nodejs-sv)](https://github.com/nodejs/nodejs-sv)
-- [Taiwan (nodejs-zh-TW)](https://github.com/nodejs/nodejs-zh-TW)
-- [Tamil (nodejs-ta)](https://github.com/nodejs/nodejs-ta)
-- [Turkish (nodejs-tr)](https://github.com/nodejs/nodejs-tr)
-- [Ukrainian (nodejs-uk)](https://github.com/nodejs/nodejs-uk)
-- [Vietnamese (nodejs-vi)](https://github.com/nodejs/nodejs-vi)
-
 ## Joining
 
-If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request.
-
-## Need Translators
-
-If you cannot speak or read English easily, we can provide translators for this group's documents and during our video meetings. Please get in touch with [Ben Michel](https://twitter.com/obensource) or [Zeke Sikelianos](https://twitter.com/zeke) and ask for help for your language.
-
----
-
-_This document was influenced by the [nodejs/Intl](https://github.com/nodejs/Intl/blob/master/README.md) working group's mandate, and is seen as a continuation of that work._
+If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request. Keep in mind, if you want help with translation only, you don't need to join this group, more info about translators contribution read in [get started](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md) guide.
