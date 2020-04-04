@@ -8,7 +8,7 @@ This repo is a basement of Node.js projects internationalization initiative. Her
 
 Help us get the Node.js translated into your native language and reach more people's hearts. Please read next guides before: 
 - [Get started](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md) - basic understanding about translation process
-- [Roles](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md) - inforamtion about roles and ierarchy in Node.js localization process
+- [Roles](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md) - information about roles and hierarchy in Node.js localization process
 - [Teams](https://github.com/nodejs/i18n/blob/master/guides/TEAMS.md) - explain the structure of localization teams and their goals
 - [Crowdin](https://github.com/nodejs/i18n/blob/master/guides/CROWDIN.md) - review functionality of Crowdin that we're using for Node.js
 
