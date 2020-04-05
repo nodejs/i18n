@@ -1,6 +1,6 @@
-# Localization process roles
+# Roles
 
-Localization process based on two environments – GitHub and Crowdin. Both of them has roles management, and Node.js i18n group standardized it into one system.
+Localization process based on two environments – GitHub and Crowdin. Both of them have roles management, and Node.js i18n group standardized it into one system.
 
 ## Crowdin
 
@@ -32,7 +32,7 @@ This role it's kind of translators team lead, who have enough experience to appr
 
 > NOTE: Not approved translation never go live, that's why we recommend for proofreaders to focus on validation process instead of translating
 
-To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)). To be sure in your experience, we require to translate at least 1000 strings in your locale as translator, and attach proofs to issue.
+To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)). To be sure in your experience, we require translate at least 1000 strings in your locale as translator, and attach proofs to issue.
 
 ### Translator
 
@@ -56,7 +56,7 @@ To avoid any confusion with "team" and "repository" in context of our process, h
 
 ## Maintainer
 
-User who manage l10n team issues/discussions, helps with global localization process updates under controlled repository. Has write access to l10n repository.
+User who manage l10n team issues/discussions, helps with global localization process updates under controlled repository. Has "write" access to l10n repository.
 
 To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)).
 

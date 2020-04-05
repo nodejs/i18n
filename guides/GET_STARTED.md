@@ -58,9 +58,9 @@ We propose a few ways to communicate:
   - [nodejs/i18n](https://github.com/nodejs/i18n) - create issue/PR if you have not language specific question
   - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](https://github.com/nodejs/i18n/blob/master/TEAMS.md)
 
-Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most of cases. It's standardized and controlled by Node.js community.
+Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most cases. It's standardized and controlled by Node.js community.
 
-Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for this reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
+Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for these reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
 
 > NOTE: You don't have to be a member of this group to start translating
 
