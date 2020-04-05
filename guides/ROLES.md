@@ -63,3 +63,7 @@ To become a maintainer of l10n repository you should be active contributor and t
 ## Contributor
 
 Member of l10n team, for example `@nodejs/nodejs-es`. The reason to be a part of team is only receive notifications about global and language specific updates/questions.
+
+---
+
+Check next guideline about [teams](https://github.com/nodejs/i18n/blob/master/guides/TEAMS.md) in Node.js localization.

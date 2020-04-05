@@ -63,3 +63,7 @@ Feel free to choose most comfortable way for your goals, but we'd like to recomm
 Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for this reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
 
 > NOTE: You don't have to be a member of this group to start translating
+
+---
+
+Check next guideline about [roles](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md) in Node.js localization.
