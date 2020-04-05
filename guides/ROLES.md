@@ -42,7 +42,7 @@ To become a translator just complete with our guidelines and go ahead! We really
 
 ## GitHub
 
-From GitHub side we have just two type of roles: 
+From GitHub side we have just two type of roles:
 
 - maintainer - admin of some l10n team/repository
 - contributor - part of some l10n team/repository

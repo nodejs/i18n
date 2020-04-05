@@ -32,7 +32,7 @@ After successful log in to Crowdin and selecting project to translate find your 
 
 > NOTE: If you cannot find your locale in list, please create a new issue in base repo ([see table](/#i18n-projects)) with mention to managers team
 
-All translations going to be approved by other translators, and then automatically pushed to GitHub repository, so you don't need to go outside Crowdin platform. Don't open pull requests to translate Node.js, and focus just on translation content. 
+All translations going to be approved by other translators, and then automatically pushed to GitHub repository, so you don't need to go outside Crowdin platform. Don't open pull requests to translate Node.js, and focus just on translation content.
 
 > NOTE: If you find an error in the original docs, feel free to open PR to the base repository ([see table](/#i18n-projects)).
 
@@ -49,16 +49,16 @@ Crowdin automatically create PR with updates to base GitHub repository around 24
 We propose a few ways to communicate:
 
 - Slack:
-    - [node-js/#i18n](https://node-js.slack.com/archives/C8S7FCNR1) - for general questions
-    - [openjs-foundation/#i18n](https://openjs-foundation.slack.com/archives/CUH8WBHBL) - for general questions
+  - [node-js/#i18n](https://node-js.slack.com/archives/C8S7FCNR1) - for general questions
+  - [openjs-foundation/#i18n](https://openjs-foundation.slack.com/archives/CUH8WBHBL) - for general questions
 - Crowdin:
-    - [conversations](https://support.crowdin.com/conversations/) - direct and group chats to communicate with other translators
-    - [comments](https://support.crowdin.com/online-editor/#communicating-with-other-project-members) - discuss translation directly
+  - [conversations](https://support.crowdin.com/conversations/) - direct and group chats to communicate with other translators
+  - [comments](https://support.crowdin.com/online-editor/#communicating-with-other-project-members) - discuss translation directly
 - GitHub:
-    - [nodejs/i18n](https://github.com/nodejs/i18n) - create issue/PR if you have not language specific question
-    - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](https://github.com/nodejs/i18n/blob/master/TEAMS.md)
+  - [nodejs/i18n](https://github.com/nodejs/i18n) - create issue/PR if you have not language specific question
+  - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](https://github.com/nodejs/i18n/blob/master/TEAMS.md)
 
-Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most of cases. It's standardized and controlled by Node.js community. 
+Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most of cases. It's standardized and controlled by Node.js community.
 
 Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for this reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
 
