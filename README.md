@@ -45,6 +45,8 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 3. Ensuring i18n compliance with all relevant standards such as [Unicode](https://unicode.org) and [ECMA-402](https://github.com/tc39/ecma402).
 4. Continual refinement and maintenance of the i18n Working Group's processes, platform service accounts, and related module repositories & source code.
 
+> NOTE: Still confused with "i18n" and "l10n" terms? Read ["i18n vs l10n — what’s the diff?"](https://blog.mozilla.org/l10n/2011/12/14/i18n-vs-l10n-whats-the-diff/) article to find answers.
+
 ## Current Members
 
 | Name                | GitHub                                                    | Twitter                                                  |
