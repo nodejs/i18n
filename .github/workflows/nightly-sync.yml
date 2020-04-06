@@ -1,4 +1,5 @@
 name: Nightly Sync of content
+description: Cron job to pull fresh docs from original repo nodejs/node
 
 on:
   schedule:
@@ -28,11 +29,12 @@ jobs:
       - name: Collect latest releases
         run: npm run collect
 
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Nightly Sync"
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: GitHub Action
+          author_email: action@github.com
+          message: "feat: Content updates"
 
       - name: Push changes
         # Only run this on the main nodejs repo and not forks
