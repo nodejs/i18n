@@ -66,4 +66,4 @@ If you want to receive notification after someone mentioned your team, join it b
 
 ---
 
-Check next guideline about [crowdin](./ROLES.md) features that used in Node.js localization.
+Check next guideline about [crowdin](./CROWDIN.md) features that used in Node.js localization.
