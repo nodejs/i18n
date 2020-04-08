@@ -24,7 +24,7 @@ This member is active contributor with big experience in Node.js localization pr
 - add/remove language
 - problems with GitHub<--->Crowdin integration/sync
 
-To become a manager of project, please create a new issue with request in base repository ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)).
+To become a manager of project, please create a new issue with request in base repository ([see table](./GET_STARTED.md/#i18n-projects)).
 
 ### Proofreader
 
@@ -32,7 +32,7 @@ This role it's kind of translators team lead, who have enough experience to appr
 
 > NOTE: Not approved translation never go live, that's why we recommend for proofreaders to focus on validation process instead of translating
 
-To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)). To be sure in your experience, we require translate at least 1000 strings in your locale as translator, and attach proofs to issue.
+To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](./GET_STARTED.md/#i18n-projects)). To be sure in your experience, we require translate at least 1000 strings in your locale as translator, and attach proofs to issue.
 
 ### Translator
 
@@ -52,13 +52,13 @@ To avoid any confusion with "team" and "repository" in context of our process, h
 - Teams are groups of organization members that reflect your company or group's structure with cascading access permissions and mentions. Used for group mentions like `@nodejs/nodejs-es` in issues/PRs, or for target announcements.
 - l10n repository is basement for translators to discuss language team specific questions. For example, glossary, priorities, guidelines etc. Here translators can speak in their native language.
 
-> NOTE: More details about l10n team/repositories you can find in [Teams guide](https://github.com/nodejs/i18n/blob/master/guides/TEAMS.md)
+> NOTE: More details about l10n team/repositories you can find in [Teams guide](./TEAMS.md)
 
 ## Maintainer
 
 User who manage l10n team issues/discussions, helps with global localization process updates under controlled repository. Has "write" access to l10n repository.
 
-To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](https://github.com/nodejs/i18n/blob/master/guides/GET_STARTED.md/#i18n-projects)).
+To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](./GET_STARTED.md/#i18n-projects)).
 
 ## Contributor
 
@@ -66,4 +66,4 @@ Member of l10n team, for example `@nodejs/nodejs-es`. The reason to be a part of
 
 ---
 
-Check next guideline about [teams](https://github.com/nodejs/i18n/blob/master/guides/TEAMS.md) in Node.js localization.
+Check next guideline about [teams](./TEAMS.md) in Node.js localization.

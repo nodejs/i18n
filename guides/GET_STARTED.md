@@ -38,7 +38,7 @@ All translations going to be approved by other translators, and then automatical
 
 ### Step #2: Proofread
 
-We really appreciate any contribution, but should validate translated content, so after you submitted your translation it's going to be approved by other translator with proofreader role. Find more details about roles in [roles guideline](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md).
+We really appreciate any contribution, but should validate translated content, so after you submitted your translation it's going to be approved by other translator with proofreader role. Find more details about roles in [roles guideline](./ROLES.md).
 
 ### Step #3: Sync
 
@@ -66,4 +66,4 @@ Localization process for each language have specific questions, that should be d
 
 ---
 
-Check next guideline about [roles](https://github.com/nodejs/i18n/blob/master/guides/ROLES.md) in Node.js localization.
+Check next guideline about [roles](./ROLES.md) in Node.js localization.
