@@ -24,7 +24,7 @@ This member is active contributor with big experience in Node.js localization pr
 - add/remove language
 - problems with GitHub<--->Crowdin integration/sync
 
-To become a manager of project, please create a new issue with request in base repository ([see table](./GET_STARTED.md/#i18n-projects)).
+To become a manager of project, please create a new issue with request in base repository ([see table](./GETTING_STARTED.md/#i18n-projects)).
 
 ### Proofreader
 
@@ -32,7 +32,7 @@ This role it's kind of translators team lead, who have enough experience to appr
 
 > NOTE: Not approved translation never go live, that's why we recommend for proofreaders to focus on validation process instead of translating
 
-To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](./GET_STARTED.md/#i18n-projects)). To be sure in your experience, we require translate at least 1000 strings in your locale as translator, and attach proofs to issue.
+To become a proofreader of locale, please create a new issue with request in base repository of project ([see table](./GETTING_STARTED.md/#i18n-projects)). To be sure in your experience, we require translate at least 1000 strings in your locale as translator, and attach proofs to issue.
 
 ### Translator
 
@@ -58,7 +58,7 @@ To avoid any confusion with "team" and "repository" in context of our process, h
 
 User who manage l10n team issues/discussions, helps with global localization process updates under controlled repository. Has "write" access to l10n repository.
 
-To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](./GET_STARTED.md/#i18n-projects)).
+To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](./GETTING_STARTED.md/#i18n-projects)).
 
 ## Contributor
 

@@ -1,4 +1,4 @@
-# Get started
+# Getting started
 
 **Thank you for volunteering to translate Node.js content to your language!**
 
