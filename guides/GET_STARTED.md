@@ -10,7 +10,7 @@ The following is a set of guidelines for contributing to Node.js localization ef
 
 ### i18n projects
 
-| Name              | GitHub                                                    | GitHub team                          | Crowdin                                                              | URL                                                                         |
+| Name              | GitHub                                                    | Managers team                        | Crowdin                                                              | URL                                                                         |
 | :---------------- | :-------------------------------------------------------- | :----------------------------------- | :------------------------------------------------------------------- | :-------------------------------------------------------------------------- |
 | API Documentation | [nodejs/i18n](https://github.com/nodejs/i18n)             | @nodejs/crowdin-managers-api-docs    | [api-docs](https://crowdin.com/project/nodejs)                       | [nodejs.org/docs/latest/api](https://nodejs.org/docs/latest/api/index.html) |
 | Website           | [nodejs/nodejs.org](https://github.com/nodejs/nodejs.org) | @nodejs/crowdin-managers-website     | [nodejs-website](https://crowdin.com/project/nodejs-website)         | [nodejs.org](https://nodejs.org)                                            |
