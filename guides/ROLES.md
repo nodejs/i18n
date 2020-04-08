@@ -18,7 +18,7 @@ All Node.js Crowdin projects created by [Node.js Crowdin Bot](https://github.com
 
 ### Manager
 
-This member is active contributor with big experience in Node.js localization process and Crowdin platform. Each of Node.js Crowdin projects has their managers to handle general issues:
+This member is an active contributor with extensive experience in the Node.js localization process and Crowdin platform. Each Node.js Crowdin project has managers to handle general issues:
 
 - change role of members (translator/proofreader/manager)
 - add/remove language

@@ -1,6 +1,6 @@
 # Teams
 
-Our localization process structure based on language community, so we have l10n team for each target locale. Read guide below to understand goals of these teams and discover how to find and join your own.
+Our localization process structure is based on language community, so we have one l10n team for each target locale. Read the guide below to understand the goals of these teams and discover how to find and join your own.
 
 ## l10n teams
 
