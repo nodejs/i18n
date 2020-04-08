@@ -63,3 +63,7 @@ If you want to receive notification after someone mentioned your team, join it b
 3. Click "Request to join"
 
 ![image](https://user-images.githubusercontent.com/28801003/78789904-70b2db80-79b6-11ea-91f4-3e5c10a823ee.png)
+
+---
+
+Check next guideline about [crowdin](./ROLES.md) features that used in Node.js localization.
