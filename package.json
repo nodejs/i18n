@@ -34,7 +34,7 @@
     "jest": "^25.3.0",
     "request": "^2.88.2",
     "semver": "^7.2.1",
-    "standard": "^14.3.2",
+    "standard": "^14.3.3",
     "walk-sync": "^2.0.2"
   },
   "standard": {
