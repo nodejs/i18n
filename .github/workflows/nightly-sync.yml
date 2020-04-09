@@ -1,12 +1,11 @@
 name: Nightly Sync of content
-description: Cron job to pull fresh docs from original repo nodejs/node
 
 on:
   schedule:
   - cron: '0 3 * * *' # run daily at 3am
 
 jobs:
-  checks:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
