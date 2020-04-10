@@ -473,7 +473,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Veja [`port.postMessage()`][] para mais detalhes.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### `worker.ref()`
 <!-- YAML
@@ -534,7 +534,7 @@ changes:
                  Terminating is now a fully asynchronous operation.
 -->
 
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the [`'exit'` event][] is emitted.
 
