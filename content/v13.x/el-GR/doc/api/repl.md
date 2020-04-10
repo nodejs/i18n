@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
-The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
 ```js
 const repl = require('repl');
@@ -430,11 +430,11 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-> Σταθερότητα: 0 - Απαρχαιωμένο.
+> Stability: 0 - Deprecated.
 
 * `keyword` {string} the potential keyword to parse and execute
 * `rest` {any} any parameters to the keyword command
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
