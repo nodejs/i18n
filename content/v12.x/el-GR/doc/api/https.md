@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
-HTTPS είναι το πρωτόκολλο HTTP μέσω TLS/SSL. Στη Node.js υλοποιείται σαν μια ξεχωριστή ενότητα.
+HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: `https.Agent`
 <!-- YAML
@@ -62,7 +62,7 @@ added: v0.3.4
 
 * Extends: {tls.Server}
 
-Για περισσότερες πληροφορίες, δείτε το [`http.Server`][].
+See [`http.Server`][] for more information.
 
 ### `server.close([callback])`
 <!-- YAML
@@ -72,7 +72,7 @@ added: v0.1.90
 * `callback` {Function}
 * Returns: {https.Server}
 
-Για πληροφορίες, δείτε το [`server.close()`][`http.close()`] από την ενότητα HTTP.
+See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 ### `server.headersTimeout`
 <!-- YAML
@@ -85,7 +85,7 @@ See [`http.Server#headersTimeout`][].
 
 ### `server.listen()`
 
-Εκκινεί τον εξυπηρετητή HTTPS για ακρόαση κρυπτογραφημένων συνδέσεων. Η μέθοδος είναι πανομοιότυπη με το [`server.listen()`][] από το [`net.Server`][].
+Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### `server.maxHeadersCount`
 
@@ -102,7 +102,7 @@ added: v0.11.2
 * `callback` {Function}
 * Returns: {https.Server}
 
-Δείτε το [`http.Server#setTimeout()`][].
+See [`http.Server#setTimeout()`][].
 
 ### `server.timeout`
 <!-- YAML
@@ -111,7 +111,7 @@ added: v0.11.2
 
 * {number} **Default:** `120000` (2 minutes)
 
-Δείτε το [`http.Server#timeout`][].
+See [`http.Server#timeout`][].
 
 ### `server.keepAliveTimeout`
 <!-- YAML
@@ -128,7 +128,7 @@ added: v0.3.4
 -->
 
 * `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-* `requestListener` {Function} Ένας ακροατής που θα προστεθεί στο συμβάν `'request'`.
+* `requestListener` {Function} A listener to be added to the `'request'` event.
 * Returns: {https.Server}
 
 ```js
@@ -147,7 +147,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Ή
+Or
 
 ```js
 const https = require('https');
@@ -182,7 +182,7 @@ changes:
 * `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 * `callback` {Function}
 
-Όπως το [`http.get()`][] αλλά για συνδέσεις HTTPS.
+Like [`http.get()`][] but for HTTPS.
 
 Το `options` μπορεί να είναι ένα αντικείμενο, ένα string ή ένα αντικείμενο [`URL`][]. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
@@ -207,7 +207,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Καθολικό στιγμιότυπο του [`https.Agent`][] για όλα τα αιτήματα HTTPS των πελατών.
+Global instance of [`https.Agent`][] for all HTTPS client requests.
 
 ## `https.request(options[, callback])`
 ## `https.request(url[, options][, callback])`
@@ -233,7 +233,7 @@ changes:
   * `agent` **Default:** `https.globalAgent`
 * `callback` {Function}
 
-Αποστέλλει ένα αίτημα σε έναν ασφαλή εξυπηρετητή ιστού.
+Makes a request to a secure web server.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
@@ -264,7 +264,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Παράδειγμα με χρήση επιλογών από το [`tls.connect()`][]:
+Example using options from [`tls.connect()`][]:
 
 ```js
 const options = {
@@ -282,7 +282,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Εναλλακτικά, μπορείτε να αρνηθείτε τη συγκέντρωση συνδέσεων, χωρίς να χρησιμοποιήσετε έναν [`Agent`][].
+Alternatively, opt out of connection pooling by not using an [`Agent`][].
 
 ```js
 const options = {
@@ -300,7 +300,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Παράδειγμα χρήσης ενός [`URL`][] ως `options`:
+Example using a [`URL`][] as `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
@@ -387,7 +387,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Ο παραπάνω κώδικας, μπορεί να εμφανίσει για παράδειγμα:
+Outputs for example:
 
 ```text
 Subject Common Name: github.com
