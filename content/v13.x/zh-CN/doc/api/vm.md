@@ -1,14 +1,14 @@
-# VM (运行 JavaScript)
+# VM (Executing JavaScript)
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
 The `vm` module enables compiling and running code within V8 Virtual Machine contexts. **The `vm` module is not a security mechanism. Do not use it to run untrusted code**.
 
-JavaScript 代码可被编译并立即运行，或者编译，保存，并稍后运行。
+JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
 A common use case is to run the code in a different V8 Context. This means invoked code has a different global object than the invoking code.
 
@@ -54,13 +54,13 @@ changes:
                  `script.createCachedData()`
 -->
 
-* `code` {string} 要编译的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile.
 * `options` {Object|string}
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `'evalmachine.<anonymous>'`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **Default:** `0`.
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **Default:** `0`.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `'evalmachine.<anonymous>'`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully. This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This option is part of the experimental modules API, and should not be considered stable.
     * `specifier` {string} specifier passed to `import()`
     * `module` {vm.Module}
@@ -68,14 +68,14 @@ changes:
 
 If `options` is a string, then it specifies the filename.
 
-创建新的 `vm.Script` 对象会编译 `code` 但不会运行它。 编译过的 `vm.Script` 可以在以后被多次运行。 The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
+Creating a new `vm.Script` object compiles `code` but does not run it. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
 
 ### `script.createCachedData()`
 <!-- YAML
 added: v10.6.0
 -->
 
-* 返回：{Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `Script` constructor's `cachedData` option. Returns a `Buffer`. This method may be called at any time and any number of times.
 
@@ -107,13 +107,13 @@ changes:
 * `contextifiedObject` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
 * `options` {Object}
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
 * Returns: {any} the result of the very last statement executed in the script.
 
-Runs the compiled code contained by the `vm.Script` object within the given `contextifiedObject` and returns the result. 正在运行的代码不能访问本地作用域。
+Runs the compiled code contained by the `vm.Script` object within the given `contextifiedObject` and returns the result. Running code does not have access to local scope.
 
-如下的示例将编译并多次运行代码，该代码会增加全局变量的值，并设置另一个全局变量的值。 The globals are contained in the `context` object.
+The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. The globals are contained in the `context` object.
 
 ```js
 const util = require('util');
@@ -152,7 +152,7 @@ changes:
 * `contextObject` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
 * `options` {Object}
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
@@ -161,9 +161,9 @@ changes:
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 * Returns: {any} the result of the very last statement executed in the script.
 
-First contextifies the given `contextObject`, runs the compiled code contained by the `vm.Script` object within the created context, and returns the result. 正在运行的代码不能访问本地作用域。
+First contextifies the given `contextObject`, runs the compiled code contained by the `vm.Script` object within the created context, and returns the result. Running code does not have access to local scope.
 
-如下的示例编译设置了全局变量的代码，并在不同的上下文中多次运行该代码。 The globals are set on and contained within each individual `context`.
+The following example compiles code that sets a global variable, then executes the code multiple times in different contexts. The globals are set on and contained within each individual `context`.
 
 ```js
 const util = require('util');
@@ -191,13 +191,13 @@ changes:
 
 * `options` {Object}
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
 * Returns: {any} the result of the very last statement executed in the script.
 
-在当前 `global` 对象的上下文中运行 `vm.Script` 中包含的已编译代码。 Running code does not have access to local scope, but *does* have access to the current `global` object.
+Runs the compiled code contained by the `vm.Script` within the context of the current `global` object. Running code does not have access to local scope, but *does* have access to the current `global` object.
 
-如下示例编译增加 `global` 变量值的代码并多次运行该代码：
+The following example compiles code that increments a `global` variable then executes that code multiple times:
 
 ```js
 const vm = require('vm');
@@ -221,7 +221,7 @@ console.log(globalVar);
 added: v13.10.0
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 Measure the memory known to V8 and used by the current execution context or a specified context.
 
@@ -259,7 +259,7 @@ vm.measureMemory({ mode: 'detailed' }, context)
 added: v13.0.0
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -368,7 +368,7 @@ Corresponds to the `[[EvaluationError]]` field of [Cyclic Module Record](https:/
 * `options` {Object}
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown. **Default:** `false`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -393,7 +393,7 @@ Corresponds to the [Evaluate() concrete method](https://tc39.es/ecma262/#sec-mod
 
   * `referencingModule` {vm.Module} The `Module` object `link()` is called on.
   * Returns: {vm.Module|Promise}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before evaluation, and can only be called once per module.
 
@@ -453,7 +453,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -517,7 +517,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v13.7.0
 -->
 
-* 返回：{Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `SourceTextModule` constructor's `cachedData` option. Returns a `Buffer`. This method may be called any number of times before the module has been evaluated.
 
@@ -537,7 +537,7 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 added: v13.0.0
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -605,14 +605,14 @@ added: v10.10.0
 * `code` {string} The body of the function to compile.
 * `params` {string[]} An array of strings containing all parameters for the function.
 * `options` {Object}
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `''`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **Default:** `0`.
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **Default:** `0`.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `''`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source.
   * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
-* 返回：{Function}
+* Returns: {Function}
 
 Compiles the given code into the provided context (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
@@ -637,7 +637,7 @@ changes:
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 * Returns: {Object} contextified object.
 
-If given a `contextObject`, the `vm.createContext()` method will [prepare that object](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `contextObject` will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. 在 vm 模块运行脚本之外，全局变量将不被更改。
+If given a `contextObject`, the `vm.createContext()` method will [prepare that object](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `contextObject` will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. Outside of scripts run by the vm module, global variables will remain unchanged.
 
 ```js
 const util = require('util');
@@ -669,7 +669,7 @@ added: v0.11.7
 -->
 
 * `object` {Object}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `oject` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
@@ -682,28 +682,28 @@ changes:
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile and run.
 * `contextifiedObject` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
 * `options` {Object|string}
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `'evalmachine.<anonymous>'`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **Default:** `0`.
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **Default:** `0`.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `'evalmachine.<anonymous>'`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully. This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This option is part of the experimental modules API, and should not be considered stable.
     * `specifier` {string} specifier passed to `import()`
     * `module` {vm.Module}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is recommended in order to take advantage of error tracking, and to avoid issues with namespaces that contain `then` function exports.
 * Returns: {any} the result of the very last statement executed in the script.
 
-The `vm.runInContext()` method compiles `code`, runs it within the context of the `contextifiedObject`, then returns the result. 正在运行的代码不能访问本地作用域。 The `contextifiedObject` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
+The `vm.runInContext()` method compiles `code`, runs it within the context of the `contextifiedObject`, then returns the result. Running code does not have access to the local scope. The `contextifiedObject` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
 
 If `options` is a string, then it specifies the filename.
 
-如下示例使用单一的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象编译并运行不同的脚本。
+The following example compiles and executes different scripts using a single [contextified](#vm_what_does_it_mean_to_contextify_an_object) object:
 
 ```js
 const util = require('util');
@@ -731,14 +731,14 @@ changes:
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile and run.
 * `contextObject` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
 * `options` {Object|string}
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `'evalmachine.<anonymous>'`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **Default:** `0`.
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **Default:** `0`.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `'evalmachine.<anonymous>'`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
@@ -746,18 +746,18 @@ changes:
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully. This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This option is part of the experimental modules API, and should not be considered stable.
     * `specifier` {string} specifier passed to `import()`
     * `module` {vm.Module}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is recommended in order to take advantage of error tracking, and to avoid issues with namespaces that contain `then` function exports.
 * Returns: {any} the result of the very last statement executed in the script.
 
-The `vm.runInNewContext()` first contextifies the given `contextObject` (or creates a new `contextObject` if passed as `undefined`), compiles the `code`, runs it within the created context, then returns the result. 正在运行的代码不能访问本地作用域。
+The `vm.runInNewContext()` first contextifies the given `contextObject` (or creates a new `contextObject` if passed as `undefined`), compiles the `code`, runs it within the created context, then returns the result. Running code does not have access to the local scope.
 
 If `options` is a string, then it specifies the filename.
 
-如下示例编译并运行代码，该代码增加一个全局变量的值，并给新的变量赋值。 These globals are contained in the `contextObject`.
+The following example compiles and executes code that increments a global variable and sets a new one. These globals are contained in the `contextObject`.
 
 ```js
 const util = require('util');
@@ -782,27 +782,27 @@ changes:
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile and run.
 * `options` {Object|string}
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `'evalmachine.<anonymous>'`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **Default:** `0`.
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **Default:** `0`.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `'evalmachine.<anonymous>'`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `displayErrors` {boolean} When `true`, if an [`Error`][] occurs while compiling the `code`, the line of code causing the error is attached to the stack trace. **Default:** `true`.
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown. **Default:** `false`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully. This option is **deprecated** in favor of `script.createCachedData()`. **Default:** `false`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This option is part of the experimental modules API, and should not be considered stable.
     * `specifier` {string} specifier passed to `import()`
     * `module` {vm.Module}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is recommended in order to take advantage of error tracking, and to avoid issues with namespaces that contain `then` function exports.
 * Returns: {any} the result of the very last statement executed in the script.
 
-`vm.runInThisContext()` 会编译 `code`，在当前 `global` 的上下文中运行该代码，并返回结果。 正在运行的代码不能访问本地作用域，但可以访问当前的 `global` 对象。
+`vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
 If `options` is a string, then it specifies the filename.
 
-下面的示例演示如何使用 `vm.runInThisContext()` 和 JavaScript [`eval()`][] 函数来运行同样的代码：
+The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
 ```js
 const vm = require('vm');
 let localVar = 'initial value';
@@ -816,13 +816,13 @@ console.log(`evalResult: '${evalResult}', localVar: '${localVar}'`);
 // Prints: evalResult: 'eval', localVar: 'eval'
 ```
 
-由于 `vm.runInThisContext()` 不能访问本地作用域，`localVar` 未被更改。 In contrast, [`eval()`][] *does* have access to the local scope, so the value `localVar` is changed. 通过这种方式，`vm.runInThisContext()` 就类似于 [间接 `eval()` 调用]，即：`(0,eval)('code')`。
+Because `vm.runInThisContext()` does not have access to the local scope, `localVar` is unchanged. In contrast, [`eval()`][] *does* have access to the local scope, so the value `localVar` is changed. In this way `vm.runInThisContext()` is much like an [indirect `eval()` call][], e.g. `(0,eval)('code')`.
 
-## 示例：在 VM 中运行一个 HTTP 服务器
+## Example: Running an HTTP Server within a VM
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-为了使用 `http` 模块运行一个简单的 web 服务器，传递给上下文的代码必须自己调用 `require('http')`，或者具有传递给它的 `http` 模块的引用。 例如：
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
@@ -843,13 +843,13 @@ const code = `
 vm.runInThisContext(code)(require);
 ```
 
-The `require()` in the above case shares the state with the context it is passed from. 这可能会在运行不受信任代码时引入风险，即：以不希望的方式更改上下文中的对象。
+The `require()` in the above case shares the state with the context it is passed from. This may introduce risks when untrusted code is executed, e.g. altering objects in the context in unwanted ways.
 
-## "contextify" 一个对象是什么意思？
+## What does it mean to "contextify" an object?
 
-在 Node.js 中运行的所有 JavaScript 都在 “上下文” 的作用域内运行。 According to the [V8 Embedder's Guide](https://v8.dev/docs/embed#contexts):
+All JavaScript executed within Node.js runs within the scope of a "context". According to the [V8 Embedder's Guide](https://v8.dev/docs/embed#contexts):
 
-> 在 V8 中，上下文是一个执行环境，它允许在一个单一的 V8 实例中运行分离的，不相关的 JavaScript 应用程序。 你必须显式指定要在其中运行任何 JavaScript 代码的上下文。
+> In V8, a context is an execution environment that allows separate, unrelated, JavaScript applications to run in a single instance of V8. You must explicitly specify the context in which you want any JavaScript code to be run.
 
 When the method `vm.createContext()` is called, the `contextObject` argument (or a newly-created object if `contextObject` is `undefined`) is associated internally with a new instance of a V8 Context. This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. The process of creating the V8 Context and associating it with the `contextObject` is what this document refers to as "contextifying" the object.
 
