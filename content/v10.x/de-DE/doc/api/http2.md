@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -685,7 +685,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Gibt zurück: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -1480,7 +1480,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Gibt zurück: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1609,7 +1609,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Gibt zurück: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1656,7 +1656,7 @@ changes:
   * `Http2ServerRequest` {http2.Http2ServerRequest} Specifies the `Http2ServerRequest` class to use. Useful for extending the original `Http2ServerRequest`. **Default:** `Http2ServerRequest`.
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Gibt zurück: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1720,7 +1720,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Gibt zurück: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1782,7 +1782,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function}
-* Gibt zurück: {ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1939,7 +1939,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Fehlerbehandlung
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2303,7 +2303,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Gibt zurück: {http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
 Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2477,7 +2477,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Gibt zurück: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2502,7 +2502,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Gibt zurück: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -2642,7 +2642,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Gibt zurück: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2761,7 +2761,7 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Gibt zurück: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
