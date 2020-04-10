@@ -270,6 +270,7 @@ To this env, N-API provides a way to allocate data such that its life cycle is t
 ### napi_set_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -291,6 +292,7 @@ This API associates `data` with the currently running Agent. `data` can later be
 ### napi_get_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -1285,9 +1287,8 @@ N-API values are represented by the type `napi_value`. Any N-API call that requi
 #### napi_key_collection_mode
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 typedef enum {
@@ -1305,9 +1306,8 @@ Describes the `Keys/Properties` filter enums:
 #### napi_key_filter
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 typedef enum {
@@ -1325,9 +1325,8 @@ Property filter bits. They can be or'ed to build a composite filter.
 #### napi_key_conversion
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 typedef enum {
@@ -1798,9 +1797,8 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 #### napi_create_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1819,9 +1817,8 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1840,9 +1837,8 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2144,9 +2140,8 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 #### napi_get_value_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2167,9 +2162,8 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 #### napi_get_value_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2190,9 +2184,8 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 #### napi_get_value_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2968,9 +2961,8 @@ This API returns the names of the enumerable properties of `object` as an array 
 #### napi_get_all_property_names
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_get_all_property_names(napi_env env,
