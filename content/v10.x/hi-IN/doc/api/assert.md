@@ -429,6 +429,8 @@ If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation functio
 
 The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
+<!-- eslint-disable no-restricted-syntax -->
+
 ```js
 assert.doesNotThrow(
   () => {
@@ -439,6 +441,8 @@ assert.doesNotThrow(
 ```
 
 However, the following will result in an `AssertionError` with the message 'Got unwanted exception...':
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 assert.doesNotThrow(
@@ -451,6 +455,8 @@ assert.doesNotThrow(
 
 If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
 
+<!-- eslint-disable no-restricted-syntax -->
+
 ```js
 assert.doesNotThrow(
   () => {
@@ -462,14 +468,14 @@ assert.doesNotThrow(
 // Throws: AssertionError: Got unwanted exception: Whoops
 ```
 
-## assert.equal(actual, expected[, message])<!-- YAML
+## assert.equal(actual, expected[, message])
+
+<!-- YAML
 added: v0.1.21
 -->
 
 * `actual` {any}
-
 * `expected` {any}
-
 * `message` {string|Error}
 
 **Strict mode**
@@ -498,7 +504,9 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 
 If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.fail([message])<!-- YAML
+## assert.fail([message])
+
+<!-- YAML
 added: v0.1.21
 -->
 
@@ -521,7 +529,9 @@ assert.fail(new TypeError('need array'));
 
 Using `assert.fail()` with more than two arguments is possible but deprecated. See below for further details.
 
-## assert.fail(actual, expected[, message[, operator[, stackStartFn]]])<!-- YAML
+## assert.fail(actual, expected[, message[, operator[, stackStartFn]]])
+
+<!-- YAML
 added: v0.1.21
 changes:
 
@@ -575,7 +585,9 @@ suppressFrame();
 //     ...
 ```
 
-## assert.ifError(value)<!-- YAML
+## assert.ifError(value)
+
+<!-- YAML
 added: v0.1.97
 changes:
 
@@ -619,7 +631,9 @@ let err;
 //     at errorFrame
 ```
 
-## assert.notDeepEqual(actual, expected[, message])<!-- YAML
+## assert.notDeepEqual(actual, expected[, message])
+
+<!-- YAML
 added: v0.1.21
 changes:
 
@@ -689,7 +703,9 @@ assert.notDeepEqual(obj1, obj4);
 
 If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.notDeepStrictEqual(actual, expected[, message])<!-- YAML
+## assert.notDeepStrictEqual(actual, expected[, message])
+
+<!-- YAML
 added: v1.2.0
 changes:
 
@@ -733,14 +749,14 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 
 If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.notEqual(actual, expected[, message])<!-- YAML
+## assert.notEqual(actual, expected[, message])
+
+<!-- YAML
 added: v0.1.21
 -->
 
 * `actual` {any}
-
 * `expected` {any}
-
 * `message` {string|Error}
 
 **Strict mode**
@@ -768,7 +784,9 @@ assert.notEqual(1, '1');
 
 If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.notStrictEqual(actual, expected[, message])<!-- YAML
+## assert.notStrictEqual(actual, expected[, message])
+
+<!-- YAML
 added: v0.1.21
 changes:
 
@@ -798,7 +816,9 @@ assert.notStrictEqual(1, '1');
 
 If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.ok(value[, message])<!-- YAML
+## assert.ok(value[, message])
+
+<!-- YAML
 added: v0.1.21
 changes:
 
@@ -858,14 +878,14 @@ assert(0);
 //   assert(0)
 ```
 
-## assert.rejects(asyncFn\[, error\]\[, message\])<!-- YAML
+## assert.rejects(asyncFn\[, error\]\[, message\])
+
+<!-- YAML
 added: v10.0.0
 -->
 
 * `asyncFn` {Function|Promise}
-
 * `error` {RegExp|Function|Object|Error}
-
 * `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
@@ -941,7 +961,9 @@ assert.strictEqual(1, '1');
 
 If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
-## assert.throws(fn\[, error\]\[, message\])<!-- YAML
+## assert.throws(fn\[, error\]\[, message\])
+
+<!-- YAML
 added: v0.1.21
 changes:
 
@@ -1072,6 +1094,8 @@ assert.throws(
 ```
 
 Note that `error` cannot be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Using the same message as the thrown error message is going to result in an `ERR_AMBIGUOUS_ARGUMENT` error. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
