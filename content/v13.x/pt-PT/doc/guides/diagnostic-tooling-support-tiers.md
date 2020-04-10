@@ -90,11 +90,11 @@ The tools are currently assigned to Tiers as follows:
  | Memory    | V8 heap profiler          | No                            | Yes                     | 1           |
  | Memory    | V8 sampling heap profiler | No                            | Yes                     | 1           |
  | AsyncFlow | Async Hooks (API)         | ?                             | Yes                     | 1           |
- | Depurador | V8 Debug protocol (API)   | No                            | Yes                     | 1           |
- | Depurador | Command line Debug Client | ?                             | Yes                     | 1           |
- | Depurador | llnode                    | ?                             | No                      | 2           |
- | Depurador | Chrome Dev tools          | ?                             | No                      | 3           |
- | Depurador | Chakracore - time-travel  | No                            | Data source only        | too early   |
+ | Debugger  | V8 Debug protocol (API)   | No                            | Yes                     | 1           |
+ | Debugger  | Command line Debug Client | ?                             | Yes                     | 1           |
+ | Debugger  | llnode                    | ?                             | No                      | 2           |
+ | Debugger  | Chrome Dev tools          | ?                             | No                      | 3           |
+ | Debugger  | Chakracore - time-travel  | No                            | Data source only        | too early   |
  | Tracing   | trace_events (API)        | No                            | Yes                     | 1           |
  | Tracing   | DTrace                    | No                            | Partial                 | 3           |
  | Tracing   | LTTng                     | No                            | Removed?                | N/A         |
