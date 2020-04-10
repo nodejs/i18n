@@ -32,12 +32,12 @@ appropriate. This is especially true when introducing or deprecating an API.</p>
 * Constructors should use PascalCase.
 * Instances should use camelCase.
 * Denote methods with parentheses: `socket.end()` instead of `socket.end`.
-* Argumenty funkcji lub właściwości obiektu powinny mieć następujący format:
+* Function arguments or object properties should use the following format:
   * ``* `name` {type|type2} Optional description. **Default:** `value`.``
   <!--lint disable maximum-line-length remark-lint-->
   * For example: <code>* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
   <!--lint enable maximum-line-length remark-lint-->
-  * `Typu` powinno odnosić się do typu Node.js lub [typu JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
+  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 * Funkcja zwrotna powinna używać następującego formatu:
   * <code>* Zwrot: {typ|typ2} Opcjonalny opis.</code>
   * E.g. <code>* Returns: {AsyncHook} A reference to `asyncHook`.</code>
