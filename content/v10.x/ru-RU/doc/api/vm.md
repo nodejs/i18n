@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -49,7 +49,7 @@ Unlike `vm.Script` however, every `vm.SourceTextModule` object is bound to a con
 
 Using a `vm.SourceTextModule` object requires four distinct steps: creation/parsing, linking, instantiation, and evaluation. These four steps are illustrated in the following example.
 
-This implementation lies at a lower level than the \[ECMAScript Module loader\]\[\]. There is also currently no way to interact with the Loader, though support is planned.
+This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
 
 ```js
 const vm = require('vm');
@@ -137,7 +137,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 ### Constructor: new vm.SourceTextModule(code[, options])
 
 * `code` {string} JavaScript Module code to parse
-* `опции` 
+* `options` 
   * `url` {string} URL used in module resolution and stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
   * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
@@ -201,10 +201,10 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 
 ### module.evaluate([options])
 
-* `опции` {Object} 
+* `options` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* Возвращает: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -215,7 +215,7 @@ This must be called after the module has been instantiated; otherwise it will th
 
 This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
 
-Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.instantiate()
 
@@ -225,12 +225,12 @@ However, if this function succeeded, further calls to this function after the in
 
 Unlike other methods operating on `Module`, this function completes synchronously and returns nothing.
 
-Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.link(linker)
 
 * `linker` {Function}
-* Возвращает: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
@@ -335,7 +335,7 @@ changes:
 -->
 
 * `code` {string} The JavaScript code to compile.
-* `опции` 
+* `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -351,7 +351,7 @@ Creating a new `vm.Script` object compiles `code` but does not run it. The compi
 added: v10.6.0
 -->
 
-* Возвращает: {Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the Script constructor's `cachedData` option. Returns a Buffer. This method may be called at any time and any number of times.
 
@@ -383,7 +383,7 @@ changes:
 -->
 
 * `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -430,7 +430,7 @@ changes:
 -->
 
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -468,7 +468,7 @@ console.log(util.inspect(sandboxes));
 added: v0.3.1
 -->
 
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -503,12 +503,12 @@ added: v10.10.0
 
 * `code` {string} The body of the function to compile.
 * `params` {string[]} An array of strings containing all parameters for the function.
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `''`.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source.
-  * `produceCachedData` {boolean} Specifies whether to produce new cache data. **По умолчанию:** `false`.
+  * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
 
@@ -529,7 +529,7 @@ changes:
 -->
 
 * `sandbox` {Object}
-* `опции` {Object} 
+* `options` {Object} 
   * `name` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `codeGeneration` {Object} 
@@ -567,7 +567,7 @@ added: v0.11.7
 -->
 
 * `sandbox` {Object}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `sandbox` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
@@ -575,7 +575,7 @@ Returns `true` if the given `sandbox` object has been [contextified](#vm_what_do
 
 * `code` {string} The JavaScript code to compile and run.
 * `contextifiedSandbox` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
-* `опции` {Object|string} 
+* `options` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -611,7 +611,7 @@ added: v0.3.1
 
 * `code` {string} The JavaScript code to compile and run.
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `опции` {Object|string} 
+* `options` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -648,7 +648,7 @@ added: v0.3.1
 -->
 
 * `code` {string} The JavaScript code to compile and run.
-* `опции` {Object|string} 
+* `options` {Object|string} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -660,6 +660,8 @@ added: v0.3.1
 If `options` is a string, then it specifies the filename.
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+
+<!-- eslint-disable prefer-const -->
 
 ```js
 const vm = require('vm');
@@ -683,7 +685,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Например:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
