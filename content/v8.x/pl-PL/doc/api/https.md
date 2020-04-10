@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -82,7 +82,7 @@ added: v0.3.4
 - `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 - `requestListener` {Function} A listener to be added to the `request` event.
 
-Przykład:
+Example:
 
 ```js
 // curl -k https://localhost:8000/
@@ -135,7 +135,7 @@ Like [`http.get()`][] but for HTTPS.
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
-Przykład:
+Example:
 
 ```js
 const https = require('https');
@@ -173,9 +173,9 @@ changes:
 -->
 
 - `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  - `protocol` **Default:** `https:`
-  - `port` **Default:** `443`
-  - `agent` **Default:** `https.globalAgent`
+    - `protocol` **Default:** `https:`
+    - `port` **Default:** `443`
+    - `agent` **Default:** `https.globalAgent`
 - `callback` {Function}
 
 Makes a request to a secure web server.
@@ -184,7 +184,7 @@ The following additional `options` from [`tls.connect()`][] are also accepted wh
 
 `options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
-Przykład:
+Example:
 
 ```js
 const https = require('https');
@@ -231,7 +231,7 @@ const req = https.request(options, (res) => {
 
 Alternatively, opt out of connection pooling by not using an `Agent`.
 
-Przykład:
+Example:
 
 ```js
 const options = {
