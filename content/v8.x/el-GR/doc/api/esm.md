@@ -1,77 +1,77 @@
-# Ενότητες ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
-Η Node.js υποστηρίζει ενότητες ES με βάση το [Node.js EP για ενότητες ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Δεν είναι όλα τα χαρακτηριστικά του EP έτοιμα, και θα ετοιμαστούν όταν ολοκληρωθεί η υποστήριξη και η υλοποίηση της VM. Τα μηνύματα λάθους είναι ακόμα υπό μορφοποίηση.
+Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 
-## Ενεργοποίηση
+## Enabling
 
 <!-- type=misc -->
 
-Η επιλογή `--experimental-modules` μπορεί να χρησιμοποιηθεί για την ενεργοποίηση των δυνατοτήτων φόρτωσης των ενοτήτων ESM.
+The `--experimental-modules` flag can be used to enable features for loading ESM modules.
 
-Μόλις οριστεί αυτή η επιλογή, τα αρχεία με κατάληξη `.mjs` θα μπορούν να φορτωθούν ως ενότητες ES Modules.
+Once this has been set, files ending with `.mjs` will be able to be loaded as ES Modules.
 
 ```sh
 node --experimental-modules my-app.mjs
 ```
 
-## Χαρακτηριστικά
+## Features
 
 <!-- type=misc -->
 
-### Υποστηριζόμενα
+### Supported
 
-Μόνο οι παράμετροι CLI για το κύριο σημείο εισόδου του προγράμματος, μπορούν να είναι ένα σημείο εισόδου για ένα γράφημα ESM. H δυναμική εισαγωγή κατά την εκτέλεση, μπορεί επίσης να δημιουργεί σημεία εισόδου στα γραφήματα ESM.
+Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
 
-### Μη υποστηριζόμενα
+### Unsupported
 
-| Χαρακτηριστικό         | Αιτία                                                                             |
+| Feature                | Reason                                                                            |
 | ---------------------- | --------------------------------------------------------------------------------- |
 | `require('./foo.mjs')` | ES Modules have differing resolution and timing, use language standard `import()` |
 | `import()`             | pending newer V8 release used in Node.js                                          |
 | `import.meta`          | pending V8 implementation                                                         |
 
-## Αξιοσημείωτες διαφορές μεταξύ `import` και `require`
+## Notable differences between `import` and `require`
 
-### Δεν υπάρχει NODE_PATH
+### No NODE_PATH
 
-Το `NODE_PATH` δεν είναι μέρος της επίλυσης των προσδιοριστών `import`. Παρακαλούμε χρησιμοποιήστε symlinks αν επιθυμείτε αυτή τη συμπεριφορά.
+`NODE_PATH` is not part of resolving `import` specifiers. Please use symlinks if this behavior is desired.
 
-### Δεν υπάρχει `require.extensions`
+### No `require.extensions`
 
-Το `require.extensions` δεν χρησιμοποιείται από το `import`. Το αναμενόμενο είναι ότι τα loader hooks μπορούν να προσφέρουν αυτή τη λειτουργικότητα στο μέλλον.
+`require.extensions` is not used by `import`. The expectation is that loader hooks can provide this workflow in the future.
 
-### Δεν υπάρχει `require.cache`
+### No `require.cache`
 
-Το `require.cache` δε χρησιμοποιείται από το `import`. Έχει ξεχωριστή προσωρινή μνήμη.
+`require.cache` is not used by `import`. It has a separate cache.
 
-### Διαδρομές βασισμένες σε URL
+### URL based paths
 
-Τα ESM επιλύονται και αποθηκεύονται προσωρινά με τη χρήση σημασιολογίας [URL](https://url.spec.whatwg.org/). Αυτό σημαίνει ότι πρέπει να γίνει χρήση χαρακτήρα διαφυγής, όταν εμφανίζονται χαρακτήρες όπως το `#` και το `?`.
+ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
 
-Οι ενότητες θα φορτωθούν πολλαπλές φορές αν οι προσδιοριστές `import` που χρησιμοποιούνται για την επίλυση τους έχουν διαφορετικό επερώτημα.
+Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
 import './foo?query=1'; // loads ./foo with query of "?query=1"
 import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
-Προς το παρόν, μόνο ενότητες που χρησιμοποιούν το πρωτόκολλο `file:` μπορούν να φορτωθούν.
+For now, only modules using the `file:` protocol can be loaded.
 
-## Διαλειτουργικότητα με υπάρχουσες μονάδες
+## Interop with existing modules
 
-Όλες οι ενότητες CommonJS, JSON, και C++ μπορούν να χρησιμοποιηθούν με τη χρήση του `import`.
+All CommonJS, JSON, and C++ modules can be used with `import`.
 
-Οι ενότητες που φορτώνονται με αυτό τον τρόπο θα φορτωθούν μόνο μια φορά, ακόμα κι αν το επερώτημά τους είναι διαφορετικό μεταξύ των δηλώσεων `import`.
+Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
 
-Όταν φορτωθούν μέσω του `import` αυτές οι ενότητες θα παρέχουν μια μοναδική εξαγόμενη `default` η οποία αντιπροσωπεύει την τιμή του `module.exports` την στιγμή της ολοκλήρωσης της αξιολόγησης.
+When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
 
 ```js
 import fs from 'fs';
@@ -90,11 +90,11 @@ fs.readFile('./foo.txt', (err, body) => {
 
 To customize the default module resolution, loader hooks can optionally be provided via a `--loader ./loader-name.mjs` argument to Node.
 
-Όταν χρησιμοποιούνται τα hook, ισχύουν μόνο για τις μονάδες ES που φορτώνονται, και όχι για μονάδες CommonJS.
+When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
-### Hook επίλυσης
+### Resolve hook
 
-Το hook επίλυσης επιστρέφει το επιλυμένο URL αρχείου και τη μορφή της ενότητας για τον δεδομένο προσδιοριστή ενότητας καθώς και το URL του γονικού αρχείου:
+The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
 
 ```js
 import url from 'url';
@@ -109,16 +109,16 @@ export async function resolve(specifier, parentModuleURL, defaultResolver) {
 
 The default NodeJS ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-Εκτός από την επιστροφή της τιμής του επιλυμένου URL του αρχείου, το hook επίλυσης επιστρέφει επίσης μια ιδιότητα `format` η οποία προσδιορίζει τη μορφή της επιλυμένης ενότητας. Αυτή μπορεί να είναι μια από τις παρακάτω:
+In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `μορφή`      | Περιγραφή                                                              |
-| ------------ | ---------------------------------------------------------------------- |
-| `'esm'`      | Φόρτωση κανονικών ενοτήτων JavaScript                                  |
-| `'commonjs'` | Φόρτωση μιας ενότητας CommonJS σε στυλ node                            |
-| `'builtin'`  | Φόρτωση μιας ενσωματωμένης ενότητας CommonJS                           |
-| `'json'`     | Φόρτωση ενός αρχείου JSON                                              |
-| `'addon'`    | Φόρτωση ενός [πρόσθετου C++](addons.html)                              |
-| `'dynamic'`  | Χρήση ενός [δυναμικού instantiate hook](#esm_dynamic_instantiate_hook) |
+| `format`     | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| `'esm'`      | Load a standard JavaScript module                               |
+| `'commonjs'` | Load a node-style CommonJS module                               |
+| `'builtin'`  | Load a node builtin CommonJS module                             |
+| `'json'`     | Load a JSON file                                                |
+| `'addon'`    | Load a [C++ Addon](addons.html)                                 |
+| `'dynamic'`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node builtin modules support could be written:
 
@@ -157,17 +157,17 @@ export function resolve(specifier, parentModuleURL/*, defaultResolve */) {
 }
 ```
 
-Με αυτόν το φορτωτή, τρέχοντας την εντολή:
+With this loader, running:
 
 ```console
 NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 ```
 
-θα φορτώσει την ενότητα `x.js` ως μια ενότητα ES, με υποστήριξη σχετικής ανάλυσης (με τη φόρτωση των `node_modules` να παραλείπεται σε αυτό το παράδειγμα).
+would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
 
-### Δυναμικό instantiate hook
+### Dynamic instantiate hook
 
-Για τη δημιουργία μιας προσαρμοσμένης δυναμικής ενότητας που δεν αντιστοιχεί σε μια από τις υπάρχουσες ερμηνείες `format`, μπορεί να χρησιμοποιηθεί το `dynamicInstantiate` hook. Αυτό το hook καλείται μόνο για ενότητες που επιστρέφουν `format: 'dynamic'` από το `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {
@@ -181,4 +181,4 @@ export async function dynamicInstantiate(url) {
 }
 ```
 
-Με τη λίστα εξαγόμενων ενοτήτων να παρέχεται εκ των προτέρων, η συνάρτηση `execute` θα κληθεί στο ακριβές σημείο της αξιολόγησης σειράς των ενοτήτων, για την ενότητα στο δέντρο εισαγωγής.
+With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.
