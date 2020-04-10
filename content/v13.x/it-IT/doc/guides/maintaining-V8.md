@@ -1,4 +1,4 @@
-# Manutenzione di V8 in Node.js
+# Maintaining V8 in Node.js
 
 ## Background
 
@@ -136,7 +136,7 @@ Once a bug in Node.js has been identified to be caused by V8, the first step is 
 
 If the bug can be reproduced on the [Node.js `canary` branch][], Chromium canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed upstream first.
 
-* Inizia aprendo un bug upstream usando [questo template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
+* Start by opening a bug upstream using [this template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
 * Make sure to include a link to the corresponding Node.js issue (if one exists).
 * If the fix is simple enough, you may fix it yourself; [contributions](https://github.com/v8/v8/wiki/Contributing) are welcome.
 * V8's build waterfall tests your change.
@@ -160,24 +160,24 @@ If the bug exists in any of the active V8 branches, we may need to get the fix b
 
 ### Backporting to Abandoned Branches
 
-I branch abbandonati di V8 sono supportati nel repository di Node.js. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
+Abandoned V8 branches are supported in the Node.js repository. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
 
 * For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug:
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
-  * Seleziona accuratamente il(i) commit(s) dal repository di V8.
+  * Cherry-pick the commit(s) from the V8 repository.
   * On Node.js < 9.0.0: Increase the patch level version in `v8-version.h`. This will not cause any problems with versioning because V8 will not publish other patches for this branch, so Node.js can effectively bump the patch version.
   * On Node.js >= 9.0.0: Increase the `v8_embedder_string` number in `common.gypi`.
   * In some cases the patch may require extra effort to merge in case V8 has changed substantially. For important issues we may be able to lean on the V8 team to get help with reimplementing the patch.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch and notify the `@nodejs/v8` team.
-  * Esegui il [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) di Node.js oltre al [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
+  * Run the Node.js [V8 CI](https://ci.nodejs.org/job/node-test-commit-v8-linux/) in addition to the [Node.js CI](https://ci.nodejs.org/job/node-test-pull-request/). The CI uses the `test-v8` target in the `Makefile`, which uses `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to run V8 tests.
 
 The [`git-node`][] tool can be used to simplify this task. Run `git node v8 backport <sha>` to cherry-pick a commit.
 
-An example for workflow how to cherry-pick consider the bug [RegExp show inconsistent result with other browsers](https://crbug.com/v8/5199). From the bug we can see that it was merged by V8 into 5.2 and 5.3, and not into V8 5.1 (since it was already abandoned). Since Node.js `v6.x` uses V8 5.1, the fix needed to be cherry-picked. Per eseguire la sezione accurata, ecco qui un esempio di workflow:
+An example for workflow how to cherry-pick consider the bug [RegExp show inconsistent result with other browsers](https://crbug.com/v8/5199). From the bug we can see that it was merged by V8 into 5.2 and 5.3, and not into V8 5.1 (since it was already abandoned). Since Node.js `v6.x` uses V8 5.1, the fix needed to be cherry-picked. To cherry-pick, here's an example workflow:
 
 * Download and apply the commit linked-to in the issue (in this case a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
 --directory=deps/v8`. If the branches have diverged significantly, this may not apply cleanly. It may help to try to cherry-pick the merge to the oldest branch that was done upstream in V8. In this example, this would be the patch from the merge to 5.2. The hope is that this would be closer to the V8 5.1, and has a better chance of applying cleanly. If you're stuck, feel free to ping @ofrobots for help.
-* Modify the commit message to match the format we use for V8 backports and replace yourself as the author. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Esempio:
+* Modify the commit message to match the format we use for V8 backports and replace yourself as the author. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Example:
 
 ```console
 deps: cherry-pick a51f429 from V8 upstream
@@ -217,7 +217,7 @@ The backlog of issues with such is regularly reviewed by the node-team at Google
 
 ## Updating V8
 
-Node.js conserva una copia di vendita di V8 all'interno della directory deps/. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
+Node.js keeps a vendored copy of V8 inside of the deps/ directory. In addition, Node.js may need to float patches that do not exist upstream. This means that some care may need to be taken to update the vendored copy of V8.
 
 V8 builds against the version of ICU supplied by Node.js, see [maintaining-icu.md](./maintaining-icu.md) for special considerations. Specifically, a V8 update may necessitate an ICU update.
 
@@ -252,7 +252,7 @@ Upgrading major versions would be much harder to do with the patch mechanism abo
 
 1. Audit the current master branch and look at the patches that have been floated since the last major V8 update.
 1. Replace the copy of V8 in Node.js with a fresh checkout of the latest stable V8 branch. Special care must be taken to recursively update the DEPS that V8 has a compile time dependency on (at the moment of this writing, these are only trace_event and gtest_prod.h)
-1. Resettare la variabile `v8_embedder_string` sul valore "-node.0" in `common.gypi`.
+1. Reset the `v8_embedder_string` variable to "-node.0" in `common.gypi`.
 1. Refloat (cherry-pick) all the patches from list computed in 1) as necessary. Some of the patches may no longer be necessary.
 
 To audit for floating patches:
@@ -284,9 +284,9 @@ This would require some tooling to:
 
 * A script that would update the V8 in a specific Node.js branch with V8 from upstream (dependent on branch abandoned vs. active).
 * We need a script to bump V8 version numbers when a new version of V8 is promoted from `nodejs/v8` to `nodejs/node`.
-* Build di V8-CI abilitato in Jenkins per costruire dal fork di `nodejs/v8`.
+* Enabled the V8-CI build in Jenkins to build from the `nodejs/v8` fork.
 
 <!-- Footnotes themselves at the bottom. -->
-### Note
+### Notes
 
 <sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
