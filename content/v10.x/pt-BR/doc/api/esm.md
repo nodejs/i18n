@@ -1,10 +1,10 @@
-# Módulos de ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
 <!-- type=misc -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
@@ -148,7 +148,7 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`    | Descrição                                                       |
+| `format`    | Description                                                     |
 | ----------- | --------------------------------------------------------------- |
 | `'esm'`     | Load a standard JavaScript module                               |
 | `'cjs'`     | Load a node-style CommonJS module                               |
