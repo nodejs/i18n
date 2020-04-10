@@ -199,7 +199,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * introduce async-context API (vdeturckheim) [#26540](https://github.com/nodejs/node/pull/26540)
-* **ροή**
+* **stream**
   * support passing generator functions into pipeline() (Robert Nagy) [#31223](https://github.com/nodejs/node/pull/31223)
 * **tls**
   * expose SSL\_export\_keying\_material (simon) [#31814](https://github.com/nodejs/node/pull/31814)
@@ -307,7 +307,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * add executionAsyncResource (Matteo Collina) [#30959](https://github.com/nodejs/node/pull/30959)
-* **κρυπτογραφία**
+* **crypto**
   * add crypto.diffieHellman (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * add DH support to generateKeyPair (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * simplify DH groups (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
