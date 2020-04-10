@@ -1,4 +1,4 @@
-# プロセス
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 <!-- type=global -->
@@ -597,7 +597,7 @@ console.log(process.cpuUsage(startUsage));
 
 ## `process.cwd()`<!-- YAML
 added: v0.1.8
--->* 戻り値: {string}
+-->* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -1019,7 +1019,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* 戻り値: {bigint}
+-->* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
