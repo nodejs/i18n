@@ -1805,7 +1805,7 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Value  | Namn                | Konstant                                      |
+| Value  | Name                | Constant                                      |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -2614,7 +2614,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-eller
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
