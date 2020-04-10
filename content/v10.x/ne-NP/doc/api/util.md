@@ -893,18 +893,21 @@ added: v10.0.0
 
 Returns `true` if the value is an `arguments` object.
 
+<!-- eslint-disable prefer-rest-params -->
+
 ```js
 function foo() {
   util.types.isArgumentsObject(arguments);  // Returns true
 }
 ```
 
-### util.types.isArrayBuffer(value)<!-- YAML
+### util.types.isArrayBuffer(value)
+
+<!-- YAML
 added: v10.0.0
 -->
 
 * `value` {any}
-
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
@@ -982,12 +985,13 @@ util.types.isBooleanObject(Boolean(false)); // Returns false
 util.types.isBooleanObject(Boolean(true));  // Returns false
 ```
 
-### util.types.isBoxedPrimitive(value)<!-- YAML
+### util.types.isBoxedPrimitive(value)
+
+<!-- YAML
 added: v10.11.0
 -->
 
 * `value` {any}
-
 * Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
@@ -1002,12 +1006,13 @@ util.types.isBoxedPrimitive(Object(Symbol('foo'))); // Returns true
 util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 ```
 
-### util.types.isDataView(value)<!-- YAML
+### util.types.isDataView(value)
+
+<!-- YAML
 added: v10.0.0
 -->
 
 * `value` {any}
-
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
@@ -1209,6 +1214,8 @@ added: v10.0.0
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
 
+<!-- eslint-skip -->
+
 ```js
 import * as ns from './a.js';
 
@@ -1232,12 +1239,13 @@ util.types.isNativeError(new TypeError());  // Returns true
 util.types.isNativeError(new RangeError());  // Returns true
 ```
 
-### util.types.isNumberObject(value)<!-- YAML
+### util.types.isNumberObject(value)
+
+<!-- YAML
 added: v10.0.0
 -->
 
 * `value` {any}
-
 * Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
@@ -1516,13 +1524,14 @@ util.types.isWebAssemblyCompiledModule(module);  // Returns true
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
 -->
 
 * `target` {Object}
-
 * `source` {Object}
 
 > Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
@@ -1531,34 +1540,40 @@ The `util._extend()` method was never intended to be used outside of internal No
 
 It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
 Deprecated predecessor of `console.error`.
 
-### util.error([...strings])<!-- YAML
+### util.error([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
 Deprecated predecessor of `console.error`.
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Array.isArray()`][] instead.
+> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1578,12 +1593,14 @@ util.isArray({});
 // Returns: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use 
+-->
 
-`typeof value === 'boolean'` instead.
+> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1601,12 +1618,14 @@ util.isBoolean(false);
 // Returns: true
 ```
 
-### util.isBuffer(object)<!-- YAML
+### util.isBuffer(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Buffer.isBuffer()`][] instead.
+> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1624,12 +1643,14 @@ util.isBuffer(Buffer.from('hello world'));
 // Returns: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`util.types.isDate()`][] instead.
+> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1647,12 +1668,14 @@ util.isDate({});
 // Returns: false
 ```
 
-### util.isError(object)<!-- YAML
+### util.isError(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`util.types.isNativeError()`][] instead.
+> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1683,12 +1706,14 @@ util.isError(obj);
 // Returns: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use 
+-->
 
-`typeof value === 'function'` instead.
+> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1709,12 +1734,14 @@ util.isFunction(Bar);
 // Returns: true
 ```
 
-### util.isNull(object)<!-- YAML
+### util.isNull(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use 
+-->
 
-`value === null` instead.
+> Stability: 0 - Deprecated: Use `value === null` instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1848,10 +1875,14 @@ util.isPrimitive(new Date());
 // Returns: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 * Returns: {boolean}
@@ -1896,12 +1927,14 @@ util.isString(5);
 // Returns: false
 ```
 
-### util.isSymbol(object)<!-- YAML
+### util.isSymbol(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated: Use 
+-->
 
-`typeof value === 'symbol'` instead.
+> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
 * Returns: {boolean}
@@ -1945,10 +1978,14 @@ util.isUndefined(null);
 // Returns: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use a third party module instead.
+-->
+
+> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
@@ -1960,20 +1997,24 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
-### util.puts([...strings])<!-- YAML
+### util.puts([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
