@@ -1306,7 +1306,7 @@ Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
   * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
   * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 * **os**: `os.tmpdir()` is now cross-platform consistent and will no longer returns a path with a trailing slash on any platform (Christian Tellnes) [#747](https://github.com/nodejs/node/pull/747)
-* **proces**: 
+* **process**: 
   * `process.nextTick()` performance has been improved by between 2-42% across the benchmark suite, notable because this is heavily used across core (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
   * New `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` and `process.setegid(id)` methods allow you to get and set effective UID and GID of the process (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
 * **repl**: 
@@ -2267,7 +2267,7 @@ outdated`) now defaults to `--depth=0`. This also has the excellent but unexpect
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* fouten 
+* errors 
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2596,7 +2596,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### gebeurtenissen
+### events
 
 https://iojs.org/api/events.html
 
@@ -2639,7 +2639,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### pad
+### path
 
 https://iojs.org/api/path.html
 
@@ -2647,7 +2647,7 @@ https://iojs.org/api/path.html
 * Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
 * Improved `path.join` performance.
 
-### proces
+### process
 
 https://iojs.org/api/process.html
 
