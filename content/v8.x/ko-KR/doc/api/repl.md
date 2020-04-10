@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
@@ -335,7 +335,7 @@ changes:
     description: The `options` parameter is optional now.
 -->
 
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `prompt` {string} The input prompt to display. **Default:** `>`. (with a trailing space).
   * `input` {stream.Readable} The Readable stream from which REPL input will be read. **Default:** `process.stdin`.
   * `output` {stream.Writable} The Writable stream to which REPL output will be written. **Default:** `process.stdout`.
