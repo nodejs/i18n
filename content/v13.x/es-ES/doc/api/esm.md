@@ -1,9 +1,9 @@
-# Módulos de ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Estabilidad: 1 - Experimental
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -17,7 +17,7 @@ Node.js contains support for ES Modules based upon the [Node.js EP for ES Module
 
 Expect major changes in the implementation including interoperability support, specifier resolution, and default behavior.
 
-## Habilitación
+## Enabling
 
 <!-- type=misc -->
 
@@ -502,7 +502,7 @@ As with the previous approach, a variant of this approach not requiring conditio
 
 ## `import` Specifiers
 
-### Terminología
+### Terminology
 
 The _specifier_ of an `import` statement is the string after the `from` keyword, e.g. `'path'` in `import { sep } from 'path'`. Specifiers are also used in `export from` statements, and as the argument to an `import()` expression.
 
@@ -543,7 +543,7 @@ import _ from 'data:application/json,"world!"';
 
 The `import.meta` metaproperty is an `Object` that contains the following property:
 
-* `url` {string} La URL del `file:` del módulo absoluta.
+* `url` {string} The absolute `file:` URL of the module.
 
 ## Differences Between ES Modules and CommonJS
 
@@ -555,7 +555,7 @@ This behavior matches how `import` behaves in browser environments, assuming a t
 
 ### No `NODE_PATH`
 
-`NODE_PATH` no es parte de la resolución de especificadores de `import`. Please use symlinks if this behavior is desired.
+`NODE_PATH` is not part of resolving `import` specifiers. Please use symlinks if this behavior is desired.
 
 ### No `require`, `exports`, `module.exports`, `__filename`, `__dirname`
 
@@ -594,13 +594,13 @@ Former use cases relying on `require.resolve` to determine the resolved path of 
 
 This function is asynchronous since the ES module resolver in Node.js is asynchronous. With the introduction of [Top-Level Await](https://github.com/tc39/proposal-top-level-await), these use cases will be easier as they won't require an async function wrapper.
 
-### No hay `require.extensions`
+### No `require.extensions`
 
-`require.extensions` no es utilizado por `import`. The expectation is that loader hooks can provide this workflow in the future.
+`require.extensions` is not used by `import`. The expectation is that loader hooks can provide this workflow in the future.
 
-### No hay `require.cache`
+### No `require.cache`
 
-`require.cache` no es utilizado por `import`. Tiene un caché separado.
+`require.cache` is not used by `import`. It has a separate cache.
 
 ### URL-based paths
 
@@ -613,7 +613,7 @@ import './foo.mjs?query=1'; // loads ./foo.mjs with query of "?query=1"
 import './foo.mjs?query=2'; // loads ./foo.mjs with query of "?query=2"
 ```
 
-Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser cargados.
+For now, only modules using the `file:` protocol can be loaded.
 
 ## Interoperability with CommonJS
 
@@ -782,14 +782,14 @@ export async function resolve(specifier, context, defaultResolve) {
 
 > Note: The loaders API is being redesigned. This hook may disappear or its signature may change. Do not rely on the API described below.
 
-The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. Este puede ser uno de los siguientes:
+The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `formato`    | Descripción                                                              |
+| `format`     | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
 | `'dynamic'`  | Use a [dynamic instantiate hook](#esm_code_dynamicinstantiate_code_hook) |
-| `'json'`     | Carga un archivo JSON                                                    |
+| `'json'`     | Load a JSON file                                                         |
 | `'module'`   | Load a standard JavaScript module (ES module)                            |
 | `'wasm'`     | Load a WebAssembly module                                                |
 
@@ -905,7 +905,7 @@ export async function dynamicInstantiate(url) {
 
 With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.
 
-### Ejemplos
+### Examples
 
 The various loader hooks can be used together to accomplish wide-ranging customizations of Node.js’ code loading and evaluation behaviors.
 
@@ -974,7 +974,7 @@ import { VERSION } from 'https://coffeescript.org/browser-compiler-modern/coffee
 console.log(VERSION);
 ```
 
-Con este cargador, corriendo:
+With this loader, running:
 
 ```console
 node --experimental-loader ./https-loader.mjs ./main.js
@@ -1055,7 +1055,7 @@ console.log "Brought to you by Node.js version #{version}"
 export scream = (str) -> str.toUpperCase()
 ```
 
-Con este cargador, corriendo:
+With this loader, running:
 
 ```console
 node --experimental-loader ./coffeescript-loader.mjs main.coffee
@@ -1065,7 +1065,7 @@ Will cause `main.coffee` to be turned into JavaScript after its source code is l
 
 ## Resolution Algorithm
 
-### Funciones
+### Features
 
 The resolver has the following properties:
 
