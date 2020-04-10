@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
 The `worker_threads` module enables the use of threads that execute JavaScript in parallel. To access it:
 
@@ -43,6 +43,8 @@ if (isMainThread) {
 The above example spawns a Worker thread for each `parse()` call. In actual practice, use a pool of Workers instead for these kinds of tasks. Otherwise, the overhead of creating Workers would likely exceed their benefit.
 
 When implementing a worker pool, use the [`AsyncResource`][] API to inform diagnostic tools (e.g. in order to provide asynchronous stack traces) about the correlation between tasks and their outcomes. See ["Using `AsyncResource` for a `Worker` thread pool"](async_hooks.html#async-resource-worker-pool) in the `async_hooks` documentation for an example implementation.
+
+Worker threads inherit non-process-specific options by default. Refer to [`Worker constructor options`][] to know how to customize worker thread options, specifically `argv` and `execArgv` options.
 
 ## `worker.isMainThread`
 <!-- YAML
@@ -211,7 +213,7 @@ port2.postMessage({ foo: 'bar' });
 added: v10.5.0
 -->
 
-* Estendendo: {EventEmitter}
+* Extends: {EventEmitter}
 
 Instances of the `worker.MessagePort` class represent one end of an asynchronous, two-way communications channel. It can be used to transfer structured data, memory regions and other `MessagePort`s between different [`Worker`][]s.
 
@@ -356,7 +358,7 @@ If listeners are attached or removed using `.on('message')`, the port will be `r
 added: v10.5.0
 -->
 
-* Estendendo: {EventEmitter}
+* Extends: {EventEmitter}
 
 The `Worker` class represents an independent JavaScript execution thread. Most Node.js APIs are available inside of it.
 
@@ -469,6 +471,17 @@ added: v10.5.0
 
 The `'online'` event is emitted when the worker thread has started executing JavaScript code.
 
+### `worker.getHeapSnapshot()`
+<!-- YAML
+added: v13.9.0
+-->
+
+* Returns: {Promise} A promise for a Readable Stream containing a V8 heap snapshot
+
+Returns a readable stream for a V8 snapshot of the current state of the Worker. See [`v8.getHeapSnapshot()`][] for more details.
+
+If the Worker thread is no longer running, which may occur before the [`'exit'` event][] is emitted, the returned `Promise` will be rejected immediately with an [`ERR_WORKER_NOT_RUNNING`][] error.
+
 ### `worker.postMessage(value[, transferList])`
 <!-- YAML
 added: v10.5.0
@@ -477,7 +490,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Vedi [`port.postMessage()`][] per maggiori dettagli.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### `worker.ref()`
 <!-- YAML
@@ -527,17 +540,6 @@ added: v10.5.0
 
 This is a readable stream which contains data written to [`process.stdout`][] inside the worker thread. If `stdout: true` was not passed to the [`Worker`][] constructor, then data will be piped to the parent thread's [`process.stdout`][] stream.
 
-### `worker.takeHeapSnapshot()`
-<!-- YAML
-added: v13.9.0
--->
-
-* Returns: {Promise} A promise for a Readable Stream containing a V8 heap snapshot
-
-Returns a readable stream for a V8 snapshot of the current state of the Worker. See [`v8.getHeapSnapshot()`][] for more details.
-
-If the Worker thread is no longer running, which may occur before the [`'exit'` event][] is emitted, the returned `Promise` will be rejected immediately with an [`ERR_WORKER_NOT_RUNNING`][] error.
-
 ### `worker.terminate()`
 <!-- YAML
 added: v10.5.0
@@ -550,7 +552,7 @@ changes:
                  Terminating is now a fully asynchronous operation.
 -->
 
-* Restituisce: {Promise}
+* Returns: {Promise}
 
 Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the [`'exit'` event][] is emitted.
 
