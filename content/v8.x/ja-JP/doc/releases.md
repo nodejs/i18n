@@ -1,14 +1,14 @@
-# Node.js のリリースプロセス
+# Node.js Release Process
 
-このドキュメントでは、Node.js のリリースプロセスを技術的側面から説明します。 The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
-## 誰がリリースできますか？
+## Who can make a release?
 
-リリースの権限は Node.js TSC によって与えられます。 Once authorized, an individual must be have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
 
-### 1. Jenkins へのリリースアクセス
+### 1. Jenkins Release Access
 
-リリースフローには、次の3つの関連する Jenkins ジョブを使用する必要があります:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
@@ -18,7 +18,7 @@
 
 The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 2. <nodejs.org> アクセス
+### 2. <nodejs.org> Access
 
 The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
@@ -42,14 +42,14 @@ The key you use may be a child/subkey of an existing key.
 
 Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
-## リリースの作成方法
+## How to create a release
 
-備考:
+Notes:
 
 * Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
 * Version strings are listed below as *"vx.y.z"*. Substitute for the release version.
 
-### 1. `master` や他のブランチからチェリーピックする
+### 1. Cherry-picking from `master` and other branches
 
 Create a new branch named *"vx.y.z-proposal"*, or something similar. Using `git cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
@@ -61,7 +61,7 @@ $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on
 
 Carefully review the list of commits looking for errors (incorrect `PR-URL`, incorrect semver, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. Previous release commits and version bumps do not need to be cherry-picked.
 
-### 2. `src/node_version.h` の更新
+### 2. Update `src/node_version.h`
 
 Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
@@ -271,11 +271,11 @@ If you didn't wait for ARM builds in the previous step before promoting the rele
 
 *Note*: It is possible to only sign a release by running `./tools/release.sh -s vX.Y.Z`.
 
-### 13. リリースを確認する
+### 13. Check the Release
 
 Your release should be available at `https://nodejs.org/dist/vx.y.z/` and <https://nodejs.org/dist/latest/>. Check that the appropriate files are in place. You may want to check that the binaries are working as appropriate and have the right internal version strings. Check that the API docs are available at <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
 
-### 14. ブログ記事を作成する
+### 14. Create a Blog Post
 
 There is an automatic build that is kicked off when you promote new builds, so within a few minutes nodejs.org will be listing your new version as the latest release. However, the blog post is not yet fully automatic.
 
@@ -294,7 +294,7 @@ Refs: <full URL to your release proposal PR>
 
 * Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
 
-### 15. アナウンス
+### 15. Announce
 
 The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
@@ -302,10 +302,10 @@ The nodejs.org website will automatically rebuild and include the new version. T
 
 To ensure communication goes out with the timing of the blog post, please allow 24 hour prior notice. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
 
-### 16. クリーンアップ
+### 16. Cleanup
 
-リリース提案の PR を閉じて提案ブランチを削除しましょう。
+Close your release proposal PR and remove the proposal branch.
 
-### 17. お祝い
+### 17. Celebrate
 
-*どんな形であれ、お祝いしましょう。*
+*In whatever form you do this...*
