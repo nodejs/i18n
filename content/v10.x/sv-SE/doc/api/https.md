@@ -107,7 +107,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-Eller
+Or
 
 ```js
 const https = require('https');
