@@ -1,8 +1,8 @@
-# 암호화
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
