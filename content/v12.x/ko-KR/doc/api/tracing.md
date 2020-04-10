@@ -1,4 +1,4 @@
-# 추적 이벤트
+# Trace Events
 
 <!--introduced_in=v7.7.0-->
 
