@@ -1,23 +1,23 @@
-# Ошибки
+# Errors
 
 <!--introduced_in=v4.0.0-->
 <!--type=misc-->
 
-Приложения, запущенные в Node.js, обычно имеют четыре категории ошибок:
+Applications running in Node.js will generally experience four categories of errors:
 
 * Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError},
 {ReferenceError}, {TypeError}, and {URIError}.
 * System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist or attempting to send data over a closed socket.
 * User-specified errors triggered by application code.
-* `AssertionError`s are a special class of error that can be triggered when Node.js detects an exceptional logic violation that should never occur. Обычно они вызываются модулем `assert`.
+* `AssertionError`s are a special class of error that can be triggered when Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
 
 All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
 
-## Распространение и перехват ошибок
+## Error Propagation and Interception
 
 <!--type=misc-->
 
-Node.js поддерживает несколько механизмов для распространения и обработки ошибок, возникающих во время работы приложения. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js supports several mechanisms for propagating and handling errors that occur while an application is running. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
 
 All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try…catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
 
@@ -37,7 +37,7 @@ With few exceptions, _Synchronous_ APIs (any blocking method that does not accep
 
 Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
 
-* Большинство асинхронных методов, которые принимают функцию `callback`, примут объект `Error`, переданный этой функции в качестве первого аргумента. Если этот первый аргумент не равен `null` и является экземпляром `Error`, то произошла ошибка, которая должна быть обработана.
+* Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
   ```js
   const fs = require('fs');
   fs.readFile('a file that does not exist', (err, data) => {
@@ -66,9 +66,9 @@ Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
   connection.pipe(process.stdout);
   ```
 
-* A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try…catch`. Нет полного списка подобных методов; пожалуйста, обратитесь к документации каждого метода для определения необходимого механизма обработки ошибок.
+* A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try…catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
 
-Использование механизма события `'error'` наиболее распространено для API [stream-based](stream.html) и [event emitter-based](events.html#events_class_eventemitter), которые представляют собой серию асинхронных операций во времени (в противоположность одиночной операции, которая может получиться или потерпеть неудачу).
+The use of the `'error'` event mechanism is most common for [stream-based](stream.html) and [event emitter-based](events.html#events_class_eventemitter) APIs, which themselves represent a series of asynchronous operations over time (as opposed to a single operation that may pass or fail).
 
 For *all* [`EventEmitter`][] objects, if an `'error'` event handler is not provided, the error will be thrown, causing the Node.js process to report an uncaught exception and crash unless either: The [`domain`](domain.html) module is used appropriately or a handler has been registered for the [`'uncaughtException'`][] event.
 
@@ -77,17 +77,17 @@ const EventEmitter = require('events');
 const ee = new EventEmitter();
 
 setImmediate(() => {
-  // Это приведет к сбою процесса, потому что
-  // обработчик события "error" не был добавлен.
-  ee.emit('error', new Error("Это потерпит неудачу"));
+  // This will crash the process because no 'error' event
+  // handler has been added.
+  ee.emit('error', new Error('This will crash'));
 });
 ```
 
 Errors generated in this way *cannot* be intercepted using `try…catch` as they are thrown *after* the calling code has already exited.
 
-Разработчики должны обратиться к документации по каждому методу, чтобы точно определить, как распространяются ошибки, вызванные этими методами.
+Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
-### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an _error-first callback_. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. Если не возникла ошибка, первый аргумент будет передан как `null`.
+### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an _error-first callback_. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
@@ -118,29 +118,29 @@ try {
     }
   });
 } catch (err) {
-  // Это не поймает вывод ошибки!
+  // This will not catch the throw!
   console.error(err);
 }
 ```
 
-Это не будет работать, потому что функция обратного вызова, переданная `fs.readFile()`, вызывается асинхронно. By the time the callback has been called, the surrounding code, including the `try…catch` block, will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
+This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code, including the `try…catch` block, will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: `Error`<!--type=class-->A generic JavaScript {Error} object that does not denote any specific circumstance of why the error occurred. Объекты `Error` фиксируют «трассировку стека», детализируя точку в коде, в которой был создан экземпляр `Error`, и могут предоставлять текстовое описание ошибки.
+## Class: `Error`<!--type=class-->A generic JavaScript {Error} object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
-Все ошибки, сгенерированные Node.js, включая все системные ошибки и ошибки JavaScript, будут либо экземплярами класса `Error`, либо наследоваться от него.
+All errors generated by Node.js, including all System and JavaScript errors, will either be instances of, or inherit from, the `Error` class.
 
 ### `new Error(message)`
 
 * `message` {string}
 
-Создает новый объект `Error` и устанавливает свойство `error.message` в предоставленное текстовое сообщение. Если объект передается как `message`, текстовое сообщение генерируется с помощью вызова `message.toString()`. Свойство `error.stack` будет представлять точку в коде, в которой был вызван `new Error()`. Трассировки стека зависят от [трассировка стека API V8](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
+Creates a new `Error` object and sets the `error.message` property to the provided text message. If an object is passed as `message`, the text message is generated by calling `message.toString()`. The `error.stack` property will represent the point in the code at which `new Error()` was called. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
 
 ### `Error.captureStackTrace(targetObject[, constructorOpt])`
 
 * `targetObject` {Object}
 * `constructorOpt` {Function}
 
-Создает свойство `.stack` в `targetObject`, которое при успешном допуске возвращает строку, представляющую положение в коде, где был вызван `Error.captureStackTrace()`.
+Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
 
 ```js
 const myObject = {};
@@ -150,18 +150,18 @@ myObject.stack;  // Similar to `new Error().stack`
 
 The first line of the trace will be prefixed with `${myObject.name}: ${myObject.message}`.
 
-Опциональный аргумент `constructorOpt` принимает функцию. Если это предусмотрено, все кадры выше `constructorOpt`, включая `constructorOpt`, будут исключены из сгенерированной трассировки стека.
+The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-Аргумент `constructorOpt` полезен для сокрытия деталей реализации от конечного пользователя. Например:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
 function MyError() {
   Error.captureStackTrace(this, MyError);
 }
 
-// Без передачи MyError в captureStackTrace, кадр MyError
-// будет отображаться в свойстве .stack. Передавая
-// конструктор мы пропускаем этот кадр и сохраняем все кадры под ним.
+// Without passing MyError to captureStackTrace, the MyError
+// frame would show up in the .stack property. By passing
+// the constructor, we omit that frame, and retain all frames below it.
 new MyError().stack;
 ```
 
@@ -169,11 +169,11 @@ new MyError().stack;
 
 * {number}
 
-Свойство `Error.stackTraceLimit` указывает количество кадров стека, собранных трассировкой стека (независимо от того, были ли они сгенерированы с помощью `new Error().stack` или `Error.captureStackTrace(obj)`).
+The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
 
-Значение по умолчанию - `10`, но может быть установлено любое число, допустимое JavaScript. Changes will affect any stack trace captured *after* the value has been changed.
+The default value is `10` but may be set to any valid JavaScript number. Changes will affect any stack trace captured *after* the value has been changed.
 
-Если установлено значение без числа или число с отрицательным значением, трассировка стека не будет захватывать никакие кадры.
+If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
 
 ### `error.code`
 
@@ -190,24 +190,24 @@ The `error.message` property is the string description of the error as set by ca
 ```js
 const err = new Error('The message');
 console.error(err.message);
-// Печатает: The message
+// Prints: The message
 ```
 
 ### `error.stack`
 
 * {string}
 
-Свойство `error.stack` является строковым описанием точки в коде, где был создан `Error`.
+The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
 
 ```txt
-Ошибка: Вещи продолжают происходить!
-   в /доме/gbusey/file.js:525:2
-   в Frobnicator.refrobulate (/дом/gbusey/business-logic.js:424:21)
-   в Actor.<anonymous> (/дом/gbusey/actors.js:400:8)
-   в increaseSynergy (/дом/gbusey/actors.js:701:6)
+Error: Things keep happening!
+   at /home/gbusey/file.js:525:2
+   at Frobnicator.refrobulate (/home/gbusey/business-logic.js:424:21)
+   at Actor.<anonymous> (/home/gbusey/actors.js:400:8)
+   at increaseSynergy (/home/gbusey/actors.js:701:6)
 ```
 
-Первая строка форматируется как `<error class name>: <error message>` и сопровождается серией кадров стека (каждая строка начинается с "в"). Каждый кадр описывает точку вызова в коде, которая приводит к генерации ошибки. V8 пытается отобразить имя каждой функции (по имени переменной, имени функции или имени объекта метода), но иногда он не может найти подходящее имя. Если V8 не может определить имя для функции, для этого кадра будет отображаться только информация о местоположении. В противном случае имя определенной функции будет отображаться в скобках вместе с информацией о местоположении.
+The first line is formatted as `<error class name>: <error message>`, and is followed by a series of stack frames (each line beginning with "at "). Each frame describes a call site within the code that lead to the error being generated. V8 attempts to display a name for each function (by variable name, function name, or object method name), but occasionally it will not be able to find a suitable name. If V8 cannot determine a name for the function, only location information will be displayed for that frame. Otherwise, the determined function name will be displayed with location information appended in parentheses.
 
 Frames are only generated for JavaScript functions. If, for example, execution synchronously passes through a C++ addon function called `cheetahify` which itself calls a JavaScript function, the frame representing the `cheetahify` call will not be present in the stack traces:
 
@@ -239,15 +239,15 @@ makeFaster();
 //       at node.js:906:3
 ```
 
-Сведение о местоположении будет одним из:
+The location information will be one of:
 
-* `native`, если кадр представляет внутренний вызов V8 (как в `[].forEach`).
-* `plain-filename.js:line:column`, если кадр представляет внутренний вызов Node.js.
-* `/absolute/path/to/file.js:line:column`, если кадр представляет вызов в пользовательской программе или ее зависимостях.
+* `native`, if the frame represents a call internal to V8 (as in `[].forEach`).
+* `plain-filename.js:line:column`, if the frame represents a call internal to Node.js.
+* `/absolute/path/to/file.js:line:column`, if the frame represents a call in a user program, or its dependencies.
 
 The string representing the stack trace is lazily generated when the `error.stack` property is **accessed**.
 
-Количество кадров, захваченных трассировкой стека, ограничено меньшим из `Error.stackTraceLimit` или количеством доступных кадров в текущем моменте цикла событий.
+The number of frames captured by the stack trace is bounded by the smaller of `Error.stackTraceLimit` or the number of available frames on the current event loop tick.
 
 ## Class: `AssertionError`
 
@@ -274,14 +274,14 @@ Node.js will generate and throw `RangeError` instances *immediately* as a form o
 
 Indicates that an attempt is being made to access a variable that is not defined. Such errors commonly indicate typos in code, or an otherwise broken program.
 
-Хотя код клиента может генерировать и распространять эти ошибки, на практике это будет делать только V8.
+While client code may generate and propagate these errors, in practice, only V8 will do so.
 
 ```js
 doesNotExist;
 // Throws ReferenceError, doesNotExist is not a variable in this program.
 ```
 
-Пока приложение не будет динамически генерировать и запускать код, экземпляры `ReferenceError` всегда нужно рассматривать как ошибку в коде или его зависимостях.
+Unless an application is dynamically generating and running code, `ReferenceError` instances should always be considered a bug in the code or its dependencies.
 
 ## Class: `SyntaxError`
 
@@ -297,7 +297,7 @@ try {
 }
 ```
 
-Экземпляры `SyntaxError` не могут быть исправлены в контексте, который их создал; они могут быть обнаружены только в других контекстах.
+`SyntaxError` instances are unrecoverable in the context that created them – they may only be caught by other contexts.
 
 ## Class: `SystemError`
 
@@ -337,7 +337,7 @@ If present, `error.dest` is the file path destination when reporting a file syst
 
 * {string|number}
 
-Свойство `error.errno` является числом или строкой. If it is a number, it is a negative value which corresponds to the error code defined in [`libuv Error handling`][]. See the libuv `errno.h` header file (`deps/uv/include/uv/errno.h` in the Node.js source tree) for details. In case of a string, it is the same as `error.code`.
+The `error.errno` property is a number or a string. If it is a number, it is a negative value which corresponds to the error code defined in [`libuv Error handling`][]. See the libuv `errno.h` header file (`deps/uv/include/uv/errno.h` in the Node.js source tree) for details. In case of a string, it is the same as `error.code`.
 
 ### `error.info`
 
@@ -369,37 +369,37 @@ If present, `error.port` is the network connection port that is not available.
 
 The `error.syscall` property is a string describing the [syscall](http://man7.org/linux/man-pages/man2/syscalls.2.html) that failed.
 
-### Основные системные ошибки
+### Common System Errors
 
 This is a list of system errors commonly-encountered when writing a Node.js program. For a comprehensive list, see the [`errno`(3) man page][].
 
-* `EACCES` (В доступе отказано): Попытка получить доступ к файлу способом, который был запрещен правами доступа к файлу.
+* `EACCES` (Permission denied): An attempt was made to access a file in a way forbidden by its file access permissions.
 
-* `EADDRINUSE` (Адрес уже используется): Попытка привязать сервер ([`net`][], [`http`][] или [`https`][]) к локальному адресу не удалась, потому что другой сервер в локальной системе уже занимает этот адрес.
+* `EADDRINUSE` (Address already in use): An attempt to bind a server ([`net`][], [`http`][], or [`https`][]) to a local address failed due to another server on the local system already occupying that address.
 
-* `ECONNREFUSED` (В соединении отказано): Не удалось установить соединение, так как целевой компьютер его активно отклоняет. Обычно это является результатом попытки подключиться к неактивному сервису на чужом хосте.
+* `ECONNREFUSED` (Connection refused): No connection could be made because the target machine actively refused it. This usually results from trying to connect to a service that is inactive on the foreign host.
 
-* `ECONNRESET` (Соединение сброшено пиром): Соединение было принудительно закрыто пиром. Обычно это является результатом потери соединения на удаленном сокете из-за тайм-аута или перезагрузки. Обычно встречается на модулях [`http`][] и [`net`][].
+* `ECONNRESET` (Connection reset by peer): A connection was forcibly closed by a peer. This normally results from a loss of the connection on the remote socket due to a timeout or reboot. Commonly encountered via the [`http`][] and [`net`][] modules.
 
-* `EEXIST` (Файл существует): В результате операции, которая требовала, чтобы цель не существовала, был получен существующий файл.
+* `EEXIST` (File exists): An existing file was the target of an operation that required that the target not exist.
 
-* `EISDIR` (Является каталогом): Операция ожидала файл, но указанный путь был путем к каталогу.
+* `EISDIR` (Is a directory): An operation expected a file, but the given pathname was a directory.
 
-* `EMFILE` (Слишком много открытых файлов в системе): Достигнуто максимальное количество [файловых дескрипторов](https://en.wikipedia.org/wiki/File_descriptor), допустимых в системе, и запросы к другому дескриптору не могут быть выполнены, пока не будет закрыт хотя бы один. Это встречается при открытии большого количества файлов одновременно, особенно в системах (в частности, в macOS), где для процессов существует низкий лимит файлового дескриптора. Чтобы изменить лимит, запустите `ulimit -n 2048` в той же оболочке, в которой будет запущен процесс Node.js.
+* `EMFILE` (Too many open files in system): Maximum number of [file descriptors](https://en.wikipedia.org/wiki/File_descriptor) allowable on the system has been reached, and requests for another descriptor cannot be fulfilled until at least one has been closed. This is encountered when opening many files at once in parallel, especially on systems (in particular, macOS) where there is a low file descriptor limit for processes. To remedy a low limit, run `ulimit -n 2048` in the same shell that will run the Node.js process.
 
-* `ENOENT` (Нет такого файла или каталога): Обычно возникает вследствие операций [`fs`][], чтобы указать на отсутствие компонента по указанному пути - объект (файл или каталог) не могут быть найдены по заданному пути.
+* `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist — no entity (file or directory) could be found by the given path.
 
-* `ENOTDIR` (Не является каталогом): Компонент заданного пути существует, но не является каталогом, как ожидалось. Обычно вызывается [`fs.readdir`][].
+* `ENOTDIR` (Not a directory): A component of the given pathname existed, but was not a directory as expected. Commonly raised by [`fs.readdir`][].
 
-* `ENOTEMPTY` (Каталог не является пустым): Целью операции был пустой каталог, а был получен каталог с записями. Обычно [`fs.unlink`][].
+* `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory — usually [`fs.unlink`][].
 
 * `ENOTFOUND` (DNS lookup failed): Indicates a DNS failure of either `EAI_NODATA` or `EAI_NONAME`. This is not a standard POSIX error.
 
-* `EPERM` (Операция не разрешена): Была предпринята попытка выполнить операцию, которая требует особых прав на доступ.
+* `EPERM` (Operation not permitted): An attempt was made to perform an operation that requires elevated privileges.
 
-* `EPIPE` (Проблемы с каналом): Запись в канал, сокет или FIFO, где нет процесса для чтения данных. Чаще встречается в слоях [`net`][] и [`http`][], показывая, что удаленная сторона потока, в котором идет запись, закрыта.
+* `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Commonly encountered at the [`net`][] and [`http`][] layers, indicative that the remote side of the stream being written to has been closed.
 
-* `ETIMEDOUT` (Время выполнения операции истекло): Не удалось выполнить подключение или запрос на отправку, потому что сторона, к которой идет подключение, не ответила должным образом через определенный период времени. Обычно встречается в [`http`][] или [`net`][]. Чаще всего является признаком неправильного вызова `socket.end()`.
+* `ETIMEDOUT` (Operation timed out): A connect or send request failed because the connected party did not properly respond after a period of time. Usually encountered by [`http`][] or [`net`][] — often a sign that a `socket.end()` was not properly called.
 
 ## Class: `TypeError`
 
@@ -414,9 +414,9 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Исключения и Ошибки<!--type=misc-->Исключение JavaScript - это значение, которое выводится как результат некорректной операции или как цель выражения `throw`. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
-Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Примеры включают проверки `assert()` или вызовы `abort()` в слое C++.
+Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
 ## OpenSSL Errors
 
@@ -1014,7 +1014,7 @@ An option pair is incompatible with each other and can not be used at the same t
 
 ### `ERR_INPUT_TYPE_NOT_ALLOWED`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The `--input-type` flag was used to attempt to execute a file. This flag can only be used with input via `--eval`, `--print` or `STDIN`.
 
@@ -1348,7 +1348,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### `ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 An [ES Module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1374,7 +1374,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### `ERR_MODULE_NOT_FOUND`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 An [ES Module](esm.html) could not be resolved.
 
@@ -1463,7 +1463,7 @@ A given value is out of the accepted range.
 
 ### `ERR_REQUIRE_ESM`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 An attempt was made to `require()` an [ES Module](esm.html).
 
@@ -1781,7 +1781,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### `ERR_UNKNOWN_FILE_EXTENSION`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1789,7 +1789,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### `ERR_UNKNOWN_MODULE_FORMAT`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1927,7 +1927,7 @@ changes:
 
 ## Legacy Node.js Error Codes
 
-> Стабильность: 0 - устарело. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_CANNOT_TRANSFER_OBJECT"></a>
 
@@ -2146,7 +2146,7 @@ These errors have never been released, but had been present on master between re
 
 #### `ERR_ENTRY_TYPE_MISMATCH`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The `--entry-type=commonjs` flag was used to attempt to execute an `.mjs` file or a `.js` file where the nearest parent `package.json` contains `"type": "module"`; or the `--entry-type=module` flag was used to attempt to execute a `.cjs` file or a `.js` file where the nearest parent `package.json` either lacks a `"type"` field or contains `"type": "commonjs"`.
 
@@ -2184,7 +2184,7 @@ Used in the `repl` in case the old history file is used and an error occurred wh
 
 #### `ERR_INVALID_REPL_TYPE`
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The `--entry-type=...` flag is not compatible with the Node.js REPL.
 
