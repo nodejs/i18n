@@ -1,4 +1,4 @@
-# पढ़ने के लिए लाइन
+# Readline
 
 <!--introduced_in=v0.10.0-->
 
