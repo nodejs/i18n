@@ -6,4 +6,3 @@ node_modules
 temp
 .idea
 yarn.lock
-stats.json
