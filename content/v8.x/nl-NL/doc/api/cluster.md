@@ -1,10 +1,10 @@
-# Bundel
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
-Een enkele instantie van Node.js wordt in een enkele thread uitgevoerd. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -379,7 +379,7 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -618,7 +618,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Retourneert: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
@@ -677,16 +677,16 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {Array} List of string arguments passed to the Node.js executable. **Standaard:** `process.execArgv`.
+  * `execArgv` {Array} List of string arguments passed to the Node.js executable. **Default:** `process.execArgv`.
   * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
   * `args` {Array} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
-  * `silent` {boolean} Whether or not to send output to parent's stdio. **Standaard:** `false`.
-  * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. Als deze optie wordt gegeven, dan verwerpt het `silent`.
-  * `uid` {number} Stelt de gebruikersindentiteit van het proces in. (Zie setuid(2).)
-  * `gid` {number} Stelt de groepsidentiteit van het proces in. (Zie setuid(2).)
+  * `silent` {boolean} Whether or not to send output to parent's stdio. **Default:** `false`.
+  * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
+  * `uid` {number} Sets the user identity of the process. (See setuid(2).)
+  * `gid` {number} Sets the group identity of the process. (See setgid(2).)
   * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
-  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Standaard:** `false`.
+  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
 
 After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
 
@@ -713,7 +713,7 @@ Note that:
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
 * The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
 
-Voorbeeld:
+Example:
 
 ```js
 const cluster = require('cluster');
