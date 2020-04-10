@@ -1,10 +1,10 @@
-# Операционная система
+# OS
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. Это осуществляется с помощью:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -29,7 +29,7 @@ A string constant defining the operating system-specific end-of-line marker:
 added: v0.5.0
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
@@ -53,7 +53,7 @@ Returns an object containing commonly used operating system specific constants f
 added: v0.3.3
 -->
 
-* Возвращает: {Array}
+* Returns: {Array}
 
 The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
@@ -68,7 +68,9 @@ The properties included on each object include:
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
-Например:
+For example:
+
+<!-- eslint-disable semi -->
 
 ```js
 [
@@ -165,11 +167,13 @@ The properties included on each object include:
 
 *Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
 
-## os.endianness()<!-- YAML
+## os.endianness()
+
+<!-- YAML
 added: v0.9.4
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
@@ -178,27 +182,33 @@ Possible values are:
 * `'BE'` for big endian
 * `'LE'` for little endian.
 
-## os.freemem()<!-- YAML
+## os.freemem()
+
+<!-- YAML
 added: v0.3.3
 -->
 
-* Возвращает: {integer}
+* Returns: {integer}
 
 The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
-## os.homedir()<!-- YAML
+## os.homedir()
+
+<!-- YAML
 added: v2.3.0
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
-## os.hostname()<!-- YAML
+## os.hostname()
+
+<!-- YAML
 added: v0.3.3
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.hostname()` method returns the hostname of the operating system as a string.
 
@@ -208,7 +218,7 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Возвращает: {Array}
+* Returns: {Array}
 
 The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
@@ -216,11 +226,13 @@ The load average is a measure of system activity, calculated by the operating sy
 
 The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
 
-## os.networkInterfaces()<!-- YAML
+## os.networkInterfaces()
+
+<!-- YAML
 added: v0.6.0
 -->
 
-* Возвращает: {Object}
+* Returns: {Object}
 
 The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
@@ -235,6 +247,8 @@ The properties available on the assigned network address object include:
 * `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
 * `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`
+
+<!-- eslint-skip -->
 
 ```js
 {
@@ -277,11 +291,13 @@ The properties available on the assigned network address object include:
 }
 ```
 
-## os.platform()<!-- YAML
+## os.platform()
+
+<!-- YAML
 added: v0.5.0
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -299,17 +315,21 @@ Equivalent to [`process.platform`][].
 
 *Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
-## os.release()<!-- YAML
+## os.release()
+
+<!-- YAML
 added: v0.3.3
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
 *Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
-## os.tmpdir()<!-- YAML
+## os.tmpdir()
+
+<!-- YAML
 added: v0.9.9
 changes:
 
@@ -319,7 +339,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -329,15 +349,17 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Возвращает: {integer}
+* Returns: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
-## os.type()<!-- YAML
+## os.type()
+
+<!-- YAML
 added: v0.3.3
 -->
 
-* Возвращает: {string}
+* Returns: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
@@ -349,20 +371,21 @@ Please see https://en.wikipedia.org/wiki/Uname#Examples for additional informati
 added: v0.3.3
 -->
 
-* Возвращает: {integer}
+* Returns: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
 *Note*: On Windows the returned value includes fractions of a second. Use `Math.floor()` to get whole seconds.
 
-## os.userInfo([options])<!-- YAML
+## os.userInfo([options])
+
+<!-- YAML
 added: v6.0.0
 -->
 
-* `options` {Object}
-  
+* `options` {Object} 
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
-* Возвращает: {Object}
+* Returns: {Object}
 
 The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
@@ -370,24 +393,26 @@ The value of `homedir` returned by `os.userInfo()` is provided by the operating 
 
 ## OS Constants
 
-Следующие константы экспортируются с помощью `os.constants`.
+The following constants are exported by `os.constants`.
 
 *Note*: Not all constants will be available on every operating system.
 
-### Signal Constants<!-- YAML
+### Signal Constants
+
+<!-- YAML
 changes:
 
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->The following signal constants are exported by 
+-->
 
-`os.constants.signals`:
+The following signal constants are exported by `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -553,8 +578,8 @@ The following error constants are exported by `os.constants.errno`:
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -887,8 +912,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1129,8 +1154,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
