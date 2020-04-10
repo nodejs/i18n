@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -105,7 +105,7 @@ changes:
 -->
 
 * `command` {string} The command to run, with space-separated arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
   * `encoding` {string} **Default:** `'utf8'`
@@ -184,7 +184,7 @@ changes:
 
 * `file` {string} The name or path of the executable file to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
   * `encoding` {string} **Default:** `'utf8'`
@@ -248,7 +248,7 @@ changes:
 
 * `modulePath` {string} The module to run in the child.
 * `args` {Array} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
   * `execPath` {string} Executable used to create the child process.
@@ -291,7 +291,7 @@ changes:
 
 * `command` {string} The command to run.
 * `args` {Array} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
   * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
@@ -512,7 +512,7 @@ changes:
 
 * `file` {string} The name or path of the executable file to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
@@ -550,7 +550,7 @@ changes:
 -->
 
 * `command` {string} The command to run.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
@@ -593,7 +593,7 @@ changes:
 
 * `command` {string} The command to run.
 * `args` {Array} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration.
@@ -839,7 +839,7 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `옵션` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
+* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
   * `keepOpen` - A Boolean value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
 * Returns: {boolean}
