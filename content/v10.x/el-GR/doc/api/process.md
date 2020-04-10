@@ -1,4 +1,4 @@
-# Διαδικασία
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -582,7 +582,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -975,7 +975,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v2.0.0
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -993,7 +993,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -1041,7 +1041,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Επιστρέφει: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1412,7 +1412,7 @@ added: v0.5.9
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1606,7 +1606,7 @@ process.stdin.pipe(process.stdout);
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Για περισσότερες πληροφορίες δείτε το [`process.exit()`][].
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
@@ -1685,7 +1685,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Επιστρέφει: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
