@@ -26,7 +26,7 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> स्थिरता: 1 - प्रायोगिक. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
@@ -40,7 +40,7 @@ Caution must be used when making use of `Experimental` features, particularly wi
 added: v0.6.12
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
