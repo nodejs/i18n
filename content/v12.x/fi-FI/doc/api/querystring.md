@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
