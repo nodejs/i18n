@@ -1,18 +1,18 @@
-# VM (运行 JavaScript)
+# VM (Executing JavaScript)
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
-`vm` 模块提供了用于在 V8 虚拟机上下文中编译和运行代码的一组 API。 **The `vm` module is not a security mechanism. Do not use it to run untrusted code**. The term "sandbox" is used throughout these docs simply to refer to a separate context, and does not confer any security guarantees.
+The `vm` module provides APIs for compiling and running code within V8 Virtual Machine contexts. **The `vm` module is not a security mechanism. Do not use it to run untrusted code**. The term "sandbox" is used throughout these docs simply to refer to a separate context, and does not confer any security guarantees.
 
-JavaScript 代码可被编译并立即运行，或者编译，保存，并稍后运行。
+JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
-一个常见的用例就是在一个沙盒环境中运行代码。 沙盒代码使用不同的 V8 上下文，这意味着与代码的其他部分不同，它具有一个不同的全局对象。
+A common use case is to run the code in a sandboxed environment. The sandboxed code uses a different V8 Context, meaning that it has a different global object than the rest of the code.
 
-可以通过 ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) 沙盒对象来提供上下文。 The sandboxed code treats any property in the sandbox like a global variable. Any changes to global variables caused by the sandboxed code are reflected in the sandbox object.
+One can provide the context by ["contextifying"](#vm_what_does_it_mean_to_contextify_an_object) a sandbox object. The sandboxed code treats any property in the sandbox like a global variable. Any changes to global variables caused by the sandboxed code are reflected in the sandbox object.
 
 ```js
 const vm = require('vm');
@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -204,7 +204,7 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 * `options` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -230,7 +230,7 @@ Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma26
 ### module.link(linker)
 
 * `linker` {Function}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
@@ -310,13 +310,13 @@ Other than `'errored'`, this status string corresponds to the specification's [S
 
 The URL of the current module, as set in the constructor.
 
-## 类：vm.Script
+## Class: vm.Script
 
 <!-- YAML
 added: v0.3.1
 -->
 
-`vm.Script` 类的实例包含预编译的，可在特定沙盒（或 “上下文”）中运行的脚本。
+Instances of the `vm.Script` class contain precompiled scripts that can be executed in specific sandboxes (or "contexts").
 
 ### new vm.Script(code, options)
 
@@ -334,16 +334,16 @@ changes:
                  `script.createCachedData()`
 -->
 
-* `code` {string} 要编译的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile.
 * `options` 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. When supplied, the `cachedDataRejected` value will be set to either `true` or `false` depending on acceptance of the data by V8.
-  * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is deprecated in favor of `script.createCachedData()`.
+  * `produceCachedData` {boolean} When `true` and no `cachedData` is present, V8 will attempt to produce code cache data for `code`. Upon success, a `Buffer` with V8's code cache data will be produced and stored in the `cachedData` property of the returned `vm.Script` instance. The `cachedDataProduced` value will be set to either `true` or `false` depending on whether code cache data is produced successfully. This option is deprecated in favor of `script.createCachedData()`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. This function has the signature `(specifier, module)` where `specifier` is the specifier passed to `import()` and `module` is this `vm.SourceTextModule`. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This method can return a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects), but returning a `vm.SourceTextModule` is recommended in order to take advantage of error tracking, and to avoid issues with namespaces that contain `then` function exports.
 
-创建新的 `vm.Script` 对象会编译 `code` 但不会运行它。 编译过的 `vm.Script` 可以在以后被多次运行。 The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
+Creating a new `vm.Script` object compiles `code` but does not run it. The compiled `vm.Script` can be run later multiple times. The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
 
 ### script.createCachedData()
 
@@ -351,7 +351,7 @@ changes:
 added: v10.6.0
 -->
 
-* 返回：{Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the Script constructor's `cachedData` option. Returns a Buffer. This method may be called at any time and any number of times.
 
@@ -382,18 +382,18 @@ changes:
     description: The `breakOnSigint` option is supported now.
 -->
 
-* `contextifiedSandbox` {Object} 由 `vm.createContext()` 方法返回的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象。
+* `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
 * `options` {Object} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
-  * `breakOnSigint`：如果值为 `true`，则在收到 `SIGINT` (Ctrl+C) 时，执行将被终止。 Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. 如果运行被终止，则抛出 [`Error`][] 。
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
+  * `breakOnSigint`: if `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is terminated, an [`Error`][] will be thrown.
 
-在已提供的 `contextifiedSandbox` 中运行 `vm.Script` 对象包含的已编译代码，并返回结果。 正在运行的代码不能访问本地作用域。
+Runs the compiled code contained by the `vm.Script` object within the given `contextifiedSandbox` and returns the result. Running code does not have access to local scope.
 
-如下的示例将编译并多次运行代码，该代码会增加全局变量的值，并设置另一个全局变量的值。 全局变量被包含在 `sandbox` 对象中。
+The following example compiles code that increments a global variable, sets the value of another global variable, then execute the code multiple times. The globals are contained in the `sandbox` object.
 
 ```js
 const util = require('util');
@@ -429,22 +429,22 @@ changes:
     description: The `contextCodeGeneration` option is supported now.
 -->
 
-* `sandbox` {Object} 将被 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 的对象。 如果 `undefined`，将会创建一个新的对象。
+* `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
 * `options` {Object} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
   * `contextCodeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
-首先 contextifies 给定的 `sandbox`，在已创建的沙盒中运行 `vm.Script` 对象包含的已编译代码，并返回结果。 正在运行的代码不能访问本地作用域。
+First contextifies the given `sandbox`, runs the compiled code contained by the `vm.Script` object within the created sandbox, and returns the result. Running code does not have access to local scope.
 
-如下的示例编译设置了全局变量的代码，并在不同的上下文中多次运行该代码。 全局变量被赋值，且被包含于每个单独的 `sandbox` 中。
+The following example compiles code that sets a global variable, then executes the code multiple times in different contexts. The globals are set on and contained within each individual `sandbox`.
 
 ```js
 const util = require('util');
@@ -469,15 +469,15 @@ added: v0.3.1
 -->
 
 * `options` {Object} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
 
-在当前 `global` 对象的上下文中运行 `vm.Script` 中包含的已编译代码。 正在运行的代码不能访问本地作用域，但 *可以* 访问当前的 `global` 对象。
+Runs the compiled code contained by the `vm.Script` within the context of the current `global` object. Running code does not have access to local scope, but *does* have access to the current `global` object.
 
-如下示例编译增加 `global` 变量值的代码并多次运行该代码：
+The following example compiles code that increments a `global` variable then executes that code multiple times:
 
 ```js
 const vm = require('vm');
@@ -504,11 +504,11 @@ added: v10.10.0
 * `code` {string} The body of the function to compile.
 * `params` {string[]} An array of strings containing all parameters for the function.
 * `options` {Object} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `''`.
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **默认值：** `0`。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **默认值：** `0`。
+  * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `''`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source.
-  * `produceCachedData` {boolean} Specifies whether to produce new cache data. **默认:** `false`.
+  * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
 
@@ -536,7 +536,7 @@ changes:
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
-如果给定 `sandbox` 对象，`vm.createContext()` 方法将会 [准备沙盒](#vm_what_does_it_mean_to_contextify_an_object)，这样该沙盒就可以在调用 [`vm.runInContext()`][] 或[`script.runInContext()`][] 时被使用。 在该脚本中，`sandbox` 对象将会是全局对象，会保留其所有现有属性，同时具有任何标准 [global object](https://es5.github.io/#x15.1) 具有的内置对象和函数。 在 vm 模块运行脚本之外，全局变量将不被更改。
+If given a `sandbox` object, the `vm.createContext()` method will [prepare that sandbox](#vm_what_does_it_mean_to_contextify_an_object) so that it can be used in calls to [`vm.runInContext()`][] or [`script.runInContext()`][]. Inside such scripts, the `sandbox` object will be the global object, retaining all of its existing properties but also having the built-in objects and functions any standard [global object](https://es5.github.io/#x15.1) has. Outside of scripts run by the vm module, global variables will remain unchanged.
 
 ```js
 const util = require('util');
@@ -554,9 +554,9 @@ console.log(util.inspect(sandbox)); // { globalVar: 2 }
 console.log(util.inspect(globalVar)); // 3
 ```
 
-如果 `sandbox` 被省略 （或显式传递为 `undefined`），则会返回一个新的空 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 沙盒对象。
+If `sandbox` is omitted (or passed explicitly as `undefined`), a new, empty [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox object will be returned.
 
-`vm.createContext()` 方法主要在创建可运行多个脚本的单一沙盒时有用。 例如，如果模仿一个 web 浏览器，该方法可被用于创建一个代表窗口全局对象的单一沙盒，之后在该沙盒的上下文中一起运行所有标签。
+The `vm.createContext()` method is primarily useful for creating a single sandbox that can be used to run multiple scripts. For instance, if emulating a web browser, the method can be used to create a single sandbox representing a window's global object, then run all `<script>` tags together within the context of that sandbox.
 
 The provided `name` and `origin` of the context are made visible through the Inspector API.
 
@@ -567,26 +567,26 @@ added: v0.11.7
 -->
 
 * `sandbox` {Object}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `sandbox` 对象已经通过 [`vm.createContext()`][] 被 [contextified](#vm_what_does_it_mean_to_contextify_an_object)，则返回 `true`。
+Returns `true` if the given `sandbox` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
 ## vm.runInContext(code, contextifiedSandbox[, options])
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
-* `contextifiedSandbox` {Object} 当 `code` 被编译和运行时，将被作为 `global` 的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象。
+* `code` {string} The JavaScript code to compile and run.
+* `contextifiedSandbox` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
 * `options` {Object|string} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
 
-`vm.runInContext()` 方法会编译 `code`，在 `contextifiedSandbox` 的上下文中运行该代码，并返回结果。 正在运行的代码不能访问本地作用域。 `contextifiedSandbox` 对象 *必须* 在之前已经通过 [`vm.createContext()`][] 方法被 [contextified](#vm_what_does_it_mean_to_contextify_an_object)。
+The `vm.runInContext()` method compiles `code`, runs it within the context of the `contextifiedSandbox`, then returns the result. Running code does not have access to the local scope. The `contextifiedSandbox` object *must* have been previously [contextified](#vm_what_does_it_mean_to_contextify_an_object) using the [`vm.createContext()`][] method.
 
 If `options` is a string, then it specifies the filename.
 
-如下示例使用单一的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象编译并运行不同的脚本。
+The following example compiles and executes different scripts using a single [contextified](#vm_what_does_it_mean_to_contextify_an_object) object:
 
 ```js
 const util = require('util');
@@ -609,22 +609,22 @@ console.log(util.inspect(sandbox));
 added: v0.3.1
 -->
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
-* `sandbox` {Object} 将被 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 的对象。 如果 `undefined`，将会创建一个新的对象。
+* `code` {string} The JavaScript code to compile and run.
+* `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
 * `options` {Object|string} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
 
-`vm.runInNewContext()` 首先会 contextifies 给定的 `sandbox` 对象 （如果传递的是 `undefined`，则会新建一个 `sandbox` ），在创建的上下文中编译和运行 `code` ，并返回结果。 正在运行的代码不能访问本地作用域。
+The `vm.runInNewContext()` first contextifies the given `sandbox` object (or creates a new `sandbox` if passed as `undefined`), compiles the `code`, runs it within the context of the created context, then returns the result. Running code does not have access to the local scope.
 
 If `options` is a string, then it specifies the filename.
 
-如下示例编译并运行代码，该代码增加一个全局变量的值，并给新的变量赋值。 这些全局变量被包含在 `sandbox` 中。
+The following example compiles and executes code that increments a global variable and sets a new one. These globals are contained in the `sandbox`.
 
 ```js
 const util = require('util');
@@ -647,19 +647,19 @@ console.log(util.inspect(sandbox));
 added: v0.3.1
 -->
 
-* `code` {string} 要编译和运行的 JavaScript 代码。
+* `code` {string} The JavaScript code to compile and run.
 * `options` {Object|string} 
-  * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
-  * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
-  * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
-  * `displayErrors` {boolean} 当值为 `true` 时，如果在编译 `code` 时发生 [`Error`][] 错误，导致错误的代码行会被附加到追溯栈。
-  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
+  * `filename` {string} Specifies the filename used in stack traces produced by this script.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
+  * `displayErrors` {boolean} When `true`, if an [`Error`][] error occurs while compiling the `code`, the line of code causing the error is attached to the stack trace.
+  * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. If execution is terminated, an [`Error`][] will be thrown. This value must be a strictly positive integer.
 
-`vm.runInThisContext()` 会编译 `code`，在当前 `global` 的上下文中运行该代码，并返回结果。 正在运行的代码不能访问本地作用域，但可以访问当前的 `global` 对象。
+`vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
 If `options` is a string, then it specifies the filename.
 
-下面的示例演示如何使用 `vm.runInThisContext()` 和 JavaScript [`eval()`][] 函数来运行同样的代码：
+The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
 
 <!-- eslint-disable prefer-const -->
 
@@ -679,13 +679,13 @@ console.log('localVar:', localVar);
 // evalResult: 'eval', localVar: 'eval'
 ```
 
-由于 `vm.runInThisContext()` 不能访问本地作用域，`localVar` 未被更改。 恰恰相反，[`eval()`][] *可以* 访问本地作用域，因此 `localVar` 的值被更改了。 通过这种方式，`vm.runInThisContext()` 就类似于 [间接 `eval()` 调用]，即：`(0,eval)('code')`。
+Because `vm.runInThisContext()` does not have access to the local scope, `localVar` is unchanged. In contrast, [`eval()`][] *does* have access to the local scope, so the value `localVar` is changed. In this way `vm.runInThisContext()` is much like an [indirect `eval()` call][], e.g. `(0,eval)('code')`.
 
-## 示例：在 VM 中运行一个 HTTP 服务器
+## Example: Running an HTTP Server within a VM
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-为了使用 `http` 模块运行一个简单的 web 服务器，传递给上下文的代码必须自己调用 `require('http')`，或者具有传递给它的 `http` 模块的引用。 例如：
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
@@ -706,15 +706,15 @@ const code = `
 vm.runInThisContext(code)(require);
 ```
 
-The `require()` in the above case shares the state with the context it is passed from. 这可能会在运行不受信任代码时引入风险，即：以不希望的方式更改上下文中的对象。
+The `require()` in the above case shares the state with the context it is passed from. This may introduce risks when untrusted code is executed, e.g. altering objects in the context in unwanted ways.
 
-## "contextify" 一个对象是什么意思？
+## What does it mean to "contextify" an object?
 
-在 Node.js 中运行的所有 JavaScript 都在 “上下文” 的作用域内运行。 根据 [V8 嵌入式指南](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts)：
+All JavaScript executed within Node.js runs within the scope of a "context". According to the [V8 Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts):
 
-> 在 V8 中，上下文是一个执行环境，它允许在一个单一的 V8 实例中运行分离的，不相关的 JavaScript 应用程序。 你必须显式指定要在其中运行任何 JavaScript 代码的上下文。
+> In V8, a context is an execution environment that allows separate, unrelated, JavaScript applications to run in a single instance of V8. You must explicitly specify the context in which you want any JavaScript code to be run.
 
-当 `vm.createContext()` 方法被调用时，传入的（如果 `sandbox` 是 `undefined`，则是新创建的对象） `sandbox` 对象在内部和一个 V8 上下文的实例相关联。 This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. 创建 V8 上下文以及将其和 `sandbox` 对象相关联的过程在此文档中被称作 "contextifying" `sandbox`。
+When the method `vm.createContext()` is called, the `sandbox` object that is passed in (or a newly created object if `sandbox` is `undefined`) is associated internally with a new instance of a V8 Context. This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. The process of creating the V8 Context and associating it with the `sandbox` object is what this document refers to as "contextifying" the `sandbox`.
 
 ## Timeout limitations when using process.nextTick(), and Promises
 
