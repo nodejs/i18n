@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Altre versioni 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -44,7 +44,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.1"></a>
 
@@ -69,7 +69,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2017-05-02, Version 7.10.0 (Current), @evanlucas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **crypto**: add randomFill and randomFillSync (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
 * **meta**: Added new collaborators 
@@ -270,7 +270,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2017-04-11, Version 7.9.0 (Current), @italoacasas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **util**: console is now closer to what is supported in all major browsers (Roman Reiss) [#10308](https://github.com/nodejs/node/pull/10308)
 
@@ -334,7 +334,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2017-03-28, Version 7.8.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
