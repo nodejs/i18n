@@ -199,7 +199,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * introduce async-context API (vdeturckheim) [#26540](https://github.com/nodejs/node/pull/26540)
-* **transmissão**
+* **stream**
   * support passing generator functions into pipeline() (Robert Nagy) [#31223](https://github.com/nodejs/node/pull/31223)
 * **tls**
   * expose SSL\_export\_keying\_material (simon) [#31814](https://github.com/nodejs/node/pull/31814)
@@ -307,7 +307,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * add executionAsyncResource (Matteo Collina) [#30959](https://github.com/nodejs/node/pull/30959)
-* **cripto**
+* **crypto**
   * add crypto.diffieHellman (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * add DH support to generateKeyPair (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * simplify DH groups (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
@@ -316,7 +316,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
   * skip keygen tests on arm systems (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
 * **perf_hooks**
   * add property flags to GCPerformanceEntry (Kirill Fomichev) [#29547](https://github.com/nodejs/node/pull/29547)
-* **processo**
+* **process**
   * report ArrayBuffer memory in `memoryUsage()` (Anna Henningsen) [#31550](https://github.com/nodejs/node/pull/31550)
 * **readline**
   * make tab size configurable (Ruben Bridgewater) [#31318](https://github.com/nodejs/node/pull/31318)
