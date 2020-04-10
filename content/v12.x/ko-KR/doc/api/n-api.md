@@ -3,7 +3,7 @@
 <!--introduced_in=v8.0.0-->
 <!-- type=misc -->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (for example, V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
@@ -82,7 +82,7 @@ Thus, for an addon to remain ABI-compatible across Node.js major versions, it mu
 
 and by checking, for all external libraries that it uses, that the external library makes ABI stability guarantees similar to N-API.
 
-## 빌드
+## Building
 
 Unlike modules written in JavaScript, developing and deploying Node.js native addons using N-API requires an additional set of tools. Besides the basic tools required to develop for Node.js, the native addon developer requires a toolchain that can compile C and C++ code into a binary. In addition, depending upon how the native addon is deployed, the *user* of the native addon will also need to have a C/C++ toolchain installed.
 
