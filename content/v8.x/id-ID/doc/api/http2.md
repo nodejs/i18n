@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -979,7 +979,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the
+--> Provides miscellaneous information about the current state of the 
 
 `Http2Stream`.
 
@@ -1600,14 +1600,16 @@ The given callback is registered as a listener on the `'timeout'` event.
 
 In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
 
-### http2.createServer(options[, onRequestHandler])<!-- YAML
+### http2.createServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1663,7 +1665,9 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.createSecureServer(options[, onRequestHandler])<!-- YAML
+### http2.createSecureServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -1674,7 +1678,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1726,14 +1730,16 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.connect(authority\[, options\]\[, listener\])<!-- YAML
+### http2.connect(authority\[, options\]\[, listener\])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1886,7 +1892,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: The `maxHeaderListSize` setting is now strictly enforced.
---> The
+--> The 
 
 `http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
 
@@ -2302,6 +2308,8 @@ Accept: text/plain\r\n
 
 Then `request.url` will be:
 
+<!-- eslint-disable semi -->
+
 ```js
 '/status?name=ryan'
 ```
@@ -2346,11 +2354,13 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse<!-- YAML
-added: v8.4.0
--->This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [
+### Class: http2.Http2ServerResponse
 
-`'request'`][] event.
+<!-- YAML
+added: v8.4.0
+-->
+
+This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. This is an [`EventEmitter`][] with the following events:
 
