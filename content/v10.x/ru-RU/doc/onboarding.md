@@ -34,8 +34,8 @@ apply.whitespace fix`
     * `git remote add upstream git://github.com/nodejs/node.git`
   * To update from `upstream`: 
     * `git checkout master`
-    * `git remote update -p` ИЛИ `git fetch --all`
-    * `git merge --ff-only upstream/master` (или `REMOTENAME/BRANCH`)
+    * `git remote update -p` OR `git fetch --all`
+    * `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
   * Make a new branch for each PR you submit.
   * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
 
@@ -129,7 +129,7 @@ apply.whitespace fix`
     * It is not automatically run. You need to start it manually.
   * Log in on CI is integrated with GitHub. Try to log in now!
   * You will be using `node-test-pull-request` most of the time. Go there now! 
-    * Можно сразу добавить в закладки в браузере: https://ci.nodejs.org/job/node-test-pull-request/
+    * Consider bookmarking it: https://ci.nodejs.org/job/node-test-pull-request/
   * To get to the form to start a job, click on `Build with Parameters`. (If you don't see it, that probably means you are not logged in!) Click it now!
   * To start CI testing from this screen, you need to fill in two elements on the form: 
     * The `CERTIFY_SAFE` box should be checked. By checking it, you are indicating that you have reviewed the code you are about to test and you are confident that it does not contain any malicious code. (We don't want people hijacking our CI hosts to attack other hosts on the internet, for example!)
