@@ -1,8 +1,8 @@
-# Moduł Async Hooks
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
@@ -76,7 +76,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `funkcje zwrotne` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
