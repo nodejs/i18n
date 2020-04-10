@@ -1,29 +1,29 @@
-# パス
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-`path` モジュールは、ファイルやディレクトリパスを取り扱うためのユーティリティを提供します。 以下のように利用できます。
+The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
 ```js
 const path = require('path');
 ```
 
-## Windows と POSIX
+## Windows vs. POSIX
 
 The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
-POSIX の場合:
+On POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
@@ -63,7 +63,7 @@ changes:
 
 * `path` {string}
 * `ext` {string} An optional file extension
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -100,7 +100,7 @@ process.env.PATH.split(path.delimiter);
 // Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 console.log(process.env.PATH);
@@ -122,7 +122,7 @@ changes:
 -->
 
 * `path` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -145,7 +145,7 @@ changes:
 -->
 
 * `path` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
@@ -180,7 +180,7 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -221,7 +221,7 @@ path.format({
 // Returns: '/file.txt'
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.format({
@@ -253,7 +253,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.isAbsolute('//server');    // true
@@ -274,7 +274,7 @@ added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
@@ -297,12 +297,11 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform-specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
@@ -313,7 +312,7 @@ path.normalize('/foo/bar//baz/asdf/quux/..');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
@@ -370,7 +369,7 @@ path.parse('/home/user/dir/file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
@@ -418,7 +417,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -431,7 +430,7 @@ path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
 // Returns: '../../impl/bbb'
 ```
 
-Windows の場合の例:
+On Windows:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
@@ -447,7 +446,7 @@ added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* 戻り値: {string}
+* Returns: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -483,10 +482,10 @@ added: v0.7.9
 
 * {string}
 
-以下のように、プラットフォーム別のパス区切り文字を提供します。
+Provides the platform-specific path segment separator:
 
-* Windowsの場合: ``
-* POSIX の場合: `/`
+* `` on Windows
+* `/` on POSIX
 
 For example, on POSIX:
 
@@ -495,16 +494,14 @@ For example, on POSIX:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-Windows の場合:
+On Windows:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
-as path segment separators; however, the``path`methods only add backward
-slashes (`\`).
+On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.toNamespacedPath(path)
 
@@ -513,7 +510,7 @@ added: v9.0.0
 -->
 
 * `path` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 On Windows systems only, returns an equivalent [namespace-prefixed path](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
