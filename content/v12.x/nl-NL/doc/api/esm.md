@@ -3,7 +3,7 @@
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -467,7 +467,7 @@ As with the previous approach, a variant of this approach not requiring conditio
 
 ## `import` Specifiers
 
-### Terminologie
+### Terminology
 
 The _specifier_ of an `import` statement is the string after the `from` keyword, e.g. `'path'` in `import { sep } from 'path'`. Specifiers are also used in `export from` statements, and as the argument to an `import()` expression.
 
