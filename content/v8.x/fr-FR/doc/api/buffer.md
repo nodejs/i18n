@@ -1,12 +1,12 @@
-# Tampons (buffers)
+# Buffer
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-Avant l'apparition de [`TypedArray`], Le langage JavaScript n'avait aucun moyen pour lire et manipuler des flux de données binaires. La classe de `mémoire tampon` a été introduite dans le cadre de l’API de Node.js pour permettre une interaction avec flux octet dans le flux TCP, les opérations de système de fichiers et d’autres contextes.
+Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
-Avec [`TypedArray`] maintenant disponible, la classe `Buffer` implémente le [`Uint8Array`] API d’une manière qui est plus Node.js optimisée et adaptée aux.
+With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
 
 Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be changed.
 
@@ -68,7 +68,7 @@ added: v5.10.0
 
 Node.js can be started using the `--zero-fill-buffers` command line option to force all newly allocated `Buffer` instances created using either `new Buffer(size)`, [`Buffer.allocUnsafe()`], [`Buffer.allocUnsafeSlow()`] or `new SlowBuffer(size)` to be *automatically zero-filled* upon creation. Use of this flag *changes the default behavior* of these methods and *can have a significant impact* on performance. Use of the `--zero-fill-buffers` option is recommended only when necessary to enforce that newly allocated `Buffer` instances cannot contain potentially sensitive data.
 
-Exemple:
+Example:
 
 ```txt
 $ node --zero-fill-buffers
@@ -97,7 +97,7 @@ changes:
 
 `Buffer` instances are commonly used to represent sequences of encoded characters such as UTF-8, UCS2, Base64, or even Hex-encoded data. It is possible to convert back and forth between `Buffer` instances and ordinary JavaScript strings by using an explicit character encoding.
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.from('hello world', 'ascii');
@@ -149,7 +149,7 @@ It is also possible to create new [`TypedArray`] instances from a `Buffer` with 
 
 It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the TypeArray object's `.buffer` property.
 
-Exemple:
+Example:
 
 ```js
 const arr = new Uint16Array(2);
@@ -180,7 +180,7 @@ console.log(buf2);
 
 Note that when creating a `Buffer` using a [`TypedArray`]'s `.buffer`, it is possible to use only a portion of the underlying [`ArrayBuffer`] by passing in `byteOffset` and `length` parameters.
 
-Exemple:
+Example:
 
 ```js
 const arr = new Uint16Array(20);
@@ -205,7 +205,7 @@ The `Buffer.from()` method, however, does not support the use of a mapping funct
 
 `Buffer` instances can be iterated over using `for..of` syntax:
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
@@ -221,7 +221,7 @@ for (const b of buf) {
 
 Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
 
-## Classe: Buffer
+## Class: Buffer
 
 The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
 
@@ -245,7 +245,7 @@ changes:
 
 Allocates a new `Buffer` using an `array` of octets.
 
-Exemple:
+Example:
 
 ```js
 // Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
@@ -280,7 +280,7 @@ This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copy
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
-Exemple:
+Example:
 
 ```js
 const arr = new Uint16Array(2);
@@ -321,7 +321,7 @@ changes:
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
-Exemple:
+Example:
 
 ```js
 const buf1 = new Buffer('buffer');
@@ -361,7 +361,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 Prior to Node.js 8.0.0, the underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of a newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc(size)`][`Buffer.alloc()`] instead to initialize a `Buffer` to zeroes.
 
-Exemple:
+Example:
 
 ```js
 const buf = new Buffer(10);
@@ -426,7 +426,7 @@ changes:
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.alloc(5);
@@ -439,7 +439,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.alloc(5, 'a');
@@ -450,7 +450,7 @@ console.log(buf);
 
 If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
@@ -480,7 +480,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`] instead to initialize `Buffer` instances to zeroes.
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.allocUnsafe(10);
@@ -516,7 +516,7 @@ When using [`Buffer.allocUnsafe()`] to allocate new `Buffer` instances, allocati
 
 However, in the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `Buffer.allocUnsafeSlow()` then copy out the relevant bits.
 
-Exemple:
+Example:
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -562,7 +562,7 @@ Returns the actual byte length of a string. This is not the same as [`String.pro
 
 *Note*: For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-Base64/Hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
 
-Exemple:
+Example:
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
@@ -591,7 +591,7 @@ changes:
 
 Compares `buf1` to `buf2` typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
-Exemple:
+Example:
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -616,7 +616,7 @@ changes:
 
 * `list` {Array} List of `Buffer` or [`Uint8Array`] instances to concat.
 * `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
 
@@ -656,7 +656,7 @@ added: v5.10.0
 
 Allocates a new `Buffer` using an `array` of octets.
 
-Exemple:
+Example:
 
 ```js
 // Creates a new Buffer containing UTF-8 bytes of the string 'buffer'
@@ -677,7 +677,7 @@ added: v5.10.0
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
 
-Exemple:
+Example:
 
 ```js
 const arr = new Uint16Array(2);
@@ -700,7 +700,7 @@ console.log(buf);
 
 The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
-Exemple:
+Example:
 
 ```js
 const ab = new ArrayBuffer(10);
@@ -722,7 +722,7 @@ added: v5.10.0
 
 Copies the passed `buffer` data onto a new `Buffer` instance.
 
-Exemple:
+Example:
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -1235,7 +1235,7 @@ added: v1.1.0
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1560,7 +1560,7 @@ added: v0.11.15
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Par défaut :** `false`.
+* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`.
 * Returns: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
@@ -1589,7 +1589,7 @@ added: v0.5.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
 * Returns: {integer}
 
 Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
@@ -1620,7 +1620,7 @@ added: v0.5.5
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
 * Returns: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt16BE()` returns big endian, `readUInt16LE()` returns little endian).
@@ -1657,7 +1657,7 @@ added: v0.5.5
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `offset` validation? **Default:** `false`
 * Returns: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with specified endian format (`readUInt32BE()` returns big endian, `readUInt32LE()` returns little endian).
@@ -1689,7 +1689,7 @@ added: v0.11.15
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to read. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `offset` and `byteLength` validation? **Default:** `false`
 * Returns: {integer}
 
 Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
@@ -1729,7 +1729,7 @@ changes:
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1877,7 +1877,7 @@ added: v0.9.2
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
@@ -1905,7 +1905,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to decode to. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
-* Retourne : {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
@@ -1945,7 +1945,7 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Renvoie : {Iterator}
+* Returns: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
@@ -1991,7 +1991,7 @@ added: v0.1.90
 
 Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only a partial amount of `string` will be written. However, partially encoded characters will not be written.
 
-Exemple:
+Example:
 
 ```js
 const buf = Buffer.allocUnsafe(256);
@@ -2012,7 +2012,7 @@ added: v0.11.15
 
 * `value` {number} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeDoubleBE()` writes big endian, `writeDoubleLE()` writes little endian). `value` *should* be a valid 64-bit double. Behavior is undefined when `value` is anything other than a 64-bit double.
@@ -2045,7 +2045,7 @@ added: v0.11.15
 
 * `value` {number} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeFloatBE()` writes big endian, `writeFloatLE()` writes little endian). `value` *should* be a valid 32-bit float. Behavior is undefined when `value` is anything other than a 32-bit float.
@@ -2076,7 +2076,7 @@ added: v0.5.0
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
@@ -2107,7 +2107,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt16BE()` writes big endian, `writeInt16LE()` writes little endian). `value` *should* be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
@@ -2138,7 +2138,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeInt32BE()` writes big endian, `writeInt32LE()` writes little endian). `value` *should* be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
@@ -2170,7 +2170,7 @@ added: v0.11.15
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
@@ -2201,7 +2201,7 @@ added: v0.5.0
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 1`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
@@ -2232,7 +2232,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 2`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt16BE()` writes big endian, `writeUInt16LE()` writes little endian). `value` should be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
@@ -2267,7 +2267,7 @@ added: v0.5.5
 
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 4`.
-* `noAssert` {boolean} Skip `value` and `offset` validation? **Par défaut :** `false`
+* `noAssert` {boolean} Skip `value` and `offset` validation? **Default:** `false`
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified endian format (`writeUInt32BE()` writes big endian, `writeUInt32LE()` writes little endian). `value` should be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
@@ -2301,7 +2301,7 @@ added: v0.5.5
 * `value` {integer} Number to be written to `buf`.
 * `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - byteLength`.
 * `byteLength` {integer} Number of bytes to write. Must satisfy: `0 < byteLength <= 6`.
-* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Par défaut :** `false`.
+* `noAssert` {boolean} Skip `value`, `offset`, and `byteLength` validation? **Default:** `false`.
 * Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
@@ -2395,7 +2395,7 @@ In order to avoid the garbage collection overhead of creating many individually 
 
 In the case where a developer may need to retain a small chunk of memory from a pool for an indeterminate amount of time, it may be appropriate to create an un-pooled `Buffer` instance using `SlowBuffer` then copy out the relevant bits.
 
-Exemple:
+Example:
 
 ```js
 // Need to keep around a few small chunks of memory
@@ -2430,7 +2430,7 @@ Allocates a new `Buffer` of `size` bytes. If the `size` is larger than [`buffer.
 
 The underlying memory for `SlowBuffer` instances is *not initialized*. The contents of a newly created `SlowBuffer` are unknown and may contain sensitive data. Use [`buf.fill(0)`][`buf.fill()`] to initialize a `SlowBuffer` to zeroes.
 
-Exemple:
+Example:
 
 ```js
 const { SlowBuffer } = require('buffer');
