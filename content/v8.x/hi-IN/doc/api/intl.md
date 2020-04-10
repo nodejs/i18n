@@ -5,12 +5,12 @@
 Node.js has many features that make it easier to write internationalized programs. Some of them are:
 
 - Locale-sensitive or Unicode-aware functions in the [ECMAScript Language Specification](https://tc39.github.io/ecma262/): 
-  - [`String.prototype.normalize()`][]
-  - [`String.prototype.toLowerCase()`][]
-  - [`String.prototype.toUpperCase()`][]
+    - [`String.prototype.normalize()`][]
+    - [`String.prototype.toLowerCase()`][]
+    - [`String.prototype.toUpperCase()`][]
 - All functionality described in the [ECMAScript Internationalization API Specification](https://tc39.github.io/ecma402/) (aka ECMA-402): 
-  - [`Intl`][] object
-  - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
+    - [`Intl`][] object
+    - Locale-sensitive methods like [`String.prototype.localeCompare()`][] and [`Date.prototype.toLocaleString()`][]
 - The [WHATWG URL parser](url.html#url_the_whatwg_url_api)'s [internationalized domain names](https://en.wikipedia.org/wiki/Internationalized_domain_name) (IDNs) support
 - [`require('buffer').transcode()`][]
 - More accurate [REPL](repl.html#repl_repl) line editing
@@ -41,7 +41,7 @@ An overview of available Node.js and JavaScript features for each `configure` op
 | `Date.prototype.toLocale*String()`                                                                  | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
 | [WHATWG URL Parser](url.html#url_the_whatwg_url_api)                                                | partial (no IDN support)          | full                         | full                   | full       |
 | [`require('buffer').transcode()`][]                                                                 | none (function does not exist)    | full                         | full                   | full       |
-| [आरईपीएल](repl.html#repl_repl)                                                                      | partial (inaccurate line editing) | full                         | full                   | full       |
+| [REPL](repl.html#repl_repl)                                                                         | partial (inaccurate line editing) | full                         | full                   | full       |
 | [`require('util').TextDecoder`][]                                                                   | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
 | [RegExp Unicode Property Escapes](https://github.com/tc39/proposal-regexp-unicode-property-escapes) | none (invalid RegExp error)       | full                         | full                   | full       |
 
@@ -82,16 +82,16 @@ This mode provides a good balance between features and binary size, and it is th
 If the `small-icu` option is used, one can still provide additional locale data at runtime so that the JS methods would work for all ICU locales. Assuming the data file is stored at `/some/directory`, it can be made available to ICU through either:
 
 - The [`NODE_ICU_DATA`][] environment variable:
-  
-  ```shell
-  env NODE_ICU_DATA=/some/directory node
-  ```
+    
+    ```shell
+    env NODE_ICU_DATA=/some/directory node
+    ```
 
 - The [`--icu-data-dir`][] CLI parameter:
-  
-  ```shell
-  node --icu-data-dir=/some/directory
-  ```
+    
+    ```shell
+    node --icu-data-dir=/some/directory
+    ```
 
 (If both are specified, the `--icu-data-dir` CLI parameter takes precedence.)
 
