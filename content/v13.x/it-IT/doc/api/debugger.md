@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -20,9 +20,9 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Il debugger client di Node.js non è un debugger completo, ma sono ugualmente possibili semplici step e ispezioni.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
-L'inserimento dell'istruzione `debugger;` nel codice sorgente di uno script abiliterà un breakpoint in quella posizione nel codice:
+Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
 ```js
 // myscript.js
 global.x = 5;
@@ -33,7 +33,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Una volta eseguito il debugger, si verificherà un breakpoint alla riga 3:
+Once the debugger is run, a breakpoint will occur at line 3:
 
 ```console
 $ node inspect myscript.js
@@ -76,17 +76,17 @@ break in myscript.js:5
 debug> .exit
 ```
 
-Il comando `repl` consente di valutare il codice da remoto. Il comando `next` passa alla riga successiva. Digita `help` per vedere quali altri comandi sono disponibili.
+The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
 
-Premere `enter` senza digitare alcun comando farà si che si ripeta il comando debugger precedente.
+Pressing `enter` without typing a command will repeat the previous debugger command.
 
 ## Watchers
 
-È possibile monitorare i valori expression e variable durante il debug. Su ogni breakpoint, ogni expression presente nell'elenco degli watcher verrà valutata nel contesto corrente e visualizzata immediatamente prima che il codice sorgente del breakpoint venga messo nell'elenco.
+It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
 
-Per iniziare a guardare un expression, digita `watch('my_expression')`. Il comando `watchers` stamperà gli watcher attivi. Per rimuovere un watcher, digita `unwatch('my_expression')`.
+To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
 
-## Riferimento dei Comandi
+## Command reference
 
 ### Stepping
 
@@ -104,7 +104,7 @@ Per iniziare a guardare un expression, digita `watch('my_expression')`. Il coman
 * `setBreakpoint('script.js', 1)`, `sb(...)`: Set breakpoint on first line of `script.js`
 * `clearBreakpoint('script.js', 1)`, `cb(...)`: Clear breakpoint in `script.js` on line 1
 
-È possibile anche impostare un breakpoint all'interno di un file (modulo) che non è ancora stato caricato:
+It is also possible to set a breakpoint in a file (module) that is not loaded yet:
 
 ```console
 $ node inspect main.js
@@ -119,7 +119,7 @@ debug> setBreakpoint('mod.js', 22)
 Warning: script 'mod.js' was not loaded yet.
 debug> c
 break in mod.js:22
- 20 // UTILIZZO O ALTRE DISPOSIZIONI NEL SOFTWARE.
+ 20 // USE OR OTHER DEALINGS IN THE SOFTWARE.
  21
 >22 exports.hello = function() {
  23   return 'hello from module';
@@ -127,7 +127,7 @@ break in mod.js:22
 debug>
 ```
 
-### Informazioni
+### Information
 
 * `backtrace`, `bt`: Print backtrace of current execution frame
 * `list(5)`: List scripts source code with 5 line context (5 lines before and after)
@@ -137,24 +137,24 @@ debug>
 * `repl`: Open debugger's repl for evaluation in debugging script's context
 * `exec expr`: Execute an expression in debugging script's context
 
-### Controllo dell'esecuzione
+### Execution control
 
 * `run`: Run script (automatically runs on debugger's start)
 * `restart`: Restart script
 * `kill`: Kill script
 
-### Varie
+### Various
 
 * `scripts`: List all loaded scripts
 * `version`: Display V8's version
 
-## Uso Avanzato
+## Advanced Usage
 
-### Integrazione dell'Inspector di V8 per Node.js
+### V8 Inspector Integration for Node.js
 
-L'integrazione dell'Inspector di V8 consente di collegare Chrome DevTools alle istanze Node.js per il debug e il profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-L'Inspector V8 può essere abilitato passando il flag `--inspect` all'avvio di un'applicazione Node.js. È anche possibile fornire una porta personalizzata tramite quel flag, ad es. `--inspect=9222` accetterà le connessioni DevTools sulla porta 9222.
+V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
 To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
