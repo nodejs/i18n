@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Vakaus: 1 - Kokeellinen
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
