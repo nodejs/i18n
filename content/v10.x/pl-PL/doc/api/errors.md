@@ -1,4 +1,4 @@
-# Błędy
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -13,7 +13,7 @@ Applications running in Node.js will generally experience four categories of err
 
 All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
 
-## Propagowanie i Zapobieganie Błędom
+## Error Propagation and Interception
 
 <!--type=misc-->
 
@@ -35,18 +35,21 @@ Any use of the JavaScript `throw` mechanism will raise an exception that *must* 
 
 With few exceptions, *Synchronous* APIs (any blocking method that does not accept a `callback` function, such as [`fs.readFileSync`][]), will use `throw` to report errors.
 
-Błędy występujące wewnątrz *Asynchronicznych API* mogą być zgłoszone na kilka sposobów:
+Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled. 
-        js
-        const fs = require('fs');
-        fs.readFile('a file that does not exist', (err, data) => {
+- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+
+<!-- eslint-disable no-useless-return -->
+
+    js
+      const fs = require('fs');
+      fs.readFile('a file that does not exist', (err, data) => {
         if (err) {
           console.error('There was an error reading the file!', err);
           return;
         }
         // Otherwise handle the data
-        });
+      });
 
 - When an asynchronous method is called on an object that is an [`EventEmitter`][], errors can be routed to that object's `'error'` event.
     
@@ -62,7 +65,7 @@ Błędy występujące wewnątrz *Asynchronicznych API* mogą być zgłoszone na 
     console.error(err);
     });
     
-     connection.pipe(process.stdout);
+    connection.pipe(process.stdout);
     ```
 
 - A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try…catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
@@ -76,9 +79,9 @@ const EventEmitter = require('events');
 const ee = new EventEmitter();
 
 setImmediate(() => {
-  // To spowoduje zamknięcie procesu, gdyż nie został dodany
-  // sposób obsługi wydarzenia 'error'.
-  ee.emit('error', new Error('To zamknie proces'));
+  // This will crash the process because no 'error' event
+  // handler has been added.
+  ee.emit('error', new Error('This will crash'));
 });
 ```
 
@@ -86,9 +89,11 @@ Errors generated in this way *cannot* be intercepted using `try…catch` as they
 
 Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
-### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an 
+### Error-first callbacks
 
-*error-first callback*. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+<!--type=misc-->
+
+Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an *error-first callback*. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
@@ -126,57 +131,59 @@ try {
 
 This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: Error<!--type=class-->A generic JavaScript 
+## Class: Error
 
-`Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+<!--type=class-->
+
+A generic JavaScript `Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
 All errors generated by Node.js, including all System and JavaScript errors, will either be instances of, or inherit from, the `Error` class.
 
-### new Error(wiadomość)
+### new Error(message)
 
-- `wiadomość` {string}
+- `message` {string}
 
 Creates a new `Error` object and sets the `error.message` property to the provided text message. If an object is passed as `message`, the text message is generated by calling `message.toString()`. The `error.stack` property will represent the point in the code at which `new Error()` was called. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
 
 ### Error.captureStackTrace(targetObject[, constructorOpt])
 
-- `targetObject` {Obiekt}
-- `constructorOpt` {Funkcja}
+- `targetObject` {Object}
+- `constructorOpt` {Function}
 
 Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
 
 ```js
-const mójObiekt = {};
-Error.captureStackTrace(mójObiekt);
-mójObiekt.stack; // podobne do `new Error().stack`
+const myObject = {};
+Error.captureStackTrace(myObject);
+myObject.stack;  // similar to `new Error().stack`
 ```
 
 The first line of the trace will be prefixed with `${myObject.name}: ${myObject.message}`.
 
-Opcjonalny argument `constructorOpt` będzie przyjęty jako funkcja. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
+The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. Na przykład:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
-function MójBłąd() {   
-  Error.captureStackTrace(this, MójBłąd);
+function MyError() {
+  Error.captureStackTrace(this, MyError);
 }
 
-// Jeśli nie podamy MójBłąd jako argumentu dla captureStackTrace, MójBłąd
-// pojawi się w właściwości .stack. Przez użycie konstruktora
-// omijamy to wydarzenie, oraz zachowujemy wszystkie wydarzenia pod nim.
-new MójBłąd().stack;
+// Without passing MyError to captureStackTrace, the MyError
+// frame would show up in the .stack property. By passing
+// the constructor, we omit that frame, and retain all frames below it.
+new MyError().stack;
 ```
 
 ### Error.stackTraceLimit
 
-- {liczba}
+- {number}
 
 The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
 
-Wartością podstawową jest `10`, ale może być to dowolna liczba dozwolona przez JavaScript. Changes will affect any stack trace captured *after* the value has been changed.
+The default value is `10` but may be set to any valid JavaScript number. Changes will affect any stack trace captured *after* the value has been changed.
 
 If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
 
@@ -258,7 +265,7 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 ## Class: AssertionError
 
-Podklasa `Error`, która wskazuje na błąd asercji. For details, see [`Class: assert.AssertionError`][].
+A subclass of `Error` that indicates the failure of an assertion. For details, see [`Class: assert.AssertionError`][].
 
 ## Class: RangeError
 
@@ -309,9 +316,11 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a 
+## Exceptions vs. Błędy
 
-`throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+<!--type=misc-->
+
+A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -379,7 +388,7 @@ If present, `error.path` is a string containing a relevant invalid pathname.
 
 #### error.port
 
-- {liczba}
+- {number}
 
 If present, `error.port` is the network connection port that is not available.
 
@@ -1247,7 +1256,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1261,7 +1270,7 @@ A `MessagePort` was found in the object passed to a `postMessage()` call, but no
 
 ### ERR_MISSING_MODULE
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) could not be resolved.
 
@@ -1275,7 +1284,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 A failure occurred resolving imports in an [ES6 module](esm.html).
 
@@ -1364,7 +1373,7 @@ A given value is out of the accepted range.
 
 ### ERR_REQUIRE_ESM
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 An attempt was made to `require()` an [ES6 module](esm.html).
 
@@ -1635,7 +1644,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### ERR_UNKNOWN_FILE_EXTENSION
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1643,7 +1652,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### ERR_UNKNOWN_MODULE_FORMAT
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1749,15 +1758,17 @@ Creation of a [`zlib`][] object failed due to incorrect configuration.
 
 <a id="HPE_HEADER_OVERFLOW"></a>
 
-### HPE_HEADER_OVERFLOW<!-- YAML
+### HPE_HEADER_OVERFLOW
+
+<!-- YAML
 changes:
 
   - version: v10.15.0
     pr-url: https://github.com/nodejs/node/commit/186035243fad247e3955f
     description: Max header size in `http_parser` was set to 8KB.
--->Too much HTTP header data was received. In order to protect against malicious or malconfigured clients, if more than 8KB of HTTP header data is received then HTTP parsing will abort without a request or response object being created, and an 
+-->
 
-`Error` with this code will be emitted.
+Too much HTTP header data was received. In order to protect against malicious or malconfigured clients, if more than 8KB of HTTP header data is received then HTTP parsing will abort without a request or response object being created, and an `Error` with this code will be emitted.
 
 <a id="MODULE_NOT_FOUND"></a>
 
@@ -1767,14 +1778,18 @@ A module file could not be resolved while attempting a [`require()`][] or `impor
 
 ## Legacy Node.js Error Codes
 
-> Stabilność: 0 - Przestarzałe. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_HTTP2_FRAME_ERROR"></a>
 
-### ERR_HTTP2_FRAME_ERROR<!-- YAML
+### ERR_HTTP2_FRAME_ERROR
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when a failure occurs sending an individual frame on the HTTP/2 session.
+-->
+
+Used when a failure occurs sending an individual frame on the HTTP/2 session.
 
 <a id="ERR_HTTP2_HEADERS_OBJECT"></a>
 
@@ -1866,7 +1881,9 @@ The `repl` module was unable to parse data from the REPL history file.
 
 <a id="ERR_STDERR_CLOSE"></a>
 
-### ERR_STDERR_CLOSE<!-- YAML
+### ERR_STDERR_CLOSE
+
+<!-- YAML
 removed: v10.12.0
 changes:
 
@@ -1875,9 +1892,9 @@ changes:
     description: Rather than emitting an error, `process.stderr.end()` now
                  only closes the stream side but not the underlying resource,
                  making this error obsolete.
--->An attempt was made to close the 
+-->
 
-`process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+An attempt was made to close the `process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 
@@ -1898,12 +1915,14 @@ An attempt was made to close the `process.stdout` stream. By design, Node.js doe
 
 <a id="ERR_STREAM_READ_NOT_IMPLEMENTED"></a>
 
-### ERR_STREAM_READ_NOT_IMPLEMENTED<!-- YAML
+### ERR_STREAM_READ_NOT_IMPLEMENTED
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when an attempt is made to use a readable stream that has not implemented [
+-->
 
-`readable._read()`][].
+Used when an attempt is made to use a readable stream that has not implemented [`readable._read()`][].
 
 <a id="ERR_TLS_RENEGOTIATION_FAILED"></a>
 
@@ -1918,19 +1937,25 @@ Used when a TLS renegotiation request has failed in a non-specific way.
 
 <a id="ERR_UNKNOWN_BUILTIN_MODULE"></a>
 
-### ERR_UNKNOWN_BUILTIN_MODULE<!-- YAML
+### ERR_UNKNOWN_BUILTIN_MODULE
+
+<!-- YAML
 added: v8.0.0
 removed: v9.0.0
--->The 
+-->
 
-`'ERR_UNKNOWN_BUILTIN_MODULE'` error code is used to identify a specific kind of internal Node.js error that should not typically be triggered by user code. Instances of this error point to an internal bug within the Node.js binary itself.
+The `'ERR_UNKNOWN_BUILTIN_MODULE'` error code is used to identify a specific kind of internal Node.js error that should not typically be triggered by user code. Instances of this error point to an internal bug within the Node.js binary itself.
 
 <a id="ERR_VALUE_OUT_OF_RANGE"></a>
 
-### ERR_VALUE_OUT_OF_RANGE<!-- YAML
+### ERR_VALUE_OUT_OF_RANGE
+
+<!-- YAML
 added: v9.0.0
 removed: v10.0.0
--->Used when a given value is out of the accepted range.
+-->
+
+Used when a given value is out of the accepted range.
 
 <a id="ERR_ZLIB_BINDING_CLOSED"></a>
 
