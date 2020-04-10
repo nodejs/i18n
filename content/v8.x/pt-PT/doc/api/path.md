@@ -1,8 +1,8 @@
-# Caminho
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
@@ -309,8 +309,7 @@ added: v0.1.23
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
@@ -512,9 +511,7 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-*Note*: On Windows, both the forward slash (`/`) and backward slash (``\`) are
-accepted as path segment separators; however, the``path`methods only add
-backward slashes (`\`).
+*Note*: On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.win32
 
