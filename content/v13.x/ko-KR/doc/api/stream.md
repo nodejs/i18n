@@ -1,8 +1,8 @@
-# 스트림
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides an API for implementing the stream interface.
 
@@ -1206,16 +1206,29 @@ const cleanup = finished(rs, (err) => {
 });
 ```
 
-### `stream.pipeline(...streams, callback)`
+### `stream.pipeline(source[, ...transforms], destination, callback)`
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v13.10.0
+    pr-url: https://github.com/nodejs/node/pull/31223
+    description: Add support for async generators.
 -->
 
-* `...streams` {Stream} Two or more streams to pipe between.
+* `source` {Stream|Iterable|AsyncIterable|Function}
+  * Returns: {Iterable|AsyncIterable}
+* `...transforms` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable}
+* `destination` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable|Promise}
 * `callback` {Function} Called when the pipeline is fully done.
   * `err` {Error}
+  * `val` Resolved value of `Promise` returned by `destination`.
+* Returns: {Stream}
 
-A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+A module method to pipe between streams and generators forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
 ```js
 const { pipeline } = require('stream');
@@ -1251,6 +1264,28 @@ async function run() {
     fs.createReadStream('archive.tar'),
     zlib.createGzip(),
     fs.createWriteStream('archive.tar.gz')
+  );
+  console.log('Pipeline succeeded.');
+}
+
+run().catch(console.error);
+```
+
+The `pipeline` API also supports async generators:
+
+```js
+const pipeline = util.promisify(stream.pipeline);
+const fs = require('fs').promises;
+
+async function run() {
+  await pipeline(
+    fs.createReadStream('lowercase.txt'),
+    async function* (source) {
+      for await (const chunk of source) {
+        yield String(chunk).toUpperCase();
+      }
+    },
+    fs.createWriteStream('uppercase.txt')
   );
   console.log('Pipeline succeeded.');
 }
@@ -2052,8 +2087,7 @@ const pipeline = util.promisify(stream.pipeline);
 const writable = fs.createWriteStream('./file');
 
 (async function() {
-  const readable = Readable.from(iterable);
-  await pipeline(readable, writable);
+  await pipeline(iterable, writable);
 })();
 ```<!--type=misc-->### Compatibility with Older Node.js Versions<!--type=misc-->Prior to Node.js 0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
 
