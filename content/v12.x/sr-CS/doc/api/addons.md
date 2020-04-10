@@ -56,9 +56,6 @@ void Initialize(Local<Object> exports) {
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 }  // namespace demo
- 
-Text
-XPath: /pre[2]/code
 ```
 
 All Node.js Addons must export an initialization function following the pattern:
@@ -76,7 +73,7 @@ In the `hello.cc` example, then, the initialization function is `Initialize` and
 
 When building addons with `node-gyp`, using the macro `NODE_GYP_MODULE_NAME` as the first parameter of `NODE_MODULE()` will ensure that the name of the final binary will be passed to `NODE_MODULE()`.
 
-### Context-aware dodaci
+### Context-aware addons
 
 There are environments in which Node.js addons may need to be loaded multiple times in multiple contexts. For example, the [Electron](https://electronjs.org/) runtime runs multiple instances of Node.js in a single process. Each instance will have its own `require()` cache, and thus each instance will need a native addon to behave correctly when loaded via `require()`. From the addon's perspective, this means that it must support multiple initializations.
 
