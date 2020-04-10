@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -2159,7 +2159,7 @@ added: v8.4.0
 deprecated: v13.0.0
 -->
 
-> Vakaus: 0 - Ei enää käytössä. Use [`request.socket`][].
+> Stability: 0 - Deprecated. Use [`request.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2416,7 +2416,7 @@ Attempting to set a header field name or value that contains invalid characters 
 #### `response.connection`<!-- YAML
 added: v8.4.0
 deprecated: v13.0.0
--->> Vakaus: 0 - Ei enää käytössä. Use [`response.socket`][].
+-->> Stability: 0 - Deprecated. Use [`response.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2442,7 +2442,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v13.4.0
--->> Vakaus: 0 - Ei enää käytössä. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
