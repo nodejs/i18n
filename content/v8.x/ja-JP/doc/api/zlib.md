@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-`zlib` モジュールは、 Gzip と Deflate/Inflate を利用して実装される圧縮機能を提供します。 以下のように利用できます。
+The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. It can be accessed using:
 
 ```js
 const zlib = require('zlib');
@@ -47,7 +47,7 @@ zlib.unzip(buffer, (err, buffer) => {
 
 Note that all zlib APIs except those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
-## HTTP リクエストとレスポンスの圧縮
+## Compressing HTTP requests and responses
 
 The `zlib` module can be used to implement support for the `gzip` and `deflate` content-encoding mechanisms defined by [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
 
