@@ -1,26 +1,26 @@
-# Параметры командной строки
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js поставляется с различными вариантами CLI. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
-## Краткий обзор
+## Synopsis
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
 `node inspect [script.js | -e "script" | <host>:<port>] …`
 
-`узел --v8-опций`
+`node --v8-options`
 
-Выполнить без аргументов, чтобы запустить [REPL](repl.html).
+Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
-## Опции
+## Options
 
 <!-- YAML
 changes:
@@ -49,7 +49,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-Укажите параметры конца узла. Передайте остальные аргументы сценарию. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 
@@ -80,7 +80,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-Включите FIPS-совместимое шифрование при запуске. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -120,7 +120,7 @@ Enable experimental worker threads using the `worker_threads` module.
 added: v6.0.0
 -->
 
-Принудительно включается FIPS-совместимое шифрование при запуске. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 
@@ -128,7 +128,7 @@ added: v6.0.0
 added: v0.11.15
 -->
 
-Задается путь загрузки данных ICU. (Перезаписывает `NODE_ICU_DATA`.)
+Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -210,7 +210,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-Тихое предупреждение об устаревании.
+Silence deprecation warnings.
 
 ### `--no-force-async-hooks-checks`
 
@@ -226,7 +226,7 @@ Disables runtime checks for `async_hooks`. These will still be enabled dynamical
 added: v6.0.0
 -->
 
-Делает все процессные уведомления тихими (включая устаревшие версии).
+Silence all process warnings (including deprecations).
 
 ### `--openssl-config=file`
 
@@ -234,7 +234,7 @@ added: v6.0.0
 added: v6.9.0
 -->
 
-Загрузка файла конфигурации OpenSSL при запуске. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -272,7 +272,7 @@ By default, when Node.js loads a module from a path that is symbolically linked 
 
 The `--preserve-symlinks` command line flag instructs Node.js to use the symlink path for modules as opposed to the real path, allowing symbolically linked peer dependencies to be found.
 
-Обратите внимание, что использование `--preserve-symlinks` может иметь другие побочные эффекты. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
+Note, however, that using `--preserve-symlinks` can have other side effects. Specifically, symbolically linked *native* modules can fail to load if those are linked from more than one location in the dependency tree (Node.js would see those as two separate modules and would attempt to load the module multiple times, causing an exception to be thrown).
 
 The `--preserve-symlinks` flag does not apply to the main module, which allows `node --preserve-symlinks node_module/.bin/<foo>` to work. To apply the same behavior for the main module, also use `--preserve-symlinks-main`.
 
@@ -312,7 +312,7 @@ Process V8 profiler output generated using the V8 option `--prof`.
 added: v8.0.0
 -->
 
-Запись процессных уведомлений в заданный файл вместо печати в stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
+Write process warnings to the given file instead of printing to stderr. The file will be created if it does not exist, and will be appended to if it does. If an error occurs while attempting to write the warning to the file, the warning will be written to stderr instead.
 
 ### `--throw-deprecation`
 
@@ -320,7 +320,7 @@ added: v8.0.0
 added: v0.11.14
 -->
 
-Формирование ошибок для устаревших версий.
+Throw errors for deprecations.
 
 ### `--title=title`
 
@@ -336,7 +336,7 @@ Set `process.title` on startup.
 added: v4.0.0
 -->
 
-Задается альтернативный список шифров TLS по умолчанию. Requires Node.js to be built with crypto support (default).
+Specify an alternative default TLS cipher list. Requires Node.js to be built with crypto support (default).
 
 ### `--trace-deprecation`
 
@@ -344,7 +344,7 @@ added: v4.0.0
 added: v0.8.0
 -->
 
-Печать трассировок стека для устаревших версий.
+Print stack traces for deprecations.
 
 ### `--trace-event-categories`
 
@@ -384,7 +384,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-Печать трассировок стека для процессных уведомлений (включая устаревшие версии).
+Print stack traces for process warnings (including deprecations).
 
 ### `--track-heap-objects`
 
@@ -392,7 +392,7 @@ added: v6.0.0
 added: v2.4.0
 -->
 
-Отслеживание распределения групп объектов для групповых снепшотов.
+Track heap object allocations for heap snapshots.
 
 ### `--unhandled-rejections=mode`
 
@@ -414,13 +414,13 @@ Using this flag allows to change what should happen when an unhandled rejection 
 added: v6.11.0
 -->
 
-Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. Хранилище по умолчанию можно выбрать во время сборки.
+Use bundled Mozilla CA store as supplied by current Node.js version or use OpenSSL's default CA store. The default store is selectable at build-time.
 
-The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. Он идентичен на всех поддерживаемых платформах.
+The bundled CA store, as supplied by Node.js, is a snapshot of Mozilla CA store that is fixed at release time. It is identical on all supported platforms.
 
-Использование хранилища OpenSSL допускает внешние модификации хранилища. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
+Using OpenSSL store allows for external modifications of the store. For most Linux and BSD distributions, this store is maintained by the distribution maintainers and system administrators. OpenSSL CA store location is dependent on configuration of the OpenSSL library but this can be altered at runtime using environment variables.
 
-Смотрите `SSL_CERT_DIR` и `SSL_CERT_FILE`.
+See `SSL_CERT_DIR` and `SSL_CERT_FILE`.
 
 ### `--v8-options`
 
@@ -463,7 +463,7 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-Проверка синтаксиса сценария без выполнения.
+Syntax check the script without executing.
 
 ### `-e`, `--eval "script"`
 
@@ -476,7 +476,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Оцените следующий аргумент как JavaScript. The modules which are predefined in the REPL can also be used in `script`.
+Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
 
 On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
@@ -486,7 +486,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Печать опций командной строки узла. Вывод этой опции менее подробен, чем этот документ.
+Print node command line options. The output of this option is less detailed than this document.
 
 ### `-i`, `--interactive`
 
@@ -494,7 +494,7 @@ added: v0.1.3
 added: v0.7.7
 -->
 
-Открывает REPL, даже если stdin не является терминалом.
+Opens the REPL even if stdin does not appear to be a terminal.
 
 ### `-p`, `--print "script"`
 
@@ -507,7 +507,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-Идентично `-e`, но печатает результат.
+Identical to `-e` but prints the result.
 
 ### `-r`, `--require module`
 
@@ -515,9 +515,9 @@ changes:
 added: v1.6.0
 -->
 
-Предварительная загрузка указанного модуля при запуске.
+Preload the specified module at startup.
 
-Follows `require()`'s module resolution rules. `module` может быть путем к файлу или именем модуля узла.
+Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
 
 ### `-v`, `--version`
 
@@ -525,9 +525,9 @@ Follows `require()`'s module resolution rules. `module` может быть пу
 added: v0.1.3
 -->
 
-Печать версии узла.
+Print node's version.
 
-## Переменные среды
+## Environment Variables
 
 ### `NODE_DEBUG=module[,…]`
 
@@ -535,7 +535,7 @@ added: v0.1.3
 added: v0.1.32
 -->
 
-`','` - разделенный список основных модулей, которые должны печатать отладочную информацию.
+`','`-separated list of core modules that should print debug information.
 
 ### `NODE_DEBUG_NATIVE=module[,…]`
 
@@ -547,7 +547,7 @@ added: v0.1.32
 added: v0.3.0
 -->
 
-Если установлено значение `1`, цвета в REPL не будут использоваться.
+When set to `1` colors will not be used in the REPL.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 
@@ -575,7 +575,7 @@ Data path for ICU (`Intl` object) data. Will extend linked-in data when compiled
 added: v6.11.0
 -->
 
-Если установлено значение `1`, предупреждения процесса отключаются.
+When set to `1`, process warnings are silenced.
 
 ### `NODE_OPTIONS=options...`
 
@@ -624,7 +624,7 @@ Node.js options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-Опции v8, которые разрешены:
+V8 options that are allowed are:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -638,7 +638,7 @@ Node.js options that are allowed are:
 added: v0.1.32
 -->
 
-`':'`- разделенный список директорий, предшествующих пути поиска модуля.
+`':'`-separated list of directories prefixed to the module search path.
 
 On Windows, this is a `';'`-separated list instead.
 
@@ -674,7 +674,7 @@ When set, process warnings will be emitted to the given file instead of printing
 added: v3.0.0
 -->
 
-Путь к файлу, который используется для хранения постоянной истории REPL. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
+Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `NODE_TLS_REJECT_UNAUTHORIZED=value`
 
@@ -706,7 +706,7 @@ At this time coverage is only collected in the main thread and will not be outpu
 added: v6.11.0
 -->
 
-Загрузка файла конфигурации OpenSSL при запуске. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
 If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
