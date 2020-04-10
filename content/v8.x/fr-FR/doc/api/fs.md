@@ -1,8 +1,8 @@
-# Système de fichier - fs
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -57,11 +57,11 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-Pour les processus occupés, le programmeur est *fortement encouragé* à utiliser les versions asynchrones de ces appels. Les versions synchrones bloquent l'intégralité du processus jusqu'à leur achèvement — interrompant toutes les connexions.
+In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
 
 The relative path to a filename can be used. Remember, however, that this path will be relative to `process.cwd()`.
 
-Bien que ce ne soit pas recommandé, la plupart des fonctions fs permettent à l'argument callback d'être omis, auquel cas un callback par défaut qui relance les erreurs est utilisé. Pour obtenir une trace jusqu'au site d'appel d'origine, définir la variable d'environnement `NODE_DEBUG` :
+While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
 *Note*: Omitting the callback function on asynchronous fs functions is deprecated and may result in an error being thrown in the future.
 
@@ -80,7 +80,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -510,7 +510,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Renvoie : {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exemple:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exemple:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -611,7 +611,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exemple:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Exemple:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exemple:
+Example:
 
 ```js
 const fs = require('fs');
@@ -852,7 +852,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exemple:
+Example:
 
 ```js
 const fs = require('fs');
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Exemple:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Exemple:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Exemple:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Exemple:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -2432,7 +2432,7 @@ changes:
 
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Par défaut :** `true`.
+  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Exemple:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exemple:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
