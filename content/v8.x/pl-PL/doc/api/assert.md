@@ -1,8 +1,8 @@
-# Asercje
+# Assert
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
@@ -55,9 +55,9 @@ added: v0.5.9
 -->
 
 * `value` {any}
-* `wiadomość` {any}
+* `message` {any}
 
-Alias [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -81,11 +81,11 @@ changes:
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 **Strict mode**
 
-Alias [`assert.deepStrictEqual()`][].
+An alias of [`assert.deepStrictEqual()`][].
 
 **Legacy mode**
 
@@ -166,7 +166,7 @@ changes:
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 Generally identical to `assert.deepEqual()` with a few exceptions:
 
@@ -228,7 +228,7 @@ added: V8.13.0
 
 * `block` {Function}
 * `error` {RegExp|Function}
-* `wiadomość` {any}
+* `message` {any}
 
 Awaits for the promise returned by function `block` to complete and not be rejected. See [`assert.rejects()`][] for more details.
 
@@ -272,7 +272,7 @@ changes:
 
 * `block` {Function}
 * `error` {RegExp|Function}
-* `wiadomość` {any}
+* `message` {any}
 
 Asserts that the function `block` does not throw an error. See [`assert.throws()`][] for more details.
 
@@ -325,11 +325,11 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 **Strict mode**
 
-Alias [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
 **Legacy mode**
 
@@ -363,7 +363,7 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
@@ -441,11 +441,11 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 **Strict mode**
 
-Alias [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy mode**
 
@@ -496,7 +496,7 @@ added: v1.2.0
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
 
@@ -520,11 +520,11 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 **Strict mode**
 
-Alias [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
 **Legacy mode**
 
@@ -555,7 +555,7 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 Tests strict inequality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `!==` ).
 
@@ -581,7 +581,7 @@ added: v0.1.21
 -->
 
 * `value` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
@@ -610,7 +610,7 @@ added: v0.1.21
 
 * `actual` {any}
 * `expected` {any}
-* `wiadomość` {any}
+* `message` {any}
 
 Tests strict equality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
 
@@ -637,7 +637,7 @@ added: V8.13.0
 
 * `block` {Function}
 * `error` {RegExp|Function|Object}
-* `wiadomość` {any}
+* `message` {any}
 
 Awaits for promise returned by function `block` to be rejected.
 
@@ -685,7 +685,7 @@ changes:
 
 * `block` {Function}
 * `error` {RegExp|Function|object}
-* `wiadomość` {any}
+* `message` {any}
 
 Expects the function `block` to throw an error.
 
@@ -749,6 +749,8 @@ assert.throws(
 ```
 
 Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
