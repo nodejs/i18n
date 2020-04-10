@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
@@ -286,7 +286,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator}
 
@@ -355,7 +355,7 @@ changes:
     description: The `historySize` option can be `0` now.
 -->
 
-* `옵션` {Object} 
+* `options` {Object} 
   * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} An optional function used for Tab autocompletion.
