@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -511,7 +511,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stabilność: 0 - Przestarzałe
+> Stability: 0 - Deprecated
 
 * {Object}
 
