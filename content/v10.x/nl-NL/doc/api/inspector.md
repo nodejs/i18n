@@ -1,12 +1,12 @@
-# Inspecteur
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-Het kan worden bereikt met behulp van:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -30,7 +30,7 @@ The inspector console does not have API parity with Node.js console.
 
 * `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
 * `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `wait` {boolean} Block until a client has connected. Optional. **Standaard:** `false`.
+* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
@@ -41,7 +41,7 @@ See the [security warning](cli.html#inspector_security) regarding the `host` par
 
 ## inspector.url()
 
-* Retourneert: {string|undefined}
+* Returns: {string|undefined}
 
 Return the URL of the active inspector, or `undefined` if there is none.
 
@@ -134,7 +134,7 @@ The latest version of the V8 inspector protocol is published on the [Chrome DevT
 
 Node.js inspector supports all the Chrome DevTools Protocol domains declared by V8. Chrome DevTools Protocol domain provides an interface for interacting with one of the runtime agents used to inspect the application state and listen to the run-time events.
 
-## Gebruiksvoorbeeld
+## Example usage
 
 Apart from the debugger, various V8 Profilers are available through the DevTools protocol.
 
