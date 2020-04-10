@@ -770,9 +770,9 @@ This release includes a security update to openssl that has been deemed low seve
   * upgrade libuv to 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
 * **fs**: 
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
-* **inspecteur**: 
+* **inspector**: 
   * enable --inspect-brk (Refael Ackermann) [#12615](https://github.com/nodejs/node/pull/12615)
-* **proces**: 
+* **process**: 
   * add --redirect-warnings command line argument (James M Snell) [#10116](https://github.com/nodejs/node/pull/10116)
 * **src**: 
   * allow CLI args in env with NODE_OPTIONS (Sam Roberts) [#12028](https://github.com/nodejs/node/pull/12028)
@@ -1044,7 +1044,7 @@ This LTS release comes with 152 commits. This includes 75 which are test related
   * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
   * Snapshots are turned back on!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
-* **pad**: 
+* **path**: 
   * win32 volume-relative paths are working again! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
   * v6.x can now build with ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
@@ -1495,7 +1495,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
   * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
   * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
-* **proces**: 
+* **process**: 
   * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
@@ -3359,7 +3359,7 @@ Semver Patch:
 
 * **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
 * **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
-* **inspecteur**: 
+* **inspector**: 
   * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
@@ -4404,10 +4404,10 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Gebeurtenissen 
+* Events 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* Bestandssysteem 
+* File System 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
@@ -4424,9 +4424,9 @@ The following significant changes have been made since the previous Node.js v5.0
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Pad 
+* Path 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Proces 
+* Process 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
