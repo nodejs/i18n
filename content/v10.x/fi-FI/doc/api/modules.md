@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -466,7 +466,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Vakaus: 0 - Ei enää käytössä
+> Stability: 0 - Deprecated
 
 * {Object}
 
