@@ -1,4 +1,4 @@
-# 프로세스
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -544,7 +544,7 @@ added: 8.0.0
 -->
 
 * `warning` {string|Error} The warning to emit.
-* `옵션` {Object} 
+* `options` {Object} 
     * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
     * `code` {string} A unique identifier for the warning instance being emitted.
     * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
