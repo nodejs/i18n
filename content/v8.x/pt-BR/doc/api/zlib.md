@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. É possível acessá-lo utilizando:
+The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. It can be accessed using:
 
 ```js
 const zlib = require('zlib');
@@ -56,7 +56,7 @@ The HTTP [`Accept-Encoding`][] header is used within an http request to identify
 *Note*: the examples given below are drastically simplified to show the basic concept. Using `zlib` encoding can be expensive, and the results ought to be cached. See [Memory Usage Tuning](#zlib_memory_usage_tuning) for more information on the speed/memory/compression tradeoffs involved in `zlib` usage.
 
 ```js
-// Exemplo de request do client
+// client request example
 const zlib = require('zlib');
 const http = require('http');
 const fs = require('fs');
@@ -68,7 +68,7 @@ request.on('response', (response) => {
   const output = fs.createWriteStream('example.com_index.html');
 
   switch (response.headers['content-encoding']) {
-    // ou, use zlib.createUnzip() para lidar com ambos os casos
+    // or, just use zlib.createUnzip() to handle both cases
     case 'gzip':
       response.pipe(zlib.createGunzip()).pipe(output);
       break;
@@ -191,7 +191,7 @@ http.createServer((request, response) => {
 }).listen(1337);
 ```
 
-## Constantes
+## Constants
 
 <!-- YAML
 added: v0.5.8
