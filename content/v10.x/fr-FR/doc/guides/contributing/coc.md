@@ -1,4 +1,4 @@
-# Code de conduite
+# Code of Conduct
 
 The Node.js project has a [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md) that *all* contributors are expected to follow. This code describes the *minimum* behavior expectations for all contributors.
 
@@ -8,7 +8,7 @@ Should any individual act in any way that is considered in violation of the [Cod
 
 Open, diverse, and inclusive communities live and die on the basis of trust. Contributors can disagree with one another so long as they trust that those disagreements are in good faith and everyone is working towards a common goal.
 
-## Mauvais acteurs
+## Bad actors
 
 All contributors to Node.js tacitly agree to abide by both the letter and spirit of the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). Failure, or unwillingness, to do so will result in contributions being respectfully declined.
 
