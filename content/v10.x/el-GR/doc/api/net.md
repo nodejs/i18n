@@ -1,14 +1,14 @@
-# Δίκτυο
+# Net
 
 <!--introduced_in=v0.10.0-->
 
 <!--lint disable maximum-line-length-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -45,19 +45,19 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
-### Συμβάν: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.5.0
 -->
 
-Μεταδίδεται όταν ο εξυπηρετητής τερματίζει τη λειτουργία του. Note that if connections exist, this event is not emitted until all connections are ended.
+Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
 
-### Συμβάν: 'connection'
+### Event: 'connection'
 
 <!-- YAML
 added: v0.1.90
@@ -91,7 +91,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Επιστρέφει: {Object|string}
+* Returns: {Object|string}
 
 Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -120,7 +120,7 @@ added: v0.1.90
 -->
 
 * `callback` {Function} Called when the server is closed
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -144,7 +144,7 @@ added: v0.9.7
 -->
 
 * `callback` {Function}
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
 
@@ -192,7 +192,7 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
 
@@ -212,10 +212,10 @@ added: v0.11.14
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
   * `backlog` {number} Common parameter of [`server.listen()`][] functions.
   * `exclusive` {boolean} **Default:** `false`
-  * `readableAll` {boolean} For IPC servers makes the pipe readable for all users. **Προεπιλογή:** `false`
-  * `writableAll` {boolean} For IPC servers makes the pipe writable for all users. **Προεπιλογή:** `false`
+  * `readableAll` {boolean} For IPC servers makes the pipe readable for all users. **Default:** `false`
+  * `writableAll` {boolean} For IPC servers makes the pipe writable for all users. **Default:** `false`
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
 <code>server.listen([port[, host[, backlog]]][, callback])</code></a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
@@ -241,7 +241,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -255,7 +255,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -289,7 +289,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
@@ -299,7 +299,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
@@ -323,16 +323,16 @@ added: v0.3.4
 
 * `options` {Object} Available options are: 
   * `fd` {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Προεπιλογή:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Προεπιλογή:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Προεπιλογή:** `false`.
-* Επιστρέφει: {net.Socket}
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+* Returns: {net.Socket}
 
 Creates a new socket object.
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
-### Συμβάν: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.90
@@ -342,13 +342,13 @@ added: v0.1.90
 
 Emitted once the socket is fully closed. The argument `hadError` is a boolean which says if the socket was closed due to a transmission error.
 
-### Συμβάν: 'connect'
+### Event: 'connect'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-Emitted when a socket connection is successfully established. Δείτε [`net.createConnection()`][].
+Emitted when a socket connection is successfully established. See [`net.createConnection()`][].
 
 ### Event: 'data'
 
@@ -405,9 +405,9 @@ changes:
 
 Emitted after resolving the hostname but before connecting. Not applicable to UNIX sockets.
 
-* `err` {Error|null} The error object. Δείτε [`dns.lookup()`][].
+* `err` {Error|null} The error object. See [`dns.lookup()`][].
 * `address` {string} The IP address.
-* `family` {string|null} The address type. Δείτε [`dns.lookup()`][].
+* `family` {string|null} The address type. See [`dns.lookup()`][].
 * `host` {string} The hostname.
 
 ### Event: 'ready'
@@ -420,7 +420,7 @@ Emitted when a socket is ready to be used.
 
 Triggered immediately after `'connect'`.
 
-### Συμβάν: 'timeout'
+### Event: 'timeout'
 
 <!-- YAML
 added: v0.1.90
@@ -428,7 +428,7 @@ added: v0.1.90
 
 Emitted if the socket times out from inactivity. This is only to notify that the socket has been idle. The user must manually close the connection.
 
-Δείτε επίσης: [`socket.setTimeout()`][].
+See also: [`socket.setTimeout()`][].
 
 ### socket.address()
 
@@ -436,7 +436,7 @@ Emitted if the socket times out from inactivity. This is only to notify that the
 added: v0.1.90
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -557,7 +557,7 @@ added: v0.1.90
 -->
 
 * `exception` {Object}
-* Επιστρέφει: {net.Socket}
+* Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -735,11 +735,11 @@ added: v0.1.90
 * `data` {string|Buffer|Uint8Array}
 * `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
-Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. [`'drain'`][] will be emitted when the buffer is again free.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
 The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
 
@@ -864,7 +864,7 @@ added: v0.1.90
 -->
 
 * `port` {number} Port the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
-* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Προεπιλογή:** `'localhost'`.
+* `host` {string} Host the socket should connect to. Will be passed to [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]. **Default:** `'localhost'`.
 * `connectListener` {Function} Common parameter of the [`net.createConnection()`][] functions, an "once" listener for the `'connect'` event on the initiating socket. Will be passed to [`socket.connect(path[, connectListener])`][`socket.connect(port, host)`].
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
@@ -879,10 +879,10 @@ added: v0.5.0
 -->
 
 * `options` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Προεπιλογή:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Προεπιλογή:** `false`.
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Επιστρέφει: {net.Server}
+* Returns: {net.Server}
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
@@ -951,7 +951,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 
@@ -962,6 +962,6 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
