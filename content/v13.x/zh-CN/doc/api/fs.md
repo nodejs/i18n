@@ -1,8 +1,8 @@
-# 文件系统
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -235,7 +235,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 
 Most operating systems limit the number of file descriptors that may be open at any given time so it is critical to close the descriptor when operations are completed. Failure to do so will result in a memory leak that will eventually cause an application to crash.
 
-## 线程池使用
+## Threadpool Usage
 
 All file system APIs except `fs.FSWatcher()` and those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications. See the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
@@ -265,7 +265,7 @@ print('./').catch(console.error);
 added: v12.12.0
 -->
 
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously close the directory's underlying resource handle. Subsequent reads will result in errors.
 
@@ -369,7 +369,7 @@ Additionally, when [`fs.readdir()`][] or [`fs.readdirSync()`][] is called with t
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a block device.
 
@@ -378,7 +378,7 @@ Returns `true` if the `fs.Dirent` object describes a block device.
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a character device.
 
@@ -387,7 +387,7 @@ Returns `true` if the `fs.Dirent` object describes a character device.
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a file system directory.
 
@@ -396,7 +396,7 @@ Returns `true` if the `fs.Dirent` object describes a file system directory.
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) pipe.
 
@@ -405,7 +405,7 @@ Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) p
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a regular file.
 
@@ -414,7 +414,7 @@ Returns `true` if the `fs.Dirent` object describes a regular file.
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a socket.
 
@@ -423,7 +423,7 @@ Returns `true` if the `fs.Dirent` object describes a socket.
 added: v10.10.0
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a symbolic link.
 
@@ -621,7 +621,7 @@ BigIntStats {
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a block device.
 
@@ -630,7 +630,7 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a character device.
 
@@ -639,7 +639,7 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a file system directory.
 
@@ -648,7 +648,7 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
 
@@ -657,7 +657,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -666,7 +666,7 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a socket.
 
@@ -675,7 +675,7 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
@@ -1229,7 +1229,7 @@ fs.chmod('my_file.txt', 0o775, (err) => {
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| 常量                     | Octal   | 描述                       |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -1243,7 +1243,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | 描述                       |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -1679,7 +1679,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the path exists, `false` otherwise.
 
@@ -1826,7 +1826,7 @@ changes:
 * `fd` {integer}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous fstat(2).
 
@@ -1955,7 +1955,7 @@ changes:
 * `callback` {Function}
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by the supplied file descriptor. 请参阅 [`fs.utimes()`][]。
+Change the file system timestamps of the object referenced by the supplied file descriptor. See [`fs.utimes()`][].
 
 This function does not work on AIX versions before 7.1, it will return the error `UV_ENOSYS`.
 
@@ -2136,7 +2136,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous lstat(2).
 
@@ -2210,7 +2210,7 @@ changes:
 * `options` {Object|integer}
   * `recursive` {boolean} **Default:** `false`
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
-* 返回：{string|undefined}
+* Returns: {string|undefined}
 
 Synchronously creates a directory. Returns `undefined`, or if `recursive` is `true`, the first folder path created. This is the synchronous version of [`fs.mkdir()`][].
 
@@ -2290,7 +2290,7 @@ added: v5.10.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{string}
+* Returns: {string}
 
 Returns the created folder path.
 
@@ -2394,7 +2394,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} **Default:** `'r'`. See [support of file system `flags`][].
 * `mode` {string|integer} **Default:** `0o666`
-* 返回：{number}
+* Returns: {number}
 
 Returns an integer representing the file descriptor.
 
@@ -2616,7 +2616,7 @@ changes:
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* 返回：{string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the contents of the `path`.
 
@@ -2678,7 +2678,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2702,7 +2702,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* 返回：{number}
+* Returns: {number}
 
 Returns the number of `bytesRead`.
 
@@ -2806,7 +2806,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the resolved pathname.
 
@@ -2820,7 +2820,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous realpath(3).
 
@@ -3081,7 +3081,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous stat(2).
 
@@ -3333,7 +3333,7 @@ changes:
 * `listener` {Function|undefined} **Default:** `undefined`
   * `eventType` {string}
   * `filename` {string|Buffer}
-* 返回：{fs.FSWatcher}
+* Returns: {fs.FSWatcher}
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
@@ -3345,7 +3345,7 @@ On most platforms, `'rename'` is emitted whenever a filename appears or disappea
 
 The listener callback is attached to the `'change'` event fired by [`fs.FSWatcher`][], but it is not the same thing as the `'change'` value of `eventType`.
 
-### 注意事项
+### Caveats
 
 <!--type=misc-->
 
@@ -3733,7 +3733,7 @@ added: v10.0.0
 * `data` {string|Buffer}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Alias of [`filehandle.writeFile()`][].
 
@@ -3745,7 +3745,7 @@ added: v10.0.0
 -->
 
 * `mode` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Modifies the permissions on the file. The `Promise` is resolved with no arguments upon success.
 
@@ -3756,7 +3756,7 @@ added: v10.0.0
 
 * `uid` {integer}
 * `gid` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
 
@@ -3787,7 +3787,7 @@ async function openAndClose() {
 added: v10.0.0
 -->
 
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3807,7 +3807,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Read data from the file.
 
@@ -3830,7 +3830,7 @@ added: v13.11.0
   * `offset` {integer} **Default:** `0`
   * `length` {integer} **Default:** `buffer.length`
   * `position` {integer} **Default:** `null`
-* 返回：{Promise}
+* Returns: {Promise}
 
 #### `filehandle.readFile(options)`
 <!-- YAML
@@ -3839,7 +3839,7 @@ added: v10.0.0
 
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -3863,7 +3863,7 @@ changes:
 
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Retrieves the [`fs.Stats`][] for the file.
 
@@ -3872,7 +3872,7 @@ Retrieves the [`fs.Stats`][] for the file.
 added: v10.0.0
 -->
 
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3882,7 +3882,7 @@ added: v10.0.0
 -->
 
 * `len` {integer} **Default:** `0`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
 
@@ -3949,7 +3949,7 @@ added: v10.0.0
 
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3964,7 +3964,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Write `buffer` to the file.
 
@@ -3986,7 +3986,7 @@ added: v10.0.0
 * `string` {string}
 * `position` {integer}
 * `encoding` {string} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Write `string` to the file. If `string` is not a string, then the value will be coerced to one.
 
@@ -4008,7 +4008,7 @@ added: v10.0.0
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
@@ -4029,7 +4029,7 @@ added: v12.9.0
 
 * `buffers` {ArrayBufferView[]}
 * `position` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Write an array of `ArrayBufferView`s to the file.
 
@@ -4048,7 +4048,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Check [File Access Constants](#fs_file_access_constants) for possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -4076,7 +4076,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
@@ -4091,7 +4091,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {string|integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Changes the permissions of a file then resolves the `Promise` with no arguments upon succces.
 
@@ -4103,7 +4103,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
 
@@ -4115,7 +4115,7 @@ added: v10.0.0
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
 
@@ -4156,7 +4156,7 @@ deprecated: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. This method is only implemented on macOS.
 
@@ -4172,7 +4172,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -4183,7 +4183,7 @@ added: v10.0.0
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
 
@@ -4200,7 +4200,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous lstat(2). The `Promise` is resolved with the [`fs.Stats`][] object for the given symbolic link `path`.
 
@@ -4213,7 +4213,7 @@ added: v10.0.0
 * `options` {Object|integer}
   * `recursive` {boolean} **Default:** `false`
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously creates a directory then resolves the `Promise` with either no arguments, or the first folder path created if `recursive` is `true`.
 
@@ -4227,7 +4227,7 @@ added: v10.0.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Creates a unique temporary directory and resolves the `Promise` with the created folder path. A unique directory name is generated by appending six random characters to the end of the provided `prefix`. Due to platform inconsistencies, avoid trailing `X` characters in `prefix`. Some platforms, notably the BSDs, can return more than six random characters, and replace trailing `X` characters in `prefix` with random characters.
 
@@ -4252,7 +4252,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][]. **Default:** `'r'`.
 * `mode` {string|integer} **Default:** `0o666` (readable and writable)
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
 
@@ -4308,7 +4308,7 @@ changes:
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
@@ -4337,7 +4337,7 @@ added: v10.0.0
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -4357,7 +4357,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
 
@@ -4371,7 +4371,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
 
@@ -4388,7 +4388,7 @@ added: v10.0.0
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
 
@@ -4416,7 +4416,7 @@ changes:
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or `EPERM` error is encountered, Node.js will retry the operation with a linear backoff wait of `retryDelay` ms longer on each try. This option represents the number of retries. This option is ignored if the `recursive` option is not `true`. **Default:** `0`.
   * `recursive` {boolean} If `true`, perform a recursive directory removal. In recursive mode, errors are not reported if `path` does not exist, and operations are retried on failure. **Default:** `false`.
   * `retryDelay` {integer} The amount of time in milliseconds to wait between retries. This option is ignored if the `recursive` option is not `true`. **Default:** `100`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4435,7 +4435,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
 
@@ -4447,7 +4447,7 @@ added: v10.0.0
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Creates a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -4460,7 +4460,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* 返回：{Promise}
+* Returns: {Promise}
 
 Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
 
@@ -4470,7 +4470,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronous unlink(2). The `Promise` is resolved with no arguments upon success.
 
@@ -4482,7 +4482,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* 返回：{Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4502,7 +4502,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* 返回：{Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
@@ -4516,7 +4516,7 @@ It is unsafe to use `fsPromises.writeFile()` multiple times on the same file wit
 
 ## FS Constants
 
-`fs.constants` 会导出如下常量。
+The following constants are exported by `fs.constants`.
 
 Not every constant will be available on every operating system.
 
@@ -4526,8 +4526,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>常量</th>
-    <th>描述</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -4558,8 +4558,8 @@ The following constants are meant for use with [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>常量</th>
-    <th>描述</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>COPYFILE_EXCL</code></td>
@@ -4586,8 +4586,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>常量</th>
-    <th>描述</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -4680,8 +4680,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>常量</th>
-    <th>描述</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -4723,8 +4723,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>常量</th>
-    <th>描述</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
