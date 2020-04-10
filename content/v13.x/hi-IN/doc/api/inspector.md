@@ -1,8 +1,8 @@
-# इंस्पेक्टर
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
