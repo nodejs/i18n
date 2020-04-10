@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.90-->
 
-> Estability: 2 - Estable
+> Stability: 2 - Stable
 
 In Node.js, `Buffer` objects are used to represent binary data in the form of a sequence of bytes. Many Node.js APIs, for example streams and file system operations, support `Buffer`s, as interactions with the operating system or other processes generally always happen in terms of binary data.
 
@@ -13,14 +13,14 @@ Instances of the `Buffer` class, and [`Uint8Array`][]s in general, are similar t
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
 ```js
-// Crea un Buffer lleno de ceros de longitud 10.
+// Creates a zero-filled Buffer of length 10.
 const buf1 = Buffer.alloc(10);
 
 // Creates a Buffer of length 10,
 // filled with bytes which all have the value `1`.
 const buf2 = Buffer.alloc(10, 1);
 
-// Crea un buffer sin inicializar de longitud 10.
+// Creates an uninitialized buffer of length 10.
 // This is faster than calling Buffer.alloc() but the returned
 // Buffer instance might contain old data that needs to be
 // overwritten using fill(), write(), or other functions that fill the Buffer's
@@ -43,7 +43,7 @@ const buf6 = Buffer.from('tést');
 const buf7 = Buffer.from('tést', 'latin1');
 ```
 
-## Buffers y Codificaciones de Caracteres
+## Buffers and Character Encodings
 <!-- YAML
 changes:
   - version: v6.4.0
@@ -169,23 +169,23 @@ const arr = new Uint16Array(20);
 const buf = Buffer.from(arr.buffer, 0, 16);
 
 console.log(buf.length);
-// Imprime: 16
+// Prints: 16
 ```
 
 The `Buffer.from()` and [`TypedArray.from()`][] have different signatures and implementations. Specifically, the [`TypedArray`][] variants accept a second argument that is a mapping function that is invoked on every element of the typed array:
 
 * `TypedArray.from(source[, mapFn[, thisArg]])`
 
-El método `Buffer.from()`, sin embargo, no permite el uso de una función de mapeo:
+The `Buffer.from()` method, however, does not support the use of a mapping function:
 
 * [`Buffer.from(array)`][]
 * [`Buffer.from(buffer)`][]
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`]
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`]
 
-## Buffers e Iteración
+## Buffers and iteration
 
-Las instancias de `Buffer` pueden iterarse utilizando la sintaxis `for..of`:
+`Buffer` instances can be iterated over using `for..of` syntax:
 
 ```js
 const buf = Buffer.from([1, 2, 3]);
@@ -203,7 +203,7 @@ Additionally, the [`buf.values()`][], [`buf.keys()`][], and [`buf.entries()`][] 
 
 ## Class: `Buffer`
 
-La clase `Buffer` es un tipo global para tratar con datos binarios directamente. Puede ser construida de varias maneras.
+The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
 
 ### Class Method: `Buffer.alloc(size[, fill[, encoding]])`
 <!-- YAML
@@ -223,42 +223,42 @@ changes:
                  zero-filled buffer.
 -->
 
-* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `size` {integer} The desired length of the new `Buffer`.
 * `fill` {string|Buffer|Uint8Array|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
-* `encoding` {string} Si `fill` es una string, esta es su codificación. **Default:** `'utf8'`.
+* `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
 
-Asigna el nuevo `Buffer` de bytes de `size`. If `fill` is `undefined`, the `Buffer` will be zero-filled.
+Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be zero-filled.
 
 ```js
 const buf = Buffer.alloc(5);
 
 console.log(buf);
-// Imprime: <Buffer 00 00 00 00 00>
+// Prints: <Buffer 00 00 00 00 00>
 ```
 
 If `size` is larger than [`buffer.constants.MAX_LENGTH`][] or smaller than 0, [`ERR_INVALID_OPT_VALUE`][] is thrown.
 
-Si `fill` es especificado, el `Buffer` asignado será inicializado llamando [`buf.fill(fill)`][`buf.fill()`].
+If `fill` is specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(5, 'a');
 
 console.log(buf);
-// Imprime: <Buffer 61 61 61 61 61>
+// Prints: <Buffer 61 61 61 61 61>
 ```
 
-Si ambos `fill` y `encoding` son especificados, el `Buffer` asignado será inicializado llamando [`buf.fill(fill, encoding)`][`buf.fill()`].
+If both `fill` and `encoding` are specified, the allocated `Buffer` will be initialized by calling [`buf.fill(fill, encoding)`][`buf.fill()`].
 
 ```js
 const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
 
 console.log(buf);
-// Imprime: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
+// Prints: <Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64>
 ```
 
 Calling [`Buffer.alloc()`][] can be measurably slower than the alternative [`Buffer.allocUnsafe()`][] but ensures that the newly created `Buffer` instance contents will never contain sensitive data from previous allocations, including data that might not have been allocated for `Buffer`s.
 
-Se producirá un `TypeError` si `size` no es número.
+A `TypeError` will be thrown if `size` is not a number.
 
 ### Class Method: `Buffer.allocUnsafe(size)`
 <!-- YAML
@@ -269,9 +269,9 @@ changes:
     description: Passing a negative `size` will now throw an error.
 -->
 
-* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `size` {integer} The desired length of the new `Buffer`.
 
-Asigna el nuevo `Buffer` de bytes de `size`. If `size` is larger than [`buffer.constants.MAX_LENGTH`][] or smaller than 0, [`ERR_INVALID_OPT_VALUE`][] is thrown.
+Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`][] or smaller than 0, [`ERR_INVALID_OPT_VALUE`][] is thrown.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`Buffer.alloc()`][] instead to initialize `Buffer` instances with zeroes.
 
@@ -287,20 +287,20 @@ console.log(buf);
 // Prints: <Buffer 00 00 00 00 00 00 00 00 00 00>
 ```
 
-Se producirá un `TypeError` si `size` no es número.
+A `TypeError` will be thrown if `size` is not a number.
 
 The `Buffer` module pre-allocates an internal `Buffer` instance of size [`Buffer.poolSize`][] that is used as a pool for the fast allocation of new `Buffer` instances created using [`Buffer.allocUnsafe()`][] and the deprecated `new Buffer(size)` constructor only when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`][] divided by two).
 
-El uso de este pool de memoria interna asignada previamente es una diferencia clave entre `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`][]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`][] provides.
+Use of this pre-allocated internal memory pool is a key difference between calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`. Specifically, `Buffer.alloc(size, fill)` will *never* use the internal `Buffer` pool, while `Buffer.allocUnsafe(size).fill(fill)` *will* use the internal `Buffer` pool if `size` is less than or equal to half [`Buffer.poolSize`][]. The difference is subtle but can be important when an application requires the additional performance that [`Buffer.allocUnsafe()`][] provides.
 
 ### Class Method: `Buffer.allocUnsafeSlow(size)`
 <!-- YAML
 added: v5.12.0
 -->
 
-* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `size` {integer} The desired length of the new `Buffer`.
 
-Asigna el nuevo `Buffer` de bytes de `size`. If `size` is larger than [`buffer.constants.MAX_LENGTH`][] or smaller than 0, [`ERR_INVALID_OPT_VALUE`][] is thrown. Un `Buffer` de longitud cero se crea si `size` es 0.
+Allocates a new `Buffer` of `size` bytes. If `size` is larger than [`buffer.constants.MAX_LENGTH`][] or smaller than 0, [`ERR_INVALID_OPT_VALUE`][] is thrown. A zero-length `Buffer` is created if `size` is 0.
 
 The underlying memory for `Buffer` instances created in this way is *not initialized*. The contents of the newly created `Buffer` are unknown and *may contain sensitive data*. Use [`buf.fill(0)`][`buf.fill()`] to initialize such `Buffer` instances with zeroes.
 
@@ -326,7 +326,7 @@ socket.on('readable', () => {
 });
 ```
 
-Se producirá un `TypeError` si `size` no es número.
+A `TypeError` will be thrown if `size` is not a number.
 
 ### Class Method: `Buffer.byteLength(string[, encoding])`
 <!-- YAML
@@ -341,20 +341,20 @@ changes:
                  or `ArrayBuffer`.
 -->
 
-* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} Un valor del cual calcular la longitud.
-* `encoding` {string} Si `string` es una string, esta es su codificación. **Default:** `'utf8'`.
-* Devuelve: {integer} El número de bytes contenidos dentro de `string`.
+* `string` {string|Buffer|TypedArray|DataView|ArrayBuffer|SharedArrayBuffer} A value to calculate the length of.
+* `encoding` {string} If `string` is a string, this is its encoding. **Default:** `'utf8'`.
+* Returns: {integer} The number of bytes contained within `string`.
 
 Returns the byte length of a string when encoded using `encoding`. This is not the same as [`String.prototype.length`][], which does not account for the encoding that is used to convert the string into bytes.
 
-Para `'base64'` y `'hex'`, esta función asume una entrada válida. For strings that contain non-base64/hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
+For `'base64'` and `'hex'`, this function assumes valid input. For strings that contain non-base64/hex-encoded data (e.g. whitespace), the return value might be greater than the length of a `Buffer` created from the string.
 
 ```js
 const str = '\u00bd + \u00bc = \u00be';
 
 console.log(`${str}: ${str.length} characters, ` +
             `${Buffer.byteLength(str, 'utf8')} bytes`);
-// Imprime: ½ + ¼ = ¾: 9 caracteres, 12 bytes
+// Prints: ½ + ¼ = ¾: 9 characters, 12 bytes
 ```
 
 When `string` is a `Buffer`/[`DataView`][]/[`TypedArray`][]/[`ArrayBuffer`][]/ [`SharedArrayBuffer`][], the byte length as reported by `.byteLength` is returned.
@@ -372,7 +372,7 @@ changes:
 * `buf2` {Buffer|Uint8Array}
 * Returns: {integer} Either `-1`, `0`, or `1`, depending on the result of the comparison. See [`buf.compare()`][] for details.
 
-Compares `buf1` to `buf2`, typically for the purpose of sorting arrays of `Buffer` instances. Esto es el equivalente de llamar a [`buf1.compare(buf2)`][`buf.compare()`].
+Compares `buf1` to `buf2`, typically for the purpose of sorting arrays of `Buffer` instances. This is equivalent to calling [`buf1.compare(buf2)`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('1234');
@@ -394,19 +394,19 @@ changes:
 -->
 
 * `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`][] instances to concatenate.
-* `totalLength` {integer} Longitud total de las instancias de `Buffer` en `list` cuando están concatenadas.
-* Devuelve: {Buffer}
+* `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
+* Returns: {Buffer}
 
-Devuelve un nuevo `Buffer`, el cual es el resultado de concatenar juntas todas las instancias de `Buffer` en la `list`.
+Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
 
-Si la lista no tiene elementos, o si la `totalLength` es 0, entonces un nuevo `Buffer` de longitud cero es devuelto.
+If the list has no items, or if the `totalLength` is 0, then a new zero-length `Buffer` is returned.
 
 If `totalLength` is not provided, it is calculated from the `Buffer` instances in `list` by adding their lengths.
 
-Si `totalLength` es proporcionado, es forzado a ser un entero sin signo. Si la longitud combinada de los `Buffer`s en `list` excede a `totalLength`, el resultado es truncado a `totalLength`.
+If `totalLength` is provided, it is coerced to an unsigned integer. If the combined length of the `Buffer`s in `list` exceeds `totalLength`, the result is truncated to `totalLength`.
 
 ```js
-// Crea un `Buffer` único desde una lista de tres instancias de `Buffer`.
+// Create a single `Buffer` from a list of three `Buffer` instances.
 
 const buf1 = Buffer.alloc(10);
 const buf2 = Buffer.alloc(14);
@@ -414,14 +414,14 @@ const buf3 = Buffer.alloc(18);
 const totalLength = buf1.length + buf2.length + buf3.length;
 
 console.log(totalLength);
-// Imprime: 42
+// Prints: 42
 
 const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
 
 console.log(bufA);
-// Imprime: <Buffer 00 00 00 00 ...>
+// Prints: <Buffer 00 00 00 00 ...>
 console.log(bufA.length);
-// Imprime: 42
+// Prints: 42
 ```
 
 ### Class Method: `Buffer.from(array)`
@@ -446,8 +446,8 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`][], [`SharedArrayBuffer`][], for example the `.buffer` property of a [`TypedArray`][].
-* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`.
-* `length` {integer} Número de bytes a exponer. **Default:** `arrayBuffer.byteLength - byteOffset`.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
+* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.byteLength - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`][] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`][] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`][].
 
@@ -470,14 +470,14 @@ console.log(buf);
 // Prints: <Buffer 88 13 70 17>
 ```
 
-Los argumentos opcionales `byteOffset` y `length` especifican un rango de memoria dentro del `arrayBuffer` que será compartido por el `Buffer`.
+The optional `byteOffset` and `length` arguments specify a memory range within the `arrayBuffer` that will be shared by the `Buffer`.
 
 ```js
 const ab = new ArrayBuffer(10);
 const buf = Buffer.from(ab, 0, 2);
 
 console.log(buf.length);
-// Imprime: 2
+// Prints: 2
 ```
 
 A `TypeError` will be thrown if `arrayBuffer` is not an [`ArrayBuffer`][] or a [`SharedArrayBuffer`][] or other type appropriate for `Buffer.from()` variants.
@@ -489,7 +489,7 @@ added: v5.10.0
 
 * `buffer` {Buffer|Uint8Array} An existing `Buffer` or [`Uint8Array`][] from which to copy data.
 
-Copia los datos del `buffer` pasado en una nueva instancia de `Buffer`.
+Copies the passed `buffer` data onto a new `Buffer` instance.
 
 ```js
 const buf1 = Buffer.from('buffer');
@@ -498,9 +498,9 @@ const buf2 = Buffer.from(buf1);
 buf1[0] = 0x61;
 
 console.log(buf1.toString());
-// Imprime: auffer
+// Prints: auffer
 console.log(buf2.toString());
-// Imprime: buffer
+// Prints: buffer
 ```
 
 A `TypeError` will be thrown if `buffer` is not a `Buffer` or other type appropriate for `Buffer.from()` variants.
@@ -517,21 +517,21 @@ added: v8.2.0
 For objects whose `valueOf()` function returns a value not strictly equal to `object`, returns `Buffer.from(object.valueOf(), offsetOrEncoding, length)`.
 
 ```js
-const buf = Buffer.from(new String('this is a test')); 
-// Imprime: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+const buf = Buffer.from(new String('this is a test'));
+// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
 For objects that support `Symbol.toPrimitive`, returns `Buffer.from(object[Symbol.toPrimitive](), offsetOrEncoding, length)`.
 
 ```js
-class Foo { 
-  [Symbol.toPrimitive]() { 
-    return 'this is a test'; 
-  } 
-} 
+class Foo {
+  [Symbol.toPrimitive]() {
+    return 'this is a test';
+  }
+}
 
-const buf = Buffer.from(new Foo(), 'utf8'); //
-Imprime: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
+const buf = Buffer.from(new Foo(), 'utf8');
+// Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
 
 A `TypeError` will be thrown if `object` has not mentioned methods or is not of other type appropriate for `Buffer.from()` variants.
@@ -541,10 +541,10 @@ A `TypeError` will be thrown if `object` has not mentioned methods or is not of 
 added: v5.10.0
 -->
 
-* `string` {string} Una string a codificar.
-* `encoding` {string} La codificación de `string`. **Default:** `'utf8'`.
+* `string` {string} A string to encode.
+* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
 
-Crea un nuevo `Buffer` que contiene `string`. The `encoding` parameter identifies the character encoding to be used when converting `string` into bytes.
+Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding to be used when converting `string` into bytes.
 
 ```js
 const buf1 = Buffer.from('this is a tést');
@@ -566,17 +566,17 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si `obj` es un `Buffer`, de otra forma es `false`.
+Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
 ### Class Method: `Buffer.isEncoding(encoding)`
 <!-- YAML
 added: v0.9.1
 -->
 
-* `encoding` {string} Un nombre de codificación de caracteres a verificar.
-* Devuelve: {boolean}
+* `encoding` {string} A character encoding name to check.
+* Returns: {boolean}
 
 Returns `true` if `encoding` is the name of a supported character encoding, or `false` otherwise.
 
@@ -601,7 +601,7 @@ added: v0.11.3
 
 * {integer} **Default:** `8192`
 
-This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. Este valor puede ser modificado.
+This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
 
 ### `buf[index]`
 <!-- YAML
@@ -611,12 +611,12 @@ name: [index]
 
 * `index` {integer}
 
-El operador de índice `[index]` puede ser usado para obtener y establecer el octeto en la posición `index` en `buf`. Los valores refieren a bytes individuales, por lo que el rango de valor legal está entre `0x00` y `0xFF` (hex) o `0` y `255` (decimal).
+The index operator `[index]` can be used to get and set the octet at position `index` in `buf`. The values refer to individual bytes, so the legal value range is between `0x00` and `0xFF` (hex) or `0` and `255` (decimal).
 
 This operator is inherited from `Uint8Array`, so its behavior on out-of-bounds access is the same as `Uint8Array`. In other words, `buf[index]` returns `undefined` when `index` is negative or `>= buf.length`, and `buf[index] = value` does not modify the buffer if `index` is negative or `>= buf.length`.
 
 ```js
-// Copia una cadena ASCII dentro de un `Buffer`, un byte a la vez.
+// Copy an ASCII string into a `Buffer` one byte at a time.
 // (This only works for ASCII-only strings. In general, one should use
 // `Buffer.from()` to perform this conversion.)
 
@@ -642,7 +642,7 @@ const arrayBuffer = new ArrayBuffer(16);
 const buffer = Buffer.from(arrayBuffer);
 
 console.log(buffer.buffer === arrayBuffer);
-// Imprime: true
+// Prints: true
 ```
 
 ### `buf.byteOffset`
@@ -678,15 +678,15 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`][] with which to compare `buf`.
-* `targetStart` {integer} El offset dentro de `target` en el cual debe comenzar la comparación. **Default:** `0`.
+* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
 * `targetEnd` {integer} The offset within `target` at which to end comparison (not inclusive). **Default:** `target.length`.
-* `sourceStart` {integer} El offset dentro de `buf` en el cual debe comenzar la comparación. **Default:** `0`.
-* `sourceEnd` {integer} El offset dentro de `buf` en el cual debe terminar la comparación (no inclusivo). **Default:** [`buf.length`][].
-* Devuelve: {integer}
+* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
+* `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`][].
+* Returns: {integer}
 
-Compara `buf` con `target` y devuelve un número que indica si `buf` viene antes, después, o está igual que `target` en el orden de clasificación. La comparación basada en la secuencia real de bytes en cada `Buffer`.
+Compares `buf` with `target` and returns a number indicating whether `buf` comes before, after, or is the same as `target` in sort order. Comparison is based on the actual sequence of bytes in each `Buffer`.
 
-* `0` es devuelto si `target` es igual que `buf`
+* `0` is returned if `target` is the same as `buf`
 * `1` is returned if `target` should come *before* `buf` when sorted.
 * `-1` is returned if `target` should come *after* `buf` when sorted.
 
@@ -710,18 +710,18 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 // (This result is equal to: [buf1, buf3, buf2].)
 ```
 
-Los argumentos opcionales `targetStart`, `targetEnd`, `sourceStart`, y `sourceEnd` pueden ser usados para limitar la comparación a rangos específicos dentro de `target` y `buf`, respectivamente.
+The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 const buf2 = Buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
 
 console.log(buf1.compare(buf2, 5, 9, 0, 4));
-// Imprime: 0
+// Prints: 0
 console.log(buf1.compare(buf2, 0, 6, 4));
-// Imprime: -1
+// Prints: -1
 console.log(buf1.compare(buf2, 5, 6, 5));
-// Imprime: 1
+// Prints: 1
 ```
 
 [`ERR_OUT_OF_RANGE`][] is thrown if `targetStart < 0`, `sourceStart < 0`, `targetEnd > target.byteLength`, or `sourceEnd > source.byteLength`.
@@ -733,16 +733,16 @@ added: v0.1.90
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`][] to copy into.
 * `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
-* `sourceStart` {integer} El desplazamiento dentro del `buf` desde el que comenzar a copiar. **Default:** `0`.
-* `sourceEnd` {integer} El offset dentro de `buf` en el cual terminar de copiar (no inclusivo). **Default:** [`buf.length`][].
-* Devuelve: {integer} El número de bytes copiados.
+* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
+* `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`][].
+* Returns: {integer} The number of bytes copied.
 
 Copies data from a region of `buf` to a region in `target`, even if the `target` memory region overlaps with `buf`.
 
 [`TypedArray#set()`][] performs the same operation, and is available for all TypedArrays, including Node.js `Buffer`s, although it takes different function arguments.
 
 ```js
-// Crea dos instancias de `Buffer`.
+// Create two `Buffer` instances.
 const buf1 = Buffer.allocUnsafe(26);
 const buf2 = Buffer.allocUnsafe(26).fill('!');
 
@@ -761,8 +761,8 @@ console.log(buf2.toString('ascii', 0, 25));
 ```
 
 ```js
-// Crea un `Buffer` y copia datos desde una región a una región superpuesta
-// dentro del mismo `Buffer`.
+// Create a `Buffer` and copy data from one region to an overlapping region
+// within the same `Buffer`.
 
 const buf = Buffer.allocUnsafe(26);
 
@@ -782,19 +782,19 @@ console.log(buf.toString());
 added: v1.1.0
 -->
 
-* Devuelve: {Iterator}
+* Returns: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `[index, byte]` pairs from the contents of `buf`.
 
 ```js
-// Registra el contenido completo de un `Buffer`.
+// Log the entire contents of a `Buffer`.
 
 const buf = Buffer.from('buffer');
 
 for (const pair of buf.entries()) {
   console.log(pair);
 }
-// Imprime:
+// Prints:
 //   [0, 98]
 //   [1, 117]
 //   [2, 102]
@@ -813,9 +813,9 @@ changes:
 -->
 
 * `otherBuffer` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`][] with which to compare `buf`.
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si ambos `buf` y `otherBuffer` tienen exactamente los mismos bytes, de lo contrario `false`. Equivalent to [`buf.compare(otherBuffer) === 0`][`buf.compare()`].
+Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise. Equivalent to [`buf.compare(otherBuffer) === 0`][`buf.compare()`].
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -823,9 +823,9 @@ const buf2 = Buffer.from('414243', 'hex');
 const buf3 = Buffer.from('ABCD');
 
 console.log(buf1.equals(buf2));
-// Imprime: true
+// Prints: true
 console.log(buf1.equals(buf3));
-// Imprime: false
+// Prints: false
 ```
 
 ### `buf.fill(value[, offset[, end]][, encoding])`
@@ -852,20 +852,20 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} The value with which to fill `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a llenar `buf`. **Default:** `0`.
-* `end` {integer} Dónde detener el llenado de `buf` (no inclusivo). **Default:** [`buf.length`][].
-* `encoding` {string} La codificación para el `value` si `value` es una cadena. **Default:** `'utf8'`.
-* Returns: {Buffer} Una referencia a `buf`.
+* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
+* `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`][].
+* `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
+* Returns: {Buffer} A reference to `buf`.
 
-Llena `buf` con el `value` especificado. If the `offset` and `end` are not given, the entire `buf` will be filled:
+Fills `buf` with the specified `value`. If the `offset` and `end` are not given, the entire `buf` will be filled:
 
 ```js
-// Llena un `Buffer`con el caracter ASCII 'h'.
+// Fill a `Buffer` with the ASCII character 'h'.
 
 const b = Buffer.allocUnsafe(50).fill('h');
 
 console.log(b.toString());
-// Imprime: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+// Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
 `value` is coerced to a `uint32` value if it is not a string, `Buffer`, or integer. If the resulting integer is greater than `255` (decimal), `buf` will be filled with `value & 255`.
@@ -885,11 +885,11 @@ If `value` contains invalid characters, it is truncated; if no valid fill data r
 const buf = Buffer.allocUnsafe(5);
 
 console.log(buf.fill('a'));
-// Imprime: <Buffer 61 61 61 61 61>
+// Prints: <Buffer 61 61 61 61 61>
 console.log(buf.fill('aazz', 'hex'));
-// Imprime: <Buffer aa aa aa aa aa>
+// Prints: <Buffer aa aa aa aa aa>
 console.log(buf.fill('zz', 'hex'));
-// Se produce una excepción.
+// Throws an exception.
 ```
 
 ### `buf.includes(value[, byteOffset][, encoding])`
@@ -897,30 +897,30 @@ console.log(buf.fill('zz', 'hex'));
 added: v5.3.0
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} Qué buscar.
-* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `0`.
-* `encoding` {string} Si `value` es una string, esa es su codificación. **Default:** `'utf8'`.
-* Devuelve: {boolean} `true` si `value` fue encontrado en `buf`, de otra forma es `false`.
+* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `byteOffset` {integer} Where to begin searching in `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `0`.
+* `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`.
+* Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
-Equivalente a [`buf.indexOf() !== -1`][`buf.indexOf()`].
+Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.includes('this'));
-// Imprime: true
+// Prints: true
 console.log(buf.includes('is'));
-// Imprime: true
+// Prints: true
 console.log(buf.includes(Buffer.from('a buffer')));
-// Imprime: true
+// Prints: true
 console.log(buf.includes(97));
-// Imprime: true (97 is the decimal ASCII value for 'a')
+// Prints: true (97 is the decimal ASCII value for 'a')
 console.log(buf.includes(Buffer.from('a buffer example')));
-// Imprime: false
+// Prints: false
 console.log(buf.includes(Buffer.from('a buffer example').slice(0, 8)));
-// Imprime: true
+// Prints: true
 console.log(buf.includes('this', 4));
-// Imprime: false
+// Prints: false
 ```
 
 ### `buf.indexOf(value[, byteOffset][, encoding])`
@@ -936,44 +936,44 @@ changes:
                  is no longer required.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} Qué buscar.
-* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `0`.
+* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `byteOffset` {integer} Where to begin searching in `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `0`.
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
-Si `value` es:
+If `value` is:
 
-* una string, `value` es interpretado de acuerdo a la codificación de caracteres en `encoding`.
+* a string, `value` is interpreted according to the character encoding in `encoding`.
 * a `Buffer` or [`Uint8Array`][], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`][].
-* un número, `value` será interpretado como un valor entero de 8-bit sin signo entre `0` y `255`.
+* a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
 
 ```js
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.indexOf('this'));
-// Imprime: 0
+// Prints: 0
 console.log(buf.indexOf('is'));
-// Imprime: 2
+// Prints: 2
 console.log(buf.indexOf(Buffer.from('a buffer')));
-// Imprime: 8
+// Prints: 8
 console.log(buf.indexOf(97));
-// Imprime: 8 (97 es el valor ASCII decimal para 'a')
+// Prints: 8 (97 is the decimal ASCII value for 'a')
 console.log(buf.indexOf(Buffer.from('a buffer example')));
-// Imprime: -1
+// Prints: -1
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
-// Imprime: 8
+// Prints: 8
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
-// Imprime: 4
+// Prints: 4
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
-// Imprime: 6
+// Prints: 6
 ```
 
-Si `value` no es una string, un número, o un `Buffer`, este método producirá un `TypeError`. Si `value` es un número, será forzado a ser un valor byte válido, un entero entre 0 y 255.
+If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
 
-Si `byteOffset` no es un número, será forzado a ser un número. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`][].
+If `byteOffset` is not a number, it will be coerced to a number. If the result of coercion is `NaN` or `0`, then the entire buffer will be searched. This behavior matches [`String#indexOf()`][].
 
 ```js
 const b = Buffer.from('abcdef');
@@ -998,9 +998,9 @@ If `value` is an empty string or empty `Buffer` and `byteOffset` is less than `b
 added: v1.1.0
 -->
 
-* Devuelve: {Iterator}
+* Returns: {Iterator}
 
-Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) de claves `buf` (índices).
+Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) of `buf` keys (indices).
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1008,7 +1008,7 @@ const buf = Buffer.from('buffer');
 for (const key of buf.keys()) {
   console.log(key);
 }
-// Imprime:
+// Prints:
 //   0
 //   1
 //   2
@@ -1026,8 +1026,8 @@ changes:
     description: The `value` can now be a `Uint8Array`.
 -->
 
-* `value` {string|Buffer|Uint8Array|integer} Qué buscar.
-* `byteOffset` {integer} Dónde comenzar la búsqueda en `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `buf.length - 1`.
+* `value` {string|Buffer|Uint8Array|integer} What to search for.
+* `byteOffset` {integer} Where to begin searching in `buf`. If negative, then offset is calculated from the end of `buf`. **Default:** `buf.length - 1`.
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
 * Returns: {integer} The index of the last occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
@@ -1037,31 +1037,31 @@ Identical to [`buf.indexOf()`][], except the last occurrence of `value` is found
 const buf = Buffer.from('this buffer is a buffer');
 
 console.log(buf.lastIndexOf('this'));
-// Imprime: 0
+// Prints: 0
 console.log(buf.lastIndexOf('buffer'));
-// Imprime: 17
+// Prints: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
-// Imprime: 17
+// Prints: 17
 console.log(buf.lastIndexOf(97));
-// Imprime: 15 (97 es el valor ASCII decimal para 'a')
+// Prints: 15 (97 is the decimal ASCII value for 'a')
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
-// Imprime: -1
+// Prints: -1
 console.log(buf.lastIndexOf('buffer', 5));
-// Imprime: 5
+// Prints: 5
 console.log(buf.lastIndexOf('buffer', 4));
-// Imprime: -1
+// Prints: -1
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
-// Imprime: 6
+// Prints: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
-// Imprime: 4
+// Prints: 4
 ```
 
-Si `value` no es una string, un número, o un `Buffer`, este método producirá un `TypeError`. Si `value` es un número, será forzado a ser un valor byte válido, un entero entre 0 y 255.
+If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
 
-Si `byteOffset` no es un número, será forzado a ser un número. Cualquier argumento que fuerce a `NaN`, como `{}` o `undefined`, buscará todo el buffer. This behavior matches [`String#lastIndexOf()`][].
+If `byteOffset` is not a number, it will be coerced to a number. Any arguments that coerce to `NaN`, like `{}` or `undefined`, will search the whole buffer. This behavior matches [`String#lastIndexOf()`][].
 
 ```js
 const b = Buffer.from('abcdef');
@@ -1082,7 +1082,7 @@ console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
 
-Si `value` es una cadena vacía o un `Buffer` vacío, se devolverá `byteOffset`.
+If `value` is an empty string or empty `Buffer`, `byteOffset` will be returned.
 
 ### `buf.length`
 <!-- YAML
@@ -1114,7 +1114,7 @@ deprecated: v8.0.0
 
 > Stability: 0 - Deprecated: Use [`buf.buffer`][] instead.
 
-La propiedad `buf.parent` es un alias obsoleto para `buf.buffer`.
+The `buf.parent` property is a deprecated alias for `buf.buffer`.
 
 ### `buf.readBigInt64BE([offset])`
 ### `buf.readBigInt64LE([offset])`
@@ -1122,12 +1122,12 @@ La propiedad `buf.parent` es un alias obsoleto para `buf.buffer`.
 added: v12.0.0
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {bigint}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigInt64BE()` reads as big endian, `readBigInt64LE()` reads as little endian).
 
-Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
+Integers read from a `Buffer` are interpreted as two's complement signed values.
 
 ### `buf.readBigUInt64BE([offset])`
 ### `buf.readBigUInt64LE([offset])`
@@ -1135,8 +1135,8 @@ Los enteros leído desde un `Buffer` son interpretados como valores con signo de
 added: v12.0.0
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {bigint}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigUInt64BE()` reads as big endian, `readBigUInt64LE()` reads as little endian).
 
@@ -1161,8 +1161,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {number}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {number}
 
 Reads a 64-bit double from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readDoubleBE()` reads as big endian, `readDoubleLE()` reads as little endian).
 
@@ -1188,8 +1188,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {number}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {number}
 
 Reads a 32-bit float from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readFloatBE()` reads as big endian, `readFloatLE()` reads as little endian).
 
@@ -1214,12 +1214,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
+* Returns: {integer}
 
-Lee un entero de 8-bit con signo desde `buf` en el `offset` especificado.
+Reads a signed 8-bit integer from `buf` at the specified `offset`.
 
-Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
+Integers read from a `Buffer` are interpreted as two's complement signed values.
 
 ```js
 const buf = Buffer.from([-1, 5]);
@@ -1243,12 +1243,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
+* Returns: {integer}
 
 Reads a signed 16-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readInt16BE()` reads as big endian, `readInt16LE()` reads as little endian).
 
-Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
+Integers read from a `Buffer` are interpreted as two's complement signed values.
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1272,12 +1272,12 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {integer}
 
 Reads a signed 32-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readInt32BE()` reads as big endian, `readInt32LE()` reads as little endian).
 
-Los enteros leído desde un `Buffer` son interpretados como valores con signo del complemento de dos.
+Integers read from a `Buffer` are interpreted as two's complement signed values.
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1301,11 +1301,11 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a leer. Must satisfy `0 < byteLength <= 6`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
+* Returns: {integer}
 
-Lee el número de bytes `byteLength` desde `buf` en el `offset` especificado e interpreta el resultado como un valor con signo del complemento de dos. Soporta hasta 48 bits de precisión.
+Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as a two's complement signed value. Supports up to 48 bits of accuracy.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1330,10 +1330,10 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
+* Returns: {integer}
 
-Lee un entero de 8-bit desde `buf` en el `offset` especificado.
+Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
 ```js
 const buf = Buffer.from([1, -2]);
@@ -1357,8 +1357,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
+* Returns: {integer}
 
 Reads an unsigned 16-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readUInt16BE()` reads as big endian, `readUInt16LE()` reads as little endian).
 
@@ -1388,8 +1388,8 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {integer}
 
 Reads an unsigned 32-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readUInt32BE()` reads as big endian, `readUInt32LE()` reads as little endian).
 
@@ -1415,11 +1415,11 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `offset` {integer} Número de bytes a omitir antes de comenzar a leer. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a leer. Must satisfy `0 < byteLength <= 6`.
-* Devuelve: {integer}
+* `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to read. Must satisfy `0 < byteLength <= 6`.
+* Returns: {integer}
 
-Lee el número de bytes `byteLength` desde `buf` en el `offset` especificado e interpreta el resultado como un entero sin signo. Soporta hasta 48 bits de precisión.
+Reads `byteLength` number of bytes from `buf` at the specified `offset` and interprets the result as an unsigned integer. Supports up to 48 bits of accuracy.
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1437,11 +1437,11 @@ console.log(buf.readUIntBE(1, 6).toString(16));
 added: v3.0.0
 -->
 
-* `start` {integer} Dónde comenzará el nuevo `Buffer`. **Default:** `0`.
-* `end` {integer} Dónde terminará el nuevo `Buffer` (no inclusivo). **Default:** [`buf.length`][].
-* Devuelve: {Buffer}
+* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`][].
+* Returns: {Buffer}
 
-Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
+Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
 Specifying `end` greater than [`buf.length`][] will return the same result as that of `end` equal to [`buf.length`][].
 
@@ -1450,8 +1450,8 @@ This method is inherited from [`TypedArray#subarray()`][].
 Modifying the new `Buffer` slice will modify the memory in the original `Buffer` because the allocated memory of the two objects overlap.
 
 ```js
-// Crea un `Buffer`con el alfabeto ASCII, toma un segmento, y modifica un byte
-// desde el `Buffer`original.
+// Create a `Buffer` with the ASCII alphabet, take a slice, and modify one byte
+// from the original `Buffer`.
 
 const buf1 = Buffer.allocUnsafe(26);
 
@@ -1471,7 +1471,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 // Prints: !bc
 ```
 
-La especificación de índices negativos causa que el segmento se genere en relación al final de `buf`, en lugar de al inicio.
+Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1503,11 +1503,11 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Dónde comenzará el nuevo `Buffer`. **Default:** `0`.
-* `end` {integer} Dónde terminará el nuevo `Buffer` (no inclusivo). **Default:** [`buf.length`][].
-* Devuelve: {Buffer}
+* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
+* `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`][].
+* Returns: {Buffer}
 
-Devuelve un nuevo `Buffer` que hace referencia a la misma memoria del original, pero se desplaza y se recorta por los índices `start` y `end`.
+Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
 This is the same behavior as `buf.subarray()`.
 
@@ -1530,7 +1530,7 @@ console.log(buf.toString());
 added: v5.10.0
 -->
 
-* Returns: {Buffer} Una referencia a `buf`.
+* Returns: {Buffer} A reference to `buf`.
 
 Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][] is not a multiple of 2.
 
@@ -1563,7 +1563,7 @@ buf.swap16(); // Convert to big-endian UTF-16 text.
 added: v5.10.0
 -->
 
-* Returns: {Buffer} Una referencia a `buf`.
+* Returns: {Buffer} A reference to `buf`.
 
 Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][] is not a multiple of 4.
 
@@ -1589,7 +1589,7 @@ buf2.swap32();
 added: v6.3.0
 -->
 
-* Returns: {Buffer} Una referencia a `buf`.
+* Returns: {Buffer} A reference to `buf`.
 
 Interprets `buf` as an array of 64-bit numbers and swaps byte order *in-place*. Throws [`ERR_INVALID_BUFFER_SIZE`][] if [`buf.length`][] is not a multiple of 8.
 
@@ -1615,9 +1615,9 @@ buf2.swap64();
 added: v0.9.2
 -->
 
-* Devuelve: {Object}
+* Returns: {Object}
 
-Devuelve una representación JSON de `buf`. [`JSON.stringify()`][] implicitly calls this function when stringifying a `Buffer` instance.
+Returns a JSON representation of `buf`. [`JSON.stringify()`][] implicitly calls this function when stringifying a `Buffer` instance.
 
 `Buffer.from()` accepts objects in the format returned from this method. In particular, `Buffer.from(buf.toJSON())` works like `Buffer.from(buf)`.
 
@@ -1626,7 +1626,7 @@ const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
 const json = JSON.stringify(buf);
 
 console.log(json);
-// Imprime: {"type":"Buffer","data":[1,2,3,4,5]}
+// Prints: {"type":"Buffer","data":[1,2,3,4,5]}
 
 const copy = JSON.parse(json, (key, value) => {
   return value && value.type === 'Buffer' ?
@@ -1643,12 +1643,12 @@ console.log(copy);
 added: v0.1.90
 -->
 
-* `encoding` {string} La codificación de caracteres a utilizar. **Default:** `'utf8'`.
-* `start` {integer} El offset de bytes en el cual comenzar la decodificación. **Default:** `0`.
-* `end` {integer} El offset de bytes en el cual detener la decodificación (no inclusivo). **Default:** [`buf.length`][].
-* Devuelve: {string}
+* `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
+* `start` {integer} The byte offset to start decoding at. **Default:** `0`.
+* `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`][].
+* Returns: {string}
 
-Decodifica `buf` en una string de acuerdo a la codificación de caracteres especificados en `encoding`. `start` y `end` pueden pasarse para decodificar solo un subconjunto de `buf`.
+Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
 If `encoding` is `'utf8'` and a byte sequence in the input is not valid UTF-8, then each invalid byte is replaced with the replacement character `U+FFFD`.
 
@@ -1682,9 +1682,9 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Devuelve: {Iterator}
+* Returns: {Iterator}
 
-Crea y devuelve un [iterador](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) para valores de `buf` (bytes). Esta función es llamada automáticamente cuando un `Buffer` es usado en una declaración `for..of`.
+Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1692,7 +1692,7 @@ const buf = Buffer.from('buffer');
 for (const value of buf.values()) {
   console.log(value);
 }
-// Imprime:
+// Prints:
 //   98
 //   117
 //   102
@@ -1703,7 +1703,7 @@ for (const value of buf.values()) {
 for (const value of buf) {
   console.log(value);
 }
-// Imprime:
+// Prints:
 //   98
 //   117
 //   102
@@ -1717,13 +1717,13 @@ for (const value of buf) {
 added: v0.1.90
 -->
 
-* `string` {string} Cadena para escribir al `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir la `string`. **Default:** `0`.
+* `string` {string} String to write to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Maximum number of bytes to write. **Default:** `buf.length - offset`.
-* `encoding` {string} La codificación de caracteres del `string`. **Default:** `'utf8'`.
-* Devuelve: {integer} Número de bytes escritos.
+* `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`.
+* Returns: {integer} Number of bytes written.
 
-Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. El parámetro `length` es el número de bytes a escribir. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. Sin embargo, no se escribirán caracteres codificados parcialmente.
+Writes `string` to `buf` at `offset` according to the character encoding in `encoding`. The `length` parameter is the number of bytes to write. If `buf` did not contain enough space to fit the entire string, only part of `string` will be written. However, partially encoded characters will not be written.
 
 ```js
 const buf = Buffer.alloc(256);
@@ -1731,7 +1731,7 @@ const buf = Buffer.alloc(256);
 const len = buf.write('\u00bd + \u00bc = \u00be', 0);
 
 console.log(`${len} bytes: ${buf.toString('utf8', 0, len)}`);
-// Imprime: 12 bytes: ½ + ¼ = ¾
+// Prints: 12 bytes: ½ + ¼ = ¾
 ```
 
 ### `buf.writeBigInt64BE(value[, offset])`
@@ -1741,12 +1741,12 @@ added: v12.0.0
 -->
 
 * `value` {bigint} Number to be written to `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeBigInt64BE()` writes as big endian, `writeBigInt64LE()` writes as little endian).
 
-`value` es interpretado y escrito como un entero con signo de complemento a dos.
+`value` is interpreted and written as a two's complement signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -1764,8 +1764,8 @@ added: v12.0.0
 -->
 
 * `value` {bigint} Number to be written to `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeBigUInt64BE()` writes as big endian, `writeBigUInt64LE()` writes as little endian).
 
@@ -1789,9 +1789,9 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {number} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {number} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 8`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeDoubleBE()` writes as big endian, `writeDoubleLE()` writes as little endian). `value` must be a JavaScript number. Behavior is undefined when `value` is anything other than a JavaScript number.
 
@@ -1820,9 +1820,9 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {number} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {number} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeFloatBE()` writes as big endian, `writeFloatLE()` writes as little endian). `value` must be a JavaScript number. Behavior is undefined when `value` is anything other than a JavaScript number.
 
@@ -1832,12 +1832,12 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeFloatBE(0xcafebabe, 0);
 
 console.log(buf);
-// Imprime: <Buffer 4f 4a fe bb>
+// Prints: <Buffer 4f 4a fe bb>
 
 buf.writeFloatLE(0xcafebabe, 0);
 
 console.log(buf);
-// Imprime: <Buffer bb fe 4a 4f>
+// Prints: <Buffer bb fe 4a 4f>
 ```
 
 ### `buf.writeInt8(value[, offset])`
@@ -1850,13 +1850,13 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` must be a valid signed 8-bit integer. El comportamiento es indefinido cuando `value` es cualquier otra cosa distinta a un entero de 8-bits con signo.
+Writes `value` to `buf` at the specified `offset`. `value` must be a valid signed 8-bit integer. Behavior is undefined when `value` is anything other than a signed 8-bit integer.
 
-`value` es interpretado y escrito como un entero con signo de complemento a dos.
+`value` is interpreted and written as a two's complement signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -1865,7 +1865,7 @@ buf.writeInt8(2, 0);
 buf.writeInt8(-2, 1);
 
 console.log(buf);
-// Imprime: <Buffer 02 fe>
+// Prints: <Buffer 02 fe>
 ```
 
 ### `buf.writeInt16BE(value[, offset])`
@@ -1879,13 +1879,13 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeInt16BE()` writes as big endian, `writeInt16LE()` writes as little endian). `value` must be a valid signed 16-bit integer. Behavior is undefined when `value` is anything other than a signed 16-bit integer.
 
-`value` es interpretado y escrito como un entero con signo de complemento a dos.
+`value` is interpreted and written as a two's complement signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -1894,7 +1894,7 @@ buf.writeInt16BE(0x0102, 0);
 buf.writeInt16LE(0x0304, 2);
 
 console.log(buf);
-// Imprime: <Buffer 01 02 04 03>
+// Prints: <Buffer 01 02 04 03>
 ```
 
 ### `buf.writeInt32BE(value[, offset])`
@@ -1908,13 +1908,13 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
 Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeInt32BE()` writes aS big endian, `writeInt32LE()` writes as little endian). `value` must be a valid signed 32-bit integer. Behavior is undefined when `value` is anything other than a signed 32-bit integer.
 
-`value` es interpretado y escrito como un entero con signo de complemento a dos.
+`value` is interpreted and written as a two's complement signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -1923,11 +1923,11 @@ buf.writeInt32BE(0x01020304, 0);
 buf.writeInt32LE(0x05060708, 4);
 
 console.log(buf);
-// Imprime: <Buffer 01 02 03 04 08 07 06 05>
+// Prints: <Buffer 01 02 03 04 08 07 06 05>
 ```
 
-### `buf.writeIntBE(value, byteLength)`
-### `buf.writeIntLE(value, byteLength)`
+### `buf.writeIntBE(value, offset, byteLength)`
+### `buf.writeIntLE(value, offset, byteLength)`
 <!-- YAML
 added: v0.11.15
 changes:
@@ -1937,12 +1937,12 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a escribir. Must satisfy `0 < byteLength <= 6`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es definid cuando `value` es cualquier cosa distinta a un entero con signo.
+Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than a signed integer.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -1950,12 +1950,12 @@ const buf = Buffer.allocUnsafe(6);
 buf.writeIntBE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Imprime: <Buffer 12 34 56 78 90 ab>
+// Prints: <Buffer 12 34 56 78 90 ab>
 
 buf.writeIntLE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Imprime: <Buffer ab 90 78 56 34 12>
+// Prints: <Buffer ab 90 78 56 34 12>
 ```
 
 ### `buf.writeUInt8(value[, offset])`
@@ -1968,11 +1968,11 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 1`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Escribe el `value` al `buf` en el `offset` especificado. `value` must be a valid unsigned 8-bit integer. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 8-bits sin signo.
+Writes `value` to `buf` at the specified `offset`. `value` must be a valid unsigned 8-bit integer. Behavior is undefined when `value` is anything other than an unsigned 8-bit integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -1983,7 +1983,7 @@ buf.writeUInt8(0x23, 2);
 buf.writeUInt8(0x42, 3);
 
 console.log(buf);
-// Imprime: <Buffer 03 04 23 42>
+// Prints: <Buffer 03 04 23 42>
 ```
 
 ### `buf.writeUInt16BE(value[, offset])`
@@ -1997,11 +1997,11 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 2`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeUInt16BE()` writes as big endian, `writeUInt16LE()` writes as little endian). `value` must be a valid unsigned 16-bit integer. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 16-bits sin signo.
+Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeUInt16BE()` writes as big endian, `writeUInt16LE()` writes as little endian). `value` must be a valid unsigned 16-bit integer. Behavior is undefined when `value` is anything other than an unsigned 16-bit integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2010,13 +2010,13 @@ buf.writeUInt16BE(0xdead, 0);
 buf.writeUInt16BE(0xbeef, 2);
 
 console.log(buf);
-// Imprime: <Buffer de ad be ef>
+// Prints: <Buffer de ad be ef>
 
 buf.writeUInt16LE(0xdead, 0);
 buf.writeUInt16LE(0xbeef, 2);
 
 console.log(buf);
-// Imprime: <Buffer ad de ef be>
+// Prints: <Buffer ad de ef be>
 ```
 
 ### `buf.writeUInt32BE(value[, offset])`
@@ -2030,11 +2030,11 @@ changes:
                  to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - 4`. **Default:** `0`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeUInt32BE()` writes as big endian, `writeUInt32LE()` writes as little endian). `value` must be a valid unsigned 32-bit integer. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero de 32-bits sin signo.
+Writes `value` to `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`writeUInt32BE()` writes as big endian, `writeUInt32LE()` writes as little endian). `value` must be a valid unsigned 32-bit integer. Behavior is undefined when `value` is anything other than an unsigned 32-bit integer.
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2042,16 +2042,16 @@ const buf = Buffer.allocUnsafe(4);
 buf.writeUInt32BE(0xfeedface, 0);
 
 console.log(buf);
-// Escribe: <Buffer fe ed fa ce>
+// Prints: <Buffer fe ed fa ce>
 
 buf.writeUInt32LE(0xfeedface, 0);
 
 console.log(buf);
-// Escribe: <Buffer ce fa ed fe>
+// Prints: <Buffer ce fa ed fe>
 ```
 
-### `buf.writeUIntBE(value, byteLength)`
-### `buf.writeUIntLE(value, byteLength)`
+### `buf.writeUIntBE(value, offset, byteLength)`
+### `buf.writeUIntLE(value, offset, byteLength)`
 <!-- YAML
 added: v0.5.5
 changes:
@@ -2061,12 +2061,12 @@ changes:
                  and `byteLength` to `uint32` anymore.
 -->
 
-* `value` {integer} Número a ser escrito en `buf`.
-* `offset` {integer} Número de bytes a omitir antes de comenzar a escribir. Must satisfy `0 <= offset <= buf.length - byteLength`.
-* `byteLength` {integer} Número de bytes a escribir. Must satisfy `0 < byteLength <= 6`.
-* Devuelve: {integer} `offset` más el número de bytes escritos.
+* `value` {integer} Number to be written to `buf`.
+* `offset` {integer} Number of bytes to skip before starting to write. Must satisfy `0 <= offset <= buf.length - byteLength`.
+* `byteLength` {integer} Number of bytes to write. Must satisfy `0 < byteLength <= 6`.
+* Returns: {integer} `offset` plus the number of bytes written.
 
-Escribe `byteLength` bytes de `value` a `buf` en el `offset` especificado. Soporta hasta 48 bits de precisión. El comportamiento es indefinido cuando `value` es cualquier cosa distinta a un entero sin signo.
+Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Supports up to 48 bits of accuracy. Behavior is undefined when `value` is anything other than an unsigned integer.
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2074,12 +2074,12 @@ const buf = Buffer.allocUnsafe(6);
 buf.writeUIntBE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Imprime: <Buffer 12 34 56 78 90 ab>
+// Prints: <Buffer 12 34 56 78 90 ab>
 
 buf.writeUIntLE(0x1234567890ab, 0, 6);
 
 console.log(buf);
-// Imprime: <Buffer ab 90 78 56 34 12>
+// Prints: <Buffer ab 90 78 56 34 12>
 ```
 
 ### `new Buffer(array)`
@@ -2100,11 +2100,11 @@ changes:
 
 > Stability: 0 - Deprecated: Use [`Buffer.from(array)`][] instead.
 
-* `array` {integer[]} Un array de bytes del cual copiarse.
+* `array` {integer[]} An array of bytes to copy from.
 
 See [`Buffer.from(array)`][].
 
-### `nuevo Buffer(arrayBuffer[, byteOffset[, length]])`
+### `new Buffer(arrayBuffer[, byteOffset[, length]])`
 <!-- YAML
 added: v3.0.0
 deprecated: v6.0.0
@@ -2127,8 +2127,8 @@ changes:
 > Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`][], [`SharedArrayBuffer`][] or the `.buffer` property of a [`TypedArray`][].
-* `byteOffset` {integer} Índice del primer byte a exponer. **Default:** `0`.
-* `length` {integer} Número de bytes a exponer. **Default:** `arrayBuffer.byteLength - byteOffset`.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
+* `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.byteLength - byteOffset`.
 
 See [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`].
 
@@ -2176,7 +2176,7 @@ changes:
 
 > Stability: 0 - Deprecated: Use [`Buffer.alloc()`][] instead (also see [`Buffer.allocUnsafe()`][]).
 
-* `size` {integer} La longitud deseada del nuevo `Buffer`.
+* `size` {integer} The desired length of the new `Buffer`.
 
 See [`Buffer.alloc()`][] and [`Buffer.allocUnsafe()`][]. This variant of the constructor is equivalent to [`Buffer.allocUnsafe()`][], although using [`Buffer.alloc()`][] is recommended in code paths that are not critical to performance.
 
@@ -2196,10 +2196,10 @@ changes:
     description: Calling this constructor emits a deprecation warning now.
 -->
 
-> Estabilidad: 0 - Desaprobado: Use [`Buffer.from(string[, encoding])`] [`Buffer.from(string)`] en su lugar.
+> Stability: 0 - Deprecated: Use [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] instead.
 
-* `string` {string} String a codificar.
-* `encoding` {string} La codificación de `string`. **Default:** `'utf8'`.
+* `string` {string} String to encode.
+* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
 
 See [`Buffer.from(string[, encoding])`][`Buffer.from(string)`].
 
@@ -2210,7 +2210,7 @@ added: v0.5.4
 
 * {integer} **Default:** `50`
 
-Devuelve el número máximo de bytes que serán devueltos cuando `buf.inspect()` es llamado. Esto puede ser reemplazado por módulos de usuario. See [`util.inspect()`][] for more details on `buf.inspect()` behavior.
+Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`][] for more details on `buf.inspect()` behavior.
 
 This is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
@@ -2219,9 +2219,9 @@ This is a property on the `buffer` module returned by `require('buffer')`, not o
 added: v3.0.0
 -->
 
-* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
+* {integer} The largest size allowed for a single `Buffer` instance.
 
-Un alias para [`buffer.constants.MAX_LENGTH`][].
+An alias for [`buffer.constants.MAX_LENGTH`][].
 
 This is a property on the `buffer` module returned by `require('buffer')`, not on the `Buffer` global or a `Buffer` instance.
 
@@ -2234,25 +2234,25 @@ changes:
     description: The `source` parameter can now be a `Uint8Array`.
 -->
 
-* `source` {Buffer|Uint8Array} Una instancia de `Buffer` o `Uint8Array`.
-* `fromEnc` {string} La codificación actual.
-* `toEnc` {string} Para apuntar a la codificación.
-* Devuelve: {Buffer}
+* `source` {Buffer|Uint8Array} A `Buffer` or `Uint8Array` instance.
+* `fromEnc` {string} The current encoding.
+* `toEnc` {string} To target encoding.
+* Returns: {Buffer}
 
-Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Devuelve una nueva instancia de `Buffer`.
+Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Returns a new `Buffer` instance.
 
 Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
 
 Encodings supported by `buffer.transcode()` are: `'ascii'`, `'utf8'`, `'utf16le'`, `'ucs2'`, `'latin1'`, and `'binary'`.
 
-The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. Por ejemplo:
+The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
 
 ```js
 const buffer = require('buffer');
 
 const newBuf = buffer.transcode(Buffer.from('€'), 'utf8', 'ascii');
 console.log(newBuf.toString('ascii'));
-// Imprime: '?'
+// Prints: '?'
 ```
 
 Because the Euro (`€`) sign is not representable in US-ASCII, it is replaced with `?` in the transcoded `Buffer`.
@@ -2275,11 +2275,11 @@ deprecated: v6.0.0
 
 > Stability: 0 - Deprecated: Use [`Buffer.allocUnsafeSlow()`][] instead.
 
-* `size` {integer} La longitud deseada del nuevo `SlowBuffer`.
+* `size` {integer} The desired length of the new `SlowBuffer`.
 
 See [`Buffer.allocUnsafeSlow()`][].
 
-## Constantes de Buffer
+## Buffer Constants
 <!-- YAML
 added: v8.2.0
 -->
@@ -2291,30 +2291,30 @@ added: v8.2.0
 added: v8.2.0
 -->
 
-* {integer} El tamaño más grande permitido para una sola instancia de `Buffer`.
+* {integer} The largest size allowed for a single `Buffer` instance.
 
 On 32-bit architectures, this value currently is `(2^30)-1` (~1GB). On 64-bit architectures, this value currently is `(2^31)-1` (~2GB).
 
-Este valor también está disponible como [`buffer.kMaxLength`][].
+This value is also available as [`buffer.kMaxLength`][].
 
 ### `buffer.constants.MAX_STRING_LENGTH`
 <!-- YAML
 added: v8.2.0
 -->
 
-* {integer} La longitud más larga asignada para una sola instancia de `string`.
+* {integer} The largest length allowed for a single `string` instance.
 
 Represents the largest `length` that a `string` primitive can have, counted in UTF-16 code units.
 
-Este valor debe depender del motor JS que se esté utilizando.
+This value may depend on the JS engine that is being used.
 
-## `Buffer.from()`, `Buffer.alloc()`, y `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
 * Passing a number as the first argument to `Buffer()` (e.g. `new Buffer(10)`) allocates a new `Buffer` object of the specified size. Prior to Node.js 8.0.0, the memory allocated for such `Buffer` instances is *not* initialized and *can contain sensitive data*. Such `Buffer` instances *must* be subsequently initialized by using either [`buf.fill(0)`][`buf.fill()`] or by writing to the entire `Buffer` before reading data from the `Buffer`. While this behavior is *intentional* to improve performance, development experience has demonstrated that a more explicit distinction is required between creating a fast-but-uninitialized `Buffer` versus creating a slower-but-safer `Buffer`. Since Node.js 8.0.0, `Buffer(num)` and `new
 Buffer(num)` return a `Buffer` with initialized memory.
-* Pasar un string, array o `Buffer` como el primer argumento copia los datos del objeto pasado en el `Buffer`.
+* Passing a string, array, or `Buffer` as the first argument copies the passed object's data into the `Buffer`.
 * Passing an [`ArrayBuffer`][] or a [`SharedArrayBuffer`][] returns a `Buffer` that shares allocated memory with the given array buffer.
 
 Because the behavior of `new Buffer()` is different depending on the type of the first argument, security and reliability issues can be inadvertently introduced into applications when argument validation or `Buffer` initialization is not performed.
@@ -2323,18 +2323,18 @@ For example, if an attacker can cause an application to receive a number where a
 
 To make the creation of `Buffer` instances more reliable and less error-prone, the various forms of the `new Buffer()` constructor have been **deprecated** and replaced by separate `Buffer.from()`, [`Buffer.alloc()`][], and [`Buffer.allocUnsafe()`][] methods.
 
-*Los desarrolladores deben migrar todos los usos existentes de los constructores `new Buffer()` a una de estas APIs nuevas.*
+*Developers should migrate all existing uses of the `new Buffer()` constructors to one of these new APIs.*
 
 * [`Buffer.from(array)`][] returns a new `Buffer` that *contains a copy* of the provided octets.
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] returns a new `Buffer` that *shares the same allocated memory* as the given [`ArrayBuffer`][].
 * [`Buffer.from(buffer)`][] returns a new `Buffer` that *contains a copy* of the contents of the given `Buffer`.
 * [`Buffer.from(string[, encoding])`][`Buffer.from(string)`] returns a new `Buffer` that *contains a copy* of the provided string.
-* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive. Se producirá un `TypeError` si `size` no es número.
+* [`Buffer.alloc(size[, fill[, encoding]])`][`Buffer.alloc()`] returns a new initialized `Buffer` of the specified size. This method is slower than [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] but guarantees that newly created `Buffer` instances never contain old data that is potentially sensitive. A `TypeError` will be thrown if `size` is not a number.
 * [`Buffer.allocUnsafe(size)`][`Buffer.allocUnsafe()`] and [`Buffer.allocUnsafeSlow(size)`][`Buffer.allocUnsafeSlow()`] each return a new uninitialized `Buffer` of the specified `size`. Because the `Buffer` is uninitialized, the allocated segment of memory might contain old data that is potentially sensitive.
 
 `Buffer` instances returned by [`Buffer.allocUnsafe()`][] *may* be allocated off a shared internal memory pool if `size` is less than or equal to half [`Buffer.poolSize`][]. Instances returned by [`Buffer.allocUnsafeSlow()`][] *never* use the shared internal memory pool.
 
-### La opción de línea de comando `--zero-fill-buffers`
+### The `--zero-fill-buffers` command line option
 <!-- YAML
 added: v5.10.0
 -->
@@ -2347,8 +2347,8 @@ $ node --zero-fill-buffers
 <Buffer 00 00 00 00 00>
 ```
 
-### ¿Qué hace `Buffer.allocUnsafe()` y `Buffer.allocUnsafeSlow()`"inseguros"?
+### What makes `Buffer.allocUnsafe()` and `Buffer.allocUnsafeSlow()` "unsafe"?
 
-When calling [`Buffer.allocUnsafe()`][] and [`Buffer.allocUnsafeSlow()`][], the segment of allocated memory is *uninitialized* (it is not zeroed-out). Mientras que este diseño hace que la asignación de memoria sea bastante rápida, el segmento asignado de la memoria puede contener datos viejos que son potencialmente sensibles. Using a `Buffer` created by [`Buffer.allocUnsafe()`][] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
+When calling [`Buffer.allocUnsafe()`][] and [`Buffer.allocUnsafeSlow()`][], the segment of allocated memory is *uninitialized* (it is not zeroed-out). While this design makes the allocation of memory quite fast, the allocated segment of memory might contain old data that is potentially sensitive. Using a `Buffer` created by [`Buffer.allocUnsafe()`][] without *completely* overwriting the memory can allow this old data to be leaked when the `Buffer` memory is read.
 
 While there are clear performance advantages to using [`Buffer.allocUnsafe()`][], extra care *must* be taken in order to avoid introducing security vulnerabilities into an application.
