@@ -45,7 +45,7 @@ See the [Implementation considerations section](#dns_implementation_consideratio
 added: v8.3.0
 -->
 
-Um solucionador de requisições DNS independente.
+An independent resolver for DNS requests.
 
 Creating a new resolver uses the default server settings. Setting the servers used for a resolver using [`resolver.setServers()`][`dns.setServers()`] does not affect other resolvers:
 
@@ -54,13 +54,13 @@ const { Resolver } = require('dns');
 const resolver = new Resolver();
 resolver.setServers(['4.4.4.4']);
 
-// Esta requisição irá usar o servidor 4.4.4.4, independente das configurações globais.
+// This request will use the server at 4.4.4.4, independent of global settings.
 resolver.resolve4('example.org', (err, addresses) => {
   // ...
 });
 ```
 
-Os seguintes métodos do módulo de `dns` estão disponíveis:
+The following methods from the `dns` module are available:
 
 * [`resolver.getServers()`][`dns.getServers()`]
 * [`resolver.resolve()`][`dns.resolve()`]
@@ -83,14 +83,14 @@ Os seguintes métodos do módulo de `dns` estão disponíveis:
 added: v8.3.0
 -->
 
-Cancela todas as consultas DNS pendentes feitas por este solucionador. The corresponding callbacks will be called with an error with code `ECANCELLED`.
+Cancel all outstanding DNS queries made by this resolver. The corresponding callbacks will be called with an error with code `ECANCELLED`.
 
 ## `dns.getServers()`
 <!-- YAML
 added: v0.11.3
 -->
 
-* Retorna: {string []}
+* Returns: {string[]}
 
 Returns an array of IP address strings, formatted according to [RFC 5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 ```js
@@ -113,8 +113,8 @@ changes:
     description: The `all` option is supported now.
 -->* `hostname` {string}
 * `options` {integer | Object}
-  * `family` {integer} a família registro. Must be `4`, `6`, or `0`. The value `0` indicates that IPv4 and IPv6 addresses are both returned. **Default:** `0`.
-  * `hints` {number} um ou mais [sinalizadores `getaddrinfo` suportados] []. Multiple flags may be passed by bitwise `OR`ing their values.
+  * `family` {integer} The record family. Must be `4`, `6`, or `0`. The value `0` indicates that IPv4 and IPv6 addresses are both returned. **Default:** `0`.
+  * `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
   * `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   * `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 * `callback` {Function}
@@ -130,7 +130,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 const dns = require('dns');
@@ -446,7 +446,7 @@ The `dns.promises` API provides an alternative set of asynchronous DNS methods t
 
 ### Class: `dnsPromises.Resolver`<!-- YAML
 added: v10.6.0
--->Um solucionador de requisições DNS independente.
+-->An independent resolver for DNS requests.
 
 Creating a new resolver uses the default server settings. Setting the servers used for a resolver using [`resolver.setServers()`][`dnsPromises.setServers()`] does not affect other resolvers:
 
@@ -486,7 +486,7 @@ The following methods from the `dnsPromises` API are available:
 
 ### `dnsPromises.getServers()`<!-- YAML
 added: v10.6.0
--->* Retorna: {string []}
+-->* Returns: {string[]}
 
 Returns an array of IP address strings, formatted according to [RFC 5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 ```js
@@ -502,8 +502,8 @@ Returns an array of IP address strings, formatted according to [RFC 5952](https:
 added: v10.6.0
 -->* `hostname` {string}
 * `options` {integer | Object}
-  * `family` {integer} a família registro. Must be `4`, `6`, or `0`. The value `0` indicates that IPv4 and IPv6 addresses are both returned. **Default:** `0`.
-  * `hints` {number} um ou mais [sinalizadores `getaddrinfo` suportados] []. Multiple flags may be passed by bitwise `OR`ing their values.
+  * `family` {integer} The record family. Must be `4`, `6`, or `0`. The value `0` indicates that IPv4 and IPv6 addresses are both returned. **Default:** `0`.
+  * `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
   * `all` {boolean} When `true`, the `Promise` is resolved with all addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   * `verbatim` {boolean} When `true`, the `Promise` is resolved with IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 
@@ -515,7 +515,7 @@ On error, the `Promise` is rejected with an [`Error`][] object, where `err.code`
 
 [`dnsPromises.lookup()`][] does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dnsPromises.lookup()`.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 const dns = require('dns');
