@@ -1,8 +1,8 @@
-# 디버거
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -20,7 +20,7 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
+The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
 ```js
