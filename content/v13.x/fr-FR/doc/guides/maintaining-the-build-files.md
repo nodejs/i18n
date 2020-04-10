@@ -1,4 +1,4 @@
-# Maintenir les fichiers de Build
+# Maintaining the Build files
 
 This document explains how to maintain the build files in the codebase.
 
