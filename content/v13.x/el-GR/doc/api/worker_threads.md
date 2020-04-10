@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The `worker_threads` module enables the use of threads that execute JavaScript in parallel. To access it:
 
@@ -552,7 +552,7 @@ changes:
                  Terminating is now a fully asynchronous operation.
 -->
 
-* Επιστρέφει: {Promise}
+* Returns: {Promise}
 
 Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the [`'exit'` event][] is emitted.
 
