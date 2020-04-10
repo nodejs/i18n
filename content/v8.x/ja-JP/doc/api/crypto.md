@@ -1,8 +1,8 @@
-# 暗号化
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -228,7 +228,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
@@ -377,7 +377,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -424,7 +424,7 @@ added: v0.5.0
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -437,7 +437,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -448,7 +448,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -459,7 +459,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -470,7 +470,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -481,7 +481,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -566,7 +566,7 @@ changes:
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -580,7 +580,7 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `uncompressed`
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -727,7 +727,7 @@ added: v0.1.92
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -813,7 +813,7 @@ added: v0.1.94
 -->
 
 - `encoding` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -909,7 +909,7 @@ changes:
   - `key` {string}
   - `passphrase` {string}
 - `outputFormat` {string}
-- 戻り値: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
@@ -1079,7 +1079,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Cipher}
+- Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`. Optional `options` argument controls stream behavior.
 
@@ -1089,7 +1089,7 @@ The `password` is used to derive the cipher key and initialization vector (IV). 
 
 The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see \[Nonce-Disrespecting Adversaries\]\[\] for details.
+In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1107,7 +1107,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Cipher}
+- Returns: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
@@ -1139,7 +1139,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Decipher}
+- Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key). Optional `options` argument controls stream behavior.
 
@@ -1163,7 +1163,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Decipher}
+- Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
@@ -1233,7 +1233,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Hash}
+- Returns: {Hash}
 
 Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
 
@@ -1268,7 +1268,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- 戻り値: {Hmac}
+- Returns: {Hmac}
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
 
@@ -1304,7 +1304,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- 戻り値: {Sign}
+- Returns: {Sign}
 
 Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1316,7 +1316,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- 戻り値: {Verify}
+- Returns: {Verify}
 
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1704,7 +1704,7 @@ This function is based on a constant-time algorithm. Returns true if `a` is equa
 
 *Note*: Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code is timing-safe. Care should be taken to ensure that the surrounding code does not introduce timing vulnerabilities.
 
-## 備考
+## Notes
 
 ### Legacy Streams API (pre Node.js v0.10)
 
