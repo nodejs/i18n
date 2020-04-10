@@ -152,7 +152,7 @@ The `'rejectionHandled'` event is emitted whenever a `Promise` has been rejected
 
 The `Promise` object would have previously been emitted in an `'unhandledRejection'` event, but during the course of processing gained a rejection handler.
 
-There is no notion of a top level for a `Promise` chain at which rejections can always be handled. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time — possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
+There is no notion of a top level for a `Promise` chain at which rejections can always be handled. Being inherently asynchronous in nature, a `Promise` rejection can be handled at a future point in time, possibly much later than the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
 Another way of stating this is that, unlike in synchronous code where there is an ever-growing list of unhandled exceptions, with Promises there can be a growing-and-shrinking list of unhandled rejections.
 
@@ -378,14 +378,17 @@ process.on('SIGTERM', handle);
 * `'SIGPIPE'` is ignored by default. It can have a listener installed.
 * `'SIGHUP'` is generated on Windows when the console window is closed, and on other platforms under various similar conditions. See signal(7). It can have a listener installed, however Node.js will be unconditionally terminated by Windows about 10 seconds later. On non-Windows platforms, the default behavior of `SIGHUP` is to terminate Node.js, but once a listener has been installed its default behavior will be removed.
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
-* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when terminal raw mode is enabled.
+* `'SIGINT'` from the terminal is supported on all platforms, and can usually be generated with `<Ctrl>+C` (though this may be configurable). It is not generated when [terminal raw mode](tty.html#tty_readstream_setrawmode_mode) is enabled and `<Ctrl>+C` is used.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on non-Windows platforms it can be listened on, but there is no way to send or generate it.
 * `'SIGWINCH'` is delivered when the console has been resized. On Windows, this will only happen on write to the console when the cursor is being moved, or when a readable tty is used in raw mode.
 * `'SIGKILL'` cannot have a listener installed, it will unconditionally terminate Node.js on all platforms.
 * `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised artificially using kill(2), inherently leave the process in a state from which it is not safe to attempt to call JS listeners. Doing so might lead to the process hanging in an endless loop, since listeners attached using `process.on()` are called asynchronously and therefore unable to correct the underlying problem.
+* `0` can be sent to test for the existence of a process, it has no effect if the process exists, but will throw an error if the process does not exist.
 
-Windows does not support sending signals, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]. Sending signal `0` can be used to test for the existence of a process. Sending `SIGINT`, `SIGTERM`, and `SIGKILL` cause the unconditional termination of the target process.
+Windows does not support signals so has no equivalent to termination by signal, but Node.js offers some emulation with [`process.kill()`][], and [`subprocess.kill()`][]:
+* Sending `SIGINT`, `SIGTERM`, and `SIGKILL` will cause the unconditional termination of the target process, and afterwards, subprocess will report that the process was terminated by signal.
+* Sending signal `0` can be used as a platform independent way to test for the existence of a process.
 
 ## `process.abort()`
 <!-- YAML
@@ -604,9 +607,9 @@ console.log(`Current directory: ${process.cwd()}`);
 
 ## `process.debugPort`<!-- YAML
 added: v0.7.2
--->* {liczba}
+-->* {number}
 
-The port used by Node.js's debugger when enabled.
+The port used by the Node.js debugger when enabled.
 
 ```js
 process.debugPort = 5858;
@@ -1463,7 +1466,7 @@ console.log(process.resourceUsage());
 
 ## `process.send(message[, sendHandle[, options]][, callback])`<!-- YAML
 added: v0.5.9
--->* `wiadomość` {Object}
+-->* `message` {Object}
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object} used to parameterize the sending of certain types of handles.`options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
@@ -1588,7 +1591,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 ### `process.stderr.fd`
 
-* {liczba}
+* {number}
 
 This property refers to the value of underlying file descriptor of `process.stderr`. The value is fixed at `2`. In [`Worker`][] threads, this field does not exist.
 
@@ -1620,7 +1623,7 @@ In "old" streams mode the `stdin` stream is paused by default, so one must call 
 
 ### `process.stdin.fd`
 
-* {liczba}
+* {number}
 
 This property refers to the value of underlying file descriptor of `process.stdin`. The value is fixed at `0`. In [`Worker`][] threads, this field does not exist.
 
@@ -1640,7 +1643,7 @@ process.stdin.pipe(process.stdout);
 
 ### `process.stdout.fd`
 
-* {liczba}
+* {number}
 
 This property refers to the value of underlying file descriptor of `process.stdout`. The value is fixed at `1`. In [`Worker`][] threads, this field does not exist.
 
@@ -1662,7 +1665,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Na przykład:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1790,14 +1793,14 @@ Node.js will normally exit with a `0` status code when no more async operations 
 
 * `1` **Uncaught Fatal Exception**: There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2`: Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
-* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `3` **Internal JavaScript Parse Error**: The JavaScript source code internal in the Node.js bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `4` **Internal JavaScript Evaluation Failure**: The JavaScript source code internal in the Node.js bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `5` **Fatal Error**: There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
 ERROR`.
 * `6` **Non-function Internal Exception Handler**: There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
 * `7` **Internal Exception Handler Run-Time Failure**: There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if an [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
 * `8`: Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
 * `9` **Invalid Argument**: Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `10` **Internal JavaScript Run-Time Failure**: The JavaScript source code internal in the Node.js bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `12` **Invalid Debug Argument**: The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
 * `>128` **Signal Exits**: If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code. For example, signal `SIGABRT` has value `6`, so the expected exit code will be `128` + `6`, or `134`.
