@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -204,7 +204,7 @@ The `handle` object can be either a server, a socket (anything with an underlyin
 added: v0.11.14
 -->
 
-* `옵션` {Object} Required. Supports the following properties: 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {number}
   * `host` {string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
@@ -316,7 +316,7 @@ added: v0.3.4
 
 Creates a new socket object.
 
-* `옵션` {Object} Available options are: 
+* `options` {Object} Available options are: 
   * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
@@ -833,7 +833,7 @@ added: v0.5.0
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
-* `옵션` {Object} 
+* `options` {Object} 
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
   * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
