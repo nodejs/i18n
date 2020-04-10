@@ -1,9 +1,9 @@
-# ECMAScript मॉड्यूल
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ## Introduction
 
