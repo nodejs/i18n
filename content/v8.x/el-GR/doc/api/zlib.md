@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate. It can be accessed using:
 
 ```js
 const zlib = require('zlib');
