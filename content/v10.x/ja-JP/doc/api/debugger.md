@@ -1,8 +1,8 @@
-# デバッガ
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
