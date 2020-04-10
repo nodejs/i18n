@@ -1,22 +1,22 @@
-# Асинхронные хуки
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. Это осуществляется с помощью:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
 ```
 
-## Терминология
+## Terminology
 
 An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. A resource can also be closed before the callback is called. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
 ## Public API
 
-### Обзор
+### Overview
 
 Following is a simple overview of the public API.
 
@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `функции обратного вызова` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Обработка ошибки
+##### Error Handling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -345,7 +345,7 @@ Note that `resolve()` does not do any observable synchronous work.
 
 *Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
 
-Например:
+For example:
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
@@ -375,7 +375,7 @@ changes:
 
 * Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
 
-Например:
+For example:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -386,7 +386,7 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). Например:
+The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). For example:
 
 ```js
 const server = net.createServer(function onConnection(conn) {
@@ -408,7 +408,7 @@ Note that promise contexts may not get precise executionAsyncIds by default. See
 
 * Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
 
-Например:
+For example:
 
 ```js
 const server = net.createServer((conn) => {
@@ -444,7 +444,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the triggerAsyncId value is 0, which means that we are missing context about the resource that caused (triggered) the `then` callback to be executed.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Пример:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
 ```js
 const ah = require('async_hooks');
@@ -511,11 +511,11 @@ asyncResource.emitAfter();
 #### `AsyncResource(type[, options])`
 
 * `type` {string} The type of async event.
-* `опции` {Object} 
+* `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **По умолчанию:** `false`.
+  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Пример употребления:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -557,7 +557,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Возвращает: {undefined}
+* Returns: {undefined}
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
@@ -571,7 +571,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Возвращает: {undefined}
+* Returns: {undefined}
 
 Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
 
@@ -581,7 +581,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### `asyncResource.emitDestroy()`
 
-* Возвращает: {undefined}
+* Returns: {undefined}
 
 Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
