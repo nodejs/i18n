@@ -1,8 +1,8 @@
-# الصوان
+# Buffer
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -12,7 +12,7 @@ Instances of the `Buffer` class are similar to arrays of integers but correspond
 
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
-أمثلة:
+Examples:
 
 ```js
 // Creates a zero-filled Buffer of length 10.
@@ -391,7 +391,7 @@ changes:
 
 Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = new Buffer('this is a tést');
@@ -750,7 +750,7 @@ added: v5.10.0
 
 Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from('this is a tést');
@@ -899,7 +899,7 @@ Compares `buf` with `target` and returns a number indicating whether `buf` comes
 * `1` is returned if `target` should come *before* `buf` when sorted.
 * `-1` is returned if `target` should come *after* `buf` when sorted.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -928,7 +928,7 @@ console.log([buf1, buf2, buf3].sort(Buffer.compare));
 
 The optional `targetStart`, `targetEnd`, `sourceStart`, and `sourceEnd` arguments can be used to limit the comparison to specific ranges within `target` and `buf` respectively.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
@@ -1036,7 +1036,7 @@ changes:
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from('ABC');
@@ -1116,7 +1116,7 @@ added: v5.3.0
 
 Equivalent to [`buf.indexOf() !== -1`][`buf.indexOf()`].
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1170,7 +1170,7 @@ If `value` is:
 * a `Buffer` or [`Uint8Array`], `value` will be used in its entirety. To compare a partial `Buffer`, use [`buf.slice()`].
 * a number, `value` will be interpreted as an unsigned 8-bit integer value between `0` and `255`.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from('this is a buffer');
@@ -1270,7 +1270,7 @@ changes:
 
 Identical to [`buf.indexOf()`], except the last occurrence of `value` is found rather than the first occurrence.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from('this buffer is a buffer');
@@ -1357,7 +1357,7 @@ console.log(buf.length);
 
 While the `length` property is not immutable, changing the value of `length` can result in undefined and inconsistent behavior. Applications that wish to modify the length of a `Buffer` should therefore treat `length` as read-only and use [`buf.slice()`] to create a new `Buffer`.
 
-أمثلة:
+Examples:
 
 ```js
 let buf = Buffer.allocUnsafe(10);
@@ -1399,7 +1399,7 @@ Reads a 64-bit double from `buf` at the specified `offset` with specified endian
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -1434,7 +1434,7 @@ Reads a 32-bit float from `buf` at the specified `offset` with specified endian 
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([1, 2, 3, 4]);
@@ -1469,7 +1469,7 @@ Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but 
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([-1, 5]);
@@ -1502,7 +1502,7 @@ Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but 
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0, 5]);
@@ -1535,7 +1535,7 @@ Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but 
 
 Integers read from a `Buffer` are interpreted as two's complement signed values.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0, 0, 0, 5]);
@@ -1567,7 +1567,7 @@ Reads `byteLength` number of bytes from `buf` at the specified `offset` and inte
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1596,7 +1596,7 @@ Reads an unsigned 8-bit integer from `buf` at the specified `offset`.
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([1, -2]);
@@ -1627,7 +1627,7 @@ Reads an unsigned 16-bit integer from `buf` at the specified `offset` with speci
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56]);
@@ -1664,7 +1664,7 @@ Reads an unsigned 32-bit integer from `buf` at the specified `offset` with speci
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
@@ -1696,7 +1696,7 @@ Reads `byteLength` number of bytes from `buf` at the specified `offset` and inte
 
 Setting `noAssert` to `true` allows `offset` to be beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
@@ -1760,7 +1760,7 @@ console.log(buf2.toString('ascii', 0, buf2.length));
 
 Specifying negative indexes causes the slice to be generated relative to the end of `buf` rather than the beginning.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from('buffer');
@@ -1788,7 +1788,7 @@ added: v5.10.0
 
 Interprets `buf` as an array of unsigned 16-bit integers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 2.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1817,7 +1817,7 @@ added: v5.10.0
 
 Interprets `buf` as an array of unsigned 32-bit integers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 4.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1846,7 +1846,7 @@ added: v6.3.0
 
 Interprets `buf` as an array of 64-bit numbers and swaps the byte order *in-place*. Throws a `RangeError` if [`buf.length`] is not a multiple of 8.
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
@@ -1911,7 +1911,7 @@ Decodes `buf` to a string according to the specified character encoding in `enco
 
 The maximum length of a string instance (in UTF-16 code units) is available as [`buffer.constants.MAX_STRING_LENGTH`][].
 
-أمثلة:
+Examples:
 
 ```js
 const buf1 = Buffer.allocUnsafe(26);
@@ -1949,7 +1949,7 @@ added: v1.1.0
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.from('buffer');
@@ -2019,7 +2019,7 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -2052,7 +2052,7 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2085,7 +2085,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(2);
@@ -2116,7 +2116,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2147,7 +2147,7 @@ Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond
 
 `value` is interpreted and written as a two's complement signed integer.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(8);
@@ -2177,7 +2177,7 @@ Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Support
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(6);
@@ -2208,7 +2208,7 @@ Writes `value` to `buf` at the specified `offset`. `value` *should* be a valid u
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2239,7 +2239,7 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2274,7 +2274,7 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(4);
@@ -2308,7 +2308,7 @@ Writes `byteLength` bytes of `value` to `buf` at the specified `offset`. Support
 
 Setting `noAssert` to `true` allows the encoded form of `value` to extend beyond the end of `buf`, but the resulting behavior is undefined.
 
-أمثلة:
+Examples:
 
 ```js
 const buf = Buffer.allocUnsafe(6);
