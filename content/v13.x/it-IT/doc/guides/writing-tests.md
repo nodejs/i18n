@@ -17,7 +17,7 @@ Add tests when:
 
 ## Test directory structure
 
-Vedi la [panoramica della directory structure](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) per la descrizione dei test & delle posizioni esistenti. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. Ad esempio, cerca `test-streams` durante la scrittura di un test per `lib/streams.js`.
+See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
 
 ## Test structure
 
@@ -28,8 +28,8 @@ Let's analyze this basic test from the Node.js test suite:
 const common = require('../common');                                   // 2
 const fixtures = require('../common/fixtures');                        // 3
 
-// Questo test assicura che l'http-parser possa gestire i caratteri UTF-8 // 5 
-// nell'http header.                                                 // 6
+// This test ensures that the http-parser can handle UTF-8 characters  // 5
+// in the http header.                                                 // 6
 
 const assert = require('assert');                                      // 8
 const http = require('http');                                          // 9
@@ -49,7 +49,7 @@ server.listen(0, () => {                                               // 14
 // ...                                                                 // 23
 ```
 
-### **Righe 1-3**
+### **Lines 1-3**
 
 ```javascript
 'use strict';
@@ -67,7 +67,7 @@ Even if a test uses no functions or other properties exported by `common`, the t
 require('../common');
 ```
 
-### **Righe 5-6**
+### **Lines 5-6**
 
 ```javascript
 // This test ensures that the http-parser can handle UTF-8 characters
@@ -76,7 +76,7 @@ require('../common');
 
 A test should start with a comment containing a brief description of what it is designed to test.
 
-### **Righe 8-9**
+### **Lines 8-9**
 
 ```javascript
 const assert = require('assert');
@@ -89,7 +89,7 @@ Most tests use the `assert` module to confirm expectations of the test.
 
 The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man7/ascii.7.html) order (digits, upper case, `_`, lower case).
 
-### **Righe 11-22**
+### **Lines 11-22**
 
 This is the body of the test. This test is simple, it just tests that an HTTP server accepts `non-ASCII` characters in the headers of an incoming request. Interesting things to notice:
 
@@ -268,11 +268,11 @@ For example, a test for the `beforeExit` event on the `process` object might be 
 
 See [`test/wpt`](../../test/wpt/README.md) for more information.
 
-## Test dell'unità C++
+## C++ Unit test
 
-Il codice C++ può essere testato utilizzando [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
+C++ code can be tested using [Google Test](https://github.com/google/googletest). Most features in Node.js can be tested using the methods described previously in this document. But there are cases where these might not be enough, for example writing code for Node.js that will only be called when Node.js is embedded.
 
-### Aggiungere un nuovo test
+### Adding a new test
 
 The unit test should be placed in `test/cctest` and be named with the prefix `test` followed by the name of unit being tested. For example, the code below would be placed in `test/cctest/test_env.cc`:
 
@@ -304,7 +304,7 @@ static void at_exit_callback(void* arg) {
 }
 ```
 
-Successivamente aggiungi il test alle `sources` nel `cctest` target in node.gyp:
+Next add the test to the `sources` in the `cctest` target in node.gyp:
 
 ```console
 'sources': [
@@ -315,7 +315,7 @@ Successivamente aggiungi il test alle `sources` nel `cctest` target in node.gyp:
 
 The only sources that should be included in the cctest target are actual test or helper source files. There might be a need to include specific object files that are compiled by the `node` target and this can be done by adding them to the `libraries` section in the cctest target.
 
-Il test può essere eseguito tramite l'eseguzione del `cctest` target:
+The test can be executed by running the `cctest` target:
 
 ```console
 $ make cctest
@@ -333,10 +333,10 @@ $ make cctest GTEST_FILTER=EnvironmentTest.AtExitWithArgument
 $ out/Release/cctest --gtest_filter=EnvironmentTest.AtExit*
 ```
 
-### Test fixture di Node.js
+### Node.js test fixture
 There is a [test fixture](https://github.com/google/googletest/blob/master/googletest/docs/Primer.md#test-fixtures-using-the-same-data-configuration-for-multiple-tests) named `node_test_fixture.h` which can be included by unit tests. The fixture takes care of setting up the Node.js environment and tearing it down after the tests have finished.
 
-Contiene anche un helper per creare argomenti da passare all'interno di Node.js. It will depend on what is being tested if this is required or not.
+It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
 
 ### Test Coverage
 
