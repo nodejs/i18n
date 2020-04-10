@@ -1,8 +1,8 @@
-# Асинхронные хуки
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
@@ -10,7 +10,7 @@ The `async_hooks` module provides an API to track asynchronous resources. It can
 const async_hooks = require('async_hooks');
 ```
 
-## Терминология
+## Terminology
 
 An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `'connection'` event in `net.createServer()`, or just a single time like in `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
@@ -18,7 +18,7 @@ If [`Worker`][]s are used, each thread has an independent `async_hooks` interfac
 
 ## Public API
 
-### Обзор
+### Overview
 
 Following is a simple overview of the public API.
 
@@ -115,7 +115,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Обработка ошибки
+##### Error Handling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -552,7 +552,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Пример употребления:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -797,7 +797,7 @@ added: v13.11.0
 
 Calling `asyncLocalStorage.enterWith(store)` will transition into the context for the remainder of the current synchronous execution and will persist through any following asynchronous calls.
 
-Пример:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -840,7 +840,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Пример:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -867,7 +867,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Пример:
+Example:
 
 ```js
 asyncLocalStorage.run('store value', () => {
@@ -894,7 +894,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `runSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be exited.
 
-Пример:
+Example:
 
 ```js
 const store = { id: 2 };
@@ -923,7 +923,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `exitSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be re-entered.
 
-Пример:
+Example:
 
 ```js
 // Within a call to run or runSyncAndReturn
