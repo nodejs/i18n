@@ -97,7 +97,7 @@ port2.postMessage({ foo: 'bar' });
 added: v10.5.0
 -->
 
-* Estendendo: {EventEmitter}
+* Extends: {EventEmitter}
 
 Instances of the `worker.MessagePort` class represent one end of an asynchronous, two-way communications channel. It can be used to transfer structured data, memory regions and other `MessagePort`s between different [`Worker`][]s.
 
@@ -180,7 +180,7 @@ If listeners are attached or removed using `.on('message')`, the port will be `r
 added: v10.5.0
 -->
 
-* Estendendo: {EventEmitter}
+* Extends: {EventEmitter}
 
 The `Worker` class represents an independent JavaScript execution thread. Most Node.js APIs are available inside of it.
 
@@ -283,7 +283,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Vedi [`port.postMessage()`][] per maggiori dettagli.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### worker.ref()
 <!-- YAML
