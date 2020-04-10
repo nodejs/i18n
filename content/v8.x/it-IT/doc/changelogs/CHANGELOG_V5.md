@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Altre versioni 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -42,7 +42,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
@@ -94,14 +94,14 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2016-04-20, Version 5.11.0 (Stable), @thealphanerd
 
-## Modifiche di rilievo
+## Notable Changes
 
 * **Buffer**: 
   * `Buffer.prototype.compare` can now compare sub-ranges of two Buffers. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**: 
   * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
   * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
-* **rete**: 
+* **net**: 
   * adds support for passing DNS lookup hints to `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * **node**: 
   * Make the builtin libraries available for the `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
@@ -920,7 +920,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2016-01-20, Version 5.5.0 (Stable), @evanlucas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **events**: make sure console functions exist (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: add autoClose option to fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
@@ -1006,7 +1006,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2016-01-12, Version 5.4.1 (Stable), @TheAlphaNerd
 
-### Modifiche di rilievo
+### Notable Changes
 
 * Minor performance improvements: 
   * **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
@@ -1578,7 +1578,7 @@ This is an important security release. All Node.js users should consult the secu
 
 ## 2015-10-29, Version 5.0.0 (Stable), @rvagg
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: *(Breaking)* Removed both `'raw'` and `'raws'` encoding types from `Buffer`, these have been deprecated for a long time (Sakthipriyan Vairamani) [#2859](https://github.com/nodejs/node/pull/2859).
 * **console**: *(Breaking)* Values reported by `console.time()` now have 3 decimals of accuracy added (Michaël Zasso) [#3166](https://github.com/nodejs/node/pull/3166).
@@ -1590,7 +1590,7 @@ This is an important security release. All Node.js users should consult the secu
   * Fixed a bug where pipelined http requests would stall (Fedor Indutny) [#3342](https://github.com/nodejs/node/pull/3342).
   * *(Breaking)* When parsing HTTP, don't add duplicates of the following headers: `Retry-After`, `ETag`, `Last-Modified`, `Server`, `Age`, `Expires`. This is in addition to the following headers which already block duplicates: `Content-Type`, `Content-Length`, `User-Agent`, `Referer`, `Host`, `Authorization`, `Proxy-Authorization`, `If-Modified-Since`, `If-Unmodified-Since`, `From`, `Location`, `Max-Forwards` (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
   * *(Breaking)* The `callback` argument to `OutgoingMessage#setTimeout()` must be a function or a `TypeError` is thrown (James M Snell) [#3090](https://github.com/nodejs/node/pull/3090).
-  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ``/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/`` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
+  * *(Breaking)* HTTP methods and header names must now conform to the RFC 2616 "token" rule, a list of allowed characters that excludes control characters and a number of *separator* characters. Specifically, methods and header names must now match ```/^[a-zA-Z0-9_!#$%&'*+.^`|~-]+$/``` or a `TypeError` will be thrown (James M Snell) [#2526](https://github.com/nodejs/node/pull/2526).
 * **node**: 
   * *(Breaking)* Deprecated the `_linklist` module (Rich Trott) [#3078](https://github.com/nodejs/node/pull/3078).
   * *(Breaking)* Removed `require.paths` and `require.registerExtension()`, both had been previously set to throw `Error` when accessed (Sakthipriyan Vairamani) [#2922](https://github.com/nodejs/node/pull/2922).
