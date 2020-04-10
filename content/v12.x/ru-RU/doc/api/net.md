@@ -1,13 +1,13 @@
-# Сеть
+# Net
 
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Это осуществляется с помощью:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -45,7 +45,7 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
@@ -54,7 +54,7 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 added: v0.5.0
 -->
 
-Генерируется при завершении работы сервера. If connections exist, this event is not emitted until all connections are ended.
+Emitted when the server closes. If connections exist, this event is not emitted until all connections are ended.
 
 ### Event: `'connection'`
 <!-- YAML
@@ -72,7 +72,7 @@ added: v0.1.90
 
 * {Error}
 
-Создается при возникновении ошибки. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
 
 ### Event: `'listening'`
 <!-- YAML
@@ -86,7 +86,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Возвращает: {Object|string}
+* Returns: {Object|string}
 
 Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -114,7 +114,7 @@ added: v0.1.90
 -->
 
 * `callback` {Function} Called when the server is closed.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -124,7 +124,7 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Стабильность: 0 - устарело: вместо этого используйте [`server.getConnections()`] [].
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 * {integer|null}
 
@@ -138,7 +138,7 @@ added: v0.9.7
 -->
 
 * `callback` {Function}
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
 
@@ -157,7 +157,7 @@ Possible signatures:
   <code>server.listen([port[, host[, backlog]]][, callback])</code></a>
 for TCP servers
 
-Это асинхронная функция. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+This function is asynchronous. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
@@ -187,13 +187,13 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function}
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a Unix domain socket, or a Windows named pipe.
 
 The `handle` object can be either a server, a socket (anything with an underlying `_handle` member), or an object with an `fd` member that is a valid file descriptor.
 
-Прослушивание на дескрипторе файла не поддерживается в Windows.
+Listening on a file descriptor is not supported on Windows.
 
 #### `server.listen(options[, callback])`
 <!-- YAML
@@ -204,7 +204,7 @@ changes:
     description: The `ipv6Only` option is supported.
 -->
 
-* `options` {Object} Required. Поддерживает следующие свойства:
+* `options` {Object} Required. Supports the following properties:
   * `port` {number}
   * `host` {string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
@@ -215,7 +215,7 @@ changes:
   * `ipv6Only` {boolean} For TCP servers, setting `ipv6Only` to `true` will disable dual-stack support, i.e., binding to host `::` won't make `0.0.0.0` be bound. **Default:** `false`.
 * `callback` {Function}
 functions.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 If `port` is specified, it behaves the same as
 <a href="#net_server_listen_port_host_backlog_callback">
@@ -241,7 +241,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function}.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -254,7 +254,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function}.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -287,7 +287,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
@@ -296,7 +296,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
@@ -323,7 +323,7 @@ added: v0.3.4
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Creates a new socket object.
 
@@ -381,7 +381,7 @@ added: v0.1.90
 
 * {Error}
 
-Создается при возникновении ошибки. The `'close'` event will be called directly following this event.
+Emitted when an error occurs. The `'close'` event will be called directly following this event.
 
 ### Event: `'lookup'`
 <!-- YAML
@@ -422,7 +422,7 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Возвращает: {Object}
+* Returns: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -468,7 +468,7 @@ Possible signatures:
 * [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] for TCP connections.
 * Returns: {net.Socket} The socket itself.
 
-Это асинхронная функция. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
 #### `socket.connect(options[, connectListener])`
 <!-- YAML
@@ -569,7 +569,7 @@ added: v0.1.90
 -->
 
 * `exception` {Object}
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -743,11 +743,11 @@ added: v0.1.90
 * `data` {string|Buffer|Uint8Array}
 * `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
-Возвращает `true`, если все данные были успешно сброшены в буфер ядра. Возвращает `false`, если данные полностью или частично были поставлены в очередь в памяти пользователя. [`'drain'`][] will be emitted when the buffer is again free.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
 The optional `callback` parameter will be executed when the data is finally written out, which may not be immediately.
 
@@ -770,7 +770,7 @@ added: v0.7.0
 
 * `options` {Object}
 * `connectListener` {Function}
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -781,7 +781,7 @@ added: v0.1.90
 
 * `path` {string}
 * `connectListener` {Function}
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
@@ -793,7 +793,7 @@ added: v0.1.90
 * `port` {number}
 * `host` {string}
 * `connectListener` {Function}
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
@@ -886,7 +886,7 @@ added: v0.5.0
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
   * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
@@ -943,7 +943,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Возвращает: {integer}
+* Returns: {integer}
 
 Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
 
@@ -953,7 +953,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 
@@ -963,6 +963,6 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
