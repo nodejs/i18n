@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -204,7 +204,7 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 * `options` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* Gibt zurück: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -230,7 +230,7 @@ Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma26
 ### module.link(linker)
 
 * `linker` {Function}
-* Gibt zurück: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
