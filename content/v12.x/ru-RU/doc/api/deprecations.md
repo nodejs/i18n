@@ -1,4 +1,4 @@
-# Устаревшие API
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
@@ -663,7 +663,7 @@ changes:
 
 Type: Documentation-only
 
-В настоящее время метод [`ecdh.setPublicKey()`][] устарел, поскольку его включение в API является бесполезным.
+The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
 
 <a id="DEP0032"></a>
 
