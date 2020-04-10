@@ -1,12 +1,12 @@
-# Socket UDP / Datagram
+# UDP / Datagram Sockets
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
 <!-- name=dgram -->
 
-Il modulo `dgram` fornisce un'implementazione dei socket UDP Datagram.
+The `dgram` module provides an implementation of UDP Datagram sockets.
 
 ```js
 const dgram = require('dgram');
@@ -38,7 +38,7 @@ added: v0.1.99
 
 The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagram functionality.
 
-Le nuove istanze di `dgram.Socket` sono create utilizzando [`dgram.createSocket()`][]. La parola chiave `new` non dev'essere utilizzata per creare istanze `dgram.Socket`.
+New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
 
 ### Event: 'close'
 
@@ -46,7 +46,7 @@ Le nuove istanze di `dgram.Socket` sono create utilizzando [`dgram.createSocket(
 added: v0.1.99
 -->
 
-L'evento `'close'` viene emesso dopo che un socket è stato chiuso con [`close()`][]. Una volta attivato, non verrà emesso nessun nuovo evento `'message'` su questo socket.
+The `'close'` event is emitted after a socket is closed with [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
 
 ### Event: 'error'
 
@@ -56,7 +56,7 @@ added: v0.1.99
 
 * `exception` {Error}
 
-L'evento `'error'` viene emesso ogni volta che si verifica un errore. The event handler function is passed a single Error object.
+The `'error'` event is emitted whenever any error occurs. The event handler function is passed a single Error object.
 
 ### Event: 'listening'
 
@@ -64,22 +64,22 @@ L'evento `'error'` viene emesso ogni volta che si verifica un errore. The event 
 added: v0.1.99
 -->
 
-The `'listening'` event is emitted whenever a socket begins listening for datagram messages. Ciò si verifica non appena vengono creati i socket UDP.
+The `'listening'` event is emitted whenever a socket begins listening for datagram messages. This occurs as soon as UDP sockets are created.
 
-### Evento: 'message'
+### Event: 'message'
 
 <!-- YAML
 added: v0.1.99
 -->
 
-L'evento `'message'` viene emesso quando un nuovo datagram è disponibile su un socket. La funzione dell'event handler riceve due argomenti: `msg` e `rinfo`.
+The `'message'` event is emitted when a new datagram is available on a socket. The event handler function is passed two arguments: `msg` and `rinfo`.
 
-* `msg` {Buffer} Il messaggio.
-* `rinfo` {Object} Informazioni sull'indirizzo remoto. 
-  * `address` {string} L'indirizzo del mittente.
-  * `family` {string} La famiglia di indirizzi (`'IPv4'` o `'IPv6'`).
-  * `port` {number} La porta del mittente.
-  * `size` {number} La dimensione del messaggio.
+* `msg` {Buffer} The message.
+* `rinfo` {Object} Remote address information. 
+  * `address` {string} The sender address.
+  * `family` {string} The address family (`'IPv4'` or `'IPv6'`).
+  * `port` {number} The sender port.
+  * `size` {number} The message size.
 
 ### socket.addMembership(multicastAddress[, multicastInterface])
 
@@ -114,7 +114,7 @@ if (cluster.isMaster) {
 added: v0.1.99
 -->
 
-Restituisce un object contenente le informazioni sull'indirizzo per un socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
+Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
 
 ### socket.bind(\[port\]\[, address\][, callback])
 
@@ -124,7 +124,7 @@ added: v0.1.99
 
 * `port` {number} Integer.
 * `address` {string}
-* `callback` {Function} senza parametri. Chiamato quando il binding (collegamento) è completo.
+* `callback` {Function} with no parameters. Called when binding is complete.
 
 For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
@@ -132,9 +132,9 @@ Note that specifying both a `'listening'` event listener and passing a `callback
 
 A bound datagram socket keeps the Node.js process running to receive datagram messages.
 
-Se il binding fallisce, viene generato un evento `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
-Esempio di un UDP server listening sulla porta 41234:
+Example of a UDP server listening on port 41234:
 
 ```js
 const dgram = require('dgram');
@@ -164,7 +164,7 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `options` {Object} Obbligatorio. Supporta le seguenti proprietà: 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
@@ -178,9 +178,9 @@ The `options` object may contain an additional `exclusive` property that is use 
 
 A bound datagram socket keeps the Node.js process running to receive datagram messages.
 
-Se il binding fallisce, viene generato un evento `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
+If binding fails, an `'error'` event is generated. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
-Di seguito viene mostrato un esempio di socket che esegue il listening su una porta esclusiva.
+An example socket listening on an exclusive port is shown below.
 
 ```js
 socket.bind({
@@ -196,7 +196,7 @@ socket.bind({
 added: v0.1.99
 -->
 
-Chiude il socket sottostante e interrompe il listening dei dati su di esso. If a callback is provided, it is added as a listener for the [`'close'`][] event.
+Close the underlying socket and stop listening for data on it. If a callback is provided, it is added as a listener for the [`'close'`][] event.
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
 
@@ -217,7 +217,7 @@ If `multicastInterface` is not specified, the operating system will attempt to d
 added: v8.7.0
 -->
 
-* Restituisce: {number} il socket `SO_RCVBUF` riceve la dimensione del buffer in byte.
+* Returns: {number} the `SO_RCVBUF` socket receive buffer size in bytes.
 
 ### socket.getSendBufferSize()
 
@@ -225,7 +225,7 @@ added: v8.7.0
 added: v8.7.0
 -->
 
-* Restituisce: {number} il socket `SO_SNDBUF` invia la dimensione del buffer in byte.
+* Returns: {number} the `SO_SNDBUF` socket send buffer size in bytes.
 
 ### socket.ref()
 
@@ -235,7 +235,7 @@ added: v0.9.1
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
 
-Chiamare `socket.ref()` più volte non avrà nessun effetto aggiuntivo.
+Calling `socket.ref()` multiples times will have no additional effect.
 
 The `socket.ref()` method returns a reference to the socket so calls can be chained.
 
@@ -261,18 +261,18 @@ changes:
                  and `length` parameters are optional now.
 -->
 
-* `msg` {Buffer|Uint8Array|string|Array} Messaggio da inviare.
+* `msg` {Buffer|Uint8Array|string|Array} Message to be sent.
 * `offset` {number} Integer. Offset in the buffer where the message starts.
 * `length` {number} Integer. Number of bytes in the message.
 * `port` {number} Integer. Destination port.
-* `address` {string} Hostname di destinazione o indirizzo IP.
-* `callback` {Function} Chiamato quando il messaggio è stato inviato.
+* `address` {string} Destination hostname or IP address.
+* `callback` {Function} Called when the message has been sent.
 
-Trasmette un datagram sul socket. The destination `port` and `address` must be specified.
+Broadcasts a datagram on the socket. The destination `port` and `address` must be specified.
 
-L'argomento `msg` contiene il messaggio da inviare. A seconda del tipo, può essere applicato un comportamento diverso. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. Se `msg` è un array, `offset` e `length` non devono essere specificati.
+The `msg` argument contains the message to be sent. Depending on its type, different behavior can apply. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
-L'argomento `address` è una stringa. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
+The `address` argument is a string. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
 
 If the socket has not been previously bound with a call to `bind`, the socket is assigned a random port number and is bound to the "all interfaces" address (`'0.0.0.0'` for `udp4` sockets, `'::0'` for `udp6` sockets.)
 
@@ -280,9 +280,9 @@ An optional `callback` function may be specified to as a way of reporting DNS er
 
 The only way to know for sure that the datagram has been sent is by using a `callback`. If an error occurs and a `callback` is given, the error will be passed as the first argument to the `callback`. If a `callback` is not given, the error is emitted as an `'error'` event on the `socket` object.
 
-Offset e length sono facoltativi, ma *devono* essere impostati se vengono utilizzati entrambi. Sono supportati solo quando il primo argomento è un `Buffer` o un `Uint8Array`.
+Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
 
-Esempio d'invio di un pacchetto UDP a una porta su `localhost`;
+Example of sending a UDP packet to a port on `localhost`;
 
 ```js
 const dgram = require('dgram');
@@ -307,7 +307,7 @@ client.send([buf1, buf2], 41234, (err) => {
 
 Sending multiple buffers might be faster or slower depending on the application and operating system. It is important to run benchmarks to determine the optimal strategy on a case-by-case basis. Generally speaking, however, sending multiple buffers is faster.
 
-**Una Nota sulla dimensione del UDP Datagram**
+**A Note about UDP datagram size**
 
 The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmission Unit*) and on the `Payload Length` field size.
 
@@ -327,7 +327,7 @@ added: v0.6.9
 
 * `flag` {boolean}
 
-Imposta o cancella l'opzione socket `SO_BROADCAST`. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
+Sets or clears the `SO_BROADCAST` socket option. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
 
 ### socket.setMulticastInterface(multicastInterface)
 
@@ -345,9 +345,9 @@ For IPv4 sockets, this should be the IP configured for the desired physical inte
 
 For IPv6 sockets, `multicastInterface` should include a scope to indicate the interface as in the examples that follow. In IPv6, individual `send` calls can also use explicit scope in addresses, so only packets sent to a multicast address without specifying an explicit scope are affected by the most recent successful use of this call.
 
-#### Esempi: Interfaccia Multicast In Uscita IPv6
+#### Examples: IPv6 Outgoing Multicast Interface
 
-Sulla maggior parte dei sistemi, in cui il formato dello scope utilizza il nome dell'interfaccia:
+On most systems, where scope format uses the interface name:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -357,7 +357,7 @@ socket.bind(1234, () => {
 });
 ```
 
-Su Windows, in cui il formato dello scope utilizza un numero dell'interfaccia:
+On Windows, where scope format uses an interface number:
 
 ```js
 const socket = dgram.createSocket('udp6');
@@ -367,9 +367,9 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Esempio: Interfaccia Multicast In Uscita IPv4
+#### Example: IPv4 Outgoing Multicast Interface
 
-Tutti i sistemi utilizzano un IP dell'host sull'interfaccia fisica desiderata:
+All systems use an IP of the host on the desired physical interface:
 
 ```js
 const socket = dgram.createSocket('udp4');
@@ -379,7 +379,7 @@ socket.bind(1234, () => {
 });
 ```
 
-#### Risultati della Chiamata
+#### Call Results
 
 A call on a socket that is not ready to send or no longer open may throw a *Not running* [`Error`][].
 
@@ -399,7 +399,7 @@ added: v0.3.8
 
 * `flag` {boolean}
 
-Imposta o cancella l'opzione socket `IP_MULTICAST_LOOP`. When set to `true`, multicast packets will also be received on the local interface.
+Sets or clears the `IP_MULTICAST_LOOP` socket option. When set to `true`, multicast packets will also be received on the local interface.
 
 ### socket.setMulticastTTL(ttl)
 
@@ -409,9 +409,9 @@ added: v0.3.8
 
 * `ttl` {number} Integer.
 
-Imposta l'opzione socket `IP_MULTICAST_TTL`. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. Se il TTL viene decrementato fino a 0 da un router, non verrà inoltrato.
+Sets the `IP_MULTICAST_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
 
-The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. L'impostazione predefinita sulla maggior parte dei sistemi è `1` ma può variare.
+The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. The default on most systems is `1` but can vary.
 
 ### socket.setRecvBufferSize(size)
 
@@ -421,7 +421,7 @@ added: v8.7.0
 
 * `size` {number} Integer
 
-Imposta l'opzione socket `SO_RCVBUF`. Sets the maximum socket receive buffer in bytes.
+Sets the `SO_RCVBUF` socket option. Sets the maximum socket receive buffer in bytes.
 
 ### socket.setSendBufferSize(size)
 
@@ -431,7 +431,7 @@ added: v8.7.0
 
 * `size` {number} Integer
 
-Imposta l'opzione socket `SO_SNDBUF`. Sets the maximum socket send buffer in bytes.
+Sets the `SO_SNDBUF` socket option. Sets the maximum socket send buffer in bytes.
 
 ### socket.setTTL(ttl)
 
@@ -441,9 +441,9 @@ added: v0.1.101
 
 * `ttl` {number} Integer.
 
-Imposta l'opzione socket `IP_TTL`. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. Se il TTL viene decrementato fino a 0 da un router, non verrà inoltrato. La modifica dei valori TTL viene in genere eseguita per sonde di rete o multicasting.
+Sets the `IP_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
 
-L'argomento passato a `socket.setTTL()` è un numero di hop compreso tra 1 e 255. L'impostazione predefinita sulla maggior parte dei sistemi è 64 ma può variare.
+The argument to `socket.setTTL()` is a number of hops between 1 and 255. The default on most systems is 64 but can vary.
 
 ### socket.unref()
 
@@ -453,11 +453,11 @@ added: v0.9.1
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
 
-Chiamare `socket.unref()` più volte non avrà nessun effetto aggiuntivo.
+Calling `socket.unref()` multiple times will have no addition effect.
 
 The `socket.unref()` method returns a reference to the socket so calls can be chained.
 
-### Passaggio al comportamento asincrono `socket.bind()`
+### Change to asynchronous `socket.bind()` behavior
 
 As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code that assumes synchronous behavior, as in the following example:
 
@@ -476,7 +476,7 @@ s.bind(1234, () => {
 });
 ```
 
-## Funzioni del modulo `dgram`
+## `dgram` module functions
 
 ### dgram.createSocket(options[, callback])
 
@@ -493,16 +493,16 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} Le opzioni disponibili sono: 
-  * `type` {string} La famiglia del socket. Dev'essere `'udp4'` oppure `'udp6'`. Obbligatorio.
+* `options` {Object} Available options are: 
+  * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
   * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
-  * `recvBufferSize` {number} - Imposta il valore socket `SO_RCVBUF`.
-  * `sendBufferSize` {number} - Imposta il valore socket `SO_SNDBUF`.
-  * `lookup` {Function} Funzione lookup (di ricerca) personalizzata. **Default:** [`dns.lookup()`][].
-* `callback` {Function} Allegato come listener per gli eventi `'message'`. Opzionale.
-* Restituisce: {dgram.Socket}
+  * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
+  * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
+  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
+* `callback` {Function} Attached as a listener for `'message'` events. Optional.
+* Returns: {dgram.Socket}
 
-Crea un `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
+Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
 
@@ -511,9 +511,9 @@ added: v0.1.99
 -->
 
 * `type` {string} - Either 'udp4' or 'udp6'.
-* `callback` {Function} - Allegato come listener per gli eventi `'message'`.
-* Restituisce: {dgram.Socket}
+* `callback` {Function} - Attached as a listener to `'message'` events.
+* Returns: {dgram.Socket}
 
-Crea un `dgram.Socket` object del `type` specificato. The `type` argument can be either `udp4` or `udp6`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
+Creates a `dgram.Socket` object of the specified `type`. The `type` argument can be either `udp4` or `udp6`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
 
 Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
