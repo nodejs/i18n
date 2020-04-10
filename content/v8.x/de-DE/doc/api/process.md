@@ -1,4 +1,4 @@
-# Prozess
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -901,7 +901,7 @@ if (process.getgid) {
 added: v0.9.4
 -->
 
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -932,7 +932,7 @@ added: v0.7.6
 -->
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -1525,7 +1525,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Gibt zurück: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
