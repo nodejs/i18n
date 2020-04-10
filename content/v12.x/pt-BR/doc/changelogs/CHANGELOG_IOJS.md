@@ -62,7 +62,7 @@
 </tr>
 </table>
 
-* Outras versões
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -73,8 +73,8 @@
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
-  * [0.10x](CHANGELOG_V010.md)
-  * [Arquivo](CHANGELOG_ARCHIVE.md)
+  * [0.10.x](CHANGELOG_V010.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* erros
+* errors
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2563,7 +2563,7 @@ https://iojs.org/api/cluster.html
 * `--debug` has been made cluster-aware.
 * Many bug fixes.
 
-### cripto
+### crypto
 
 https://iojs.org/api/crypto.html
 
@@ -2590,7 +2590,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### eventos
+### events
 
 https://iojs.org/api/events.html
 
@@ -2688,7 +2688,7 @@ In addition to the bulk-write changes, the performance of repeated small writes 
 
 For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
-### temporizadores
+### timers
 
 https://iojs.org/api/timers.html
 
