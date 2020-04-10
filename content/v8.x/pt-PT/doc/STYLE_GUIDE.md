@@ -1,4 +1,4 @@
-# Guia de Estilo
+# Style Guide
 
 * Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
