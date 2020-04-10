@@ -1,4 +1,4 @@
-# 非推奨となったAPI
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 
