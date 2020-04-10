@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -78,7 +78,7 @@ If `name` is not provided, removes all `PerformanceMeasure` objects from the Per
 added: v8.5.0
 -->
 
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -90,7 +90,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -101,7 +101,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
@@ -159,7 +159,7 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Gibt zurück: {number}
+* Returns: {number}
 
 Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
@@ -457,7 +457,7 @@ The `PerformanceObserverEntryList` class is used to provide access to the `Perfo
 added: v8.5.0
 -->
 
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -469,7 +469,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -480,7 +480,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Gibt zurück: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
@@ -536,7 +536,7 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Beispiele
+## Examples
 
 ### Measuring the duration of async operations
 
