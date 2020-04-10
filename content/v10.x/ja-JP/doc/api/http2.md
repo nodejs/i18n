@@ -11,9 +11,9 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. 以下のように利用できます。
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
 ```js
 const http2 = require('http2');
@@ -685,7 +685,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* 戻り値: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -987,7 +987,7 @@ req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 
 <!-- YAML
 added: v8.4.0
---> Provides miscellaneous information about the current state of the
+--> Provides miscellaneous information about the current state of the 
 
 `Http2Stream`.
 
@@ -1480,7 +1480,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 戻り値: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1609,7 +1609,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 戻り値: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1617,14 +1617,16 @@ The given callback is registered as a listener on the `'timeout'` event.
 
 In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
 
-### http2.createServer(options[, onRequestHandler])<!-- YAML
+### http2.createServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1654,7 +1656,7 @@ changes:
   * `Http2ServerRequest` {http2.Http2ServerRequest} Specifies the `Http2ServerRequest` class to use. Useful for extending the original `Http2ServerRequest`. **Default:** `Http2ServerRequest`.
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 戻り値: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1680,7 +1682,9 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.createSecureServer(options[, onRequestHandler])<!-- YAML
+### http2.createSecureServer(options[, onRequestHandler])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -1691,7 +1695,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1716,7 +1720,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 戻り値: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1743,14 +1747,16 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-### http2.connect(authority\[, options\]\[, listener\])<!-- YAML
+### http2.connect(authority\[, options\]\[, listener\])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
-                 10. 
+                 10.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
@@ -1776,7 +1782,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function}
-* 戻り値: {ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1901,7 +1907,7 @@ changes:
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/16676
     description: The `maxHeaderListSize` setting is now strictly enforced.
---> The
+--> The 
 
 `http2.getDefaultSettings()`, `http2.getPackedSettings()`, `http2.createServer()`, `http2.createSecureServer()`, `http2session.settings()`, `http2session.localSettings`, and `http2session.remoteSettings` APIs either return or receive as input an object that defines configuration settings for an `Http2Session` object. These objects are ordinary JavaScript objects containing the following properties.
 
@@ -2297,7 +2303,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 戻り値: {http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
 Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2361,6 +2367,8 @@ Accept: text/plain\r\n
 
 Then `request.url` will be:
 
+<!-- eslint-disable semi -->
+
 ```js
 '/status?name=ryan'
 ```
@@ -2405,11 +2413,13 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-### Class: http2.Http2ServerResponse<!-- YAML
-added: v8.4.0
--->This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [
+### Class: http2.Http2ServerResponse
 
-`'request'`][] event.
+<!-- YAML
+added: v8.4.0
+-->
+
+This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 The response inherits from [Stream](stream.html#stream_stream), and additionally implements the following:
 
@@ -2453,7 +2463,9 @@ added: v8.4.0
 
 See [`response.socket`][].
 
-#### response.end(\[data\]\[, encoding\][, callback])<!-- YAML
+#### response.end(\[data\]\[, encoding\][, callback])
+
+<!-- YAML
 added: v8.4.0
 changes:
 
@@ -2465,7 +2477,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 戻り値: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2473,7 +2485,9 @@ If `data` is specified, it is equivalent to calling [`response.write(data, encod
 
 If `callback` is specified, it will be called when the response stream is finished.
 
-#### response.finished<!-- YAML
+#### response.finished
+
+<!-- YAML
 added: v8.4.0
 -->
 
@@ -2488,7 +2502,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -2628,7 +2642,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 戻り値: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2747,13 +2761,13 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* 戻り値: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
 Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 
-For compatibility with \[HTTP/1\]\[\], a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
+For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
 const body = 'hello world';
