@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -631,7 +631,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stabilność: 0 - Przestarzałe
+> Stability: 0 - Deprecated
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
@@ -1089,7 +1089,7 @@ The `password` is used to derive the cipher key and initialization vector (IV). 
 
 The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
-In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see \[Nonce-Disrespecting Adversaries\]\[\] for details.
+In line with OpenSSL's recommendation to use PBKDF2 instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.pbkdf2()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1328,7 +1328,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array with the names of the supported cipher algorithms.
 
-Przykład:
+Example:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1343,7 +1343,7 @@ added: v2.3.0
 
 - Returns: {string[]} An array with the names of the supported elliptic curves.
 
-Przykład:
+Example:
 
 ```js
 const curves = crypto.getCurves();
@@ -1386,7 +1386,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Przykład:
+Example:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1429,7 +1429,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Przykład:
+Example:
 
 ```js
 const crypto = require('crypto');
@@ -1474,7 +1474,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Przykład:
+Example:
 
 ```js
 const crypto = require('crypto');
