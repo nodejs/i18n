@@ -477,7 +477,7 @@ added: v11.10.0
 
 The standard deviation of the recorded event loop delays.
 
-## Exempel
+## Examples
 
 ### Measuring the duration of async operations
 
