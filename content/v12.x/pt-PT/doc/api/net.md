@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
