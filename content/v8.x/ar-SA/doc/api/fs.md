@@ -1,14 +1,14 @@
-# نظام الملفات
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
 File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-الشكل المتزامن دائماً يأخذ كمعامل أخير دالة يتم ندائها عند إكتمال التنفيذ. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
