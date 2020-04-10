@@ -1,9 +1,9 @@
-# Módulos de ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -467,7 +467,7 @@ As with the previous approach, a variant of this approach not requiring conditio
 
 ## `import` Specifiers
 
-### Terminologia
+### Terminology
 
 The _specifier_ of an `import` statement is the string after the `from` keyword, e.g. `'path'` in `import { sep } from 'path'`. Specifiers are also used in `export from` statements, and as the argument to an `import()` expression.
 
@@ -728,7 +728,7 @@ export async function resolve(specifier, context, defaultResolve) {
 
 The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `format`     | Descrição                                                                |
+| `format`     | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
