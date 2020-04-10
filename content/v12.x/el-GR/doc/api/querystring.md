@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
