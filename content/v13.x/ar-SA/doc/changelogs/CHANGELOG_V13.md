@@ -26,7 +26,7 @@
 </tr>
 </table>
 
-* نسخ أخرى
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -307,7 +307,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * add executionAsyncResource (Matteo Collina) [#30959](https://github.com/nodejs/node/pull/30959)
-* **التشفير**
+* **crypto**
   * add crypto.diffieHellman (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * add DH support to generateKeyPair (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
   * simplify DH groups (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
@@ -316,7 +316,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
   * skip keygen tests on arm systems (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
 * **perf_hooks**
   * add property flags to GCPerformanceEntry (Kirill Fomichev) [#29547](https://github.com/nodejs/node/pull/29547)
-* **الاجراء**
+* **process**
   * report ArrayBuffer memory in `memoryUsage()` (Anna Henningsen) [#31550](https://github.com/nodejs/node/pull/31550)
 * **readline**
   * make tab size configurable (Ruben Bridgewater) [#31318](https://github.com/nodejs/node/pull/31318)
