@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -103,14 +103,14 @@ Instances of the `worker.MessagePort` class represent one end of an asynchronous
 
 With the exception of `MessagePort`s being [`EventEmitter`][]s rather than [`EventTarget`][]s, this implementation matches [browser `MessagePort`][]s.
 
-### Событие: 'close'
+### Event: 'close'
 <!-- YAML
 added: v10.5.0
 -->
 
 The `'close'` event is emitted once either side of the channel has been disconnected.
 
-### Событие: 'message'
+### Event: 'message'
 <!-- YAML
 added: v10.5.0
 -->
@@ -175,7 +175,7 @@ Calling `unref()` on a port will allow the thread to exit if this is the only ac
 
 If listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.
 
-## Класс: Worker
+## Class: Worker
 <!-- YAML
 added: v10.5.0
 -->
@@ -241,7 +241,7 @@ if (isMainThread) {
   * stdout {boolean} If this is set to `true`, then `worker.stdout` will not automatically be piped through to `process.stdout` in the parent.
   * stderr {boolean} If this is set to `true`, then `worker.stderr` will not automatically be piped through to `process.stderr` in the parent.
 
-### Событие: 'error'
+### Event: 'error'
 <!-- YAML
 added: v10.5.0
 -->
@@ -250,7 +250,7 @@ added: v10.5.0
 
 The `'error'` event is emitted if the worker thread throws an uncaught exception. In that case, the worker will be terminated.
 
-### Событие: 'exit'
+### Event: 'exit'
 <!-- YAML
 added: v10.5.0
 -->
@@ -259,7 +259,7 @@ added: v10.5.0
 
 The `'exit'` event is emitted once the worker has stopped. If the worker exited by calling [`process.exit()`][], the `exitCode` parameter will be the passed exit code. If the worker was terminated, the `exitCode` parameter will be `1`.
 
-### Событие: 'message'
+### Event: 'message'
 <!-- YAML
 added: v10.5.0
 -->
@@ -268,7 +268,7 @@ added: v10.5.0
 
 The `'message'` event is emitted when the worker thread has invoked [`require('worker_threads').parentPort.postMessage()`][]. See the [`port.on('message')`][] event for more details.
 
-### Событие: 'online'
+### Event: 'online'
 <!-- YAML
 added: v10.5.0
 -->
