@@ -1,8 +1,8 @@
-# Sistem File
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
