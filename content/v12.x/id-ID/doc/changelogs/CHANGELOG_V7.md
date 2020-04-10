@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Versi lain
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -42,7 +42,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arsip](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.1"></a>
 
@@ -2027,7 +2027,7 @@ _This is a security release impacting Windows 10 users._
 * Deps
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
-* Sistem File
+* File System
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).
 * Intl
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
