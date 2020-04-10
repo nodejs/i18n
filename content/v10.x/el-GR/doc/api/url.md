@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -429,7 +429,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### url.toString()
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -437,7 +437,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -620,7 +620,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### urlSearchParams.entries()
 
-* Επιστρέφει: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
@@ -653,20 +653,20 @@ Returns the value of the first name-value pair whose name is `name`. If there ar
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
-* Επιστρέφει: {string[]}
+* Returns: {string[]}
 
 Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
 
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### urlSearchParams.keys()
 
-* Επιστρέφει: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 `Iterator` over the names of each name-value pair.
 
@@ -723,19 +723,19 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### urlSearchParams.values()
 
-* Επιστρέφει: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 `Iterator` over the values of each name-value pair.
 
 #### urlSearchParams\[Symbol.iterator\]()
 
-* Επιστρέφει: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 `Iterator` over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript `Array`. The first item of the `Array` is the `name`, the second item of the `Array` is the `value`.
 
@@ -761,7 +761,7 @@ added:
 -->
 
 * `domain` {string}
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -787,7 +787,7 @@ added:
 -->
 
 * `domain` {string}
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -836,11 +836,11 @@ added: v7.6.0
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
 * `options` {Object} 
-  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Προεπιλογή:** `true`.
-  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Προεπιλογή:** `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Προεπιλογή:** `true`.
-  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Προεπιλογή:** `false`.
-* Επιστρέφει: {string}
+  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
+  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
+* Returns: {string}
 
 Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
@@ -1044,8 +1044,8 @@ changes:
 -->
 
 * `urlString` {string} The URL string to parse.
-* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Προεπιλογή:** `false`.
-* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Προεπιλογή:** `false`.
+* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
+* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
 
 The `url.parse()` method takes a URL string, parses it, and returns a URL object.
 
