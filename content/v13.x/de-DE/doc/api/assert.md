@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -393,7 +393,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -655,7 +655,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
