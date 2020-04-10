@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -109,7 +109,7 @@ added: v0.11.4
 
 * `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
 * `callback` {Function} Callback function that receives the created socket
-* Retorna: {net.Socket}
+* Returns: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
@@ -185,7 +185,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Retorna: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -478,11 +478,11 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Retorna: {string}
+* Returns: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
-Exemplo:
+Example:
 
 ```js
 const contentType = request.getHeader('Content-Type');
@@ -498,7 +498,7 @@ added: v1.6.0
 
 Removes a header that's already defined into headers object.
 
-Exemplo:
+Example:
 
 ```js
 request.removeHeader('Content-Type');
@@ -515,13 +515,13 @@ added: v1.6.0
 
 Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Exemplo:
+Example:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
 ```
 
-ou
+or
 
 ```js
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -571,7 +571,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
 
-Exemplo:
+Example:
 
 ```js
 const http = require('http');
@@ -747,7 +747,7 @@ Emitted each time a client requests an HTTP upgrade. If this event is not listen
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
-### server.close ([callback])
+### server.close([callback])
 
 <!-- YAML
 added: v0.1.90
@@ -759,7 +759,7 @@ Stops the server from accepting new connections. See [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. Esse método é idêntico ao [`server.listen()`] [] do [`net. Server`] [].
+Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### server.listening
 
@@ -777,7 +777,7 @@ A Boolean indicating whether or not the server is listening for connections.
 added: v0.7.0
 -->
 
-* {number} **Padrão:** `2000`
+* {number} **Default:** `2000`
 
 Limits maximum incoming headers count. If set to 0 - no limit will be applied.
 
@@ -787,19 +787,19 @@ Limits maximum incoming headers count. If set to 0 - no limit will be applied.
 added: v8.14.0
 -->
 
-* {number} **Padrão:** `40000`
+* {number} **Default:** `40000`
 
 Limit the amount of time the parser will wait to receive the complete HTTP headers.
 
 In case of inactivity, the rules defined in \[server.timeout\]\[\] apply. However, that inactivity based timeout would still allow the connection to be kept open if the headers are being sent very slowly (by default, up to a byte per 2 minutes). In order to prevent this, whenever header data arrives an additional check is made that more than `server.headersTimeout` milliseconds has not passed since the connection was established. If the check fails, a `'timeout'` event is emitted on the server object, and (by default) the socket is destroyed. See \[server.timeout\]\[\] for more information on how timeout behaviour can be customised.
 
-### server.setTimeout (\[msecs\]\[, callback\])
+### server.setTimeout(\[msecs\]\[, callback\])
 
 <!-- YAML
 added: v0.9.12
 -->
 
-* `Ms` {number} **Padrão:** `120000` (2 minutos)
+* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
@@ -816,7 +816,7 @@ Returns `server`.
 added: v0.9.12
 -->
 
-* {number} Timeout in milliseconds. **Padrão:** `120000` (2 minutos).
+* {number} Timeout in milliseconds. **Default:** `120000` (2 minutes).
 
 The number of milliseconds of inactivity before a socket is presumed to have timed out.
 
@@ -830,7 +830,7 @@ A value of `0` will disable the timeout behavior on incoming connections.
 added: v8.0.0
 -->
 
-* {number} Timeout in milliseconds. **Padrão:** `5000` (5 segundos).
+* {number} Timeout in milliseconds. **Default:** `5000` (5 seconds).
 
 The number of milliseconds of inactivity a server needs to wait for additional incoming data, after it has finished writing the last response, before a socket will be destroyed. If the server receives new data before the keep-alive timeout has fired, it will reset the regular inactivity timeout, i.e., [`server.timeout`][].
 
@@ -933,11 +933,11 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Retorna: {string}
+* Returns: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-Exemplo:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -949,11 +949,11 @@ const contentType = response.getHeader('content-type');
 added: v7.7.0
 -->
 
-* Retorna: {Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Exemplo:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -969,13 +969,13 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Exemplo:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -992,11 +992,11 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Exemplo:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1022,7 +1022,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Exemplo:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1051,13 +1051,13 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Exemplo:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-ou
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1102,14 +1102,14 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-Exemplo:
+Example:
 
 ```js
 const http = require('http');
 const server = http.createServer((req, res) => {
   const ip = res.socket.remoteAddress;
   const port = res.socket.remotePort;
-  res.end(`Seu endereço IP é ${ip} e sua porta é ${port}.`);
+  res.end(`Your IP address is ${ip} and your source port is ${port}.`);
 }).listen(3000);
 ```
 
@@ -1123,7 +1123,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Exemplo:
+Example:
 
 ```js
 response.statusCode = 404;
@@ -1141,7 +1141,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Exemplo:
+Example:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1158,7 +1158,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1200,10 +1200,10 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Exemplo:
+Example:
 
 ```js
-const body = 'ola mundo';
+const body = 'hello world';
 response.writeHead(200, {
   'Content-Length': Buffer.byteLength(body),
   'Content-Type': 'text/plain' });
@@ -1312,7 +1312,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Exemplo:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -1476,7 +1476,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Exemplo:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -1496,7 +1496,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Exemplo:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -1545,7 +1545,7 @@ added: v0.1.13
 
 * `requestListener` {Function}
 
-* Retorna: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1564,7 +1564,7 @@ changes:
 
 * `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Retorna: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1639,7 +1639,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `opções` {Object | string | URL} 
+* `options` {Object | string | URL} 
   * `protocol` {string} Protocol to use. **Default:** `http:`.
   * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `localhost`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
@@ -1658,17 +1658,17 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Retorna: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
-`options` pode ser um objeto, uma string, ou um objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`url.parse()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 The optional `callback` parameter will be added as a one-time listener for the [`'response'`][] event.
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Exemplo:
+Example:
 
 ```js
 const postData = querystring.stringify({
@@ -1721,7 +1721,7 @@ There are a few special headers that should be noted.
 
 * Sending an Authorization header will override using the `auth` option to compute basic authentication.
 
-Exemplo usando uma [`URL`] [] como `options`:
+Example using a [`URL`][] as `options`:
 
 ```js
 const { URL } = require('url');
