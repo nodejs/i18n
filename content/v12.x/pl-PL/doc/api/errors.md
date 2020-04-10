@@ -3,21 +3,21 @@
 <!--introduced_in=v4.0.0-->
 <!--type=misc-->
 
-Aplikacje bazujące na Node.js generalnie spotkają się z czterema kategoriami błędów:
+Applications running in Node.js will generally experience four categories of errors:
 
 * Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError},
 {ReferenceError}, {TypeError}, and {URIError}.
 * System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist or attempting to send data over a closed socket.
 * User-specified errors triggered by application code.
-* `AssertionError`s are a special class of error that can be triggered when Node.js detects an exceptional logic violation that should never occur. Te błędy występują typowo na prośbę modułu `assert`.
+* `AssertionError`s are a special class of error that can be triggered when Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
 
 All JavaScript and System errors raised by Node.js inherit from, or are instances of, the standard JavaScript {Error} class and are guaranteed to provide *at least* the properties available on that class.
 
-## Propagowanie i Zapobieganie Błędom
+## Error Propagation and Interception
 
 <!--type=misc-->
 
-Node.js wspiera kilka mechanizmów dla propagowania i manipulacji błędów, które występują podczas, gdy aplikacja jest w użyciu. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
+Node.js supports several mechanisms for propagating and handling errors that occur while an application is running. How these errors are reported and handled depends entirely on the type of `Error` and the style of the API that is called.
 
 All JavaScript errors are handled as exceptions that *immediately* generate and throw an error using the standard JavaScript `throw` mechanism. These are handled using the [`try…catch` construct](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) provided by the JavaScript language.
 
@@ -37,7 +37,7 @@ With few exceptions, _Synchronous_ APIs (any blocking method that does not accep
 
 Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
 
-* Większość asynchronicznych metod, które akceptują funkcję `callback` zaakceptują też obiekt `Error` jako pierwszy argument przekazany tej funkcji. Jeżeli ten pierwszy argument nie jest typu `null` i jest instancją `Error`, to wystąpił błąd który powinien zostać obsłużony.
+* Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
   ```js
   const fs = require('fs');
   fs.readFile('a file that does not exist', (err, data) => {
@@ -66,9 +66,9 @@ Errors that occur within _Asynchronous APIs_ may be reported in multiple ways:
   connection.pipe(process.stdout);
   ```
 
-* A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try…catch`. Nie ma wszechstronnej listy tych metod; proszę odnoś się do dokumentacji każdej metody by poznać odpowiedni mechanizm obsługiwania błędów.
+* A handful of typically asynchronous methods in the Node.js API may still use the `throw` mechanism to raise exceptions that must be handled using `try…catch`. There is no comprehensive list of such methods; please refer to the documentation of each method to determine the appropriate error handling mechanism required.
 
-Użycie mechanizmu wydarzenia `'error'` jest najczęściej spotykane w API typu [przesyłowego](stream.html) i [emiterach wydarzeń](events.html#events_class_eventemitter), które reprezentują serię asynchronicznych wydarzeń w czasie (w przeciwieństwie do jednej operacji, która może się wykonać lub zawieść).
+The use of the `'error'` event mechanism is most common for [stream-based](stream.html) and [event emitter-based](events.html#events_class_eventemitter) APIs, which themselves represent a series of asynchronous operations over time (as opposed to a single operation that may pass or fail).
 
 For *all* [`EventEmitter`][] objects, if an `'error'` event handler is not provided, the error will be thrown, causing the Node.js process to report an uncaught exception and crash unless either: The [`domain`](domain.html) module is used appropriately or a handler has been registered for the [`'uncaughtException'`][] event.
 
@@ -77,15 +77,15 @@ const EventEmitter = require('events');
 const ee = new EventEmitter();
 
 setImmediate(() => {
-  // To spowoduje zamknięcie procesu, gdyż nie został dodany
-  // sposób obsługi wydarzenia 'error'.
-  ee.emit('error', new Error('To zamknie proces'));
+  // This will crash the process because no 'error' event
+  // handler has been added.
+  ee.emit('error', new Error('This will crash'));
 });
 ```
 
 Errors generated in this way *cannot* be intercepted using `try…catch` as they are thrown *after* the calling code has already exited.
 
-Programiści muszą odwoływać się do dokumentacji każdej z metod by dowiedzieć się dokładnie jak te błędy wznoszone przez te metody są propagowane.
+Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
 ### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an _error-first callback_. With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the `Error` object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
@@ -125,22 +125,22 @@ try {
 
 This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code, including the `try…catch` block, will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: `Error`<!--type=class-->A generic JavaScript {Error} object that does not denote any specific circumstance of why the error occurred. Obiekty `Error` zawierają "ślad stacku", który wskazuje punkt w kodzie który spowodował wystąpienie obiektu `Error`, może też zawierać tekstowy opis błędu.
+## Class: `Error`<!--type=class-->A generic JavaScript {Error} object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
-Wszystkie błędy wygenerowane przez Node.js, włączając w to błędy Systemowe i błędy JavaScript, będą instancjami, lub będą dziedziczyć z klasy `Error`.
+All errors generated by Node.js, including all System and JavaScript errors, will either be instances of, or inherit from, the `Error` class.
 
-### `new Error(wiadomość)`
+### `new Error(message)`
 
-* `wiadomość` {string}
+* `message` {string}
 
-Tworzy nowy obiekt `Error` i ustawia własność `error.message` na daną wiadomość tekstową. Jeżeli obiekt jest podany jako `wiadomość`, wiadomość tekstowa może być wygenerowana przez użycie `message.toString()`. Własność `error.stack` będzie reprezentować punkt w kodzie, w którym użyto `new Error()`. Ślady stacku są zależne od [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
+Creates a new `Error` object and sets the `error.message` property to the provided text message. If an object is passed as `message`, the text message is generated by calling `message.toString()`. The `error.stack` property will represent the point in the code at which `new Error()` was called. Stack traces are dependent on [V8's stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). Stack traces extend only to either (a) the beginning of *synchronous code execution*, or (b) the number of frames given by the property `Error.stackTraceLimit`, whichever is smaller.
 
 ### `Error.captureStackTrace(targetObject[, constructorOpt])`
 
-* `targetObject` {Obiekt}
-* `constructorOpt` {Funkcja}
+* `targetObject` {Object}
+* `constructorOpt` {Function}
 
-Tworzy właściwość `.stack` na obiekcie `targetObject`, który zwraca ciąg tekstu (string) reprezentujący pozycję w kodzie, w której wywołano `Error.captureStackTrace()`.
+Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called.
 
 ```js
 const myObject = {};
@@ -150,30 +150,30 @@ myObject.stack;  // Similar to `new Error().stack`
 
 The first line of the trace will be prefixed with `${myObject.name}: ${myObject.message}`.
 
-Opcjonalny argument `constructorOpt` będzie przyjęty jako funkcja. Jeśli go podasz, wszystkie wydarzenia powyżej `constructorOpt`, włącznie z `constructorOpt` będą ominięte przy generowaniu śladów stacku.
+The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-Argument `constructorOpt` jest użyteczny, gdy chcemy ukryć detale implementacji generacji błędów przed użytkownikiem końcowym. Na przykład:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
-function MójBłąd() {   
-  Error.captureStackTrace(this, MójBłąd);
+function MyError() {
+  Error.captureStackTrace(this, MyError);
 }
 
-// Jeśli nie podamy MójBłąd jako argumentu dla captureStackTrace, MójBłąd
-// pojawi się w właściwości .stack. Przez użycie konstruktora
-// omijamy to wydarzenie, oraz zachowujemy wszystkie wydarzenia pod nim.
-new MójBłąd().stack;
+// Without passing MyError to captureStackTrace, the MyError
+// frame would show up in the .stack property. By passing
+// the constructor, we omit that frame, and retain all frames below it.
+new MyError().stack;
 ```
 
 ### `Error.stackTraceLimit`
 
-* {liczba}
+* {number}
 
-Właściwość `Error.stackTraceLimit` wyznacza liczbę wydarzeń stacku zbieranych przez ślad stacku (wygenerowanych przez `new Error().stack` lub `Error.captureStackTrace(obiekt)`).
+The `Error.stackTraceLimit` property specifies the number of stack frames collected by a stack trace (whether generated by `new Error().stack` or `Error.captureStackTrace(obj)`).
 
-Wartością podstawową jest `10`, ale może być to dowolna liczba dozwolona przez JavaScript. Changes will affect any stack trace captured *after* the value has been changed.
+The default value is `10` but may be set to any valid JavaScript number. Changes will affect any stack trace captured *after* the value has been changed.
 
-Jeśli zostanie wybrany obiekt inny lub liczba, lub zostanie wybrana liczba ujemna, ślad stacku nie będzie przechowywał żadnych wydarzeń.
+If set to a non-number value, or set to a negative number, stack traces will not capture any frames.
 
 ### `error.code`
 
@@ -359,7 +359,7 @@ If present, `error.path` is a string containing a relevant invalid pathname.
 
 ### `error.port`
 
-* {liczba}
+* {number}
 
 If present, `error.port` is the network connection port that is not available.
 
@@ -1927,7 +1927,7 @@ changes:
 
 ## Legacy Node.js Error Codes
 
-> Stabilność: 0 - Przestarzałe. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_CANNOT_TRANSFER_OBJECT"></a>
 
