@@ -2,23 +2,23 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estability: 2 - Estable
+> Stability: 2 - Stable
 
-El módulo `repl` proporciona una implementación del Bucle de Lectura-Evaluación-Impresión (Read-Eval-Print-Loop, REPL) que está disponible tanto como un programa independiente como uno con posibilidad de inclusión en otras aplicaciones. Se puede acceder al mismo utilizando:
+The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
 ```js
 const repl = require('repl');
 ```
 
-## Diseño y Características
+## Design and Features
 
 The `repl` module exports the [`repl.REPLServer`][] class. While running, instances of [`repl.REPLServer`][] will accept individual lines of user input, evaluate those according to a user-defined evaluation function, then output the result. Input and output may be from `stdin` and `stdout`, respectively, or may be connected to any Node.js [stream](stream.html).
 
 Instances of [`repl.REPLServer`][] support automatic completion of inputs, simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output, saving and restoring current REPL session state, error recovery, and customizable evaluation functions.
 
-### Comandos y Teclas Especiales
+### Commands and Special Keys
 
-Los siguientes comandos especiales son soportados por todas las instancias de REPL:
+The following special commands are supported by all REPL instances:
 
 * `.break`: When in the process of inputting a multi-line expression, entering the `.break` command (or pressing the `<ctrl>-C` key combination) will abort further input or processing of that expression.
 * `.clear`: Resets the REPL `context` to an empty object and clears any multi-line expression currently being input.
@@ -30,7 +30,7 @@ Los siguientes comandos especiales son soportados por todas las instancias de RE
 
 ```console
 > .editor
-// Entrando en el modo de edición (^D para finalizar, ^C para cancelar)
+// Entering editor mode (^D to finish, ^C to cancel)
 function welcome(name) {
   return `Hello ${name}!`;
 }
@@ -42,19 +42,19 @@ welcome('Node.js User');
 >
 ```
 
-Las siguientes combinaciones de teclas en el REPL tendrán estos efectos especiales:
+The following key combinations in the REPL have these special effects:
 
-* `<ctrl>-C`: When pressed once, has the same effect as the `.break` command. Cuando se presiona dos veces en una línea en blanco, tiene el mismo efecto que el comando `.exit`.
+* `<ctrl>-C`: When pressed once, has the same effect as the `.break` command. When pressed twice on a blank line, has the same effect as the `.exit` command.
 * `<ctrl>-D`: Has the same effect as the `.exit` command.
-* `<tab>`: When pressed on a blank line, displays global and local (scope) variables. Cuando se presiona mientras se está ingresando otro input, muestra opciones de auto-completado relevantes.
+* `<tab>`: When pressed on a blank line, displays global and local (scope) variables. When pressed while entering other input, displays relevant autocompletion options.
 
-### Evaluación Predeterminada
+### Default Evaluation
 
 By default, all instances of [`repl.REPLServer`][] use an evaluation function that evaluates JavaScript expressions and provides access to Node.js' built-in modules. This default behavior can be overridden by passing in an alternative evaluation function when the [`repl.REPLServer`][] instance is created.
 
-#### Expresiones de JavaScript
+#### JavaScript Expressions
 
-El evaluador predeterminado soporta la evaluación directa de las expresiones de JavaScript:
+The default evaluator supports direct evaluation of JavaScript expressions:
 
 ```console
 > 1 + 1
@@ -67,9 +67,9 @@ undefined
 
 Unless otherwise scoped within blocks or functions, variables declared either implicitly or using the `const`, `let`, or `var` keywords are declared at the global scope.
 
-#### Ámbitos Global y Local
+#### Global and Local Scope
 
-El evaluador predeterminado proporciona acceso a las variables que existan en el ámbito global. It is possible to expose a variable to the REPL explicitly by assigning it to the `context` object associated with each `REPLServer`:
+The default evaluator provides access to any variables that exist in the global scope. It is possible to expose a variable to the REPL explicitly by assigning it to the `context` object associated with each `REPLServer`:
 
 ```js
 const repl = require('repl');
@@ -78,7 +78,7 @@ const msg = 'message';
 repl.start('> ').context.m = msg;
 ```
 
-Las propiedades en el objeto de `context` aparecen como locales dentro del REPL:
+Properties in the `context` object appear as local within the REPL:
 
 ```console
 $ node repl_test.js
@@ -86,7 +86,7 @@ $ node repl_test.js
 'message'
 ```
 
-Las propiedades de contexto no son de sólo lectura por defecto. To specify read-only globals, context properties must be defined using `Object.defineProperty()`:
+Context properties are not read-only by default. To specify read-only globals, context properties must be defined using `Object.defineProperty()`:
 
 ```js
 const repl = require('repl');
@@ -100,15 +100,15 @@ Object.defineProperty(r.context, 'm', {
 });
 ```
 
-#### Acceso a los Módulos Principales de Node.js
+#### Accessing Core Node.js Modules
 
-El evaluador predeterminado cargará automáticamente los módulos principales de Node.js en el ambiente de REPL cuando sea usado. Por ejemplo, a menos que sea declarado como una variable global o con ámbito, el input `fs` será evaluado como `global.fs = require('fs')` cuando se requiera.
+The default evaluator will automatically load Node.js core modules into the REPL environment when used. For instance, unless otherwise declared as a global or scoped variable, the input `fs` will be evaluated on-demand as `global.fs = require('fs')`.
 
 ```console
 > fs.createReadStream('./some/file');
 ```
 
-#### Excepciones Globales No Capturadas
+#### Global Uncaught Exceptions
 <!-- YAML
 changes:
   - version: v12.3.0
@@ -119,7 +119,7 @@ changes:
 
 The REPL uses the [`domain`][] module to catch all uncaught exceptions for that REPL session.
 
-Este uso del módulo [`domain`][] en el REPL tiene estos efectos secundarios:
+This use of the [`domain`][] module in the REPL has these side effects:
 
 * Uncaught exceptions only emit the [`'uncaughtException'`][] event in the standalone REPL. Adding a listener for this event in a REPL within another Node.js program throws [`ERR_INVALID_REPL_INPUT`][].
 * Trying to use [`process.setUncaughtExceptionCaptureCallback()`][] throws an [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`][] error.
@@ -145,7 +145,7 @@ throw new Error('foobar');
 // Error: foobar
 ```
 
-#### Asignación de la variable `_` (guión bajo)
+#### Assignment of the `_` (underscore) variable
 <!-- YAML
 changes:
   - version: v9.8.0
@@ -153,7 +153,7 @@ changes:
     description: Added `_error` support.
 -->
 
-El evaluador por defecto asignará, de manera predeterminada, el resultado de la última expresión evaluada a la variable especial `_` (guión bajo). Establecer explícitamente `_` a un valor deshabilitará este comportamiento.
+The default evaluator will, by default, assign the result of the most recently evaluated expression to the special variable `_` (underscore). Explicitly setting `_` to a value will disable this behavior.
 
 ```console
 > [ 'a', 'b', 'c' ]
@@ -178,7 +178,7 @@ Error: foo
 'foo'
 ```
 
-#### Palabra clave `await`
+#### `await` keyword
 
 With the [`--experimental-repl-await`][] command line option specified, experimental support for the `await` keyword is enabled.
 
@@ -195,11 +195,11 @@ undefined
 undefined
 ```
 
-### Funciones de Evaluación Personalizadas
+### Custom Evaluation Functions
 
-When a new [`repl.REPLServer`][] is created, a custom evaluation function may be provided. Esto puede utilizarse, por ejemplo, para implementar aplicaciones REPL completamente personalizadas.
+When a new [`repl.REPLServer`][] is created, a custom evaluation function may be provided. This can be used, for instance, to implement fully customized REPL applications.
 
-Lo siguiente ilustra un ejemplo hipotético de un REPL que traduce texto de un idioma a otro:
+The following illustrates a hypothetical example of a REPL that performs translation of text from one language to another:
 
 ```js
 const repl = require('repl');
@@ -214,9 +214,9 @@ function myEval(cmd, context, filename, callback) {
 repl.start({ prompt: '> ', eval: myEval });
 ```
 
-#### Errores Recuperables
+#### Recoverable Errors
 
-Cuando un usuario esté ingresando una entrada en el campo de texto del REPL, presionar la tecla `<enter>` enviará la línea actual del input a la función `eval`. Para poder soportar entradas multi-líneas, la función de evaluación puede devolver una instancia de `repl.Recoverable` a la función callback proporcionada:
+As a user is typing input into the REPL prompt, pressing the `<enter>` key will send the current line of input to the `eval` function. In order to support multi-line input, the eval function can return an instance of `repl.Recoverable` to the provided callback function:
 
 ```js
 function myEval(cmd, context, filename, callback) {
@@ -239,7 +239,7 @@ function isRecoverableError(error) {
 }
 ```
 
-### Personalización del Output de REPL
+### Customizing REPL Output
 
 By default, [`repl.REPLServer`][] instances format output using the [`util.inspect()`][] method before writing the output to the provided `Writable` stream (`process.stdout` by default). The `showProxy` inspection option is set to true by default and the `colors` option is set to true depending on the REPL's `useColors` option.
 
@@ -297,7 +297,7 @@ const secondInstance = new repl.REPLServer(options);
 added: v0.7.7
 -->
 
-El evento `'exit'` es emitido cuando se sale del REPL, ya sea por la introducción del comando `.exit`, la presión por el usuario de `<ctrl>-C` dos veces, para señalar `SIGINT`, o la presión de `<ctrl>-D` para señalar `'end'` en el stream del input. La callback del listener es invocada sin argumentos.
+The `'exit'` event is emitted when the REPL is exited either by receiving the `.exit` command as input, the user pressing `<ctrl>-C` twice to signal `SIGINT`, or by pressing `<ctrl>-D` to signal `'end'` on the input stream. The listener callback is invoked without any arguments.
 
 ```js
 replServer.on('exit', () => {
@@ -311,7 +311,7 @@ replServer.on('exit', () => {
 added: v0.11.0
 -->
 
-El evento `'reset'` es emitido cuando el contexto del REPL es restablecido. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. La callback del listener será llamada con una referencia al objeto de `context` como único argumento.
+The `'reset'` event is emitted when the REPL's context is reset. This occurs whenever the `.clear` command is received as input *unless* the REPL is using the default evaluator and the `repl.REPLServer` instance was created with the `useGlobal` option set to `true`. The listener callback will be called with a reference to the `context` object as the only argument.
 
 This can be used primarily to re-initialize REPL context to some pre-defined state:
 
@@ -328,7 +328,7 @@ initializeContext(r.context);
 r.on('reset', initializeContext);
 ```
 
-Cuando se ejecuta este código, la variable `'m'` global puede ser modificada, pero luego restablecida a su valor inicial, utilizando el comando `.clear`:
+When this code is executed, the global `'m'` variable can be modified but then reset to its initial value using the `.clear` command:
 
 ```console
 $ ./node example.js
@@ -351,14 +351,14 @@ added: v0.3.0
 -->
 
 * `keyword` {string} The command keyword (*without* a leading `.` character).
-* `cmd` {Object|Function} La función a invocar cuando el comando sea procesado.
+* `cmd` {Object|Function} The function to invoke when the command is processed.
 
-El método `replServer.defineCommand()` es utilizado para añadir nuevos comandos con el prefijo `.` a la instancia del REPL. Estos comandos son invocados al escribir `.` seguido por la `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
+The `replServer.defineCommand()` method is used to add new `.`-prefixed commands to the REPL instance. Such commands are invoked by typing a `.` followed by the `keyword`. The `cmd` is either a `Function` or an `Object` with the following properties:
 
-* `help` {string} Texto de ayuda a mostrarse cuando se ingresa `.help` (Opcional).
-* `action` {Function} La función a ejecutar, aceptando opcionalmente un solo argumento de string.
+* `help` {string} Help text to be displayed when `.help` is entered (Optional).
+* `action` {Function} The function to execute, optionally accepting a single string argument.
 
-El siguiente ejemplo muestra dos nuevos comandos añadidos a la instancia del REPL:
+The following example shows two new commands added to the REPL instance:
 
 ```js
 const repl = require('repl');
@@ -378,13 +378,13 @@ replServer.defineCommand('saybye', function saybye() {
 });
 ```
 
-Los nuevos comandos pueden ser utilizados desde dentro de la instancia del REPL:
+The new commands can then be used from within the REPL instance:
 
 ```console
-> .sayhello Usuario de Node.js
-¡Hola, Usuario de Node.Js!
+> .sayhello Node.js User
+Hello, Node.js User!
 > .saybye
-¡Adiós!
+Goodbye!
 ```
 
 ### `replServer.displayPrompt([preserveCursor])`
@@ -394,13 +394,13 @@ added: v0.1.91
 
 * `preserveCursor` {boolean}
 
-El método `replServer.displayPrompt()` alista a la instancia del REPL para el input del usuario, imprimiendo el `prompt` configurado a una nueva línea en el `output` y reanudando el `input` para aceptar una nueva entrada.
+The `replServer.displayPrompt()` method readies the REPL instance for input from the user, printing the configured `prompt` to a new line in the `output` and resuming the `input` to accept new input.
 
-Cuando una entrada multi-líneas esté siendo ingresada, se imprime una elipsis en lugar del 'prompt'.
+When multi-line input is being entered, an ellipsis is printed rather than the 'prompt'.
 
-Cuando `preserveCursor` sea `true`, la colocación del cursor no se restablecerá a `0`.
+When `preserveCursor` is `true`, the cursor placement will not be reset to `0`.
 
-El método `replServer.displayPrompt` está destinado principalmente para ser llamado desde dentro de la función de acción para comandos registrados, utilizando el método `replServer.defineCommand()`.
+The `replServer.displayPrompt` method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
 
 ### `replServer.clearBufferedCommand()`
 <!-- YAML
@@ -415,11 +415,11 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado.
+> Stability: 0 - Deprecated.
 
 * `keyword` {string} the potential keyword to parse and execute
 * `rest` {any} any parameters to the keyword command
-* Devuelve: {boolean}
+* Returns: {boolean}
 
 An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
@@ -452,41 +452,41 @@ changes:
 -->
 
 * `options` {Object|string}
-  * `prompt` {string} El prompt del input a mostrar. **Default:** `'> '` (with a trailing space).
+  * `prompt` {string} The input prompt to display. **Default:** `'> '` (with a trailing space).
   * `input` {stream.Readable} The `Readable` stream from which REPL input will be read. **Default:** `process.stdin`.
   * `output` {stream.Writable} The `Writable` stream to which REPL output will be written. **Default:** `process.stdout`.
   * `terminal` {boolean} If `true`, specifies that the `output` should be treated as a TTY terminal. **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
-  * `eval` {Function} La función que ha de utilizarse al evaluar cada línea de input dada. **Default:** an async wrapper for the JavaScript `eval()` function. Una función `eval` puede producir un error con `repl.Recoverable` para indicar que la entrada fue incompleta y solicitar líneas adicionales al usuario.
-  * `useColors` {boolean} Si es `true`, especifica que la función `writer` predeterminada debería incluir el estilo de color ANSI para el output del REPL. Si una función `writer` personalizada es provista, esto no tendrá ningún efecto. **Default:** checking color support on the `output` stream if the REPL instance's `terminal` value is `true`.
-  * `useGlobal` {boolean} Si es `true`, especifica que la función de evaluación predeterminada utilizará la `global` de JavaScript como el contexto, en lugar de crear un nuevo contexto separado para la instancia del REPL. The node CLI REPL sets this value to `true`. **Default:** `false`.
-  * `ignoreUndefined` {boolean} Si es `true`, especifica que el escritor predeterminado no emitirá en el output el valor de retorno de un comando si este evalúa en `undefined`. **Default:** `false`.
-  * `writer` {Function} La función a ser invocada para dar formato al output de cada comando antes de escribir al `output`. **Default:** [`util.inspect()`][].
-  * `completer` {Function} Una función opcional utilizada para el auto-completado de Tab personalizado. Vea [`readline.InterfaceCompleter`][] para un ejemplo.
-  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. Son valores aceptables:
+  * `eval` {Function} The function to be used when evaluating each given line of input. **Default:** an async wrapper for the JavaScript `eval()` function. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
+  * `useColors` {boolean} If `true`, specifies that the default `writer` function should include ANSI color styling to REPL output. If a custom `writer` function is provided then this has no effect. **Default:** checking color support on the `output` stream if the REPL instance's `terminal` value is `true`.
+  * `useGlobal` {boolean} If `true`, specifies that the default evaluation function will use the JavaScript `global` as the context as opposed to creating a new separate context for the REPL instance. The node CLI REPL sets this value to `true`. **Default:** `false`.
+  * `ignoreUndefined` {boolean} If `true`, specifies that the default writer will not output the return value of a command if it evaluates to `undefined`. **Default:** `false`.
+  * `writer` {Function} The function to invoke to format the output of each command before writing to `output`. **Default:** [`util.inspect()`][].
+  * `completer` {Function} An optional function used for custom Tab auto completion. See [`readline.InterfaceCompleter`][] for an example.
+  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. Acceptable values are:
     * `repl.REPL_MODE_SLOPPY` to evaluate expressions in sloppy mode.
-    * `repl.REPL_MODE_STRICT` to evaluate expressions in strict mode. Esto es equivalente a anteceder cada declaración del repl con `'use strict'`.
+    * `repl.REPL_MODE_STRICT` to evaluate expressions in strict mode. This is equivalent to prefacing every repl statement with `'use strict'`.
   * `breakEvalOnSigint` {boolean} Stop evaluating the current piece of code when `SIGINT` is received, such as when `Ctrl+C` is pressed. This cannot be used together with a custom `eval` function. **Default:** `false`.
 * Returns: {repl.REPLServer}
 
 The `repl.start()` method creates and starts a [`repl.REPLServer`][] instance.
 
-Si `options` es una string, entonces especifica el prompt del input:
+If `options` is a string, then it specifies the input prompt:
 
 ```js
 const repl = require('repl');
 
-// un prompt estilo Unix
+// a Unix style prompt
 repl.start('$ ');
 ```
 
-## El REPL de Node.js
+## The Node.js REPL
 
-Node.js utiliza, en sí mismo, el módulo `repl` para proporcionar su propia interfaz interactiva para la ejecución de JavaScript. Este puede utilizarse ejecutando el binario de Node.js sin pasar ningún argumento (o pasando el argumento `-i`):
+Node.js itself uses the `repl` module to provide its own interactive interface for executing JavaScript. This can be used by executing the Node.js binary without passing any arguments (or by passing the `-i` argument):
 
 ```console
 $ node
 > const a = [1, 2, 3];
-indefinido
+undefined
 > a
 [ 1, 2, 3 ]
 > a.forEach((v) => {
@@ -497,33 +497,33 @@ indefinido
 3
 ```
 
-### Opciones de Variables de Ambiente
+### Environment Variable Options
 
-Varios comportamientos del REPL de Node.js pueden ser personalizados mediante el uso de las siguientes variables de ambiente:
+Various behaviors of the Node.js REPL can be customized using the following environment variables:
 
-* `NODE_REPL_HISTORY`: When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` (an empty string) will disable persistent REPL history. El espacio en blanco será recortado del valor. On Windows platforms environment variables with empty values are invalid so set this variable to one or more spaces to disable persistent REPL history.
-* `NODE_REPL_HISTORY_SIZE`: Controls how many lines of history will be persisted if history is available. Debe ser un número positivo. **Default:** `1000`.
+* `NODE_REPL_HISTORY`: When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` (an empty string) will disable persistent REPL history. Whitespace will be trimmed from the value. On Windows platforms environment variables with empty values are invalid so set this variable to one or more spaces to disable persistent REPL history.
+* `NODE_REPL_HISTORY_SIZE`: Controls how many lines of history will be persisted if history is available. Must be a positive number. **Default:** `1000`.
 * `NODE_REPL_MODE`: May be either `'sloppy'` or `'strict'`. **Default:** `'sloppy'`, which will allow non-strict mode code to be run.
 
-### Historial Persistente
+### Persistent History
 
-Por defecto, el REPL de Node.js almacenará de manera persistente el historial de las sesiones `node` de REPL, salvando los inputs en un archivo `.node_repl_history` ubicado en la carpeta de usuario del usuario actual. Esto puede desactivarse al establecer la variable de entorno `NODE_REPL_HISTORY=''`.
+By default, the Node.js REPL will persist history between `node` REPL sessions by saving inputs to a `.node_repl_history` file located in the user's home directory. This can be disabled by setting the environment variable `NODE_REPL_HISTORY=''`.
 
-### Utilización del REPL de Node.js con editores de línea avanzados
+### Using the Node.js REPL with advanced line-editors
 
-Para utilizar editores de línea avanzados, inicie Node.js con la variable de entorno `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
+For advanced line-editors, start Node.js with the environment variable `NODE_NO_READLINE=1`. This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
 
-Por ejemplo, el siguiente código puede ser añadido al archivo `.bashrc`:
+For example, the following can be added to a `.bashrc` file:
 
 ```text
 alias node="env NODE_NO_READLINE=1 rlwrap node"
 ```
 
-### Inicio de múltiples instancias de REPL, en lugar del inicio de una instancia única
+### Starting multiple REPL instances against a single running instance
 
-Es posible crear y ejecutar múltiples instancias de REPL, en lugar de una instancia única de Node.js que comparta un único objeto `global` pero tenga interfaces I/O separadas.
+It is possible to create and run multiple REPL instances against a single running instance of Node.js that share a single `global` object but have separate I/O interfaces.
 
-En el siguiente ejemplo se muestran REPLs separados en `stdin`, un socket de Unix y un socket de TCP:
+The following example, for instance, provides separate REPLs on `stdin`, a Unix socket, and a TCP socket:
 
 ```js
 const net = require('net');
@@ -559,9 +559,9 @@ net.createServer((socket) => {
 }).listen(5001);
 ```
 
-La ejecución de esta aplicación desde la línea de comandos dará inicio a un REPL en stdin. Otros clientes de REPL pueden conectarse a través del socket de Unix o socket de TCP. Por ejemplo, `telnet` es útil para conectarse a sockets de TCP, mientras que `socat` puede ser utilizado para conectarse tanto a sockets de Unix como de TCP.
+Running this application from the command line will start a REPL on stdin. Other REPL clients may connect through the Unix socket or TCP socket. `telnet`, for instance, is useful for connecting to TCP sockets, while `socat` can be used to connect to both Unix and TCP sockets.
 
-Al iniciar un REPL desde un servidor basado en sockets de Unix, en lugar de en stdin, es posible conectarse a un proceso de larga duración de Node.js sin la necesidad de reiniciarlo.
+By starting a REPL from a Unix socket-based server instead of stdin, it is possible to connect to a long-running Node.js process without restarting it.
 
 For an example of running a "full-featured" (`terminal`) REPL over a `net.Server` and `net.Socket` instance, see: <https://gist.github.com/TooTallNate/2209310>.
 
