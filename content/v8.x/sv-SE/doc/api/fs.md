@@ -1,4 +1,4 @@
-# Filsystem
+# File System
 
 <!--introduced_in=v0.10.0-->
 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exempel:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exempel:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -611,7 +611,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exempel:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Exempel:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -673,7 +673,7 @@ See also: chmod(2)
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Konstant               | Octal   | Beskrivning              |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -687,7 +687,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Beskrivning              |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exempel:
+Example:
 
 ```js
 const fs = require('fs');
@@ -852,7 +852,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exempel:
+Example:
 
 ```js
 const fs = require('fs');
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Exempel:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Exempel:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1712,7 +1712,7 @@ fs.open('<directory>', 'a+', (err, fd) => {
 
 Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Functions based on `fs.open()` exhibit this behavior as well. t.ex. `fs.writeFile()`, `fs.readFile()`, etc.
+Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Exempel:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Exempel:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Exempel:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exempel:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -2752,8 +2752,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -2781,8 +2781,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -2869,8 +2869,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -2912,8 +2912,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
