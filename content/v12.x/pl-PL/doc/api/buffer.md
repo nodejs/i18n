@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.90-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`][], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -2320,7 +2320,7 @@ Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if con
 
 Encodings supported by `buffer.transcode()` are: `'ascii'`, `'utf8'`, `'utf16le'`, `'ucs2'`, `'latin1'`, and `'binary'`.
 
-The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. Na przykład:
+The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
 
 ```js
 const buffer = require('buffer');
