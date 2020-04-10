@@ -391,7 +391,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -653,7 +653,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
