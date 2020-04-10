@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -427,7 +427,7 @@ The `vm.SourceTextModule` class provides the [Source Text Module Record](https:/
 ### Constructor: `new vm.SourceTextModule(code[, options])`
 
 * `code` {string} JavaScript Module code to parse
-* `옵션`
+* `options`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
   * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`. **Default:** `0`.
@@ -506,7 +506,7 @@ added: v12.16.0
 
 * `exportNames` {string[]} Array of names that will be exported from the module.
 * `evaluateCallback` {Function} Called when the module is evaluated.
-* `옵션`
+* `options`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
 
