@@ -1,4 +1,4 @@
-# Uso
+# Usage
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,46 +6,46 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Por favor vea las [ Opciones de Linea de Comando](cli.html#cli_command_line_options) para obtener infomación sobre diferentes opciones y maneras de ejecutar scripts con Node.js.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Ejemplo
+## Example
 
-Un ejemplo de un [servidor web](http.html) escrito con Node.js cuya respuesta es `"¡Hola Mundo!"`:
+An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
 
-Los comandos mostrados en este documento comienzan con `$` o con `>` para indicar como debería aparecer en la terminal de un usuario. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
+Commands displayed in this document are shown starting with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
 
-Hay algunos tutoriales y ejemplos que siguen esta convención: `$` o `>` para comandos ejecutados por un usuario regular y `#` para comandos que podría ejecutar un administrado.
+There are many tutorials and examples that follow this convention: `$` or `>` for commands run as a regular user, and `#` for commands that should be executed as an administrator.
 
-Las lineas que no inician con los caracteres `$` o `>` están mostrando la salida del comando anterior.
+Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
-En primer lugar, asegúrese de haber descargado e instalado Node.js. Consulte [esta guia](https://nodejs.org/en/download/package-manager/) para mas información sobre la instalación.
+Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
 
 Now, create an empty project folder called `projects`, then navigate into it. The project folder can be named based on the user's current project title, but this example will use `projects` as the project folder.
 
-Linux y Mac:
+Linux and Mac:
 
 ```console
-$ mkdir ~/projects 
+$ mkdir ~/projects
 $ cd ~/projects
 ```
 
 Windows CMD:
 
 ```console
-> mkdir %USERPROFILE%\projects 
+> mkdir %USERPROFILE%\projects
 > cd %USERPROFILE%\projects
 ```
 
 Windows PowerShell:
 
 ```console
-> mkdir $env:USERPROFILE\projects 
+> mkdir $env:USERPROFILE\projects
 > cd $env:USERPROFILE\projects
 ```
 
-A continuación, cree un nuevo archivo en la carpeta `projects` y llamela `hola-mundo.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
-En Node.js está considerado buen estilo usar guiones (`-`) o guiones bajos (`_`) para separar múltiples palabras en los nombres de archivo.
+In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
 Open `hello-world.js` in any preferred text editor and paste in the following content:
 
@@ -55,30 +55,30 @@ const http = require('http');
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const server = http.createServer((req, res) => {   
-  res.statusCode = 200;  
-  res.setHeader('Content-Type', 'text/plain');  
-  res.end('Hello World!\n'); 
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World!\n');
 });
 
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`); 
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
 ```
 
-Guarde el archivo, regrese a la terminal e ingrese el siguiente comando:
+Save the file, go back to the terminal window enter the following command:
 
 ```console
-$ node hola-mundo.js
+$ node hello-world.js
 ```
 
-Un mensaje de salida como este debería aparecer en la terminal para indicar que Node.js guardo lo que se está ejecutando:
+An output like this should appear in the terminal to indicate Node.js server is running:
 
     console
      Server running at http://127.0.0.1:3000/`
 
-Ahora, abra cualquier navegador web y visite `http://127.0.0.1:3000`.
+Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
-Si el navegador muestra el mensaje `¡Hola, Mundo!`, indica que el servidor está funcionando.
+If the browser displays the string `Hello, world!`, that indicates the server is working.
 
-Cualquiera de los ejemplos en el documento pueden ser ejecutado del mismo modo.
+Many of the examples in the documentation can be run similarly.
