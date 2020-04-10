@@ -1,12 +1,12 @@
-# Module
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=module-->
 
-Im Node.js Modul System wird jede Datei als separates Modul behandelt. For example, consider a file named `foo.js`:
+In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
 
 ```js
 const circle = require('./circle.js');
@@ -431,7 +431,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-Beispiele:
+Examples:
 
 Running `node example.js` from `/Users/mjr`
 
@@ -511,7 +511,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -569,7 +569,7 @@ changes:
 -->* `request` {string} The module path to resolve.
 * `options` {Object}
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Gibt zurück: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
