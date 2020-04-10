@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Actual</th>
+<th>Current</th>
 </tr>
 <tr>
 <td>
@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -43,13 +43,13 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="12.12.0"></a>
 
 ## 2019-10-11, Version 12.12.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **build**:
   * Add `--force-context-aware` flag to prevent usage of native node addons that aren't context aware [#29631](https://github.com/nodejs/node/pull/29631)
@@ -136,7 +136,7 @@
 
 ## 2019-10-01, Version 12.11.1 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **build**:
   * This release fixes a regression that prevented from building Node.js using the official source tarball (Richard Lau) [#29712](https://github.com/nodejs/node/pull/29712).
@@ -182,7 +182,7 @@
 
 ## 2019-09-25, Version 12.11.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **crypto**:
   * Add `oaepLabel` option [#29489](https://github.com/nodejs/node/pull/29489)
@@ -358,7 +358,7 @@
 
 ## 2019-09-03, Version 12.10.0 (Current), @BridgeAr
 
-### Cambios notables
+### Notable changes
 
 * **deps**:
   * Update npm to 6.10.3 (isaacs) [#29023](https://github.com/nodejs/node/pull/29023)
@@ -458,7 +458,7 @@
 
 ## 2019-08-26, Version 12.9.1 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 This release fixes two regressions in the **http** module:
 
@@ -479,7 +479,7 @@ This release fixes two regressions in the **http** module:
 
 ## 2019-08-20, Version 12.9.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **crypto**:
   * Added an oaepHash option to asymmetric encryption which allows users to specify a hash function when using OAEP padding (Tobias Nießen) [#28335](https://github.com/nodejs/node/pull/28335).
@@ -605,9 +605,9 @@ This release fixes two regressions in the **http** module:
 
 ## 2019-08-15, Version 12.8.1 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 Node.js, as well as many other implementations of HTTP/2, have been found vulnerable to Denial of Service attacks. See https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md for more information.
 
@@ -641,7 +641,7 @@ Vulnerabilities fixed:
 
 ## 2019-08-06, Version 12.8.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **assert**:
   * Legacy mode deprecation (`DEP0089`) is revoked (Colin Ihrig) [#28892](https://github.com/nodejs/node/pull/28892)
@@ -748,7 +748,7 @@ Vulnerabilities fixed:
 
 ## 2019-07-23, Version 12.7.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **deps**:
   * Updated nghttp2 to 1.39.1 (gengjiawen) [#28448](https://github.com/nodejs/node/pull/28448).
@@ -935,7 +935,7 @@ Vulnerabilities fixed:
 
 ## 2019-07-03, Version 12.6.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **build**:
   * Experimental support for building Node.js on MIPS architecture is back [#27992](https://github.com/nodejs/node/pull/27992).
@@ -1107,7 +1107,7 @@ Vulnerabilities fixed:
 
 ## 2019-06-27, Version 12.5.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **build**:
   * The startup time is reduced by enabling V8 snapshots by default [#28181](https://github.com/nodejs/node/pull/28181)
@@ -1328,7 +1328,7 @@ Vulnerabilities fixed:
 
 ## 2019-06-04, Version 12.4.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **doc**:
   * The JSON variant of the API documentation is no longer experimental (Rich Trott) [#27842](https://github.com/nodejs/node/pull/27842).
@@ -1457,7 +1457,7 @@ Vulnerabilities fixed:
 
 ## 2019-05-22, Version 12.3.1 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **deps**:
   * Fix handling of +0/-0 when constant field tracking is enabled (Michaël Zasso) [#27792](https://github.com/nodejs/node/pull/27792)
@@ -1476,7 +1476,7 @@ Vulnerabilities fixed:
 
 ## 2019-05-21, Version 12.3.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **esm**:
   * Added the `--experimental-wasm-modules` flag to support WebAssembly modules (Myles Borins & Guy Bedford) [#27659](https://github.com/nodejs/node/pull/27659)
@@ -1628,7 +1628,7 @@ Vulnerabilities fixed:
 
 ## 2019-05-07, Version 12.2.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **deps**:
   * Updated llhttp to 1.1.3. This fixes a bug that made Node.js' HTTP parser refuse any request URL that contained the "|" (vertical bar) character (Fedor Indutny) [#27595](https://github.com/nodejs/node/pull/27595).
@@ -1758,7 +1758,7 @@ Vulnerabilities fixed:
 
 ## 2019-04-29, Version 12.1.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **intl**:
   * Update ICU to 64.2. This adds support for Japanese Era (Reiwa) (Ujjwal Sharma) [#27361](https://github.com/nodejs/node/pull/27361).
@@ -1821,7 +1821,7 @@ Vulnerabilities fixed:
 
 ## 2019-04-23, Version 12.0.0 (Current), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **assert**:
   * validate required arguments (Ruben Bridgewater) [#26641](https://github.com/nodejs/node/pull/26641)
@@ -1928,7 +1928,7 @@ Vulnerabilities fixed:
   * throw TypeError if callback is missing (Anna Henningsen) [#24929](https://github.com/nodejs/node/pull/24929)
   * make “bare” constants un-enumerable (Anna Henningsen) [#24824](https://github.com/nodejs/node/pull/24824)
 
-### Commits de Semver-Major
+### Semver-Major Commits
 
 * [[`afce912193`](https://github.com/nodejs/node/commit/afce912193)] - **(SEMVER-MAJOR)** **assert**: improve performance to instantiate errors (Ruben Bridgewater) [#26738](https://github.com/nodejs/node/pull/26738)
 * [[`5a3623af74`](https://github.com/nodejs/node/commit/5a3623af74)] - **(SEMVER-MAJOR)** **assert**: validate required arguments (Ruben Bridgewater) [#26641](https://github.com/nodejs/node/pull/26641)
