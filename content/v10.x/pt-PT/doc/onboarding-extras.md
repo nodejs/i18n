@@ -1,4 +1,4 @@
-# Informação Addicional
+# Additional Onboarding Information
 
 ## Labels
 
