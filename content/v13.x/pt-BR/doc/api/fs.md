@@ -1,4 +1,4 @@
-# Sistema de Arquivos
+# File System
 
 <!--introduced_in=v0.10.0-->
 
@@ -8,7 +8,7 @@
 
 The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
 
-Para utilizar este módulo:
+To use this module:
 
 ```js
 const fs = require('fs');
@@ -16,14 +16,14 @@ const fs = require('fs');
 
 Todas as operações de sistema de arquivos têm formas síncronas e assíncronas.
 
-A forma assíncrona sempre leva uma função de conclusão (frequentemente chamado "callback") como seu último argumento. Os argumentos passados para função de conclusão dependem do método, mas o primeiro argumento é sempre reservado para uma exceção. Se a operação foi concluída com êxito, então, o primeiro argumento será `null` ou `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 ```js
 const fs = require('fs');
 
 fs.unlink('/tmp/hello', (err) => {
   if (err) throw err;
-  console.log('/tmp/hello deletado com sucesso');
+  console.log('successfully deleted /tmp/hello');
 });
 ```
 
@@ -34,9 +34,9 @@ const fs = require('fs');
 
 try {
   fs.unlinkSync('/tmp/hello');
-  console.log('/tmp/hello deletado com sucesso');
+  console.log('successfully deleted /tmp/hello');
 } catch (err) {
-  // tratamento de erro
+  // handle the error
 }
 ```
 
@@ -45,7 +45,7 @@ There is no guaranteed ordering when using asynchronous methods. So the followin
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
   if (err) throw err;
-  console.log('renomeação concluída');
+  console.log('renamed complete');
 });
 fs.stat('/tmp/world', (err, stats) => {
   if (err) throw err;
@@ -82,17 +82,17 @@ $ env NODE_DEBUG=fs node script.js
 fs.js:88
         throw backtrace;
         ^
-Error: EISDIR: operação ilegal em um diretório, leitura
+Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-## Caminho do arquivo
+## File paths
 
 Most `fs` operations accept filepaths that may be specified in the form of a string, a [`Buffer`][], or a [`URL`][] object using the `file:` protocol.
 
 String form paths are interpreted as UTF-8 character sequences identifying the absolute or relative filename. Relative paths will be resolved relative to the current working directory as specified by `process.cwd()`.
 
-Exemplo usando um caminho absoluto em POSIX:
+Example using an absolute path on POSIX:
 
 ```js
 const fs = require('fs');
@@ -105,7 +105,7 @@ fs.open('/open/some/file.txt', 'r', (err, fd) => {
 });
 ```
 
-Exemplo usando um caminho relativo em POSIX (em relação a `process.cwd()`):
+Example using a relative path on POSIX (relative to `process.cwd()`):
 
 ```js
 fs.open('file.txt', 'r', (err, fd) => {
@@ -118,7 +118,7 @@ fs.open('file.txt', 'r', (err, fd) => {
 
 Paths specified using a [`Buffer`][] are useful primarily on certain POSIX operating systems that treat file paths as opaque byte sequences. On such systems, it is possible for a single file path to contain sub-sequences that use multiple character encodings. As with string paths, `Buffer` paths may be relative or absolute:
 
-Exemplo usando um caminho absoluto em POSIX:
+Example using an absolute path on POSIX:
 
 ```js
 fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
@@ -131,7 +131,7 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 
 On Windows, Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
-### Suporte à objetos URL
+### URL object support
 <!-- YAML
 added: v7.6.0
 -->
@@ -141,14 +141,14 @@ For most
 
 ```js
 const fs = require('fs');
-const fileUrl = new URL('file://tmp/hello');
+const fileUrl = new URL('file:///tmp/hello');
 
 fs.readFileSync(fileUrl);
 ```
 
 `file:` URLs are always absolute paths.
 
-Usar objetos WHATWG [`URL`][] pode introduzir comportamentos específicos de plataforma.
+Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 
 On Windows, `file:` URLs with a host name convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a host name nor a drive letter will result in a throw:
 
@@ -265,7 +265,7 @@ print('./').catch(console.error);
 added: v12.12.0
 -->
 
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously close the directory's underlying resource handle. Subsequent reads will result in errors.
 
@@ -369,7 +369,7 @@ Additionally, when [`fs.readdir()`][] or [`fs.readdirSync()`][] is called with t
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a block device.
 
@@ -378,7 +378,7 @@ Returns `true` if the `fs.Dirent` object describes a block device.
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a character device.
 
@@ -387,7 +387,7 @@ Returns `true` if the `fs.Dirent` object describes a character device.
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a file system directory.
 
@@ -396,7 +396,7 @@ Returns `true` if the `fs.Dirent` object describes a file system directory.
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) pipe.
 
@@ -405,7 +405,7 @@ Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) p
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a regular file.
 
@@ -414,7 +414,7 @@ Returns `true` if the `fs.Dirent` object describes a regular file.
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a socket.
 
@@ -423,7 +423,7 @@ Returns `true` if the `fs.Dirent` object describes a socket.
 added: v10.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a symbolic link.
 
@@ -621,7 +621,7 @@ BigIntStats {
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a block device.
 
@@ -630,7 +630,7 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a character device.
 
@@ -639,7 +639,7 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a file system directory.
 
@@ -648,7 +648,7 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
 
@@ -657,7 +657,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -666,7 +666,7 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a socket.
 
@@ -675,7 +675,7 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
@@ -1229,7 +1229,7 @@ fs.chmod('my_file.txt', 0o775, (err) => {
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constante              | Octal   | Descrição                |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -1243,7 +1243,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Descrição                |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -1491,7 +1491,7 @@ If `fd` points to a character device that only supports blocking reads (such as 
 
 By default, the stream will not emit a `'close'` event after it has been destroyed. This is the opposite of the default for other `Readable` streams. Set the `emitClose` option to `true` to change this behavior.
 
-By providing the `fs` option it is possible to override the corresponding `fs` implementations for `open`, `read` and `close`. When providing the `fs` option, you must override `open`, `close` and `read`.
+By providing the `fs` option, it is possible to override the corresponding `fs` implementations for `open`, `read`, and `close`. When providing the `fs` option, overrides for `open`, `read`, and `close` are required.
 
 ```js
 const fs = require('fs');
@@ -1565,7 +1565,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 By default, the stream will not emit a `'close'` event after it has been destroyed. This is the opposite of the default for other `Writable` streams. Set the `emitClose` option to `true` to change this behavior.
 
-By providing the `fs` option it is possible to override the corresponding `fs` implementations for `open`, `write`, `writev` and `close`. Overriding `write()` without `writev()` can reduce performance as some optimizations (`_writev()`) will be disabled. When providing the `fs` option, you must override `open`, `close` and at least one of `write` and `writev`.
+By providing the `fs` option it is possible to override the corresponding `fs` implementations for `open`, `write`, `writev` and `close`. Overriding `write()` without `writev()` can reduce performance as some optimizations (`_writev()`) will be disabled. When providing the `fs` option,  overrides for `open`, `close`, and at least one of `write` and `writev` are required.
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
@@ -1679,7 +1679,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the path exists, `false` otherwise.
 
@@ -1826,7 +1826,7 @@ changes:
 * `fd` {integer}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous fstat(2).
 
@@ -2136,7 +2136,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous lstat(2).
 
@@ -2169,7 +2169,9 @@ changes:
 * `callback` {Function}
   * `err` {Error}
 
-Asynchronously creates a directory. No arguments other than a possible exception are given to the completion callback.
+Asynchronously creates a directory.
+
+The callback is given a possible exception and, if `recursive` is `true`, the first folder path created, `(err, [path])`.
 
 The optional `options` argument can be an integer specifying mode (permission and sticky bits), or an object with a `mode` property and a `recursive` property indicating whether parent folders should be created. Calling `fs.mkdir()` when `path` is a directory that exists results in an error only when `recursive` is false.
 
@@ -2208,8 +2210,9 @@ changes:
 * `options` {Object|integer}
   * `recursive` {boolean} **Default:** `false`
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
+* Returns: {string|undefined}
 
-Synchronously creates a directory. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
+Synchronously creates a directory. Returns `undefined`, or if `recursive` is `true`, the first folder path created. This is the synchronous version of [`fs.mkdir()`][].
 
 See also: mkdir(2).
 
@@ -2287,7 +2290,7 @@ added: v5.10.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {string}
+* Returns: {string}
 
 Returns the created folder path.
 
@@ -2391,7 +2394,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} **Default:** `'r'`. See [support of file system `flags`][].
 * `mode` {string|integer} **Default:** `0o666`
-* Retorna: {number}
+* Returns: {number}
 
 Returns an integer representing the file descriptor.
 
@@ -2436,6 +2439,28 @@ Read data from the file specified by `fd`.
 The callback is given the three arguments, `(err, bytesRead, buffer)`.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `bytesRead` and `buffer` properties.
+
+## `fs.read(fd, [options,] callback)`
+<!-- YAML
+added: v13.11.0
+changes:
+  - version: v13.11.0
+    pr-url: https://github.com/nodejs/node/pull/31402
+    description: Options object can be passed in
+                 to make Buffer, offset, length and position optional
+-->
+* `fd` {integer}
+* `options` {Object}
+  * `buffer` {Buffer|TypedArray|DataView} **Default:** `Buffer.alloc(16384)`
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* `callback` {Function}
+  * `err` {Error}
+  * `bytesRead` {integer}
+  * `buffer` {Buffer}
+
+Similar to the above `fs.read` function, this version takes an optional `options` object. If no `options` object is specified, it will default with the above values.
 
 ## `fs.readdir(path[, options], callback)`
 <!-- YAML
@@ -2591,7 +2616,7 @@ changes:
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Retorna: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the contents of the `path`.
 
@@ -2653,7 +2678,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2677,7 +2702,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retorna: {number}
+* Returns: {number}
 
 Returns the number of `bytesRead`.
 
@@ -2781,7 +2806,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the resolved pathname.
 
@@ -2795,7 +2820,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous realpath(3).
 
@@ -3056,7 +3081,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {fs.Stats}
+* Returns: {fs.Stats}
 
 Synchronous stat(2).
 
@@ -3308,7 +3333,7 @@ changes:
 * `listener` {Function|undefined} **Default:** `undefined`
   * `eventType` {string}
   * `filename` {string|Buffer}
-* Retorna: {fs.FSWatcher}
+* Returns: {fs.FSWatcher}
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
@@ -3374,6 +3399,9 @@ fs.watch('somedir', (eventType, filename) => {
 <!-- YAML
 added: v0.1.31
 changes:
+  - version: v10.5.0
+    pr-url: https://github.com/nodejs/node/pull/20220
+    description: The `bigint` option is now supported.
   - version: v7.6.0
     pr-url: https://github.com/nodejs/node/pull/10739
     description: The `filename` parameter can be a WHATWG `URL` object using
@@ -3382,6 +3410,7 @@ changes:
 
 * `filename` {string|Buffer|URL}
 * `options` {Object}
+  * `bigint` {boolean} **Default:** `false`
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function}
@@ -3401,7 +3430,7 @@ fs.watchFile('message.text', (curr, prev) => {
 });
 ```
 
-These stat objects are instances of `fs.Stat`.
+These stat objects are instances of `fs.Stat`. If the `bigint` option is `true`, the numeric values in these objects are specified as `BigInt`s.
 
 To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
 
@@ -3690,7 +3719,7 @@ added: v10.0.0
 
 A `FileHandle` object is a wrapper for a numeric file descriptor. Instances of `FileHandle` are distinct from numeric file descriptors in that they provide an object oriented API for working with files.
 
-If a `FileHandle` is not closed using the `filehandle.close()` method, it might automatically close the file descriptor and will emit a process warning, thereby helping to prevent memory leaks. Please do not rely on this behavior in your code because it is unreliable and your file may not be closed. Instead, always explicitly close `FileHandle`s. Node.js may change this behavior in the future.
+If a `FileHandle` is not closed using the `filehandle.close()` method, it might automatically close the file descriptor and will emit a process warning, thereby helping to prevent memory leaks. Please do not rely on this behavior because it is unreliable and the file may not be closed. Instead, always explicitly close `FileHandle`s. Node.js may change this behavior in the future.
 
 Instances of the `FileHandle` object are created internally by the `fsPromises.open()` method.
 
@@ -3704,7 +3733,7 @@ added: v10.0.0
 * `data` {string|Buffer}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Alias of [`filehandle.writeFile()`][].
 
@@ -3716,7 +3745,7 @@ added: v10.0.0
 -->
 
 * `mode` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Modifies the permissions on the file. The `Promise` is resolved with no arguments upon success.
 
@@ -3727,7 +3756,7 @@ added: v10.0.0
 
 * `uid` {integer}
 * `gid` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
 
@@ -3758,7 +3787,7 @@ async function openAndClose() {
 added: v10.0.0
 -->
 
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3778,7 +3807,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Read data from the file.
 
@@ -3792,6 +3821,17 @@ Read data from the file.
 
 Following successful read, the `Promise` is resolved with an object with a `bytesRead` property specifying the number of bytes read, and a `buffer` property that is a reference to the passed in `buffer` argument.
 
+#### `filehandle.read(options)`
+<!-- YAML
+added: v13.11.0
+-->
+* `options` {Object}
+  * `buffer` {Buffer|Uint8Array} **Default:** `Buffer.alloc(16384)`
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* Returns: {Promise}
+
 #### `filehandle.readFile(options)`
 <!-- YAML
 added: v10.0.0
@@ -3799,7 +3839,7 @@ added: v10.0.0
 
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -3823,7 +3863,7 @@ changes:
 
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Retrieves the [`fs.Stats`][] for the file.
 
@@ -3832,7 +3872,7 @@ Retrieves the [`fs.Stats`][] for the file.
 added: v10.0.0
 -->
 
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3842,7 +3882,7 @@ added: v10.0.0
 -->
 
 * `len` {integer} **Default:** `0`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
 
@@ -3909,7 +3949,7 @@ added: v10.0.0
 
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3924,7 +3964,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Write `buffer` to the file.
 
@@ -3946,7 +3986,7 @@ added: v10.0.0
 * `string` {string}
 * `position` {integer}
 * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Write `string` to the file. If `string` is not a string, then the value will be coerced to one.
 
@@ -3968,7 +4008,7 @@ added: v10.0.0
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
@@ -3989,7 +4029,7 @@ added: v12.9.0
 
 * `buffers` {ArrayBufferView[]}
 * `position` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Write an array of `ArrayBufferView`s to the file.
 
@@ -4008,7 +4048,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Check [File Access Constants](#fs_file_access_constants) for possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -4036,7 +4076,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
@@ -4051,7 +4091,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {string|integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Changes the permissions of a file then resolves the `Promise` with no arguments upon succces.
 
@@ -4063,7 +4103,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
 
@@ -4075,7 +4115,7 @@ added: v10.0.0
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
 
@@ -4116,7 +4156,7 @@ deprecated: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. This method is only implemented on macOS.
 
@@ -4132,7 +4172,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -4143,7 +4183,7 @@ added: v10.0.0
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
 
@@ -4160,7 +4200,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous lstat(2). The `Promise` is resolved with the [`fs.Stats`][] object for the given symbolic link `path`.
 
@@ -4173,9 +4213,9 @@ added: v10.0.0
 * `options` {Object|integer}
   * `recursive` {boolean} **Default:** `false`
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
-Asynchronously creates a directory then resolves the `Promise` with no arguments upon success.
+Asynchronously creates a directory then resolves the `Promise` with either no arguments, or the first folder path created if `recursive` is `true`.
 
 The optional `options` argument can be an integer specifying mode (permission and sticky bits), or an object with a `mode` property and a `recursive` property indicating whether parent folders should be created. Calling `fsPromises.mkdir()` when `path` is a directory that exists results in a rejection only when `recursive` is false.
 
@@ -4187,7 +4227,7 @@ added: v10.0.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Creates a unique temporary directory and resolves the `Promise` with the created folder path. A unique directory name is generated by appending six random characters to the end of the provided `prefix`. Due to platform inconsistencies, avoid trailing `X` characters in `prefix`. Some platforms, notably the BSDs, can return more than six random characters, and replace trailing `X` characters in `prefix` with random characters.
 
@@ -4212,7 +4252,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][]. **Default:** `'r'`.
 * `mode` {string|integer} **Default:** `0o666` (readable and writable)
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
 
@@ -4268,7 +4308,7 @@ changes:
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
@@ -4297,7 +4337,7 @@ added: v10.0.0
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -4317,7 +4357,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
 
@@ -4331,7 +4371,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
 
@@ -4348,7 +4388,7 @@ added: v10.0.0
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
 
@@ -4376,7 +4416,7 @@ changes:
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or `EPERM` error is encountered, Node.js will retry the operation with a linear backoff wait of `retryDelay` ms longer on each try. This option represents the number of retries. This option is ignored if the `recursive` option is not `true`. **Default:** `0`.
   * `recursive` {boolean} If `true`, perform a recursive directory removal. In recursive mode, errors are not reported if `path` does not exist, and operations are retried on failure. **Default:** `false`.
   * `retryDelay` {integer} The amount of time in milliseconds to wait between retries. This option is ignored if the `recursive` option is not `true`. **Default:** `100`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4395,7 +4435,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
 
@@ -4407,7 +4447,7 @@ added: v10.0.0
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Creates a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -4420,7 +4460,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
 
@@ -4430,7 +4470,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronous unlink(2). The `Promise` is resolved with no arguments upon success.
 
@@ -4442,7 +4482,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4462,7 +4502,7 @@ added: v10.0.0
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
@@ -4486,8 +4526,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -4518,8 +4558,8 @@ The following constants are meant for use with [`fs.copyFile()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>COPYFILE_EXCL</code></td>
@@ -4546,8 +4586,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -4640,8 +4680,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -4683,8 +4723,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
