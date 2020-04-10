@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
-`util` 模块主要用于满足 Node.js 自己内部 API 的需求。 然而，很多实用程序对于应用程序和模块开发者也非常有用。 可以通过如下方式访问：
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -62,10 +62,10 @@ callbackFunction((err, ret) => {
 added: v0.11.3
 -->
 
-* `section` {string} 用于标识在应用程序中 `debuglog` 函数被创建的部分。
-* 返回：{Function} 日志函数
+* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
+* Returns: {Function} The logging function
 
-`util.debuglog()` 方法基于 `NODE_DEBUG` 环境变量的值，当符合某些条件时将调试信息输出到 `stderr`。 如果 `section` 名称出现在环境变量的值中，则返回的函数操作类似于 [`console.error()`][]。 如果没有，则返回的函数是空操作。
+The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
 ```js
 const util = require('util');
@@ -74,13 +74,13 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-如果在变量中包含 `NODE_DEBUG=foo`，则此程序的输出类似于如下内容：
+If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-其中的 `3245` 为进程 id。 如果该环境变量不存在，则程序运行时不打印任何内容。
+where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
 
 The `section` supports wildcard also:
 
@@ -138,11 +138,11 @@ fn2(); // Does not emit a deprecation warning because it has the same code
 
 If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
 
-如果 `--trace-deprecation` 或 `--trace-warnings` 命令行标志被设置，或者 `process.traceDeprecation` 属性被设置为 `true`，当已弃用的函数被首次调用时，警告和栈追溯将被打印到 `stderr`。
+If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
 
-如果设置了 `--throw-deprecation` 命令行标志，或者 `process.throwDeprecation` 属性被设置为 `true`，当被弃用的函数被调用时会抛出异常。
+If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
 
-`--throw-deprecation` 命令行标志和 `process.throwDeprecation` 属性优先于 `--trace-deprecation` 和 `process.traceDeprecation`。
+The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
 ## `util.format(format[, ...args])`
 <!-- YAML
@@ -181,7 +181,7 @@ changes:
     description: The `%o` and `%O` specifiers are supported now.
 -->
 
-* `format` {string} 一个和 `printf` 类似的格式化字符串函数。
+* `format` {string} A `printf`-like format string.
 
 The `util.format()` method returns a formatted string using the first argument as a `printf`-like format string which can contain zero or more format specifiers. Each specifier is replaced with the converted value from the corresponding argument. Supported specifiers are:
 
@@ -193,7 +193,7 @@ The `util.format()` method returns a formatted string using the first argument a
 * `%o`: `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
 * `%O`: `Object`. A string representation of an object with generic JavaScript object formatting. 类似于没有选项的 `util.inspect()`。 This will show the full object not including non-enumerable properties and proxies.
 * `%c`: `CSS`. This specifier is currently ignored, and will skip any CSS passed in.
-* `%%`: single percent sign (`'%'`). 它不使用参数。
+* `%%`: single percent sign (`'%'`). This does not consume an argument.
 * Returns: {string} The formatted string
 
 If a specifier does not have a corresponding argument, it is not replaced:
@@ -250,7 +250,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* 返回：{string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -275,9 +275,9 @@ changes:
 
 Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
 
-Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. `构造器` 的原型方法将被设定在通过`superConstructor`创建的对象之中。
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
-This mainly adds some input validation on top of `Object.setPrototypeOf(constructor.prototype, superConstructor.prototype)`. 更为方便的时，`superConstructor` 可以通过 `constructor.super_` 属性进行访问。
+This mainly adds some input validation on top of `Object.setPrototypeOf(constructor.prototype, superConstructor.prototype)`. As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
 ```js
 const util = require('util');
@@ -438,7 +438,7 @@ console.log(inspect(obj));
 // }
 ```
 
-如下的范例检查 `util` 对象的所有属性：
+The following example inspects all properties of the `util` object:
 
 ```js
 const util = require('util');
@@ -543,15 +543,15 @@ assert.strict.equal(
 
 `util.inspect()` is a synchronous method intended for debugging. Its maximum output length is approximately 128 MB. Inputs that result in longer output will be truncated.
 
-### 自定义 `util.inspect` 颜色
+### Customizing `util.inspect` colors
 
 <!-- type=misc -->
 
-`util.inspect` 的带颜色输出 （如果启用）可以通过 `util.inspect.styles` 和 `util.inspect.colors` 属性进行全局性定义。
+Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
 
-`util.inspect.styles` 是一个将样式名称和 `util.inspect.colors` 中颜色相关联的 map。
+`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
-默认的样式及其相关联的颜色是：
+The default styles and associated colors are:
 
 * `bigint`: `yellow`
 * `boolean`: `yellow`
@@ -566,7 +566,7 @@ assert.strict.equal(
 * `symbol`: `green`
 * `undefined`: `grey`
 
-使用 ANSI 控制代码的颜色样式可能不会适用于所有终端。 To verify color support use [`tty.hasColors()`][].
+Color styling uses ANSI control codes that may not be supported on all terminals. To verify color support use [`tty.hasColors()`][].
 
 Predefined control codes are listed below (grouped as "Modifiers", "Foreground colors", and "Background colors").
 
@@ -625,7 +625,7 @@ Modifier support varies throughout different terminals. They will mostly be igno
 * `bgCyanBright`
 * `bgWhiteBright`
 
-### 对象上的自定义检查功能
+### Custom inspection functions on Objects
 
 <!-- type=misc -->
 
@@ -662,7 +662,7 @@ util.inspect(box);
 // Returns: "Box< true >"
 ```
 
-自定义的 `[util.inspect.custom](depth, opts)` 函数通常返回一个字符串，但可能会返回任何类型的值，该值会被 `util.inspect()` 进行相应的格式化。
+Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
 
 ```js
 const util = require('util');
@@ -718,7 +718,7 @@ See [Custom inspection functions on Objects](#util_custom_inspection_functions_o
 added: v6.4.0
 -->
 
-`defaultOptions` 值允许自定义 `util.inspect` 的默认选项。 这对于 `console.log` 或 `util.format` 类似的函数非常有用，这样的函数会隐式调用 `util.inspect`。 应将其设置为一个包含一个或多个合法 [`util.inspect()`][] 选项的对象。 还支持直接设置选项属性。
+The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
 
 ```js
 const util = require('util');
@@ -736,9 +736,9 @@ added: v9.0.0
 
 * `val1` {any}
 * `val2` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-Returns `true` if there is deep strict equality between `val1` and `val2`. 否则，返回 `false`。
+Returns `true` if there is deep strict equality between `val1` and `val2`. Otherwise, returns `false`.
 
 See [`assert.deepStrictEqual()`][] for more information about deep strict equality.
 
@@ -748,7 +748,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* 返回：{Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -764,7 +764,7 @@ stat('.').then((stats) => {
 });
 ```
 
-或者，等同于使用 `async function`：
+Or, equivalently using `async function`s:
 
 ```js
 const util = require('util');
@@ -855,7 +855,7 @@ added: v8.0.0
 added: v8.3.0
 -->
 
-一个实现了 [WHATWG 编码规范](https://encoding.spec.whatwg.org/) 的 `TextDecoder` API。
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -871,7 +871,7 @@ string += decoder.decode(); // end-of-stream
 
 Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-不同的 Node.js 构建配置支持不同的编码集。 While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
+Different Node.js build configurations support different sets of encodings. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
 #### 没有启用 ICU 时支持的编码
 
@@ -943,7 +943,7 @@ changes:
   * `fatal` {boolean} `true` 如果解码出现的错误是致命的。 This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
-创建一个新的 `TextDecoder` 实例。 The `encoding` may specify one of the supported encodings or an alias.
+Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
 The `TextDecoder` class is also available on the global object.
 
@@ -952,9 +952,9 @@ The `TextDecoder` class is also available on the global object.
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `TypedArray` instance containing the encoded data.
 * `options` {Object}
   * `stream` {boolean} 如果期待额外的数据块，则为 `true`。 **Default:** `false`.
-* 返回：{string}
+* Returns: {string}
 
-对 `input` 进行解码并返回一个字符串。 If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
+Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
 If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
@@ -962,7 +962,7 @@ If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `T
 
 * {string}
 
-`TextDecoder` 实例支持的编码。
+The encoding supported by the `TextDecoder` instance.
 
 ### `textDecoder.fatal`
 
@@ -985,7 +985,7 @@ changes:
     description: The class is now available on the global object.
 -->
 
-[WHATWG 编码标准](https://encoding.spec.whatwg.org/)`TextEncoder` API 的一个实现。 All instances of `TextEncoder` only support UTF-8 encoding.
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextEncoder` API. All instances of `TextEncoder` only support UTF-8 encoding.
 
 ```js
 const encoder = new TextEncoder();
@@ -1005,7 +1005,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 * `src` {string} The text to encode.
 * `dest` {Uint8Array} The array to hold the encode result.
-* 返回：{Object}
+* Returns: {Object}
   * `read` {number} The read Unicode code units of src.
   * `written` {number} The written UTF-8 bytes of dest.
 
@@ -1022,7 +1022,7 @@ const { read, written } = encoder.encodeInto(src, dest);
 
 * {string}
 
-`TextEncoder` 实例支持的编码。 始终设置为 `'utf-8'`。
+The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
 ## `util.types`
 <!-- YAML
@@ -1039,7 +1039,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
 
@@ -1056,7 +1056,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an `arguments` object.
 ```js
@@ -1068,7 +1068,7 @@ function foo() {
 ### `util.types.isArrayBuffer(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -1083,7 +1083,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1098,7 +1098,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigInt64Array` instance.
 
@@ -1113,7 +1113,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigUint64Array` instance.
 
@@ -1128,7 +1128,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
 
@@ -1144,11 +1144,11 @@ util.types.isBooleanObject(Boolean(true));  // Returns false
 ### `util.types.isBoxedPrimitive(value)`<!-- YAML
 added: v10.11.0
 -->* `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
-例如：
+For example:
 
 ```js
 util.types.isBoxedPrimitive(false); // Returns false
@@ -1161,7 +1161,7 @@ util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 ### `util.types.isDataView(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -1179,7 +1179,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Date`][] instance.
 
@@ -1193,7 +1193,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a native `External` value.
 
@@ -1203,7 +1203,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float32Array`][] instance.
 
@@ -1219,7 +1219,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float64Array`][] instance.
 
@@ -1235,7 +1235,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1250,7 +1250,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a generator object as returned from a built-in generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1266,7 +1266,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int8Array`][] instance.
 
@@ -1282,7 +1282,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int16Array`][] instance.
 
@@ -1298,7 +1298,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int32Array`][] instance.
 
@@ -1314,7 +1314,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Map`][] instance.
 
@@ -1328,7 +1328,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
 
@@ -1346,7 +1346,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
 ```js
@@ -1361,7 +1361,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an instance of a built-in [`Error`][] type.
 
@@ -1374,7 +1374,7 @@ util.types.isNativeError(new RangeError());  // Returns true
 ### `util.types.isNumberObject(value)`<!-- YAML
 added: v10.0.0
 -->* `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1389,7 +1389,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Promise`][].
 
@@ -1403,7 +1403,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a [`Proxy`][] instance.
 
@@ -1420,7 +1420,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a regular expression object.
 
@@ -1435,7 +1435,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Set`][] instance.
 
@@ -1449,7 +1449,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
 
@@ -1467,7 +1467,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -1482,7 +1482,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a string object, e.g. created by `new String()`.
 
@@ -1497,7 +1497,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
 
@@ -1513,7 +1513,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`TypedArray`][] instance.
 
@@ -1531,7 +1531,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8Array`][] instance.
 
@@ -1547,7 +1547,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
 
@@ -1563,7 +1563,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint16Array`][] instance.
 
@@ -1579,7 +1579,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint32Array`][] instance.
 
@@ -1595,7 +1595,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
 
@@ -1609,7 +1609,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakSet`][] instance.
 
@@ -1623,7 +1623,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
 
@@ -1632,9 +1632,9 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## 已弃用的 API
+## Deprecated APIs
 
-The following APIs are deprecated and should no longer be used. 现有的应用程序和模块都应被更新，以找到替代方法。
+The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
 ### `util._extend(target, source)`<!-- YAML
 added: v0.7.5
@@ -1644,9 +1644,9 @@ deprecated: v6.0.0
 * `target` {Object}
 * `source` {Object}
 
-`util._extend()` 方法从未打算在内部 Node.js 模块之外被使用。 尽管如此，但社区还是发现并使用了它。
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
 
-它已被弃用，不应在新代码中使用。 JavaScript comes with very similar built-in functionality through [`Object.assign()`][].
+It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`][].
 
 ### `util.isArray(object)`<!-- YAML
 added: v0.6.0
@@ -1654,11 +1654,11 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Alias for [`Array.isArray()`][].
 
-如果给定的 `object` 是一个 `Array`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1677,9 +1677,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Boolean`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1695,12 +1695,12 @@ util.isBoolean(false);
 ### `util.isBuffer(object)`<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用：改为使用[`Buffer.isBuffer()`][]。
+-->> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Buffer`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1719,9 +1719,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Date`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1740,9 +1740,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是一个 [`Error`][]，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1755,7 +1755,7 @@ util.isError({ name: 'Error', message: 'an error occurred' });
 // Returns: false
 ```
 
-This method relies on `Object.prototype.toString()` behavior. 当 `object` 参数操作 `@@toStringTag` 时可能会获得不正确的结果。
+This method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
@@ -1774,9 +1774,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Function`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1798,9 +1798,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `value === null` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 严格为 `null`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1822,9 +1822,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `null` 或 `undefined`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1846,9 +1846,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Number`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1872,9 +1872,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). 否则，返回 `false`。
+Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1898,9 +1898,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是基本类型，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1928,12 +1928,12 @@ util.isPrimitive(new Date());
 ### `util.isRegExp(object)`<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> 稳定性：0 - 已弃用
+-->> Stability: 0 - Deprecated
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `RegExp`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1955,9 +1955,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是一个 `字符串`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1978,9 +1978,9 @@ deprecated: v4.0.0
 -->> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `Symbol`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -2002,9 +2002,9 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined` instead.
 
 * `object` {any}
-* 返回：{boolean}
+* Returns: {boolean}
 
-如果给定的 `object` 是 `undefined`，则返回 `true`。 否则，返回 `false`。
+Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -2021,11 +2021,11 @@ util.isUndefined(null);
 ### `util.log(string)`<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> 稳定性：0 - 已弃用：改为使用第三方模块。
+-->> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
-`util.log()` 方法在 `标准输出` 打印包含时间戳的给定 `string`。
+The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
 
 ```js
 const util = require('util');
