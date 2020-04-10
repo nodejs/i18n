@@ -1,12 +1,12 @@
-# Сеть
+# Net
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Доступ к нему можно получить с помощью:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -22,7 +22,7 @@ The `net` module supports IPC with named pipes on Windows, and UNIX domain socke
 
 On UNIX, the local domain is also known as the UNIX domain. The path is a filesystem path name. It gets truncated to `sizeof(sockaddr_un.sun_path) - 1`, which varies on different operating system between 91 and 107 bytes. The typical values are 107 on Linux and 103 on macOS. The path is subject to the same naming conventions and permissions checks as would be done on file creation. It will be visible in the filesystem, and will *persist until unlinked*.
 
-On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in ``\\?\pipe\` or``\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving`..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
+On Windows, the local domain is implemented using a named pipe. The path *must* refer to an entry in `\\?\pipe` or `\\.\pipe`. Any characters are permitted, but the latter may do some processing of pipe names, such as resolving `..` sequences. Despite appearances, the pipe name space is flat. Pipes will *not persist*, they are removed when the last reference to them is closed. Do not forget JavaScript string escaping requires paths to be specified with double-backslashes, such as:
 
 ```js
 net.createServer().listen(
@@ -39,21 +39,21 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 ### new net.Server(\[options\]\[, connectionListener\])
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
-### Событие: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.5.0
 -->
 
-Генерируется при завершении работы сервера. Note that if connections exist, this event is not emitted until all connections are ended.
+Emitted when the server closes. Note that if connections exist, this event is not emitted until all connections are ended.
 
-### Событие: 'connection'
+### Event: 'connection'
 
 <!-- YAML
 added: v0.1.90
@@ -63,7 +63,7 @@ added: v0.1.90
 
 Emitted when a new connection is made. `socket` is an instance of `net.Socket`.
 
-### Событие: 'error'
+### Event: 'error'
 
 <!-- YAML
 added: v0.1.90
@@ -71,9 +71,9 @@ added: v0.1.90
 
 * {Error}
 
-Создается при возникновении ошибки. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
+Emitted when an error occurs. Unlike [`net.Socket`][], the [`'close'`][] event will **not** be emitted directly following this event unless [`server.close()`][] is manually called. See the example in discussion of [`server.listen()`][].
 
-### Событие: 'listening'
+### Event: 'listening'
 
 <!-- YAML
 added: v0.1.90
@@ -91,7 +91,7 @@ Returns the bound address, the address family name, and port of the server as re
 
 For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
 
-Пример:
+Example:
 
 ```js
 const server = net.createServer((socket) => {
@@ -115,11 +115,11 @@ Don't call `server.address()` until the `'listening'` event has been emitted.
 added: v0.1.90
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an Error as its only argument if the server was not open when it was closed.
 
-Возвращает `server`.
+Returns `server`.
 
 ### server.connections
 
@@ -128,7 +128,7 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Стабильность: 0 - устарело: вместо этого используйте [`server.getConnections()`] [].
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 The number of concurrent connections on the server.
 
@@ -140,7 +140,7 @@ This becomes `null` when sending a socket to a child with [`child_process.fork()
 added: v0.9.7
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
 
@@ -157,7 +157,7 @@ Possible signatures:
 * [`server.listen(path[, backlog][, callback])`][`server.listen(path)`] for [IPC](#net_ipc_support) servers
 * [`server.listen([port][, host][, backlog][, callback])`][`server.listen(port, host)`] for TCP servers
 
-Это асинхронная функция. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
+This function is asynchronous. When the server starts listening, the [`'listening'`][] event will be emitted. The last parameter `callback` will be added as a listener for the [`'listening'`][] event.
 
 All `listen()` methods can take a `backlog` parameter to specify the maximum length of the queue of pending connections. The actual length will be determined by the OS through sysctl settings such as `tcp_max_syn_backlog` and `somaxconn` on Linux. The default value of this parameter is 511 (not 512).
 
@@ -190,7 +190,7 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
 
@@ -204,14 +204,14 @@ The `handle` object can be either a server, a socket (anything with an underlyin
 added: v0.11.14
 -->
 
-* `опции` Требуется {Object}. Поддерживает следующие свойства: 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {number}
   * `host` {string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
   * `backlog` {number} Common parameter of [`server.listen()`][] functions.
   * `exclusive` {boolean} **Default:** `false`
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 If `port` is specified, it behaves the same as [`server.listen([port][, hostname][, backlog][, callback])`][`server.listen(port, host)`]. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
 
@@ -234,7 +234,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start a [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -248,7 +248,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -282,7 +282,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Opposite of `unref`, calling `ref` on a previously `unref`d server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`d calling `ref` again will have no effect.
 
@@ -292,7 +292,7 @@ Opposite of `unref`, calling `ref` on a previously `unref`d server will *not* le
 added: v0.9.1
 -->
 
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 Calling `unref` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`d calling `unref` again will have no effect.
 
@@ -316,16 +316,16 @@ added: v0.3.4
 
 Creates a new socket object.
 
-* `опции` {Object} Available options are: 
+* `options` {Object} Available options are: 
   * `fd`: {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **По умолчанию:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **По умолчанию:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **По умолчанию:** `false`.
-* Возвращает: {net.Socket}
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+* Returns: {net.Socket}
 
 The newly created socket can be either a TCP socket or a streaming [IPC](#net_ipc_support) endpoint, depending on what it [`connect()`][`socket.connect()`] to.
 
-### Событие: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.90
@@ -335,7 +335,7 @@ added: v0.1.90
 
 Emitted once the socket is fully closed. The argument `had_error` is a boolean which says if the socket was closed due to a transmission error.
 
-### Событие: 'connect'
+### Event: 'connect'
 
 <!-- YAML
 added: v0.1.90
@@ -375,7 +375,7 @@ Emitted when the other end of the socket sends a FIN packet, thus ending the rea
 
 By default (`allowHalfOpen` is `false`) the socket will send a FIN packet back and destroy its file descriptor once it has written out its pending write queue. However, if `allowHalfOpen` is set to `true`, the socket will not automatically [`end()`][`socket.end()`] its writable side, allowing the user to write arbitrary amounts of data. The user must call [`end()`][`socket.end()`] explicitly to close the connection (i.e. sending a FIN packet back).
 
-### Событие: 'error'
+### Event: 'error'
 
 <!-- YAML
 added: v0.1.90
@@ -383,7 +383,7 @@ added: v0.1.90
 
 * {Error}
 
-Создается при возникновении ошибки. The `'close'` event will be called directly following this event.
+Emitted when an error occurs. The `'close'` event will be called directly following this event.
 
 ### Event: 'lookup'
 
@@ -460,7 +460,7 @@ Possible signatures:
 * \[socket.connect(port[, host\]\[, connectListener\])][`socket.connect(port, host)`] for TCP connections.
 * Returns: {net.Socket} The socket itself.
 
-Это асинхронная функция. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
+This function is asynchronous. When the connection is established, the [`'connect'`][] event will be emitted. If there is a problem connecting, instead of a [`'connect'`][] event, an [`'error'`][] event will be emitted with the error passed to the [`'error'`][] listener. The last parameter `connectListener`, if supplied, will be added as a listener for the [`'connect'`][] event **once**.
 
 #### socket.connect(options[, connectListener])
 
@@ -543,7 +543,7 @@ If `true` - [`socket.connect(options[, connectListener])`][`socket.connect(optio
 added: v0.1.90
 -->
 
-* Возвращает: {net.Socket}
+* Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -704,7 +704,7 @@ added: v0.1.90
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
-Returns `true` if the entire data was flushed successfully to the kernel buffer. Возвращает `false`, если данные полностью или частично были поставлены в очередь в памяти пользователя. [`'drain'`][] will be emitted when the buffer is again free.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
 The optional `callback` parameter will be executed when the data is finally written out - this may not be immediately.
 
@@ -833,11 +833,11 @@ added: v0.5.0
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
-* `опции` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **По умолчанию:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **По умолчанию:** `false`.
+* `options` {Object} 
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Возвращает: {net.Server}
+* Returns: {net.Server}
 
 If `allowHalfOpen` is set to `true`, when the other end of the socket sends a FIN packet, the server will only send a FIN packet back when [`socket.end()`][] is explicitly called, until then the connection is half-closed (non-readable but still writable). See [`'end'`][] event and [RFC 1122](https://tools.ietf.org/html/rfc1122) (section 4.2.2.13) for more information.
 
