@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
@@ -179,13 +179,13 @@ This is an opaque pointer that is used to represent a JavaScript value.
 
 ### napi_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 This is an opaque pointer that represents a JavaScript function which can be called asynchronously from multiple threads via `napi_call_threadsafe_function()`.
 
 ### napi_threadsafe_function_release_mode
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 A value to be given to `napi_release_threadsafe_function()` to indicate whether the thread-safe function is to be closed immediately (`napi_tsfn_abort`) or merely released (`napi_tsfn_release`) and thus available for subsequent use via `napi_acquire_threadsafe_function()` and `napi_call_threadsafe_function()`.
 
@@ -198,7 +198,7 @@ typedef enum {
 
 ### napi_threadsafe_function_call_mode
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 A value to be given to `napi_call_threadsafe_function()` to indicate whether the call should block whenever the queue associated with the thread-safe function is full.
 
@@ -275,7 +275,7 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 #### napi_threadsafe_function_call_js
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 Function pointer used with asynchronous thread-safe function calls. The callback will be called on the main thread. Its purpose is to use a data item arriving via the queue from one of the secondary threads to construct the parameters necessary for a call into JavaScript, usually via `napi_call_function`, and then make the call into JavaScript.
 
@@ -3975,7 +3975,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4016,7 +4016,7 @@ napi_create_threadsafe_function(napi_env env,
 
 ### napi_get_threadsafe_function_context
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4035,7 +4035,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4058,7 +4058,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4077,7 +4077,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4098,7 +4098,7 @@ This API may be called from any thread which will stop making use of `func`.
 
 ### napi_ref_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4118,7 +4118,7 @@ This API may only be called from the main thread.
 
 ### napi_unref_threadsafe_function
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
