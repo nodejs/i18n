@@ -546,7 +546,7 @@ Sets a single header value for headers object. If this header already exists in 
 request.setHeader('Content-Type', 'application/json');
 ```
 
-eller
+or
 
 ```js
 request.setHeader('Cookie', ['type=ninja', 'language=javascript']);
@@ -991,7 +991,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-eller
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
