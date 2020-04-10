@@ -1,10 +1,10 @@
-# Λειτουργικό Σύστημα
+# OS
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
-The `os` module provides operating system-related utility methods and properties. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `os` module provides operating system-related utility methods and properties. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -27,7 +27,7 @@ The operating system-specific end-of-line marker.
 added: v0.5.0
 -->
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Returns the operating system CPU architecture for which the Node.js binary was compiled. Possible values are `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
@@ -114,7 +114,7 @@ The properties included on each object include:
 
 ## `os.endianness()`<!-- YAML
 added: v0.9.4
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns a string identifying the endianness of the CPU for which the Node.js binary was compiled.
 
@@ -135,7 +135,7 @@ Returns the scheduling priority for the process specified by `pid`. If `pid` is 
 
 ## `os.homedir()`<!-- YAML
 added: v2.3.0
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns the string path of the current user's home directory.
 
@@ -145,7 +145,7 @@ On Windows, it uses the `USERPROFILE` environment variable if defined. Otherwise
 
 ## `os.hostname()`<!-- YAML
 added: v0.3.3
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns the hostname of the operating system as a string.
 
@@ -164,7 +164,7 @@ The load average is a Unix-specific concept. On Windows, the return value is alw
 
 ## `os.networkInterfaces()`<!-- YAML
 added: v0.6.0
--->* Επιστρέφει: {Object}
+-->* Returns: {Object}
 
 Returns an object containing network interfaces that have been assigned a network address.
 
@@ -224,7 +224,7 @@ The properties available on the assigned network address object include:
 
 ## `os.platform()`<!-- YAML
 added: v0.5.0
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns a string identifying the operating system platform. The value is set at compile time. Possible values are `'aix'`, `'darwin'`, `'freebsd'`, `'linux'`, `'openbsd'`, `'sunos'`, and `'win32'`.
 
@@ -234,7 +234,7 @@ The value `'android'` may also be returned if Node.js is built on the Android op
 
 ## `os.release()`<!-- YAML
 added: v0.3.3
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns the operating system as a string.
 
@@ -258,7 +258,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns the operating system's default directory for temporary files as a string.
 
@@ -270,7 +270,7 @@ Returns the total amount of system memory in bytes as an integer.
 
 ## `os.type()`<!-- YAML
 added: v0.3.3
--->* Επιστρέφει: {string}
+-->* Returns: {string}
 
 Returns the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, it returns `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
@@ -291,7 +291,7 @@ Returns the system uptime in number of seconds.
 added: v6.0.0
 -->* `options` {Object}
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Returns information about the currently effective user. On POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
@@ -315,7 +315,7 @@ changes:
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -482,7 +482,7 @@ The following error constants are exported by `os.constants.errno`.
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -816,7 +816,7 @@ The following error codes are specific to the Windows operating system.
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1061,7 +1061,7 @@ If available on the operating system, the following constants are exported in `o
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
@@ -1096,7 +1096,7 @@ added: v10.10.0
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>PRIORITY_LOW</code></td>
@@ -1144,7 +1144,7 @@ added: v10.10.0
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
