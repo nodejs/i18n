@@ -1,10 +1,10 @@
-# Ασυγχρόνιστα Αγκίστρια
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callback` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -444,7 +444,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the triggerAsyncId value is 0, which means that we are missing context about the resource that caused (triggered) the `then` callback to be executed.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Παράδειγμα:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
 ```js
 const ah = require('async_hooks');
@@ -513,9 +513,9 @@ asyncResource.emitAfter();
 * `type` {string} The type of async event.
 * `options` {Object} 
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Προεπιλογή:** `false`.
+  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Παράδειγμα χρήσης:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -557,7 +557,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
@@ -571,7 +571,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
 
@@ -581,7 +581,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### `asyncResource.emitDestroy()`
 
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
