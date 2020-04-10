@@ -728,7 +728,7 @@ socket.on('end', () => {
 });
 ```
 
-Eller
+Or
 
 ```js
 const tls = require('tls');
@@ -887,7 +887,7 @@ server.listen(8000, () => {
 });
 ```
 
-Eller
+Or
 
 ```js
 const tls = require('tls');
