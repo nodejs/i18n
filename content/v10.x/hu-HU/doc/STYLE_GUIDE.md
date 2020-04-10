@@ -1,19 +1,19 @@
-# Stílus útmutató
+# Style Guide
 
-* A dokumentáció markdown jelöléssel készül, a fájlnevek formátuma `kisbetű-kötőjelekkkel-tagolva.md`. 
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Néhány fájl kivételt képez, pl. legfelső szintű mardown fájl.
-* A dokumentumokban a sor hossza 80 karakter legyen.
-* Az `.editorconfig`-ban van megadva a formázás. 
-  * Néhány szerkesztőszoftver képes ezeket a szabályokat átvenni [plugin](http://editorconfig.org/#download)-nel.
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Changes to documentation should be checked with `make lint-md`.
-* Az amerikai angol nyelvtan az irányadó. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
-    * Rossz: "férfié", "nőé", "féfinek", "nőnek", "srácok", "csajok"
+    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
 * When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
