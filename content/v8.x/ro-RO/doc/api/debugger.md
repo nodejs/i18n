@@ -24,6 +24,8 @@ Node.js's debugger client is not a full-featured debugger, but simple step and i
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
 
+<!-- eslint-disable no-debugger -->
+
 ```js
 // myscript.js
 global.x = 5;
