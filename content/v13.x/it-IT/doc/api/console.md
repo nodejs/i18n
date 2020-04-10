@@ -2,33 +2,33 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
-Il modulo `console` fornisce una semplice debugging console con funzionamento simile alla JavaScript console fornita dai browser web.
+The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
-Il modulo esporta due componenti specifici:
+The module exports two specific components:
 
-* Una classe `Console` con metodi come `console.log()`, `console.error()` e `console.warn()` che possono essere utilizzati per eseguire la scrittura (writing) su qualsiasi stream di Node.js.
-* Un'istanza global `console` configurata per eseguire la scrittura (writing) su [`process.stdout`][] e [`process.stderr`][]. La global `console` può essere utilizzata senza chiamare `require('console')`.
+* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
+* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. Vedi la [nota sul proceso I/O](process.html#process_a_note_on_process_i_o) per maggiori informazioni.
+***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
-Esempio utilizzando la global `console`:
+Example using the global `console`:
 
 ```js
 console.log('hello world');
-// Stampa: hello world, a stdout
+// Prints: hello world, to stdout
 console.log('hello %s', 'world');
-// Stampa: hello world, a stdout
+// Prints: hello world, to stdout
 console.error(new Error('Whoops, something bad happened'));
-// Stampa: [Error: Whoops, something bad happened], a stderr
+// Prints: [Error: Whoops, something bad happened], to stderr
 
 const name = 'Will Robinson';
 console.warn(`Danger ${name}! Danger!`);
-// Stampa: Danger Will Robinson! Danger!, a stderr
+// Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Esempio utilizzando la classe `Console`:
+Example using the `Console` class:
 
 ```js
 const out = getStreamSomehow();
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Stampa: hello world, ad out
+// Prints: hello world, to out
 myConsole.log('hello %s', 'world');
-// Stampa: hello world, ad out
+// Prints: hello world, to out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Stampa: [Error: Whoops, something bad happened], ad err
+// Prints: [Error: Whoops, something bad happened], to err
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Stampa: Danger Will Robinson! Danger!, ad err
+// Prints: Danger Will Robinson! Danger!, to err
 ```
 
 ## Class: `Console`
@@ -88,10 +88,10 @@ changes:
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
   * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Default:** `true`.
-  * `colorMode` {boolean|string} Imposta il supporto dei colori per quest'istanza `Console`. Setting to `true` enables coloring while inspecting values. Setting to `false` disables coloring while inspecting values. Setting to `'auto'` makes color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. This option can not be used, if `inspectOptions.colors` is set as well. **Default:** `'auto'`.
+  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values. Setting to `false` disables coloring while inspecting values. Setting to `'auto'` makes color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. This option can not be used, if `inspectOptions.colors` is set as well. **Default:** `'auto'`.
   * `inspectOptions` {Object} Specifies options that are passed along to [`util.inspect()`][].
 
-Crea una nuova `Console` con una o due istanze di writable stream. `stdout` è un writable stream per stampare log o info output. `stderr` è utilizzato per stampare warning o error output. Se `stderr` non viene fornito, viene utilizzato `stdout` al posto di `stderr`.
+Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
@@ -104,7 +104,7 @@ logger.log('count: %d', count);
 // In stdout.log: count 5
 ```
 
-La global `console` è una speciale `Console` il cui output è inviato a [`process.stdout`][] e [`process.stderr`][]. E' come chiamare:
+The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -120,10 +120,10 @@ changes:
                  anymore.
 -->
 
-* `value` {any} Il valore testato per essere veritiero.
-* `...message` {any} Tutti gli argomenti oltre a `value` vengono utilizzati come error message.
+* `value` {any} The value tested for being truthy.
+* `...message` {any} All arguments besides `value` are used as error message.
 
-Un semplice assertion test che verifica se `value` è veritiero. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
 
 ```js
 console.assert(true, 'does nothing');
@@ -139,18 +139,18 @@ Calling `console.assert()` with a falsy assertion will only cause the `message` 
 added: v8.3.0
 -->
 
-Quando `stdout` è un TTY, con la chiamata di `console.clear()` si tenterà di cancellare il TTY. Quando `stdout` non è un TTY, questo metodo non fa nulla.
+When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. Per la maggior parte dei sistemi operativi Linux, `console.clear()` funziona in modo simile al comando `clear` di shell. Su Windows, `console.clear()` cancella solo l'output nella corrente finestra del terminale per il binario di Node.js.
+The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
 ### `console.count([label])`
 <!-- YAML
 added: v8.3.0
 -->
 
-* `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
+* `label` {string} The display label for the counter. **Default:** `'default'`.
 
-Mantiene un counter interno specifico per `label` e restituisce a `stdout` il numero di volte in cui `console.count()` è stato chiamato con il `label` fornito.
+Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 ```js
 > console.count()
 default: 1
@@ -175,9 +175,9 @@ undefined
 
 ### `console.countReset([label])`<!-- YAML
 added: v8.3.0
--->* `label` {string} L'etichetta del display per il counter. **Default:** `'default'`.
+-->* `label` {string} The display label for the counter. **Default:** `'default'`.
 
-Reimposta il counter interno specifico per `label`.
+Resets the internal counter specific to `label`.
 ```js
 > console.count('abc');
 abc: 1
@@ -199,17 +199,17 @@ changes:
 -->* `data` {any}
 * `...args` {any}
 
-La funzione `console.debug()` è un alias di [`console.log()`][].
+The `console.debug()` function is an alias for [`console.log()`][].
 
 ### `console.dir(obj[, options])`<!-- YAML
 added: v0.1.101
 -->* `obj` {any}
 * `options` {Object}
   * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Per farlo ripetere indefinitamente, passa `null`. **Default:** `2`.
+  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
-Utilizza [`util.inspect()`][] su `obj` e stampa la stringa risultante su `stdout`. Questa funzione ignora qualsiasi funzione personalizzata `inspect()` definita su `obj`.
+Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
 
 ### `console.dirxml(...data)`<!-- YAML
 added: v8.0.0
@@ -219,30 +219,30 @@ changes:
     description: "`console.dirxml` now calls `console.log` for its arguments."
 -->* `...data` {any}
 
-Questo metodo chiama `console.log()` passandogli gli argomenti ricevuti. This method does not produce any XML formatting.
+This method calls `console.log()` passing it the arguments received. This method does not produce any XML formatting.
 
 ### `console.error([data][, ...args])`<!-- YAML
 added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Stampa una nuova riga (newline) su `stderr`. È possibile passare più argomenti, usando il primo come messaggio principale e tutti gli altri come valori di sostituzione simili a printf(3) (gli argomenti vengono passati tutti ad [`util.format()`][]).
+Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Stampa: error #5, a stderr
+// Prints: error #5, to stderr
 console.error('error', code);
-// Stampa: error 5, a stderr
+// Prints: error 5, to stderr
 ```
 
-Se gli elementi di formattazione (ad esempio `%d`) non vengono trovati nella prima stringa, allora viene chiamato [`util.inspect()`][] su ogni argomento e i valori risultanti della stringa vengono concatenati. Vedi [`util.format()`][] per maggiori informazioni.
+If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
 
 ### `console.group([...label])`<!-- YAML
 added: v8.5.0
 -->* `...label` {any}
 
-Aumenta l'indentazione delle righe successive di due spazi.
+Increases indentation of subsequent lines by two spaces.
 
 If one or more `label`s are provided, those are printed first without the additional indentation.
 
@@ -262,24 +262,24 @@ added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-La funzione `console.info()` è un alias di [`console.log()`][].
+The `console.info()` function is an alias for [`console.log()`][].
 
 ### `console.log([data][, ...args])`<!-- YAML
 added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Stampa una nuova riga (newline) su `stdout`. È possibile passare più argomenti, usando il primo come messaggio principale e tutti gli altri come valori di sostituzione simili a printf(3) (gli argomenti vengono passati tutti ad [`util.format()`][]).
+Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Stampa: count: 5, a stdout
+// Prints: count: 5, to stdout
 console.log('count:', count);
-// Stampa: count: 5, a stdout
+// Prints: count: 5, to stdout
 ```
 
-Vedi [`util.format()`][] per maggiori informazioni.
+See [`util.format()`][] for more information.
 
 ### `console.table(tabularData[, properties])`<!-- YAML
 added: v10.0.0
@@ -289,7 +289,7 @@ added: v10.0.0
 Try to construct a table with the columns of the properties of `tabularData` (or use `properties`) and rows of `tabularData` and log it. Falls back to just logging the argument if it can’t be parsed as tabular.
 
 ```js
-// Questi non possono essere analizzati tramite il parsing come dati della tabella
+// These can't be parsed as tabular data
 console.table(Symbol());
 // Symbol()
 
@@ -317,7 +317,7 @@ console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 added: v0.1.104
 -->* `label` {string} **Default:** `'default'`
 
-Avvia un timer che può essere utilizzato per calcolare la durata di un'operazione. I timer sono identificati da una `label` specifica. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Le misure del timer sono precise al millisecondo.
+Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### `console.timeEnd([label])`<!-- YAML
 added: v0.1.104
@@ -328,13 +328,13 @@ changes:
                  to individual `console.time()` calls; see below for details.
 -->* `label` {string} **Default:** `'default'`
 
-Arresta un timer precedentemente avviato chiamando [`console.time()`][] e stampa il risultato su `stdout`:
+Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
 
 ```js
 console.time('100-elements');
 for (let i = 0; i < 100; i++) {}
 console.timeEnd('100-elements');
-// stampa 100-elements: 225.438ms
+// prints 100-elements: 225.438ms
 ```
 
 ### `console.timeLog([label][, ...data])`<!-- YAML
@@ -362,7 +362,7 @@ Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] f
 
 ```js
 console.trace('Show me');
-// Stampa: (lo stack trace varierà in base a dove viene chiamata la trace)
+// Prints: (stack trace will vary based on where trace is called)
 //  Trace: Show me
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
@@ -381,16 +381,16 @@ added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-La funzione `console.warn()` è un alias di [`console.error()`][].
+The `console.warn()` function is an alias for [`console.error()`][].
 
-## Metodi solo per l'Inspector
+## Inspector only methods
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
 
 ### `console.profile([label])`<!-- YAML
 added: v8.0.0
 -->* `label` {string}
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+This method does not display anything unless used in the inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
 
 ```js
 console.profile('MyLabel');
@@ -403,7 +403,7 @@ console.profileEnd('MyLabel');
 added: v8.0.0
 -->* `label` {string}
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
 
 If this method is called without a label, the most recently started profile is stopped.
 
@@ -414,4 +414,4 @@ added: v8.0.0
 
 * `label` {string}
 
-Questo metodo non mostra nulla se non viene utilizzato nell'inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
+This method does not display anything unless used in the inspector. The `console.timeStamp()` method adds an event with the label `'label'` to the **Timeline** panel of the inspector.
