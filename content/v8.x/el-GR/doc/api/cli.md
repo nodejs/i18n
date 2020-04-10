@@ -1,10 +1,10 @@
-# Επιλογές διεπαφής γραμμής εντολών
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Το Node.js περιλαμβάνει αρκετές επιλογές διεπαφής γραμμής εντολών. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
@@ -307,7 +307,7 @@ For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Προεπιλογή))
+Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
 
 ### `--enable-fips`
 
