@@ -240,7 +240,7 @@ Node.js uses three [Deprecation](https://en.wikipedia.org/wiki/Deprecation) leve
   * Emits a warning at runtime on first use of the deprecated API.
   * If used with the [`--throw-deprecation`][] flag, will throw a runtime error.
 
-* Τέλος κύκλου ζωής
+* End-of-Life
   * The API is no longer subject to the semantic versioning rules.
   * Backward-incompatible changes including complete removal of such APIs may occur at any time.
 
