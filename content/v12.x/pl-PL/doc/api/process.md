@@ -580,7 +580,7 @@ console.log(`Current directory: ${process.cwd()}`);
 
 ## `process.debugPort`<!-- YAML
 added: v0.7.2
--->* {liczba}
+-->* {number}
 
 The port used by Node.js's debugger when enabled.
 
@@ -1433,7 +1433,7 @@ console.log(process.resourceUsage());
 
 ## `process.send(message[, sendHandle[, options]][, callback])`<!-- YAML
 added: v0.5.9
--->* `wiadomość` {Object}
+-->* `message` {Object}
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object} used to parameterize the sending of certain types of handles.`options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
@@ -1614,7 +1614,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Na przykład:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
