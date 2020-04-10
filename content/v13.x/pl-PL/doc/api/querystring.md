@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
