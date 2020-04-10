@@ -2,44 +2,44 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 <!--name=module-->
 
-Dans le système de module de Node.js, chaque fichier est traité comme un module séparé. Par exemple, considérez un fichier nommé `foo.js` :
+In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
 
 ```js
-const cercle = require('./cercle.js');
-console.log(`L'aire d'un cercle de rayon 4 est ${cercle.aire(4)}`);
+const circle = require('./circle.js');
+console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-Sur la première ligne, `foo.js` charge le module `cercle.js` qui se trouve dans le même répertoire que `foo.js`.
+On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
 
-Voici le contenu de `cercle.js` :
+Here are the contents of `circle.js`:
 
 ```js
 const { PI } = Math;
 
-exports.aire = (r) => PI * r ** 2;
+exports.area = (r) => PI * r ** 2;
 
-exports.circonference = (r) => 2 * PI * r;
+exports.circumference = (r) => 2 * PI * r;
 ```
 
-Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
-Les variables locales au module seront privées, car le module est enveloppé dans une fonction par Node.js (voir [module wrapper](#modules_the_module_wrapper)). Dans cet exemple, la variable `PI` est une variable privée de `cercle.js`.
+Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 
 The `module.exports` property can be assigned a new value (such as a function or object).
 
-Ci-dessous, `bar.js` utilise le module `carré`, qui exporte une classe Carré :
+Below, `bar.js` makes use of the `square` module, which exports a Square class:
 
 ```js
-const Carré = require('./carré.js');
-const monCarré = new Carré(2);
-console.log(`L'aire de monCarré est ${monCarré.aire()}`);
+const Square = require('./square.js');
+const mySquare = new Square(2);
+console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-Le module `carré` est défini dans le fichier `carré.js` :
+The `square` module is defined in `square.js`:
 
 ```js
 // Assigning to exports will not modify module, must use module.exports
@@ -54,66 +54,66 @@ module.exports = class Square {
 };
 ```
 
-Le système de module est implémenté dans le module `require('module')`.
+The module system is implemented in the `require('module')` module.
 
-## Accès au module principal
+## Accessing the main module
 
 <!-- type=misc -->
 
-Lorsqu’un fichier est exécuté directement par Node.js, son `module` est assigné à `require.main`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
+When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
-Pour un fichier `foo.js`, cette comparaison renverra `true` si le fichier est exécuté via la commande `node foo.js`, `false` s'il est exécuté par `require('./foo')`.
+For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
-Parce que `module` expose une propriété `filename` (normalement équivalente à `__filename`), le point d’entrée de l’application courante peut être obtenu en consultant la valeur de `require.main.filename`.
+Because `module` provides a `filename` property (normally equivalent to `__filename`), the entry point of the current application can be obtained by checking `require.main.filename`.
 
-## Addenda : Astuces pour Gestionnaire de Paquets
+## Addenda: Package Manager Tips
 
 <!-- type=misc -->
 
 The semantics of the Node.js `require()` function were designed to be general enough to support reasonable directory structures. Package manager programs such as `dpkg`, `rpm`, and `npm` will hopefully find it possible to build native packages from Node.js modules without modification.
 
-Ci-dessous une suggestion d'arborescence de répertoire qui pourrait fonctionner :
+Below we give a suggested directory structure that could work:
 
-Disons que nous voudrions que le dossier situé à `/usr/lib/node/<some-package>/<some-version>` contienne une version spécifique d'un paquet.
+Let's say that we wanted to have the folder at `/usr/lib/node/<some-package>/<some-version>` hold the contents of a specific version of a package.
 
-Les paquets peuvent dépendre les uns des autres. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
+Packages can depend on one another. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
 
-Puisque Node.js vérifie le `chemin d'accès réel` de tous les modules qu'il charge (autrement dit, résoud les liens symboliques), puis cherche leurs dépendances dans le dossier `node_modules` comme décrit [ici](#modules_loading_from_node_modules_folders), ce cas est très simple à résoudre avec l'architecture suivante :
+Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
 
 * `/usr/lib/node/foo/1.2.3/`: Contents of the `foo` package, version 1.2.3.
 * `/usr/lib/node/bar/4.3.2/`: Contents of the `bar` package that `foo` depends on.
 * `/usr/lib/node/foo/1.2.3/node_modules/bar`: Symbolic link to `/usr/lib/node/bar/4.3.2/`.
 * `/usr/lib/node/bar/4.3.2/node_modules/*`: Symbolic links to the packages that `bar` depends on.
 
-Ainsi, même si un cycle est formé, ou s’il existe des conflits de dépendances, chaque module sera en mesure d’obtenir une version de sa dépendance qu’il pourra utiliser.
+Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
 
-Quand le code dans le paquet `foo` appellera `require('bar')`, il obtiendra la version symboliquement liée via `/usr/lib/node/foo/1.2.3/node_modules/bar`. Ensuite, quand le code dans le paquet `bar` appellera `require('quux')`, il obtiendra la version symboliquement liée via `/usr/lib/node/bar/4.3.2/node_modules/quux`.
+When the code in the `foo` package does `require('bar')`, it will get the version that is symlinked into `/usr/lib/node/foo/1.2.3/node_modules/bar`. Then, when the code in the `bar` package calls `require('quux')`, it'll get the version that is symlinked into `/usr/lib/node/bar/4.3.2/node_modules/quux`.
 
-De plus, pour rendre le processus de résolution de module encore plus optimal, plutôt que de placer directement les packets dans `/usr/lib/node`, nous pourrions les mettre dans `/usr/lib/node_modules/<name>/<version>`. Ainsi Node.js ne perdra pas de temps à aller chercher les dépendances manquantes dans `/usr/node_modules` ou `/node_modules`.
+Furthermore, to make the module lookup process even more optimal, rather than putting packages directly in `/usr/lib/node`, we could put them in `/usr/lib/node_modules/<name>/<version>`. Then Node.js will not bother looking for missing dependencies in `/usr/node_modules` or `/node_modules`.
 
-Pour que les modules soient disponibles pour le REPL de Node.js, il pourrait également être utile d'ajouter le dossier `/usr/lib/node_modules` à la variable d'environnement `$NODE_PATH`. Comme les recherches de modules utilisant les dossiers `node_modules` sont toutes relatives, et basées sur le chemin d'accès réels des fichiers appelant `require()`, les paquets eux-mêmes peuvent se trouver n'importe où.
+In order to make modules available to the Node.js REPL, it might be useful to also add the `/usr/lib/node_modules` folder to the `$NODE_PATH` environment variable. Since the module lookups using `node_modules` folders are all relative, and based on the real path of the files making the calls to `require()`, the packages themselves can be anywhere.
 
 ## Addenda: The `.mjs` extension
 
 It is not possible to `require()` files that have the `.mjs` extension. Attempting to do so will throw [an error](errors.html#errors_err_require_esm). The `.mjs` extension is reserved for [ECMAScript Modules](esm.html) which cannot be loaded via `require()`. See [ECMAScript Modules](esm.html) for more details.
 
-## En assemblant les pièces...
+## All Together...
 
 <!-- type=misc -->
 
-Pour obtenir le nom de fichier exact qui sera chargé lorsque `require()` est appelée, utilisez la fonction `require.resolve()`.
+To get the exact filename that will be loaded when `require()` is called, use the `require.resolve()` function.
 
 Putting together all of the above, here is the high-level algorithm in pseudocode of what `require()` does:
 
 ```txt
-require(X) depuis le module situé au chemin d'accès Y
-1. Si X est un module de la bibliothèque de base,
-   a. retourner le module de la biliothèque de base
-   b. ARRET
-2. Si X commence par '/'
-   a. assigner à Y une valeur pointant vers la racine du système de fichiers
-3. Si X commence par './' ou '/' ou '../'
-   a. CHARGER_COMME_FICHIER(Y + X)
+require(X) from module at path Y
+1. If X is a core module,
+   a. return the core module
+   b. STOP
+2. If X begins with '/'
+   a. set Y to be the filesystem root
+3. If X begins with './' or '/' or '../'
+   a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
    c. THROW "not found"
 4. LOAD_SELF_REFERENCE(X, dirname(Y))
@@ -121,19 +121,19 @@ require(X) depuis le module situé au chemin d'accès Y
 6. THROW "not found"
 
 LOAD_AS_FILE(X)
-1. Si X est un fichier, charger X comme texte JavaScript.  ARRET
-2. Si X.js est un fichier, charger X.js comme texte JavaScript.  ARRET
-3. Si X.json est un fichier, parser X.json vers un Objet JavaScript.  ARRET
-4. Si X.node est un fichier, charger X.node comme une extension binaire.  STOP
+1. If X is a file, load X as JavaScript text.  STOP
+2. If X.js is a file, load X.js as JavaScript text.  STOP
+3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
+4. If X.node is a file, load X.node as binary addon.  STOP
 
 LOAD_INDEX(X)
-1. Si X/index.js est un fichier, charger X/index.js comme texte JavaScript.  ARRET
-2. Si X/index.json est un fichier, parser X/index.json vers un Objet JavaScript. ARRET
-3. Si X/index.node est un fichier, charger X/index.node comme une extension binaire.  STOP
+1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
+2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
+3. If X/index.node is a file, load X/index.node as binary addon.  STOP
 
 LOAD_AS_DIRECTORY(X)
-1. Si X/package.json est un fichier,
-   a. Parser X/package.json, et chercher un champ "main".
+1. If X/package.json is a file,
+   a. Parse X/package.json, and look for "main" field.
    b. If "main" is a falsy value, GOTO 2.
    c. let M = X + (json main field)
    d. LOAD_AS_FILE(M)
@@ -144,19 +144,19 @@ LOAD_AS_DIRECTORY(X)
 
 LOAD_NODE_MODULES(X, START)
 1. let DIRS = NODE_MODULES_PATHS(START)
-2. pour chaque DOSSIER de DOSSIERS :
-   a. CHARGER_COMME_FICHIER(DOSSIER/X)
+2. for each DIR in DIRS:
+   a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
-1. soit SEGMENTS = separation_chemin(DEBUT)
-2. soit I = nombre de SEGMENTS - 1
+1. let PARTS = path split(START)
+2. let I = count of PARTS - 1
 3. let DIRS = [GLOBAL_FOLDERS]
-4. tant que I >= 0,
-   a. si SEGMENTS[I] = "node_modules" CONTINUE
-   b. DOSSIER = concaténation_chemin(SEGMENTS[0 .. I] + "node_modules")
-   c. DOSSIERS = DOSSIERS + DOSSIER
-   d. soit I = I - 1
+4. while I >= 0,
+   a. if PARTS[I] = "node_modules" CONTINUE
+   b. DIR = path join(PARTS[0 .. I] + "node_modules")
+   c. DIRS = DIRS + DIR
+   d. let I = I - 1
 5. return DIRS
 
 LOAD_SELF_REFERENCE(X, START)
@@ -175,7 +175,7 @@ With this feature enabled, the `LOAD_NODE_MODULES` changes are:
 ```txt
 LOAD_NODE_MODULES(X, START)
 1. let DIRS = NODE_MODULES_PATHS(START)
-2. pour chaque DOSSIER de DOSSIERS :
+2. for each DIR in DIRS:
    a. let FILE_PATH = RESOLVE_BARE_SPECIFIER(DIR, X)
    b. LOAD_AS_FILE(FILE_PATH)
    c. LOAD_AS_DIRECTORY(FILE_PATH)
@@ -203,87 +203,87 @@ RESOLVE_BARE_SPECIFIER(DIR, X)
 
 `"exports"` is only honored when loading a package "name" as defined above. Any `"exports"` values within nested directories and packages must be declared by the `package.json` responsible for the "name".
 
-## Cache
+## Caching
 
 <!--type=misc-->
 
-Les modules sont mis en cache après leur premier chargement. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
+Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
 
 Provided `require.cache` is not modified, multiple calls to `require('foo')` will not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
 To have a module execute code multiple times, export a function, and call that function.
 
-### Mises en garde relatives à la mise en cache de modules
+### Module Caching Caveats
 
 <!--type=misc-->
 
-Les modules sont mis en cache sur la base du nom de fichier résolu. Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a *guarantee* that `require('foo')` will always return the exact same object, if it would resolve to different files.
+Modules are cached based on their resolved filename. Since modules may resolve to a different filename based on the location of the calling module (loading from `node_modules` folders), it is not a *guarantee* that `require('foo')` will always return the exact same object, if it would resolve to different files.
 
-De plus, sur les systèmes de fichiers ou d'exploitation insensibles à la casse, des chemins d'accès résolus différents peuvent pointer vers le même fichier, mais le cache les traitera tout de même comme des modules différents et rechargera le fichier plusieurs fois. Par exemple, `require('./foo')` et `require('./FOO')` renverront deux objets différents, que `./foo` et `./FOO` soient le même fichier ou non.
+Additionally, on case-insensitive file systems or operating systems, different resolved filenames can point to the same file, but the cache will still treat them as different modules and will reload the file multiple times. For example, `require('./foo')` and `require('./FOO')` return two different objects, irrespective of whether or not `./foo` and `./FOO` are the same file.
 
-## Modules de la Bibliothèque de Base
+## Core Modules
 
 <!--type=misc-->
 
-Node.js comporte plusieurs modules compilés directement dans son exécutable. Ces modules sont décrits plus en détail ailleurs dans la présente documentation.
+Node.js has several modules compiled into the binary. These modules are described in greater detail elsewhere in this documentation.
 
 The core modules are defined within the Node.js source and are located in the `lib/` folder.
 
-Les modules de la bibliothèque de base sont toujours chargés en priorité si leur identificateur est passé à `require()`. Par exemple, `require('http')` renverra toujours le module HTTP embarqué, même s'il existe un fichier portant ce nom.
+Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
 
 ## Cycles
 
 <!--type=misc-->
 
-Lorsque se produisent des appels circulaires à `require()`, un module peut ne pas avoir fini son exécution au moment où il est retourné.
+When there are circular `require()` calls, a module might not have finished executing when it is returned.
 
-Considérez cette situation :
+Consider this situation:
 
-`a.js` :
+`a.js`:
 
 ```js
-console.log('démarrage de a');
+console.log('a starting');
 exports.done = false;
 const b = require('./b.js');
-console.log('en a, b.done = %j', b.done);
+console.log('in a, b.done = %j', b.done);
 exports.done = true;
-console.log('a terminé');
+console.log('a done');
 ```
 
-`b.js` :
+`b.js`:
 
 ```js
-console.log('démarrage de b');
+console.log('b starting');
 exports.done = false;
 const a = require('./a.js');
-console.log('en b, a.done = %j', a.done);
+console.log('in b, a.done = %j', a.done);
 exports.done = true;
-console.log('b terminé');
+console.log('b done');
 ```
 
 `main.js`:
 
 ```js
-console.log('démarrage de main');
+console.log('main starting');
 const a = require('./a.js');
 const b = require('./b.js');
-console.log('en main, a.done = %j, b.done = %j', a.done, b.done);
+console.log('in main, a.done = %j, b.done = %j', a.done, b.done);
 ```
 
-Lorsque `main.js` charge `a.js`, alors `a.js` charge à son tour `b.js`. Arrrivé là, `b.js` essaie de charger `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` finit alors son chargement, et son objet `exports` est fourni au module `a.js`.
+When `main.js` loads `a.js`, then `a.js` in turn loads `b.js`. At that point, `b.js` tries to load `a.js`. In order to prevent an infinite loop, an **unfinished copy** of the `a.js` exports object is returned to the `b.js` module. `b.js` then finishes loading, and its `exports` object is provided to the `a.js` module.
 
-Lorsque `main.js` a chargé les deux modules, ils sont tous deux terminés. La sortie de ce programme serait donc :
+By the time `main.js` has loaded both modules, they're both finished. The output of this program would thus be:
 
 ```console
 $ node main.js
-démarrage de main
-démarrage de a
-démarrage de b
-en b, a.done = false
-b terminé
-en a, b.done = true
-a terminé
-en main, a.done = true, b.done = true
+main starting
+a starting
+b starting
+in b, a.done = false
+b done
+in a, b.done = true
+a done
+in main, a.done = true, b.done = true
 ```
 
 Careful planning is required to allow cyclic module dependencies to work correctly within an application.
@@ -512,7 +512,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stabilité : 0 - obsolète
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -570,7 +570,7 @@ changes:
 -->* `request` {string} The module path to resolve.
 * `options` {Object}
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Retourne : {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Stabilité: 1 - Expérimental
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
