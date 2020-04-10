@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -651,7 +651,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Возвращает: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -998,7 +998,7 @@ The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used excl
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Это является инструкцией о том, что клиент должен отправить тело запроса.
+Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. This is an instruction that the client should send the request body.
 
 #### Event: `'headers'`
 <!-- YAML
@@ -1347,7 +1347,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Генерируется каждый раз, когда есть запрос. There may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Emitted each time there is a request. There may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: `'session'`
 <!-- YAML
@@ -1420,7 +1420,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Возвращает: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1461,7 +1461,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Генерируется каждый раз, когда есть запрос. There may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Emitted each time there is a request. There may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: `'session'`
 <!-- YAML
@@ -1541,7 +1541,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Возвращает: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1596,7 +1596,7 @@ changes:
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Возвращает: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1663,7 +1663,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Возвращает: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1720,7 +1720,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function} Will be registered as a one-time listener of the [`'connect'`][] event.
-* Возвращает: {ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1742,7 +1742,7 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Value  | Name                | Константа                                     |
+| Value  | Name                | Constant                                      |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -1776,7 +1776,7 @@ added: v8.4.0
 -->
 
 * `settings` {HTTP/2 Settings Object}
-* Возвращает: {Buffer}
+* Returns: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 
@@ -1819,9 +1819,9 @@ For incoming headers:
 
 * The `:status` header is converted to `number`.
 * Duplicates of `:status`, `:method`, `:authority`, `:scheme`, `:path`, `:protocol`, `age`, `authorization`, `access-control-allow-credentials`, `access-control-max-age`, `access-control-request-method`, `content-encoding`, `content-language`, `content-length`, `content-location`, `content-md5`, `content-range`, `content-type`, `date`, `dnt`, `etag`, `expires`, `from`, `if-match`, `if-modified-since`, `if-none-match`, `if-range`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `range`, `referer`,`retry-after`, `tk`, `upgrade-insecure-requests`, `user-agent` or `x-content-type-options` are discarded.
-* `set-cookie` всегда массив. Дубликаты добавляются в массив.
+* `set-cookie` is always an array. Duplicates are added to the array.
 * For duplicate `cookie` headers, the values are joined together with '; '.
-* Для всех других заголовков значения соединяются с помощью ', '.
+* For all other headers, the values are joined together with ', '.
 
 ```js
 const http2 = require('http2');
@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Обработка ошибки
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2094,7 +2094,7 @@ The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable 
 added: v8.4.0
 -->
 
-Indicates that the underlying [`Http2Stream`][] was closed. Так же как `'end'`, это событие происходит только один раз на ответ.
+Indicates that the underlying [`Http2Stream`][] was closed. Just like `'end'`, this event occurs only once per response.
 
 #### `request.aborted`
 <!-- YAML
@@ -2141,12 +2141,12 @@ added: v8.4.0
 
 * {Object}
 
-Объект заголовков запроса/ответа.
+The request/response headers object.
 
-Пары ключ-значение имен заголовков и значений. Имена заголовков в нижнем регистре.
+Key-value pairs of header names and values. Header names are lower-cased.
 
 ```js
-// Печатает что-то вроде:
+// Prints something like:
 //
 // { 'user-agent': 'curl/7.22.0',
 //   host: '127.0.0.1:8000',
@@ -2170,9 +2170,9 @@ added: v8.4.0
 
 * {string}
 
-В случае запроса сервера - версия HTTP, отправленная клиентом. В случае ответа клиента - версия HTTP подключенного сервера. Returns `'2.0'`.
+In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
 
-Также `message.httpVersionMajor` является первым целым числом, а `message.httpVersionMinor` - вторым.
+Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
 #### `request.method`
 <!-- YAML
@@ -2181,7 +2181,7 @@ added: v8.4.0
 
 * {string}
 
-Метод запроса в качестве строки. Read-only. Examples: `'GET'`, `'DELETE'`.
+The request method as a string. Read-only. Examples: `'GET'`, `'DELETE'`.
 
 #### `request.rawHeaders`
 <!-- YAML
@@ -2190,17 +2190,17 @@ added: v8.4.0
 
 * {string[]}
 
-Список необработанных заголовков запроса/ответа в том виде, в котором они были получены.
+The raw request/response headers list exactly as they were received.
 
-The keys and values are in the same list. It is *not* a list of tuples. Таким образом, даже четные смещения являются ключевыми значениями, а нечетные смещения - сопутствующими.
+The keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Имена заголовков не в нижнем регистре, а дубликаты не объединяются.
+Header names are not lowercased, and duplicates are not merged.
 
 ```js
-// Печатает что-то вроде:
+// Prints something like:
 //
 // [ 'user-agent',
-//   'это неверно, потому что может быть только один',
+//   'this is invalid because there can be only one',
 //   'User-Agent',
 //   'curl/7.22.0',
 //   'Host',
@@ -2217,7 +2217,7 @@ added: v8.4.0
 
 * {string[]}
 
-Необработанные ключи трейлера и значения запроса/ответа в том виде, как они были получены. Заполняется только в событии `'end'`.
+The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
 
 #### `request.scheme`
 <!-- YAML
@@ -2235,9 +2235,9 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Возвращает: {http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
-Sets the [`Http2Stream`][]'s timeout value to `msecs`. Если предусмотрен обратный вызов, то он добавляется в качестве слушателя для события `'timeout'` объекта ответа.
+Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`][]s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2276,7 +2276,7 @@ added: v8.4.0
 
 * {Object}
 
-Объект трейлеров запроса/ответа. Заполняется только в событии `'end'`.
+The request/response trailers object. Only populated at the `'end'` event.
 
 #### `request.url`
 <!-- YAML
@@ -2285,7 +2285,7 @@ added: v8.4.0
 
 * {string}
 
-Запросите URL-строку. Содержит только URL, который присутствует в текущем HTTP-запросе. Если запрос:
+Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2293,7 +2293,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-То `request.url` будет:
+Then `request.url` will be:
 ```js
 '/status?name=ryan'
 ```
@@ -2342,7 +2342,7 @@ Url {
 added: v8.4.0
 -->* Extends: {Stream}
 
-Этот объект создается внутренне сервером HTTP, а не пользователем. Он передается в качестве второго параметра событию [`'request'`][].
+This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 #### Event: `'close'`
 <!-- YAML
@@ -2356,9 +2356,9 @@ Indicates that the underlying [`Http2Stream`][] was terminated before [`response
 added: v8.4.0
 -->
 
-Генерируется, когда ответ был отправлен. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. Это не означает, что клиент еще ничего не получил.
+Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-После этого события на объекте ответа больше не будет сгенерировано ни одного события.
+After this event, no more events will be emitted on the response object.
 
 #### `response.addTrailers(headers)`
 <!-- YAML
@@ -2367,9 +2367,9 @@ added: v8.4.0
 
 * `headers` {Object}
 
-Этот метод добавляет в ответ конечные заголовки HTTP (заголовок, но в конце сообщения).
+This method adds HTTP trailing headers (a header but at the end of the message) to the response.
 
-Попытка установить имя поля заголовка или значение, содержащее недопустимые символы, приведет к выводу [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 #### `response.connection`
 <!-- YAML
@@ -2389,27 +2389,27 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Возвращает: {this}
+* Returns: {this}
 
-Этот метод сообщает серверу, что все заголовки и тело ответа отправлены; этот сервер должен считать это сообщение завершенным. Этот метод - `response.end()` - ДОЛЖЕН вызываться при каждом ответе.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
-Если указан параметр `data`, то это эквивалентно вызову [`response.write(data, encoding)`][], за которым следует `response.end(callback)`.
+If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
-Если указан `callback`, он будет вызываться при завершении потока запроса.
+If `callback` is specified, it will be called when the response stream is finished.
 
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v12.16.0
--->> Стабильность: 0 - устарело. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
-Логическое значение, которое указывает, был ли завершен ответ. Начинается со значением `false`. После выполнения [`response.end()`][] значение будет `true`.
+Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
 
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
@@ -2439,7 +2439,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Возвращает: {Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2459,7 +2459,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -2496,9 +2496,9 @@ added: v8.4.0
 
 * {boolean}
 
-При значении true заголовок Date будет автоматически сгенерирован и отправлен в ответе, если его еще нет в заголовках. По умолчанию на true.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
 
-Это должно быть отключено только для тестирования; HTTP требует заголовок Date в ответах.
+This should only be disabled for testing; HTTP requires the Date header in responses.
 
 #### `response.setHeader(name, value)`
 <!-- YAML
@@ -2508,19 +2508,19 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Устанавливает одно значение заголовка для неявных заголовков. Если этот заголовок уже существует в заголовках, которые подлежат отправке, его значение будет заменено. Use an array of strings here to send multiple headers with the same name.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-или
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Попытка установить имя поля заголовка или значение, содержащее недопустимые символы, приведет к выводу [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
@@ -2541,9 +2541,9 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Возвращает: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
-Sets the [`Http2Stream`][]'s timeout value to `msecs`. Если предусмотрен обратный вызов, то он добавляется в качестве слушателя для события `'timeout'` объекта ответа.
+Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`][]s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2582,13 +2582,13 @@ added: v8.4.0
 
 * {number}
 
-При использовании неявных заголовков (без явного вызова [`response.writeHead()`][]) это свойство контролирует код состояния, который будет отправлен клиенту при сбросе заголовков.
+When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
 ```js
 response.statusCode = 404;
 ```
 
-После того, как заголовок ответа был отправлен клиенту, это свойство указывает код состояния, который был отправлен.
+After response header was sent to the client, this property indicates the status code which was sent out.
 
 #### `response.statusMessage`
 <!-- YAML
@@ -2619,21 +2619,21 @@ added: v8.4.0
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
-Если этот метод вызывается, а [`response.writeHead()`][] не был вызван, то он переключится в режим неявного заголовка и очистит данные неявных заголовков.
+If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-Отправляет часть тела ответа. Этот метод может вызываться несколько раз, чтобы обеспечить последовательность частей тела.
+This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
 
 In the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses _must not_ include a message body.
 
-`chunk` может быть строкой или буфером. Если `chunk` является строкой, второй параметр указывает, как кодировать его в поток байтов. По умолчанию `encoding` - `'utf8'`. `callback` будет вызываться, когда эта часть данных будет очищена.
+`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
 This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Возвращает `true`, если все данные были успешно сброшены в буфер ядра. Возвращает `false`, если данные полностью или частично были поставлены в очередь в памяти пользователя. `'drain'` будет выдан, когда буфер снова освободиться.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 #### `response.writeContinue()`
 <!-- YAML
@@ -2652,9 +2652,9 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Возвращает: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
-Отправляет заголовок ответа на запрос. Код статуса - 3-значный код статуса HTTP вроде `404`. Последние аргументы - `headers` - являются заголовками ответа.
+Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
 Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 
@@ -2685,7 +2685,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-Попытка установить имя поля заголовка или значение, содержащее недопустимые символы, приведет к выводу [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 #### `response.createPushResponse(headers, callback)`<!-- YAML
 added: v8.4.0
