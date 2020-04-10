@@ -1,4 +1,4 @@
-# Domínio
+# Domain
 
 <!-- YAML
 changes:
