@@ -1,14 +1,14 @@
-# 커맨드 라인 옵션
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js에는 다양한 CLI 옵션이 있습니다. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
-터미널에서 이 설명서 매뉴얼 페이지를 보려면, `man node`를 실행하세요.
+To view this documentation as a manual page in a terminal, run `man node`.
 
-## 개요
+## Synopsis
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,11 +16,11 @@ Node.js에는 다양한 CLI 옵션이 있습니다. These options expose built-i
 
 `node --v8-options`
 
-인수 없이 실행하면 [REPL](repl.html)을 시작 합니다.
+Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
-## 옵션
+## Options
 
 <!-- YAML
 changes:
@@ -49,7 +49,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v6.11.0
 -->
 
-노드 옵션의 끝을 나타냅니다. 인수의 나머지 부분을 스크립트에 넘깁니다. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 
@@ -80,7 +80,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-시작할 때 FIPS 호환 암호화를 사용 합니다. (Requires Node.js to be built with `./configure --openssl-fips`.)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -88,7 +88,7 @@ added: v6.0.0
 added: v8.5.0
 -->
 
-실험적인 ES 모듈 지원 및 모듈 캐싱을 활성화 합니다.
+Enable experimental ES module support and caching modules.
 
 ### `--experimental-repl-await`
 
@@ -96,7 +96,7 @@ added: v8.5.0
 added: v10.0.0
 -->
 
-REPL에서 실험적인 최상위 `await` 키워드를 지원합니다.
+Enable experimental top-level `await` keyword support in REPL.
 
 ### `--experimental-vm-modules`
 
@@ -104,7 +104,7 @@ REPL에서 실험적인 최상위 `await` 키워드를 지원합니다.
 added: v9.6.0
 -->
 
-`vm` 모듈에서 실험적인 ES 모듈 지원을 활성화 합니다.
+Enable experimental ES Module support in the `vm` module.
 
 ### `--experimental-worker`
 
@@ -120,7 +120,7 @@ Enable experimental worker threads using the `worker_threads` module.
 added: v6.0.0
 -->
 
-시작할 때 FIPS 호환 암호화를 강제합니다. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
+Force FIPS-compliant crypto on startup. (Cannot be disabled from script code.) (Same requirements as `--enable-fips`.)
 
 ### `--icu-data-dir=file`
 
@@ -128,7 +128,7 @@ added: v6.0.0
 added: v0.11.15
 -->
 
-ICU 데이터 로드 경로 지정 합니다. (`NODE_ICU_DATA`를 재정의합니다.)
+Specify ICU data load path. (Overrides `NODE_ICU_DATA`.)
 
 ### `--inspect-brk[=[host:]port]`
 
@@ -136,7 +136,7 @@ ICU 데이터 로드 경로 지정 합니다. (`NODE_ICU_DATA`를 재정의합�
 added: v7.6.0
 -->
 
-`host:port`에 인스팩터를 활성화하고, 유저 스크립트의 시작에서 중단(break)합니다. `host:port`의 기본값은 `127.0.0.1:9229`입니다.
+Activate inspector on `host:port` and break at start of user script. Default `host:port` is `127.0.0.1:9229`.
 
 ### `--inspect-port=[host:]port`
 
@@ -144,9 +144,9 @@ added: v7.6.0
 added: v7.6.0
 -->
 
-인스팩터 활성화에 사용되는 `host:port`를 설정합니다. `SIGUSR1`신호를 보내 인스팩터를 활성화할 때 유용합니다.
+Set the `host:port` to be used when the inspector is activated. Useful when activating the inspector by sending the `SIGUSR1` signal.
 
-호스트의 기본값은 `127.0.0.1`입니다.
+Default host is `127.0.0.1`.
 
 See the [security warning](#inspector_security) below regarding the `host` parameter usage.
 
@@ -156,7 +156,7 @@ See the [security warning](#inspector_security) below regarding the `host` param
 added: v6.3.0
 -->
 
-`host:port`에 인스팩터를 활성화합니다. 기본값은 `127.0.0.1:9229`입니다.
+Activate inspector on `host:port`. Default is `127.0.0.1:9229`.
 
 V8 inspector integration allows tools such as Chrome DevTools and IDEs to debug and profile Node.js instances. The tools attach to Node.js instances via a tcp port and communicate using the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
@@ -210,7 +210,7 @@ This option is a no-op. It is kept for compatibility.
 added: v0.8.0
 -->
 
-폐지 예정 경고를 무시합니다.
+Silence deprecation warnings.
 
 ### `--no-force-async-hooks-checks`
 
@@ -226,7 +226,7 @@ Disables runtime checks for `async_hooks`. These will still be enabled dynamical
 added: v6.0.0
 -->
 
-(폐지 예정을 포함한) 모든 프로세스 경고를 무시합니다.
+Silence all process warnings (including deprecations).
 
 ### `--openssl-config=file`
 
@@ -234,7 +234,7 @@ added: v6.0.0
 added: v6.9.0
 -->
 
-시작할 때 OpenSSL 설정 파일을 불러옵니다. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure --openssl-fips`.
 
 ### `--pending-deprecation`
 
@@ -242,7 +242,7 @@ added: v6.9.0
 added: v8.0.0
 -->
 
-보류중인 지원 중단 경고를 내보냅니다.
+Emit pending deprecation warnings.
 
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
@@ -384,7 +384,7 @@ Prints a stack trace whenever synchronous I/O is detected after the first turn o
 added: v6.0.0
 -->
 
-(폐지 예정을 포함한) 모든 프로세스 경고의 스택 트레이스를 출력합니다.
+Print stack traces for process warnings (including deprecations).
 
 ### `--track-heap-objects`
 
@@ -463,7 +463,7 @@ changes:
     description: The `--require` option is now supported when checking a file.
 -->
 
-스크립트를 실행하지 않고 구문 검사 합니다.
+Syntax check the script without executing.
 
 ### `-e`, `--eval "script"`
 
@@ -476,7 +476,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-뒤의 인수를 JavaScript로 평가합니다. The modules which are predefined in the REPL can also be used in `script`.
+Evaluate the following argument as JavaScript. The modules which are predefined in the REPL can also be used in `script`.
 
 On Windows, using `cmd.exe` a single quote will not work correctly because it only recognizes double `"` for quoting. In Powershell or Git bash, both `'` and `"` are usable.
 
@@ -486,7 +486,7 @@ On Windows, using `cmd.exe` a single quote will not work correctly because it on
 added: v0.1.3
 -->
 
-Node 커맨드 라인 옵션을 출력합니다. 이 옵션의 출력은 이 문서를 보다 덜 자세합니다.
+Print node command line options. The output of this option is less detailed than this document.
 
 ### `-i`, `--interactive`
 
@@ -494,7 +494,7 @@ Node 커맨드 라인 옵션을 출력합니다. 이 옵션의 출력은 이 문
 added: v0.7.7
 -->
 
-Stdin이 터미널로 보이지 않는 경우에도 REPL을 엽니다.
+Opens the REPL even if stdin does not appear to be a terminal.
 
 ### `-p`, `--print "script"`
 
@@ -507,7 +507,7 @@ changes:
     description: Built-in libraries are now available as predefined variables.
 -->
 
-`-e`와 동일하지만 결과를 출력합니다.
+Identical to `-e` but prints the result.
 
 ### `-r`, `--require module`
 
@@ -515,9 +515,9 @@ changes:
 added: v1.6.0
 -->
 
-시작할 때 지정된 모듈을 미리 로드 합니다.
+Preload the specified module at startup.
 
-Follows `require()`'s module resolution rules. `module`은 파일 경로이거나 node 모듈 이름일 수 있습니다.
+Follows `require()`'s module resolution rules. `module` may be either a path to a file, or a node module name.
 
 ### `-v`, `--version`
 
@@ -525,9 +525,9 @@ Follows `require()`'s module resolution rules. `module`은 파일 경로이거�
 added: v0.1.3
 -->
 
-Node 버전을 출력합니다.
+Print node's version.
 
-## 환경 변수
+## Environment Variables
 
 ### `NODE_DEBUG=module[,…]`
 
@@ -624,7 +624,7 @@ Node.js options that are allowed are:
 - `--v8-pool-size`
 - `--zero-fill-buffers`
 
-다음 V8 옵션이 허용됩니다.
+V8 options that are allowed are:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
@@ -638,7 +638,7 @@ Node.js options that are allowed are:
 added: v0.1.32
 -->
 
-모듈 탐색 경로의 앞에 붙일 `':'`로 구분된 디렉토리 리스트.
+`':'`-separated list of directories prefixed to the module search path.
 
 On Windows, this is a `';'`-separated list instead.
 
@@ -648,7 +648,7 @@ On Windows, this is a `';'`-separated list instead.
 added: v8.0.0
 -->
 
-`1`로 설정하면, 보류중인 지원 중단 경고를 내보냅니다.
+When set to `1`, emit pending deprecation warnings.
 
 Pending deprecations are generally identical to a runtime deprecation with the notable exception that they are turned *off* by default and will not be emitted unless either the `--pending-deprecation` command line flag, or the `NODE_PENDING_DEPRECATION=1` environment variable, is set. Pending deprecations are used to provide a kind of selective "early warning" mechanism that developers may leverage to detect deprecated API usage.
 
@@ -706,7 +706,7 @@ At this time coverage is only collected in the main thread and will not be outpu
 added: v6.11.0
 -->
 
-시작할 때 OpenSSL 설정 파일을 불러옵니다. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
+Load an OpenSSL configuration file on startup. Among other uses, this can be used to enable FIPS-compliant crypto if Node.js is built with `./configure
 --openssl-fips`.
 
 If the [`--openssl-config`][] command line option is used, the environment variable is ignored.
