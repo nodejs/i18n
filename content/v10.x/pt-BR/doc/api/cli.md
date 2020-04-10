@@ -1,14 +1,14 @@
-# Opções de Linha de Comandos
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js vem com uma variedade de opções CLI. Essas opções expõem a depuração interna, múltiplas formas de executar scripts, e outras opções úteis em tempo de execução.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
-Para ver essa documentação como uma página de manual no terminal, execute `man node `.
+To view this documentation as a manual page in a terminal, run `man node`.
 
-## Sinopse
+## Synopsis
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,7 +16,7 @@ Para ver essa documentação como uma página de manual no terminal, execute `ma
 
 `node --v8-options`
 
-Execute sem argumentos para iniciar o [REPL](repl.html).
+Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
@@ -41,7 +41,7 @@ For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 added: v8.0.0
 -->
 
-Chamada por stdin, análogo ao uso de - em outros terminais de linha de comando, significando que o script será lido de stdin, e o restante das opções serão passados para esse script.
+Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
 ### `--`
 
@@ -49,7 +49,7 @@ Chamada por stdin, análogo ao uso de - em outros terminais de linha de comando,
 added: v6.11.0
 -->
 
-Indica o fim das opções do node. Passa o restante dos argumentos para o script. Se o script for passado sem nome ou eval/print antes disso, então o próximo argumento será utilizado como o nome do script.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--abort-on-uncaught-exception`
 
@@ -57,9 +57,9 @@ Indica o fim das opções do node. Passa o restante dos argumentos para o script
 added: v0.10
 -->
 
-Abortar ao invés de sair faz com que um arquivo principal seja gerado para post-mortem [Pós-Morte] análise usando um depurador (tal qual `lldb`,`gdb`, e `mdb`).
+Aborting instead of exiting causes a core file to be generated for post-mortem analysis using a debugger (such as `lldb`, `gdb`, and `mdb`).
 
-Se esse sinal é passado, o comportamento ainda pode ser definido para não abortar através do [`process.setUncaughtExceptionCaptureCallback()`][] (e utilizando do módulo `domain`).
+If this flag is passed, the behavior can still be set to not abort through [`process.setUncaughtExceptionCaptureCallback()`][] (and through usage of the `domain` module that uses it).
 
 ### `--completion-bash`
 
@@ -80,7 +80,7 @@ $ source node_bash_completion
 added: v6.0.0
 -->
 
-Habilite a criptografia compatível com FIPS na inicialização. (Necessita que seja feito no Node.js `./configure --openssl-fips`.)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`.)
 
 ### `--experimental-modules`
 
@@ -88,7 +88,7 @@ Habilite a criptografia compatível com FIPS na inicialização. (Necessita que 
 added: v8.5.0
 -->
 
-Ativa suporte ao módulo ES experimental e módulos de armazenamento em cache.
+Enable experimental ES module support and caching modules.
 
 ### `--experimental-repl-await`
 
@@ -96,7 +96,7 @@ Ativa suporte ao módulo ES experimental e módulos de armazenamento em cache.
 added: v10.0.0
 -->
 
-Ativa o suporte top-level experimental `await` palavra-chave em REPL.
+Enable experimental top-level `await` keyword support in REPL.
 
 ### `--experimental-vm-modules`
 
@@ -104,7 +104,7 @@ Ativa o suporte top-level experimental `await` palavra-chave em REPL.
 added: v9.6.0
 -->
 
-Ativa suporte ao módulo ES experimental e ao módulo `vm`.
+Enable experimental ES Module support in the `vm` module.
 
 ### `--experimental-worker`
 
@@ -202,7 +202,7 @@ Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
 added: v7.10.0
 -->
 
-Esta opção é um "no-op". Mantém-se a compatibilidade.
+This option is a no-op. It is kept for compatibility.
 
 ### `--no-deprecation`
 
