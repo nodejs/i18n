@@ -1,4 +1,4 @@
-# Registro de Cambios de io.js
+# io.js ChangeLog
 
 <!--lint disable prohibited-strings-->
 <!--lint disable maximum-line-length-->
@@ -62,7 +62,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -75,13 +75,13 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
-## 2015-09-15, io.js Versión 3.3.1 @rvagg
+## 2015-09-15, io.js Version 3.3.1 @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: Fixed a minor errors that was causing crashes (Michaël Zasso) [#2635](https://github.com/nodejs/node/pull/2635),
 * **child_process**: Fix error that was causing crashes (Evan Lucas) [#2727](https://github.com/nodejs/node/pull/2727)
@@ -92,16 +92,16 @@
 * **npm**: Upgrade to version 2.14.3 from 2.13.3, includes a security update, see https://github.com/npm/npm/releases/tag/v2.14.2 for more details, (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696).
 * **timers**: Improved timer performance from porting the 0.12 implementation, plus minor fixes (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa y actual de todos los problemas conocidos.
+See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos usos de propiedades abreviadas de objetos computados no son manejadas correctamente por la versión de V8 actual. p. ej. `[{ [prop]: val }]` se evalúa a `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
-* `process.send()` no es sincrónico, como lo sugieren los documentos, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
+* Some uses of computed object shorthand properties are not handled correctly by the current version of V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/io.js/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/io.js/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/io.js/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
@@ -168,26 +168,26 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa
 
 <a id="3.3.0"></a>
 
-## 2015-09-02, Versión 3.3.0, @rvagg
+## 2015-09-02, Version 3.3.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **build**: Add a `--link-module` option to `configure` that can be used to bundle additional JavaScript modules into a built binary (Bradley Meck) [#2497](https://github.com/nodejs/node/pull/2497)
 * **docs**: Merge outstanding doc updates from joyent/node (James M Snell) [#2378](https://github.com/nodejs/node/pull/2378)
-* **http_parser**: Significant performance improvement by having `http.Server` consume all initial data from its `net.Socket` and parsing directly without having to enter JavaScript. El uso de listeners de `'data'` en el `net.Socket` causará que los datos sean "desconsumidos" en JavaScript, deshaciendo, por ende, cualquier ganancia obtenida para el rendimiento. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
+* **http_parser**: Significant performance improvement by having `http.Server` consume all initial data from its `net.Socket` and parsing directly without having to enter JavaScript. Any `'data'` listeners on the `net.Socket` will result in the data being "unconsumed" into JavaScript, thereby undoing any performance gains. (Fedor Indutny) [#2355](https://github.com/nodejs/node/pull/2355)
 * **libuv**: Upgrade to 1.7.3 (from 1.6.1), see [ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) for details (Saúl Ibarra Corretgé) [#2310](https://github.com/nodejs/node/pull/2310)
 * **V8**: Upgrade to 4.4.63.30 (from 4.4.63.26) (Michaël Zasso) [#2482](https://github.com/nodejs/node/pull/2482)
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa y actual de todos los problemas conocidos.
+See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos usos de propiedades abreviadas de objetos computados no son manejadas correctamente por la versión de V8 actual. p. ej. `[{ [prop]: val }]` se evalúa a `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
-* `process.send()` no es sincrónico, como lo sugieren los documentos, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
+* Some uses of computed object shorthand properties are not handled correctly by the current version of V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/io.js/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/io.js/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/io.js/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
@@ -258,9 +258,9 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa
 
 <a id="3.2.0"></a>
 
-## 2015-08-25, Versión 3.2.0, @rvagg
+## 2015-08-25, Version 3.2.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **events**: Added `EventEmitter#listenerCount(event)` as a replacement for `EventEmitter.listenerCount(emitter, event)`, which has now been marked as deprecated in the docs. (Sakthipriyan Vairamani) [#2349](https://github.com/nodejs/node/pull/2349)
 * **module**: Fixed an error with preloaded modules when the current working directory doesn't exist. (Bradley Meck) [#2353](https://github.com/nodejs/node/pull/2353)
@@ -269,16 +269,16 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa
 * **string_bytes**: Fixed an unaligned write in the handling of UCS2 encoding. (Fedor Indutny) [#2480](https://github.com/nodejs/node/pull/2480)
 * **tls**: Added a new `--tls-cipher-list` flag that can be used to override the built-in default cipher list. (James M Snell) [#2412](https://github.com/nodejs/node/pull/2412) _Note: it is suggested you use the built-in cipher list as it has been carefully selected to reflect current security best practices and risk mitigation._
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa y actual de todos los problemas conocidos.
+See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos usos de propiedades abreviadas de objetos computados no son manejadas correctamente por la versión de V8 actual. p. ej. `[{ [prop]: val }]` se evalúa a `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
-* `process.send()` no es sincrónico, como lo sugieren los documentos, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
+* Some uses of computed object shorthand properties are not handled correctly by the current version of V8. e.g. `[{ [prop]: val }]` evaluates to `[{}]`. [#2507](https://github.com/nodejs/node/issues/2507)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/io.js/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/io.js/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/io.js/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
@@ -329,32 +329,32 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa
 
 <a id="3.1.0"></a>
 
-## 2015-08-18, Versión 3.1.0, @Fishrock123
+## 2015-08-18, Version 3.1.0, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: Fixed a couple large memory leaks (Ben Noordhuis) [#2352](https://github.com/nodejs/node/pull/2352).
 * **crypto**:
-  * Se corrigió un par de fugas de memoria menores (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
-  * El inicio de sesión ahora revisa en busca de errores de OpenSSL (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
+  * Fixed a couple of minor memory leaks (Karl Skomski) [#2375](https://github.com/nodejs/node/pull/2375).
+  * Signing now checks for OpenSSL errors (Minqi Pan) [#2342](https://github.com/nodejs/node/pull/2342). **Note that this may expose previously hidden errors in user code.**
 * **intl**: Intl support using small-icu is now enabled by default in builds (Steven R. Loomis) [#2264](https://github.com/nodejs/node/pull/2264).
-  * [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) puede ser usada ahora para la normalización de unicode.
-  * El objeto [`Intl`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl) y varios métodos `String` y `Number` se encuentran presentes, pero solo soportan la configuración del inglés.
-  * Para el soporte de todos los locales, node debe ser compilado con [full-icu](https://github.com/nodejs/node#build-with-full-icu-support-all-locales-supported-by-icu).
+  * [`String#normalize()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize) can now be used for unicode normalization.
+  * The [`Intl`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Intl) object and various `String` and `Number` methods are present, but only support the English locale.
+  * For support of all locales, node must be built with [full-icu](https://github.com/nodejs/node#build-with-full-icu-support-all-locales-supported-by-icu).
 * **tls**: Fixed tls throughput being much lower after an incorrect merge (Fedor Indutny) [#2381](https://github.com/nodejs/node/pull/2381).
 * **tools**: The v8 tick processor now comes bundled with node (Matt Loring) [#2090](https://github.com/nodejs/node/pull/2090).
-  * Este puede ser utilizado mediante la producción de outputs del rendimiento del perfilado al ejecutar node con `--perf`, y luego ejecutando su script de la plataforma adecuado en el output, tal como se encuentra en [tools/v8-prof](https://github.com/nodejs/node/tree/master/tools/v8-prof).
+  * This can be used by producing performance profiling output by running node with `--perf`, then running your appropriate platform's script on the output as found in [tools/v8-prof](https://github.com/nodejs/node/tree/master/tools/v8-prof).
 * **util**: `util.inspect(obj)` now prints the constructor name of the object if there is one (Christopher Monsanto) [#1935](https://github.com/nodejs/io.js/pull/1935).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa y actual de todos los problemas conocidos.
+See https://github.com/nodejs/io.js/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/io.js/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/io.js/issues/690)
-* `process.send()` no es sincrónico, como lo sugieren los documentos, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/io.js/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/io.js/issues/894)
-* `url.resolve` puede transferir la porción de autenticación del url mientras resuelve entre dos hosts completos, vea [#1435](https://github.com/nodejs/io.js/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/io.js/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/io.js/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/io.js/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/io.js/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/io.js/issues/1435).
 
 ### Commits
 
@@ -399,47 +399,47 @@ Vea https://github.com/nodejs/io.js/labels/confirmed-bug para una lista completa
 
 <a id="3.0.0"></a>
 
-## 2015-08-04, Versión 3.0.0, @rvagg
+## 2015-08-04, Version 3.0.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **buffer**:
-  * Debido a cambios en V8, ha sido necesario reimplementar `Buffer` por encima del `Uint8Array` de V8. Cada esfuerzo ha sido hecho para minimizar el impacto en el rendimiento, sin embargo, la instanciación de `Buffer` es considerablemente más lenta. Las operaciones de acceso pueden ser más rápidas en algunas circunstancias, pero el perfil de rendimiento exacto y la diferencia respecto a versiones anteriores dependerá de cómo se utiliza `Buffer` en las aplicaciones. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
-  * `Buffer` ahora puede tomar `ArrayBuffer`s como un argumento constructor (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
-  * Cuando un buffer simple sea pasado a `Buffer.concat()`, se devolverá un objeto `Buffer` nuevo con copia; el comportamiento previo era devolver el objeto `Buffer` original (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
+  * Due to changes in V8, it has been necessary to reimplement `Buffer` on top of V8's `Uint8Array`. Every effort has been made to minimize the performance impact, however `Buffer` instantiation is measurably slower. Access operations may be faster in some circumstances but the exact performance profile and difference over previous versions will depend on how `Buffer` is used within applications. (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825).
+  * `Buffer` can now take `ArrayBuffer`s as a constructor argument (Trevor Norris) [#2002](https://github.com/nodejs/node/pull/2002).
+  * When a single buffer is passed to `Buffer.concat()`, a new, copied `Buffer` object will be returned; previous behavior was to return the original `Buffer` object (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937).
 * **build**: PPC support has been added to core to allow compiling on pLinux BE and LE (AIX support coming soon) (Michael Dawson) [#2124](https://github.com/nodejs/node/pull/2124).
 * **dgram**: If an error occurs within `socket.send()` and a callback has been provided, the error is only passed as the first argument to the callback and not emitted on the `socket` object; previous behavior was to do both (Matteo Collina & Chris Dickinson) [#1796](https://github.com/nodejs/node/pull/1796)
 * **freelist**: Deprecate the undocumented `freelist` core module (Sakthipriyan Vairamani) [#2176](https://github.com/nodejs/node/pull/2176).
 * **http**:
-  * Ahora todos los códigos de estado utilizan los [nombres IANA](http://www.iana.org/assignments/http-status-codes) oficiales, como indica [RFC7231](https://tools.ietf.org/html/rfc7231), p.ej., `http.STATUS_CODES[414]` ahora devuelve `'URI Too Long'`, en lugar de `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
-  * Llamar a .getName() en un agente HTTPS ya no devolverá dos puntos finales, los agentes HTTPS ya no devolverán dos puntos extra hacia el centro de la string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
+  * Status codes now all use the official [IANA names](http://www.iana.org/assignments/http-status-codes) as per [RFC7231](https://tools.ietf.org/html/rfc7231), e.g. `http.STATUS_CODES[414]` now returns `'URI Too Long'` rather than `'Request-URI Too Large'` (jomo) [#1470](https://github.com/nodejs/node/pull/1470).
+  * Calling .getName() on an HTTP agent no longer returns a trailing colon, HTTPS agents will no longer return an extra colon near the middle of the string (Brendan Ashworth) [#1617](https://github.com/nodejs/node/pull/1617).
 * **node**:
-  * `NODE_MODULE_VERSION` ha sido empujada a `45` para reflejar la ruptura en ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
-  * Introducir un nuevo objeto `process.release` que contenga una propiedad `name` establecida a `'io.js'` y propiedades `sourceUrl`, `headersUrl` y `libUrl` (solo en Windows) que contengan las URLs de los recursos relevantes; esto está destinado a ser utilizado por node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
-  * La versión de node-gyp empaquetada con io.js ahora descarga y utiliza un tarball de archivos de cabecera desde iojs.org, en lugar de la fuente completa para la compilación de complementos nativos; se espera que esto sea un parche flotante temporal y que el cambio sea cargado a node-gyp pronto (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
-* **repl**: Persistent history is now enabled by default. El archivo de historial está localizado en ~/.node_repl_history, la cual puede ser anulada por la nueva variable de ambiente `NODE_REPL_HISTORY`. Esto desaprueba la variable `NODE_REPL_HISTORY_FILE` previa. Adicionalmente, el formato del archivo ha sido cambiado a texto sin formato para hacer un mejor manejo de la corrupción de archivo. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
+  * `NODE_MODULE_VERSION` has been bumped to `45` to reflect the break in ABI (Rod Vagg) [#2096](https://github.com/nodejs/node/pull/2096).
+  * Introduce a new `process.release` object that contains a `name` property set to `'io.js'` and `sourceUrl`, `headersUrl` and `libUrl` (Windows only) properties containing URLs for the relevant resources; this is intended to be used by node-gyp (Rod Vagg) [#2154](https://github.com/nodejs/node/pull/2154).
+  * The version of node-gyp bundled with io.js now downloads and uses a tarball of header files from iojs.org rather than the full source for compiling native add-ons; it is hoped this is a temporary floating patch and the change will be upstreamed to node-gyp soon (Rod Vagg) [#2066](https://github.com/nodejs/node/pull/2066).
+* **repl**: Persistent history is now enabled by default. The history file is located at ~/.node_repl_history, which can be overridden by the new environment variable `NODE_REPL_HISTORY`. This deprecates the previous `NODE_REPL_HISTORY_FILE` variable. Additionally, the format of the file has been changed to plain text to better handle file corruption. (Jeremiah Senkpiel) [#2224](https://github.com/nodejs/node/pull/2224).
 * **smalloc**: The `smalloc` module has been removed as it is no longer possible to provide the API due to changes in V8 (Ben Noordhuis) [#2022](https://github.com/nodejs/node/pull/2022).
 * **tls**: Add `server.getTicketKeys()` and `server.setTicketKeys()` methods for [TLS session key](https://www.ietf.org/rfc/rfc5077.txt) rotation (Fedor Indutny) [#2227](https://github.com/nodejs/node/pull/2227).
 * **v8**: Upgraded to 4.4.63.26
-  * ES6: [Nombres de propiedades computadas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) habilitados
-  * ES6: Ahora `array` puede ser subclasificado en el modo estricto
-  * ES6: Implementar [parámetros rest](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/rest_parameters) en la escenificación, utilizar la bandera de línea de comandos `--harmony-rest-parameters`
-  * ES6: Implementar el [operador de extensión](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) en la escenificación, utilizar la línea de comandos `--harmony-spreadcalls`
+  * ES6: Enabled [computed property names](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names)
+  * ES6: `Array` can now be subclassed in strict mode
+  * ES6: Implement [rest parameters](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/rest_parameters) in staging, use the `--harmony-rest-parameters` command line flag
+  * ES6: Implement the [spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) in staging, use the `--harmony-spreadcalls` command line flag
   * Removed `SetIndexedPropertiesToExternalArrayData` and related APIs, forcing a shift to `Buffer` to be reimplemented based on `Uint8Array`
   * Introduction of `Maybe` and `MaybeLocal` C++ API for objects which _may_ or _may not_ have a value.
-  * Se añadió soporte para PPC
+  * Added support for PPC
 
-Vea también https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x para un resumen de los cambios de ruptura (SEMVER-MAJOR).
+See also https://github.com/nodejs/node/wiki/Breaking-Changes#300-from-2x for a summary of the breaking changes (SEMVER-MAJOR).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -452,7 +452,7 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 * [[`eea66e2a7b`](https://github.com/nodejs/node/commit/eea66e2a7b)] - **(SEMVER-MAJOR)** **buffer**: fix case of one buffer passed to concat (Sakthipriyan Vairamani) [#1937](https://github.com/nodejs/node/pull/1937)
 * [[`8664084166`](https://github.com/nodejs/node/commit/8664084166)] - **buffer**: make additional changes to native API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`36f78f4c1c`](https://github.com/nodejs/node/commit/36f78f4c1c)] - **buffer**: switch API to return MaybeLocal\<T> (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
-* [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: switch to using Maybe\<T> Maybe (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
+* [[`571ec13841`](https://github.com/nodejs/node/commit/571ec13841)] - **buffer**: switch to using Maybe\<T> API (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`d75f5c8d0e`](https://github.com/nodejs/node/commit/d75f5c8d0e)] - **buffer**: finish implementing FreeCallback (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`63da0dfd3a`](https://github.com/nodejs/node/commit/63da0dfd3a)] - **buffer**: implement Uint8Array backed Buffer (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
 * [[`23be6ca189`](https://github.com/nodejs/node/commit/23be6ca189)] - **buffer**: allow ARGS_THIS to accept a name (Trevor Norris) [#1825](https://github.com/nodejs/node/pull/1825)
@@ -511,24 +511,24 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.5.0"></a>
 
-## 2015-07-28, Versión 2.5.0, @cjihrig
+## 2015-07-28, Version 2.5.0, @cjihrig
 
-### Cambios notables
+### Notable changes
 
 * **https**: TLS sessions in Agent are reused (Fedor Indutny) [#2228](https://github.com/nodejs/node/pull/2228)
 * **src**: base64 decoding is now 50% faster (Ben Noordhuis) [#2193](https://github.com/nodejs/node/pull/2193)
 * **npm**: Upgraded to v2.13.2, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.2> (Kat Marchán) [#2241](https://github.com/nodejs/node/pull/2241).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* La utilización en paralelo de múltiples instancias de REPL puede causar alguna corrupción o pérdida del historial de REPL. [#1634](https://github.com/nodejs/node/issues/1634)
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Using multiple REPL instances in parallel may cause some REPL history corruption or loss. [#1634](https://github.com/nodejs/node/issues/1634)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -576,23 +576,23 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.4.0"></a>
 
-## 2015-07-17, Versión 2.4.0, @Fishrock123
+## 2015-07-17, Version 2.4.0, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **src**: Added a new `--track-heap-objects` flag to track heap object allocations for heap snapshots (Bradley Meck) [#2135](https://github.com/nodejs/node/pull/2135).
 * **readline**: Fixed a freeze that affected the repl if the keypress event handler threw (Alex Kocharin) [#2107](https://github.com/nodejs/node/pull/2107).
 * **npm**: Upgraded to v2.13.0, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.13.0> (Forrest L Norvell) [#2152](https://github.com/nodejs/node/pull/2152).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -623,22 +623,22 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.3.4"></a>
 
-## 2015-07-09, Versión 2.3.4, @Fishrock123
+## 2015-07-09, Version 2.3.4, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) (Shigeki Ohtsu) [#2141](https://github.com/nodejs/node/pull/2141).
 * **npm**: Upgraded to v2.12.1, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.12.0> and <https://github.com/npm/npm/releases/tag/v2.12.1> (Kat Marchán) [#2112](https://github.com/nodejs/node/pull/2112).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -660,22 +660,22 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.8.4"></a>
 
-## 2015-07-09, Versión 1.8.4, @Fishrock123
+## 2015-07-09, Version 1.8.4, @Fishrock123
 
-**Versión de mantenimiento**
+**Maintenance release**
 
-### Cambios notables
+### Notable changes
 
 * **openssl**: Upgrade to 1.0.2d, fixes CVE-2015-1793 (Alternate Chains Certificate Forgery) [#2141](https://github.com/nodejs/node/pull/2141).
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -684,21 +684,21 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.3.3"></a>
 
-## 2015-07-04, Versión 2.3.3, @Fishrock123
+## 2015-07-04, Version 2.3.3, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **deps**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica, como sugieren los docs, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760).
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760).
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
@@ -708,26 +708,26 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.8.3"></a>
 
-## 2015-07-04, Versión 1.8.3, @rvagg
+## 2015-07-04, Version 1.8.3, @rvagg
 
-**Versión de mantenimiento**
+**Maintenance release**
 
-## Cambios notables
+## Notable changes
 
 * **v8**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
-* **openssl**: Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). Vea el [aviso de seguridad](https://www.openssl.org/news/secadv_20150611.txt) para obtener todos los detalles. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
+* **openssl**: Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
 * **build**:
-  * Se añadió soporte para la compilación con Microsoft Visual C++ 2015
-  * Se inició la compilación y distribución de tarballs de solo cabeceras junto con binarios
+  * Added support for compiling with Microsoft Visual C++ 2015
+  * Started building and distributing headers-only tarballs along with binaries
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -760,23 +760,23 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.3.2"></a>
 
-## 2015-07-01, Versión 2.3.2, @rvagg
+## 2015-07-01, Version 2.3.2, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **build**:
-  * Se añadió soporte para la compilación con Microsoft Visual C++ 2015
-  * Se inició la compilación y distribución de tarballs de solo cabeceras junto con binarios
+  * Added support for compiling with Microsoft Visual C++ 2015
+  * Started building and distributing headers-only tarballs along with binaries
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
@@ -823,25 +823,25 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.3.1"></a>
 
-## 2015-06-23, Versión 2.3.1, @rvagg
+## 2015-06-23, Version 2.3.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **module**: The number of syscalls made during a `require()` have been significantly reduced again (see [#1801](https://github.com/nodejs/node/pull/1801) from v2.2.0 for previous work), which should lead to a performance improvement (Pierre Inglebert) [#1920](https://github.com/nodejs/node/pull/1920).
 * **npm**:
-  * Actualizar a [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
-  * Actualizar a [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
-* **zlib**: A bug was discovered where the process would abort if the final part of a zlib decompression results in a buffer that would exceed the maximum length of `0x3fffffff` bytes (~1GiB). Esto solía suceder solamente durante la descompresión en búfer (y no en la transmisión de datos). Esto fue arreglado y ahora ha de resultar en el arrojo de un `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
+  * Upgrade to [v2.11.2](https://github.com/npm/npm/releases/tag/v2.11.2) (Rebecca Turner) [#1956](https://github.com/nodejs/node/pull/1956).
+  * Upgrade to [v2.11.3](https://github.com/npm/npm/releases/tag/v2.11.3) (Forrest L Norvell) [#2018](https://github.com/nodejs/node/pull/2018).
+* **zlib**: A bug was discovered where the process would abort if the final part of a zlib decompression results in a buffer that would exceed the maximum length of `0x3fffffff` bytes (~1GiB). This was likely to only occur during buffered decompression (rather than streaming). This is now fixed and will instead result in a thrown `RangeError` (Michaël Zasso) [#1811](https://github.com/nodejs/node/pull/1811).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
@@ -893,22 +893,22 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.3.0"></a>
 
-## 2015-06-13, Versión 2.3.0, @rvagg
+## 2015-06-13, Version 2.3.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **libuv**: Upgraded to 1.6.0 and 1.6.1, see [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) for details. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Destacan:
-  * Corregir el bloqueo de TTY en OS X
-  * Corregir el envío no sincrónico de callbacks por UDP
-  * Añadir `uv_os_homedir()` (expuesta como `os.homedir()`, vea más abajo)
-* **npm**: See full [release notes](https://github.com/npm/npm/releases/tag/v2.11.1) for details. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Destaca:
-  * Utilice GIT_SSH_COMMAND (disponible a partir de Git 2.3)
+* **libuv**: Upgraded to 1.6.0 and 1.6.1, see [full ChangeLog](https://github.com/libuv/libuv/blob/60e515d9e6f3d86c0eedad583805201f32ea3aed/ChangeLog#L1-L36) for details. (Saúl Ibarra Corretgé) [#1905](https://github.com/nodejs/node/pull/1905) [#1889](https://github.com/nodejs/node/pull/1889). Highlights include:
+  * Fix TTY becoming blocked on OS X
+  * Fix UDP send callbacks to not to be synchronous
+  * Add `uv_os_homedir()` (exposed as `os.homedir()`, see below)
+* **npm**: See full [release notes](https://github.com/npm/npm/releases/tag/v2.11.1) for details. (Kat Marchán) [#1899](https://github.com/nodejs/node/pull/1899). Highlight:
+  * Use GIT_SSH_COMMAND (available as of Git 2.3)
 * **openssl**:
-  * Actualizar a 1.0.2b y 1.0.2c, introduce una protección contra ataques de intermediario de DHE (Logjam) y corrige ECParameters malformados, causantes de un bucle infinito (CVE-2015-1788). Vea el [aviso de seguridad](https://www.openssl.org/news/secadv_20150611.txt) para obtener todos los detalles. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
-  * Soportar el modo [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) de OpenSSL, consulte [README](https://github.com/nodejs/node#building-iojs-with-fips-compliant-openssl) para obtener instrucciones. (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
+  * Upgrade to 1.0.2b and 1.0.2c, introduces DHE man-in-the-middle protection (Logjam) and fixes malformed ECParameters causing infinite loop (CVE-2015-1788). See the [security advisory](https://www.openssl.org/news/secadv_20150611.txt) for full details. (Shigeki Ohtsu) [#1950](https://github.com/nodejs/node/pull/1950) [#1958](https://github.com/nodejs/node/pull/1958)
+  * Support [FIPS](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) mode of OpenSSL, see [README](https://github.com/nodejs/node#building-iojs-with-fips-compliant-openssl) for instructions. (Fedor Indutny) [#1890](https://github.com/nodejs/node/pull/1890)
 * **os**: Add `os.homedir()` method. (Colin Ihrig) [#1791](https://github.com/nodejs/node/pull/1791)
 * **smalloc**: Deprecate whole module. (Vladimir Kurchatkin) [#1822](https://github.com/nodejs/node/pull/1822)
-* Añadir nuevos colaboradores:
+* Add new collaborators:
   * Alex Kocharin ([@rlidwka](https://github.com/rlidwka))
   * Christopher Monsanto ([@monsanto](https://github.com/monsanto))
   * Ali Ijaz Sheikh ([@ofrobots](https://github.com/ofrobots))
@@ -916,15 +916,15 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
   * Domenic Denicola ([@domenic](https://github.com/domenic))
   * Rich Trott ([@Trott](https://github.com/Trott))
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ## Commits
 
@@ -1017,21 +1017,21 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.2.1"></a>
 
-## 2015-06-01, Versión 2.2.1, @rvagg
+## 2015-06-01, Version 2.2.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **http**: Reverts the move of the `client` property of `IncomingMessage` to its prototype. Aún sin haber sido documentada, esta propiedad fue utilizada y se asumió como una "propiedad de posesión" fuera del ambiente controlado, destacadamente por [request](https://github.com/request/request), que es utilizada por el npm. (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852).
+* **http**: Reverts the move of the `client` property of `IncomingMessage` to its prototype. Although undocumented, this property was used and assumed to be an "own property" in the wild, most notably by [request](https://github.com/request/request) which is used by npm. (Michaël Zasso) [#1852](https://github.com/nodejs/node/pull/1852).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -1041,23 +1041,23 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.2.0"></a>
 
-## 2015-05-31, Versión 2.2.0, @rvagg
+## 2015-05-31, Version 2.2.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **node**: Speed-up `require()` by replacing usage of `fs.statSync()` and `fs.readFileSync()` with internal variants that are faster for this use-case and do not create as many objects for the garbage collector to clean up. Los dos beneficios principales son: un incremento significativo en el tiempo de arranque de las aplicaciones típicas y un mejor tiempo de arranque para el depurador, a través de la eliminación de casi todos los miles de eventos de excepción. (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801).
+* **node**: Speed-up `require()` by replacing usage of `fs.statSync()` and `fs.readFileSync()` with internal variants that are faster for this use-case and do not create as many objects for the garbage collector to clean up. The primary two benefits are: significant increase in application start-up time on typical applications and better start-up time for the debugger by eliminating almost all of the thousands of exception events. (Ben Noordhuis) [#1801](https://github.com/nodejs/node/pull/1801).
 * **node**: Resolution of pre-load modules (`-r` or `--require`) now follows the standard `require()` rules rather than just resolving paths, so you can now pre-load modules in node_modules. (Ali Ijaz Sheikh) [#1812](https://github.com/nodejs/node/pull/1812).
-* **npm**: Upgraded npm to v2.11.0. New hooks for `preversion`, `version`, and `postversion` lifecycle events, some SPDX-related license changes and license file inclusions. Consulte las [notas del lanzamiento](https://github.com/npm/npm/releases/tag/v2.11.0) para ver los detalles completos.
+* **npm**: Upgraded npm to v2.11.0. New hooks for `preversion`, `version`, and `postversion` lifecycle events, some SPDX-related license changes and license file inclusions. See the [release notes](https://github.com/npm/npm/releases/tag/v2.11.0) for full details.
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -1090,25 +1090,25 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.1.0"></a>
 
-## 2015-05-24, Versión 2.1.0, @rvagg
+## 2015-05-24, Version 2.1.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **crypto**: Diffie-Hellman key exchange (DHE) parameters (`'dhparams'`) must now be 1024 bits or longer or an error will be thrown. Asimismo, una advertencia será impresa en la consola si suministra menos de 2048 bits. Consulte https://weakdh.org/ para informarse sobre este asunto de seguridad con un mayor contexto. (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739).
-* **node**: A new `--trace-sync-io` command line flag will print a warning and a stack trace whenever a synchronous API is used. Esto puede utilizarse para rastrear las llamadas sincrónicas que puedan estar realentizando una aplicación. (Trevor Norris) [#1707](https://github.com/nodejs/node/pull/1707).
+* **crypto**: Diffie-Hellman key exchange (DHE) parameters (`'dhparams'`) must now be 1024 bits or longer or an error will be thrown. A warning will also be printed to the console if you supply less than 2048 bits. See https://weakdh.org/ for further context on this security concern. (Shigeki Ohtsu) [#1739](https://github.com/nodejs/node/pull/1739).
+* **node**: A new `--trace-sync-io` command line flag will print a warning and a stack trace whenever a synchronous API is used. This can be used to track down synchronous calls that may be slowing down an application. (Trevor Norris) [#1707](https://github.com/nodejs/node/pull/1707).
 * **node**: To allow for chaining of methods, the `setTimeout()`, `setKeepAlive()`, `setNoDelay()`, `ref()` and `unref()` methods used in `'net'`, `'dgram'`, `'http'`, `'https'` and `'tls'` now return the current instance instead of `undefined` (Roman Reiss & Evan Lucas) [#1699](https://github.com/nodejs/node/pull/1699) [#1768](https://github.com/nodejs/node/pull/1768) [#1779](https://github.com/nodejs/node/pull/1779).
 * **npm**: Upgraded to v2.10.1, release notes can be found in <https://github.com/npm/npm/releases/tag/v2.10.1> and <https://github.com/npm/npm/releases/tag/v2.10.0>.
 * **util**: A significant speed-up (in the order of 35%) for the common-case of a single string argument to `util.format()`, used by `console.log()` (Сковорода Никита Андреевич) [#1749](https://github.com/nodejs/node/pull/1749).
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -1139,26 +1139,26 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.8.2"></a>
 
-## 2015-05-17, Versión 1.8.2, @rvagg
+## 2015-05-17, Version 1.8.2, @rvagg
 
-**Versión de mantenimiento**
+**Maintenance release**
 
-## Cambios notables
+## Notable changes
 
 * **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
-* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Resumen:
+* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Summary:
   * Add support for default author field to make `npm init -y` work without user-input (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9)
-  * Incluir módulos locales en `npm outdated` y `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
-  * Ahora el prefijo usado antes del número de versión en `npm version` es configurable a través de `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
+  * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
+  * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1180,29 +1180,29 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.0.2"></a>
 
-## 2015-05-15, Versión 2.0.2, @Fishrock123
+## 2015-05-15, Version 2.0.2, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **win,node-gyp**: the delay-load hook for windows addons has now been correctly enabled by default, it had wrongly defaulted to off in the release version of 2.0.0 (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
-* **os**: `tmpdir()`'s trailing slash stripping has been refined to fix an issue when the temp directory is at '/'. También toma en cuenta cuál barra diagonal es utilizada por el sistema operativo. (cjihrig) [#1673](https://github.com/nodejs/node/pull/1673)
+* **os**: `tmpdir()`'s trailing slash stripping has been refined to fix an issue when the temp directory is at '/'. Also considers which slash is used by the operating system. (cjihrig) [#1673](https://github.com/nodejs/node/pull/1673)
 * **tls**: default ciphers have been updated to use gcm and aes128 (Mike MacCana) [#1660](https://github.com/nodejs/node/pull/1660)
-* **build**: v8 snapshots have been re-enabled by default as suggested by the v8 team, since prior security issues have been resolved. Esto debería traer algunas mejoras de rendimiento para el arranque y la creación de contextos de la vm. (Trevor Norris) [#1663](https://github.com/nodejs/node/pull/1663)
+* **build**: v8 snapshots have been re-enabled by default as suggested by the v8 team, since prior security issues have been resolved. This should give some perf improvements to both startup and vm context creation. (Trevor Norris) [#1663](https://github.com/nodejs/node/pull/1663)
 * **src**: fixed preload modules not working when other flags were used before `--require` (Yosuke Furukawa) [#1694](https://github.com/nodejs/node/pull/1694)
 * **dgram**: fixed `send()`'s callback not being asynchronous (Yosuke Furukawa) [#1313](https://github.com/nodejs/node/pull/1313)
-* **readline**: emitKeys now keeps buffering data until it has enough to parse. Esto corrige un problema con el análisis de escapes divididos. (Alex Kocharin) [#1601](https://github.com/nodejs/node/pull/1601)
+* **readline**: emitKeys now keeps buffering data until it has enough to parse. This fixes an issue with parsing split escapes. (Alex Kocharin) [#1601](https://github.com/nodejs/node/pull/1601)
 * **cluster**: works now properly emit 'disconnect' to `cluser.worker` (Oleg Elifantiev) [#1386](https://github.com/nodejs/node/pull/1386)
 * **events**: uncaught errors now provide some context (Evan Lucas) [#1654](https://github.com/nodejs/node/pull/1654)
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
 
 ### Commits
 
@@ -1231,32 +1231,32 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.0.1"></a>
 
-## 2015-05-07, Versión 2.0.1, @rvagg
+## 2015-05-07, Version 2.0.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **async_wrap**: (Trevor Norris) [#1614](https://github.com/nodejs/node/pull/1614)
-  * ahora es posible filtrar por proveedores
-  * las banderas de bits han sido removidas y reemplazadas con llamadas de métodos en el objeto de enlazado
-  * _tenga en cuenta que esta es una API inestable, por lo que la adición de funciones y los cambios de ruptura no cambiarán el semver de io.js_
+  * it is now possible to filter by providers
+  * bit flags have been removed and replaced with method calls on the binding object
+  * _note that this is an unstable API so feature additions and breaking changes won't change io.js semver_
 * **libuv**: resolves numerous io.js issues:
-  * [#862](https://github.com/nodejs/node/issues/862) evitar la generación de procesos secundarios con descriptores de archivos de stdio inválidos
-  * [#1397](https://github.com/nodejs/node/issues/1397) corregir el error EPERM con fs.access(W_OK) en Windows
-  * [#1621](https://github.com/nodejs/node/issues/1621) errores de compilación asociados con el libuv empaquetado
-  * [#1512](https://github.com/nodejs/node/issues/1512) debería corregir correctamente los errores de terminación de Windows
+  * [#862](https://github.com/nodejs/node/issues/862) prevent spawning child processes with invalid stdio file descriptors
+  * [#1397](https://github.com/nodejs/node/issues/1397) fix EPERM error with fs.access(W_OK) on Windows
+  * [#1621](https://github.com/nodejs/node/issues/1621) build errors associated with the bundled libuv
+  * [#1512](https://github.com/nodejs/node/issues/1512) should properly fix Windows termination errors
 * **addons**: the `NODE_DEPRECATED` macro was causing problems when compiling addons with older compilers, this should now be resolved (Ben Noordhuis) [#1626](https://github.com/nodejs/node/pull/1626)
 * **V8**: upgrade V8 from 4.2.77.18 to 4.2.77.20 with minor fixes, including a bug preventing builds on FreeBSD
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1280,58 +1280,58 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="2.0.0"></a>
 
-## 2015-05-04, Versión 2.0.0, @rvagg
+## 2015-05-04, Version 2.0.0, @rvagg
 
-### Cambios de ruptura
+### Breaking changes
 
-Detalles completos en https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
+Full details at https://github.com/nodejs/node/wiki/Breaking-Changes#200-from-1x
 
-* Actualización de V8 a 4.2, cambios menores a la API de C++
-* `os.tmpdir()` ahora es consistentemente multi-plataforma y ya no devuelve una ruta con una barra diagonal final en ninguna plataforma
+* V8 upgrade to 4.2, minor changes to C++ API
+* `os.tmpdir()` is now cross-platform consistent and no longer returns a path with a trailing slash on any platform
 * While not a *breaking change* the 'smalloc' module has been deprecated in anticipation of it becoming unsupportable with a future upgrade to V8 4.4. See [#1451](https://github.com/nodejs/node/issues/1451)  for further information.
 
-_Nota: una nueva versión del módulo 'url' fue revertida antes de su lanzamiento, pues se decidió que su potencial como causa de ruptura en el ecosistema npm era demasiado grande y era necesario realizar más trabajo de compatibilidad antes de lanzarlo. Vea [#1602](https://github.com/nodejs/node/pull/1602) para más información._
+_Note: a new version of the 'url' module was reverted prior to release as it was decided the potential for breakage across the npm ecosystem was too great and that more compatibility work needed to be done before releasing it. See [#1602](https://github.com/nodejs/node/pull/1602) for further information._
 
-### Cambios notables
+### Notable changes
 
 * **crypto**: significantly reduced memory usage for TLS (Fedor Indutny & Сковорода Никита Андреевич) [#1529](https://github.com/nodejs/node/pull/1529)
 * **net**: `socket.connect()` now accepts a `'lookup'` option for a custom DNS resolution mechanism, defaults to `dns.lookup()` (Evan Lucas) [#1505](https://github.com/nodejs/node/pull/1505)
-* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Artículos notables:
-  * Añadir soporte para el campo de autor predeterminado para hacer que `npm init -y` funcione sin un input de usuario (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9af)
-  * Incluir módulos locales en `npm outdated` y `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
-  * Ahora el prefijo usado antes del número de versión en `npm version` es configurable a través de `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
+* **npm**: Upgrade npm to 2.9.0. See the [v2.8.4](https://github.com/npm/npm/releases/tag/v2.8.4) and [v2.9.0](https://github.com/npm/npm/releases/tag/v2.9.0) release notes for details. Notable items:
+  * Add support for default author field to make `npm init -y` work without user-input (@othiym23) [npm/npm/d8eee6cf9d](https://github.com/npm/npm/commit/d8eee6cf9d2ff7aca68dfaed2de76824a3e0d9af)
+  * Include local modules in `npm outdated` and `npm update` (@ArnaudRinquin) [npm/npm#7426](https://github.com/npm/npm/issues/7426)
+  * The prefix used before the version number on `npm version` is now configurable via `tag-version-prefix` (@kkragenbrink) [npm/npm#8014](https://github.com/npm/npm/issues/8014)
 * **os**: `os.tmpdir()` is now cross-platform consistent and will no longer returns a path with a trailing slash on any platform (Christian Tellnes) [#747](https://github.com/nodejs/node/pull/747)
 * **process**:
-  * El rendimiento de `process.nextTick()` ha sido mejorado entre un 2 y un 42% a través de la suite de pruebas de rendimiento, en gran medida ya que es sumamente utilizada en el núcleo (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
-  * Los nuevos métodos `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` y `process.setegid(id)` le permiten obtener y establecer las UID y GID efectivas del proceso (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
+  * `process.nextTick()` performance has been improved by between 2-42% across the benchmark suite, notable because this is heavily used across core (Brian White) [#1571](https://github.com/nodejs/node/pull/1571)
+  * New `process.geteuid()`, `process.seteuid(id)`, `process.getegid()` and `process.setegid(id)` methods allow you to get and set effective UID and GID of the process (Evan Lucas) [#1536](https://github.com/nodejs/node/pull/1536)
 * **repl**:
-  * El historial de REPL puede ser persistente a través de las sesiones si la variable de ambiente `NODE_REPL_HISTORY_FILE` es establecida como un archivo accesible por los usuarios, `NODE_REPL_HISTORY_SIZE` puede establecer el tamaño máximo del historial y se establece como `1000` de manera predeterminada (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
-  * El REPL puede establecerse en uno de tres modos utilizando la variable de entorno `NODE_REPL_MODE`: `sloppy`, `strict` o `magic` (por defecto); el nuevo modo `magic` ejecutará automáticamente declaraciones de "solo en modo estricto" en el modo estricto (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
+  * REPL history can be persisted across sessions if the `NODE_REPL_HISTORY_FILE` environment variable is set to a user accessible file, `NODE_REPL_HISTORY_SIZE` can set the maximum history size and defaults to `1000` (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
+  * The REPL can be placed in to one of three modes using the `NODE_REPL_MODE` environment variable: `sloppy`, `strict` or `magic` (default); the new `magic` mode will automatically run "strict mode only" statements in strict mode (Chris Dickinson) [#1513](https://github.com/nodejs/node/pull/1513)
 * **smalloc**: the 'smalloc' module has been deprecated due to changes coming in V8 4.4 that will render it unusable
 * **util**: add Promise, Map and Set inspection support (Christopher Monsanto) [#1471](https://github.com/nodejs/node/pull/1471)
-* **V8**: upgrade to 4.2.77.18, see the [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) for full details. Artículos notables:
-  * Las clases se han movido fuera de la escenificación; la palabra clave `class` ahora es utilizable sin banderas en el modo estricto
-  * Las mejoras literales de objetos han sido movidas fuera de la escenificación; el método de atajo y la sintaxis de la propiedad ahora son utilizables (`{ method() { }, property }`)
-  * Los parámetros del resto (`function(...args) {}`) son implementados en la escenificación tras la bandera `--harmony-rest-parameters`
-  * Los nombres de propiedades computados (`{['foo'+'bar']:'bam'}`) son implementados en la escenificación tras la bandera `--harmony-computed-property-names`
-  * Los escapes de unicode (`'\u{xxxx}'`) son implementados en la escenificación tras las banderas `--harmony_unicode` y `--harmony_unicode_regexps`, para uso en las expresiones regulares
+* **V8**: upgrade to 4.2.77.18, see the [ChangeLog](https://chromium.googlesource.com/v8/v8/+/refs/heads/4.2.77/ChangeLog) for full details. Notable items:
+  * Classes have moved out of staging; the `class` keyword is now usable in strict mode without flags
+  * Object literal enhancements have moved out of staging; shorthand method and property syntax is now usable (`{ method() { }, property }`)
+  * Rest parameters (`function(...args) {}`) are implemented in staging behind the `--harmony-rest-parameters` flag
+  * Computed property names (`{['foo'+'bar']:'bam'}`) are implemented in staging behind the `--harmony-computed-property-names` flag
+  * Unicode escapes (`'\u{xxxx}'`) are implemented in staging behind the `--harmony_unicode` flag and the `--harmony_unicode_regexps` flag for use in regular expressions
 * **Windows**:
-  * Fue corregida la terminación de procesos aleatoria en Windows (Fedor Indutny)  [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
-  * El hook delay-load introducido para corregir problemas con el nombramiento de procesos (iojs.exe / node.exe) se ha convertido en opt-out para los complementos nativos. Los complementos nativos deben incluir `'win_delay_load_hook': 'false'` en sus binding.gyp para deshabilitar esta función si experimentan problemas. (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
+  * Random process termination on Windows fixed (Fedor Indutny)  [#1512](https://github.com/nodejs/node/issues/1512) / [#1563](https://github.com/nodejs/node/pull/1563)
+  * The delay-load hook introduced to fix issues with process naming (iojs.exe / node.exe) has been made opt-out for native add-ons. Native add-ons should include `'win_delay_load_hook': 'false'` in their binding.gyp to disable this feature if they experience problems . (Bert Belder) [#1433](https://github.com/nodejs/node/pull/1433)
 * **Governance**:
-  * Rod Vagg (@rvagg) fue añadido al Comité Técnico (TC)
-  * Jeremiah Senkpiel (@Fishrock123) fue añadido al Comité Técnico (TC)
+  * Rod Vagg (@rvagg) was added to the Technical Committee (TC)
+  * Jeremiah Senkpiel (@Fishrock123) was added to the Technical Committee (TC)
 
-### Problemas conocidos
+### Known issues
 
-Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y actual de problemas conocidos.
+See https://github.com/nodejs/node/labels/confirmed-bug for complete and current list of known issues.
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1409,32 +1409,32 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.8.1"></a>
 
-## 2015-04-20, Versión 1.8.1, @chrisdickinson
+## 2015-04-20, Version 1.8.1, @chrisdickinson
 
-### Cambios notables
+### Notable changes
 
-* **NOTICE**: Skipped v1.8.0 due to problems with release tooling. Consulte [#1436](https://github.com/nodejs/node/issues/1436) para ver detalles.
+* **NOTICE**: Skipped v1.8.0 due to problems with release tooling. See [#1436](https://github.com/nodejs/node/issues/1436) for details.
 * **build**: Support for building io.js as a static library (Marat Abdullin) [#1341](https://github.com/nodejs/node/pull/1341)
 * **deps**: Upgrade openssl to 1.0.2a (Shigeki Ohtsu) [#1389](https://github.com/nodejs/node/pull/1389)
-  * Los usuarios deberían ver mejoras en el rendimiento al utilizar la API criptográfica. Consulte [aquí](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) para ver detalles.
-* **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Incluye soporte de git mejorado. Resumen:
-  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Asegurarse de que los URLs del SSH del git alojado tengan siempre un protocolo válido al ser almacenados en los campos `resolved` (resueltos) en `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
-  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Invertir el orden en el que los proveedores de Gits alojados son revisados a `git:`, `git+https:`, y luego `git+ssh:` (anteriormente era `git:`, `git+ssh:`, y luego `git+https:`) con la intención de proceder desde el que tiene menos probabilidades de éxito hasta el que tiene más, para crear un mensaje de error menos confuso. ([@othiym23](https://github.com/othiym23))
-  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: No enviar el cuerpo con las solicitudes del GET de HTTP al ingresar. ([@smikes](https://github.com/smikes))
-  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Utilice la nueva versión de `hosted-git-info` para pasar credenciales incrustadas en URLs de gits,. Pruébelo. Pruébelo mucho. ([@othiym23](https://github.com/othiym23))
-  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Los paquetes con ámbito con `peerDependencies` estaban instalando las `peerDependencies` en el directorio equivocado. ([@ewie](https://github.com/ewie))
-  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Utilice los atajos de gits y las URLs de gits como son presentados por los usuarios. Soportar la nueva sintaxis del atajo a `hosted-git-info`. Guardar atajo en `package.json`. Intente clonar a través de `git:`, `git+ssh:`, y `git+https:`, en ese orden, cuando sean soportados por el provedor de host subyacente. ([@othiym23](https://github.com/othiym23))
+  * Users should see performance improvements when using the crypto API. See [here](https://github.com/nodejs/node/wiki/Crypto-Performance-Notes-for-OpenSSL-1.0.2a-on-iojs-v1.8.0) for details.
+* **npm**: Upgrade npm to 2.8.3. See the [release notes](https://github.com/npm/npm/releases/tag/v2.8.3) for details. Includes improved git support. Summary:
+  * [`387f889`](https://github.com/npm/npm/commit/387f889c0e8fb617d9cc9a42ed0a3ec49424ab5d) [#7961](https://github.com/npm/npm/issues/7961) Ensure that hosted git SSH URLs always have a valid protocol when stored in `resolved` fields in `npm-shrinkwrap.json`. ([@othiym23](https://github.com/othiym23))
+  * [`394c2f5`](https://github.com/npm/npm/commit/394c2f5a1227232c0baf42fbba1402aafe0d6ffb) Switch the order in which hosted Git providers are checked to `git:`, `git+https:`, then `git+ssh:` (from `git:`, `git+ssh:`, then `git+https:`) in an effort to go from most to least likely to succeed, to make for less confusing error message. ([@othiym23](https://github.com/othiym23))
+  * [`431c3bf`](https://github.com/npm/npm/commit/431c3bf6cdec50f9f0c735f478cb2f3f337d3313) [#7699](https://github.com/npm/npm/issues/7699) `npm-registry-client@6.3.2`: Don't send body with HTTP GET requests when logging in. ([@smikes](https://github.com/smikes))
+  * [`15efe12`](https://github.com/npm/npm/commit/15efe124753257728a0ddc64074fa5a4b9c2eb30) [#7872](https://github.com/npm/npm/issues/7872) Use the new version of `hosted-git-info` to pass along credentials embedded in git URLs. Test it. Test it a lot. ([@othiym23](https://github.com/othiym23))
+  * [`b027319`](https://github.com/npm/npm/commit/b0273190c71eba14395ddfdd1d9f7ba625297523) [#7920](https://github.com/npm/npm/issues/7920) Scoped packages with `peerDependencies` were installing the `peerDependencies` into the wrong directory. ([@ewie](https://github.com/ewie))
+  * [`6b0f588`](https://github.com/npm/npm/commit/6b0f58877f37df9904490ffbaaad33862bd36dce) [#7867](https://github.com/npm/npm/issues/7867) Use git shorthand and git URLs as presented by user. Support new `hosted-git-info` shortcut syntax. Save shorthand in `package.json`. Try cloning via `git:`, `git+ssh:`, and `git+https:`, in that order, when supported by the underlying hosting provider. ([@othiym23](https://github.com/othiym23))
 * **src**: Allow multiple arguments to be passed to process.nextTick (Trevor Norris) [#1077](https://github.com/nodejs/node/pull/1077)
-* **module**: The interaction of `require('.')` with `NODE_PATH` has been restored and deprecated. Esta función será eliminada en un punto en el futuro. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
+* **module**: The interaction of `require('.')` with `NODE_PATH` has been restored and deprecated. This functionality will be removed at a later point. (Roman Reiss) [#1363](https://github.com/nodejs/node/pull/1363)
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1476,19 +1476,19 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.7.1"></a>
 
-## 2015-04-14, Versión 1.7.1, @rvagg
+## 2015-04-14, Version 1.7.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **build**: A syntax error in the Makefile for release builds caused 1.7.0 to be DOA and unreleased. (Rod Vagg) [#1421](https://github.com/nodejs/node/pull/1421).
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1496,27 +1496,27 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.7.0"></a>
 
-## 2015-04-14, Versión 1.7.0, @rvagg
+## 2015-04-14, Version 1.7.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **C++ API**: Fedor Indutny contributed a feature to V8 which has been backported to the V8 bundled in io.js. `SealHandleScope` allows a C++ add-on author to _seal_ a `HandleScope` to prevent further, unintended allocations within it. Actualmente solo está habilitado para builds de depuración de io.js. Esta función ayudó a detectar la fuga en [#1075](https://github.com/nodejs/node/issues/1075) y ahora se encuentra habilitada en el `HandleScope` raíz en io.js. (Fedor Indutny) [#1395](https://github.com/nodejs/node/pull/1395).
-* **ARM**: This release includes significant work to improve the state of ARM support for builds and tests. Los servidores de los builds de ARMv6, ARMv7 y ARMv8 del clúster de CI de io.js están (casi todos) reportando las compilaciones y pruebas exitosas.
-  * ARMv8 64-bit (AARCH64) ahora está soportado correctamente, incluyendo una corrección a la que se le hizo backport en libuv que estaba detectando erróneamente la existencia de `epoll_wait()`. (Ben Noordhuis) [#1365](https://github.com/nodejs/node/pull/1365).
-  * ARMv6: [#1376](https://github.com/nodejs/node/issues/1376) reportó un problema con `Math.exp()` en ARMv6 (incl Raspberry Pi). El culpable es un codegen erróneo para ARMv6, al utilizar la función de "matemática rápida" de V8. `--nofast_math` ha sido activada por defecto para todas las variantes de ARMv6 para evitar esto, la matemática rápida puede volver a ser activada con `--fast_math`. (Ben Noordhuis) [#1398](https://github.com/nodejs/node/pull/1398).
-  * Pruebas: los tiempos de espera han sido ajustados específicamente para plataformas más lentas, detectadas como ARMv6 y ARMv7. (Roman Reiss) [#1366](https://github.com/nodejs/node/pull/1366).
-* **npm**: Upgrade npm to 2.7.6. See the [release notes](https://github.com/npm/npm/releases/tag/v2.7.6) for details. Resumen:
-  * [`b747593`](https://github.com/npm/npm/commit/b7475936f473f029e6a027ba1b16277523747d0b)[#7630](https://github.com/npm/npm/issues/7630) No registrar todas las fallas de git como errores. `maybeGithub` necesita ser capaz de fallar sin dejar registros para soportar su lógica de reserva. ([@othiym23](https://github.com/othiym23))
-  * [`78005eb`](https://github.com/npm/npm/commit/78005ebb6f4103c20f077669c3929b7ea46a4c0d)[#7743](https://github.com/npm/npm/issues/7743) Siempre citar los argumentos pasados a `npm run-script`. Esto permite que los sistemas de compilación y los patrones globales similares al escape seguro sean pasados como argumentos a `run-scripts` con `npm run-script &lt;script&gt; -- &lt;arguments&gt;`. Esto es un cambio complicado que ha de ser puesto a prueba, y que puede ser revertido o movido a`npm@3` si resulta que daña cosas para los usuarios. ([@mantoni](https://github.com/mantoni))
-  * [`da015ee`](https://github.com/npm/npm/commit/da015eee45f6daf384598151d06a9b57ffce136e)[#7074](https://github.com/npm/npm/issues/7074) `read-package-json@1.3.3`: `read-package-json` ya no almacena los archivos de `package.json` en caché, lo que implica una pérdida de rendimiento muy pequeña por la eliminación de una gran clase de condiciones de carrera realmente molestas. Consulte [#7074](https://github.com/npm/npm/issues/7074) para ver los espeluznantes detalles. ([@othiym23](https://github.com/othiym23))
+* **C++ API**: Fedor Indutny contributed a feature to V8 which has been backported to the V8 bundled in io.js. `SealHandleScope` allows a C++ add-on author to _seal_ a `HandleScope` to prevent further, unintended allocations within it. Currently only enabled for debug builds of io.js. This feature helped detect the leak in [#1075](https://github.com/nodejs/node/issues/1075) and is now activated on the root `HandleScope` in io.js. (Fedor Indutny) [#1395](https://github.com/nodejs/node/pull/1395).
+* **ARM**: This release includes significant work to improve the state of ARM support for builds and tests. The io.js CI cluster's ARMv6, ARMv7 and ARMv8 build servers are now all (mostly) reporting passing builds and tests.
+  * ARMv8 64-bit (AARCH64) is now properly supported, including a backported fix in libuv that was mistakenly detecting the existence of `epoll_wait()`. (Ben Noordhuis) [#1365](https://github.com/nodejs/node/pull/1365).
+  * ARMv6: [#1376](https://github.com/nodejs/node/issues/1376) reported a problem with `Math.exp()` on ARMv6 (incl Raspberry Pi). The culprit is erroneous codegen for ARMv6 when using the "fast math" feature of V8. `--nofast_math` has been turned on for all ARMv6 variants by default to avoid this, fast math can be turned back on with `--fast_math`. (Ben Noordhuis) [#1398](https://github.com/nodejs/node/pull/1398).
+  * Tests: timeouts have been tuned specifically for slower platforms, detected as ARMv6 and ARMv7. (Roman Reiss) [#1366](https://github.com/nodejs/node/pull/1366).
+* **npm**: Upgrade npm to 2.7.6. See the [release notes](https://github.com/npm/npm/releases/tag/v2.7.6) for details. Summary:
+  * [`b747593`](https://github.com/npm/npm/commit/b7475936f473f029e6a027ba1b16277523747d0b)[#7630](https://github.com/npm/npm/issues/7630) Don't automatically log all git failures as errors. `maybeGithub` needs to be able to fail without logging to support its fallback logic. ([@othiym23](https://github.com/othiym23))
+  * [`78005eb`](https://github.com/npm/npm/commit/78005ebb6f4103c20f077669c3929b7ea46a4c0d)[#7743](https://github.com/npm/npm/issues/7743) Always quote arguments passed to `npm run-script`. This allows build systems and the like to safely escape glob patterns passed as arguments to `run-scripts` with `npm run-script <script> -- <arguments>`. This is a tricky change to test, and may be reverted or moved to `npm@3` if it turns out it breaks things for users. ([@mantoni](https://github.com/mantoni))
+  * [`da015ee`](https://github.com/npm/npm/commit/da015eee45f6daf384598151d06a9b57ffce136e)[#7074](https://github.com/npm/npm/issues/7074) `read-package-json@1.3.3`: `read-package-json` no longer caches `package.json` files, which trades a very small performance loss for the elimination of a large class of really annoying race conditions. See [#7074](https://github.com/npm/npm/issues/7074) for the grisly details. ([@othiym23](https://github.com/othiym23))
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
-* readline: los escapes divididos son procesados incorrectamente, vea [#1403](https://github.com/nodejs/node/issues/1403)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
+* readline: split escapes are processed incorrectly, see [#1403](https://github.com/nodejs/node/issues/1403)
 
 ### Commits
 
@@ -1558,26 +1558,26 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.6.4"></a>
 
-## 2015-04-06, Versión 1.6.4, @Fishrock123
+## 2015-04-06, Version 1.6.4, @Fishrock123
 
-### Cambios notables
+### Notable changes
 
-* **npm**: upgrade npm to 2.7.5. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) for details. Incluye dos correcciones de seguridad importantes. Resumen:
-  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalizar los enlaces simbólicos que apuntan a objetivos fuera de la raíz de extracción. Esto evita que los paquetes que contengan enlaces simbólicos sobreescriban objetivos fuera de las rutas esperadas para un paquete. Gracias a [Tim Cuthbertson](http://gfxmonk.net/) y al equipo de [Lift Security](https://liftsecurity.io/) por trabajar con el equipo de npm para identifiar este problema. ([@othiym23](https://github.com/othiym23))
-  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Las versiones de paquete no pueden ser de más de 256 caracteres de largas. Esto evita una situación en la que analizar el número de versión puede gastar exponencialmente más tiempo y memoria, llevando a una denegación de servicio potencial. Gracias a Adam Baldwin, de Lift Security, por hacernos notar esto.  ([@isaacs](https://github.com/isaacs))
-  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) Un último ajuste para asegurarse que los accesos directos de Github funcionen con repositorios privados. ([@iarna](https://github.com/iarna))
-  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Solo arreglar las rutas URL de git cuando hayan rutas que arreglar. ([@othiym23](https://github.com/othiym23))
-* **openssl**: preliminary work has been done for an upcoming upgrade to OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). Consulte [#589](https://github.com/nodejs/node/issues/589) para ver detalles adicionales.
-* **timers**: a minor memory leak when timers are unreferenced was fixed, alongside some related timers issues [#1330](https://github.com/nodejs/node/pull/1330) (Fedor Indutny). Esto parece haber corregido la fuga restante reportada en [#1075](https://github.com/nodejs/node/issues/1075).
+* **npm**: upgrade npm to 2.7.5. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v275-2015-03-26) for details. Includes two important security fixes. Summary:
+  * [`300834e`](https://github.com/npm/npm/commit/300834e91a4e2a95fb7fb59c309e7c3fc91d2312) `tar@2.0.0`: Normalize symbolic links that point to targets outside the extraction root. This prevents packages containing symbolic links from overwriting targets outside the expected paths for a package. Thanks to [Tim Cuthbertson](http://gfxmonk.net/) and the team at [Lift Security](https://liftsecurity.io/) for working with the npm team to identify this issue. ([@othiym23](https://github.com/othiym23))
+  * [`0dc6875`](https://github.com/npm/npm/commit/0dc68757cffd5397c280bc71365d106523a5a052) `semver@4.3.2`: Package versions can be no more than 256 characters long. This prevents a situation in which parsing the version number can use exponentially more time and memory to parse, leading to a potential denial of service. Thanks to Adam Baldwin at Lift Security for bringing this to our attention.  ([@isaacs](https://github.com/isaacs))
+  * [`eab6184`](https://github.com/npm/npm/commit/eab618425c51e3aa4416da28dcd8ca4ba63aec41) [#7766](https://github.com/npm/npm/issues/7766) One last tweak to ensure that GitHub shortcuts work with private repositories. ([@iarna](https://github.com/iarna))
+  * [`a840a13`](https://github.com/npm/npm/commit/a840a13bbf0330157536381ea8e58d0bd93b4c05) [#7746](https://github.com/npm/npm/issues/7746) Only fix up git URL paths when there are paths to fix up. ([@othiym23](https://github.com/othiym23))
+* **openssl**: preliminary work has been done for an upcoming upgrade to OpenSSL 1.0.2a [#1325](https://github.com/nodejs/node/pull/1325) (Shigeki Ohtsu). See [#589](https://github.com/nodejs/node/issues/589) for additional details.
+* **timers**: a minor memory leak when timers are unreferenced was fixed, alongside some related timers issues [#1330](https://github.com/nodejs/node/pull/1330) (Fedor Indutny). This appears to have fixed the remaining leak reported in [#1075](https://github.com/nodejs/node/issues/1075).
 * **android**: it is now possible to compile io.js for Android and related devices [#1307](https://github.com/nodejs/node/pull/1307) (Giovanny Andres Gongora Granada).
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores sin referencias que se ejecutan durante `beforeExit` aún están por resolverse. Vea [#1264](https://github.com/nodejs/node/issues/1264).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Some problems with unreferenced timers running during `beforeExit` are still to be resolved. See [#1264](https://github.com/nodejs/node/issues/1264).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1621,35 +1621,35 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.6.3"></a>
 
-## 2015-03-31, Versión 1.6.3, @rvagg
+## 2015-03-31, Version 1.6.3, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **fs**: corruption can be caused by `fs.writeFileSync()` and append-mode `fs.writeFile()` and `fs.writeFileSync()` under certain circumstances, reported in [#1058](https://github.com/nodejs/node/issues/1058), fixed in [#1063](https://github.com/nodejs/node/pull/1063) (Olov Lassus).
 * **iojs**: an "internal modules" API has been introduced to allow core code to share JavaScript modules internally only without having to expose them as a public API, this feature is for core-only [#848](https://github.com/nodejs/node/pull/848) (Vladimir Kurchatkin).
 * **timers**: two minor problems with timers have been fixed:
-  * ahora `Timer#close()` es idempotente [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
-  * `setTimeout()` solo ejecutará la callback una vez luego de `unref()` durante la callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
-  * NOTA: aún existen otros asuntos sin resolver con el código de los temporizadores, tales como [#1152](https://github.com/nodejs/node/pull/1152).
+  * `Timer#close()` is now properly idempotent [#1288](https://github.com/nodejs/node/issues/1288) (Petka Antonov).
+  * `setTimeout()` will only run the callback once now after an `unref()` during the callback [#1231](https://github.com/nodejs/node/pull/1231) (Roman Reiss).
+  * NOTE: there are still other unresolved concerns with the timers code, such as [#1152](https://github.com/nodejs/node/pull/1152).
 * **Windows**: a "delay-load hook" has been added for compiled add-ons on Windows that should alleviate some of the problems that Windows users may be experiencing with add-ons in io.js [#1251](https://github.com/nodejs/node/pull/1251) (Bert Belder).
 * **V8**: minor bug-fix upgrade for V8 to 4.1.0.27.
-* **npm**: upgrade npm to 2.7.4. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v274-2015-03-20) for details. Resumen:
-  * [`1549106`](https://github.com/npm/npm/commit/1549106f518000633915686f5f1ccc6afcf77f8f) [#7641](https://github.com/npm/npm/issues/7641) Debido a 448efd0, la ejecución de `npm shrinkwrap --dev` causó que las dependencias de producción dejaran de ser incluidas en `npm-shrinkwrap.json`. ¡Ooops! ([@othiym23](https://github.com/othiym23))
-  * [`fb0ac26`](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5) [#7579](https://github.com/npm/npm/issues/7579) Solo bloquear la remoción de archivos y enlaces al estar seguros de que npm no es responsable por ellos. Este cambio es difícil de resumir, ya que si las cosas están funcionando correctamente usted no debería notarlo, pero si desea más contexto solo [lea el mensaje del commit](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5), en el que todo se explica. ([@othiym23](https://github.com/othiym23))
-  * [`051c473`](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) [#7552](https://github.com/npm/npm/issues/7552) las `bundledDependencies` ahora están correctamente incluidas en el contexto de instalación. Este es otro bug increíblemente difícil de resumir, y, de nuevo, le recomiendo [leer el mensaje del commit](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) si se siente curioso sobre los detalles. Un breve resumen es que esto corrige muchos casos de uso para `ember-cli`. ([@othiym23](https://github.com/othiym23))
-  * [`fe1bc38`](https://github.com/npm/npm/commit/fe1bc387a14475e373557de669e03d9d006d3173)[#7672](https://github.com/npm/npm/issues/7672) `npm-registry-client@3.1.2`: Corregir el manejo de certificados paralelos al cliente corrigiendo el nombre de la propiedad. ([@atamon](https://github.com/atamon))
-  * [`89ce829`](https://github.com/npm/npm/commit/89ce829a00b526d0518f5cd855c323bffe182af0)[#7630](https://github.com/npm/npm/issues/7630) `hosted-git-info@1.5.3`: La tercera parte de asegurarse que el atajo de Github sea manejado consistentemente. ([@othiym23](https://github.com/othiym23))
-  * [`63313eb`](https://github.com/npm/npm/commit/63313eb0c37891c355546fd1093010c8a0c3cd81)[#7630](https://github.com/npm/npm/issues/7630) `realize-package-specifier@2.2.0`: La segunda parte de asegurarse de que el atajo de Github sea manejado correctamente. ([@othiym23](https://github.com/othiym23))
-  * [`3ed41bf`](https://github.com/npm/npm/commit/3ed41bf64a1bb752bb3155c74dd6ffbbd28c89c9)[#7630](https://github.com/npm/npm/issues/7630) `npm-package-arg@3.1.1`: La primera parte de asegurarse de que el atajo de Github sea manejado correctamente. ([@othiym23](https://github.com/othiym23))
+* **npm**: upgrade npm to 2.7.4. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v274-2015-03-20) for details. Summary:
+  * [`1549106`](https://github.com/npm/npm/commit/1549106f518000633915686f5f1ccc6afcf77f8f) [#7641](https://github.com/npm/npm/issues/7641) Due to 448efd0, running `npm shrinkwrap --dev` caused production dependencies to no longer be included in `npm-shrinkwrap.json`. Whoopsie! ([@othiym23](https://github.com/othiym23))
+  * [`fb0ac26`](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5) [#7579](https://github.com/npm/npm/issues/7579) Only block removing files and links when we're sure npm isn't responsible for them. This change is hard to summarize, because if things are working correctly you should never see it, but if you want more context, just [go read the commit message](https://github.com/npm/npm/commit/fb0ac26eecdd76f6eaa4a96a865b7c6f52ce5aa5), which lays it all out. ([@othiym23](https://github.com/othiym23))
+  * [`051c473`](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) [#7552](https://github.com/npm/npm/issues/7552) `bundledDependencies` are now properly included in the installation context. This is another fantastically hard-to-summarize bug, and once again, I encourage you to [read the commit message](https://github.com/npm/npm/commit/051c4738486a826300f205b71590781ce7744f01) if you're curious about the details. The snappy takeaway is that this unbreaks many use cases for `ember-cli`. ([@othiym23](https://github.com/othiym23))
+  * [`fe1bc38`](https://github.com/npm/npm/commit/fe1bc387a14475e373557de669e03d9d006d3173)[#7672](https://github.com/npm/npm/issues/7672) `npm-registry-client@3.1.2`: Fix client-side certificate handling by correcting property name. ([@atamon](https://github.com/atamon))
+  * [`89ce829`](https://github.com/npm/npm/commit/89ce829a00b526d0518f5cd855c323bffe182af0)[#7630](https://github.com/npm/npm/issues/7630) `hosted-git-info@1.5.3`: Part 3 of ensuring that GitHub shorthand is handled consistently. ([@othiym23](https://github.com/othiym23))
+  * [`63313eb`](https://github.com/npm/npm/commit/63313eb0c37891c355546fd1093010c8a0c3cd81)[#7630](https://github.com/npm/npm/issues/7630) `realize-package-specifier@2.2.0`: Part 2 of ensuring that GitHub shorthand is handled consistently. ([@othiym23](https://github.com/othiym23))
+  * [`3ed41bf`](https://github.com/npm/npm/commit/3ed41bf64a1bb752bb3155c74dd6ffbbd28c89c9)[#7630](https://github.com/npm/npm/issues/7630) `npm-package-arg@3.1.1`: Part 1 of ensuring that GitHub shorthand is handled consistently. ([@othiym23](https://github.com/othiym23))
 
-### Problemas conocidos
+### Known issues
 
-* Algunos problemas con temporizadores y `unref()` aún están por resolverse. Consulte [#1152](https://github.com/nodejs/node/pull/1152).
-* Puede que aún exista alguna o algunas fugas de memoria pequeñas, pero aún deben ser adecuadamente identificadas, consulte los detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Some problems exist with timers and `unref()` still to be resolved. See [#1152](https://github.com/nodejs/node/pull/1152).
+* Possible small memory leak(s) may still exist but have yet to be properly identified, details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1691,22 +1691,22 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.6.2"></a>
 
-## 2015-03-23, Versión 1.6.2, @rvagg
+## 2015-03-23, Version 1.6.2, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **Windows**: The ongoing work in improving the state of Windows support has resulted in full test suite passes once again. Como se hace notar en las notas de lanzamiento para la v1.4.2, el sistema de integración continua y problemas de configuración del mismo no le permitían reportar correctamente problemas con las pruebas de Windows, dichos problemas con la integración continua y la base de código parecen haberse resuelto completamente.
+* **Windows**: The ongoing work in improving the state of Windows support has resulted in full test suite passes once again. As noted in the release notes for v1.4.2, CI system and configuration problems prevented it from properly reporting problems with the Windows tests, the problems with the CI and the codebase appear to have been fully resolved.
 * **FreeBSD**: A [kernel bug](https://lists.freebsd.org/pipermail/freebsd-current/2015-March/055043.html) impacting io.js/Node.js was [discovered](https://github.com/joyent/node/issues/9326) and a patch has been introduced to prevent it causing problems for io.js (Fedor Indutny) [#1218](https://github.com/nodejs/node/pull/1218).
 * **module**: you can now `require('.')` instead of having to `require('./')`, this is considered a bugfix (Michaël Zasso) [#1185](https://github.com/nodejs/node/pull/1185).
 * **v8**: updated to 4.1.0.25 including patches for `--max_old_space_size` values above `4096` and Solaris support, both of which are already included in io.js.
 
-### Problemas conocidos
+### Known issues
 
-* Puede que aún exista alguna o algunas fugas de memoria pequeñas, pero aún deben ser adecuadamente identificadas, consulte los detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Possible small memory leak(s) may still exist but have yet to be properly identified, details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1732,20 +1732,20 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.6.1"></a>
 
-## 2015-03-20, Versión 1.6.1, @rvagg
+## 2015-03-20, Version 1.6.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **path**: New type-checking on `path.resolve()` [#1153](https://github.com/nodejs/node/pull/1153) uncovered some edge-cases being relied upon in the wild, most notably `path.dirname(undefined)`. La revisión de tipo se ha hecho menos estricta para `path.dirname()`, `path.basename()`, y `path.extname()` (Colin Ihrig) [#1216](https://github.com/nodejs/node/pull/1216).
-* **querystring**: Internal optimizations in `querystring.parse()` and `querystring.stringify()` [#847](https://github.com/nodejs/node/pull/847) prevented `Number` literals from being properly converted via `querystring.escape()` [#1208](https://github.com/nodejs/node/issues/1208), exposing a blind-spot in the test suite. El bug y las pruebas ya han sido corregidas (Jeremiah Senkpiel) [#1213](https://github.com/nodejs/node/pull/1213).
+* **path**: New type-checking on `path.resolve()` [#1153](https://github.com/nodejs/node/pull/1153) uncovered some edge-cases being relied upon in the wild, most notably `path.dirname(undefined)`. Type-checking has been loosened for `path.dirname()`, `path.basename()`, and `path.extname()` (Colin Ihrig) [#1216](https://github.com/nodejs/node/pull/1216).
+* **querystring**: Internal optimizations in `querystring.parse()` and `querystring.stringify()` [#847](https://github.com/nodejs/node/pull/847) prevented `Number` literals from being properly converted via `querystring.escape()` [#1208](https://github.com/nodejs/node/issues/1208), exposing a blind-spot in the test suite. The bug and the tests have now been fixed (Jeremiah Senkpiel) [#1213](https://github.com/nodejs/node/pull/1213).
 
-### Problemas conocidos
+### Known issues
 
-* Posible(s) pérdida(s) de memoria restante(s) relacionada(s) con TLS [#1075](https://github.com/nodejs/node/issues/1075).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Possible remaining TLS-related memory leak(s), details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1758,9 +1758,9 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.6.0"></a>
 
-## 2015-03-19, Versión 1.6.0, @chrisdickinson
+## 2015-03-19, Version 1.6.0, @chrisdickinson
 
-### Cambios notables
+### Notable changes
 
 * **node**: a new `-r` or `--require` command-line option can be used to pre-load modules at start-up (Ali Ijaz Sheikh) [#881](https://github.com/nodejs/node/pull/881).
 * **querystring**: `parse()` and `stringify()` are now faster (Brian White) [#847](https://github.com/nodejs/node/pull/847).
@@ -1769,19 +1769,19 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 * **tls**: further work on the reported memory leak although there appears to be a minor leak remaining for the use-case in question, track progress at [#1075](https://github.com/nodejs/node/issues/1075).
 * **v8**: backport a fix for an integer overflow when `--max_old_space_size` values above `4096` are used (Ben Noordhuis) [#1166](https://github.com/nodejs/node/pull/1166).
 * **platforms**: the io.js CI system now reports passes on **FreeBSD** and **SmartOS** (_Solaris_).
-* **npm**: upgrade npm to 2.7.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v271-2015-03-05) for details. Resumen:
-  * [`6823807`](https://github.com/npm/npm/commit/6823807bba) [#7121](https://github.com/npm/npm/issues/7121) utilizar `npm install --save` para dependencias de Git guarda el URL pasado, en lugar del directorio temporal utilizado para clonar el repositorio remoto. Corrige el uso de dependencias de Git al hacer shrinkwwap. En el proceso, se reescribió el almacenamiento en caché de código por la dependencia de Git. Nuevamente. No más nombres de variables de una sola letra, y un flujo de trabajo mucho más claro. ([@othiym23](https://github.com/othiym23))
-  * [`abdd040`](https://github.com/npm/npm/commit/abdd040da9) read-package-json@1.3.2: Proporcionar mensajes de error más útiles cuando los errores de análisis de JSON sean encontrados utilizando un analizador de JSON menos estricto que JSON.parse. ([@smikes](https://github.com/smikes))
-  * [`c56cfcd`](https://github.com/npm/npm/commit/c56cfcd79c) [#7525](https://github.com/npm/npm/issues/7525) `npm dedupe` maneja los paquetes con ámbito. ([@KidkArolis](https://github.com/KidkArolis))
-  * [`4ef1412`](https://github.com/npm/npm/commit/4ef1412d00) [#7075](https://github.com/npm/npm/issues/7075) Si intenta etiquetar un lanzamiento como un rango de semver válido, `npm publish` y `npm tag` emitirán un error tempranamente, en lugar de proceder. ([@smikes](https://github.com/smikes))
+* **npm**: upgrade npm to 2.7.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v271-2015-03-05) for details. Summary:
+  * [`6823807`](https://github.com/npm/npm/commit/6823807bba) [#7121](https://github.com/npm/npm/issues/7121) `npm install --save` for Git dependencies saves the URL passed in, instead of the temporary directory used to clone the remote repo. Fixes using Git dependencies when shrinkwwapping. In the process, rewrote the Git dependency caching code. Again. No more single-letter variable names, and a much clearer workflow. ([@othiym23](https://github.com/othiym23))
+  * [`abdd040`](https://github.com/npm/npm/commit/abdd040da9) read-package-json@1.3.2: Provide more helpful error messages when JSON parse errors are encountered by using a more forgiving JSON parser than JSON.parse. ([@smikes](https://github.com/smikes))
+  * [`c56cfcd`](https://github.com/npm/npm/commit/c56cfcd79c) [#7525](https://github.com/npm/npm/issues/7525) `npm dedupe` handles scoped packages. ([@KidkArolis](https://github.com/KidkArolis))
+  * [`4ef1412`](https://github.com/npm/npm/commit/4ef1412d00) [#7075](https://github.com/npm/npm/issues/7075) If you try to tag a release as a valid semver range, `npm publish` and `npm tag` will error early instead of proceeding. ([@smikes](https://github.com/smikes))
 
-### Problemas conocidos
+### Known issues
 
-* Posible(s) pérdida(s) de memoria restante(s) relacionada(s) con TLS [#1075](https://github.com/nodejs/node/issues/1075).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Possible remaining TLS-related memory leak(s), details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1845,21 +1845,21 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.5.1"></a>
 
-## 2015-03-09, Versión 1.5.1, @rvagg
+## 2015-03-09, Version 1.5.1, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **tls**: The reported TLS memory leak has been at least partially resolved via various commits in this release. Current testing indicated that there _may_ still be some leak problems. Siga el progreso completo en [#1075](https://github.com/nodejs/node/issues/1075).
-* **http**: Fixed an error reported at [joyent/node#9348](https://github.com/joyent/node/issues/9348) and [npm/npm#7349](https://github.com/npm/npm/issues/7349). Los datos pendientes no estaban siendo leídos completamente cuando se producía un evento de `'error'` que conducía a una falla de aserción ante `socket.destroy()`. (Fedor Indutny) [#1103](https://github.com/nodejs/node/pull/1103)
+* **tls**: The reported TLS memory leak has been at least partially resolved via various commits in this release. Current testing indicated that there _may_ still be some leak problems. Track complete progress at [#1075](https://github.com/nodejs/node/issues/1075).
+* **http**: Fixed an error reported at [joyent/node#9348](https://github.com/joyent/node/issues/9348) and [npm/npm#7349](https://github.com/npm/npm/issues/7349). Pending data was not being fully read upon an `'error'` event leading to an assertion failure on `socket.destroy()`. (Fedor Indutny) [#1103](https://github.com/nodejs/node/pull/1103)
 
-### Problemas conocidos
+### Known issues
 
-* Posible(s) pérdida(s) de memoria restante(s) relacionada(s) con TLS [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Possible remaining TLS-related memory leak(s), details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1880,30 +1880,30 @@ Vea https://github.com/nodejs/node/labels/confirmed-bug para la lista completa y
 
 <a id="1.5.0"></a>
 
-## 2015-03-06, Versión 1.5.0, @rvagg
+## 2015-03-06, Version 1.5.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **buffer**: New `Buffer#indexOf()` method, modelled off [`Array#indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf). Acepta una String, un Búfer o un Número. Las strings son interpretadas como UTF8. (Trevor Norris) [#561](https://github.com/nodejs/node/pull/561)
+* **buffer**: New `Buffer#indexOf()` method, modelled off [`Array#indexOf()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf). Accepts a String, Buffer or a Number. Strings are interpreted as UTF8. (Trevor Norris) [#561](https://github.com/nodejs/node/pull/561)
 * **fs**: `options` object properties in `'fs'` methods no longer perform a `hasOwnProperty()` check, thereby allowing options objects to have prototype properties that apply. (Jonathan Ong) [#635](https://github.com/nodejs/node/pull/635)
-* **tls**: A likely TLS memory leak was reported by PayPal. Some of the recent changes in **stream_wrap** appear to be to blame. La corrección inicial se encuentra en [#1078](https://github.com/nodejs/node/pull/1078), puede hacer seguimiento del progreso hacia el cierre de la fuga en [#1075](https://github.com/nodejs/node/issues/1075) (Fedor Indutny).
-* **npm**: Upgrade npm to 2.7.0. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) for details including why this is a semver-minor when it could have been semver-major. Resumen:
-  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Reemplazar las llamadas al script de `node-gyp` empaquetado con npm, pasando la opción `--node-gyp=/path/to/node-gyp` a npm. Intercambie con `pangyp` o una versión de `node-gyp` modificada para funcionar mejor con io.js, ¡sin tener que tocar el código de npm!  ([@ackalker](https://github.com/ackalker))
-  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Solo ejecutar los scripts de `stop` y `start` (y sus scripts pre- y post-) cuando no haya un script de `restart` definido. Esto hace que sea más fácil soportar reinicios con gracia de servicios manejados por npm.  ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
-  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Añadir soporte de `--dev` y `--prod` para `npm ls`, de modo que pueda enumerar solo los árboles de producción o dependencias de desarrollo, como se desee. ([@watilde](https://github.com/watilde))
-  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Dividir la lista impresa por `npm run-script` en scripts de ciclos de vida y scripts directamente invocados a través de `npm
+* **tls**: A likely TLS memory leak was reported by PayPal. Some of the recent changes in **stream_wrap** appear to be to blame. The initial fix is in [#1078](https://github.com/nodejs/node/pull/1078), you can track the progress toward closing the leak at [#1075](https://github.com/nodejs/node/issues/1075) (Fedor Indutny).
+* **npm**: Upgrade npm to 2.7.0. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v270-2015-02-26) for details including why this is a semver-minor when it could have been semver-major. Summary:
+  * [`145af65`](https://github.com/npm/npm/commit/145af6587f45de135cc876be2027ed818ed4ca6a) [#4887](https://github.com/npm/npm/issues/4887) Replace calls to the `node-gyp` script bundled with npm by passing the `--node-gyp=/path/to/node-gyp` option to npm. Swap in `pangyp` or a version of `node-gyp` modified to work better with io.js without having to touch npm's code!  ([@ackalker](https://github.com/ackalker))
+  * [`2f6a1df`](https://github.com/npm/npm/commit/2f6a1df3e1e3e0a3bc4abb69e40f59a64204e7aa) [#1999](https://github.com/npm/npm/issues/1999) Only run `stop` and `start` scripts (plus their pre- and post- scripts) when there's no `restart` script defined. This makes it easier to support graceful restarts of services managed by npm.  ([@watilde](https://github.com/watilde) / [@scien](https://github.com/scien))
+  * [`448efd0`](https://github.com/npm/npm/commit/448efd0eaa6f97af0889bf47efc543a1ea2f8d7e) [#2853](https://github.com/npm/npm/issues/2853) Add support for `--dev` and `--prod` to `npm ls`, so that you can list only the trees of production or development dependencies, as desired. ([@watilde](https://github.com/watilde))
+  * [`a0a8777`](https://github.com/npm/npm/commit/a0a87777af8bee180e4e9321699f050c29ed5ac4) [#7463](https://github.com/npm/npm/issues/7463) Split the list printed by `npm run-script` into lifecycle scripts and scripts directly invoked via `npm
 run-script`. ([@watilde](https://github.com/watilde))
-  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b) [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`: Soporte para el paso de ámbitos a `npm init`, de modo que los paquetes sean inicializados como parte de tal ámbito / organización / equipo. ([@watilde](https://github.com/watilde))
+  * [`a5edc17`](https://github.com/npm/npm/commit/a5edc17d5ef1435b468a445156a4a109df80f92b) [#6749](https://github.com/npm/npm/issues/6749) `init-package-json@1.3.1`: Support for passing scopes to `npm init` so packages are initialized as part of that scope / organization / team. ([@watilde](https://github.com/watilde))
 * **TC**: Colin Ihrig (@cjihrig) resigned from the TC due to his desire to do more code and fewer meetings.
 
-### Problemas conocidos
+### Known issues
 
-* Posible fuga de memoria relacionada con TLS, detalles en [#1075](https://github.com/nodejs/node/issues/1075).
-* Windows todavía reporta algunas fallas menores de prueba y continuamos abordando todas estas como una prioridad. Vea [#1005](https://github.com/nodejs/node/issues/1005).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Possible TLS-related memory leak, details at [#1075](https://github.com/nodejs/node/issues/1075).
+* Windows still reports some minor test failures and we are continuing to address all of these as a priority. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1966,21 +1966,21 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 <a id="1.4.3"></a>
 
-## 2015-03-02, Versión 1.4.3, @rvagg
+## 2015-03-02, Version 1.4.3, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **stream**: Fixed problems for platforms without `writev()` support, particularly Windows. Los cambios introducidos en la versión 1.4.1, a través de [#926](https://github.com/nodejs/node/pull/926), dañaron algunas funcionalidades para estas plataformas. Esto ya ha sido abordado. [#1008](https://github.com/nodejs/node/pull/1008) (Fedor Indutny)
-* **arm**: We have the very beginnings of ARMv8 / ARM64 / AARCH64 support. Una actualización a OpenSSL 1.0.2 es requerida para tener un soporte completo. [#1028](https://github.com/nodejs/node/pull/1028) (Ben Noordhuis)
-* Añadir a un nuevo colaborador: Julian Duque ([@julianduque](https://github.com/julianduque))
+* **stream**: Fixed problems for platforms without `writev()` support, particularly Windows. Changes introduced in 1.4.1, via [#926](https://github.com/nodejs/node/pull/926), broke some functionality for these platforms, this has now been addressed. [#1008](https://github.com/nodejs/node/pull/1008) (Fedor Indutny)
+* **arm**: We have the very beginnings of ARMv8 / ARM64 / AARCH64 support. An upgrade to OpenSSL 1.0.2 is one requirement for full support. [#1028](https://github.com/nodejs/node/pull/1028) (Ben Noordhuis)
+* Add new collaborator: Julian Duque ([@julianduque](https://github.com/julianduque))
 
-### Problemas conocidos
+### Known issues
 
-* Windows aún reporta algunas fallas menores con las pruebas y continuamos abordando todas estas tan rápido como nos es posible. Vea [#1005](https://github.com/nodejs/node/issues/1005).
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Windows still reports some minor test failures and we are continuing to address all of these ASAP. See [#1005](https://github.com/nodejs/node/issues/1005).
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -1995,28 +1995,28 @@ run-script`. ([@watilde](https://github.com/watilde))
 
 <a id="1.4.2"></a>
 
-## 2015-02-28, Versión 1.4.2, @rvagg
+## 2015-02-28, Version 1.4.2, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* **tls**: A typo introduced in the TLSWrap changes in [#840](https://github.com/nodejs/node/pull/840) only encountered as a bug on Windows was not caught by the io.js CI system due to problems with the Windows build script and the Windows CI configuration, see Known Issues below. Corregido en [#994](https://github.com/nodejs/node/pull/994) & [#1004](https://github.com/nodejs/node/pull/1004). (Fedor Indutny)
-* **npm**: Upgrade npm to 2.6.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Resumen:
-  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (y solo `npm
-outdated`) ahora se establece predeterminadamente con `--depth=0`. Esto, además, tiene el excelente pero inesperado efecto de hacer que `npm update -g` funcione de la manera que casi todos quieren. Consulte los [documentos para `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) para ver los ligeramente confusos detalles. ([@smikes](https://github.com/smikes))
-  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Mejorar la advertencia de desaprobación de `peerDependency` para incluir qué dependencia en cuál paquete va a necesitar ser cambiada. ([@othiym23](https://github.com/othiym23))
-  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Mejorar la advertencia de desaprobación de `engineStrict` para incluir cuál `package.json` lo está usando. ([@othiym23](https://github.com/othiym23))
-* Añadir nuevos colaboradores:
+* **tls**: A typo introduced in the TLSWrap changes in [#840](https://github.com/nodejs/node/pull/840) only encountered as a bug on Windows was not caught by the io.js CI system due to problems with the Windows build script and the Windows CI configuration, see Known Issues below. Fixed in [#994](https://github.com/nodejs/node/pull/994) & [#1004](https://github.com/nodejs/node/pull/1004). (Fedor Indutny)
+* **npm**: Upgrade npm to 2.6.1. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary:
+  * [`8b98f0e`](https://github.com/npm/npm/commit/8b98f0e709d77a8616c944aebd48ab726f726f76) [#4471](https://github.com/npm/npm/issues/4471) `npm outdated` (and only `npm
+outdated`) now defaults to `--depth=0`. This also has the excellent but unexpected effect of making `npm update -g` work the way almost everyone wants it to. See the [docs for `--depth`](https://github.com/npm/npm/blob/82f484672adb1a3caf526a8a48832789495bb43d/doc/misc/npm-config.md#depth) for the mildly confusing details. ([@smikes](https://github.com/smikes))
+  * [`aa79194`](https://github.com/npm/npm/commit/aa791942a9f3c8af6a650edec72a675deb7a7c6e) [#6565](https://github.com/npm/npm/issues/6565) Tweak `peerDependency` deprecation warning to include which peer dependency on which package is going to need to change. ([@othiym23](https://github.com/othiym23))
+  * [`5fa067f`](https://github.com/npm/npm/commit/5fa067fd47682ac3cdb12a2b009d8ca59b05f992) [#7171](https://github.com/npm/npm/issues/7171) Tweak `engineStrict` deprecation warning to include which `package.json` is using it. ([@othiym23](https://github.com/othiym23))
+* Add new collaborators:
   * Robert Kowalski ([@robertkowalski](https://github.com/robertkowalski))
   * Christian Vaagland Tellnes ([@tellnes](https://github.com/tellnes))
   * Brian White ([@mscdex](https://github.com/mscdex))
 
-### Problemas conocidos
+### Known issues
 
-* El soporte para Windows tiene algunas fallas sobresalientes que no han sido abordadas correctamente por el sistema de integración continua de io.js, debido a una combinación de factores que incluyen errores humanos, de programa y de Jenkins. Consulte [#1005](https://github.com/nodejs/node/issues/1005) para ver los detalles & la discusión. Espere que estos problemas sean abordados tan pronto como sea posible.
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Windows support has some outstanding failures that have not been properly picked up by the io.js CI system due to a combination of factors including human, program and Jenkins errors. See [#1005](https://github.com/nodejs/node/issues/1005) for details & discussion. Expect these problems to be addressed ASAP.
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2040,28 +2040,28 @@ outdated`) ahora se establece predeterminadamente con `--depth=0`. Esto, además
 
 <a id="1.4.1"></a>
 
-## 2015-02-26, Versión 1.4.1, @rvagg
+## 2015-02-26, Version 1.4.1, @rvagg
 
-_Note: version **1.4.0** was tagged and built but not released. Fue descubierto un bug de libuv en el proceso, por lo que el lanzamiento fue abortado. La etiqueta seguía a [`a558cd0a61`](https://github.com/nodejs/node/commit/a558cd0a61), pero ha sido removida. Hemos saltado a la versión 1.4.1 para evitar la confusión._
+_Note: version **1.4.0** was tagged and built but not released. A libuv bug was discovered in the process so the release was aborted. The tag was straight after [`a558cd0a61`](https://github.com/nodejs/node/commit/a558cd0a61) but has since been removed. We have jumped to 1.4.1 to avoid confusion._
 
-### Cambios notables
+### Notable changes
 
-* **process** / **promises**: An `'unhandledRejection'` event is now emitted on `process` whenever a `Promise` is rejected and no error handler is attached to the `Promise` within a turn of the event loop. Ahora, un evento `'rejectionHandled'`es emitido cada vez que una `Promesa` es rechazada y un manejador de errores es anexado a la misma tras una vuelta del bucle de eventos. Consulte la documentación de [process](https://iojs.org/api/process.html) para ver más detalles. [#758](https://github.com/nodejs/node/pull/758) (Petka Antonov)
+* **process** / **promises**: An `'unhandledRejection'` event is now emitted on `process` whenever a `Promise` is rejected and no error handler is attached to the `Promise` within a turn of the event loop. A `'rejectionHandled'` event is now emitted whenever a `Promise` was rejected and an error handler was attached to it later than after an event loop turn. See the [process](https://iojs.org/api/process.html) documentation for more detail. [#758](https://github.com/nodejs/node/pull/758) (Petka Antonov)
 * **streams**: you can now use regular streams as an underlying socket for `tls.connect()` [#926](https://github.com/nodejs/node/pull/926) (Fedor Indutny)
 * **http**: A new `'abort'` event emitted when a `http.ClientRequest` is aborted by the client. [#945](https://github.com/nodejs/node/pull/945) (Evan Lucas)
-* **V8**: Upgrade V8 to 4.1.0.21. Incluye una corrección bloqueada, los detalles deberían estar disponibles en https://code.google.com/p/chromium/issues/detail?id=430201 cuando el bloqueo se levante. Un cambio de ruptura de ABI no ha sido agregado a esta actualización, y posiblemente sea incluido cuando io.js se combine con V8 4.2. Consulte [#952](https://github.com/nodejs/node/pull/952) para ver la discusión.
-* **npm**: Upgrade npm to 2.6.0. Includes features to support the new registry and to prepare for `npm@3`. Consulte el [CHANGELOG.md de npm](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) para ver detalles. Resumen:
-  * [`38c4825`](https://github.com/npm/npm/commit/38c48254d3d217b4babf5027cb39492be4052fc2) [#5068](https://github.com/npm/npm/issues/5068) Añadir un nuevo comando de cierre de sesión, y encargarse de que haga algo útil tanto con los clientes autenticados de portador como los básicos. ([@othiym23](https://github.com/othiym23))
-  * [`c8e08e6`](https://github.com/npm/npm/commit/c8e08e6d91f4016c80f572aac5a2080df0f78098) [#6565](https://github.com/npm/npm/issues/6565) Advertir que el comportamiento de `peerDependency` está cambiando y añadir una nota a los documentos. ([@othiym23](https://github.com/othiym23))
-  * [`7c81a5f`](https://github.com/npm/npm/commit/7c81a5f5f058941f635a92f22641ea68e79b60db) [#7171](https://github.com/npm/npm/issues/7171) Advertir que el `engineStrict` en `package.json` desaparecerá en la siguiente versión major de npm (¡próximamente!) ([@othiym23](https://github.com/othiym23))
+* **V8**: Upgrade V8 to 4.1.0.21. Includes an embargoed fix, details should be available at https://code.google.com/p/chromium/issues/detail?id=430201 when embargo is lifted. A breaking ABI change has been held back from this upgrade, possibly to be included when io.js merges V8 4.2. See [#952](https://github.com/nodejs/node/pull/952) for discussion.
+* **npm**: Upgrade npm to 2.6.0. Includes features to support the new registry and to prepare for `npm@3`. See [npm CHANGELOG.md](https://github.com/npm/npm/blob/master/CHANGELOG.md#v260-2015-02-12) for details. Summary:
+  * [`38c4825`](https://github.com/npm/npm/commit/38c48254d3d217b4babf5027cb39492be4052fc2) [#5068](https://github.com/npm/npm/issues/5068) Add new logout command, and make it do something useful on both bearer-based and basic-based authed clients. ([@othiym23](https://github.com/othiym23))
+  * [`c8e08e6`](https://github.com/npm/npm/commit/c8e08e6d91f4016c80f572aac5a2080df0f78098) [#6565](https://github.com/npm/npm/issues/6565) Warn that `peerDependency` behavior is changing and add a note to the docs. ([@othiym23](https://github.com/othiym23))
+  * [`7c81a5f`](https://github.com/npm/npm/commit/7c81a5f5f058941f635a92f22641ea68e79b60db) [#7171](https://github.com/npm/npm/issues/7171) Warn that `engineStrict` in `package.json` will be going away in the next major version of npm (coming soon!) ([@othiym23](https://github.com/othiym23))
 * **libuv**: Upgrade to 1.4.2. See [libuv ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog) for details of fixes.
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2107,19 +2107,19 @@ _Note: version **1.4.0** was tagged and built but not released. Fue descubierto 
 
 <a id="1.3.0"></a>
 
-## 2015-02-20, Versión 1.3.0, @rvagg
+## 2015-02-20, Version 1.3.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **url**: `url.resolve('/path/to/file', '.')` now returns `/path/to/` with the trailing slash, `url.resolve('/', '.')` returns `/`. [#278](https://github.com/nodejs/node/issues/278) (Amir Saboury)
-* **tls**: The default cipher suite used by `tls` and `https` has been changed to one that achieves Perfect Forward Secrecy with all modern browsers. Adicionalmente, los cifrados RC4 inseguros han sido excluidos. Si necesita estrictamente de RC4, por favor especifique sus propias suites de cifrado. [#826](https://github.com/nodejs/node/issues/826) (Roman Reiss)
+* **tls**: The default cipher suite used by `tls` and `https` has been changed to one that achieves Perfect Forward Secrecy with all modern browsers. Additionally, insecure RC4 ciphers have been excluded. If you absolutely require RC4, please specify your own cipher suites. [#826](https://github.com/nodejs/node/issues/826) (Roman Reiss)
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica como los docs sugieren, una regresión introducida en 1.0.2, vea [#760](https://github.com/nodejs/node/issues/760) y corrija en [#774](https://github.com/nodejs/node/issues/774)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse en una aserción fallida [#894](https://github.com/nodejs/node/issues/894)
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion [#894](https://github.com/nodejs/node/issues/894)
 
 ### Commits
 
@@ -2171,198 +2171,198 @@ _Note: version **1.4.0** was tagged and built but not released. Fue descubierto 
 * [[`3b1b4de903`](https://github.com/nodejs/node/commit/3b1b4de903)] - **test**: Timeout#unref() does not return instance (Jan Schär) [joyent/node#9171](https://github.com/joyent/node/pull/9171)
 * [[`becb4e980e`](https://github.com/nodejs/node/commit/becb4e980e)] - **test**: distribute crypto tests into separate files (Brendan Ashworth) [#827](https://github.com/nodejs/node/pull/827)
 * [[`77f35861d0`](https://github.com/nodejs/node/commit/77f35861d0)] - **(SEMVER-MINOR) tls**: more secure defaults (Roman Reiss) [#826](https://github.com/nodejs/node/pull/826)
-* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . y .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
+* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . and .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
 
 <a id="1.2.0"></a>
 
-## 2015-02-10, Versión 1.2.0, @rvagg
+## 2015-02-10, Version 1.2.0, @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **stream**:
-  * Construcción de streams más sencilla, consulte [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) para ver detalles. Esto extiende los objetos base de los streams para hacer que sus constructores acepten métodos de implementación predeterminados, reduciendo los datos requeridos para implementar streams personalizados. Una versión actualizada de stream legible será lanzada eventualmente para hacer juego con este cambio en el núcleo. (@sonewman)
+  * Simpler stream construction, see [readable-stream/issues#102](https://github.com/nodejs/readable-stream/issues/102) for details. This extends the streams base objects to make their constructors accept default implementation methods, reducing the boilerplate required to implement custom streams. An updated version of readable-stream will eventually be released to match this change in core. (@sonewman)
 * **dns**:
   * `lookup()` now supports an `'all'` boolean option, default to `false` but when turned on will cause the method to return an array of *all* resolved names for an address, see, [#744](https://github.com/nodejs/node/pull/744) (@silverwind)
 * **assert**:
-  * Remover la comparación de la propiedad `prototype` en `deepEqual()`, considerada una corrección de bug, vea [#636](https://github.com/nodejs/node/pull/636) (@vkurchatkin)
-  * Introducir un método de `deepStrictEqual()` que imite a `deepEqual()` pero realice comparaciones de igualdad estricta sobre valores primitivos, vea [#639](https://github.com/nodejs/node/pull/639) (@vkurchatkin)
+  * Remove `prototype` property comparison in `deepEqual()`, considered a bugfix, see [#636](https://github.com/nodejs/node/pull/636) (@vkurchatkin)
+  * Introduce a `deepStrictEqual()` method to mirror `deepEqual()` but performs strict equality checks on primitives, see [#639](https://github.com/nodejs/node/pull/639) (@vkurchatkin)
 * **tracing**:
-  * Añadir [LTTng](http://lttng.org/) (Linux Trace Toolkit Next Generation, o Nueva Generación de Herramientas de Seguimiento de Linux) al compilarse con la opción  `--with-lttng`. Los puntos de seguimiento coinciden con aquellos disponibles para DTrace y ETW. [#702](https://github.com/nodejs/node/pull/702) (@thekemkid)
+  * Add [LTTng](http://lttng.org/) (Linux Trace Toolkit Next Generation) when compiled with the  `--with-lttng` option. Trace points match those available for DTrace and ETW. [#702](https://github.com/nodejs/node/pull/702) (@thekemkid)
 * **docs**:
-  * Muchas actualizaciones de documentación, vea los commits individuales
+  * Lots of doc updates, see individual commits
   * New **Errors** page discussing JavaScript errors, V8 specifics, and io.js specific error details. (@chrisdickinson)
 * **npm** upgrade to 2.5.1, short changelog:
-  * [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Limpiar API, establecer `connection: close`, lo que hace que las pruebas pasen en io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
+  * [npm/0e8d473](https://github.com/npm/npm/commit/0e8d4736a1cbdda41ae8eba8a02c7ff7ce80c2ff) [#7281](https://github.com/npm/npm/issues/7281) `npm-registry-mock@1.0.0`: Clean up API, set `connection: close`, which makes tests pass on io.js 1.1.x. ([@robertkowalski](https://github.com/robertkowalski))
   * [npm/f9313a0](https://github.com/npm/npm/commit/f9313a066c9889a0ee898d8a35676e40b8101e7f) [#7226](https://github.com/npm/npm/issues/7226) Ensure that all request settings are copied onto the agent. ([@othiym23](https://github.com/othiym23))
-  * [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Permitir `--no-proxy` para sobreescribir la configuración de `HTTP_PROXY` en el ambiente. ([@othiym23](https://github.com/othiym23))
-  * [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` ahora incluye una columna que muestra el tipo de dependencia. ([@watilde](https://github.com/watilde))
+  * [npm/fec4c96](https://github.com/npm/npm/commit/fec4c967ee235030bf31393e8605e9e2811f4a39) Allow `--no-proxy` to override `HTTP_PROXY` setting in environment. ([@othiym23](https://github.com/othiym23))
+  * [npm/9d61e96](https://github.com/npm/npm/commit/9d61e96fb1f48687a85c211e4e0cd44c7f95a38e) `npm outdated --long` now includes a column showing the type of dependency. ([@watilde](https://github.com/watilde))
 * **libuv** upgrade to 1.4.0, see [libuv ChangeLog](https://github.com/libuv/libuv/blob/v1.x/ChangeLog)
-* Añadir nuevos colaboradores:
+* Add new collaborators:
   * Aleksey Smolenchuk (@lxe)
   * Shigeki Ohtsu (@shigeki)
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal [#690](https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática [#686](https://github.com/nodejs/node/issues/686)
-* `process.send()` no es sincrónica, como los docs sugieren, una regresión introducida en la versión 1.0.2. Vea [#760](https://github.com/nodejs/node/issues/760) y la corrección en [#774](https://github.com/nodejs/node/issues/774), que debería aparecer en el próximo parche a ser lanzado.
+* Surrogate pair in REPL can freeze terminal [#690](https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library [#686](https://github.com/nodejs/node/issues/686)
+* `process.send()` is not synchronous as the docs suggest, a regression introduced in 1.0.2, see [#760](https://github.com/nodejs/node/issues/760) and fix in [#774](https://github.com/nodejs/node/issues/774) that should appear in the next patch release.
 
 ### Commits
 
-* [[`7e2235a`](https://github.com/nodejs/node/commit/7e2235aebb067b84974e001f9fa4d83f45b7c9dd)] - doc: añadir documentación de errores (Chris Dickinson)
-* [[`d832be4`](https://github.com/nodejs/node/commit/d832be4aa3c68c29017339a65593f62cb73179bc)] - doc: actualizar la lista AUTHORS (Rod Vagg)
-* [[`aea9b89`](https://github.com/nodejs/node/commit/aea9b89b5c2e3fb9fdbd96c7483eb1f60d09a39e)] - doc: añadir a shigeki como colaborador (Shigeki Ohtsu)
-* [[`e653080`](https://github.com/nodejs/node/commit/e65308053c871352be948b9001737df01aad1965)] - fs: mejorar el rendimiento de `readFile` (Vladimir Kurchatkin)
-* [[`9681fca`](https://github.com/nodejs/node/commit/9681fcacf0fd477f999a52f6ff4151d4125d49d0)] - deps: actualizar libuv a 1.4.0 (Saúl Ibarra Corretgé)
-* [[`5e825d1`](https://github.com/nodejs/node/commit/5e825d1073b57a87fc9a77751ed3e21c86970082)] - tracing: añadir soporte de lttng para el seguimiento en linux (Glen Keane)
-* [[`b677b84`](https://github.com/nodejs/node/commit/b677b844fc1de328a0f2b0151bdfc045cb5d0c81)] - events: optimizar varias funciones (Brian White)
-* [[`c86e383`](https://github.com/nodejs/node/commit/c86e383c41f35b17ba79cc1c6dbfff674214177d)] - test: corregir fallo de prueba con openssl compartido (Shigeki Ohtsu)
-* [[`1151016`](https://github.com/nodejs/node/commit/1151016d0a13dcb5973f602d0717c2da6abca551)] - doc: corregir error tipográfico en el documento "crypto" (Haoliang Gao)
-* [[`7c56868`](https://github.com/nodejs/node/commit/7c568684b834a6a3c4d15bb29d2f95cf76773cb8)] - doc: cambiar el orden de crypto.publicDecrypt (Haoliang Gao)
-* [[`3f473ef`](https://github.com/nodejs/node/commit/3f473ef141fdc7059928ebc4542b00e2f126ab07)] - assert: introducir `deepStrictEqual` (Vladimir Kurchatkin)
-* [[`828d19a`](https://github.com/nodejs/node/commit/828d19a1f696840acf43b70125b85b0d61ff5056)] - doc: corregir el ejemplo de opciones de dns.lookup (Roman Reiss)
-* [[`90d2b35`](https://github.com/nodejs/node/commit/90d2b352810bc352620e61e0dacc8573faf11dfb)] - doc: actualizar output de process.versions anticuado (Ben Noordhuis)
-* [[`789bbb9`](https://github.com/nodejs/node/commit/789bbb91d3eb30fa2a51e9b064592d6a461a6fe5)] - doc: actualizar las referencias de node.js en los documentos de api (Ben Noordhuis)
-* [[`c22e5ac`](https://github.com/nodejs/node/commit/c22e5ace846f93b4531a39b0e055f89a46598f63)] - https: revisión de argumentos más sencilla (Michaël Zasso)
-* [[`b9d3928`](https://github.com/nodejs/node/commit/b9d3928f80992a812795a974cbae02288fc5049c)] - util: simplificar `isPrimitive` (Vladimir Kurchatkin)
-* [[`2c3121c`](https://github.com/nodejs/node/commit/2c3121c606967f8595d671601493e623a7157385)] - benchmark: impulsar el número de iteraciones de eventemitter (Ben Noordhuis)
-* [[`633a990`](https://github.com/nodejs/node/commit/633a9908487efadda6a86026a36d5325a28805c6)] - dns: permitir que dns.lookup() devuelva todas las direcciones (Roman Reiss)
-* [[`1cd1d7a`](https://github.com/nodejs/node/commit/1cd1d7a182c2d16c28c778ddcd72bbeac6bc5c75)] - buffer: no comparar los mismos búferes (Vladimir Kurchatkin)
-* [[`847b9d2`](https://github.com/nodejs/node/commit/847b9d212a404e5906ea9f366c458332c0318c53)] - benchmark: añadir más pruebas de rendimiento de EventEmitter (Brian White)
-* [[`96597bc`](https://github.com/nodejs/node/commit/96597bc5927c57737c3bea943dd163d69ac76a96)] - doc: añadir a lxe como colaborador (Aleksey Smolenchuk)
-* [[`7a301e2`](https://github.com/nodejs/node/commit/7a301e29de1e4ab5f39165beb6d0b41435c221dd)] - deps: hacer que node-gyp funcione de nuevo en windows (Bert Belder)
-* [[`b188a34`](https://github.com/nodejs/node/commit/b188a3459d9d8a6d0c5fd391f1aefba281407083)] - deps: hacer que node-gyp obtenga tarballs de iojs.org (Ben Noordhuis)
-* [[`af1bf49`](https://github.com/nodejs/node/commit/af1bf49852b7a8bcc9b9b6dd718edea0b18e3cb6)] - deps: actualizar npm a 2.5.1 (Forrest L Norvell)
-* [[`9dc9ec3`](https://github.com/nodejs/node/commit/9dc9ec3ce6ba6f3dd4020e00f5863e207fa08a75)] - lib: hacer que el cliente de depuración se conecte a 127.0.0.1 (Ben Noordhuis)
-* [[`e7573f9`](https://github.com/nodejs/node/commit/e7573f9111f6b85c599ec225714d76e08ec8a4dc)] - assert: no comparar la propiedad `prototype` de los objetos (Vladimir Kurchatkin)
-* [[`8d11799`](https://github.com/nodejs/node/commit/8d1179952aefaa0086ff5540671cfd6ff612594b)] - asyncwrap: corregir revisión del proceso primario de nullptr (Trevor Norris)
-* [[`62512bb`](https://github.com/nodejs/node/commit/62512bb29cd000dd5ce848258c10f3211f153bd5)] - test: aceptar error de ipv6 de EPROTONOSUPPORT (Ben Noordhuis)
-* [[`05f4dff`](https://github.com/nodejs/node/commit/05f4dff97519ada5d3149a16ca9e5a04df948a61)] - asyncwrap: corregir condición del constructor para ret temprana (Trevor Norris)
-* [[`10277d2`](https://github.com/nodejs/node/commit/10277d2e57ee7fe9e0e3f63f10b9ea521e86e7f0)] - docs: incluir mención de los nuevos métodos criptográficos (Calvin Metcalf)
-* [[`9a8f186`](https://github.com/nodejs/node/commit/9a8f18613da4956c963377e2ad55cdd3dabc32aa)] - child_process: añadir detalles de depuración y errores (Zach Bruggeman)
-* [[`6f7a978`](https://github.com/nodejs/node/commit/6f7a9784eaef82a1aa6cf53bbbd7224c446876a0)] - crypto: limpiar error ante retorno en los métodos de TLS (Fedor Indutny)
-* [[`50daee7`](https://github.com/nodejs/node/commit/50daee7243a3f987e1a28d93c43f913471d6885a)] - stream: construcción de streams más sencilla (Sam Newman)
-* [[`e0730ee`](https://github.com/nodejs/node/commit/e0730eeaa5231841a7eba080c8170e41278c3c52)] - benchmark: permitir la comparación a través de filtros fine-grained (Brian White)
-* [[`96ffcb9`](https://github.com/nodejs/node/commit/96ffcb9a210a2fa1248ae5931290193573512a96)] - src: reducir el desbordamiento del perfilador de cpu (Ben Noordhuis)
-* [[`3e675e4`](https://github.com/nodejs/node/commit/3e675e44b59f1be8e5581de000f3cb17ef747c14)] - benchmark: no utilizar strings modelo (Evan Lucas)
-* [[`8ac8b76`](https://github.com/nodejs/node/commit/8ac8b760ac74e5a6938a49e563406716804672cb)] - doc: búsqueda de consenso total simplificada (Mikeal Rogers)
-* [[`0a54b6a`](https://github.com/nodejs/node/commit/0a54b6a134a6815e30d1f78f8c8612d4a00399ad)] - doc: actualizar la carta de wg de streams (Chris Dickinson)
-* [[`b8ead4a`](https://github.com/nodejs/node/commit/b8ead4a23f8b0717204878235d61cfce3f3fdd30)] - Ajuste para el proceso de retroalimentación en las pull requests. (Mikeal Rogers)
-* [[`3af7f30`](https://github.com/nodejs/node/commit/3af7f30a7cceb1e418e5cd26c65a8ec5cc589d09)] - Documentación inicial para grupos de trabajo. (Mikeal Rogers)
-* [[`513724e`](https://github.com/nodejs/node/commit/513724efcc42ed150391915050fe60402f8dd48d)] - doc: añadir huella digital de GPG para chrisdickinson (Chris Dickinson)
-* [[`4168198`](https://github.com/nodejs/node/commit/41681983921d323da79b6d45e4ae0f8edb541e18)] - doc: añadir minutas de la reunión del TC del 2015-01-28 (Rod Vagg)
+* [[`7e2235a`](https://github.com/nodejs/node/commit/7e2235aebb067b84974e001f9fa4d83f45b7c9dd)] - doc: add error documentation (Chris Dickinson)
+* [[`d832be4`](https://github.com/nodejs/node/commit/d832be4aa3c68c29017339a65593f62cb73179bc)] - doc: update AUTHORS list (Rod Vagg)
+* [[`aea9b89`](https://github.com/nodejs/node/commit/aea9b89b5c2e3fb9fdbd96c7483eb1f60d09a39e)] - doc: add shigeki as collaborator (Shigeki Ohtsu)
+* [[`e653080`](https://github.com/nodejs/node/commit/e65308053c871352be948b9001737df01aad1965)] - fs: improve `readFile` performance (Vladimir Kurchatkin)
+* [[`9681fca`](https://github.com/nodejs/node/commit/9681fcacf0fd477f999a52f6ff4151d4125d49d0)] - deps: update libuv to 1.4.0 (Saúl Ibarra Corretgé)
+* [[`5e825d1`](https://github.com/nodejs/node/commit/5e825d1073b57a87fc9a77751ed3e21c86970082)] - tracing: add lttng support for tracing on linux (Glen Keane)
+* [[`b677b84`](https://github.com/nodejs/node/commit/b677b844fc1de328a0f2b0151bdfc045cb5d0c81)] - events: optimize various functions (Brian White)
+* [[`c86e383`](https://github.com/nodejs/node/commit/c86e383c41f35b17ba79cc1c6dbfff674214177d)] - test: fix test failure with shared openssl (Shigeki Ohtsu)
+* [[`1151016`](https://github.com/nodejs/node/commit/1151016d0a13dcb5973f602d0717c2da6abca551)] - doc: fix typo in crypto (Haoliang Gao)
+* [[`7c56868`](https://github.com/nodejs/node/commit/7c568684b834a6a3c4d15bb29d2f95cf76773cb8)] - doc: change the order of crypto.publicDecrypt (Haoliang Gao)
+* [[`3f473ef`](https://github.com/nodejs/node/commit/3f473ef141fdc7059928ebc4542b00e2f126ab07)] - assert: introduce `deepStrictEqual` (Vladimir Kurchatkin)
+* [[`828d19a`](https://github.com/nodejs/node/commit/828d19a1f696840acf43b70125b85b0d61ff5056)] - doc: fix dns.lookup options example (Roman Reiss)
+* [[`90d2b35`](https://github.com/nodejs/node/commit/90d2b352810bc352620e61e0dacc8573faf11dfb)] - doc: update antiquated process.versions output (Ben Noordhuis)
+* [[`789bbb9`](https://github.com/nodejs/node/commit/789bbb91d3eb30fa2a51e9b064592d6a461a6fe5)] - doc: update node.js references in api docs (Ben Noordhuis)
+* [[`c22e5ac`](https://github.com/nodejs/node/commit/c22e5ace846f93b4531a39b0e055f89a46598f63)] - https: simpler argument check (Michaël Zasso)
+* [[`b9d3928`](https://github.com/nodejs/node/commit/b9d3928f80992a812795a974cbae02288fc5049c)] - util: simplify `isPrimitive` (Vladimir Kurchatkin)
+* [[`2c3121c`](https://github.com/nodejs/node/commit/2c3121c606967f8595d671601493e623a7157385)] - benchmark: bump eventemitter number of iterations (Ben Noordhuis)
+* [[`633a990`](https://github.com/nodejs/node/commit/633a9908487efadda6a86026a36d5325a28805c6)] - dns: allow dns.lookup() to return all addresses (Roman Reiss)
+* [[`1cd1d7a`](https://github.com/nodejs/node/commit/1cd1d7a182c2d16c28c778ddcd72bbeac6bc5c75)] - buffer: don't compare same buffers (Vladimir Kurchatkin)
+* [[`847b9d2`](https://github.com/nodejs/node/commit/847b9d212a404e5906ea9f366c458332c0318c53)] - benchmark: add more EventEmitter benchmarks (Brian White)
+* [[`96597bc`](https://github.com/nodejs/node/commit/96597bc5927c57737c3bea943dd163d69ac76a96)] - doc: add lxe as collaborator (Aleksey Smolenchuk)
+* [[`7a301e2`](https://github.com/nodejs/node/commit/7a301e29de1e4ab5f39165beb6d0b41435c221dd)] - deps: make node-gyp work again on windows (Bert Belder)
+* [[`b188a34`](https://github.com/nodejs/node/commit/b188a3459d9d8a6d0c5fd391f1aefba281407083)] - deps: make node-gyp fetch tarballs from iojs.org (Ben Noordhuis)
+* [[`af1bf49`](https://github.com/nodejs/node/commit/af1bf49852b7a8bcc9b9b6dd718edea0b18e3cb6)] - deps: upgrade npm to 2.5.1 (Forrest L Norvell)
+* [[`9dc9ec3`](https://github.com/nodejs/node/commit/9dc9ec3ce6ba6f3dd4020e00f5863e207fa08a75)] - lib: make debug client connect to 127.0.0.1 (Ben Noordhuis)
+* [[`e7573f9`](https://github.com/nodejs/node/commit/e7573f9111f6b85c599ec225714d76e08ec8a4dc)] - assert: don't compare object `prototype` property (Vladimir Kurchatkin)
+* [[`8d11799`](https://github.com/nodejs/node/commit/8d1179952aefaa0086ff5540671cfd6ff612594b)] - asyncwrap: fix nullptr parent check (Trevor Norris)
+* [[`62512bb`](https://github.com/nodejs/node/commit/62512bb29cd000dd5ce848258c10f3211f153bd5)] - test: accept EPROTONOSUPPORT ipv6 error (Ben Noordhuis)
+* [[`05f4dff`](https://github.com/nodejs/node/commit/05f4dff97519ada5d3149a16ca9e5a04df948a61)] - asyncwrap: fix constructor condition for early ret (Trevor Norris)
+* [[`10277d2`](https://github.com/nodejs/node/commit/10277d2e57ee7fe9e0e3f63f10b9ea521e86e7f0)] - docs: include mention of new crypto methods (Calvin Metcalf)
+* [[`9a8f186`](https://github.com/nodejs/node/commit/9a8f18613da4956c963377e2ad55cdd3dabc32aa)] - child_process: add debug and error details (Zach Bruggeman)
+* [[`6f7a978`](https://github.com/nodejs/node/commit/6f7a9784eaef82a1aa6cf53bbbd7224c446876a0)] - crypto: clear error on return in TLS methods (Fedor Indutny)
+* [[`50daee7`](https://github.com/nodejs/node/commit/50daee7243a3f987e1a28d93c43f913471d6885a)] - stream: simpler stream construction (Sam Newman)
+* [[`e0730ee`](https://github.com/nodejs/node/commit/e0730eeaa5231841a7eba080c8170e41278c3c52)] - benchmark: allow compare via fine-grained filters (Brian White)
+* [[`96ffcb9`](https://github.com/nodejs/node/commit/96ffcb9a210a2fa1248ae5931290193573512a96)] - src: reduce cpu profiler overhead (Ben Noordhuis)
+* [[`3e675e4`](https://github.com/nodejs/node/commit/3e675e44b59f1be8e5581de000f3cb17ef747c14)] - benchmark: don't use template strings (Evan Lucas)
+* [[`8ac8b76`](https://github.com/nodejs/node/commit/8ac8b760ac74e5a6938a49e563406716804672cb)] - doc: simplified pure consensus seeking (Mikeal Rogers)
+* [[`0a54b6a`](https://github.com/nodejs/node/commit/0a54b6a134a6815e30d1f78f8c8612d4a00399ad)] - doc: update streams wg charter (Chris Dickinson)
+* [[`b8ead4a`](https://github.com/nodejs/node/commit/b8ead4a23f8b0717204878235d61cfce3f3fdd30)] - Adjusting for feedback in the PR. (Mikeal Rogers)
+* [[`3af7f30`](https://github.com/nodejs/node/commit/3af7f30a7cceb1e418e5cd26c65a8ec5cc589d09)] - Initial documentation for working groups. (Mikeal Rogers)
+* [[`513724e`](https://github.com/nodejs/node/commit/513724efcc42ed150391915050fe60402f8dd48d)] - doc: add GPG fingerprint for chrisdickinson (Chris Dickinson)
+* [[`4168198`](https://github.com/nodejs/node/commit/41681983921d323da79b6d45e4ae0f8edb541e18)] - doc: add TC meeting 2015-01-28 minutes (Rod Vagg)
 
 <a id="1.1.0"></a>
 
-## 2015-02-03, Versión 1.1.0, @chrisdickinson
+## 2015-02-03, Version 1.1.0, @chrisdickinson
 
-### Cambios notables
+### Notable changes
 
-* debug: corregir la depuración post-mortem de v8.
-* crypto: ahora publicEncrypt soporta claves privadas protegidas con contraseña.
-* crypto: aceleración de ~30% en las funciones de hash.
-* crypto: funciones privateEncrypt/publicDecrypt añadidas.
+* debug: fix v8 post-mortem debugging.
+* crypto: publicEncrypt now supports password-protected private keys.
+* crypto: ~30% speedup on hashing functions.
+* crypto: added privateEncrypt/publicDecrypt functions.
 * errors
-  * mejor formato a través de util.inspect
-  * errores del sistema de archivos más descriptivos. Esto requería que se actualizara la `NODE_MODULE_VERSION`.
-  * errores de http.setHeader más descriptivos
-* actualizaciones de dependencias:
-  * npm: actualizar a 2.4.1
-  * http-parser: regresar a 2.3.0
-  * libuv: actualizar a 1.3.0
-  * v8: actualizar a 4.1.0.14
-* http.request: ahora se respetan las propiedades heredadas en las opciones
-* añadir interfaz iterable a los búferes (`para (permitir byte de buffer.values()) { }`)
-* fs: corregir fuga del descriptor de archivos en `fs.createReadStream`. Consulte 497fd72 para ver detalles.
-* instalador: en Windows, emitir WM_SETTINGCHANGE luego de la instalación, para hacer que los demás procesos en ejecución estén al tanto de los cambios de PATH.
-* Nuevos colaboradores añadidos:
+  * better formatting via util.inspect
+  * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
+  * more descriptive errors from http.setHeader
+* dep updates:
+  * npm: upgrade to 2.4.1
+  * http-parser: rollback to 2.3.0
+  * libuv: update to 1.3.0
+  * v8: update to 4.1.0.14
+* http.request: inherited properties on options are now respected
+* add iterable interface to buffers (`for (let byte of buffer.values()) { }`)
+* fs: fix fd leak on `fs.createReadStream`. See 497fd72 for details.
+* installer: on Windows, emit WM_SETTINGCHANGE after install to make other running processes aware of the PATH changes.
+* Added new collaborators:
   * Vladimir Kurchatkin (@vkurchatkin)
   * Micleușanu Nicu (@micnic)
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal (https://github.com/nodejs/node/issues/690)
-* No es posible compilar io.js como una librería estática (https://github.com/nodejs/node/issues/686)
+* Surrogate pair in REPL can freeze terminal (https://github.com/nodejs/node/issues/690)
+* Not possible to build io.js as a static library (https://github.com/nodejs/node/issues/686)
 
 ### Commits
 
-* [[`df48faf`](https://github.com/nodejs/node/commit/df48fafa92c4ff0caee54c2f7fa214073cbd787e)] - tools: añadir herramienta de lanzamiento y documentos, remover herramientas viejas (Rod Vagg)
+* [[`df48faf`](https://github.com/nodejs/node/commit/df48fafa92c4ff0caee54c2f7fa214073cbd787e)] - tools: add release tool and docs, remove old tools (Rod Vagg)
 * [[`14684d3`](https://github.com/nodejs/node/commit/14684d3d67ad7c04bec7b63377343dab3e389470)] - v8abbr: ASCIISTRINGTAG =&gt; ONEBYTESTRINGTAG (Fedor Indutny)
-* [[`6a5d731`](https://github.com/nodejs/node/commit/6a5d731f602b547074f4367a7eb3964395080c94)] - gyp: habilitar el soporte para postmortem, corregir rutas de dtrace (Fedor Indutny)
-* [[`8b88ff8`](https://github.com/nodejs/node/commit/8b88ff85f106eed03bf677b9ab3b842f4edbdc6b)] - deps: arreglar el soporte para postmortem en v8 (Fedor Indutny)
-* [[`d0b0bb4`](https://github.com/nodejs/node/commit/d0b0bb4ae00f596042bebe1ae61ae685bfbebf7d)] - dtrace: corregir la remoción de sondas no utilizadas (Glen Keane)
-* [[`3e67d7e`](https://github.com/nodejs/node/commit/3e67d7e46b80c90faa360d1d0e44dacc444e8e4f)] - http: reemplazar util._extend() con [].slice() (Jonathan Ong)
-* [[`89dd8e0`](https://github.com/nodejs/node/commit/89dd8e062f462106a6f7d3e92e9d18906445f851)] - benchmark: limpiar common.js (Brendan Ashworth)
-* [[`6561274`](https://github.com/nodejs/node/commit/6561274d2377d9fd9c55fa3ce2eb2e53c14d898e)] - crypto: soportar contraseñas en publicEncrypt (Calvin Metcalf)
-* [[`e9eb2ec`](https://github.com/nodejs/node/commit/e9eb2ec1c491e82dda27fe07d0eaf14ff569351b)] - process: corregir regresión en señales de des-escucha (Sam Roberts)
-* [[`233e333`](https://github.com/nodejs/node/commit/233e333b183edeea6b740911061c7dc526078260)] - events: remover la indeterminación de la ordenación de eventos (Sam Roberts)
-* [[`d75fecf`](https://github.com/nodejs/node/commit/d75fecf6fd7a1ef9d3d84a70ab832e7c062f5880)] - src: remover sondas de dtrace no utilizadas (Glen Keane)
-* [[`8c0742f`](https://github.com/nodejs/node/commit/8c0742f43759d35da99f2475f81a026c2818c66a)] - net: revisar que la callback de cierre sea una función (Yosuke Furukawa)
-* [[`207e48c`](https://github.com/nodejs/node/commit/207e48c93459da5e47f2efd408cfad6328bb0e25)] - dgram: revisar que la callback de cierre sea una función (Yosuke Furukawa)
-* [[`6ac8bdc`](https://github.com/nodejs/node/commit/6ac8bdc0aba5f60f4b4f2da5abd36d664062aa40)] - lib: reducir el uso de util.is*() (cjihrig)
-* [[`bce7a26`](https://github.com/nodejs/node/commit/bce7a2608eb198eee6ecd7991062efd6daeeb440)] - deps: hacer que node-gyp funcione otra vez en windows (Bert Belder)
-* [[`1bdd74d`](https://github.com/nodejs/node/commit/1bdd74d20a3c979d51929a1039824d90abca2cdb)] - deps: hacer que node-gyp obtenga tarballs de iojs.org (Ben Noordhuis)
-* [[`faf34ff`](https://github.com/nodejs/node/commit/faf34ffbd321f4657bd99fb82931e1c9a4dda6af)] - deps: actualizar npm a 2.4.1 (Forrest L Norvell)
-* [[`40e29dc`](https://github.com/nodejs/node/commit/40e29dcbbf33d919f5cc0cbab5fa65a282adb04b)] - assert: utilizar util.inspect() para crear mensajes de error (cjihrig)
-* [[`bc2c85c`](https://github.com/nodejs/node/commit/bc2c85ceef7ac034830e4a4357d0aef69cd6e386)] - fs: mejorar mensajes de error (Bert Belder)
-* [[`0767c2f`](https://github.com/nodejs/node/commit/0767c2feb1cb6921acd18be3392d331e093b2b4c)] - lib: arreglar la revisión de tamaño máximo en el constructor de Búfer (Ben Noordhuis)
-* [[`65b1e4f`](https://github.com/nodejs/node/commit/65b1e4f56f1f49dccd19b65dee2856df05b06c89)] - dgram: los enlazados implícitos deben ser exclusivos (Sam Roberts)
-* [[`083c421`](https://github.com/nodejs/node/commit/083c421b5ca08576897b5da396085a462010780e)] - benchmark: remover el espaciado adicional en las opciones de http (Brendan Ashworth)
-* [[`e17e6fb`](https://github.com/nodejs/node/commit/e17e6fb2faa04193eddf8062fbd49f1612b4dbff)] - util: utilizar el búfer on-stack para Utf8Value (Fedor Indutny)
-* [[`3d4e96f`](https://github.com/nodejs/node/commit/3d4e96f3ceea1d30b4affb66133016a3c2811005)] - crypto: utilizar el almacenamiento on-stack en HashUpdate (Fedor Indutny)
-* [[`aca2011`](https://github.com/nodejs/node/commit/aca20112519decef44474a2ee9936049e2a38b67)] - string_bytes: introducir InlineDecoder (Fedor Indutny)
-* [[`c6367e7`](https://github.com/nodejs/node/commit/c6367e7f2a68b2418a98dfe9e829f17f62ba403a)] - node: acelerar ParseEncoding (Fedor Indutny)
-* [[`7604e6d`](https://github.com/nodejs/node/commit/7604e6decc441a1110567e98f20f7ee122179d54)] - docs: añadir nota sobre el relleno por defecto al documento de crypto (Calvin Metcalf)
-* [[`cf3e908`](https://github.com/nodejs/node/commit/cf3e908b70dfb345711cbca6c8e5373d085b05ea)] - http: errores de setHeader más descriptivos (Qasim Zaidi)
-* [[`cbc1262`](https://github.com/nodejs/node/commit/cbc1262bd952a6c52937abe47a0af625965fba65)] - deps: actualizar v8 a 4.1.0.14 (Ben Noordhuis)
-* [[`00f822f`](https://github.com/nodejs/node/commit/00f822f276c08465db3f6c70f154e9f28cc372d6)] - doc: añadir a micnic como colaborador (Micleusanu Nicu)
-* [[`514b1d9`](https://github.com/nodejs/node/commit/514b1d964b2e67d0594c6a44a22fbc29fe71454b)] - doc: añadir más información a benchmark/README.md (Fishrock123)
-* [[`097fde7`](https://github.com/nodejs/node/commit/097fde7129a3acc660beb372cecd9daf1164a7f2)] - deps: actualizar libuv a 1.3.0 (Saúl Ibarra Corretgé)
-* [[`6ad236c`](https://github.com/nodejs/node/commit/6ad236c9b6a344a88ec2f1f173d5f920984b77b7)] - build: configurar el formato, añadir mensaje final (Roman Reiss)
-* [[`dd47a8c`](https://github.com/nodejs/node/commit/dd47a8c78547db14ea0c7fc2f3375e8c9cb1a129)] - src: establecer disposiciones de señal predeterminadas en el inicio (Ben Noordhuis)
-* [[`63ae1d2`](https://github.com/nodejs/node/commit/63ae1d203aba94b9a35400acdf00ff968fb6eb05)] - src: volver a trabajar el manejo de la señal temprana del depurador (Ben Noordhuis)
-* [[`5756f92`](https://github.com/nodejs/node/commit/5756f92f464fd0f2d04dd05bc30b350010885f74)] - src: realizar más pronto la inicialización de plataforma específica (Ben Noordhuis)
-* [[`24bd4e0`](https://github.com/nodejs/node/commit/24bd4e055562d8eb8a0d8db907c1715cc37e90b4)] - test: añadir prueba de regresión de cabecera en actualización de http (Ben Noordhuis)
-* [[`6605096`](https://github.com/nodejs/node/commit/660509694cfd4de59df0548eabbe18c97d75c63a)] - deps: devolver http_parser a la versión 2.3.0 (Ben Noordhuis)
-* [[`90ddb46`](https://github.com/nodejs/node/commit/90ddb46d522c37d2bc2eb68a6e0c9d52f9fbba42)] - crypto: eliminar el uso de this._readableState (Calvin Metcalf)
-* [[`45d8d9f`](https://github.com/nodejs/node/commit/45d8d9f8262983d7d6434f4500b4e88b63052cd5)] - buffer: implementar interfaz `iterable` (Vladimir Kurchatkin)
-* [[`3cbb5cd`](https://github.com/nodejs/node/commit/3cbb5cdfdb621baec5dc3a2ac505be37f1718086)] - console: permitir los campos de Object.prototype como etiquetas (cjihrig)
-* [[`87e62bd`](https://github.com/nodejs/node/commit/87e62bd4c87e8674e3d1c432506e9b4991784ee2)] - crypto: implementar privateEncrypt/publicDecrypt (Fedor Indutny)
-* [[`b50fea4`](https://github.com/nodejs/node/commit/b50fea4d490278b291321e6b96c49cf20bee1552)] - watchdog: corregir la finalización del tiempo de espera para el retorno temprano del poll (Saúl Ibarra Corretgé)
-* [[`b5166cb`](https://github.com/nodejs/node/commit/b5166cb7d269cd1bf90d1768f82767b05b9ac1f8)] - benchmark: añadir bench-(url & events) crear objetivos (Yosuke Furukawa)
-* [[`5843ae8`](https://github.com/nodejs/node/commit/5843ae8dfba5db83f2c04ed2db847049cbd2ab0d)] - Revertir "doc: clarificar los parámetros de fs.symlink y fs.symlinkSync" (Bert Belder)
-* [[`668bde8`](https://github.com/nodejs/node/commit/668bde8ac0d16382cbc98c904d8b5f55fd9fd9f0)] - win,msi: transmitir WM_SETTINGCHANGE tras la instalación (Mathias Küsel)
-* [[`69ce064`](https://github.com/nodejs/node/commit/69ce0641dc6a84c90ffdd0906790cd945f1c3629)] - build: remover artefactos en distclean (Johan Bergström)
-* [[`1953886`](https://github.com/nodejs/node/commit/1953886126a2ab3e7291a73767ee4302a391a208)] - test: fuga del descriptor de archivos de fs.createReadStream().destroy() (Rod Vagg)
-* [[`497fd72`](https://github.com/nodejs/node/commit/497fd72e21d2d1216e8457928d1a8082349fd0e5)] - fs: corregir fuga del descriptor de archivos en ReadStream.destroy() (Alex Kocharin)
-* [[`8b09ae7`](https://github.com/nodejs/node/commit/8b09ae76f1d854a0db579fc0737df4809ce6087d)] - doc: añadir enlaces para las mejoras de http_parser/libuv (Michael Hart)
-* [[`683e096`](https://github.com/nodejs/node/commit/683e09603e3418ed13333bac05876cb7d52453f5)] - src: remover datos excesivos sobre licencia (Aleksey Smolenchuk)
-* [[`5c7ab96`](https://github.com/nodejs/node/commit/5c7ab96b90d1ab35e03e32a249d50e7651dee6ef)] - doc: corregir el comportamiento del enlazado de net.Server.listen (Andres Suarez)
-* [[`84b05d4`](https://github.com/nodejs/node/commit/84b05d48d943e5b5e88485be129755277bedd1cb)] - doc: actualizar la codificación por defecto de los streams escribibles (Johnny Ray Austin)
-* [[`1855267`](https://github.com/nodejs/node/commit/18552677d7e4468b093f28e721d1c02ce001b558)] - doc: corregir error gramatical menor en los documentos de streams (ttrfwork)
-* [[`4f68369`](https://github.com/nodejs/node/commit/4f68369643cbbbcc6b12028091bb8064e89ce02d)] - build: deshabilitar los snapshots de v8 (Ben Noordhuis)
-* [[`c0a9d1b`](https://github.com/nodejs/node/commit/c0a9d1bc74e1aa5ed1f5a934509c1984142e0eab)] - versions: añadir nivel de parche de http-parser (Johan Bergström)
-* [[`7854811`](https://github.com/nodejs/node/commit/785481149d59fddead9007d469e2578204f24cfb)] - child_process: clonar el argumento de generación de opciones (cjihrig)
-* [[`88aaff9`](https://github.com/nodejs/node/commit/88aaff9aa6dd2aa2baadaf9b8d5f08e89fb77402)] - deps: actualizar http_parser a 2.4.2 (Fedor Indutny)
-* [[`804ab7e`](https://github.com/nodejs/node/commit/804ab7ebaaf5d87499e3cbce03184f064264dd2a)] - doc: añadir a seishun como colaborador (Nikolai Vavilov)
-* [[`301a968`](https://github.com/nodejs/node/commit/301a968a40152c1ad3562482b4044458a13ebc4f)] - child_process: remover condición redundante (Vladimir Kurchatkin)
-* [[`06cfff9`](https://github.com/nodejs/node/commit/06cfff935012ed2826cac56284cea982630cbc27)] - http: no molestarse haciendo una copia de las opciones (Jonathan Ong)
-* [[`55c222c`](https://github.com/nodejs/node/commit/55c222ceba8e2b22fb5639082906faace520ec4e)] - doc: añadir a vkurchatkin como colaborador (Vladimir Kurchatkin)
-* [[`50ac4b7`](https://github.com/nodejs/node/commit/50ac4b7e2a823f92f0e102b804ec73f00eacb216)] - Trabajando en la 1.0.5 (Rod Vagg)
-* [[`d1fc9c6`](https://github.com/nodejs/node/commit/d1fc9c6caec68883401fe601d99f3a69fee52556)] - 2015-01-24 Versión de io.js 1.0.4 (Rod Vagg)
+* [[`6a5d731`](https://github.com/nodejs/node/commit/6a5d731f602b547074f4367a7eb3964395080c94)] - gyp: enable postmortem support, fix dtrace paths (Fedor Indutny)
+* [[`8b88ff8`](https://github.com/nodejs/node/commit/8b88ff85f106eed03bf677b9ab3b842f4edbdc6b)] - deps: fix postmortem support in v8 (Fedor Indutny)
+* [[`d0b0bb4`](https://github.com/nodejs/node/commit/d0b0bb4ae00f596042bebe1ae61ae685bfbebf7d)] - dtrace: fix removal of unused probes (Glen Keane)
+* [[`3e67d7e`](https://github.com/nodejs/node/commit/3e67d7e46b80c90faa360d1d0e44dacc444e8e4f)] - http: replace util._extend() with [].slice() (Jonathan Ong)
+* [[`89dd8e0`](https://github.com/nodejs/node/commit/89dd8e062f462106a6f7d3e92e9d18906445f851)] - benchmark: clean up common.js (Brendan Ashworth)
+* [[`6561274`](https://github.com/nodejs/node/commit/6561274d2377d9fd9c55fa3ce2eb2e53c14d898e)] - crypto: support passwords in publicEncrypt (Calvin Metcalf)
+* [[`e9eb2ec`](https://github.com/nodejs/node/commit/e9eb2ec1c491e82dda27fe07d0eaf14ff569351b)] - process: fix regression in unlistening signals (Sam Roberts)
+* [[`233e333`](https://github.com/nodejs/node/commit/233e333b183edeea6b740911061c7dc526078260)] - events: remove indeterminancy from event ordering (Sam Roberts)
+* [[`d75fecf`](https://github.com/nodejs/node/commit/d75fecf6fd7a1ef9d3d84a70ab832e7c062f5880)] - src: remove unused dtrace probes (Glen Keane)
+* [[`8c0742f`](https://github.com/nodejs/node/commit/8c0742f43759d35da99f2475f81a026c2818c66a)] - net: check close callback is function (Yosuke Furukawa)
+* [[`207e48c`](https://github.com/nodejs/node/commit/207e48c93459da5e47f2efd408cfad6328bb0e25)] - dgram: check close callback is function (Yosuke Furukawa)
+* [[`6ac8bdc`](https://github.com/nodejs/node/commit/6ac8bdc0aba5f60f4b4f2da5abd36d664062aa40)] - lib: reduce util.is*() usage (cjihrig)
+* [[`bce7a26`](https://github.com/nodejs/node/commit/bce7a2608eb198eee6ecd7991062efd6daeeb440)] - deps: make node-gyp work again on windows (Bert Belder)
+* [[`1bdd74d`](https://github.com/nodejs/node/commit/1bdd74d20a3c979d51929a1039824d90abca2cdb)] - deps: make node-gyp fetch tarballs from iojs.org (Ben Noordhuis)
+* [[`faf34ff`](https://github.com/nodejs/node/commit/faf34ffbd321f4657bd99fb82931e1c9a4dda6af)] - deps: upgrade npm to 2.4.1 (Forrest L Norvell)
+* [[`40e29dc`](https://github.com/nodejs/node/commit/40e29dcbbf33d919f5cc0cbab5fa65a282adb04b)] - assert: use util.inspect() to create error messages (cjihrig)
+* [[`bc2c85c`](https://github.com/nodejs/node/commit/bc2c85ceef7ac034830e4a4357d0aef69cd6e386)] - fs: improve error messages (Bert Belder)
+* [[`0767c2f`](https://github.com/nodejs/node/commit/0767c2feb1cb6921acd18be3392d331e093b2b4c)] - lib: fix max size check in Buffer constructor (Ben Noordhuis)
+* [[`65b1e4f`](https://github.com/nodejs/node/commit/65b1e4f56f1f49dccd19b65dee2856df05b06c89)] - dgram: implicit binds should be exclusive (Sam Roberts)
+* [[`083c421`](https://github.com/nodejs/node/commit/083c421b5ca08576897b5da396085a462010780e)] - benchmark: remove extra spacing in http options (Brendan Ashworth)
+* [[`e17e6fb`](https://github.com/nodejs/node/commit/e17e6fb2faa04193eddf8062fbd49f1612b4dbff)] - util: use on-stack buffer for Utf8Value (Fedor Indutny)
+* [[`3d4e96f`](https://github.com/nodejs/node/commit/3d4e96f3ceea1d30b4affb66133016a3c2811005)] - crypto: use on-stack storage in HashUpdate (Fedor Indutny)
+* [[`aca2011`](https://github.com/nodejs/node/commit/aca20112519decef44474a2ee9936049e2a38b67)] - string_bytes: introduce InlineDecoder (Fedor Indutny)
+* [[`c6367e7`](https://github.com/nodejs/node/commit/c6367e7f2a68b2418a98dfe9e829f17f62ba403a)] - node: speed up ParseEncoding (Fedor Indutny)
+* [[`7604e6d`](https://github.com/nodejs/node/commit/7604e6decc441a1110567e98f20f7ee122179d54)] - docs: add note about default padding in crypto (Calvin Metcalf)
+* [[`cf3e908`](https://github.com/nodejs/node/commit/cf3e908b70dfb345711cbca6c8e5373d085b05ea)] - http: more descriptive setHeader errors (Qasim Zaidi)
+* [[`cbc1262`](https://github.com/nodejs/node/commit/cbc1262bd952a6c52937abe47a0af625965fba65)] - deps: upgrade v8 to 4.1.0.14 (Ben Noordhuis)
+* [[`00f822f`](https://github.com/nodejs/node/commit/00f822f276c08465db3f6c70f154e9f28cc372d6)] - doc: add micnic as collaborator (Micleusanu Nicu)
+* [[`514b1d9`](https://github.com/nodejs/node/commit/514b1d964b2e67d0594c6a44a22fbc29fe71454b)] - doc: add more info to benchmark/README.md (Fishrock123)
+* [[`097fde7`](https://github.com/nodejs/node/commit/097fde7129a3acc660beb372cecd9daf1164a7f2)] - deps: update libuv to 1.3.0 (Saúl Ibarra Corretgé)
+* [[`6ad236c`](https://github.com/nodejs/node/commit/6ad236c9b6a344a88ec2f1f173d5f920984b77b7)] - build: configure formatting, add final message (Roman Reiss)
+* [[`dd47a8c`](https://github.com/nodejs/node/commit/dd47a8c78547db14ea0c7fc2f3375e8c9cb1a129)] - src: set default signal dispositions at start-up (Ben Noordhuis)
+* [[`63ae1d2`](https://github.com/nodejs/node/commit/63ae1d203aba94b9a35400acdf00ff968fb6eb05)] - src: rework early debug signal handling (Ben Noordhuis)
+* [[`5756f92`](https://github.com/nodejs/node/commit/5756f92f464fd0f2d04dd05bc30b350010885f74)] - src: do platform-specific initialization earlier (Ben Noordhuis)
+* [[`24bd4e0`](https://github.com/nodejs/node/commit/24bd4e055562d8eb8a0d8db907c1715cc37e90b4)] - test: add http upgrade header regression test (Ben Noordhuis)
+* [[`6605096`](https://github.com/nodejs/node/commit/660509694cfd4de59df0548eabbe18c97d75c63a)] - deps: roll back http_parser to 2.3.0 (Ben Noordhuis)
+* [[`90ddb46`](https://github.com/nodejs/node/commit/90ddb46d522c37d2bc2eb68a6e0c9d52f9fbba42)] - crypto: remove use of this._readableState (Calvin Metcalf)
+* [[`45d8d9f`](https://github.com/nodejs/node/commit/45d8d9f8262983d7d6434f4500b4e88b63052cd5)] - buffer: implement `iterable` interface (Vladimir Kurchatkin)
+* [[`3cbb5cd`](https://github.com/nodejs/node/commit/3cbb5cdfdb621baec5dc3a2ac505be37f1718086)] - console: allow Object.prototype fields as labels (cjihrig)
+* [[`87e62bd`](https://github.com/nodejs/node/commit/87e62bd4c87e8674e3d1c432506e9b4991784ee2)] - crypto: implement privateEncrypt/publicDecrypt (Fedor Indutny)
+* [[`b50fea4`](https://github.com/nodejs/node/commit/b50fea4d490278b291321e6b96c49cf20bee1552)] - watchdog: fix timeout for early polling return (Saúl Ibarra Corretgé)
+* [[`b5166cb`](https://github.com/nodejs/node/commit/b5166cb7d269cd1bf90d1768f82767b05b9ac1f8)] - benchmark: add bench-(url & events) make targets (Yosuke Furukawa)
+* [[`5843ae8`](https://github.com/nodejs/node/commit/5843ae8dfba5db83f2c04ed2db847049cbd2ab0d)] - Revert "doc: clarify fs.symlink and fs.symlinkSync parameters" (Bert Belder)
+* [[`668bde8`](https://github.com/nodejs/node/commit/668bde8ac0d16382cbc98c904d8b5f55fd9fd9f0)] - win,msi: broadcast WM_SETTINGCHANGE after install (Mathias Küsel)
+* [[`69ce064`](https://github.com/nodejs/node/commit/69ce0641dc6a84c90ffdd0906790cd945f1c3629)] - build: remove artifacts on distclean (Johan Bergström)
+* [[`1953886`](https://github.com/nodejs/node/commit/1953886126a2ab3e7291a73767ee4302a391a208)] - test: fs.createReadStream().destroy() fd leak (Rod Vagg)
+* [[`497fd72`](https://github.com/nodejs/node/commit/497fd72e21d2d1216e8457928d1a8082349fd0e5)] - fs: fix fd leak in ReadStream.destroy() (Alex Kocharin)
+* [[`8b09ae7`](https://github.com/nodejs/node/commit/8b09ae76f1d854a0db579fc0737df4809ce6087d)] - doc: add links for http_parser/libuv upgrades (Michael Hart)
+* [[`683e096`](https://github.com/nodejs/node/commit/683e09603e3418ed13333bac05876cb7d52453f5)] - src: remove excessive license boilerplate (Aleksey Smolenchuk)
+* [[`5c7ab96`](https://github.com/nodejs/node/commit/5c7ab96b90d1ab35e03e32a249d50e7651dee6ef)] - doc: fix net.Server.listen bind behavior (Andres Suarez)
+* [[`84b05d4`](https://github.com/nodejs/node/commit/84b05d48d943e5b5e88485be129755277bedd1cb)] - doc: update writable streams default encoding (Johnny Ray Austin)
+* [[`1855267`](https://github.com/nodejs/node/commit/18552677d7e4468b093f28e721d1c02ce001b558)] - doc: fix minor grammar mistake in streams docs (ttrfwork)
+* [[`4f68369`](https://github.com/nodejs/node/commit/4f68369643cbbbcc6b12028091bb8064e89ce02d)] - build: disable v8 snapshots (Ben Noordhuis)
+* [[`c0a9d1b`](https://github.com/nodejs/node/commit/c0a9d1bc74e1aa5ed1f5a934509c1984142e0eab)] - versions: add http-parser patchlevel (Johan Bergström)
+* [[`7854811`](https://github.com/nodejs/node/commit/785481149d59fddead9007d469e2578204f24cfb)] - child_process: clone spawn options argument (cjihrig)
+* [[`88aaff9`](https://github.com/nodejs/node/commit/88aaff9aa6dd2aa2baadaf9b8d5f08e89fb77402)] - deps: update http_parser to 2.4.2 (Fedor Indutny)
+* [[`804ab7e`](https://github.com/nodejs/node/commit/804ab7ebaaf5d87499e3cbce03184f064264dd2a)] - doc: add seishun as a collaborator (Nikolai Vavilov)
+* [[`301a968`](https://github.com/nodejs/node/commit/301a968a40152c1ad3562482b4044458a13ebc4f)] - child_process: remove redundant condition (Vladimir Kurchatkin)
+* [[`06cfff9`](https://github.com/nodejs/node/commit/06cfff935012ed2826cac56284cea982630cbc27)] - http: don't bother making a copy of the options (Jonathan Ong)
+* [[`55c222c`](https://github.com/nodejs/node/commit/55c222ceba8e2b22fb5639082906faace520ec4e)] - doc: add vkurchatkin as collaborator (Vladimir Kurchatkin)
+* [[`50ac4b7`](https://github.com/nodejs/node/commit/50ac4b7e2a823f92f0e102b804ec73f00eacb216)] - Working on 1.0.5 (Rod Vagg)
+* [[`d1fc9c6`](https://github.com/nodejs/node/commit/d1fc9c6caec68883401fe601d99f3a69fee52556)] - 2015-01-24 io.js v1.0.4 Release (Rod Vagg)
 
 <a id="1.0.4"></a>
 
-## 2015-01-24, Versión 1.0.4, @rvagg
+## 2015-01-24, Version 1.0.4, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* La actualización de npm a 2.3.0 corrige los errores "uid is undefined" (la uid está sin definir) de Windows
-* Ahora crypto.pseudoRandomBytes() es un alias para crypto.randomBytes() y se bloqueará si no hay suficiente entropía para producir valores seguros. Consulte https://github.com/nodejs/node/commit/e5e5980 para ver detalles.
-* Parche para V8, para que detecte a ARMv6 correctamente; los binarios vuelven a funcionar en ARMv6 (Raspberry Pi, etc.)
-* Mejora menor de V8 de 4.1.0.7 a 4.1.0.12
-* El módulo del núcleo 'punycode' ha sido llevado del nivel de estabilidad 2-Inestable a 3-Estable
-* Nuevos colaboradores añadidos:
+* npm upgrade to 2.3.0 fixes Windows "uid is undefined" errors
+* crypto.pseudoRandomBytes() is now an alias for crypto.randomBytes() and will block if there is insufficient entropy to produce secure values. See https://github.com/nodejs/node/commit/e5e5980 for details.
+* Patch for V8 to properly detect ARMv6; binaries now work again on ARMv6 (Raspberry Pi etc.)
+* Minor V8 upgrade from 4.1.0.7 to 4.1.0.12
+* 'punycode' core module bumped from stability level 2-Unstable, to 3-Stable
+* Added new collaborators:
   * Thorsten Lorenz (@thlorenz)
   * Stephen Belanger (@qard)
   * Jeremiah Senkpiel (@fishrock123)
@@ -2371,423 +2371,423 @@ _Note: version **1.4.0** was tagged and built but not released. Fue descubierto 
 
 ### Commits
 
-* [[`bb766d2`](https://github.com/nodejs/node/commit/bb766d2c47e8a416ce9f1e4f693f124afe857c1a)] - doc: actualizar la sección "net" en node de acuerdo a los cambios de io.js (Andres Suarez)
-* [[`73ddaa6`](https://github.com/nodejs/node/commit/73ddaa629c145af1632ac67d5d7d3a2abeabdf24)] - tools: remover el viejo script de updateAuthors.awk (Rod Vagg)
-* [[`6230bf9`](https://github.com/nodejs/node/commit/6230bf9b79a6c451d678693004d52249fe9c1702)] - doc: actualizar la lista AUTHORS (Rod Vagg)
-* [[`33186fa`](https://github.com/nodejs/node/commit/33186fa7d89aef988e5cf24801de891d325afd7d)] - doc: añadir a brendanashworth como colaborador (Brendan Ashworth)
-* [[`8f9502a`](https://github.com/nodejs/node/commit/8f9502a20a8851cfbf5f6181a52813baec23fe0f)] - doc: añadir a evanlucas a los colaboradores (Evan Lucas)
-* [[`35a4f11`](https://github.com/nodejs/node/commit/35a4f1107eeab39f9cd0e5b9abe6a314e1f6ddd7)] - doc: alfabetizar all.markdown (Brendan Ashworth)
-* [[`a0831c5`](https://github.com/nodejs/node/commit/a0831c580d50b54fd4add58071341b3b7ec83499)] - doc: añadir a Fishrock123 a los colaboradores (Fishrock123)
-* [[`5412487`](https://github.com/nodejs/node/commit/54124874dcc7eee1e8909cf2056c7f69722be4aa)] - doc: añadir a qard a los colaboradores (Stephen Belanger)
-* [[`8b55048`](https://github.com/nodejs/node/commit/8b55048d670d22d4e6d93710fe039d576a2b71bc)] - deps: hacer que node-gyp funcione otra vez en windows (Bert Belder)
-* [[`82227f3`](https://github.com/nodejs/node/commit/82227f35110dcefa5a02e068a78dc3eb4aa0d3bc)] - deps: hacer que node-gyp obtenga tarballs de iojs.org (Ben Noordhuis)
-* [[`f5b35db`](https://github.com/nodejs/node/commit/f5b35dbda45c466eda888a4451591c66e8671faf)] - deps: actualizar npm a 2.3.0 (Forrest L Norvell)
-* [[`f3fed51`](https://github.com/nodejs/node/commit/f3fed5193caaac151acd555a7523068ee269801c)] - doc: adición de thlorenz a la lista de colaboradores (Thorsten Lorenz)
-* [[`8de89ec`](https://github.com/nodejs/node/commit/8de89ec465d8f1e31521e0b888c19b0a3309cd88)] - lib: mover la lógica de direcciones por defecto a `net._listen2` (Vladimir Kurchatkin)
-* [[`3143d73`](https://github.com/nodejs/node/commit/3143d732f6efd82da76e9c53ad192ac14071bf70)] - test: eliminar parallel/test-process-active-wraps (Ben Noordhuis)
-* [[`4f95b5d`](https://github.com/nodejs/node/commit/4f95b5d8253ef64e3673b9fa178c41dc8109b72b)] - test: corregir parallel/test-http-destroyed-socket-write2 (Ben Noordhuis)
-* [[`5ba307a`](https://github.com/nodejs/node/commit/5ba307a97879342ff81aa813ffd7da46b6411b1c)] - test: corregir parallel/test-dgram-error-message-address (Ben Noordhuis)
-* [[`f4c536b`](https://github.com/nodejs/node/commit/f4c536b749735a0240da08386d6784767f95cb5d)] - debugger: no anular el enlazado de módulos (Vladimir Kurchatkin)
-* [[`40ffed8`](https://github.com/nodejs/node/commit/40ffed8f3f4392d6e110769ca06d86d6295fc645)] - stream: utilizar nop como callback de write() si se ha omitido (cjihrig)
-* [[`df0d790`](https://github.com/nodejs/node/commit/df0d790107edf635dc233f3338b3c2e68db58cc7)] - doc: dns.lookupService tiene un nivel de encabezado erróneo (Icer Liang)
-* [[`8b1db9c`](https://github.com/nodejs/node/commit/8b1db9c0a7dc39261218a0fac2dd6cf4fbb6a7b4)] - doc: nota en los documentos sobre las interfaces faltantes (Todd Kennedy)
-* [[`2928ac6`](https://github.com/nodejs/node/commit/2928ac68e524bb5cacd522507bac0a147d01cd75)] - doc: llevar la estabilidad de la api de punycode a "estable" (Ben Noordhuis)
-* [[`328e67b`](https://github.com/nodejs/node/commit/328e67b58bc6dbcbed8ec452e6903ea6f121dc59)] - doc: añadir minutas de la reunión del TC del 2015-01-21 (Rod Vagg)
-* [[`e5e5980`](https://github.com/nodejs/node/commit/e5e598060eb43faf2142184d523a04f0ca2d95c3)] - lib,src: hacer que pseudoRandomBytes sea un alias de randomBytes (Calvin Metcalf)
-* [[`c6cd460`](https://github.com/nodejs/node/commit/c6cd46041c70794d89634da380555fb613c2e0ab)] - configure: remover variable de arm_neon no utilizada (Ben Noordhuis)
-* [[`7d9d756`](https://github.com/nodejs/node/commit/7d9d7560cfbd24172ede690e74cedbb4b26e32c9)] - configure: deshabilitar vfpv3 en armv6 (Ben Noordhuis)
-* [[`297cadb`](https://github.com/nodejs/node/commit/297cadbab6a37fa4f14811452e4621770a321371)] - deps: arreglar la detección en tiempo de ejecución de armv6 de v8 (Ben Noordhuis)
-* [[`d481bb6`](https://github.com/nodejs/node/commit/d481bb68c4f2cf01ec7d26dcc91862b265b7effa)] - doc: documentos de crypto.pseudoRandomBytes más explícitos (Calvin Metcalf)
-* [[`7d46247`](https://github.com/nodejs/node/commit/7d462479f6aad374fab90dd10bb07a8097f750aa)] - src: mensaje de s/node/io.js/ en `--help de iojs` (Ben Noordhuis)
-* [[`069c0df`](https://github.com/nodejs/node/commit/069c0dfb1cbfeb7c9c66a30f1fb5f065a9e22ee6)] - deps: actualizar v8 a 4.1.0.12 (Ben Noordhuis)
-* [[`ada2a43`](https://github.com/nodejs/node/commit/ada2a4308c5a70728d01ea7447c0a7a153a9b703)] - doc: añadir las minutas de la reunión del TC del 2015-01-13 (Rod Vagg)
-* [[`60402b9`](https://github.com/nodejs/node/commit/60402b924b4b38196a658a023fad945421710457)] - docs: remover entrada incorrecta de registro de cambios (Bert Belder)
-* [[`8b98096`](https://github.com/nodejs/node/commit/8b98096c921f8a210b05aed64e0b2f1440667a7c)] - fs: hacer que las banderas de fs.access() sean de solo lectura (Jackson Tian)
-* [[`804e7aa`](https://github.com/nodejs/node/commit/804e7aa9ab0b34fa88709ef0980b960abca5e059)] - lib: utilizar const para definir constantes (cjihrig)
-* [[`803883b`](https://github.com/nodejs/node/commit/803883bb1a701da12c285fd735233eed7627eada)] - v8: corregir deref de puntero NULL de literal modelo (Ben Noordhuis)
-* [[`5435cf2`](https://github.com/nodejs/node/commit/5435cf2f1619721745c7a8ac06b4f833d0b80d25)] - v8: optimizar `getHeapStatistics` (Vladimir Kurchatkin)
-* [[`5d01463`](https://github.com/nodejs/node/commit/5d014637b618af7eac6ab0fce8d67884598c7b35)] - benchmark: imprimir cuenta a cinco lugares decimales (Yosuke Furukawa)
-* [[`752585d`](https://github.com/nodejs/node/commit/752585db6355ead7e6484f321e053b8d543c0a67)] - src: silenciar las advertencias de clang (Trevor Norris)
-* [[`22e1aea`](https://github.com/nodejs/node/commit/22e1aea8a025b6439493dec4d44afe4c9f454c86)] - src: establecer node_is_initialized en node::Init (Cheng Zhao)
-* [[`668420d`](https://github.com/nodejs/node/commit/668420d1f7685f49843bbf81ee3b4733a1989852)] - src: limpiar macros no utilizados en node_file.cc (Ben Noordhuis)
-* [[`52f624e`](https://github.com/nodejs/node/commit/52f624e72a419d3fd7f7f8ccc2d22ebdb0ba4fff)] - src: renombrar macros de ASSERT en node_crypto.cc (Ben Noordhuis)
-* [[`e95cfe1`](https://github.com/nodejs/node/commit/e95cfe14e343c5abed96a8d3cb9397c0c84abecc)] - src: añadir macros de estilo de ASSERT_EQ (Ben Noordhuis)
-* [[`ee9cd00`](https://github.com/nodejs/node/commit/ee9cd004d8a211871439fc77c0696b79c5d0e52d)] - lib: corregir TypeError con abuso de EventEmitter#on() (Ben Noordhuis)
-* [[`77d6807`](https://github.com/nodejs/node/commit/77d68070dafe56b5593ad92759a57c64de6b4cf1)] - test: corregir el estilo de event-emitter-get-max-listeners (Ben Noordhuis)
-* [[`767ee73`](https://github.com/nodejs/node/commit/767ee7348624803e6f90cf111df8b917fac442fc)] - test: reducir los datos sobre derecho de autor (Ben Noordhuis)
-* [[`86eda17`](https://github.com/nodejs/node/commit/86eda173b16b6ece9712e066661a0ac5db6795e8)] - fs: definir constantes con const (cjihrig)
+* [[`bb766d2`](https://github.com/nodejs/node/commit/bb766d2c47e8a416ce9f1e4f693f124afe857c1a)] - doc: update "net" section in node to io.js changes (Andres Suarez)
+* [[`73ddaa6`](https://github.com/nodejs/node/commit/73ddaa629c145af1632ac67d5d7d3a2abeabdf24)] - tools: remove old updateAuthors.awk script (Rod Vagg)
+* [[`6230bf9`](https://github.com/nodejs/node/commit/6230bf9b79a6c451d678693004d52249fe9c1702)] - doc: update AUTHORS list (Rod Vagg)
+* [[`33186fa`](https://github.com/nodejs/node/commit/33186fa7d89aef988e5cf24801de891d325afd7d)] - doc: adds brendanashworth as collaborator (Brendan Ashworth)
+* [[`8f9502a`](https://github.com/nodejs/node/commit/8f9502a20a8851cfbf5f6181a52813baec23fe0f)] - doc: add evanlucas to collaborators (Evan Lucas)
+* [[`35a4f11`](https://github.com/nodejs/node/commit/35a4f1107eeab39f9cd0e5b9abe6a314e1f6ddd7)] - doc: alphabetize all.markdown (Brendan Ashworth)
+* [[`a0831c5`](https://github.com/nodejs/node/commit/a0831c580d50b54fd4add58071341b3b7ec83499)] - doc: add Fishrock123 to collaborators (Fishrock123)
+* [[`5412487`](https://github.com/nodejs/node/commit/54124874dcc7eee1e8909cf2056c7f69722be4aa)] - doc: add qard to collaborators (Stephen Belanger)
+* [[`8b55048`](https://github.com/nodejs/node/commit/8b55048d670d22d4e6d93710fe039d576a2b71bc)] - deps: make node-gyp work again on windows (Bert Belder)
+* [[`82227f3`](https://github.com/nodejs/node/commit/82227f35110dcefa5a02e068a78dc3eb4aa0d3bc)] - deps: make node-gyp fetch tarballs from iojs.org (Ben Noordhuis)
+* [[`f5b35db`](https://github.com/nodejs/node/commit/f5b35dbda45c466eda888a4451591c66e8671faf)] - deps: upgrade npm to 2.3.0 (Forrest L Norvell)
+* [[`f3fed51`](https://github.com/nodejs/node/commit/f3fed5193caaac151acd555a7523068ee269801c)] - doc: adding thlorenz to list of collaborators (Thorsten Lorenz)
+* [[`8de89ec`](https://github.com/nodejs/node/commit/8de89ec465d8f1e31521e0b888c19b0a3309cd88)] - lib: move default address logic to `net._listen2` (Vladimir Kurchatkin)
+* [[`3143d73`](https://github.com/nodejs/node/commit/3143d732f6efd82da76e9c53ad192ac14071bf70)] - test: delete parallel/test-process-active-wraps (Ben Noordhuis)
+* [[`4f95b5d`](https://github.com/nodejs/node/commit/4f95b5d8253ef64e3673b9fa178c41dc8109b72b)] - test: fix parallel/test-http-destroyed-socket-write2 (Ben Noordhuis)
+* [[`5ba307a`](https://github.com/nodejs/node/commit/5ba307a97879342ff81aa813ffd7da46b6411b1c)] - test: fix parallel/test-dgram-error-message-address (Ben Noordhuis)
+* [[`f4c536b`](https://github.com/nodejs/node/commit/f4c536b749735a0240da08386d6784767f95cb5d)] - debugger: don't override module binding (Vladimir Kurchatkin)
+* [[`40ffed8`](https://github.com/nodejs/node/commit/40ffed8f3f4392d6e110769ca06d86d6295fc645)] - stream: use nop as write() callback if omitted (cjihrig)
+* [[`df0d790`](https://github.com/nodejs/node/commit/df0d790107edf635dc233f3338b3c2e68db58cc7)] - doc: dns.lookupService has wrong header level (Icer Liang)
+* [[`8b1db9c`](https://github.com/nodejs/node/commit/8b1db9c0a7dc39261218a0fac2dd6cf4fbb6a7b4)] - doc: note in docs about missing interfaces (Todd Kennedy)
+* [[`2928ac6`](https://github.com/nodejs/node/commit/2928ac68e524bb5cacd522507bac0a147d01cd75)] - doc: bump punycode api stability to 'stable' (Ben Noordhuis)
+* [[`328e67b`](https://github.com/nodejs/node/commit/328e67b58bc6dbcbed8ec452e6903ea6f121dc59)] - doc: add TC meeting 2015-01-21 minutes (Rod Vagg)
+* [[`e5e5980`](https://github.com/nodejs/node/commit/e5e598060eb43faf2142184d523a04f0ca2d95c3)] - lib,src: make pseudoRandomBytes alias randomBytes (Calvin Metcalf)
+* [[`c6cd460`](https://github.com/nodejs/node/commit/c6cd46041c70794d89634da380555fb613c2e0ab)] - configure: remove unused arm_neon variable (Ben Noordhuis)
+* [[`7d9d756`](https://github.com/nodejs/node/commit/7d9d7560cfbd24172ede690e74cedbb4b26e32c9)] - configure: disable vfpv3 on armv6 (Ben Noordhuis)
+* [[`297cadb`](https://github.com/nodejs/node/commit/297cadbab6a37fa4f14811452e4621770a321371)] - deps: fix v8 armv6 run-time detection (Ben Noordhuis)
+* [[`d481bb6`](https://github.com/nodejs/node/commit/d481bb68c4f2cf01ec7d26dcc91862b265b7effa)] - doc: more explicit crypto.pseudoRandomBytes docs (Calvin Metcalf)
+* [[`7d46247`](https://github.com/nodejs/node/commit/7d462479f6aad374fab90dd10bb07a8097f750aa)] - src: s/node/io.js/ in `iojs --help` message (Ben Noordhuis)
+* [[`069c0df`](https://github.com/nodejs/node/commit/069c0dfb1cbfeb7c9c66a30f1fb5f065a9e22ee6)] - deps: upgrade v8 to 4.1.0.12 (Ben Noordhuis)
+* [[`ada2a43`](https://github.com/nodejs/node/commit/ada2a4308c5a70728d01ea7447c0a7a153a9b703)] - doc: add TC meeting 2015-01-13 minutes (Rod Vagg)
+* [[`60402b9`](https://github.com/nodejs/node/commit/60402b924b4b38196a658a023fad945421710457)] - docs: remove incorrect entry from changelog (Bert Belder)
+* [[`8b98096`](https://github.com/nodejs/node/commit/8b98096c921f8a210b05aed64e0b2f1440667a7c)] - fs: make fs.access() flags read only (Jackson Tian)
+* [[`804e7aa`](https://github.com/nodejs/node/commit/804e7aa9ab0b34fa88709ef0980b960abca5e059)] - lib: use const to define constants (cjihrig)
+* [[`803883b`](https://github.com/nodejs/node/commit/803883bb1a701da12c285fd735233eed7627eada)] - v8: fix template literal NULL pointer deref (Ben Noordhuis)
+* [[`5435cf2`](https://github.com/nodejs/node/commit/5435cf2f1619721745c7a8ac06b4f833d0b80d25)] - v8: optimize `getHeapStatistics` (Vladimir Kurchatkin)
+* [[`5d01463`](https://github.com/nodejs/node/commit/5d014637b618af7eac6ab0fce8d67884598c7b35)] - benchmark: print score to five decimal places (Yosuke Furukawa)
+* [[`752585d`](https://github.com/nodejs/node/commit/752585db6355ead7e6484f321e053b8d543c0a67)] - src: silence clang warnings (Trevor Norris)
+* [[`22e1aea`](https://github.com/nodejs/node/commit/22e1aea8a025b6439493dec4d44afe4c9f454c86)] - src: set node_is_initialized in node::Init (Cheng Zhao)
+* [[`668420d`](https://github.com/nodejs/node/commit/668420d1f7685f49843bbf81ee3b4733a1989852)] - src: clean up unused macros in node_file.cc (Ben Noordhuis)
+* [[`52f624e`](https://github.com/nodejs/node/commit/52f624e72a419d3fd7f7f8ccc2d22ebdb0ba4fff)] - src: rename ASSERT macros in node_crypto.cc (Ben Noordhuis)
+* [[`e95cfe1`](https://github.com/nodejs/node/commit/e95cfe14e343c5abed96a8d3cb9397c0c84abecc)] - src: add ASSERT_EQ style macros (Ben Noordhuis)
+* [[`ee9cd00`](https://github.com/nodejs/node/commit/ee9cd004d8a211871439fc77c0696b79c5d0e52d)] - lib: fix TypeError with EventEmitter#on() abuse (Ben Noordhuis)
+* [[`77d6807`](https://github.com/nodejs/node/commit/77d68070dafe56b5593ad92759a57c64de6b4cf1)] - test: fix event-emitter-get-max-listeners style (Ben Noordhuis)
+* [[`767ee73`](https://github.com/nodejs/node/commit/767ee7348624803e6f90cf111df8b917fac442fc)] - test: strip copyright boilerplate (Ben Noordhuis)
+* [[`86eda17`](https://github.com/nodejs/node/commit/86eda173b16b6ece9712e066661a0ac5db6795e8)] - fs: define constants with const (cjihrig)
 
 <a id="1.0.3"></a>
 
-## 2015-01-20, Versión 1.0.3, @rvagg
+## 2015-01-20, Version 1.0.3, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* Actualización de V8 de 3.31 a 4.1, esto no es una actualización mayor, el número de versión "4.1" significa el seguimiento hacia Chrome 41. La rama 3.31 no se está dirigiendo ahora hacia una versión estable.
-* Volver a habilitar el soporte para Windows XP / 2003
-* Actualización de npm a 2.2.0
-* Soporte para FreeBSD mejorado
+* V8 upgrade from 3.31 to 4.1, this is not a major upgrade, the version number "4.1" signifies tracking towards Chrome 41. The 3.31 branch is now not tracking towards a stable release.
+* Re-enable Windows XP / 2003 support
+* npm upgrade to 2.2.0
+* Improved FreeBSD support
 
-### Problemas conocidos
+### Known issues
 
-* Aún no funcionan las compilaciones de ARMv6, hay un retraso en V8 en este asunto, incidente #283
-* Las strings modelo pueden utilizar segfaults en V8 4.1, https://codereview.chromium.org/857433004, asimismo incidente #333
+* ARMv6 builds still not working, there is a hold-up in V8 on this, issue #283
+* Template strings can cause segfaults in V8 4.1, https://codereview.chromium.org/857433004, also issue #333
 
 ### Commits
 
-* [[`9419e1f`](https://github.com/nodejs/node/commit/9419e1fb698e1a9319fec5c4777686d62fad4a51)] - src: corregir inconsistencia entre una revisión y un error (toastynerd)
-* [[`03ee4d8`](https://github.com/nodejs/node/commit/03ee4d854744e83f99bc5857b98f75139c448564)] - fs: añadir código de error ante rutas de bytes nulos (cjihrig)
-* [[`e2558f0`](https://github.com/nodejs/node/commit/e2558f02dfb671fc74f5768d4401a826efb5c117)] - net: corregir detalles de errores en connect() (cjihrig)
-* [[`4af5746`](https://github.com/nodejs/node/commit/4af5746993a6b91c88973b6debcee19c6cd35185)] - win,build: eliminar definición duplicada (Bert Belder)
-* [[`e8d0850`](https://github.com/nodejs/node/commit/e8d08503c7821e8c92e9fa236ed7328e9bdfe62a)] - win: traer de vuelta el soporte para xp/2k3 (Bert Belder)
-* [[`4dd22b9`](https://github.com/nodejs/node/commit/4dd22b946ebfec81a7c4a61aa9c6ed528e317802)] - cluster: evitar que la carrera active el depurador en worker (Timothy J Fontaine)
-* [[`6b91c78`](https://github.com/nodejs/node/commit/6b91c78e201948937a4524027a6778aa7f82fb0a)] - test: volver a aterrizar cambios de [`11c1bae`](https://github.com/nodejs/node/commit/11c1bae734dae3a017f2c4f3f71b5e679a9ddfa6) (Ben Noordhuis)
-* [[`992a1e7`](https://github.com/nodejs/node/commit/992a1e7f5f87606276af8504c2d57cc5a966830a)] - test: debug-signal-cluster no debería actuar con condición de carrera (Timothy J Fontaine)
-* [[`cdf0df1`](https://github.com/nodejs/node/commit/cdf0df13d85391b3b8ac36fa5b70da7f21072619)] - test: respaldar temporalmente los cambios desde [`11c1bae`](https://github.com/nodejs/node/commit/11c1bae734dae3a017f2c4f3f71b5e679a9ddfa6) (Ben Noordhuis)
-* [[`1ea607c`](https://github.com/nodejs/node/commit/1ea607cb299b0bb59d7d557e01b21b3c615d689e)] - test: mover sequential/test-debug-port-from-cmdline (Ben Noordhuis)
-* [[`2f33e00`](https://github.com/nodejs/node/commit/2f33e00d716d692e84b02768430664fd92298c98)] - test: corregir test-debug-port-from-cmdline.js (Julien Gilli)
-* [[`b7365c1`](https://github.com/nodejs/node/commit/b7365c15597253e906590045aa6f3f07f6e76b52)] - repl: hacer que REPL soporte literales modelo multilíneas (Xiaowei Li)
-* [[`2253d30`](https://github.com/nodejs/node/commit/2253d30d9cbba42abc1faa183e4480cac69c4222)] - build: remover variable no utilizada (Johan Bergström)
-* [[`ab04a43`](https://github.com/nodejs/node/commit/ab04a434761cf66d107481d58798f36d3cb49d46)] - doc: añadir a README sudo opcional para realizar instalación (Glen Keane)
-* [[`1b1cd1c`](https://github.com/nodejs/node/commit/1b1cd1c3f8e21b34a8e1355e545057a661acaa15)] - build: acortar la impresión del script de configuración en stdout (Roman Reiss)
-* [[`d566ded`](https://github.com/nodejs/node/commit/d566ded26b996c27afeb7fc208709bb6096bfa13)] - deps: corregir bugs del depurador de V8 (Jay Jaeho Lee)
-* [[`6f36630`](https://github.com/nodejs/node/commit/6f36630f55efcbe5954a52ac22bbb0a378020e98)] - doc: corregir ejemplos util.isBuffer (Thomas Jensen)
-* [[`3abfb56`](https://github.com/nodejs/node/commit/3abfb56f9b012da0d1e1deaec1529ea7384a0a71)] - benchmark: corregir prueba de rendimiento de tcp luego del cambio de api interna (Yosuke Furukawa)
-* [[`50177fb`](https://github.com/nodejs/node/commit/50177fb13cae68067845cca7622798eb7a34f8e9)] - benchmark: detener el trato deficiente de la prueba de rendimiento de v8 a RegExp (Ben Noordhuis)
-* [[`1952219`](https://github.com/nodejs/node/commit/19522197ef28275344ad2f1e0799ce8106276ec1)] - deps: hacer que node-gyp funcione otra vez en windows (Bert Belder)
-* [[`a28de9b`](https://github.com/nodejs/node/commit/a28de9bd3684f54379ccf101f62656771002205d)] - deps: hacer que node-gyp obtenga tarballs de iojs.org (Ben Noordhuis)
-* [[`9dc8f59`](https://github.com/nodejs/node/commit/9dc8f59fea5a294df039f70e523be2d45aef1324)] - deps: actualizar npm a 2.2.0 (Forrest L Norvell)
-* [[`e8ad773`](https://github.com/nodejs/node/commit/e8ad773b56a94fad2cd8a454453a7214a8ce92d1)] - src: volver a eliminar las --noharmony_classes (Ben Noordhuis)
-* [[`334020e`](https://github.com/nodejs/node/commit/334020e016a72952a9a3b3f7e9179145c7e167ad)] - deps: corregir la compilación de v8 en FreeBSD (Fedor Indutny)
-* [[`5e7ebc7`](https://github.com/nodejs/node/commit/5e7ebc7af6d08d4e31cf66f4ae22d29c688ef814)] - deps: actualizar v8 a 4.1.0.7 (Ben Noordhuis)
-* [[`ea7750b`](https://github.com/nodejs/node/commit/ea7750bddd8051f39fa538905e05f9bf1d1afa5f)] - benchmark: añadir opción de filtro para prueba de rendimiento (Yosuke Furukawa)
-* [[`4764eef`](https://github.com/nodejs/node/commit/4764eef9b2efdf17cafeb4ec40898c6669a84e3b)] - doc: fue corregido el uso de signos de puntuación (Brenard Cubacub)
-* [[`de224d6`](https://github.com/nodejs/node/commit/de224d6e6c9381e71ffee965dbda928802cc438e)] - configure: remover --ninja switch (Ben Noordhuis)
-* [[`48774ec`](https://github.com/nodejs/node/commit/48774ec027a28cca17656659d316bb7ed8d6f33c)] - configure: imprimir advertencia para compiladores viejos (Ben Noordhuis)
-* [[`daf9562`](https://github.com/nodejs/node/commit/daf9562d918b7926186471cd0db60cec2f72547a)] - doc: cambiar a iojs desde node en el mensaje de uso (Jongyeol Choi)
-* [[`3fde649`](https://github.com/nodejs/node/commit/3fde64937a3a0c8ed941ee97b07e1828b392a672)] - build: añadir herramientas/gflags a PYTHONPATH (Shigeki Ohtsu)
-* [[`8b22df1`](https://github.com/nodejs/node/commit/8b22df15ae0e3499b2e057ffd8a6f65cbf978da3)] - doc: añadir bloqueo de LICENSE de python-gflags (Shigeki Ohtsu)
-* [[`6242229`](https://github.com/nodejs/node/commit/62422297f52523d2214136cd5514e2453197e3e8)] - tools: añadir módulo de python-gflags (Shigeki Ohtsu)
+* [[`9419e1f`](https://github.com/nodejs/node/commit/9419e1fb698e1a9319fec5c4777686d62fad4a51)] - src: fix inconsistency between a check and error (toastynerd)
+* [[`03ee4d8`](https://github.com/nodejs/node/commit/03ee4d854744e83f99bc5857b98f75139c448564)] - fs: add error code on null byte paths (cjihrig)
+* [[`e2558f0`](https://github.com/nodejs/node/commit/e2558f02dfb671fc74f5768d4401a826efb5c117)] - net: fix error details in connect() (cjihrig)
+* [[`4af5746`](https://github.com/nodejs/node/commit/4af5746993a6b91c88973b6debcee19c6cd35185)] - win,build: remove duplicate definition (Bert Belder)
+* [[`e8d0850`](https://github.com/nodejs/node/commit/e8d08503c7821e8c92e9fa236ed7328e9bdfe62a)] - win: bring back xp/2k3 support (Bert Belder)
+* [[`4dd22b9`](https://github.com/nodejs/node/commit/4dd22b946ebfec81a7c4a61aa9c6ed528e317802)] - cluster: avoid race enabling debugger in worker (Timothy J Fontaine)
+* [[`6b91c78`](https://github.com/nodejs/node/commit/6b91c78e201948937a4524027a6778aa7f82fb0a)] - test: reland changes from [`11c1bae`](https://github.com/nodejs/node/commit/11c1bae734dae3a017f2c4f3f71b5e679a9ddfa6) (Ben Noordhuis)
+* [[`992a1e7`](https://github.com/nodejs/node/commit/992a1e7f5f87606276af8504c2d57cc5a966830a)] - test: debug-signal-cluster should not be racey (Timothy J Fontaine)
+* [[`cdf0df1`](https://github.com/nodejs/node/commit/cdf0df13d85391b3b8ac36fa5b70da7f21072619)] - test: temporarily back out changes from [`11c1bae`](https://github.com/nodejs/node/commit/11c1bae734dae3a017f2c4f3f71b5e679a9ddfa6) (Ben Noordhuis)
+* [[`1ea607c`](https://github.com/nodejs/node/commit/1ea607cb299b0bb59d7d557e01b21b3c615d689e)] - test: move sequential/test-debug-port-from-cmdline (Ben Noordhuis)
+* [[`2f33e00`](https://github.com/nodejs/node/commit/2f33e00d716d692e84b02768430664fd92298c98)] - test: fix test-debug-port-from-cmdline.js (Julien Gilli)
+* [[`b7365c1`](https://github.com/nodejs/node/commit/b7365c15597253e906590045aa6f3f07f6e76b52)] - repl: make REPL support multiline template literals (Xiaowei Li)
+* [[`2253d30`](https://github.com/nodejs/node/commit/2253d30d9cbba42abc1faa183e4480cac69c4222)] - build: remove unused variable (Johan Bergström)
+* [[`ab04a43`](https://github.com/nodejs/node/commit/ab04a434761cf66d107481d58798f36d3cb49d46)] - doc: add optional sudo to make install in README (Glen Keane)
+* [[`1b1cd1c`](https://github.com/nodejs/node/commit/1b1cd1c3f8e21b34a8e1355e545057a661acaa15)] - build: shorten configurate script print on stdout (Roman Reiss)
+* [[`d566ded`](https://github.com/nodejs/node/commit/d566ded26b996c27afeb7fc208709bb6096bfa13)] - deps: fix V8 debugger bugs (Jay Jaeho Lee)
+* [[`6f36630`](https://github.com/nodejs/node/commit/6f36630f55efcbe5954a52ac22bbb0a378020e98)] - doc: fix util.isBuffer examples (Thomas Jensen)
+* [[`3abfb56`](https://github.com/nodejs/node/commit/3abfb56f9b012da0d1e1deaec1529ea7384a0a71)] - benchmark: fix tcp bench after internal api change (Yosuke Furukawa)
+* [[`50177fb`](https://github.com/nodejs/node/commit/50177fb13cae68067845cca7622798eb7a34f8e9)] - benchmark: stop v8 benchmark clobbering RegExp (Ben Noordhuis)
+* [[`1952219`](https://github.com/nodejs/node/commit/19522197ef28275344ad2f1e0799ce8106276ec1)] - deps: make node-gyp work again on windows (Bert Belder)
+* [[`a28de9b`](https://github.com/nodejs/node/commit/a28de9bd3684f54379ccf101f62656771002205d)] - deps: make node-gyp fetch tarballs from iojs.org (Ben Noordhuis)
+* [[`9dc8f59`](https://github.com/nodejs/node/commit/9dc8f59fea5a294df039f70e523be2d45aef1324)] - deps: upgrade npm to 2.2.0 (Forrest L Norvell)
+* [[`e8ad773`](https://github.com/nodejs/node/commit/e8ad773b56a94fad2cd8a454453a7214a8ce92d1)] - src: remove --noharmony_classes again (Ben Noordhuis)
+* [[`334020e`](https://github.com/nodejs/node/commit/334020e016a72952a9a3b3f7e9179145c7e167ad)] - deps: fix v8 build on FreeBSD (Fedor Indutny)
+* [[`5e7ebc7`](https://github.com/nodejs/node/commit/5e7ebc7af6d08d4e31cf66f4ae22d29c688ef814)] - deps: upgrade v8 to 4.1.0.7 (Ben Noordhuis)
+* [[`ea7750b`](https://github.com/nodejs/node/commit/ea7750bddd8051f39fa538905e05f9bf1d1afa5f)] - benchmark: add filter option for benchmark (Yosuke Furukawa)
+* [[`4764eef`](https://github.com/nodejs/node/commit/4764eef9b2efdf17cafeb4ec40898c6669a84e3b)] - doc: fixed punctuation (Brenard Cubacub)
+* [[`de224d6`](https://github.com/nodejs/node/commit/de224d6e6c9381e71ffee965dbda928802cc438e)] - configure: remove --ninja switch (Ben Noordhuis)
+* [[`48774ec`](https://github.com/nodejs/node/commit/48774ec027a28cca17656659d316bb7ed8d6f33c)] - configure: print warning for old compilers (Ben Noordhuis)
+* [[`daf9562`](https://github.com/nodejs/node/commit/daf9562d918b7926186471cd0db60cec2f72547a)] - doc: change to iojs from node in the usage message (Jongyeol Choi)
+* [[`3fde649`](https://github.com/nodejs/node/commit/3fde64937a3a0c8ed941ee97b07e1828b392a672)] - build: add tools/gflags to PYTHONPATH (Shigeki Ohtsu)
+* [[`8b22df1`](https://github.com/nodejs/node/commit/8b22df15ae0e3499b2e057ffd8a6f65cbf978da3)] - doc: add python-gflags LICENSE block (Shigeki Ohtsu)
+* [[`6242229`](https://github.com/nodejs/node/commit/62422297f52523d2214136cd5514e2453197e3e8)] - tools: add python-gflags module (Shigeki Ohtsu)
 
 <a id="1.0.2"></a>
 
-## 2015-01-16, Versión 1.0.2, @rvagg
+## 2015-01-16, Version 1.0.2, @rvagg
 
-### Cambios notables
+### Notable changes
 
-* Correcciones del instalador de Windows
-* Correcciones empaquetadas de node-gyp para Windows
-* [Actualización de http_parser v2.4.1](https://github.com/joyent/http-parser/compare/v2.3...v2.4.1)
-* [Actualización de libuv v1.2.1](https://github.com/libuv/libuv/compare/v1.2.0...v1.2.1)
+* Windows installer fixes
+* Bundled node-gyp fixes for Windows
+* [http_parser v2.4.1 upgrade](https://github.com/joyent/http-parser/compare/v2.3...v2.4.1)
+* [libuv v1.2.1 upgrade](https://github.com/libuv/libuv/compare/v1.2.0...v1.2.1)
 
 ### Commits
 
-* [[`265cb76`](https://github.com/nodejs/node/commit/265cb76517d81408afb72506c778f0c0b889f4dc)] - build: añadir nueva configuración del instalador para OS X (Rod Vagg)
-* [[`8cf6079`](https://github.com/nodejs/node/commit/8cf6079a6a7f5d1afb06606b7c51acf9b1a046a0)] - doc: actualizar la lista AUTHORS (Rod Vagg)
-* [[`c80a944`](https://github.com/nodejs/node/commit/c80a9449b309f9c52a5910b7ac6ba0c84ee1b6f6)] - doc: Añadir comportamiento keepalive de http a CHANGELOG.md (Isaac Z. Schlueter)
-* [[`9b81c3e`](https://github.com/nodejs/node/commit/9b81c3e77ffd733645956129a38fdc2fddd08b50)] - doc: corregir atribución del autor (Tom Hughes)
-* [[`fd30eb2`](https://github.com/nodejs/node/commit/fd30eb21526bdaa5aabb15523b0a766e0cbbe535)] - src: corregir errores de jslint (Yosuke Furukawa)
-* [[`946eabd`](https://github.com/nodejs/node/commit/946eabd18f623b438e17164b14c98066f7054168)] - tools: actualizar el linter de cierre a 2.3.17 (Yosuke Furukawa)
-* [[`9e62ae4`](https://github.com/nodejs/node/commit/9e62ae4304a0bee3aec8c5fb743eb17d78b1cd35)] - _debug_agent: utilizar la opción `readableObjectMode` (Vladimir Kurchatkin)
-* [[`eec4c81`](https://github.com/nodejs/node/commit/eec4c8168be1f0a01db3576ae99f7756eea01151)] - doc: corregir formato en LICENSE para la generación de RTF (Rod Vagg)
-* [[`e789103`](https://github.com/nodejs/node/commit/e7891034c269dccf8d6264acc4b7421e19a905f6)] - doc: corregir 404s para que la sintaxis resalte js (Phil Hughes)
-* [[`ca039b4`](https://github.com/nodejs/node/commit/ca039b4616915b95130ba5ee5a2cf9f5c768645e)] - src: definir AI_V4MAPPED para OpenBSD (Aaron Bieber)
-* [[`753fcaa`](https://github.com/nodejs/node/commit/753fcaa27066b34a99ee1c02b43a32744fc92a3c)] - doc: extender ejemplo de http.request con evento de finalización (Michal Tehnik)
-* [[`8440cac`](https://github.com/nodejs/node/commit/8440cacb100ae83c2b2c02e82a87c73a66380c21)] - src: corregir url de documentación en mensaje de ayuda (Shigeki Ohtsu)
-* [[`24def66`](https://github.com/nodejs/node/commit/24def662936ae8c15770ede0344cd7a7402a63ef)] - win,msi: advertir que el viejo io.js necesita una desinstalación manual (Bert Belder)
-* [[`59d9361`](https://github.com/nodejs/node/commit/59d93613d8e1e8507b5c8462c52dd3cbda98e99b)] - win,msi: cambiar UpgradeCode (Bert Belder)
-* [[`5de334c`](https://github.com/nodejs/node/commit/5de334c23096492014a097ff487f07ad8eaee6d2)] - deps: hacer que node-gyp funcione otra vez en windows (Bert Belder)
-* [[`07bd05b`](https://github.com/nodejs/node/commit/07bd05ba332e078c1ba76635921f5448a3e884cf)] - deps: actualizar libuv a 1.2.1 (Saúl Ibarra Corretgé)
-* [[`e177377`](https://github.com/nodejs/node/commit/e177377a4bc0cdbaecb8b17a58e57c73b4ca0090)] - doc: mencionar io.js junto a Node en los documentos de Punycode (Mathias Bynens)
-* [[`598efcb`](https://github.com/nodejs/node/commit/598efcbe7f4d795622f038e0ba28c7b119927a14)] - deps: actualizar http_parser a 2.4.1 (Fedor Indutny)
-* [[`3dd7ebb`](https://github.com/nodejs/node/commit/3dd7ebb0ba181960fb6d7131e11243a6ec85458d)] - doc: actualizar entrada sobre el clúster en CHANGELOG (Ben Noordhuis)
-* [[`0c5de1f`](https://github.com/nodejs/node/commit/0c5de1ff813de9661d33cb9aefc4a9540b58b147)] - doc: corregir ejemplo de smalloc doble (Mathias Buus)
+* [[`265cb76`](https://github.com/nodejs/node/commit/265cb76517d81408afb72506c778f0c0b889f4dc)] - build: add new installer config for OS X (Rod Vagg)
+* [[`8cf6079`](https://github.com/nodejs/node/commit/8cf6079a6a7f5d1afb06606b7c51acf9b1a046a0)] - doc: update AUTHORS list (Rod Vagg)
+* [[`c80a944`](https://github.com/nodejs/node/commit/c80a9449b309f9c52a5910b7ac6ba0c84ee1b6f6)] - doc: Add http keepalive behavior to CHANGELOG.md (Isaac Z. Schlueter)
+* [[`9b81c3e`](https://github.com/nodejs/node/commit/9b81c3e77ffd733645956129a38fdc2fddd08b50)] - doc: fix author attribution (Tom Hughes)
+* [[`fd30eb2`](https://github.com/nodejs/node/commit/fd30eb21526bdaa5aabb15523b0a766e0cbbe535)] - src: fix jslint errors (Yosuke Furukawa)
+* [[`946eabd`](https://github.com/nodejs/node/commit/946eabd18f623b438e17164b14c98066f7054168)] - tools: update closure linter to 2.3.17 (Yosuke Furukawa)
+* [[`9e62ae4`](https://github.com/nodejs/node/commit/9e62ae4304a0bee3aec8c5fb743eb17d78b1cd35)] - _debug_agent: use `readableObjectMode` option (Vladimir Kurchatkin)
+* [[`eec4c81`](https://github.com/nodejs/node/commit/eec4c8168be1f0a01db3576ae99f7756eea01151)] - doc: fix formatting in LICENSE for RTF generation (Rod Vagg)
+* [[`e789103`](https://github.com/nodejs/node/commit/e7891034c269dccf8d6264acc4b7421e19a905f6)] - doc: fix 404s for syntax highlighting js (Phil Hughes)
+* [[`ca039b4`](https://github.com/nodejs/node/commit/ca039b4616915b95130ba5ee5a2cf9f5c768645e)] - src: define AI_V4MAPPED for OpenBSD (Aaron Bieber)
+* [[`753fcaa`](https://github.com/nodejs/node/commit/753fcaa27066b34a99ee1c02b43a32744fc92a3c)] - doc: extend example of http.request by end event (Michal Tehnik)
+* [[`8440cac`](https://github.com/nodejs/node/commit/8440cacb100ae83c2b2c02e82a87c73a66380c21)] - src: fix documentation url in help message (Shigeki Ohtsu)
+* [[`24def66`](https://github.com/nodejs/node/commit/24def662936ae8c15770ede0344cd7a7402a63ef)] - win,msi: warn that older io.js needs manual uninstall (Bert Belder)
+* [[`59d9361`](https://github.com/nodejs/node/commit/59d93613d8e1e8507b5c8462c52dd3cbda98e99b)] - win,msi: change UpgradeCode (Bert Belder)
+* [[`5de334c`](https://github.com/nodejs/node/commit/5de334c23096492014a097ff487f07ad8eaee6d2)] - deps: make node-gyp work again on windows (Bert Belder)
+* [[`07bd05b`](https://github.com/nodejs/node/commit/07bd05ba332e078c1ba76635921f5448a3e884cf)] - deps: update libuv to 1.2.1 (Saúl Ibarra Corretgé)
+* [[`e177377`](https://github.com/nodejs/node/commit/e177377a4bc0cdbaecb8b17a58e57c73b4ca0090)] - doc: mention io.js alongside Node in Punycode docs (Mathias Bynens)
+* [[`598efcb`](https://github.com/nodejs/node/commit/598efcbe7f4d795622f038e0ba28c7b119927a14)] - deps: update http_parser to 2.4.1 (Fedor Indutny)
+* [[`3dd7ebb`](https://github.com/nodejs/node/commit/3dd7ebb0ba181960fb6d7131e11243a6ec85458d)] - doc: update cluster entry in CHANGELOG (Ben Noordhuis)
+* [[`0c5de1f`](https://github.com/nodejs/node/commit/0c5de1ff813de9661d33cb9aefc4a9540b58b147)] - doc: fix double smalloc example (Mathias Buus)
 
 <a id="1.0.1"></a>
 
-## 2015-01-14, Versión 1.0.1, @rvagg
+## 2015-01-14, Version 1.0.1, @rvagg
 
-Re-compilar, debido a entradas de registro de git de worker de compilación estancadas para el lanzamiento de la versión 1.0.0
+Rebuild due to stale build worker git reflogs for 1.0.0 release
 
-* doc: mejorar la consistencia del estilo de redacción (Rui Marinho)
-* win,msi: corregir enlace al sitio web del documento (Bert Belder)
+* doc: improve write style consistency (Rui Marinho)
+* win,msi: correct doc website link (Bert Belder)
 
 --------------------------------------
 
 <a id="1.0.0"></a>
-Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current _stable_ Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest _unstable_ Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. La base de código de io.js hereda la mayor parte de los cambios encontrados en la rama de la v0.11 del repositorio [joyent/note](https://github.com/joyent/node), y, por ende, puede ser vista como una extensión de esta.
+Below is a summary of the user-facing changes to be found in the io.js v1.0.0 release as compared to the current _stable_ Node.js release, v0.10.35. At the time of the v1.0.0 release, the latest _unstable_ Node.js release is v0.11.14 with much progress made towards a v0.11.15 release. The io.js codebase inherits the majority of the changes found in the v0.11 branch of the [joyent/node](https://github.com/joyent/node) repository and therefore can be seen as an extension to v0.11.
 
-## Resumen de los cambios desde la v0.10.35 de Node.js a la v1.0.0 de io.js
+## Summary of changes from Node.js v0.10.35 to io.js v1.0.0
 
 ### General
 
-* El motor de JavaScript de V8 empaquetado con io.js fue actualizado de manera dramática, desde la versión 3.14.5.9 en la versión 0.10.35 de Node.js y la versión 3.26.33 en la versión 0.11.14 de Node.js, hasta la versión 3.31.74.1 para la versión 1.0.0 de io.js. Esto trae consigo muchas correcciones y mejoras de rendimiento, ¡así como soporte adicional para nuevas funcionalidades referentes al lenguaje ES6! Para más información sobre esto, revise la [página de ES6 de io.js](https://iojs.org/es6.html).
-* Otras tecnologías empaquetadas fueron actualizadas:
-  * c-ares: 1.9.0-DEV a 1.10.0-DEV
-  * http_parser: 1.0 a 2.3
-  * libuv: 0.10.30 a 1.2.0
-  * npm: 1.4.28 a 2.1.18
-  * openssl: 1.0.1j a 1.0.1k
-  * punycode: 1.2.0 a 1.3.2.
-* Mejoras de rendimiento y estabilidad en todas las plataformas.
+* The V8 JavaScript engine bundled with io.js was upgraded dramatically, from version 3.14.5.9 in Node.js v0.10.35 and 3.26.33 in Node.js v0.11.14 to 3.31.74.1 for io.js v1.0.0. This brings along many fixes and performance improvements, as well as additional support for new ES6 language features! For more information on this, check out [the io.js ES6 page](https://iojs.org/es6.html).
+* Other bundled technologies were upgraded:
+  * c-ares: 1.9.0-DEV to 1.10.0-DEV
+  * http_parser: 1.0 to 2.3
+  * libuv: 0.10.30 to 1.2.0
+  * npm: 1.4.28 to 2.1.18
+  * openssl: 1.0.1j to 1.0.1k
+  * punycode: 1.2.0 to 1.3.2.
+* Performance and stability improvements on all platforms.
 
 ### buffer
 
 https://iojs.org/api/buffer.html
 
-* Fueron añadidos los métodos `buf.writeUIntLE`, `buf.writeUIntBE`, `buf.writeIntLE`, `buf.writeIntBE`, `buf.readUIntLE`, `buf.readUIntBE`, `buf.readIntLE` y `buf.readIntBE` que leen y escriben valores de hasta 6 bytes.
-* Fue añadido `Buffer.compare()`, el cual realiza `memcmp()` sobre dos instancias de Búfer. Las instancias mismas también tienen una `compare()`.
-* Se añadió `buffer.equals()`, la cual realiza chequeos de igualdad de Búferes a partir de sus contenidos.
-* Se añadió un constructor de `new Buffer(otherBuffer)`.
-* Semánticas de `SlowBuffer` mejoradas.
-* Se actualizó el output de `buffer.toJSON()` para que no fuera igual que un array. En lugar de esto, es un objeto específicamente etiquetado como un búfer, el cual puede ser recuperado pasándolo (como una nueva sobrecarga) al constructor de `Buffer`.
+* Added `buf.writeUIntLE`, `buf.writeUIntBE`, `buf.writeIntLE`, `buf.writeIntBE`, `buf.readUIntLE`, `buf.readUIntBE`, `buf.readIntLE` and `buf.readIntBE` methods that read and write value up to 6 bytes.
+* Added `Buffer.compare()` which does a `memcmp()` on two Buffer instances. Instances themselves also have a `compare()`.
+* Added `buffer.equals()` that checks equality of Buffers by their contents.
+* Added `new Buffer(otherBuffer)` constructor.
+* Tweaked `SlowBuffer`'s semantics.
+* Updated the output of `buffer.toJSON()` to not be the same as an array. Instead it is an object specifically tagged as a buffer, which can be recovered by passing it to (a new overload of) the `Buffer` constructor.
 
 ### child_process
 
 https://iojs.org/api/child_process.html
 
-* Se añadió una opción `shell` a `child_process.exec`.
-* Se añadieron contrapartes sincrónicas para las funciones de procesos secundarios: `child_process.spawnSync`, `child_process.execSync`, y `child_process.execFileSync`.
-* Se añadió la ruta para errores `ENOENT` cualesquiera, para una depuración más sencilla.
+* Added a `shell` option to `child_process.exec`.
+* Added synchronous counterparts for the child process functions: `child_process.spawnSync`, `child_process.execSync`, and `child_process.execFileSync`.
+* Added the path to any `ENOENT` errors, for easier debugging.
 
 ### console
 
 https://iojs.org/api/console.html
 
-* Se añadió un parámetro `options` a `console.dir`.
+* Added an `options` parameter to `console.dir`.
 
 ### cluster
 
 https://iojs.org/api/cluster.html
 
-* Se actualizó `cluster` para que utilice de manera predeterminada un balance de carga estilo round-robin en todas las plataformas distintas a Windows. Sin embargo, la política de programación es configurable.
-* Se ha hecho que `--debug` esté consciente del clúster.
-* Muchas correcciones de bugs.
+* Updated `cluster` to use round-robin load balancing by default on non-Windows platforms. The scheduling policy is configurable however.
+* `--debug` has been made cluster-aware.
+* Many bug fixes.
 
 ### crypto
 
 https://iojs.org/api/crypto.html
 
-* Se añadió soporte para el paso de valores de generador personalizados a `DiffieHellman` (estableciéndose por defecto en dos, para garantizar la compatibilidad con versiones anteriores).
-* Se añadió soporte para los métodos de resumen pbkdf2 personalizados.
-* Se añadió soporte para Diffie-Hellman con base de curva elíptica.
-* Se añadió soporte para la carga y configuración del motor para algunas/todas las funciones de OpenSSL.
-* Se añadió soporte para el pase de una contraseña para la desencriptación de la clave de firma a `Sign.sign()`.
-* Se añadió soporte para la contraseña de clave privada en todos los métodos que las aceptan.
-* Se añadió soporte para la funcionalidad de encriptación/desencriptación pública/privada de RSA.
-* Se añadió soporte para el establecimiento y obtención de etiquetas de autenticación y el establecimiento de datos de autenticación adicionales al utilizar cifrados como AES-GCM.
+* Added support for custom generator values to `DiffieHellman` (defaulting to 2 for backwards compatibility).
+* Added support for custom pbkdf2 digest methods.
+* Added support for elliptic curve-based Diffie-Hellman.
+* Added support for loading and setting the engine for some/all OpenSSL functions.
+* Added support for passing in a passphrase for decrypting the signing key to `Sign.sign()`.
+* Added support for private key passphrase in every method that accepts it.
+* Added support for RSA public/private encryption/decryption functionality.
+* Added support for setting and getting of authentication tags and setting additional authentication data when using ciphers such as AES-GCM.
 
 ### dgram
 
 https://iojs.org/api/dgram.html
 
-* Se añadió soporte para la recepción de paquetes UDP vacíos.
+* Added support for receiving empty UDP packets.
 
 ### dns
 
 https://iojs.org/api/dns.html
 
-* Se añadieron los métodos `dns.resolveSoa`, `dns.getServers`, y `dns.setServers`.
-* `hostname` añadido a los mensajes de error, al estar disponible.
-* Se mejoró la consistencia del manejo de errores.
+* Added `dns.resolveSoa`, `dns.getServers`, and `dns.setServers` methods.
+* Added `hostname` on error messages when available.
+* Improved error handling consistency.
 
 ### events
 
 https://iojs.org/api/events.html
 
-* Se añadió soporte de encadenado a `EventEmitter.setMaxListeners`.
-* Se actualizó `require('events')` para que devuelva el constructor de `EventEmitter`, permitiendo que el módulo sea usado como `var EventEmitter = require('events')`, en lugar de `var EventEmitter = require('events').EventEmitter`.
+* Added chaining support to `EventEmitter.setMaxListeners`.
+* Updated `require('events')` to return the `EventEmitter` constructor, allowing the module to be used like `var EventEmitter = require('events')` instead of `var EventEmitter = require('events').EventEmitter`.
 
 ### fs
 
 https://iojs.org/api/fs.html
 
-* Se añadió `fs.access`, y `fs.exists` desaprobada. Por favor lea cuidadosamente la documentación.
-* Se añadieron errores más informativos y detalles del sitio de las llamadas de métodos cuando el ambiente `NODE_DEBUG` está establecido para aligerar la depuración.
-* Se añadió una opción a `fs.watch` para el soporte de sub-directorios recursivos (solo para OS X).
-* Se corrigió que los errores de callbacks perdidas solo fueran impresos, en lugar de arrojados.
+* Added `fs.access`, and deprecated `fs.exists`. Please read the documentation carefully.
+* Added more informative errors and method call site details when the `NODE_DEBUG` environment is set to ease debugging.
+* Added option to `fs.watch` for recursive sub-directory support (OS X only).
+* Fixed missing callbacks errors just being printed instead of thrown.
 
 ### http
 
 https://iojs.org/api/http.html
 
-* Se añadió soporte para que `response.write` y `response.end` reciban una callback para ser informados sobre el momento en el que la operación finaliza.
-* Se añadió soporte para el código de estado 308 (vea RFC 7238).
-* Array `http.METHODS` añadido, en este se especifican los métodos HTTP soportados por el analizador.
-* Se añadió el método `request.flush`.
-* Se añadió el método `response.getHeader('header')`, que puede ser utilizado antes de que se vacíen las cabeceras.
-* Se añadió la propiedad `response.statusMessage`.
-* Se añadió el comportamiento Keep-Alive del Cliente.  Establecer `keepAlive:true` en las opciones de solicitud, para reutilizar indefinidamente las conexiones.
-* Se añadieron los miembros `rawHeaders` y `rawTrailers` al mensaje entrante.
-* Codificación fragmentada predeterminada removida de `DELETE` y `OPTIONS`.
+* Added support for `response.write` and `response.end` to receive a callback to know when the operation completes.
+* Added support for 308 status code (see RFC 7238).
+* Added `http.METHODS` array, listing the HTTP methods supported by the parser.
+* Added `request.flush` method.
+* Added `response.getHeader('header')` method that may be used before headers are flushed.
+* Added `response.statusMessage` property.
+* Added Client Keep-Alive behavior.  Set `keepAlive:true` in request options to reuse connections indefinitely.
+* Added `rawHeaders` and `rawTrailers` members on incoming message.
+* Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
 ### net
 
 https://iojs.org/api/net.html
 
-* Se cambió `net.Server.listen`, de modo tal que cuando la dirección enlazada es omitida se prueba primero con IPv6, y IPv4 se utiliza como una reserva.
+* Changed `net.Server.listen` such that, when the bind address is omitted, IPv6 is tried first, and IPv4 is used as a fallback.
 
 ### os
 
 https://iojs.org/api/os.html
 
-* Se añadieron direcciones MAC, netmasks e IDs de ámbito para direcciones IPv6 al output del método `os.networkInterfaces`.
-* `os.tmpdir` fue actualizado en Windows para que utilice las variables de ambiente `%SystemRoot%` o `%WINDIR%`, en lugar del valor de código duro de `c:\windows`, al determinar la ubicación del directorio temporal.
+* Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
+* Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
 ### path
 
 https://iojs.org/api/path.html
 
-* Se añadieron los métodos `path.isAbsolute` y `path.parse`.
-* Se añadieron objetos de `path.win32` y `path.posix` que contienen versiones de plataforma específica de las diversas funciones de `path`.
-* Mejorar el rendimiento de `path.join`.
+* Added `path.isAbsolute` and `path.parse` methods.
+* Added `path.win32` and `path.posix` objects that contain platform-specific versions of the various `path` functions.
+* Improved `path.join` performance.
 
 ### process
 
 https://iojs.org/api/process.html
 
-* Se añadió el evento `beforeExit`.
-* Se añadieron `process.mainModule` y `process.exitCode`.
+* Added `beforeExit` event.
+* Added `process.mainModule` and `process.exitCode`.
 
 ### querystring
 
 https://iojs.org/api/querystring.html
 
-* Se añadió la habilidad de pasar versiones personalizadas de `encodeURIComponent` y `decodeURIComponent` al stringificar o analizar una string de consulta.
-* Se corrigieron varios problemas con el formato de las strings de consulta en casos extremos.
+* Added the ability to pass custom versions of `encodeURIComponent` and `decodeURIComponent` when stringifying or parsing a querystring.
+* Fixed several issues with the formatting of query strings in edge cases.
 
 ### smalloc
 
 https://iojs.org/api/smalloc.html
 
-`smalloc` es un nuevo módulo principal para la asignación/desasignación/copia de la memoria en bruto (externa) en JavaScript.
+`smalloc` is a new core module for doing (external) raw memory allocation/deallocation/copying in JavaScript.
 
 ### streams
 
 https://iojs.org/api/stream.html
 
-Los cambios en los streams no son tan drásticos como la transición de streams1 a streams2: son un refinamiento de ideas existentes, y deberían hacer que la API sea un poco menos sorprendente para los humanos y más rápida para las computadoras. Como conjunto, estos cambios son referidos como "streams3", pero deberían pasar, ampliamente, desapercibidos por la mayor parte de los consumidores e implementadores de streams.
+The changes to streams are not as drastic as the transition from streams1 to streams2: they are a refinement of existing ideas, and should make the API slightly less surprising for humans and faster for computers. As a whole the changes are referred to as "streams3", but the changes should largely go unnoticed by the majority of stream consumers and implementers.
 
-#### Streams legibles
+#### Readable streams
 
-La distinción entre los modos "fluido" y "no-fluido" ha sido refinada. La entrada en el modo "fluido" ya no es una operación irreversible&mdash;es posible regresar al modo "no-fluido" desde el modo "fluido". Adicionalmente, los dos modos ahora fluyen a través de la misma maquinaria en lugar de reemplazar métodos. Any time data is returned as a result of a `.read` call that data will *also* be emitted on the `"data"` event.
+The distinction between "flowing" and "non-flowing" modes has been refined. Entering "flowing" mode is no longer an irreversible operation&mdash;it is possible to return to "non-flowing" mode from "flowing" mode. Additionally, the two modes now flow through the same machinery instead of replacing methods. Any time data is returned as a result of a `.read` call that data will *also* be emitted on the `"data"` event.
 
-Igual que antes, la adición de un listener para los eventos `"readable"` o `"data"` dará inicio al flujo del stream; del mismo modo, lo hará la conducción por pipes hacia otra string.
+As before, adding a listener for the `"readable"` or `"data"` event will start flowing the stream; as will piping to another stream.
 
-#### Streams escribibles
+#### Writable streams
 
-La habilidad para "escribir en masa" a recursos subyacentes ha sido añadida a los streams `Writable` (escribibles). Para los implementadores de streams, uno puede emitir una señal que indique que un stream es susceptible a la escritura en masa, a través de la especificación del método [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback). La escritura en masa se dará en dos situaciones:
+The ability to "bulk write" to underlying resources has been added to `Writable` streams. For stream implementers, one can signal that a stream is bulk-writable by specifying a [_writev](https://iojs.org/api/stream.html#stream_writable_writev_chunks_callback) method. Bulk writes will occur in two situations:
 
-1. Cuando un stream susceptible a la escritura en masa se encuentra limpiando su reserva de solicitudes de escritura almacenadas en búfer,
-2. o si un usuario final ha hecho uso de los nuevos métodos de la API de `.cork()` y `.uncork()`.
+1. When a bulk-writable stream is clearing its backlog of buffered write requests,
+2. or if an end user has made use of the new `.cork()` and `.uncork()` API methods.
 
-`.cork` y `.uncork` permiten al usuario final controlar el comportamiento del almacenamiento en búfer de los streams escribibles independientemente de la contrapresión que esté siendo aplicada. `.cork` indica que el stream debería aceptar nuevas escrituras (hasta `highWaterMark`), mientras que `.uncork` restablece ese comportamiento e intenta escribir en masa a todas las escrituras transmitidas por búfer al recurso subyacente.
+`.cork` and `.uncork` allow the end user to control the buffering behavior of writable streams separate from exerting backpressure. `.cork` indicates that the stream should accept new writes (up to `highWaterMark`), while `.uncork` resets that behavior and attempts to bulk-write all buffered writes to the underlying resource.
 
 The only core stream API that **currently** implements `_writev` is `net.Socket`.
 
-En adición a los cambios de escritura en masa, el rendimiento de la pequeñas escrituras repetidas hacia streams no susceptibles a la escritura en masa (tales como `fs.WriteStream`) ha sido mejorada drásticamente. Los usuarios que transmitan mediante pipes streams de registros de gran volumen al disco deberían ver una mejora.
+In addition to the bulk-write changes, the performance of repeated small writes to non-bulk-writable streams (such as `fs.WriteStream`) has been drastically improved. Users piping high volume log streams to disk should see an improvement.
 
-Para una descripción detallada de cómo los streams3 interactúan, [vea este diagrama](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
+For a detailed overview of how streams3 interact, [see this diagram](https://cloud.githubusercontent.com/assets/37303/5728694/f9a3e300-9b20-11e4-9e14-a6938b3327f0.png).
 
 ### timers
 
 https://iojs.org/api/timers.html
 
-* `process.maxTickDepth` fue removido, permitiendo que `process.nextTick` sea usado recursivamente sin ningún límite.
-* Se actualizó `setImmediate` para procesar la cola completa en cada vuelta del bucle de eventos, en lugar de uno por cola.
+* Removed `process.maxTickDepth`, allowing `process.nextTick` to be used recursively without limit.
+* Updated `setImmediate` to process the full queue each turn of the event loop, instead of one per queue.
 
 ### tls
 
 https://iojs.org/api/tls.html
 
-* Se añadió la bandera booleana `detailed` a `getPeerCertificate` para devolver información detallada del certificado (con bytes DER sin procesar).
-* Se añadió el método `renegotiate(options, callback)` para la negociación de la sesión.
-* Se añadió el método `setMaxSendFragment` para la variación del tamaño del fragmento de TLS.
-* Se añadió una opción `dhparam` para los cifrados DH.
-* Se añadió una opción `ticketKeys` para la configuración de las claves de encriptado del ticket de TLS.
-* Se añadió callback OCSP-stapling asíncrona.
-* Se añadieron eventos de almacenamiento de sesión asíncronos.
-* Se añadió callback SNI asíncrona.
-* Se añadió soporte para servidores multi-claves (por ejemplo, un servidor ECDSA+RSA).
-* Se añadió una callback opcional a `checkServerIdentity` para la validación manual de certificados en el espacio de usuario.
-* Se añadió soporte para el cifrado ECDSA/ECDHE.
-* Se implementaron streams de TLS en C++, aumentando su rendimiento.
-* `createCredentials` fue movida a `tls` y renombrada como `createSecureContext`.
-* Se eliminó el soporte de SSLv2 y SSLv3.
+* Added `detailed` boolean flag to `getPeerCertificate` to return detailed certificate information (with raw DER bytes).
+* Added `renegotiate(options, callback)` method for session renegotiation.
+* Added `setMaxSendFragment` method for varying TLS fragment size.
+* Added a `dhparam` option for DH ciphers.
+* Added a `ticketKeys` option for TLS ticket AES encryption keys setup.
+* Added async OCSP-stapling callback.
+* Added async session storage events.
+* Added async SNI callback.
+* Added multi-key server support (for example, ECDSA+RSA server).
+* Added optional callback to `checkServerIdentity` for manual certificate validation in userland.
+* Added support for ECDSA/ECDHE cipher.
+* Implemented TLS streams in C++, boosting their performance.
+* Moved `createCredentials` to `tls` and renamed it to `createSecureContext`.
+* Removed SSLv2 and SSLv3 support.
 
 ### url
 
 https://iojs.org/api/url.html
 
-* Fue mejorado el escape de ciertos caracteres.
-* Se mejoró la velocidad de análisis.
+* Improved escaping of certain characters.
+* Improved parsing speed.
 
 ### util
 
 https://iojs.org/api/util.html
 
-* Se añadió `util.debuglog`.
-* Se añadió una plétora de nuevos métodos de pruebas de tipo. Vea [los documentos](https://iojs.org/api/util.html).
-* Se actualizó `util.format` para que recibiera varios cambios:
-  * Ahora `-0` se muestra como tal, en lugar de como `0`.
-  * Todo aquello que es un `instanceof Error` ahora tiene formato de error.
-  * Ahora las referencias circulares en objetos de JavaScript son manejadas para el especificador `%j`.
-  * Ahora se les permite a las funciones `inspect` personalizadas devolver un objeto.
-  * Ahora las funciones `inspect` personalizadas reciben los argumentos cualesquiera que sean pasados a `util.inspect`.
+* Added `util.debuglog`.
+* Added a plethora of new type-testing methods. See [the docs](https://iojs.org/api/util.html).
+* Updated `util.format` to receive several changes:
+  * `-0` is now displayed as such, instead of as `0`.
+  * Anything that is `instanceof Error` is now formatted as an error.
+  * Circular references in JavaScript objects are now handled for the `%j` specifier.
+  * Custom `inspect` functions are now allowed to return an object.
+  * Custom `inspect` functions now receive any arguments passed to `util.inspect`.
 
 ## v8
 
 https://iojs.org/api/v8.html
 
-`v8` es ahora un módulo principal para interactuar directamente con el motor de V8.
+`v8` is a new core module for interfacing directly with the V8 engine.
 
 ### vm
 
 https://iojs.org/api/vm.html
 
-El módulo `vm` ha sido reescrito para un mejor funcionamiento, basado en el excelente módulo nativo de [Contextify](https://github.com/brianmcd/contextify). Toda la funcionalidad de Contextify se encuentra ahora en el núcleo, ¡con mejoras!
+The `vm` module has been rewritten to work better, based on the excellent [Contextify](https://github.com/brianmcd/contextify) native module. All of the functionality of Contextify is now in core, with improvements!
 
-* Se añadió el método `vm.isContext(object)` para determinar si un `object` ha sido contextualizado.
-* Se añadió el método `vm.runInDebugContext(code)` para compilar y ejecutar `code` dentro del contexto de depuración de V8.
-* Se actualizó `vm.createContext(sandbox)` para "contextualizar" el entorno de pruebas, haciéndolo apto para su uso como global para los scripts de la `vm`, y luego devolverla. Ya no crea un objeto de contexto separado.
-* Se actualizó la mayoría de los métodos de la `vm` y `vm.Script` para que acepten un objeto de `options`, permitiendo la configuración de un tiempo de espera para el script, el comportamiento de la visualización de los errores, y, algunas veces, el nombre de archivo (para los stack traces).
-* Habiendo sido actualizado el objeto del entorno de pruebas suministrado para ser utilizado directamente como el global, remover la copia, susceptible a errores, de propiedades hacia atrás y hacia adelante entre el objeto del entorno de pruebas proporcionado y el global que aparece dentro de los scripts ejecutados por el módulo `vm`.
+* Added `vm.isContext(object)` method to determine whether `object` has been contextified.
+* Added `vm.runInDebugContext(code)` method to compile and execute `code` inside the V8 debug context.
+* Updated `vm.createContext(sandbox)` to "contextify" the sandbox, making it suitable for use as a global for `vm` scripts, and then return it. It no longer creates a separate context object.
+* Updated most `vm` and `vm.Script` methods to accept an `options` object, allowing you to configure a timeout for the script, the error display behavior, and sometimes the filename (for stack traces).
+* Updated the supplied sandbox object to be used directly as the global, remove error-prone copying of properties back and forth between the supplied sandbox object and the global that appears inside the scripts run by the `vm` module.
 
-Para más información, consulte la documentación de la `vm` referida anteriormente.
+For more information, see the `vm` documentation linked above.
 
 ### zlib
 
 https://iojs.org/api/zlib.html
 
-* Se añadió soporte para que `zlib.flush` especifique un método de vaciado particular (estableciéndose por defecto `Z_FULL_FLUSH`).
-* Se añadió soporte para que `zlib.params` actualice dinámicamente el nivel de compresión y la estrategia al desinflarse.
-* Se añadieron versiones sincrónicas de los métodos de zlib.
+* Added support for `zlib.flush` to specify a particular flush method (defaulting to `Z_FULL_FLUSH`).
+* Added support for `zlib.params` to dynamically update the compression level and strategy when deflating.
+* Added synchronous versions of the zlib methods.
 
-### Cambios de la API de C++
+### C++ API Changes
 
 https://iojs.org/api/addons.html
 
-En general, se recomienda que utilice [NAN](https://github.com/rvagg/nan) como una capa de compatibilidad para sus complementos. Esto también ayudará con cambios futuros en la API de C++ de V8 y Node/io.js. La mayor parte de los cambios listados a continuación ya son manejados por envoltorios específicos de NAN.
+In general it is recommended that you use [NAN](https://github.com/rvagg/nan) as a compatibility layer for your addons. This will also help with future changes in the V8 and Node/io.js C++ API. Most of the following changes are already handled by NAN-specific wrappers.
 
-#### Destacados de V8
+#### V8 highlights
 
-* La firma del método expuesto ha cambiado de `Handle<Value> Method(const Arguments& args)` a `void Method(const v8::FunctionCallbackInfo<Value>& args)`, con la recientemente introducida `FunctionCallbackInfo` también tomando el valor de retorno a través de `args.GetReturnValue().Set(value)` en lugar de `scope.Close(value)`, `Arguments` ha sido removida.
-* La firma del setter expuesto ha cambiado de `void Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<void>& args)`.
-* La firma del getter expuesta ha cambiado de `void Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-* La firma del setter de la propiedad expuesta ha cambiado de `Handle<Value> Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-* La firma del getter de la propiedad ha cambiado de `Handle<Value> Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
-* Se han realizado cambios similares a los enumeradores de propiedades, eliminadores de propiedades, consulta de propiedades, getter de índice, setter de índice, enumerador de índice, eliminador de índice, consulta de índice.
-* Ahora los objetos de V8 instanciados en C++ requieren un argumento `Isolate*` como el primer argumento. En la mayoría de los casos, está bien sencillamente pasar `v8::Isolate::GetCurrent()`, p. ej., `Date::New(Isolate::GetCurrent(), time)`, o `String::NewFromUtf8(Isolate::GetCurrent(), "foobar")`.
-* Ahora `HandleScope scope` requiere un argumento `Isolate*`, es decir, `HandleScope scope(isolate)`. En la mayor parte de los casos, `v8::Isolate::GetCurrent()` está bien.
-* Se han hecho cambios similares a `Locker` y `Unlocker`.
-* Los objetos de V8 que necesiten "escapar" a un ámbito deberían estar dentro de un `EscapableHandleScope` y no un `HandleScope`, y ser devueltos con `scope.Escape(value)`.
-* Ahora las excepciones son arrojadas desde los isolates con `isolate->ThrowException(ExceptionObject)`.
-* Ahora `Context::GetCurrent()` debe ser realizada sobre un isolate, por ejemplo, `Isolate::GetCurrent()->GetCurrentContext()`.
-* `String::NewSymbol()` ha sido eliminada, utilice strings sencillas en su lugar.
-* `String::New()` ha sido eliminada, utilice `String::NewFromUtf8()` en su lugar.
-* Los objetos `Persistent` ya no heredan desde `Handle` y no pueden ser instanciados con otros objetos. En vez de esto, el `Persistent` debería ser, sencillamente, declarado. Por ejemplo: `Persistent<Type> handle` y luego asignársele un `Local` mediante `handle.Reset(isolate, value)`. Para obtener un `Local` desde un `Persistent`, debe instanciarlo como el argumento, es decir, `Local::New(Isolate*, Persistent)`.
+* Exposed method signature has changed from `Handle<Value> Method(const Arguments& args)` to `void Method(const v8::FunctionCallbackInfo<Value>& args)` with the newly introduced `FunctionCallbackInfo` also taking the return value via `args.GetReturnValue().Set(value)` instead of `scope.Close(value)`, `Arguments` has been removed.
+* Exposed setter signature has changed from `void Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<void>& args)`.
+* Exposed getter signature has changed from `void Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Exposed property setter signature has changed from `Handle<Value> Setter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Setter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Exposed property getter signature has changed from `Handle<Value> Getter(Local<String> property, Local<Value> value, const v8::AccessorInfo& args)` `void Getter(Local<String> property, Local<Value> value, const v8::PropertyCallbackInfo<Value>& args)`.
+* Similar changes have been made to property enumerators, property deleters, property query, index getter, index setter, index enumerator, index deleter, index query.
+* V8 objects instantiated in C++ now require an `Isolate*` argument as the first argument. In most cases it is OK to simply pass `v8::Isolate::GetCurrent()`, e.g. `Date::New(Isolate::GetCurrent(), time)`, or `String::NewFromUtf8(Isolate::GetCurrent(), "foobar")`.
+* `HandleScope scope` now requires an `Isolate*` argument, i.e. `HandleScope scope(isolate)`, in most cases `v8::Isolate::GetCurrent()` is OK.
+* Similar changes have been made to `Locker` and `Unlocker`.
+* V8 objects that need to "escape" a scope should be enclosed in a `EscapableHandleScope` rather than a `HandleScope` and should be returned with `scope.Escape(value)`.
+* Exceptions are now thrown from isolates with `isolate->ThrowException(ExceptionObject)`.
+* `Context::GetCurrent()` must now be done on an isolate, e.g. `Isolate::GetCurrent()->GetCurrentContext()`.
+* `String::NewSymbol()` has been removed, use plain strings instead.
+* `String::New()` has been removed, use `String::NewFromUtf8()` instead.
+* `Persistent` objects no longer inherit from `Handle` and cannot be instantiated with another object. Instead, the `Persistent` should simply be declared, e.g. `Persistent<Type> handle` and then have a `Local` assigned to it with `handle.Reset(isolate, value)`. To get a `Local` from a `Persistent` you must instantiate it as the argument, i.e. `Local::New(Isolate*, Persistent)`.
 
 #### Node / io.js
 
-* Se actualizó `node::Buffer::New()` para que devuelva directamente un `Handle`, de modo que ya no necesite encargarse usted de buscar la propiedad `handle_`.
-* Se actualizó `node::MakeCallback()` para que requiera un `Isolate*` como el primer argumento. Generalmente `Isolate::GetCurrent()` estará bien para esto.
+* Updated `node::Buffer::New()` to return a `Handle` directly so you no longer need to fetch the `handle_` property.
+* Updated `node::MakeCallback()` to require an `Isolate*` as the first argument. Generally `Isolate::GetCurrent()` will be OK for this.
