@@ -134,7 +134,7 @@ Floating patches are applied at `configure` time. The "patch" files are used ins
 
 Patches are tied to a specific ICU version. They won’t apply to a future ICU version.  We assume that you filed a bug against [ICU](http://icu-project.org) and upstreamed the fix, so the patch won’t be needed in a later ICU version.
 
-### Exemplo
+### Example
 
 For example, to patch `source/tools/toolutil/pkg_genc.cpp` for ICU version 63:
 
@@ -175,6 +175,6 @@ Especially given the V8 dependencies above, there may be times when a floating p
 
 1. **Repeatability.** Given the complexity of merging in a new ICU version, following the steps above in the prior section of this document ought to be repeatable without concern for overriding a patch.
 
-2. **Verifiability.** Given the number of files modified in an ICU PR, a floating patch could easily be missed — or dropped altogether next time something is landed.
+2. **Verifiability.** Given the number of files modified in an ICU PR, a floating patch could easily be missed or dropped altogether next time something is landed.
 
 3. **Compatibility.** There are a number of ways that ICU can be loaded into Node.js (see the top level README.md). Only modifying `icu-small` would cause the patch not to be landed in case the user specifies the ICU source code another way.
