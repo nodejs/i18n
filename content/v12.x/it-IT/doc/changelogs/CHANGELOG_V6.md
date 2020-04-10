@@ -61,7 +61,7 @@
 </tr>
 </table>
 
-* Altre versioni
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -73,7 +73,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v6 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2018 and maintained until April 2019.
 
@@ -83,7 +83,7 @@
 
 Node 6 is due to go End-of-Life on 2019-04-30.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **http**:
   * fix error check in `Execute()` (Brian White) [#25939](https://github.com/nodejs/node/pull/25939)
@@ -114,7 +114,7 @@ Fixes for the following CVEs are included in this release:
 * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
 * OpenSSL: 0-byte record padding oracle (CVE-2019-1559)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: OpenSSL has been upgraded to 1.0.2r which contains a fix for [CVE-2019-1559](https://www.openssl.org/news/secadv/20190226.txt). Under certain circumstances, a TLS server can be forced to respond differently to a client if a zero-byte record is received with an invalid _padding_ compared to a zero-byte record with an invalid _MAC_. This can be used as the basis of a padding oracle attack to decrypt data.
 * **http**:
@@ -141,7 +141,7 @@ Fixes for the following CVEs are included in this release:
 
 The 6.15.0 security release introduced some unexpected breakages on the 6.x release line. This is a special release to fix a regression in the HTTP binary upgrade response body and add a missing CLI flag to adjust the max header size of the http parser.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **cli**:
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -159,7 +159,7 @@ The 6.15.0 security release introduced some unexpected breakages on the 6.x rele
 
 ## 2018-12-03, Version 6.15.1 'Boron' (LTS), @rvagg
 
-### Modifiche di rilievo
+### Notable Changes
 
 This is a patch release to address a bad backport of the fix for "Slowloris HTTP Denial of Service" (CVE-2018-12122). Node.js 6.15.0 misapplies the headers timeout to an entire keep-alive HTTP session, resulting in prematurely disconnected sockets.
 
@@ -187,7 +187,7 @@ Fixes for the following CVEs are included in this release:
 * OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734)
 * OpenSSL: Microarchitecture timing vulnerability in ECC scalar multiplication (CVE-2018-5407)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **debugger**: Backport of [nodejs/node#8106](https://github.com/nodejs/node/pull/8106) to prevent the debugger from listening on `0.0.0.0`. It now defaults to `127.0.0.1`. Reported by Ben Noordhuis. (CVE-2018-12120 / Ben Noordhuis).
 * **deps**: Upgrade to OpenSSL 1.0.2q, fixing CVE-2018-0734 and CVE-2018-5407
@@ -228,7 +228,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-0732 (OpenSSL)
 * CVE-2018-12115 (Node.js)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
 * **deps**: Upgrade to OpenSSL 1.0.2p, fixing:
@@ -253,7 +253,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-06-12, Version 6.14.3 'Boron' (LTS), @evanlucas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer** (CVE-2018-7167): Fixes Denial of Service vulnerability where calling Buffer.fill() could hang
 
@@ -265,7 +265,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-04-30, Version 6.14.2 'Boron' (LTS), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **n-api**:
   * n-api has been backported to v6.x. It is being landed as an experimental interface, and as such is landing in a Semver-Patch release. (Gabriel Schulhof) [#19447](https://github.com/nodejs/node/pull/19447)
@@ -503,7 +503,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-29, Version 6.14.1 'Boron' (LTS), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 No additional commits.
 
@@ -521,7 +521,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
@@ -549,7 +549,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-06, Version 6.13.1 'Boron' (LTS), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **http, tls**:
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
@@ -586,7 +586,7 @@ Fixes for the following CVEs are included in this release:
 
 This LTS release comes with 112 commits, 17 of which are considered Semver-Minor. This includes 32 which are doc related, 31 which are test related, 8 which are build / tool related and 1 commit which updates a dependency.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **console**:
   * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
@@ -744,7 +744,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 
 This LTS release comes with 115 commits. This includes 52 which are test related, 40 which are doc related, 12 which are build / tool related and 2 commits which updating a dependency.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**:
   * configure can now be run from any directory (Gibson Fahnestock) [#17321](https://github.com/nodejs/node/pull/17321)
@@ -878,7 +878,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2017-15896
 * CVE-2017-3738 (from the openssl project)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**:
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -899,7 +899,7 @@ Fixes for the following CVEs are included in this release:
 
 This LTS release comes with 263 commits. This includes 173 which are test related, 41 which are doc related, 18 which are build / tool related and 1 commit which is an update to a dependency.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**:
   * fix npm install with --shared (Ben Noordhuis) [#16438](https://github.com/nodejs/node/pull/16438)
@@ -1182,7 +1182,7 @@ This LTS release comes with 127 commits. This includes 45 which are test related
 
 This release includes a security update to openssl that has been deemed low severity for the Node.js project.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **assert**:
   * assert.fail() can now take one or two arguments (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
@@ -1344,7 +1344,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/oct-2017-dos/ for details on patched vulnerabilities.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **zlib**:
   * CVE-2017-14919 - In zlib v1.2.9, a change was made that causes an error to be raised when a raw deflate stream is initialized with windowBits set to 8. On some versions this crashes Node and you cannot recover from it, while on some versions it throws an exception. Node.js will now gracefully set windowBits to 9 replicating the legacy behavior to avoid a DOS vector. [nodejs-private/node-private#95](https://github.com/nodejs-private/node-private/pull/95)
@@ -1359,7 +1359,7 @@ This is a security release. All Node.js users should consult the security releas
 
 This LTS release comes with 91 commits. This includes 29 which are test related, 28 which are doc related, 11 which are build / tool related and 3 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **net**:
   * support passing undefined to listen() to match behavior in v4.x and v8.x (Sam Roberts) [#14234](https://github.com/nodejs/node/pull/14234)
@@ -1464,7 +1464,7 @@ This LTS release comes with 91 commits. This includes 29 which are test related,
 
 This LTS release comes with 152 commits. This includes 75 which are test related, 25 which are doc related, 21 which are build / tool related and 3 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**:
   * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
@@ -1636,7 +1636,7 @@ This LTS release comes with 152 commits. This includes 75 which are test related
 
 This LTS release comes with 221 commits. This includes 80 which are test related, 52 which are doc related, 32 which are build / tool related and 10 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **configure**:
   * add mips64el to valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
@@ -1882,7 +1882,7 @@ This LTS release comes with 221 commits. This includes 80 which are test related
 
 This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**:
   * Disable V8 snapshots - The hashseed embedded in the snapshot is currently the same for all runs of the binary. This opens node up to collision attacks which could result in a Denial of Service. We have temporarily disabled snapshots until a more robust solution is found (Ali Ijaz Sheikh)
@@ -1902,7 +1902,7 @@ This is a security release. All Node.js users should consult the security releas
 
 This LTS release comes with 126 commits. This includes 40 which are test related, 32 which are doc related, 12 which are build / tool related and 4 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**:
   * support for building mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
@@ -2064,7 +2064,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
 
 ## 2017-05-02, Version 6.10.3 'Boron' (LTS), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **module**:
   * The [module loading global fallback](https://nodejs.org/dist/latest-v4.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows.  (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
@@ -2596,7 +2596,7 @@ This LTS release comes with 297 commits. This includes 124 which are test relate
 
 This LTS release comes with 168 commits. This includes 85 which are test related, 34 which are doc related, 12 commits which are updates to dependencies and 5 which are build / tool related.
 
-### Modifiche di rilievo
+### Notable Changes
 
 The SEMVER-MINOR changes include:
 
@@ -2789,7 +2789,7 @@ This is a security release of the 'Boron' release line to upgrade OpenSSL to ver
 
 Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: upgrade openssl sources to 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
 
@@ -2809,7 +2809,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 This is a special release that contains 0 commits. While promoting additional platforms for v6.9.3 after the release, the tarballs on the release server were overwritten and now have different shasums. In order to remove any ambiguity around the release we have opted to do a semver patch release with no changes.
 
-### Modifiche di rilievo
+### Notable Changes
 
 N/A
 
@@ -2823,7 +2823,7 @@ N/A
 
 This LTS release comes with 312 commits. This includes 229 that are test related, 62 that are docs related, 17 which are build / tools related, and 4 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build**: shared library support is now working for AIX builds (Stewart Addison) [#9675](https://github.com/nodejs/node/pull/9675)
 * **deps**:
@@ -3158,7 +3158,7 @@ This LTS release comes with 312 commits. This includes 229 that are test related
 
 This LTS release comes with 144 commits. This includes 47 that are docs related, 46 that are test related, 15 which are build / tools related, and 9 commits which are updates to dependencies.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: coerce slice parameters consistently (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
 * **deps**:
@@ -4727,7 +4727,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 ## 2016-05-05, Version 6.1.0 (Current), @Fishrock123
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **assert**: `deep{Strict}Equal()` now works correctly with circular references. (Rich Trott) [#6432](https://github.com/nodejs/node/pull/6432)
 * **debugger**: Arrays are now formatted correctly in the debugger repl. (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
@@ -4838,7 +4838,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Eventi
+* Events
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
 * File System
@@ -4848,19 +4848,19 @@ The following significant changes have been made since the previous Node.js v5.0
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Moduli
+* Modules
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
-* Rete
+* Net
   * DNS hints no longer implicitly set [#6021](https://github.com/nodejs/node/pull/6021).
   * Improved error handling and type checking [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
 * npm
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Percorso
+* Path
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Processo
+* Process
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring
