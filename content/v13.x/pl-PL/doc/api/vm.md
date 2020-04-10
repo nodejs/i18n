@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -213,6 +213,45 @@ for (let i = 0; i < 1000; ++i) {
 console.log(globalVar);
 
 // 1000
+```
+
+## `vm.measureMemory([options])`
+
+<!-- YAML
+added: v13.10.0
+-->
+
+> Stabilność: 1 - Eksperymentalne
+
+Measure the memory known to V8 and used by the current execution context or a specified context.
+
+* `options` {Object} Optional.
+  * `mode` {string} Either `'summary'` or `'detailed'`. **Default:** `'summary'`
+  * `context` {Object} Optional. A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object returned by `vm.createContext()`. If not specified, measure the memory usage of the current context where `vm.measureMemory()` is invoked.
+* Returns: {Promise} If the memory is successfully measured the promise will resolve with an object containing information about the memory usage.
+
+The format of the object that the returned Promise may resolve with is specific to the V8 engine and may change from one version of V8 to the next.
+
+The returned result is different from the statistics returned by `v8.getHeapSpaceStatistics()` in that `vm.measureMemory()` measures the memory reachable by V8 from a specific context, while `v8.getHeapSpaceStatistics()` measures the memory used by an instance of V8 engine, which can switch among multiple contexts that reference objects in the heap of one engine.
+
+```js
+const vm = require('vm');
+// Measure the memory used by the current context and return the result
+// in summary.
+vm.measureMemory({ mode: 'summary' })
+  // Is the same as vm.measureMemory()
+  .then((result) => {
+    // The current format is:
+    // { total: { jsMemoryEstimate: 2211728, jsMemoryRange: [ 0, 2211728 ] } }
+    console.log(result);
+  });
+
+const context = vm.createContext({});
+vm.measureMemory({ mode: 'detailed' }, context)
+  .then((result) => {
+    // At the moment the detailed format is the same as the summary one.
+    console.log(result);
+  });
 ```
 
 ## Class: `vm.Module`
@@ -783,7 +822,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Na przykład:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
