@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
@@ -751,7 +751,7 @@ added: v0.1.90
 * `callback` {Function}
 * Returns: {boolean}
 
-Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
+Sends data on the socket. The second parameter specifies the encoding in the case of a string. It defaults to UTF8 encoding.
 
 Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. [`'drain'`][] will be emitted when the buffer is again free.
 
