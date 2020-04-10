@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. On peut y accéder en utilisant :
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -250,7 +250,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Retourne : {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -748,7 +748,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Renvoie : {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -952,7 +952,7 @@ The `TextDecoder` class is also available on the global object.
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `TypedArray` instance containing the encoded data.
 * `options` {Object}
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Retourne : {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -997,7 +997,7 @@ The `TextEncoder` class is also available on the global object.
 ### `textEncoder.encode([input])`
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Renvoie : {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -1038,7 +1038,7 @@ The result generally does not make any guarantees about what kinds of properties
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
@@ -1055,7 +1055,7 @@ util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an `arguments` object.
@@ -1067,7 +1067,7 @@ function foo() {
 
 ### `util.types.isArrayBuffer(value)`<!-- YAML
 added: v10.0.0
--->* `valeur` {any}
+-->* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
@@ -1082,7 +1082,7 @@ util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
@@ -1097,7 +1097,7 @@ util.types.isAsyncFunction(async function foo() {});  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a `BigInt64Array` instance.
@@ -1112,7 +1112,7 @@ util.types.isBigInt64Array(new BigUint64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a `BigUint64Array` instance.
@@ -1127,7 +1127,7 @@ util.types.isBigUint64Array(new BigUint64Array());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
@@ -1143,7 +1143,7 @@ util.types.isBooleanObject(Boolean(true));  // Returns false
 
 ### `util.types.isBoxedPrimitive(value)`<!-- YAML
 added: v10.11.0
--->* `valeur` {any}
+-->* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
@@ -1160,7 +1160,7 @@ util.types.isBoxedPrimitive(Object(BigInt(5))); // Returns true
 
 ### `util.types.isDataView(value)`<!-- YAML
 added: v10.0.0
--->* `valeur` {any}
+-->* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
@@ -1178,7 +1178,7 @@ See also [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Date`][] instance.
@@ -1192,7 +1192,7 @@ util.types.isDate(new Date());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a native `External` value.
@@ -1202,7 +1202,7 @@ Returns `true` if the value is a native `External` value.
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float32Array`][] instance.
@@ -1218,7 +1218,7 @@ util.types.isFloat32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float64Array`][] instance.
@@ -1234,7 +1234,7 @@ util.types.isFloat64Array(new Float64Array());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
@@ -1249,7 +1249,7 @@ util.types.isGeneratorFunction(function* foo() {});  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a generator object as returned from a built-in generator function. This only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
@@ -1265,7 +1265,7 @@ util.types.isGeneratorObject(generator);  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int8Array`][] instance.
@@ -1281,7 +1281,7 @@ util.types.isInt8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int16Array`][] instance.
@@ -1297,7 +1297,7 @@ util.types.isInt16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int32Array`][] instance.
@@ -1313,7 +1313,7 @@ util.types.isInt32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Map`][] instance.
@@ -1327,7 +1327,7 @@ util.types.isMap(new Map());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
@@ -1345,7 +1345,7 @@ util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
@@ -1360,7 +1360,7 @@ util.types.isModuleNamespaceObject(ns);  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an instance of a built-in [`Error`][] type.
@@ -1373,7 +1373,7 @@ util.types.isNativeError(new RangeError());  // Returns true
 
 ### `util.types.isNumberObject(value)`<!-- YAML
 added: v10.0.0
--->* `valeur` {any}
+-->* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
@@ -1388,7 +1388,7 @@ util.types.isNumberObject(new Number(0));   // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Promise`][].
@@ -1402,7 +1402,7 @@ util.types.isPromise(Promise.resolve(42));  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a [`Proxy`][] instance.
@@ -1419,7 +1419,7 @@ util.types.isProxy(proxy);  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a regular expression object.
@@ -1434,7 +1434,7 @@ util.types.isRegExp(new RegExp('abc'));  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Set`][] instance.
@@ -1448,7 +1448,7 @@ util.types.isSet(new Set());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
@@ -1466,7 +1466,7 @@ util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
@@ -1481,7 +1481,7 @@ util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a string object, e.g. created by `new String()`.
@@ -1496,7 +1496,7 @@ util.types.isStringObject(new String('foo'));   // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
@@ -1512,7 +1512,7 @@ util.types.isSymbolObject(Object(symbol));   // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`TypedArray`][] instance.
@@ -1530,7 +1530,7 @@ See also [`ArrayBuffer.isView()`][].
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8Array`][] instance.
@@ -1546,7 +1546,7 @@ util.types.isUint8Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
@@ -1562,7 +1562,7 @@ util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint16Array`][] instance.
@@ -1578,7 +1578,7 @@ util.types.isUint16Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint32Array`][] instance.
@@ -1594,7 +1594,7 @@ util.types.isUint32Array(new Float64Array());  // Returns false
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
@@ -1608,7 +1608,7 @@ util.types.isWeakMap(new WeakMap());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakSet`][] instance.
@@ -1622,7 +1622,7 @@ util.types.isWeakSet(new WeakSet());  // Returns true
 added: v10.0.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
@@ -1632,7 +1632,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## APIs obsolètes
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -1928,7 +1928,7 @@ util.isPrimitive(new Date());
 ### `util.isRegExp(object)`<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stabilité : 0 - obsolète
+-->> Stability: 0 - Deprecated
 
 * `object` {any}
 * Returns: {boolean}
