@@ -1,4 +1,4 @@
-# وحدات ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
