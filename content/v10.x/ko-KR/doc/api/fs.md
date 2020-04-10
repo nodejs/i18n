@@ -1,8 +1,8 @@
-# 파일 시스템
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -135,7 +135,7 @@ On Windows, Node.js follows the concept of per-drive working directory. This beh
 
 <!-- YAML
 added: v7.6.0
---> For most
+--> For most 
 
 `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -990,7 +990,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1042,7 +1042,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1349,7 +1349,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
@@ -1418,7 +1418,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
@@ -1678,7 +1678,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
@@ -1699,7 +1699,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {fs.Stats}
 
@@ -2009,7 +2009,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
@@ -2034,7 +2034,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {fs.Stats}
 
@@ -2065,7 +2065,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
 * `callback` {Function} 
@@ -2109,7 +2109,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
 
@@ -2137,7 +2137,7 @@ changes:
 -->
 
 * `prefix` {string}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2192,7 +2192,7 @@ added: v5.10.0
 -->
 
 * `prefix` {string}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string}
 
@@ -2333,7 +2333,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
 * `callback` {Function} 
@@ -2362,7 +2362,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
 * Returns: {string[]|Buffer[]|fs.Dirent[]}
@@ -2401,7 +2401,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * `callback` {Function} 
@@ -2465,7 +2465,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {string|Buffer}
@@ -2508,7 +2508,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2532,7 +2532,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2597,7 +2597,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2628,7 +2628,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2667,7 +2667,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2682,7 +2682,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string|Buffer}
 
@@ -2820,7 +2820,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
@@ -2851,7 +2851,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {fs.Stats}
 
@@ -3099,7 +3099,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
@@ -3181,7 +3181,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function} 
@@ -3336,7 +3336,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|TypedArray|DataView}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3389,7 +3389,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|TypedArray|DataView}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
@@ -3469,7 +3469,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3575,7 +3575,7 @@ Following successful read, the `Promise` is resolved with an object with a `byte
 added: v10.0.0
 -->
 
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -3604,7 +3604,7 @@ changes:
                  the numeric values returned should be bigint.
 -->
 
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {Promise}
 
@@ -3755,7 +3755,7 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3806,7 +3806,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -3941,7 +3941,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {Promise}
 
@@ -3954,7 +3954,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
 * Returns: {Promise}
@@ -3970,7 +3970,7 @@ added: v10.0.0
 -->
 
 * `prefix` {string}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -4019,7 +4019,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
 * Returns: {Promise}
@@ -4037,7 +4037,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * Returns: {Promise}
@@ -4059,7 +4059,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -4074,7 +4074,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
@@ -4124,7 +4124,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * Returns: {Promise}
 
@@ -4194,7 +4194,7 @@ added: v10.0.0
 
 * `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer|Uint8Array}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
