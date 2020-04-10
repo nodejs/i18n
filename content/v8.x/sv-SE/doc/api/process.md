@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Exempel:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Exempel:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Exempel:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Exempel:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
