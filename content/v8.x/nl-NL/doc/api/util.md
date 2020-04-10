@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Het kan worden bereikt met behulp van:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -40,7 +40,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-hallo wereld
+hello world
 ```
 
 *Note*:
@@ -180,7 +180,7 @@ added: v8.12.0
 -->
 
 * `err` {number}
-* Retourneert: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -278,12 +278,12 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or Object.
-* `opties` {Object} 
+* `options` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Default:** `true`.
-  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Standaard:** `false`.
+  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Default:** `100`.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
 
@@ -406,7 +406,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Retourneert: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -569,18 +569,18 @@ Different Node.js build configurations support different sets of encodings. Whil
 ### new TextDecoder([encoding[, options]])
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
-* `opties` {Object} 
+* `options` {Object} 
   * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Standaard:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
 Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
-* `opties` {Object} 
-  * `stream` {boolean} `true` if additional chunks of data are expected. **Standaard:** `false`.
-* Retourneert: {string}
+* `options` {Object} 
+  * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -620,7 +620,7 @@ const uint8array = encoder.encode('this is some data');
 ### textEncoder.encode([input])
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Retourneert: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## Afgekeurde API's
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -654,7 +654,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -667,7 +667,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -1096,7 +1096,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
@@ -1107,6 +1107,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
