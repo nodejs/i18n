@@ -1,9 +1,9 @@
-# ECMAScript Ενότητες
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -17,7 +17,7 @@ Node.js contains support for ES Modules based upon the [Node.js EP for ES Module
 
 Expect major changes in the implementation including interoperability support, specifier resolution, and default behavior.
 
-## Ενεργοποίηση
+## Enabling
 
 <!-- type=misc -->
 
@@ -555,7 +555,7 @@ This behavior matches how `import` behaves in browser environments, assuming a t
 
 ### No `NODE_PATH`
 
-Το `NODE_PATH` δεν είναι μέρος της επίλυσης των προσδιοριστών `import`. Please use symlinks if this behavior is desired.
+`NODE_PATH` is not part of resolving `import` specifiers. Please use symlinks if this behavior is desired.
 
 ### No `require`, `exports`, `module.exports`, `__filename`, `__dirname`
 
@@ -594,13 +594,13 @@ Former use cases relying on `require.resolve` to determine the resolved path of 
 
 This function is asynchronous since the ES module resolver in Node.js is asynchronous. With the introduction of [Top-Level Await](https://github.com/tc39/proposal-top-level-await), these use cases will be easier as they won't require an async function wrapper.
 
-### Δεν υπάρχει `require.extensions`
+### No `require.extensions`
 
-Το `require.extensions` δεν χρησιμοποιείται από το `import`. The expectation is that loader hooks can provide this workflow in the future.
+`require.extensions` is not used by `import`. The expectation is that loader hooks can provide this workflow in the future.
 
-### Δεν υπάρχει `require.cache`
+### No `require.cache`
 
-Το `require.cache` δε χρησιμοποιείται από το `import`. Έχει ξεχωριστή προσωρινή μνήμη.
+`require.cache` is not used by `import`. It has a separate cache.
 
 ### URL-based paths
 
@@ -613,7 +613,7 @@ import './foo.mjs?query=1'; // loads ./foo.mjs with query of "?query=1"
 import './foo.mjs?query=2'; // loads ./foo.mjs with query of "?query=2"
 ```
 
-Προς το παρόν, μόνο ενότητες που χρησιμοποιούν το πρωτόκολλο `file:` μπορούν να φορτωθούν.
+For now, only modules using the `file:` protocol can be loaded.
 
 ## Interoperability with CommonJS
 
@@ -782,14 +782,14 @@ export async function resolve(specifier, context, defaultResolve) {
 
 > Note: The loaders API is being redesigned. This hook may disappear or its signature may change. Do not rely on the API described below.
 
-The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. Αυτή μπορεί να είναι μια από τις παρακάτω:
+The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `μορφή`      | Περιγραφή                                                                |
+| `format`     | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
 | `'dynamic'`  | Use a [dynamic instantiate hook](#esm_code_dynamicinstantiate_code_hook) |
-| `'json'`     | Φόρτωση ενός αρχείου JSON                                                |
+| `'json'`     | Load a JSON file                                                         |
 | `'module'`   | Load a standard JavaScript module (ES module)                            |
 | `'wasm'`     | Load a WebAssembly module                                                |
 
@@ -974,7 +974,7 @@ import { VERSION } from 'https://coffeescript.org/browser-compiler-modern/coffee
 console.log(VERSION);
 ```
 
-Με αυτόν το φορτωτή, τρέχοντας την εντολή:
+With this loader, running:
 
 ```console
 node --experimental-loader ./https-loader.mjs ./main.js
@@ -1055,7 +1055,7 @@ console.log "Brought to you by Node.js version #{version}"
 export scream = (str) -> str.toUpperCase()
 ```
 
-Με αυτόν το φορτωτή, τρέχοντας την εντολή:
+With this loader, running:
 
 ```console
 node --experimental-loader ./coffeescript-loader.mjs main.coffee
@@ -1065,7 +1065,7 @@ Will cause `main.coffee` to be turned into JavaScript after its source code is l
 
 ## Resolution Algorithm
 
-### Χαρακτηριστικά
+### Features
 
 The resolver has the following properties:
 
