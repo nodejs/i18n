@@ -1,8 +1,8 @@
-# Ενδιάμεση Μνήμη
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`][], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -757,7 +757,7 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
@@ -767,7 +767,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} A character encoding name to check.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
 
@@ -997,7 +997,7 @@ changes:
 -->
 
 * `otherBuffer` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`][] with which to compare `buf`.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
@@ -1323,7 +1323,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Επιστρέφει: {bigint}
+* Returns: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified endian format (`readBigInt64BE()` returns big endian, `readBigInt64LE()` returns little endian).
 
@@ -1336,7 +1336,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Επιστρέφει: {bigint}
+* Returns: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with specified endian format (`readBigUInt64BE()` returns big endian, `readBigUInt64LE()` returns little endian).
 
@@ -1815,7 +1815,7 @@ JavaScript cannot encode 64-bit integers. This method is intended for working wi
 added: v0.9.2
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`][] implicitly calls this function when stringifying a `Buffer` instance.
 
@@ -1844,7 +1844,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`][].
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`. If a byte sequence in the input is not valid in the given `encoding` then it is replaced with the replacement character `U+FFFD`.
 
