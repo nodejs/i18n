@@ -45,6 +45,8 @@ The first argument passed to `E()` is the static identifier. The second argument
 
 It is possible to create multiple derived classes by providing additional arguments. The other ones will be exposed as properties of the main class:
 
+<!-- eslint-disable no-unreachable -->
+
 ```js
 E('EXAMPLE_KEY', 'Error message', TypeError, RangeError);
 
@@ -100,6 +102,6 @@ Exposes all internal error classes to be used by Node.js APIs.
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Возвращает: {string}
+* Returns: {string}
 
 Returns the formatted error message string for the given `key`.
