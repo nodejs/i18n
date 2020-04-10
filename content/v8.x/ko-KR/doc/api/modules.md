@@ -1,8 +1,8 @@
-# 모듈
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -498,7 +498,7 @@ changes:
 -->
 
 * `request` {string} The module path to resolve.
-* `옵션` {Object} 
+* `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
 * Returns: {string}
 
