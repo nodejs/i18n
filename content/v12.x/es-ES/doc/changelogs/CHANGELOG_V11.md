@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Actual</th>
+<th>Current</th>
 </tr>
 <tr>
 <td>
@@ -29,7 +29,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
@@ -41,13 +41,13 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="11.14.0"></a>
 
 ## 2019-04-11, Version 11.14.0 (Current), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 * **child_process**: doc deprecate ChildProcess.\_channel (cjihrig) [#26982](https://github.com/nodejs/node/pull/26982)
 * **deps**: update nghttp2 to 1.37.0 (gengjiawen) [#26990](https://github.com/nodejs/node/pull/26990)
@@ -198,7 +198,7 @@
 
 ## 2019-03-28, Version 11.13.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
@@ -388,7 +388,7 @@
 
 ## 2019-03-15, Version 11.12.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **bootstrap**:
   * Add experimental `--frozen-intrinsics` flag (Guy Bedford) [#25685](https://github.com/nodejs/node/pull/25685)
@@ -564,7 +564,7 @@
 
 ## 2019-03-06, Version 11.11.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **n-api**:
   * Implement date object (Jarrod Connolly) [#25917](https://github.com/nodejs/node/pull/25917)
@@ -792,7 +792,7 @@
 
 ## 2019-02-28, Version 11.10.1 (Current), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
   https://nodejs.org/en/blog/vulnerability/february-2019-security-releases/
 
@@ -802,7 +802,7 @@ A fix for the following CVE is included in this release:
 
 * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
 
-### Cambios Notables
+### Notable Changes
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -814,7 +814,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-02-14, Version 11.10.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * Updated libuv to 1.26.0. [#26037](https://github.com/nodejs/node/pull/26037)
@@ -1059,7 +1059,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-30, Version 11.9.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * OpenSSL has been updated to 1.1.1a, which is API/ABI compatible with the previous OpenSSL 1.1.0j. Note that while OpenSSL 1.1.1a supports TLS1.3, Node.js still does not. [#25381](https://github.com/nodejs/node/pull/25381)
@@ -1149,7 +1149,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-24, Version 11.8.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **events**:
   * For unhandled `error` events with an argument that is not an `Error` object, the resulting exeption will have more information about the argument. [nodejs/node#25621](https://github.com/nodejs/node/pull/25621)
@@ -1261,7 +1261,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-17, Version 11.7.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **compression / zlib**:
   * Added brotli support (Anna Henningsen and Zach Vacura) [#24938](https://github.com/nodejs/node/pull/24938)
@@ -1531,7 +1531,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-26, Version 11.6.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **cli**:
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -1610,7 +1610,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-18, Version 11.5.0 (Current), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **tls**:
   * support "BEGIN TRUSTED CERTIFICATE" for ca: (Sam Roberts) [#24733](https://github.com/nodejs/node/pull/24733)
@@ -1712,7 +1712,7 @@ A fix for the following CVE is included in this release:
 
 ## 2018-12-07, Version 11.4.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **console,util**:
   * `console` functions now handle symbols as defined in the spec. https://github.com/nodejs/node/pull/23708
@@ -2058,13 +2058,13 @@ A fix for the following CVE is included in this release:
 
 ## 2018-11-27, Version 11.3.0 (Current), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
   https://nodejs.org/en/blog/vulnerability/november-2018-security-releases/
 
 for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
 * Node.js: Denial of Service with large HTTP headers (CVE-2018-12121)
 * Node.js: Slowloris HTTP Denial of Service (CVE-2018-12122 / Node.js)
@@ -2072,7 +2072,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 * OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734)
 * OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2019-0735)
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: Upgrade to OpenSSL 1.1.0j, fixing CVE-2018-0734 and CVE-2019-0735
 * **http**:
@@ -2097,7 +2097,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-11-15, Version 11.2.0 (Current), @BridgeAR
 
-### Cambios notables
+### Notable changes
 
 * **deps**:
   * A new experimental HTTP parser (`llhttp`) is now supported. https://github.com/nodejs/node/pull/24059
@@ -2368,7 +2368,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-11-02, Version 11.1.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **deps**
   * Updated ICU to 63.1. [#23715](https://github.com/nodejs/node/pull/23715)
@@ -2467,7 +2467,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-10-23, Version 11.0.0 (Current), @jasnell
 
-### Cambios Notables
+### Notable Changes
 
 * Build
   * FreeBSD 10 is no longer supported. [#22617](https://github.com/nodejs/node/pull/22617)
@@ -2476,7 +2476,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 * `console`
   * `console.countReset()` will emit a warning if the timer being reset does not exist. [#21649](https://github.com/nodejs/node/pull/21649)
   * `console.time()` will no longer reset a timer if it already exists. [#20442](https://github.com/nodejs/node/pull/20442)
-* Dependencias
+* Dependencies
   * V8 has been updated to 7.0. [#22754](https://github.com/nodejs/node/pull/22754)
 * `fs`
   * The `fs.read()` method now requires a callback. [#22146](https://github.com/nodejs/node/pull/22146)
@@ -2489,7 +2489,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 * Internal
   * Windows performance-counter support has been removed. [#22485](https://github.com/nodejs/node/pull/22485)
   * The `--expose-http2` command-line option has been removed. [#20887](https://github.com/nodejs/node/pull/20887)
-* Temporizadores
+* Timers
   * Interval timers will be rescheduled even if previous interval threw an error. [#20002](https://github.com/nodejs/node/pull/20002)
   * `nextTick` queue will be run after each immediate and timer. [#22842](https://github.com/nodejs/node/pull/22842)
 * `util`
@@ -2497,7 +2497,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * `util.inspect()` output size is limited to 128 MB by default. [#22756](https://github.com/nodejs/node/pull/22756)
   * A runtime warning will be emitted when `NODE_DEBUG` is set for either `http` or `http2`. [#21914](https://github.com/nodejs/node/pull/21914)
 
-### Commits de Semver-Major
+### Semver-Major Commits
 
 * [[`0518b9edf3`](https://github.com/nodejs/node/commit/0518b9edf3)] - **(SEMVER-MAJOR)** **assert**: multiple improvements (Ruben Bridgewater) [#21628](https://github.com/nodejs/node/pull/21628)
 * [[`21c3a402d4`](https://github.com/nodejs/node/commit/21c3a402d4)] - **(SEMVER-MAJOR)** **assert**: validate input stricter (Ruben Bridgewater) [#20481](https://github.com/nodejs/node/pull/20481)
