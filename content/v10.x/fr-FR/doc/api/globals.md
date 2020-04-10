@@ -1,10 +1,10 @@
-# Objets Globaux
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Ces objets sont disponibles dans tous les modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,9 +12,9 @@ Ces objets sont disponibles dans tous les modules. The following variables may a
 * [`module`][]
 * [`require()`][]
 
-Les objets listés ici sont spécifiques à Node.js. Il y a un certain nombre d' [objets built-in](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) faisant partie du langage JavaScript lui-même, qui sont également accessibles globalement.
+The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
-## Classe: Buffer
+## Class: Buffer
 
 <!-- YAML
 added: v0.1.103
@@ -24,15 +24,15 @@ added: v0.1.103
 
 * {Function}
 
-Utilisée pour gérer les données binaires. Voir la [section buffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## \_\_dirname
 
-Cette variable peut sembler globale mais ne l'est pas. Voir [`__dirname`].
+This variable may appear to be global but is not. See [`__dirname`].
 
 ## \_\_filename
 
-Cette variable peut sembler globale mais ne l'est pas. Voir [`__filename`].
+This variable may appear to be global but is not. See [`__filename`].
 
 ## clearImmediate(immediateObject)
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] est décrite dans la section [timers](timers.html).
+[`clearImmediate`] is described in the [timers](timers.html) section.
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] est décrite dans la section [timers](timers.html).
+[`clearInterval`] is described in the [timers](timers.html) section.
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] est décrite dans la section [timers](timers.html).
+[`clearTimeout`] is described in the [timers](timers.html) section.
 
 ## console
 
@@ -74,11 +74,11 @@ added: v0.1.100
 
 * {Object}
 
-Utilisé pour écrire vers stdout et stderr. Voir la section [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## exports
 
-Cette variable peut sembler globale mais ne l'est pas. Voir [`exports`].
+This variable may appear to be global but is not. See [`exports`].
 
 ## global
 
@@ -88,13 +88,13 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} L'object correspondant à l'espace de nom global.
+* {Object} The global namespace object.
 
-Dans les navigateurs, la portée la plus haute est la portée globale. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
-Cette variable peut sembler globale mais ne l'est pas. Voir [`module`].
+This variable may appear to be global but is not. See [`module`].
 
 ## process
 
@@ -106,11 +106,11 @@ added: v0.1.7
 
 * {Object}
 
-L'objet process. Voir la section [objet `process`][].
+The process object. See the [`process` object][] section.
 
 ## require()
 
-Cette variable peut sembler globale mais ne l'est pas. Voir [`require()`].
+This variable may appear to be global but is not. See [`require()`].
 
 ## setImmediate(callback[, ...args])
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] est décrite dans la section [timers](timers.html).
+[`setImmediate`] is described in the [timers](timers.html) section.
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] est décrite dans la section [timers](timers.html).
+[`setInterval`] is described in the [timers](timers.html) section.
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,7 +140,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] est décrite dans la section [timers](timers.html).
+[`setTimeout`] is described in the [timers](timers.html) section.
 
 ## URL
 
@@ -150,7 +150,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-La classe `URL` WHATWG. Voir la section [`URL`][].
+The WHATWG `URL` class. See the [`URL`][] section.
 
 ## URLSearchParams
 
@@ -160,7 +160,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-La classe `URLSearchParams` WHATWG. Voir la section [`URLSearchParams`][].
+The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
 
 ## WebAssembly
 
