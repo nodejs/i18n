@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -257,7 +257,7 @@ console.log(util.inspect(sandbox));
 added: v0.11.14
 -->
 
-> Σταθερότητα: 0 - Απαρχαιωμένο. An alternative is in development.
+> Stability: 0 - Deprecated. An alternative is in development.
 
 * `code` {string} The JavaScript code to compile and run.
 
