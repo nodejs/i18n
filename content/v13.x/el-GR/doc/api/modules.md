@@ -1,8 +1,8 @@
-# Ενότητες
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -512,7 +512,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Σταθερότητα: 0 - Απαρχαιωμένο
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -570,7 +570,7 @@ changes:
 -->* `request` {string} The module path to resolve.
 * `options` {Object}
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Σταθερότητα: 1 - Πειραματικό
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
@@ -852,7 +852,7 @@ Creates a new `sourceMap` instance.
 
 #### `sourceMap.payload`
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Getter for the payload used to construct the [`SourceMap`][] instance.
 
@@ -860,7 +860,7 @@ Getter for the payload used to construct the [`SourceMap`][] instance.
 
 * `lineNumber` {number}
 * `columnNumber` {number}
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Given a line number and column number in the generated source file, returns an object representing the position in the original file. The object returned consists of the following keys:
 
