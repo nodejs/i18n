@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. Es kann zugegriffen werden durch:
+The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
 ```js
 const repl = require('repl');
@@ -390,7 +390,7 @@ deprecated: v9.0.0
 * `rest` {any} any parameters to the keyword command
 * Returns: {boolean}
 
-> Stabilität: 0 - Veraltet.
+> Stability: 0 - Deprecated.
 
 An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
