@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -835,7 +835,7 @@ added: v7.6.0
 -->
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
-* `옵션` {Object} 
+* `options` {Object} 
   * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
