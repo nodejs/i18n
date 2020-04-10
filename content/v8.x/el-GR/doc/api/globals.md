@@ -1,10 +1,10 @@
-# Καθολικά Αντικείμενα
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. Οι παρακάτω μεταβλητές μπορεί να φαίνονται ως καθολικές, αλλά δεν είναι. Υπάρχουν μόνο σε πεδία εφαρμογής των ενοτήτων, δείτε την [τεκμηρίωση ενοτήτων συστήματος](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -12,7 +12,7 @@
 * [`module`][]
 * [`require()`][]
 
-Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. Υπάρχει ένας αριθμός από [ενσωματωμένα αντικείμενα](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) που είναι μέρος της γλώσσας της JavaScript, τα οποία είναι επίσης καθολικά προσβάσιμα.
+The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
 
@@ -24,15 +24,15 @@ added: v0.1.103
 
 * {Function}
 
-Χρησιμοποιείται για τον χειρισμό binary δεδομένων. Δείτε την [ενότητα buffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## \_\_dirname
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__dirname`].
+This variable may appear to be global but is not. See [`__dirname`].
 
 ## \_\_filename
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__filename`].
+This variable may appear to be global but is not. See [`__filename`].
 
 ## clearImmediate(immediateObject)
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-Το [`clearImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`clearImmediate`] is described in the [timers](timers.html) section.
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-Το [`clearInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`clearInterval`] is described in the [timers](timers.html) section.
 
 ## clearTimeout(timeoutObject)
 
@@ -62,7 +62,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-Το [`clearTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`clearTimeout`] is described in the [timers](timers.html) section.
 
 ## console
 
@@ -74,11 +74,11 @@ added: v0.1.100
 
 * {Object}
 
-Χρησιμοποιείται για εκτύπωση στο stdout και το stderr. Δείτε την ενότητα [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## exports
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`exports`].
+This variable may appear to be global but is not. See [`exports`].
 
 ## global
 
@@ -88,13 +88,13 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} Το καθολικό αντικείμενο ονομάτων.
+* {Object} The global namespace object.
 
-Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. Αυτό σημαίνει ότι σε ένα πρόγραμμα περιήγησης, ο κώδικας `var something` θα ορίσει μια νέα καθολική μεταβλητή. Στη Node.js αυτό είναι διαφορετικό. Το ανώτατο πεδίο εφαρμογής δεν είναι το καθολικό πεδίο εφαρμογής· ο κώδικας `var something` μέσα σε μια ενότητα Node.js, ορίζει τη μεταβλητή μόνο σε αυτή την ενότητα.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`module`].
+This variable may appear to be global but is not. See [`module`].
 
 ## process
 
@@ -106,11 +106,11 @@ added: v0.1.7
 
 * {Object}
 
-Το αντικείμενο process. Δείτε την ενότητα [Αντικείμενο `process`][].
+The process object. See the [`process` object][] section.
 
 ## require()
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`require()`].
+This variable may appear to be global but is not. See [`require()`].
 
 ## setImmediate(callback[, ...args])
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-Το [`setImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`setImmediate`] is described in the [timers](timers.html) section.
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-Το [`setInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`setInterval`] is described in the [timers](timers.html) section.
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,4 +140,4 @@ added: v0.0.1
 
 <!-- type=global -->
 
-Το [`setTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
+[`setTimeout`] is described in the [timers](timers.html) section.
