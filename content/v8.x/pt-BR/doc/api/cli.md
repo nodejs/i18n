@@ -1,14 +1,14 @@
-# Opções de linha de comando
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js vem com uma variedade de opções CLI. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
-Para ver essa documentação como uma página de manual no terminal, execute `man node `.
+To view this documentation as a manual page in a terminal, run `man node`.
 
-## Sinopse
+## Synopsis
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,11 +16,11 @@ Para ver essa documentação como uma página de manual no terminal, execute `ma
 
 `node --v8-options`
 
-Execute sem argumentos para iniciar o [REPL](repl.html).
+Execute without arguments to start the [REPL](repl.html).
 
-*Para mais informações sobre `node debug`, por favor consulte a documentação de [depurador [debugger]](debugger.html).*
+*For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
 
-## Opções
+## Options
 
 ### `-v`, `--version`
 
@@ -315,7 +315,7 @@ Specify an alternative default TLS cipher list. (Requires Node.js to be built wi
 added: v6.0.0
 -->
 
-Habilite a criptografia compatível com FIPS na inicialização. (Requires Node.js to be built with `./configure --openssl-fips`)
+Enable FIPS-compliant crypto at startup. (Requires Node.js to be built with `./configure --openssl-fips`)
 
 ### `--force-fips`
 
@@ -369,7 +369,7 @@ Alias for stdin, analogous to the use of - in other command line utilities, mean
 added: v7.5.0
 -->
 
-Indica o fim das opções do node. Passa o restante dos argumentos para o script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
+Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
 ### `--max-http-header-size=size`
 
