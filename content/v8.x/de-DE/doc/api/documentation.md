@@ -1,32 +1,32 @@
-# Über diese Dokumentation
+# About this Documentation
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Das Ziel dieser Dokumentation ist es, die Node.js API umfassend zu erklären, sowohl aus Referenz- als auch aus konzeptioneller Sicht. Jeder Abschnitt beschreibt ein eingebautes Modul oder ein Konzept auf hohem Niveau.
+The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
 
 Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
-## Mitwirken
+## Contributing
 
-Wenn in dieser Dokumentation Fehler gefunden werden, senden Sie bitte [ein Problem ein](https://github.com/nodejs/node/issues/new) oder lesen Sie [den Beitrag Anleitung](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) für Anleitungen, wie Sie einen Patch einreichen können.
+If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Jede Datei wird basierend auf der entsprechenden `.md` Datei im Ordner `doc/api/` im Quellbaum von Node.js generiert. Die Dokumentation wird mit dem `tools/doc/generate.js` Programm generiert. Eine HTML-Vorlage befindet sich unter `doc/template.html`.
+Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
-## Stabilitätsindex
+## Stability Index
 
 <!--type=misc-->
 
-Überall in der Dokumentation zeigt die Stabilität eines Abschnitts an. Die Node.js API ändert sich immer noch einigermaßen und da sie reift, sind bestimmte Teile zuverlässiger als andere. Einige sind so bewiesen und sind so darauf angewiesen, dass sie sich nicht jemals bei ändern werden. Andere sind nagelneu und experimentell, oder bekannt als gefährlich und im Prozess der Neugestaltung.
+Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 
-Die Stabilitätsindizes lauten wie folgt:
+The stability indices are as follows:
 
 ```txt
 Stability: 0 - Deprecated
 This feature is known to be problematic, and changes may be planned. Do
 not rely on it. Use of the feature may cause warnings to be emitted.
-Abwärtskompatibilität zwischen Hauptversionen sollte nicht erwartet werden.
+Backwards compatibility across major versions should not be expected.
 ```
 
 ```txt
@@ -43,22 +43,22 @@ The API has proven satisfactory. Compatibility with the npm ecosystem
 is a high priority, and will not be broken unless absolutely necessary.
 ```
 
-*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Endbenutzer können nicht wissen, dass experimentelle Funktionen verwendet werden und kann daher zu unerwarteten Fehlern oder Verhaltensänderungen beim Auftreten von API-Änderungen führen. Um solche Überraschungen zu vermeiden, könnten `Experimental` Features ein Befehlszeilenflag erfordern, um diese explizit zu aktivieren oder kann eine Prozesswarnung auslösen. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
+*Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
-## JSON Ausgabe
+## JSON Output
 
 <!-- YAML
 added: v0.6.12
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
-Jedes `.html` Dokument hat ein passendes `.json` Dokument, dass die selben Informationen in einen strukturierten Verhalten. Diese Funktion ist experimentell und zum Nutzen von IDEs und anderen Hilfsprogrammen hinzugefügt, die programmatische Dinge mit der Dokumentation erledigen möchten.
+Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
-## Syscalls und Man Seiten
+## Syscalls and man pages
 
-Systemaufrufe wie open(2) und read(2) definieren die Schnittstelle zwischen Benutzerprogrammen und dem zugrundeliegenden Betriebssystem. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. Die Dokumentation verlinkt auf den entsprechenden Man Seiten (kurz für manuelle Seiten), die beschreiben, wie die Syscalls funktionieren.
+System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
-Einige Syscalls, wie lchown(2), sind BSD-spezifisch. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
+Some syscalls, like lchown(2), are BSD-specific. That means, for example, that [`fs.lchown()`][] only works on macOS and other BSD-derived systems, and is not available on Linux.
 
-Die meisten Unix Syscalls haben Windows-Äquivalente, aber das Verhalten kann unter Windows relativ zu Linux und macOS variieren. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
+Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
