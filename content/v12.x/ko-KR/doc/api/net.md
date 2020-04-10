@@ -3,7 +3,7 @@
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
