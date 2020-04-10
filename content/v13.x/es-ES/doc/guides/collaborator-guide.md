@@ -14,7 +14,7 @@
   * [Testing and CI](#testing-and-ci)
     * [Useful CI Jobs](#useful-ci-jobs)
     * [Starting a CI Job](#starting-a-ci-job)
-  * [Internal vs. API Pública](#internal-vs-public-api)
+  * [Internal vs. Public API](#internal-vs-public-api)
   * [Breaking Changes](#breaking-changes)
     * [Breaking Changes and Deprecations](#breaking-changes-and-deprecations)
     * [Breaking Changes to Internal Elements](#breaking-changes-to-internal-elements)
@@ -101,7 +101,7 @@ Collaborators should not block a pull request without providing a reason. Anothe
 
 ### Waiting for Approvals
 
-Before landing pull requests, allow 48 hours for input from other Collaborators. Certain types of pull requests can be fast-tracked and may land after a shorter delay. Por ejemplo:
+Before landing pull requests, allow 48 hours for input from other Collaborators. Certain types of pull requests can be fast-tracked and may land after a shorter delay. For example:
 
 * Focused changes that affect only documentation and/or the test suite:
   * `code-and-learn` tasks often fall into this category.
@@ -153,7 +153,7 @@ Look at the list of jobs on the left hand side under "Build History" and copy th
 
 Copy/paste the URL for the job into a comment in the pull request. [`node-test-pull-request`](https://ci.nodejs.org/job/node-test-pull-request/) is an exception where the GitHub bot will automatically post for you.
 
-### Internal vs. API Pública
+### Internal vs. Public API
 
 All functionality in the official Node.js documentation is part of the public API. Any undocumented object, property, method, argument, behavior, or event is internal. There are exceptions to this rule. Node.js users have come to rely on some undocumented behaviors. Collaborators treat many of those undocumented behaviors as public.
 
@@ -495,7 +495,7 @@ Attach the appropriate `lts-watch-` label to any PR that may impact an LTS relea
 
 ## Who to CC in the issue tracker
 
-| Subsistema                                                                 | Mantenedores                                                            |
+| Subsystem                                                                  | Maintainers                                                             |
 | -------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `benchmark/*`                                                              | @nodejs/benchmarking, @mscdex                                           |
 | `doc/*`, `*.md`                                                            | @nodejs/documentation                                                   |
