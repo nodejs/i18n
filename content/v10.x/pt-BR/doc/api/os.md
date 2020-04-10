@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-O módulo de `os` fornece uma quantidade de métodos utilitários relacionados ao sistema operacional. É possível acessá-lo utilizando:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -18,10 +18,10 @@ added: v0.7.8
 
 * {string}
 
-Uma constante string definindo o marcador de fim de linha específico do sistema operacional:
+A string constant defining the operating system-specific end-of-line marker:
 
-* `\n` em POSIX
-* `\r\n` no Windows
+* `\n` on POSIX
+* `\r\n` on Windows
 
 ## os.arch()
 
@@ -29,13 +29,13 @@ Uma constante string definindo o marcador de fim de linha específico do sistema
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
-O método `os.arch()` retorna uma string identificando a arquitetura de CPU do sistema operacional no qual o binário do Node.js foi compilado.
+The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-Os atuais valores possíveis são: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
-Equivalente à [`process.arch`][].
+Equivalent to [`process.arch`][].
 
 ## os.constants
 
@@ -45,7 +45,7 @@ added: v6.3.0
 
 * {Object}
 
-Retorna um objeto contendo constantes específicas de sistema operacional, usadas comumente para códigos de erro, sinalização de processos, e assim por diante. As constantes específicas atualmente definidas são descritas em [OS Constants](#os_os_constants_1).
+Returns an object containing commonly used operating system specific constants for error codes, process signals, and so on. The specific constants currently defined are described in [OS Constants](#os_os_constants_1).
 
 ## os.cpus()
 
@@ -53,20 +53,20 @@ Retorna um objeto contendo constantes específicas de sistema operacional, usada
 added: v0.3.3
 -->
 
-* Retorna: {Object[]}
+* Returns: {Object[]}
 
-O método `os.cpus()` retorna um array de objetos contendo informações sobre cada núcleo lógico de CPU.
+The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
-As propriedades incluídas em cada objeto incluem:
+The properties included on each object include:
 
 * `model` {string}
-* `speed` {number} (em MHz)
+* `speed` {number} (in MHz)
 * `times` {Object} 
-  * `user` {number} O número de milissegundos que a CPU gastou em modo user.
-  * `nice` {number} O número de milissegundos que a CPU gastou em modo nice.
-  * `sys` {number} O número de milissegundos que a CPU gastou em modo sys.
-  * `idle` {number} O número de milissegundos que a CPU gastou em modo idle.
-  * `irq` {number} O número de milissegundos que a CPU gastou em modo irq.
+  * `user` {number} The number of milliseconds the CPU has spent in user mode.
+  * `nice` {number} The number of milliseconds the CPU has spent in nice mode.
+  * `sys` {number} The number of milliseconds the CPU has spent in sys mode.
+  * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
+  * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
 <!-- eslint-disable semi -->
 
@@ -171,14 +171,14 @@ Because `nice` values are UNIX-specific, on Windows the `nice` values of all pro
 added: v0.9.4
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
-O método `os.endianness()` retorna uma string identificando a ordem de bytes da CPU * no qual o binário do Node.js foi compilado*.
+The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
-Valores possíveis:
+Possible values are:
 
-* `'BE'` para big endian
-* `'LE'` para little endian.
+* `'BE'` for big endian
+* `'LE'` for little endian.
 
 ## os.freemem()
 
@@ -186,9 +186,9 @@ Valores possíveis:
 added: v0.3.3
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
-O método `os.freemem()` retorna a quantidade de memória livre do sistema em bytes como um número inteiro.
+The `os.freemem()` method returns the amount of free system memory in bytes as an integer.
 
 ## os.getPriority([pid])
 
@@ -197,7 +197,7 @@ added: v10.10.0
 -->
 
 * `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
-* Retorna: {integer}
+* Returns: {integer}
 
 The `os.getPriority()` method returns the scheduling priority for the process specified by `pid`. If `pid` is not provided, or is `0`, the priority of the current process is returned.
 
@@ -207,9 +207,9 @@ The `os.getPriority()` method returns the scheduling priority for the process sp
 added: v2.3.0
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
-O método `os.homedir()` retorna o diretório home do usuário atual como string.
+The `os.homedir()` method returns the home directory of the current user as a string.
 
 ## os.hostname()
 
@@ -217,9 +217,9 @@ O método `os.homedir()` retorna o diretório home do usuário atual como string
 added: v0.3.3
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
-O método `os.hostname()` retorna o nome do host do sistema operacional como string.
+The `os.hostname()` method returns the hostname of the operating system as a string.
 
 ## os.loadavg()
 
@@ -227,13 +227,13 @@ O método `os.hostname()` retorna o nome do host do sistema operacional como str
 added: v0.3.3
 -->
 
-* Retorna: {number[]}
+* Returns: {number[]}
 
-O método `os.loadavg()` retorna um array contendo os 1, 5, e 15 minutos de carga média.
+The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
-A carga média é uma medida da atividade do sistema, calculada pelo sistema operacional e expressa como um número fracionário. Como regra geral, a carga média deve idealmente ser menor que o número de CPUs lógicas no sistema.
+The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system.
 
-A carga média é um conceito específico do UNIX com nenhum equivalente real em plataformas Windows. No Windows, o valor de retorno é sempre `[0, 0, 0]`.
+The load average is a UNIX-specific concept with no real equivalent on Windows platforms. On Windows, the return value is always `[0, 0, 0]`.
 
 ## os.networkInterfaces()
 
@@ -241,20 +241,20 @@ A carga média é um conceito específico do UNIX com nenhum equivalente real em
 added: v0.6.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
-O método `os.networkInterfaces()` retorna um objeto contendo somente as interfaces as quais foram atribuídas um endereço de rede.
+The `os.networkInterfaces()` method returns an object containing only network interfaces that have been assigned a network address.
 
-Cada chave no objeto retornado identifica uma interface de rede. O valor associado é um array de objetos em que cada um descreve um endereço de rede atribuído.
+Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
 
-As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
+The properties available on the assigned network address object include:
 
-* `address` {string} O endereço IPv4 ou IPv6 atribuído
-* `netmask` {string} máscara de rede IPv4 ou IPv6
-* `family` {string} `IPv4` ou `IPv6`
-* `mac` {string} O endereço MAC da interface de rede
-* `internal` {boolean} `true` Se a interface de rede é loopback ou interface similar que não é acessível remotamente; caso contrário `false`
-* `scopeid` {number} O ID de escopo numérico IPv6 (somente especificado quando `family` é `IPv6`)
+* `address` {string} The assigned IPv4 or IPv6 address
+* `netmask` {string} The IPv4 or IPv6 network mask
+* `family` {string} Either `IPv4` or `IPv6`
+* `mac` {string} The MAC address of the network interface
+* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 
 <!-- eslint-skip -->
@@ -308,7 +308,7 @@ As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -332,7 +332,7 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -365,7 +365,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -375,7 +375,7 @@ The `os.tmpdir()` method returns a string specifying the operating system's defa
 added: v0.3.3
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
 The `os.totalmem()` method returns the total amount of system memory in bytes as an integer.
 
@@ -385,7 +385,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
@@ -403,7 +403,7 @@ changes:
                  component on Windows.
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
 The `os.uptime()` method returns the system uptime in number of seconds.
 
@@ -415,7 +415,7 @@ added: v6.0.0
 
 * `options` {Object} 
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
-* Retorna: {Object}
+* Returns: {Object}
 
 The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
@@ -441,8 +441,8 @@ The following signal constants are exported by `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -608,8 +608,8 @@ The following error constants are exported by `os.constants.errno`:
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -942,8 +942,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1187,8 +1187,8 @@ If available on the operating system, the following constants are exported in `o
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
@@ -1226,8 +1226,8 @@ The following process scheduling constants are exported by `os.constants.priorit
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>PRIORITY_LOW</code></td>
@@ -1274,8 +1274,8 @@ The following process scheduling constants are exported by `os.constants.priorit
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
