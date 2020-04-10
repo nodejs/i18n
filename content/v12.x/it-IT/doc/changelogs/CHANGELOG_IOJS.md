@@ -62,7 +62,7 @@
 </tr>
 </table>
 
-* Altre versioni
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -74,7 +74,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="3.3.1"></a>
 
@@ -2170,7 +2170,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * [[`3b1b4de903`](https://github.com/nodejs/node/commit/3b1b4de903)] - **test**: Timeout#unref() does not return instance (Jan Schär) [joyent/node#9171](https://github.com/joyent/node/pull/9171)
 * [[`becb4e980e`](https://github.com/nodejs/node/commit/becb4e980e)] - **test**: distribute crypto tests into separate files (Brendan Ashworth) [#827](https://github.com/nodejs/node/pull/827)
 * [[`77f35861d0`](https://github.com/nodejs/node/commit/77f35861d0)] - **(SEMVER-MINOR) tls**: more secure defaults (Roman Reiss) [#826](https://github.com/nodejs/node/pull/826)
-* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . e .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
+* [[`faa687b4be`](https://github.com/nodejs/node/commit/faa687b4be)] - **url**: reslove urls with . and .. (Amir Saboury) [#278](https://github.com/nodejs/node/pull/278)
 
 <a id="1.2.0"></a>
 
@@ -2261,7 +2261,7 @@ _Note: version **1.4.0** was tagged and built but not released. A libuv bug was 
 * crypto: publicEncrypt now supports password-protected private keys.
 * crypto: ~30% speedup on hashing functions.
 * crypto: added privateEncrypt/publicDecrypt functions.
-* errori
+* errors
   * better formatting via util.inspect
   * more descriptive errors from fs. This necessitated a `NODE_MODULE_VERSION` bump.
   * more descriptive errors from http.setHeader
@@ -2590,7 +2590,7 @@ https://iojs.org/api/dns.html
 * Added `hostname` on error messages when available.
 * Improved error handling consistency.
 
-### eventi
+### events
 
 https://iojs.org/api/events.html
 
@@ -2620,7 +2620,7 @@ https://iojs.org/api/http.html
 * Added `rawHeaders` and `rawTrailers` members on incoming message.
 * Removed default chunked encoding on `DELETE` and `OPTIONS`.
 
-### rete
+### net
 
 https://iojs.org/api/net.html
 
@@ -2633,7 +2633,7 @@ https://iojs.org/api/os.html
 * Added MAC addresses, netmasks and scope IDs for IPv6 addresses to `os.networkInterfaces` method output.
 * Updated `os.tmpdir` on Windows to use the `%SystemRoot%` or `%WINDIR%` environment variables instead of the hard-coded value of `c:\windows` when determining the temporary directory location.
 
-### percorso
+### path
 
 https://iojs.org/api/path.html
 
