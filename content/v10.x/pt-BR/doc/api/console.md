@@ -2,18 +2,18 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-O módulo `console` fornece um console de depuração simples que é semelhante ao mecanismo de console JavaScript fornecido por navegadores da web.
+The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
-O módulo exporta dois componentes específicos:
+The module exports two specific components:
 
-* Uma classe de `Console` tem métodos como `console.log()`, `console.error()` e `console.warn()` que pode ser usado para gravar qualquer fluxo de Node.js.
-* Uma instância global `console` configurada para gravar em [`process.stdout`] [] e [`process.stderr`] []. O global `console` pode ser usado sem a chamada `require('console')`.
+* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
+* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
 
-***Aviso***: métodos do objeto global console nem assemelham-se consistentemente síncronos como o navegador APIs, nem consistentemente assíncronos como todos os outros fluxos de Node.js. Veja a [nota de processo I/O](process.html#process_a_note_on_process_i_o) para mais Informações.
+***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
-Exemplo usando o `console` global:
+Example using the global `console`:
 
 ```js
 console.log('hello world');
@@ -28,7 +28,7 @@ console.warn(`Danger ${name}! Danger!`);
 // Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Exemplo usando a classe `Console`:
+Example using the `Console` class:
 
 ```js
 const out = getStreamSomehow();
@@ -44,10 +44,10 @@ myConsole.error(new Error('Whoops, something bad happened'));
 
 const name = 'Will Robinson';
 myConsole.warn(`Danger ${name}! Danger!`);
-// Prints: Danger Will Robinson! Danger!, to stderr
+// Prints: Danger Will Robinson! Danger!, to err
 ```
 
-## Classe: Console
+## Class: Console
 
 <!-- YAML
 changes:
@@ -90,9 +90,9 @@ changes:
   * `stdout` {stream.Writable}
   * `stderr` {stream.Writable}
   * `ignoreErrors` {boolean} Ignore errors when writing to the underlying streams. **Padrão:** `true`.
-  * `colorMode` {boolean|string} conjunto suporte a cores para esta instância do `Console`. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Padrão:** `'auto'`.
+  * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values, setting to `'auto'` will make color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. **Default:** `'auto'`.
 
-Cria um novo `Console` com uma ou duas instâncias de fluxo gravável. `stdout` é um fluxo gravável para imprimir a saída de log ou informação. `stderr` é usado para o aviso ou a saída de erro. Se não for fornecido `stderr`, `stdout` é usado para `stderr`.
+Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
@@ -105,7 +105,7 @@ logger.log('count: %d', count);
 // in stdout.log: count 5
 ```
 
-Uma instância global `console` é um especial `Console` cuja saída é enviada para [`process.stdout`][] e [`process.stderr`][]. É equivalente a chamar:
+The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
