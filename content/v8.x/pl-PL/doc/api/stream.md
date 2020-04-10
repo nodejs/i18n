@@ -1,16 +1,16 @@
-# Strumień
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-Strumień jest abstrakcyjnym interfejsem do pracy z danymi strumieniowymi w Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
+A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
-Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
+There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
 
-Strumienie mogą być tylko do odczytu, tylko do zapisu lub także do obu. All streams are instances of [`EventEmitter`][].
+Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
 
-Dostęp do modułu `stream` można uzyskać za pomocą:
+The `stream` module can be accessed using:
 
 ```js
 const stream = require('stream');
@@ -18,26 +18,26 @@ const stream = require('stream');
 
 While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
 
-## Organizacja tego Dokumentu
+## Organization of this Document
 
 This document is divided into two primary sections with a third section for additional notes. The first section explains the elements of the stream API that are required to *use* streams within an application. The second section explains the elements of the API that are required to *implement* new types of streams.
 
-## Rodzaje Strumieni
+## Types of Streams
 
-Istnieją cztery fundamentalne typy strumieni w Node.js:
+There are four fundamental stream types within Node.js:
 
 * [Readable](#stream_class_stream_readable) - streams from which data can be read (for example [`fs.createReadStream()`][]).
 * [Writable](#stream_class_stream_writable) - streams to which data can be written (for example [`fs.createWriteStream()`][]).
 * [Duplex](#stream_class_stream_duplex) - streams that are both Readable and Writable (for example [`net.Socket`][]).
 * [Transform](#stream_class_stream_transform) - Duplex streams that can modify or transform the data as it is written and read (for example [`zlib.createDeflate()`][]).
 
-### Tryb Obiektu
+### Object Mode
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
 Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
 
-### Buforowanie
+### Buffering
 
 <!--type=misc-->
 
@@ -55,7 +55,7 @@ A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to
 
 Because [Duplex](#stream_class_stream_duplex) and [Transform](#stream_class_stream_transform) streams are both Readable and Writable, each maintain *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [Duplex](#stream_class_stream_duplex) streams whose Readable side allows consumption of data received *from* the socket and whose Writable side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
 
-## API dla Konsumentów Strumienia
+## API for Stream Consumers
 
 <!--type=misc-->
 
@@ -885,7 +885,7 @@ When using an older Node.js library that emits [`'data'`][] events and has a [`s
 
 It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
 
-Na przykład:
+For example:
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -1047,7 +1047,7 @@ added: v1.2.0
 
 For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
 
-Na przykład:
+For example:
 
 ```js
 const { Writable } = require('stream');
@@ -1076,7 +1076,7 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
   * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
 
-Na przykład:
+For example:
 
 ```js
 const { Writable } = require('stream');
@@ -1269,7 +1269,7 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
-Na przykład:
+For example:
 
 ```js
 const { Readable } = require('stream');
@@ -1397,6 +1397,8 @@ For streams not operating in object mode, if the `chunk` parameter of `readable.
 
 It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an Error from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
 
+<!-- eslint-disable no-useless-return -->
+
 ```js
 const { Readable } = require('stream');
 
@@ -1411,7 +1413,11 @@ const myReadable = new Readable({
 });
 ```
 
-#### An Example Counting Stream<!--type=example-->The following is a basic example of a Readable stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
+#### An Example Counting Stream
+
+<!--type=example-->
+
+The following is a basic example of a Readable stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
 
 ```js
 const { Readable } = require('stream');
@@ -1446,7 +1452,9 @@ Because JavaScript does not have support for multiple inheritance, the `stream.D
 
 Custom Duplex streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
 
-#### new stream.Duplex(options)<!-- YAML
+#### new stream.Duplex(options)
+
+<!-- YAML
 changes:
 
   - version: v8.4.0
@@ -1462,7 +1470,7 @@ changes:
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
-Na przykład:
+For example:
 
 ```js
 const { Duplex } = require('stream');
@@ -1590,7 +1598,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-Na przykład:
+For example:
 
 ```js
 const { Transform } = require('stream');
@@ -1682,7 +1690,11 @@ The `transform._transform()` method is prefixed with an underscore because it is
 
 The `stream.PassThrough` class is a trivial implementation of a [Transform](#stream_class_stream_transform) stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
 
-## Additional Notes<!--type=misc-->### Compatibility with Older Node.js Versions
+## Additional Notes
+
+<!--type=misc-->
+
+### Compatibility with Older Node.js Versions
 
 <!--type=misc-->
 
