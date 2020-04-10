@@ -4,7 +4,7 @@
 
 <!--lint disable maximum-line-length-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
