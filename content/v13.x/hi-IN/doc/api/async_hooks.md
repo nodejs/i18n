@@ -1,8 +1,8 @@
-# Async हुक
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
