@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -345,7 +345,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Pin the exact certificate, rather then the pub key
+    // Pin the exact certificate, rather than the pub key
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
