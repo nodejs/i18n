@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -49,7 +49,7 @@ Unlike `vm.Script` however, every `vm.SourceTextModule` object is bound to a con
 
 Using a `vm.SourceTextModule` object requires four distinct steps: creation/parsing, linking, instantiation, and evaluation. These four steps are illustrated in the following example.
 
-This implementation lies at a lower level than the \[ECMAScript Module loader\]\[\]. There is also currently no way to interact with the Loader, though support is planned.
+This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
 
 ```js
 const vm = require('vm');
@@ -204,7 +204,7 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 * `options` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* 戻り値: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -215,7 +215,7 @@ This must be called after the module has been instantiated; otherwise it will th
 
 This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
 
-Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.instantiate()
 
@@ -225,12 +225,12 @@ However, if this function succeeded, further calls to this function after the in
 
 Unlike other methods operating on `Module`, this function completes synchronously and returns nothing.
 
-Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.link(linker)
 
 * `linker` {Function}
-* 戻り値: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
@@ -660,6 +660,8 @@ added: v0.3.1
 If `options` is a string, then it specifies the filename.
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+
+<!-- eslint-disable prefer-const -->
 
 ```js
 const vm = require('vm');
