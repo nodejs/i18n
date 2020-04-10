@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -23,6 +23,8 @@ debug>
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+
+<!-- eslint-disable no-debugger -->
 
 ```js
 // myscript.js
