@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -29,11 +29,17 @@ The [`child_process.spawn()`][] method spawns the child process asynchronously, 
 
 For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell, passing the `stdout` and `stderr` to a callback function when complete.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that it spawns the command directly without first spawning a shell by default.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a specified module with an IPC communication channel established that allows sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of [`child_process.exec()`][] that *will* block the Node.js event loop.
-    * [`child_process.execFileSync()`][]: a synchronous version of [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
+      passing the `stdout` and `stderr` to a callback function when complete.
+    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
+      it spawns the command directly without first spawning a shell by default.
+    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
+      specified module with an IPC communication channel established that allows
+      sending messages between parent and child.
+    * [`child_process.execSync()`][]: a synchronous version of
+      [`child_process.exec()`][] that *will* block the Node.js event loop.
+    * [`child_process.execFileSync()`][]: a synchronous version of
+      [`child_process.execFile()`][] that *will* block the Node.js event loop.
     
 
 For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
@@ -114,7 +120,7 @@ changes:
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* 戻り値: {ChildProcess}
+* Returns: {ChildProcess}
 
 Spawns a shell then executes the `command` within that shell, buffering any generated output. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
 
@@ -194,7 +200,7 @@ changes:
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* 戻り値: {ChildProcess}
+* Returns: {ChildProcess}
 
 The `child_process.execFile()` function is similar to [`child_process.exec()`][] except that it does not spawn a shell by default. Rather, the specified executable `file` is spawned directly as a new process making it slightly more efficient than [`child_process.exec()`][].
 
@@ -252,7 +258,7 @@ changes:
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
-* 戻り値: {ChildProcess}
+* Returns: {ChildProcess}
 
 The `child_process.fork()` method is a special case of [`child_process.spawn()`][] used specifically to spawn new Node.js processes. Like [`child_process.spawn()`][], a [`ChildProcess`][] object is returned. The returned [`ChildProcess`][] will have an additional communication channel built-in that allows messages to be passed back and forth between the parent and child. See [`subprocess.send()`][] for details.
 
@@ -296,7 +302,7 @@ changes:
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
-* 戻り値: {ChildProcess}
+* Returns: {ChildProcess}
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
 
