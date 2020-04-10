@@ -32,7 +32,7 @@
 </tr>
 </table>
 
-* Inne Wersje
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -44,7 +44,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archiwum](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.12 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until December 31st, 2016.
 
