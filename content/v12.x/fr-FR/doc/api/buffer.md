@@ -1,8 +1,8 @@
-# Tampons (buffers)
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`][], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -586,7 +586,7 @@ changes:
 
 * `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`][] instances to concat.
 * `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
 
@@ -1323,7 +1323,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Renvoie : {bigint}
+* Returns: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified endian format (`readBigInt64BE()` returns big endian, `readBigInt64LE()` returns little endian).
 
@@ -1336,7 +1336,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Renvoie : {bigint}
+* Returns: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with specified endian format (`readBigUInt64BE()` returns big endian, `readBigUInt64LE()` returns little endian).
 
@@ -1639,7 +1639,7 @@ added: v3.0.0
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`][].
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1703,7 +1703,7 @@ changes:
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`][].
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1844,7 +1844,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`][].
-* Retourne : {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`. If a byte sequence in the input is not valid in the given `encoding` then it is replaced with the replacement character `U+FFFD`.
 
@@ -2312,7 +2312,7 @@ changes:
 * `source` {Buffer|Uint8Array} A `Buffer` or `Uint8Array` instance.
 * `fromEnc` {string} The current encoding.
 * `toEnc` {string} To target encoding.
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Re-encodes the given `Buffer` or `Uint8Array` instance from one character encoding to another. Returns a new `Buffer` instance.
 
