@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -221,7 +221,7 @@ console.log(globalVar);
 added: v13.10.0
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Measure the memory known to V8 and used by the current execution context or a specified context.
 
@@ -259,7 +259,7 @@ vm.measureMemory({ mode: 'detailed' }, context)
 added: v13.0.0
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -368,7 +368,7 @@ Corresponds to the `[[EvaluationError]]` field of [Cyclic Module Record](https:/
 * `options` {Object}
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown. **Default:** `false`.
-* Gibt zurück: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -393,7 +393,7 @@ Corresponds to the [Evaluate() concrete method](https://tc39.es/ecma262/#sec-mod
 
   * `referencingModule` {vm.Module} The `Module` object `link()` is called on.
   * Returns: {vm.Module|Promise}
-* Gibt zurück: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before evaluation, and can only be called once per module.
 
@@ -453,7 +453,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -537,7 +537,7 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 added: v13.0.0
 -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -612,7 +612,7 @@ added: v10.10.0
   * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
-* Gibt zurück: {Function}
+* Returns: {Function}
 
 Compiles the given code into the provided context (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
