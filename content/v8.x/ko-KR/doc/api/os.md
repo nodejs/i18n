@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
@@ -383,7 +383,7 @@ The `os.uptime()` method returns the system uptime in number of seconds.
 added: v6.0.0
 -->
 
-* `옵션` {Object} 
+* `options` {Object} 
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
 * Returns: {Object}
 
