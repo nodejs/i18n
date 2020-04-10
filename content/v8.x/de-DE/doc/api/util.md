@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Es kann zugegriffen werden durch:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -40,7 +40,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-hallo Welt
+hello world
 ```
 
 *Note*:
@@ -180,7 +180,7 @@ added: v8.12.0
 -->
 
 * `err` {number}
-* Gibt zurück: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -406,7 +406,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Gibt zurück: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -580,7 +580,7 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
 * `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Gibt zurück: {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -620,7 +620,7 @@ const uint8array = encoder.encode('this is some data');
 ### textEncoder.encode([input])
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Gibt zurück: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## Veraltete APIs
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -680,7 +680,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -706,7 +706,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -754,7 +754,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -778,7 +778,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -815,7 +815,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -842,7 +842,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -866,7 +866,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -890,7 +890,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -916,7 +916,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -942,7 +942,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -978,7 +978,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1002,7 +1002,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1028,7 +1028,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1052,7 +1052,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
