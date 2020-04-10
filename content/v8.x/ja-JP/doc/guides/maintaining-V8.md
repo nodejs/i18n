@@ -288,7 +288,7 @@ We are trying this out in https://github.com/nodejs/node/pull/9754. If this ends
 
 <!-- Footnotes themselves at the bottom. -->
 
-### 備考
+### Notes
 
 <sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support is ending soon.
 
