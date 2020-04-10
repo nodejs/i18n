@@ -796,7 +796,7 @@ added: v13.10.0
 
 Keying material is used for validations to prevent different kind of attacks in network protocols, for example in the specifications of IEEE 802.1X.
 
-Exempel
+Example
 
 ```js
 const keyingMaterial = tlsSocket.exportKeyingMaterial(
