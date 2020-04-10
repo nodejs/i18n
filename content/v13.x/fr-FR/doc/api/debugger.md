@@ -1,8 +1,8 @@
-# Débogueur
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -22,7 +22,7 @@ debug>
 
 The Node.js debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
-Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
+Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
 ```js
 // myscript.js
 global.x = 5;
@@ -33,7 +33,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Quand le débogueur sera exécuté, un arrêt se produira à la ligne 3:
+Once the debugger is run, a breakpoint will occur at line 3:
 
 ```console
 $ node inspect myscript.js
@@ -76,19 +76,19 @@ break in myscript.js:5
 debug> .exit
 ```
 
-La commande `repl` permet d'évaluer du code à distance. La commande `next` passe à la ligne suivante. Tapez `help` pour voir quelles autres commandes sont disponibles.
+The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
 
-Presser `enter` sans taper de commande répètera la commande de débogage précédente.
+Pressing `enter` without typing a command will repeat the previous debugger command.
 
-## Espions
+## Watchers
 
-Il est possible d'espionner les valeurs d'expression et de variables pendant le débogage. Sur tous les point d'arrêt, chaque expression de la liste d'expressions espionnées sera évaluée dans le contexte courant, et affichée immédiatement avant le listing de code source du point d'arrêt.
+It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
 
-Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La commande `watchers` affichera tous les espions actifs. Pour supprimer un espion, tapez `unwatch('mon_expression')`.
+To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
 
-## Référence de la ligne de commande
+## Command reference
 
-### Pas-à-pas
+### Stepping
 
 * `cont`, `c`: Continue execution
 * `next`, `n`: Step next
@@ -96,7 +96,7 @@ Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La 
 * `out`, `o`: Step out
 * `pause`: Pause running code (like pause button in Developer Tools)
 
-### Points d'arrêt
+### Breakpoints
 
 * `setBreakpoint()`, `sb()`: Set breakpoint on current line
 * `setBreakpoint(line)`, `sb(line)`: Set breakpoint on specific line
@@ -104,7 +104,7 @@ Pour commencer à espionner une expression, tapez `watch('mon_expression')`. La 
 * `setBreakpoint('script.js', 1)`, `sb(...)`: Set breakpoint on first line of `script.js`
 * `clearBreakpoint('script.js', 1)`, `cb(...)`: Clear breakpoint in `script.js` on line 1
 
-Il est également possible d'ajouter un point d'arrêt dans un fichier (module) qui n'est pas encore chargé:
+It is also possible to set a breakpoint in a file (module) that is not loaded yet:
 
 ```console
 $ node inspect main.js
@@ -137,24 +137,24 @@ debug>
 * `repl`: Open debugger's repl for evaluation in debugging script's context
 * `exec expr`: Execute an expression in debugging script's context
 
-### Contrôle d’exécution
+### Execution control
 
 * `run`: Run script (automatically runs on debugger's start)
 * `restart`: Restart script
 * `kill`: Kill script
 
-### Divers
+### Various
 
 * `scripts`: List all loaded scripts
 * `version`: Display V8's version
 
-## Utilisation avancée
+## Advanced Usage
 
-### Intégration de l'inspecteur V8 pour Node.js
+### V8 Inspector Integration for Node.js
 
-L'intégration de l'inspecteur V8 permet d'attacher les outils de développement de Chrome aux instances de Node.js pour le débogage et le profilage. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-L'inspecteur V8 peut être active en passant le flag `--inspect` au démarrage d'une application Node.js. Il est également possible de fournir un port personnalisé avec ce flag, par exemple `--inspect=9222` acceptera les connexions des outils de développement sur le port 9222.
+V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
 To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
