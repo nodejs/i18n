@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 The `util` module supports the needs of Node.js internal APIs. Many of the utilities are useful for application and module developers as well. To access it:
 
