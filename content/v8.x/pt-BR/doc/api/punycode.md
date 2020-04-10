@@ -1,4 +1,4 @@
-# Código Insignificante
+# Punycode
 
 <!-- YAML
 changes:
@@ -10,7 +10,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 **The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
 
