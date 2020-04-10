@@ -1,4 +1,4 @@
-# امثلة الاستخدام
+# Usage & Example
 
 ## Usage
 
