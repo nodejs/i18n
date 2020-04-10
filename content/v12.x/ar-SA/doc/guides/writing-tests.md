@@ -338,7 +338,7 @@ There is a [test fixture](https://github.com/google/googletest/blob/master/googl
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
 
-### تغطية الاختبار
+### Test Coverage
 
 To generate a test coverage report, see the [Test Coverage section of the Building guide](https://github.com/nodejs/node/blob/master/BUILDING.md#running-coverage).
 
