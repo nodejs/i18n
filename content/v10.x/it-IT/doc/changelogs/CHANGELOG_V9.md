@@ -7,7 +7,7 @@
 <table>
   
 <tr>
-<th>Versione attuale</th>
+<th>Current</th>
 </tr>
   
   <tr>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Altre versioni 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -44,15 +44,15 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.1"></a>
 
-## 2018-04-05, Versione 9.11.1 (Attuale), @MylesBorins
+## 2018-04-05, Version 9.11.1 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
-Nessun commit aggiuntivo.
+No additional commits.
 
 An infrastructure issue caused a non-functioning msi installer for x64 to be promoted. The patch release is to ensure that all binaries and installers work as expected.
 
@@ -60,7 +60,7 @@ An infrastructure issue caused a non-functioning msi installer for x64 to be pro
 
 ## 2018-04-04, Version 9.11.0 (Current), @MylesBorins prepared by @targos
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: 
   * Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Includes CLDR 33 (many new languages and data improvements).
@@ -68,7 +68,7 @@ An infrastructure issue caused a non-functioning msi installer for x64 to be pro
   * Emit 'ready' event for `ReadStream` and `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**: 
   * Bump version of n-api supported (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
-* **rete**: 
+* **net**: 
   * Emit 'ready' event for `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **Added new collaborators** 
   * [mafintosh](https://github.com/mafintosh) Mathias Buus
@@ -160,7 +160,7 @@ An infrastructure issue caused a non-functioning msi installer for x64 to be pro
 
 ## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 No additional commits.
 
@@ -180,7 +180,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
@@ -195,7 +195,7 @@ Fixes for the following CVEs are included in this release:
   * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**: 
   * Add `napi_fatal_exception` to trigger an `uncaughtException` in JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
-* **percorso**: 
+* **path**: 
   * Fix regression in `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
 * **stream**: 
   * Improve stream creation performance (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
@@ -260,8 +260,8 @@ Fixes for the following CVEs are included in this release:
 * [[`5960cde4eb`](https://github.com/nodejs/node/commit/5960cde4eb)] - **doc**: fix changelog (Myles Borins) [#19515](https://github.com/nodejs/node/pull/19515)
 * [[`b351e0eda6`](https://github.com/nodejs/node/commit/b351e0eda6)] - **http**: use more destructuring (Tobias Nießen) [#19481](https://github.com/nodejs/node/pull/19481)
 * [[`49c0efd2a2`](https://github.com/nodejs/node/commit/49c0efd2a2)] - **http2**: remove some unnecessary next ticks (James M Snell) [#19451](https://github.com/nodejs/node/pull/19451)
-* [[`583d5afa5e`](https://github.com/nodejs/node/commit/583d5afa5e)] - **inspector**: do not allow host names (Eugene Ostroukhov)
-* [[`fc1a610a00`](https://github.com/nodejs/node/commit/fc1a610a00)] - **inspector**: check Host header for local connections (Eugene Ostroukhov)
+* [[`583d5afa5e`](https://github.com/nodejs/node/commit/583d5afa5e)] - **inspector**: do not allow host names (Eugene Ostroukhov) 
+* [[`fc1a610a00`](https://github.com/nodejs/node/commit/fc1a610a00)] - **inspector**: check Host header for local connections (Eugene Ostroukhov) 
 * [[`419e88ea4a`](https://github.com/nodejs/node/commit/419e88ea4a)] - **lib,test**: lint fixes for linter upgrade (Rich Trott) [#19528](https://github.com/nodejs/node/pull/19528)
 * [[`fd8523fe44`](https://github.com/nodejs/node/commit/fd8523fe44)] - **n-api**: re-write test\_make\_callback (Gabriel Schulhof) [#19448](https://github.com/nodejs/node/pull/19448)
 * [[`29a04b7ed6`](https://github.com/nodejs/node/commit/29a04b7ed6)] - **(SEMVER-MINOR)** **n-api**: add napi\_fatal\_exception (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
@@ -294,7 +294,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-21, Version 9.9.0 (Current), @MylesBorins prepared by @targos
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **assert**: 
   * From now on all error messages produced by `assert` in strict mode will produce a error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
@@ -314,7 +314,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Commits
 
-* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso)
+* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso) 
 * [[`8d33e5c214`](https://github.com/nodejs/node/commit/8d33e5c214)] - **assert**: improve error check (Ruben Bridgewater) [#17574](https://github.com/nodejs/node/pull/17574)
 * [[`5e6b42ec9c`](https://github.com/nodejs/node/commit/5e6b42ec9c)] - **assert**: show proper differences (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
 * [[`9abbb6b857`](https://github.com/nodejs/node/commit/9abbb6b857)] - **assert**: fix infinite loop (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
@@ -453,7 +453,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-07, Version 9.8.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **crypto**: 
   * add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
@@ -553,7 +553,7 @@ No additional commits. New version published due to a bad node-v9.7.0.pkg file t
 
 ## 2018-03-01, Version 9.7.0 (Current), @rvagg prepared by @addaleax
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **libuv**:
   
@@ -647,9 +647,9 @@ No additional commits. New version published due to a bad node-v9.7.0.pkg file t
 
 This is a special release to fix potentially Semver-Major regression that was released in v9.6.0
 
-### Modifiche di rilievo
+### Notable Changes
 
-* **eventi**: 
+* **events**: 
   * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 ### Commits
@@ -660,7 +660,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-02-22, Version 9.6.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **async_hooks**: 
   * deprecate unsafe emit{Before,After} (Ali Ijaz Sheikh) [#18513](https://github.com/nodejs/node/pull/18513)
@@ -901,7 +901,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-01-31, Version 9.5.0 (Current), @evanlucas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **cluster** 
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
@@ -1085,7 +1085,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2018-01-10, Version 9.4.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **async\_hooks**: 
   * deprecate AsyncHooks Sensitive API and runInAsyncIdScope. Neither API were documented. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
@@ -1093,7 +1093,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * update nghttp2 to 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
   * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
   * cherry-pick 50f7455 from upstream V8 (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
-* **eventi**: 
+* **events**: 
   * remove reaches into _events internals (Anatoli Papirovski) [#17440](https://github.com/nodejs/node/pull/17440)
 * **http**: 
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
@@ -1103,7 +1103,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * add altsvc support (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
   * perf_hooks integration (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
   * Refactoring and cleanup of Http2Session and Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
-* **rete**: 
+* **net**: 
   * remove Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
 * **repl**: 
   * show lexically scoped vars in tab completion (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
@@ -1361,7 +1361,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ## 2017-12-12, Version 9.3.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **async\_hooks**: 
   * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
@@ -1780,7 +1780,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2017-15897
 * CVE-2017-3738 (from the openssl project)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
@@ -1807,7 +1807,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-14, Version 9.2.0 (Current), @evanlucas
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **crypto**: 
   * Support building with both 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
@@ -1956,7 +1956,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-07, Version 9.1.0 (Current), @cjihrig
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **CLI**: 
   * `NODE_OPTIONS` now supports the `--stack-trace-limit` option. [#16495](https://github.com/nodejs/node/pull/16495)
@@ -2070,13 +2070,13 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-10-31, Version 9.0.0 (Current), @jasnell
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Async hooks**
   
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Errori**
+* **Errors**
   
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues: 
@@ -2104,7 +2104,7 @@ Fixes for the following CVEs are included in this release:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **Processi del Child**
+* **Child Processes**
   
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] [#4670](https://github.com/nodejs/node/pull/4670)
 
@@ -2128,7 +2128,7 @@ Fixes for the following CVEs are included in this release:
   
   * The deprecated `Intl.v8BreakIterator` has been removed. [[`668ad44922`](https://github.com/nodejs/node/commit/668ad44922)] [#15238](https://github.com/nodejs/node/pull/15238)
 
-* **SO**
+* **OS**
   
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] [#14622](https://github.com/nodejs/node/pull/14622)
 
