@@ -1,61 +1,71 @@
-# Hooks Asincrónicos
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Estabilidad: 1 - Experimental
+> Stability: 1 - Experimental
 
-El módulo `async_hooks` proporciona una API para registrar los callbacks que rastrean el tiempo de vida de recursos asincrónicos creados dentro de una aplicación de Node.js. Se puede acceder a él utilizando:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
 ```
 
-## Terminología
+## Terminology
 
-Un recurso asincrónico representa un objeto con un callback asociado. Este callback puede ser llamado varias veces, por ejemplo, el evento `connection` en `net.createServer`, o simplemente una sola vez como en `fs.open`. Un recurso también puede cerrarse antes de que un callback sea llamado. AsyncHook no distingue explícitamente entre estos casos diferentes, pero los representará como el concepto abstracto que es un recurso.
+An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `connection` event in `net.createServer`, or just a single time like in `fs.open`. A resource can also be closed before the callback is called. AsyncHook does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
-## API Pública
+## Public API
 
-### Resumen
+### Overview
 
-A continuación se muestra un simple resumen de la API pública.
+Following is a simple overview of the public API.
 
 ```js
-const async_hooks=require("async_hooks");
-//Retorna el ID del contexto de la ejecución actual.
+const async_hooks = require('async_hooks');
+
+// Return the ID of the current execution context.
 const eid = async_hooks.executionAsyncId();
-//Retorna el ID del encargado responsable de lanzar el callback 
-//del alcance de la ejecución actual de la llamada.
+
+// Return the ID of the handle responsible for triggering the callback of the
+// current execution scope to call.
 const tid = async_hooks.triggerAsyncId();
-//Crea una nueva instancia AsyncHook. Todos estos callbacks son opcionales.
+
+// Create a new AsyncHook instance. All of these callbacks are optional.
 const asyncHook =
     async_hooks.createHook({ init, before, after, destroy, promiseResolve });
-//Permite a los callbacks de la instancia AsyncHook ser llamados. // Acción después de ejecutar el constructor, y debe de estar correctamente //accionado para comenzar a ejecutar los callbacks.
+
+// Allow callbacks of this AsyncHook instance to call. This is not an implicit
+// action after running the constructor, and must be explicitly run to begin
+// executing callbacks.
 asyncHook.enable();
-//Inhabilita la escucha de nuevos eventos asíncronos.
+
+// Disable listening for new asynchronous events.
 asyncHook.disable();
+
 //
-//Los siguientes son los callbacks que se pueden pasar a createHook().
+// The following are the callbacks that can be passed to createHook().
 //
 
-//init es llamado durante la construcción del objeto. El recurso puede no tener
-//construcción completada cuando se ejecuta este callback, por lo tanto, todos los 
-//campos del recurso al que hace referencia "asyncId" no se hayan rellenado.
-function init(asyncId, type, triggerAsyncId, resource){ }
-//esta función es llamada, justo antes de que los recursos del callback sean llamados. Se pueden
-// llamar 0-N veces por los handles (e.g TCPWrap), y se llamará exactamente 1
-//vez por solicitud(e.gFSReqWrap).
-function before(asyncId){ }
-//after es llamado justo después de que los recursos del callback han terminado.
-function after(asyncId){ }
+// init is called during object construction. The resource may not have
+// completed construction when this callback runs, therefore all fields of the
+// resource referenced by "asyncId" may not have been populated.
+function init(asyncId, type, triggerAsyncId, resource) { }
 
-// destroy es llamada cuando una instancia de AsyncWrap es destruida.
-function destroy(asyncId){ }
+// before is called just before the resource's callback is called. It can be
+// called 0-N times for handles (e.g. TCPWrap), and will be called exactly 1
+// time for requests (e.g. FSReqWrap).
+function before(asyncId) { }
 
-//promiseResolve es llamada solo por los recursos promesa, cuando la
-//función `resolve` pasa a `Promise` y el constructor es invocado
-// (Ya sea directamente o utilizando otros medios para resolver la promesa).
-function promiseResolve(asyncId){ }
+// after is called just after the resource's callback has finished.
+function after(asyncId) { }
+
+// destroy is called when an AsyncWrap instance is destroyed.
+function destroy(asyncId) { }
+
+// promiseResolve is called only for promise resources, when the
+// `resolve` function passed to the `Promise` constructor is invoked
+// (either directly or through other means of resolving a promise).
+function promiseResolve(asyncId) { }
 ```
 
 #### `async_hooks.createHook(callbacks)`
@@ -64,18 +74,18 @@ function promiseResolve(asyncId){ }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} Los [Callbacks de Hook](#async_hooks_hook_callbacks) para registrar 
-  * `init` {Function} El [`init` callback][].
-  * `before` {Function} El [`before` callback][].
-  * `after` {Function} El [`after` callback][].
-  * `destroy` {Function} El [`destroy` callback][].
-* Devoluciones: {AsyncHook} Instancia utilizada para inhabilitar y habilitar hooks
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+  * `init` {Function} The [`init` callback][].
+  * `before` {Function} The [`before` callback][].
+  * `after` {Function} The [`after` callback][].
+  * `destroy` {Function} The [`destroy` callback][].
+* Returns: {AsyncHook} Instance used for disabling and enabling hooks
 
-Registra funciones para que sean llamadas para diferentes eventos en el tiempo de vida de cada operación asincrónica.
+Registers functions to be called for different lifetime events of each async operation.
 
-Los callbacks `init()`/`before()`/`after()`/`destroy()` son llamados para el respectivo evento asincrónico durante el tiempo de vida de un recurso.
+The callbacks `init()`/`before()`/`after()`/`destroy()` are called for the respective asynchronous event during a resource's lifetime.
 
-Todos los callbacks son opcionales. Por ejemplo, si solamente se necesita rastrear la limpieza de recursos, entonces solo será necesario pasar el callback `destroy` . Las especificaciones de todas las funciones que pueden ser pasadas a `callbacks` están en la sección [Callbacks de Hooks](#async_hooks_hook_callbacks) .
+All callbacks are optional. For example, if only resource cleanup needs to be tracked, then only the `destroy` callback needs to be passed. The specifics of all functions that can be passed to `callbacks` is in the [Hook Callbacks](#async_hooks_hook_callbacks) section.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -86,7 +96,7 @@ const asyncHook = async_hooks.createHook({
 });
 ```
 
-Tenga en cuenta que los callbacks serán heredados por medio de la cadena del prototipo:
+Note that the callbacks will be inherited via the prototype chain:
 
 ```js
 class MyAsyncCallbacks {
@@ -102,15 +112,15 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Manejo de Errores
+##### Error Handling
 
-Si algún callback de `AsyncHook` arroja, la aplicación imprimirá el seguimiento de pilas y saldrá. La ruta de salida sí sigue a una excepción no capturada, pero se eliminan todos los listeners de `uncaughtException`, forzando la salida del proceso. Los callbacks de `'exit'` seguirán siendo llamados a menos que la aplicación se ejecute con `--abort-on-uncaught-exception`, en dado caso un seguimiento de pilas será impreso y la aplicación saldrá, dejando un archivo principal.
+If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
-El motivo de este comportamiento de manejo de error es que estos callbacks se ejecutan en puntos potencialmente volátiles en el tiempo de vida de un objeto, por ejemplo, durante la construcción y destrucción de una clase. Debido a esto, se considera necesario reducir el proceso rápidamente para evitar una suspensión no intencionada en el futuro. Esto está sujeto a cambios en el futuro si se realiza un análisis comprensivo para asegurar que una excepción pueda seguir el flujo de control normal sin efectos secundarios no intencionados.
+The reason for this error handling behavior is that these callbacks are running at potentially volatile points in an object's lifetime, for example during class construction and destruction. Because of this, it is deemed necessary to bring down the process quickly in order to prevent an unintentional abort in the future. This is subject to change in the future if a comprehensive analysis is performed to ensure an exception can follow the normal control flow without unintentional side effects.
 
-##### Impresión en los callbacks de AsyncHooks
+##### Printing in AsyncHooks callbacks
 
-Ya que imprimir hacia la consola es una operación asincrónica, `console.log()` causará que los callbacks de AsyncHooks sean llamados. Utilizar `console.log()` u operaciones asincrónicas similares dentro de una función de callback de AsyncHooks causará una recursión infinita. Una solución fácil para esto al momento de depurar es utilizar una operación de registro sincrónico tal como `fs.writeSync(1, msg)`. Esto imprimirá hacia stdout porque `1` es el descriptor de archivo para stdout y no invocará a AsyncHooks de manera recursiva porque es sincrónico.
+Because printing to the console is an asynchronous operation, `console.log()` will cause the AsyncHooks callbacks to be called. Using `console.log()` or similar asynchronous operations inside an AsyncHooks callback function will thus cause an infinite recursion. An easy solution to this when debugging is to use a synchronous logging operation such as `fs.writeSync(1, msg)`. This will print to stdout because `1` is the file descriptor for stdout and will not invoke AsyncHooks recursively because it is synchronous.
 
 ```js
 const fs = require('fs');
@@ -122,15 +132,15 @@ function debug(...args) {
 }
 ```
 
-Si se necesita una operación asincrónica para registrarse, es posible mantener un seguimiento de lo que causó la operación asincrónica que utiliza la información proporcionada por AsyncHooks. Por lo tanto el registro debería ser omitido, cuando era el registro en sí lo que causó que el callback de AsyncHooks llamara. Al hacer esto, la recursión que sería infinita se rompe.
+If an asynchronous operation is needed for logging, it is possible to keep track of what caused the asynchronous operation using the information provided by AsyncHooks itself. The logging should then be skipped when it was the logging itself that caused AsyncHooks callback to call. By doing this the otherwise infinite recursion is broken.
 
 #### `asyncHook.enable()`
 
-* Devuelve: {AsyncHook} Una referencia a `asyncHook`.
+* Returns: {AsyncHook} A reference to `asyncHook`.
 
-Habilita los callbacks para una instancia determinada de `AsyncHook` . Si no se proporcionan callbacks, habilitarlos sería un noop.
+Enable the callbacks for a given `AsyncHook` instance. If no callbacks are provided enabling is a noop.
 
-La instancia `AsyncHook` está inhabilitada por defecto. Si la instancia `AsyncHook` fuese habilitada inmediatamente después de la creación, se podría utilizar el siguiente patrón.
+The `AsyncHook` instance is disabled by default. If the `AsyncHook` instance should be enabled immediately after creation, the following pattern can be used.
 
 ```js
 const async_hooks = require('async_hooks');
@@ -140,26 +150,26 @@ const hook = async_hooks.createHook(callbacks).enable();
 
 #### `asyncHook.disable()`
 
-* Devuelve: {AsyncHook} Una referencia a `asyncHook`.
+* Returns: {AsyncHook} A reference to `asyncHook`.
 
-Inhabilita los callbacks para una instancia dada de `AsyncHook` del pool global de callbacks de AsyncHook que serán ejecutados. Una vez que un hook haya sido inhabilitado, no volverá a ser llamado hasta que vuelva a ser habilitado.
+Disable the callbacks for a given `AsyncHook` instance from the global pool of AsyncHook callbacks to be executed. Once a hook has been disabled it will not be called again until enabled.
 
-Para la consistencia de APIs, `disable()` también devuelve la instancia `AsyncHook` .
+For API consistency `disable()` also returns the `AsyncHook` instance.
 
-#### Callbacks de Hooks
+#### Hook Callbacks
 
-Los eventos clave en el tiempo de vida de eventos asincrónicos han sido categorizados en cuatro áreas: instanciación, antes/después de que un callback es llamado, y cuando la instancia es destruida.
+Key events in the lifetime of asynchronous events have been categorized into four areas: instantiation, before/after the callback is called, and when the instance is destroyed.
 
 ##### `init(asyncId, type, triggerAsyncId, resource)`
 
-* `asyncId` {number} Una ID única para el recurso asincrónico.
-* `type` {string} El tipo del recurso asincrónico.
-* `triggerAsyncId` {number} La ID única del recurso asincrónico en cuyo contexto de ejecución fue creado este recurso asincrónico.
-* `resource` {Object} Referencia al recurso que representa la operación asincrónica, necesita ser liberada durante *destroy*.
+* `asyncId` {number} A unique ID for the async resource.
+* `type` {string} The type of the async resource.
+* `triggerAsyncId` {number} The unique ID of the async resource in whose execution context this async resource was created.
+* `resource` {Object} Reference to the resource representing the async operation, needs to be released during *destroy*.
 
-Se llama cuando se construye una clase que tiene la *posibilidad* de emitir un evento asincrónico. Esto *no* significa que la instancia debe llamar a `before`/`after` antes de que `destroy` sea llamado, solo que la posibilidad existe.
+Called when a class is constructed that has the *possibility* to emit an asynchronous event. This *does not* mean the instance must call `before`/`after` before `destroy` is called, only that the possibility exists.
 
-Se puede observar este comportamiento al hacer algo como abrir un recurso, y después cerrarlo antes de que el recurso pueda ser utilizado. El siguiente fragmento demuestra esto.
+This behavior can be observed by doing something like opening a resource then closing it before the resource can be used. The following snippet demonstrates this.
 
 ```js
 require('net').createServer().listen(function() { this.close(); });
@@ -167,11 +177,11 @@ require('net').createServer().listen(function() { this.close(); });
 clearTimeout(setTimeout(() => {}, 10));
 ```
 
-A cada recurso nuevo se le asigna una ID que es única dentro del ámbito del proceso actual.
+Every new resource is assigned an ID that is unique within the scope of the current process.
 
-###### `tipo`
+###### `type`
 
-El `type` es una string que identifica el tipo de recurso que causó que `init` fuese llamado. Generalmente, corresponderá al nombre del constructor del recurso.
+The `type` is a string identifying the type of resource that caused `init` to be called. Generally, it will correspond to the name of the resource's constructor.
 
 ```text
 FSEVENTWRAP, FSREQWRAP, GETADDRINFOREQWRAP, GETNAMEINFOREQWRAP, HTTPPARSER,
@@ -181,17 +191,17 @@ TTYWRAP, UDPSENDWRAP, UDPWRAP, WRITEWRAP, ZLIB, SSLCONNECTION, PBKDF2REQUEST,
 RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 ```
 
-También está el tipo de recurso `PROMISE`, el cual se utiliza para rastrear las instancias de `Promise` y el trabajo asincrónico programado para esas instancias.
+There is also the `PROMISE` resource type, which is used to track `Promise` instances and asynchronous work scheduled by them.
 
-Los usuarios son capaces de definir su propio `type` al utilizar la API pública del embebedor.
+Users are able to define their own `type` when using the public embedder API.
 
-*Nota:* Es posible tener colisiones de nombres de tipo. A los embebedores se les anima utilizar prefijos únicos, tales como el nombre del paquete del npm, para prevenir colisiones al escuchar los hooks.
+*Note:* It is possible to have type name collisions. Embedders are encouraged to use unique prefixes, such as the npm package name, to prevent collisions when listening to the hooks.
 
 ###### `triggerId`
 
-`triggerAsyncId` es el `asyncId` del recurso que causó (o "activó") que el nuevo recurso se inicializara y que causó que `init` llamara. Esto es diferente a `async_hooks.executionAsyncId()`, el cual solamente muestra *cuándo* fue creado un nuevo recurso, mientras que `triggerAsyncId` muestra *por qué* se creó un recurso.
+`triggerAsyncId` is the `asyncId` of the resource that caused (or "triggered") the new resource to initialize and that caused `init` to call. This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
 
-La siguiente es una demostración simple de `triggerAsyncId`:
+The following is a simple demonstration of `triggerAsyncId`:
 
 ```js
 async_hooks.createHook({
@@ -212,21 +222,21 @@ TCPSERVERWRAP(2): trigger: 1 execution: 1
 TCPWRAP(4): trigger: 2 execution: 0
 ```
 
-El `TCPSERVERWRAP` es el servidor que recibe las conexiones.
+The `TCPSERVERWRAP` is the server which receives the connections.
 
-El `TCPWRAP` es la nueva conexión del cliente. Cuando se crea una nueva conexión, se construye inmediatamente la instancia `TCPWrap` . Esto ocurre fuera de cualquier pila de JavaScript (nota: una `executionAsyncId()` de `0` significa que está siendo ejecutada desde C++, sin pilas de JavaScript sobre la misma). Con solo esa información, sería imposible vincular recursos en términos de lo que hizo que fuesen creados, así que a `triggerAsyncId` se le da la tarea de propagar cuál recurso es responsable de la existencia del nuevo recurso.
+The `TCPWRAP` is the new connection from the client. When a new connection is made the `TCPWrap` instance is immediately constructed. This happens outside of any JavaScript stack (side note: a `executionAsyncId()` of `0` means it's being executed from C++, with no JavaScript stack above it). With only that information, it would be impossible to link resources together in terms of what caused them to be created, so `triggerAsyncId` is given the task of propagating what resource is responsible for the new resource's existence.
 
-###### `recurso`
+###### `resource`
 
-`resource` es un objeto que representa el recurso asincrónico verdadero que ha sido inicializado. Esto puede contener información útil que puede variar con base en el valor de `type`. Por ejemplo, para el tipo de recurso `GETADDRINFOREQWRAP`, `resource` proporciona el nombre de host utilizado cuando se busca la dirección IP para el nombre de host en `net.Server.listen()`. La API para acceder a esta información actualmente no se considera como pública, pero al utilizar la API del embebedor, los usuarios pueden proporcionar y documentar sus propios objetos de recurso. Por ejemplo, dicho objeto de recurso podría contener la consulta SQL que esté siendo ejecutada.
+`resource` is an object that represents the actual async resource that has been initialized. This can contain useful information that can vary based on the value of `type`. For instance, for the `GETADDRINFOREQWRAP` resource type, `resource` provides the hostname used when looking up the IP address for the hostname in `net.Server.listen()`. The API for accessing this information is currently not considered public, but using the Embedder API, users can provide and document their own resource objects. For example, such a resource object could contain the SQL query being executed.
 
-In the case of Promises, the `resource` object will have `promise` property that refers to the Promise that is being initialized, and a `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. Por ejemplo, en el caso de `b = a.then(handler)`, `a` es considerada como la Promesa principal de `b`. Aquí, `b` es considerado como una promesa encadenada.
+In the case of Promises, the `resource` object will have `promise` property that refers to the Promise that is being initialized, and a `isChainedPromise` property, set to `true` if the promise has a parent promise, and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is considered a parent Promise of `b`. Here, `b` is considered a chained promise.
 
-*Nota*: En algunos casos, se reutiliza el objeto de recurso por motivos de rendimiento, por lo tanto, no es seguro utilizarlo como una clave en un `WeakMap` o agregarle propiedades.
+*Note*: In some cases the resource object is reused for performance reasons, it is thus not safe to use it as a key in a `WeakMap` or add properties to it.
 
-###### Ejemplo de contexto asincrónico
+###### Asynchronous context example
 
-Lo siguiente es un ejemplo con información adicional sobre las llamadas a `init` entre las llamadas de `before` y `after`, específicamente cómo se verá el callback a `listen()` . El formateo de salida está un poco más elaborado para hacer que el contexto de llamada pueda ser visto más fácilmente.
+The following is an example with additional information about the calls to `init` between the `before` and `after` calls, specifically what the callback to `listen()` will look like. The output formatting is slightly more elaborate to make calling context easier to see.
 
 ```js
 let indent = 0;
@@ -289,59 +299,59 @@ destroy: 9
 destroy: 5
 ```
 
-*Nota*: Como se ilustra en el ejemplo, `executionAsyncId()` y `execution` especifican el valor del contexto de ejecución actual; el cual está delineado por las llamadas a `before` y `after`.
+*Note*: As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
 
-Utilizar `execution` solamente para hacer un gráfico de la asignación de recursos tiene como resultado lo siguiente:
+Only using `execution` to graph resource allocation results in the following:
 
 ```console
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-El `TCPSERVERWRAP` no es parte de este gráfico, a pesar de que fue el motivo por el cual `console.log()` fue llamado. El motivo de esto es porque enlazar a un puerto sin un nombre de host es una operación *sincrónica*, pero para mantener una API completamente asincrónica, se coloca el callback del usuario en un `process.nextTick()`.
+The `TCPSERVERWRAP` is not part of this graph, even though it was the reason for `console.log()` being called. This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
 
-El gráfico solo muestra *cuándo* se creó un recurso, no el *porqué*, así que para rastrear el *porqué* utilice `triggerAsyncId`.
+The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
 
 ##### `before(asyncId)`
 
 * `asyncId` {number}
 
-Cuando se inicia una operación asincrónica (así como un servidor de TCP que recibe una nueva conexión) o completa (así como escribir datos a un disco), un callback es llamado para notificar al usuario. El callback `before` es llamado justo antes de que se ejecute dicho callback. `asyncId` es el único identificador asignado al recurso que está por ejecutar el callback.
+When an asynchronous operation is initiated (such as a TCP server receiving a new connection) or completes (such as writing data to disk) a callback is called to notify the user. The `before` callback is called just before said callback is executed. `asyncId` is the unique identifier assigned to the resource about to execute the callback.
 
-El callback `before` será llamado de 0 a N veces. El callback `before` generalmente será llamado 0 veces si la operación asincrónica fue cancelada o, por ejemplo, si el servidor de TCP no recibe ninguna conexión. Recursos asincrónicos persistentes como un servidor de TCP generalmente llamarán al callback `before` varias veces, mientras que otras operaciones como `fs.open()` llamarán una sola vez.
+The `before` callback will be called 0 to N times. The `before` callback will typically be called 0 times if the asynchronous operation was cancelled or, for example, if no connections are received by a TCP server. Persistent asynchronous resources like a TCP server will typically call the `before` callback multiple times, while other operations like `fs.open()` will call it only once.
 
 ##### `after(asyncId)`
 
 * `asyncId` {number}
 
-Se llama inmediatamente después que el callback especificado en `before` se completa.
+Called immediately after the callback specified in `before` is completed.
 
-*Nota:* Si ocurre una excepción no capturada durante la ejecución del callback, entonces `after` se ejecutará *después* de que se emita el evento `'uncaughtException'` o se ejecute un manejador de `domain` .
+*Note:* If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
 
 ##### `destroy(asyncId)`
 
 * `asyncId` {number}
 
-Se llama después de que se destruye el recurso correspondiente a `asyncId` . También es llamado de manera asincrónica desde la API del embebedor `emitDestroy()`.
+Called after the resource corresponding to `asyncId` is destroyed. It is also called asynchronously from the embedder API `emitDestroy()`.
 
-*Nota:* Algunos recursos dependen de la recolección de basura para la limpieza, por lo tanto si se crea un referencia para el objeto de `resource` pasado a `init`, es posible que `destroy` nunca sea llamado, causando una pérdida de memoria en la aplicación. Si el recurso no depende de la recolección de basura, entonces esto no será un problema.
+*Note:* Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. If the resource does not depend on garbage collection, then this will not be an issue.
 
 ##### `promiseResolve(asyncId)`
 
 * `asyncId` {number}
 
-Es llamado cuando la función de `resolve` pasada al constructor de `Promise` es invocada (ya sea de manera directa o a través de otros medios de resolución de una promesa).
+Called when the `resolve` function passed to the `Promise` constructor is invoked (either directly or through other means of resolving a promise).
 
-Tenga en cuenta que `resolve()` no hace ningún trabajo sincrónico observable.
+Note that `resolve()` does not do any observable synchronous work.
 
-*Nota:* Esto no significa necesariamente que la `Promise` se cumplirá o se rechazará en este punto, si la `Promise` fue resuelta asumiendo el estado de otra `Promise`.
+*Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
 
-Por ejemplo:
+For example:
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
 ```
 
-llama a los siguientes callbacks:
+calls the following callbacks:
 
 ```text
 init for PROMISE with id 5, trigger id: 1
@@ -363,148 +373,149 @@ changes:
     description: Renamed from currentId
 -->
 
-* Devuelve: {number} El `asyncId` del contexto de ejecución actual. Útil para rastrear cuando algo llama.
+* Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
 
-Por ejemplo:
+For example:
 
 ```js
 const async_hooks = require('async_hooks');
 
-console.log(async_hooks.executionAsyncId());  // llamada a 1 - bootstrap 
+console.log(async_hooks.executionAsyncId());  // 1 - bootstrap
 fs.open(path, 'r', (err, fd) => {
-  console.log(async_hooks.executionAsyncId());  // llamada a 6 - open()
+  console.log(async_hooks.executionAsyncId());  // 6 - open()
 });
 ```
 
-La ID devuelta desde `executionAsyncId()` está relacionada con el tiempo de ejecución, no con la causalidad (la cual está cubierta por `triggerAsyncId()`). Por ejemplo:
+The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). For example:
 
 ```js
 const server = net.createServer(function onConnection(conn) {
-  // Devuelve el ID del server, no de la nueva conexión, porque el
-  // onConnection callback se ejecutan el ámbito de la función del server
+  // Returns the ID of the server, not of the new connection, because the
+  // onConnection callback runs in the execution scope of the server's
   // MakeCallback().
   async_hooks.executionAsyncId();
 
 }).listen(port, function onListening() {
-  //Devuelve el ID de un TickObjetc (esto es process.netTick()) porque 
-  //todos los callbacks pasados a .listen() están wrappeados en un nextTick().
+  // Returns the ID of a TickObject (i.e. process.nextTick()) because all
+  // callbacks passed to .listen() are wrapped in a nextTick().
   async_hooks.executionAsyncId();
-}); 
+});
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir executionAsyncIds precisos por defecto. Consulte la sección sobre [rastreo de ejecución de promesas](#async_hooks_promise_execution_tracking).
+Note that promise contexts may not get precise executionAsyncIds by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
 #### `async_hooks.triggerAsyncId()`
 
-* Devuelve: {number} La ID del recurso responsable de llamar al callback que está siendo actualmente ejecutado.
+* Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
 
 For example:
 
 ```js
 const server = net.createServer((conn) => {
-  // El recurso que causa (o dispara) que este callback se llame
-  // fue el de la nueva conexión. Así el valor devuelto por triggerAsyncId()
-  // es el asyncId de "conn".
+  // The resource that caused (or triggered) this callback to be called
+  // was that of the new connection. Thus the return value of triggerAsyncId()
+  // is the asyncId of "conn".
   async_hooks.triggerAsyncId();
 
 }).listen(port, () => {
-  // Aunque todos los callbacks pasados a .listen() estén wrappeaddos en un nextTick()
-  // el propio callback existe por que se hizo la  llamada al .listen() del server. Por lo tanto el valor devuelto sería el ID del server.
+  // Even though all callbacks passed to .listen() are wrapped in a nextTick()
+  // the callback itself exists because the call to the server's .listen()
+  // was made. So the return value would be the ID of the server.
   async_hooks.triggerAsyncId();
 });
 ```
 
-Tenga en cuenta que los contextos de promesa no podrán recibir triggerAsyncIds válidos por defecto. Consulte la sección sobre [promise execution tracking](#async_hooks_promise_execution_tracking).
+Note that promise contexts may not get valid triggerAsyncIds by default. See the section on [promise execution tracking](#async_hooks_promise_execution_tracking).
 
-## Rastreo de ejecución de promises
+## Promise execution tracking
 
-By default, promise executions are not assigned asyncIds due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. Esto significa que los programas que utilizan promesas ó `async`/`await` no obtendrán una ejecución correcta y activarán identificaciones para contextos de callbacks de promesas por defecto.
+By default, promise executions are not assigned asyncIds due to the relatively expensive nature of the [promise introspection API](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) provided by V8. This means that programs using promises or `async`/`await` will not get correct execution and trigger ids for promise callback contexts by default.
 
-Aquí tiene un ejemplo:
+Here's an example:
 
 ```js
 const ah = require('async_hooks');
 Promise.resolve(1729).then(() => {
   console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
 });
-// muestra:
+// produces:
 // eid 1 tid 0
 ```
 
 Observe that the `then` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the triggerAsyncId value is 0, which means that we are missing context about the resource that caused (triggered) the `then` callback to be executed.
 
-Instalar hooks asincrónicos mediante `async_hooks.createHook` habilita el rastreo de ejecución de promises. Ejemplo:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
 ```js
 const ah = require('async_hooks');
-ah.createHook({ init() {} }).enable(); // fuerza que PromiseHooks esté habilitado.
+ah.createHook({ init() {} }).enable(); // forces PromiseHooks to be enabled.
 Promise.resolve(1729).then(() => {
   console.log(`eid ${ah.executionAsyncId()} tid ${ah.triggerAsyncId()}`);
 });
-// muestra:
+// produces:
 // eid 7 tid 6
 ```
 
-En este ejemplo, agregar cualquier función real de un hook habilitó el rastreo de las promesas. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then`. In the example above, the first promise got the asyncId 6 and the latter got asyncId 7. During the execution of the `then` callback, we are executing in the context of promise with asyncId 7. This promise was triggered by async resource 6.
+In this example, adding any actual hook function enabled the tracking of promises. There are two promises in the example above; the promise created by `Promise.resolve()` and the promise returned by the call to `then`. In the example above, the first promise got the asyncId 6 and the latter got asyncId 7. During the execution of the `then` callback, we are executing in the context of promise with asyncId 7. This promise was triggered by async resource 6.
 
-Otra sutileza con las promises es que los callbacks de `before` y `after` se ejecutan sólo en promises encadenadas. That means promises not created by `then`/`catch` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
+Another subtlety with promises is that `before` and `after` callbacks are run only on chained promises. That means promises not created by `then`/`catch` will not have the `before` and `after` callbacks fired on them. For more details see the details of the V8 [PromiseHooks](https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk) API.
 
-## API del Embebedor de JavaScript
+## JavaScript Embedder API
 
 Library developers that handle their own asynchronous resources performing tasks like I/O, connection pooling, or managing callback queues may use the `AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
 
-### `clase AsyncResource()`
+### `class AsyncResource()`
 
-La clase `AsyncResource` está diseñada para extenderse por los registros asincrónicos del embebedor. Al usar esto, los usuarios podrán fácilmente activar los eventos del tiempo de vida de sus propios recursos.
+The class `AsyncResource` is designed to be extended by the embedder's async resources. Using this, users can easily trigger the lifetime events of their own resources.
 
-El hook de `init` se activará cuando un `AsyncResource` sea instanciado.
+The `init` hook will trigger when an `AsyncResource` is instantiated.
 
-A continuación, se muestra un resumen de la API `AsyncResource` .
+The following is an overview of the `AsyncResource` API.
 
 ```js
 const { AsyncResource, executionAsyncId } = require('async_hooks');
 
-// Se espera que se herende de AsyncResource(). Instanciar una 
-// nueva AsyncResource() tambien dispara un init. Si se omite triggerAsyncId entonces
-// se usa async_hook.executionAsyncId().
+// AsyncResource() is meant to be extended. Instantiating a
+// new AsyncResource() also triggers init. If triggerAsyncId is omitted then
+// async_hook.executionAsyncId() is used.
 const asyncResource = new AsyncResource(
   type, { triggerAsyncId: executionAsyncId(), requireManualDestroy: false }
 );
 
-// Ejecuta una función en el contexto de ejecución del recurso. Esto permitirá
-// * establecer el contexto de recurso 
-// * disparar un AsyncHooks antes de los callbacks
-// * llamar al proveedor de la función `fn` con los argumentos dados
-// * disparar el AsyncHooks después de los callbacks
-// * restaurar el contexto de ejecución original 
+// Run a function in the execution context of the resource. This will
+// * establish the context of the resource
+// * trigger the AsyncHooks before callbacks
+// * call the provided function `fn` with the supplied arguments
+// * trigger the AsyncHooks after callbacks
+// * restore the original execution context
 asyncResource.runInAsyncScope(fn, thisArg, ...args);
 
-// La llamada a AsyncHooks destruye los callbacks.
+// Call AsyncHooks destroy callbacks.
 asyncResource.emitDestroy();
 
-// Devuelve el ID único asignado a la instancia de AsyncResource.
+// Return the unique ID assigned to the AsyncResource instance.
 asyncResource.asyncId();
 
-// Devuelve el ID del trigger para la instancia de AsyncResource.
+// Return the trigger ID for the AsyncResource instance.
 asyncResource.triggerAsyncId();
 
-// Invoca a AsyncHooks antes de los callbacks.
-// Deprecado: sino usa asyncResource.runInAsyncScope.
+// Call AsyncHooks before callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
 asyncResource.emitBefore();
 
-// Invoca a AsyncHooks después de los callbacks.
-// Deprecado: sino usa asyncResource.runInAsyncScope.
+// Call AsyncHooks after callbacks.
+// Deprecated: Use asyncResource.runInAsyncScope instead.
 asyncResource.emitAfter();
 ```
 
 #### `AsyncResource(type[, options])`
 
-* `type` {string} El tipo de evento asincrónico.
+* `type` {string} The type of async event.
 * `options` {Object} 
-  * `triggerAsyncId` {number} La ID del contexto de ejecución que creó este evento asincrónico. **Predeterminado:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Inhabilita la función automática `emitDestroy` cuando el objeto es recolectado en la basura. Generalmente, esto no necesita ser establecido (incluso si `emitDestroy` es llamado manualmente), a menos que el asyncId del recurso sea recuperado y las API's sensibles de `emitDestroy` sean llamadas con ello. **Predeterminado:** `false`.
+  * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
+  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's asyncId is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Ejemplo de uso:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -532,11 +543,11 @@ class DBQuery extends AsyncResource {
 added: v8.12.0
 -->
 
-* `fn` {Function} La función para llamar en el contexto de ejecución de este recurso asincrónico.
-* `thisArg` {any} El receptor que será utilizado para la función de llamada.
-* `...args` {any} Argumentos opcionales para pasar a la función.
+* `fn` {Function} The function to call in the execution context of this async resource.
+* `thisArg` {any} The receiver to be used for the function call.
+* `...args` {any} Optional arguments to pass to the function.
 
-Llama a la función proporcionada con los argumentos proporcionados en el contexto de ejecución del recurso asincrónico. Esto establecerá el contexto, activará el AsyncHooks antes de los callbacks, llamará la función, activará el AsyncHooks después de los callbacks, y después restaurará el contexto de ejecución original.
+Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
 
 #### `asyncResource.emitBefore()`
 
@@ -544,13 +555,13 @@ Llama a la función proporcionada con los argumentos proporcionados en el contex
 deprecated: v8.12.0
 -->
 
-> Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
+> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Devuelve: {undefined}
+* Returns: {undefined}
 
-Llama a todos los callbacks de `before` para notificar que un nuevo contexto de ejecución asincrónico está siendo accedido. Si se realizan llamadas anidadas a `emitBefore()`, la pila de `asyncId`s será rastreada y desenrollada correctamente.
+Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
-Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor, utilice `runInAsyncScope`, ya que ofrece una alternativa mucho más segura.
+`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### `asyncResource.emitAfter()`
 
@@ -558,26 +569,26 @@ Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en 
 deprecated: v8.12.0
 -->
 
-> Estabilidad: 0 - Obsoleto: Utilice [`asyncResource.runInAsyncScope()`][] en su lugar.
+> Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Devuelve: {undefined}
+* Returns: {undefined}
 
-Llama a todos los callbacks `after` . Si se realizaron llamadas anidadas a `emitBefore()`, entonces asegúrese de que el stack se desenrolle correctamente. De otra manera ocurrirá un error.
+Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
 
-Si el callback del usuario arroja una excepción, `emitAfter()` será llamado automáticamente para todos los `asyncId`s en el stack si el error es manejado por un dominio o un handler de `'uncaughtException'` .
+If the user's callback throws an exception, `emitAfter()` will automatically be called for all `asyncId`s on the stack if the error is handled by a domain or `'uncaughtException'` handler.
 
-Las llamadas de `before` y `after` deben ser desenrolladas en el mismo orden en el cual son llamadas. De lo contrario, ocurrirá una excepción irrecuperable y se anulará el proceso. Por este motivo, las APIs de `emitBefore` y `emitAfter` se consideran obsoletas. Por favor utilice `runInAsyncScope`, ya que ofrece una alternativa mucha más segura.
+`before` and `after` calls must be unwound in the same order that they are called. Otherwise, an unrecoverable exception will occur and the process will abort. For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### `asyncResource.emitDestroy()`
 
-* Devuelve: {undefined}
+* Returns: {undefined}
 
-Llama a todos los hooks `destroy`. Esto sólo se debe llamar una vez. Ocurrirá un error si se llama más de una vez. Esto **must** se debe llamar manualmente. Si se deja el recurso para que sea recolectado por el GC, entonces los hooks `destroy` nunca serán llamados.
+Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
 #### `asyncResource.asyncId()`
 
-* Devuelve: {number} El único `asyncId` asignado al recurso.
+* Returns: {number} The unique `asyncId` assigned to the resource.
 
 #### `asyncResource.triggerAsyncId()`
 
-* Devuelve: {number} El mismo `triggerAsyncId` que es pasado al constructor de `AsyncResource` .
+* Returns: {number} The same `triggerAsyncId` that is passed to the `AsyncResource` constructor.
