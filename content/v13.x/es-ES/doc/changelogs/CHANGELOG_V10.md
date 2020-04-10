@@ -1,4 +1,4 @@
-# Registro de Cambios de Node.js 10
+# Node.js 10 ChangeLog
 
 <!--lint disable prohibited-strings-->
 <!--lint disable maximum-line-length-->
@@ -6,7 +6,7 @@
 <table>
 <tr>
 <th>LTS 'Dubnium'</th>
-<th title="Previamente llamado 'Stable'">Actual</th>
+<th title="Previously called 'Stable'">Current</th>
 </tr>
 <tr>
 <td valign="top">
@@ -43,7 +43,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -56,15 +56,15 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.16.3"></a>
 
 ## 2019-08-15, Version 10.16.3 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 Node.js, as well as many other implementations of HTTP/2, have been found vulnerable to Denial of Service attacks. See https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md for more information.
 
@@ -104,7 +104,7 @@ Vulnerabilities fixed:
 
 ## 2019-08-06, Version 10.16.2 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 This release patches a [regression](https://github.com/nodejs/node/issues/28932) in the OpenSSL upgrade to 1.1.1c that causes intermittent hangs in machines that have low entropy.
 
@@ -116,7 +116,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-07-31, Version 10.16.1 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 * **deps**: upgrade openssl sources to 1.1.1c (Sam Roberts) [#28212](https://github.com/nodejs/node/pull/28212)
 * **stream**: do not unconditionally call `_read()` on `resume()` (Anna Henningsen) [#26965](https://github.com/nodejs/node/pull/26965)
@@ -161,11 +161,11 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-05-28, Version 10.16.0 'Dubnium' (LTS), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * update ICU to 64.2 (Ujjwal Sharma) [#27361](https://github.com/nodejs/node/pull/27361)
-  * actualizar npm a 6.9.0 (Kat Marchán) [#26244](https://github.com/nodejs/node/pull/26244)
+  * upgrade npm to 6.9.0 (Kat Marchán) [#26244](https://github.com/nodejs/node/pull/26244)
   * upgrade openssl sources to 1.1.1b (Sam Roberts) [#26327](https://github.com/nodejs/node/pull/26327)
   * upgrade to libuv 1.28.0 (cjihrig) [#27241](https://github.com/nodejs/node/pull/27241)
 * **events**: add once method to use promises with EventEmitter (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078)
@@ -532,7 +532,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-03-05, Version 10.15.3 'Dubnium' (LTS), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **doc**
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
@@ -757,7 +757,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-02-28, Version 10.15.2 'Dubnium' (LTS), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
   https://nodejs.org/en/blog/vulnerability/february-2019-security-releases/
 
@@ -767,7 +767,7 @@ A fix for the following CVE is included in this release:
 
 * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
 
-### Cambios Notables
+### Notable Changes
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -779,7 +779,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-29, Version 10.15.1 'Dubnium' (LTS), @codebytere
 
-### Cambios Notables
+### Notable Changes
 
 * **doc**:
   * add oyyd to collaborators (Ouyang Yadong) [#24300](https://github.com/nodejs/node/pull/24300)
@@ -1017,7 +1017,7 @@ A fix for the following CVE is included in this release:
 
 The 10.14.0 security release introduced some unexpected breakages on the 10.x release line. This is a special release to fix a regression in the HTTP binary upgrade response body and add a missing CLI flag to adjust the max header size of the http parser.
 
-### Cambios Notables
+### Notable Changes
 
 * **cli**:
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -1040,9 +1040,9 @@ The 10.14.0 security release introduced some unexpected breakages on the 10.x re
 
 ## 2018-12-11, Version 10.14.2 'Dubnium' (LTS), @MylesBorins prepared by @codebytere
 
-Esta actualización de LTS viene con 374 commits. This includes 165 which are test or benchmark related, 77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
+This LTS release comes with 374 commits. This includes 165 which are test or benchmark related, 77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * upgrade to c-ares v1.15.0 (Ben Noordhuis) [#23854](https://github.com/nodejs/node/pull/23854)
@@ -1433,7 +1433,7 @@ Esta actualización de LTS viene con 374 commits. This includes 165 which are te
 
 ## 2018-11-29, Version 10.14.1 'Dubnium' (LTS), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **win/msi**: Revert changes to installer causing issues on Windows systems.
 
@@ -1447,13 +1447,13 @@ Esta actualización de LTS viene con 374 commits. This includes 165 which are te
 
 ## 2018-11-27, Version 10.14.0 'Dubnium' (LTS), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
   https://nodejs.org/en/blog/vulnerability/november-2018-security-releases/
 
 for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
 * Node.js: Denial of Service with large HTTP headers (CVE-2018-12121)
 * Node.js: Slowloris HTTP Denial of Service (CVE-2018-12122 / Node.js)
@@ -1461,7 +1461,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 * OpenSSL: Timing vulnerability in DSA signature generation (CVE-2018-0734)
 * OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2019-0735)
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: Upgrade to OpenSSL 1.1.0j, fixing CVE-2018-0734 and CVE-2019-0735
 * **http**:
@@ -1485,7 +1485,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 This release marks the transition of Node.js 10.x into Long Term Support (LTS) with the codename 'Dubnium'. The 10.x release line now moves in to "Active LTS" and will remain so until April 2020. After that time it will move in to "Maintenance" until end of life in April 2021.
 
-### Cambios Notables
+### Notable Changes
 
 This release only includes minimal changes necessary to fix known regressions prior to LTS.
 
@@ -1499,7 +1499,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-10-10, Version 10.12.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **assert**
   * The diff output is now a tiny bit improved by sorting object properties when inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
@@ -1795,7 +1795,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-20, Version 10.11.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **fs**
   * Fixed fsPromises.readdir `withFileTypes`. [#22832](https://github.com/nodejs/node/pull/22832)
@@ -1922,7 +1922,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-06, Version 10.10.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **child_process**:
   * `TypedArray` and `DataView` values are now accepted as input by `execFileSync` and `spawnSync`. [#22409](https://github.com/nodejs/node/pull/22409)
@@ -1939,7 +1939,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * **os**:
   * Added two new methods: `os.getPriority` and `os.setPriority`, allowing to manipulate the scheduling priority of processes. [#22407](https://github.com/nodejs/node/pull/22407)
 * **process**:
-  * Se añadió `process.allowedNodeEnvironmentFlags`. This object can be used to programmatically validate and list flags that are allowed in the `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
+  * Added `process.allowedNodeEnvironmentFlags`. This object can be used to programmatically validate and list flags that are allowed in the `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
 * **src**:
   * Deprecated option variables in public C++ API. [#22515](https://github.com/nodejs/node/pull/22515)
   * Refactored options parsing. [#22392](https://github.com/nodejs/node/pull/22392)
@@ -2162,19 +2162,19 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-08-15, Version 10.9.0 (Current), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
   https://nodejs.org/en/blog/vulnerability/august-2018-security-releases/
 
 for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
 * CVE-2018-0732 (OpenSSL)
 * CVE-2018-7166 (Node.js)
 * CVE-2018-12115 (Node.js)
 
-### Cambios Notables
+### Notable Changes
 
 * **buffer**:
   * Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
@@ -2186,7 +2186,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * Upgrade V8 from 6.7 to 6.8 (Michaël Zasso) [#21079](https://github.com/nodejs/node/pull/21079)
     * Memory reduction and performance improvements, details at: https://v8project.blogspot.com/2018/06/v8-release-68.html
 * **http**: `http.get()` and `http.request()` (and `https` variants) can now accept three arguments to allow for a `URL` _and_ an `options` object (Sam Ruby) [#21616](https://github.com/nodejs/node/pull/21616)
-* Nuevos colaboradores añadidos
+* Added new collaborators
   * Sam Ruby (https://github.com/rubys)
   * George Adams (https://github.com/gdams)
 
@@ -2355,7 +2355,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-08-01, Version 10.8.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * Upgrade npm to 6.2.0. [#21592](https://github.com/nodejs/node/pull/21592)
@@ -2465,7 +2465,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-07-18, Version 10.7.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **console**:
   * The `console.timeLog()` method has been implemented. [#21312](https://github.com/nodejs/node/pull/21312)
@@ -2483,7 +2483,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * Added the `--title` command line argument to set the process title on startup. [#21477](https://github.com/nodejs/node/pull/21477)
 * **trace_events**:
   * Added process\_name metadata. [#21477](https://github.com/nodejs/node/pull/21477)
-* **Nuevos colaboradores añadidos**
+* **Added new collaborators**
   * [codebytere](https://github.com/codebytere) - Shelley Vohr
 
 ### Commits
@@ -2608,7 +2608,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-07-04, Version 10.6.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **dns**:
   * An experimental promisified version of the dns module is now available. Give it a try with `require('dns').promises`. [#21264](https://github.com/nodejs/node/pull/21264)
@@ -2740,10 +2740,10 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-06-20, Version 10.5.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **crypto**:
-  * Soporte para `crypto.scrypt()` ha sido añadido. [#20816](https://github.com/nodejs/node/pull/20816)
+  * Support for `crypto.scrypt()` has been added. [#20816](https://github.com/nodejs/node/pull/20816)
 * **fs**:
   * BigInt support has been added to `fs.stat` and `fs.watchFile`. [#20220](https://github.com/nodejs/node/pull/20220)
   * APIs that take `mode` as arguments no longer throw on values larger than `0o777`. [#20636](https://github.com/nodejs/node/pull/20636) [#20975](https://github.com/nodejs/node/pull/20975) (Fixes: [#20498](https://github.com/nodejs/node/issues/20498))
@@ -2905,9 +2905,9 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="10.4.1"></a>
 
-## 2018-06-12, Versión 10.4.1 (Actual), @evanlucas
+## 2018-06-12, Version 10.4.1 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **http2**
@@ -2936,12 +2936,12 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="10.4.0"></a>
 
-## 2018-06-06, Versión 10.4.0 (Actual), @MylesBorins
+## 2018-06-06, Version 10.4.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
-  * actualizar V8 a 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
+  * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
 * **stream**:
   * ensure Stream.pipeline re-throws errors without callback (Blaine Bublitz) [#20437](https://github.com/nodejs/node/pull/20437)
 
@@ -3042,19 +3042,19 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="10.3.0"></a>
 
-## 2018-05-29, Versión 10.3.0 (Actual), @MylesBorins
+## 2018-05-29, Version 10.3.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
-  * actualizar npm a 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
+  * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
 * **fs**:
   * fix reads with pos \> 4GB (Mathias Buus) [#21003](https://github.com/nodejs/node/pull/21003)
 * **net**:
   * new option to allow IPC servers to be readable and writable by all users (Bartosz Sosnowski) [#19472](https://github.com/nodejs/node/pull/19472)
 * **stream**:
   * fix removeAllListeners() for Stream.Readable to work as expected when no arguments are passed (Kael Zhang) [#20924](https://github.com/nodejs/node/pull/20924)
-* **Nuevos colaboradores añadidos**
+* **Added new collaborators**
   * [jdlaton](https://github.com/jdalton) John-David Dalton
 
 ### Commits
@@ -3102,9 +3102,9 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="10.2.1"></a>
 
-## 2018-05-24, Versión 10.2.1 (Actual), @MylesBorin
+## 2018-05-24, Version 10.2.1 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 This is a follow up release to fix two regressions that were introduced in v10.2.0.
 
@@ -3116,9 +3116,9 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 <a id="10.2.0"></a>
 
-## 2018-05-23, Versión 10.2.0 (Actual), @MylesBorins
+## 2018-05-23, Version 10.2.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **addons**:
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
@@ -3351,20 +3351,20 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 <a id="10.1.0"></a>
 
-## 2018-05-08, Versión 10.1.0 (Actual), @MylesBorins
+## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **console**:
-  * hacer que console.table() utilice inspeccionar con color (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
+  * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**:
-  * mover fs/promesa a fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
+  * move fs/promises to fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**:
-  * se agregó la propiedad abortada para solicitar (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
+  * added aborted property to request (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
 * **n-api**:
-  * inicializar un módulo a través de un símbolo especial (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
+  * initialize a module via a special symbol (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
 * **src**:
-  * añadir API pública para exponer la Plataforma V8 principal (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
+  * add public API to expose the main V8 Platform (Allen Yonghuang Wang) [#20447](https://github.com/nodejs/node/pull/20447)
 
 ### Commits
 
@@ -3543,105 +3543,105 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 <a id="10.0.0"></a>
 
-## 2018-04-24, Versión 10.0.0 (Actual), @jasnell
+## 2018-04-24, Version 10.0.0 (Current), @jasnell
 
-### Cambios Notables
+### Notable Changes
 
-* Aserción
-  * Llamar a `assert.fail()` con más de un argumento está desaprobado. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
-  * Llamar a `assert.ifError()` ahora arrojará con cualquier argumento que no sea `undefined` o `null`. Previamente el método arrojaba con cualquier valor verdadero. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
-  * Los métodos `assert.rejects()` y `assert.doesNotReject()` han sido añadidos para trabajar con funciones asincrónicas. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
+* Assert
+  * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
+  * Calling `assert.ifError()` will now throw with any argument other than `undefined` or `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
+  * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
   * Assertion errors will show a diff in case objects are used. [[`2d9e87695e`](https://github.com/nodejs/node/commit/2d9e87695e)]
   * `assert.throws()` accepts an object for comparison to the error. [[`2d374916eb`](https://github.com/nodejs/node/commit/2d374916eb)]
   * The error message from `assert.ok(expression)` now also contains the expression itself. [[`f76ef50432`](https://github.com/nodejs/node/commit/f76ef50432)]
 * Async_hooks
-  * Las APIs async_hooks experimentales antiguas han sido eliminadas. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
+  * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
 * Buffer
-  * Los usos de `new Buffer()` y `Buffer()` fuera del directorio `node_modules` ahora emitirán una advertencia de desaprobación del tiempo de ejecución. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
-  * `Buffer.isEncoding()` ahora devuelve `undefined` para valores falsos, incluyendo una cadena vacía. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
-  * `Buffer.fill()` arrojará si se hace un intento de llenar con un `Buffer` vacío. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
+  * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
+  * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
+  * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
   * `noAssert` argument was removed from all `Buffer` read and write functions. [[`e8bb1f35df`](https://github.com/nodejs/node/commit/e8bb1f35df)]
 * Child Process
-  * Las propiedades indefinidas de env son ignoradas. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Consola
-  * El método `console.table()` ha sido agregado. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
+  * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
+* Console
+  * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto
-  * Los métodos `crypto.createCipher()` y `crypto.createDecipher()` se han desaprobado. Por favor, utilice `crypto.createCipheriv()` y `crypto.createDecipheriv()` en su lugar. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
-  * El método `decipher.finaltol()` se ha desaprobado. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
-  * La propiedad `crypto.DEFAULT_ENCODING` ha sido desaprobada. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
-  * El método `ECDH.convertKey()` ha sido añadido. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
-  * La propiedad `crypto.fips` se ha desaprobado. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
+  * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+  * The `decipher.finaltol()` method has been deprecated. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
+  * The `crypto.DEFAULT_ENCODING` property has been deprecated. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
+  * The `ECDH.convertKey()` method has been added. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
+  * The `crypto.fips` property has been deprecated. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
   * The AES-CCM algorithm has been implemented. [[`1e07acd476`](https://github.com/nodejs/node/commit/1e07acd476)]
-* Dependencias
-  * V8 ha sido actualizado a 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
-  * OpenSSL ha sido actualizado a 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
+* Dependencies
+  * V8 has been updated to 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
+  * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter
-  * El método `EventEmitter.prototype.off()` se ha agregado como un alias para `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* Sistema de Archivos
-  * La API `fs/promises` proporciona versiones promisificadas experimentales de las funciones del `fs`. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
-  * Los errores de ruta inválidos ahora se lanzan de forma sincrónica. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
-  * El método `fs.readFile()` ahora particiona las lecturas para evitar el agotamiento del pool de subprocesos. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
+  * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
+* File System
+  * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
+  * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
+  * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
 * HTTP
-  * El procesamiento de los códigos de Estatus de HTTP `100`, `102-199` se ha mejorado. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
-  * Los caracteres mult-byte en rutas URL ahora están prohibidos. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
+  * Processing of HTTP Status codes `100`, `102-199` has been improved. [[`baf8495078`](https://github.com/nodejs/node/commit/baf8495078)]
+  * Multi-byte characters in URL paths are now forbidden. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
 * N-API
-  * El n-api ya no es experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
+  * The n-api is no longer experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
 * Net
-  * El evento `'close'` se emitirá después de `'end'`. [[`9b7a6914a7`](https://github.com/nodejs/node/commit/9b7a6914a7)]
+  * The `'close'` event will be emitted after `'end'`. [[`9b7a6914a7`](https://github.com/nodejs/node/commit/9b7a6914a7)]
 * Perf_hooks
-  * La clase `PerformanceObserver` ahora es un `AsyncResource` y puede monitorearse utilizando `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
-  * Los eventos de seguimiento ahora se emiten para eventos de rendimiento. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
-  * La API de `performance` se ha simplificado. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
-  * Las marcas de hitos de rendimiento se emitirán como eventos de seguimiento. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Proceso
-  * El uso de valores no-cadena para `process.env` está desaprobado. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
-  * El método `process.assert()` está desaprobado. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
+  * The `PerformanceObserver` class is now an `AsyncResource` and can be monitored using `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
+  * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
+  * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
+  * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
+* Process
+  * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
+  * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL
-  * REPL ahora soporta experimentalmente la espera de nivel superior cuando se utiliza el indicador `--experimental-repl-await`. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
-  * El "modo mágico" desaprobado previamente se ha eliminado. [[`4893f70d12`](https://github.com/nodejs/node/commit/4893f70d12)]
-  * La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente se ha eliminado. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
-  * Los objetos Proxy se muestran como objetos Proxy cuando se inspeccionan. [[`90a43906ab`](https://github.com/nodejs/node/commit/90a43906ab)]
+  * REPL now experimentally supports top-level await when using the `--experimental-repl-await` flag. [[`eeab7bc068`](https://github.com/nodejs/node/commit/eeab7bc068)]
+  * The previously deprecated "magic mode" has been removed. [[`4893f70d12`](https://github.com/nodejs/node/commit/4893f70d12)]
+  * The previously deprecated `NODE_REPL_HISTORY_FILE` environment variable has been removed. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
+  * Proxy objects are shown as Proxy objects when inspected. [[`90a43906ab`](https://github.com/nodejs/node/commit/90a43906ab)]
 * Streams
-  * El evento `'readable'` ahora siempre se aplaza con nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
-  * Un nuevo método `pipeline()` ha sido proporcionado para crear pipelines de stream de extremo a datos. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
-  * El soporte experimental para for-await asincrónico se ha agregado a `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Temporizadores
-  * Los métodos `enroll()` y `unenroll()` se han desaprobado. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
+  * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
+  * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
+  * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
+* Timers
+  * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS
-  * El método `tls.convertNPNProtocols()` se ha desaprobado. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
-  * El soporte para NPN (próxima negociación del protocolo) se ha eliminado. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
-  * El `ecdhCurve` predeterminado ahora es `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
-* Seguimiento de Eventos
-  * Un nuevo módulo de alto nivel `trace_events` permite a las categorías de evento de seguimiento ser habilitadas/deshabilitadas en el tiempo de ejecución. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
+  * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
+  * Support for NPN (next protocol negotiation) has been dropped. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
+  * The `ecdhCurve` default is now `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
+* Trace Events
+  * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL
-  * La API URL WHATWG ahora es un global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
+  * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
 * Util
-  * Controles de tipo `util.types.is[…]` han sido agregados. [[`b20af8088a`](https://github.com/nodejs/node/commit/b20af8088a)]
-  * El soporte para el formato bigint se ha agregado a `util.inspect()`. [[`39dc947409`](https://github.com/nodejs/node/commit/39dc947409)]
+  * `util.types.is[…]` type checks have been added. [[`b20af8088a`](https://github.com/nodejs/node/commit/b20af8088a)]
+  * Support for bigint formatting has been added to `util.inspect()`. [[`39dc947409`](https://github.com/nodejs/node/commit/39dc947409)]
   * `util.inspect()` custom inspection with `inspect` property has been deprecated at runtime. [[`617e3e96e6`](https://github.com/nodejs/node/commit/617e3e96e6)]
 
-#### Desaprobaciones:
+#### Deprecations:
 
-Las siguientes APIs se ha desaprobado en Node.js 10.0.0
+The following APIs have been deprecated in Node.js 10.0.0
 
-* Pasar más de un argumento a `assert.fail()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
-* Las APIs async_hooks heredadas previamente desaprobadas han alcanzado el final de su vida útil y han sido eliminadas. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* El uso de `require()` para acceder a varias de las dependencias internas propias de Node.js' emitirá una desaprobación del tiempo de ejecución. [[`0e10717e43`](https://github.com/nodejs/node/commit/0e10717e43)]
-* Los métodos `crypto.createCipher()` y `crypto.createDecipher()` se han desaprobado en la documentación. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
-* El uso del método `Decipher.finaltol()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
-* El uso de la propiedad `crypto.DEFAULT_ENCODING` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
-* El uso de complementos nativos de la variante `MakeCallback()` que pasa un `Domain` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`14bc3e22f3`](https://github.com/nodejs/node/commit/14bc3e22f3)], [[`efb32592e1`](https://github.com/nodejs/node/commit/efb32592e1)]
-* Los getters/setters internos desaprobados previamente en `net.Server` han alcanzado el final de su vida útil y han sido eliminados. [[`3701b02309`](https://github.com/nodejs/node/commit/3701b02309)]
-* El uso de valores no-cadena para `process.env` se ha desaprobado en la documentación. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
-* El uso de `process.assert()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
-* La variable de entorno `NODE_REPL_HISTORY_FILE` desaprobada previamente ha alcanzado el final de su vida útil y ha sido eliminada. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
-* El uso de los métodos `timers.enroll()` y `timers.unenroll()` emitirá una advertencia de desaprobación del tiempo de ejecución. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
-* El uso del método `tls.convertNPNProtocols()` emitirá una advertencia de desaprobación del tiempo de ejecución. El soporte para NPN se ha eliminado de Node.js. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
-* La propiedad `crypto.fips` ha sido desaprobada en la documentación. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
+* Passing more than one argument to `assert.fail()` will emit a runtime deprecation warning. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
+* Previously deprecated legacy async_hooks APIs have reached end-of-life and have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
+* Using `require()` to access several of Node.js' own internal dependencies will emit a runtime deprecation. [[`0e10717e43`](https://github.com/nodejs/node/commit/0e10717e43)]
+* The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated in documentation.[[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
+* Using the `Decipher.finaltol()` method will emit a runtime deprecation warning. [[`19f3927d92`](https://github.com/nodejs/node/commit/19f3927d92)]
+* Using the `crypto.DEFAULT_ENCODING` property will emit a runtime deprecation warning. [[`6035beea93`](https://github.com/nodejs/node/commit/6035beea93)]
+* Use by native addons of the `MakeCallback()` variant that passes a `Domain` will emit a runtime deprecation warning. [[`14bc3e22f3`](https://github.com/nodejs/node/commit/14bc3e22f3)], [[`efb32592e1`](https://github.com/nodejs/node/commit/efb32592e1)]
+* Previously deprecated internal getters/setters on `net.Server` has reached end-of-life and have been removed. [[`3701b02309`](https://github.com/nodejs/node/commit/3701b02309)]
+* Use of non-string values for `process.env` has been deprecated in documentation. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
+* Use of `process.assert()` will emit a runtime deprecation warning. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
+* Previously deprecated `NODE_REPL_HISTORY_FILE` environment variable has reached end-of-life and has been removed. [[`60c9ad7979`](https://github.com/nodejs/node/commit/60c9ad7979)]
+* Use of the `timers.enroll()` and `timers.unenroll()` methods will emit a runtime deprecation warning. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
+* Use of the `tls.convertNPNProtocols()` method will emit a runtime deprecation warning. Support for NPN has been removed from Node.js. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
+* The `crypto.fips` property has been deprecated in documentation. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
 
 ### Commits
 
-#### Semver mayor
+#### Semver-major
 
 * [[`c9bb91af33`](https://github.com/nodejs/node/commit/c9bb91af33)] - **(SEMVER-MAJOR)** **assert**: remove `errorDiff` property (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
 * [[`eb427caadd`](https://github.com/nodejs/node/commit/eb427caadd)] - **(SEMVER-MAJOR)** **assert**: improve default error messages (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
