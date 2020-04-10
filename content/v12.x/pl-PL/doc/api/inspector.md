@@ -1,4 +1,4 @@
-# Inspektor
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
