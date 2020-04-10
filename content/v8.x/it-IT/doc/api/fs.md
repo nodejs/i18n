@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
 File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-La forma asincrona accetta sempre un callback di completamento come suo ultimo argomento. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
@@ -80,11 +80,11 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-*Nota:* Su Windows Node.js segue il concetto di working directory per unità. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
-## Utilizzo del Threadpool
+## Threadpool Usage
 
 Note that all file system APIs except `fs.FSWatcher()` and those that are explicitly synchronous use libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
@@ -108,40 +108,40 @@ fs.readFileSync(fileUrl);
 
 *Note*: `file:` URLs are always absolute paths.
 
-L'utilizzo degli [`URL`][] object WHATWG potrebbe introdurre comportamenti specifici della piattaforma.
+Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw :
 
 ```js
-// Su Windows :
+// On Windows :
 
-// - Gli URL dei file WHATWG con hostname convertiti in percorso UNC
+// - WHATWG file URLs with hostname convert to UNC path
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - Gli URL dei file WHATWG con le lettere di unità convertite in percorso assoluto
+// - WHATWG file URLs with drive letters convert to absolute path
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - Gli URL dei file WHATWG senza hostname devono contenere lettere di unità
+// - WHATWG file URLs without hostname must have a drive letters
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file dev'essere assoluto
+// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
 ```
 
-*Note*: `file:` URLs with drive letters must use `:` as a separator just after the drive letter. L'utilizzo di un altro separatore genererà un'esecuzione.
+*Note*: `file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
 
 On all other platforms, `file:` URLs with a hostname are unsupported and will result in a throw:
 
 ```js
-// Su altre piattaforme:
+// On other platforms:
 
-// - Gli URL dei file WHATWG con hostname non sono supportati
+// - WHATWG file URLs with hostname are unsupported
 // file://hostname/p/a/t/h/file => throw!
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: deve essere assoluto
+// TypeError [ERR_INVALID_FILE_URL_PATH]: must be absolute
 
-// - Gli URL dei file WHATWG vengono convertiti nel percorso assoluto
+// - WHATWG file URLs convert to absolute path
 // file:///tmp/hello => /tmp/hello
 fs.readFileSync(new URL('file:///tmp/hello'));
 ```
@@ -149,27 +149,27 @@ fs.readFileSync(new URL('file:///tmp/hello'));
 A `file:` URL having encoded slash characters will result in a throw on all platforms:
 
 ```js
-// Su Windows
+// On Windows
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///C:/p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
-\ o / codificati */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+\ or / characters */
 
-// Su POSIX
+// On POSIX
 fs.readFileSync(new URL('file:///p/a/t/h/%2F'));
 fs.readFileSync(new URL('file:///p/a/t/h/%2f'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
-/ codificati */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+/ characters */
 ```
 
-Su Windows, gli URL `file:` con il backslash codificato provocheranno un'esecuzione:
+On Windows, `file:` URLs having encoded backslash will result in a throw:
 
 ```js
-// Su Windows
+// On Windows
 fs.readFileSync(new URL('file:///C:/path/%5C'));
 fs.readFileSync(new URL('file:///C:/path/%5c'));
-/* TypeError [ERR_INVALID_FILE_URL_PATH]: Il percorso dell'URL del file non deve includere i caratteri
-\ o / codificati */
+/* TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must not include encoded
+\ or / characters */
 ```
 
 ## Buffer API
@@ -201,9 +201,9 @@ added: v0.5.8
 -->
 
 * `eventType` {string} The type of fs change
-* `filename` {string|Buffer} Il filename che è cambiato (se rilevante/disponibile)
+* `filename` {string|Buffer} The filename that changed (if relevant/available)
 
-Viene emesso quando qualcosa cambia in una directory o in un file sottoposto al watching. Vedi ulteriori dettagli in [`fs.watch()`][].
+Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
 
 The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a string.
 
@@ -225,7 +225,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Emesso quando si verifica un errore.
+Emitted when an error occurs.
 
 ### watcher.close()
 
@@ -233,7 +233,7 @@ Emesso quando si verifica un errore.
 added: v0.5.8
 -->
 
-Termina l'osservazione dei cambiamenti sull'`fs.FSWatcher` indicato.
+Stop watching for changes on the given `fs.FSWatcher`.
 
 ## Class: fs.ReadStream
 
@@ -324,14 +324,14 @@ Stats {
 
 *Note*: `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. The `Date` and number values are not connected. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
 
-### Valori Stat Time
+### Stat Time Values
 
-I momenti nello stat object hanno la seguente semantica:
+The times in the stat object have the following semantics:
 
-* `atime` "Access Time" - Momento in cui è avvenuto l'ultimo accesso ai dati del file. Changed by the mknod(2), utimes(2), and read(2) system calls.
-* `mtime` "Modified Time" - Momento in cui è avvenuta l'ultima modifica ai dati del file. Modificato dalle system call mknod(2), utimes(2) e write(2).
+* `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
+* `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
 * `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Birth Time" - Momento in cui è stato creato il file. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
 Prior to Node v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
@@ -418,7 +418,7 @@ fs.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK, (err) => {
 
 Using `fs.access()` to check for the accessibility of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
-Per esempio:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -510,7 +510,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Restituisce: {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Esempio:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-Se `options` è una stringa, allora esso specifica l'encoding. Esempio:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -611,7 +611,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Esempio:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-Se `options` è una stringa, allora esso specifica l'encoding. Esempio:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -673,7 +673,7 @@ See also: chmod(2)
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Costante               | Octal   | Descrizione              |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -687,12 +687,12 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Descrizione              |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | solo lettura             |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Esempio:
+Example:
 
 ```js
 const fs = require('fs');
@@ -852,7 +852,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Esempio:
+Example:
 
 ```js
 const fs = require('fs');
@@ -932,7 +932,7 @@ An example to read the last 10 bytes of a file which is 100 bytes long:
 fs.createReadStream('sample.txt', { start: 90, end: 99 });
 ```
 
-Se `options` è una stringa, allora esso specifica l'encoding.
+If `options` is a string, then it specifies the encoding.
 
 ## fs.createWriteStream(path[, options])
 
@@ -984,7 +984,7 @@ If `autoClose` is set to true (default behavior) on `error` or `end` the file de
 
 Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-Se `options` è una stringa, allora esso specifica l'encoding.
+If `options` is a string, then it specifies the encoding.
 
 ## fs.exists(path, callback)
 
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Esempio:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1017,7 +1017,7 @@ fs.exists('/etc/passwd', (exists) => {
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
-Per esempio:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -1101,7 +1101,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Versione sincrona di [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
+Synchronous version of [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
 
 Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
 
@@ -1290,7 +1290,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). Per esempio,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). For example,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1343,7 +1343,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by the supplied file descriptor. Vedi [`fs.utimes()`][].
+Change the file system timestamps of the object referenced by the supplied file descriptor. See [`fs.utimes()`][].
 
 *Note*: This function does not work on AIX versions before 7.1, it will return the error `UV_ENOSYS`.
 
@@ -1363,7 +1363,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Versione sincrona di [`fs.futimes()`][]. Returns `undefined`.
+Synchronous version of [`fs.futimes()`][]. Returns `undefined`.
 
 ## fs.lchmod(path, mode, callback)
 
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Esempio:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1730,7 +1730,7 @@ changes:
 * `flags` {string|number}
 * `mode` {integer} **Default:** `0o666`
 
-Versione sincrona di [`fs.open()`][]. Returns an integer representing the file descriptor.
+Synchronous version of [`fs.open()`][]. Returns an integer representing the file descriptor.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Esempio:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-Se `options` è una stringa, allora esso specifica l'encoding. Esempio:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -1910,7 +1910,7 @@ changes:
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} **Default:** `'r'`
 
-Versione sincrona di [`fs.readFile()`][]. Returns the contents of the `path`.
+Synchronous version of [`fs.readFile()`][]. Returns the contents of the `path`.
 
 If the `encoding` option is specified then this function returns a string. Otherwise it returns a buffer.
 
@@ -1990,7 +1990,7 @@ changes:
 * `length` {integer}
 * `position` {integer}
 
-Versione sincrona di [`fs.read()`][]. Returns the number of `bytesRead`.
+Synchronous version of [`fs.read()`][]. Returns the number of `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -2413,7 +2413,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Versione sincrona di [`fs.utimes()`][]. Returns `undefined`.
+Synchronous version of [`fs.utimes()`][]. Returns `undefined`.
 
 ## fs.watch(filename\[, options\]\[, listener\])
 
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Esempio:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-Se `options` è una stringa, allora esso specifica l'encoding. Esempio:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -2742,7 +2742,7 @@ Synchronous versions of [`fs.write()`][]. Returns the number of bytes written.
 
 ## FS Constants
 
-Le seguenti costante vengono esportate da `fs.constants`.
+The following constants are exported by `fs.constants`.
 
 *Note*: Not every constant will be available on every operating system.
 
@@ -2752,8 +2752,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Costante</th>
-    <th>Descrizione</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -2781,8 +2781,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Costante</th>
-    <th>Descrizione</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -2869,8 +2869,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Costante</th>
-    <th>Descrizione</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -2912,8 +2912,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Costante</th>
-    <th>Descrizione</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
