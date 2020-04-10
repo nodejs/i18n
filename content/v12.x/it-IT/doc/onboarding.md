@@ -11,7 +11,7 @@ This document is an outline of the things we tell new Collaborators at their onb
 ## Fifteen minutes before the onboarding session
 
 * Prior to the onboarding session, add the new Collaborator to [the Collaborators team](https://github.com/orgs/nodejs/teams/collaborators).
-* Chiedere ai nuovi collaboratori se vogliono unirsi a qualsiasi team del sottosistema. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* Ask them if they want to join any subsystem teams. See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
 
 ## Onboarding session
 
@@ -25,10 +25,10 @@ This document is an outline of the things we tell new Collaborators at their onb
 ## Local setup
 
 * git:
-  * Assicurati di avere whitespace=fix: `git config --global --add
+  * Make sure you have whitespace=fix: `git config --global --add
 apply.whitespace fix`
-  * Continua sempre la PR dal tuo GitHub fork
-    * I branch nel repository `nodejs/node` sono solo per le righe di rilascio
+  * Always continue to PR from your own GitHub fork
+    * Branches in the `nodejs/node` repository are only for release lines
   * Add the canonical nodejs repository as `upstream` remote:
     * `git remote add upstream git://github.com/nodejs/node.git`
   * To update from `upstream`:
@@ -70,7 +70,7 @@ apply.whitespace fix`
     * When adding a `semver-*` label, add a comment explaining why you're adding it. Do it right away so you don't forget!
   * Please add the [`author-ready`][] label for PRs, if applicable.
 
-* Vedi [Chi indicare come CC nell'issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
+* See [Who to CC in the issue tracker](../COLLABORATOR_GUIDE.md#who-to-cc-in-the-issue-tracker).
   * This will come more naturally over time
   * For many of the teams listed there, you can ask to be added if you are interested
     * Some are WGs with some process around adding people, others are only there for notifications
@@ -84,7 +84,7 @@ apply.whitespace fix`
 * The primary goal is for the codebase to improve.
 * Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
 * Review a bit at a time. Do not overwhelm new contributors.
-  * Si tende a micro-ottimizzare. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
+  * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
 * Be aware: Your opinion carries a lot of weight!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request.
   * Identify them as nits when you comment: `Nit: change foo() to bar().`
@@ -128,7 +128,7 @@ apply.whitespace fix`
 
 ## Landing PRs
 
-Vedi la Guida per i Collaboratori: [Confermare le Pull Request](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
+See the Collaborator Guide: [Landing Pull Requests](https://github.com/nodejs/node/blob/master/COLLABORATOR_GUIDE.md#landing-pull-requests).
 
 Commits in one PR that belong to one logical change should be squashed. It is rarely the case in onboarding exercises, so this needs to be pointed out separately during the onboarding.
 
@@ -137,16 +137,16 @@ Commits in one PR that belong to one logical change should be squashed. It is ra
 ## Exercise: Make a PR adding yourself to the README
 
 * Example: https://github.com/nodejs/node/commit/ce986de829457c39257cd205067602e765768fb0
-  * Per commit message non elaborato: `git log ce986de829457c39257cd205067602e765768fb0
+  * For raw commit message: `git log ce986de829457c39257cd205067602e765768fb0
 -1`
 * Collaborators are in alphabetical order by GitHub username.
 * Optionally, include your personal pronouns.
 * Label your pull request with the `doc`, `notable-change`, and `fast-track` labels.
-* Esegui la CI sulla PR. Because the PR does not affect any code, use the `node-test-pull-request-lite-pipeline` CI task.
+* Run CI on the PR. Because the PR does not affect any code, use the `node-test-pull-request-lite-pipeline` CI task.
 * After two Collaborator approvals for the change and two Collaborator approvals for fast-tracking, land the PR.
   * Be sure to add the `PR-URL: <full-pr-url>` and appropriate `Reviewed-By:` metadata.
-  * [`node-core-utils`][] automates the generation of metadata and the landing process. Vedi la documentazione di [`git-node`][].
-  * [`core-validate-commit`][] automatizza la convalida dei commit message. This will be run during `git node land --final` of the [`git-node`][] command.
+  * [`node-core-utils`][] automates the generation of metadata and the landing process. See the documentation of [`git-node`][].
+  * [`core-validate-commit`][] automates the validation of commit messages. This will be run during `git node land --final` of the [`git-node`][] command.
 
 ## Final notes
 
