@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
