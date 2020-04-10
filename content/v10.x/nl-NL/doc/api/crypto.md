@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -268,7 +268,7 @@ added: v1.0.0
 -->
 
 * `buffer` {Buffer}
-* `opties` {Object} [`stream.transform` options][] 
+* `options` {Object} [`stream.transform` options][] 
   * `plaintextLength` {number}
 * Returns: {Cipher} for method chaining.
 
@@ -317,7 +317,7 @@ changes:
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the data.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Updates the cipher with `data`. If the `inputEncoding` argument is given, the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
@@ -439,7 +439,7 @@ changes:
 -->
 
 * `buffer` {Buffer | TypedArray | DataView}
-* `opties` {Object} [`stream.transform` options][] 
+* `options` {Object} [`stream.transform` options][] 
   * `plaintextLength` {number}
 * Returns: {Decipher} for method chaining.
 
@@ -498,7 +498,7 @@ changes:
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -545,7 +545,7 @@ added: v0.5.0
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of an `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -558,7 +558,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -569,7 +569,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -580,7 +580,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -591,7 +591,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -602,7 +602,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -684,7 +684,7 @@ added: v10.0.0
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `key` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`.
 
@@ -732,7 +732,7 @@ changes:
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -748,7 +748,7 @@ added: v0.11.14
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -899,7 +899,7 @@ added: v0.1.92
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -987,7 +987,7 @@ added: v0.1.94
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -1085,7 +1085,7 @@ changes:
   * `padding` {integer}
   * `saltLength` {integer}
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Retourneert: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
@@ -1272,12 +1272,12 @@ changes:
                  authentication tags in GCM mode and defaults to 16 bytes.
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`crypto.createCipheriv()`][].
+> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1317,7 +1317,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView}
 * `iv` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1336,10 +1336,10 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`tls.createSecureContext()`][].
+> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
 
 * `details` {Object} Identical to [`tls.createSecureContext()`][].
-* Retourneert: {tls.SecureContext}
+* Returns: {tls.SecureContext}
 
 The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
 
@@ -1357,12 +1357,12 @@ changes:
     description: Ciphers in OCB mode are now supported.
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`crypto.createDecipheriv()`][].
+> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
 
@@ -1398,7 +1398,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView}
 * `iv` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1432,7 +1432,7 @@ changes:
 * `primeEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `prime` string.
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 * `generatorEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `generator` string.
-* Retourneert: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
@@ -1450,7 +1450,7 @@ added: v0.5.0
 
 * `primeLength` {number}
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
-* Retourneert: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
 
@@ -1461,7 +1461,7 @@ added: v0.11.14
 -->
 
 * `curveName` {string}
-* Retourneert: {ECDH}
+* Returns: {ECDH}
 
 Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
@@ -1473,7 +1473,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Hash}
+* Returns: {Hash}
 
 Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
 
@@ -1510,7 +1510,7 @@ added: v0.1.94
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Retourneert: {Hmac}
+* Returns: {Hmac}
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
 
@@ -1548,7 +1548,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Retourneert: {Sign}
+* Returns: {Sign}
 
 Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1560,7 +1560,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Retourneert: {Verify}
+* Returns: {Verify}
 
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1571,7 +1571,7 @@ added: v10.12.0
 -->
 
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `opties`: {Object} 
+* `options`: {Object} 
   * `modulusLength`: {number} Key size in bits (RSA, DSA).
   * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
   * `divisorLength`: {number} Size of `q` in bits (DSA).
@@ -1623,7 +1623,7 @@ added: v10.12.0
 -->
 
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `opties`: {Object} 
+* `options`: {Object} 
   * `modulusLength`: {number} Key size in bits (RSA, DSA).
   * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
   * `divisorLength`: {number} Size of `q` in bits (DSA).
@@ -1636,7 +1636,7 @@ added: v10.12.0
     * `format`: {string} Must be `'pem'` or `'der'`.
     * `cipher`: {string} If specified, the private key will be encrypted with the given `cipher` and `passphrase` using PKCS#5 v2.0 password based encryption.
     * `passphrase`: {string} The passphrase to use for encryption, see `cipher`.
-* Retourneert: {Object} 
+* Returns: {Object} 
   * `publicKey`: {string|Buffer}
   * `privateKey`: {string|Buffer}
 
@@ -1696,7 +1696,7 @@ added: v0.7.5
 -->
 
 * `groupName` {string}
-* Retourneert: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][], for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
@@ -1820,7 +1820,7 @@ changes:
 * `iterations` {number}
 * `keylen` {number}
 * `digest` {string}
-* Retourneert: {Buffer}
+* Returns: {Buffer}
 
 Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
@@ -2103,7 +2103,7 @@ changes:
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `opties` {Object} 
+* `options` {Object} 
   * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
   * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
   * `blockSize` {number} Block size parameter. **Default:** `8`.
@@ -2156,7 +2156,7 @@ changes:
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `opties` {Object} 
+* `options` {Object} 
   * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
   * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
   * `blockSize` {number} Block size parameter. **Default:** `8`.
@@ -2165,7 +2165,7 @@ changes:
   * `r` {number} Alias for `blockSize`. Only one of both may be specified.
   * `p` {number} Alias for `parallelization`. Only one of both may be specified.
   * `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
-* Retourneert: {Buffer}
+* Returns: {Buffer}
 
 Provides a synchronous [scrypt](https://en.wikipedia.org/wiki/Scrypt) implementation. Scrypt is a password-based key derivation function that is designed to be expensive computationally and memory-wise in order to make brute-force attacks unrewarding.
 
@@ -2236,7 +2236,7 @@ added: v6.6.0
 
 * `a` {Buffer | TypedArray | DataView}
 * `b` {Buffer | TypedArray | DataView}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 This function is based on a constant-time algorithm. Returns true if `a` is equal to `b`, without leaking timing information that would allow an attacker to guess one of the values. This is suitable for comparing HMAC digests or secret values like authentication cookies or [capability urls](https://www.w3.org/TR/capability-urls/).
 
