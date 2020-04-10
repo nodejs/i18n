@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
@@ -257,11 +257,11 @@ Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query).
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `'A'`     | `address`/`ttl`                                                                                                                                  |
 | `'AAAA'`  | `address`/`ttl`                                                                                                                                  |
-| `'CNAME'` | `valeur`                                                                                                                                         |
+| `'CNAME'` | `value`                                                                                                                                          |
 | `'MX'`    | Refer to [`dns.resolveMx()`][]                                                                                                                   |
 | `'NAPTR'` | Refer to [`dns.resolveNaptr()`][]                                                                                                                |
-| `'NS'`    | `valeur`                                                                                                                                         |
-| `'PTR'`   | `valeur`                                                                                                                                         |
+| `'NS'`    | `value`                                                                                                                                          |
+| `'PTR'`   | `value`                                                                                                                                          |
 | `'SOA'`   | Refer to [`dns.resolveSoa()`][]                                                                                                                  |
 | `'SRV'`   | Refer to [`dns.resolveSrv()`][]                                                                                                                  |
 | `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dns.resolveTxt()`][], e.g. `{ entries: ['...'], type: 'TXT' }` |
@@ -612,11 +612,11 @@ Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query).
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'A'`     | `address`/`ttl`                                                                                                                                          |
 | `'AAAA'`  | `address`/`ttl`                                                                                                                                          |
-| `'CNAME'` | `valeur`                                                                                                                                                 |
+| `'CNAME'` | `value`                                                                                                                                                  |
 | `'MX'`    | Refer to [`dnsPromises.resolveMx()`][]                                                                                                                   |
 | `'NAPTR'` | Refer to [`dnsPromises.resolveNaptr()`][]                                                                                                                |
-| `'NS'`    | `valeur`                                                                                                                                                 |
-| `'PTR'`   | `valeur`                                                                                                                                                 |
+| `'NS'`    | `value`                                                                                                                                                  |
+| `'PTR'`   | `value`                                                                                                                                                  |
 | `'SOA'`   | Refer to [`dnsPromises.resolveSoa()`][]                                                                                                                  |
 | `'SRV'`   | Refer to [`dnsPromises.resolveSrv()`][]                                                                                                                  |
 | `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dnsPromises.resolveTxt()`][], e.g. `{ entries: ['...'], type: 'TXT' }` |
