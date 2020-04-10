@@ -1,8 +1,8 @@
-# ECMAScript-Module
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
