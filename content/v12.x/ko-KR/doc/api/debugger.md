@@ -1,8 +1,8 @@
-# 디버거
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
