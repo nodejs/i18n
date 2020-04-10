@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -38,7 +38,7 @@ WHATWG URL's `origin` property includes `protocol` and `host`, but not `username
 ├─────────────┴─────────────────────┴────────────────────────┴──────────┴────────────────┴───────┤
 │                                              href                                              │
 └────────────────────────────────────────────────────────────────────────────────────────────────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 Parsing the URL string using the WHATWG API:
