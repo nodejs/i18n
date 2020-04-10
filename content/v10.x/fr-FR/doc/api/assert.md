@@ -2,17 +2,17 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-Le module `assert` fournit un ensemble simple de tests d’assertion qui peut être utilisé pour tester des invariants.
+The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Un mode `strict` et un mode `legacy` existent, mais il est recommandé de n’utiliser que le mode `strict`.
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Pour plus d’informations sur les tests d’égalité utilisés, voir le [guide de MDN sur les tests d'égalité](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Classe: assert.AssertionError
+## Class: assert.AssertionError
 
-Une sous-classe d' `Error` qui indique l’échec d’une assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
 
 ### new assert.AssertionError(options)
 
@@ -27,7 +27,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
-Une sous-classe d' `Error` qui indique l’échec d’une assertion.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -40,14 +40,14 @@ All instances contain the built-in `Error` properties (`message` and `name`) and
 ```js
 const assert = require('assert');
 
-// Génère une AssertionError afin de comparer le message d'erreur plus tard:
+// Generate an AssertionError to compare the error message later:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Vérifier l'output du message:
+// Verify error output:
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -62,7 +62,7 @@ try {
 }
 ```
 
-## Mode strict
+## Strict mode
 
 <!-- YAML
 added: v9.9.0
@@ -78,15 +78,15 @@ changes:
 
 When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
 
-On top of that, error messages which involve objects produce an error diff instead of displaying both objects. Ce n'est pas le cas dans le mode legacy.
+On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
 
-On peut y accéder en utilisant :
+It can be accessed using:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-Exemple de diff:
+Example error diff:
 
 ```js
 const assert = require('assert').strict;
@@ -107,28 +107,28 @@ assert.deepEqual([[[1, 2, 3]], 4, 5], [[[1, 2, '3']], 4, 5]);
 //   ]
 ```
 
-Pour désactiver les couleurs, il est nécessaire d'utiliser la variable d'environnement `NODE_DISABLE_COLORS` . Veuillez noter que cela va également désactiver les couleur dans le module REPL.
+To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Please note that this will also deactivate the colors in the REPL.
 
-## Mode Legacy
+## Legacy mode
 
-> Stabilité: 0 - Déprécié: utilisez plutôt le mode strict.
+> Stability: 0 - Deprecated: Use strict mode instead.
 
-En accédant à `assert` directement plutôt qu'en utilisant la propriété `strict`, l'[algorithme d'égalité abstraite (abstract equality comparison)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sera utilisé pour toute fonction n'ayant pas "strict" dans son nom, comme [`assert.deepEqual()`][].
+When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-On peut y accéder en utilisant :
+It can be accessed using:
 
 ```js
 const assert = require('assert');
 ```
 
-Il est recommandé d’utiliser le [de] [`mode strict`] plutôt que la [Comparaison d’égalité abstraite](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) qui peut souvent avoir des résultats surprenants. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
+It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
-// ATTENTION: Ceci ne soulève pas d'AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-## assert(valeur[, message])
+## assert(value[, message])
 
 <!-- YAML
 added: v0.5.9
@@ -137,7 +137,7 @@ added: v0.5.9
 * `value` {any} The input that is checked for being truthy.
 * `message` {string|Error}
 
-Un alias de [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -166,20 +166,20 @@ changes:
 * `expected` {any}
 * `message` {string|Error}
 
-**Mode strict**
+**Strict mode**
 
-Un alias de [`assert.ok()`][].
+An alias of [`assert.deepStrictEqual()`][].
 
-**Mode Legacy**
+**Legacy mode**
 
-> Stabilité : 0 - obsolète : utilisez [`emitter.listenerCount()`] [] à la place.
+> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
 Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects or enumerable own [`Symbol`][] properties. For such checks, consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have potentially surprising results. The following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
-// ATTENTION: Ceci ne soulève pas d'AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -478,13 +478,13 @@ added: v0.1.21
 * `expected` {any}
 * `message` {string|Error}
 
-**Mode strict**
+**Strict mode**
 
-Un alias de [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
-**Mode Legacy**
+**Legacy mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.strictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
@@ -601,7 +601,7 @@ changes:
                  values were handled the same as `null` and did not throw.
 -->
 
-* `valeur` {any}
+* `value` {any}
 
 Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself.
 
@@ -658,13 +658,13 @@ changes:
 * `expected` {any}
 * `message` {string|Error}
 
-**Mode strict**
+**Strict mode**
 
-Un alias de [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
-**Mode Legacy**
+**Legacy mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.notDeepStrictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
@@ -759,13 +759,13 @@ added: v0.1.21
 * `expected` {any}
 * `message` {string|Error}
 
-**Mode strict**
+**Strict mode**
 
-Un alias de [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
-**Mode Legacy**
+**Legacy mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.notStrictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -828,7 +828,7 @@ changes:
                  error message.
 -->
 
-* `valeur` {any}
+* `value` {any}
 * `message` {string|Error}
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
