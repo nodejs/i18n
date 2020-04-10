@@ -1,10 +1,10 @@
-# Asynchrone Auslöser
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. Es kann zugegriffen werden durch:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -112,7 +112,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Fehlerbehandlung
+##### Error Handling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `uncaughtException` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -557,7 +557,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Gibt zurück: {undefined}
+* Returns: {undefined}
 
 Call all `before` callbacks to notify that a new asynchronous execution context is being entered. If nested calls to `emitBefore()` are made, the stack of `asyncId`s will be tracked and properly unwound.
 
@@ -571,7 +571,7 @@ deprecated: v8.12.0
 
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
-* Gibt zurück: {undefined}
+* Returns: {undefined}
 
 Call all `after` callbacks. If nested calls to `emitBefore()` were made, then make sure the stack is unwound properly. Otherwise an error will be thrown.
 
@@ -581,7 +581,7 @@ If the user's callback throws an exception, `emitAfter()` will automatically be 
 
 #### `asyncResource.emitDestroy()`
 
-* Gibt zurück: {undefined}
+* Returns: {undefined}
 
 Call all `destroy` hooks. This should only ever be called once. An error will be thrown if it is called more than once. This **must** be manually called. If the resource is left to be collected by the GC then the `destroy` hooks will never be called.
 
