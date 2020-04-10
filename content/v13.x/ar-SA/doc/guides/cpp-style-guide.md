@@ -55,7 +55,7 @@ Unfortunately, the C++ linter (based on [Google’s `cpplint`][]), which can be 
 
 Use C++ style comments (`//`) for both single-line and multi-line comments. Comments should also start with uppercase and finish with a dot.
 
-أمثلة:
+Examples:
 
 ```c++
 // A single-line comment.
