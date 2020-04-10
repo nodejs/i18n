@@ -1,8 +1,8 @@
-# 경로
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
