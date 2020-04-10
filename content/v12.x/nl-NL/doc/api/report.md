@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
