@@ -272,7 +272,7 @@ The 8.14.0 security release introduced some unexpected breakages on the 8.x rele
 
 ### Notable changes
 
-* **断言 (Assert)**: 
+* **assert**: 
   * revert breaking change (Ruben Bridgewater) [#24786](https://github.com/nodejs/node/pull/24786)
 * **http2**: 
   * fix sequence of error/close events (Gerhard Stoebich) [#24789](https://github.com/nodejs/node/pull/24789)
@@ -414,7 +414,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable changes
 
-* **断言 (Assert)**: 
+* **assert**: 
   * backport some assert commits (Ruben Bridgewater) [#23223](https://github.com/nodejs/node/pull/23223)
 * **deps**: 
   * upgrade to libuv 1.23.2 (cjihrig) [#23336](https://github.com/nodejs/node/pull/23336)
@@ -565,10 +565,10 @@ Fixes for the following CVEs are included in this release:
   * rename PromiseWrap.parentId (Ali Ijaz Sheikh) [#18633](https://github.com/nodejs/node/pull/18633)
   * remove runtime deprecation (Ali Ijaz Sheikh) [#19517](https://github.com/nodejs/node/pull/19517)
   * deprecate unsafe emit{Before,After} (Ali Ijaz Sheikh) [#18513](https://github.com/nodejs/node/pull/18513)
-* **集群**: 
+* **cluster**: 
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
   * support windowsHide option for workers (Todd Wong) [#17412](https://github.com/nodejs/node/pull/17412)
-* **加密算法**: 
+* **crypto**: 
   * allow passing null as IV unless required (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
 * **deps**: 
   * upgrade npm to 6.4.1 (Kat Marchán) [#22591](https://github.com/nodejs/node/pull/22591)
@@ -1229,7 +1229,7 @@ Fixes for the following CVEs are included in this release:
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
   * re land npm 5.6.0 (Myles Borins) [#18625](https://github.com/nodejs/node/pull/18625)
   * ICU 60 bump (Steven R. Loomis) [#16876](https://github.com/nodejs/node/pull/16876)
-* **加密算法**: 
+* **crypto**: 
   * Support both OpenSSL 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
   * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
 * **async_hooks**: 
@@ -1259,15 +1259,15 @@ Fixes for the following CVEs are included in this release:
   * support generic `Duplex` streams (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
-* **网络**: 
+* **net**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
-* **进程**: 
+* **process**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
 * **tls**: 
   * unconsume stream on destroy (Anna Henningsen) [#17478](https://github.com/nodejs/node/pull/17478)
-* **进程**: 
+* **process**: 
   * improve unhandled rejection message (Madara Uchiha) [#17158](https://github.com/nodejs/node/pull/17158)
-* **流**: 
+* **stream**: 
   * remove usage of *State.highWaterMark (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
 * **trace_events**: 
   * add executionAsyncId to init events (Andreas Madsen) [#17196](https://github.com/nodejs/node/pull/17196)
@@ -1854,7 +1854,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **缓冲区**: 
+* **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -2153,7 +2153,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **网络**: 
+* **net**: 
   * Fix timeout with null handle issue. This is a regression in Node 8.8.0 [#16489](https://github.com/nodejs/node/pull/16489)
 
 ### Commits
@@ -2178,7 +2178,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **加密算法**: 
+* **crypto**: 
   * expose ECDH class [#8188](https://github.com/nodejs/node/pull/8188)
 * **http2**: 
   * http2 is now exposed by default without the need for a flag [#15685](https://github.com/nodejs/node/pull/15685)
@@ -2721,7 +2721,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **加密算法** 
+* **crypto** 
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram** 
   * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
@@ -3162,7 +3162,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   
   * New APIs for creating number values have been introduced. [#14573](https://github.com/nodejs/node/pull/14573)
 
-* **流**
+* **Stream**
   
   * For `Duplex` streams, the high water mark option can now be set independently for the readable and the writable side. [#14636](https://github.com/nodejs/node/pull/14636)
 
@@ -3295,7 +3295,7 @@ More detailed information on performance differences can be found at https://med
   
   * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
 
-* **工具**
+* **Utilities**
   
   * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
 
@@ -3494,7 +3494,7 @@ Big thanks to @addaleax who prepared the vast majority of this release.
   
   * The compiler version requirement to build Node with GCC has been raised to GCC 4.9.4. [[`820b011ed6`](https://github.com/nodejs/node/commit/820b011ed6)] [#13466](https://github.com/nodejs/node/pull/13466)
 
-* **集群**
+* **Cluster**
   
   * Users now have more fine-grained control over the inspector port used by individual cluster workers. Previously, cluster workers were restricted to incrementing from the master's debug port. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] [#14140](https://github.com/nodejs/node/pull/14140)
 
@@ -3783,7 +3783,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable changes
 
-* **流** Two regressions with the `stream` module have been fixed: 
+* **Stream** Two regressions with the `stream` module have been fixed: 
   * The `finish` event will now always be emitted after the `error` event if one is emitted: [[`0a9e96e86c`](https://github.com/nodejs/node/commit/0a9e96e86c)] [#13850](https://github.com/nodejs/node/pull/13850)
   * In object mode, readable streams can now use `undefined` again. [[`5840138e70`](https://github.com/nodejs/node/commit/5840138e70)] [#13760](https://github.com/nodejs/node/pull/13760)
 
@@ -3877,7 +3877,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
   
   * The `rejectUnauthorized` option now works properly for unix sockets. [[`c4cbd99d37`](https://github.com/nodejs/node/commit/c4cbd99d37)] [#13505](https://github.com/nodejs/node/pull/13505)
 
-* **逐行读取**
+* **Readline**
   
   * A change that broke `npm init` and other code which uses `readline` multiple times on the same input stream is reverted. [[`0df6c0b5f0`](https://github.com/nodejs/node/commit/0df6c0b5f0)] [#13560](https://github.com/nodejs/node/pull/13560)
 
@@ -4083,13 +4083,13 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * The `async_hooks` module has landed in core [[`4a7233c178`](https://github.com/nodejs/node/commit/4a7233c178)] [#12892](https://github.com/nodejs/node/pull/12892).
 
-* **缓冲区**
+* **Buffer**
   
   * Using the `--pending-deprecation` flag will cause Node.js to emit a deprecation warning when using `new Buffer(num)` or `Buffer(num)`. [[`d2d32ea5a2`](https://github.com/nodejs/node/commit/d2d32ea5a2)] [#11968](https://github.com/nodejs/node/pull/11968).
   * `new Buffer(num)` and `Buffer(num)` will zero-fill new `Buffer` instances [[`7eb1b4658e`](https://github.com/nodejs/node/commit/7eb1b4658e)] [#12141](https://github.com/nodejs/node/pull/12141).
   * Many `Buffer` methods now accept `Uint8Array` as input [[`beca3244e2`](https://github.com/nodejs/node/commit/beca3244e2)] [#10236](https://github.com/nodejs/node/pull/10236).
 
-* **子进程**
+* **Child Process**
   
   * Argument and kill signal validations have been improved [[`97a77288ce`](https://github.com/nodejs/node/commit/97a77288ce)] [#12348](https://github.com/nodejs/node/pull/12348), [[`d75fdd96aa`](https://github.com/nodejs/node/commit/d75fdd96aa)] [#10423](https://github.com/nodejs/node/pull/10423).
   * Child Process methods accept `Uint8Array` as input [[`627ecee9ed`](https://github.com/nodejs/node/commit/627ecee9ed)] [#10653](https://github.com/nodejs/node/pull/10653).
@@ -4107,11 +4107,11 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Native `Promise` instances are now `Domain` aware [[`84dabe8373`](https://github.com/nodejs/node/commit/84dabe8373)] [#12489](https://github.com/nodejs/node/pull/12489).
 
-* **错误处理**
+* **Errors**
   
   * We have started assigning static error codes to errors generated by Node.js. This has been done through multiple commits and is still a work in progress.
 
-* **文件系统**
+* **File System**
   
   * The utility class `fs.SyncWriteStream` has been deprecated [[`7a55e34ef4`](https://github.com/nodejs/node/commit/7a55e34ef4)] [#10467](https://github.com/nodejs/node/pull/10467).
   * The deprecated `fs.read()` string interface has been removed [[`3c2a9361ff`](https://github.com/nodejs/node/commit/3c2a9361ff)] [#9683](https://github.com/nodejs/node/pull/9683).
@@ -4132,7 +4132,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **进程**
+* **Process**
   
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] [#12725](https://github.com/nodejs/node/pull/12725).
@@ -4149,7 +4149,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   * Throw when the `-c` and `-e` command-line arguments are used at the same time [[`a5f91ab230`](https://github.com/nodejs/node/commit/a5f91ab230)] [#11689](https://github.com/nodejs/node/pull/11689).
   * Throw when the `--use-bundled-ca` and `--use-openssl-ca` command-line arguments are used at the same time. [[`8a7db9d4b5`](https://github.com/nodejs/node/commit/8a7db9d4b5)] [#12087](https://github.com/nodejs/node/pull/12087).
 
-* **流**
+* **Stream**
   
   * `Stream` now supports `destroy()` and `_destroy()` APIs [[`b6e1d22fa6`](https://github.com/nodejs/node/commit/b6e1d22fa6)] [#12925](https://github.com/nodejs/node/pull/12925).
   * `Stream` now supports the `_final()` API [[`07c7f198db`](https://github.com/nodejs/node/commit/07c7f198db)] [#12828](https://github.com/nodejs/node/pull/12828).
