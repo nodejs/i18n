@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
@@ -99,7 +99,7 @@ added: v0.11.3
 
 Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 
-例如：
+For example:
 
 <!-- eslint-disable semi-->
 
@@ -127,7 +127,7 @@ changes:
 - `options` {integer | Object} 
   - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
   - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
-  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **默认:** `false`.
+  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
@@ -142,7 +142,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-示例用法：
+Example usage:
 
 ```js
 const dns = require('dns');
@@ -310,14 +310,14 @@ added: v0.9.12
 
 Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects with the following properties:
 
-- `标记`
+- `flags`
 - `service`
 - `regexp`
 - `replacement`
 - `order`
 - `preference`
 
-例如：
+For example:
 
 <!-- eslint-skip -->
 
@@ -502,7 +502,7 @@ added: v0.11.3
 
 Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
 
-例如：
+For example:
 
 ```js
 dns.setServers([
