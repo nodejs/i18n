@@ -1,4 +1,4 @@
-# Processo
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -32,7 +32,7 @@ added: v0.7.7
 
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
 
-### Evento: 'exit'
+### Event: 'exit'
 
 <!-- YAML
 added: v0.1.7
@@ -47,7 +47,7 @@ There is no way to prevent the exiting of the event loop at this point, and once
 
 The listener callback function is invoked with the exit code specified either by the [`process.exitCode`][] property, or the `exitCode` argument passed to the [`process.exit()`] method, as the only argument.
 
-Por exemplo:
+For example:
 
 ```js
 process.on('exit', (code) => {
@@ -100,7 +100,7 @@ In synchronous code, the `'uncaughtException'` event is emitted when the list of
 
 In asynchronous code, the `'unhandledRejection'` event is emitted when the list of unhandled rejections grows, and the `'rejectionHandled'` event is emitted when the list of unhandled rejections shrinks.
 
-Por exemplo:
+For example:
 
 ```js
 const unhandledRejections = new Map();
@@ -124,7 +124,7 @@ The `'uncaughtException'` event is emitted when an uncaught JavaScript exception
 
 The listener function is called with the `Error` object passed as the only argument.
 
-Por exemplo:
+For example:
 
 ```js
 process.on('uncaughtException', (err) => {
@@ -174,7 +174,7 @@ The listener function is called with the following arguments:
 * `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
 * `p` the `Promise` that was rejected.
 
-Por exemplo:
+For example:
 
 ```js
 process.on('unhandledRejection', (reason, p) => {
@@ -275,7 +275,7 @@ The signal handler will receive the signal's name (`'SIGINT'`, `'SIGTERM'`, etc.
 
 The name of each event will be the uppercase common name for the signal (e.g. `'SIGINT'` for `SIGINT` signals).
 
-Por exemplo:
+For example:
 
 ```js
 // Begin reading from stdin so the process does not exit.
@@ -326,7 +326,7 @@ added: v0.5.0
 
 The `process.arch` property returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-Os atuais valores possíveis são: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
 ```js
 console.log(`This processor architecture is ${process.arch}`);
@@ -477,7 +477,7 @@ added: v6.1.0
 -->
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Retorna: {Object} 
+* Returns: {Object} 
     * `user` {integer}
     * `system` {integer}
 
@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Exemplo:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Exemplo:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Exemplo:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -744,7 +744,7 @@ added: v0.7.7
 
 The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
 
-Por exemplo:
+For example:
 
 ```console
 $ node --harmony script.js --version
@@ -776,7 +776,7 @@ added: v0.1.100
 
 The `process.execPath` property returns the absolute pathname of the executable that started the Node.js process.
 
-Por exemplo:
+For example:
 
 <!-- eslint-disable semi -->
 
@@ -865,7 +865,7 @@ if (process.getegid) {
 added: v2.0.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -883,7 +883,7 @@ if (process.geteuid) {
 added: v0.1.31
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -901,7 +901,7 @@ if (process.getgid) {
 added: v0.9.4
 -->
 
-* Retorna: {Array}
+* Returns: {Array}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -913,7 +913,7 @@ The `process.getgroups()` method returns an array with the supplementary group I
 added: v0.1.28
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -932,7 +932,7 @@ added: v0.7.6
 -->
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
-* Retorna: {Array}
+* Returns: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Exemplo:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -994,7 +994,7 @@ This method will throw an error if the target `pid` does not exist. As a special
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-Por exemplo:
+For example:
 
 ```js
 process.on('SIGHUP', () => {
@@ -1034,7 +1034,7 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Retorna: {Object} 
+* Returns: {Object} 
     * `rss` {integer}
     * `heapTotal` {integer}
     * `heapUsed` {integer}
@@ -1245,7 +1245,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
     * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
 
-Por exemplo:
+For example:
 
 <!-- eslint-skip -->
 
@@ -1271,7 +1271,7 @@ added: v0.5.9
 * `sendHandle` {Handle object}
 * `options` {Object}
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1401,7 +1401,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-Por exemplo:
+For example:
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1448,13 +1448,13 @@ process.stdin.pipe(process.stdout);
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Consulte [`process.exit()`] [-] para obter mais informações.
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Por exemplo:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1525,7 +1525,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Retorna: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
