@@ -1,9 +1,9 @@
-# Objets Globaux
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
 
-Ces objets sont disponibles dans tous les modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -11,7 +11,7 @@ Ces objets sont disponibles dans tous les modules. The following variables may a
 * [`module`][]
 * [`require()`][]
 
-Les objets listés ici sont spécifiques à Node.js. There are [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+The objects listed here are specific to Node.js. There are [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: `Buffer`
 <!-- YAML
@@ -22,15 +22,15 @@ added: v0.1.103
 
 * {Function}
 
-Utilisée pour gérer les données binaires. Voir la [section buffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## `__dirname`
 
-Cette variable peut sembler globale mais ne l'est pas. See [`__dirname`][].
+This variable may appear to be global but is not. See [`__dirname`][].
 
 ## `__filename`
 
-Cette variable peut sembler globale mais ne l'est pas. See [`__filename`][].
+This variable may appear to be global but is not. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -68,11 +68,11 @@ added: v0.1.100
 
 * {Object}
 
-Utilisé pour écrire vers stdout et stderr. Voir la section [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## `exports`
 
-Cette variable peut sembler globale mais ne l'est pas. See [`exports`][].
+This variable may appear to be global but is not. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -81,13 +81,13 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} L'object correspondant à l'espace de nom global.
+* {Object} The global namespace object.
 
-Dans les navigateurs, la portée la plus haute est la portée globale. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## `module`
 
-Cette variable peut sembler globale mais ne l'est pas. See [`module`][].
+This variable may appear to be global but is not. See [`module`][].
 
 ## `process`
 <!-- YAML
@@ -98,7 +98,7 @@ added: v0.1.7
 
 * {Object}
 
-L'objet process. Voir la section [objet `process`][].
+The process object. See the [`process` object][] section.
 
 ## `queueMicrotask(callback)`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-Cette variable peut sembler globale mais ne l'est pas. See [`require()`][].
+This variable may appear to be global but is not. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML
@@ -190,7 +190,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-La classe `URL` WHATWG. Voir la section [`URL`][].
+The WHATWG `URL` class. See the [`URL`][] section.
 
 ## `URLSearchParams`
 <!-- YAML
@@ -199,7 +199,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-La classe `URLSearchParams` WHATWG. Voir la section [`URLSearchParams`][].
+The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
 
 ## `WebAssembly`
 <!-- YAML
