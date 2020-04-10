@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 <!-- name=policy -->
 
