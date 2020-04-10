@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -25,7 +25,9 @@ ls.on('close', (code) => {
 
 By default, pipes for `stdin`, `stdout`, and `stderr` are established between the parent Node.js process and the spawned child. These pipes have limited (and platform-specific) capacity. If the child process writes to stdout in excess of that limit without the output being captured, the child process will block waiting for the pipe buffer to accept more data. This is identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }` option if the output will not be consumed.
 
-Metoda [`child_process.spawn()`][] uruchamia procesy podrzędne asynchronicznie, nie blokując pętli zdarzeń Node.js. Metoda [`child_process.spawnSync()`][] zapewnia równoważną funkcjonalność w sposób synchroniczny, blokując pętle zdarzeń dopóki uruchomiony proces się nie zakończy lub nie zostanie zakończony.
+The command lookup will be performed using `options.env.PATH` environment variable if passed in `options` object, otherwise `process.env.PATH` will be used. To account for the fact that Windows environment variables are case-insensitive Node.js will lexicographically sort all `env` keys and choose the first one case-insensitively matching `PATH` to perform command lookup. This may lead to issues on Windows when passing objects to `env` option that have multiple variants of `PATH` variable.
+
+The [`child_process.spawn()`][] method spawns the child process asynchronously, without blocking the Node.js event loop. The [`child_process.spawnSync()`][] function provides equivalent functionality in a synchronous manner that blocks the event loop until the spawned process either exits or is terminated.
 
 For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. Each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].
 
@@ -854,7 +856,7 @@ changes:
     description: The `callback` parameter is supported now.
 -->
 
-* `wiadomość` {Object}
+* `message` {Object}
 * `sendHandle` {Handle}
 * `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
