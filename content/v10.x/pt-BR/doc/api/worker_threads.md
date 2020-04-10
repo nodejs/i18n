@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -250,7 +250,7 @@ added: v10.5.0
 
 The `'error'` event is emitted if the worker thread throws an uncaught exception. In that case, the worker will be terminated.
 
-### Evento: 'exit'
+### Event: 'exit'
 <!-- YAML
 added: v10.5.0
 -->
@@ -283,7 +283,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Veja [`port.postMessage()`][] para mais detalhes.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### worker.ref()
 <!-- YAML
@@ -319,7 +319,7 @@ added: v10.5.0
 
 This is a readable stream which contains data written to [`process.stdout`][] inside the worker thread. If `stdout: true` was not passed to the [`Worker`][] constructor, then data will be piped to the parent thread's [`process.stdout`][] stream.
 
-### worker.terminate ([callback])
+### worker.terminate([callback])
 <!-- YAML
 added: v10.5.0
 -->
