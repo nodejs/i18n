@@ -115,7 +115,7 @@ A good commit message should describe what changed and why.
   * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
   * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
     
-    Exempel:
+    Examples:
   
   * `net: add localAddress and localPort to Socket`
   
@@ -127,7 +127,7 @@ A good commit message should describe what changed and why.
 
 4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
   
-  Exempel:
+  Examples:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
