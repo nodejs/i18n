@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
@@ -383,7 +383,7 @@ A complete example report that was generated on an uncaught exception is provide
 }
 ```
 
-## Utilisation
+## Usage
 
 ```bash
 node --experimental-report --report-uncaught-exception \
