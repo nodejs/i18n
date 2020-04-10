@@ -31,7 +31,7 @@
 </tr>
 </table>
 
-* نسخ أخرى
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -921,7 +921,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **عنقود**
+* **cluster**
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps**
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
@@ -2120,7 +2120,7 @@ Fixes for the following CVEs are included in this release:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] - [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] - [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] - [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **الإجراءات الفرعية**
+* **Child Processes**
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] - [#4670](https://github.com/nodejs/node/pull/4670)
 
 * **Domains**
@@ -2139,7 +2139,7 @@ Fixes for the following CVEs are included in this release:
 * **Intl**
   * The deprecated `Intl.v8BreakIterator` has been removed. [[`668ad44922`](https://github.com/nodejs/node/commit/668ad44922)] - [#15238](https://github.com/nodejs/node/pull/15238)
 
-* ** نظام التشغيل**
+* **OS**
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] - [#14622](https://github.com/nodejs/node/pull/14622)
 
 * **Timers**
