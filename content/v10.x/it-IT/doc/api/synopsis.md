@@ -1,4 +1,4 @@
-# Utilizzo
+# Usage
 
 <!--introduced_in=v0.10.0-->
 
@@ -8,7 +8,7 @@
 
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Esempio
+## Example
 
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
@@ -18,11 +18,11 @@ There are many tutorials and examples that follow this convention: `$` or `>` fo
 
 Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
-Prima di tutto, assicurati di aver scaricato e installato Node.js. Visualizza [questa guida](https://nodejs.org/en/download/package-manager/) per ulteriori informazioni sull'installazione.
+Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
 
 Now, create an empty project folder called `projects`, then navigate into it. The project folder can be named based on the user's current project title, but this example will use `projects` as the project folder.
 
-Linux e Mac:
+Linux and Mac:
 
 ```console
 $ mkdir ~/projects
@@ -66,7 +66,7 @@ server.listen(port, hostname, () => {
 });
 ```
 
-Salva il file, ritorna alla finestra del terminal e inserisci il seguente comando:
+Save the file, go back to the terminal window enter the following command:
 
 ```console
 $ node hello-world.js
@@ -78,8 +78,8 @@ An output like this should appear in the terminal to indicate Node.js server is 
 Server running at http://127.0.0.1:3000/
 ```
 
-Adesso, apri un qualsiasi browser web preferito e visita l'indirizzo `http:/127.0.0.1.3000`.
+Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, World!`, that indicates the server is working.
 
-Molti degli esempi presenti nella documentazione possono essere eseguiti allo stesso modo.
+Many of the examples in the documentation can be run similarly.
