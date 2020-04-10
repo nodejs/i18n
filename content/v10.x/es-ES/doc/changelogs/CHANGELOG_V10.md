@@ -1,4 +1,4 @@
-# Registro de Cambios de Node.js 10
+# Node.js 10 ChangeLog
 
 <!--lint disable prohibited-strings-->
 
@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Dubnium'</th>
-<th title="Previamente llamado 'Stable'">Actual</th>
+<th title="Previously called 'Stable'">Current</th>
   </tr>
   
   <tr>
@@ -53,25 +53,25 @@
   </tr>
 </table>
 
-* Otras Versiones 
+* Other Versions 
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
-  * [0.12x](CHANGELOG_V012.md)
-  * [0.10x](CHANGELOG_V010.md)
+  * [0.12.x](CHANGELOG_V012.md)
+  * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.19.0"></a>
 
 ## 2020-02-06, Version 10.19.0 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 Vulnerabilities fixed:
 
@@ -96,7 +96,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2020-01-09, Version 10.18.1 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 * **http2**: fix session memory accounting after pausing (Michael Lehenbauer) [#30684](https://github.com/nodejs/node/pull/30684)
 * **n-api**: correct bug in napi_get_last_error (Octavian Soldea) [#28702](https://github.com/nodejs/node/pull/28702)
@@ -124,13 +124,13 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2019-12-17, Version 10.18.0 'Dubnium' (LTS), @MylesBorins
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 For more details about the vulnerability please consult the npm blog:
 
 https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
-### Cambios notables
+### Notable changes
 
 * **deps**: update npm to 6.13.4 [#30904](https://github.com/nodejs/node/pull/30904)
 
@@ -143,7 +143,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-10-22, Version 10.17.0 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 * **crypto**: 
   * add support for chacha20-poly1305 for AEAD (chux0519) [#24081](https://github.com/nodejs/node/pull/24081)
@@ -216,9 +216,9 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-08-15, Version 10.16.3 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 Node.js, as well as many other implementations of HTTP/2, have been found vulnerable to Denial of Service attacks. See https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md for more information.
 
@@ -258,7 +258,7 @@ Vulnerabilities fixed:
 
 ## 2019-08-06, Version 10.16.2 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 This release patches a [regression](https://github.com/nodejs/node/issues/28932) in the OpenSSL upgrade to 1.1.1c that causes intermittent hangs in machines that have low entropy.
 
@@ -270,7 +270,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-07-31, Version 10.16.1 'Dubnium' (LTS), @BethGriggs
 
-### Cambios notables
+### Notable changes
 
 * **deps**: upgrade openssl sources to 1.1.1c (Sam Roberts) [#28212](https://github.com/nodejs/node/pull/28212)
 * **stream**: do not unconditionally call `\_read()` on `resume()` (Anna Henningsen) [#26965](https://github.com/nodejs/node/pull/26965)
@@ -315,7 +315,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-05-28, Version 10.16.0 'Dubnium' (LTS), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: 
   * update ICU to 64.2 (Ujjwal Sharma) [#27361](https://github.com/nodejs/node/pull/27361)
@@ -686,7 +686,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2018-03-05, Version 10.15.3 'Dubnium' (LTS), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **doc** 
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
@@ -911,7 +911,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
 
 ## 2019-02-28, Version 10.15.2 'Dubnium' (LTS), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
     https://nodejs.org/en/blog/vulnerability/february-2019-security-releases/
     
@@ -923,7 +923,7 @@ A fix for the following CVE is included in this release:
     * Node.js: Slowloris HTTP Denial of Service with keep-alive (CVE-2019-5737)
     
 
-### Cambios Notables
+### Notable Changes
 
 * **http**: Further prevention of "Slowloris" attacks on HTTP and HTTPS connections by consistently applying the receive timeout set by `server.headersTimeout` to connections in keep-alive mode. Reported by Marco Pracucci ([Voxnest](https://voxnest.com)). (CVE-2019-5737 / Matteo Collina)
 
@@ -935,7 +935,7 @@ A fix for the following CVE is included in this release:
 
 ## 2019-01-29, Version 10.15.1 'Dubnium' (LTS), @codebytere
 
-### Cambios Notables
+### Notable Changes
 
 * **doc**:
   
@@ -1175,7 +1175,7 @@ A fix for the following CVE is included in this release:
 
 The 10.14.0 security release introduced some unexpected breakages on the 10.x release line. This is a special release to fix a regression in the HTTP binary upgrade response body and add a missing CLI flag to adjust the max header size of the http parser.
 
-### Cambios Notables
+### Notable Changes
 
 * **cli**: 
   * add --max-http-header-size flag (cjihrig) [#24811](https://github.com/nodejs/node/pull/24811)
@@ -1200,13 +1200,13 @@ The 10.14.0 security release introduced some unexpected breakages on the 10.x re
 
 This LTS release comes with 374 commits. This includes 165 which are test or benchmark related, 77 which are doc related, 29 which are build / tool related and 15 commits which update dependencies.
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: 
   * upgrade to c-ares v1.15.0 (Ben Noordhuis) [#23854](https://github.com/nodejs/node/pull/23854)
 * **Windows**: 
   * A crashing process will now show the names of stack frames if the node.pdb file is available. (Refael Ackermann) [#23822](https://github.com/nodejs/node/pull/23822)
-* **Nuevos colaboradores añadidos**: 
+* **Added new collaborators**: 
   * [psmarshall](https://github.com/psmarshall) - Peter Marshall. https://github.com/nodejs/node/pull/24170
   * [shisama](https://github.com/shisama) - Masashi Hirano. https://github.com/nodejs/node/pull/24136
 
@@ -1591,7 +1591,7 @@ This LTS release comes with 374 commits. This includes 165 which are test or ben
 
 ## 2018-11-29, Version 10.14.1 'Dubnium' (LTS), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **win/msi**: Revert changes to installer causing issues on Windows systems.
 
@@ -1605,14 +1605,14 @@ This LTS release comes with 374 commits. This includes 165 which are test or ben
 
 ## 2018-11-27, Version 10.14.0 'Dubnium' (LTS), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
     https://nodejs.org/en/blog/vulnerability/november-2018-security-releases/
     
 
 for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
     * Node.js: Denial of Service with large HTTP headers (CVE-2018-12121)
     * Node.js: Slowloris HTTP Denial of Service (CVE-2018-12122 / Node.js)
@@ -1621,7 +1621,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
     * OpenSSL: Timing vulnerability in ECDSA signature generation (CVE-2019-0735)
     
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: Upgrade to OpenSSL 1.1.0j, fixing CVE-2018-0734 and CVE-2019-0735
 * **http**: * Headers received by HTTP servers must not exceed 8192 bytes in total to prevent possible Denial of Service attacks. Reported by Trevor Norris. (CVE-2018-12121 / Matteo Collina) * A timeout of 40 seconds now applies to servers receiving HTTP headers. This value can be adjusted with `server.headersTimeout`. Where headers are not completely received within this period, the socket is destroyed on the next received chunk. In conjunction with `server.setTimeout()`, this aids in protecting against excessive resource retention and possible Denial of Service. Reported by Jan Maybach ([liebdich.com](https://liebdich.com)). (CVE-2018-12122 / Matteo Collina)
@@ -1643,7 +1643,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 This release marks the transition of Node.js 10.x into Long Term Support (LTS) with the codename 'Dubnium'. The 10.x release line now moves in to "Active LTS" and will remain so until April 2020. After that time it will move in to "Maintenance" until end of life in April 2021.
 
-### Cambios Notables
+### Notable Changes
 
 This release only includes minimal changes necessary to fix known regressions prior to LTS.
 
@@ -1657,7 +1657,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-10-10, Version 10.12.0 (Current), @targos
 
-### Cambios notables
+### Notable changes
 
 * **assert** 
   * The diff output is now a tiny bit improved by sorting object properties when inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
@@ -1690,7 +1690,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 * **Workers** 
   * Debugging support for Workers using the DevTools protocol has been implemented. [#21364](https://github.com/nodejs/node/pull/21364)
   * The public `inspector` module is now enabled in Workers. [#22769](https://github.com/nodejs/node/pull/22769)
-* **Nuevos colaboradores añadidos**: 
+* **Added new collaborators**: 
   * [digitalinfinity](https://github.com/digitalinfinity) - Hitesh Kanwathirtha
 
 ### Commits
@@ -1953,7 +1953,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-20, Version 10.11.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **fs** 
   * Fixed fsPromises.readdir `withFileTypes`. [#22832](https://github.com/nodejs/node/pull/22832)
@@ -1961,7 +1961,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Added `http2stream.endAfterHeaders` property. [#22843](https://github.com/nodejs/node/pull/22843)
 * **util** 
   * Added `util.types.isBoxedPrimitive(value)`. [#22620](https://github.com/nodejs/node/pull/22620)
-* **Nuevos colaboradores añadidos**: 
+* **Added new collaborators**: 
   * [boneskull](https://github.com/boneskull) - Christopher Hiller
 * **The Technical Steering Committee has new members**: 
   * [apapirovski](https://github.com/apapirovski) - Anatoli Papirovski
@@ -2080,7 +2080,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-09-06, Version 10.10.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **child_process**: 
   * `TypedArray` and `DataView` values are now accepted as input by `execFileSync` and `spawnSync`. [#22409](https://github.com/nodejs/node/pull/22409)
@@ -2103,7 +2103,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Refactored options parsing. [#22392](https://github.com/nodejs/node/pull/22392)
 * **vm**: 
   * Added `vm.compileFunction`, a method to create new JavaScript functions from a source body, with options similar to those of the other `vm` methods. [#21571](https://github.com/nodejs/node/pull/21571)
-* **Nuevos colaboradores añadidos**: 
+* **Added new collaborators**: 
   * [lundibundi](https://github.com/lundibundi) - Denys Otrishko
 
 ### Commits
@@ -2320,21 +2320,21 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ## 2018-08-15, Version 10.9.0 (Current), @rvagg
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at:
+This is a security release. All Node.js users should consult the security release summary at:
 
     https://nodejs.org/en/blog/vulnerability/august-2018-security-releases/
     
 
 for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
     * CVE-2018-0732 (OpenSSL)
     * CVE-2018-7166 (Node.js)
     * CVE-2018-12115 (Node.js)
     
 
-### Cambios Notables
+### Notable Changes
 
 * **buffer**: 
   * Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
@@ -2346,7 +2346,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * Upgrade V8 from 6.7 to 6.8 (Michaël Zasso) [#21079](https://github.com/nodejs/node/pull/21079) 
     * Memory reduction and performance improvements, details at: https://v8project.blogspot.com/2018/06/v8-release-68.html
 * **http**: `http.get()` and `http.request()` (and `https` variants) can now accept three arguments to allow for a `URL` *and* an `options` object (Sam Ruby) [#21616](https://github.com/nodejs/node/pull/21616)
-* Nuevos colaboradores añadidos 
+* Added new collaborators 
   * Sam Ruby (https://github.com/rubys)
   * George Adams (https://github.com/gdams)
 
@@ -2515,7 +2515,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-08-01, Version 10.8.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: 
   * Upgrade npm to 6.2.0. [#21592](https://github.com/nodejs/node/pull/21592) 
@@ -2625,7 +2625,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-07-18, Version 10.7.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **console**: 
   * The `console.timeLog()` method has been implemented. [#21312](https://github.com/nodejs/node/pull/21312)
@@ -2643,7 +2643,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * Added the `--title` command line argument to set the process title on startup. [#21477](https://github.com/nodejs/node/pull/21477)
 * **trace_events**: 
   * Added process\_name metadata. [#21477](https://github.com/nodejs/node/pull/21477)
-* **Nuevos colaboradores añadidos** 
+* **Added new collaborators** 
   * [codebytere](https://github.com/codebytere) - Shelley Vohr
 
 ### Commits
@@ -2768,7 +2768,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-07-04, Version 10.6.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **dns**: 
   * An experimental promisified version of the dns module is now available. Give it a try with `require('dns').promises`. [#21264](https://github.com/nodejs/node/pull/21264)
@@ -2900,7 +2900,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-06-20, Version 10.5.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **crypto**: 
   * Support for `crypto.scrypt()` has been added. [#20816](https://github.com/nodejs/node/pull/20816)
@@ -3067,7 +3067,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-06-12, Version 10.4.1 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **http2** 
@@ -3098,7 +3098,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-06-06, Version 10.4.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: 
   * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
@@ -3204,7 +3204,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-05-29, Version 10.3.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**: 
   * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
@@ -3214,7 +3214,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
   * new option to allow IPC servers to be readable and writable by all users (Bartosz Sosnowski) [#19472](https://github.com/nodejs/node/pull/19472)
 * **stream**: 
   * fix removeAllListeners() for Stream.Readable to work as expected when no arguments are passed (Kael Zhang) [#20924](https://github.com/nodejs/node/pull/20924)
-* **Nuevos colaboradores añadidos** 
+* **Added new collaborators** 
   * [jdlaton](https://github.com/jdalton) John-David Dalton
 
 ### Commits
@@ -3264,7 +3264,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2018-05-24, Version 10.2.1 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 This is a follow up release to fix two regressions that were introduced in v10.2.0.
 
@@ -3278,7 +3278,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-23, Version 10.2.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **addons**: 
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
@@ -3513,14 +3513,14 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-05-08, Version 10.1.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **console**: 
   * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
   * move fs/promises to fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
 * **http**: 
-  * se agregó la propiedad abortada para solicitar (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
+  * added aborted property to request (Robert Nagy) [#20094](https://github.com/nodejs/node/pull/20094)
 * **n-api**: 
   * initialize a module via a special symbol (Gabriel Schulhof) [#20161](https://github.com/nodejs/node/pull/20161)
 * **src**: 
@@ -3705,9 +3705,9 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ## 2018-04-24, Version 10.0.0 (Current), @jasnell
 
-### Cambios Notables
+### Notable Changes
 
-* Aserción 
+* Assert 
   * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
   * Calling `assert.ifError()` will now throw with any argument other than `undefined` or `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
@@ -3723,7 +3723,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * `noAssert` argument was removed from all `Buffer` read and write functions. [[`e8bb1f35df`](https://github.com/nodejs/node/commit/e8bb1f35df)]
 * Child Process 
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Consola 
+* Console 
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto 
   * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
@@ -3732,12 +3732,12 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The `ECDH.convertKey()` method has been added. [[`f2e02883e7`](https://github.com/nodejs/node/commit/f2e02883e7)]
   * The `crypto.fips` property has been deprecated. [[`6e7992e8b8`](https://github.com/nodejs/node/commit/6e7992e8b8)]
   * The AES-CCM algorithm has been implemented. [[`1e07acd476`](https://github.com/nodejs/node/commit/1e07acd476)]
-* Dependencias 
+* Dependencies 
   * V8 has been updated to 6.6. [[`9daebb48d6`](https://github.com/nodejs/node/commit/9daebb48d6)]
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* Sistema de Archivos 
+* File System 
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
@@ -3753,7 +3753,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
   * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
   * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Proceso 
+* Process 
   * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
@@ -3765,13 +3765,13 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
   * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
   * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Temporizadores 
+* Timers 
   * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS 
   * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
   * Support for NPN (next protocol negotiation) has been dropped. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
   * The `ecdhCurve` default is now `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
-* Seguimiento de Eventos 
+* Trace Events 
   * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL 
   * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
@@ -3780,7 +3780,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Support for bigint formatting has been added to `util.inspect()`. [[`39dc947409`](https://github.com/nodejs/node/commit/39dc947409)]
   * `util.inspect()` custom inspection with `inspect` property has been deprecated at runtime. [[`617e3e96e6`](https://github.com/nodejs/node/commit/617e3e96e6)]
 
-#### Desaprobaciones:
+#### Deprecations:
 
 The following APIs have been deprecated in Node.js 10.0.0
 
@@ -3801,7 +3801,7 @@ The following APIs have been deprecated in Node.js 10.0.0
 
 ### Commits
 
-#### Semver mayor
+#### Semver-major
 
 * [[`c9bb91af33`](https://github.com/nodejs/node/commit/c9bb91af33)] - **(SEMVER-MAJOR)** **assert**: remove `errorDiff` property (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
 * [[`eb427caadd`](https://github.com/nodejs/node/commit/eb427caadd)] - **(SEMVER-MAJOR)** **assert**: improve default error messages (Ruben Bridgewater) [#19467](https://github.com/nodejs/node/pull/19467)
