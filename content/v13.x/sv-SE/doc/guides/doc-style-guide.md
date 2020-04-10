@@ -1,4 +1,4 @@
-# Stilguide
+# Style Guide
 
 * Documentation is in markdown files with names formatted as `lowercase-with-dashes.md`.
   * Use an underscore in the filename only if the underscore is part of the topic name (e.g., `child_process`).
