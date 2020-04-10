@@ -1,10 +1,10 @@
-# שגיאות
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
 <!--type=misc-->
 
-אפליקציות שרצות עם Node.js יכולות לחוות ארבע קטגוריות של שגיאות:
+Applications running in Node.js will generally experience four categories of errors:
 
 - Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError}, {ReferenceError}, {TypeError}, and {URIError}.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist or attempting to send data over a closed socket.
@@ -316,7 +316,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. שגיאות
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
