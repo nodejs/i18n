@@ -1,31 +1,31 @@
-# String Dekodierer
+# String Decoder
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-Das `string_decoder` Modul bietet eine API zur Dekodierung von `Puffer` Objekten in auf eine Weise, die kodierte Multibyte UTF-8 und UTF-16 Zeichen beibehält. Es kann zugegriffen werden durch:
+The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. It can be accessed using:
 
 ```js
 const { StringDecoder } = require('string_decoder');
 ```
 
-Das folgende Beispiel zeigt die grundlegende Verwendung der `StringDecoder` Klasse.
+The following example shows the basic use of the `StringDecoder` class.
 
 ```js
 const { StringDecoder } = require('string_decoder');
 const decoder = new StringDecoder('utf8');
 
-const cent = Buffer. rom([0xC2, 0xA2]);
+const cent = Buffer.from([0xC2, 0xA2]);
 console.log(decoder.write(cent));
 
 const euro = Buffer.from([0xE2, 0x82, 0xAC]);
 console.log(decoder.write(euro));
 ```
 
-Wenn eine `Buffer` Instanz auf die `StringDecoder` Instanz geschrieben wird ein interner Puffer wird verwendet, um sicherzustellen, dass der dekodierte String keine unvollständigen Multibyte-Zeichen enthält. Diese werden in Buffer behalten bis der nächste Aufruf zu `stringDecoder.write()` oder zu `stringDecoder.end()` aufgerufen wurde.
+When a `Buffer` instance is written to the `StringDecoder` instance, an internal buffer is used to ensure that the decoded string does not contain any incomplete multibyte characters. These are held in the buffer until the next call to `stringDecoder.write()` or until `stringDecoder.end()` is called.
 
-Im folgenden Beispiel werden die drei UTF-8-kodierten Bytes des Europäischen Euro Symbols (`€`) über drei separate Operationen geschrieben:
+In the following example, the three UTF-8 encoded bytes of the European Euro symbol (`€`) are written over three separate operations:
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -36,7 +36,7 @@ decoder.write(Buffer.from([0x82]));
 console.log(decoder.end(Buffer.from([0xAC])));
 ```
 
-## Klasse: StringDecoder
+## Class: StringDecoder
 
 ### new StringDecoder([encoding])
 
@@ -44,9 +44,9 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `Kodierung` {string} Die Zeichenkodierung des `StringDecoder` wird verwendet. **Standard:** `'utf8'`.
+* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
 
-Erstellt einen neuen `StringDecoder` Instanz.
+Creates a new `StringDecoder` instance.
 
 ### stringDecoder.end([buffer])
 
@@ -55,11 +55,11 @@ added: v0.9.3
 -->
 
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
-* Gibt zurück: {string}
+* Returns: {string}
 
-Gibt alle übrigen im internen Puffer gespeicherten Eingaben als String zurück. Bytes die unvollständige UTF-8 und UTF-16 Zeichen darstellen, werden durch ersetzt werden, die für die Zeichenkodierung geeignet sind.
+Returns any remaining input stored in the internal buffer as a string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
 
-Wenn das `buffer`-Argument angegeben wird, wird ein letzter Aufruf an `stringDecoder.write()` vor der Rückgabe der restlichen Eingabe durchgeführt.
+If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
 ### stringDecoder.write(buffer)
 
@@ -74,6 +74,6 @@ changes:
 -->
 
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
-* Gibt zurück: {string}
+* Returns: {string}
 
 Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the `Buffer`, or `TypedArray`, or `DataView` are omitted from the returned string and stored in an internal buffer for the next call to `stringDecoder.write()` or `stringDecoder.end()`.
