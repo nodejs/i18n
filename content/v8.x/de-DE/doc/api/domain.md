@@ -1,4 +1,4 @@
-# Domäne
+# Domain
 
 <!-- YAML
 changes:
@@ -16,7 +16,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
@@ -229,7 +229,7 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* Gibt zurück: {Domain}
+* Returns: {Domain}
 
 Returns a new Domain object.
 
@@ -283,7 +283,7 @@ d.on('error', (er) => {
 
 ### domain.dispose()
 
-> Stabilität: 0 - Veraltet. Please recover from failed IO actions explicitly via error event handlers set on the domain.
+> Stability: 0 - Deprecated. Please recover from failed IO actions explicitly via error event handlers set on the domain.
 
 Once `dispose` has been called, the domain will no longer be used by callbacks bound into the domain via `run`, `bind`, or `intercept`, and a `'dispose'` event is emitted.
 
