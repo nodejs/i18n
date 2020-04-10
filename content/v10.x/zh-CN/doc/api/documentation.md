@@ -22,15 +22,15 @@ Throughout the documentation are indications of a section's stability. The Node.
 
 The stability indices are as follows:
 
-> 稳定性：0 - 已弃用。 The feature may emit warnings. Backward compatibility is not guaranteed.
+> Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
 
 <!-- separator -->
 
-> 稳定性：1 - 实验中. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> 稳定性：2 - 稳定. Compatibility with the npm ecosystem is a high priority.
+> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
@@ -40,7 +40,7 @@ Caution must be used when making use of `Experimental` features, particularly wi
 added: v0.6.12
 -->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
