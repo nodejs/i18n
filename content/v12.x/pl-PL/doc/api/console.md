@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.13-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-Moduł `console` dostarcza prostej konsoli debugującej. Przypomina ona konsolę JavaScript dostarczaną przez przeglądarki internetowe.
+The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
 The module exports two specific components:
 
@@ -13,7 +13,7 @@ The module exports two specific components:
 
 ***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
-Przykłady użycia `console`:
+Example using the global `console`:
 
 ```js
 console.log('hello world');
@@ -355,7 +355,7 @@ console.timeEnd('process');
 
 ### `console.trace([message][, ...args])`<!-- YAML
 added: v0.1.104
--->* `wiadomość` {any}
+-->* `message` {any}
 * `...args` {any}
 
 Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
