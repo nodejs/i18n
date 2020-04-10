@@ -1,8 +1,8 @@
-# Moduł Async Hooks
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `funkcje zwrotne` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -345,7 +345,7 @@ Note that `resolve()` does not do any observable synchronous work.
 
 *Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
 
-Na przykład:
+For example:
 
 ```js
 new Promise((resolve) => resolve(true)).then((a) => {});
@@ -375,7 +375,7 @@ changes:
 
 * Returns: {number} The `asyncId` of the current execution context. Useful to track when something calls.
 
-Na przykład:
+For example:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -386,7 +386,7 @@ fs.open(path, 'r', (err, fd) => {
 });
 ```
 
-The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). Na przykład:
+The ID returned from `executionAsyncId()` is related to execution timing, not causality (which is covered by `triggerAsyncId()`). For example:
 
 ```js
 const server = net.createServer(function onConnection(conn) {
@@ -408,7 +408,7 @@ Note that promise contexts may not get precise executionAsyncIds by default. See
 
 * Returns: {number} The ID of the resource responsible for calling the callback that is currently being executed.
 
-Na przykład:
+For example:
 
 ```js
 const server = net.createServer((conn) => {
@@ -444,7 +444,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the triggerAsyncId value is 0, which means that we are missing context about the resource that caused (triggered) the `then` callback to be executed.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Przykład:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
 ```js
 const ah = require('async_hooks');
