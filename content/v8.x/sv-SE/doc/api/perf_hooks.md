@@ -536,7 +536,7 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Exempel
+## Examples
 
 ### Measuring the duration of async operations
 
