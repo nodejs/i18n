@@ -4,55 +4,112 @@
 
 > Estabilidade: 2 - Estável
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. Ele pode ser acessado usando:
+The `zlib` module provides compression functionality implemented using Gzip, Deflate/Inflate, and Brotli.
+
+To access it:
 
 ```js
 const zlib = require('zlib');
 ```
 
-Compressing or decompressing a stream (such as a file) can be accomplished by piping the source stream data through a `zlib` stream into a destination stream:
+Compression and decompression are built around the Node.js [Streams API](stream.md).
+
+Compressing or decompressing a stream (such as a file) can be accomplished by piping the source stream through a `zlib` `Transform` stream into a destination stream:
 
 ```js
-const gzip = zlib.createGzip();
-const fs = require('fs');
-const inp = fs.createReadStream('input.txt');
-const out = fs.createWriteStream('input.txt.gz');
+const { createGzip } = require('zlib');
+const { pipeline } = require('stream');
+const {
+  createReadStream,
+  createWriteStream
+} = require('fs');
 
-inp.pipe(gzip)
-  .on('error', () => {
-    // handle error
-  })
-  .pipe(out)
-  .on('error', () => {
-    // handle error
+const gzip = createGzip();
+const source = createReadStream('input.txt');
+const destination = createWriteStream('input.txt.gz');
+
+pipeline(source, gzip, destination, (err) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    process.exitCode = 1;
+  }
+});
+
+// Or, Promisified
+
+const { promisify } = require('util');
+const pipe = promisify(pipeline);
+
+async function do_gzip(input, output) {
+  const gzip = createGzip();
+  const source = createReadStream(input);
+  const destination = createWriteStream(output);
+  await pipe(source, gzip, destination);
+}
+
+do_gzip('input.txt', 'input.txt.gz')
+  .catch((err) => {
+    console.error('An error occurred:', err);
+    process.exitCode = 1;
   });
 ```
 
 It is also possible to compress or decompress data in a single step:
 
 ```js
+const { deflate, unzip } = require('zlib');
+
 const input = '.................................';
-zlib.deflate(input, (err, buffer) => {
-  if (!err) {
-    console.log(buffer.toString('base64'));
-  } else {
-    // handle error
+deflate(input, (err, buffer) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    process.exitCode = 1;
   }
+  console.log(buffer.toString('base64'));
 });
 
 const buffer = Buffer.from('eJzT0yMAAGTvBe8=', 'base64');
-zlib.unzip(buffer, (err, buffer) => {
-  if (!err) {
-    console.log(buffer.toString());
-  } else {
-    // handle error
+unzip(buffer, (err, buffer) => {
+  if (err) {
+    console.error('An error occurred:', err);
+    process.exitCode = 1;
   }
+  console.log(buffer.toString());
 });
+
+// Or, Promisified
+
+const { promisify } = require('util');
+const do_unzip = promisify(unzip);
+
+do_unzip(buffer)
+  .then((buf) => console.log(buf.toString()))
+  .catch((err) => {
+    console.error('An error occurred:', err);
+    process.exitCode = 1;
+  });
 ```
 
-## Threadpool Usage
+## Threadpool Usage and Performance Considerations
 
-All zlib APIs, except those that are explicitly synchronous, use libuv's threadpool. This can lead to surprising effects in some applications, such as subpar performance (which can be mitigated by adjusting the [pool size](cli.html#cli_uv_threadpool_size_size)) and/or unrecoverable and catastrophic memory fragmentation.
+All `zlib` APIs, except those that are explicitly synchronous, use the Node.js internal threadpool. This can lead to surprising effects and performance limitations in some applications.
+
+Creating and using a large number of zlib objects simultaneously can cause significant memory fragmentation.
+
+```js
+const zlib = require('zlib');
+
+const payload = Buffer.from('This is some data');
+
+// WARNING: DO NOT DO THIS!
+for (let i = 0; i < 30000; ++i) {
+  zlib.deflate(payload, (err, buffer) => {});
+}
+```
+
+In the preceding example, 30,000 deflate instances are created concurrently. Because of how some operating systems handle memory allocation and deallocation, this may lead to to significant memory fragmentation.
+
+It is strongly recommended that the results of compression operations be cached to avoid duplication of effort.
 
 ## Compressing HTTP requests and responses
 
@@ -67,6 +124,8 @@ The examples given below are drastically simplified to show the basic concept. U
 const zlib = require('zlib');
 const http = require('http');
 const fs = require('fs');
+const { pipeline } = require('stream');
+
 const request = http.get({ host: 'example.com',
                            path: '/',
                            port: 80,
@@ -74,19 +133,26 @@ const request = http.get({ host: 'example.com',
 request.on('response', (response) => {
   const output = fs.createWriteStream('example.com_index.html');
 
+  const onError = (err) => {
+    if (err) {
+      console.error('An error occurred:', err);
+      process.exitCode = 1;
+    }
+  };
+
   switch (response.headers['content-encoding']) {
     case 'br':
-      response.pipe(zlib.createBrotliDecompress()).pipe(output);
+      pipeline(response, zlib.createBrotliDecompress(), output, onError);
       break;
     // Or, just use zlib.createUnzip() to handle both of the following cases:
     case 'gzip':
-      response.pipe(zlib.createGunzip()).pipe(output);
+      pipeline(response, zlib.createGunzip(), output, onError);
       break;
     case 'deflate':
-      response.pipe(zlib.createInflate()).pipe(output);
+      pipeline(response, zlib.createInflate(), outout, onError);
       break;
     default:
-      response.pipe(output);
+      pipeline(response, output, onError);
       break;
   }
 });
@@ -99,6 +165,8 @@ request.on('response', (response) => {
 const zlib = require('zlib');
 const http = require('http');
 const fs = require('fs');
+const { pipeline } = require('stream');
+
 http.createServer((request, response) => {
   const raw = fs.createReadStream('index.html');
   // Store both a compressed and an uncompressed version of the resource.
@@ -108,20 +176,32 @@ http.createServer((request, response) => {
     acceptEncoding = '';
   }
 
+  const onError = (err) => {
+    if (err) {
+      // If an error occurs, there's not much we can do because
+      // the server has already sent the 200 response code and
+      // some amount of data has already been sent to the client.
+      // The best we can do is terminate the response immediately
+      // and log the error.
+      response.end();
+      console.error('An error occurred:', err);
+    }
+  };
+
   // Note: This is not a conformant accept-encoding parser.
   // See https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
   if (/\bdeflate\b/.test(acceptEncoding)) {
     response.writeHead(200, { 'Content-Encoding': 'deflate' });
-    raw.pipe(zlib.createDeflate()).pipe(response);
+    pipeline(raw, zlib.createDeflate(), response, onError);
   } else if (/\bgzip\b/.test(acceptEncoding)) {
     response.writeHead(200, { 'Content-Encoding': 'gzip' });
-    raw.pipe(zlib.createGzip()).pipe(response);
+    pipeline(raw, zlib.createGzip(), response, onError);
   } else if (/\bbr\b/.test(acceptEncoding)) {
     response.writeHead(200, { 'Content-Encoding': 'br' });
-    raw.pipe(zlib.createBrotliCompress()).pipe(response);
+    pipeline(raw, zlib.createBrotliCompress(), response, onError);
   } else {
     response.writeHead(200, {});
-    raw.pipe(response);
+    pipeline(raw, response, onError);
   }
 }).listen(1337);
 ```
@@ -137,11 +217,11 @@ zlib.unzip(
   // For Brotli, the equivalent is zlib.constants.BROTLI_OPERATION_FLUSH.
   { finishFlush: zlib.constants.Z_SYNC_FLUSH },
   (err, buffer) => {
-    if (!err) {
-      console.log(buffer.toString());
-    } else {
-      // handle error
+    if (err) {
+      console.error('An error occurred:', err);
+      process.exitCode = 1;
     }
+    console.log(buffer.toString());
   });
 ```
 
@@ -196,14 +276,28 @@ In the following example, `flush()` is used to write a compressed partial HTTP r
 ```js
 const zlib = require('zlib');
 const http = require('http');
+const { pipeline } = require('stream');
 
 http.createServer((request, response) => {
   // For the sake of simplicity, the Accept-Encoding checks are omitted.
   response.writeHead(200, { 'content-encoding': 'gzip' });
   const output = zlib.createGzip();
-  output.pipe(response);
+  let i;
 
-  setInterval(() => {
+  pipeline(output, response, (err) => {
+    if (err) {
+      // If an error occurs, there's not much we can do because
+      // the server has already sent the 200 response code and
+      // some amount of data has already been sent to the client.
+      // The best we can do is terminate the response immediately
+      // and log the error.
+      clearInterval(i);
+      response.end();
+      console.error('An error occurred:', err);
+    }
+  });
+
+  i = setInterval(() => {
     output.write(`The current time is ${Date()}\n`, () => {
       // The data has been passed to zlib, but the compression algorithm may
       // have decided to buffer the data for more efficient compression.
@@ -215,7 +309,7 @@ http.createServer((request, response) => {
 }).listen(1337);
 ```
 
-## Constantes<!-- YAML
+## Constants<!-- YAML
 added: v0.5.8
 --><!--type=misc-->### zlib constants
 
@@ -325,7 +419,7 @@ changes:
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6069
     description: The `finishFlush` option is supported now.
---><!--type=misc-->Each zlib-based class takes an `options` object. All options are optional.
+--><!--type=misc-->Each zlib-based class takes an `options` object. No options are required.
 
 Some options are only relevant when compressing and are ignored by the decompression classes.
 
@@ -350,7 +444,7 @@ added: v11.7.0
 * `chunkSize` {integer} **Default:** `16 * 1024`
 * `params` {Object} Key-value object containing indexed [Brotli parameters](#zlib_brotli_constants).
 
-Por exemplo:
+For example:
 
 ```js
 const stream = zlib.createBrotliCompress({
