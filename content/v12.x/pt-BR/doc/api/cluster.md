@@ -398,7 +398,7 @@ changes:
 * `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -558,7 +558,7 @@ The `settings` object is the `cluster.settings` object at the time [`.setupMaste
 
 If accuracy is important, use `cluster.settings`.
 
-## `cluster.disconnect ([callback])`
+## `cluster.disconnect([callback])`
 <!-- YAML
 added: v0.7.7
 -->
@@ -579,7 +579,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Retorna: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
