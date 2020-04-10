@@ -49,7 +49,7 @@
 </tr>
 </table>
 
-* نسخ أخرى
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -2617,7 +2617,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ### Notable Changes
 
-* **التشفير**
+* **crypto**
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
 * **dgram**
   * Added `setMulticastInterface()` API. [#7855](https://github.com/nodejs/node/pull/7855)
@@ -2782,7 +2782,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 * **build**
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
-* **المحاورة**
+* **console**
   * Implement minimal `console.group()`. [#14910](https://github.com/nodejs/node/pull/14910)
 * **deps**
   * upgrade libuv to 1.14.1 [#14866](https://github.com/nodejs/node/pull/14866)
@@ -2791,7 +2791,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
   * Add `verbatim` option to dns.lookup(). When true, results from the DNS resolver are passed on as-is, without the reshuffling that Node.js otherwise does that puts IPv4 addresses before IPv6 addresses. [#14731](https://github.com/nodejs/node/pull/14731)
 * **fs**
   * add fs.copyFile and fs.copyFileSync which allows for more efficient copying of files. [#15034](https://github.com/nodejs/node/pull/15034)
-* **الفاحص**
+* **inspector**
   * Enable async stack traces [#13870](https://github.com/nodejs/node/pull/13870)
 * **module**
   * Add support for ESM. This is currently behind the `--experimental-modules` flag and requires the .mjs extension. `node --experimental-modules index.mjs` [#14369](https://github.com/nodejs/node/pull/14369)
@@ -3048,7 +3048,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 * **HTTP2**
   * Experimental support for the built-in `http2` has been added via the `--expose-http2` flag. [#14239](https://github.com/nodejs/node/pull/14239)
 
-* **الفاحص**
+* **Inspector**
   * `require()` is available in the inspector console now. [#8837](https://github.com/nodejs/node/pull/8837)
   * Multiple contexts, as created by the `vm` module, are supported now. [#14465](https://github.com/nodejs/node/pull/14465)
 
@@ -3183,7 +3183,7 @@ More detailed information on performance differences can be found at https://med
 * **REPL**
   * Autocompletion support for `require()` has been improved. [#14409](https://github.com/nodejs/node/pull/14409)
 
-* **أدوات**
+* **Utilities**
   * The WHATWG Encoding Standard (`TextDecoder` and `TextEncoder`) has been implemented as an experimental feature. [#13644](https://github.com/nodejs/node/pull/13644)
 
 * **Added new collaborators**
@@ -3372,13 +3372,13 @@ Big thanks to @addaleax who prepared the vast majority of this release.
 
 ### Notable changes
 
-* **الخطافات الغير تزامنية**
+* **Async Hooks**
   * Multiple improvements to Promise support in `async_hooks` have been made.
 
 * **Build**
   * The compiler version requirement to build Node with GCC has been raised to GCC 4.9.4. [[`820b011ed6`](https://github.com/nodejs/node/commit/820b011ed6)] - [#13466](https://github.com/nodejs/node/pull/13466)
 
-* **عنقود**
+* **Cluster**
   * Users now have more fine-grained control over the inspector port used by individual cluster workers. Previously, cluster workers were restricted to incrementing from the master's debug port. [[`dfc46e262a`](https://github.com/nodejs/node/commit/dfc46e262a)] - [#14140](https://github.com/nodejs/node/pull/14140)
 
 * **نظام أسماء النطاقات (DNS)**
@@ -3820,15 +3820,15 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 
 ### Notable Changes
 
-* **الخطافات الغير تزامنية**
+* **Async Hooks**
   * When one `Promise` leads to the creation of a new `Promise`, the parent `Promise` will be identified as the trigger [[`135f4e6643`](https://github.com/nodejs/node/commit/135f4e6643)] - [#13367](https://github.com/nodejs/node/pull/13367).
-* **التبعيات**
+* **Dependencies**
   * libuv has been updated to 1.12.0 [[`968596ec77`](https://github.com/nodejs/node/commit/968596ec77)] - [#13306](https://github.com/nodejs/node/pull/13306).
   * npm has been updated to 5.0.3 [[`ffa7debd7a`](https://github.com/nodejs/node/commit/ffa7debd7a)] - [#13487](https://github.com/nodejs/node/pull/13487).
 * **File system**
   * The `fs.exists()` function now works correctly with `util.promisify()` [[`6e0eccd7a1`](https://github.com/nodejs/node/commit/6e0eccd7a1)] - [#13316](https://github.com/nodejs/node/pull/13316).
   * fs.Stats times are now also available as numbers [[`c756efb25a`](https://github.com/nodejs/node/commit/c756efb25a)] - [#13173](https://github.com/nodejs/node/pull/13173).
-* **الفاحص**
+* **Inspector**
   * It is now possible to bind to a random port using `--inspect=0` [[`cc6ec2fb27`](https://github.com/nodejs/node/commit/cc6ec2fb27)] - [#5025](https://github.com/nodejs/node/pull/5025).
 * **Zlib**
   * A regression in the Zlib module that made it impossible to properly subclasses `zlib.Deflate` and other Zlib classes has been fixed. [[`6aeb555cc4`](https://github.com/nodejs/node/commit/6aeb555cc4)] - [#13374](https://github.com/nodejs/node/pull/13374).
@@ -3961,10 +3961,10 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 
 ### Notable Changes
 
-* **الخطافات الغير تزامنية**
+* **Async Hooks**
   * The `async_hooks` module has landed in core [[`4a7233c178`](https://github.com/nodejs/node/commit/4a7233c178)] - [#12892](https://github.com/nodejs/node/pull/12892).
 
-* **الصوان**
+* **Buffer**
   * Using the `--pending-deprecation` flag will cause Node.js to emit a deprecation warning when using `new Buffer(num)` or `Buffer(num)`. [[`d2d32ea5a2`](https://github.com/nodejs/node/commit/d2d32ea5a2)] - [#11968](https://github.com/nodejs/node/pull/11968).
   * `new Buffer(num)` and `Buffer(num)` will zero-fill new `Buffer` instances [[`7eb1b4658e`](https://github.com/nodejs/node/commit/7eb1b4658e)] - [#12141](https://github.com/nodejs/node/pull/12141).
   * Many `Buffer` methods now accept `Uint8Array` as input [[`beca3244e2`](https://github.com/nodejs/node/commit/beca3244e2)] - [#10236](https://github.com/nodejs/node/pull/10236).
@@ -3973,10 +3973,10 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   * Argument and kill signal validations have been improved [[`97a77288ce`](https://github.com/nodejs/node/commit/97a77288ce)] - [#12348](https://github.com/nodejs/node/pull/12348), [[`d75fdd96aa`](https://github.com/nodejs/node/commit/d75fdd96aa)] - [#10423](https://github.com/nodejs/node/pull/10423).
   * Child Process methods accept `Uint8Array` as input [[`627ecee9ed`](https://github.com/nodejs/node/commit/627ecee9ed)] - [#10653](https://github.com/nodejs/node/pull/10653).
 
-* **المحاورة**
+* **Console**
   * Error events emitted when using `console` methods are now supressed. [[`f18e08d820`](https://github.com/nodejs/node/commit/f18e08d820)] - [#9744](https://github.com/nodejs/node/pull/9744).
 
-* **التبعيات**
+* **Dependencies**
   * The npm client has been updated to 5.0.0 [[`3c3b36af0f`](https://github.com/nodejs/node/commit/3c3b36af0f)] - [#12936](https://github.com/nodejs/node/pull/12936).
   * V8 has been updated to 5.8 with forward ABI stability to 6.0 [[`60d1aac8d2`](https://github.com/nodejs/node/commit/60d1aac8d2)] - [#12784](https://github.com/nodejs/node/pull/12784).
 
@@ -3986,7 +3986,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 * **الأخطاء**
   * We have started assigning static error codes to errors generated by Node.js. This has been done through multiple commits and is still a work in progress.
 
-* **نظام الملفات**
+* **File System**
   * The utility class `fs.SyncWriteStream` has been deprecated [[`7a55e34ef4`](https://github.com/nodejs/node/commit/7a55e34ef4)] - [#10467](https://github.com/nodejs/node/pull/10467).
   * The deprecated `fs.read()` string interface has been removed [[`3c2a9361ff`](https://github.com/nodejs/node/commit/3c2a9361ff)] - [#9683](https://github.com/nodejs/node/pull/9683).
 
@@ -4003,7 +4003,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
 * **N-API**
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] - [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **الاجراء**
+* **Process**
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] - [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] - [#12725](https://github.com/nodejs/node/pull/12725).
 
