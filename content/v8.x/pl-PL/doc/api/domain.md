@@ -1,4 +1,4 @@
-# Domena
+# Domain
 
 <!-- YAML
 changes:
@@ -16,13 +16,13 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 0 - Przestarzałe
+> Stability: 0 - Deprecated
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
 Domains provide a way to handle multiple different IO operations as a single group. If any of the event emitters or callbacks registered to a domain emit an `'error'` event, or throw an error, then the domain object will be notified, rather than losing the context of the error in the `process.on('uncaughtException')` handler, or causing the program to exit immediately with an error code.
 
-## Uwaga: Nie ignoruj błędów!
+## Warning: Don't Ignore Errors!
 
 <!-- type=misc -->
 
@@ -36,7 +36,7 @@ The better approach is to send an error response to the request that triggered t
 
 In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
 
-Na przykład, to nie jest dobry pomysł:
+For example, this is not a good idea:
 
 ```js
 // XXX WARNING!  BAD IDEA!
@@ -197,7 +197,7 @@ For example, there could be one domain in use for an HTTP server, but perhaps we
 
 That is possible via explicit binding.
 
-Na przykład:
+For example:
 
 ```js
 // create a top-level domain for the server
@@ -233,7 +233,7 @@ serverDomain.run(() => {
 
 Returns a new Domain object.
 
-## Klasa: Domena
+## Class: Domain
 
 The Domain class encapsulates the functionality of routing errors and uncaught exceptions to the active Domain object.
 
@@ -262,7 +262,7 @@ If the Timer or EventEmitter was already bound to a domain, it is removed from t
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### Przykład
+#### Example
 
 ```js
 const d = domain.create();
@@ -283,7 +283,7 @@ d.on('error', (er) => {
 
 ### domain.dispose()
 
-> Stabilność: 0 - Przestarzałe. Please recover from failed IO actions explicitly via error event handlers set on the domain.
+> Stability: 0 - Deprecated. Please recover from failed IO actions explicitly via error event handlers set on the domain.
 
 Once `dispose` has been called, the domain will no longer be used by callbacks bound into the domain via `run`, `bind`, or `intercept`, and a `'dispose'` event is emitted.
 
@@ -314,7 +314,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### Przykład
+#### Example
 
 ```js
 const d = domain.create();
@@ -355,7 +355,7 @@ Run the supplied function in the context of the domain, implicitly binding all e
 
 This is the most basic way to use a domain.
 
-Przykład:
+Example:
 
 ```js
 const domain = require('domain');
