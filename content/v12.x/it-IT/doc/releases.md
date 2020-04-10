@@ -2,7 +2,7 @@
 
 This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
-## Sommario
+## Table of Contents
 
 * [Who can make a release?](#who-can-make-a-release)
   * [1. Jenkins Release Access](#1-jenkins-release-access)
@@ -112,7 +112,7 @@ When landing the PR add the `Backport-PR-URL:` line to each commit. Close the ba
 
 To determine the relevant commits, use [`branch-diff`](https://github.com/nodejs/branch-diff). The tool is available on npm and should be installed globally or run with `npx`. It depends on our commit metadata, as well as the GitHub labels such as `semver-minor` and `semver-major`. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
-Per un elenco di commit che potrebbero essere trovati in una patch release su v1.x:
+For a list of commits that could be landed in a patch release on v1.x:
 
 ```console
 $ branch-diff v1.x-staging master --exclude-label=semver-major,semver-minor,dont-land-on-v1.x,backport-requested-v1.x --filter-release --format=simple
