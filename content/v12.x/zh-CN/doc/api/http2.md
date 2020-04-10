@@ -8,9 +8,9 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
-The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. 可以通过如下方式访问：
+The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
 ```js
 const http2 = require('http2');
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -651,7 +651,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* 返回：{ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -1420,7 +1420,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 返回：{Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1541,7 +1541,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 返回：{Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1596,7 +1596,7 @@ changes:
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 返回：{Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1660,10 +1660,10 @@ changes:
   * `maxSessionRejectedStreams` {integer} Sets the maximum number of rejected upon creation streams that will be tolerated before the session is closed. Each rejection is associated with an `NGHTTP2_ENHANCE_YOUR_CALM` error that should tell the peer to not open any more streams, continuing to open streams is therefore regarded as a sign of a misbehaving peer. **Default:** `100`.
   * `selectPadding` {Function} When `options.paddingStrategy` is equal to `http2.constants.PADDING_STRATEGY_CALLBACK`, provides the callback function used to determine the padding. See [Using `options.selectPadding()`][].
   * `settings` {HTTP/2 Settings Object} The initial settings to send to the remote peer upon connection.
-  * ...: 可以提供任何的 [`tls.createServer()`][] 选项。 对于服务器，通常需要标识符选项 (`pfx` 或 `key`/`cert`)。
+  * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 返回：{Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1720,7 +1720,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function} Will be registered as a one-time listener of the [`'connect'`][] event.
-* 返回：{ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1742,7 +1742,7 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Value  | Name                | 常量                                            |
+| Value  | Name                | Constant                                      |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -1776,7 +1776,7 @@ added: v8.4.0
 -->
 
 * `settings` {HTTP/2 Settings Object}
-* 返回：{Buffer}
+* Returns: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 
@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### 错误处理
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2235,7 +2235,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 返回：{http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2389,7 +2389,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 返回：{this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2400,7 +2400,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v12.16.0
--->> 稳定性：0 - 已弃用。 Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -2409,7 +2409,7 @@ Boolean value that indicates whether the response has completed. Starts as `fals
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* 返回：{string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
@@ -2439,7 +2439,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* 返回：{Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2459,7 +2459,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -2496,7 +2496,7 @@ added: v8.4.0
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -2514,7 +2514,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-或
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2541,7 +2541,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 返回：{http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2619,7 +2619,7 @@ added: v8.4.0
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 返回：{boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -2633,7 +2633,7 @@ This is the raw HTTP body and has nothing to do with higher-level multi-part bod
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 #### `response.writeContinue()`
 <!-- YAML
@@ -2652,7 +2652,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* 返回：{http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
