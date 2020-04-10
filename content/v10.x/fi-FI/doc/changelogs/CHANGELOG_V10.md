@@ -1,4 +1,4 @@
-# Node.js 10 Muutosloki
+# Node.js 10 ChangeLog
 
 <!--lint disable prohibited-strings-->
 
@@ -53,7 +53,7 @@
   </tr>
 </table>
 
-* Muut versiot 
+* Other Versions 
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -63,7 +63,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arkisto](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.19.0"></a>
 
