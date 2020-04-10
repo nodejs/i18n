@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. Это осуществляется с помощью:
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
@@ -44,13 +44,15 @@ changes:
 * `str` {string} The URL query string to parse
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `опции` {Object} 
+* `options` {Object} 
   * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. **Default:** `querystring.unescape()`.
   * `maxKeys` {number} Specifies the maximum number of keys to parse. Specify `0` to remove key counting limitations. **Default:** `1000`.
 
 The `querystring.parse()` method parses a URL query string (`str`) into a collection of key and value pairs.
 
 For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
+
+<!-- eslint-skip -->
 
 ```js
 {
@@ -70,23 +72,23 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
 ```
 
-## querystring.stringify(obj[, sep[, eq[, options]]])<!-- YAML
+## querystring.stringify(obj[, sep[, eq[, options]]])
+
+<!-- YAML
 added: v0.1.25
 -->
 
 * `obj` {Object} The object to serialize into a URL query string
-
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
-
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `опции` 
+* `options` 
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
 
 The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
 
 It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
 
-Например:
+For example:
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
