@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
