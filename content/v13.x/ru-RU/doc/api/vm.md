@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -75,7 +75,7 @@ Creating a new `vm.Script` object compiles `code` but does not run it. The compi
 added: v10.6.0
 -->
 
-* Возвращает: {Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `Script` constructor's `cachedData` option. Returns a `Buffer`. This method may be called at any time and any number of times.
 
@@ -221,7 +221,7 @@ console.log(globalVar);
 added: v13.10.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 Measure the memory known to V8 and used by the current execution context or a specified context.
 
@@ -259,7 +259,7 @@ vm.measureMemory({ mode: 'detailed' }, context)
 added: v13.0.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -368,7 +368,7 @@ Corresponds to the `[[EvaluationError]]` field of [Cyclic Module Record](https:/
 * `options` {Object}
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown. **Default:** `false`.
-* Возвращает: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -393,7 +393,7 @@ Corresponds to the [Evaluate() concrete method](https://tc39.es/ecma262/#sec-mod
 
   * `referencingModule` {vm.Module} The `Module` object `link()` is called on.
   * Returns: {vm.Module|Promise}
-* Возвращает: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before evaluation, and can only be called once per module.
 
@@ -453,7 +453,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -464,7 +464,7 @@ The `vm.SourceTextModule` class provides the [Source Text Module Record](https:/
 ### Constructor: `new vm.SourceTextModule(code[, options])`
 
 * `code` {string} JavaScript Module code to parse
-* `опции`
+* `options`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source. The `code` must be the same as the module from which this `cachedData` was created.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
@@ -517,7 +517,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v13.7.0
 -->
 
-* Возвращает: {Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `SourceTextModule` constructor's `cachedData` option. Returns a `Buffer`. This method may be called any number of times before the module has been evaluated.
 
@@ -537,7 +537,7 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 added: v13.0.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -564,7 +564,7 @@ added: v13.0.0
 
 * `exportNames` {string[]} Array of names that will be exported from the module.
 * `evaluateCallback` {Function} Called when the module is evaluated.
-* `опции`
+* `options`
   * `identifier` {string} String used in stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
 
@@ -612,7 +612,7 @@ added: v10.10.0
   * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
-* Возвращает: {Function}
+* Returns: {Function}
 
 Compiles the given code into the provided context (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
@@ -669,7 +669,7 @@ added: v0.11.7
 -->
 
 * `object` {Object}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `oject` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
@@ -822,7 +822,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Например:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
