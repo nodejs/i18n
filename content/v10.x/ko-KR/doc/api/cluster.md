@@ -1,10 +1,10 @@
-# 클러스터
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
-하나의 Node.js 인스턴스는 싱글 스레드에서 동작합니다. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -36,7 +36,7 @@ if (cluster.isMaster) {
 }
 ```
 
-이제 Node.js는 8000번 포트를 worker들과 공유합니다.
+Running Node.js will now share port 8000 between the workers:
 
 ```txt
 $ node server.js
@@ -49,7 +49,7 @@ Worker 5644 started
 
 Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
 
-## 작동 원리
+## How It Works
 
 <!--type=misc-->
 
@@ -61,7 +61,7 @@ The first one (and the default one on all platforms except Windows), is the roun
 
 The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
 
-두번째 방식이 이론적으로는 가장 좋은 성능을 내야합니다. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
 
 Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
 
@@ -81,7 +81,7 @@ Although a primary use case for the `cluster` module is networking, it can also 
 added: v0.7.0
 -->
 
-`Worker` 오브젝트는 worker에 관련된 public 메소드와 정보들을 가지고 있습니다. master에서는 `cluster.workers`를 In a worker it can be obtained using `cluster.worker`.
+A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
 ### Event: 'disconnect'
 
@@ -89,11 +89,11 @@ added: v0.7.0
 added: v0.7.7
 -->
 
-`cluster.on('disconnect')` event와 비슷하지만, 해당 worker에만 적용됩니다.
+Similar to the `cluster.on('disconnect')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Worker가 종료되었습니다.
+  // Worker has disconnected
 });
 ```
 
@@ -103,9 +103,9 @@ cluster.fork().on('disconnect', () => {
 added: v0.7.3
 -->
 
-이 이벤트는 [`child_process.fork()`][].로 얻어지는 것과 일치합니다.
+This event is the same as the one provided by [`child_process.fork()`][].
 
-worker 안에서는, `process.on('error')` 도 사용됩니다.
+Within a worker, `process.on('error')` may also be used.
 
 ### Event: 'exit'
 
@@ -113,18 +113,18 @@ worker 안에서는, `process.on('error')` 도 사용됩니다.
 added: v0.11.2
 -->
 
-* `code` {number} exit code, 비정상적으로 종료된 경우 출력
+* `code` {number} The exit code, if it exited normally.
 * `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
 
-`cluster.on('exit')` event와 비슷하지만, 해당 worker에만 적용됩니다.
+Similar to the `cluster.on('exit')` event, but specific to this worker.
 
 ```js
 const worker = cluster.fork();
 worker.on('exit', (code, signal) => {
   if (signal) {
-    console.log(`worker가 다음 signal에 의해 종료되었습니다.: ${signal}`);
+    console.log(`worker was killed by signal: ${signal}`);
   } else if (code !== 0) {
-    console.log(`worker가 다음 에러 코드와 함께 종료되었습니다.: ${code}`);
+    console.log(`worker exited with error code: ${code}`);
   } else {
     console.log('worker success!');
   }
@@ -139,7 +139,7 @@ added: v0.7.0
 
 * `address` {Object}
 
-`cluster.on('listening')` event와 비슷하지만, 해당 worker 오브젝트에만 적용됩니다 .
+Similar to the `cluster.on('listening')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('listening', (address) => {
@@ -147,7 +147,7 @@ cluster.fork().on('listening', (address) => {
 });
 ```
 
-worker 안에서 사용할 수 없습니다.
+It is not emitted in the worker.
 
 ### Event: 'message'
 
@@ -158,11 +158,11 @@ added: v0.7.0
 * `message` {Object}
 * `handle` {undefined|Object}
 
-`cluster`의 `'message'` 이벤트와 비슷하지만, 해당 worker에만 적용됩니다.
+Similar to the `'message'` event of `cluster`, but specific to this worker.
 
-worker 안에서는, `process.on('message')` 도 사용됩니다.
+Within a worker, `process.on('message')` may also be used.
 
-[`process` event: `'message'`][] 를 참고하세요.
+See [`process` event: `'message'`][].
 
 Here is an example using the message system. It keeps a count in the master process of the number of HTTP requests received by the workers:
 
@@ -172,7 +172,7 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // http 요청을 추적합니다.
+  // Keep track of http requests
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
@@ -184,11 +184,25 @@ if (cluster.isMaster) {
       numReqs += 1;
     }
   }
+
+  // Start workers and listen for messages containing notifyRequest
+  const numCPUs = require('os').cpus().length;
+  for (let i = 0; i < numCPUs; i++) {
+    cluster.fork();
+  }
+
+  for (const id in cluster.workers) {
+    cluster.workers[id].on('message', messageHandler);
+  }
+
+} else {
+
+  // Worker processes have a http server.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
 
-    // master 에게 요청정보를 알려준다.
+    // notify master about the request
     process.send({ cmd: 'notifyRequest' });
   }).listen(8000);
 }
@@ -200,15 +214,15 @@ if (cluster.isMaster) {
 added: v0.7.0
 -->
 
-`cluster.on('online')` event와 비슷하지만, 해당 worker에만 사용할수 있습니다.
+Similar to the `cluster.on('online')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('online', () => {
-  // worker 가 동작중입니다.
+  // Worker is online
 });
 ```
 
-worker 안에서 사용할 수 없습니다.
+It is not emitted in the worker.
 
 ### worker.disconnect()
 
@@ -221,13 +235,13 @@ changes:
     description: This method now returns a reference to `worker`.
 -->
 
-* 리턴값: {cluster.Worker} A reference to `worker`.
+* Returns: {cluster.Worker} A reference to `worker`.
 
 In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
 
 In the master, an internal message is sent to the worker causing it to call `.disconnect()` on itself.
 
-실행 이후에 `.ExitedAfterDisconnect` 가 1로 설정됩니다.
+Causes `.exitedAfterDisconnect` to be set.
 
 Note that after a server is closed, it will no longer accept new connections, but connections may be accepted by any other listening worker. Existing connections will be allowed to close as usual. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
 
@@ -257,14 +271,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // 연결이 종료되지 않습니다.
+    // connections never end
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // 서버에 대한 모든 연결을 정상적으로 종료하기 위해 준비
+      // initiate graceful close of any connections to server
     }
   });
 }
@@ -278,7 +292,7 @@ added: v6.0.0
 
 * {boolean}
 
-`.Kill()` 또는 `.disconnect()`를 호출 하여 1로 만듭니다. 그전까지는 `undefined` 값을 가지게 됩니다.
+Set by calling `.kill()` or `.disconnect()`. Until then, it is `undefined`.
 
 The boolean [`worker.exitedAfterDisconnect`][] allows distinguishing between voluntary and accidental exit, the master may choose not to respawn a worker based on this value.
 
@@ -289,7 +303,7 @@ cluster.on('exit', (worker, code, signal) => {
   }
 });
 
-// worker를 kill
+// kill worker
 worker.kill();
 ```
 
@@ -333,7 +347,7 @@ This function will kill the worker. In the master, it does this by disconnecting
 
 Because `kill()` attempts to gracefully disconnect the worker process, it is susceptible to waiting indefinitely for the disconnect to complete. For example, if the worker enters an infinite loop, a graceful disconnect will never occur. If the graceful disconnect behavior is not needed, use `worker.process.kill()`.
 
-실행 이후에 `.ExitedAfterDisconnect` 가 1로 설정됩니다.
+Causes `.exitedAfterDisconnect` to be set.
 
 This method is aliased as `worker.destroy()` for backwards compatibility.
 
@@ -414,7 +428,7 @@ added: v0.7.9
 -->
 
 * `worker` {cluster.Worker}
-* `code` {number} exit code, 비정상적으로 종료된 경우 출력
+* `code` {number} The exit code, if it exited normally.
 * `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
 
 When any of the workers die the cluster module will emit the `'exit'` event.
