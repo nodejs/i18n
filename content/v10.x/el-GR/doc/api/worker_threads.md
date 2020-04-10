@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -103,7 +103,7 @@ Instances of the `worker.MessagePort` class represent one end of an asynchronous
 
 With the exception of `MessagePort`s being [`EventEmitter`][]s rather than [`EventTarget`][]s, this implementation matches [browser `MessagePort`][]s.
 
-### Συμβάν: 'close'
+### Event: 'close'
 <!-- YAML
 added: v10.5.0
 -->
