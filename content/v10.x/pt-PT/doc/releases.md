@@ -1,10 +1,10 @@
-# Processo de lançamento de Node. js
+# Node.js Release Process
 
-Este documento descreve os aspectos técnicos do processo de liberação de Node. js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Table of Contents
 
-* [Quem pode fazer um lançamento?](#who-can-make-a-release) 
+* [Who can make a release?](#who-can-make-a-release) 
   * [1. Jenkins Release Access](#1-jenkins-release-access)
   * [2. <nodejs.org> Access](#2-nodejsorg-access)
   * [3. A Publicly Listed GPG Key](#3-a-publicly-listed-gpg-key)
@@ -30,9 +30,9 @@ Este documento descreve os aspectos técnicos do processo de liberação de Node
   * [18. Announce](#18-announce)
   * [19. Celebrate](#19-celebrate)
 
-## Quem pode fazer um lançamento?
+## Who can make a release?
 
-Liberação de autorização é dada pelo TSC node. js. Once authorized, an individual must have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must have the following:
 
 ### 1. Jenkins Release Access
 
@@ -82,7 +82,7 @@ Notes:
 
 Before preparing a Node.js release, the Build Working Group must be notified at least one business day in advance of the expected release. Coordinating with Build is essential to make sure that the CI works, release files are published, and the release blog post is available on the project website.
 
-Build can be contacted best by opening up an issue on the \[Build issue tracker\]\[\], and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
+Build can be contacted best by opening up an issue on the [Build issue tracker](https://github.com/nodejs/build/issues/new), and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
 
 When preparing a security release, contact Build at least two weekdays in advance of the expected release. To ensure that the security patch(es) can be properly tested, run a `node-test-pull-request` job against the `master` branch of the `nodejs-private/node-private` repository a day or so before the [CI lockdown procedure](https://github.com/nodejs/build/blob/master/doc/jenkins-guide.md#restricting-access-for-security-releases) begins. This is to confirm that Jenkins can properly access the private repository.
 
