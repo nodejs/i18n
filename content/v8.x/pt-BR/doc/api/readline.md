@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. É possível acessá-lo utilizando:
+The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
 ```js
 const readline = require('readline');
@@ -65,7 +65,7 @@ The `'line'` event is emitted whenever the `input` stream receives an end-of-lin
 
 The listener function is called with a string containing the single line of received input.
 
-Por exemplo:
+For example:
 
 ```js
 rl.on('line', (input) => {
@@ -86,7 +86,7 @@ The `'pause'` event is emitted when one of the following occur:
 
 The listener function is called without passing any arguments.
 
-Por exemplo:
+For example:
 
 ```js
 rl.on('pause', () => {
@@ -122,7 +122,7 @@ If the `input` stream was paused *before* the `SIGTSTP` request, this event will
 
 The listener function is invoked without passing any arguments.
 
-Por exemplo:
+For example:
 
 ```js
 rl.on('SIGCONT', () => {
@@ -143,7 +143,7 @@ The `'SIGINT'` event is emitted whenever the `input` stream receives a `<ctrl>-C
 
 The listener function is invoked without passing any arguments.
 
-Por exemplo:
+For example:
 
 ```js
 rl.on('SIGINT', () => {
@@ -167,7 +167,7 @@ The `'pause'` and `'SIGCONT'` events will not be emitted if the `input` was paus
 
 The listener function is invoked without passing any arguments.
 
-Por exemplo:
+For example:
 
 ```js
 rl.on('SIGTSTP', () => {
@@ -226,7 +226,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -275,7 +275,7 @@ When called, `rl.write()` will resume the `input` stream if it has been paused.
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `data` and `key` are not written.
 
-Por exemplo:
+For example:
 
 ```js
 rl.write('Delete this!');
@@ -341,7 +341,7 @@ changes:
 
 The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
-Por exemplo:
+For example:
 
 ```js
 const readline = require('readline');
@@ -355,7 +355,7 @@ Once the `readline.Interface` instance is created, the most common case is to li
 
 ```js
 rl.on('line', (line) => {
-  console.log(`Recebido: ${line}`);
+  console.log(`Received: ${line}`);
 });
 ```
 
