@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -631,7 +631,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Vakaus: 0 - Ei enää käytössä
+> Stability: 0 - Deprecated
 
 - `publicKey` {string | Buffer | TypedArray | DataView}
 - `encoding` {string}
