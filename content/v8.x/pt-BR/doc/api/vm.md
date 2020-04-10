@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
-O módulo `vm` fornece APIs para compilar e executar código dentro do contexto da máquina virtual do V8.
+The `vm` module provides APIs for compiling and running code within V8 Virtual Machine contexts.
 
-Código JavaScript pode ser compilado e executado imediatamente ou compilado, salvo e executado mais tarde.
+JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
 A common use case is to run the code in a sandboxed environment. The sandboxed code uses a different V8 Context, meaning that it has a different global object than the rest of the code.
 
@@ -257,7 +257,7 @@ console.log(util.inspect(sandbox));
 added: v0.11.14
 -->
 
-> Estabilidade: 0 - Descontinuado. An alternative is in development.
+> Stability: 0 - Deprecated. An alternative is in development.
 
 * `code` {string} The JavaScript code to compile and run.
 
@@ -350,7 +350,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Por exemplo:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js 'use strict'; const vm = require('vm');
 
