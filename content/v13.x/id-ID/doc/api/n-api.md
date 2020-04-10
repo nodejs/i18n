@@ -3,7 +3,7 @@
 <!--introduced_in=v8.0.0-->
 <!-- type=misc -->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (for example, V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
@@ -82,7 +82,7 @@ Thus, for an addon to remain ABI-compatible across Node.js major versions, it mu
 
 and by checking, for all external libraries that it uses, that the external library makes ABI stability guarantees similar to N-API.
 
-## Bangunan
+## Building
 
 Unlike modules written in JavaScript, developing and deploying Node.js native addons using N-API requires an additional set of tools. Besides the basic tools required to develop for Node.js, the native addon developer requires a toolchain that can compile C and C++ code into a binary. In addition, depending upon how the native addon is deployed, the *user* of the native addon will also need to have a C/C++ toolchain installed.
 
@@ -255,7 +255,7 @@ NAPI_MODULE_INIT() {
 
 ## Environment Life Cycle APIs
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 [Section 8.7](https://tc39.es/ecma262/#sec-agents) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/) defines the concept of an "Agent" as a self-contained environment in which JavaScript code runs. Multiple such Agents may be started and terminated either concurrently or in sequence by the process.
 
@@ -270,6 +270,7 @@ To this env, N-API provides a way to allocate data such that its life cycle is t
 ### napi_set_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -291,6 +292,7 @@ This API associates `data` with the currently running Agent. `data` can later be
 ### napi_get_instance_data
 <!-- YAML
 added: v12.8.0
+napiVersion: 6
 -->
 
 ```C
@@ -1285,9 +1287,8 @@ N-API values are represented by the type `napi_value`. Any N-API call that requi
 #### napi_key_collection_mode
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 typedef enum {
@@ -1305,9 +1306,8 @@ Describes the `Keys/Properties` filter enums:
 #### napi_key_filter
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 typedef enum {
@@ -1325,9 +1325,8 @@ Property filter bits. They can be or'ed to build a composite filter.
 #### napi_key_conversion
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 typedef enum {
@@ -1798,9 +1797,8 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 #### napi_create_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1819,9 +1817,8 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1840,9 +1837,8 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2144,9 +2140,8 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 #### napi_get_value_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2167,9 +2162,8 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 #### napi_get_value_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2190,9 +2184,8 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 #### napi_get_value_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2727,7 +2720,7 @@ This API represents the invocation of the Strict Equality algorithm as defined i
 added: v13.0.0
 -->
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_detach_arraybuffer(napi_env env,
@@ -2748,7 +2741,7 @@ This API represents the invocation of the `ArrayBuffer` detach operation as defi
 added: v13.3.0
 -->
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_is_detached_arraybuffer(napi_env env,
@@ -2968,9 +2961,8 @@ This API returns the names of the enumerable properties of `object` as an array 
 #### napi_get_all_property_names
 <!-- YAML
 added: v13.7.0
+napiVersion: 6
 -->
-
-> Stabilitas: 1 - Eksperimental
 
 ```C
 napi_get_all_property_names(napi_env env,
