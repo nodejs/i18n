@@ -1,8 +1,8 @@
-# Dekoder ciągów
+# String Decoder
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. It can be accessed using:
 
@@ -43,7 +43,7 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
+* `encoding` {string} The character [encoding](buffer.html#buffer_buffers_and_character_encodings) the `StringDecoder` will use. **Default:** `'utf8'`.
 
 Creates a new `StringDecoder` instance.
 
