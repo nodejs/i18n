@@ -1,8 +1,8 @@
-# Ενδιάμεση Μνήμη
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -783,7 +783,7 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
@@ -794,7 +794,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} A character encoding name to check.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `encoding` contains a supported character encoding, or `false` otherwise.
 
@@ -804,7 +804,7 @@ Returns `true` if `encoding` contains a supported character encoding, or `false`
 added: v0.11.3
 -->
 
-* {integer} **Προεπιλογή:** `8192`
+* {integer} **Default:** `8192`
 
 This is the size (in bytes) of pre-allocated internal `Buffer` instances used for pooling. This value may be modified.
 
@@ -1014,7 +1014,7 @@ changes:
 -->
 
 * `otherBuffer` {Buffer} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise.
 
@@ -1355,7 +1355,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`.
-* Επιστρέφει: {number}
+* Returns: {number}
 
 Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
 
@@ -1812,7 +1812,7 @@ Note that JavaScript cannot encode 64-bit integers. This method is intended for 
 added: v0.9.2
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`] implicitly calls this function when stringifying a `Buffer` instance.
 
@@ -1842,7 +1842,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
@@ -1877,7 +1877,7 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Επιστρέφει: {Iterator}
+* Returns: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
@@ -2268,7 +2268,7 @@ console.log(buf);
 added: v0.5.4
 -->
 
-* {integer} **Προεπιλογή:** `50`
+* {integer} **Default:** `50`
 
 Returns the maximum number of bytes that will be returned when `buf.inspect()` is called. This can be overridden by user modules. See [`util.inspect()`] for more details on `buf.inspect()` behavior.
 
