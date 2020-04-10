@@ -37,7 +37,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-हैलो वर्ल्ड
+hello world
 ```
 
 The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
@@ -1665,7 +1665,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## अस्वीकृत एपीआई
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
