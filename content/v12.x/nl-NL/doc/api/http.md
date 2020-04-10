@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -161,7 +161,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Retourneert: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -416,7 +416,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {this}
+* Returns: {this}
 
 Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
@@ -573,7 +573,7 @@ changes:
     description: Consistently set socket timeout only when the socket connects.
 -->* `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -617,7 +617,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
@@ -784,7 +784,7 @@ Limits maximum incoming headers count. If set to 0, no limit will be applied.
 added: v0.9.12
 -->* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Retourneert: {http.Server}
+* Returns: {http.Server}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
 
@@ -869,7 +869,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -925,7 +925,7 @@ const headerNames = response.getHeaderNames();
 
 ### `response.getHeaders()`<!-- YAML
 added: v7.7.0
--->* Retourneert: {Object}
+-->* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -945,7 +945,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -1017,7 +1017,7 @@ If [`response.writeHead()`][] method is called and this method has not been call
 added: v0.9.12
 -->* `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -1085,7 +1085,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1119,7 +1119,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Retourneert: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
@@ -1288,7 +1288,7 @@ The raw request/response trailer keys and values exactly as they were received. 
 added: v0.5.9
 -->* `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http.IncomingMessage}
+* Returns: {http.IncomingMessage}
 
 Calls `message.connection.setTimeout(msecs, callback)`.
 
@@ -1394,7 +1394,7 @@ changes:
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 * `requestListener` {Function}
 
-* Retourneert: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1414,7 +1414,7 @@ changes:
 -->* `url` {string | URL}
 * `options` {Object} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. The callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1508,7 +1508,7 @@ changes:
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
