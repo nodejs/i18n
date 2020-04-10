@@ -82,7 +82,7 @@ Thus, for an addon to remain ABI-compatible across Node.js major versions, it mu
 
 and by checking, for all external libraries that it uses, that the external library makes ABI stability guarantees similar to N-API.
 
-## Construindo
+## Building
 
 Unlike modules written in JavaScript, developing and deploying Node.js native addons using N-API requires an additional set of tools. Besides the basic tools required to develop for Node.js, the native addon developer requires a toolchain that can compile C and C++ code into a binary. In addition, depending upon how the native addon is deployed, the *user* of the native addon will also need to have a C/C++ toolchain installed.
 
@@ -134,7 +134,7 @@ The three tools listed here permit native addon developers and maintainers to cr
 
 [prebuildify](https://github.com/prebuild/prebuildify) is tool based on node-gyp. The advantage of prebuildify is that the built binaries are bundled with the native module when it's uploaded to npm. The binaries are downloaded from npm and are immediately available to the module user when the native module is installed.
 
-## Uso
+## Usage
 
 In order to use the N-API functions, include the file [`node_api.h`][] which is located in the src directory in the node development tree:
 
@@ -255,7 +255,7 @@ NAPI_MODULE_INIT() {
 
 ## Environment Life Cycle APIs
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 [Section 8.7](https://tc39.es/ecma262/#sec-agents) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/) defines the concept of an "Agent" as a self-contained environment in which JavaScript code runs. Multiple such Agents may be started and terminated either concurrently or in sequence by the process.
 
@@ -525,7 +525,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 * `[in] context`: The optional data with which the thread-safe function was created.
 * `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## Tratamento de erros
+## Error Handling
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
@@ -878,7 +878,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // fazer alguma coisa com o elemento
+  // do something with element
 }
 ```
 
@@ -902,7 +902,7 @@ for (int i = 0; i < 1000000; i++) {
   if (status != napi_ok) {
     break;
   }
-  // fazer alguma coisa com o elemento
+  // do something with element
   status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
@@ -1218,7 +1218,7 @@ napi_value Init(napi_env env, napi_value exports) {
 To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOTE: exemplo parcial, nem todo código referenciado está incluso.
+// NOTE: partial example, not all referenced code is included
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
@@ -1744,7 +1744,7 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1765,7 +1765,7 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1786,7 +1786,7 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2090,7 +2090,7 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2113,7 +2113,7 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2136,7 +2136,7 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 added: v10.7.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2671,7 +2671,7 @@ This API represents the invocation of the Strict Equality algorithm as defined i
 added: v12.16.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_detach_arraybuffer(napi_env env,
@@ -2692,7 +2692,7 @@ This API represents the invocation of the `ArrayBuffer` detach operation as defi
 added: v12.16.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_is_detached_arraybuffer(napi_env env,
@@ -3456,7 +3456,7 @@ assert(napi_ok == status);
 if (is_instance) {
   // napi_unwrap() ...
 } else {
-  // caso contrário...
+  // otherwise...
 }
 ```
 
