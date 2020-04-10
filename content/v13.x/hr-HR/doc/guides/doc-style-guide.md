@@ -2,7 +2,7 @@
 
 * Documentation is in markdown files with names formatted as `lowercase-with-dashes.md`.
   * Use an underscore in the filename only if the underscore is part of the topic name (e.g., `child_process`).
-  * Neke datoteke, kao što su datoteke na visokoj razini, su iznimke.
+  * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * `.editorconfig` describes the preferred formatting.
   * A [plugin](https://editorconfig.org/#download) is available for some editors to apply these rules.
@@ -10,7 +10,7 @@
 * Use American English spelling.
   * OK: _capitalize_, _color_
   * NOT OK: _capitalise_, _colour_
-* Koristite [serijske zareze](https://en.wikipedia.org/wiki/Serial_comma).
+* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns (_I_, _you_, _we_) in reference documentation.
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns.
