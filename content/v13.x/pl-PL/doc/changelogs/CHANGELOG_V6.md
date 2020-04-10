@@ -61,7 +61,7 @@
 </tr>
 </table>
 
-* Inne Wersje
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -74,7 +74,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archiwum](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v6 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2018 and maintained until April 2019.
 
@@ -4872,7 +4872,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * REPL
   * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
   * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
-* Liczniki
+* Timers
   * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams
   * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
