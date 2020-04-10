@@ -1,8 +1,8 @@
-# Σύστημα Αρχείων
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -243,7 +243,7 @@ added: v0.1.93
 
 `ReadStream` is a [Readable Stream](stream.html#stream_class_stream_readable).
 
-### Συμβάν: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.93
@@ -343,7 +343,7 @@ added: v0.1.93
 
 `WriteStream` is a [Writable Stream](stream.html#stream_class_stream_writable).
 
-### Συμβάν: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.93
@@ -510,7 +510,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -551,7 +551,7 @@ changes:
 * `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
 * `options` {Object|string} 
-  * `encoding` {string|null} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
 * `callback` {Function} 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Παράδειγμα:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Παράδειγμα:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -605,13 +605,13 @@ changes:
 * `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
 * `options` {Object|string} 
-  * `encoding` {string|null} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Παράδειγμα:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Παράδειγμα:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -673,7 +673,7 @@ See also: chmod(2)
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constant               | Octal   | Περιγραφή                |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -687,12 +687,12 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Περιγραφή                |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | μόνο για ανάγνωση        |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Παράδειγμα:
+Example:
 
 ```js
 const fs = require('fs');
@@ -852,7 +852,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Παράδειγμα:
+Example:
 
 ```js
 const fs = require('fs');
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Παράδειγμα:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1343,7 +1343,7 @@ changes:
 * `callback` {Function} 
   * `err` {Error}
 
-Change the file system timestamps of the object referenced by the supplied file descriptor. Δείτε [`fs.utimes()`][].
+Change the file system timestamps of the object referenced by the supplied file descriptor. See [`fs.utimes()`][].
 
 *Note*: This function does not work on AIX versions before 7.1, it will return the error `UV_ENOSYS`.
 
@@ -1571,7 +1571,7 @@ changes:
 
 * `prefix` {string}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
   * `folder` {string}
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Παράδειγμα:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1629,7 +1629,7 @@ added: v5.10.0
 
 * `prefix` {string}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 
 The synchronous version of [`fs.mkdtemp()`][]. Returns the created folder path.
 
@@ -1791,7 +1791,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
   * `files` {string[]|Buffer[]}
@@ -1814,7 +1814,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous readdir(3). Returns an array of filenames excluding `'.'` and `'..'`.
 
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Παράδειγμα:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Παράδειγμα:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -1943,7 +1943,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
   * `linkString` {string|Buffer}
@@ -1967,7 +1967,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2020,7 +2020,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
   * `resolvedPath` {string|Buffer}
@@ -2058,7 +2058,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `encoding` {string} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous realpath(3). Returns the resolved path.
 
@@ -2432,10 +2432,10 @@ changes:
 
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Προεπιλογή:** `true`.
+  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
-* `listener` {Function|undefined} **Προεπιλογή:** `undefined` 
+* `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
 
@@ -2648,7 +2648,7 @@ changes:
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
-  * `encoding` {string|null} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
 * `callback` {Function} 
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Παράδειγμα:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Παράδειγμα:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -2696,7 +2696,7 @@ changes:
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
 * `options` {Object|string} 
-  * `encoding` {string|null} **Προεπιλογή:** `'utf8'`
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
 
@@ -2753,7 +2753,7 @@ The following constants are meant for use with [`fs.access()`][].
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -2782,7 +2782,7 @@ The following constants are meant for use with `fs.open()`.
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -2870,7 +2870,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -2913,7 +2913,7 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 <table>
   <tr>
     <th>Constant</th>
-    <th>Περιγραφή</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
