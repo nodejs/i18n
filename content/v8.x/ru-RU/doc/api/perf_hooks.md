@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -78,7 +78,7 @@ If `name` is not provided, removes all `PerformanceMeasure` objects from the Per
 added: v8.5.0
 -->
 
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -90,7 +90,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -101,7 +101,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of all `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
@@ -125,7 +125,7 @@ Value: {number}
 
 The maximum number of Performance Entry items that should be added to the Performance Timeline. This limit is not strictly enforced, but a process warning will be emitted if the number of entries in the timeline exceeds this limit.
 
-По умолчанию на 150.
+Defaults to 150.
 
 ### performance.measure(name, startMark, endMark)
 
@@ -159,7 +159,7 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Возвращает: {number}
+* Returns: {number}
 
 Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
@@ -457,7 +457,7 @@ The `PerformanceObserverEntryList` class is used to provide access to the `Perfo
 added: v8.5.0
 -->
 
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime`.
 
@@ -469,7 +469,7 @@ added: v8.5.0
 
 * `name` {string}
 * `type` {string}
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.name` is equal to `name`, and optionally, whose `performanceEntry.entryType` is equal to `type`.
 
@@ -480,7 +480,7 @@ added: v8.5.0
 -->
 
 * `type` {string}
-* Возвращает: {Array}
+* Returns: {Array}
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
@@ -488,7 +488,7 @@ Returns a list of `PerformanceEntry` objects in chronological order with respect
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the
+--> Disconnects the 
 
 `PerformanceObserver` instance from all notifications.
 
@@ -498,9 +498,9 @@ added: v8.5.0
 added: v8.5.0
 -->
 
-* `опции` {Object} 
+* `options` {Object} 
   * `entryTypes` {Array} An array of strings identifying the types of `PerformanceEntry` instances the observer is interested in. If not provided an error will be thrown.
-  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **По умолчанию:** `false`.
+  * `buffered` {boolean} If true, the notification callback will be called using `setImmediate()` and multiple `PerformanceEntry` instance notifications will be buffered internally. If `false`, notifications will be immediate and synchronous. **Default:** `false`.
 
 Subscribes the `PerformanceObserver` instance to notifications of new `PerformanceEntry` instances identified by `options.entryTypes`.
 
@@ -536,7 +536,7 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Примеры
+## Examples
 
 ### Measuring the duration of async operations
 
@@ -584,6 +584,8 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
+
+<!-- eslint-disable no-global-assign -->
 
 ```js
 'use strict';
