@@ -784,7 +784,7 @@ export async function resolve(specifier, context, defaultResolve) {
 
 The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `format`     | Beskrivning                                                              |
+| `format`     | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
@@ -905,7 +905,7 @@ export async function dynamicInstantiate(url) {
 
 With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.
 
-### Exempel
+### Examples
 
 The various loader hooks can be used together to accomplish wide-ranging customizations of Node.js’ code loading and evaluation behaviors.
 
