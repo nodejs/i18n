@@ -1,14 +1,14 @@
 # Style Guide
 
-* Dokumentacija se piše u markdown fajlu sa nazivom formatiranim `mala-slova-sa-crtama.md`. 
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Neke datoteke, kao što su datoteke na visokoj razini, su iznimke.
+  * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
-* Preferira se formatiranje opisano u `.editorconfig`fajlu. 
-  * [Plugin](http://editorconfig.org/#download) je dostupan za neke editore da automatski primjeni pravila.
-* Problemi kao što su pravopis i gramatika, bi se trebali indentifikovati pomoću alata, insofar ako je moguće. If not caught by a tool, they should be pointed out by human reviewers.
-* Američki pravopis se preferira. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
-* Koristite [serijske zareze](https://en.wikipedia.org/wiki/Serial_comma).
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
