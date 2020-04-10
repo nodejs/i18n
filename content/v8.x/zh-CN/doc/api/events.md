@@ -1,8 +1,8 @@
-# 事件
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -199,7 +199,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> 稳定性：0 - 已弃用：改为使用 [`emitter.listenerCount()`][]。
+> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
 
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
