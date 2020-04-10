@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -801,7 +801,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
@@ -1233,7 +1233,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
 
@@ -1250,7 +1250,7 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
@@ -1289,7 +1289,7 @@ The `password` is used to derive the cipher key and initialization vector (IV). 
 
 The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
-In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see \[Nonce-Disrespecting Adversaries\]\[\] for details.
+In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
