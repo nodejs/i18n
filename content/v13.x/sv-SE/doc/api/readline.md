@@ -621,7 +621,7 @@ const { createInterface } = require('readline');
 <table>
   <tr>
     <th>Keybindings</th>
-    <th>Beskrivning</th>
+    <th>Description</th>
     <th>Notes</th>
   </tr>
   <tr>
