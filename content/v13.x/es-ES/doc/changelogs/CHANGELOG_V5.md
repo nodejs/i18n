@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Estable</th>
+<th>Stable</th>
 </tr>
 <tr>
 <td>
@@ -32,7 +32,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -45,17 +45,17 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
-*Note*: Official support for the v5 release line is scheduled to expire around June 2016. Los usuarios de v5 deberían actualizar a [Node.js v6](CHANGELOG_V6.md).
+*Note*: Official support for the v5 release line is scheduled to expire around June 2016. Users of v5 should upgrade to [Node.js v6](CHANGELOG_V6.md).
 
 <a id="5.12.0"></a>
 
 ## 2016-06-23, Version 5.12.0 (Stable), @evanlucas
 
-### Cambios notables
+### Notable changes
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases for details on patched vulnerabilities.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases for details on patched vulnerabilities.
 
 * **buffer**
   * backport allocUnsafeSlow (Сковорода Никита Андреевич) [#7169](https://github.com/nodejs/node/pull/7169)
@@ -73,9 +73,9 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.11.1"></a>
 
-## 2016-06-23, Versión 5.11.1 (Estable), @evanlucas
+## 2016-05-05, Version 5.11.1 (Stable), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: safeguard against accidental kNoZeroFill (Сковорода Никита Андреевич) [nodejs/node-private#35](https://github.com/nodejs/node-private/pull/35)
 * **deps**: upgrade openssl sources to 1.0.2h (Shigeki Ohtsu) [#6552](https://github.com/nodejs/node/pull/6552)
@@ -95,29 +95,29 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.11.0"></a>
 
-## 2016-04-20, Versión 5.11.0 (Estable), @thealphanerd
+## 2016-04-20, Version 5.11.0 (Stable), @thealphanerd
 
-## Cambios Notables
+## Notable Changes
 
 * **Buffer**:
-  * `Buffer.prototype.compare` ahora puede comparar los sub-rangos de dos Búferes. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
+  * `Buffer.prototype.compare` can now compare sub-ranges of two Buffers. (James M Snell) [#5880](https://github.com/nodejs/node/pull/5880)
 * **deps**:
-  * actualizar a http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
-  * actualizar ESLint a 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
+  * update to http-parser 2.7.0 (Fedor Indutny) [#6279](https://github.com/nodejs/node/pull/6279)
+  * update ESLint to 2.7.0 (silverwind) [#6132](https://github.com/nodejs/node/pull/6132)
 * **net**:
-  * añadir soporte para sugerencias de búsqueda de DNS que pasan a `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
+  * adds support for passing DNS lookup hints to `createConnection()` (Colin Ihrig) [#6000](https://github.com/nodejs/node/pull/6000)
 * **node**:
-  * Hacer que las bibliotecas incorporadas estén disponibles para las opciones de CLI de `--eval` y `--print` (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
+  * Make the builtin libraries available for the `--eval` and `--print` CLI options (Anna Henningsen) [#6207](https://github.com/nodejs/node/pull/6207)
 * **npm**:
-  * actualizar npm a 3.8.6 (Kat Marchán) [#6153](https://github.com/nodejs/node/pull/6153)
+  * upgrade npm to 3.8.6 (Kat Marchán) [#6153](https://github.com/nodejs/node/pull/6153)
 * **repl**:
-  * Presionar "enter" en el repl va a repetir el último comando de manera predeterminada si no se ha recibido ninguna entrada. Este comportamiento estaba en node previamente y no fue removido intencionalmente. (Rich Trott) [#6090](https://github.com/nodejs/node/pull/6090)
+  * Pressing enter in the repl will repeat the last command by default if no input has been received. This behaviour was in node previously and was not removed intentionally. (Rich Trott) [#6090](https://github.com/nodejs/node/pull/6090)
 * **src**:
-  * añadir SIGINFO a las señales soportadas (James Reggio) [#6093](https://github.com/nodejs/node/pull/6093)
+  * add SIGINFO to supported signals (James Reggio) [#6093](https://github.com/nodejs/node/pull/6093)
 * **streams**:
-  * Reparar una regresión que fue causada porque los streams de red solicitaban múltiples fragmentos sincrónicamente cuando eran combinados con cork/uncork (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
+  * Fix a regression that caused by net streams requesting multiple chunks synchronously when combined with cork/uncork (Matteo Collina) [#6164](https://github.com/nodejs/node/pull/6164)
 * **zlib**:
-  * Los datos arrojados ahora son configurables permitiendo la descompresión de datos parciales (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
+  * The flushing flag is now configurable allowing for decompression of partial data (Anna Henningsen) [#6069](https://github.com/nodejs/node/pull/6069)
 
 ### Commits
 
@@ -221,9 +221,9 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.10.1"></a>
 
-## 2016-04-05, Versión 5.10.1 (Estable), @thealphanerd
+## 2016-04-05, Version 5.10.1 (Stable), @thealphanerd
 
-### Cambios notables
+### Notable changes
 
 * **http**:
   * Enclose IPv6 Host header in square brackets. This will enable proper separation of the host address from any port reference (Mihai Potra) [#5314](https://github.com/nodejs/node/pull/5314)
@@ -266,15 +266,15 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.10.0"></a>
 
-## 2016-03-31, Versión 5.10.0 (Estable), @evanlucas
+## 2016-03-31, Version 5.10.0 (Stable), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **buffer**:
-  * hacer funcionar a byteLength con ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
-  * hacer backport a la opción de línea de comando de --zero-fill-buffers (James M Snell) [#5744](https://github.com/nodejs/node/pull/5744)
-  * hacer backport a las nuevas APIs de constructor de búfer (James M Snell) [#5763](https://github.com/nodejs/node/pull/5763)
-  * añadir métodos de swap16() y swap32() (James M Snell) [#5724](https://github.com/nodejs/node/pull/5724)
+  * make byteLength work with ArrayBuffer & DataView (Jackson Tian) [#5255](https://github.com/nodejs/node/pull/5255)
+  * backport --zero-fill-buffers command line option (James M Snell) [#5744](https://github.com/nodejs/node/pull/5744)
+  * backport new buffer constructor APIs (James M Snell) [#5763](https://github.com/nodejs/node/pull/5763)
+  * add swap16() and swap32() methods (James M Snell) [#5724](https://github.com/nodejs/node/pull/5724)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
 * **net**: emit host in lookup event (HUANG Wei) [#5598](https://github.com/nodejs/node/pull/5598)
 * **node**: --no-browser-globals configure flag (Fedor Indutny) [#5853](https://github.com/nodejs/node/pull/5853)
@@ -343,15 +343,15 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.9.1"></a>
 
-## 2016-03-23, Versión 5.9.1 (Estable), @Fishrock123
+## 2016-03-23, Version 5.9.1 (Stable), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: Now properly throws `RangeError`s on out-of-bounds writes (Matt Loring) [#5605](https://github.com/nodejs/node/pull/5605).
-  * Esto afecta a `write{Float|Double}` cuando la opción de `noAssert` no es usada.
+  * This effects `write{Float|Double}` when the `noAssert` option is not used.
 * **timers**:
-  * Objetos de timeout devueltos ahora tienen un nombre de constructor `Timeout` (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793).
-  * Rendimiento del procesamiento de `Immediate` ahora es un ~20-40% más rápido (Brian White) [#4169](https://github.com/nodejs/node/pull/4169).
+  * Returned timeout objects now have a `Timeout` constructor name (Jeremiah Senkpiel) [#5793](https://github.com/nodejs/node/pull/5793).
+  * Performance of `Immediate` processing is now ~20-40% faster (Brian White) [#4169](https://github.com/nodejs/node/pull/4169).
 * **vm**: Fixed a contextify regression introduced in v5.9.0 (Ali Ijaz Sheikh) [#5800](https://github.com/nodejs/node/pull/5800).
 
 ### Commits
@@ -401,9 +401,9 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.9.0"></a>
 
-## 2016-03-16, Versión 5.9.0 (Estable), @evanlucas
+## 2016-03-16, Version 5.9.0 (Stable), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **contextify**: Fixed a memory consumption issue related to heavy use of `vm.createContext` and `vm.runInNewContext`. (Ali Ijaz Sheikh) https://github.com/nodejs/node/pull/5392
 * **governance**: The following members have been added as collaborators:
@@ -417,11 +417,11 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 * **lib**: copy arguments object instead of leaking it (Nathan Woltman) https://github.com/nodejs/node/pull/4361
 * **src**: allow both -i and -e flags to be used at the same time (Rich Trott) https://github.com/nodejs/node/pull/5655
 * **timers**: Internal Node.js timeouts now use the same logic path as those created with `setTimeout()` (Jeremiah Senkpiel) [#4007](https://github.com/nodejs/node/pull/4007)
-  * Esto puede causar un perfil de rendimiento ligeramente diferente en algunas situaciones. Hasta ahora, ha mostrado ser positivo en la mayoría de los casos.
+  * This may cause a slightly different performance profile in some situations. So far, it has shown to be positive in most cases.
 * **v8**: backport fb4ccae from v8 upstream (Vladimir Krivosheev) #4231
-  * eventos de ruptura de v8 ofrecerán mejor soporte para depuradores externos
+  * breakout events from v8 to offer better support for external debuggers
 * **zlib**: add support for concatenated members (Kári Tristan Helgason) https://github.com/nodejs/node/pull/5120
-  * Anteriormente, si múltiples miembros estaban en el mismo archivo, solo el primero podía ser leído. Los otros ahora ya no son botados.
+  * Previously, if multiple members were in the same archive, only the first would be read. The others are no longer thrown away.
 
 ### Commits
 
@@ -476,14 +476,14 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.8.0"></a>
 
-## 2016-03-08, Versión 5.8.0 (Estable), @Fishrock123
+## 2016-03-08, Version 5.8.0 (Stable), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **child_process**: `send()` now accepts an options parameter (cjihrig) [#5283](https://github.com/nodejs/node/pull/5283).
-  * Actualmente la única opción es `keepOpen`, que mantiene el socket subyacente abierto después que el mensaje es enviado.
+  * Currently the only option is `keepOpen`, which keeps the underlying socket open after the message is sent.
 * **constants**: `ENGINE_METHOD_RSA` is now correctly exposed (Sam Roberts) [#5463](https://github.com/nodejs/node/pull/5463).
-* Reparas dos regresiones que fueron originadas en v5.7.0:
+* Fixed two regressions which originated in v5.7.0:
   * **http**: Errors inside of http client callbacks now propagate correctly (Trevor Norris) [#5591](https://github.com/nodejs/node/pull/5591).
   * **path**: Fixed normalization of absolute paths (Evan Lucas) [#5589](https://github.com/nodejs/node/pull/5589).
 * **repl**: `start()` no longer requires an options parameter (cjihrig) [#5388](https://github.com/nodejs/node/pull/5388).
@@ -525,20 +525,20 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.7.1"></a>
 
-## 2016-03-02, Versión 5.7.1 (Estable), @Fishrock123
+## 2016-03-02, Version 5.7.1 (Stable), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **governance**: The Core Technical Committee (CTC) added four new members to help guide Node.js core development: Evan Lucas, Rich Trott, Ali Ijaz Sheikh and Сковорода Никита Андреевич (Nikita Skovoroda).
 * **openssl**: Upgrade from 1.0.2f to 1.0.2g (Ben Noordhuis) [#5507](https://github.com/nodejs/node/pull/5507).
-  * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
-  * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` and `BN_dec2bn()`. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. Hay más información disponible en [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797) .
-  * Fix a defect that makes the _[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)_ possible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y posiblemente más viejos) cuando se usa hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
-* Reparadas varias regresiones que aparecieron en v5.7.0:
+  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at [CVE-2016-0705](https://www.openssl.org/news/vulnerabilities.html#2016-0705).
+  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. More info is available at [CVE-2016-0797](https://www.openssl.org/news/vulnerabilities.html#2016-0797).
+  * Fix a defect that makes the _[CacheBleed Attack](https://ssrg.nicta.com.au/projects/TS/cachebleed/)_ possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at [CVE-2016-0702](https://www.openssl.org/news/vulnerabilities.html#2016-0702).
+* Fixed several regressions that appeared in v5.7.0:
   * **`path.relative()`**:
-    * La salida ya no es innecesariamente verbosa (Brian White) [#5389](https://github.com/nodejs/node/pull/5389).
-    * Resolver las rutas UNC en Windows ahora funciona correctamente (Owen Smith) [#5456](https://github.com/nodejs/node/pull/5456).
-    * Resolver rutas con prefijos ahora funciona correctamente desde el directorio raíz (Owen Smith) [#5490](https://github.com/nodejs/node/pull/5490).
+    * Output is no longer unnecessarily verbose (Brian White) [#5389](https://github.com/nodejs/node/pull/5389).
+    * Resolving UNC paths on Windows now works correctly (Owen Smith) [#5456](https://github.com/nodejs/node/pull/5456).
+    * Resolving paths with prefixes now works correctly from the root directory (Owen Smith) [#5490](https://github.com/nodejs/node/pull/5490).
   * **url**: Fixed an off-by-one error with `parse()` (Brian White) [#5394](https://github.com/nodejs/node/pull/5394).
   * **dgram**: Now correctly handles a default address case when offset and length are specified (Matteo Collina) [#5407](https://github.com/nodejs/node/pull/5407).
 
@@ -621,26 +621,26 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.7.0"></a>
 
-## 2016-02-23, Versión 5.7.0 (Estable), @rvagg
+## 2016-02-23, Version 5.7.0 (Stable), @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **buffer**:
-  * Ahora puedes proporcionar un argumento `encoding` cuando se llene un Búfer `Buffer#fill(string[, start[, end]][, encoding])`, suministrar un Búfer existente también funcionará con `Buffer#fill(buffer[, start[, end]])`. Vea la [documentación API ](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) para los detalles de cómo funciona esto. (Trevor Norris) [#4935](https://github.com/nodejs/node/pull/4935)
-  * `Buffer#indexOf()` ya no requiere un argumento `byteOffset` si también deseas especificar un `encoding`: `Buffer#indexOf(val[, byteOffset][, encoding])`. (Trevor Norris) [#4803](https://github.com/nodejs/node/pull/4803)
-* **child_process**: `spawn()` and `spawnSync()` now support a `'shell'` option to allow for optional execution of the given command inside a shell. Si se establece como `true`, `cmd.exe` será usado en Windows y `/bin/sh` en los demás. Una ruta a un shell personalizado también puede ser pasada para sobrescribir estos predeterminados. En Windows, esta opción permite a los archivos `.bat.` y `.cmd` ser ejecutados con `spawn()` y `spawnSync()`. (Colin Ihrig) [#4598](https://github.com/nodejs/node/pull/4598)
+  * You can now supply an `encoding` argument when filling a Buffer `Buffer#fill(string[, start[, end]][, encoding])`, supplying an existing Buffer will also work with `Buffer#fill(buffer[, start[, end]])`. See the [API documentation](https://nodejs.org/api/buffer.html#buffer_buf_fill_value_offset_end_encoding) for details on how this works. (Trevor Norris) [#4935](https://github.com/nodejs/node/pull/4935)
+  * `Buffer#indexOf()` no longer requires a `byteOffset` argument if you also wish to specify an `encoding`: `Buffer#indexOf(val[, byteOffset][, encoding])`. (Trevor Norris) [#4803](https://github.com/nodejs/node/pull/4803)
+* **child_process**: `spawn()` and `spawnSync()` now support a `'shell'` option to allow for optional execution of the given command inside a shell. If set to `true`, `cmd.exe` will be used on Windows and `/bin/sh` elsewhere. A path to a custom shell can also be passed to override these defaults. On Windows, this option allows `.bat.` and `.cmd` files to be executed with `spawn()` and `spawnSync()`. (Colin Ihrig) [#4598](https://github.com/nodejs/node/pull/4598)
 * **http_parser**: Update to http-parser 2.6.2 to fix an unintentionally strict limitation of allowable header characters (James M Snell) [#5237](https://github.com/nodejs/node/pull/5237)
-* **dgram**: `socket.send()` now supports accepts an array of Buffers or Strings as the first argument. Vea los [documentos API](https://nodejs.org/download/nightly/v6.0.0-nightly201602102848f84332/docs/api/dgram.html#dgram_socket_send_msg_offset_length_port_address_callback) para los detalles de cómo funciona esto. (Matteo Collina) [#4374](https://github.com/nodejs/node/pull/4374)
-* **http**: Fix a bug where handling headers will mistakenly trigger an `'upgrade'` event where the server is just advertising its protocols. Este bug puede prevenir los clientes HTTP de comunicarse con servidores habilitados HTTP/2. (Fedor Indutny) [#4337](https://github.com/nodejs/node/pull/4337)
+* **dgram**: `socket.send()` now supports accepts an array of Buffers or Strings as the first argument. See the [API docs](https://nodejs.org/download/nightly/v6.0.0-nightly201602102848f84332/docs/api/dgram.html#dgram_socket_send_msg_offset_length_port_address_callback) for details on how this works. (Matteo Collina) [#4374](https://github.com/nodejs/node/pull/4374)
+* **http**: Fix a bug where handling headers will mistakenly trigger an `'upgrade'` event where the server is just advertising its protocols. This bug can prevent HTTP clients from communicating with HTTP/2 enabled servers. (Fedor Indutny) [#4337](https://github.com/nodejs/node/pull/4337)
 * **net**: Added a `listening` Boolean property to `net` and `http` servers to indicate whether the server is listening for connections. (José Moreira) [#4743](https://github.com/nodejs/node/pull/4743)
 * **node**: The C++ `node::MakeCallback()` API is now reentrant and calling it from inside another `MakeCallback()` call no longer causes the `nextTick` queue or Promises microtask queue to be processed out of order. (Trevor Norris) [#4507](https://github.com/nodejs/node/pull/4507)
 * **tls**: Add a new `tlsSocket.getProtocol()` method to get the negotiated TLS protocol version of the current connection. (Brian White) [#4995](https://github.com/nodejs/node/pull/4995)
-* **vm**: Introduce new `'produceCachedData'` and `'cachedData'` options to `new vm.Script()` to interact with V8's code cache. Cuando un nuevo objeto `vm.Script` es creado con el `'produceCachedData'` establecido como `true` un `Buffer` con los datos del caché del código V8 será producido y guardado en la propiedad `cachedData` del objeto devuelto. Estos datos pueden ser suministrados devuelta a otro objeto`vm.Script()` con una opción `'cachedData'` si la fuente suministrada es la misma. Ejecutar con éxito un script desde datos en caché puede acelerar los tiempos de instanciación. Vea los [documentos API](https://nodejs.org/api/vm.html#vm_new_vm_script_code_options) para los detalles. (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
+* **vm**: Introduce new `'produceCachedData'` and `'cachedData'` options to `new vm.Script()` to interact with V8's code cache. When a new `vm.Script` object is created with the `'produceCachedData'` set to `true` a `Buffer` with V8's code cache data will be produced and stored in `cachedData` property of the returned object. This data in turn may be supplied back to another `vm.Script()` object with a `'cachedData'` option if the supplied source is the same. Successfully executing a script from cached data can speed up instantiation time. See the [API docs](https://nodejs.org/api/vm.html#vm_new_vm_script_code_options) for details. (Fedor Indutny) [#4777](https://github.com/nodejs/node/pull/4777)
 * **performance**: Improvements in:
   * `process.nextTick()` (Ruben Bridgewater) [#5092](https://github.com/nodejs/node/pull/5092)
   * `path` module (Brian White) [#5123](https://github.com/nodejs/node/pull/5123)
-  * `querystring` módulo (Brian White) [#5012](https://github.com/nodejs/node/pull/5012)
-  * `streams` módulo cuando sean procesados fragmentos pequeños (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
+  * `querystring` module (Brian White) [#5012](https://github.com/nodejs/node/pull/5012)
+  * `streams` module when processing small chunks (Matteo Collina) [#4354](https://github.com/nodejs/node/pull/4354)
 
 ### Commits
 
@@ -758,16 +758,16 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 <a id="5.6.0"></a>
 
-## 2016-02-09, Versión 5.6.0 (Estable), @jasnell
+## 2016-02-09, Version 5.6.0 (Stable), @jasnell
 
-Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para los detalles de vulnerabilidades parcheadas.
+This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
-### Cambios notables
+### Notable changes
 
-* **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). El análisis de cabeceras HTTP ahora se alinea más cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
+* **http**: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
 * **http-parser**: upgrade from 2.6.0 to 2.6.1
 * **npm**: upgrade npm from 3.3.12 to 3.6.0 (Rebecca Turner) [#4958](https://github.com/nodejs/node/pull/4958)
-* **openssl**: upgrade from 1.0.2e to 1.0.2f. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
+* **openssl**: upgrade from 1.0.2e to 1.0.2f. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
 
 ### Commits
 
@@ -917,27 +917,27 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.5.0"></a>
 
-## 2016-01-20, Versión 5.5.0 (Estable), @evanlucas
+## 2016-01-20, Version 5.5.0 (Stable), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **events**: make sure console functions exist (Dave) [#4479](https://github.com/nodejs/node/pull/4479)
 * **fs**: add autoClose option to fs.createWriteStream (Saquib) [#3679](https://github.com/nodejs/node/pull/3679)
 * **http**: improves expect header handling (Daniel Sellers) [#4501](https://github.com/nodejs/node/pull/4501)
 * **node**: allow preload modules with -i (Evan Lucas) [#4696](https://github.com/nodejs/node/pull/4696)
 * **v8,src**: expose statistics about heap spaces (`v8.getHeapSpaceStatistics()`) (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* Mejoras de rendimiento menores:
+* Minor performance improvements:
   * **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [#3622](https://github.com/nodejs/node/pull/3622).
-    * (Falta por un error en v5.4.0)
+    * (Mistakenly missing from v5.4.0)
   * **module**: cache stat() results more aggressively (Ben Noordhuis) [#4575](https://github.com/nodejs/node/pull/4575)
   * **querystring**: improve parse() performance (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
@@ -1003,22 +1003,22 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.4.1"></a>
 
-## 2016-01-12, Versión 5.4.1 (Estable), @TheAlphaNerd
+## 2016-01-12, Version 5.4.1 (Stable), @TheAlphaNerd
 
-### Cambios Notables
+### Notable Changes
 
-* Mejoras de rendimiento menores:
+* Minor performance improvements:
   * **module**: move unnecessary work for early return (Andres Suarez) [#3579](https://github.com/nodejs/node/pull/3579)
-* Varios errores arreglados
-* Varias recuperaciones de documentos
-* Varias mejoras de pruebas
+* Various bug fixes
+* Various doc fixes
+* Various test improvements
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### commits
 
@@ -1051,14 +1051,14 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.4.0"></a>
 
-## 2016-01-06, Versión 5.4.0 (Estable), @Fishrock123
+## 2016-01-06, Version 5.4.0 (Stable), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **http**:
-  * Se añadió un nuevo código de estatus 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
-  * Los sockets que no se estén usando y se han mantenido vidos ahora manejaran los errores (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
-* Este lanzamiento incluye varias mejoras de rendimiento menores:
+  * A new status code was added: 451 - "Unavailable For Legal Reasons" (Max Barinov) [#4377](https://github.com/nodejs/node/pull/4377).
+  * Idle sockets that have been kept alive now handle errors (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482).
+* This release also includes several minor performance improvements:
   * **assert**: deepEqual is now speedier when comparing TypedArrays (Claudio Rodriguez) [#4330](https://github.com/nodejs/node/pull/4330).
   * **lib**: Use arrow functions instead of bind where possible (Minwoo Jung) [node#3622](https://github.com/nodejs/node/pull/3622).
   * **node**: Improved accessor perf of `process.env` (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
@@ -1066,12 +1066,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * **node**: Improved GetActiveHandles performance (Trevor Norris) [#3780](https://github.com/nodejs/node/pull/3780).
   * **util**: Use faster iteration in `util.format()` (Jackson Tian) [#3964](https://github.com/nodejs/node/pull/3964).
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
@@ -1176,31 +1176,31 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.3.0"></a>
 
-## 2015-12-16, Versión 5.3.0 (Estable), @cjihrig
+## 2015-12-16, Version 5.3.0 (Stable), @cjihrig
 
-### Cambios notables
+### Notable changes
 
 * **buffer**:
-  * `Buffer.prototype.includes()` ha sido añadido para mantener paridad con TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
+  * `Buffer.prototype.includes()` has been added to keep parity with TypedArrays. (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567).
 * **domains**:
-  * Reparar el manejo de excepciones no detectadas. (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654).
+  * Fix handling of uncaught exceptions. (Julien Gilli) [#3654](https://github.com/nodejs/node/pull/3654).
 * **https**:
-  * Añadido soporte para deshabilitar el almacenamiento en la caché de la sesión. (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252).
+  * Added support for disabling session caching. (Fedor Indutny) [#4252](https://github.com/nodejs/node/pull/4252).
 * **repl**:
-  * Permitir que los módulos de terceros sean importados usando `require()`. Esto corrige una regresión de 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
+  * Allow third party modules to be imported using `require()`. This corrects a regression from 5.2.0. (Ben Noordhuis) [#4215](https://github.com/nodejs/node/pull/4215).
 * **deps**:
-  * Actualizar libuv a 1.8.0. (Saúl Ibarra Corretgé) [#4276](https://github.com/nodejs/node/pull/4276).
+  * Upgrade libuv to 1.8.0. (Saúl Ibarra Corretgé) [#4276](https://github.com/nodejs/node/pull/4276).
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
-* [[`6ca5ea3860`](https://github.com/nodejs/node/commit/6ca5ea3860)] - 2015-12-09, Versión 5.2.0 (Estable) (Rod Vagg) [#4181](https://github.com/nodejs/node/pull/4181)
+* [[`6ca5ea3860`](https://github.com/nodejs/node/commit/6ca5ea3860)] - 2015-12-09, Version 5.2.0 (Stable) (Rod Vagg) [#4181](https://github.com/nodejs/node/pull/4181)
 * [[`da5cdc2207`](https://github.com/nodejs/node/commit/da5cdc2207)] - **assert**: accommodate ES6 classes that extend Error (Rich Trott) [#4166](https://github.com/nodejs/node/pull/4166)
 * [[`67e181986a`](https://github.com/nodejs/node/commit/67e181986a)] - **(SEMVER-MINOR)** **buffer**: add includes() for parity with TypedArray (Alexander Martin) [#3567](https://github.com/nodejs/node/pull/3567)
 * [[`84dea1bd0c`](https://github.com/nodejs/node/commit/84dea1bd0c)] - **configure**: fix arm vfpv2 (Jörg Krause) [#4203](https://github.com/nodejs/node/pull/4203)
@@ -1254,25 +1254,25 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.2.0"></a>
 
-## 2015-12-09, Versión 5.2.0 (Estable), @rvagg
+## 2015-12-09, Version 5.2.0 (Stable), @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **build**:
-  * Añadir soporte para el perfilaje de Intel VTune JIT cuando se compile con `--enable-vtune-profiling`. For more information about VTune, see <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
-  * Habilitar de forma correcta los snapshots V8 de manera predeterminada. Debido a un error de configuración, los snapshots han sido mantenidos por fuera de manera predeterminada cuando la intención es que la característica debe estar habilitada. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
+  * Add support for Intel's VTune JIT profiling when compiled with `--enable-vtune-profiling`. For more information about VTune, see <https://software.intel.com/en-us/node/544211>. (Chunyang Dai) [#3785](https://github.com/nodejs/node/pull/3785).
+  * Properly enable V8 snapshots by default. Due to a configuration error, snapshots have been kept off by default when the intention is for the feature to be enabled. (Fedor Indutny) [#3962](https://github.com/nodejs/node/pull/3962).
 * **crypto**:
-  * Simplificar el uso de los objetos (creados con `crypto.createECDH(curve_name)`) ECDH (Curva Elíptica Diffie-Hellman) con claves privadas que no son generadas dinámicamente con `generateKeys()`. La clave pública ahora es computada cuando se configure explícitamente una clave privada. Añadidos verificaciones de validez para reducir la posibilidad de computar secretos débiles o secretos compartidos inválidos. Además, se hizo obsoleto el método `setPublicKey()` para objetos ECDH ya que su uso es innecesario y puede conducir a un estado inconsistente. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
-  * Actualizar los certificados raíz de la lista actual almacenada mantenida por Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
-  * Varios certificados CA ahora pueden ser pasados con la opción `ca` a los métodos TLS como un array de strings o en una sola string separada de nueva línea. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
+  * Simplify use of ECDH (Elliptic Curve Diffie-Hellman) objects (created via `crypto.createECDH(curve_name)`) with private keys that are not dynamically generated via `generateKeys()`. The public key is now computed when explicitly setting a private key. Added validity checks to reduce the possibility of computing weak or invalid shared secrets. Also, deprecated the `setPublicKey()` method for ECDH objects as its usage is unnecessary and can lead to inconsistent state. (Michael Ruddy) [#3511](https://github.com/nodejs/node/pull/3511).
+  * Update root certificates from the current list stored maintained by Mozilla NSS. (Ben Noordhuis) [#3951](https://github.com/nodejs/node/pull/3951).
+  * Multiple CA certificates can now be passed with the `ca` option to TLS methods as an array of strings or in a single new-line separated string. (Ben Noordhuis) [#4099](https://github.com/nodejs/node/pull/4099)
 * **tools**: Include a tick processor in core, exposed via the `--prof-process` command-line argument which can be used to process V8 profiling output files generated when using the `--prof` command-line argument. (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021).
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
@@ -1386,7 +1386,7 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 ## 2015-12-04, Version 5.1.1 (Stable), @rvagg
 
-### Cambios notables
+### Notable changes
 
 * **http**: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
 * **openssl**: Upgrade to 1.0.2e, containing fixes for:
@@ -1394,12 +1394,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Shigeki Ohtsu) [#4134](https://github.com/nodejs/node/pull/4134)
 * **v8**: Backport fix for CVE-2015-6764, a bug in `JSON.stringify()` that can result in out-of-bounds reads for arrays. (Ben Noordhuis)
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
@@ -1410,9 +1410,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.1.0"></a>
 
-## 2015-11-17, Versión 5.1.0 (Estable), @Fishrock123
+## 2015-11-17, Version 5.1.0 (Stable), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: The `noAssert` option for many buffer functions will now silently drop invalid write values rather than crashing (Minqi Pan) [#3767](https://github.com/nodejs/node/pull/3767).
   * This makes the behavior match what the docs suggest.
@@ -1427,12 +1427,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 * **tls**: The default `sessionIdContext` now uses SHA1 in FIPS mode rather than MD5 (Stefan Budeanu) [#3755](https://github.com/nodejs/node/pull/3755).
 * **v8**: Added some more useful post-mortem data (Fedor Indutny) [#3779](https://github.com/nodejs/node/pull/3779).
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
@@ -1575,9 +1575,9 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="5.0.0"></a>
 
-## 2015-10-29, Versión 5.0.0 (Estable), @rvagg
+## 2015-10-29, Version 5.0.0 (Stable), @rvagg
 
-### Cambios Notables
+### Notable Changes
 
 * **buffer**: _(Breaking)_ Removed both `'raw'` and `'raws'` encoding types from `Buffer`, these have been deprecated for a long time (Sakthipriyan Vairamani) [#2859](https://github.com/nodejs/node/pull/2859).
 * **console**: _(Breaking)_ Values reported by `console.time()` now have 3 decimals of accuracy added (Michaël Zasso) [#3166](https://github.com/nodejs/node/pull/3166).
@@ -1608,12 +1608,12 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
   * Implements `new.target`, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new.target for further information.
 * **zlib**: Decompression now throws on truncated input (e.g. unexpected end of file) (Yuval Brik) [#2595](https://github.com/nodejs/node/pull/2595).
 
-### Problemas conocidos
+### Known issues
 
-* El par sustituto en REPL puede congelar el terminal. [#690](https://github.com/nodejs/node/issues/690)
-* Llamar a `dns.setServers()` mientras una consulta de DNS está en progreso puede ocasionar que el proceso colapse ante una aserción fallida. [#894](https://github.com/nodejs/node/issues/894)
-* `url.resolve` puede transferir la porción de autenticación de la url al resolver entre dos hosts completos, vea [#1435](https://github.com/nodejs/node/issues/1435).
-* Los caracteres unicode en las rutas del sistema de archivos no son manejados consistentemente a través de las plataformas o de los APIs de Node.js. Vea [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) y [#3519](https://github.com/nodejs/node/issues/3519).
+* Surrogate pair in REPL can freeze terminal. [#690](https://github.com/nodejs/node/issues/690)
+* Calling `dns.setServers()` while a DNS query is in progress can cause the process to crash on a failed assertion. [#894](https://github.com/nodejs/node/issues/894)
+* `url.resolve` may transfer the auth portion of the url when resolving between two full hosts, see [#1435](https://github.com/nodejs/node/issues/1435).
+* Unicode characters in filesystem paths are not handled consistently across platforms or Node.js APIs. See [#2088](https://github.com/nodejs/node/issues/2088), [#3401](https://github.com/nodejs/node/issues/3401) and [#3519](https://github.com/nodejs/node/issues/3519).
 
 ### Commits
 
