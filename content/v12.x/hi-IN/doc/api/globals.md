@@ -59,7 +59,7 @@ added: v0.0.1
 
 [`clearTimeout`][] is described in the [timers](timers.html) section.
 
-## `कंसोल`
+## `console`
 <!-- YAML
 added: v0.1.100
 -->
@@ -89,7 +89,7 @@ In browsers, the top-level scope is the global scope. This means that within the
 
 This variable may appear to be global but is not. See [`module`][].
 
-## `प्रसंस्करण`
+## `process`
 <!-- YAML
 added: v0.1.7
 -->
@@ -183,7 +183,7 @@ added: v11.0.0
 
 The WHATWG `TextEncoder` class. See the [`TextEncoder`][] section.
 
-## `यूआरएल`
+## `URL`
 <!-- YAML
 added: v10.0.0
 -->
