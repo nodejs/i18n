@@ -1,6 +1,6 @@
-# Utilizzo del modulo internal/errors.js
+# Using the internal/errors.js Module
 
-## Che cos'è internal/errors.js
+## What is internal/errors.js
 
 The `require('internal/errors')` module is an internal-only module that can be used to produce `Error`, `TypeError` and `RangeError` instances that use a static, permanent error code and an optionally parameterized message.
 
@@ -44,6 +44,8 @@ E('EXAMPLE_KEY2', (a, b) => `${a} ${b}`, RangeError);
 The first argument passed to `E()` is the static identifier. The second argument is either a String with optional `util.format()` style replacement tags (e.g. `%s`, `%d`), or a function returning a String. The optional additional arguments passed to the `errors.message()` function (which is used by the `errors.Error`, `errors.TypeError` and `errors.RangeError` classes), will be used to format the error message. The third argument is the base class that the new error will extend.
 
 It is possible to create multiple derived classes by providing additional arguments. The other ones will be exposed as properties of the main class:
+
+<!-- eslint-disable no-unreachable -->
 
 ```js
 E('EXAMPLE_KEY', 'Error message', TypeError, RangeError);
@@ -100,6 +102,6 @@ Exposes all internal error classes to be used by Node.js APIs.
 
 * `key` {string} The static error identifier
 * `args` {Array} Zero or more optional arguments passed as an Array
-* Restituisce: {string}
+* Returns: {string}
 
 Returns the formatted error message string for the given `key`.
