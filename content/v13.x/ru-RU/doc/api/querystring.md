@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.1.25-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. Это осуществляется с помощью:
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
@@ -85,7 +85,7 @@ added: v0.1.25
 -->* `obj` {Object} The object to serialize into a URL query string
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `опции`
+* `options`
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
 
 The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
