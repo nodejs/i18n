@@ -2,9 +2,9 @@
 
 <!--introduced_in=v7.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. 它旨在将插件与底层JavaScript引擎中的更改隔离开来，并允许为一个版本编译的模块在更新版本的Node.js上运行而无需重新编译。
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -18,7 +18,7 @@ APIs exposed by N-API are generally used to create and manipulate JavaScript val
 The documentation for N-API is structured as follows:
 
 - [Basic N-API Data Types](#n_api_basic_n_api_data_types)
-- [错误处理](#n_api_error_handling)
+- [Error Handling](#n_api_error_handling)
 - [Object Lifetime Management](#n_api_object_lifetime_management)
 - [Module Registration](#n_api_module_registration)
 - [Working with JavaScript Values](#n_api_working_with_javascript_values)
@@ -33,9 +33,9 @@ The documentation for N-API is structured as follows:
 
 The N-API is a C API that ensures ABI stability across Node.js versions and different compiler levels. However, we also understand that a C++ API can be easier to use in many cases. To support these cases we expect there to be one or more C++ wrapper modules that provide an inlineable C++ API. Binaries built with these wrapper modules will depend on the symbols for the N-API C based functions exported by Node.js. These wrappers are not part of N-API, nor will they be maintained as part of Node.js. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
-## 用法
+## Usage
 
-In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. 例如：
+In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. For example:
 
 ```C
 #include <node_api.h>
@@ -133,13 +133,13 @@ This is an opaque pointer that is used to represent a JavaScript value.
 
 ### napi_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 This is an opaque pointer that represents a JavaScript function which can be called asynchronously from multiple threads via `napi_call_threadsafe_function()`.
 
 ### napi_threadsafe_function_release_mode
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 A value to be given to `napi_release_threadsafe_function()` to indicate whether the thread-safe function is to be closed immediately (`napi_tsfn_abort`) or merely released (`napi_tsfn_release`) and thus available for subsequent use via `napi_acquire_threadsafe_function()` and `napi_call_threadsafe_function()`.
 
@@ -152,7 +152,7 @@ typedef enum {
 
 ### napi_threadsafe_function_call_mode
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 A value to be given to `napi_call_threadsafe_function()` to indicate whether the call should block whenever the queue associated with the thread-safe function is full.
 
@@ -227,7 +227,7 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 #### napi_threadsafe_function_call_js
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 Function pointer used with asynchronous thread-safe function calls. The callback will be called on the main thread. Its purpose is to use a data item arriving via the queue from one of the secondary threads to construct the parameters necessary for a call into JavaScript, usually via `napi_call_function`, and then make the call into JavaScript.
 
@@ -249,7 +249,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 - `[in] context`: The optional data with which the thread-safe function was created.
 - `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## 错误处理
+## Error Handling
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
@@ -3636,7 +3636,7 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
 
 ## Asynchronous Thread-safe Function Calls
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 JavaScript functions can normally only be called from a native addon's main thread. If an addon creates additional threads, then N-API functions that require a `napi_env`, `napi_value`, or `napi_ref` must not be called from those threads.
 
@@ -3668,7 +3668,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3703,7 +3703,7 @@ napi_create_threadsafe_function(napi_env env,
 
 ### napi_get_threadsafe_function_context
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3722,7 +3722,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3745,7 +3745,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3764,7 +3764,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3785,7 +3785,7 @@ This API may be called from any thread which will stop making use of `func`.
 
 ### napi_ref_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3805,7 +3805,7 @@ This API may only be called from the main thread.
 
 ### napi_unref_threadsafe_function
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
