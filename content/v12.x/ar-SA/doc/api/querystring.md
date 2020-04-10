@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.25-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
