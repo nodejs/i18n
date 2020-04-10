@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -485,7 +485,7 @@ The new settings will not become effective until the `SETTINGS` acknowledgment i
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 The `http2session.type` will be equal to `http2.constants.NGHTTP2_SESSION_SERVER` if this `Http2Session` instance is a server, and `http2.constants.NGHTTP2_SESSION_CLIENT` if the instance is a client.
 
@@ -808,7 +808,7 @@ Set to `true` if the `Http2Stream` instance was aborted abnormally. When set, th
 added: v11.2.0
 -->
 
-* {liczba}
+* {number}
 
 This property shows the number of characters currently buffered to be written. See [`net.Socket.bufferSize`][] for details.
 
@@ -885,7 +885,7 @@ Updates the priority for this `Http2Stream` instance.
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 Set to the `RST_STREAM` [error code](#error_codes) reported when the `Http2Stream` is destroyed after either receiving an `RST_STREAM` frame from the connected peer, calling `http2stream.close()`, or `http2stream.destroy()`. Will be `undefined` if the `Http2Stream` has not been closed.
 
@@ -1432,7 +1432,24 @@ Used to set the timeout value for http2 server requests, and sets a callback fun
 
 The given callback is registered as a listener on the `'timeout'` event.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Timeout in milliseconds. **Default:** 0 (no timeout)
+
+The number of milliseconds of inactivity before a socket is presumed to have timed out.
+
+A value of `0` will disable the timeout behavior on incoming connections.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### Class: `Http2SecureServer`
 <!-- YAML
@@ -1551,7 +1568,24 @@ Used to set the timeout value for http2 secure server requests, and sets a callb
 
 The given callback is registered as a listener on the `'timeout'` event.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Timeout in milliseconds. **Default:** 0 (no timeout)
+
+The number of milliseconds of inactivity before a socket is presumed to have timed out.
+
+A value of `0` will disable the timeout behavior on incoming connections.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### `http2.createServer(options[, onRequestHandler])`<!-- YAML
 added: v8.4.0
@@ -1716,7 +1750,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
                  128 header pairs.
--->* `authority` {string|URL}
+-->* `authority` {string|URL} The remote HTTP/2 server to connect to. This must be in the form of a minimal, valid URL with the `http://` or `https://` prefix, host name, and IP port (if a non-default port is used). Userinfo (user ID and password), path, querystring, and fragment details in the URL will be ignored.
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
@@ -2125,7 +2159,7 @@ added: v8.4.0
 deprecated: v13.0.0
 -->
 
-> Stabilność: 0 - Przestarzałe. Use [`request.socket`][].
+> Stability: 0 - Deprecated. Use [`request.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2350,7 +2384,7 @@ Url {
 added: v8.4.0
 -->* Extends: {Stream}
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+This object is created internally by an HTTP server, not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 #### Event: `'close'`
 <!-- YAML
@@ -2382,7 +2416,7 @@ Attempting to set a header field name or value that contains invalid characters 
 #### `response.connection`<!-- YAML
 added: v8.4.0
 deprecated: v13.0.0
--->> Stabilność: 0 - Przestarzałe. Use [`response.socket`][].
+-->> Stability: 0 - Deprecated. Use [`response.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2408,7 +2442,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v13.4.0
--->> Stabilność: 0 - Przestarzałe. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -2588,7 +2622,7 @@ const server = http2.createServer((req, res) => {
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
