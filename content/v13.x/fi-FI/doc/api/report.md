@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Vakaus: 1 - Kokeellinen
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
