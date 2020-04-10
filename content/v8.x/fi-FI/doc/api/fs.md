@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Vakaus: 1 - Kokeellinen
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -1712,7 +1712,7 @@ fs.open('<directory>', 'a+', (err, fd) => {
 
 Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Functions based on `fs.open()` exhibit this behavior as well. esim. `fs.writeFile()`, `fs.readFile()`, etc.
+Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
