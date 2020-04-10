@@ -208,7 +208,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -271,7 +271,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-* Retorna: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for await...of` loops.
 
@@ -341,7 +341,7 @@ This will track where the current cursor lands in the input string, when reading
 added: v12.16.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
   * `rows` {number} the row of the prompt the cursor currently lands on
   * `cols` {number} the screen column the cursor currently lands on
 
@@ -424,7 +424,7 @@ Once the `readline.Interface` instance is created, the most common case is to li
 
 ```js
 rl.on('line', (line) => {
-  console.log(`Recebido: ${line}`);
+  console.log(`Received: ${line}`);
 });
 ```
 
