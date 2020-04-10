@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.90-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 In Node.js, `Buffer` objects are used to represent binary data in the form of a sequence of bytes. Many Node.js APIs, for example streams and file system operations, support `Buffer`s, as interactions with the operating system or other processes generally always happen in terms of binary data.
 
@@ -13,15 +13,14 @@ Instances of the `Buffer` class, and [`Uint8Array`][]s in general, are similar t
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
 ```js
-// Opretter en Buffer med en længde på 10, hvor alle 
-// elementer har værdien nul.
+// Creates a zero-filled Buffer of length 10.
 const buf1 = Buffer.alloc(10);
 
 // Creates a Buffer of length 10,
 // filled with bytes which all have the value `1`.
 const buf2 = Buffer.alloc(10, 1);
 
-// Opretter en uinitialiseret Buffer med en længde på 10.
+// Creates an uninitialized buffer of length 10.
 // This is faster than calling Buffer.alloc() but the returned
 // Buffer instance might contain old data that needs to be
 // overwritten using fill(), write(), or other functions that fill the Buffer's
@@ -2309,7 +2308,7 @@ Represents the largest `length` that a `string` primitive can have, counted in U
 
 This value may depend on the JS engine that is being used.
 
-## `Buffer.from()`, `Buffer.alloc()` og `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
