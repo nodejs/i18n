@@ -1,4 +1,4 @@
-# कमांड लाइन विकल्प
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
