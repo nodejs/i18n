@@ -148,7 +148,7 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`    | Beskrivning                                                     |
+| `format`    | Description                                                     |
 | ----------- | --------------------------------------------------------------- |
 | `'esm'`     | Load a standard JavaScript module                               |
 | `'cjs'`     | Load a node-style CommonJS module                               |
