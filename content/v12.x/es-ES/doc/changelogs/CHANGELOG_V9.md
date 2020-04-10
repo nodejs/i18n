@@ -1,11 +1,11 @@
-# Registro de Cambios de Node.js 9
+# Node.js 9 ChangeLog
 
 <!--lint disable prohibited-strings-->
 <!--lint disable maximum-line-length-->
 
 <table>
 <tr>
-<th>Actual</th>
+<th>Current</th>
 </tr>
 <tr>
 <td>
@@ -31,7 +31,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -43,13 +43,13 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.2"></a>
 
 ## 2018-06-12, Version 9.11.2 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **Fixes memory exhaustion DoS** (CVE-2018-7164): Fixes a bug introduced in 9.7.0 that increases the memory consumed when reading from the network into JavaScript using the net.Socket object directly as a stream.
 * **buffer** (CVE-2018-7167): Fixes Denial of Service vulnerability where calling Buffer.fill() could hang
@@ -71,29 +71,29 @@
 
 <a id="9.11.1"></a>
 
-## 2018-04-05, Versión 9.11.1 (Actual), @MylesBorin
+## 2018-04-05, Version 9.11.1 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
-No hay commits adicionales.
+No additional commits.
 
-Un problema de infraestructura causó que se promoviera un instalador msi no operativo para x64. La versión del parche es para garantizar que todos los binarios e instaladores funcionan como se espera.
+An infrastructure issue caused a non-functioning msi installer for x64 to be promoted. The patch release is to ensure that all binaries and installers work as expected.
 
 <a id="9.11.0"></a>
 
-## 2018-04-04, Versión 9.11.0 (Actual), @MylesBorins preparado por @targos
+## 2018-04-04, Version 9.11.0 (Current), @MylesBorins prepared by @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * Updated ICU to 61.1 (Steven R. Loomis) [#19621](https://github.com/nodejs/node/pull/19621) Includes CLDR 33 (many new languages and data improvements).
 * **fs**:
-  * Emite el evento 'ready' para `ReadStream` y `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+  * Emit 'ready' event for `ReadStream` and `WriteStream` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
 * **n-api**:
-  * Versión Bump de n-api compatible (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
+  * Bump version of n-api supported (Michael Dawson) [#19497](https://github.com/nodejs/node/pull/19497)
 * **net**:
-  * Emite el evento 'ready' para `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
-* **Nuevos colaboradores añadidos**
+  * Emit 'ready' event for `Socket` (Sameer Srivastava) [#19408](https://github.com/nodejs/node/pull/19408)
+* **Added new collaborators**
   * [mafintosh](https://github.com/mafintosh) Mathias Buus
 
 ### Commits
@@ -181,47 +181,47 @@ Un problema de infraestructura causó que se promoviera un instalador msi no ope
 
 <a id="9.10.1"></a>
 
-## 2018-03-29, Versión 9.10.1 (Actual), @MylesBorin
+## 2018-03-29, Version 9.10.1 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
-No hay commits adicionales.
+No additional commits.
 
-Debido a un incorrecta preparación de la actualización para el compilador GCC 4.9.X, los últimos lanzamientos para PPC de "little endian" fueron compilados usando GCC 4.9.X en vez de GCC 4.8.X. Esto causó un quiebre de ABI en ambientes basados en PPCLE. Esto ha sido reparado en nuestra infraestructura y estamos haciendo este lanzamiento para asegurarnos de que los binarios alojados se están adheriendo a nuestra contrato de soporte de plataforma.
+Due to incorrect staging of the upgrade to the GCC 4.9.X compiler, the latest releases for PPC little endian were built using GCC 4.9.X instead of GCC 4.8.X. This caused an ABI breakage on PPCLE based environments. This has been fixed in our infrastructure and we are doing this release to ensure that the hosted binaries are adhering to our platform support contract.
 
 Note that Node.js versions 10.X and later will be built with version 4.9.X or later of the GCC compiler, and it is possible that Node.js version 9.X may be built on the 4.9.X compiler at a later time as the stated [minimum compiler requirement](https://github.com/nodejs/node/blob/v8.x/BUILDING.md) for Node.js version 9.X is 4.9.4.
 
 <a id="9.10.0"></a>
 
-## 2018-03-28, Versión 9.10.0 (Actual), @MylesBorins preparado por @targos
+## 2018-03-28, Version 9.10.0 (Current), @MylesBorins prepared by @targos
 
-Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/march-2018-security-releases/ for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
 * CVE-2018-7158
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Cambios Notables
+### Notable Changes
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
-* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. El inspector ahora permite conexiones que tengan un valor `Host` de navegador que sea igual a `localhost` o `localhost6`.
+* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
-* **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Dichos valores ahora llevan a conexiones rechazadas en la misma manera que valores no numéricos.
+* **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
 * **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
 
 * **cluster**:
-  * Añadir soporte para `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
+  * Add support for `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
 * **crypto**:
-  * Exponer la clave pública de un certificado (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+  * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**:
-  * Agregar `napi_fatal_exception` para activar un `uncaughtException` en JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
+  * Add `napi_fatal_exception` to trigger an `uncaughtException` in JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
 * **path**:
-  * Corregir regresión en `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
+  * Fix regression in `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
 * **stream**:
-  * Mejorar el rendimiento de la creación de stream (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
-* **Nuevos colaboradores añadidos**
+  * Improve stream creation performance (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
+* **Added new collaborators**
   * [BethGriggs](https://github.com/BethGriggs) Beth Griggs
 
 ### Commits
@@ -314,29 +314,29 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="9.9.0"></a>
 
-## 2018-03-21, Versión 9.9.0 (Actual), @MylesBorins preparado por @targos
+## 2018-03-21, Version 9.9.0 (Current), @MylesBorins prepared by @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **assert**:
-  * De ahora en adelante en todos los mensajes de error producidos por `assert` en modo estricto producirán un diff de error. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
-  * De ahora en adelante, es posible utilizar un objeto de validación en lanzamientos, en lugar de otras posibilidades. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
+  * From now on all error messages produced by `assert` in strict mode will produce a error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+  * From now on it is possible to use a validation object in throws instead of the other possibilities. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
 * **crypto**:
-  * permitir pasar null como IV a menos que sea requerido (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
+  * allow passing null as IV unless required (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
 * **fs**:
-  * soportar banderas as y as+ en stringToFlags() (Sarat Addepalli)
+  * support as and as+ flags in stringToFlags() (Sarat Addepalli) [#18801](https://github.com/nodejs/node/pull/18801)
 * **tls**:
-  * exponer los mensajes finalizados en TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
+  * expose Finished messages in TLSSocket (Anton Salikhmetov) [#19102](https://github.com/nodejs/node/pull/19102)
 * **tty**:
-  * Agregar función getColorDepth para determinar si el terminal admite colores. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
+  * Add getColorDepth function to determine if terminal supports colors. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
 * **util**:
-  * agregar opción compacta util.inspect (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
-* **Nuevos colaboradores añadidos**
+  * add util.inspect compact option (Ruben Bridgewater) [#17576](https://github.com/nodejs/node/pull/17576)
+* **Added new collaborators**
   * [watson](https://github.com/watson) Thomas Watson
 
 ### Commits
 
-* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Versión 9.9.0 (Actual) (Michaël Zasso)
+* [[`acc86ed246`](https://github.com/nodejs/node/commit/acc86ed246)] - 2018-03-XX, Version 9.9.0 (Current) (Michaël Zasso)
 * [[`8d33e5c214`](https://github.com/nodejs/node/commit/8d33e5c214)] - **assert**: improve error check (Ruben Bridgewater) [#17574](https://github.com/nodejs/node/pull/17574)
 * [[`5e6b42ec9c`](https://github.com/nodejs/node/commit/5e6b42ec9c)] - **assert**: show proper differences (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
 * [[`9abbb6b857`](https://github.com/nodejs/node/commit/9abbb6b857)] - **assert**: fix infinite loop (Ruben Bridgewater) [#18611](https://github.com/nodejs/node/pull/18611)
@@ -473,21 +473,21 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="9.8.0"></a>
 
-## 2018-03-07, Versión 9.8.0 (Actual), @MylesBorins
+## 2018-03-07, Version 9.8.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **crypto**:
-  * agregar cert.fingerprint256 como impresión de huella SHA256 (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
+  * add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **http2**:
-  * Se solucionaron problemas con conexiones abortadas en la implementación de HTTP/2 (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987) [#19002](https://github.com/nodejs/node/pull/19002)
+  * Fixed issues with aborted connections in the HTTP/2 implementation (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987) [#19002](https://github.com/nodejs/node/pull/19002)
 * **loader**:
-  * --inspect-brk ahora trabaja apropiadamente para esmodules (Gus Caplan) [#18949](https://github.com/nodejs/node/pull/18949)
+  * --inspect-brk now works properly for esmodules (Gus Caplan) [#18949](https://github.com/nodejs/node/pull/18949)
 * **src**:
   * make process.dlopen() load well-known symbol (Ben Noordhuis) [#18934](https://github.com/nodejs/node/pull/18934)
 * **trace_events**:
   * add file pattern cli option (Andreas Madsen) [#18480](https://github.com/nodejs/node/pull/18480)
-* **Nuevos colaboradores añadidos**
+* **Added new collaborators**
   * [MoonBall](https://github.com/MoonBall) Chen Gang
 
 ### Commits
@@ -567,27 +567,27 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="9.7.1"></a>
 
-## 2018-03-02, Versión 9.7.1 (Actual), @rvagg
+## 2018-03-02, Version 9.7.1 (Current), @rvagg
 
-No hay commits adicionales. Nueva versión publicada debido a un archivo node-v9.7.0.pkg malo que fue publicado en nodejs.org en la actualización anterior.
+No additional commits. New version published due to a bad node-v9.7.0.pkg file that was published to nodejs.org in the previous release.
 
 <a id="9.7.0"></a>
 
-## 2018-03-01, Versión 9.7.0 (Actual), @rvagg preparado por @addaleax
+## 2018-03-01, Version 9.7.0 (Current), @rvagg prepared by @addaleax
 
-### Cambios Notables
+### Notable Changes
 
 * **libuv**:
-  * Actualizado a libuv 1.19.2 (Colin Ihrig) [#18918](https://github.com/nodejs/node/pull/18918)
+  * Updated to libuv 1.19.2 (Colin Ihrig) [#18918](https://github.com/nodejs/node/pull/18918)
 
 * **src**:
-  * Agregar soporte inicial para metadatos post mortem específicos de Node.js (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
+  * Add initial support for Node.js-specific post-mortem metadata (Matheus Marchini) [#14901](https://github.com/nodejs/node/pull/14901)
 
 * **timers**:
-  * El valor devuelto de `setImmediate()` ahora tiene los métodos `ref()` y `unref()` (Anatoli Papirovski) [#18139](https://github.com/nodejs/node/pull/18139)
+  * The return value of `setImmediate()` now has `ref()` and `unref()` methods (Anatoli Papirovski) [#18139](https://github.com/nodejs/node/pull/18139)
 
 * **util**:
-  * Ahora es posible obtener el nombre de un código de error numérico específico de una plataforma como una string (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
+  * It is now possible to get the name for a numerical platform-specific error code as a string (Joyee Cheung) [#18186](https://github.com/nodejs/node/pull/18186)
 
 ### Commits
 
@@ -661,54 +661,51 @@ No hay commits adicionales. Nueva versión publicada debido a un archivo node-v9
 
 <a id="9.6.1"></a>
 
-## 2018-02-22, Versión 9.6.1 (Actual), @MylesBorin
+## 2018-02-22, Version 9.6.1 (Current), @MylesBorins
 
-Esta es una actualización especial para corregir potencialmente la regresión de Semver-Major que fue lanzada en v9.6.0
+This is a special release to fix potentially Semver-Major regression that was released in v9.6.0
 
-### Cambios Notables
+### Notable Changes
 
 * **events**:
-  * `events.usingDomains` establecido en `false` por defecto se eliminó en 9.6.0, que fue un cambio en comparaciones del comportamiento con 9.5.0. Este cambio de comportamiento fue revertido y el objeto `events` ahora tiene `usingDomains` preestablecido en `false</0, que es el comportamiento en 9.x anteriores a 9.6.0 (Myles Borins) <a href="https://github.com/nodejs/node/pull/18944">#18944</a></li>
-</ul></li>
-</ul>
+  * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
-<h3 spaces-before="0">Commits</h3>
+### Commits
 
-<ul>
-<li>[<a href="https://github.com/nodejs/node/commit/761caec379"><code>761caec379`</a>] - **events**: preset `usingDomains` to false (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
+* [[`761caec379`](https://github.com/nodejs/node/commit/761caec379)] - **events**: preset `usingDomains` to false (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 <a id="9.6.0"></a>
 
-## 2018-02-22, Versión 9.6.0 (Actual), @MylesBorins
+## 2018-02-22, Version 9.6.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **async_hooks**:
   * deprecate unsafe emit{Before,After} (Ali Ijaz Sheikh) [#18513](https://github.com/nodejs/node/pull/18513)
-  * cambiar nombre de PromiseWrap.parentId a PromiseWrap.isChainedPromise (Ali Ijaz Sheikh) [#18633](https://github.com/nodejs/node/pull/18633)
+  * rename PromiseWrap.parentId to PromiseWrap.isChainedPromise (Ali Ijaz Sheikh) [#18633](https://github.com/nodejs/node/pull/18633)
 * **deps**:
-  * actualizar node-inspect a 1.11.3 (Jan Krems) [#18354](https://github.com/nodejs/node/pull/18354)
+  * update node-inspect to 1.11.3 (Jan Krems) [#18354](https://github.com/nodejs/node/pull/18354)
   * ICU 60.2 bump (Steven R. Loomis) [#17687](https://github.com/nodejs/node/pull/17687)
-  * Introducir ScriptOrModule y HostDefinedOptions to V8 (Jan Krems) [#16889](https://github.com/nodejs/node/pull/16889)
+  * Introduce ScriptOrModule and HostDefinedOptions to V8 (Jan Krems) [#16889](https://github.com/nodejs/node/pull/16889)
 * **http**:
-  * agregar opciones a http.createServer() para `IncomingMessage` y `ServerReponse` (Peter Marton) [#15752](https://github.com/nodejs/node/pull/15752)
+  * add options to http.createServer() for `IncomingMessage` and `ServerReponse` (Peter Marton) [#15752](https://github.com/nodejs/node/pull/15752)
 * **http2**:
-  * agregar opciones de fallback de http en .createServer (Peter Marton) [#15752](https://github.com/nodejs/node/pull/15752)
+  * add http fallback options to .createServer (Peter Marton) [#15752](https://github.com/nodejs/node/pull/15752)
 * **https**:
-  * Agrega las opciones restantes de tls.createSecureContext() en la string generada por Agent#getName(). Esto permite que https.request() acepte las opciones y genere sockets únicos apropiadamente. (Jeff Principe) [#16402](https://github.com/nodejs/node/pull/16402)
+  * Adds the remaining options from tls.createSecureContext() to the string generated by Agent#getName(). This allows https.request() to accept the options and generate unique sockets appropriately. (Jeff Principe) [#16402](https://github.com/nodejs/node/pull/16402)
 * **inspector**:
-  * --inspect-brk para módulos es (Guy Bedford) [#18194](https://github.com/nodejs/node/pull/18194)
+  * --inspect-brk for es modules (Guy Bedford) [#18194](https://github.com/nodejs/node/pull/18194)
 * **lib**:
-  * permitir muerte de procesos por número de señal (Sam Roberts) [#16944](https://github.com/nodejs/node/pull/16944)
+  * allow process kill by signal number (Sam Roberts) [#16944](https://github.com/nodejs/node/pull/16944)
 * **module**:
-  * activar importación dinámica (Myles Borins) [#18387](https://github.com/nodejs/node/pull/18387)
-  * ahora la importación dinámica es soportada (Jan Krems) [#15713](https://github.com/nodejs/node/pull/15713)
+  * enable dynamic import (Myles Borins) [#18387](https://github.com/nodejs/node/pull/18387)
+  * dynamic import is now supported (Jan Krems) [#15713](https://github.com/nodejs/node/pull/15713)
 * **n-api**:
-  * agregar métodos para abrir/cerrar el alcance de la callback (Michael Dawson) [#18089](https://github.com/nodejs/node/pull/18089)
+  * add methods to open/close callback scope (Michael Dawson) [#18089](https://github.com/nodejs/node/pull/18089)
 * **src**:
-  * permitir --perf-(basic-)?prof en NODE_OPTIONS (Leko) [#17600](https://github.com/nodejs/node/pull/17600)
+  * allow --perf-(basic-)?prof in NODE_OPTIONS (Leko) [#17600](https://github.com/nodejs/node/pull/17600)
 * **vm**:
-  * agregar soporte para módulos es (Gus Caplan) [#17560](https://github.com/nodejs/node/pull/17560)
+  * add support for es modules (Gus Caplan) [#17560](https://github.com/nodejs/node/pull/17560)
 
 ### Commits
 
@@ -911,7 +908,7 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 * [[`e00bb1657f`](https://github.com/nodejs/node/commit/e00bb1657f)] - **tools**: non-Ascii linter for /lib only (Sarat Addepalli) [#18043](https://github.com/nodejs/node/pull/18043)
 * [[`4f4bfbecbf`](https://github.com/nodejs/node/commit/4f4bfbecbf)] - **tools**: auto fix custom eslint rule (Shobhit Chittora) [#16652](https://github.com/nodejs/node/pull/16652)
 * [[`ef45bb4305`](https://github.com/nodejs/node/commit/ef45bb4305)] - **tools**: fix icu readme lint error (Anatoli Papirovski) [#18445](https://github.com/nodejs/node/pull/18445)
-* [[`1767ef06f3`](https://github.com/nodejs/node/commit/1767ef06f3)] - **url**: simplify constructor URLSearchParams. Eliminar "check null" innecesaria (Mihail Bodrov) [#18700](https://github.com/nodejs/node/pull/18700)
+* [[`1767ef06f3`](https://github.com/nodejs/node/commit/1767ef06f3)] - **url**: simplify constructor URLSearchParams. Remove needless check null (Mihail Bodrov) [#18700](https://github.com/nodejs/node/pull/18700)
 * [[`07e4ba2519`](https://github.com/nodejs/node/commit/07e4ba2519)] - **url**: simplify loop in parser (Tobias Nießen) [#18468](https://github.com/nodejs/node/pull/18468)
 * [[`c8f729f7a3`](https://github.com/nodejs/node/commit/c8f729f7a3)] - **v8**: add missing ',' in OpenBSD's 'sources' section. (Aaron Bieber) [#18448](https://github.com/nodejs/node/pull/18448)
 * [[`02afdbc5c6`](https://github.com/nodejs/node/commit/02afdbc5c6)] - **vm**: flip Module#link's signature (Gus Caplan) [#18471](https://github.com/nodejs/node/pull/18471)
@@ -920,23 +917,23 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 
 <a id="9.5.0"></a>
 
-## 2018-01-31, Versión 9.5.0 (Actual), @evanlucas
+## 2018-01-31, Version 9.5.0 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **cluster**
-  * agregar cwd en cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
+  * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps**
-  * actualizar libuv a 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
+  * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
 * **meta**
-  * agregar a Leko a colaboradores (Leko) [#18117](https://github.com/nodejs/node/pull/18117)
-  * agregar a vdeturckheim como colaborador (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
+  * add Leko to collaborators (Leko) [#18117](https://github.com/nodejs/node/pull/18117)
+  * add vdeturckheim as collaborator (vdeturckheim) [#18432](https://github.com/nodejs/node/pull/18432)
 * **n-api**
-  * exponer versión de n-api en process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
+  * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
 * **perf_hooks**
-  * agregar performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
+  * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
 * **stream**
-  * evitar writeAfterEnd() mientras termina (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
+  * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
 
 ### Commits
 
@@ -1104,40 +1101,40 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 
 <a id="9.4.0"></a>
 
-## 2018-01-10, Versión 9.4.0 (Actual), @MylesBorins
+## 2018-01-10, Version 9.4.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **async\_hooks**:
-  * desaprobar API Sensible de AsyncHooks y runInAsyncIdScope. Ninguna API fue documentada. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
+  * deprecate AsyncHooks Sensitive API and runInAsyncIdScope. Neither API were documented. (Andreas Madsen) [#16972](https://github.com/nodejs/node/pull/16972)
 * **deps**:
-  * actualizar nghttp2 a 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
-  * actualizar npm a 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
+  * update nghttp2 to 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
+  * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
   * cherry-pick 50f7455 from upstream V8 (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
 * **events**:
   * remove reaches into _events internals (Anatoli Papirovski) [#17440](https://github.com/nodejs/node/pull/17440)
 * **http**:
-  * agregar rawPacket en error del evento `clientError` (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
+  * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
 * **http2**:
-  * implementar maxSessionMemory (James M Snell) [#17967](https://github.com/nodejs/node/pull/17967)
-  * agregar soporte inicial para originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
-  * agregar soporte altsvc (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
-  * integración de perf_hooks (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
-  * Refactorización y limpieza de Http2Session y Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
+  * implement maxSessionMemory (James M Snell) [#17967](https://github.com/nodejs/node/pull/17967)
+  * add initial support for originSet (James M Snell) [#17935](https://github.com/nodejs/node/pull/17935)
+  * add altsvc support (James M Snell) [#17917](https://github.com/nodejs/node/pull/17917)
+  * perf_hooks integration (James M Snell) [#17906](https://github.com/nodejs/node/pull/17906)
+  * Refactoring and cleanup of Http2Session and Http2Stream destroy (James M Snell) [#17406](https://github.com/nodejs/node/pull/17406)
 * **net**:
-  * eliminar Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
+  * remove Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
 * **repl**:
-  * mostrar variables de ámbito léxico en completación de pestaña (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
+  * show lexically scoped vars in tab completion (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
 * **stream**:
   * rm {writeable/readable}State.length (Calvin Metcalf) [#12857](https://github.com/nodejs/node/pull/12857)
-  * agregar propiedades de flujo y buffer a los streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
+  * add flow and buffer properties to streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
 * **util**:
-  * permitir comodines en variable NODE_DEBUG (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
+  * allow wildcards in NODE_DEBUG variable (Tyler) [#17609](https://github.com/nodejs/node/pull/17609)
 * **zlib**:
-  * agregar soporte de ArrayBuffer (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
-* **Se añadió un nuevo colaborador**
+  * add ArrayBuffer support (Jem Bezooyen) [#16042](https://github.com/nodejs/node/pull/16042)
+* **Added new collaborator**
   * [starkwang](https://github.com/starkwang) Weijia Wang
-* **Agregado nuevo miembro de TSC**
+* **Added new TSC member**
   * [danbev](https://github.com/danbev) Daniel Bevenius
 
 ### Commits
@@ -1380,37 +1377,37 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 
 <a id="9.3.0"></a>
 
-## 2017-12-12, Versión 9.3.0 (Actual), @MylesBorins
+## 2017-12-12, Version 9.3.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **async\_hooks**:
-  * agregar eventos de seguimiento a async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
-  * agregar tipos de proveedores para el servidor de red (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
+  * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
+  * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
 * **console**:
-  * console.debug ahora puede ser utilizado fuera del inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
+  * console.debug can now be used outside of the inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
 * **deps**:
-  * actualizar libuv a 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
-  * parchear V8 a 6.2.414.46 (Myles Borins) [#17206](https://github.com/nodejs/node/pull/17206)
+  * upgrade libuv to 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
+  * patch V8 to 6.2.414.46 (Myles Borins) [#17206](https://github.com/nodejs/node/pull/17206)
 * **module**:
-  * module.builtinModules devolverá una lista de módulos compilados (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
+  * module.builtinModules will return a list of built in modules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
 * **n-api**:
-  * agregar ayudante para los complementos para obtener el bucle del evento (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
+  * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
 * **process**:
-  * process.setUncaughtExceptionCaptureCallback ahora puede ser utilizado para personalizar comportamiento de `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
-  * Un manejador de señal ahora es capaz de recibir el código de señal que activó el manejador. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
+  * process.setUncaughtExceptionCaptureCallback can now be used to customize behavior for `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
+  * A signal handler is now able to receive the signal code that triggered the handler. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
 * **src**:
-  * los embedders ahora pueden utilizar Node::CreatePlatform para crear una instancia de NodePlatform (Cheng Zhao) [#16981](https://github.com/nodejs/node/pull/16981)
+  * embedders can now use Node::CreatePlatform to create an instance of NodePlatform (Cheng Zhao) [#16981](https://github.com/nodejs/node/pull/16981)
 * **stream**:
-  * writable.writableHighWaterMark y readable.readableHighWaterMark devolverán los valores con los que fue instanciado el objeto stream (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
-* **Nuevos colaboradores añadidos**
+  * writable.writableHighWaterMark and readable.readableHighWaterMark will return the values the stream object was instantiated with (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
+* **Added new collaborators**
   * [maclover7](https://github.com/maclover7) Jon Moss
   * [guybedford](https://github.com/guybedford) Guy Bedford
   * [hashseed](https://github.com/hashseed) Yang Guo
 
 ### Commits
 
-* [[`623b589921`](https://github.com/nodejs/node/commit/623b589921)] - tools/doc: agregar tools/remark-* a eslintignore (Ivan Wei) [#17240](https://github.com/nodejs/node/pull/17240)
+* [[`623b589921`](https://github.com/nodejs/node/commit/623b589921)] - tools/doc: add tools/remark-* to eslintignore (Ivan Wei) [#17240](https://github.com/nodejs/node/pull/17240)
 * [[`cf0d7cfc46`](https://github.com/nodejs/node/commit/cf0d7cfc46)] - **async_hooks**: add destroy event for gced AsyncResources (Sebastian Mayr) [#16998](https://github.com/nodejs/node/pull/16998)
 * [[`cf7e15cf78`](https://github.com/nodejs/node/commit/cf7e15cf78)] - **(SEMVER-MINOR)** **async_hooks**: add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
 * [[`e0ce7cf1e9`](https://github.com/nodejs/node/commit/e0ce7cf1e9)] - **(SEMVER-MINOR)** **async_wrap**: add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
@@ -1791,22 +1788,22 @@ Esta es una actualización especial para corregir potencialmente la regresión d
 
 <a id="9.2.1"></a>
 
-## 2017-12-08, Versión 9.2.1 (Actual), @evanlucas
+## 2017-12-08, Version 9.2.1 (Current), @evanlucas
 
-Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
 
-Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
+Fixes for the following CVEs are included in this release:
 
 * CVE-2017-15896
 * CVE-2017-15897
-* CVE-2017-3738 (del proyecto openssl)
+* CVE-2017-3738 (from the openssl project)
 
-### Cambios Notables
+### Notable Changes
 
 * **buffer**:
-  * el buffer asignado con un contenido no válido ahora se rellenará con ceros (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
+  * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**:
-  * openssl actualizado a 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
+  * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
 
 ### Commits
 
@@ -1826,16 +1823,16 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 <a id="9.2.0"></a>
 
-## 2017-11-14, Versión 9.2.0 (Actual), @evanlucas
+## 2017-11-14, Version 9.2.0 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
 * **crypto**:
-  * Soportar compilación con 1.1.0 y 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
+  * Support building with both 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * **fs**:
-  * fs.realpathSync.native y fs.realpath.native están expuestas ahora (Ben Noordhuis) [#15776](https://github.com/nodejs/node/pull/15776)
+  * fs.realpathSync.native and fs.realpath.native are now exposed (Ben Noordhuis) [#15776](https://github.com/nodejs/node/pull/15776)
 * **process**:
-  * exponer process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
+  * expose process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 
 ### Commits
 
@@ -1977,7 +1974,7 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2017-11-07, Version 9.1.0 (Current), @cjihrig
 
-### Cambios Notables
+### Notable Changes
 
 * **CLI**:
   * `NODE_OPTIONS` now supports the `--stack-trace-limit` option. [#16495](https://github.com/nodejs/node/pull/16495)
@@ -2091,12 +2088,12 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 
 ## 2017-10-31, Version 9.0.0 (Current), @jasnell
 
-### Cambios Notables
+### Notable Changes
 
 * **Async hooks**
-  * Las APIs experimentales antiguas fueron eliminadas. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] - [#14414](https://github.com/nodejs/node/pull/14414)
+  * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] - [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Errores**
+* **Errors**
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] - [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues:
     * `buffer`: [[`e79a61cf80`](https://github.com/nodejs/node/commit/e79a61cf80)] - [#16352](https://github.com/nodejs/node/pull/16352), [[`dbfe8c4ea2`](https://github.com/nodejs/node/commit/dbfe8c4ea2)] - [#13976](https://github.com/nodejs/node/pull/13976)
@@ -2123,10 +2120,10 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] - [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] - [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] - [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **Procesos Secundarios**
+* **Child Processes**
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] - [#4670](https://github.com/nodejs/node/pull/4670)
 
-* **Dominios**
+* **Domains**
   * The long-deprecated `.dispose()` method has been removed [[`602fd36d95`](https://github.com/nodejs/node/commit/602fd36d95)] - [#15412](https://github.com/nodejs/node/pull/15412)
 
 * **fs**
@@ -2142,10 +2139,10 @@ Correcciones para los siguientes CVEs están incluidas en este lanzamiento:
 * **Intl**
   * The deprecated `Intl.v8BreakIterator` has been removed. [[`668ad44922`](https://github.com/nodejs/node/commit/668ad44922)] - [#15238](https://github.com/nodejs/node/pull/15238)
 
-* **SO**
+* **OS**
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] - [#14622](https://github.com/nodejs/node/pull/14622)
 
-* **Temporizadores**
+* **Timers**
   * `setTimeout()` will emit a warning if the timeout is larger that the maximum 32-bit unsigned integer. [[`ce3586da31`](https://github.com/nodejs/node/commit/ce3586da31)] - [#15627](https://github.com/nodejs/node/pull/15627)
 
 ### Commits
