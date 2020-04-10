@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -293,7 +293,7 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Stabilité : 0 - obsolète : utilisez [`server.getConnections()`][] à la place.
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 Returns the current number of concurrent connections on the server.
 
@@ -348,7 +348,7 @@ changes:
 
 * `socket` {net.Socket|stream.Duplex} On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
 * `options` {Object} 
-  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Par défaut :** `false`.
+  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Default:** `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance.
   * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Clients always request a server certificate. Servers (`isServer` is true) may optionally set `requestCert` to true to request a client certificate.
   * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
@@ -845,7 +845,7 @@ changes:
 * `options` {Object} 
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
   * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **Default:** `false`.
-  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Par défaut :** `true`.
+  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
   * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
   * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a SecureContext instance. (`tls.createSecureContext(...)` can be used to get a proper SecureContext.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
@@ -941,7 +941,7 @@ added: v0.11.13
 
 The default curve name to use for ECDH key agreement in a tls server. The default value is `'prime256v1'` (NIST P-256). Consult [RFC 4492](https://www.rfc-editor.org/rfc/rfc4492.txt) and [FIPS.186-4](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) for more details.
 
-## APIs obsolètes
+## Deprecated APIs
 
 ### Class: CryptoStream
 
@@ -1005,7 +1005,7 @@ changes:
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
 * `options` 
   * `secureContext`: An optional TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Par défaut :** `false`.
+  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Default:** `false`.
   * `server` {net.Server} An optional [`net.Server`][] instance
   * `requestCert`: Optional, see [`tls.createServer()`][]
   * `rejectUnauthorized`: Optional, see [`tls.createServer()`][]
