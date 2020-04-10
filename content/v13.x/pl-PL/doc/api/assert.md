@@ -1,8 +1,8 @@
-# Asercje
+# Assert
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -77,7 +77,7 @@ Whenever possible, use the [strict assertion mode](#assert_strict_assertion_mode
 assert.deepEqual(/a/gi, new Date());
 ```
 
-## Klasa: assert.AssertionError
+## Class: assert.AssertionError
 
 * Extends: {errors.Error}
 
@@ -95,7 +95,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance.
   * `stackStartFn` {Function} If provided, the generated stack trace omits frames before this function.
 
-Podklasa `Error`, która wskazuje na błąd asercji.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -421,7 +421,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `wiadomość` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
@@ -460,7 +460,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function}
-* `wiadomość` {string}
+* `message` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -512,7 +512,7 @@ added: v0.1.21
 
 **Strict assertion mode**
 
-Alias [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
 **Legacy assertion mode**
 
@@ -700,7 +700,7 @@ changes:
 
 **Strict assertion mode**
 
-Alias [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy assertion mode**
 
@@ -792,7 +792,7 @@ added: v0.1.21
 
 **Strict assertion mode**
 
-Alias [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
 **Legacy assertion mode**
 
@@ -905,7 +905,7 @@ assert(0);
 added: v10.0.0
 -->* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `wiadomość` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
@@ -926,6 +926,21 @@ If specified, `message` will be the message provided by the [`AssertionError`][]
     {
       name: 'TypeError',
       message: 'Wrong value'
+    }
+  );
+})();
+```
+
+```js
+(async () => {
+  await assert.rejects(
+    async () => {
+      throw new TypeError('Wrong value');
+    },
+    (err) => {
+      assert.strictEqual(err.name, 'TypeError');
+      assert.strictEqual(err.message, 'Wrong value');
+      return true;
     }
   );
 })();
@@ -999,7 +1014,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `wiadomość` {string}
+* `message` {string}
 
 Expects the function `fn` to throw an error.
 
