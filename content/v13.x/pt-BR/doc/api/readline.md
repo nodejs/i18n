@@ -208,7 +208,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -271,7 +271,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-* Retorna: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for await...of` loops.
 
@@ -296,7 +296,7 @@ async function processLineByLine() {
 
 ### `rl.line`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {string|undefined}
@@ -327,7 +327,7 @@ process.stdin.on('keypress', (c, k) => {
 
 ### `rl.cursor`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {number|undefined}
@@ -341,7 +341,7 @@ This will track where the current cursor lands in the input string, when reading
 added: v13.5.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
   * `rows` {number} the row of the prompt the cursor currently lands on
   * `cols` {number} the screen column the cursor currently lands on
 
@@ -428,7 +428,7 @@ Once the `readline.Interface` instance is created, the most common case is to li
 
 ```js
 rl.on('line', (line) => {
-  console.log(`Recebido: ${line}`);
+  console.log(`Received: ${line}`);
 });
 ```
 
@@ -621,7 +621,7 @@ const { createInterface } = require('readline');
 <table>
   <tr>
     <th>Keybindings</th>
-    <th>Descrição</th>
+    <th>Description</th>
     <th>Notes</th>
   </tr>
   <tr>
