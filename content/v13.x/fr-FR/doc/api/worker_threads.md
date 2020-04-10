@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 The `worker_threads` module enables the use of threads that execute JavaScript in parallel. To access it:
 
@@ -265,7 +265,7 @@ The [`'close'` event][] will be emitted on both `MessagePort` instances that are
 added: v10.5.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * `transferList` {Object[]}
 
 Sends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the [HTML structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm).
@@ -487,7 +487,7 @@ If the Worker thread is no longer running, which may occur before the [`'exit'` 
 added: v10.5.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * `transferList` {Object[]}
 
 Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
@@ -552,7 +552,7 @@ changes:
                  Terminating is now a fully asynchronous operation.
 -->
 
-* Renvoie : {Promise}
+* Returns: {Promise}
 
 Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the [`'exit'` event][] is emitted.
 
