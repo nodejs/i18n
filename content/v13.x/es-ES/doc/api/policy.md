@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Estabilidad: 1 - Experimental
+> Stability: 1 - Experimental
 
 <!-- name=policy -->
 
@@ -13,7 +13,7 @@ Policies are a security feature intended to allow guarantees about what code Nod
 
 A best practice would be to ensure that the policy manifest is read only for the running Node.js application, and that the file cannot be changed by the running Node.js application in any way. A typical setup would be to create the policy file as a different user id than the one running Node.js and granting read permissions to the user id running Node.js.
 
-## Habilitación
+## Enabling
 
 <!-- type=misc -->
 
@@ -33,7 +33,7 @@ To mitigate tampering with policy files on disk, an integrity for the policy fil
 node --experimental-policy=policy.json --policy-integrity="sha384-SggXRQHwCG8g+DktYYzxkXRIkTiEYWBHqev0xnpCxYlqMBufKZHAHQM3/boDaI/0" app.js
 ```
 
-## Funciones
+## Features
 
 ### Error Behavior
 
