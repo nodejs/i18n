@@ -1,4 +1,4 @@
-# Fouten
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -170,7 +170,7 @@ The first line of the trace will be prefixed with `${myObject.name}: ${myObject.
 
 The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. Bijvoorbeeld:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
 function MyError() {
@@ -273,7 +273,7 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 ## Class: AssertionError
 
-Een subklasse van `Error` die het falen van een bewering aangeeft. Such errors commonly indicate inequality of actual and expected value.
+A subclass of `Error` that indicates the failure of an assertion. Such errors commonly indicate inequality of actual and expected value.
 
 For example:
 
@@ -333,7 +333,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Fouten
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
@@ -835,7 +835,7 @@ A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronou
 
 A Node.js API function was called with an incompatible `this` value.
 
-Voorbeeld:
+Example:
 
 ```js
 const { URLSearchParams } = require('url');
@@ -898,7 +898,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but does not provide a `dynamicInstantiate` hook.
 
@@ -906,7 +906,7 @@ Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but doe
 
 ### ERR_MISSING_MODULE
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] cannot be resolved.
 
@@ -914,7 +914,7 @@ Used when an \[ES6 module\]\[\] cannot be resolved.
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 Used when a failure occurred resolving imports in an \[ES6 module\]\[\].
 
