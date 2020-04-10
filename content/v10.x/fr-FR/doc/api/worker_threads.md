@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -133,7 +133,7 @@ Disables further sending of messages on either side of the connection. This meth
 added: v10.5.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * `transferList` {Object[]}
 
 Sends a JavaScript value to the receiving side of this channel. `value` will be transferred in a way which is compatible with the [HTML structured clone algorithm](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). In particular, it may contain circular references and objects like typed arrays that the `JSON` API is not able to stringify.
@@ -280,7 +280,7 @@ The `'online'` event is emitted when the worker thread has started executing Jav
 added: v10.5.0
 -->
 
-* `valeur` {any}
+* `value` {any}
 * `transferList` {Object[]}
 
 Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
