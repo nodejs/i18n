@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
@@ -1029,7 +1029,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
@@ -1930,7 +1930,7 @@ The `transform._transform()` method is prefixed with an underscore because it is
 
 The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
 
-## ملاحظات إضافية
+## Additional Notes
 
 <!--type=misc-->
 
