@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-可以通过如下方式访问：
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -41,7 +41,7 @@ See the [security warning](cli.html#inspector_security) regarding the `host` par
 
 ## `inspector.url()`
 
-* 返回：{string|undefined}
+* Returns: {string|undefined}
 
 Return the URL of the active inspector, or `undefined` if there is none.
 
