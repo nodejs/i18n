@@ -1,8 +1,8 @@
-# Eventos
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -202,7 +202,7 @@ deprecated: v4.0.0
 * `emitter` {EventEmitter} The emitter to query
 * `eventName` {string|symbol} The event name
 
-> Estabilidade: 0 - Descontinuada: Use [`emitter.listenerCount()`][].
+> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
 
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
@@ -257,7 +257,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `...args` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
@@ -269,7 +269,7 @@ Returns `true` if the event had listeners, `false` otherwise.
 added: v6.0.0
 -->
 
-* Retorna: {Array}
+* Returns: {Array}
 
 Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
 
@@ -292,7 +292,7 @@ console.log(myEE.eventNames());
 added: v1.0.0
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
 Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
 
@@ -303,7 +303,7 @@ added: v3.2.0
 -->
 
 * `eventName` {string|symbol} The name of the event being listened for
-* Retorna: {integer}
+* Returns: {integer}
 
 Returns the number of listeners listening to the event named `eventName`.
 
@@ -340,7 +340,7 @@ added: v10.0.0
 
 * `eventName` {string|symbol}
 * `listener` {Function}
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Alias for [`emitter.removeListener()`][].
 
@@ -352,7 +352,7 @@ added: v0.1.101
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -384,7 +384,7 @@ added: v0.3.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
@@ -416,7 +416,7 @@ added: v6.0.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -436,7 +436,7 @@ added: v6.0.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
 
@@ -455,7 +455,7 @@ added: v0.1.26
 -->
 
 * `eventName` {string|symbol}
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -471,7 +471,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `listener` {Function}
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
@@ -546,7 +546,7 @@ added: v0.3.5
 -->
 
 * `n` {integer}
-* Retorna: {EventEmitter}
+* Returns: {EventEmitter}
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
 
@@ -595,7 +595,7 @@ added: v10.16.0
 
 * `emitter` {EventEmitter}
 * `name` {string}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Creates a `Promise` that is resolved when the `EventEmitter` emits the given event or that is rejected when the `EventEmitter` emits `'error'`. The `Promise` will resolve with an array of all the arguments emitted to the given event.
 
