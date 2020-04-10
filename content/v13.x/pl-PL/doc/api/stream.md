@@ -1,14 +1,14 @@
-# Strumień
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-Strumień jest abstrakcyjnym interfejsem do pracy z danymi strumieniowymi w Node.js. The `stream` module provides an API for implementing the stream interface.
+A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides an API for implementing the stream interface.
 
-Istnieje wiele obiektów strumieniowych udostępnianych przez Node.js. Na przykład [żądanie do serwera HTTP](http.html#http_class_http_incomingmessage) i [`process.stdout`][] są instancjami strumieni.
+There are many stream objects provided by Node.js. For instance, a [request to an HTTP server](http.html#http_class_http_incomingmessage) and [`process.stdout`][] are both stream instances.
 
-Strumienie mogą być tylko do odczytu, tylko do zapisu lub także do obu. Wszystkie strumienie są instancjami [`EventEmitter`][].
+Streams can be readable, writable, or both. All streams are instances of [`EventEmitter`][].
 
 To access the `stream` module:
 
@@ -18,13 +18,13 @@ const stream = require('stream');
 
 The `stream` module is useful for creating new types of stream instances. It is usually not necessary to use the `stream` module to consume streams.
 
-## Organizacja tego Dokumentu
+## Organization of this Document
 
 This document contains two primary sections and a third section for notes. The first section explains how to use existing streams within an application. The second section explains how to create new types of streams.
 
-## Rodzaje Strumieni
+## Types of Streams
 
-Istnieją cztery fundamentalne typy strumieni w Node.js:
+There are four fundamental stream types within Node.js:
 
 * [`Writable`][]: streams to which data can be written (for example, [`fs.createWriteStream()`][]).
 * [`Readable`][]: streams from which data can be read (for example, [`fs.createReadStream()`][]).
@@ -33,23 +33,23 @@ Istnieją cztery fundamentalne typy strumieni w Node.js:
 
 Additionally, this module includes the utility functions [`stream.pipeline()`][], [`stream.finished()`][] and [`stream.Readable.from()`][].
 
-### Tryb Obiektu
+### Object Mode
 
 All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
-Instancje strumieni są przełączane w tryb obiektu za pomocą opcji `objectMode`, gdy strumień jest tworzony. Próba przełączenia istniejącego strumienia na tryb obiektu nie jest bezpieczna.
+Stream instances are switched into object mode using the `objectMode` option when the stream is created. Attempting to switch an existing stream into object mode is not safe.
 
-### Buforowanie
+### Buffering
 
 <!--type=misc-->
 
 Both [`Writable`][] and [`Readable`][] streams will store data in an internal buffer that can be retrieved using `writable.writableBuffer` or `readable.readableBuffer`, respectively.
 
-The amount of data potentially buffered depends on the `highWaterMark` option passed into the stream's constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). W przypadku strumieni działających w trybie obiektu, `highWaterMark` określa całkowitą liczbę obiektów.
+The amount of data potentially buffered depends on the `highWaterMark` option passed into the stream's constructor. For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). For streams operating in object mode, the `highWaterMark` specifies a total number of objects.
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
-Gdy całkowity rozmiar wewnętrznego bufora odczytu osiągnie wartość progową określoną przez `highWaterMark`, strumień tymczasowo przestanie odczytywać dane z bazowego zasobu, dopóki dane aktualnie buforowane nie zostaną zużyte (to znaczy, że strumień przestanie wywoływać wewnętrzną metodę `readable._read()`, która jest używana do wypełnienia bufora odczytu).
+Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
 
 Data is buffered in `Writable` streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
@@ -57,11 +57,11 @@ A key goal of the `stream` API, particularly the [`stream.pipe()`][] method, is 
 
 Because [`Duplex`][] and [`Transform`][] streams are both `Readable` and `Writable`, each maintains *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [`Duplex`][] streams whose `Readable` side allows consumption of data received *from* the socket and whose `Writable` side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, each side should operate (and buffer) independently of the other.
 
-## API dla Konsumentów Strumienia
+## API for Stream Consumers
 
 <!--type=misc-->
 
-Niemal wszystkie aplikacje Node.js, bez względu na to, jak prostymi one są, wykorzystują strumienie w jakiś sposób. Poniżej przedstawiono przykład używania strumieni w aplikacji Node.js, która implementuje serwer HTTP:
+Almost all Node.js applications, no matter how simple, use streams in some manner. The following is an example of using streams in a Node.js application that implements an HTTP server:
 
 ```js
 const http = require('http');
@@ -420,7 +420,7 @@ Is set to `true` immediately before the [`'finish'`][] event is emitted.
 added: v9.3.0
 -->
 
-* {liczba}
+* {number}
 
 Return the value of `highWaterMark` passed when constructing this `Writable`.
 
@@ -429,7 +429,7 @@ Return the value of `highWaterMark` passed when constructing this `Writable`.
 added: v9.4.0
 -->
 
-* {liczba}
+* {number}
 
 This property contains the number of bytes (or objects) in the queue ready to be written. The value provides introspection data regarding the status of the `highWaterMark`.
 
@@ -892,7 +892,7 @@ This property reflects the current state of a `Readable` stream as described in 
 added: v9.3.0
 -->
 
-* {liczba}
+* {number}
 
 Returns the value of `highWaterMark` passed when constructing this `Readable`.
 
@@ -901,7 +901,7 @@ Returns the value of `highWaterMark` passed when constructing this `Readable`.
 added: v9.4.0
 -->
 
-* {liczba}
+* {number}
 
 This property contains the number of bytes (or objects) in the queue ready to be read. The value provides introspection data regarding the status of the `highWaterMark`.
 
@@ -1206,16 +1206,29 @@ const cleanup = finished(rs, (err) => {
 });
 ```
 
-### `stream.pipeline(...streams, callback)`
+### `stream.pipeline(source[, ...transforms], destination, callback)`
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v13.10.0
+    pr-url: https://github.com/nodejs/node/pull/31223
+    description: Add support for async generators.
 -->
 
-* `...streams` {Stream} Two or more streams to pipe between.
+* `source` {Stream|Iterable|AsyncIterable|Function}
+  * Returns: {Iterable|AsyncIterable}
+* `...transforms` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable}
+* `destination` {Stream|Function}
+  * `source` {AsyncIterable}
+  * Returns: {AsyncIterable|Promise}
 * `callback` {Function} Called when the pipeline is fully done.
   * `err` {Error}
+  * `val` Resolved value of `Promise` returned by `destination`.
+* Returns: {Stream}
 
-A module method to pipe between streams forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
+A module method to pipe between streams and generators forwarding errors and properly cleaning up and provide a callback when the pipeline is complete.
 
 ```js
 const { pipeline } = require('stream');
@@ -1251,6 +1264,28 @@ async function run() {
     fs.createReadStream('archive.tar'),
     zlib.createGzip(),
     fs.createWriteStream('archive.tar.gz')
+  );
+  console.log('Pipeline succeeded.');
+}
+
+run().catch(console.error);
+```
+
+The `pipeline` API also supports async generators:
+
+```js
+const pipeline = util.promisify(stream.pipeline);
+const fs = require('fs').promises;
+
+async function run() {
+  await pipeline(
+    fs.createReadStream('lowercase.txt'),
+    async function* (source) {
+      for await (const chunk of source) {
+        yield String(chunk).toUpperCase();
+      }
+    },
+    fs.createWriteStream('uppercase.txt')
   );
   console.log('Pipeline succeeded.');
 }
@@ -1949,7 +1984,7 @@ The `transform._transform()` method is prefixed with an underscore because it is
 
 The `stream.PassThrough` class is a trivial implementation of a [`Transform`][] stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
 
-## Dodatkowe Notatki<!--type=misc-->### Streams Compatibility with Async Generators and Async Iterators
+## Additional Notes<!--type=misc-->### Streams Compatibility with Async Generators and Async Iterators
 
 With the support of async generators and iterators in JavaScript, async generators are effectively a first-class language-level stream construct at this point.
 
@@ -2052,8 +2087,7 @@ const pipeline = util.promisify(stream.pipeline);
 const writable = fs.createWriteStream('./file');
 
 (async function() {
-  const readable = Readable.from(iterable);
-  await pipeline(readable, writable);
+  await pipeline(iterable, writable);
 })();
 ```<!--type=misc-->### Compatibility with Older Node.js Versions<!--type=misc-->Prior to Node.js 0.10, the `Readable` stream interface was simpler, but also less powerful and less useful.
 
