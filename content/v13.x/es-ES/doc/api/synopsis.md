@@ -1,6 +1,6 @@
-# Usos & Ejemplos
+# Usage & Example
 
-## Uso
+## Usage
 
 <!--introduced_in=v0.10.0-->
 <!--type=misc-->
@@ -9,7 +9,7 @@
 
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for more information.
 
-## Ejemplo
+## Example
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
 Commands in this document start with `$` or `>` to replicate how they would appear in a user's terminal. Do not include the `$` and `>` characters. They are there to show the start of each command.
@@ -20,28 +20,28 @@ First, make sure to have downloaded and installed Node.js. See [this guide](http
 
 Now, create an empty project folder called `projects`, then navigate into it.
 
-Linux y Mac:
+Linux and Mac:
 
 ```console
-$ mkdir ~/projects 
+$ mkdir ~/projects
 $ cd ~/projects
 ```
 
 Windows CMD:
 
 ```console
-> mkdir %USERPROFILE%\projects 
+> mkdir %USERPROFILE%\projects
 > cd %USERPROFILE%\projects
 ```
 
 Windows PowerShell:
 
 ```console
-> mkdir $env:USERPROFILE\projects 
+> mkdir $env:USERPROFILE\projects
 > cd $env:USERPROFILE\projects
 ```
 
-A continuación, cree un nuevo archivo en la carpeta `projects` y llamela `hola-mundo.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
 Open `hello-world.js` in any preferred text editor and paste in the following content:
 
@@ -65,7 +65,7 @@ server.listen(port, hostname, () => {
 Save the file, go back to the terminal window, and enter the following command:
 
 ```console
-$ node hola-mundo.js
+$ node hello-world.js
 ```
 
 Output like this should appear in the terminal:
@@ -74,6 +74,6 @@ Output like this should appear in the terminal:
 Server running at http://127.0.0.1:3000/
 ```
 
-Ahora, abra cualquier navegador web y visite `http://127.0.0.1:3000`.
+Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, World!`, that indicates the server is working.
