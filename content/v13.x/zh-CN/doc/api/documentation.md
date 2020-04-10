@@ -19,15 +19,15 @@ Throughout the documentation are indications of a section's stability. Some APIs
 
 The stability indices are as follows:
 
-> 稳定性：0 - 已弃用。 The feature may emit warnings. Backward compatibility is not guaranteed.
+> Stability: 0 - Deprecated. The feature may emit warnings. Backward compatibility is not guaranteed.
 
 <!-- separator -->
 
-> 稳定性：1 - 实验中. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
+> Stability: 1 - Experimental. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
-> 稳定性：2 - 稳定. Compatibility with the npm ecosystem is a high priority.
+> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Use caution when making use of Experimental features, particularly within modules. End users may not be aware that experimental features are being used. Bugs or behavior changes may surprise end users when Experimental API modifications occur. To avoid surprises, use of an Experimental feature may need a command-line flag. Experimental features may also emit a [warning](process.html#process_event_warning).
 
