@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-Pojedyncza instancja Node.js tworzy pojedynczy wątek. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -49,7 +49,7 @@ Worker 5644 started
 
 On Windows, it is not yet possible to set up a named pipe server in a worker.
 
-## Jak to działa
+## How It Works
 
 <!--type=misc-->
 
@@ -151,7 +151,7 @@ It is not emitted in the worker.
 added: v0.7.0
 -->
 
-* `wiadomość` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Similar to the `'message'` event of `cluster`, but specific to this worker.
@@ -304,7 +304,7 @@ worker.kill();
 added: v0.8.0
 -->
 
-* {liczba}
+* {number}
 
 Each new worker is given its own unique id, this id is stored in the `id`.
 
@@ -393,7 +393,7 @@ changes:
     description: The `callback` parameter is supported now.
 -->
 
-* `wiadomość` {Object}
+* `message` {Object}
 * `sendHandle` {Handle}
 * `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
@@ -523,7 +523,7 @@ changes:
 -->
 
 * `worker` {cluster.Worker}
-* `wiadomość` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Emitted when the cluster master receives a message from any worker.
