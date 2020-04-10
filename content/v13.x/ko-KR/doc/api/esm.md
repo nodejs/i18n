@@ -1,4 +1,4 @@
-# ECMAScript 모듈
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
@@ -306,6 +306,46 @@ If writing any exports value that mixes up these two forms, an error will be thr
     "require": "./main.cjs"
   }
 }
+```
+
+#### Self-referencing a package using its name
+
+Within a package, the values defined in the package’s `package.json` `"exports"` field can be referenced via the package’s name. For example, assuming the `package.json` is:
+
+```json
+// package.json
+{
+  "name": "a-package",
+  "exports": {
+    ".": "./main.mjs",
+    "./foo": "./foo.js"
+  }
+}
+```
+
+Then any module _in that package_ can reference an export in the package itself:
+
+```js
+// ./a-module.mjs
+import { something } from 'a-package'; // Imports "something" from ./main.mjs.
+```
+
+Self-referencing is available only if `package.json` has `exports`, and will allow importing only what that `exports` (in the `package.json`) allows. So the code below, given the package above, will generate a runtime error:
+
+```js
+// ./another-module.mjs
+
+// Imports "another" from ./m.mjs. Fails because
+// the "package.json" "exports" field
+// does not provide an export named "./m.mjs".
+import { another } from 'a-package/m.mjs';
+```
+
+Self-referencing is also available when using `require`, both in an ES module, and in a CommonJS one. For example, this code will also work:
+
+```js
+// ./a-module.js
+const { something } = require('a-package/foo'); // Loads from ./foo.js.
 ```
 
 ### Dual CommonJS/ES Module Packages
@@ -1046,6 +1086,13 @@ In the following algorithms, all subroutine errors are propagated as errors of t
 
 _defaultEnv_ is the conditional environment name priority array, `["node", "import"]`.
 
+The resolver can throw the following errors:
+* _Invalid Module Specifier_: Module specifier is an invalid URL, package name or package subpath specifier.
+* _Invalid Package Configuration_: package.json configuration is invalid or contains an invalid configuration.
+* _Invalid Package Target_: Package exports define a target module within the package that is an invalid type or string target.
+* _Package Path Not Exported_: Package exports do not define or permit a target subpath in the package for the given module.
+* _Module Not Found_: The package or module requested does not exist.
+
 <details>
 <summary>Resolver algorithm specification</summary>
 
@@ -1055,14 +1102,14 @@ _defaultEnv_ is the conditional environment name priority array, `["node", "impo
 > 2. If _specifier_ is a valid URL, then 
 >     1. Set _resolvedURL_ to the result of parsing and reserializing _specifier_ as a URL.
 > 3. Otherwise, if _specifier_ starts with _"/"_, then 
->     1. Throw an _Invalid Specifier_ error.
+>     1. Throw an _Invalid Module Specifier_ error.
 > 4. Otherwise, if _specifier_ starts with _"./"_ or _"../"_, then 
 >     1. Set _resolvedURL_ to the URL resolution of _specifier_ relative to _parentURL_.
 > 5. Otherwise, 
 >     1. Note: _specifier_ is now a bare specifier.
 >     2. Set _resolvedURL_ the result of **PACKAGE_RESOLVE**(_specifier_, _parentURL_).
 > 6. If _resolvedURL_ contains any percent encodings of _"/"_ or _"\\"_ (_"%2f"_ and _"%5C"_ respectively), then 
->     1. Throw an _Invalid Specifier_ error.
+>     1. Throw an _Invalid Module Specifier_ error.
 > 7. If _resolvedURL_ does not end with a trailing _"/"_ and the file at _resolvedURL_ does not exist, then 
 >     1. Throw a _Module Not Found_ error.
 > 8. Set _resolvedURL_ to the real path of _resolvedURL_.
@@ -1075,18 +1122,18 @@ _defaultEnv_ is the conditional environment name priority array, `["node", "impo
 > 1. Let _packageName_ be *undefined*.
 > 2. Let _packageSubpath_ be *undefined*.
 > 3. If _packageSpecifier_ is an empty string, then 
->     1. Throw an _Invalid Specifier_ error.
+>     1. Throw an _Invalid Module Specifier_ error.
 > 4. Otherwise, 
 >     1. If _packageSpecifier_ does not contain a _"/"_ separator, then 
->         1. Throw an _Invalid Specifier_ error.
+>         1. Throw an _Invalid Module Specifier_ error.
 >     2. Set _packageName_ to the substring of _packageSpecifier_ until the second _"/"_ separator or the end of the string.
 > 5. If _packageName_ starts with _"."_ or contains _"\\"_ or _"%"_, then 
->     1. Throw an _Invalid Specifier_ error.
+>     1. Throw an _Invalid Module Specifier_ error.
 > 6. Let _packageSubpath_ be _undefined_.
 > 7. If the length of _packageSpecifier_ is greater than the length of _packageName_, then 
 >     1. Set _packageSubpath_ to _"."_ concatenated with the substring of _packageSpecifier_ from the position at the length of _packageName_.
 > 8. If _packageSubpath_ contains any _"."_ or _".."_ segments or percent encoded strings for _"/"_ or _"\\"_, then 
->     1. Throw an _Invalid Specifier_ error.
+>     1. Throw an _Invalid Module Specifier_ error.
 > 9. Set _selfUrl_ to the result of **SELF_REFERENCE_RESOLVE**(_packageName_, _packageSubpath_, _parentURL_).
 > 10. If _selfUrl_ isn't empty, return _selfUrl_.
 > 11. If _packageSubpath_ is _undefined_ and _packageName_ is a Node.js builtin module, then 
@@ -1136,12 +1183,13 @@ _defaultEnv_ is the conditional environment name priority array, `["node", "impo
 > 1. If _pjson_ is **null**, then 
 >     1. Throw a _Module Not Found_ error.
 > 2. If _pjson.exports_ is not **null** or **undefined**, then 
->     1. If _exports_ is an Object with both a key starting with _"."_ and a key not starting with _"."_, throw an "Invalid Package Configuration" error.
+>     1. If _exports_ is an Object with both a key starting with _"."_ and a key not starting with _"."_, throw an _Invalid Package Configuration_ error.
 >     2. If _pjson.exports_ is a String or Array, or an Object containing no keys starting with _"."_, then 
 >         1. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _pjson.exports_, _""_).
 >     3. If _pjson.exports_ is an Object containing a _"."_ property, then 
 >         1. Let _mainExport_ be the _"."_ property in _pjson.exports_.
 >         2. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _mainExport_, _""_).
+>     4. Throw a _Package Path Not Exported_ error.
 > 3. If _pjson.main_ is a String, then 
 >     1. Let _resolvedMain_ be the URL resolution of _packageURL_, "/", and _pjson.main_.
 >     2. If the file at _resolvedMain_ exists, then 
@@ -1152,7 +1200,7 @@ _defaultEnv_ is the conditional environment name priority array, `["node", "impo
 > 6. Return _legacyMainURL_.
 
 **PACKAGE_EXPORTS_RESOLVE**(_packageURL_, _packagePath_, _exports_)
-> 1. If _exports_ is an Object with both a key starting with _"."_ and a key not starting with _"."_, throw an "Invalid Package Configuration" error.
+> 1. If _exports_ is an Object with both a key starting with _"."_ and a key not starting with _"."_, throw an _Invalid Package Configuration_ error.
 > 2. If _exports_ is an Object and all keys of _exports_ start with _"."_, then 
 >     1. Set _packagePath_ to _"./"_ concatenated with _packagePath_.
 >     2. If _packagePath_ is a key of _exports_, then 
@@ -1164,34 +1212,11 @@ _defaultEnv_ is the conditional environment name priority array, `["node", "impo
 >             1. Let _target_ be the value of _exports\[directory\]_.
 >             2. Let _subpath_ be the substring of _target_ starting at the index of the length of _directory_.
 >             3. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _target_, _subpath_, _defaultEnv_).
-> 3. Throw a _Module Not Found_ error.
+> 3. Throw a _Package Path Not Exported_ error.
 
 **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _target_, _subpath_, _env_)
 
-> 1. If _target_ is a String, then 
->     1. If _target_ does not start with _"./"_, throw a _Module Not Found_ error.
->     2. If _subpath_ has non-zero length and _target_ does not end with _"/"_, throw a _Module Not Found_ error.
->     3. If _target_ or _subpath_ contain any _"node_modules"_ segments including _"node_modules"_ percent-encoding, throw a _Module Not Found_ error.
->     4. Let _resolvedTarget_ be the URL resolution of the concatenation of _packageURL_ and _target_.
->     5. If _resolvedTarget_ is contained in _packageURL_, then 
->         1. Let _resolved_ be the URL resolution of the concatenation of _subpath_ and _resolvedTarget_.
->         2. If _resolved_ is contained in _resolvedTarget_, then 
->             1. Return _resolved_.
-> 2. Otherwise, if _target_ is a non-null Object, then 
->     1. If _exports_ contains any index property keys, as defined in ECMA-262 [6.1.7 Array Index](https://tc39.es/ecma262/#integer-index), throw an _Invalid Package Configuration_ error.
->     2. For each property _p_ of _target_, in object insertion order as, 
->         1. If _env_ contains an entry for _p_, then 
->             1. Let _targetValue_ be the value of the _p_ property in _target_.
->             2. Let _resolved_ be the result of **PACKAGE_EXPORTS_TARGET_RESOLVE** (_packageURL_, _targetValue_, _subpath_, _env_).
->             3. Assert: _resolved_ is a String.
->             4. Return _resolved_.
-> 3. Otherwise, if _target_ is an Array, then 
->     1. For each item _targetValue_ in _target_, do 
->         1. If _targetValue_ is an Array, continue the loop.
->         2. Let _resolved_ be the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _targetValue_, _subpath_, _env_), continuing the loop on abrupt completion.
->         3. Assert: _resolved_ is a String.
->         4. Return _resolved_.
-> 4. Throw a _Module Not Found_ error.
+> 1.If _target_ is a String, then 1. If _target_ does not start with _"./"_ or contains any _"node_modules"_ segments including _"node_modules"_ percent-encoding, throw an _Invalid Package Target_ error. 1. Let _resolvedTarget_ be the URL resolution of the concatenation of _packageURL_ and _target_. 1. If _resolvedTarget_ is not contained in _packageURL_, throw an _Invalid Package Target_ error. 1. If _subpath_ has non-zero length and _target_ does not end with _"/"_, throw an _Invalid Module Specifier_ error. 1. Let _resolved_ be the URL resolution of the concatenation of _subpath_ and _resolvedTarget_. 1. If _resolved_ is not contained in _resolvedTarget_, throw an _Invalid Module Specifier_ error. 1. Return _resolved_. 1. Otherwise, if _target_ is a non-null Object, then 1. If _exports_ contains any index property keys, as defined in ECMA-262 [6.1.7 Array Index](https://tc39.es/ecma262/#integer-index), throw an _Invalid Package Configuration_ error. 1. For each property _p_ of _target_, in object insertion order as, 1. If _env_ contains an entry for _p_, then 1. Let _targetValue_ be the value of the _p_ property in _target_. 1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**( _packageURL_, _targetValue_, _subpath_, _env_), continuing the loop on any _Package Path Not Exported_ error. 1. Throw a _Package Path Not Exported_ error. 1. Otherwise, if _target_ is an Array, then 1. If _target.length is zero, throw an _Invalid Package Target_ error. 1. For each item _targetValue_ in _target_, do 1. If _targetValue_ is an Array, continue the loop. 1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_, _targetValue_, _subpath_, _env_), continuing the loop on any _Package Path Not Exported_ or _Invalid Package Target_ error. 1. Throw the last fallback resolution error. 1. Otherwise throw an _Invalid Package Target_ error.
 
 **ESM_FORMAT**(_url_)
 
