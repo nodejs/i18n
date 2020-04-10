@@ -1,8 +1,8 @@
-# عنوان الموارد الموحد(URL)
+# URL
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
