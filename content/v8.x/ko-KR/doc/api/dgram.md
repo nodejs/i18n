@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!-- name=dgram -->
 
@@ -164,7 +164,7 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `옵션` {Object} Required. Supports the following properties: 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
@@ -493,7 +493,7 @@ changes:
                  supported now.
 -->
 
-* `옵션` {Object} Available options are: 
+* `options` {Object} Available options are: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
   * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
