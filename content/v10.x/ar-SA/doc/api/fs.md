@@ -1,22 +1,22 @@
-# نظام الملفات
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
-إن وحدة `fs` البرمجية توفر واجهات برمجية للتفاعل مع نظام الملفات بطريقة مماثلة و مصاغة بناءً على دوال واجهات نظام التشغيل المحمولة (POSIX).
+The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
 
-لإستخدام هذه الوحدة البرمحية:
+To use this module:
 
 ```js
 const fs = require('fs');
 ```
 
-كافة عمليات النظام لديها أشكال متزامنة و غير متزامنة.
+All file system operations have synchronous and asynchronous forms.
 
-الشكل المتزامن دائماً يأخذ كمعامل أخير دالة يتم ندائها عند إكتمال التنفيذ. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 ```js
 const fs = require('fs');
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
