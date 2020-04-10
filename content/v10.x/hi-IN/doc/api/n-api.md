@@ -1544,7 +1544,7 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1566,7 +1566,7 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1588,7 +1588,7 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -1904,7 +1904,7 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -1928,7 +1928,7 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -1952,7 +1952,7 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 added: v10.7.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -3943,7 +3943,7 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
 
 ## Asynchronous Thread-safe Function Calls
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 JavaScript functions can normally only be called from a native addon's main thread. If an addon creates additional threads, then N-API functions that require a `napi_env`, `napi_value`, or `napi_ref` must not be called from those threads.
 
