@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
@@ -124,7 +124,7 @@ changes:
 -->
 
 - `hostname` {string}
-- `옵션` {integer | Object} 
+- `options` {integer | Object} 
   - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
   - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
   - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
@@ -242,7 +242,7 @@ changes:
 -->
 
 - `hostname` {string} Hostname to resolve.
-- `옵션` {Object} 
+- `options` {Object} 
   - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '1.2.3.4', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
 - `callback` {Function} 
   - `err` {Error}
@@ -263,7 +263,7 @@ changes:
 -->
 
 - `hostname` {string} Hostname to resolve.
-- `옵션` {Object} 
+- `options` {Object} 
   - `ttl` {boolean} Retrieve the Time-To-Live value (TTL) of each record. When `true`, the callback receives an array of `{ address: '0:1:2:3:4:5:6:7', ttl: 60 }` objects rather than an array of strings, with the TTL expressed in seconds.
 - `callback` {Function} 
   - `err` {Error}
