@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. É possível acessá-lo utilizando:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -21,7 +21,7 @@ added: v8.2.0
 
 Takes an `async` function (or a function that returns a Promise) and returns a function following the error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the Promise resolved), and the second argument will be the resolved value.
 
-Por exemplo:
+For example:
 
 ```js
 const util = require('util');
@@ -40,7 +40,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-hello World
+hello world
 ```
 
 *Note*:
@@ -73,7 +73,7 @@ added: v0.11.3
 
 The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
-Por exemplo:
+For example:
 
 ```js
 const util = require('util');
@@ -180,7 +180,7 @@ added: v8.12.0
 -->
 
 * `err` {number}
-* Retorna: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -278,11 +278,11 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or Object.
-* `opções` {Object} 
+* `options` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Padrão:** `true`.
+  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Default:** `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Default:** `100`.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
@@ -406,11 +406,11 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Retorna: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-Por exemplo:
+For example:
 
 ```js
 const util = require('util');
@@ -580,7 +580,7 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
 * `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Retorna: {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -620,7 +620,7 @@ const uint8array = encoder.encode('this is some data');
 ### textEncoder.encode([input])
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Retorna: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## APIs Descontinuadas
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -654,7 +654,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -667,7 +667,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -680,7 +680,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -706,7 +706,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -754,7 +754,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -778,7 +778,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -815,7 +815,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -842,7 +842,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -866,7 +866,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -890,7 +890,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -916,7 +916,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -942,7 +942,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -978,7 +978,7 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1002,7 +1002,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1028,7 +1028,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1052,7 +1052,7 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1096,7 +1096,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
@@ -1107,6 +1107,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
