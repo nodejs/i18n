@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -343,7 +343,7 @@ deprecated: v0.9.7
 
 > Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
-* {liczba}
+* {number}
 
 Returns the current number of concurrent connections on the server.
 
@@ -641,7 +641,7 @@ Returns the string representation of the local IP address.
 added: v0.11.4
 -->
 
-* {liczba}
+* {number}
 
 Returns the numeric representation of the local port.
 
@@ -671,7 +671,7 @@ Returns the string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 added: v0.11.4
 -->
 
-* {liczba}
+* {number}
 
 Returns the numeric representation of the remote port. For example, `443`.
 
@@ -1031,7 +1031,7 @@ added: v10.6.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1'`.
 
-## Przestarzałe API
+## Deprecated APIs
 
 ### Class: CryptoStream
 
