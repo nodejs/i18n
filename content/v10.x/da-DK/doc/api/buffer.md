@@ -2,44 +2,40 @@
 
 <!--introduced_in=v0.1.90-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
-Før [`TypedArray`] blev tilføjet, kunne man ikke læse eller manipulere streams af binær data i JavaScript. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
-Nu hvor [`TypedArray`] er blevet tilføjet til JavaScript, implementerer `Buffer` klassen [`Uint8Array`] API'et, på en måde der er optimeret og tilpasset Node.js.
+With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
 
-Instantieringer af `Buffer` klassen minder on arrays af integers, men er rå hukommelses-allokationer af fast størrelse udenfor V8 heap'en. The size of the `Buffer` is established when it is created and cannot be changed.
+Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be changed.
 
 The `Buffer` class is within the global scope, making it unlikely that one would need to ever use `require('buffer').Buffer`.
 
 ```js
-// Opretter en Buffer med en længde på 10, hvor alle 
-// elementer har værdien nul.
+// Creates a zero-filled Buffer of length 10.
 const buf1 = Buffer.alloc(10);
 
-// Opretter en Buffer med en længde på 10, hvor alle 
-// elementer har værdien 0x1.
+// Creates a Buffer of length 10, filled with 0x1.
 const buf2 = Buffer.alloc(10, 1);
 
-// Opretter en uinitialiseret Buffer med en længde på 10.
-// Dette er hurtigere end at kalde Buffer.alloc(), men den 
-// Buffer du får kan indeholde gammelt data, som du bliver 
-// nød til at overskrive med enten fill() eller write().
+// Creates an uninitialized buffer of length 10.
+// This is faster than calling Buffer.alloc() but the returned
+// Buffer instance might contain old data that needs to be
+// overwritten using either fill() or write().
 const buf3 = Buffer.allocUnsafe(10);
 
-// Opretter en Buffer, der indeholder [0x1, 0x2, 0x3].
-const buf4 = Buffer.from ([1, 2, 3]); 
+// Creates a Buffer containing [0x1, 0x2, 0x3].
+const buf4 = Buffer.from([1, 2, 3]);
 
-// Opretter en Buffer, der indeholder følgende UTF-8 bytes:
-// [0x74, 0xc3, 0xa9, 0x73, 0x74].
+// Creates a Buffer containing UTF-8 bytes [0x74, 0xc3, 0xa9, 0x73, 0x74].
 const buf5 = Buffer.from('tést');
 
-// Opretter en buffer, der indeholder følgende Latin-1 bytes: 
-// [0x74, 0xe9, 0x73, 0x74].
+// Creates a Buffer containing Latin-1 bytes [0x74, 0xe9, 0x73, 0x74].
 const buf6 = Buffer.from('tést', 'latin1');
 ```
 
-## `Buffer.from()`, `Buffer.alloc()` og `Buffer.allocUnsafe()`
+## `Buffer.from()`, `Buffer.alloc()`, and `Buffer.allocUnsafe()`
 
 In versions of Node.js prior to 6.0.0, `Buffer` instances were created using the `Buffer` constructor function, which allocates the returned `Buffer` differently based on what arguments are provided:
 
