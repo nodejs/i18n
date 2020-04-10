@@ -4,11 +4,11 @@
 
 <!--lint disable maximum-line-length-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Het kan worden bereikt met behulp van:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -45,7 +45,7 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
@@ -91,7 +91,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Retourneert: {Object|string}
+* Returns: {Object|string}
 
 Returns the bound `address`, the address `family` name, and `port` of the server as reported by the operating system if listening on an IP socket (useful to find which port was assigned when getting an OS-assigned address): `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`.
 
@@ -120,7 +120,7 @@ added: v0.1.90
 -->
 
 * `callback` {Function} Called when the server is closed
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -131,7 +131,7 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`server.getConnections()`][].
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 The number of concurrent connections on the server.
 
@@ -144,7 +144,7 @@ added: v0.9.7
 -->
 
 * `callback` {Function}
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
 
@@ -192,7 +192,7 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function} Common parameter of [`server.listen()`][] functions
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a UNIX domain socket, or a Windows named pipe.
 
@@ -206,16 +206,16 @@ Listening on a file descriptor is not supported on Windows.
 added: v0.11.14
 -->
 
-* `opties` {Object} Required. Supports the following properties: 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {number}
   * `host` {string}
   * `path` {string} Will be ignored if `port` is specified. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
   * `backlog` {number} Common parameter of [`server.listen()`][] functions.
   * `exclusive` {boolean} **Default:** `false`
-  * `readableAll` {boolean} For IPC servers makes the pipe readable for all users. **Standaard:** `false`
-  * `writableAll` {boolean} For IPC servers makes the pipe writable for all users. **Standaard:** `false`
+  * `readableAll` {boolean} For IPC servers makes the pipe readable for all users. **Default:** `false`
+  * `writableAll` {boolean} For IPC servers makes the pipe writable for all users. **Default:** `false`
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 If `port` is specified, it behaves the same as <a href="#net_server_listen_port_host_backlog_callback">
 <code>server.listen([port[, host[, backlog]]][, callback])</code></a>. Otherwise, if `path` is specified, it behaves the same as [`server.listen(path[, backlog][, callback])`][`server.listen(path)`]. If none of them is specified, an error will be thrown.
@@ -241,7 +241,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -255,7 +255,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function} Common parameter of [`server.listen()`][] functions.
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -289,7 +289,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
@@ -299,7 +299,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
@@ -321,12 +321,12 @@ It can also be created by Node.js and passed to the user when a connection is re
 added: v0.3.4
 -->
 
-* `opties` {Object} Available options are: 
+* `options` {Object} Available options are: 
   * `fd` {number} If specified, wrap around an existing socket with the given file descriptor, otherwise a new socket will be created.
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Standaard:** `false`.
-  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Standaard:** `false`.
-  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Standaard:** `false`.
-* Retourneert: {net.Socket}
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
+  * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+  * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
+* Returns: {net.Socket}
 
 Creates a new socket object.
 
@@ -436,7 +436,7 @@ See also: [`socket.setTimeout()`][].
 added: v0.1.90
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 Returns the bound `address`, the address `family` name and `port` of the socket as reported by the operating system: `{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
@@ -557,7 +557,7 @@ added: v0.1.90
 -->
 
 * `exception` {Object}
-* Retourneert: {net.Socket}
+* Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -574,7 +574,7 @@ added: v0.1.90
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `encoding` {string} Only used when data is `string`. **Standaard:** `'utf8'`.
+* `encoding` {string} Only used when data is `string`. **Default:** `'utf8'`.
 * `callback` {Function} Optional callback for when the socket is finished.
 * Returns: {net.Socket} The socket itself.
 
@@ -735,7 +735,7 @@ added: v0.1.90
 * `data` {string|Buffer|Uint8Array}
 * `encoding` {string} Only used when data is `string`. **Default:** `utf8`.
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Sends data on the socket. The second parameter specifies the encoding in the case of a string — it defaults to UTF8 encoding.
 
@@ -878,11 +878,11 @@ This function creates a new [`net.Socket`][] with all options set to default, im
 added: v0.5.0
 -->
 
-* `opties` {Object} 
-  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Standaard:** `false`.
-  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Standaard:** `false`.
+* `options` {Object} 
+  * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
+  * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Retourneert: {net.Server}
+* Returns: {net.Server}
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
@@ -940,7 +940,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Retourneert: {integer}
+* Returns: {integer}
 
 Tests if input is an IP address. Returns `0` for invalid strings, returns `4` for IP version 4 addresses, and returns `6` for IP version 6 addresses.
 
@@ -951,7 +951,7 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 4 IP address, otherwise returns `false`.
 
@@ -962,6 +962,6 @@ added: v0.3.0
 -->
 
 * `input` {string}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if input is a version 6 IP address, otherwise returns `false`.
