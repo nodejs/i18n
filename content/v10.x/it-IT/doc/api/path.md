@@ -1,10 +1,10 @@
-# Percorso
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stabile
+> Stability: 2 - Stable
 
-Il modulo `path` fornisce utility per lavorare con percorsi di file e directory. Ci si può accedere utilizzando:
+The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
 ```js
 const path = require('path');
@@ -16,39 +16,39 @@ The default operation of the `path` module varies based on the operating system 
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
-Su POSIX:
+On POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Restituisce: 'C:\\temp\\myfile.html'
+// Returns: 'C:\\temp\\myfile.html'
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Restituisce: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
 To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
 
-Su POSIX e Windows:
+On POSIX and Windows:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Restituisce: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
 To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
 
-Su POSIX e Windows:
+On POSIX and Windows:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// Restituisce: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
-On Windows Node.js follows the concept of per-drive working directory. Questo comportamento può essere osservato quando si utilizza un percorso di unità senza backslash. For example, `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
+On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example, `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ## path.basename(path[, ext])
 
@@ -62,17 +62,17 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} Un'estensione di file opzionale
-* Restituisce: {string}
+* `ext` {string} An optional file extension
+* Returns: {string}
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
-// Restituisce: 'quux.html'
+// Returns: 'quux.html'
 
 path.basename('/foo/bar/baz/asdf/quux.html', '.html');
-// Restituisce: 'quux'
+// Returns: 'quux'
 ```
 
 A [`TypeError`][] is thrown if `path` is not a string or if `ext` is given and is not a string.
@@ -85,29 +85,29 @@ added: v0.9.3
 
 * {string}
 
-Fornisce il delimitarore del percorso specifico della piattaforma:
+Provides the platform-specific path delimiter:
 
-* `;` per Windows
-* `:` per POSIX
+* `;` for Windows
+* `:` for POSIX
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 console.log(process.env.PATH);
-// Stampa: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+// Prints: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
 
 process.env.PATH.split(path.delimiter);
-// Restituisce: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
+// Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 console.log(process.env.PATH);
-// Stampa: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
+// Prints: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
 
 process.env.PATH.split(path.delimiter);
-// Restituisce ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
+// Returns ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
 ```
 
 ## path.dirname(path)
@@ -122,16 +122,16 @@ changes:
 -->
 
 * `path` {string}
-* Restituisce: {string}
+* Returns: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
-// Restituisce: '/foo/bar/baz/asdf'
+// Returns: '/foo/bar/baz/asdf'
 ```
 
-Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
+A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.extname(path)
 
@@ -145,28 +145,28 @@ changes:
 -->
 
 * `path` {string}
-* Restituisce: {string}
+* Returns: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
 ```js
 path.extname('index.html');
-// Restituisce: '.html'
+// Returns: '.html'
 
 path.extname('index.coffee.md');
-// Restituisce: '.md'
+// Returns: '.md'
 
 path.extname('index.');
-// Restituisce: '.'
+// Returns: '.'
 
 path.extname('index');
-// Restituisce: ''
+// Returns: ''
 
 path.extname('.index');
-// Restituisce: ''
+// Returns: ''
 ```
 
-Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
+A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.format(pathObject)
 
@@ -180,55 +180,55 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Restituisce: {string}
+* Returns: {string}
 
-Il metodo `path.format ()` restituisce una stringa di percorso da un object. This is the opposite of [`path.parse()`][].
+The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
 When providing properties to the `pathObject` remember that there are combinations where one property has priority over another:
 
-* `pathObject.root` viene ignorato se `pathObject.dir` viene fornito
-* `pathObject.ext` e `pathObject.name` vengono ignorati se `pathObject.base` esiste
+* `pathObject.root` is ignored if `pathObject.dir` is provided
+* `pathObject.ext` and `pathObject.name` are ignored if `pathObject.base` exists
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
-// se `dir`, `root` and `base`vengono forniti,
+// If `dir`, `root` and `base` are provided,
 // `${dir}${path.sep}${base}`
-// verrà restituito. `root` viene ignorato.
+// will be returned. `root` is ignored.
 path.format({
   root: '/ignored',
   dir: '/home/user/dir',
   base: 'file.txt'
 });
-// Restituisce: '/home/user/dir/file.txt'
+// Returns: '/home/user/dir/file.txt'
 
-// `root` sarà usato se`dir` non è specificato.
-// Se viene fornito solo `root` o` dir` è uguale a `root`, il 
-// separatore della piattaforma non sarà incluso. `ext` verrà ignorato.
+// `root` will be used if `dir` is not specified.
+// If only `root` is provided or `dir` is equal to `root` then the
+// platform separator will not be included. `ext` will be ignored.
 path.format({
   root: '/',
   base: 'file.txt',
   ext: 'ignored'
 });
-// Restituisce: '/file.txt'
+// Returns: '/file.txt'
 
-// `name` + `ext` verrà usato se `base` non è specificato.
+// `name` + `ext` will be used if `base` is not specified.
 path.format({
   root: '/',
   name: 'file',
   ext: '.txt'
 });
-// Restituisce: '/file.txt'
+// Returns: '/file.txt'
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.format({
   dir: 'C:\\path\\dir',
   base: 'file.txt'
 });
-// Restituisce: 'C:\\path\\dir\\file.txt'
+// Returns: 'C:\\path\\dir\\file.txt'
 ```
 
 ## path.isAbsolute(path)
@@ -238,13 +238,13 @@ added: v0.11.2
 -->
 
 * `path` {string}
-* Restituisce: {boolean}
+* Returns: {boolean}
 
-Il metodo `path.isAbsolute ()` determina se il `path` è un absolute path.
+The `path.isAbsolute()` method determines if `path` is an absolute path.
 
-Se il `path` dato è una stringa di lunghezza zero, verrà restituito `false`.
+If the given `path` is a zero-length string, `false` will be returned.
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 path.isAbsolute('/foo/bar'); // true
@@ -253,7 +253,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.isAbsolute('//server');    // true
@@ -265,7 +265,7 @@ path.isAbsolute('bar/baz');     // false
 path.isAbsolute('.');           // false
 ```
 
-Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
+A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.join([...paths])
 
@@ -273,22 +273,22 @@ Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
 added: v0.1.16
 -->
 
-* `...paths` {string} Una sequenza di segmenti di percorso
-* Restituisce: {string}
+* `...paths` {string} A sequence of path segments
+* Returns: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform-specific separator as a delimiter, then normalizes the resulting path.
 
-I segmenti di lunghezza zero `path` vengono ignorati. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
+Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
-// Restituisce: '/foo/bar/baz/asdf'
+// Returns: '/foo/bar/baz/asdf'
 
 path.join('foo', {}, 'bar');
-// lancia 'TypeError: Path deve essere una stringa. Ricevuto {}'
+// throws 'TypeError: Path must be a string. Received {}'
 ```
 
-Un [`TypeError`] [] viene lanciato se uno dei segmenti del percorso non è una stringa.
+A [`TypeError`][] is thrown if any of the path segments is not a string.
 
 ## path.normalize(path)
 
@@ -297,37 +297,36 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* Restituisce: {string}
+* Returns: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). I separatori finali vengono conservati.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform-specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 path.normalize('/foo/bar//baz/asdf/quux/..');
-// Restituisce: '/foo/bar/baz/asdf'
+// Returns: '/foo/bar/baz/asdf'
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
-// Restituisce: 'C:\\temp\\foo\\'
+// Returns: 'C:\\temp\\foo\\'
 ```
 
 Since Windows recognizes multiple path separators, both separators will be replaced by instances of the Windows preferred separator (``):
 
 ```js
 path.win32.normalize('C:////temp\\\\/\\/\\/foo/bar');
-// Restituisce: 'C:\\temp\\foo\\bar'
+// Returns: 'C:\\temp\\foo\\bar'
 ```
 
-Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
+A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.parse(path)
 
@@ -336,11 +335,11 @@ added: v0.11.15
 -->
 
 * `path` {string}
-* Restituisce: {Object}
+* Returns: {Object}
 
 The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
 
-L'object restituito avrà le seguenti proprietà:
+The returned object will have the following properties:
 
 * `dir` {string}
 * `root` {string}
@@ -348,11 +347,11 @@ L'object restituito avrà le seguenti proprietà:
 * `name` {string}
 * `ext` {string}
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 path.parse('/home/user/dir/file.txt');
-// Restituisce:
+// Returns:
 // { root: '/',
 //   dir: '/home/user/dir',
 //   base: 'file.txt',
@@ -367,14 +366,14 @@ path.parse('/home/user/dir/file.txt');
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(tutti gli spazi nella linea "" devono essere ignorati - sono esclusivamente per la formattazione)
+(all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
-// Restituisce:
+// Returns:
 // { root: 'C:\\',
 //   dir: 'C:\\path\\dir',
 //   base: 'file.txt',
@@ -389,10 +388,10 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(tutti gli spazi nella linea "" devono essere ignorati - sono esclusivamente per la formattazione)
+(all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-Un [`TypeError`] [] viene lanciato se `path` non è una stringa.
+A [`TypeError`][] is thrown if `path` is not a string.
 
 ## path.posix
 
@@ -404,7 +403,7 @@ added: v0.11.15
 
 The `path.posix` property provides access to POSIX specific implementations of the `path` methods.
 
-## path.relative (da, a)
+## path.relative(from, to)
 
 <!-- YAML
 added: v0.5.0
@@ -418,27 +417,27 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Restituisce: {string}
+* Returns: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
 If a zero-length string is passed as `from` or `to`, the current working directory will be used instead of the zero-length strings.
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
-// Restituisce: '../../impl/bbb'
+// Returns: '../../impl/bbb'
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
-// Restituisce: '..\\..\\impl\\bbb'
+// Returns: '..\\..\\impl\\bbb'
 ```
 
-Un [`TypeError`][] viene lanciato se `from` o `to` non è una stringa.
+A [`TypeError`][] is thrown if either `from` or `to` is not a string.
 
 ## path.resolve([...paths])
 
@@ -446,8 +445,8 @@ Un [`TypeError`][] viene lanciato se `from` o `to` non è una stringa.
 added: v0.3.4
 -->
 
-* `...paths` {string} Una sequenza di percorsi o segmenti di percorso
-* Restituisce: {string}
+* `...paths` {string} A sequence of paths or path segments
+* Returns: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -457,23 +456,23 @@ If after processing all given `path` segments an absolute path has not yet been 
 
 The resulting path is normalized and trailing slashes are removed unless the path is resolved to the root directory.
 
-I segmenti di lunghezza zero `path` vengono ignorati.
+Zero-length `path` segments are ignored.
 
 If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
 
 ```js
 path.resolve('/foo/bar', './baz');
-// Restituisce: '/foo/bar/baz'
+// Returns: '/foo/bar/baz'
 
 path.resolve('/foo/bar', '/tmp/file/');
-// Restituisce: '/tmp/file'
+// Returns: '/tmp/file'
 
 path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif');
-// se la directory di lavoro corrente è /home/myself/node,
-// questo restituisce'/home/myself/node/wwwroot/static_files/gif/image.gif'
+// if the current working directory is /home/myself/node,
+// this returns '/home/myself/node/wwwroot/static_files/gif/image.gif'
 ```
 
-Un [`TypeError`][] viene lanciato se uno degli argomenti non è una stringa.
+A [`TypeError`][] is thrown if any of the arguments is not a string.
 
 ## path.sep
 
@@ -483,28 +482,26 @@ added: v0.7.9
 
 * {string}
 
-Fornisce il separatore del segmento del percorso specifico della piattaforma:
+Provides the platform-specific path segment separator:
 
-* `` su Windows
-* `/` su POSIX
+* `` on Windows
+* `/` on POSIX
 
-Ad esempio, su POSIX:
+For example, on POSIX:
 
 ```js
 'foo/bar/baz'.split(path.sep);
-// Restituisce: ['foo', 'bar', 'baz']
+// Returns: ['foo', 'bar', 'baz']
 ```
 
-Su Windows:
+On Windows:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
-// Restituisce: ['foo', 'bar', 'baz']
+// Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
-as path segment separators; however, the``path`methods only add backward
-slashes (`\`).
+On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.toNamespacedPath(path)
 
@@ -513,11 +510,11 @@ added: v9.0.0
 -->
 
 * `path` {string}
-* Restituisce: {string}
+* Returns: {string}
 
 On Windows systems only, returns an equivalent [namespace-prefixed path](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#namespaces) for the given `path`. If `path` is not a string, `path` will be returned without modifications.
 
-Questo metodo è efficace solo sul sistema Windows. On POSIX systems, the method is non-operational and always returns `path` without modifications.
+This method is meaningful only on Windows system. On POSIX systems, the method is non-operational and always returns `path` without modifications.
 
 ## path.win32
 
