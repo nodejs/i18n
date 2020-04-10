@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -175,7 +175,7 @@ Calling `unref()` on a port will allow the thread to exit if this is the only ac
 
 If listeners are attached or removed using `.on('message')`, the port will be `ref()`ed and `unref()`ed automatically depending on whether listeners for the event exist.
 
-## Klasa: Worker
+## Class: Worker
 <!-- YAML
 added: v10.5.0
 -->
