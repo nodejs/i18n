@@ -287,6 +287,6 @@ This would require some tooling to:
 * Enabled the V8-CI build in Jenkins to build from the `nodejs/v8` fork.
 
 <!-- Footnotes themselves at the bottom. -->
-### 備考
+### Notes
 
 <sup>1</sup>Node.js 0.12 and older are intentionally omitted from this document as their support has ended.
