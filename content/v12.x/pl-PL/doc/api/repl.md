@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
@@ -415,7 +415,7 @@ added: v0.8.9
 deprecated: v9.0.0
 -->
 
-> Stabilność: 0 - Przestarzałe.
+> Stability: 0 - Deprecated.
 
 * `keyword` {string} the potential keyword to parse and execute
 * `rest` {any} any parameters to the keyword command
