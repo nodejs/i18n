@@ -1,12 +1,12 @@
-# Инспектор
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
-Модуль `инспектора` предоставляет API для взаимодействия с инспектором V8.
+The `inspector` module provides an API for interacting with the V8 inspector.
 
-Доступ к нему можно получить с помощью:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -14,22 +14,22 @@ const inspector = require('inspector');
 
 ## inspector.open([port[, host[, wait]]])
 
-* `port` {number} Порт для прослушивания соединений инспектора. Необязательный. **По умолчанию:** что было указано в CLI.
-* `host` {string} Хост для прослушивания соединений инспектора. Необязательный. **По умолчанию:** что было указано в CLI.
-* `wait` {boolean} Блокировать, пока клиент не подключился. Необязательный. **По умолчанию:** `false`.
+* `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
+* `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
+* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
 
-Активируйте инспектор на хосте и порте. Equivalent to `node
+Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
 
 If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
 
 ### inspector.close()
 
-Выключить инспектор. Блокирует, пока нет активных соединений.
+Deactivate the inspector. Blocks until there are no active connections.
 
 ### inspector.url()
 
-Вернёт URL-адрес активного инспектора или ` undefined `, если его нет.
+Return the URL of the active inspector, or `undefined` if there is none.
 
 ## Class: inspector.Session
 
@@ -120,7 +120,7 @@ added: v8.0.0
 
 Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
-## Пример употребления
+## Example usage
 
 ### CPU Profiler
 
