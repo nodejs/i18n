@@ -8,7 +8,7 @@
 
 The `vm` module enables compiling and running code within V8 Virtual Machine contexts. **The `vm` module is not a security mechanism. Do not use it to run untrusted code**.
 
-Código JavaScript pode ser compilado e executado imediatamente ou compilado, salvo e executado mais tarde.
+JavaScript code can be compiled and run immediately or compiled, saved, and run later.
 
 A common use case is to run the code in a different V8 Context. This means invoked code has a different global object than the invoking code.
 
@@ -75,7 +75,7 @@ Creating a new `vm.Script` object compiles `code` but does not run it. The compi
 added: v10.6.0
 -->
 
-* Retorna: {Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `Script` constructor's `cachedData` option. Returns a `Buffer`. This method may be called at any time and any number of times.
 
@@ -215,12 +215,51 @@ console.log(globalVar);
 // 1000
 ```
 
+## `vm.measureMemory([options])`
+
+<!-- YAML
+added: v13.10.0
+-->
+
+> Stability: 1 - Experimental
+
+Measure the memory known to V8 and used by the current execution context or a specified context.
+
+* `options` {Object} Optional.
+  * `mode` {string} Either `'summary'` or `'detailed'`. **Default:** `'summary'`
+  * `context` {Object} Optional. A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object returned by `vm.createContext()`. If not specified, measure the memory usage of the current context where `vm.measureMemory()` is invoked.
+* Returns: {Promise} If the memory is successfully measured the promise will resolve with an object containing information about the memory usage.
+
+The format of the object that the returned Promise may resolve with is specific to the V8 engine and may change from one version of V8 to the next.
+
+The returned result is different from the statistics returned by `v8.getHeapSpaceStatistics()` in that `vm.measureMemory()` measures the memory reachable by V8 from a specific context, while `v8.getHeapSpaceStatistics()` measures the memory used by an instance of V8 engine, which can switch among multiple contexts that reference objects in the heap of one engine.
+
+```js
+const vm = require('vm');
+// Measure the memory used by the current context and return the result
+// in summary.
+vm.measureMemory({ mode: 'summary' })
+  // Is the same as vm.measureMemory()
+  .then((result) => {
+    // The current format is:
+    // { total: { jsMemoryEstimate: 2211728, jsMemoryRange: [ 0, 2211728 ] } }
+    console.log(result);
+  });
+
+const context = vm.createContext({});
+vm.measureMemory({ mode: 'detailed' }, context)
+  .then((result) => {
+    // At the moment the detailed format is the same as the summary one.
+    console.log(result);
+  });
+```
+
 ## Class: `vm.Module`
 <!-- YAML
 added: v13.0.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -329,7 +368,7 @@ Corresponds to the `[[EvaluationError]]` field of [Cyclic Module Record](https:/
 * `options` {Object}
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown. **Default:** `false`.
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -354,7 +393,7 @@ Corresponds to the [Evaluate() concrete method](https://tc39.es/ecma262/#sec-mod
 
   * `referencingModule` {vm.Module} The `Module` object `link()` is called on.
   * Returns: {vm.Module|Promise}
-* Retorna: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before evaluation, and can only be called once per module.
 
@@ -414,7 +453,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -478,7 +517,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v13.7.0
 -->
 
-* Retorna: {Buffer}
+* Returns: {Buffer}
 
 Creates a code cache that can be used with the `SourceTextModule` constructor's `cachedData` option. Returns a `Buffer`. This method may be called any number of times before the module has been evaluated.
 
@@ -498,7 +537,7 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 added: v13.0.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -573,7 +612,7 @@ added: v10.10.0
   * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object in which the said function should be compiled in.
   * `contextExtensions` {Object[]} An array containing a collection of context extensions (objects wrapping the current scope) to be applied while compiling. **Default:** `[]`.
-* Retorna: {Function}
+* Returns: {Function}
 
 Compiles the given code into the provided context (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
@@ -630,7 +669,7 @@ added: v0.11.7
 -->
 
 * `object` {Object}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `oject` object has been [contextified](#vm_what_does_it_mean_to_contextify_an_object) using [`vm.createContext()`][].
 
@@ -783,7 +822,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Por exemplo:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js
 'use strict';
