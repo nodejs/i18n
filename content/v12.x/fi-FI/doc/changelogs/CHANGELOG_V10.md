@@ -1,4 +1,4 @@
-# Node.js 10 Muutosloki
+# Node.js 10 ChangeLog
 
 <!--lint disable prohibited-strings-->
 <!--lint disable maximum-line-length-->
@@ -39,7 +39,7 @@
 </tr>
 </table>
 
-* Muut versiot
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [9.x](CHANGELOG_V9.md)
@@ -51,7 +51,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arkisto](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.15.3"></a>
 
