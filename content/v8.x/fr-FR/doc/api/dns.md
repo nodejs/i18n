@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-Le module `dns` contient des fonctions appartenant à deux catégories différentes :
+The `dns` module contains functions belonging to two different categories:
 
 1) Functions that use the underlying operating system facilities to perform name resolution, and that do not necessarily perform any network communication. This category contains only one function: [`dns.lookup()`][]. **Developers looking to perform name resolution in the same way that other applications on the same operating system behave should use [`dns.lookup()`][].**
 
@@ -127,7 +127,7 @@ changes:
 - `options` {integer | Object} 
   - `family` {integer} The record family. Must be `4` or `6`. IPv4 and IPv6 addresses are both returned by default.
   - `hints` {number} One or more [supported `getaddrinfo` flags][]. Multiple flags may be passed by bitwise `OR`ing their values.
-  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Par défaut :** `false`.
+  - `all` {boolean} When `true`, the callback returns all resolved addresses in an array. Otherwise, returns a single address. **Default:** `false`.
   - `verbatim` {boolean} When `true`, the callback receives IPv4 and IPv6 addresses in the order the DNS resolver returned them. When `false`, IPv4 addresses are placed before IPv6 addresses. **Default:** currently `false` (addresses are reordered) but this is expected to change in the not too distant future. New code should use `{ verbatim: true }`.
 - `callback` {Function} 
   - `err` {Error}
@@ -448,11 +448,11 @@ Uses the DNS protocol to resolve all records (also known as `ANY` or `*` query).
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'A'`     | `address` / `ttl`                                                                                                                               |
 | `'AAAA'`  | `address` / `ttl`                                                                                                                               |
-| `'CNAME'` | `valeur`                                                                                                                                        |
+| `'CNAME'` | `value`                                                                                                                                         |
 | `'MX'`    | Refer to [`dns.resolveMx()`][]                                                                                                                  |
 | `'NAPTR'` | Refer to [`dns.resolveNaptr()`][]                                                                                                               |
-| `'NS'`    | `valeur`                                                                                                                                        |
-| `'PTR'`   | `valeur`                                                                                                                                        |
+| `'NS'`    | `value`                                                                                                                                         |
+| `'PTR'`   | `value`                                                                                                                                         |
 | `'SOA'`   | Refer to [`dns.resolveSoa()`][]                                                                                                                 |
 | `'SRV'`   | Refer to [`dns.resolveSrv()`][]                                                                                                                 |
 | `'TXT'`   | This type of record contains an array property called `entries` which refers to [`dns.resolveTxt()`][], eg. `{ entries: ['...'], type: 'TXT' }` |
