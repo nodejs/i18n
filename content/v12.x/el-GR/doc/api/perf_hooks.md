@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -393,7 +393,7 @@ Tracks the event loop delay at a given sampling rate.
 added: v11.10.0
 -->
 
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Disables the event loop delay sample timer. Returns `true` if the timer was stopped, `false` if it was already stopped.
 
@@ -402,7 +402,7 @@ Disables the event loop delay sample timer. Returns `true` if the timer was stop
 added: v11.10.0
 -->
 
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Enables the event loop delay sample timer. Returns `true` if the timer was started, `false` if it was already started.
 
