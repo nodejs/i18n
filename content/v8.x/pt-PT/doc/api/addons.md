@@ -1,4 +1,4 @@
-# Complementos de C++
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 
@@ -10,24 +10,24 @@ At the moment, the method for implementing Addons is rather complicated, involvi
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Bibliotecas internas do Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Ver [Ligar paras as dependências do próprio Node.js](#addons_linking_to_node_js_own_dependencies) para informação adicional.
+* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Olá mundo
+## Hello world
 
 This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
-module.exports.ola = () => 'mundo';
+module.exports.hello = () => 'world';
 ```
 
-Primeiro, crie o arquivo `ola.cc`:
+First, create the file `hello.cc`:
 
 ```cpp
-// ola.cc
+// hello.cc
 #include <node.h>
 
 namespace demo {
@@ -50,7 +50,7 @@ void init(Local<Object> exports) {
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 
-}  // demonstração namespace
+}  // namespace demo
 ```
 
 Note that all Node.js Addons must export an initialization function following the pattern:
@@ -66,16 +66,16 @@ The `module_name` must match the filename of the final binary (excluding the .no
 
 In the `hello.cc` example, then, the initialization function is `init` and the Addon module name is `addon`.
 
-### Compilando
+### Building
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
-  "targets": [ \\alvos
+  "targets": [
     {
-      "target_name": "addon", \\nome do alvo
-      "sources": [ "ola.cc" ] \\fonte onde "extrai" o arquivo "ola.cc"
+      "target_name": "addon",
+      "sources": [ "hello.cc" ]
     }
   ]
 }
@@ -85,18 +85,18 @@ Once the source code has been written, it must be compiled into the binary `addo
 
 Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Este irá pôr no diretório `build/Release/`.
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
 When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
 ```js
-// ola.js
+// hello.js
 const addon = require('./build/Release/addon');
 
 console.log(addon.hello());
-// Prints: 'mundo'
+// Prints: 'world'
 ```
 
 Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
@@ -113,7 +113,7 @@ try {
 }
 ```
 
-### Vinculando às próprias dependências do Node.js
+### Linking to Node.js' own dependencies
 
 Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
@@ -121,13 +121,13 @@ Node.js uses a number of statically linked libraries such as V8, libuv and OpenS
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
-### Carregando Complementos usando require()
+### Loading Addons using require()
 
 The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
 When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
-## Abstrações Nativas para o Node.js
+## Native Abstractions for Node.js
 
 Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
@@ -135,14 +135,14 @@ The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) 
 
 ## N-API
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
-N-API é um API para compilação de Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across version of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Todas as outras instruções ficam o mesmo.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
 ```cpp
-// ola.cc usando N-API
+// hello.cc using N-API
 #include <node_api.h>
 
 namespace demo {
@@ -151,7 +151,7 @@ napi_value Method(napi_env env, napi_callback_info args) {
   napi_value greeting;
   napi_status status;
 
-  status = napi_create_string_utf8(env, "ola", NAPI_AUTO_LENGTH, &greeting);
+  status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &greeting);
   if (status != napi_ok) return nullptr;
   return greeting;
 }
