@@ -1,8 +1,8 @@
-# Ενότητες
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -466,7 +466,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Σταθερότητα: 0 - Απαρχαιωμένο
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -537,7 +537,7 @@ changes:
 * `request` {string} The module path to resolve.
 * `options` {Object} 
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
