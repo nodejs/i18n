@@ -1,8 +1,8 @@
-# モジュール
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -500,7 +500,7 @@ changes:
 * `request` {string} The module path to resolve.
 * `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* 戻り値: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
