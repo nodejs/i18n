@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
