@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
