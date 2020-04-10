@@ -4,7 +4,7 @@
 
 > Estabilidade: 2 - Estável
 
-The `os` module provides operating system-related utility methods and properties. Ele pode ser acessado usando:
+The `os` module provides operating system-related utility methods and properties. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -19,15 +19,15 @@ added: v0.7.8
 
 The operating system-specific end-of-line marker.
 
-* `\n` em POSIX
-* `\r\n` no Windows
+* `\n` on POSIX
+* `\r\n` on Windows
 
 ## `os.arch()`
 <!-- YAML
 added: v0.5.0
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 Returns the operating system CPU architecture for which the Node.js binary was compiled. Possible values are `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
@@ -47,14 +47,14 @@ Contains commonly used operating system-specific constants for error codes, proc
 added: v0.3.3
 -->
 
-* Retorna: {Object[]}
+* Returns: {Object[]}
 
 Returns an array of objects containing information about each logical CPU core.
 
-As propriedades incluídas em cada objeto incluem:
+The properties included on each object include:
 
 * `model` {string}
-* `speed` {number} (em MHz)
+* `speed` {number} (in MHz)
 * `times` {Object}
   * `user` {number} O número de milissegundos que a CPU gastou em modo user.
   * `nice` {number} O número de milissegundos que a CPU gastou em modo nice.
@@ -114,7 +114,7 @@ As propriedades incluídas em cada objeto incluem:
 
 ## `os.endianness()`<!-- YAML
 added: v0.9.4
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns a string identifying the endianness of the CPU for which the Node.js binary was compiled.
 
@@ -122,20 +122,20 @@ Possible values are `'BE'` for big endian and `'LE'` for little endian.
 
 ## `os.freemem()`<!-- YAML
 added: v0.3.3
--->* Retorna: {integer}
+-->* Returns: {integer}
 
 Returns the amount of free system memory in bytes as an integer.
 
 ## `os.getPriority([pid])`<!-- YAML
 added: v10.10.0
 -->* `pid` {integer} The process ID to retrieve scheduling priority for. **Default** `0`.
-* Retorna: {integer}
+* Returns: {integer}
 
 Returns the scheduling priority for the process specified by `pid`. If `pid` is not provided or is `0`, the priority of the current process is returned.
 
 ## `os.homedir()`<!-- YAML
 added: v2.3.0
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns the string path of the current user's home directory.
 
@@ -145,7 +145,7 @@ On Windows, it uses the `USERPROFILE` environment variable if defined. Otherwise
 
 ## `os.hostname()`<!-- YAML
 added: v0.3.3
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns the hostname of the operating system as a string.
 
@@ -154,7 +154,7 @@ Returns the hostname of the operating system as a string.
 added: v0.3.3
 -->
 
-* Retorna: {number[]}
+* Returns: {number[]}
 
 Returns an array containing the 1, 5, and 15 minute load averages.
 
@@ -164,20 +164,20 @@ The load average is a Unix-specific concept. On Windows, the return value is alw
 
 ## `os.networkInterfaces()`<!-- YAML
 added: v0.6.0
--->* Retorna: {Object}
+-->* Returns: {Object}
 
 Returns an object containing network interfaces that have been assigned a network address.
 
-Cada chave no objeto retornado identifica uma interface de rede. O valor associado é um array de objetos em que cada um descreve um endereço de rede atribuído.
+Each key on the returned object identifies a network interface. The associated value is an array of objects that each describe an assigned network address.
 
-As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
+The properties available on the assigned network address object include:
 
-* `address` {string} O endereço IPv4 ou IPv6 atribuído
-* `netmask` {string} máscara de rede IPv4 ou IPv6
-* `family` {string} `IPv4` ou `IPv6`
-* `mac` {string} O endereço MAC da interface de rede
-* `internal` {boolean} `true` Se a interface de rede é loopback ou interface similar que não é acessível remotamente; caso contrário `false`
-* `scopeid` {number} O ID de escopo numérico IPv6 (somente especificado quando `family` é `IPv6`)
+* `address` {string} The assigned IPv4 or IPv6 address
+* `netmask` {string} The IPv4 or IPv6 network mask
+* `family` {string} Either `IPv4` or `IPv6`
+* `mac` {string} The MAC address of the network interface
+* `internal` {boolean} `true` if the network interface is a loopback or similar interface that is not remotely accessible; otherwise `false`
+* `scopeid` {number} The numeric IPv6 scope ID (only specified when `family` is `IPv6`)
 * `cidr` {string} The assigned IPv4 or IPv6 address with the routing prefix in CIDR notation. If the `netmask` is invalid, this property is set to `null`.
 ```js
 {
@@ -224,7 +224,7 @@ As propriedades disponíveis no objeto de endereço de rede atribuído incluem:
 
 ## `os.platform()`<!-- YAML
 added: v0.5.0
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns a string identifying the operating system platform. The value is set at compile time. Possible values are `'aix'`, `'darwin'`, `'freebsd'`, `'linux'`, `'openbsd'`, `'sunos'`, and `'win32'`.
 
@@ -234,7 +234,7 @@ The value `'android'` may also be returned if Node.js is built on the Android op
 
 ## `os.release()`<!-- YAML
 added: v0.3.3
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns the operating system as a string.
 
@@ -258,19 +258,19 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns the operating system's default directory for temporary files as a string.
 
 ## `os.totalmem()`<!-- YAML
 added: v0.3.3
--->* Retorna: {integer}
+-->* Returns: {integer}
 
 Returns the total amount of system memory in bytes as an integer.
 
 ## `os.type()`<!-- YAML
 added: v0.3.3
--->* Retorna: {string}
+-->* Returns: {string}
 
 Returns the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, it returns `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
@@ -283,7 +283,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/20129
     description: The result of this function no longer contains a fraction
                  component on Windows.
--->* Retorna: {integer}
+-->* Returns: {integer}
 
 Returns the system uptime in number of seconds.
 
@@ -291,7 +291,7 @@ Returns the system uptime in number of seconds.
 added: v6.0.0
 -->* `options` {Object}
   * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
-* Retorna: {Object}
+* Returns: {Object}
 
 Returns information about the currently effective user. On POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
 
@@ -314,8 +314,8 @@ changes:
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -481,8 +481,8 @@ The following error constants are exported by `os.constants.errno`.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -815,8 +815,8 @@ The following error codes are specific to the Windows operating system.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1060,8 +1060,8 @@ If available on the operating system, the following constants are exported in `o
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
@@ -1095,8 +1095,8 @@ added: v10.10.0
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>PRIORITY_LOW</code></td>
@@ -1143,8 +1143,8 @@ added: v10.10.0
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
