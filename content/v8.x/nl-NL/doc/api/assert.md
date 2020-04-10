@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
-De `assert` module biedt een simpele set bevestigingshulpmiddelen die kunnen worden gebruikt om invariabelen te testen.
+The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Een `strict` en een `legacy` module bestaan, maar het is aanbevolen om alleen de [`strict mode`][] module te gebruiken.
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Voor meer informatie over de gebruikte gelijkheidsvergelijkingen zie [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Strikte modus
+## Strict mode
 
 <!-- YAML
 added: V8.13.0
@@ -23,28 +23,28 @@ changes:
 
 When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
 
-Het kan worden bereikt met behulp van:
+It can be accessed using:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-## Legacy modus
+## Legacy mode
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief de strikte modus.
+> Stability: 0 - Deprecated: Use strict mode instead.
 
-Bij het rechtstreeks binnengaan van `assert` in plaats van de `strict` eigenschap te gebruiken, zal de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) worden gebruikt voor elke functie zonder "strikt" in de naam, zoals [`assert.deepEqual()`][].
+When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-Het kan worden bereikt met behulp van:
+It can be accessed using:
 
 ```js
 const assert = require('assert');
 ```
 
-Het is aanbevolen om als alternatief de [`strict mode`][] te gebruiken, omdat de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) vaak verrassende resultaten levert. Dit is met name zo voor [`assert.deepEqual()`][], waar de vergelijkingsregels laks zijn:
+It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
-// WAARSCHUWING: Dit gooit geen AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
@@ -57,7 +57,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-Een alias van [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -83,26 +83,26 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Strikte modus**
+**Strict mode**
 
-Een alias van [`assert.deepStrictEqual()`][].
+An alias of [`assert.deepStrictEqual()`][].
 
-**Legacy modus**
+**Legacy mode**
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.deepStrictEqual()`][].
+> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
-Test voor diepe gelijkheid tussen de `actual` en `expected` parameters. Primitieve waarden worden vergeleken met de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) worden overwogen. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
-// WAARSCHUWING: Dit gooit geen AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-Een uitzondering wordt gemaakt voor [`Map`][] en [`Set`][]. Maps en Sets hebben hun opgenomen items ook vergeleken, als verwacht.
+An exception is made for [`Map`][] and [`Set`][]. Maps and Sets have their contained items compared too, as expected.
 
-"Diepe" gelijkheid betekent dat de telbare "eigen" eigenschappen van kind objecten ook worden geëvalueerd:
+"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
 ```js
 const assert = require('assert');
@@ -125,21 +125,21 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.deepEqual(obj1, obj1);
-// OK, object is gelijk aan zichzelf
+// OK, object is equal to itself
 
 assert.deepEqual(obj1, obj2);
 // AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
-// waarden van b zijn verschillend
+// values of b are different
 
 assert.deepEqual(obj1, obj3);
-// OK, objecten zijn gelijk
+// OK, objects are equal
 
 assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
-// Prototypes worden genegeerd
+// Prototypes are ignored
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -170,18 +170,18 @@ changes:
 
 Generally identical to `assert.deepEqual()` with a few exceptions:
 
-### Vergelijkingsdetails
+### Comparison details
 
 * Primitive values are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
 * Set values and Map keys are compared using the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison. (Which means they are free of the [caveats](#assert_caveats)).
-* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) van objecten moeten gelijk zijn.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) van objecten wordt vergeleken met behulp van de [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) worden overwogen.
+* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
+* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
 * [`Error`][] messages are always compared, even though this property is non-enumerable.
-* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) worden zowel als object als oningepakte waarden vergeleken.
+* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
 * Object properties are compared unordered.
 * Map keys and Set items are compared unordered.
-* Recursie stopt als beide zijden verschillen of beide zijden een circulaire verwijzing tegenkomen.
+* Recursion stops when both sides differ or both sides encounter a circular reference.
 
 ```js
 const assert = require('assert').strict;
@@ -218,7 +218,7 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -274,15 +274,15 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Beweert dat de functie `block` geen fout gooit. See [`assert.throws()`][] for more details.
+Asserts that the function `block` does not throw an error. See [`assert.throws()`][] for more details.
 
-Let op: Het gebruik van `assert.doesNotThrow()` is niet nuttig, want er is geen voordeel aan het vangen van een afwijzing om het vervolgens wéér te werpen. Als alternatief, overweeg het toevoegen van een opmerking naast het specifieke code pad wat niet zou moeten gooien en probeer de foutberichten zo expressief mogelijk te houden.
+Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
-Wanneer `assert.doesNotThrow()` wordt aangeroepen, zal het onmiddellijk de `block` functie aanroepen.
+When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
-Als een fout is geworpen en het is hetzelfde type als die is gespecificeerd door de `error` parameter, dan wordt een `AssertionError` geworpen. Wanneer de fout van een ander type is, of al de `error` parameter ongedefinieerd is, dan wordt de fout teruggegeven aan de aanroepfunctie.
+If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-Het volgende, bijvoorbeeld, zal de [`TypeError`][] gooien, want er is geen overeenkomstig fout type in de bewering:
+The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
 ```js
 assert.doesNotThrow(
@@ -304,7 +304,7 @@ assert.doesNotThrow(
 );
 ```
 
-Wanneer een `AssertionError` wordt geworpen, en de waarde voor de `message` parameter is opgegeven, dan zal de waarde van `message` worden toegevoegd aan het `AssertionError` bericht:
+If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
 
 ```js
 assert.doesNotThrow(
@@ -327,15 +327,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strikte modus**
+**Strict mode**
 
-Een alias van [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
-**Legacy modus**
+**Legacy mode**
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief 0 - Deprecated: Use [`assert.strictEqual()`][].
+> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
-Test ondiepe, dwangmatige gelijkheid tussen de `actual` en de `expected` parameters met behulp van de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 ```js
 const assert = require('assert');
@@ -351,7 +351,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 //AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.fail(message)
 
@@ -395,7 +395,7 @@ assert.fail('a', 'b');
 // AssertionError [ERR_ASSERTION]: 'a' != 'b'
 ```
 
-Voorbeeld van gebruik van `stackStartFunction` om de stacktrace van de uitzondering af te korten:
+Example use of `stackStartFunction` for truncating the exception's stacktrace:
 
 ```js
 function suppressFrame() {
@@ -443,15 +443,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strikte modus**
+**Strict mode**
 
-Een alias of [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
-**Legacy modus**
+**Legacy mode**
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.notDeepStrictEqual()`][].
+> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
-Test voor alle diepe ongelijkheid. Tegenovergestelde van [`assert.deepEqual()`][].
+Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
 ```js
 const assert = require('assert');
@@ -474,19 +474,19 @@ const obj3 = {
 const obj4 = Object.create(obj1);
 
 assert.notDeepEqual(obj1, obj1);
-// AssertionError: { a: { b: 1 } } niet diep gelijk { a: { b: 1 } }
+// AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj2);
-// OK: obj1 en obj2 zijn niet diep gelijk
+// OK: obj1 and obj2 are not deeply equal
 
 assert.notDeepEqual(obj1, obj3);
-// AssertionError: { a: { b: 1 } } niet diep gelijk { a: { b: 1 } }
+// AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
 
 assert.notDeepEqual(obj1, obj4);
-// OK: obj1 en obj4 zijn niet diep gelijk
+// OK: obj1 and obj4 are not deeply equal
 ```
 
-Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -498,7 +498,7 @@ added: v1.2.0
 * `expected` {any}
 * `message` {any}
 
-Test op diep strikte ongelijkheid. Tegenovergestelde van [`assert.deepStrictEqual()`][].
+Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
 
 ```js
 const assert = require('assert').strict;
@@ -522,15 +522,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Strikte modus**
+**Strict mode**
 
-Een alias van [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
-**Legacy modus**
+**Legacy mode**
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`assert.notStrictEqual()`][].
+> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
-Test ondiepe, dwangmatige ongelijkheid met de [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
+Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
 ```js
 const assert = require('assert');
@@ -545,7 +545,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notStrictEqual(actual, expected[, message])
 
@@ -572,7 +572,7 @@ assert.notStrictEqual(1, '1');
 // OK
 ```
 
-If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
+If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.ok(value[, message])
 
@@ -583,9 +583,9 @@ added: v0.1.21
 * `value` {any}
 * `message` {any}
 
-Test of `value` truthy is. Het is gelijkwaardig aan `assert.equal(!!value, true, message)`.
+Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
-Als de `value` niet truthy is, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter `undefined` is, wordt er een standaard foutmelding toegewezen.
+If `value` is not truthy, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is `undefined`, a default error message is assigned.
 
 ```js
 const assert = require('assert').strict;
@@ -627,7 +627,7 @@ assert.strictEqual(1, '1');
 // AssertionError: 1 === '1'
 ```
 
-Wanneer de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
+If the values are not strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.rejects(block\[, error\]\[, message\])
 
@@ -647,7 +647,7 @@ Besides the async nature to await the completion behaves identical to [`assert.t
 
 If specified, `error` can be a constructor, [`RegExp`][], a validation function, or an object where each property will be tested for.
 
-Wanneer dit is gespecificeerd, zal `message` het bericht zijn wat verstrekt wordt door de `AssertionError` als het blok het niet afwijst.
+If specified, `message` will be the message provided by the `AssertionError` if the block fails to reject.
 
 ```js
 (async () => {
@@ -687,13 +687,13 @@ changes:
 * `error` {RegExp|Function|object}
 * `message` {any}
 
-Verwacht dat de functie `block` een fout werpt.
+Expects the function `block` to throw an error.
 
 If specified, `error` can be a constructor, [`RegExp`][], a validation function, or an object where each property will be tested for.
 
-Wanneer dit is gespecificeerd, zal `message` het bericht zijn wat verstrekt wordt door de `AssertionError` als het blok het niet werpt.
+If specified, `message` will be the message provided by the `AssertionError` if the block fails to throw.
 
-Valideer instantie van met behulp van de constructor:
+Validate instanceof using constructor:
 
 ```js
 assert.throws(
@@ -704,7 +704,7 @@ assert.throws(
 );
 ```
 
-Valideer foutmelding met behulp van [`RegExp`][]:
+Validate error message using [`RegExp`][]:
 
 ```js
 assert.throws(
@@ -715,7 +715,7 @@ assert.throws(
 );
 ```
 
-Aangepaste fout validatie:
+Custom error validation:
 
 ```js
 assert.throws(
@@ -731,7 +731,7 @@ assert.throws(
 );
 ```
 
-Aangepast fout-object / fout-instantie:
+Custom error object / error instance:
 
 ```js
 assert.throws(
@@ -748,7 +748,7 @@ assert.throws(
 );
 ```
 
-Note that `error` can not be a string. Wanneer een tekenreeks wordt verstrekt als tweede argument, dan wordt verondersteld dat `error` wordt weggelaten, en wordt als alternatief de tekenreeks voor `message` gebruikt. Dit kan leiden tot makkelijk te missen fouten. Please read the example below carefully if using a string as the second argument gets considered:
+Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example below carefully if using a string as the second argument gets considered:
 
 <!-- eslint-disable no-restricted-syntax -->
 
@@ -761,7 +761,7 @@ function throwingSecond() {
 }
 function notThrowing() {}
 
-// Het tweede argument is een tekenreeks en de invoerfunctie heeft een Fout geworpen.
+// The second argument is a string and the input function threw an Error.
 // In that case both cases do not throw as neither is going to try to
 // match for the error message thrown by the input function!
 assert.throws(throwingFirst, 'Second');
@@ -780,7 +780,7 @@ assert.throws(throwingFirst, /Second$/);
 //     at throwingFirst (repl:2:9)
 ```
 
-Vanwege de verwarrende notatie, is het aanbevolen de tekenreeks niet als tweede argument te gebruiken. Dit kan leiden tot moeilijk te vinden fouten.
+Due to the confusing notation, it is recommended not to use a string as the second argument. This might lead to difficult-to-spot errors.
 
 ## Caveats
 
