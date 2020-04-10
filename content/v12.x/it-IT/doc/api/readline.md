@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`][]) one line at a time. It can be accessed using:
 
@@ -10,7 +10,7 @@ The `readline` module provides an interface for reading data from a [Readable](s
 const readline = require('readline');
 ```
 
-Il seguente esempio semplice illustra l'uso di base del modulo `readline`.
+The following simple example illustrates the basic use of the `readline` module.
 
 ```js
 const readline = require('readline');
@@ -21,7 +21,7 @@ const rl = readline.createInterface({
 });
 
 rl.question('What do you think of Node.js? ', (answer) => {
-  // TODO: Registra la risposta in un database
+  // TODO: Log the answer in a database
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
   rl.close();
@@ -35,34 +35,34 @@ Once this code is invoked, the Node.js application will not terminate until the 
 added: v0.1.104
 -->
 
-* Estendendo: {EventEmitter}
+* Extends: {EventEmitter}
 
-Le istanze della classe `readline.Interface` sono costruite utilizzando il metodo `readline.createInterface()`. Ogni istanza è associata ad un singolo stream [Readable](stream.html#stream_readable_streams) di `input` e ad un singolo stream [Writable](stream.html#stream_writable_streams) di `output`. Lo stream di `output` viene utilizzato per stampare prompt per l'input dell'utente che arriva e viene letto dallo stream di `input`.
+Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
 ### Event: `'close'`
 <!-- YAML
 added: v0.1.98
 -->
 
-L'evento `'close'` viene emesso quando si verifica uno dei seguenti eventi:
+The `'close'` event is emitted when one of the following occur:
 
-* Il metodo `rl.close()` viene chiamato e l'istanza `readline.Interface` ha ceduto il controllo sugli stream di `input` e `output`;
-* Lo stream di `input` riceve il suo evento `'end'`;
-* Lo stream `input` riceve `&lt;ctrl&gt;-D` per segnalare la fine della trasmissione (EOT);
+* The `rl.close()` method is called and the `readline.Interface` instance has relinquished control over the `input` and `output` streams;
+* The `input` stream receives its `'end'` event;
+* The `input` stream receives `<ctrl>-D` to signal end-of-transmission (EOT);
 * The `input` stream receives `<ctrl>-C` to signal `SIGINT` and there is no `'SIGINT'` event listener registered on the `readline.Interface` instance.
 
-La funzione listener viene chiamata senza passare alcun argomento.
+The listener function is called without passing any arguments.
 
-L'istanza `readline.Interface` è terminata una volta che l'evento `'close'` è stato emesso.
+The `readline.Interface` instance is finished once the `'close'` event is emitted.
 
 ### Event: `'line'`
 <!-- YAML
 added: v0.1.98
 -->
 
-L'evento `'line'` viene emesso ogni volta che lo stream di `input` riceve un input di fine riga (`\n`, `\r` o `\r\n`). Questo di solito si verifica quando l'utente preme i tasti `&lt;Enter&gt;` or `&lt;Return&gt;`.
+The `'line'` event is emitted whenever the `input` stream receives an end-of-line input (`\n`, `\r`, or `\r\n`). This usually occurs when the user presses the `<Enter>`, or `<Return>` keys.
 
-La funzione listener viene chiamata con una stringa contenente la singola riga di input ricevuto.
+The listener function is called with a string containing the single line of received input.
 
 ```js
 rl.on('line', (input) => {
@@ -75,12 +75,12 @@ rl.on('line', (input) => {
 added: v0.7.5
 -->
 
-L'evento `'pause'` viene emesso quando si verifica uno dei seguenti eventi:
+The `'pause'` event is emitted when one of the following occur:
 
-* Lo stream di `input` è in pausa.
-* Lo stream di `input` non viene messo in pausa e riceve l'evento `'SIGCONT'`. (See events [`'SIGTSTP'`][] and [`'SIGCONT'`][].)
+* The `input` stream is paused.
+* The `input` stream is not paused and receives the `'SIGCONT'` event. (See events [`'SIGTSTP'`][] and [`'SIGCONT'`][].)
 
-La funzione listener viene chiamata senza passare alcun argomento.
+The listener function is called without passing any arguments.
 
 ```js
 rl.on('pause', () => {
@@ -93,9 +93,9 @@ rl.on('pause', () => {
 added: v0.7.5
 -->
 
-L'evento `'resume'` viene emesso ogni qual volta viene ripristinato lo stream di `input`.
+The `'resume'` event is emitted whenever the `input` stream is resumed.
 
-La funzione listener viene chiamata senza passare alcun argomento.
+The listener function is called without passing any arguments.
 
 ```js
 rl.on('resume', () => {
@@ -112,11 +112,11 @@ The `'SIGCONT'` event is emitted when a Node.js process previously moved into th
 
 If the `input` stream was paused *before* the `SIGTSTP` request, this event will not be emitted.
 
-La funzione listener viene invocata senza passare alcun argomento.
+The listener function is invoked without passing any arguments.
 
 ```js
 rl.on('SIGCONT', () => {
-  // `prompt` ripristinerà automaticamente lo stream
+  // `prompt` will automatically resume the stream
   rl.prompt();
 });
 ```
@@ -128,9 +128,9 @@ The `'SIGCONT'` event is _not_ supported on Windows.
 added: v0.3.0
 -->
 
-L'evento `'SIGINT'` viene emesso ogni qual volta lo stream di `input` riceve un input `&lt;ctrl&gt;-C`, generalmente noto come `SIGINT`. Se non sono presenti listener di eventi `'SIGINT'` registrati quando lo stream di `input` riceve un `SIGINT`, verrà emesso l'evento `'pause'`.
+The `'SIGINT'` event is emitted whenever the `input` stream receives a `<ctrl>-C` input, known typically as `SIGINT`. If there are no `'SIGINT'` event listeners registered when the `input` stream receives a `SIGINT`, the `'pause'` event will be emitted.
 
-La funzione listener viene invocata senza passare alcun argomento.
+The listener function is invoked without passing any arguments.
 
 ```js
 rl.on('SIGINT', () => {
@@ -145,17 +145,17 @@ rl.on('SIGINT', () => {
 added: v0.7.5
 -->
 
-L'evento `'SIGTSTP'` viene emesso quando lo stream di `input` riceve un input `&lt;ctrl&gt;-Z`, generalmente noto come `SIGTSTP`. If there are no `'SIGTSTP'` event listeners registered when the `input` stream receives a `SIGTSTP`, the Node.js process will be sent to the background.
+The `'SIGTSTP'` event is emitted when the `input` stream receives a `<ctrl>-Z` input, typically known as `SIGTSTP`. If there are no `'SIGTSTP'` event listeners registered when the `input` stream receives a `SIGTSTP`, the Node.js process will be sent to the background.
 
-When the program is resumed using fg(1p), the `'pause'` and `'SIGCONT'` events will be emitted. Questi possono essere utilizzati per ripristinare lo stream di `input`.
+When the program is resumed using fg(1p), the `'pause'` and `'SIGCONT'` events will be emitted. These can be used to resume the `input` stream.
 
-Gli eventi `'pause'` e `'SIGCONT'` non verranno emessi se l'`input` era stato messo in pausa prima che il processo fosse inviato in background.
+The `'pause'` and `'SIGCONT'` events will not be emitted if the `input` was paused before the process was sent to the background.
 
-La funzione listener viene invocata senza passare alcun argomento.
+The listener function is invoked without passing any arguments.
 
 ```js
 rl.on('SIGTSTP', () => {
-  // Questo sovrascriverà SIGTSTP ed eviterà che il programma vada in 
+  // This will override SIGTSTP and prevent the program from going to the
   // background.
   console.log('Caught SIGTSTP.');
 });
@@ -168,7 +168,7 @@ The `'SIGTSTP'` event is _not_ supported on Windows.
 added: v0.1.98
 -->
 
-Il metodo `rl.close()` chiude l'istanza `readline.Interface` e cede il controllo sugli stream di `input` e `output`. Quando viene chiamato, verrà emesso l'evento `'close'`.
+The `rl.close()` method closes the `readline.Interface` instance and relinquishes control over the `input` and `output` streams. When called, the `'close'` event will be emitted.
 
 Calling `rl.close()` does not immediately stop other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
@@ -177,38 +177,38 @@ Calling `rl.close()` does not immediately stop other events (including `'line'`)
 added: v0.3.4
 -->
 
-Il metodo `rl.pause()` mette in pausa lo stream di `input`, consentendone la ripresa in seguito, se necessario.
+The `rl.pause()` method pauses the `input` stream, allowing it to be resumed later if necessary.
 
-Chiamare `rl.pause()` non sospende immediatamente gli altri eventi (incluso `'line'`) dall'essere emessi dall'istanza `readline.Interface`.
+Calling `rl.pause()` does not immediately pause other events (including `'line'`) from being emitted by the `readline.Interface` instance.
 
 ### `rl.prompt([preserveCursor])`
 <!-- YAML
 added: v0.1.98
 -->
 
-* `preserveCursor` {boolean} Se `true`, impedisce che il posizionamento del cursore venga reimpostato su `0`.
+* `preserveCursor` {boolean} If `true`, prevents the cursor placement from being reset to `0`.
 
-Il metodo `rl.prompt()` scrive le istanze `readline.Interface` configurate `prompt` in una nuova riga in `output` per fornire all'utente una nuova posizione in cui fornire input.
+The `rl.prompt()` method writes the `readline.Interface` instances configured `prompt` to a new line in `output` in order to provide a user with a new location at which to provide input.
 
-Quando chiamato, `rl.prompt()` ripristinerà lo stream di `input` se è stato messo in pausa.
+When called, `rl.prompt()` will resume the `input` stream if it has been paused.
 
-Se `readline.Interface` è stato creato con `output` impostato su `null` o `undefined` il prompt non viene scritto.
+If the `readline.Interface` was created with `output` set to `null` or `undefined` the prompt is not written.
 
 ### `rl.question(query, callback)`
 <!-- YAML
 added: v0.3.3
 -->
 
-* `query` {string} Un'istruzione o una query da scrivere su `output`, anteposta al prompt.
-* `callback` {Function} Una funzione callback invocata con l'input dell'utente in risposta alla `query`.
+* `query` {string} A statement or query to write to `output`, prepended to the prompt.
+* `callback` {Function} A callback function that is invoked with the user's input in response to the `query`.
 
-Il metodo `rl.question()` visualizza la `query` scrivendola nell'`output`, attende che l'input dell'utente venga fornito su `input`, quindi invoca la funzione di `callback` passando l'input fornito come primo argomento.
+The `rl.question()` method displays the `query` by writing it to the `output`, waits for user input to be provided on `input`, then invokes the `callback` function passing the provided input as the first argument.
 
-Quando chiamato, `rl.question()` ripristinerà lo stream di `input` se è stato messo in pausa.
+When called, `rl.question()` will resume the `input` stream if it has been paused.
 
-Se `readline.Interface` è stato creato con `output` impostato su `null` o `undefined` la `query` non viene scritta.
+If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Esempio di utilizzo:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -216,14 +216,14 @@ rl.question('What is your favorite food? ', (answer) => {
 });
 ```
 
-The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. Il `callback` viene chiamato con la risposta fornita come unico argomento.
+The `callback` function passed to `rl.question()` does not follow the typical pattern of accepting an `Error` object or `null` as the first argument. The `callback` is called with the provided answer as the only argument.
 
 ### `rl.resume()`
 <!-- YAML
 added: v0.3.4
 -->
 
-Il metodo `rl.resume()` ripristina lo stream di `input` se è stato messo in pausa.
+The `rl.resume()` method resumes the `input` stream if it has been paused.
 
 ### `rl.setPrompt(prompt)`
 <!-- YAML
@@ -232,7 +232,7 @@ added: v0.1.98
 
 * `prompt` {string}
 
-Il metodo `rl.setPrompt()` imposta il prompt che verrà scritto su `output` ogni volta che viene chiamato `rl.prompt()`.
+The `rl.setPrompt()` method sets the prompt that will be written to `output` whenever `rl.prompt()` is called.
 
 ### `rl.write(data[, key])`
 <!-- YAML
@@ -241,22 +241,22 @@ added: v0.1.98
 
 * `data` {string}
 * `key` {Object}
-  * `ctrl` {boolean} `true` per indicare il tasto `&lt;ctrl&gt;`.
-  * `meta` {boolean} `true` per indicare il tasto `&lt;Meta&gt;`.
-  * `shift` {boolean} `true` per indicare il tasto `&lt;Shift&gt;`.
-  * `name` {string} Il nome del tasto.
+  * `ctrl` {boolean} `true` to indicate the `<ctrl>` key.
+  * `meta` {boolean} `true` to indicate the `<Meta>` key.
+  * `shift` {boolean} `true` to indicate the `<Shift>` key.
+  * `name` {string} The name of the a key.
 
-Il metodo `rl.write()` scriverà i `data` o una sequenza di tasti identificata dalla `key` nell'`output`. L'argomento `key` è supportato esclusivamente se l'`output` è un terminale di testo [TTY](tty.html).
+The `rl.write()` method will write either `data` or a key sequence identified by `key` to the `output`. The `key` argument is supported only if `output` is a [TTY](tty.html) text terminal.
 
-Se viene specificata la `key`, `data` viene ignorato.
+If `key` is specified, `data` is ignored.
 
-Quando chiamato, `rl.write()` ripristinerà lo stream di `input` se è stato messo in pausa.
+When called, `rl.write()` will resume the `input` stream if it has been paused.
 
-Se `readline.Interface` è stato creato con `output` impostato su `null` o `undefined` i `data` e la `key` non vengono scritti.
+If the `readline.Interface` was created with `output` set to `null` or `undefined` the `data` and `key` are not written.
 
 ```js
 rl.write('Delete this!');
-// Simulare Ctrl+u per eliminare la linea precedentemente scritta
+// Simulate Ctrl+u to delete the line written previously
 rl.write(null, { ctrl: true, name: 'u' });
 ```
 
@@ -271,7 +271,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-* Restituisce: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for await...of` loops.
 
@@ -341,7 +341,7 @@ This will track where the current cursor lands in the input string, when reading
 added: v12.16.0
 -->
 
-* Restituisce: {Object}
+* Returns: {Object}
   * `rows` {number} the row of the prompt the cursor currently lands on
   * `cols` {number} the screen column the cursor currently lands on
 
@@ -364,7 +364,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-Il metodo `readline.clearLine()` cancella la riga corrente di un determinato stream [TTY](tty.html) in una direzione specificata identificata da `dir`.
+The `readline.clearLine()` method clears current line of given [TTY](tty.html) stream in a specified direction identified by `dir`.
 
 ## `readline.clearScreenDown(stream[, callback])`
 <!-- YAML
@@ -379,7 +379,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-Il metodo `readline.clearScreenDown()` cancella un determinato stream [TTY](tty.html) dalla posizione corrente del cursore verso il basso.
+The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
 
 ## `readline.createInterface(options)`
 <!-- YAML
@@ -400,17 +400,17 @@ changes:
 -->
 
 * `options` {Object}
-  * `input` {stream.Readable} Lo stream [Readable](stream.html#stream_readable_streams) da sottoporre al listening. This option is *required*.
+  * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
   * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
-  * `completer` {Function} Una funzione opzionale utilizzata per il completamento automatico di Tab.
-  * `terminal` {boolean} `true` se gli stream di `input` e `output` devono essere trattati come TTY e avere codici di escape ANSI/VT100 scritti su di esso. **Default:** checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} Massimo numero di righe di cronologia conservate. Per disabilitare la cronologia, impostare questo valore su `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
-  * `prompt` {string} La stringa prompt da utilizzare. **Default:** `'> '`.
-  * `crlfDelay` {number} Se il ritardo tra `\r` e `\n` supera i millisecondi di `crlfDelay`, sia `\r` che `\n` verranno trattati come input di fine riga separati. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
-  * `removeHistoryDuplicates` {boolean} Se `true`, quando una nuova riga di input aggiunta all'elenco della cronologia ne duplica una precedente, rimuove la riga precedente dall'elenco. **Default:** `false`.
+  * `completer` {Function} An optional function used for Tab autocompletion.
+  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
+  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `prompt` {string} The prompt string to use. **Default:** `'> '`.
+  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
+  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
   * `escapeCodeTimeout` {number} The duration `readline` will wait for a character (when reading an ambiguous key sequence in milliseconds one that can both form a complete key sequence using the input read so far and can take additional input to complete a longer key sequence). **Default:** `500`.
 
-Il metodo `readline.createInterface()` crea una nuova istanza di `readline.Interface`.
+The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
 ```js
 const readline = require('readline');
@@ -420,7 +420,7 @@ const rl = readline.createInterface({
 });
 ```
 
-Una volta creata l'istanza `readline.Interface`, il caso più comune è sottoporre al listening l'evento `'line'`:
+Once the `readline.Interface` instance is created, the most common case is to listen for the `'line'` event:
 
 ```js
 rl.on('line', (line) => {
@@ -428,16 +428,16 @@ rl.on('line', (line) => {
 });
 ```
 
-Se il `terminal` è `true` per questa istanza, allora lo stream di `output` otterrà la migliore compatibilità se definisce una proprietà `output.columns` ed emette un evento `'resize'` sull'`output` se o quando le colonne cambiano ([`process.stdout`][] lo fa automaticamente quando è un TTY).
+If `terminal` is `true` for this instance then the `output` stream will get the best compatibility if it defines an `output.columns` property and emits a `'resize'` event on the `output` if or when the columns ever change ([`process.stdout`][] does this automatically when it is a TTY).
 
-### Uso della Funzione `completer`
+### Use of the `completer` Function
 
 The `completer` function takes the current line entered by the user as an argument, and returns an `Array` with 2 entries:
 
-* Un `Array` con voci per il completamento corrispondenti.
-* La sottostringa che è stata utilizzata per la corrispondenza.
+* An `Array` with matching entries for the completion.
+* The substring that was used for the matching.
 
-Ad esempio: `[[substr1, substr2, ...], originalsubstring]`.
+For instance: `[[substr1, substr2, ...], originalsubstring]`.
 
 ```js
 function completer(line) {
@@ -448,7 +448,7 @@ function completer(line) {
 }
 ```
 
-La funzione `completer` può essere chiamata in modo asincrono se accetta due argomenti:
+The `completer` function can be called asynchronously if it accepts two arguments:
 
 ```js
 function completer(linePartial, callback) {
@@ -471,7 +471,7 @@ changes:
 * `callback` {Function} Invoked once the operation completes.
 * Returns: {boolean} `false` if `stream` wishes for the calling code to wait for the `'drain'` event to be emitted before continuing to write additional data; otherwise `true`.
 
-Il metodo `readline.cursorTo()` sposta il cursore sulla posizione specificata in un determinato `stream` [TTY](tty.html).
+The `readline.cursorTo()` method moves cursor to the specified position in a given [TTY](tty.html) `stream`.
 
 ## `readline.emitKeypressEvents(stream[, interface])`
 <!-- YAML
@@ -483,11 +483,11 @@ added: v0.7.7
 
 The `readline.emitKeypressEvents()` method causes the given [Readable](stream.html#stream_readable_streams) stream to begin emitting `'keypress'` events corresponding to received input.
 
-Facoltativamente, l'`interface` specifica un'istanza `readline.Interface` per cui il completamento automatico è disabilitato quando viene rilevato un input copia-incollato.
+Optionally, `interface` specifies a `readline.Interface` instance for which autocompletion is disabled when copy-pasted input is detected.
 
-Se lo `stream` è un [TTY](tty.html), deve essere in modalità raw.
+If the `stream` is a [TTY](tty.html), then it must be in raw mode.
 
-This is automatically called by any readline instance on its `input` if the `input` is a terminal. La chiusura dell'istanza `readline` non impedisce all'`input` di emettere eventi `'keypress'`.
+This is automatically called by any readline instance on its `input` if the `input` is a terminal. Closing the `readline` instance does not stop the `input` from emitting `'keypress'` events.
 
 ```js
 readline.emitKeypressEvents(process.stdin);
@@ -512,9 +512,9 @@ changes:
 
 The `readline.moveCursor()` method moves the cursor *relative* to its current position in a given [TTY](tty.html) `stream`.
 
-## Esempio: Tiny CLI
+## Example: Tiny CLI
 
-L'esempio seguente illustra l'utilizzo della classe `readline.Interface` per implementare una piccola interfaccia a riga di comando:
+The following example illustrates the use of `readline.Interface` class to implement a small command-line interface:
 
 ```js
 const readline = require('readline');
@@ -542,7 +542,7 @@ rl.on('line', (line) => {
 });
 ```
 
-## Esempio: Leggere lo Stream del File Riga per Riga
+## Example: Read File Stream Line-by-Line
 
 A common use case for `readline` is to consume an input file one line at a time. The easiest way to do so is leveraging the [`fs.ReadStream`][] API as well as a `for await...of` loop:
 
