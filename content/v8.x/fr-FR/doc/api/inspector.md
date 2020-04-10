@@ -1,12 +1,12 @@
-# Inspecteur (sessions de débogage)
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-On peut y accéder en utilisant :
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -16,7 +16,7 @@ const inspector = require('inspector');
 
 * `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
 * `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `wait` {boolean} Block until a client has connected. Optional. **Par défaut :** `false`.
+* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
