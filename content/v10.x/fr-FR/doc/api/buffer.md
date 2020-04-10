@@ -1,12 +1,12 @@
-# Tampons (buffers)
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-Avant l'apparition de [`TypedArray`], Le langage JavaScript n'avait aucun moyen pour lire et manipuler des flux de données binaires. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
+Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
-Avec [`TypedArray`] maintenant disponible, la classe `Buffer` implémente le [`Uint8Array`] API d’une manière qui est plus Node.js optimisée et adaptée aux.
+With [`TypedArray`] now available, the `Buffer` class implements the [`Uint8Array`] API in a manner that is more optimized and suitable for Node.js.
 
 Instances of the `Buffer` class are similar to arrays of integers but correspond to fixed-sized, raw memory allocations outside the V8 heap. The size of the `Buffer` is established when it is created and cannot be changed.
 
@@ -211,7 +211,7 @@ for (const b of buf) {
 
 Additionally, the [`buf.values()`], [`buf.keys()`], and [`buf.entries()`] methods can be used to create iterators.
 
-## Classe: Buffer
+## Class: Buffer
 
 The `Buffer` class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
 
@@ -608,7 +608,7 @@ changes:
 
 * `list` {Buffer[] | Uint8Array[]} List of `Buffer` or [`Uint8Array`] instances to concat.
 * `totalLength` {integer} Total length of the `Buffer` instances in `list` when concatenated.
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` which is the result of concatenating all the `Buffer` instances in the `list` together.
 
@@ -1355,7 +1355,7 @@ changes:
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy `0 <= offset <= buf.length - 8`.
-* Renvoie : {number}
+* Returns: {number}
 
 Reads a 64-bit double from `buf` at the specified `offset` with specified endian format (`readDoubleBE()` returns big endian, `readDoubleLE()` returns little endian).
 
@@ -1668,7 +1668,7 @@ changes:
 
 * `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
-* Renvoie : {Buffer}
+* Returns: {Buffer}
 
 Returns a new `Buffer` that references the same memory as the original, but offset and cropped by the `start` and `end` indices.
 
@@ -1842,7 +1842,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
-* Retourne : {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
@@ -1877,7 +1877,7 @@ console.log(buf2.toString(undefined, 0, 3));
 added: v1.1.0
 -->
 
-* Renvoie : {Iterator}
+* Returns: {Iterator}
 
 Creates and returns an [iterator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols) for `buf` values (bytes). This function is called automatically when a `Buffer` is used in a `for..of` statement.
 
