@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -328,7 +328,7 @@ added: v0.3.2
 -->
 
 * `callback` {Function} A listener callback that will be registered to listen for the server instance's `'close'` event.
-* Renvoie : {tls.Server}
+* Returns: {tls.Server}
 
 The `server.close()` method stops the server from accepting new connections.
 
@@ -341,7 +341,7 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Stabilité : 0 - obsolète : utilisez [`server.getConnections()`][] à la place.
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 * {number}
 
@@ -402,7 +402,7 @@ changes:
 
 * `socket` {net.Socket|stream.Duplex} On the server side, any `Duplex` stream. On the client side, any instance of [`net.Socket`][] (for generic `Duplex` stream support on the client side, [`tls.connect()`][] must be used).
 * `options` {Object} 
-  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Par défaut :** `false`.
+  * `isServer`: The SSL/TLS protocol is asymmetrical, TLSSockets must know if they are to behave as a server or a client. If `true` the TLS socket will be instantiated as a server. **Default:** `false`.
   * `server` {net.Server} A [`net.Server`][] instance.
   * `requestCert`: Whether to authenticate the remote peer by requesting a certificate. Clients always request a server certificate. Servers (`isServer` is true) may set `requestCert` to true to request a client certificate.
   * `rejectUnauthorized`: See [`tls.createServer()`][]
@@ -576,7 +576,7 @@ Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to
 added: v5.7.0
 -->
 
-* Retourne : {string|null}
+* Returns: {string|null}
 
 Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
 
@@ -791,7 +791,7 @@ changes:
   * `timeout`: {number} If set and if a socket is created internally, will call [`socket.setTimeout(timeout)`][] after the socket is created, but before it starts the connection.
   * ...: [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
 * `callback` {Function}
-* Renvoie : {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 The `callback` function, if specified, will be added as a listener for the [`'secureConnect'`][] event.
 
@@ -840,7 +840,7 @@ added: v0.11.3
 * `path` {string} Default value for `options.path`.
 * `options` {Object} See [`tls.connect()`][].
 * `callback` {Function} See [`tls.connect()`][].
-* Renvoie : {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 Same as [`tls.connect()`][] except that `path` can be provided as an argument instead of an option.
 
@@ -856,7 +856,7 @@ added: v0.11.3
 * `host` {string} Default value for `options.host`.
 * `options` {Object} See [`tls.connect()`][].
 * `callback` {Function} See [`tls.connect()`][].
-* Renvoie : {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 Same as [`tls.connect()`][] except that `port` and `host` can be provided as arguments instead of options.
 
@@ -944,14 +944,14 @@ changes:
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
   * `clientCertEngine` {string} Name of an OpenSSL engine which can provide the client certificate.
   * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
-  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Par défaut :** `true`.
+  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
   * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **Default:** `false`.
   * `sessionTimeout` {number} The number of seconds after which a TLS session created by the server will no longer be resumable. See [Session Resumption](#tls_session_resumption) for more information. **Default:** `300`.
   * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a `SecureContext` instance. (`tls.createSecureContext(...)` can be used to get a proper `SecureContext`.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
   * `ticketKeys`: {Buffer} 48-bytes of cryptographically strong pseudo-random data. See [Session Resumption](#tls_session_resumption) for more information.
   * ...: Any [`tls.createSecureContext()`][] option can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
 * `secureConnectionListener` {Function}
-* Renvoie : {tls.Server}
+* Returns: {tls.Server}
 
 Creates a new [`tls.Server`][]. The `secureConnectionListener`, if provided, is automatically set as a listener for the [`'secureConnection'`][] event.
 
@@ -1031,7 +1031,7 @@ added: v10.6.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1'`.
 
-## APIs obsolètes
+## Deprecated APIs
 
 ### Class: CryptoStream
 
@@ -1095,7 +1095,7 @@ changes:
 * `rejectUnauthorized` {boolean} If not `false` a server automatically reject clients with invalid certificates. Only applies when `isServer` is `true`.
 * `options` 
   * `secureContext`: A TLS context object from [`tls.createSecureContext()`][]
-  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Par défaut :** `false`.
+  * `isServer`: If `true` the TLS socket will be instantiated in server-mode. **Default:** `false`.
   * `server` {net.Server} A [`net.Server`][] instance
   * `requestCert`: See [`tls.createServer()`][]
   * `rejectUnauthorized`: See [`tls.createServer()`][]
