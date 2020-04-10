@@ -133,7 +133,7 @@ added: v10.0.0
 
 * `options` {Object}
   * `categories` {string[]} An array of trace category names. Values included in the array are coerced to a string when possible. An error will be thrown if the value cannot be coerced.
-* 戻り値: {Tracing}.
+* Returns: {Tracing}.
 
 Creates and returns a `Tracing` object for the given set of `categories`.
 
@@ -151,7 +151,7 @@ tracing.disable();
 added: v10.0.0
 -->
 
-* 戻り値: {string}
+* Returns: {string}
 
 Returns a comma-separated list of all currently-enabled trace event categories. The current set of enabled trace event categories is determined by the *union* of all currently-enabled `Tracing` objects and any categories enabled using the `--trace-event-categories` flag.
 
