@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. It can be accessed using:
 
@@ -442,13 +442,13 @@ added: v8.1.0
 deprecated: v10.0.0
 -->> Stability: 0 - Deprecated: Use [`zlib.bytesWritten`][] instead.
 
-* {liczba}
+* {number}
 
 Deprecated alias for [`zlib.bytesWritten`][]. This original name was chosen because it also made sense to interpret the value as the number of bytes read by the engine, but is inconsistent with other streams in Node.js that expose values under these names.
 
 ### `zlib.bytesWritten`<!-- YAML
 added: v10.0.0
--->* {liczba}
+-->* {number}
 
 The `zlib.bytesWritten` property specifies the number of bytes written to the engine, before the bytes are processed (compressed or decompressed, as appropriate for the derived class).
 
