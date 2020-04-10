@@ -1,4 +1,4 @@
-# Moduli ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
@@ -8,9 +8,9 @@
 
 Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Not all features of the EP are complete and will be landing as both VM support and implementation is ready. I messaggi di errore sono ancora in via di ottimizzazione.
+Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 
-## Abilitazione
+## Enabling
 
 <!-- type=misc -->
 
@@ -22,37 +22,37 @@ Once this has been set, files ending with `.mjs` will be able to be loaded as ES
 node --experimental-modules my-app.mjs
 ```
 
-## Funzionalità
+## Features
 
 <!-- type=misc -->
 
-### Supportato
+### Supported
 
 Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
 
-### Non supportato
+### Unsupported
 
-| Funzionalità           | Motivo                                                                            |
+| Feature                | Reason                                                                            |
 | ---------------------- | --------------------------------------------------------------------------------- |
 | `require('./foo.mjs')` | ES Modules have differing resolution and timing, use language standard `import()` |
 | `import()`             | pending newer V8 release used in Node.js                                          |
 | `import.meta`          | pending V8 implementation                                                         |
 
-## Differenze notevoli tra `import` e `require`
+## Notable differences between `import` and `require`
 
-### Nessuna NODE_PATH
+### No NODE_PATH
 
-`NODE_PATH` non fa parte dei "resolving `import` specifiers". Please use symlinks if this behavior is desired.
+`NODE_PATH` is not part of resolving `import` specifiers. Please use symlinks if this behavior is desired.
 
-### Nessun `require.extensions`
+### No `require.extensions`
 
-`require.extensions` non è utilizzato da `import`. The expectation is that loader hooks can provide this workflow in the future.
+`require.extensions` is not used by `import`. The expectation is that loader hooks can provide this workflow in the future.
 
-### Nessun `require.cache`
+### No `require.cache`
 
-`require.cache` non è utilizzata da `import`. Ha una cache separata.
+`require.cache` is not used by `import`. It has a separate cache.
 
-### Percorsi basati su URL
+### URL based paths
 
 ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
 
@@ -63,11 +63,11 @@ import './foo?query=1'; // loads ./foo with query of "?query=1"
 import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
-Per il momento, solo i moduli che utilizzano il protocollo `file:` possono essere caricati.
+For now, only modules using the `file:` protocol can be loaded.
 
-## Interop con moduli esistenti
+## Interop with existing modules
 
-Tutti i moduli CommonJS, JSON e C++ possono essere utilizzati con `import`.
+All CommonJS, JSON, and C++ modules can be used with `import`.
 
 Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
 
@@ -84,7 +84,7 @@ fs.readFile('./foo.txt', (err, body) => {
 });
 ```
 
-## Hooks loader
+## Loader hooks
 
 <!-- type=misc -->
 
@@ -92,7 +92,7 @@ To customize the default module resolution, loader hooks can optionally be provi
 
 When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
-### Risolvi hook
+### Resolve hook
 
 The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
 
@@ -109,16 +109,16 @@ export async function resolve(specifier, parentModuleURL, defaultResolver) {
 
 The default NodeJS ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Questo può essere uno dei seguenti:
+In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`     | Descrizione                                                      |
-| ------------ | ---------------------------------------------------------------- |
-| `'esm'`      | Carica un modulo JavaScript standard                             |
-| `'commonjs'` | Carica un modulo CommonJS di tipo nodo                           |
-| `'builtin'`  | Carica un modulo CommonJS di tipo nodo                           |
-| `'json'`     | Carica un file JSON                                              |
-| `'addon'`    | Carica un [C++ Addon](addons.html)                               |
-| `'dinamico'` | Usa un hook istantaneo [dinamico](#esm_dynamic_instantiate_hook) |
+| `format`     | Description                                                     |
+| ------------ | --------------------------------------------------------------- |
+| `'esm'`      | Load a standard JavaScript module                               |
+| `'commonjs'` | Load a node-style CommonJS module                               |
+| `'builtin'`  | Load a node builtin CommonJS module                             |
+| `'json'`     | Load a JSON file                                                |
+| `'addon'`    | Load a [C++ Addon](addons.html)                                 |
+| `'dynamic'`  | Use a [dynamic instantiate hook](#esm_dynamic_instantiate_hook) |
 
 For example, a dummy loader to load JavaScript restricted to browser resolution rules with only JS file extension and Node builtin modules support could be written:
 
@@ -157,15 +157,15 @@ export function resolve(specifier, parentModuleURL/*, defaultResolve */) {
 }
 ```
 
-Con questo loader, se si esegue:
+With this loader, running:
 
 ```console
-NODE_OPTIONS='--sperimentale-modules --loader ./custom-loader.mjs' node x.js
+NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 ```
 
 would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
 
-### Gancio istanziato dinamico
+### Dynamic instantiate hook
 
 To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
 
