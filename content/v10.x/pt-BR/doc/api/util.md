@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. É possível acessá-lo utilizando:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -38,7 +38,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-hello World
+hello world
 ```
 
 The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
@@ -229,7 +229,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Retorna: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -345,11 +345,11 @@ changes:
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
-  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Padrão:** `true`.
+  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Default:** `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or negative to show no elements. **Default:** `100`.
   * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
-  * `compact` {boolean} Setting this to `false` changes the default indentation to use a line break for each object key instead of lining up multiple properties in one line. It will also break text that is above the `breakLength` size into smaller and better readable chunks and indents objects the same as arrays. Note that no text will be reduced below 16 characters, no matter the `breakLength` size. For more information, see the example below. **Padrão:** `true`.
+  * `compact` {boolean} Setting this to `false` changes the default indentation to use a line break for each object key instead of lining up multiple properties in one line. It will also break text that is above the `breakLength` size into smaller and better readable chunks and indents objects the same as arrays. Note that no text will be reduced below 16 characters, no matter the `breakLength` size. For more information, see the example below. **Default:** `true`.
   * `sorted` {boolean|Function} If set to `true` or a function, all properties of an object and Set and Map entries will be sorted in the returned string. If set to `true` the [default sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) is going to be used. If set to a function, it is used as a [compare function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters).
 * Returns: {string} The representation of passed object
 
@@ -619,7 +619,7 @@ added: v9.0.0
 
 * `val1` {any}
 * `val2` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if there is deep strict equality between `val1` and `val2`. Otherwise, returns `false`.
 
@@ -632,7 +632,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Retorna: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -802,9 +802,9 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
-* `opções` {Object} 
+* `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Retorna: {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -844,7 +844,7 @@ const uint8array = encoder.encode('this is some data');
 ### textEncoder.encode([input])
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Retorna: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -871,7 +871,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
 
@@ -889,7 +889,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an `arguments` object.
 
@@ -908,7 +908,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -924,7 +924,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -940,7 +940,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigInt64Array` instance.
 
@@ -956,7 +956,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigUint64Array` instance.
 
@@ -972,7 +972,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
 
@@ -992,11 +992,11 @@ added: v10.11.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
-Por exemplo:
+For example:
 
 ```js
 util.types.isBoxedPrimitive(false); // Returns false
@@ -1013,7 +1013,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`DataView`][] instance.
 
@@ -1032,7 +1032,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Date`][] instance.
 
@@ -1047,7 +1047,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a native `External` value.
 
@@ -1058,7 +1058,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float32Array`][] instance.
 
@@ -1075,7 +1075,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Float64Array`][] instance.
 
@@ -1092,7 +1092,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1108,7 +1108,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a generator object as returned from a built-in generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
@@ -1125,7 +1125,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int8Array`][] instance.
 
@@ -1142,7 +1142,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int16Array`][] instance.
 
@@ -1159,7 +1159,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Int32Array`][] instance.
 
@@ -1176,7 +1176,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Map`][] instance.
 
@@ -1191,7 +1191,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
 
@@ -1210,7 +1210,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
 
@@ -1229,7 +1229,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an instance of a built-in [`Error`][] type.
 
@@ -1246,7 +1246,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
@@ -1262,7 +1262,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Promise`][].
 
@@ -1277,7 +1277,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a [`Proxy`][] instance.
 
@@ -1295,7 +1295,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a regular expression object.
 
@@ -1311,7 +1311,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Set`][] instance.
 
@@ -1326,7 +1326,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
 
@@ -1345,7 +1345,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
@@ -1361,7 +1361,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a string object, e.g. created by `new String()`.
 
@@ -1377,7 +1377,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
 
@@ -1394,7 +1394,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`TypedArray`][] instance.
 
@@ -1413,7 +1413,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8Array`][] instance.
 
@@ -1430,7 +1430,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
 
@@ -1447,7 +1447,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint16Array`][] instance.
 
@@ -1464,7 +1464,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`Uint32Array`][] instance.
 
@@ -1481,7 +1481,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakMap`][] instance.
 
@@ -1496,7 +1496,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WeakSet`][] instance.
 
@@ -1511,7 +1511,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
 
@@ -1520,7 +1520,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## APIs Descontinuadas
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -1547,7 +1547,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -1560,7 +1560,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -1576,7 +1576,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Alias for [`Array.isArray()`][].
 
@@ -1603,7 +1603,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 
@@ -1628,7 +1628,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
 
@@ -1650,10 +1650,10 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`util.types.isDate()`][].
+> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
 
@@ -1675,10 +1675,10 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`util.types.isNativeError()`][].
+> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
@@ -1716,7 +1716,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
@@ -1744,7 +1744,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === null` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
 
@@ -1769,7 +1769,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
@@ -1794,7 +1794,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
@@ -1821,7 +1821,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
 
@@ -1848,7 +1848,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
 
@@ -1882,10 +1882,10 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 
@@ -1910,7 +1910,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 
@@ -1937,7 +1937,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
@@ -1962,7 +1962,7 @@ deprecated: v4.0.0
 > Stability: 0 - Deprecated: Use `value === undefined` instead.
 
 * `object` {any}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
 
@@ -2004,7 +2004,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
@@ -2015,6 +2015,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
