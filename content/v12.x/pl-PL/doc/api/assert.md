@@ -1,12 +1,12 @@
-# Asercje
+# Assert
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants. The module provides a recommended [`strict` mode][] and a more lenient legacy mode.
 
-## Klasa: assert.AssertionError
+## Class: assert.AssertionError
 
 * Extends: {errors.Error}
 
@@ -24,7 +24,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance.
   * `stackStartFn` {Function} If provided, the generated stack trace omits frames before this function.
 
-Podklasa `Error`, która wskazuje na błąd asercji.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -419,7 +419,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `wiadomość` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
@@ -458,7 +458,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function}
-* `wiadomość` {string}
+* `message` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -510,7 +510,7 @@ added: v0.1.21
 
 **Strict mode**
 
-Alias [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
 **Legacy mode**
 
@@ -698,7 +698,7 @@ changes:
 
 **Strict mode**
 
-Alias [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy mode**
 
@@ -790,7 +790,7 @@ added: v0.1.21
 
 **Strict mode**
 
-Alias [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
 **Legacy mode**
 
@@ -903,7 +903,7 @@ assert(0);
 added: v10.0.0
 -->* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `wiadomość` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
@@ -997,7 +997,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `wiadomość` {string}
+* `message` {string}
 
 Expects the function `fn` to throw an error.
 
