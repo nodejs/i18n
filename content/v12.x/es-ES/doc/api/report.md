@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Estabilidad: 1 - Experimental
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
@@ -383,7 +383,7 @@ A complete example report that was generated on an uncaught exception is provide
 }
 ```
 
-## Uso
+## Usage
 
 ```bash
 node --experimental-report --report-uncaught-exception \
@@ -477,11 +477,11 @@ When a report is written, start and end messages are issued to stderr and the fi
 
 Additional runtime configuration of report generation is available via the following properties of `process.report`:
 
-`reportOnFatalError` triggers diagnostic reporting on fatal errors when `true`. Por defecto es `false`.
+`reportOnFatalError` triggers diagnostic reporting on fatal errors when `true`. Defaults to `false`.
 
-`reportOnSignal` triggers diagnostic reporting on signal when `true`. This is not supported on Windows. Por defecto es `false`.
+`reportOnSignal` triggers diagnostic reporting on signal when `true`. This is not supported on Windows. Defaults to `false`.
 
-`reportOnUncaughtException` triggers diagnostic reporting on uncaught exception when `true`. Por defecto es `false`.
+`reportOnUncaughtException` triggers diagnostic reporting on uncaught exception when `true`. Defaults to `false`.
 
 `signal` specifies the POSIX signal identifier that will be used to intercept external triggers for report generation. Defaults to `'SIGUSR2'`.
 
