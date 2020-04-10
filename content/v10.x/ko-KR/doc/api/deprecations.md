@@ -1,4 +1,4 @@
-# 폐기 예정인 API
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 
