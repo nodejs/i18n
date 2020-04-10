@@ -322,8 +322,8 @@ changes:
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -489,8 +489,8 @@ The following error constants are exported by `os.constants.errno`.
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -823,8 +823,8 @@ The following error codes are specific to the Windows operating system.
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1068,8 +1068,8 @@ If available on the operating system, the following constants are exported in `o
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>RTLD_LAZY</code></td>
@@ -1103,8 +1103,8 @@ added: v10.10.0
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>PRIORITY_LOW</code></td>
@@ -1151,8 +1151,8 @@ added: v10.10.0
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
