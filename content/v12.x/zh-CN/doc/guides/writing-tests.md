@@ -12,14 +12,14 @@
 在以下情况下添加测试:
 
 * 添加新功能。
-* 修复回归和 bug。
+* Fixing regressions and bugs.
 * 扩展测试覆盖率。
 
-## 目录结构
+## Test directory structure
 
 See [directory structure overview](https://github.com/nodejs/node/blob/master/test/README.md#test-directories) for outline of existing test & locations. When deciding on whether to expand an existing test file or create a new one, consider going through the files related to the subsystem. For example, look for `test-streams` when writing a test for `lib/streams.js`.
 
-## 测试结构
+## Test structure
 
 让我们从 Node.js 测试套件分析这个基本测试：
 
@@ -90,13 +90,13 @@ The require statements are sorted in [ASCII](http://man7.org/linux/man-pages/man
 
 ### **Lines 11-22**
 
-这是测试的主体。 这个测试很简单，它仅仅测试 HTTP 服务器在传入的请求标头接受 `非ASCII字符`。 有趣的事情要注意：
+这是测试的主体。 这个测试很简单，它仅仅测试 HTTP 服务器在传入的请求标头接受 `非ASCII字符`。 Interesting things to notice:
 
 * If the test doesn't depend on a specific port number, then always use 0 instead of an arbitrary value, as it allows tests to run in parallel safely, as the operating system will assign a random port. If the test requires a specific port, for example if the test checks that assigning a specific port works as expected, then it is ok to assign a specific port number.
 * The use of `common.mustCall` to check that some callbacks/listeners are called.
 * The HTTP server closes once all the checks have run. This way, the test can exit gracefully. Remember that for a test to succeed, it must exit with a status code of 0.
 
-## 一般建议
+## General recommendations
 
 ### Timers
 
@@ -257,7 +257,7 @@ In some tests, it can be unclear whether a `console.log()` statement is required
 
 ## 测试文件命名
 
-测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 第三部分通常是将要测试的方法或者事件名称。 名称的后续部分会添加更多关于被测试内容的信息。
+测试文件使用短横杆间隔(kebab casing)命名。 名称的第一个组成部分是 `test`。 名称的第二个组成部分是将要被测试的模块或者子系统。 The third is usually the method or event name being tested. Subsequent components of the name add more information about what is being tested.
 
 例如，`process` 对象的 `beforeExit` 事件的测试可能被命名为 `test-process-before-exit.js`。 如果测试专门检查箭头函数是否与 `beforeExit` 事件正常工作，则它可能被命名为 `test-process-before-exit-arrow-functions.js`。
 
