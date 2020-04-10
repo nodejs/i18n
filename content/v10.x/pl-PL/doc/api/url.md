@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -90,7 +90,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. Na przykład:
+A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note that an effort will be made to coerce the given values into strings. For instance:
 
 ```js
 const myURL = new URL({ toString: () => 'https://example.org/' });
