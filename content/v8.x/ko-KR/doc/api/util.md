@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
@@ -100,6 +100,8 @@ added: v0.8.0
 
 The `util.deprecate()` method wraps the given `function` or class in such a way that it is marked as deprecated.
 
+<!-- eslint-disable prefer-rest-params -->
+
 ```js
 const util = require('util');
 
@@ -120,7 +122,9 @@ If the `--throw-deprecation` command line flag is set, or the `process.throwDepr
 
 The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
-## util.format(format[, ...args])<!-- YAML
+## util.format(format[, ...args])
+
+<!-- YAML
 added: v0.5.3
 changes:
 
@@ -169,12 +173,13 @@ If only one argument is passed to `util.format()`, it is returned as it is witho
 util.format('%% %s'); // '%% %s'
 ```
 
-## util.getSystemErrorName(err)<!-- YAML
+## util.getSystemErrorName(err)
+
+<!-- YAML
 added: v8.12.0
 -->
 
 * `err` {number}
-
 * Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
@@ -186,7 +191,9 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
-## util.inherits(constructor, superConstructor)<!-- YAML
+## util.inherits(constructor, superConstructor)
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -249,7 +256,9 @@ stream.write('With ES6');
 
 ```
 
-## util.inspect(object[, options])<!-- YAML
+## util.inspect(object[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -269,7 +278,7 @@ changes:
 -->
 
 * `object` {any} Any JavaScript primitive or Object.
-* `옵션` {Object} 
+* `options` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:** `false`.
   * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
   * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
@@ -290,9 +299,11 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
 
-### Customizing `util.inspect` colors<!-- type=misc -->Color output (if enabled) of 
+### Customizing `util.inspect` colors
 
-`util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
+<!-- type=misc -->
+
+Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
 
 `util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
@@ -363,17 +374,21 @@ util.inspect(obj);
 // Returns: "{ bar: 'baz' }"
 ```
 
-### util.inspect.custom<!-- YAML
+### util.inspect.custom
+
+<!-- YAML
 added: v6.6.0
--->A Symbol that can be used to declare custom inspect functions, see 
+-->
 
-[Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
+A Symbol that can be used to declare custom inspect functions, see [Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
 
-### util.inspect.defaultOptions<!-- YAML
+### util.inspect.defaultOptions
+
+<!-- YAML
 added: v6.4.0
--->The 
+-->
 
-`defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
+The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
 
 ```js
 const util = require('util');
@@ -384,12 +399,13 @@ util.inspect.defaultOptions.maxArrayLength = null;
 console.log(arr); // logs the full array
 ```
 
-## util.promisify(original)<!-- YAML
+## util.promisify(original)
+
+<!-- YAML
 added: v8.0.0
 -->
 
 * `original` {Function}
-
 * Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
@@ -470,11 +486,13 @@ added: v8.0.0
 
 A Symbol that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## Class: util.TextDecoder<!-- YAML
-added: v8.3.0
--->An implementation of the 
+## Class: util.TextDecoder
 
-[WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
+<!-- YAML
+added: v8.3.0
+-->
+
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -551,7 +569,7 @@ Different Node.js build configurations support different sets of encodings. Whil
 ### new TextDecoder([encoding[, options]])
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
-* `옵션` {Object} 
+* `options` {Object} 
   * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
   * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
@@ -560,7 +578,7 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
-* `옵션` {Object} 
+* `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
 * Returns: {string}
 
@@ -612,27 +630,31 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## 폐기 예정인 API
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Object.assign()`] instead.
+> Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
 
 The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
 
 It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -651,10 +673,14 @@ deprecated: v0.11.3
 
 Deprecated predecessor of `console.error`.
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -673,10 +699,14 @@ util.isArray({});
 // Returns: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -717,10 +747,14 @@ util.isBuffer(Buffer.from('hello world'));
 // Returns: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -774,10 +808,14 @@ util.isError(obj);
 // Returns: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -933,10 +971,14 @@ util.isPrimitive(new Date());
 // Returns: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -953,10 +995,14 @@ util.isRegExp({});
 // Returns: false
 ```
 
-### util.isString(object)<!-- YAML
+### util.isString(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
@@ -1024,10 +1070,14 @@ util.isUndefined(null);
 // Returns: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use a third party module instead.
+-->
+
+> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
@@ -1039,12 +1089,14 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
