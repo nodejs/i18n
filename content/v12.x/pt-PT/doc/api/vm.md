@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -222,7 +222,7 @@ console.log(globalVar);
 added: v12.16.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -416,7 +416,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -479,7 +479,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v12.16.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
