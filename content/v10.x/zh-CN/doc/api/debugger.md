@@ -1,8 +1,8 @@
-# 调试器
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
