@@ -1,4 +1,4 @@
-# Informação Addicional
+# Additional Onboarding Information
 
 ## Who to CC in issues
 
