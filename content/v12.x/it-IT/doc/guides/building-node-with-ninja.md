@@ -1,8 +1,8 @@
-# Costruire Node.js con Ninja
+# Building Node.js with Ninja
 
 The purpose of this guide is to show how to build Node.js using [Ninja](https://ninja-build.org/), as doing so can be significantly quicker than using `make`. Please see [Ninja's site](https://ninja-build.org/) for installation instructions (Unix only).
 
-Per costruire Node.js con ninja, ci sono 3 step che devono essere compiuti:
+To build Node.js with ninja, there are 3 steps that must be taken:
 
 1. Configure the project's OS-based build rules via `./configure --ninja`.
 2. Run `ninja -C out/Release` to produce a compiled release binary.
