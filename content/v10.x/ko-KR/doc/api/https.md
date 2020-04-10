@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -194,10 +194,10 @@ changes:
 -->
 
 * `url` {string | URL}
-* `옵션` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  * `protocol` **Default:** `'https:'`
-  * `port` **Default:** `443`
-  * `agent` **Default:** `https.globalAgent`
+* `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
+    * `protocol` **Default:** `'https:'`
+    * `port` **Default:** `443`
+    * `agent` **Default:** `https.globalAgent`
 * `callback` {Function}
 
 Makes a request to a secure web server.
