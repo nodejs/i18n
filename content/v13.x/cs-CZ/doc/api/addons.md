@@ -1,4 +1,4 @@
-# Node. js doplňky jsou dynamicky přidávané sdílené objekty napsané v jazyce C++, které mohou být nahrány přímo do Node. js s použitím require() funkce a použity jakoby byly normální Node. js moduly. Jsou primárně použity jako rozhraní mezi JavaScript kódem běžícím v Node. js a C/C++ knihovnami
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
