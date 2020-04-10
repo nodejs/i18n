@@ -1,8 +1,8 @@
-# Ενδιάμεση Μνήμη
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 In Node.js, `Buffer` objects are used to represent binary data in the form of a sequence of bytes. Many Node.js APIs, for example streams and file system operations, support `Buffer`s, as interactions with the operating system or other processes generally always happen in terms of binary data.
 
@@ -566,7 +566,7 @@ added: v0.1.101
 -->
 
 * `obj` {Object}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `obj` is a `Buffer`, `false` otherwise.
 
@@ -576,7 +576,7 @@ added: v0.9.1
 -->
 
 * `encoding` {string} A character encoding name to check.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if `encoding` is the name of a supported character encoding, or `false` otherwise.
 
@@ -813,7 +813,7 @@ changes:
 -->
 
 * `otherBuffer` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`][] with which to compare `buf`.
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Returns `true` if both `buf` and `otherBuffer` have exactly the same bytes, `false` otherwise. Equivalent to [`buf.compare(otherBuffer) === 0`][`buf.compare()`].
 
@@ -1123,7 +1123,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Επιστρέφει: {bigint}
+* Returns: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigInt64BE()` reads as big endian, `readBigInt64LE()` reads as little endian).
 
@@ -1136,7 +1136,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Επιστρέφει: {bigint}
+* Returns: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigUInt64BE()` reads as big endian, `readBigUInt64LE()` reads as little endian).
 
@@ -1615,7 +1615,7 @@ buf2.swap64();
 added: v0.9.2
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 Returns a JSON representation of `buf`. [`JSON.stringify()`][] implicitly calls this function when stringifying a `Buffer` instance.
 
@@ -1646,7 +1646,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`][].
-* Επιστρέφει: {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
