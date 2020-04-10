@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -85,7 +85,7 @@ See [`http.Server#headersTimeout`][].
 
 ### `server.listen()`
 
-Starts the HTTPS server listening for encrypted connections. 此方法与 [`net.Server`][] 中的 [`server.listen()`][] 相同。
+Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### `server.maxHeadersCount`
 
@@ -151,7 +151,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-或
+Or
 
 ```js
 const https = require('https');
