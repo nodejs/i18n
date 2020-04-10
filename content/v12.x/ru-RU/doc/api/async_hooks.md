@@ -1,16 +1,16 @@
-# Асинхронные хуки
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. Это осуществляется с помощью:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
 ```
 
-## Терминология
+## Terminology
 
 An asynchronous resource represents an object with an associated callback. This callback may be called multiple times, for example, the `'connection'` event in `net.createServer()`, or just a single time like in `fs.open()`. A resource can also be closed before the callback is called. `AsyncHook` does not explicitly distinguish between these different cases but will represent them as the abstract concept that is a resource.
 
@@ -18,7 +18,7 @@ If [`Worker`][]s are used, each thread has an independent `async_hooks` interfac
 
 ## Public API
 
-### Обзор
+### Overview
 
 Following is a simple overview of the public API.
 
@@ -115,7 +115,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### Обработка ошибки
+##### Error Handling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -498,7 +498,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Пример употребления:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
