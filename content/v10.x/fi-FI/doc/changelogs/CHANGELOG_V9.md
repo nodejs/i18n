@@ -1,4 +1,4 @@
-# Node.js 9 Muutosloki
+# Node.js 9 ChangeLog
 
 <!--lint disable prohibited-strings-->
 
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Muut versiot 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -44,7 +44,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arkisto](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="9.11.1"></a>
 
@@ -2076,7 +2076,7 @@ Fixes for the following CVEs are included in this release:
   
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Virheet**
+* **Errors**
   
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues: 
