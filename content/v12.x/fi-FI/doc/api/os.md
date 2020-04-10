@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 The `os` module provides operating system-related utility methods and properties. It can be accessed using:
 
