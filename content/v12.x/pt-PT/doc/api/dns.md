@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
