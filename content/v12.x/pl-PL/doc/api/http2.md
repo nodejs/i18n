@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -485,7 +485,7 @@ The new settings will not become effective until the `SETTINGS` acknowledgment i
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 The `http2session.type` will be equal to `http2.constants.NGHTTP2_SESSION_SERVER` if this `Http2Session` instance is a server, and `http2.constants.NGHTTP2_SESSION_CLIENT` if the instance is a client.
 
@@ -808,7 +808,7 @@ Set to `true` if the `Http2Stream` instance was aborted abnormally. When set, th
 added: v11.2.0
 -->
 
-* {liczba}
+* {number}
 
 This property shows the number of characters currently buffered to be written. See [`net.Socket.bufferSize`][] for details.
 
@@ -885,7 +885,7 @@ Updates the priority for this `Http2Stream` instance.
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 Set to the `RST_STREAM` [error code](#error_codes) reported when the `Http2Stream` is destroyed after either receiving an `RST_STREAM` frame from the connected peer, calling `http2stream.close()`, or `http2stream.destroy()`. Will be `undefined` if the `Http2Stream` has not been closed.
 
@@ -2400,7 +2400,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v12.16.0
--->> Stabilność: 0 - Przestarzałe. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -2580,7 +2580,7 @@ const server = http2.createServer((req, res) => {
 added: v8.4.0
 -->
 
-* {liczba}
+* {number}
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
