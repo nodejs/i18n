@@ -1,4 +1,4 @@
-# Διαδικασία
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -477,7 +477,7 @@ added: v6.1.0
 -->
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Επιστρέφει: {Object} 
+* Returns: {Object} 
     * `user` {integer}
     * `system` {integer}
 
@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Επιστρέφει: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Παράδειγμα:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Παράδειγμα:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Παράδειγμα:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -865,7 +865,7 @@ if (process.getegid) {
 added: v2.0.0
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -883,7 +883,7 @@ if (process.geteuid) {
 added: v0.1.31
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -901,7 +901,7 @@ if (process.getgid) {
 added: v0.9.4
 -->
 
-* Επιστρέφει: {Array}
+* Returns: {Array}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -932,7 +932,7 @@ added: v0.7.6
 -->
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
-* Επιστρέφει: {Array}
+* Returns: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Παράδειγμα:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -1034,7 +1034,7 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Επιστρέφει: {Object} 
+* Returns: {Object} 
     * `rss` {integer}
     * `heapTotal` {integer}
     * `heapUsed` {integer}
@@ -1271,7 +1271,7 @@ added: v0.5.9
 * `sendHandle` {Handle object}
 * `options` {Object}
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1448,7 +1448,7 @@ process.stdin.pipe(process.stdout);
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Για περισσότερες πληροφορίες δείτε το [`process.exit()`][].
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
@@ -1525,7 +1525,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Επιστρέφει: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
