@@ -10,11 +10,11 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 0 - Устарело
+> Stability: 0 - Deprecated
 
 **The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://github.com/bestiejs/punycode.js) module instead.
 
-The `punycode` module is a bundled version of the [Punycode.js](https://github.com/bestiejs/punycode.js) module. Это осуществляется с помощью:
+The `punycode` module is a bundled version of the [Punycode.js](https://github.com/bestiejs/punycode.js) module. It can be accessed using:
 
 ```js
 const punycode = require('punycode');
