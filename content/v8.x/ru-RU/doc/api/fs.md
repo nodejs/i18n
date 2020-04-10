@@ -1,43 +1,43 @@
-# Файловая система
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
-Файловый ввод-вывод обеспечивается простыми врапперами вокруг стандартных функций POSIX. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
+File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-Асинхронная форма всегда принимает обратный вызов завершения в качестве его последнего аргумента. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
-При использовании синхронной формы любые исключения выводятся немедленно. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
+When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
-Пример асинхронной версии:
+Here is an example of the asynchronous version:
 
 ```js
 const fs = require('fs');
 
 fs.unlink('/tmp/hello', (err) => {
   if (err) throw err;
-  console.log("успешно удален /tmp/hello");
+  console.log('successfully deleted /tmp/hello');
 });
 ```
 
-Синхронная версия:
+Here is the synchronous version:
 
 ```js
 const fs = require('fs');
 
 fs.unlinkSync('/tmp/hello');
-console.log("успешно удален /tmp/hello");
+console.log('successfully deleted /tmp/hello');
 ```
 
-При использовании асинхронных методов нет гарантии в последовательности. So the following is prone to error:
+With the asynchronous methods there is no guaranteed ordering. So the following is prone to error:
 
 ```js
-s.rename('/tmp/hello', '/tmp/world', (err) => {
+fs.rename('/tmp/hello', '/tmp/world', (err) => {
   if (err) throw err;
-  console.log("полностью переименовано");
+  console.log('renamed complete');
 });
 fs.stat('/tmp/world', (err, stats) => {
   if (err) throw err;
@@ -45,7 +45,7 @@ fs.stat('/tmp/world', (err, stats) => {
 });
 ```
 
-`fs.stat` может выполняться перед `fs.rename`. Правильный способ это сделать - выстроить по цепочке обратные вызовы.
+It could be that `fs.stat` is executed before `fs.rename`. The correct way to do this is to chain the callbacks.
 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
@@ -59,7 +59,7 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 
 In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
 
-Можно использовать связанный путь к имени файла. Remember, however, that this path will be relative to `process.cwd()`.
+The relative path to a filename can be used. Remember, however, that this path will be relative to `process.cwd()`.
 
 While it is not recommended, most fs functions allow the callback argument to be omitted, in which case a default callback is used that rethrows errors. To get a trace to the original call site, set the `NODE_DEBUG` environment variable:
 
@@ -76,7 +76,7 @@ $ env NODE_DEBUG=fs node script.js
 fs.js:88
         throw backtrace;
         ^
-Ошибка: EISDIR: недопустимая операция с каталогом, читайте
+Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -172,7 +172,7 @@ fs.readFileSync(new URL('file:///C:/path/%5c'));
 \ or / characters */
 ```
 
-## API буфера
+## Buffer API
 
 <!-- YAML
 added: v6.0.0
@@ -182,28 +182,28 @@ added: v6.0.0
 
 *Note*: On certain file systems (such as NTFS and HFS+) filenames will always be encoded as UTF-8. On such file systems, passing non-UTF-8 encoded Buffers to `fs` functions will not work as expected.
 
-## Класс: fs.FSWatcher
+## Class: fs.FSWatcher
 
 <!-- YAML
 added: v0.5.8
 -->
 
-Объекты, возвращенные из [`fs.watch()`][], относятся к этому типу.
+Objects returned from [`fs.watch()`][] are of this type.
 
 The `listener` callback provided to `fs.watch()` receives the returned FSWatcher's `change` events.
 
-Сам объект создает эти события:
+The object itself emits these events:
 
-### Событие: "change"'
+### Event: 'change'
 
 <!-- YAML
 added: v0.5.8
 -->
 
-* `eventType` {string} Тип изменения fs
-* `filename` {string|Buffer} Имя файла, которое изменилось (если релевантно/допустимо)
+* `eventType` {string} The type of fs change
+* `filename` {string|Buffer} The filename that changed (if relevant/available)
 
-Создается, когда что-то меняется в отслеживаемом каталоге или файле. Более подробно смотрите в [`fs.watch()`][].
+Emitted when something changes in a watched directory or file. See more details in [`fs.watch()`][].
 
 The `filename` argument may not be provided depending on operating system support. If `filename` is provided, it will be provided as a `Buffer` if `fs.watch()` is called with its `encoding` option set to `'buffer'`, otherwise `filename` will be a string.
 
@@ -217,7 +217,7 @@ fs.watch('./tmp', { encoding: 'buffer' }, (eventType, filename) => {
 });
 ```
 
-### Событие: 'error'
+### Event: 'error'
 
 <!-- YAML
 added: v0.5.8
@@ -225,7 +225,7 @@ added: v0.5.8
 
 * `error` {Error}
 
-Создается при возникновении ошибки.
+Emitted when an error occurs.
 
 ### watcher.close()
 
@@ -233,33 +233,33 @@ added: v0.5.8
 added: v0.5.8
 -->
 
-Прекратить просмотр изменений на данном `fs.FSWatcher`.
+Stop watching for changes on the given `fs.FSWatcher`.
 
-## Класс: fs.ReadStream
-
-<!-- YAML
-added: v0.1.93
--->
-
-`ReadStream` является [Читаемым Потоком](stream.html#stream_class_stream_readable).
-
-### Событие: 'close'
+## Class: fs.ReadStream
 
 <!-- YAML
 added: v0.1.93
 -->
 
-Создается, когда базовый файловый дескриптор `ReadStream` был закрыт.
+`ReadStream` is a [Readable Stream](stream.html#stream_class_stream_readable).
 
-### Событие: 'open'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.93
 -->
 
-* `fd` {integer} Целочислительный файловый дескриптор, используемый ReadStream.
+Emitted when the `ReadStream`'s underlying file descriptor has been closed.
 
-Создается, когда открывается файл ReadStream.
+### Event: 'open'
+
+<!-- YAML
+added: v0.1.93
+-->
+
+* `fd` {integer} Integer file descriptor used by the ReadStream.
+
+Emitted when the ReadStream's file is opened.
 
 ### readStream.bytesRead
 
@@ -267,7 +267,7 @@ added: v0.1.93
 added: 6.4.0
 -->
 
-Количество байтов, прочитанных на данный момент.
+The number of bytes read so far.
 
 ### readStream.path
 
@@ -277,7 +277,7 @@ added: v0.1.93
 
 The path to the file the stream is reading from as specified in the first argument to `fs.createReadStream()`. If `path` is passed as a string, then `readStream.path` will be a string. If `path` is passed as a `Buffer`, then `readStream.path` will be a `Buffer`.
 
-## Класс: fs.Stats
+## Class: fs.Stats
 
 <!-- YAML
 added: v0.1.21
@@ -294,7 +294,7 @@ Objects returned from [`fs.stat()`][], [`fs.lstat()`][] and [`fs.fstat()`][] and
 * `stats.isDirectory()`
 * `stats.isBlockDevice()`
 * `stats.isCharacterDevice()`
-* `stats.isSymbolicLink()` (действительно только с [`fs.lstat()`][])
+* `stats.isSymbolicLink()` (only valid with [`fs.lstat()`][])
 * `stats.isFIFO()`
 * `stats.isSocket()`
 
@@ -324,42 +324,42 @@ Stats {
 
 *Note*: `atimeMs`, `mtimeMs`, `ctimeMs`, `birthtimeMs` are [numbers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type) that hold the corresponding times in milliseconds. Their precision is platform specific. `atime`, `mtime`, `ctime`, and `birthtime` are [`Date`](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Date) object alternate representations of the various times. The `Date` and number values are not connected. Assigning a new number value, or mutating the `Date` value, will not be reflected in the corresponding alternate representation.
 
-### Статические значения времени
+### Stat Time Values
 
-Время в объекте статистики имеет следующую семантику:
+The times in the stat object have the following semantics:
 
-* `atime` "Время доступа" - Время, когда данные файлов последний раз были доступны. Changed by the mknod(2), utimes(2), and read(2) system calls.
-* `mtime` "Время изменения" - Время, когда данные файла последний раз изменялись. Изменено с помощью системных вызовов mknod(2), utimes(2) и write(2).
+* `atime` "Access Time" - Time when file data last accessed. Changed by the mknod(2), utimes(2), and read(2) system calls.
+* `mtime` "Modified Time" - Time when file data last modified. Changed by the mknod(2), utimes(2), and write(2) system calls.
 * `ctime` "Change Time" - Time when file status was last changed (inode data modification). Changed by the chmod(2), chown(2), link(2), mknod(2), rename(2), unlink(2), utimes(2), read(2), and write(2) system calls.
-* `birthtime` "Время рождения" - Время создания файла. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
+* `birthtime` "Birth Time" - Time of file creation. Set once when the file is created. On filesystems where birthtime is not available, this field may instead hold either the `ctime` or `1970-01-01T00:00Z` (ie, unix epoch timestamp `0`). Note that this value may be greater than `atime` or `mtime` in this case. On Darwin and other FreeBSD variants, also set if the `atime` is explicitly set to an earlier value than the current `birthtime` using the utimes(2) system call.
 
 Prior to Node v0.12, the `ctime` held the `birthtime` on Windows systems. Note that as of v0.12, `ctime` is not "creation time", and on Unix systems, it never was.
 
-## Класс: fs.WriteStream
+## Class: fs.WriteStream
 
 <!-- YAML
 added: v0.1.93
 -->
 
-`WriteStream` является [Записываемым потоком](stream.html#stream_class_stream_writable).
+`WriteStream` is a [Writable Stream](stream.html#stream_class_stream_writable).
 
-### Событие: 'close'
-
-<!-- YAML
-added: v0.1.93
--->
-
-Создается, когда базовый файловый дескриптор `WriteStream` был закрыт.
-
-### Событие: 'open'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.93
 -->
 
-* `fd` {integer} Целочислительный файловый дескриптор, используемый WriteStream.
+Emitted when the `WriteStream`'s underlying file descriptor has been closed.
 
-Создается, когда открывается файл WriteStream.
+### Event: 'open'
+
+<!-- YAML
+added: v0.1.93
+-->
+
+* `fd` {integer} Integer file descriptor used by the WriteStream.
+
+Emitted when the WriteStream's file is opened.
 
 ### writeStream.bytesWritten
 
@@ -367,7 +367,7 @@ added: v0.1.93
 added: v0.4.7
 -->
 
-Количество байтов, записанных на данный момент. Does not include data that is still queued for writing.
+The number of bytes written so far. Does not include data that is still queued for writing.
 
 ### writeStream.path
 
@@ -398,15 +398,15 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Проверяет права пользователя для файла или каталога, указанного с помощью `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
+Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` виден вызывающему процессу. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Установлен по умолчанию, если `mode` не задан.
-* `fs.constants.R_OK` - `path` может быть прочитан вызывающим процессом.
-* `fs.constants.W_OK` - `path` может быть записан вызывающим процессом.
-* `fs.constants.X_OK` - `path` может быть выполнен вызывающим процессом. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
+* `fs.constants.R_OK` - `path` can be read by the calling process.
+* `fs.constants.W_OK` - `path` can be written by the calling process.
+* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
 
 The final argument, `callback`, is a callback function that is invoked with a possible error argument. If any of the accessibility checks fail, the error argument will be an `Error` object. The following example checks if the file `/etc/passwd` can be read and written by the current process.
 
@@ -418,9 +418,9 @@ fs.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK, (err) => {
 
 Using `fs.access()` to check for the accessibility of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
-Например:
+For example:
 
-**запись (НЕ РЕКОМЕНДУЕТСЯ)**
+**write (NOT RECOMMENDED)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -436,7 +436,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**запись (РЕКОМЕНДУЕТСЯ)**
+**write (RECOMMENDED)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -453,7 +453,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**чтение (НЕ РЕКОМЕНДУЕТСЯ)**
+**read (NOT RECOMMENDED)**
 
 ```js
 fs.access('myfile', (err) => {
@@ -473,7 +473,7 @@ fs.access('myfile', (err) => {
 });
 ```
 
-**чтение (РЕКОМЕНДУЕТСЯ)**
+**read (RECOMMENDED)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
@@ -510,14 +510,14 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Возвращает: {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
-* `fs.constants.F_OK` - `path` виден вызывающему процессу. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Установлен по умолчанию, если `mode` не задан.
-* `fs.constants.R_OK` - `path` может быть прочитан вызывающим процессом.
-* `fs.constants.W_OK` - `path` может быть записан вызывающим процессом.
-* `fs.constants.X_OK` - `path` может быть выполнен вызывающим процессом. This has no effect on Windows (will behave like `fs.constants.F_OK`).
+* `fs.constants.F_OK` - `path` is visible to the calling process. This is useful for determining if a file exists, but says nothing about `rwx` permissions. Default if no `mode` is specified.
+* `fs.constants.R_OK` - `path` can be read by the calling process.
+* `fs.constants.W_OK` - `path` can be written by the calling process.
+* `fs.constants.X_OK` - `path` can be executed by the calling process. This has no effect on Windows (will behave like `fs.constants.F_OK`).
 
 If any of the accessibility checks fail, an `Error` will be thrown. Otherwise, the method will return `undefined`.
 
@@ -548,30 +548,30 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|number} имя файла или файловый дескриптор
+* `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `опции` {Object|string} 
-  * `encoding` {string|null} **По умолчанию:** `'utf8'`
+* `options` {Object|string} 
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронно добавляет данные в файл, создавая файл, если он еще не существует. `data` can be a string or a [`Buffer`][].
+Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Пример:
+Example:
 
 ```js
-fs.appendFile('message.txt', 'данные для добавления', (err) => {
+fs.appendFile('message.txt', 'data to append', (err) => {
   if (err) throw err;
-  console.log('"Данные для добавления" были добавлены в файл!');
+  console.log('The "data to append" was appended to file!');
 });
 ```
 
-Если параметр `options` является строкой, то он указывает кодировку. Пример:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
-fs.appendFile('message.txt', 'данные для добавления', 'utf8', обратный вызов);
+fs.appendFile('message.txt', 'data to append', 'utf8', callback);
 ```
 
 The `file` may be specified as a numeric file descriptor that has been opened for appending (using `fs.open()` or `fs.openSync()`). The file descriptor will not be closed automatically.
@@ -602,16 +602,16 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|number} имя файла или файловый дескриптор
+* `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `опции` {Object|string} 
-  * `encoding` {string|null} **По умолчанию:** `'utf8'`
+* `options` {Object|string} 
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Пример:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-Если параметр `options` является строкой, то он указывает кодировку. Пример:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -662,18 +662,18 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронно изменяет права доступа к файлу. No arguments other than a possible exception are given to the completion callback.
+Asynchronously changes the permissions of a file. No arguments other than a possible exception are given to the completion callback.
 
-См. также: chmod(2)
+See also: chmod(2)
 
 ### File modes
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Константа              | Octal   | Описание                 |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -687,12 +687,12 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Описание                 |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | только для чтения        |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -719,9 +719,9 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Синхронно меняет права доступа к файлу. Возвращает `undefined`. Синхронная версия [`fs.chmod()`][].
+Synchronously changes the permissions of a file. Returns `undefined`. This is the synchronous version of [`fs.chmod()`][].
 
-См. также: chmod(2)
+See also: chmod(2)
 
 ## fs.chown(path, uid, gid, callback)
 
@@ -742,12 +742,12 @@ changes:
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронно меняет владельца и группу файла. No arguments other than a possible exception are given to the completion callback.
+Asynchronously changes owner and group of a file. No arguments other than a possible exception are given to the completion callback.
 
-См. также: chown(2)
+See also: chown(2)
 
 ## fs.chownSync(path, uid, gid)
 
@@ -765,9 +765,9 @@ changes:
 * `uid` {integer}
 * `gid` {integer}
 
-Синхронно меняет владельца и группу файла. Возвращает `undefined`. Синхронная версия [`fs.chown()`][].
+Synchronously changes owner and group of a file. Returns `undefined`. This is the synchronous version of [`fs.chown()`][].
 
-См. также: chown(2)
+See also: chown(2)
 
 ## fs.close(fd, callback)
 
@@ -782,10 +782,10 @@ changes:
 -->
 
 * `fd` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный close(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous close(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.closeSync(fd)
 
@@ -795,7 +795,7 @@ added: v0.1.21
 
 * `fd` {integer}
 
-Синхронный close(2). Возвращает `undefined`.
+Synchronous close(2). Returns `undefined`.
 
 ## fs.constants
 
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Пример:
+Example:
 
 ```js
 const fs = require('fs');
@@ -848,11 +848,11 @@ added: v8.5.0
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
 
-Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. Возвращает `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
+Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Пример:
+Example:
 
 ```js
 const fs = require('fs');
@@ -891,7 +891,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string}
   * `encoding` {string}
   * `fd` {integer}
@@ -901,11 +901,11 @@ changes:
   * `end` {integer}
   * `highWaterMark` {integer}
 
-Возвращает новый объект [`ReadStream`][]. (См. [Readable Stream](stream.html#stream_class_stream_readable)).
+Returns a new [`ReadStream`][] object. (See [Readable Stream](stream.html#stream_class_stream_readable)).
 
 Be aware that, unlike the default value set for `highWaterMark` on a readable stream (16 kb), the stream returned by this method has a default value of 64 kb for the same parameter.
 
-`options` - объект или строка со следующими значениями по умолчанию:
+`options` is an object or string with the following defaults:
 
 ```js
 const defaults = {
@@ -918,7 +918,7 @@ const defaults = {
 };
 ```
 
-`options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. `encoding` может быть одним из тех, что принимает [`Buffer`][].
+`options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
 If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
@@ -926,13 +926,13 @@ If `autoClose` is false, then the file descriptor won't be closed, even if there
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
-Пример чтения последних 10 байтов файла, который имеет длину 100 байтов:
+An example to read the last 10 bytes of a file which is 100 bytes long:
 
 ```js
 fs.createReadStream('sample.txt', { start: 90, end: 99 });
 ```
 
-Если параметр `options` является строкой, то он указывает кодировку.
+If `options` is a string, then it specifies the encoding.
 
 ## fs.createWriteStream(path[, options])
 
@@ -956,7 +956,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string}
   * `encoding` {string}
   * `fd` {integer}
@@ -964,9 +964,9 @@ changes:
   * `autoClose` {boolean}
   * `start` {integer}
 
-Возвращает новый объект [`WriteStream`][]. (См. [Writable Stream](stream.html#stream_class_stream_writable)).
+Returns a new [`WriteStream`][] object. (See [Writable Stream](stream.html#stream_class_stream_writable)).
 
-`options` - объект или строка со следующими значениями по умолчанию:
+`options` is an object or string with the following defaults:
 
 ```js
 const defaults = {
@@ -978,13 +978,13 @@ const defaults = {
 };
 ```
 
-`options` may also include a `start` option to allow writing data at some position past the beginning of the file. Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`. `encoding` может быть одним из тех, что принимает [`Buffer`][].
+`options` may also include a `start` option to allow writing data at some position past the beginning of the file. Modifying a file rather than replacing it may require a `flags` mode of `r+` rather than the default mode `w`. The `encoding` can be any one of those accepted by [`Buffer`][].
 
 If `autoClose` is set to true (default behavior) on `error` or `end` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak.
 
 Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
-Если параметр `options` является строкой, то он указывает кодировку.
+If `options` is a string, then it specifies the encoding.
 
 ## fs.exists(path, callback)
 
@@ -999,13 +999,13 @@ changes:
 deprecated: v1.0.0
 -->
 
-> Стабильность: 0 - Устарело: Вместо этого используйте [`fs.stat()`][] или [`fs.access()`][].
+> Stability: 0 - Deprecated: Use [`fs.stat()`][] or [`fs.access()`][] instead.
 
 * `path` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `exists` {boolean}
 
-Проверьте наличие данного пути с помощью файловой системы. Затем вызовите аргумент `callback` со значением true или false. Пример:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1017,9 +1017,9 @@ fs.exists('/etc/passwd', (exists) => {
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
-Например:
+For example:
 
-**запись (НЕ РЕКОМЕНДУЕТСЯ)**
+**write (NOT RECOMMENDED)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1034,7 +1034,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**запись (РЕКОМЕНДУЕТСЯ)**
+**write (RECOMMENDED)**
 
 ```js
 fs.open('myfile', 'wx', (err, fd) => {
@@ -1051,7 +1051,7 @@ fs.open('myfile', 'wx', (err, fd) => {
 });
 ```
 
-**чтение (НЕ РЕКОМЕНДУЕТСЯ)**
+**read (NOT RECOMMENDED)**
 
 ```js
 fs.exists('myfile', (exists) => {
@@ -1066,7 +1066,7 @@ fs.exists('myfile', (exists) => {
 });
 ```
 
-**чтение (РЕКОМЕНДУЕТСЯ)**
+**read (RECOMMENDED)**
 
 ```js
 fs.open('myfile', 'r', (err, fd) => {
@@ -1101,9 +1101,9 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Синхронная версия [`fs.exists()`][]. Если путь существует, возвращает `true`, в противном случае - `false`.
+Synchronous version of [`fs.exists()`][]. Returns `true` if the path exists, `false` otherwise.
 
-Обратите внимание, что устарел `fs.exists()`, но не `fs.existsSync()`. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
+Note that `fs.exists()` is deprecated, but `fs.existsSync()` is not. (The `callback` parameter to `fs.exists()` accepts parameters that are inconsistent with other Node.js callbacks. `fs.existsSync()` does not use a callback.)
 
 ## fs.fchmod(fd, mode, callback)
 
@@ -1119,10 +1119,10 @@ changes:
 
 * `fd` {integer}
 * `mode` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный fchmod(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fchmod(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.fchmodSync(fd, mode)
 
@@ -1133,7 +1133,7 @@ added: v0.4.7
 * `fd` {integer}
 * `mode` {integer}
 
-Синхронный fchmod(2). Возвращает `undefined`.
+Synchronous fchmod(2). Returns `undefined`.
 
 ## fs.fchown(fd, uid, gid, callback)
 
@@ -1150,10 +1150,10 @@ changes:
 * `fd` {integer}
 * `uid` {integer}
 * `gid` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный fchown(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fchown(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.fchownSync(fd, uid, gid)
 
@@ -1165,7 +1165,7 @@ added: v0.4.7
 * `uid` {integer}
 * `gid` {integer}
 
-Синхронный fchown(2). Возвращает `undefined`.
+Synchronous fchown(2). Returns `undefined`.
 
 ## fs.fdatasync(fd, callback)
 
@@ -1180,10 +1180,10 @@ changes:
 -->
 
 * `fd` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный fdatasync(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fdatasync(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.fdatasyncSync(fd)
 
@@ -1193,7 +1193,7 @@ added: v0.1.96
 
 * `fd` {integer}
 
-Синхронный fdatasync(2). Возвращает `undefined`.
+Synchronous fdatasync(2). Returns `undefined`.
 
 ## fs.fstat(fd, callback)
 
@@ -1208,11 +1208,11 @@ changes:
 -->
 
 * `fd` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Асинхронный fstat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
+Asynchronous fstat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object. `fstat()` is identical to [`stat()`][], except that the file to be stat-ed is specified by the file descriptor `fd`.
 
 ## fs.fstatSync(fd)
 
@@ -1222,7 +1222,7 @@ added: v0.1.95
 
 * `fd` {integer}
 
-Синхронный fstat(2). Возвращает экземпляр [`fs.Stats`][].
+Synchronous fstat(2). Returns an instance of [`fs.Stats`][].
 
 ## fs.fsync(fd, callback)
 
@@ -1237,10 +1237,10 @@ changes:
 -->
 
 * `fd` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный fsync(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous fsync(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.fsyncSync(fd)
 
@@ -1250,7 +1250,7 @@ added: v0.1.96
 
 * `fd` {integer}
 
-Синхронный fsync(2). Возвращает `undefined`.
+Synchronous fsync(2). Returns `undefined`.
 
 ## fs.ftruncate(fd[, len], callback)
 
@@ -1266,49 +1266,49 @@ changes:
 
 * `fd` {integer}
 * `len` {integer} **Default:** `0`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный ftruncate(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous ftruncate(2). No arguments other than a possible exception are given to the completion callback.
 
 If the file referred to by the file descriptor was larger than `len` bytes, only the first `len` bytes will be retained in the file.
 
-Например, следующая программа сохраняет только первые четыре байта файла
+For example, the following program retains only the first four bytes of the file
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
-// Печатает: Node.js
+// Prints: Node.js
 
-// получить файловый дескриптор файла, который нужно сократить
+// get the file descriptor of the file to be truncated
 const fd = fs.openSync('temp.txt', 'r+');
 
-// сократить файл до первых четырех байтов
+// truncate the file to first four bytes
 fs.ftruncate(fd, 4, (err) => {
   assert.ifError(err);
   console.log(fs.readFileSync('temp.txt', 'utf8'));
 });
-// Печатает: Node
+// Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). Например,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). For example,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
-// Печатает: Node.js
+// Prints: Node.js
 
-// получить файловый дескриптор файла, который нужно сократить
+// get the file descriptor of the file to be truncated
 const fd = fs.openSync('temp.txt', 'r+');
 
-// сократить файл до 10 байтов, когда фактический размер составляет 7 байтов
+// truncate the file to 10 bytes, whereas the actual size is 7 bytes
 fs.ftruncate(fd, 10, (err) => {
   assert.ifError(err);
   console.log(fs.readFileSync('temp.txt'));
 });
-// Печатает: <Buffer 4e 6f 64 65 2e 6a 73 00 00 00>
+// Prints: <Buffer 4e 6f 64 65 2e 6a 73 00 00 00>
 // ('Node.js\0\0\0' in UTF8)
 ```
 
-Последние три байта будут нулевыми ('\0'), чтобы компенсировать чрезмерное усечение.
+The last three bytes are null bytes ('\0'), to compensate the over-truncation.
 
 ## fs.ftruncateSync(fd[, len])
 
@@ -1319,7 +1319,7 @@ added: v0.8.6
 * `fd` {integer}
 * `len` {integer} **Default:** `0`
 
-Синхронный ftruncate(2). Возвращает `undefined`.
+Synchronous ftruncate(2). Returns `undefined`.
 
 ## fs.futimes(fd, atime, mtime, callback)
 
@@ -1340,7 +1340,7 @@ changes:
 * `fd` {integer}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
 Change the file system timestamps of the object referenced by the supplied file descriptor. See [`fs.utimes()`][].
@@ -1363,7 +1363,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Синхронная версия [`fs.futimes()`][]. Возвращает `undefined`.
+Synchronous version of [`fs.futimes()`][]. Returns `undefined`.
 
 ## fs.lchmod(path, mode, callback)
 
@@ -1379,12 +1379,12 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный lchmod(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous lchmod(2). No arguments other than a possible exception are given to the completion callback.
 
-Доступно только на macOS.
+Only available on macOS.
 
 ## fs.lchmodSync(path, mode)
 
@@ -1395,7 +1395,7 @@ deprecated: v0.4.7
 * `path` {string|Buffer|URL}
 * `mode` {integer}
 
-Синхронный lchmod(2). Возвращает `undefined`.
+Synchronous lchmod(2). Returns `undefined`.
 
 ## fs.lchown(path, uid, gid, callback)
 
@@ -1412,10 +1412,10 @@ changes:
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный lchown(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous lchown(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.lchownSync(path, uid, gid)
 
@@ -1427,7 +1427,7 @@ deprecated: v0.4.7
 * `uid` {integer}
 * `gid` {integer}
 
-Синхронный lchown(2). Возвращает `undefined`.
+Synchronous lchown(2). Returns `undefined`.
 
 ## fs.link(existingPath, newPath, callback)
 
@@ -1448,10 +1448,10 @@ changes:
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный link(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous link(2). No arguments other than a possible exception are given to the completion callback.
 
 ## fs.linkSync(existingPath, newPath)
 
@@ -1469,7 +1469,7 @@ changes:
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
 
-Синхронный link(2). Возвращает `undefined`.
+Synchronous link(2). Returns `undefined`.
 
 ## fs.lstat(path, callback)
 
@@ -1488,11 +1488,11 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Асинхронный lstat(2). The callback gets two arguments `(err, stats)` where `stats` is a [`fs.Stats`][] object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
+Asynchronous lstat(2). The callback gets two arguments `(err, stats)` where `stats` is a [`fs.Stats`][] object. `lstat()` is identical to `stat()`, except that if `path` is a symbolic link, then the link itself is stat-ed, not the file that it refers to.
 
 ## fs.lstatSync(path)
 
@@ -1508,7 +1508,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Синхронный lstat(2). Возвращает экземпляр [`fs.Stats`][].
+Synchronous lstat(2). Returns an instance of [`fs.Stats`][].
 
 ## fs.mkdir(path[, mode], callback)
 
@@ -1528,12 +1528,12 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронно создает каталог. No arguments other than a possible exception are given to the completion callback.
+Asynchronously creates a directory. No arguments other than a possible exception are given to the completion callback.
 
-См. также: mkdir(2)
+See also: mkdir(2)
 
 ## fs.mkdirSync(path[, mode])
 
@@ -1550,9 +1550,9 @@ changes:
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `0o777`
 
-Синхронно создает каталог. Возвращает `undefined`. Синхронная версия [`fs.mkdir()`][].
+Synchronously creates a directory. Returns `undefined`. This is the synchronous version of [`fs.mkdir()`][].
 
-См. также: mkdir(2)
+See also: mkdir(2)
 
 ## fs.mkdtemp(prefix[, options], callback)
 
@@ -1570,13 +1570,13 @@ changes:
 -->
 
 * `prefix` {string}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-* `обратный вызов` {Function} 
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
+* `callback` {Function} 
   * `err` {Error}
   * `folder` {string}
 
-Создает уникальный временный каталог.
+Creates a unique temporary directory.
 
 Generates six random characters to be appended behind a required `prefix` to create a unique temporary directory.
 
@@ -1584,40 +1584,40 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Пример:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
   if (err) throw err;
   console.log(folder);
-  // Печатает: /tmp/foo-itXde2 or C:\Users\...\AppData\Local\Temp\foo-itXde2
+  // Prints: /tmp/foo-itXde2 or C:\Users\...\AppData\Local\Temp\foo-itXde2
 });
 ```
 
 *Note*: The `fs.mkdtemp()` method will append the six randomly selected characters directly to the `prefix` string. For instance, given a directory `/tmp`, if the intention is to create a temporary directory *within* `/tmp`, the `prefix` *must* end with a trailing platform-specific path separator (`require('path').sep`).
 
 ```js
-// Родительский каталог для нового временного каталога
+// The parent directory for the new temporary directory
 const tmpDir = os.tmpdir();
 
-// Этот метод *НЕПРАВИЛЬНЫЙ*:
+// This method is *INCORRECT*:
 fs.mkdtemp(tmpDir, (err, folder) => {
   if (err) throw err;
   console.log(folder);
-  // Напечатает что-то похожее на `/tmpabc123`.
-  // Обратите внимание, что новый временный каталог создается
-  // в корневой файловой системе, а не *в*
-  // каталоге /tmp.
+  // Will print something similar to `/tmpabc123`.
+  // Note that a new temporary directory is created
+  // at the file system root rather than *within*
+  // the /tmp directory.
 });
 
-// Этот метод *ПРАВИЛЬНЫЙ*:
+// This method is *CORRECT*:
 const { sep } = require('path');
 fs.mkdtemp(`${tmpDir}${sep}`, (err, folder) => {
   if (err) throw err;
   console.log(folder);
-  // Напечатает что-то похожее на `/tmp/abc123`.
-  // Новый временный каталог создается в
-  // каталоге /tmp.
+  // Will print something similar to `/tmp/abc123`.
+  // A new temporary directory is created within
+  // the /tmp directory.
 });
 ```
 
@@ -1628,10 +1628,10 @@ added: v5.10.0
 -->
 
 * `prefix` {string}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
 
-Синхронная версия [`fs.mkdtemp()`][]. Returns the created folder path.
+The synchronous version of [`fs.mkdtemp()`][]. Returns the created folder path.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
@@ -1650,69 +1650,69 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number}
 * `mode` {integer} **Default:** `0o666` (readable and writable)
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `fd` {integer}
 
-Асинхронное открытие файла. См. open(2). Параметр `flags` может быть:
+Asynchronous file open. See open(2). `flags` can be:
 
-* `'r'` - Открыть файл для чтения. Исключение возникает, если файл не существует.
+* `'r'` - Open file for reading. An exception occurs if the file does not exist.
 
-* `'r+'` - Открыть файл для чтения и записи. Исключение возникает, если файл не существует.
+* `'r+'` - Open file for reading and writing. An exception occurs if the file does not exist.
 
-* `'rs+'` - Открыть файл для чтения и записи в синхронном режиме. Instructs the operating system to bypass the local file system cache.
+* `'rs+'` - Open file for reading and writing in synchronous mode. Instructs the operating system to bypass the local file system cache.
   
   This is primarily useful for opening files on NFS mounts as it allows skipping the potentially stale local cache. It has a very real impact on I/O performance so using this flag is not recommended unless it is needed.
   
-  Обратите внимание, что это не превращает `fs.open()` в синхронно блокирующий вызов. If synchronous operation is desired `fs.openSync()` should be used.
+  Note that this doesn't turn `fs.open()` into a synchronous blocking call. If synchronous operation is desired `fs.openSync()` should be used.
 
-* `'w'` - Открыть файл для записи. Файл создается (если он не существует) или сокращается (если он существует).
+* `'w'` - Open file for writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx'` - Как `'w'`, но не работает, если `path` существует.
+* `'wx'` - Like `'w'` but fails if `path` exists.
 
-* `'w+'` - Открыть файл для чтения и записи. Файл создается (если он не существует) или сокращается (если он существует).
+* `'w+'` - Open file for reading and writing. The file is created (if it does not exist) or truncated (if it exists).
 
-* `'wx+'` - Как `'w+'`, но не работает, если `path` существует.
+* `'wx+'` - Like `'w+'` but fails if `path` exists.
 
-* `'a'` - Открыть файл для добавления. Файл создается, если он не существует.
+* `'a'` - Open file for appending. The file is created if it does not exist.
 
-* `'ax'` - Как `'a'`, но не работает, если `path` существует.
+* `'ax'` - Like `'a'` but fails if `path` exists.
 
-* `'as'` - Open file for appending in synchronous mode. Файл создается, если он не существует.
+* `'as'` - Open file for appending in synchronous mode. The file is created if it does not exist.
 
-* `'a+'` - Открыть файл для чтения и добавления. Файл создается, если он не существует.
+* `'a+'` - Open file for reading and appending. The file is created if it does not exist.
 
-* `'ax+'` - Как `'a+'`, но не работает, если `path` существует.
+* `'ax+'` - Like `'a+'` but fails if `path` exists.
 
-* `'as+'` - Open file for reading and appending in synchronous mode. Файл создается, если он не существует.
+* `'as+'` - Open file for reading and appending in synchronous mode. The file is created if it does not exist.
 
 `mode` sets the file mode (permission and sticky bits), but only if the file was created.
 
-Обратный вызов принимает два аргумента `(err, fd)`.
+The callback gets two arguments `(err, fd)`.
 
 The exclusive flag `'x'` (`O_EXCL` flag in open(2)) ensures that `path` is newly created. On POSIX systems, `path` is considered to exist even if it is a symlink to a non-existent file. The exclusive flag may or may not work with network file systems.
 
 `flags` can also be a number as documented by open(2); commonly used constants are available from `fs.constants`. On Windows, flags are translated to their equivalent ones where applicable, e.g. `O_WRONLY` to `FILE_GENERIC_WRITE`, or `O_EXCL|O_CREAT` to `CREATE_NEW`, as accepted by CreateFileW.
 
-В Linux позиционные записи не работают, когда файл открыт в режиме добавления. The kernel ignores the position argument and always appends the data to the end of the file.
+On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
-*Примечание*: Поведение `fs.open()` зависит от платформы для некоторых флагов. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. In contrast, on Windows and FreeBSD, a file descriptor will be returned.
+*Note*: The behavior of `fs.open()` is platform-specific for some flags. As such, opening a directory on macOS and Linux with the `'a+'` flag - see example below - will return an error. In contrast, on Windows and FreeBSD, a file descriptor will be returned.
 
 ```js
-// macOS и Linux
+// macOS and Linux
 fs.open('<directory>', 'a+', (err, fd) => {
-  // => [Error: EISDIR: недопустимая операция с каталогом, открыть <directory>]
+  // => [Error: EISDIR: illegal operation on a directory, open <directory>]
 });
 
-// Windows и FreeBSD
+// Windows and FreeBSD
 fs.open('<directory>', 'a+', (err, fd) => {
   // => null, <fd>
 });
 ```
 
-Некоторые символы (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
+Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented by [Naming Files, Paths, and Namespaces](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247(v=vs.85).aspx). Under NTFS, if the filename contains a colon, Node.js will open a file system stream, as described by [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/bb540537.aspx).
 
-Функции, основанные на `fs.open()`, также демонстрируют это поведение. например, `fs.writeFile()`, `fs.readFile()` и т.д.
+Functions based on `fs.open()` exhibit this behavior as well. eg. `fs.writeFile()`, `fs.readFile()`, etc.
 
 ## fs.openSync(path, flags[, mode])
 
@@ -1730,7 +1730,7 @@ changes:
 * `flags` {string|number}
 * `mode` {integer} **Default:** `0o666`
 
-Синхронная версия [`fs.open()`][]. Returns an integer representing the file descriptor.
+Synchronous version of [`fs.open()`][]. Returns an integer representing the file descriptor.
 
 ## fs.read(fd, buffer, offset, length, position, callback)
 
@@ -1751,22 +1751,22 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `bytesRead` {integer}
   * `buffer` {Buffer}
 
-Читает данные из файла, указанного `fd`.
+Read data from the file specified by `fd`.
 
-`buffer` - буфер, на который будут записаны данные.
+`buffer` is the buffer that the data will be written to.
 
-`offset` - смещение в буфере, чтобы начать запись.
+`offset` is the offset in the buffer to start writing at.
 
-`length` - целое число, которое указывает количество байтов для чтения.
+`length` is an integer specifying the number of bytes to read.
 
-`position` - аргумент, указывающий, где начать чтение из файла. If `position` is `null`, data will be read from the current file position, and the file position will be updated. Если `position` - целое число, позиция файла останется неизменной.
+`position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
-Обратному вызову дается три аргумента `(err, bytesRead, buffer)`.
+The callback is given the three arguments, `(err, bytesRead, buffer)`.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `bytesRead` and `buffer` properties.
 
@@ -1790,13 +1790,13 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-* `обратный вызов` {Function} 
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
+* `callback` {Function} 
   * `err` {Error}
   * `files` {string[]|Buffer[]}
 
-Асинхронный readdir(3). Считывает содержимое каталога. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
+Asynchronous readdir(3). Reads the contents of a directory. The callback gets two arguments `(err, files)` where `files` is an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
 
@@ -1813,10 +1813,10 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
 
-Синхронный readdir(3). Returns an array of filenames excluding `'.'` and `'..'`.
+Synchronous readdir(3). Returns an array of filenames excluding `'.'` and `'..'`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the filenames passed to the callback. If the `encoding` is set to `'buffer'`, the filenames returned will be passed as `Buffer` objects.
 
@@ -1844,14 +1844,14 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `опции` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} **Default:** `'r'`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `data` {string|Buffer}
 
-Асинхронно считывает все содержимое файла. Пример:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1862,9 +1862,9 @@ fs.readFile('/etc/passwd', (err, data) => {
 
 The callback is passed two arguments `(err, data)`, where `data` is the contents of the file.
 
-Если кодировка не указана, то вернется необработанный буфер.
+If no encoding is specified, then the raw buffer is returned.
 
-Если параметр `options` является строкой, то он указывает кодировку. Пример:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -1884,7 +1884,7 @@ fs.readFile('<directory>', (err, data) => {
 });
 ```
 
-Любой указанный файловый дескриптор должен поддерживать чтение.
+Any specified file descriptor has to support reading.
 
 *Note*: If a file descriptor is specified as the `path`, it will not be closed automatically.
 
@@ -1906,13 +1906,13 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `опции` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} **Default:** `'r'`
 
-Синхронная версия [`fs.readFile()`][]. Returns the contents of the `path`.
+Synchronous version of [`fs.readFile()`][]. Returns the contents of the `path`.
 
-If the `encoding` option is specified then this function returns a string. В противном случае она возвращает буфер.
+If the `encoding` option is specified then this function returns a string. Otherwise it returns a buffer.
 
 *Note*: Similar to [`fs.readFile()`][], when the path is a directory, the behavior of `fs.readFileSync()` is platform-specific.
 
@@ -1942,13 +1942,14 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-* `обратный вызов` {Function} 
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
+* `callback` {Function} 
   * `err` {Error}
   * `linkString` {string|Buffer}
 
-Асинхронный readlink(2). Обратный вызов принимает два аргумента `(err, linkString)`.
+Asynchronous readlink(2). The callback gets two arguments `(err,
+linkString)`.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
 
@@ -1965,10 +1966,10 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
 
-Синхронный readlink(2). Возвращает значение строки символической ссылки.
+Synchronous readlink(2). Returns the symbolic link's string value.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the link path passed to the callback. If the `encoding` is set to `'buffer'`, the link path returned will be passed as a `Buffer` object.
 
@@ -1989,7 +1990,7 @@ changes:
 * `length` {integer}
 * `position` {integer}
 
-Синхронная версия [`fs.read()`][]. Возвращает количество `bytesRead`.
+Synchronous version of [`fs.read()`][]. Returns the number of `bytesRead`.
 
 ## fs.realpath(path[, options], callback)
 
@@ -2018,15 +2019,16 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-* `обратный вызов` {Function} 
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
+* `callback` {Function} 
   * `err` {Error}
   * `resolvedPath` {string|Buffer}
 
-Асинхронный realpath(3). `callback` получает два аргумента `(err, resolvedPath)`. Может использовать `process.cwd` для разрешения относительных путей.
+Asynchronous realpath(3). The `callback` gets two arguments `(err,
+resolvedPath)`. May use `process.cwd` to resolve relative paths.
 
-Поддерживаются только те пути, которые могут быть преобразованы в строки UTF8.
+Only paths that can be converted to UTF8 strings are supported.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the path passed to the callback. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
@@ -2055,12 +2057,12 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `опции` {string|Object} 
-  * `encoding` {string} **По умолчанию:** `'utf8'`
+* `options` {string|Object} 
+  * `encoding` {string} **Default:** `'utf8'`
 
-Синхронный realpath(3). Возвращает разрешенный путь.
+Synchronous realpath(3). Returns the resolved path.
 
-Поддерживаются только те пути, которые могут быть преобразованы в строки UTF8.
+Only paths that can be converted to UTF8 strings are supported.
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use for the returned value. If the `encoding` is set to `'buffer'`, the path returned will be passed as a `Buffer` object.
 
@@ -2085,7 +2087,7 @@ changes:
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
 Asynchronously rename file at `oldPath` to the pathname provided as `newPath`. In the case that `newPath` already exists, it will be overwritten. No arguments other than a possible exception are given to the completion callback.
@@ -2115,7 +2117,7 @@ changes:
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
 
-Синхронный rename(2). Возвращает `undefined`.
+Synchronous rename(2). Returns `undefined`.
 
 ## fs.rmdir(path, callback)
 
@@ -2134,10 +2136,10 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный rmdir(2). No arguments other than a possible exception are given to the completion callback.
+Asynchronous rmdir(2). No arguments other than a possible exception are given to the completion callback.
 
 *Note*: Using `fs.rmdir()` on a file (not a directory) results in an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
 
@@ -2155,7 +2157,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Синхронный rmdir(2). Возвращает `undefined`.
+Synchronous rmdir(2). Returns `undefined`.
 
 *Note*: Using `fs.rmdirSync()` on a file (not a directory) results in an `ENOENT` error on Windows and an `ENOTDIR` error on POSIX.
 
@@ -2179,13 +2181,13 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
 
-Асинхронный stat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object.
+Asynchronous stat(2). The callback gets two arguments `(err, stats)` where `stats` is an [`fs.Stats`][] object.
 
-В случае ошибки `err.code` будет одной из [Общих Системных Ошибок](errors.html#errors_common_system_errors).
+In case of an error, the `err.code` will be one of [Common System Errors](errors.html#errors_common_system_errors).
 
 Using `fs.stat()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Instead, user code should open/read/write the file directly and handle the error raised if the file is not available.
 
@@ -2205,7 +2207,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Синхронный stat(2). Возвращает экземпляр [`fs.Stats`][].
+Synchronous stat(2). Returns an instance of [`fs.Stats`][].
 
 ## fs.symlink(target, path[, type], callback)
 
@@ -2223,18 +2225,18 @@ changes:
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный symlink(2). No arguments other than a possible exception are given to the completion callback. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
+Asynchronous symlink(2). No arguments other than a possible exception are given to the completion callback. The `type` argument can be set to `'dir'`, `'file'`, or `'junction'` and is only available on Windows (ignored on other platforms). Note that Windows junction points require the destination path to be absolute. When using `'junction'`, the `target` argument will automatically be normalized to absolute path.
 
-Ниже приведен пример:
+Here is an example below:
 
 ```js
 fs.symlink('./foo', './new-port', callback);
 ```
 
-Создает символическую ссылку с именем "new-port", которая указывает на "foo".
+It creates a symbolic link named "new-port" that points to "foo".
 
 ## fs.symlinkSync(target, path[, type])
 
@@ -2253,7 +2255,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
 
-Синхронный symlink(2). Возвращает `undefined`.
+Synchronous symlink(2). Returns `undefined`.
 
 ## fs.truncate(path[, len], callback)
 
@@ -2269,10 +2271,10 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронный truncate(2). No arguments other than a possible exception are given to the completion callback. A file descriptor can also be passed as the first argument. В этом случае вызывается `fs.ftruncate()`.
+Asynchronous truncate(2). No arguments other than a possible exception are given to the completion callback. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncate()` is called.
 
 ## fs.truncateSync(path[, len])
 
@@ -2283,7 +2285,7 @@ added: v0.8.6
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
 
-Синхронный truncate(2). Возвращает `undefined`. A file descriptor can also be passed as the first argument. В этом случае вызывается `fs.ftruncateSync()`.
+Synchronous truncate(2). Returns `undefined`. A file descriptor can also be passed as the first argument. In this case, `fs.ftruncateSync()` is called.
 
 ## fs.unlink(path, callback)
 
@@ -2302,7 +2304,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
 Asynchronously removes a file or symbolic link. No arguments other than a possible exception are given to the completion callback.
@@ -2333,7 +2335,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 
-Синхронный unlink(2). Возвращает `undefined`.
+Synchronous unlink(2). Returns `undefined`.
 
 ## fs.unwatchFile(filename[, listener])
 
@@ -2344,11 +2346,11 @@ added: v0.1.31
 * `filename` {string|Buffer|URL}
 * `listener` {Function} Optional, a listener previously attached using `fs.watchFile()`
 
-Остановить отслеживание изменений на `filename`. If `listener` is specified, only that particular listener is removed. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
+Stop watching for changes on `filename`. If `listener` is specified, only that particular listener is removed. Otherwise, *all* listeners are removed, effectively stopping watching of `filename`.
 
 Calling `fs.unwatchFile()` with a filename that is not being watched is a no-op, not an error.
 
-*Примечание*: [`fs.watch()`][] более эффективен, чем `fs.watchFile()` и `fs.unwatchFile()`. `fs.watch()` should be used instead of `fs.watchFile()` and `fs.unwatchFile()` when possible.
+*Note*: [`fs.watch()`][] is more efficient than `fs.watchFile()` and `fs.unwatchFile()`. `fs.watch()` should be used instead of `fs.watchFile()` and `fs.unwatchFile()` when possible.
 
 ## fs.utimes(path, atime, mtime, callback)
 
@@ -2377,7 +2379,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
 Change the file system timestamps of the object referenced by `path`.
@@ -2411,7 +2413,7 @@ changes:
 * `atime` {integer}
 * `mtime` {integer}
 
-Синхронная версия [`fs.utimes()`][]. Возвращает `undefined`.
+Synchronous version of [`fs.utimes()`][]. Returns `undefined`.
 
 ## fs.watch(filename\[, options\]\[, listener\])
 
@@ -2429,58 +2431,58 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `опции` {string|Object} 
+* `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
-  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **По умолчанию:** `false`.
+  * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
-* `слушатель` {Function|undefined} **Default:** `undefined` 
+* `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
 
-Watch for changes on `filename`, where `filename` is either a file or a directory. [`fs.FSWatcher`][] - возвращаемый объект.
+Watch for changes on `filename`, where `filename` is either a file or a directory. The returned object is a [`fs.FSWatcher`][].
 
-Второй аргумент является необязательным. If `options` is provided as a string, it specifies the `encoding`. В противном случае параметр `options` передается в качестве объекта.
+The second argument is optional. If `options` is provided as a string, it specifies the `encoding`. Otherwise `options` should be passed as an object.
 
-Обратный вызов слушателя получит два аргумента `(eventType, filename)`. `eventType` is either `'rename'` or `'change'`, and `filename` is the name of the file which triggered the event.
+The listener callback gets two arguments `(eventType, filename)`. `eventType` is either `'rename'` or `'change'`, and `filename` is the name of the file which triggered the event.
 
 Note that on most platforms, `'rename'` is emitted whenever a filename appears or disappears in the directory.
 
 Also note the listener callback is attached to the `'change'` event fired by [`fs.FSWatcher`][], but it is not the same thing as the `'change'` value of `eventType`.
 
-### Предупреждения
+### Caveats
 
 <!--type=misc-->
 
 The `fs.watch` API is not 100% consistent across platforms, and is unavailable in some situations.
 
-Рекурсивная опция поддерживается только на macOS and Windows.
+The recursive option is only supported on macOS and Windows.
 
-#### Доступность
+#### Availability
 
 <!--type=misc-->
 
 This feature depends on the underlying operating system providing a way to be notified of filesystem changes.
 
-* В системах Linux используется [`inotify`]
-* В системах BSD используется [`kqueue`]
-* В macOS используется [`kqueue`] для файлов и [`FSEvents`] для каталогов.
-* В системах SunOS (включая Solaris и SmartOS) используется [`event ports`].
-* В системах Windows эта функция зависит от [`ReadDirectoryChangesW`].
-* В системах Aix эта функция зависит от [`AHAFS`], который должен быть включен.
+* On Linux systems, this uses [`inotify`]
+* On BSD systems, this uses [`kqueue`]
+* On macOS, this uses [`kqueue`] for files and [`FSEvents`] for directories.
+* On SunOS systems (including Solaris and SmartOS), this uses [`event ports`].
+* On Windows systems, this feature depends on [`ReadDirectoryChangesW`].
+* On Aix systems, this feature depends on [`AHAFS`], which must be enabled.
 
 If the underlying functionality is not available for some reason, then `fs.watch` will not be able to function. For example, watching files or directories can be unreliable, and in some cases impossible, on network file systems (NFS, SMB, etc), or host file systems when using virtualization software such as Vagrant, Docker, etc.
 
 It is still possible to use `fs.watchFile()`, which uses stat polling, but this method is slower and less reliable.
 
-#### Индексные дескрипторы
+#### Inodes
 
 <!--type=misc-->
 
-On Linux and macOS systems, `fs.watch()` resolves the path to an [inode](https://en.wikipedia.org/wiki/Inode) and watches the inode. If the watched path is deleted and recreated, it is assigned a new inode. The watch will emit an event for the delete but will continue watching the *original* inode. События для нового индексного дескриптора не будут созданы. Это ожидаемое поведение.
+On Linux and macOS systems, `fs.watch()` resolves the path to an [inode](https://en.wikipedia.org/wiki/Inode) and watches the inode. If the watched path is deleted and recreated, it is assigned a new inode. The watch will emit an event for the delete but will continue watching the *original* inode. Events for the new inode will not be emitted. This is expected behavior.
 
 AIX files retain the same inode for the lifetime of a file. Saving and closing a watched file on AIX will result in two notifications (one for adding new content, and one for truncation).
 
-#### Аргумент имени файла
+#### Filename Argument
 
 <!--type=misc-->
 
@@ -2488,11 +2490,11 @@ Providing `filename` argument in the callback is only supported on Linux, macOS,
 
 ```js
 fs.watch('somedir', (eventType, filename) => {
-  console.log(`тип события: ${eventType}`);
+  console.log(`event type is: ${eventType}`);
   if (filename) {
-    console.log(`имя файла предоставлено: ${filename}`);
+    console.log(`filename provided: ${filename}`);
   } else {
-    console.log('имя файла не предоставлено');
+    console.log('filename not provided');
   }
 });
 ```
@@ -2510,40 +2512,40 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `опции` {Object} 
+* `options` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
-* `слушатель` {Function} 
+* `listener` {Function} 
   * `current` {fs.Stats}
   * `previous` {fs.Stats}
 
-Отслеживание изменений в `filename`. The callback `listener` will be called each time the file is accessed.
+Watch for changes on `filename`. The callback `listener` will be called each time the file is accessed.
 
-Аргумент `options` может быть опущен. Если он предусмотрен, то должен быть объектом. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
+The `options` argument may be omitted. If provided, it should be an object. The `options` object may contain a boolean named `persistent` that indicates whether the process should continue to run as long as files are being watched. The `options` object may specify an `interval` property indicating how often the target should be polled in milliseconds.
 
 The `listener` gets two arguments the current stat object and the previous stat object:
 
 ```js
 fs.watchFile('message.text', (curr, prev) => {
-  console.log(`текущий mtime: ${curr.mtime}`);
-  console.log(`предыдущий mtime был: ${prev.mtime}`);
+  console.log(`the current mtime is: ${curr.mtime}`);
+  console.log(`the previous mtime was: ${prev.mtime}`);
 });
 ```
 
-Эти stat объекты являются экземплярами `fs.Stat`.
+These stat objects are instances of `fs.Stat`.
 
 To be notified when the file was modified, not just accessed, it is necessary to compare `curr.mtime` and `prev.mtime`.
 
-*Note*: When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). In Windows, `blksize` and `blocks` fields will be `undefined`, instead of zero. If the file is created later on, the listener will be called again, with the latest stat objects. Это изменение функциональности начинается с версии v0.10.
+*Note*: When an `fs.watchFile` operation results in an `ENOENT` error, it will invoke the listener once, with all the fields zeroed (or, for dates, the Unix Epoch). In Windows, `blksize` and `blocks` fields will be `undefined`, instead of zero. If the file is created later on, the listener will be called again, with the latest stat objects. This is a change in functionality since v0.10.
 
 *Note*: [`fs.watch()`][] is more efficient than `fs.watchFile` and `fs.unwatchFile`. `fs.watch` should be used instead of `fs.watchFile` and `fs.unwatchFile` when possible.
 
 *Note:* When a file being watched by `fs.watchFile()` disappears and reappears, then the `previousStat` reported in the second callback event (the file's reappearance) will be the same as the `previousStat` of the first callback event (its disappearance).
 
-Это происходит, когда:
+This happens when:
 
-* файл удален с последующим восстановлением
-* переименование файла дважды - возвращение к изначальному имени во второй раз
+* the file is deleted, followed by a restore
+* the file is renamed twice - the second time back to its original name
 
 ## fs.write(fd, buffer[, offset[, length[, position]]], callback)
 
@@ -2568,16 +2570,16 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `bytesWritten` {integer}
   * `buffer` {Buffer|Uint8Array}
 
-Запись `buffer` в файл, указанный `fd`.
+Write `buffer` to the file specified by `fd`.
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. Смотрите pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
 
 The callback will be given three arguments `(err, bytesWritten, buffer)` where `bytesWritten` specifies how many *bytes* were written from `buffer`.
 
@@ -2585,7 +2587,7 @@ If this method is invoked as its [`util.promisify()`][]ed version, it returns a 
 
 Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
-В Linux позиционные записи не работают, когда файл открыт в режиме добавления. The kernel ignores the position argument and always appends the data to the end of the file.
+On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
 ## fs.write(fd, string[, position[, encoding]], callback)
 
@@ -2606,24 +2608,24 @@ changes:
 * `string` {string}
 * `position` {integer}
 * `encoding` {string}
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
   * `written` {integer}
   * `string` {string}
 
-Запись `string` в файл, указанный `fd`. If `string` is not a string, then the value will be coerced to one.
+Write `string` to the file specified by `fd`. If `string` is not a string, then the value will be coerced to one.
 
-`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'` the data will be written at the current position. Смотрите pwrite(2).
+`position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'` the data will be written at the current position. See pwrite(2).
 
-`encoding` - ожидаемое кодирование строки.
+`encoding` is the expected string encoding.
 
-The callback will receive the arguments `(err, written, string)` where `written` specifies how many *bytes* the passed string required to be written. Note that bytes written is not the same as string characters. Смотрите [`Buffer.byteLength`][].
+The callback will receive the arguments `(err, written, string)` where `written` specifies how many *bytes* the passed string required to be written. Note that bytes written is not the same as string characters. See [`Buffer.byteLength`][].
 
-В отличие от записи `buffer`, строка должна записываться полностью. No substring may be specified. This is because the byte offset of the resulting data may not be the same as the string offset.
+Unlike when writing `buffer`, the entire string must be written. No substring may be specified. This is because the byte offset of the resulting data may not be the same as the string offset.
 
 Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
-В Linux позиционные записи не работают, когда файл открыт в режиме добавления. The kernel ignores the position argument and always appends the data to the end of the file.
+On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
 ## fs.writeFile(file, data[, options], callback)
 
@@ -2643,35 +2645,35 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|integer} имя файла или файловый дескриптор
+* `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `опции` {Object|string} 
-  * `encoding` {string|null} **По умолчанию:** `'utf8'`
+* `options` {Object|string} 
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
-* `обратный вызов` {Function} 
+* `callback` {Function} 
   * `err` {Error}
 
-Асинхронно записывает данные в файл, заменяя файл, если он уже существует. `data` может быть строкой или буфером.
+Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer.
 
-Опция `encoding` игнорируется, если `data` является буфером.
+The `encoding` option is ignored if `data` is a buffer.
 
-Пример:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
   if (err) throw err;
-  console.log('Файл сохранен!');
+  console.log('The file has been saved!');
 });
 ```
 
-Если параметр `options` является строкой, то он указывает кодировку. Пример:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 ```
 
-Любой заданный файловый дескриптор должен поддерживать запись.
+Any specified file descriptor has to support writing.
 
 Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
@@ -2691,14 +2693,14 @@ changes:
     description: The `file` parameter can be a file descriptor now.
 -->
 
-* `file` {string|Buffer|URL|integer} имя файла или файловый дескриптор
+* `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `опции` {Object|string} 
-  * `encoding` {string|null} **По умолчанию:** `'utf8'`
+* `options` {Object|string} 
+  * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
 
-Синхронная версия [`fs.writeFile()`][]. Возвращает `undefined`.
+The synchronous version of [`fs.writeFile()`][]. Returns `undefined`.
 
 ## fs.writeSync(fd, buffer[, offset[, length[, position]]])
 
@@ -2736,103 +2738,104 @@ changes:
 * `position` {integer}
 * `encoding` {string}
 
-Синхронная версия [`fs.write()`][]. Возвращает количество записанных байтов.
+Synchronous versions of [`fs.write()`][]. Returns the number of bytes written.
 
-## Константы FS
+## FS Constants
 
-Следующие константы экспортируются с помощью `fs.constants`.
+The following constants are exported by `fs.constants`.
 
 *Note*: Not every constant will be available on every operating system.
 
-### Константы доступа к файлу
+### File Access Constants
 
-Следующие константы предназначены для использования с [`fs.access()`][].
+The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
-    <td>Флаг, указывающий, что файл виден для вызывающего процесса.</td>
+    <td>Flag indicating that the file is visible to the calling process.</td>
   </tr>
   <tr>
     <td><code>R_OK</code></td>
-    <td>Флаг, указывающий, что файл может быть прочитан вызывающим процессом.</td>
+    <td>Flag indicating that the file can be read by the calling process.</td>
   </tr>
   <tr>
     <td><code>W_OK</code></td>
-    <td>Флаг, указывающий, что файл может быть записан вызывающим
-  процессом.</td>
+    <td>Flag indicating that the file can be written by the calling
+    process.</td>
   </tr>
   <tr>
     <td><code>X_OK</code></td>
-    <td>Флаг, указывающий, что файл может быть выполнен вызывающим
-   процессом.</td>
+    <td>Flag indicating that the file can be executed by the calling
+    process.</td>
   </tr>
 </table>
 
-### Константы открытия файла
+### File Open Constants
 
-Следующие константы предназначены для использования с `fs.open()`.
+The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
-    <td>Флаг, который указывает на открытие файла, доступного только для чтения.</td>
+    <td>Flag indicating to open a file for read-only access.</td>
   </tr>
   <tr>
     <td><code>O_WRONLY</code></td>
-    <td>Флаг, который указывает на открытие файла, доступного только для записи.</td>
+    <td>Flag indicating to open a file for write-only access.</td>
   </tr>
   <tr>
     <td><code>O_RDWR</code></td>
-    <td>Флаг, который указывает на открытие файла, доступного только для чтения.</td>
+    <td>Flag indicating to open a file for read-write access.</td>
   </tr>
   <tr>
     <td><code>O_CREAT</code></td>
-    <td>Флаг, указывающий на создание файла, если он еще не существует.</td>
+    <td>Flag indicating to create the file if it does not already exist.</td>
   </tr>
   <tr>
     <td><code>O_EXCL</code></td>
-    <td>Флаг, указывающий, что открытие файла должно потерпеть неудачу, если
-    установлен флаг <code>O_CREAT</code>, а файл уже существует.</td>
+    <td>Flag indicating that opening a file should fail if the
+    <code>O_CREAT</code> flag is set and the file already exists.</td>
   </tr>
   <tr>
     <td><code>O_NOCTTY</code></td>
-    <td>Флаг, указывающий на то, что если путь идентифицирует терминальное устройство, то открытие
-    пути не приведет к тому, что терминал станет управляющим для
-    процесса (если у процесса все еще нет терминала).</td>
+    <td>Flag indicating that if path identifies a terminal device, opening the
+    path shall not cause that terminal to become the controlling terminal for
+    the process (if the process does not already have one).</td>
   </tr>
   <tr>
     <td><code>O_TRUNC</code></td>
-    <td>Флаг, указывающий, что если файл существует и является обычным файлом, и этот
-    файл успешно открыт с доступом для записи, его длина должна быть усечена
-    до нуля.</td>
+    <td>Flag indicating that if the file exists and is a regular file, and the
+    file is opened successfully for write access, its length shall be truncated
+    to zero.</td>
   </tr>
   <tr>
     <td><code>O_APPEND</code></td>
-    <td>Флаг, указывающий, что данные будут добавлены в конец файла.</td>
+    <td>Flag indicating that data will be appended to the end of the file.</td>
   </tr>
   <tr>
     <td><code>O_DIRECTORY</code></td>
-    <td>Флаг, указывающий, что открытие должно завершиться неудачей, если путь не является
-    каталогом.</td>
+    <td>Flag indicating that the open should fail if the path is not a
+    directory.</td>
   </tr>
   <tr>
   <td><code>O_NOATIME</code></td>
-    <td>Флаг, указывающий, что доступ для чтения к файловой системе больше не приведет к обновлению информации "atime", связанной с файлом.
-    Этот флаг доступен только на операционных системах Linux.</td>
+    <td>Flag indicating reading accesses to the file system will no longer
+    result in an update to the `atime` information associated with the file.
+    This flag is available on Linux operating systems only.</td>
   </tr>
   <tr>
     <td><code>O_NOFOLLOW</code></td>
-    <td>Флаг, указывающий, что открытие должно завершиться неудачей, если путь является символической
-    ссылкой.</td>
+    <td>Flag indicating that the open should fail if the path is a symbolic
+    link.</td>
   </tr>
   <tr>
     <td><code>O_SYNC</code></td>
@@ -2846,70 +2849,71 @@ changes:
   </tr>
   <tr>
     <td><code>O_SYMLINK</code></td>
-    <td>Флаг, указывающий на открытие самой символической ссылки, а не ресурса, на который она указывает.</td>
+    <td>Flag indicating to open the symbolic link itself rather than the
+    resource it is pointing to.</td>
   </tr>
   <tr>
     <td><code>O_DIRECT</code></td>
-    <td>Когда установлено, будет сделана попытка свести к минимуму эффекты кэширования файлового
-    ввода-вывода.</td>
+    <td>When set, an attempt will be made to minimize caching effects of file
+    I/O.</td>
   </tr>
   <tr>
     <td><code>O_NONBLOCK</code></td>
-    <td>Флаг, указывающий, что при возможности файл открывается в режиме без блокировки.</td>
+    <td>Flag indicating to open the file in nonblocking mode when possible.</td>
   </tr>
 </table>
 
-### Константы типа файла
+### File Type Constants
 
 The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining a file's type.
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
-    <td>Битовая маска, используемая для извлечения кода типа файла.</td>
+    <td>Bit mask used to extract the file type code.</td>
   </tr>
   <tr>
     <td><code>S_IFREG</code></td>
-    <td>Константа типа файла для обычного файла.</td>
+    <td>File type constant for a regular file.</td>
   </tr>
   <tr>
     <td><code>S_IFDIR</code></td>
-    <td>Константа типа файла для каталога.</td>
+    <td>File type constant for a directory.</td>
   </tr>
   <tr>
     <td><code>S_IFCHR</code></td>
-    <td>Константа типа файла для файла устройства, ориентированного на символы.</td>
+    <td>File type constant for a character-oriented device file.</td>
   </tr>
   <tr>
     <td><code>S_IFBLK</code></td>
-    <td>Константа типа файла для файла устройства, ориентированного на блоки.</td>
+    <td>File type constant for a block-oriented device file.</td>
   </tr>
   <tr>
     <td><code>S_IFIFO</code></td>
-    <td>Константа типа файла для FIFO/канала.</td>
+    <td>File type constant for a FIFO/pipe.</td>
   </tr>
   <tr>
     <td><code>S_IFLNK</code></td>
-    <td>Константа типа файла для символической ссылки.</td>
+    <td>File type constant for a symbolic link.</td>
   </tr>
   <tr>
     <td><code>S_IFSOCK</code></td>
-    <td>Константа типа файла для сокета.</td>
+    <td>File type constant for a socket.</td>
   </tr>
 </table>
 
-### Константы режимов файла
+### File Mode Constants
 
 The following constants are meant for use with the [`fs.Stats`][] object's `mode` property for determining the access permissions for a file.
 
 <table>
   <tr>
-    <th>Константа</th>
-    <th>Описание</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
@@ -2917,15 +2921,15 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRUSR</code></td>
-    <td>Режим файла, указывающий на чтение пользователем.</td>
+    <td>File mode indicating readable by owner.</td>
   </tr>
   <tr>
     <td><code>S_IWUSR</code></td>
-    <td>Режим файла, указывающий на запись пользователем.</td>
+    <td>File mode indicating writable by owner.</td>
   </tr>
   <tr>
     <td><code>S_IXUSR</code></td>
-    <td>Режим файла, указывающий на выполнение пользователем.</td>
+    <td>File mode indicating executable by owner.</td>
   </tr>
   <tr>
     <td><code>S_IRWXG</code></td>
@@ -2933,15 +2937,15 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IRGRP</code></td>
-    <td>Режим файла, указывающий на чтение группой.</td>
+    <td>File mode indicating readable by group.</td>
   </tr>
   <tr>
     <td><code>S_IWGRP</code></td>
-    <td>Режим файла, указывающий на запись группой.</td>
+    <td>File mode indicating writable by group.</td>
   </tr>
   <tr>
     <td><code>S_IXGRP</code></td>
-    <td>Режим файла, указывающий на выполнение группой.</td>
+    <td>File mode indicating executable by group.</td>
   </tr>
   <tr>
     <td><code>S_IRWXO</code></td>
@@ -2949,14 +2953,14 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
   </tr>
   <tr>
     <td><code>S_IROTH</code></td>
-    <td>Режим файла, указывающий на чтение другими.</td>
+    <td>File mode indicating readable by others.</td>
   </tr>
   <tr>
     <td><code>S_IWOTH</code></td>
-    <td>Режим файла, указывающий на запись другими.</td>
+    <td>File mode indicating writable by others.</td>
   </tr>
   <tr>
     <td><code>S_IXOTH</code></td>
-    <td>Режим файла, указывающий на выполнение другими.</td>
+    <td>File mode indicating executable by others.</td>
   </tr>
 </table>
