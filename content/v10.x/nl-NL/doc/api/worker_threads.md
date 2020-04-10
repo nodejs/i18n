@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
@@ -283,7 +283,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Zie [`port.postMessage()`][] voor meer details.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### worker.ref()
 <!-- YAML
