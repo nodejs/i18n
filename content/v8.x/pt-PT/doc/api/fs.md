@@ -1,8 +1,8 @@
-# Sistema de Ficheiros
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
