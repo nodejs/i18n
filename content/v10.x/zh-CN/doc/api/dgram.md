@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- name=dgram -->
 
@@ -40,7 +40,7 @@ The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagra
 
 New instances of `dgram.Socket` are created using [`dgram.createSocket()`][]. The `new` keyword is not to be used to create `dgram.Socket` instances.
 
-### 事件：'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.99
@@ -48,7 +48,7 @@ added: v0.1.99
 
 The `'close'` event is emitted after a socket is closed with [`close()`][]. Once triggered, no new `'message'` events will be emitted on this socket.
 
-### 事件: 'error'
+### Event: 'error'
 
 <!-- YAML
 added: v0.1.99
@@ -58,7 +58,7 @@ added: v0.1.99
 
 The `'error'` event is emitted whenever any error occurs. The event handler function is passed a single `Error` object.
 
-### 事件：'listening'
+### Event: 'listening'
 
 <!-- YAML
 added: v0.1.99
@@ -66,7 +66,7 @@ added: v0.1.99
 
 The `'listening'` event is emitted whenever a socket begins listening for datagram messages. This occurs as soon as UDP sockets are created.
 
-### 事件：'message'
+### Event: 'message'
 
 <!-- YAML
 added: v0.1.99
@@ -114,7 +114,7 @@ if (cluster.isMaster) {
 added: v0.1.99
 -->
 
-* 返回：{Object}
+* Returns: {Object}
 
 Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
 
@@ -166,7 +166,7 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `options` {Object} 必须的。 支持如下属性： 
+* `options` {Object} Required. Supports the following properties: 
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
@@ -497,14 +497,14 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} 可用的选项包括： 
+* `options` {Object} Available options are: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
-  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **默认:** `false`.
+  * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **Default:** `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
   * `sendBufferSize` {number} - Sets the `SO_SNDBUF` socket value.
-  * `lookup` {Function} 自定义查找函数。 **默认值：** [`dns.lookup()`][].
+  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
@@ -516,7 +516,7 @@ added: v0.1.99
 
 * `type` {string} - Either `'udp4'` or `'udp6'`.
 * `callback` {Function} - Attached as a listener to `'message'` events.
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 Creates a `dgram.Socket` object of the specified `type`. The `type` argument can be either `'udp4'` or `'udp6'`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
 
