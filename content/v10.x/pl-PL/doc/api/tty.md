@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -87,7 +87,7 @@ process.stdout.on('resize', () => {
 added: v0.7.7
 -->
 
-* `dir` {liczba} 
+* `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
   * `0` - the entire line
@@ -157,7 +157,7 @@ added: v0.7.7
 added: v10.16.0
 -->
 
-* `count` {integer} The number of colors that are requested (minimum 2). **Domyślne:** 16.
+* `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
 * Returns: {boolean}
 
