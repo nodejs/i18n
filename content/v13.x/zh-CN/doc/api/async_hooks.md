@@ -2,9 +2,9 @@
 
 <!--introduced_in=v8.1.0-->
 
-> 稳定性：1 - 实验中
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to track asynchronous resources. 可以通过如下方式访问：
+The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -82,7 +82,7 @@ added: v8.1.0
   * `after` {Function} [`after` 回调函数][]。
   * `destroy` {Function} [`destroy` 回调函数][]。
   * `promiseResolve` {Function} The [`promiseResolve` callback][].
-* 返回：用于禁用和启用钩子的 {AsyncHook} 实例
+* Returns: {AsyncHook} Instance used for disabling and enabling hooks
 
 Registers functions to be called for different lifetime events of each async operation.
 
@@ -115,7 +115,7 @@ class MyAddedCallbacks extends MyAsyncCallbacks {
 const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 ```
 
-##### 错误处理
+##### Error Handling
 
 If any `AsyncHook` callbacks throw, the application will print the stack trace and exit. The exit path does follow that of an uncaught exception, but all `'uncaughtException'` listeners are removed, thus forcing the process to exit. The `'exit'` callbacks will still be called unless the application is run with `--abort-on-uncaught-exception`, in which case a stack trace will be printed and the application exits, leaving a core file.
 
@@ -552,7 +552,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-示例用法：
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -797,7 +797,7 @@ added: v13.11.0
 
 Calling `asyncLocalStorage.enterWith(store)` will transition into the context for the remainder of the current synchronous execution and will persist through any following asynchronous calls.
 
-例如：
+Example:
 
 ```js
 const store = { id: 1 };
@@ -840,7 +840,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-例如：
+Example:
 
 ```js
 const store = { id: 1 };
@@ -867,7 +867,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-例如：
+Example:
 
 ```js
 asyncLocalStorage.run('store value', () => {
@@ -894,7 +894,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `runSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be exited.
 
-例如：
+Example:
 
 ```js
 const store = { id: 2 };
@@ -923,7 +923,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `exitSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be re-entered.
 
-例如：
+Example:
 
 ```js
 // Within a call to run or runSyncAndReturn
