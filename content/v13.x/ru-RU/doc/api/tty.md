@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -35,7 +35,7 @@ Represents the readable side of a TTY. In normal circumstances [`process.stdin`]
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. По умолчанию: `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### `readStream.isTTY`
 <!-- YAML
@@ -140,9 +140,9 @@ added: v9.9.0
 -->
 
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Возвращает: {number}
+* Returns: {number}
 
-Возвращает:
+Returns:
 
 * `1` for 2,
 * `4` for 16,
@@ -176,7 +176,7 @@ added: v11.13.0
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
@@ -229,6 +229,6 @@ added: v0.5.8
 -->
 
 * `fd` {number} A numeric file descriptor
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
