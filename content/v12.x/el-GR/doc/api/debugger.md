@@ -1,8 +1,8 @@
-# Πρόγραμμα Εντοπισμού Σφαλμάτων
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -20,9 +20,9 @@ Break on start in myscript.js:1
 debug>
 ```
 
-Το πρόγραμμα εντοπισμού σφαλμάτων της Node.js δεν είναι ένα πρόγραμμα με πλήρη χαρακτηριστικά, όμως είναι δυνατό να γίνεται επιθεώρηση ανά βήμα.
+Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
-Εισάγοντας μια δήλωση `debugger;` στον πηγαίο κώδικα ενός σεναρίου, θα ενεργοποιήσει ένα σημείο διακοπής σε αυτό το σημείο του κώδικα:
+Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
 ```js
 // myscript.js
 global.x = 5;
@@ -33,7 +33,7 @@ setTimeout(() => {
 console.log('hello');
 ```
 
-Όταν εκτελεστεί το πρόγραμμα εντοπισμού σφαλμάτων, μια διακοπή θα γίνει στη γραμμή 3:
+Once the debugger is run, a breakpoint will occur at line 3:
 
 ```console
 $ node inspect myscript.js
@@ -76,19 +76,19 @@ break in myscript.js:5
 debug> .exit
 ```
 
-Η εντολή `repl` επιτρέπει την απομακρυσμένη αξιολόγηση του κώδικα. Η εντολή `next` προχωράει στην επόμενη γραμμή. Πληκτρολογήστε `help` για να δείτε όλες τις διαθέσιμες εντολές.
+The `repl` command allows code to be evaluated remotely. The `next` command steps to the next line. Type `help` to see what other commands are available.
 
-Πατώντας `enter` χωρίς την πληκτρολόγηση μιας εντολής, θα γίνει επανάληψη της προηγούμενης εντολής του προγράμματος εντοπισμού σφαλμάτων.
+Pressing `enter` without typing a command will repeat the previous debugger command.
 
-## Παρατηρητές
+## Watchers
 
-Είναι δυνατό να γίνει παρατήρηση των εκφράσεων και των τιμών των μεταβλητών κατά τον εντοπισμού σφαλμάτων. Σε κάθε σημείο διακοπής, κάθε έκφραση από τους παρατηρητές μπορούν να αξιολογηθούν στο τρέχον πλαίσιο και να εμφανιστούν αμέσως πριν τον πηγαίο κώδικα του σημείου διακοπής.
+It is possible to watch expression and variable values while debugging. On every breakpoint, each expression from the watchers list will be evaluated in the current context and displayed immediately before the breakpoint's source code listing.
 
-Για να ξεκινήσετε την παρατήρηση μιας έκφρασης, πληκτρολογήστε `watch('my_expression')`. Η εντολή `watchers` θα τυπώσει τους ενεργούς παρατηρητές. Για να αφαιρέσετε έναν παρατηρητή, πληκτρολογήστε `unwatch('my_expression')`.
+To begin watching an expression, type `watch('my_expression')`. The command `watchers` will print the active watchers. To remove a watcher, type `unwatch('my_expression')`.
 
-## Αναφορά Εντολών
+## Command reference
 
-### Βηματισμός
+### Stepping
 
 * `cont`, `c`: Continue execution
 * `next`, `n`: Step next
@@ -96,7 +96,7 @@ debug> .exit
 * `out`, `o`: Step out
 * `pause`: Pause running code (like pause button in Developer Tools)
 
-### Σημεία Διακοπής
+### Breakpoints
 
 * `setBreakpoint()`, `sb()`: Set breakpoint on current line
 * `setBreakpoint(line)`, `sb(line)`: Set breakpoint on specific line
@@ -104,7 +104,7 @@ debug> .exit
 * `setBreakpoint('script.js', 1)`, `sb(...)`: Set breakpoint on first line of `script.js`
 * `clearBreakpoint('script.js', 1)`, `cb(...)`: Clear breakpoint in `script.js` on line 1
 
-Είναι επίσης πιθανό να οριστεί σημείο διακοπής σε ένα αρχείο (ενότητα) που δεν έχει φορτωθεί ακόμα:
+It is also possible to set a breakpoint in a file (module) that is not loaded yet:
 
 ```console
 $ node inspect main.js
@@ -127,7 +127,7 @@ break in mod.js:22
 debug>
 ```
 
-### Πληροφορίες
+### Information
 
 * `backtrace`, `bt`: Print backtrace of current execution frame
 * `list(5)`: List scripts source code with 5 line context (5 lines before and after)
@@ -137,24 +137,24 @@ debug>
 * `repl`: Open debugger's repl for evaluation in debugging script's context
 * `exec expr`: Execute an expression in debugging script's context
 
-### Έλεγχος εκτέλεσης
+### Execution control
 
 * `run`: Run script (automatically runs on debugger's start)
 * `restart`: Restart script
 * `kill`: Kill script
 
-### Διάφορα
+### Various
 
 * `scripts`: List all loaded scripts
 * `version`: Display V8's version
 
-## Χρήση για Προχωρημένους
+## Advanced Usage
 
-### Ενσωμάτωση του Επιθεωρητή V8 στη Node.js
+### V8 Inspector Integration for Node.js
 
-Ο Επιθεωρητής V8 επιτρέπει την σύνδεση του Chrome DevTools με τα στιγμιότυπα της Node.js για εντοπισμό σφαλμάτων και την δημιουργία προφίλ. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+V8 Inspector integration allows attaching Chrome DevTools to Node.js instances for debugging and profiling. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
-Ο Επιθεωρητής V8 μπορεί να ενεργοποιηθεί με τη χρήση της επιλογης `--inspect` κατά την εκκίνηση μιας εφαρμογής Node.js. Είναι επίσης δυνατό να οριστεί μια προσαρμοσμένη θύρα με τη χρήση της ίδιας επιλογής, π.χ. ο ορισμός `--inspect=9222` θα δώσει εντολή στη Node.js να αναμένει για συνδέσεις από το DevTools στην θύρα 9222.
+V8 Inspector can be enabled by passing the `--inspect` flag when starting a Node.js application. It is also possible to supply a custom port with that flag, e.g. `--inspect=9222` will accept DevTools connections on port 9222.
 
 To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
