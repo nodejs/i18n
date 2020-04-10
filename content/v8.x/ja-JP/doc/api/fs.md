@@ -1,8 +1,8 @@
-# ファイルシステム
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -510,7 +510,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
