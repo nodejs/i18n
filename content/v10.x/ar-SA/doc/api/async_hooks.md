@@ -1,4 +1,4 @@
-# الخطافات الغير تزامنية
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
@@ -76,7 +76,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `معاودة الاتصال` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
