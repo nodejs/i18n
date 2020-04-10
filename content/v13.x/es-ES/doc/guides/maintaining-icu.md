@@ -1,6 +1,6 @@
 # Maintaining ICU in Node.js
 
-## Trasfondo
+## Background
 
 International Components for Unicode ([ICU4C](http://icu-project.org)) is used both by V8 and also by Node.js directly to provide internationalization functionality. To quote from icu-project.org:
 
@@ -134,7 +134,7 @@ Floating patches are applied at `configure` time. The "patch" files are used ins
 
 Patches are tied to a specific ICU version. They won’t apply to a future ICU version.  We assume that you filed a bug against [ICU](http://icu-project.org) and upstreamed the fix, so the patch won’t be needed in a later ICU version.
 
-### Ejemplo
+### Example
 
 For example, to patch `source/tools/toolutil/pkg_genc.cpp` for ICU version 63:
 
