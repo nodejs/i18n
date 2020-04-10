@@ -14,13 +14,13 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 0 - Przestarzałe
+> Stability: 0 - Deprecated
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
 Domains provide a way to handle multiple different IO operations as a single group. If any of the event emitters or callbacks registered to a domain emit an `'error'` event, or throw an error, then the domain object will be notified, rather than losing the context of the error in the `process.on('uncaughtException')` handler, or causing the program to exit immediately with an error code.
 
-## Uwaga: Nie ignoruj błędów!
+## Warning: Don't Ignore Errors!
 
 <!-- type=misc -->
 
@@ -34,7 +34,7 @@ The better approach is to send an error response to the request that triggered t
 
 In this way, `domain` usage goes hand-in-hand with the cluster module, since the master process can fork a new worker when a worker encounters an error. For Node.js programs that scale to multiple machines, the terminating proxy or service registry can take note of the failure, and react accordingly.
 
-Na przykład, to nie jest dobry pomysł:
+For example, this is not a good idea:
 
 ```js
 // XXX WARNING! BAD IDEA!
