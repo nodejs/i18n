@@ -1,8 +1,8 @@
-# الوحدات
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -431,7 +431,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-أمثلة:
+Examples:
 
 Running `node example.js` from `/Users/mjr`
 
