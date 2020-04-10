@@ -6,7 +6,7 @@
   <tr>
     
 <th>LTS 'Boron'</th>
-<th title="Previously called 'Stable'">Courant</th>
+<th title="Previously called 'Stable'">Current</th>
   </tr>
   
   <tr>
@@ -43,7 +43,7 @@
   </tr>
 </table>
 
-* Autres versions 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [5.x](CHANGELOG_V5.md)
@@ -240,7 +240,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable changes
 
-* **cryptographie**: 
+* **crypto**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -1780,7 +1780,7 @@ Semver Patch:
 
 * **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
 * **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
-* **inspecteur (sessions de débogage)**: 
+* **inspector**: 
   * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
@@ -2057,7 +2057,7 @@ Semver Patch:
 
 ### Notable changes
 
-* **tampons (buffers)**: 
+* **buffer**: 
   * Improve performance of Buffer.from(str, 'hex') and Buffer#write(str, 'hex'). (Christopher Jeffrey) [#7602](https://github.com/nodejs/node/pull/7602)
   * Fix creating from zero-length ArrayBuffer. (Ingvar Stepanyan) [#7176](https://github.com/nodejs/node/pull/7176)
 * **deps**: 
@@ -2720,7 +2720,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 * **debugger**: Arrays are now formatted correctly in the debugger repl. (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **deps**: Upgrade OpenSSL sources to 1.0.2h (Shigeki Ohtsu) [#6550](https://github.com/nodejs/node/pull/6550) 
   * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
-* **sockets TCP**: Introduced a `Socket#connecting` property. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
+* **net**: Introduced a `Socket#connecting` property. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
   * Previously this information was only available as the undocumented, internal `_connecting` property.
 * **process**: Introduced `process.cpuUsage()`. (Patrick Mueller) [#6157](https://github.com/nodejs/node/pull/6157)
 * **stream**: `Writable#setDefaultEncoding()` now returns `this`. (Alexander Makarenko) [#5040](https://github.com/nodejs/node/pull/5040)
@@ -2802,7 +2802,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 The following significant changes have been made since the previous Node.js v5.0.0 release.
 
-* Tampons (buffers) 
+* Buffer 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
@@ -2813,7 +2813,7 @@ The following significant changes have been made since the previous Node.js v5.0
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
 * Console 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
-* Cryptographie 
+* Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
   * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
   * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
@@ -2828,7 +2828,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * Events 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* Système de fichier - fs 
+* File System 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
@@ -2838,14 +2838,14 @@ The following significant changes have been made since the previous Node.js v5.0
 * Modules 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
-* Sockets TCP 
+* Net 
   * DNS hints no longer implicitly set [#6021](https://github.com/nodejs/node/pull/6021).
   * Improved error handling and type checking [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
 * npm 
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Gestion des chemins (path) 
+* Path 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
 * Process 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
@@ -2865,7 +2865,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * TLS 
   * Rename 'clientError' to 'tlsClientError' [#4557](https://github.com/nodejs/node/pull/4557).
   * SHA1 used for sessionIdContext [#3866](https://github.com/nodejs/node/pull/3866).
-* Terminaux (TTY) 
+* TTY 
   * Previously deprecated setRawMode wrapper is removed [#2528](https://github.com/nodejs/node/pull/2528).
 * URL 
   * Username and password will be dropped by `url.resolve()` if the host changes [#1480](https://github.com/nodejs/node/pull/1480).
