@@ -80,10 +80,10 @@ Packages can depend on one another. In order to install package `foo`, it may be
 
 Since Node.js looks up the `realpath` of any modules it loads (that is, resolves symlinks), and then looks for their dependencies in the `node_modules` folders as described [here](#modules_loading_from_node_modules_folders), this situation is very simple to resolve with the following architecture:
 
-- `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
-- `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
-- `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
-- `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
+* `/usr/lib/node/foo/1.2.3/` - Contents of the `foo` package, version 1.2.3.
+* `/usr/lib/node/bar/4.3.2/` - Contents of the `bar` package that `foo` depends on.
+* `/usr/lib/node/foo/1.2.3/node_modules/bar` - Symbolic link to `/usr/lib/node/bar/4.3.2/`.
+* `/usr/lib/node/bar/4.3.2/node_modules/*` - Symbolic links to the packages that `bar` depends on.
 
 Thus, even if a cycle is encountered, or if there are dependency conflicts, every module will be able to get a version of its dependency that it can use.
 
@@ -276,8 +276,8 @@ This is the extent of Node.js's awareness of `package.json` files.
 
 If there is no `package.json` file present in the directory, or if the `'main'` entry is missing or cannot be resolved, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
 
-- `./some-library/index.js`
-- `./some-library/index.node`
+* `./some-library/index.js`
+* `./some-library/index.node`
 
 If these attempts fail, then Node.js will report the entire module as missing with the default error:
 
@@ -295,10 +295,10 @@ If it is not found there, then it moves to the parent directory, and so on, unti
 
 For example, if the file at `'/home/ry/projects/foo.js'` called `require('bar.js')`, then Node.js would look in the following locations, in this order:
 
-- `/home/ry/projects/node_modules/bar.js`
-- `/home/ry/node_modules/bar.js`
-- `/home/node_modules/bar.js`
-- `/node_modules/bar.js`
+* `/home/ry/projects/node_modules/bar.js`
+* `/home/ry/node_modules/bar.js`
+* `/home/node_modules/bar.js`
+* `/node_modules/bar.js`
 
 This allows programs to localize their dependencies, so that they do not clash.
 
@@ -318,9 +318,9 @@ On Windows, `NODE_PATH` is delimited by semicolons (`;`) instead of colons.
 
 Additionally, Node.js will search in the following list of GLOBAL_FOLDERS:
 
-- 1: `$HOME/.node_modules`
-- 2: `$HOME/.node_libraries`
-- 3: `$PREFIX/lib/node`
+* 1: `$HOME/.node_modules`
+* 2: `$HOME/.node_libraries`
+* 3: `$PREFIX/lib/node`
 
 Where `$HOME` is the user's home directory, and `$PREFIX` is Node.js's configured `node_prefix`.
 
@@ -342,10 +342,10 @@ Before a module's code is executed, Node.js will wrap it with a function wrapper
 
 By doing this, Node.js achieves a few things:
 
-- It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
-- It helps to provide some global-looking variables that are actually specific to the module, such as: 
-  - The `module` and `exports` objects that the implementor can use to export values from the module.
-  - The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+* It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
+* It helps to provide some global-looking variables that are actually specific to the module, such as: 
+  * The `module` and `exports` objects that the implementor can use to export values from the module.
+  * The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
 
 ## The module scope
 
@@ -357,7 +357,7 @@ added: v0.1.27
 
 <!-- type=var -->
 
-- {string}
+* {string}
 
 The directory name of the current module. This is the same as the [`path.dirname()`][] of the [`__filename`][].
 
@@ -378,7 +378,7 @@ added: v0.0.1
 
 <!-- type=var -->
 
-- {string}
+* {string}
 
 The file name of the current module. This is the current module file's absolute path with symlinks resolved.
 
@@ -399,8 +399,8 @@ console.log(__dirname);
 
 Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a directory structure of:
 
-- `/Users/mjr/app/a.js`
-- `/Users/mjr/app/node_modules/b/b.js`
+* `/Users/mjr/app/a.js`
+* `/Users/mjr/app/node_modules/b/b.js`
 
 References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
 
@@ -422,7 +422,7 @@ added: v0.1.16
 
 <!-- type=var -->
 
-- {Object}
+* {Object}
 
 A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
 
@@ -434,7 +434,7 @@ added: v0.1.13
 
 <!-- type=var -->
 
-- {Function}
+* {Function}
 
 Used to import modules, `JSON`, and local files. Modules can be imported from `node_modules`. Local modules and JSON files can be imported using a relative path (e.g. `./`, `./foo`, `./bar/baz`, `../foo`) that will be resolved against the directory named by [`__dirname`][] (if defined) or the current working directory.
 
@@ -455,7 +455,7 @@ const crypto = require('crypto');
 added: v0.3.0
 -->
 
-- {Object}
+* {Object}
 
 Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an error.
 
@@ -468,7 +468,7 @@ deprecated: v0.10.6
 
 > Stability: 0 - Deprecated
 
-- {Object}
+* {Object}
 
 Instruct `require` on how to handle certain file extensions.
 
@@ -492,7 +492,7 @@ In other words, adding extensions slows down the module loader and should be dis
 added: v0.1.17
 -->
 
-- {Object}
+* {Object}
 
 The `Module` object representing the entry script loaded when the Node.js process launched. See ["Accessing the main module"](#modules_accessing_the_main_module).
 
@@ -505,6 +505,8 @@ console.log(require.main);
 ```sh
 node entry.js
 ```
+
+<!-- eslint-skip -->
 
 ```js
 Module {
@@ -521,7 +523,9 @@ Module {
      '/node_modules' ] }
 ```
 
-#### require.resolve(request[, options])<!-- YAML
+#### require.resolve(request[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -530,24 +534,27 @@ changes:
     description: The `paths` option is now supported.
 -->
 
-- `request` {string} The module path to resolve.
-- `options` {Object} 
-  - `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-- Returns: {string}
+* `request` {string} The module path to resolve.
+* `options` {Object} 
+  * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
-#### require.resolve.paths(request)<!-- YAML
+#### require.resolve.paths(request)
+
+<!-- YAML
 added: v8.9.0
 -->
 
-- `request` {string} The module path whose lookup paths are being retrieved.
-
-- Returns: {string[]|null}
+* `request` {string} The module path whose lookup paths are being retrieved.
+* Returns: {string[]|null}
 
 Returns an array containing the paths searched during resolution of `request` or `null` if the `request` string references a core module, for example `http` or `fs`.
 
-## The `module` Object<!-- YAML
+## The `module` Object
+
+<!-- YAML
 added: v0.1.16
 -->
 
@@ -555,15 +562,17 @@ added: v0.1.16
 
 <!-- name=module -->
 
-- {Object}
+* {Object}
 
 In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` is not actually a global but rather local to each module.
 
-### module.children<!-- YAML
+### module.children
+
+<!-- YAML
 added: v0.1.16
 -->
 
-- {module[]}
+* {module[]}
 
 The module objects required for the first time by this one.
 
@@ -573,7 +582,7 @@ The module objects required for the first time by this one.
 added: v0.1.16
 -->
 
-- {Object}
+* {Object}
 
 The `module.exports` object is created by the `Module` system. Sometimes this is not acceptable; many want their module to be an instance of some class. To do this, assign the desired export object to `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
 
@@ -634,6 +643,8 @@ exports = { hello: false };  // Not exported, only available in the module
 
 When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`:
 
+<!-- eslint-disable func-name-matching -->
+
 ```js
 module.exports = exports = function Constructor() {
   // ... etc.
@@ -665,15 +676,17 @@ function require(/* ... */) {
 added: v0.1.16
 -->
 
-- {string}
+* {string}
 
 The fully resolved filename to the module.
 
-### module.id<!-- YAML
+### module.id
+
+<!-- YAML
 added: v0.1.16
 -->
 
-- {string}
+* {string}
 
 The identifier for the module. Typically this is the fully resolved filename.
 
@@ -683,7 +696,7 @@ The identifier for the module. Typically this is the fully resolved filename.
 added: v0.1.16
 -->
 
-- {boolean}
+* {boolean}
 
 Whether or not the module is done loading, or is in the process of loading.
 
@@ -693,43 +706,50 @@ Whether or not the module is done loading, or is in the process of loading.
 added: v0.1.16
 -->
 
-- {module}
+* {module}
 
 The module that first required this one.
 
-### module.paths<!-- YAML
+### module.paths
+
+<!-- YAML
 added: v0.4.0
 -->
 
-- {string[]}
+* {string[]}
 
 The search paths for the module.
 
-### module.require(id)<!-- YAML
+### module.require(id)
+
+<!-- YAML
 added: v0.5.1
 -->
 
-- `id` {string}
-
-- Returns: {Object} `module.exports` from the resolved module
+* `id` {string}
+* Returns: {Object} `module.exports` from the resolved module
 
 The `module.require` method provides a way to load a module as if `require()` was called from the original module.
 
 In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## The `Module` Object<!-- YAML
+## The `Module` Object
+
+<!-- YAML
 added: v0.3.7
 -->
 
-- {Object}
+* {Object}
 
 Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
 
-### module.builtinModules<!-- YAML
+### module.builtinModules
+
+<!-- YAML
 added: v9.3.0
 -->
 
-- {string[]}
+* {string[]}
 
 A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third party or not.
 
@@ -739,13 +759,14 @@ Note that `module` in this context isn't the same object that's provided by the 
 const builtin = require('module').builtinModules;
 ```
 
-### module.createRequireFromPath(filename)<!-- YAML
+### module.createRequireFromPath(filename)
+
+<!-- YAML
 added: v10.12.0
 -->
 
-- `filename` {string} Filename to be used to construct the relative require function.
-
-- Returns: {[`require`][]} Require function
+* `filename` {string} Filename to be used to construct the relative require function.
+* Returns: {[`require`][]} Require function
 
 ```js
 const { createRequireFromPath } = require('module');
