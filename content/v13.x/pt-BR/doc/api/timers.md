@@ -1,4 +1,4 @@
-# Temporizadores
+# Timers
 
 <!--introduced_in=v0.10.0-->
 
@@ -19,7 +19,7 @@ By default, when an immediate is scheduled, the Node.js event loop will continue
 added: v11.0.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If true, the `Immediate` object will keep the Node.js event loop active.
 
@@ -54,7 +54,7 @@ By default, when a timer is scheduled using either [`setTimeout()`][] or [`setIn
 added: v11.0.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If true, the `Timeout` object will keep the Node.js event loop active.
 
