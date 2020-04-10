@@ -124,9 +124,9 @@ to update from nodejs/node:
 
 * `git checkout master`
 * `git remote update -p` OR `git fetch --all` (I prefer the former)
-* `git merge --ff-only upstream/master` (или `REMOTENAME/BRANCH`)
+* `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
 
-## Лучшие практики
+## Best practices
 
-* При создании PR лучше подготовить детальное описание изменений.
+* When making PRs, spend time writing a thorough description.
 * Usually only squash at the end of your work.
