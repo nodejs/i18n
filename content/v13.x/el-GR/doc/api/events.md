@@ -1,8 +1,8 @@
-# Συμβάντα
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -322,7 +322,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `...args` {any}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
@@ -366,7 +366,7 @@ myEmitter.emit('event', 1, 2, 3, 4, 5);
 added: v6.0.0
 -->
 
-* Επιστρέφει: {Array}
+* Returns: {Array}
 
 Returns an array listing the events for which the emitter has registered listeners. The values in the array will be strings or `Symbol`s.
 
@@ -432,7 +432,7 @@ added: v10.0.0
 
 * `eventName` {string|symbol}
 * `listener` {Function}
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Alias for [`emitter.removeListener()`][].
 
@@ -443,7 +443,7 @@ added: v0.1.101
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -474,7 +474,7 @@ added: v0.3.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
@@ -505,7 +505,7 @@ added: v6.0.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
@@ -524,7 +524,7 @@ added: v6.0.0
 
 * `eventName` {string|symbol} The name of the event.
 * `listener` {Function} The callback function
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
 
@@ -542,7 +542,7 @@ added: v0.1.26
 -->
 
 * `eventName` {string|symbol}
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Removes all listeners, or those of the specified `eventName`.
 
@@ -557,7 +557,7 @@ added: v0.1.26
 
 * `eventName` {string|symbol}
 * `listener` {Function}
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 Removes the specified `listener` from the listener array for the event named `eventName`.
 
@@ -631,7 +631,7 @@ added: v0.3.5
 -->
 
 * `n` {integer}
-* Επιστρέφει: {EventEmitter}
+* Returns: {EventEmitter}
 
 By default `EventEmitter`s will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Obviously, not all events should be limited to just 10 listeners. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
 
@@ -710,7 +710,7 @@ added: v11.13.0
 
 * `emitter` {EventEmitter}
 * `name` {string}
-* Επιστρέφει: {Promise}
+* Returns: {Promise}
 
 Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given event or that is rejected when the `EventEmitter` emits `'error'`. The `Promise` will resolve with an array of all the arguments emitted to the given event.
 
