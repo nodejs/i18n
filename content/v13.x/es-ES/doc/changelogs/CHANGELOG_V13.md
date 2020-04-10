@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Actual</th>
+<th>Current</th>
 </tr>
 <tr>
 <td>
@@ -26,7 +26,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -39,13 +39,13 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="13.11.0"></a>
 
 ## 2020-03-11, Version 13.11.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **async_hooks**: add sync enterWith to ALS (Stephen Belanger) [#31945](https://github.com/nodejs/node/pull/31945)
 * **cli**: allow --jitless V8 flag in NODE\_OPTIONS (Andrew Neitsch) [#32100](https://github.com/nodejs/node/pull/32100)
@@ -168,7 +168,7 @@
 
 ## 2020-03-04, Version 13.10.1 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementation. This change had the unforseen consequence of breaking building from the tarballs we release as we were too aggressively removing `unneccessary files` from the `deps/zlib` folder. This release includes a patch that ensures that individuals will once again be able to build Node.js from source.
 
@@ -195,7 +195,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 ## 2020-03-04, Version 13.10.0 (Current), @codebytere
 
-### Cambios Notables
+### Notable Changes
 
 * **async_hooks**
   * introduce async-context API (vdeturckheim) [#26540](https://github.com/nodejs/node/pull/26540)
@@ -303,7 +303,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 ## 2020-02-18, Version 13.9.0 (Current), @codebytere
 
-### Cambios notables
+### Notable changes
 
 * **async_hooks**
   * add executionAsyncResource (Matteo Collina) [#30959](https://github.com/nodejs/node/pull/30959)
@@ -554,9 +554,9 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 ## 2020-02-06, Version 13.8.0 (Current), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 Vulnerabilities fixed:
 * **CVE-2019-15606**: HTTP header values do not have trailing OWS trimmed.
@@ -578,7 +578,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2020-01-21, Version 13.7.0 (Current), @codebytere
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * upgrade to libuv 1.34.1 (cjihrig) [#31332](https://github.com/nodejs/node/pull/31332)
@@ -709,7 +709,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2020-01-07, Version 13.6.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **assert**:
   * Implement `assert.match()` and `assert.doesNotMatch()` (Ruben Bridgewater) [#30929](https://github.com/nodejs/node/pull/30929)
@@ -911,7 +911,7 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2019-12-18, Version 13.5.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **cli**:
   * add --trace-exit cli option (legendecas) [#30516](https://github.com/nodejs/node/pull/30516)
@@ -1003,13 +1003,13 @@ Also, HTTP parsing is more strict to be more secure. Since this may cause proble
 
 ## 2019-12-17, Version 13.4.0 (Current), @MylesBorins
 
-Esta es una actualización de seguridad.
+This is a security release.
 
 For more details about the vulnerability please consult the npm blog:
 
 https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * update npm to 6.13.4 [#30904](https://github.com/nodejs/node/pull/30904)
@@ -1159,7 +1159,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-12-03, Version 13.3.0 (Current), @BridgeAR
 
-### Cambios Notables
+### Notable Changes
 
 * **fs**:
   * Reworked experimental recursive `rmdir()`  (cjihrig) [#30644](https://github.com/nodejs/node/pull/30644)
@@ -1358,7 +1358,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-11-21, Version 13.2.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **addons**:
   * Deprecate one- and two-argument `AtExit()`. Use the three-argument variant of `AtExit()` or `AddEnvironmentCleanupHook()` instead (Anna Henningsen) [#30227](https://github.com/nodejs/node/pull/30227)
@@ -1561,7 +1561,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-11-05, Version 13.1.0 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **cli**:
   * Added a new flag (`--trace-uncaught`) that makes Node.js print the stack trace at the time of throwing uncaught exceptions, rather than at the creation of the `Error` object, if there is any. This is disabled by default because it affects GC behavior (Anna Henningsen) [#30025](https://github.com/nodejs/node/pull/30025).
@@ -1645,7 +1645,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-10-23, Version 13.0.1 (Current), @targos
 
-### Cambios Notables
+### Notable Changes
 
 * **deps**:
   * Fixed a bug in npm 6.12.0 where warnings are emitted on Node.js 13.x (Jordan Harband) [#30079](https://github.com/nodejs/node/pull/30079).
@@ -1691,7 +1691,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 
 ## 2019-10-22, Version 13.0.0 (Current), @BethGriggs
 
-### Cambios Notables
+### Notable Changes
 
 * **assert**:
   * If the validation function passed to `assert.throws()` or `assert.rejects()` returns a value other than `true`, an assertion error will be thrown instead of the original error to highlight the programming mistake (Ruben Bridgewater) [#28263](https://github.com/nodejs/node/pull/28263).
@@ -1729,7 +1729,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
 * **stream**:
   * The timing and behavior of streams was consolidated for a number of edge cases. Please look at the individual commits below for more information.
 
-### Commits de Semver-Major
+### Semver-Major Commits
 
 * [[`5981fb7faa`](https://github.com/nodejs/node/commit/5981fb7faa)] - **(SEMVER-MAJOR)** **assert**: fix line number calculation after V8 upgrade (Michaël Zasso) [#29694](https://github.com/nodejs/node/pull/29694)
 * [[`48d1ea5e7f`](https://github.com/nodejs/node/commit/48d1ea5e7f)] - **(SEMVER-MAJOR)** **assert**: special handle identical error names in instance checks (Ruben Bridgewater) [#28263](https://github.com/nodejs/node/pull/28263)
