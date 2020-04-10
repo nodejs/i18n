@@ -1,8 +1,8 @@
-# Συμβάντα
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--type=module-->
 
