@@ -1,14 +1,14 @@
-# Node.js processo di release
+# Node.js Release Process
 
-Questo documento descrive gli aspetti tecnici del processo di release di Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
-## Chi può fare una release?
+## Who can make a release?
 
-L'autorizzazione di release è fornita dal Node.js TSC. Once authorized, an individual must be have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
 
-### 1. Accesso Release Jenkins
+### 1. Jenkins Release Access
 
-Ci sono tre lavori Jenkins importanti che dovrebbero essere utilizzati per un release flow:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
@@ -18,7 +18,7 @@ Ci sono tre lavori Jenkins importanti che dovrebbero essere utilizzati per un re
 
 The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 2. <nodejs.org> Accesso
+### 2. <nodejs.org> Access
 
 The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
@@ -28,40 +28,40 @@ Nightly builds are promoted automatically on the server by a cron task for the *
 
 Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 3. Una GPG Key elencata pubblicamente
+### 3. A Publicly Listed GPG Key
 
 A SHASUMS256.txt file is produced for every promoted build, nightly, and releases. Additionally for releases, this file is signed by the individual responsible for that release. In order to be able to verify downloaded binaries, the public should be able to check that the SHASUMS256.txt file has been signed by someone who has been authorized to create a release.
 
-Le chiavi GPG devono essere scaricabili da un keyserver di terze parti noto. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
+The GPG keys should be fetchable from a known third-party keyserver. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
 
 ```console
-$ gpg --keyserver pool.sks-keyserver.net --recv-keys <FINGERPRINT>
+$ gpg --keyserver pool.sks-keyservers.net --recv-keys <FINGERPRINT>
 ```
 
-La chiave che usi può essere una child/subkey di una chiave esistente.
+The key you use may be a child/subkey of an existing key.
 
 Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
-## Come creare una release
+## How to create a release
 
-Note:
+Notes:
 
-* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Usa `data -u +'%Y-%m-%d'` per scoprire di cosa si tratta.
-* Le stringhe di versione sono elencate qui sotto come *"vx.y.z"*. Substitute for the release version.
+* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
+* Version strings are listed below as *"vx.y.z"*. Substitute for the release version.
 
-### 1. Selezionare da `master` e altri rami
+### 1. Cherry-picking from `master` and other branches
 
-Crea un nuovo ramo chiamato * "vx.y.z-proposal"*, o qualcosa di simile. Using `git cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
+Create a new branch named *"vx.y.z-proposal"*, or something similar. Using `git cherry-pick`, bring the appropriate commits into your new branch. To determine the relevant commits, use [`branch-diff`](https://github.com/rvagg/branch-diff) and [`changelog-maker`](https://github.com/rvagg/changelog-maker/) (both are available on npm and should be installed globally). These tools depend on our commit metadata, as well as the `semver-minor` and `semver-major` GitHub labels. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
-Per un elenco di commit che potrebbero essere trovati in una patch release su v5.x
+For a list of commits that could be landed in a patch release on v5.x
 
 ```console
 $ branch-diff v5.x master --exclude-label=semver-major,semver-minor,dont-land-on-v5.x --filter-release --format=simple
 ```
 
-Carefully review the list of commits looking for errors (incorrect `PR-URL`, incorrect semver, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. I precedenti commit di release e i salti di versione non hanno bisogno di essere selezionati.
+Carefully review the list of commits looking for errors (incorrect `PR-URL`, incorrect semver, etc.). Commits labeled as semver minor or semver major should only be cherry-picked when appropriate for the type of release being made. Previous release commits and version bumps do not need to be cherry-picked.
 
-### 2. Aggiornare `src/node_version.h`
+### 2. Update `src/node_version.h`
 
 Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
@@ -71,15 +71,15 @@ Set the version for the proposed release using the following macros, which are a
 #define NODE_PATCH_VERSION z
 ```
 
-Imposta la macro `NODE_VERSION_IS_RELEASE` al valore `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
+Set the `NODE_VERSION_IS_RELEASE` macro value to `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
 
 ```c
 #define NODE_VERSION_IS_RELEASE 1
 ```
 
-**Inoltre, considera se saltare `NODE_MODULE_VERSION`**:
+**Also consider whether to bump `NODE_MODULE_VERSION`**:
 
-Questa macro è utilizzata per segnalare una versione ABI per addons nativi. It currently has two common uses in the community:
+This macro is used to signal an ABI version for native addons. It currently has two common uses in the community:
 
 * Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
 * Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
