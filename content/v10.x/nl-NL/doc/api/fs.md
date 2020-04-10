@@ -1,8 +1,8 @@
-# Bestandssysteem
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -253,7 +253,7 @@ When [`fs.readdir()`][] or [`fs.readdirSync()`][] is called with the `withFileTy
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a block device.
 
@@ -263,7 +263,7 @@ Returns `true` if the `fs.Dirent` object describes a block device.
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a character device.
 
@@ -273,7 +273,7 @@ Returns `true` if the `fs.Dirent` object describes a character device.
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a file system directory.
 
@@ -283,7 +283,7 @@ Returns `true` if the `fs.Dirent` object describes a file system directory.
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) pipe.
 
@@ -293,7 +293,7 @@ Returns `true` if the `fs.Dirent` object describes a first-in-first-out (FIFO) p
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a regular file.
 
@@ -303,7 +303,7 @@ Returns `true` if the `fs.Dirent` object describes a regular file.
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a socket.
 
@@ -313,7 +313,7 @@ Returns `true` if the `fs.Dirent` object describes a socket.
 added: v10.10.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Dirent` object describes a symbolic link.
 
@@ -521,7 +521,7 @@ Stats {
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a block device.
 
@@ -531,7 +531,7 @@ Returns `true` if the `fs.Stats` object describes a block device.
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a character device.
 
@@ -541,7 +541,7 @@ Returns `true` if the `fs.Stats` object describes a character device.
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a file system directory.
 
@@ -551,7 +551,7 @@ Returns `true` if the `fs.Stats` object describes a file system directory.
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pipe.
 
@@ -561,7 +561,7 @@ Returns `true` if the `fs.Stats` object describes a first-in-first-out (FIFO) pi
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a regular file.
 
@@ -571,7 +571,7 @@ Returns `true` if the `fs.Stats` object describes a regular file.
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a socket.
 
@@ -581,7 +581,7 @@ Returns `true` if the `fs.Stats` object describes a socket.
 added: v0.1.10
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `fs.Stats` object describes a symbolic link.
 
@@ -990,7 +990,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1042,7 +1042,7 @@ changes:
 
 * `path` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
@@ -1349,7 +1349,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'r'`.
   * `encoding` {string} **Default:** `null`
   * `fd` {integer} **Default:** `null`
@@ -1418,7 +1418,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string} See [support of file system `flags`][]. **Default:** `'w'`.
   * `encoding` {string} **Default:** `'utf8'`
   * `fd` {integer} **Default:** `null`
@@ -1547,7 +1547,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the path exists, `false` otherwise.
 
@@ -1678,8 +1678,8 @@ changes:
 -->
 
 * `fd` {integer}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
@@ -1699,9 +1699,9 @@ changes:
 -->
 
 * `fd` {integer}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {fs.Stats}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {fs.Stats}
 
 Synchronous fstat(2).
 
@@ -2009,8 +2009,8 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
@@ -2034,9 +2034,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {fs.Stats}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {fs.Stats}
 
 Synchronous lstat(2).
 
@@ -2065,7 +2065,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
 * `callback` {Function} 
@@ -2109,7 +2109,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
 
@@ -2137,7 +2137,7 @@ changes:
 -->
 
 * `prefix` {string}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2192,9 +2192,9 @@ added: v5.10.0
 -->
 
 * `prefix` {string}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {string}
+* Returns: {string}
 
 Returns the created folder path.
 
@@ -2258,7 +2258,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} **Default:** `'r'`. See [support of file system `flags`][].
 * `mode` {integer} **Default:** `0o666`
-* Retourneert: {number}
+* Returns: {number}
 
 Returns an integer representing the file descriptor.
 
@@ -2333,7 +2333,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
 * `callback` {Function} 
@@ -2362,7 +2362,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
 * Returns: {string[]|Buffer[]|fs.Dirent[]}
@@ -2401,7 +2401,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
 * `callback` {Function} 
@@ -2465,10 +2465,10 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Retourneert: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the contents of the `path`.
 
@@ -2508,7 +2508,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2532,9 +2532,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2560,7 +2560,7 @@ changes:
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retourneert: {number}
+* Returns: {number}
 
 Returns the number of `bytesRead`.
 
@@ -2597,7 +2597,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2628,7 +2628,7 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2667,9 +2667,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the resolved pathname.
 
@@ -2682,9 +2682,9 @@ added: v9.2.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous realpath(3).
 
@@ -2820,8 +2820,8 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
 * `callback` {Function} 
   * `err` {Error}
   * `stats` {fs.Stats}
@@ -2851,9 +2851,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {fs.Stats}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {fs.Stats}
 
 Synchronous stat(2).
 
@@ -3099,14 +3099,14 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
-  * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Standaard:** `'utf8'`.
+  * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
   * `eventType` {string}
   * `filename` {string|Buffer}
-* Retourneert: {fs.FSWatcher}
+* Returns: {fs.FSWatcher}
 
 Watch for changes on `filename`, where `filename` is either a file or a directory.
 
@@ -3181,7 +3181,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `opties` {Object} 
+* `options` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function} 
@@ -3336,7 +3336,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|TypedArray|DataView}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3389,7 +3389,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|TypedArray|DataView}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
@@ -3469,11 +3469,11 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously append data to this file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
@@ -3488,7 +3488,7 @@ added: v10.0.0
 -->
 
 * `mode` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Modifies the permissions on the file. The `Promise` is resolved with no arguments upon success.
 
@@ -3500,7 +3500,7 @@ added: v10.0.0
 
 * `uid` {integer}
 * `gid` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Changes the ownership of the file then resolves the `Promise` with no arguments upon success.
 
@@ -3533,7 +3533,7 @@ async function openAndClose() {
 added: v10.0.0
 -->
 
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3555,7 +3555,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Read data from the file.
 
@@ -3575,10 +3575,10 @@ Following successful read, the `Promise` is resolved with an object with a `byte
 added: v10.0.0
 -->
 
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -3604,9 +3604,9 @@ changes:
                  the numeric values returned should be bigint.
 -->
 
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {Promise}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {Promise}
 
 Retrieves the [`fs.Stats`][] for the file.
 
@@ -3616,7 +3616,7 @@ Retrieves the [`fs.Stats`][] for the file.
 added: v10.0.0
 -->
 
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3627,7 +3627,7 @@ added: v10.0.0
 -->
 
 * `len` {integer} **Default:** `0`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Truncates the file then resolves the `Promise` with no arguments upon success.
 
@@ -3695,7 +3695,7 @@ added: v10.0.0
 
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by the `FileHandle` then resolves the `Promise` with no arguments upon success.
 
@@ -3711,7 +3711,7 @@ added: v10.0.0
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Write `buffer` to the file.
 
@@ -3734,7 +3734,7 @@ added: v10.0.0
 * `string` {string}
 * `position` {integer}
 * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Write `string` to the file. If `string` is not a string, then the value will be coerced to one.
 
@@ -3755,11 +3755,11 @@ added: v10.0.0
 -->
 
 * `data` {string|Buffer|Uint8Array}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
@@ -3781,7 +3781,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. Check [File Access Constants](#fs_file_access_constants) for possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -3806,11 +3806,11 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
@@ -3826,7 +3826,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Changes the permissions of a file then resolves the `Promise` with no arguments upon succces.
 
@@ -3839,7 +3839,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Changes the ownership of a file then resolves the `Promise` with no arguments upon success.
 
@@ -3852,7 +3852,7 @@ added: v10.0.0
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
 * `flags` {number} modifiers for copy operation. **Default:** `0`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
 
@@ -3894,7 +3894,7 @@ deprecated: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `mode` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Changes the permissions on a symbolic link then resolves the `Promise` with no arguments upon success. This method is only implemented on macOS.
 
@@ -3912,7 +3912,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `uid` {integer}
 * `gid` {integer}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Changes the ownership on a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -3924,7 +3924,7 @@ added: v10.0.0
 
 * `existingPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
 
@@ -3941,9 +3941,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {Promise}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {Promise}
 
 Asynchronous lstat(2). The `Promise` is resolved with the [`fs.Stats`][] object for the given symbolic link `path`.
 
@@ -3954,10 +3954,10 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object|integer} 
+* `options` {Object|integer} 
   * `recursive` {boolean} **Default:** `false`
   * `mode` {integer} Not supported on Windows. **Default:** `0o777`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously creates a directory then resolves the `Promise` with no arguments upon success.
 
@@ -3970,9 +3970,9 @@ added: v10.0.0
 -->
 
 * `prefix` {string}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Creates a unique temporary directory and resolves the `Promise` with the created folder path. A unique directory name is generated by appending six random characters to the end of the provided `prefix`.
 
@@ -3999,7 +3999,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `flags` {string|number} See [support of file system `flags`][]. **Default:** `'r'`.
 * `mode` {integer} **Default:** `0o666` (readable and writable)
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous file open that returns a `Promise` that, when resolved, yields a `FileHandle` object. See open(2).
 
@@ -4019,10 +4019,10 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
   * `withFileTypes` {boolean} **Default:** `false`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Reads the contents of a directory then resolves the `Promise` with an array of the names of the files in the directory excluding `'.'` and `'..'`.
 
@@ -4037,10 +4037,10 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL|FileHandle} filename or `FileHandle`
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously reads the entire contents of a file.
 
@@ -4059,9 +4059,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous readlink(2). The `Promise` is resolved with the `linkString` upon success.
 
@@ -4074,9 +4074,9 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Determines the actual location of `path` using the same semantics as the `fs.realpath.native()` function then resolves the `Promise` with the resolved path.
 
@@ -4094,7 +4094,7 @@ added: v10.0.0
 
 * `oldPath` {string|Buffer|URL}
 * `newPath` {string|Buffer|URL}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Renames `oldPath` to `newPath` and resolves the `Promise` with no arguments upon success.
 
@@ -4105,7 +4105,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Removes the directory identified by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4124,9 +4124,9 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `opties` {Object} 
-  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Standaard:** `false`.
-* Retourneert: {Promise}
+* `options` {Object} 
+  * `bigint` {boolean} Whether the numeric values in the returned [`fs.Stats`][] object should be `bigint`. **Default:** `false`.
+* Returns: {Promise}
 
 The `Promise` is resolved with the [`fs.Stats`][] object for the given `path`.
 
@@ -4139,7 +4139,7 @@ added: v10.0.0
 * `target` {string|Buffer|URL}
 * `path` {string|Buffer|URL}
 * `type` {string} **Default:** `'file'`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Creates a symbolic link then resolves the `Promise` with no arguments upon success.
 
@@ -4153,7 +4153,7 @@ added: v10.0.0
 
 * `path` {string|Buffer|URL}
 * `len` {integer} **Default:** `0`
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Truncates the `path` then resolves the `Promise` with no arguments upon success. The `path` *must* be a string or `Buffer`.
 
@@ -4164,7 +4164,7 @@ added: v10.0.0
 -->
 
 * `path` {string|Buffer|URL}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronous unlink(2). The `Promise` is resolved with no arguments upon success.
 
@@ -4177,7 +4177,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * `atime` {number|string|Date}
 * `mtime` {number|string|Date}
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Change the file system timestamps of the object referenced by `path` then resolves the `Promise` with no arguments upon success.
 
@@ -4194,11 +4194,11 @@ added: v10.0.0
 
 * `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
 * `data` {string|Buffer|Uint8Array}
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
-* Retourneert: {Promise}
+* Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
