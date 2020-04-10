@@ -1,10 +1,10 @@
-# Σφάλματα
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
 <!--type=misc-->
 
-Οι εφαρμογές που τρέχουν με Node.js μπορούν να εμφανίσουν τέσσερα είδη σφαλμάτων:
+Applications running in Node.js will generally experience four categories of errors:
 
 - Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError}, {ReferenceError}, {TypeError}, and {URIError}.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist or attempting to send data over a closed socket.
@@ -316,7 +316,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Σφάλματα
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
@@ -324,7 +324,7 @@ A JavaScript exception is a value that is thrown as a result of an invalid opera
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
-## Σφάλματα Συστήματος
+## System Errors
 
 Node.js generates system errors when exceptions occur within its runtime environment. These usually occur when an application violates an operating system constraint. For example, a system error will occur if an application attempts to read a file that does not exist.
 
@@ -1256,7 +1256,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1270,7 +1270,7 @@ A `MessagePort` was found in the object passed to a `postMessage()` call, but no
 
 ### ERR_MISSING_MODULE
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) could not be resolved.
 
@@ -1284,7 +1284,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 A failure occurred resolving imports in an [ES6 module](esm.html).
 
@@ -1373,7 +1373,7 @@ A given value is out of the accepted range.
 
 ### ERR_REQUIRE_ESM
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 An attempt was made to `require()` an [ES6 module](esm.html).
 
@@ -1644,7 +1644,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### ERR_UNKNOWN_FILE_EXTENSION
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1652,7 +1652,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### ERR_UNKNOWN_MODULE_FORMAT
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1778,7 +1778,7 @@ A module file could not be resolved while attempting a [`require()`][] or `impor
 
 ## Legacy Node.js Error Codes
 
-> Σταθερότητα: 0 - Απαρχαιωμένο. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_HTTP2_FRAME_ERROR"></a>
 
