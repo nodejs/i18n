@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
-Le module `path` fournit des fonctions utilitaires permettant de travailler avec des chemins de fichiers et de répertoires. On peut y accéder en utilisant :
+The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
 ```js
 const path = require('path');
@@ -12,43 +12,43 @@ const path = require('path');
 
 ## Windows vs. POSIX
 
-L'opération par défaut du module `path` varie selon le système d'exploitation sur lequel s'exécute une application Node.js. Plus précisément, lorsque vous utilisez un système d'exploitation Windows, le module `path` considérera que les chemins utilisés sont de type Windows.
+The default operation of the `path` module varies based on the operating system on which a Node.js application is running. Specifically, when running on a Windows operating system, the `path` module will assume that Windows-style paths are being used.
 
 So using `path.basename()` might yield different results on POSIX and Windows:
 
-Sur POSIX :
+On POSIX:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
 // Returns: 'C:\\temp\\myfile.html'
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.basename('C:\\temp\\myfile.html');
-// Rend: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
-Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers Windows sur n'importe quel système d'exploitation, utilisez [`path.win32`][] :
+To achieve consistent results when working with Windows file paths on any operating system, use [`path.win32`][]:
 
-Sur POSIX et Windows :
+On POSIX and Windows:
 
 ```js
 path.win32.basename('C:\\temp\\myfile.html');
-// Rend: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
-Pour obtenir des résultats cohérents lorsque vous travaillez avec des chemins de fichiers POSIX sur n'importe quel système d'exploitation, utilisez [`path.posix`][] :
+To achieve consistent results when working with POSIX file paths on any operating system, use [`path.posix`][]:
 
-Sur POSIX et Windows :
+On POSIX and Windows:
 
 ```js
 path.posix.basename('/tmp/myfile.html');
-// retourne: 'myfile.html'
+// Returns: 'myfile.html'
 ```
 
-*Note :* Sur Windows, Node.js suit le concept de répertoire de travail par disque. Ce comportement peut être observé en utilisant un chemin vers un disque sans antislash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. Pour plus d'informations, consulter [cette page MSDN](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `path.resolve('c:\\')` can potentially return a different result than `path.resolve('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 ## path.basename(path[, ext])
 
@@ -62,10 +62,10 @@ changes:
 -->
 
 * `path` {string}
-* `ext` {string} Une extension de fichier optionnelle
-* Retourne : {string}
+* `ext` {string} An optional file extension
+* Returns: {string}
 
-La méthode `path.basename()` retourne la dernière portion de `path`, de la même façon que la commande Unix `basename`. Trailing directory separators are ignored, see [`path.sep`][].
+The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
 For example:
 
@@ -102,7 +102,7 @@ process.env.PATH.split(path.delimiter);
 // Returns: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 console.log(process.env.PATH);
@@ -124,7 +124,7 @@ changes:
 -->
 
 * `path` {string}
-* Retourne : {string}
+* Returns: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -149,7 +149,7 @@ changes:
 -->
 
 * `path` {string}
-* Retourne : {string}
+* Returns: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
@@ -186,7 +186,7 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Retourne : {string}
+* Returns: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -227,7 +227,7 @@ path.format({
 // Returns: '/file.txt'
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.format({
@@ -259,7 +259,7 @@ path.isAbsolute('qux/');     // false
 path.isAbsolute('.');        // false
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.isAbsolute('//server');    // true
@@ -280,7 +280,7 @@ added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* Retourne : {string}
+* Returns: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
 
@@ -305,7 +305,7 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* Retourne : {string}
+* Returns: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
@@ -320,7 +320,7 @@ path.normalize('/foo/bar//baz/asdf/quux/..');
 // Returns: '/foo/bar/baz/asdf'
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.normalize('C:\\temp\\\\foo\\bar\\..\\');
@@ -377,7 +377,7 @@ path.parse('/home/user/dir/file.txt');
 (all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.parse('C:\\path\\dir\\file.txt');
@@ -425,7 +425,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Retourne : {string}
+* Returns: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -438,7 +438,7 @@ path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb');
 // Returns: '../../impl/bbb'
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb');
@@ -454,7 +454,7 @@ added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* Retourne : {string}
+* Returns: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -504,7 +504,7 @@ For example on POSIX:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-Sur Windows :
+On Windows:
 
 ```js
 'foo\\bar\\baz'.split(path.sep);
