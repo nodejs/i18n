@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants. The module provides a recommended [`strict` mode][] and a more lenient legacy mode.
 
