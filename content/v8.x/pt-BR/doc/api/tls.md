@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -92,7 +92,7 @@ The TLS protocol allows clients to renegotiate certain aspects of the TLS sessio
 To mitigate the risk, renegotiation is limited to three times every ten minutes. An `'error'` event is emitted on the [`tls.TLSSocket`][] instance when this threshold is exceeded. The limits are configurable:
 
 * `tls.CLIENT_RENEG_LIMIT` {number} Specifies the number of renegotiation requests. **Default:** `3`.
-* `tls.CLIENT_RENEG_WINDOW` {number} Specifies the time renegotiation window in seconds. **Padrão:** `600` (10 minutos).
+* `tls.CLIENT_RENEG_WINDOW` {number} Specifies the time renegotiation window in seconds. **Default:** `600` (10 minutes).
 
 *Note*: The default renegotiation limits should not be modified without a full understanding of the implications and risks.
 
@@ -274,7 +274,7 @@ added: v0.6.0
 
 Returns the bound address, the address family name, and port of the server as reported by the operating system. See [`net.Server.address()`][] for more information.
 
-### server.close ([callback])
+### server.close([callback])
 
 <!-- YAML
 added: v0.3.2
@@ -293,7 +293,7 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Estabilidade: 0 - Descontinuada: Use [`server.getConnections()`][].
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 Returns the current number of concurrent connections on the server.
 
@@ -307,7 +307,7 @@ Returns a `Buffer` instance holding the keys currently used for encryption/decry
 
 ### server.listen()
 
-Starts the server listening for encrypted connections. Esse método é idêntico ao [`server.listen()`] [] do [`net. Server`] [].
+Starts the server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### server.setTicketKeys(keys)
 
@@ -468,7 +468,7 @@ Returns an object representing the peer's certificate. The returned object has s
 
 If the full certificate chain was requested, each certificate will include a `issuerCertificate` property containing an object representing its issuer's certificate.
 
-Por exemplo:
+For example:
 
 ```text
 { subject:
@@ -589,7 +589,7 @@ Returns the numeric representation of the remote port. For example, `443`.
 added: v0.11.8
 -->
 
-* `opções` {Object} 
+* `options` {Object} 
   * `rejectUnauthorized` {boolean} If not `false`, the server certificate is verified against the list of supplied CAs. An `'error'` event is emitted if verification fails; `err.code` contains the OpenSSL error code. **Default:** `true`.
   * `requestCert`
 * `callback` {Function} A function that will be called when the renegotiation request has been completed.
@@ -677,7 +677,7 @@ changes:
     description: ALPN options are supported now.
 -->
 
-* `opções` {Object} 
+* `options` {Object} 
   * `host` {string} Host the client should connect to. **Default:** `'localhost'`.
   * `port` {number} Port the client should connect to.
   * `path` {string} Creates unix socket connection to path. If this option is specified, `host` and `port` are ignored.
@@ -715,7 +715,7 @@ const options = {
 
 const socket = tls.connect(8000, options, () => {
   console.log('client connected',
-              socket.authorized ? 'autorizado' : 'não autorizado');
+              socket.authorized ? 'authorized' : 'unauthorized');
   process.stdin.pipe(socket);
   process.stdin.resume();
 });
@@ -728,7 +728,7 @@ socket.on('end', () => {
 });
 ```
 
-Ou
+Or
 
 ```js
 const tls = require('tls');
@@ -740,7 +740,7 @@ const options = {
 
 const socket = tls.connect(8000, options, () => {
   console.log('client connected',
-              socket.authorized ? 'autorizado' : 'não autorizado');
+              socket.authorized ? 'authorized' : 'unauthorized');
   process.stdin.pipe(socket);
   process.stdin.resume();
 });
@@ -799,7 +799,7 @@ changes:
                  CA certificates.
 -->
 
-* `opções` {Object} 
+* `options` {Object} 
   * `pfx` {string|string[]|Buffer|Buffer[]|Object[]} Optional PFX or PKCS12 encoded private key and certificate chain. `pfx` is an alternative to providing `key` and `cert` individually. PFX is usually encrypted, if it is, `passphrase` will be used to decrypt it. Multiple PFX can be provided either as an array of unencrypted PFX buffers, or an array of objects in the form `{buf: <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted PFX will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
   * `key` {string|string[]|Buffer|Buffer[]|Object[]} Optional private keys in PEM format. PEM allows the option of private keys being encrypted. Encrypted keys will be decrypted with `options.passphrase`. Multiple keys using different algorithms can be provided either as an array of unencrypted key strings or buffers, or an array of objects in the form `{pem:
 <string|buffer>[, passphrase: <string>]}`. The object form can only occur in an array. `object.passphrase` is optional. Encrypted keys will be decrypted with `object.passphrase` if provided, or `options.passphrase` if it is not.
@@ -843,9 +843,9 @@ changes:
 -->
 
 * `options` {Object} 
-  * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Padrão:** `120000` (120 segundos).
+  * `handshakeTimeout` {number} Abort the connection if the SSL/TLS handshake does not finish in the specified number of milliseconds. A `'tlsClientError'` is emitted on the `tls.Server` object whenever a handshake times out. **Default:** `120000` (120 seconds).
   * `requestCert` {boolean} If `true` the server will request a certificate from clients that connect and attempt to verify that certificate. **Default:** `false`.
-  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Padrão:** `true`.
+  * `rejectUnauthorized` {boolean} If not `false` the server will reject any connection which is not authorized with the list of supplied CAs. This option only has an effect if `requestCert` is `true`. **Default:** `true`.
   * `NPNProtocols` {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing supported NPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.)
   * `ALPNProtocols`: {string[]|Buffer[]|Uint8Array[]|Buffer|Uint8Array} An array of strings, `Buffer`s or `Uint8Array`s, or a single `Buffer` or `Uint8Array` containing the supported ALPN protocols. `Buffer`s should have the format `[len][name][len][name]...` e.g. `0x05hello0x05world`, where the first byte is the length of the next protocol name. Passing an array is usually much simpler, e.g. `['hello', 'world']`. (Protocols should be ordered by their priority.) When the server receives both NPN and ALPN extensions from the client, ALPN takes precedence over NPN and the server does not send an NPN extension to the client.
   * `SNICallback(servername, cb)` {Function} A function that will be called if the client supports SNI TLS extension. Two arguments will be passed when called: `servername` and `cb`. `SNICallback` should invoke `cb(null, ctx)`, where `ctx` is a SecureContext instance. (`tls.createSecureContext(...)` can be used to get a proper SecureContext.) If `SNICallback` wasn't provided the default callback with high-level API will be used (see below).
@@ -887,7 +887,7 @@ server.listen(8000, () => {
 });
 ```
 
-Ou
+Or
 
 ```js
 const tls = require('tls');
@@ -927,7 +927,7 @@ added: v0.10.2
 
 Returns an array with the names of the supported SSL ciphers.
 
-Por exemplo:
+For example:
 
 ```js
 console.log(tls.getCiphers()); // ['AES128-SHA', 'AES256-SHA', ...]
@@ -941,7 +941,7 @@ added: v0.11.13
 
 The default curve name to use for ECDH key agreement in a tls server. The default value is `'prime256v1'` (NIST P-256). Consult [RFC 4492](https://www.rfc-editor.org/rfc/rfc4492.txt) and [FIPS.186-4](http://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) for more details.
 
-## APIs Descontinuadas
+## Deprecated APIs
 
 ### Class: CryptoStream
 
