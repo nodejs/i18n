@@ -1,16 +1,16 @@
-# Guida di stile
+# Style Guide
 
 * Documentation is in markdown files with names formatted as `lowercase-with-dashes.md`.
   * Use an underscore in the filename only if the underscore is part of the topic name (e.g., `child_process`).
-  * Alcuni file, come i file markdown top-level, sono eccezioni.
-* Il testo dei documenti dovrebbe andare a capo in modo automatico raggiunti gli 80 caratteri.
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
 * `.editorconfig` describes the preferred formatting.
   * A [plugin](https://editorconfig.org/#download) is available for some editors to apply these rules.
 * Check changes to documentation with `make lint-md`.
 * Use American English spelling.
   * OK: _capitalize_, _color_
   * NOT OK: _capitalise_, _colour_
-* Usare la [virgola di Oxford](https://en.wikipedia.org/wiki/Serial_comma).
+* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns (_I_, _you_, _we_) in reference documentation.
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns.
@@ -18,26 +18,26 @@
     * NOT OK: _his_, _hers_, _him_, _her_, _guys_, _dudes_
 * When combining wrapping elements (parentheses and quotes), place terminal punctuation:
   * Inside the wrapping element if the wrapping element contains a complete clause.
-  * Al di fuori dell'elemento di wrapping se l'elemento di wrapping contiene solo il frammento di una proposizione.
-* I documenti devono iniziare con un'intestazione di livello uno.
-* Preferisci i link di apposizione al posto dei link diretti — preferisci `[un link][]` al posto di `[un link](http://esempio.com)`.
+  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
+* Documents must start with a level-one heading.
+* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, update the YAML comment associated with the API as appropriate. This is especially true when introducing or deprecating an API.
 * Use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* Per i blocchi di codice:
-  * Usa blocchi consapevoli del linguaggio. ("```js")
-  * Code need not be complete. Treat code blocks as an illustration or aid to your point, not as complete running programs. Se è necessario un programma completo in esecuzione, includilo come asset in `assets/code-examples` e collegalo ad esso.
+* For code blocks:
+  * Use language aware fences. ("```js")
+  * Code need not be complete. Treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use backslash-escaping: `\_`, `\*`, and `` \` ``.
 * Constructors should use PascalCase.
 * Instances should use camelCase.
 * Denote methods with parentheses: `socket.end()` instead of `socket.end`.
-* Gli argomenti della funzione o le proprietà dell'oggetto devono utilizzare il seguente formato:
+* Function arguments or object properties should use the following format:
   * ``* `name` {type|type2} Optional description. **Default:** `value`.``
   <!--lint disable maximum-line-length remark-lint-->
   * For example: <code>* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code>
   <!--lint enable maximum-line-length remark-lint-->
-  * Il `tipo` dovrebbe fare riferimento ad un tipo Node.js oppure ad un [tipo JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
-* I returns delle funzioni dovrebbero utilizzare il seguente formato:
-  * <code>* Returns: {type|type2} Descrizione facoltativa.</code>
+  * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
+* Function returns should use the following format:
+  * <code>* Returns: {type|type2} Optional description.</code>
   * E.g. <code>* Returns: {AsyncHook} A reference to `asyncHook`.</code>
 * Use official styling for capitalization in products and projects.
   * OK: JavaScript, Google's V8
