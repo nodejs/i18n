@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
-`tty` 模块提供了 `tty.ReadStream` 和 `tty.WriteStream` 类。 在大多数情况下，不需要或不可能直接使用此模块。 然而，可以通过如下方式访问它：
+The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
 ```js
 const tty = require('tty');
 ```
 
-当 Node.js 检测到其运行环境中有连接的文本终端 ("TTY") 时，默认情况下 [`process.stdin`][] 会被作为 `tty.ReadStream` 的实例初始化，同时 [`process.stdout`][] 和 [`process.stderr`][] 会被作为 `tty.WriteStream` 的实例初始化。 用于确定 Node.js 是否在 TTY 的上下文中运行的首选方法就是，检查 `process.stdout.isTTY` 属性的值是否为 `true`：
+When Node.js detects that it is being run with a text terminal ("TTY") attached, [`process.stdin`][] will, by default, be initialized as an instance of `tty.ReadStream` and both [`process.stdout`][] and [`process.stderr`][] will, by default be instances of `tty.WriteStream`. The preferred method of determining whether Node.js is being run within a TTY context is to check that the value of the `process.stdout.isTTY` property is `true`:
 
 ```sh
 $ node -p -e "Boolean(process.stdout.isTTY)"
@@ -19,7 +19,7 @@ $ node -p -e "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-在大多数情况下，应用程序几乎没有理由手工创建 `tty.ReadStream` 和 `tty.WriteStream` 类的实例。
+In most cases, there should be little to no reason for an application to manually create instances of the `tty.ReadStream` and `tty.WriteStream` classes.
 
 ## Class: `tty.ReadStream`
 <!-- YAML
@@ -35,26 +35,26 @@ Represents the readable side of a TTY. In normal circumstances [`process.stdin`]
 added: v0.7.7
 -->
 
-如果 TTY 被配置为原始设备，则该 `boolean` 值为 `true`。 默认值为 `false`。
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### `readStream.isTTY`
 <!-- YAML
 added: v0.5.8
 -->
 
-对于 `tty.ReadStream` 实例，该 `boolean` 值始终为 `true`。
+A `boolean` that is always `true` for `tty.ReadStream` instances.
 
 ### `readStream.setRawMode(mode)`
 <!-- YAML
 added: v0.7.7
 -->
 
-* `mode` {boolean} 如果为 `true`，将 `tty.ReadStream` 配置为原始设备。 如果为 `false`，将 `tty.ReadStream` 以其原始模式运行。 `readStream.isRaw` 属性将被设置为结果中对应的模式。
+* `mode` {boolean} If `true`, configures the `tty.ReadStream` to operate as a raw device. If `false`, configures the `tty.ReadStream` to operate in its default mode. The `readStream.isRaw` property will be set to the resulting mode.
 * Returns: {this} The read stream instance.
 
-允许配置 `tty.ReadStream`，这样它可以作为原始设备运行。
+Allows configuration of `tty.ReadStream` so that it operates as a raw device.
 
-在处于原始模式时，输入按字符逐个生效，但不包括修饰符。 此外，终端对字符的所有特殊处理都被禁用，包括回显输入字符。 `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
+When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
 
 ## Class: `tty.WriteStream`
 <!-- YAML
@@ -70,7 +70,7 @@ Represents the writable side of a TTY. In normal circumstances, [`process.stdout
 added: v0.7.7
 -->
 
-当 `writeStream.columns` 或 `writeStream.rows` 属性发生变化时，`'resize'` 事件会被触发。 它在被调用时，没有参数被传递给监听器回调函数。
+The `'resize'` event is emitted whenever either of the `writeStream.columns` or `writeStream.rows` properties have changed. No arguments are passed to the listener callback when called.
 
 ```js
 process.stdout.on('resize', () => {
@@ -116,7 +116,7 @@ changes:
 added: v0.7.7
 -->
 
-用来表示当前 TTY 列数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
+A `number` specifying the number of columns the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ### `writeStream.cursorTo(x[, y][, callback])`
 <!-- YAML
@@ -140,9 +140,9 @@ added: v9.9.0
 -->
 
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* 返回：{number}
+* Returns: {number}
 
-返回:
+Returns:
 
 * `1` for 2,
 * `4` for 16,
@@ -176,7 +176,7 @@ added: v11.13.0
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
@@ -198,7 +198,7 @@ process.stdout.hasColors(2 ** 24, { TMUX: '1' });
 added: v0.5.8
 -->
 
-一个始终为 `true` 的 `boolean` 值。
+A `boolean` that is always `true`.
 
 ### `writeStream.moveCursor(dx, dy[, callback])`
 <!-- YAML
@@ -221,14 +221,14 @@ changes:
 added: v0.7.7
 -->
 
-用来表示 TTY 当前行数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
+A `number` specifying the number of rows the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ## `tty.isatty(fd)`
 <!-- YAML
 added: v0.5.8
 -->
 
-* `fd` {number} 一个数字类型的文件描述符
-* 返回：{boolean}
+* `fd` {number} A numeric file descriptor
+* Returns: {boolean}
 
-如果给定的 `fd` 和 TTY 相关联，`tty.isatty()` 方法返回 `true`，否则返回 `false`，其中包括当 `fd` 值为负的情况。
+The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
