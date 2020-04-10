@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -167,13 +167,13 @@ Get a unique name for a set of request options, to determine whether a connectio
 
 ### `agent.maxFreeSockets`<!-- YAML
 added: v0.11.7
--->* {liczba}
+-->* {number}
 
 By default set to 256. For agents with `keepAlive` enabled, this sets the maximum number of sockets that will be left open in the free state.
 
 ### `agent.maxSockets`<!-- YAML
 added: v0.3.6
--->* {liczba}
+-->* {number}
 
 By default set to `Infinity`. Determines how many concurrent sockets the agent can have open per origin. Origin is the returned value of [`agent.getName()`][].
 
@@ -427,7 +427,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v12.16.0
--->> Stabilność: 0 - Przestarzałe. Use [`request.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -880,7 +880,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v12.16.0
--->> Stabilność: 0 - Przestarzałe. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -1304,7 +1304,7 @@ This property is guaranteed to be an instance of the {net.Socket} class, a subcl
 
 ### `message.statusCode`<!-- YAML
 added: v0.1.1
--->* {liczba}
+-->* {number}
 
 **Only valid for response obtained from [`http.ClientRequest`][].**
 
@@ -1466,7 +1466,7 @@ Global instance of `Agent` which is used as the default for all HTTP client requ
 
 ## `http.maxHeaderSize`<!-- YAML
 added: v11.6.0
--->* {liczba}
+-->* {number}
 
 Read-only property specifying the maximum allowed size of HTTP headers in bytes. Defaults to 8KB. Configurable using the [`--max-http-header-size`][] CLI option.
 
