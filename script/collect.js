@@ -5,13 +5,13 @@ const path = require('path')
 const download = require('download')
 const walk = require('walk-sync').entries
 
-const getVersions = require('./getVersions');
-const { supportedVersions } = require("../package.json");
+const getVersions = require('./getVersions')
+const { supportedVersions } = require('../package.json')
 
 collect()
 
 async function collect () {
-  const nodeVersions = await getVersions(supportedVersions);
+  const nodeVersions = await getVersions(supportedVersions)
   for (const major in nodeVersions) {
     const version = nodeVersions[major]
     await getDocsForNodeVersion(major, version).catch(err => {

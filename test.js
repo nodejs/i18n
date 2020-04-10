@@ -2,7 +2,6 @@ const fs = require('fs')
 const path = require('path')
 const walk = require('walk-sync').entries
 const { supportedVersions } = require('./package.json')
-const semver = require('semver')
 const contentDir = path.join(__dirname, 'content')
 
 test('includes source English content for all major versions', () => {
