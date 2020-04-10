@@ -99,7 +99,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 
 ## General recommendations
 
-### Таймеры
+### Timers
 
 Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 
