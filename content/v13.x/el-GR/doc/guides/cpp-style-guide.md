@@ -74,7 +74,7 @@ if (foo)
   bar();
 ```
 
-ή
+or
 
 ```c++
 if (foo) {
