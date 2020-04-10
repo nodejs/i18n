@@ -1,18 +1,18 @@
-# Erros
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
 <!--type=misc-->
 
-Os aplicativos que são executados no Node.js geralmente experimentam quatro categorias de erros:
+Applications running in Node.js will generally experience four categories of errors:
 
-- Erros padrão do JavasScript como: 
-  - {EvalError} : lançado quando uma chamada para `eval()` falha.
-  - {SyntaxError} : lançado em resposta à sintaxe de linguagem JavaScript inadequada.
-  - {RangeError} : lançado quando um valor não está dentro de um intervalo esperado
-  - {ReferenceError} : lançado quando usando variáveis undefined
-  - {TypeError} : lançado ao passar argumentos de tipo incorreto
-  - {URIError} : lançado quando uma função global de manipulação de URI é usada incorretamente.
+- Standard JavaScript errors such as: 
+  - {EvalError} : thrown when a call to `eval()` fails.
+  - {SyntaxError} : thrown in response to improper JavaScript language syntax.
+  - {RangeError} : thrown when a value is not within an expected range
+  - {ReferenceError} : thrown when using undefined variables
+  - {TypeError} : thrown when passing arguments of the wrong type
+  - {URIError} : thrown when a global URI handling function is misused.
 - System errors triggered by underlying operating system constraints such as attempting to open a file that does not exist, attempting to send data over a closed socket, etc;
 - And User-specified errors triggered by application code.
 - Assertion Errors are a special class of error that can be triggered whenever Node.js detects an exceptional logic violation that should never occur. These are raised typically by the `assert` module.
@@ -170,7 +170,7 @@ The first line of the trace will be prefixed with `${myObject.name}: ${myObject.
 
 The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. Por exemplo:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
 function MyError() {
@@ -217,7 +217,7 @@ console.error(err.message);
 
 The `error.stack` property is a string describing the point in the code at which the `Error` was instantiated.
 
-Por exemplo:
+For example:
 
 ```txt
 Error: Things keep happening!
@@ -273,9 +273,9 @@ System-level errors are generated as augmented `Error` instances, which are deta
 
 ## Class: AssertionError
 
-Uma subclasse de `Error` que indica a falha de uma asserção. Such errors commonly indicate inequality of actual and expected value.
+A subclass of `Error` that indicates the failure of an assertion. Such errors commonly indicate inequality of actual and expected value.
 
-Por exemplo:
+For example:
 
 ```js
 assert.strictEqual(1, 2);
@@ -286,7 +286,7 @@ assert.strictEqual(1, 2);
 
 A subclass of `Error` that indicates that a provided argument was not within the set or range of acceptable values for a function; whether that is a numeric range, or outside the set of options for a given function parameter.
 
-Por exemplo:
+For example:
 
 ```js
 require('net').connect(-1);
@@ -333,7 +333,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Erros
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
@@ -835,7 +835,7 @@ A `Buffer`, `Uint8Array` or `string` was provided as stdio input to a synchronou
 
 A Node.js API function was called with an incompatible `this` value.
 
-Exemplo:
+Example:
 
 ```js
 const { URLSearchParams } = require('url');
@@ -898,7 +898,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but does not provide a `dynamicInstantiate` hook.
 
@@ -906,7 +906,7 @@ Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but doe
 
 ### ERR_MISSING_MODULE
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] cannot be resolved.
 
@@ -914,7 +914,7 @@ Used when an \[ES6 module\]\[\] cannot be resolved.
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 Used when a failure occurred resolving imports in an \[ES6 module\]\[\].
 
