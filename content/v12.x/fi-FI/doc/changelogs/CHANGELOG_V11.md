@@ -29,7 +29,7 @@
 </tr>
 </table>
 
-* Muut versiot
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
@@ -41,7 +41,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arkisto](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="11.14.0"></a>
 
