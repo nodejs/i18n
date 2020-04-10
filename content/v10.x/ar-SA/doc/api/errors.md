@@ -1,4 +1,4 @@
-# الأخطاء
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
