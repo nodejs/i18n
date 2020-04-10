@@ -1,8 +1,8 @@
-# Modul
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -512,7 +512,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -573,6 +573,8 @@ changes:
 * Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
+
+If the module can not be found, a `MODULE_NOT_FOUND` error is thrown.
 
 ##### `require.resolve.paths(request)`<!-- YAML
 added: v8.9.0
@@ -734,7 +736,7 @@ In order to do this, it is necessary to get a reference to the `module` object. 
 added: v0.3.7
 -->* {Object}
 
-Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
+Provides general utility methods when interacting with instances of `Module`, the `module` variable often seen in file modules. Accessed via `require('module')`.
 
 ### `module.builtinModules`<!-- YAML
 added:
@@ -807,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Stabilitas: 1 - Eksperimental
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
