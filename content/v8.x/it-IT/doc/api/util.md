@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Ci si può accedere utilizzando:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -16,12 +16,12 @@ const util = require('util');
 added: v8.2.0
 -->
 
-* `original` {Function} Una funzione `async`
-* Restituisce: {Function} una funzione di tipo callback
+* `original` {Function} An `async` function
+* Returns: {Function} a callback style function
 
 Takes an `async` function (or a function that returns a Promise) and returns a function following the error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the Promise resolved), and the second argument will be the resolved value.
 
-Per esempio:
+For example:
 
 ```js
 const util = require('util');
@@ -37,7 +37,7 @@ callbackFunction((err, ret) => {
 });
 ```
 
-Stamperà:
+Will print:
 
 ```txt
 hello world
@@ -45,7 +45,7 @@ hello world
 
 *Note*:
 
-* Il callback viene eseguito in modo asincrono e avrà una stack trace limitata. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
+* The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
 
 * Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
   
@@ -56,8 +56,8 @@ hello world
   const callbackFunction = util.callbackify(fn);
   
   callbackFunction((err, ret) => {
-    // Quando la Promise è stata rifiutata con 'null' viene sottoposta al wrapping con un Error e
-    // il valore originale viene memorizzato in `reason`.
+    // When the Promise was rejected with `null` it is wrapped with an Error and
+    // the original value is stored in `reason`.
     err && err.hasOwnProperty('reason') && err.reason === null;  // true
   });
   ```
@@ -69,11 +69,11 @@ added: v0.11.3
 -->
 
 * `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
-* Restituisce: {Function} La funzione di registrazione
+* Returns: {Function} The logging function
 
-The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. In caso contrario, la funzione restituita è un no-op.
+The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
-Per esempio:
+For example:
 
 ```js
 const util = require('util');
@@ -88,7 +88,7 @@ If this program is run with `NODE_DEBUG=foo` in the environment, then it will ou
 FOO 3245: hello from foo [123]
 ```
 
-in cui `3245` è l'id del processo. If it is not run with that environment variable set, then it will not print anything.
+where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
 
 Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable. For example: `NODE_DEBUG=fs,net,tls`.
 
@@ -99,6 +99,8 @@ added: v0.8.0
 -->
 
 The `util.deprecate()` method wraps the given `function` or class in such a way that it is marked as deprecated.
+
+<!-- eslint-disable prefer-rest-params -->
 
 ```js
 const util = require('util');
@@ -120,7 +122,9 @@ If the `--throw-deprecation` command line flag is set, or the `process.throwDepr
 
 The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
-## util.format(format[, ...args])<!-- YAML
+## util.format(format[, ...args])
+
+<!-- YAML
 added: v0.5.3
 changes:
 
@@ -129,26 +133,26 @@ changes:
     description: The `%o` and `%O` specifiers are supported now.
 -->
 
-* `format` {string} Una stringa di formato simile a `printf`.
+* `format` {string} A `printf`-like format string.
 
 The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
 
-Il primo argomento è una stringa contenente zero o più token *segnaposto*. Each placeholder token is replaced with the converted value from the corresponding argument. I segnaposto supportati sono:
+The first argument is a string containing zero or more *placeholder* tokens. Each placeholder token is replaced with the converted value from the corresponding argument. Supported placeholders are:
 
 * `%s` - String.
 * `%d` - Number (integer or floating point value).
-* `%i` - Numero intero.
-* `%f` - Valore in virgola mobile.
+* `%i` - Integer.
+* `%f` - Floating point value.
 * `%j` - JSON. Replaced with the string `'[Circular]'` if the argument contains circular references.
 * `%o` - Object. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, depth: 4, showProxy: true }`. This will show the full object including non-enumerable symbols and properties.
-* `%O` - Object. A string representation of an object with generic JavaScript object formatting. Simile a `util.inspect()` senza opzioni. This will show the full object not including non-enumerable symbols and properties.
-* `%%` - singolo segno di percentuale (`'%'`). Non consuma un argomento.
+* `%O` - Object. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` without options. This will show the full object not including non-enumerable symbols and properties.
+* `%%` - single percent sign (`'%'`). This does not consume an argument.
 
 If the placeholder does not have a corresponding argument, the placeholder is not replaced.
 
 ```js
 util.format('%s:%s', 'foo');
-// Restituisce: 'foo:%s'
+// Returns: 'foo:%s'
 ```
 
 If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
@@ -157,7 +161,7 @@ If there are more arguments passed to the `util.format()` method than the number
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. Ogni argomento viene convertito in una stringa utilizzando `util.inspect()`.
+If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. Each argument is converted to a string using `util.inspect()`.
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
@@ -169,15 +173,16 @@ If only one argument is passed to `util.format()`, it is returned as it is witho
 util.format('%% %s'); // '%% %s'
 ```
 
-## util.getSystemErrorName(err)<!-- YAML
+## util.getSystemErrorName(err)
+
+<!-- YAML
 added: v8.12.0
 -->
 
 * `err` {number}
+* Returns: {string}
 
-* Restituisce: {string}
-
-Restituisce il nome della stringa per un codice di errore numerico proveniente da un'API di Node.js. Il mapping tra codici di errore e nomi di errore è dipendente dalla piattaforma. Vedere [Errori di Sistema Comuni](errors.html#errors_common_system_errors) per i nomi degli errori comuni.
+Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
 ```js
 fs.access('file/that/does/not/exist', (err) => {
@@ -186,7 +191,9 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
-## util.inherits(constructor, superConstructor)<!-- YAML
+## util.inherits(constructor, superConstructor)
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -200,7 +207,7 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-Ereditano i metodi del prototipo da un [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) all'altro. The prototype of `constructor` will be set to a new object created from `superConstructor`.
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
 As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
@@ -229,7 +236,7 @@ stream.on('data', (data) => {
 stream.write('It works!'); // Received data: "It works!"
 ```
 
-Esempio di ES6 utilizzando la `class` ed `extends`
+ES6 example using `class` and `extends`
 
 ```js
 const EventEmitter = require('events');
@@ -249,7 +256,9 @@ stream.write('With ES6');
 
 ```
 
-## util.inspect(object[, options])<!-- YAML
+## util.inspect(object[, options])
+
+<!-- YAML
 added: v0.3.0
 changes:
 
@@ -271,16 +280,16 @@ changes:
 * `object` {any} Any JavaScript primitive or Object.
 * `options` {Object} 
   * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result. **Default:** `false`.
-  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. È utile per ispezionare object complicati di grandi dimensioni. Defaults to `2`. Per farlo ripetere indefinitamente, passare `null`.
-  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. I colori sono personalizzabili, vedi [Customizing `util.inspect` colors][]. **Default:** `false`.
+  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely pass `null`.
+  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
   * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions exported on the `object` being inspected will not be called. **Default:** `true`.
   * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
   * `maxArrayLength` {number} Specifies the maximum number of array and `TypedArray` elements to include when formatting. Set to `null` to show all array elements. Set to `0` or negative to show no array elements. **Default:** `100`.
-  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` per la compatibilità legacy.
+  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
 
 The `util.inspect()` method returns a string representation of `object` that is primarily useful for debugging. Additional `options` may be passed that alter certain aspects of the formatted string.
 
-L'esempio seguente ispeziona tutte le proprietà dell'`util` object:
+The following example inspects all properties of the `util` object:
 
 ```js
 const util = require('util');
@@ -290,13 +299,15 @@ console.log(util.inspect(util, { showHidden: true, depth: null }));
 
 Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
 
-### Customizing `util.inspect` colors<!-- type=misc -->Color output (if enabled) of 
+### Customizing `util.inspect` colors
 
-`util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
+<!-- type=misc -->
+
+Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
 
 `util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
-Gli stili predefiniti e i colori associati sono:
+The default styles and associated colors are:
 
 * `number` - `yellow`
 * `boolean` - `yellow`
@@ -305,14 +316,14 @@ Gli stili predefiniti e i colori associati sono:
 * `regexp` - `red`
 * `null` - `bold`
 * `undefined` - `grey`
-* `special` - `cyan` (applicato solo alle funzioni in questo momento)
-* `name` - (senza stile)
+* `special` - `cyan` (only applied to functions at this time)
+* `name` - (no styling)
 
 The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
 
 Color styling uses ANSI control codes that may not be supported on all terminals.
 
-### Funzioni di ispezione personalizzate sugli Object
+### Custom inspection functions on Objects
 
 <!-- type=misc -->
 
@@ -335,7 +346,7 @@ class Box {
       depth: options.depth === null ? null : options.depth - 1
     });
 
-    // Padding di cinque spazi perché è la dimensione di "Box< ".
+    // Five space padding because that's the size of "Box< ".
     const padding = ' '.repeat(5);
     const inner = util.inspect(this.value, newOptions)
                       .replace(/\n/g, `\n${padding}`);
@@ -346,7 +357,7 @@ class Box {
 const box = new Box(true);
 
 util.inspect(box);
-// Restituisce: "Box< true >"
+// Returns: "Box< true >"
 ```
 
 Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
@@ -360,41 +371,46 @@ obj[util.inspect.custom] = (depth) => {
 };
 
 util.inspect(obj);
-// Restituisce: "{ bar: 'baz' }"
+// Returns: "{ bar: 'baz' }"
 ```
 
-### util.inspect.custom<!-- YAML
+### util.inspect.custom
+
+<!-- YAML
 added: v6.6.0
--->A Symbol that can be used to declare custom inspect functions, see 
+-->
 
-[Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
+A Symbol that can be used to declare custom inspect functions, see [Custom inspection functions on Objects](#util_custom_inspection_functions_on_objects).
 
-### util.inspect.defaultOptions<!-- YAML
+### util.inspect.defaultOptions
+
+<!-- YAML
 added: v6.4.0
--->The 
+-->
 
-`defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
+The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
 
 ```js
 const util = require('util');
 const arr = Array(101).fill(0);
 
-console.log(arr); // registra l'array troncato
+console.log(arr); // logs the truncated array
 util.inspect.defaultOptions.maxArrayLength = null;
-console.log(arr); // registra l'array completo
+console.log(arr); // logs the full array
 ```
 
-## util.promisify(original)<!-- YAML
+## util.promisify(original)
+
+<!-- YAML
 added: v8.0.0
 -->
 
 * `original` {Function}
-
-* Restituisce: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking a `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
-Per esempio:
+For example:
 
 ```js
 const util = require('util');
@@ -402,13 +418,13 @@ const fs = require('fs');
 
 const stat = util.promisify(fs.stat);
 stat('.').then((stats) => {
-  // Eseguire le istruzioni con `stats`
+  // Do something with `stats`
 }).catch((error) => {
-  //Gestire l'errore.
+  // Handle the error.
 });
 ```
 
-Oppure, utilizzando in modo equivalente le `async function`:
+Or, equivalently using `async function`s:
 
 ```js
 const util = require('util');
@@ -426,7 +442,7 @@ If there is an `original[util.promisify.custom]` property present, `promisify` w
 
 `promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
 
-### Funzioni promisified personalizzate
+### Custom promisified functions
 
 Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
 
@@ -443,7 +459,7 @@ doSomething[util.promisify.custom] = (foo) => {
 
 const promisified = util.promisify(doSomething);
 console.log(promisified === doSomething[util.promisify.custom]);
-// stampa 'true'
+// prints 'true'
 ```
 
 This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
@@ -470,11 +486,13 @@ added: v8.0.0
 
 A Symbol that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## Class: util.TextDecoder<!-- YAML
-added: v8.3.0
--->An implementation of the 
+## Class: util.TextDecoder
 
-[WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
+<!-- YAML
+added: v8.3.0
+-->
+
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -486,30 +504,30 @@ while (buffer = getNextChunkSomehow()) {
 string += decoder.decode(); // end-of-stream
 ```
 
-### Codifiche Supportate da WHATWG
+### WHATWG Supported Encodings
 
 Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-Diverse configurazioni di build Node.js supportano diversi set di codifiche. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
+Different Node.js build configurations support different sets of encodings. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
-#### Codifiche Supportate Senza ICU
+#### Encodings Supported Without ICU
 
-| Codifica     | Alias                           |
+| Encoding     | Aliases                         |
 | ------------ | ------------------------------- |
 | `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
 | `'utf-16le'` | `'utf-16'`                      |
 
-#### Codifiche Supportate per Impostazione Predefinita (Con ICU)
+#### Encodings Supported by Default (With ICU)
 
-| Codifica     | Alias                           |
+| Encoding     | Aliases                         |
 | ------------ | ------------------------------- |
 | `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
 | `'utf-16le'` | `'utf-16'`                      |
 | `'utf-16be'` |                                 |
 
-#### Codifiche che Richiedono Dati ICU Completi
+#### Encodings Requiring Full ICU Data
 
-| Codifica           | Alias                                                                                                                                                                                                                               |
+| Encoding           | Aliases                                                                                                                                                                                                                             |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'ibm866'`         | `'866'`, `'cp866'`, `'csibm866'`                                                                                                                                                                                                    |
 | `'iso-8859-2'`     | `'csisolatin2'`, `'iso-ir-101'`, `'iso8859-2'`, `'iso88592'`, `'iso_8859-2'`, `'iso_8859-2:1987'`, `'l2'`, `'latin2'`                                                                                                               |
@@ -552,19 +570,19 @@ Diverse configurazioni di build Node.js supportano diversi set di codifiche. Whi
 
 * `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` se i fallimenti di decodifica sono fatali. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
-  * `ignoreBOM` {boolean} Quando è `true`, il `TextDecoder` includerà il segno di ordine dei byte nel risultato decodificato. Se `false`, il segno di ordine dei byte verrà rimosso dall'output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
+  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
-Crea una nuova istanza `TextDecoder`. The `encoding` may specify one of the supported encodings or an alias.
+Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or Typed Array instance containing the encoded data.
 * `options` {Object} 
-  * `stream` {boolean} `true` se sono previsti chunk di dati aggiuntivi. **Default:** `false`.
-* Restituisce: {string}
+  * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
+* Returns: {string}
 
-Decodifica l'`input` e restituisce una stringa. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
+Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
 If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
@@ -572,7 +590,7 @@ If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `T
 
 * {string}
 
-La codifica supportata dall'istanza `TextDecoder`.
+The encoding supported by the `TextDecoder` instance.
 
 ### textDecoder.fatal
 
@@ -592,7 +610,7 @@ The value will be `true` if the decoding result will include the byte order mark
 added: v8.3.0
 -->
 
-Un'implementazione dell'API `TextEncoder` dello [Standard di Codifica WHATWG](https://encoding.spec.whatwg.org/). All instances of `TextEncoder` only support UTF-8 encoding.
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextEncoder` API. All instances of `TextEncoder` only support UTF-8 encoding.
 
 ```js
 const encoder = new TextEncoder();
@@ -601,8 +619,8 @@ const uint8array = encoder.encode('this is some data');
 
 ### textEncoder.encode([input])
 
-* `input` {string} Il testo da codificare. **Default:** una stringa vuota.
-* Restituisce: {Uint8Array}
+* `input` {string} The text to encode. **Default:** an empty string.
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -610,33 +628,37 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 * {string}
 
-La codifica supportata dall'istanza `TextEncoder`. Impostata sempre su `'utf-8'`.
+The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## API obsolete
+## Deprecated APIs
 
-Le seguenti API sono state deprecate e non dovrebbero più essere utilizzate. Existing applications and modules should be updated to find alternative approaches.
+The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
-### util.\_extend(target, source)<!-- YAML
+### util.\_extend(target, source)
+
+<!-- YAML
 added: v0.7.5
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`Object.assign()`] instead.
+> Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
 
-The `util._extend()` method was never intended to be used outside of internal Node.js modules. Tuttavia la comunità l'ha trovato e utilizzato ugualmente.
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
 
-E' deprecato e non dovrebbe essere utilizzato in un nuovo codice. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
+It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
-### util.debug(string)<!-- YAML
+### util.debug(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.error()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
-* `string` {string} Il messaggio da stampare su `stderr`
+* `string` {string} The message to print to `stderr`
 
-Predecessore deprecato di `console.error`.
+Deprecated predecessor of `console.error`.
 
 ### util.error([...strings])
 
@@ -645,52 +667,60 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabilità: 0 - Deprecato: Utilizza [`console.error()`][] al suo posto.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
-* `...strings` {string} Il messaggio da stampare su `stderr`
+* `...strings` {string} The message to print to `stderr`
 
-Predecessore deprecato di `console.error`.
+Deprecated predecessor of `console.error`.
 
-### util.isArray(object)<!-- YAML
+### util.isArray(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
 Internal alias for [`Array.isArray`][].
 
-Restituisce `true` se l'`object` indicato è un `Array`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isArray([]);
-// Restituisce: true
+// Returns: true
 util.isArray(new Array());
-// Restituisce: true
+// Returns: true
 util.isArray({});
-// Restituisce: false
+// Returns: false
 ```
 
-### util.isBoolean(object)<!-- YAML
+### util.isBoolean(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un `Boolean`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isBoolean(1);
-// Restituisce: false
+// Returns: false
 util.isBoolean(0);
-// Restituisce: false
+// Returns: false
 util.isBoolean(false);
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isBuffer(object)
@@ -700,41 +730,45 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Deprecato: Utilizza [`Buffer.isBuffer()`][] al suo posto.
+> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un `Buffer`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isBuffer({ length: 0 });
-// Restituisce: false
+// Returns: false
 util.isBuffer([]);
-// Restituisce: false
+// Returns: false
 util.isBuffer(Buffer.from('hello world'));
-// Restituisce: true
+// Returns: true
 ```
 
-### util.isDate(object)<!-- YAML
+### util.isDate(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è una `Date`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isDate(new Date());
-// Restituisce: true
+// Returns: true
 util.isDate(Date());
-// false (senza 'new' restituisce una Stringa)
+// false (without 'new' returns a String)
 util.isDate({});
-// Restituisce: false
+// Returns: false
 ```
 
 ### util.isError(object)
@@ -744,44 +778,48 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un [`Error`][]. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isError(new Error());
-// Restituisce: true
+// Returns: true
 util.isError(new TypeError());
-// Restituisce: true
+// Returns: true
 util.isError({ name: 'Error', message: 'an error occurred' });
-// Restituisce: false
+// Returns: false
 ```
 
-Notare che questo metodo dipende dal comportamento di `Object.prototype.toString()`. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
+Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
 const obj = { name: 'Error', message: 'an error occurred' };
 
 util.isError(obj);
-// Restituisce: false
+// Returns: false
 obj[Symbol.toStringTag] = 'Error';
 util.isError(obj);
-// Restituisce: true
+// Returns: true
 ```
 
-### util.isFunction(object)<!-- YAML
+### util.isFunction(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è una `Function`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -790,11 +828,11 @@ function Foo() {}
 const Bar = () => {};
 
 util.isFunction({});
-// Restituisce: false
+// Returns: false
 util.isFunction(Foo);
-// Restituisce: true
+// Returns: true
 util.isFunction(Bar);
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isNull(object)
@@ -804,21 +842,21 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è rigorosamente `null`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNull(0);
-// Restituisce: false
+// Returns: false
 util.isNull(undefined);
-// Restituisce: false
+// Returns: false
 util.isNull(null);
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isNullOrUndefined(object)
@@ -828,21 +866,21 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è `null` o `undefined`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNullOrUndefined(0);
-// Restituisce: false
+// Returns: false
 util.isNullOrUndefined(undefined);
-// Restituisce: true
+// Returns: true
 util.isNullOrUndefined(null);
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isNumber(object)
@@ -852,23 +890,23 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un `Number`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNumber(false);
-// Restituisce: false
+// Returns: false
 util.isNumber(Infinity);
-// Restituisce: true
+// Returns: true
 util.isNumber(0);
-// Restituisce: true
+// Returns: true
 util.isNumber(NaN);
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isObject(object)
@@ -878,11 +916,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is strictly an `Object` **and** not a `Function`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -904,11 +942,11 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un tipo primitivo. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -933,46 +971,54 @@ util.isPrimitive(new Date());
 // Returns: false
 ```
 
-### util.isRegExp(object)<!-- YAML
+### util.isRegExp(object)
+
+<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un `RegExp`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isRegExp(/some regexp/);
-// Restituisce: true
+// Returns: true
 util.isRegExp(new RegExp('another regexp'));
-// Restituisce: true
+// Returns: true
 util.isRegExp({});
-// Restituisce: false
+// Returns: false
 ```
 
-### util.isString(object)<!-- YAML
+### util.isString(object)
+
+<!-- YAML
 added: v0.11.5
 deprecated: v4.0.0
--->> Stability: 0 - Deprecated
+-->
+
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è una `string`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isString('');
-// Restituisce: true
+// Returns: true
 util.isString('foo');
-// Restituisce: true
+// Returns: true
 util.isString(String('foo'));
-// Restituisce: true
+// Returns: true
 util.isString(5);
-// Restituisce: false
+// Returns: false
 ```
 
 ### util.isSymbol(object)
@@ -982,21 +1028,21 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è un `Symbol`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isSymbol(5);
-// Restituisce: false
+// Returns: false
 util.isSymbol('foo');
-// Restituisce: false
+// Returns: false
 util.isSymbol(Symbol('foo'));
-// Restituisce: true
+// Returns: true
 ```
 
 ### util.isUndefined(object)
@@ -1006,28 +1052,32 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Stabilità: 0 - Obsoleto
+> Stability: 0 - Deprecated
 
 * `object` {any}
 
-Restituisce `true` se l'`object` indicato è `undefined`. In caso contrario, restituisce `false`.
+Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 const foo = undefined;
 util.isUndefined(5);
-// Restituisce: false
+// Returns: false
 util.isUndefined(foo);
-// Restituisce: true
+// Returns: true
 util.isUndefined(null);
-// Restituisce: false
+// Returns: false
 ```
 
-### util.log(string)<!-- YAML
+### util.log(string)
+
+<!-- YAML
 added: v0.3.0
 deprecated: v6.0.0
--->> Stability: 0 - Deprecated: Use a third party module instead.
+-->
+
+> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
@@ -1039,14 +1089,16 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-### util.print([...strings])<!-- YAML
+### util.print([...strings])
+
+<!-- YAML
 added: v0.3.0
 deprecated: v0.11.3
--->> Stability: 0 - Deprecated: Use [
+-->
 
-`console.log()`][] instead.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
-Predecessore obsoleto di `console.log`.
+Deprecated predecessor of `console.log`.
 
 ### util.puts([...strings])
 
@@ -1055,6 +1107,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Stabilità: 0 - Deprecato: Utilizza [`console.log()`][] al suo posto.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
-Predecessore obsoleto di `console.log`.
+Deprecated predecessor of `console.log`.
