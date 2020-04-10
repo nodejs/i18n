@@ -1,20 +1,20 @@
-# حول هذه الوثائق
+# About this Documentation
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-هذه الوثائق تهدف للشرح بالتفصيل لواجهات برمجة التطبيق الخاصة بـNode.js, سواء كمرجع أو وجهة نظر مفاهيمية. يصف كل قسم وحدة برمجية مدمجة أو مفهوم رفيع المستوى.
+The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
 
 Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
-## المساهمة
+## Contributing
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
 Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
-## مؤشر الإستقرار
+## Stability Index
 
 <!--type=misc-->
 
@@ -30,7 +30,7 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> درجة الإستقرار: 2 - مستقر. Compatibility with the npm ecosystem is a high priority.
+> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
@@ -44,7 +44,7 @@ added: v0.6.12
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
-## نداءات النظام و صفحات دليل الإستخدام
+## Syscalls and man pages
 
 System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
