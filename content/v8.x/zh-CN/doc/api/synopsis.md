@@ -6,7 +6,7 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-请参阅 [命令行选项](cli.html#cli_command_line_options) 文档以获取关于运行 Node.js 的不同选项和方式的相关信息。
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
 ## 示例
 
@@ -81,4 +81,4 @@ Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, world!`, that indicates the server is working.
 
-文档中的很多示例都可用类似的方式运行。
+Many of the examples in the documentation can be run similarly.
