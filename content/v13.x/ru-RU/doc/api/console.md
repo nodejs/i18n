@@ -1,34 +1,34 @@
-# Консоль
+# Console
 
 <!--introduced_in=v0.10.13-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
-Модуль `console` предоставляет простую консоль отладки, которая похожа на механизм консоли JavaScript, предоставляемый веб-браузерами.
+The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
-Модуль экспортирует два конкретных компонента:
+The module exports two specific components:
 
-* Класс `Console` с такими методами, как `console.log()`, `console.error()` и `console.warn()`, которые могут быть использованы для записи в любой поток Node.js.
-* Глобальный экземпляр `console`, настроенный для записи в [`process.stdout`][] и [`process.stderr`][]. Глобальная `console` может быть использована без вызова `require('console')`.
+* A `Console` class with methods such as `console.log()`, `console.error()` and `console.warn()` that can be used to write to any Node.js stream.
+* A global `console` instance configured to write to [`process.stdout`][] and [`process.stderr`][]. The global `console` can be used without calling `require('console')`.
 
-***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. Для более подробной информации смотрите [note on process I/O](process.html#process_a_note_on_process_i_o).
+***Warning***: The global console object's methods are neither consistently synchronous like the browser APIs they resemble, nor are they consistently asynchronous like all other Node.js streams. See the [note on process I/O](process.html#process_a_note_on_process_i_o) for more information.
 
-Пример использования глобальной `console`:
+Example using the global `console`:
 
 ```js
 console.log('hello world');
-// Печатает: hello world на stdout
+// Prints: hello world, to stdout
 console.log('hello %s', 'world');
-// Печатает: hello world на stdout
+// Prints: hello world, to stdout
 console.error(new Error('Whoops, something bad happened'));
-// Печатает: [Error: Whoops, something bad happened] на stderr
+// Prints: [Error: Whoops, something bad happened], to stderr
 
 const name = 'Will Robinson';
-console.warn(`Danger ${name}! Опасность!`);
-// Печатает: Опасность, Will Robinson! Опасность! на stderr
+console.warn(`Danger ${name}! Danger!`);
+// Prints: Danger Will Robinson! Danger!, to stderr
 ```
 
-Пример использования класса `Console`:
+Example using the `Console` class:
 
 ```js
 const out = getStreamSomehow();
@@ -36,15 +36,15 @@ const err = getStreamSomehow();
 const myConsole = new console.Console(out, err);
 
 myConsole.log('hello world');
-// Печатает: hello world на out
+// Prints: hello world, to out
 myConsole.log('hello %s', 'world');
-// Печатает: hello world на out
+// Prints: hello world, to out
 myConsole.error(new Error('Whoops, something bad happened'));
-// Печатает: [Error: Whoops, something bad happened] на err
+// Prints: [Error: Whoops, something bad happened], to err
 
 const name = 'Will Robinson';
-myConsole.warn(`Danger ${name}! Опасность!`);
-// Печатает: Опасность, Will Robinson! Опасность! на err
+myConsole.warn(`Danger ${name}! Danger!`);
+// Prints: Danger Will Robinson! Danger!, to err
 ```
 
 ## Class: `Console`
@@ -91,7 +91,7 @@ changes:
   * `colorMode` {boolean|string} Set color support for this `Console` instance. Setting to `true` enables coloring while inspecting values. Setting to `false` disables coloring while inspecting values. Setting to `'auto'` makes color support depend on the value of the `isTTY` property and the value returned by `getColorDepth()` on the respective stream. This option can not be used, if `inspectOptions.colors` is set as well. **Default:** `'auto'`.
   * `inspectOptions` {Object} Specifies options that are passed along to [`util.inspect()`][].
 
-Создает новую `Console` с одним или двумя экземплярами, доступными для записи потоков. `stdout` - открытый для записи поток для печати вывода журнала или информации. `stderr` используется для вывода предупреждения или ошибки. Если `stderr` не указан, то `stdout` используется для `stderr`.
+Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
 ```js
 const output = fs.createWriteStream('./stdout.log');
@@ -104,7 +104,7 @@ logger.log('count: %d', count);
 // In stdout.log: count 5
 ```
 
-Глобальная `console` является специальной `Console`, вывод которой посылается в [`process.stdout`][] и [`process.stderr`][]. Это идентично вызову:
+The global `console` is a special `Console` whose output is sent to [`process.stdout`][] and [`process.stderr`][]. It is equivalent to calling:
 
 ```js
 new Console({ stdout: process.stdout, stderr: process.stderr });
@@ -123,7 +123,7 @@ changes:
 * `value` {any} The value tested for being truthy.
 * `...message` {any} All arguments besides `value` are used as error message.
 
-Простой тест подтверждения, который проверяет, является ли `value` истинным. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
+A simple assertion test that verifies whether `value` is truthy. If it is not, `Assertion failed` is logged. If provided, the error `message` is formatted using [`util.format()`][] by passing along all message arguments. The output is used as the error message.
 
 ```js
 console.assert(true, 'does nothing');
@@ -139,54 +139,54 @@ Calling `console.assert()` with a falsy assertion will only cause the `message` 
 added: v8.3.0
 -->
 
-Когда `stdout` является TTY, вызов `console.clear()` попытается очистить TTY. Когда `stdout` не является TTY, этот метод ничего не делает.
+When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY. When `stdout` is not a TTY, this method does nothing.
 
-The specific operation of `console.clear()` can vary across operating systems and terminal types. Для большинства операционных систем Linux `console.clear()` работает аналогично команде оболочки `clear`. На Windows `console.clear()` будет удалять только выходные данные в текущем окне просмотра терминала для двоичного файла Node.js.
+The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
 ### `console.count([label])`
 <!-- YAML
 added: v8.3.0
 -->
 
-* `label` {string} Отображаемая метка для счетчика. **Default:** `'default'`.
+* `label` {string} The display label for the counter. **Default:** `'default'`.
 
-Сохраняет определенный внутренний счетчик для `label` и выводит на `stdout` количество вызовов `console.count()` с заданным `label`.
+Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 ```js
 > console.count()
-по умолчанию: 1
-не определено
+default: 1
+undefined
 > console.count('default')
-по умолчанию: 2
-не определено
+default: 2
+undefined
 > console.count('abc')
 abc: 1
-не определено
+undefined
 > console.count('xyz')
 xyz: 1
-не определено
+undefined
 > console.count('abc')
 abc: 2
-не определено
+undefined
 > console.count()
-по умолчанию: 3
-не определено
+default: 3
+undefined
 >
 ```
 
 ### `console.countReset([label])`<!-- YAML
 added: v8.3.0
--->* `label` {string} Отображаемая метка для счетчика. **Default:** `'default'`.
+-->* `label` {string} The display label for the counter. **Default:** `'default'`.
 
-Сбрасывает определенный внутренний счетчик для `label`.
+Resets the internal counter specific to `label`.
 ```js
 > console.count('abc');
 abc: 1
-не определено
+undefined
 > console.countReset('abc');
-не определено
+undefined
 > console.count('abc');
 abc: 1
-не определено
+undefined
 >
 ```
 
@@ -199,17 +199,17 @@ changes:
 -->* `data` {any}
 * `...args` {any}
 
-Функция `console.debug()` является псевдонимом для [`console.log()`][].
+The `console.debug()` function is an alias for [`console.log()`][].
 
 ### `console.dir(obj[, options])`<!-- YAML
 added: v0.1.101
 -->* `obj` {any}
 * `options` {Object}
   * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
-  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Для бесконечной рекурсии необходимо передать `null`. **Default:** `2`.
+  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
   * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
-Использует [`util.inspect()`][] в `obj` и печатает строку с результатом в `stdout`. Эта функция обходит любую пользовательскую функцию `inspect()`, которая определена в `obj`.
+Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
 
 ### `console.dirxml(...data)`<!-- YAML
 added: v8.0.0
@@ -226,17 +226,17 @@ added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Печатает `stderr` с новой строки. Можно передавать несколько аргументов, первый из которых используется в качестве основного сообщения, а все дополнительные - в качестве значений подстановки аналогично printf(3) (все аргументы передаются в [`util.format()`][]).
+Prints to `stderr` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const code = 5;
 console.error('error #%d', code);
-// Печатает: error #5, в stderr
+// Prints: error #5, to stderr
 console.error('error', code);
-// Печатает: error 5, в stderr
+// Prints: error 5, to stderr
 ```
 
-Если элементы форматирования (например, `%d`) не найдены в первой строке, то в каждом аргументе вызывается [`util.inspect()`][], а значения строки результата объединяются. Для более подробной информации смотрите [`util.format()`][].
+If formatting elements (e.g. `%d`) are not found in the first string then [`util.inspect()`][] is called on each argument and the resulting string values are concatenated. See [`util.format()`][] for more information.
 
 ### `console.group([...label])`<!-- YAML
 added: v8.5.0
@@ -262,24 +262,24 @@ added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Функция `console.info()` является псевдонимом для [`console.log()`][].
+The `console.info()` function is an alias for [`console.log()`][].
 
 ### `console.log([data][, ...args])`<!-- YAML
 added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Печатает в `stdout` с новой строки. Можно передавать несколько аргументов, первый из которых используется в качестве основного сообщения, а все дополнительные - в качестве значений подстановки аналогично printf(3) (все аргументы передаются в [`util.format()`][]).
+Prints to `stdout` with newline. Multiple arguments can be passed, with the first used as the primary message and all additional used as substitution values similar to printf(3) (the arguments are all passed to [`util.format()`][]).
 
 ```js
 const count = 5;
 console.log('count: %d', count);
-// Печатает: count: 5, в stdout
+// Prints: count: 5, to stdout
 console.log('count:', count);
-// Печатает: count: 5, в stdout
+// Prints: count: 5, to stdout
 ```
 
-Для более подробной информации смотрите [`util.format()`][].
+See [`util.format()`][] for more information.
 
 ### `console.table(tabularData[, properties])`<!-- YAML
 added: v10.0.0
@@ -317,7 +317,7 @@ console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 added: v0.1.104
 -->* `label` {string} **Default:** `'default'`
 
-Запускает таймер, который может быть использован для расчета продолжительности операции. Таймеры идентифицируются уникальным `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Показания таймера точны до миллисекунды.
+Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
 ### `console.timeEnd([label])`<!-- YAML
 added: v0.1.104
@@ -328,7 +328,7 @@ changes:
                  to individual `console.time()` calls; see below for details.
 -->* `label` {string} **Default:** `'default'`
 
-Останавливает ранее запущенный таймер вызовом [`console.time()`][] и печатает результат в `stdout`:
+Stops a timer that was previously started by calling [`console.time()`][] and prints the result to `stdout`:
 
 ```js
 console.time('100-elements');
@@ -362,18 +362,18 @@ Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] f
 
 ```js
 console.trace('Show me');
-// Печатает: (трассировка стека будет меняться в зависимости от того, где она вызывается)
-//  Трассировка: Show me
-//    на repl:2:9
-//    на REPLServer.defaultEval (repl.js:248:27)
-//    на bound (domain.js:287:14)
-//    на REPLServer.runBound [as eval] (domain.js:300:12)
-//    на REPLServer.<anonymous> (repl.js:412:12)
-//    на emitOne (events.js:82:20)
-//    на REPLServer.emit (events.js:169:7)
-//    на REPLServer.Interface._onLine (readline.js:210:10)
-//    на REPLServer.Interface._line (readline.js:549:8)
-//    на REPLServer.Interface._ttyWrite (readline.js:826:14)
+// Prints: (stack trace will vary based on where trace is called)
+//  Trace: Show me
+//    at repl:2:9
+//    at REPLServer.defaultEval (repl.js:248:27)
+//    at bound (domain.js:287:14)
+//    at REPLServer.runBound [as eval] (domain.js:300:12)
+//    at REPLServer.<anonymous> (repl.js:412:12)
+//    at emitOne (events.js:82:20)
+//    at REPLServer.emit (events.js:169:7)
+//    at REPLServer.Interface._onLine (readline.js:210:10)
+//    at REPLServer.Interface._line (readline.js:549:8)
+//    at REPLServer.Interface._ttyWrite (readline.js:826:14)
 ```
 
 ### `console.warn([data][, ...args])`<!-- YAML
@@ -381,7 +381,7 @@ added: v0.1.100
 -->* `data` {any}
 * `...args` {any}
 
-Функция `console.warn()` является псевдонимом для [`console.error()`][].
+The `console.warn()` function is an alias for [`console.error()`][].
 
 ## Inspector only methods
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
