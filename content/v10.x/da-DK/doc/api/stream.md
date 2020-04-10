@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
@@ -1029,7 +1029,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator} to fully consume the stream.
 
