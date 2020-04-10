@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 <!-- name=policy -->
 
