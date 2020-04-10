@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
@@ -65,7 +65,7 @@ The `'line'` event is emitted whenever the `input` stream receives an end-of-lin
 
 The listener function is called with a string containing the single line of received input.
 
-Na przykład:
+For example:
 
 ```js
 rl.on('line', (input) => {
@@ -86,7 +86,7 @@ The `'pause'` event is emitted when one of the following occur:
 
 The listener function is called without passing any arguments.
 
-Na przykład:
+For example:
 
 ```js
 rl.on('pause', () => {
@@ -122,7 +122,7 @@ If the `input` stream was paused *before* the `SIGTSTP` request, this event will
 
 The listener function is invoked without passing any arguments.
 
-Na przykład:
+For example:
 
 ```js
 rl.on('SIGCONT', () => {
@@ -143,7 +143,7 @@ The `'SIGINT'` event is emitted whenever the `input` stream receives a `<ctrl>-C
 
 The listener function is invoked without passing any arguments.
 
-Na przykład:
+For example:
 
 ```js
 rl.on('SIGINT', () => {
@@ -167,7 +167,7 @@ The `'pause'` and `'SIGCONT'` events will not be emitted if the `input` was paus
 
 The listener function is invoked without passing any arguments.
 
-Na przykład:
+For example:
 
 ```js
 rl.on('SIGTSTP', () => {
@@ -275,7 +275,7 @@ When called, `rl.write()` will resume the `input` stream if it has been paused.
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `data` and `key` are not written.
 
-Na przykład:
+For example:
 
 ```js
 rl.write('Delete this!');
@@ -292,7 +292,7 @@ added: v0.7.7
 -->
 
 * `stream` {stream.Writable}
-* `dir` {liczba} 
+* `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
   * `0` - the entire line
@@ -341,7 +341,7 @@ changes:
 
 The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
-Na przykład:
+For example:
 
 ```js
 const readline = require('readline');
