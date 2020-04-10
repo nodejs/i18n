@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
-HTTP서버와 클라이언트를 사용하기 위해서 `require('http')`를 사용합니다.
+To use the HTTP server and client one must `require('http')`.
 
-Node.js의 HTTP 인터페이스는 과거에 사용하기 어려웠던 HTTP프로토콜의 많은 기능을 지원하도록 설계되었습니다. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
-HTTP 메시지 헤더는 다음과 같은 오브젝트 개체로 표현합니다.
+HTTP message headers are represented by an object like this:
 
 <!-- eslint-skip -->
 
@@ -20,11 +20,11 @@ HTTP 메시지 헤더는 다음과 같은 오브젝트 개체로 표현합니다
   'accept': '*/*' }
 ```
 
-Key값은 소문자로 입력합니다. Value값은 대/소문자 구분을 하지 않습니다.
+Keys are lowercased. Values are not modified.
 
-넓은 범위의 HTTP응용 프로그램을 지원하기위해 Node.js의 HTTP API는 가장 밑단의 역할을 합니다. 이 API는 스트림 처리와 메세지 파싱만 처리합니다. It parses a message into headers and body but it does not parse the actual headers or the body.
+In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
-중복된 헤더들을 다루는 방법에 관한 자세한 문서는 [`message.headers`][]를 참조하세요.
+See [`message.headers`][] for details on how duplicate headers are handled.
 
 The raw headers as they were received are retained in the `rawHeaders` property, which is an array of `[key, value, key2, value2, ...]`. For example, the previous message header object might have a `rawHeaders` list like the following:
 
@@ -84,7 +84,7 @@ http.get({
 added: v0.3.4
 -->
 
-* `옵션` {Object} Set of configurable options to set on the agent. Can have the following fields: 
+* `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
   * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
@@ -180,7 +180,7 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `옵션` {Object} A set of options providing information for name generation 
+* `options` {Object} A set of options providing information for name generation 
   * `host` {string} A domain name or IP address of the server to issue the request to
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
@@ -1639,7 +1639,7 @@ changes:
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `옵션` {Object | string | URL} 
+* `options` {Object | string | URL} 
   * `protocol` {string} Protocol to use. **Default:** `http:`.
   * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `localhost`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` is preferred over `host`.
