@@ -582,7 +582,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retourne : {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Renvoie : {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1685,7 +1685,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Renvoie : {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
