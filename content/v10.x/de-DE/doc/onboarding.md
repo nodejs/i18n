@@ -93,7 +93,7 @@ apply.whitespace fix`
 
 * The primary goal is for the codebase to improve.
 * Secondary (but not far off) is for the person submitting code to succeed. A pull request from a new contributor is an opportunity to grow the community.
-* Überprüfen Sie eins nach dem anderen. Do not overwhelm new contributors. 
+* Review a bit at a time. Do not overwhelm new contributors. 
   * It is tempting to micro-optimize. Don't succumb to that temptation. We change V8 often. Techniques that provide improved performance today may be unnecessary in the future.
 * Be aware: Your opinion carries a lot of weight!
 * Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the pull request. 
@@ -105,7 +105,7 @@ apply.whitespace fix`
   * For non-trivial changes, leave the pull request open for at least 48 hours.
   * If a pull request is abandoned, check if they'd mind if you took it over (especially if it just has nits left).
 
-* Genehmigung einer Änderung
+* Approving a change
   
   * Collaborators indicate that they have reviewed and approve of the changes in a pull request using GitHub’s approval interface
   * Some people like to comment `LGTM` (“Looks Good To Me”)
