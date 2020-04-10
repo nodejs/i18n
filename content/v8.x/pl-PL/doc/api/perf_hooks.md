@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stabilność: 1 - Eksperymentalne
+> Stability: 1 - Experimental
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -169,7 +169,7 @@ Returns the current high resolution millisecond timestamp, where 0 represents th
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
 
@@ -218,7 +218,7 @@ added: v8.5.0
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The total number of milliseconds elapsed for this entry. This value will not be meaningful for all Performance Entry types.
 
@@ -238,7 +238,7 @@ The name of the performance entry.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp marking the starting time of the Performance Entry.
 
@@ -258,7 +258,7 @@ The type of the performance entry. Current it may be one of: `'node'`, `'mark'`,
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` property identifies the type of garbage collection operation that occurred. The value may be one of:
 
@@ -281,7 +281,7 @@ Provides timing details for Node.js itself.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
@@ -291,7 +291,7 @@ The high resolution millisecond timestamp at which the Node.js process completed
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
 
@@ -301,7 +301,7 @@ The high resolution millisecond timestamp at which cluster processing ended. If 
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
 
@@ -311,7 +311,7 @@ The high resolution millisecond timestamp at which cluster processing started. I
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
 
@@ -321,7 +321,7 @@ The high resolution millisecond timestamp at which the Node.js event loop exited
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
@@ -331,7 +331,7 @@ The high resolution millisecond timestamp at which the Node.js event loop starte
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which main module load ended.
 
@@ -341,7 +341,7 @@ The high resolution millisecond timestamp at which main module load ended.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which main module load started.
 
@@ -351,7 +351,7 @@ The high resolution millisecond timestamp at which main module load started.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js process was initialized.
 
@@ -361,7 +361,7 @@ The high resolution millisecond timestamp at which the Node.js process was initi
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which preload module load ended.
 
@@ -371,7 +371,7 @@ The high resolution millisecond timestamp at which preload module load ended.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which preload module load started.
 
@@ -381,7 +381,7 @@ The high resolution millisecond timestamp at which preload module load started.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
 
@@ -391,7 +391,7 @@ The high resolution millisecond timestamp at which third\_party\_main processing
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
 
@@ -401,7 +401,7 @@ The high resolution millisecond timestamp at which third\_party\_main processing
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the V8 platform was initialized.
 
@@ -488,7 +488,7 @@ Returns a list of `PerformanceEntry` objects in chronological order with respect
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the
+--> Disconnects the 
 
 `PerformanceObserver` instance from all notifications.
 
@@ -536,7 +536,7 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Przykłady
+## Examples
 
 ### Measuring the duration of async operations
 
@@ -584,6 +584,8 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
+
+<!-- eslint-disable no-global-assign -->
 
 ```js
 'use strict';
