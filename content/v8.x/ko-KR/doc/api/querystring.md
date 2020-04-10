@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
@@ -44,7 +44,7 @@ changes:
 * `str` {string} The URL query string to parse
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `옵션` {Object} 
+* `options` {Object} 
   * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. **Default:** `querystring.unescape()`.
   * `maxKeys` {number} Specifies the maximum number of keys to parse. Specify `0` to remove key counting limitations. **Default:** `1000`.
 
@@ -81,7 +81,7 @@ added: v0.1.25
 * `obj` {Object} The object to serialize into a URL query string
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
-* `옵션` 
+* `options` 
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
 
 The `querystring.stringify()` method produces a URL query string from a given `obj` by iterating through the object's "own properties".
