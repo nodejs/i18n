@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-Ele pode ser acessado usando:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -120,7 +120,7 @@ added: v8.0.0
 
 Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
-## Exemplo de Uso
+## Example usage
 
 ### CPU Profiler
 
