@@ -22,7 +22,7 @@ The documentation for N-API is structured as follows:
 - [Object Lifetime Management](#n_api_object_lifetime_management)
 - [Module Registration](#n_api_module_registration)
 - [Working with JavaScript Values](#n_api_working_with_javascript_values)
-- \[Working with JavaScript Values - Abstract Operations\]\[\]
+- [Working with JavaScript Values - Abstract Operations](#n_api_working_with_javascript_values_abstract_operations)
 - [Working with JavaScript Properties](#n_api_working_with_javascript_properties)
 - [Working with JavaScript Functions](#n_api_working_with_javascript_functions)
 - [Object Wrap](#n_api_object_wrap)
@@ -3636,7 +3636,7 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
 
 ## Asynchronous Thread-safe Function Calls
 
-> स्थिरता: 1 - प्रायोगिक
+> Stability: 1 - Experimental
 
 JavaScript functions can normally only be called from a native addon's main thread. If an addon creates additional threads, then N-API functions that require a `napi_env`, `napi_value`, or `napi_ref` must not be called from those threads.
 
