@@ -1,10 +1,10 @@
-# Opsi Command Line
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js dilengkapi dengan berbagai opsi dalam penggunaan Antarmuka Baris Perintah (ABP). These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
 To view this documentation as a manual page in a terminal, run `man node`.
 
