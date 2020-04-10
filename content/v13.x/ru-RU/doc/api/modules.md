@@ -1,8 +1,8 @@
-# Модули
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -405,15 +405,15 @@ added: v0.1.27
 
 * {string}
 
-Имя каталога текущего модуля. This is the same as the [`path.dirname()`][] of the [`__filename`][].
+The directory name of the current module. This is the same as the [`path.dirname()`][] of the [`__filename`][].
 
-Например: запущенный `node example.js` от `/Users/mjr`
+Example: running `node example.js` from `/Users/mjr`
 
 ```js
 console.log(__dirname);
-// Печатает: /Users/mjr
+// Prints: /Users/mjr
 console.log(path.dirname(__filename));
-// Печатает: /Users/mjr
+// Prints: /Users/mjr
 ```
 
 ### `__filename`
@@ -425,29 +425,29 @@ added: v0.0.1
 
 * {string}
 
-Имя файла текущего модуля. This is the current module file's absolute path with symlinks resolved.
+The file name of the current module. This is the current module file's absolute path with symlinks resolved.
 
-Для основной программы это не обязательно совпадает с именем файла, используемым в командной строке.
+For a main program this is not necessarily the same as the file name used in the command line.
 
-Смотрите [`__dirname`][] для имени каталога текущего модуля.
+See [`__dirname`][] for the directory name of the current module.
 
-Примеры:
+Examples:
 
-Запуск `node example.js` от `/Users/mjr`
+Running `node example.js` from `/Users/mjr`
 
 ```js
 console.log(__filename);
-// Печатает: /Users/mjr/example.js
+// Prints: /Users/mjr/example.js
 console.log(__dirname);
-// Печатает: /Users/mjr
+// Prints: /Users/mjr
 ```
 
-Имеются два модуля: `a` и `b`, где `b` является зависимостью `a`, а также имеется структура каталогов:
+Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a directory structure of:
 
 * `/Users/mjr/app/a.js`
 * `/Users/mjr/app/node_modules/b/b.js`
 
-Ссылки на `__filename` в пределах `b.js` вернут `/Users/mjr/app/node_modules/b/b.js`, а ссылки на `__filename` в пределах `a.js` вернут `/Users/mjr/app/a.js`.
+References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
 
 ### `exports`
 <!-- YAML
@@ -458,7 +458,7 @@ added: v0.1.12
 
 * {Object}
 
-Ссылка на `module.exports`, которая короче для типа. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
+A reference to the `module.exports` that is shorter to type. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
 
 ### `module`
 <!-- YAML
@@ -502,7 +502,7 @@ added: v0.3.0
 
 * {Object}
 
-Модули кэшируются в этом объекте, когда они необходимы. При удалении значения ключа из этого модуля, следующий `require` перезагрузит модуль. This does not apply to [native addons](addons.html), for which reloading will result in an error.
+Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. This does not apply to [native addons](addons.html), for which reloading will result in an error.
 
 Adding or replacing entries is also possible. This cache is checked before native modules and if a name matching a native module is added to the cache, no require call is going to receive the native module anymore. Use with care!
 
@@ -512,13 +512,13 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Стабильность: 0 - Устарело
+> Stability: 0 - Deprecated
 
 * {Object}
 
-Инструкция для `require` по обработке определенных расширений файлов.
+Instruct `require` on how to handle certain file extensions.
 
-Файлы процесса с расширением `.sjs` как `.js`:
+Process files with the extension `.sjs` as `.js`:
 
 ```js
 require.extensions['.sjs'] = require.extensions['.js'];
@@ -570,9 +570,9 @@ changes:
 -->* `request` {string} The module path to resolve.
 * `options` {Object}
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Возвращает: {string}
+* Returns: {string}
 
-Используйте внутренний механизм `require()` для поиска местоположения модуля, но вместо загрузки модуля просто верните разрешенное имя файла.
+Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
 If the module can not be found, a `MODULE_NOT_FOUND` error is thrown.
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
@@ -852,7 +852,7 @@ Creates a new `sourceMap` instance.
 
 #### `sourceMap.payload`
 
-* Возвращает: {Object}
+* Returns: {Object}
 
 Getter for the payload used to construct the [`SourceMap`][] instance.
 
@@ -860,7 +860,7 @@ Getter for the payload used to construct the [`SourceMap`][] instance.
 
 * `lineNumber` {number}
 * `columnNumber` {number}
-* Возвращает: {Object}
+* Returns: {Object}
 
 Given a line number and column number in the generated source file, returns an object representing the position in the original file. The object returned consists of the following keys:
 
