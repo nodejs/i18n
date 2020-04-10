@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-The `os` module provides operating system-related utility methods and properties. 以下のように利用できます。
+The `os` module provides operating system-related utility methods and properties. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -27,7 +27,7 @@ The operating system-specific end-of-line marker.
 added: v0.5.0
 -->
 
-* 戻り値: {string}
+* Returns: {string}
 
 Returns the operating system CPU architecture for which the Node.js binary was compiled. Possible values are `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
@@ -114,7 +114,7 @@ The properties included on each object include:
 
 ## `os.endianness()`<!-- YAML
 added: v0.9.4
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns a string identifying the endianness of the CPU for which the Node.js binary was compiled.
 
@@ -135,7 +135,7 @@ Returns the scheduling priority for the process specified by `pid`. If `pid` is 
 
 ## `os.homedir()`<!-- YAML
 added: v2.3.0
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns the string path of the current user's home directory.
 
@@ -145,7 +145,7 @@ On Windows, it uses the `USERPROFILE` environment variable if defined. Otherwise
 
 ## `os.hostname()`<!-- YAML
 added: v0.3.3
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns the hostname of the operating system as a string.
 
@@ -224,7 +224,7 @@ The properties available on the assigned network address object include:
 
 ## `os.platform()`<!-- YAML
 added: v0.5.0
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns a string identifying the operating system platform. The value is set at compile time. Possible values are `'aix'`, `'darwin'`, `'freebsd'`, `'linux'`, `'openbsd'`, `'sunos'`, and `'win32'`.
 
@@ -234,7 +234,7 @@ The value `'android'` may also be returned if Node.js is built on the Android op
 
 ## `os.release()`<!-- YAML
 added: v0.3.3
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns the operating system as a string.
 
@@ -258,7 +258,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns the operating system's default directory for temporary files as a string.
 
@@ -270,7 +270,7 @@ Returns the total amount of system memory in bytes as an integer.
 
 ## `os.type()`<!-- YAML
 added: v0.3.3
--->* 戻り値: {string}
+-->* Returns: {string}
 
 Returns the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, it returns `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
