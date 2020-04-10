@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -531,7 +531,7 @@ Fires immediately after `'open'`.
 added: v6.4.0
 -->
 
-* {liczba}
+* {number}
 
 The number of bytes that have been read so far.
 
