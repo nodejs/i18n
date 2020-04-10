@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `util` module supports the needs of Node.js internal APIs. Many of the utilities are useful for application and module developers as well. To access it:
 
@@ -37,7 +37,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-witaj świecie
+hello world
 ```
 
 The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
@@ -1665,7 +1665,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## Przestarzałe API
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -1961,7 +1961,7 @@ util.isPrimitive(new Date());
 ### `util.isRegExp(object)`<!-- YAML
 added: v0.6.0
 deprecated: v4.0.0
--->> Stabilność: 0 - Przestarzałe
+-->> Stability: 0 - Deprecated
 
 * `object` {any}
 * Returns: {boolean}
