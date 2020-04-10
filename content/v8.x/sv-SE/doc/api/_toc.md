@@ -1,7 +1,7 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
 
 * [About these Docs](documentation.html)
-* [Användande & exempel](synopsis.html)
+* [Usage & Example](synopsis.html)
 
 <div class="line"></div>
 
@@ -22,7 +22,7 @@
 * [ECMAScript Modules](esm.html)
 * [Errors](errors.html)
 * [Events](events.html)
-* [Filsystem](fs.html)
+* [File System](fs.html)
 * [Globals](globals.html)
 * [HTTP](http.html)
 * [HTTP/2](http2.html)
