@@ -8,7 +8,7 @@
   <tr>
     
 <th>LTS 'Dubnium'</th>
-<th title="Previously called 'Stable'">Obecna</th>
+<th title="Previously called 'Stable'">Current</th>
   </tr>
   
   <tr>
@@ -53,7 +53,7 @@
   </tr>
 </table>
 
-* Inne Wersje 
+* Other Versions 
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -63,7 +63,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archiwum](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.19.0"></a>
 
@@ -160,7 +160,7 @@ https://blog.npmjs.org/post/189618601100/binary-planting-with-the-npm-cli
   * mark version 5 N-APIs as stable (Gabriel Schulhof) [#29401](https://github.com/nodejs/node/pull/29401)
   * implement date object (Jarrod Connolly) [#25917](https://github.com/nodejs/node/pull/25917)
 * **process**: add --unhandled-rejections flag (Ruben Bridgewater) [#26599](https://github.com/nodejs/node/pull/26599)
-* **strumień**: 
+* **stream**: 
   * implement Readable.from async iterator utility (Guy Bedford) [#27660](https://github.com/nodejs/node/pull/27660)
   * make Symbol.asyncIterator support stable (Matteo Collina) [#26989](https://github.com/nodejs/node/pull/26989)
 
@@ -692,7 +692,7 @@ This release patches a [regression](https://github.com/nodejs/node/issues/28932)
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
 * **http** 
   * fix error check in Execute() (Brian White) [#25863](https://github.com/nodejs/node/pull/25863)
-* **strumień** 
+* **stream** 
   * fix end-of-stream for HTTP/2 (Anna Henningsen) [#24926](https://github.com/nodejs/node/pull/24926)
 
 ### Commits
@@ -1659,7 +1659,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ### Notable changes
 
-* **asercje** 
+* **assert** 
   * The diff output is now a tiny bit improved by sorting object properties when inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
 * **cli** 
   * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
@@ -1675,7 +1675,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
 * **module** 
   * Added `module.createRequireFromPath(filename)`. This new method can be used to create a custom require function that will resolve modules relative to the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
-* **proces** 
+* **process** 
   * Added a `'multipleResolves'` process event that is emitted whenever a `Promise` is attempted to be resolved multiple times, e.g. if the `resolve` and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
 * **url** 
   * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
@@ -2096,7 +2096,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * The `http2` module is no longer experimental. [#22466](https://github.com/nodejs/node/pull/22466)
 * **os**: 
   * Added two new methods: `os.getPriority` and `os.setPriority`, allowing to manipulate the scheduling priority of processes. [#22407](https://github.com/nodejs/node/pull/22407)
-* **proces**: 
+* **process**: 
   * Added `process.allowedNodeEnvironmentFlags`. This object can be used to programmatically validate and list flags that are allowed in the `NODE_OPTIONS` environment variable. [#19335](https://github.com/nodejs/node/pull/19335)
 * **src**: 
   * Deprecated option variables in public C++ API. [#22515](https://github.com/nodejs/node/pull/22515)
@@ -2336,7 +2336,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **bufor**: 
+* **buffer**: 
   * Fix out-of-bounds (OOB) write in `Buffer.write()` for UCS-2 encoding (CVE-2018-12115)
   * Fix unintentional exposure of uninitialized memory in `Buffer.alloc()` (CVE-2018-7166)
 * **deps**: 
@@ -2627,7 +2627,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **konsola**: 
+* **console**: 
   * The `console.timeLog()` method has been implemented. [#21312](https://github.com/nodejs/node/pull/21312)
 * **deps**: 
   * Upgrade to libuv 1.22.0. [#21731](https://github.com/nodejs/node/pull/21731)
@@ -2638,7 +2638,7 @@ Fixes for the following CVEs are included in this release:
   * Expose the original console API in `require('inspector').console`. [#21659](https://github.com/nodejs/node/pull/21659)
 * **napi**: 
   * Added experimental support for functions dealing with bigint numbers. [#21226](https://github.com/nodejs/node/pull/21226)
-* **proces**: 
+* **process**: 
   * The `process.hrtime.bigint()` method has been implemented. [#21256](https://github.com/nodejs/node/pull/21256)
   * Added the `--title` command line argument to set the process title on startup. [#21477](https://github.com/nodejs/node/pull/21477)
 * **trace_events**: 
@@ -3102,7 +3102,7 @@ Fixes for the following CVEs are included in this release:
 
 * **deps**: 
   * update V8 to 6.7.288.43 (Michaël Zasso) [#19989](https://github.com/nodejs/node/pull/19989)
-* **strumień**: 
+* **stream**: 
   * ensure Stream.pipeline re-throws errors without callback (Blaine Bublitz) [#20437](https://github.com/nodejs/node/pull/20437)
 
 ### Commits
@@ -3210,9 +3210,9 @@ Fixes for the following CVEs are included in this release:
   * upgrade npm to 6.1.0 (Rebecca Turner) [#20190](https://github.com/nodejs/node/pull/20190)
 * **fs**: 
   * fix reads with pos \> 4GB (Mathias Buus) [#21003](https://github.com/nodejs/node/pull/21003)
-* **sieć**: 
+* **net**: 
   * new option to allow IPC servers to be readable and writable by all users (Bartosz Sosnowski) [#19472](https://github.com/nodejs/node/pull/19472)
-* **strumień**: 
+* **stream**: 
   * fix removeAllListeners() for Stream.Readable to work as expected when no arguments are passed (Kael Zhang) [#20924](https://github.com/nodejs/node/pull/20924)
 * **Added new collaborators** 
   * [jdlaton](https://github.com/jdalton) John-David Dalton
@@ -3282,7 +3282,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 * **addons**: 
   * Fixed a memory leak for users of `AsyncResource` and N-API. (Michael Dawson) [#20668](https://github.com/nodejs/node/pull/20668)
-* **asercje**: 
+* **assert**: 
   * The `error` parameter of `assert.throws()` can be an object containing regular expressions now. (Ruben Bridgewater) [#20485](https://github.com/nodejs/node/pull/20485)
 * **crypto**: 
   * The `authTagLength` option has been made more flexible. (Tobias Nießen) [#20235](https://github.com/nodejs/node/pull/20235), [#20039](https://github.com/nodejs/node/pull/20039)
@@ -3292,7 +3292,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Handling of `close` and `aborted` events has been made more consistent. (Robert Nagy) [#20075](https://github.com/nodejs/node/pull/20075), [#20611](https://github.com/nodejs/node/pull/20611)
 * **module**: 
   * add --preserve-symlinks-main (David Goldstein) [#19911](https://github.com/nodejs/node/pull/19911)
-* **timery**: 
+* **timers**: 
   * `timeout.refresh()` has been added to the public API. (Jeremiah Senkpiel) [#20298](https://github.com/nodejs/node/pull/20298)
 * Embedder support: 
   * Functions for creating V8 `Isolate` and `Context` objects with Node.js-specific behaviour have been added to the API. (Allen Yonghuang Wang) [#20639](https://github.com/nodejs/node/pull/20639)
@@ -3515,7 +3515,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ### Notable Changes
 
-* **konsola**: 
+* **console**: 
   * make console.table() use colored inspect (TSUYUSATO Kitsune) [#20510](https://github.com/nodejs/node/pull/20510)
 * **fs**: 
   * move fs/promises to fs.promises (cjihrig) [#20504](https://github.com/nodejs/node/pull/20504)
@@ -3707,7 +3707,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ### Notable Changes
 
-* Asercje 
+* Assert 
   * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
   * Calling `assert.ifError()` will now throw with any argument other than `undefined` or `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
@@ -3716,14 +3716,14 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The error message from `assert.ok(expression)` now also contains the expression itself. [[`f76ef50432`](https://github.com/nodejs/node/commit/f76ef50432)]
 * Async_hooks 
   * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* Bufor 
+* Buffer 
   * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
   * `noAssert` argument was removed from all `Buffer` read and write functions. [[`e8bb1f35df`](https://github.com/nodejs/node/commit/e8bb1f35df)]
 * Child Process 
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Konsola 
+* Console 
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto 
   * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
@@ -3737,7 +3737,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* System plików 
+* File System 
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
@@ -3746,14 +3746,14 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Multi-byte characters in URL paths are now forbidden. [[`b961d9fd83`](https://github.com/nodejs/node/commit/b961d9fd83)]
 * N-API 
   * The n-api is no longer experimental. [[`cd7d7b15c1`](https://github.com/nodejs/node/commit/cd7d7b15c1)]
-* Sieć 
+* Net 
   * The `'close'` event will be emitted after `'end'`. [[`9b7a6914a7`](https://github.com/nodejs/node/commit/9b7a6914a7)]
 * Perf_hooks 
   * The `PerformanceObserver` class is now an `AsyncResource` and can be monitored using `async_hooks`. [[`009e41826f`](https://github.com/nodejs/node/commit/009e41826f)]
   * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
   * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
   * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Proces 
+* Process 
   * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL 
@@ -3765,13 +3765,13 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
   * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
   * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Liczniki 
+* Timers 
   * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS 
   * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
   * Support for NPN (next protocol negotiation) has been dropped. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
   * The `ecdhCurve` default is now `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
-* Śledzenie zdarzeń 
+* Trace Events 
   * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL 
   * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
