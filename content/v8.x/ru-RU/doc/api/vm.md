@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -56,7 +56,7 @@ changes:
 -->
 
 * `code` {string} The JavaScript code to compile.
-* `опции` 
+* `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -79,7 +79,7 @@ changes:
 -->
 
 * `contextifiedSandbox` {Object} A [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method.
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -121,7 +121,7 @@ added: v0.3.1
 -->
 
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -154,7 +154,7 @@ console.log(util.inspect(sandboxes));
 added: v0.3.1
 -->
 
-* `опции` {Object} 
+* `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -225,7 +225,7 @@ Returns `true` if the given `sandbox` object has been [contextified](#vm_what_do
 
 * `code` {string} The JavaScript code to compile and run.
 * `contextifiedSandbox` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object that will be used as the `global` when the `code` is compiled and run.
-* `опции` 
+* `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -257,7 +257,7 @@ console.log(util.inspect(sandbox));
 added: v0.11.14
 -->
 
-> Стабильность: 0 - устарело. An alternative is in development.
+> Stability: 0 - Deprecated. An alternative is in development.
 
 * `code` {string} The JavaScript code to compile and run.
 
@@ -282,7 +282,7 @@ added: v0.3.1
 
 * `code` {string} The JavaScript code to compile and run.
 * `sandbox` {Object} An object that will be [contextified](#vm_what_does_it_mean_to_contextify_an_object). If `undefined`, a new object will be created.
-* `опции` 
+* `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -315,7 +315,7 @@ added: v0.3.1
 -->
 
 * `code` {string} The JavaScript code to compile and run.
-* `опции` 
+* `options` 
   * `filename` {string} Specifies the filename used in stack traces produced by this script.
   * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script.
   * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script.
@@ -325,6 +325,8 @@ added: v0.3.1
 `vm.runInThisContext()` compiles `code`, runs it within the context of the current `global` and returns the result. Running code does not have access to local scope, but does have access to the current `global` object.
 
 The following example illustrates using both `vm.runInThisContext()` and the JavaScript [`eval()`][] function to run the same code:
+
+<!-- eslint-disable prefer-const -->
 
 ```js
 const vm = require('vm');
@@ -348,7 +350,7 @@ Because `vm.runInThisContext()` does not have access to the local scope, `localV
 
 When using either [`script.runInThisContext()`][] or [`vm.runInThisContext()`][], the code is executed within the current V8 global context. The code passed to this VM context will have its own isolated scope.
 
-In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. Например:
+In order to run a simple web server using the `http` module the code passed to the context must either call `require('http')` on its own, or have a reference to the `http` module passed to it. For instance:
 
 ```js 'use strict'; const vm = require('vm');
 
