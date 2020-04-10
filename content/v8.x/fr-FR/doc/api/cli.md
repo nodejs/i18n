@@ -1,4 +1,4 @@
-# Options de la ligne de commande
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
@@ -307,7 +307,7 @@ For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Par défaut ))
+Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
 
 ### `--enable-fips`
 
