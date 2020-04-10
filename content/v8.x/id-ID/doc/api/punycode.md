@@ -10,7 +10,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 **The version of the punycode module bundled in Node.js is being deprecated**. In a future major version of Node.js this module will be removed. Users currently depending on the `punycode` module should switch to using the userland-provided [Punycode.js](https://mths.be/punycode) module instead.
 
