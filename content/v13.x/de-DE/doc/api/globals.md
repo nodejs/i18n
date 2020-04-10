@@ -1,9 +1,9 @@
-# Globale Objekte
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
 
-Diese Objekte sind in jedem Modul verfügbar. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -22,15 +22,15 @@ added: v0.1.103
 
 * {Function}
 
-Verarbeitet binäre Daten. Siehe [Abschnitt Puffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## `__dirname`
 
-Die Variable sieht wie eine globale aus, ist es aber nicht. See [`__dirname`][].
+This variable may appear to be global but is not. See [`__dirname`][].
 
 ## `__filename`
 
-Die Variable sieht wie eine globale aus, ist es aber nicht. See [`__filename`][].
+This variable may appear to be global but is not. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -59,7 +59,7 @@ added: v0.0.1
 
 [`clearTimeout`][] is described in the [timers](timers.html) section.
 
-## `konsole`
+## `console`
 <!-- YAML
 added: v0.1.100
 -->
@@ -68,11 +68,11 @@ added: v0.1.100
 
 * {Object}
 
-Wird zur Ausgabe mit stdout und stderr verwendet. Siehe Abschnitt [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## `exports`
 
-Die Variable sieht wie eine globale aus, ist es aber nicht. See [`exports`][].
+This variable may appear to be global but is not. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -81,15 +81,15 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} Das globale namespace Objekt.
+* {Object} The global namespace object.
 
-In Browsern, ist der Top-Level Bereich der globale Bereich. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## `module`
 
-Die Variable sieht wie eine globale aus, ist es aber nicht. See [`module`][].
+This variable may appear to be global but is not. See [`module`][].
 
-## `prozess`
+## `process`
 <!-- YAML
 added: v0.1.7
 -->
@@ -98,7 +98,7 @@ added: v0.1.7
 
 * {Object}
 
-Das Objekt Prozess. Siehe Abschnitt [`process` object][].
+The process object. See the [`process` object][] section.
 
 ## `queueMicrotask(callback)`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-Die Variable sieht wie eine globale aus, ist es aber nicht. See [`require()`][].
+This variable may appear to be global but is not. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML
@@ -190,7 +190,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-Die Klasse WHATWG `URL`. Siehe Abschnitt [`URL`][].
+The WHATWG `URL` class. See the [`URL`][] section.
 
 ## `URLSearchParams`
 <!-- YAML
@@ -199,7 +199,7 @@ added: v10.0.0
 
 <!-- type=global -->
 
-Die Klasse WHATWG `URLSearchParams`. Siehe Abschnitt [`URLSearchParams`][].
+The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
 
 ## `WebAssembly`
 <!-- YAML
