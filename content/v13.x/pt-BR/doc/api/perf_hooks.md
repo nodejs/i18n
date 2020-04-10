@@ -74,7 +74,7 @@ An instance of the `PerformanceNodeTiming` class that provides performance metri
 added: v8.5.0
 -->
 
-* Retorna: {number}
+* Returns: {number}
 
 Returns the current high resolution millisecond timestamp, where 0 represents the start of the current `node` process.
 
@@ -410,7 +410,7 @@ Tracks the event loop delay at a given sampling rate.
 added: v11.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Disables the event loop delay sample timer. Returns `true` if the timer was stopped, `false` if it was already stopped.
 
@@ -419,7 +419,7 @@ Disables the event loop delay sample timer. Returns `true` if the timer was stop
 added: v11.10.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Enables the event loop delay sample timer. Returns `true` if the timer was started, `false` if it was already started.
 
@@ -465,7 +465,7 @@ added: v11.10.0
 -->
 
 * `percentile` {number} A percentile value between 1 and 100.
-* Retorna: {number}
+* Returns: {number}
 
 Returns the value at the given percentile.
 
