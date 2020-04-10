@@ -1,8 +1,8 @@
-# Дочерний процесс
+# Child Process
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -29,29 +29,35 @@ The [`child_process.spawn()`][] method spawns the child process asynchronously, 
 
 For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell, passing the `stdout` and `stderr` to a callback function when complete.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that it spawns the command directly without first spawning a shell by default.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a specified module with an IPC communication channel established that allows sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of [`child_process.exec()`][] that *will* block the Node.js event loop.
-    * [`child_process.execFileSync()`][]: a synchronous version of [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
+      passing the `stdout` and `stderr` to a callback function when complete.
+    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
+      it spawns the command directly without first spawning a shell by default.
+    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
+      specified module with an IPC communication channel established that allows
+      sending messages between parent and child.
+    * [`child_process.execSync()`][]: a synchronous version of
+      [`child_process.exec()`][] that *will* block the Node.js event loop.
+    * [`child_process.execFileSync()`][]: a synchronous version of
+      [`child_process.execFile()`][] that *will* block the Node.js event loop.
     
 
 For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
 
-## Создание асинхронного процесса
+## Asynchronous Process Creation
 
 The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][], and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous programming pattern typical of other Node.js APIs.
 
-Каждый из методов возвращает экземпляр [`ChildProcess`][]. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
+Each of the methods returns a [`ChildProcess`][] instance. These objects implement the Node.js [`EventEmitter`][] API, allowing the parent process to register listener functions that are called when certain events occur during the life cycle of the child process.
 
 The [`child_process.exec()`][] and [`child_process.execFile()`][] methods additionally allow for an optional `callback` function to be specified that is invoked when the child process terminates.
 
-### Создание файлов `.bat` and `.cmd` в Windows
+### Spawning `.bat` and `.cmd` files on Windows
 
 The importance of the distinction between [`child_process.exec()`][] and [`child_process.execFile()`][] can vary based on platform. On Unix-type operating systems (Unix, Linux, macOS) [`child_process.execFile()`][] can be more efficient because it does not spawn a shell by default. On Windows, however, `.bat` and `.cmd` files are not executable on their own without a terminal, and therefore cannot be launched using [`child_process.execFile()`][]. When running on Windows, `.bat` and `.cmd` files can be invoked using [`child_process.spawn()`][] with the `shell` option set, with [`child_process.exec()`][], or by spawning `cmd.exe` and passing the `.bat` or `.cmd` file as an argument (which is what the `shell` option and [`child_process.exec()`][] do). In any case, if the script filename contains spaces it needs to be quoted.
 
 ```js
-// Только для Windows ...
+// On Windows Only ...
 const { spawn } = require('child_process');
 const bat = spawn('cmd.exe', ['/c', 'my.bat']);
 
@@ -69,7 +75,7 @@ bat.on('exit', (code) => {
 ```
 
 ```js
-// ИЛИ...
+// OR...
 const { exec } = require('child_process');
 exec('my.bat', (err, stdout, stderr) => {
   if (err) {
@@ -98,23 +104,23 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `command` {string} Команда запуска с аргументами, разделенными пробелами.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса. **Default:** `null`.
-  * `env` {Object} Пары ключ-значение среды. **Default:** `null`.
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-  * `shell` {string} Оболочка для выполнения команды. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
-  * `timeout` {number} **По умолчанию:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **По умолчанию:** `200 * 1024`.
-  * `killSignal` {string|integer} **По умолчанию:** `'SIGTERM'`
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-* `обратный вызов` {Function} вызывается с выходом, когда процесс завершается. 
+* `command` {string} The command to run, with space-separated arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process. **Default:** `null`.
+  * `env` {Object} Environment key-value pairs. **Default:** `null`.
+  * `encoding` {string} **Default:** `'utf8'`
+  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `timeout` {number} **Default:** `0`
+  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `killSignal` {string|integer} **Default:** `'SIGTERM'`
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+* `callback` {Function} called with the output when process terminates. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Возвращает: {ChildProcess}
+* Returns: {ChildProcess}
 
 Spawns a shell then executes the `command` within that shell, buffering any generated output. The `command` string passed to the exec function is processed directly by the shell and special characters (vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) need to be dealt with accordingly:
 
@@ -141,7 +147,7 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 });
 ```
 
-If a `callback` function is provided, it is called with the arguments `(error, stdout, stderr)`. В случае успеха `error` будет `null`. On error, `error` will be an instance of [`Error`][]. The `error.code` property will be the exit code of the child process while `error.signal` will be set to the signal that terminated the process. Any exit code other than `0` is considered to be an error.
+If a `callback` function is provided, it is called with the arguments `(error, stdout, stderr)`. On success, `error` will be `null`. On error, `error` will be an instance of [`Error`][]. The `error.code` property will be the exit code of the child process while `error.signal` will be set to the signal that terminated the process. Any exit code other than `0` is considered to be an error.
 
 The `stdout` and `stderr` arguments passed to the callback will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
@@ -151,7 +157,7 @@ If `timeout` is greater than `0`, the parent will send the signal identified by 
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `stdout` and `stderr` properties. In case of an error, a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
 
-Например:
+For example:
 
 ```js
 const util = require('util');
@@ -176,29 +182,29 @@ changes:
     description: The `windowsHide` option is supported now.
 -->
 
-* `file` {string} Имя исполняемого файла для запуска или путь к нему.
-* `args` {string[]} Список строковых аргументов.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
-  * `env` {Object} Пары ключ-значение среды.
-  * `encoding` {string} **По умолчанию:** `'utf8'`
-  * `timeout` {number} **По умолчанию:** `0`
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **По умолчанию:** `200 * 1024`.
-  * `killSignal` {string|integer} **По умолчанию:** `'SIGTERM'`
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **По умолчанию:** `false`.
-  * `shell` {boolean|string} Если `true`, запускает `command` внутри оболочки. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **По умолчанию:** `false` (без оболочки).
-* `обратный вызов` {Function} Вызывается с выходом, когда процесс завершается. 
+* `file` {string} The name or path of the executable file to run.
+* `args` {string[]} List of string arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
+  * `env` {Object} Environment key-value pairs.
+  * `encoding` {string} **Default:** `'utf8'`
+  * `timeout` {number} **Default:** `0`
+  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `killSignal` {string|integer} **Default:** `'SIGTERM'`
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
+* `callback` {Function} Called with the output when process terminates. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
-* Возвращает: {ChildProcess}
+* Returns: {ChildProcess}
 
 The `child_process.execFile()` function is similar to [`child_process.exec()`][] except that it does not spawn a shell by default. Rather, the specified executable `file` is spawned directly as a new process making it slightly more efficient than [`child_process.exec()`][].
 
-Поддерживаются те же опции, что и в [`child_process.exec()`][]. Since a shell is not spawned, behaviors such as I/O redirection and file globbing are not supported.
+The same options as [`child_process.exec()`][] are supported. Since a shell is not spawned, behaviors such as I/O redirection and file globbing are not supported.
 
 ```js
 const { execFile } = require('child_process');
@@ -240,21 +246,21 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* `modulePath` {string} Модуль, запускаемый в дочернем процессе.
-* `args` {Array} Список строковых аргументов.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
-  * `env` {Object} Пары ключ-значение среды.
-  * `execPath` {string} Выполняемая функция для создания дочернего процесса.
-  * `execArgv` {Array} Список строковых аргументов, переданных исполняемому файлу. **По умолчанию:** `process.execArgv`.
-  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **По умолчанию:** `false`.
-  * `stdio` {Array|string} See [`child_process.spawn()`][]'s [`stdio`][]. Когда эта опция предоставляется, она отменяет `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. Например: `[0, 1, 2, 'ipc']`.
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **По умолчанию:** `false`.
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-* Возвращает: {ChildProcess}
+* `modulePath` {string} The module to run in the child.
+* `args` {Array} List of string arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
+  * `env` {Object} Environment key-value pairs.
+  * `execPath` {string} Executable used to create the child process.
+  * `execArgv` {Array} List of string arguments passed to the executable. **Default:** `process.execArgv`.
+  * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be piped to the parent, otherwise they will be inherited from the parent, see the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s [`stdio`][] for more details. **Default:** `false`.
+  * `stdio` {Array|string} See [`child_process.spawn()`][]'s [`stdio`][]. When this option is provided, it overrides `silent`. If the array variant is used, it must contain exactly one item with value `'ipc'` or an error will be thrown. For instance `[0, 1, 2, 'ipc']`.
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. **Default:** `false`.
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+* Returns: {ChildProcess}
 
-The `child_process.fork()` method is a special case of [`child_process.spawn()`][] used specifically to spawn new Node.js processes. Как и [`child_process.spawn()`][], объект [`ChildProcess`][] возвращается. The returned [`ChildProcess`][] will have an additional communication channel built-in that allows messages to be passed back and forth between the parent and child. Для более подробной информации смотрите [`subprocess.send()`][].
+The `child_process.fork()` method is a special case of [`child_process.spawn()`][] used specifically to spawn new Node.js processes. Like [`child_process.spawn()`][], a [`ChildProcess`][] object is returned. The returned [`ChildProcess`][] will have an additional communication channel built-in that allows messages to be passed back and forth between the parent and child. See [`subprocess.send()`][] for details.
 
 It is important to keep in mind that spawned Node.js child processes are independent of the parent with exception of the IPC communication channel that is established between the two. Each process has its own memory, with their own V8 instances. Because of the additional resource allocations required, spawning a large number of child Node.js processes is not recommended.
 
@@ -283,26 +289,26 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} Команда для выполнения.
-* `args` {Array} Список строковых аргументов.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
-  * `env` {Object} Пары ключ-значение среды.
-  * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. Если не указано, будет установлено значение `command`.
+* `command` {string} The command to run.
+* `args` {Array} List of string arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
+  * `env` {Object} Environment key-value pairs.
+  * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
   * `stdio` {Array|string} Child's stdio configuration (see [`options.stdio`][`stdio`]).
   * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-  * `shell` {boolean|string} Если `true`, запускает `command` внутри оболочки. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **По умолчанию:** `false` (без оболочки).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **По умолчанию:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-* Возвращает: {ChildProcess}
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+* Returns: {ChildProcess}
 
 The `child_process.spawn()` method spawns a new process using the given `command`, with command line arguments in `args`. If omitted, `args` defaults to an empty array.
 
 *Note*: If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.
 
-Третий аргумент может быть использован для указания дополнительных опций со следующими параметрами по умолчанию:
+A third argument may be used to specify additional options, with these defaults:
 
 ```js
 const defaults = {
@@ -311,7 +317,7 @@ const defaults = {
 };
 ```
 
-Используйте `cwd`, чтобы определить рабочий каталог, из которого создается процесс. Если это не указано, то по умолчанию наследуется текущий рабочий каталог.
+Use `cwd` to specify the working directory from which the process is spawned. If not given, the default is to inherit the current working directory.
 
 Use `env` to specify environment variables that will be visible to the new process, the default is [`process.env`][].
 
@@ -334,7 +340,7 @@ ls.on('close', (code) => {
 });
 ```
 
-Пример: очень сложный способ выполнения `ps ax | grep ssh`
+Example: A very elaborate way to run `ps ax | grep ssh`
 
 ```js
 const { spawn } = require('child_process');
@@ -371,7 +377,7 @@ grep.on('close', (code) => {
 });
 ```
 
-Пример проверки `spawn` на невыполнение:
+Example of checking for failed `spawn`:
 
 ```js
 const { spawn } = require('child_process');
@@ -394,9 +400,9 @@ added: v0.7.10
 
 On Windows, setting `options.detached` to `true` makes it possible for the child process to continue running after the parent exits. The child will have its own console window. *Once enabled for a child process, it cannot be disabled*.
 
-On non-Windows platforms, if `options.detached` is set to `true`, the child process will be made the leader of a new process group and session. Note that child processes may continue running after the parent exits regardless of whether they are detached or not. Для более подробной информации см. setsid(2).
+On non-Windows platforms, if `options.detached` is set to `true`, the child process will be made the leader of a new process group and session. Note that child processes may continue running after the parent exits regardless of whether they are detached or not. See setsid(2) for more information.
 
-По умолчанию родительский процесс будет ждать выхода отделенного дочернего процесса. To prevent the parent from waiting for a given `subprocess`, use the `subprocess.unref()` method. Doing so will cause the parent's event loop to not include the child in its reference count, allowing the parent to exit independently of the child, unless there is an established IPC channel between the child and parent.
+By default, the parent will wait for the detached child to exit. To prevent the parent from waiting for a given `subprocess`, use the `subprocess.unref()` method. Doing so will cause the parent's event loop to not include the child in its reference count, allowing the parent to exit independently of the child, unless there is an established IPC channel between the child and parent.
 
 When using the `detached` option to start a long-running process, the process will not stay running in the background after the parent exits unless it is provided with a `stdio` configuration that is not connected to the parent. If the parent's `stdio` is inherited, the child will remain attached to the controlling terminal.
 
@@ -413,7 +419,7 @@ const subprocess = spawn(process.argv[0], ['child_program.js'], {
 subprocess.unref();
 ```
 
-В качестве альтернативы можно перенаправить вывод дочернего процесса в файлы:
+Alternatively one can redirect the child process' output into files:
 
 ```js
 const fs = require('fs');
@@ -442,26 +448,26 @@ changes:
 
 The `options.stdio` option is used to configure the pipes that are established between the parent and child process. By default, the child's stdin, stdout, and stderr are redirected to corresponding [`subprocess.stdin`][], [`subprocess.stdout`][], and [`subprocess.stderr`][] streams on the [`ChildProcess`][] object. This is equivalent to setting the `options.stdio` equal to `['pipe', 'pipe', 'pipe']`.
 
-Для удобства `options.stdio` может быть одной из следующих строк:
+For convenience, `options.stdio` may be one of the following strings:
 
-* `'pipe'` - эквивалент `['pipe', 'pipe', 'pipe']` (по умолчанию)
-* `'ignore'` - эквивалент `['ignore', 'ignore', 'ignore']`
-* `'inherit'` - эквивалент `[process.stdin, process.stdout, process.stderr]` или `[0,1,2]`
+* `'pipe'` - equivalent to `['pipe', 'pipe', 'pipe']` (the default)
+* `'ignore'` - equivalent to `['ignore', 'ignore', 'ignore']`
+* `'inherit'` - equivalent to `[process.stdin, process.stdout, process.stderr]` or `[0,1,2]`
 
-Otherwise, the value of `options.stdio` is an array where each index corresponds to an fd in the child. The fds 0, 1, and 2 correspond to stdin, stdout, and stderr, respectively. Additional fds can be specified to create additional pipes between the parent and child. Значение является одним из следующих:
+Otherwise, the value of `options.stdio` is an array where each index corresponds to an fd in the child. The fds 0, 1, and 2 correspond to stdin, stdout, and stderr, respectively. Additional fds can be specified to create additional pipes between the parent and child. The value is one of the following:
 
-1. `'pipe'` - Создание канала между дочерним процессом и родительским процессом. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Трубы, созданные для файловых дескрипторов (fd) 0 - 2, также доступны как [`subprocess.stdin`][], [`subprocess.stdout`][] и [`subprocess.stderr`][] соответственно.
-2. `'ipc'` - Создание канала IPC для передачи сообщений/файловых дескрипторов между родительским и дочерним процессами. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. Если дочерний процесс является процессом Node.js, то наличие канала IPC активирует методы [`process.send()`][], [`process.disconnect()`][], [`process.on('disconnect')`][] и [`process.on('message')`] в дочернем процессе.
+1. `'pipe'` - Create a pipe between the child process and the parent process. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
+2. `'ipc'` - Create an IPC channel for passing messages/file descriptors between parent and child. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][], [`process.disconnect()`][], [`process.on('disconnect')`][], and [`process.on('message')`] within the child.
   
   Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
 
-3. `'ignore'` - Дает наказ Node.js игнорировать fd в дочернем процессе. While Node.js will always open fds 0 - 2 for the processes it spawns, setting the fd to `'ignore'` will cause Node.js to open `/dev/null` and attach it to the child's fd.
+3. `'ignore'` - Instructs Node.js to ignore the fd in the child. While Node.js will always open fds 0 - 2 for the processes it spawns, setting the fd to `'ignore'` will cause Node.js to open `/dev/null` and attach it to the child's fd.
 
 4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
 5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. It is shared with the child process, similar to how {Stream} objects can be shared.
-6. `null`, `undefined` - Используйте значение по умолчанию. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. Для fd 3 и выше по умолчанию задается `'ignore'`.
+6. `null`, `undefined` - Use default value. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. For fd 3 and up, the default is `'ignore'`.
 
-Пример:
+Example:
 
 ```js
 const { spawn } = require('child_process');
@@ -479,9 +485,9 @@ spawn('prg', [], { stdio: ['pipe', null, null, null, 'pipe'] });
 
 *It is worth noting that when an IPC channel is established between the parent and child processes, and the child is a Node.js process, the child is launched with the IPC channel unreferenced (using `unref()`) until the child registers an event handler for the [`process.on('disconnect')`][] event or the [`process.on('message')`][] event. This allows the child to exit normally without the process being held open by the open IPC channel.*
 
-Смотрите также: [`child_process.exec()`][] и [`child_process.fork()`][]
+See also: [`child_process.exec()`][] and [`child_process.fork()`][]
 
-## Создание синхронного процесса
+## Synchronous Process Creation
 
 The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and [`child_process.execFileSync()`][] methods are **synchronous** and **WILL** block the Node.js event loop, pausing execution of any additional code until the spawned process exits.
 
@@ -504,22 +510,22 @@ changes:
     description: The `encoding` option can now explicitly be set to `buffer`.
 -->
 
-* `file` {string} Имя исполняемого файла для запуска или путь к нему.
-* `args` {string[]} Список строковых аргументов.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
+* `file` {string} The name or path of the executable file to run.
+* `args` {string[]} List of string arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Конфигурация stdio дочернего процесса. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
-  * `env` {Object} Пары ключ-значение среды.
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **По умолчанию:** `не определено`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **По умолчанию:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **По умолчанию:** `200 * 1024`.
-  * `encoding` {string} Кодировка, используемая для всех входов и выходов stdio. **По умолчанию:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-  * `shell` {boolean|string} Если `true`, запускает `command` внутри оболочки. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **По умолчанию:** `false` (без оболочки).
-* Возвращает: {Buffer|string} Stdout из команды.
+  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `env` {Object} Environment key-value pairs.
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
+  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
+* Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execFileSync()` method is generally identical to [`child_process.execFile()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited.
 
@@ -543,21 +549,21 @@ changes:
     description: The `input` option can now be a `Uint8Array`.
 -->
 
-* `command` {string} Команда для выполнения.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
+* `command` {string} The command to run.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Конфигурация stdio дочернего процесса. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
-  * `env` {Object} Пары ключ-значение среды.
-  * `shell` {string} Оболочка для выполнения команды. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
-  * `uid` {number} Устанавливает личность пользователя процесса. (См. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса. (См. setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **По умолчанию:** `не определено`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **По умолчанию:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **По умолчанию:** `200 * 1024`.
-  * `encoding` {string} Кодировка, используемая для всех входов и выходов stdio. **По умолчанию:** `'buffer'`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-* Возвращает: {Buffer|string} Stdout из команды.
+  * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
+  * `env` {Object} Environment key-value pairs.
+  * `shell` {string} Shell to execute the command with. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` on UNIX, `process.env.ComSpec` on Windows.
+  * `uid` {number} Sets the user identity of the process. (See setuid(2)).
+  * `gid` {number} Sets the group identity of the process. (See setgid(2)).
+  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
+  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+* Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execSync()` method is generally identical to [`child_process.exec()`][] with the exception that the method will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. *Note that if the child process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.*
 
@@ -585,30 +591,30 @@ changes:
     description: The `shell` option is supported now.
 -->
 
-* `command` {string} Команда для выполнения.
-* `args` {Array} Список строковых аргументов.
-* `опции` {Object} 
-  * `cwd` {string} Текущий рабочий каталог дочернего процесса.
+* `command` {string} The command to run.
+* `args` {Array} List of string arguments.
+* `options` {Object} 
+  * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|Uint8Array} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
-  * `stdio` {string|Array} Конфигурация stdio дочернего процесса.
-  * `env` {Object} Пары ключ-значение среды.
-  * `uid` {number} Устанавливает личность пользователя процесса (см. setuid(2)).
-  * `gid` {number} Устанавливает групповой идентификатор процесса (см. setgid(2)).
-  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **По умолчанию:** `не определено`.
-  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **По умолчанию:** `'SIGTERM'`.
-  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **По умолчанию:** `200 * 1024`.
-  * `encoding` {string} Кодировка, используемая для всех входов и выходов stdio. **По умолчанию:** `'buffer'`.
-  * `shell` {boolean|string} Если `true`, запускает `command` внутри оболочки. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **По умолчанию:** `false` (без оболочки).
-  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **По умолчанию:** `false`.
-  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **По умолчанию:** `false`.
-* Возвращает: {Object} 
-  * `pid` {number} Pid дочернего процесса.
-  * `output` {Array} Массив результатов из выхода stdio.
-  * `stdout` {Buffer|string} Содержимое `output[1]`.
-  * `stderr` {Buffer|string} Содержимое `output[2]`.
-  * `status` {number} Код выхода дочернего процесса.
-  * `signal` {string} Сигнал, используемый для завершения дочернего процесса.
-  * `error` {Error} Объект ошибки, если дочерний процесс завершился неудачно или истекло время ожидания.
+  * `stdio` {string|Array} Child's stdio configuration.
+  * `env` {Object} Environment key-value pairs.
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
+  * `timeout` {number} In milliseconds the maximum amount of time the process is allowed to run. **Default:** `undefined`.
+  * `killSignal` {string|integer} The signal value to be used when the spawned process will be killed. **Default:** `'SIGTERM'`.
+  * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or stderr. If exceeded, the child process is terminated. See caveat at [`maxBuffer` and Unicode][]. **Default:** `200 * 1024`.
+  * `encoding` {string} The encoding used for all stdio inputs and outputs. **Default:** `'buffer'`.
+  * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses `'/bin/sh'` on UNIX, and `process.env.ComSpec` on Windows. A different shell can be specified as a string. See [Shell Requirements](#child_process_shell_requirements) and [Default Windows Shell](#child_process_default_windows_shell). **Default:** `false` (no shell).
+  * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to `true` automatically when `shell` is specified. **Default:** `false`.
+  * `windowsHide` {boolean} Hide the subprocess console window that would normally be created on Windows systems. **Default:** `false`.
+* Returns: {Object} 
+  * `pid` {number} Pid of the child process.
+  * `output` {Array} Array of results from stdio output.
+  * `stdout` {Buffer|string} The contents of `output[1]`.
+  * `stderr` {Buffer|string} The contents of `output[2]`.
+  * `status` {number} The exit code of the child process.
+  * `signal` {string} The signal used to kill the child process.
+  * `error` {Error} The error object if the child process failed or timed out.
 
 The `child_process.spawnSync()` method is generally identical to [`child_process.spawn()`][] with the exception that the function will not return until the child process has fully closed. When a timeout has been encountered and `killSignal` is sent, the method won't return until the process has completely exited. Note that if the process intercepts and handles the `SIGTERM` signal and doesn't exit, the parent process will wait until the child process has exited.
 
@@ -622,20 +628,20 @@ added: v2.2.0
 
 Instances of the `ChildProcess` class are [`EventEmitters`][`EventEmitter`] that represent spawned child processes.
 
-Экземпляры `ChildProcess` не предназначены для создания напрямую. Rather, use the [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][], or [`child_process.fork()`][] methods to create instances of `ChildProcess`.
+Instances of `ChildProcess` are not intended to be created directly. Rather, use the [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][], or [`child_process.fork()`][] methods to create instances of `ChildProcess`.
 
-### Событие: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-* `code` {number} Код выхода, если дочерний процесс завершился самостоятельно.
-* `signal` {string} Сигнал, по которому дочерний процесс был завершен.
+* `code` {number} The exit code if the child exited on its own.
+* `signal` {string} The signal by which the child process was terminated.
 
 The `'close'` event is emitted when the stdio streams of a child process have been closed. This is distinct from the [`'exit'`][] event, since multiple processes might share the same stdio streams.
 
-### Событие: 'disconnect'
+### Event: 'disconnect'
 
 <!-- YAML
 added: v0.7.2
@@ -643,30 +649,30 @@ added: v0.7.2
 
 The `'disconnect'` event is emitted after calling the [`subprocess.disconnect()`][] method in parent process or [`process.disconnect()`][] in child process. After disconnecting it is no longer possible to send or receive messages, and the [`subprocess.connected`][] property is `false`.
 
-### Событие: 'error'
+### Event: 'error'
 
-* `err` {Error} Ошибка.
+* `err` {Error} The error.
 
-Событие `'error'` создается, когда:
+The `'error'` event is emitted whenever:
 
-1. Процесс не может быть запущен, или
-2. Процесс не может быть завершен, или
-3. Не удалось отправить сообщение дочернему процессу.
+1. The process could not be spawned, or
+2. The process could not be killed, or
+3. Sending a message to the child process failed.
 
 *Note*: The `'exit'` event may or may not fire after an error has occurred. When listening to both the `'exit'` and `'error'` events, it is important to guard against accidentally invoking handler functions multiple times.
 
-Также смотрите [`subprocess.kill()`][] и [`subprocess.send()`][].
+See also [`subprocess.kill()`][] and [`subprocess.send()`][].
 
-### Событие: 'exit'
+### Event: 'exit'
 
 <!-- YAML
 added: v0.1.90
 -->
 
-* `code` {number} Код выхода, если дочерний процесс завершился самостоятельно.
-* `signal` {string} Сигнал, по которому дочерний процесс был завершен.
+* `code` {number} The exit code if the child exited on its own.
+* `signal` {string} The signal by which the child process was terminated.
 
-Событие `'exit'` генерируется после завершения дочернего процесса. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. Один из двух всегда будет ненулевым.
+The `'exit'` event is emitted after the child process ends. If the process exited, `code` is the final exit code of the process, otherwise `null`. If the process terminated due to receipt of a signal, `signal` is the string name of the signal, otherwise `null`. One of the two will always be non-null.
 
 Note that when the `'exit'` event is triggered, child process stdio streams might still be open.
 
@@ -674,13 +680,13 @@ Also, note that Node.js establishes signal handlers for `SIGINT` and `SIGTERM` a
 
 See waitpid(2).
 
-### Событие: 'message'
+### Event: 'message'
 
 <!-- YAML
 added: v0.5.9
 -->
 
-* `message` {Object} Анализируемый объект JSON или примитивное значение.
+* `message` {Object} A parsed JSON object or primitive value.
 * `sendHandle` {Handle} A [`net.Socket`][] or [`net.Server`][] object, or undefined.
 
 The `'message'` event is triggered when a child process uses [`process.send()`][] to send messages.
@@ -707,7 +713,7 @@ The `subprocess.channel` property is a reference to the child's IPC channel. If 
 added: v0.7.2
 -->
 
-* {boolean} Установка на `false` после вызова `subprocess.disconnect()`.
+* {boolean} Set to `false` after `subprocess.disconnect()` is called.
 
 The `subprocess.connected` property indicates whether it is still possible to send and receive messages from a child process. When `subprocess.connected` is `false`, it is no longer possible to send or receive messages.
 
@@ -735,7 +741,7 @@ added: v0.1.90
 
 * `signal` {string}
 
-Метод `subprocess.kill()` отправляет сигнал дочернему процессу. If no argument is given, the process will be sent the `'SIGTERM'` signal. See signal(7) for a list of available signals.
+The `subprocess.kill()` method sends a signal to the child process. If no argument is given, the process will be sent the `'SIGTERM'` signal. See signal(7) for a list of available signals.
 
 ```js
 const { spawn } = require('child_process');
@@ -754,7 +760,7 @@ The [`ChildProcess`][] object may emit an [`'error'`][] event if the signal cann
 
 Note that while the function is called `kill`, the signal delivered to the child process may not actually terminate the process.
 
-Для справки смотрите kill(2).
+See kill(2) for reference.
 
 Also note: on Linux, child processes of child processes will not be terminated when attempting to kill their parent. This is likely to happen when running a new process in a shell or with use of the `shell` option of `ChildProcess`, such as in this example:
 
@@ -799,9 +805,9 @@ added: v0.1.90
 
 * {number} Integer
 
-Возвращает идентификатор процесса (PID) дочернего процесса.
+Returns the process identifier (PID) of the child process.
 
-Пример:
+Example:
 
 ```js
 const { spawn } = require('child_process');
@@ -833,16 +839,16 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `опции` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
-  * `keepOpen` - A Boolean value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **По умолчанию:** `false`.
+* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
+  * `keepOpen` - A Boolean value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 When an IPC channel has been established between the parent and child ( i.e. when using [`child_process.fork()`][]), the `subprocess.send()` method can be used to send messages to the child process. When the child process is a Node.js instance, these messages can be received via the [`process.on('message')`][] event.
 
 *Note*: The message goes through serialization and parsing. The resulting message might not be the same as what is originally sent.
 
-Например, в родительском сценарии:
+For example, in the parent script:
 
 ```js
 const cp = require('child_process');
@@ -856,7 +862,7 @@ n.on('message', (m) => {
 n.send({ hello: 'world' });
 ```
 
-И тогда дочерний сценарий `'sub.js'` может выглядеть так:
+And then the child script, `'sub.js'` might look like this:
 
 ```js
 process.on('message', (m) => {
@@ -869,7 +875,7 @@ process.send({ foo: 'bar', baz: NaN });
 
 Child Node.js processes will have a [`process.send()`][] method of their own that allows the child to send messages back to the parent.
 
-Существует особый случай при отправке сообщения `{cmd: 'NODE_foo'}`. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`process.on('message')`][] event. Rather, such messages are emitted using the `process.on('internalMessage')` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
+There is a special case when sending a `{cmd: 'NODE_foo'}` message. Messages containing a `NODE_` prefix in the `cmd` property are reserved for use within Node.js core and will not be emitted in the child's [`process.on('message')`][] event. Rather, such messages are emitted using the `process.on('internalMessage')` event and are consumed internally by Node.js. Applications should avoid using such messages or listening for `'internalMessage'` events as it is subject to change without notice.
 
 The optional `sendHandle` argument that may be passed to `subprocess.send()` is for passing a TCP server or socket object to the child process. The child will receive the object as the second argument passed to the callback function registered on the [`process.on('message')`][] event. Any data that is received and buffered in the socket will not be sent to the child.
 
@@ -877,16 +883,16 @@ The optional `callback` is a function that is invoked after the message is sent 
 
 If no `callback` function is provided and the message cannot be sent, an `'error'` event will be emitted by the [`ChildProcess`][] object. This can happen, for instance, when the child process has already exited.
 
-`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. В противном случае, метод возвращает `true`. The `callback` function can be used to implement flow control.
+`subprocess.send()` will return `false` if the channel has closed or when the backlog of unsent messages exceeds a threshold that makes it unwise to send more. Otherwise, the method returns `true`. The `callback` function can be used to implement flow control.
 
-#### Пример: отправка объекта сервера
+#### Example: sending a server object
 
 The `sendHandle` argument can be used, for instance, to pass the handle of a TCP server object to the child process as illustrated in the example below:
 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Открыть объект сервера и отправить обработчик.
+// Open up the server object and send the handle.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
@@ -896,7 +902,7 @@ server.listen(1337, () => {
 });
 ```
 
-Дочерний процесс тогда получит объект сервера как:
+The child would then receive the server object as:
 
 ```js
 process.on('message', (m, server) => {
@@ -910,9 +916,9 @@ process.on('message', (m, server) => {
 
 Once the server is now shared between the parent and child, some connections can be handled by the parent and some by the child.
 
-While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. Однако в настоящее время это поддерживается только на платформах UNIX.
+While the example above uses a server created using the `net` module, `dgram` module servers use exactly the same workflow with the exceptions of listening on a `'message'` event instead of `'connection'` and using `server.bind()` instead of `server.listen()`. This is, however, currently only supported on UNIX platforms.
 
-#### Пример: отправка объекта сокета
+#### Example: sending a socket object
 
 Similarly, the `sendHandler` argument can be used to pass the handle of a socket to the child process. The example below spawns two children that each handle connections with "normal" or "special" priority:
 
@@ -921,17 +927,17 @@ const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Открыть сервер и отправить сокеты дочернему процессу. Используйте pauseOnConnect для предотвращения
-// чтения сокетов перед их отправкой дочернему процессу.
+// Open up the server and send sockets to child. Use pauseOnConnect to prevent
+// the sockets from being read before they are sent to the child process.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
 
-  // Если специальный приоритет 
+  // If this is special priority
   if (socket.remoteAddress === '74.125.127.100') {
     special.send('socket', socket);
     return;
   }
-  // Это нормальный приоритет
+  // This is normal priority
   normal.send('socket', socket);
 });
 server.listen(1337);
@@ -943,9 +949,9 @@ The `subprocess.js` would receive the socket handle as the second argument passe
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Проверяем, что клиентский сокет существует.
-      // Сокет может быть закрыт между временем, когда он был
-      // отправлен и временем, когда он доставлен в дочерний процесс.
+      // Check that the client socket exists.
+      // It is possible for the socket to be closed between the time it is
+      // sent and the time it is received in the child process.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
@@ -968,11 +974,11 @@ added: v0.1.90
 
 * {stream.Readable}
 
-`Readable Stream`, который представляет `stderr` дочернего процесса.
+A `Readable Stream` that represents the child process's `stderr`.
 
 If the child was spawned with `stdio[2]` set to anything other than `'pipe'`, then this will be `null`.
 
-`subprocess.stderr` является псевдонимом для `subprocess.stdio[2]`. Both properties will refer to the same value.
+`subprocess.stderr` is an alias for `subprocess.stdio[2]`. Both properties will refer to the same value.
 
 <a name="child_process_child_stdin"></a>
 
@@ -984,13 +990,13 @@ added: v0.1.90
 
 * {stream.Writable}
 
-`Writable Stream`, который представляет `stdin` дочернего процесса.
+A `Writable Stream` that represents the child process's `stdin`.
 
 *Note that if a child process waits to read all of its input, the child will not continue until this stream has been closed via `end()`.*
 
 If the child was spawned with `stdio[0]` set to anything other than `'pipe'`, then this will be `null`.
 
-`subprocess.stdin` является псевдонимом для `subprocess.stdio[0]`. Both properties will refer to the same value.
+`subprocess.stdin` is an alias for `subprocess.stdio[0]`. Both properties will refer to the same value.
 
 <a name="child_process_child_stdio"></a>
 
@@ -1013,9 +1019,9 @@ const child_process = require('child_process');
 
 const subprocess = child_process.spawn('ls', {
   stdio: [
-    0, // Использовать stdin родительского процесса для дочернего
-    'pipe', // Канал stdout дочернего процесса к родительскому
-    fs.openSync('err.out', 'w') // Направить stderr дочернего процесса в файл
+    0, // Use parent's stdin for child
+    'pipe', // Pipe child's stdout to parent
+    fs.openSync('err.out', 'w') // Direct child's stderr to a file
   ]
 });
 
@@ -1039,15 +1045,15 @@ added: v0.1.90
 
 * {stream.Readable}
 
-`Readable Stream`, который представляет `stdout` дочернего процесса.
+A `Readable Stream` that represents the child process's `stdout`.
 
 If the child was spawned with `stdio[1]` set to anything other than `'pipe'`, then this will be `null`.
 
-`subprocess.stdout` является псевдонимом для `subprocess.stdio[1]`. Both properties will refer to the same value.
+`subprocess.stdout` is an alias for `subprocess.stdio[1]`. Both properties will refer to the same value.
 
-## `maxBuffer` и Юникод
+## `maxBuffer` and Unicode
 
-The `maxBuffer` option specifies the largest number of bytes allowed on `stdout` or `stderr`. Если это значение превышено, дочерний процесс завершается. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. For instance, `console.log('中文测试')` will send 13 UTF-8 encoded bytes to `stdout` although there are only 4 characters.
+The `maxBuffer` option specifies the largest number of bytes allowed on `stdout` or `stderr`. If this value is exceeded, then the child process is terminated. This impacts output that includes multibyte character encodings such as UTF-8 or UTF-16. For instance, `console.log('中文测试')` will send 13 UTF-8 encoded bytes to `stdout` although there are only 4 characters.
 
 ## Shell Requirements
 
