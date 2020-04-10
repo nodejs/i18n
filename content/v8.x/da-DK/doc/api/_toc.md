@@ -1,7 +1,7 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
 
-* [Om denne dokumentation](documentation.html)
-* [Brug & eksempel](synopsis.html)
+* [About these Docs](documentation.html)
+* [Usage & Example](synopsis.html)
 
 <div class="line"></div>
 
