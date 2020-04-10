@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
-Il modulo `tty` fornisce le classi `tty.ReadStream` e `tty.WriteStream`. Nella maggior parte dei casi, non sarà necessario né possibile utilizzare direttamente questo modulo. Tuttavia, ci si può accedere utilizzando:
+The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
 ```js
 const tty = require('tty');
@@ -35,7 +35,7 @@ The `tty.ReadStream` class is a subclass of [`net.Socket`][] that represents the
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Il valore predefinito è `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### readStream.isTTY
 
@@ -43,7 +43,7 @@ A `boolean` that is `true` if the TTY is currently configured to operate as a ra
 added: v0.5.8
 -->
 
-Un `boolean` che è sempre `true` per le istanze `tty.ReadStream`.
+A `boolean` that is always `true` for `tty.ReadStream` instances.
 
 ### readStream.setRawMode(mode)
 
@@ -51,9 +51,9 @@ Un `boolean` che è sempre `true` per le istanze `tty.ReadStream`.
 added: v0.7.7
 -->
 
-Consente la configurazione di `tty.ReadStream` in modo che funzioni come dispositivo raw.
+Allows configuration of `tty.ReadStream` so that it operates as a raw device.
 
-When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. Notare che `CTRL`+`C` non causerà più un `SIGINT` in questa modalità.
+When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. Note that `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
 
 * `mode` {boolean} If `true`, configures the `tty.ReadStream` to operate as a raw device. If `false`, configures the `tty.ReadStream` to operate in its default mode. The `readStream.isRaw` property will be set to the resulting mode.
 
@@ -86,7 +86,7 @@ process.stdout.on('resize', () => {
 added: v0.7.7
 -->
 
-Un `number` che specifica il numero di colonne che il TTY possiede attualmente. This property is updated whenever the `'resize'` event is emitted.
+A `number` specifying the number of columns the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ### writeStream.isTTY
 
@@ -94,7 +94,7 @@ Un `number` che specifica il numero di colonne che il TTY possiede attualmente. 
 added: v0.5.8
 -->
 
-Un `boolean` che è sempre `true`.
+A `boolean` that is always `true`.
 
 ### writeStream.rows
 
@@ -102,7 +102,7 @@ Un `boolean` che è sempre `true`.
 added: v0.7.7
 -->
 
-Un `number` che specifica il numero di righe che il TTY possiede attualmente. This property is updated whenever the `'resize'` event is emitted.
+A `number` specifying the number of rows the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ## tty.isatty(fd)
 
@@ -110,6 +110,6 @@ Un `number` che specifica il numero di righe che il TTY possiede attualmente. Th
 added: v0.5.8
 -->
 
-* `fd` {number} Un descrittore di file numerico
+* `fd` {number} A numeric file descriptor
 
 The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
