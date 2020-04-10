@@ -1,18 +1,18 @@
-# Node.js processo di release
+# Node.js Release Process
 
-Questo documento descrive gli aspetti tecnici del processo di release di Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
-## Sommario
+## Table of Contents
 
-* [Chi può fare una release?](#who-can-make-a-release) 
-  * [1. Accesso Release Jenkins](#1-jenkins-release-access)
-  * [2. <nodejs.org> Accesso](#2-nodejsorg-access)
-  * [3. Una GPG Key elencata pubblicamente](#3-a-publicly-listed-gpg-key)
-* [Come creare una release](#how-to-create-a-release) 
+* [Who can make a release?](#who-can-make-a-release) 
+  * [1. Jenkins Release Access](#1-jenkins-release-access)
+  * [2. <nodejs.org> Access](#2-nodejsorg-access)
+  * [3. A Publicly Listed GPG Key](#3-a-publicly-listed-gpg-key)
+* [How to create a release](#how-to-create-a-release) 
   * [0. Pre-release steps](#0-pre-release-steps)
   * [1. Update the staging branch](#1-update-the-staging-branch)
   * [2. Create a new branch for the release](#2-create-a-new-branch-for-the-release)
-  * [3. Aggiornare `src/node_version.h`](#3-update-srcnode_versionh)
+  * [3. Update `src/node_version.h`](#3-update-srcnode_versionh)
   * [4. Update the Changelog](#4-update-the-changelog)
   * [5. Create Release Commit](#5-create-release-commit)
   * [6. Propose Release on GitHub](#6-propose-release-on-github)
@@ -30,13 +30,13 @@ Questo documento descrive gli aspetti tecnici del processo di release di Node.js
   * [18. Announce](#18-announce)
   * [19. Celebrate](#19-celebrate)
 
-## Chi può fare una release?
+## Who can make a release?
 
-L'autorizzazione di release è fornita dal Node.js TSC. Once authorized, an individual must have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must have the following:
 
-### 1. Accesso Release Jenkins
+### 1. Jenkins Release Access
 
-Ci sono tre lavori Jenkins importanti che dovrebbero essere utilizzati per un release flow:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
@@ -46,7 +46,7 @@ Ci sono tre lavori Jenkins importanti che dovrebbero essere utilizzati per un re
 
 The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 2. <nodejs.org> Accesso
+### 2. <nodejs.org> Access
 
 The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
@@ -56,25 +56,25 @@ Nightly builds are promoted automatically on the server by a cron task for the *
 
 Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 3. Una GPG Key elencata pubblicamente
+### 3. A Publicly Listed GPG Key
 
 A SHASUMS256.txt file is produced for every promoted build, nightly, and releases. Additionally for releases, this file is signed by the individual responsible for that release. In order to be able to verify downloaded binaries, the public should be able to check that the SHASUMS256.txt file has been signed by someone who has been authorized to create a release.
 
-Le chiavi GPG devono essere scaricabili da un keyserver di terze parti noto. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
+The GPG keys should be fetchable from a known third-party keyserver. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
 
 ```console
-$ gpg --keyserver pool.sks-keyserver.net --recv-keys <FINGERPRINT>
+$ gpg --keyserver pool.sks-keyservers.net --recv-keys <FINGERPRINT>
 ```
 
-La chiave che usi può essere una child/subkey di una chiave esistente.
+The key you use may be a child/subkey of an existing key.
 
 Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
-## Come creare una release
+## How to create a release
 
-Note:
+Notes:
 
-* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Usa `data -u +'%Y-%m-%d'` per scoprire di cosa si tratta.
+* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
 * Version strings are listed below as *"vx.y.z"* or *"x.y.z"*. Substitute for the release version.
 * Examples will use the fictional release version `1.2.3`.
 
@@ -82,7 +82,7 @@ Note:
 
 Before preparing a Node.js release, the Build Working Group must be notified at least one business day in advance of the expected release. Coordinating with Build is essential to make sure that the CI works, release files are published, and the release blog post is available on the project website.
 
-Build can be contacted best by opening up an issue on the \[Build issue tracker\]\[\], and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
+Build can be contacted best by opening up an issue on the [Build issue tracker](https://github.com/nodejs/build/issues/new), and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
 
 When preparing a security release, contact Build at least two weekdays in advance of the expected release. To ensure that the security patch(es) can be properly tested, run a `node-test-pull-request` job against the `master` branch of the `nodejs-private/node-private` repository a day or so before the [CI lockdown procedure](https://github.com/nodejs/build/blob/master/doc/jenkins-guide.md#restricting-access-for-security-releases) begins. This is to confirm that Jenkins can properly access the private repository.
 
@@ -111,7 +111,7 @@ When landing the PR add the `Backport-PR-URL:` line to each commit. Close the ba
 
 To determine the relevant commits, use [`branch-diff`](https://github.com/nodejs/branch-diff). The tool is available on npm and should be installed globally or run with `npx`. It depends on our commit metadata, as well as the GitHub labels such as `semver-minor` and `semver-major`. One drawback is that when the `PR-URL` metadata is accidentally omitted from a commit, the commit will show up because it's unsure if it's a duplicate or not.
 
-Per un elenco di commit che potrebbero essere trovati in una patch release su v1.x:
+For a list of commits that could be landed in a patch release on v1.x:
 
 ```console
 $ branch-diff v1.x-staging master --exclude-label=semver-major,semver-minor,dont-land-on-v1.x,backport-requested-v1.x --filter-release --format=simple
@@ -141,7 +141,7 @@ Create a new branch named `vx.y.z-proposal`, off the corresponding staging branc
 $ git checkout -b v1.2.3-proposal upstream/v1.x-staging
 ```
 
-### 3. Aggiornare `src/node_version.h`
+### 3. Update `src/node_version.h`
 
 Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
@@ -151,15 +151,15 @@ Set the version for the proposed release using the following macros, which are a
 #define NODE_PATCH_VERSION z
 ```
 
-Imposta la macro `NODE_VERSION_IS_RELEASE` al valore `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
+Set the `NODE_VERSION_IS_RELEASE` macro value to `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
 
 ```c
 #define NODE_VERSION_IS_RELEASE 1
 ```
 
-**Inoltre, considera se saltare `NODE_MODULE_VERSION`**:
+**Also consider whether to bump `NODE_MODULE_VERSION`**:
 
-Questa macro è utilizzata per segnalare una versione ABI per addons nativi. It currently has two common uses in the community:
+This macro is used to signal an ABI version for native addons. It currently has two common uses in the community:
 
 * Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
 * Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
