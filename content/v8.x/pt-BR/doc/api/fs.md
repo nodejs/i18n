@@ -1,14 +1,14 @@
-# Sistema de Arquivos
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
 File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-A forma assíncrona sempre leva uma função de conclusão (frequentemente chamado "callback") como seu último argumento. Os argumentos passados para função de conclusão dependem do método, mas o primeiro argumento é sempre reservado para uma exceção. Se a operação foi concluída com êxito, então, o primeiro argumento será `null` ou `undefined`.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
@@ -19,7 +19,7 @@ const fs = require('fs');
 
 fs.unlink('/tmp/hello', (err) => {
   if (err) throw err;
-  console.log('/tmp/hello deletado com sucesso');
+  console.log('successfully deleted /tmp/hello');
 });
 ```
 
@@ -37,7 +37,7 @@ With the asynchronous methods there is no guaranteed ordering. So the following 
 ```js
 fs.rename('/tmp/hello', '/tmp/world', (err) => {
   if (err) throw err;
-  console.log('renomeação concluída');
+  console.log('renamed complete');
 });
 fs.stat('/tmp/world', (err, stats) => {
   if (err) throw err;
@@ -57,7 +57,7 @@ fs.rename('/tmp/hello', '/tmp/world', (err) => {
 });
 ```
 
-Nos processos onerosos, o programador é *fortemente encorajado* a usar as versões assíncronas dessas chamadas. As versões síncronas bloquearão todo o processo até que se completem — travando todas as conexões.
+In busy processes, the programmer is *strongly encouraged* to use the asynchronous versions of these calls. The synchronous versions will block the entire process until they complete — halting all connections.
 
 The relative path to a filename can be used. Remember, however, that this path will be relative to `process.cwd()`.
 
@@ -76,11 +76,11 @@ $ env NODE_DEBUG=fs node script.js
 fs.js:88
         throw backtrace;
         ^
-Error: EISDIR: operação ilegal em um diretório, leitura
+Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-*Nota:* No Windows, o Node.js segue o conceito de diretório de trabalho por unidade. Esse comportamento pode ser observado quando usamos um caminho sem colocar uma /. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -108,7 +108,7 @@ fs.readFileSync(fileUrl);
 
 *Note*: `file:` URLs are always absolute paths.
 
-Usar objetos WHATWG [`URL`][] pode introduzir comportamentos específicos de plataforma.
+Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw :
 
@@ -418,7 +418,7 @@ fs.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK, (err) => {
 
 Using `fs.access()` to check for the accessibility of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
-Por exemplo:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -510,7 +510,7 @@ changes:
 
 * `path` {string|Buffer|URL}
 * `mode` {integer} **Default:** `fs.constants.F_OK`
-* Retorna: {undefined}
+* Returns: {undefined}
 
 Synchronously tests a user's permissions for the file or directory specified by `path`. The `mode` argument is an optional integer that specifies the accessibility checks to be performed. The following constants define the possible values of `mode`. It is possible to create a mask consisting of the bitwise OR of two or more values (e.g. `fs.constants.W_OK | fs.constants.R_OK`).
 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exemplo:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exemplo:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -611,7 +611,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Exemplo:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Exemplo:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -673,7 +673,7 @@ See also: chmod(2)
 
 The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods is a numeric bitmask created using a logical OR of the following constants:
 
-| Constante              | Octal   | Descrição                |
+| Constant               | Octal   | Description              |
 | ---------------------- | ------- | ------------------------ |
 | `fs.constants.S_IRUSR` | `0o400` | read by owner            |
 | `fs.constants.S_IWUSR` | `0o200` | write by owner           |
@@ -687,7 +687,7 @@ The `mode` argument used in both the `fs.chmod()` and `fs.chmodSync()` methods i
 
 An easier method of constructing the `mode` is to use a sequence of three octal digits (e.g. `765`). The left-most digit (`7` in the example), specifies the permissions for the file owner. The middle digit (`6` in the example), specifies permissions for the group. The right-most digit (`5` in the example), specifies the permissions for others.
 
-| Number | Descrição                |
+| Number | Description              |
 | ------ | ------------------------ |
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
@@ -816,7 +816,7 @@ Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it a
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exemplo:
+Example:
 
 ```js
 const fs = require('fs');
@@ -852,7 +852,7 @@ Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it al
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Exemplo:
+Example:
 
 ```js
 const fs = require('fs');
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Exemplo:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1017,7 +1017,7 @@ fs.exists('/etc/passwd', (exists) => {
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
-Por exemplo:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -1290,7 +1290,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). Por exemplo,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). For example,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Exemplo:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Exemplo:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Exemplo:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -2432,7 +2432,7 @@ changes:
 
 * `filename` {string|Buffer|URL}
 * `options` {string|Object} 
-  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Padrão:** `true`.
+  * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
 * `listener` {Function|undefined} **Default:** `undefined` 
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Exemplo:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Exemplo:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -2752,8 +2752,8 @@ The following constants are meant for use with [`fs.access()`][].
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>F_OK</code></td>
@@ -2781,8 +2781,8 @@ The following constants are meant for use with `fs.open()`.
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>O_RDONLY</code></td>
@@ -2869,8 +2869,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IFMT</code></td>
@@ -2912,8 +2912,8 @@ The following constants are meant for use with the [`fs.Stats`][] object's `mode
 
 <table>
   <tr>
-    <th>Constante</th>
-    <th>Descrição</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>S_IRWXU</code></td>
