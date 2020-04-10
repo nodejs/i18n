@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -128,9 +128,9 @@ added: v9.9.0
 -->
 
 * `env` {Object} An object containing the environment variables to check. **Default:** `process.env`.
-* Retorna: {number}
+* Returns: {number}
 
-Retorna:
+Returns:
 
 * `1` for 2,
 * `4` for 16,
@@ -147,7 +147,7 @@ Use the `NODE_DISABLE_COLORS` environment variable to enforce this function to a
 added: v0.7.7
 -->
 
-* Retorna: {number[]}
+* Returns: {number[]}
 
 `writeStream.getWindowSize()` returns the size of the [TTY](tty.html) corresponding to this `WriteStream`. The array is of the type `[numColumns, numRows]` where `numColumns` and `numRows` represent the number of columns and rows in the corresponding [TTY](tty.html).
 
@@ -159,7 +159,7 @@ added: v10.16.0
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
