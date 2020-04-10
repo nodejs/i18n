@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
-Il modulo `tty` fornisce le classi `tty.ReadStream` e `tty.WriteStream`. Nella maggior parte dei casi, non sarà necessario né possibile utilizzare direttamente questo modulo. Tuttavia, ci si può accedere utilizzando:
+The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
 ```js
 const tty = require('tty');
 ```
 
-Quando Node.js rileva che è in fase di esecuzione con un terminale di testo ("TTY") associato, [`process.stdin`][] verrà, di default, inizializzato come istanza di `tty.ReadStream` e sia [`process.stdout`][] che [`process.stderr`][] saranno, di default, istanze di `tty.WriteStream`. Il metodo migliore per determinare se Node.js sia in esecuzione in un contesto TTY è controllare che il valore della proprietà `process.stdout.isTTY` sia `true`:
+When Node.js detects that it is being run with a text terminal ("TTY") attached, [`process.stdin`][] will, by default, be initialized as an instance of `tty.ReadStream` and both [`process.stdout`][] and [`process.stderr`][] will, by default be instances of `tty.WriteStream`. The preferred method of determining whether Node.js is being run within a TTY context is to check that the value of the `process.stdout.isTTY` property is `true`:
 
 ```sh
 $ node -p -e "Boolean(process.stdout.isTTY)"
@@ -19,7 +19,7 @@ $ node -p -e "Boolean(process.stdout.isTTY)" | cat
 false
 ```
 
-Nella maggior parte dei casi, non ci dovrebbe essere alcun motivo per cui un'applicazione debba creare manualmente istanze delle classi `tty.ReadStream` e `tty.WriteStream`.
+In most cases, there should be little to no reason for an application to manually create instances of the `tty.ReadStream` and `tty.WriteStream` classes.
 
 ## Class: `tty.ReadStream`
 <!-- YAML
@@ -35,26 +35,26 @@ Represents the readable side of a TTY. In normal circumstances [`process.stdin`]
 added: v0.7.7
 -->
 
-Un `boolean` che è `true` se il TTY è attualmente configurato per funzionare come dispositivo non elaborato. Il valore predefinito è `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### `readStream.isTTY`
 <!-- YAML
 added: v0.5.8
 -->
 
-Un `boolean` che è sempre `true` per le istanze `tty.ReadStream`.
+A `boolean` that is always `true` for `tty.ReadStream` instances.
 
 ### `readStream.setRawMode(mode)`
 <!-- YAML
 added: v0.7.7
 -->
 
-* `mode` {boolean} Se `true`, configura il `tty.ReadStream` per funzionare come dispositivo raw. Se `false`, configura il `tty.ReadStream` per funzionare nella sua modalità predefinita. La proprietà `readStream.isRaw` verrà impostata sulla modalità risultante.
+* `mode` {boolean} If `true`, configures the `tty.ReadStream` to operate as a raw device. If `false`, configures the `tty.ReadStream` to operate in its default mode. The `readStream.isRaw` property will be set to the resulting mode.
 * Returns: {this} The read stream instance.
 
-Consente la configurazione di `tty.ReadStream` in modo che funzioni come dispositivo raw.
+Allows configuration of `tty.ReadStream` so that it operates as a raw device.
 
-Quando è in modalità raw, l'input è sempre disponibile carattere per carattere, ad esclusione dei modificatori. Inoltre, tutte le elaborazioni speciali dei caratteri da parte del terminale sono disabilitate, inclusi i caratteri di input con eco. `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
+When in raw mode, input is always available character-by-character, not including modifiers. Additionally, all special processing of characters by the terminal is disabled, including echoing input characters. `CTRL`+`C` will no longer cause a `SIGINT` when in this mode.
 
 ## Class: `tty.WriteStream`
 <!-- YAML
@@ -70,7 +70,7 @@ Represents the writable side of a TTY. In normal circumstances, [`process.stdout
 added: v0.7.7
 -->
 
-L'evento `'resize'` viene emesso ogni volta che una delle proprietà `writeStream.columns` o `writeStream.rows` viene modificata. Non viene passato nessun argomento al callback del listener quando viene chiamato.
+The `'resize'` event is emitted whenever either of the `writeStream.columns` or `writeStream.rows` properties have changed. No arguments are passed to the listener callback when called.
 
 ```js
 process.stdout.on('resize', () => {
@@ -116,7 +116,7 @@ changes:
 added: v0.7.7
 -->
 
-Un `number` che specifica il numero di colonne che il TTY possiede attualmente. Questa proprietà viene aggiornata ogni volta che l'evento `'resize'` viene emesso.
+A `number` specifying the number of columns the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ### `writeStream.cursorTo(x[, y][, callback])`
 <!-- YAML
@@ -139,17 +139,17 @@ changes:
 added: v9.9.0
 -->
 
-* `env` {Object} Un object contenente le variabili d'ambiente da controllare. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Restituisce: {number}
+* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
+* Returns: {number}
 
-Restituisce:
+Returns:
 
-* `1` per 2,
-* `4` per 16,
-* `8` per 256,
+* `1` for 2,
+* `4` for 16,
+* `8` for 256,
 * `24` for 16,777,216 colors supported.
 
-Da utilizzare per determinare quali colori supporta il terminale. Due to the nature of colors in terminals it is possible to either have false positives or false negatives. It depends on process information and the environment variables that may lie about what terminal is used. It is possible to pass in an `env` object to simulate the usage of a specific terminal. This can be useful to check how specific environment settings behave.
+Use this to determine what colors the terminal supports. Due to the nature of colors in terminals it is possible to either have false positives or false negatives. It depends on process information and the environment variables that may lie about what terminal is used. It is possible to pass in an `env` object to simulate the usage of a specific terminal. This can be useful to check how specific environment settings behave.
 
 To enforce a specific color support, use one of the below environment settings.
 
@@ -165,7 +165,7 @@ Disabling color support is also possible by using the `NO_COLOR` and `NODE_DISAB
 added: v0.7.7
 -->
 
-* Restituisce: {number[]}
+* Returns: {number[]}
 
 `writeStream.getWindowSize()` returns the size of the [TTY](tty.html) corresponding to this `WriteStream`. The array is of the type `[numColumns, numRows]` where `numColumns` and `numRows` represent the number of columns and rows in the corresponding [TTY](tty.html).
 
@@ -175,8 +175,8 @@ added: v11.13.0
 -->
 
 * `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
-* `env` {Object} Un object contenente le variabili d'ambiente da controllare. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
-* Restituisce: {boolean}
+* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
+* Returns: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
@@ -198,7 +198,7 @@ process.stdout.hasColors(2 ** 24, { TMUX: '1' });
 added: v0.5.8
 -->
 
-Un `boolean` che è sempre `true`.
+A `boolean` that is always `true`.
 
 ### `writeStream.moveCursor(dx, dy[, callback])`
 <!-- YAML
@@ -221,14 +221,14 @@ changes:
 added: v0.7.7
 -->
 
-Un `number` che specifica il numero di righe che il TTY possiede attualmente. Questa proprietà viene aggiornata ogni volta che l'evento `'resize'` viene emesso.
+A `number` specifying the number of rows the TTY currently has. This property is updated whenever the `'resize'` event is emitted.
 
 ## `tty.isatty(fd)`
 <!-- YAML
 added: v0.5.8
 -->
 
-* `fd` {number} Un descrittore di file numerico
-* Restituisce: {boolean}
+* `fd` {number} A numeric file descriptor
+* Returns: {boolean}
 
-Il metodo `tty.isatty()` restituisce `true` se il `fd` indicato è associato con un TTY e `false` se non lo è, compreso quando `fd` non è un numero intero non negativo.
+The `tty.isatty()` method returns `true` if the given `fd` is associated with a TTY and `false` if it is not, including whenever `fd` is not a non-negative integer.
