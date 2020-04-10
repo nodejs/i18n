@@ -5,11 +5,11 @@
 
 Addons are dynamically-linked shared objects written in C++. The [`require()`](modules.html#modules_require_id) function can load Addons as ordinary Node.js modules. Addons provide an interface between JavaScript and C/C++ libraries.
 
-There are three options for implementing Addons: N-API, nan, or direct use of internal V8, libuv and Node.js libraries. Unless you need direct access to functionality which is not exposed by N-API, use N-API. Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
+There are three options for implementing Addons: N-API, nan, or direct use of internal V8, libuv and Node.js libraries. Unless there is a need for direct access to functionality which is not exposed by N-API, use N-API. Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
-* V8: biblioteka C ++, którą Node.js obecnie używa do zapewnienia wykonania JavaScript. V8 zapewnia mechanizmy tworzenia obiektów, funkcji dzwoniących itp. API V8 jest udokumentowane głównie w `v8.h` pliku nagłówkowym (`deps/v8/include/v8.h` w drzewie źródłowym Node.js), które jest również dostępne [online](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): Biblioteka C która implementuje pętlę wydarzeń Node.js, jej wątki robocze i wszystkie asynchroniczne zachowania platformy. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv również zapewnia podobną do pthreads abstrakcję wątków, która może być używana do zasilania bardziej wyrafinowanych asynchronicznych dodatków, które muszą wyjść poza standardową pętlę wydarzeń. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
@@ -241,7 +241,7 @@ require('./build/Release/addon');
 
 ### Konfigurowanie
 
-Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Ten plik jest używany przez [node-gyp](https://github.com/nodejs/node-gyp) — narzędzie napisane specjalnie do kompilacji dodatków Node.js.
+Po zapisaniu kodu źródłowego, należy go skompilować do pliku binarnego `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp), a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -302,17 +302,17 @@ When calling [`require()`](modules.html#modules_require_id), the `.node` extensi
 
 Każdy z przykładów przedstawionych w tym dokumencie bezpośrednio wykorzystuje API Node.js i V8 do implementacji dodatków. The V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
-[Rodzime Abstrakcje dla Node.js](https://github.com/nodejs/nan) (lub `nan`) zapewniają zestaw narzędzi, które zaleca się deweloperom dodatków w celu zachowania zgodności pomiędzy przeszłymi i przyszłymi wersjami V8 i Node.js. Zobacz [przykłady](https://github.com/nodejs/nan/tree/master/examples/) `nan`, aby dowiedzieć się, w jaki sposób można go użyć.
+[Rodzime Abstrakcje dla Node.js](https://github.com/nodejs/nan) (lub `nan`) zapewniają zestaw narzędzi, które zaleca się deweloperom dodatków w celu zachowania zgodności pomiędzy przeszłymi i przyszłymi wersjami V8 i Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
 ## N-API
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-N-API jest API do budowania rodzimych dodatków. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Ma on za zadanie izolować dodatki od zmian w zasadniczym silniku JavaScript i pozwolić modułom skompilowanym danej wersji działać w późniejszych wersjach Node.js bez wymogu ponownej kompilacji. Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisanych w tym dokumencie (node-gyp, itp.). Jedyną różnicą jest zbiór API, które są używane przez kod rodzimy. Zamiast korzystać z V8 lub API [Rodzimych Abstrakcji dla Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
+N-API jest API do budowania rodzimych dodatków. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Dodatki są budowane/pakowane przy użyciu tego samego podejścia/narzędzi opisanych w tym dokumencie (node-gyp, itp.). Jedyną różnicą jest zbiór API, które są używane przez kod rodzimy. Zamiast korzystać z V8 lub API [Rodzimych Abstrakcji dla Node.js](https://github.com/nodejs/nan), używane są funkcje dostępne w N-API.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Wszystkie pozostałe instrukcje pozostają takie same.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
 ```cpp
 // hello.cc using N-API
@@ -783,7 +783,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Przetestuj to z:
+Test it with:
 
 ```js
 // test.js
@@ -987,7 +987,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Przetestuj to z:
+Test it with:
 
 ```js
 // test.js
@@ -1177,7 +1177,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Przetestuj to z:
+Test it with:
 
 ```js
 // test.js
