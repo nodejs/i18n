@@ -411,8 +411,8 @@ The following signal constants are exported by `os.constants.signals`:
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SIGHUP</code></td>
@@ -578,8 +578,8 @@ The following error constants are exported by `os.constants.errno`:
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>E2BIG</code></td>
@@ -912,8 +912,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>WSAEINTR</code></td>
@@ -1154,8 +1154,8 @@ The following error codes are specific to the Windows operating system:
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>UV_UDP_REUSEADDR</code></td>
