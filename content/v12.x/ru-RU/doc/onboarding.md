@@ -33,7 +33,7 @@ apply.whitespace fix`
     * `git remote add upstream git://github.com/nodejs/node.git`
   * To update from `upstream`:
     * `git checkout master`
-    * `git remote update -p` ИЛИ `git fetch --all`
+    * `git remote update -p` OR `git fetch --all`
     * `git merge --ff-only upstream/master` (or `REMOTENAME/BRANCH`)
   * Make a new branch for each PR you submit.
   * Membership: Consider making your membership in the Node.js GitHub organization public. This makes it easier to identify Collaborators. Instructions on how to do that are available at [Publicizing or hiding organization membership](https://help.github.com/articles/publicizing-or-hiding-organization-membership/).
