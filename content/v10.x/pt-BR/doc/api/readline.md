@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. É possível acessá-lo utilizando:
+The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
 ```js
 const readline = require('readline');
@@ -218,7 +218,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Exemplo de Uso:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -286,9 +286,9 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-* Retorna: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
 
@@ -380,7 +380,7 @@ Once the `readline.Interface` instance is created, the most common case is to li
 
 ```js
 rl.on('line', (line) => {
-  console.log(`Recebido: ${line}`);
+  console.log(`Received: ${line}`);
 });
 ```
 
