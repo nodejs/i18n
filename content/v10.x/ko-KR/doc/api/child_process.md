@@ -4,7 +4,7 @@
 
 <!--lint disable maximum-line-length-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -31,11 +31,17 @@ The [`child_process.spawn()`][] method spawns the child process asynchronously, 
 
 For convenience, the `child_process` module provides a handful of synchronous and asynchronous alternatives to [`child_process.spawn()`][] and [`child_process.spawnSync()`][]. *Note that each of these alternatives are implemented on top of [`child_process.spawn()`][] or [`child_process.spawnSync()`][].*
 
-    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell, passing the `stdout` and `stderr` to a callback function when complete.
-    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that it spawns the command directly without first spawning a shell by default.
-    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a specified module with an IPC communication channel established that allows sending messages between parent and child.
-    * [`child_process.execSync()`][]: a synchronous version of [`child_process.exec()`][] that *will* block the Node.js event loop.
-    * [`child_process.execFileSync()`][]: a synchronous version of [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: spawns a shell and runs a command within that shell,
+      passing the `stdout` and `stderr` to a callback function when complete.
+    * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that
+      it spawns the command directly without first spawning a shell by default.
+    * [`child_process.fork()`][]: spawns a new Node.js process and invokes a
+      specified module with an IPC communication channel established that allows
+      sending messages between parent and child.
+    * [`child_process.execSync()`][]: a synchronous version of
+      [`child_process.exec()`][] that *will* block the Node.js event loop.
+    * [`child_process.execFileSync()`][]: a synchronous version of
+      [`child_process.execFile()`][] that *will* block the Node.js event loop.
     
 
 For certain use cases, such as automating shell scripts, the [synchronous counterparts](#child_process_synchronous_process_creation) may be more convenient. In many cases, however, the synchronous methods can have significant impact on performance due to stalling the event loop while spawned processes complete.
@@ -101,7 +107,7 @@ changes:
 -->
 
 * `command` {string} The command to run, with space-separated arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process. **Default:** `null`.
   * `env` {Object} Environment key-value pairs. **Default:** `null`.
   * `encoding` {string} **Default:** `'utf8'`
@@ -178,7 +184,7 @@ changes:
 
 * `file` {string} The name or path of the executable file to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
   * `encoding` {string} **Default:** `'utf8'`
@@ -242,7 +248,7 @@ changes:
 
 * `modulePath` {string} The module to run in the child.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `detached` {boolean} Prepare child to run independently of its parent process. Specific behavior depends on the platform, see [`options.detached`][]).
   * `env` {Object} Environment key-value pairs.
@@ -286,7 +292,7 @@ changes:
 
 * `command` {string} The command to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `env` {Object} Environment key-value pairs.
   * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
@@ -514,7 +520,7 @@ changes:
 
 * `file` {string} The name or path of the executable file to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|TypedArray|DataView} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
@@ -556,7 +562,7 @@ changes:
 -->
 
 * `command` {string} The command to run.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|TypedArray|DataView} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will be output to the parent process' stderr unless `stdio` is specified. **Default:** `'pipe'`.
@@ -603,7 +609,7 @@ changes:
 
 * `command` {string} The command to run.
 * `args` {string[]} List of string arguments.
-* `옵션` {Object} 
+* `options` {Object} 
   * `cwd` {string} Current working directory of the child process.
   * `input` {string|Buffer|TypedArray|DataView} The value which will be passed as stdin to the spawned process. Supplying this value will override `stdio[0]`.
   * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child process. This will be set to `command` if not specified.
@@ -856,7 +862,7 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `옵션` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
+* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
 * Returns: {boolean}
