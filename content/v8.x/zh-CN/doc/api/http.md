@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -85,7 +85,7 @@ added: v0.3.4
 -->
 
 * `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
-  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **默认:** `false`.
+  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Maximum number of sockets to allow per host. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
@@ -109,7 +109,7 @@ added: v0.11.4
 
 * `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
 * `callback` {Function} Callback function that receives the created socket
-* 返回：{net.Socket}
+* Returns: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
@@ -185,7 +185,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* 返回：{string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -255,7 +255,7 @@ added: v1.4.1
 
 Emitted when the request has been aborted by the client. This event is only emitted on the first call to `abort()`.
 
-### 事件：'connect'
+### Event: 'connect'
 
 <!-- YAML
 added: v0.7.0
@@ -352,7 +352,7 @@ added: v0.5.3
 
 Emitted after a socket is assigned to this request.
 
-### 事件：'timeout'
+### Event: 'timeout'
 
 <!-- YAML
 added: v0.7.8
@@ -360,7 +360,7 @@ added: v0.7.8
 
 Emitted when the underlying socket times out from inactivity. This only notifies that the socket has been idle. The request must be aborted manually.
 
-请参阅：[`request.setTimeout()`][]
+See also: [`request.setTimeout()`][]
 
 ### Event: 'upgrade'
 
@@ -478,11 +478,11 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* 返回：{string}
+* Returns: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
-例如：
+Example:
 
 ```js
 const contentType = request.getHeader('Content-Type');
@@ -498,7 +498,7 @@ added: v1.6.0
 
 Removes a header that's already defined into headers object.
 
-例如：
+Example:
 
 ```js
 request.removeHeader('Content-Type');
@@ -515,13 +515,13 @@ added: v1.6.0
 
 Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-例如：
+Example:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
 ```
 
-或
+or
 
 ```js
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -571,7 +571,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
 
-例如：
+Example:
 
 ```js
 const http = require('http');
@@ -600,11 +600,11 @@ added: v0.1.29
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. 默认值为 `'utf8'`。
+The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
 
 The `callback` argument is optional and will be called when this chunk of data is flushed.
 
-如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 ## Class: http.Server
 
@@ -688,15 +688,15 @@ When the `'clientError'` event occurs, there is no `request` or `response` objec
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
 * `rawPacket`: the raw packet of current request.
 
-### 事件：'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.4
 -->
 
-当服务器关闭时发出。
+Emitted when the server closes.
 
-### 事件：'connect'
+### Event: 'connect'
 
 <!-- YAML
 added: v0.7.0
@@ -710,7 +710,7 @@ Emitted each time a client requests an HTTP `CONNECT` method. If this event is n
 
 After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
-### 事件：'connection'
+### Event: 'connection'
 
 <!-- YAML
 added: v0.1.0
@@ -759,7 +759,7 @@ Stops the server from accepting new connections. See [`net.Server.close()`][].
 
 ### server.listen()
 
-Starts the HTTP server listening for connections. 此方法与 [`net.Server`][] 中的 [`server.listen()`][] 相同。
+Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### server.listening
 
@@ -769,7 +769,7 @@ added: v5.7.0
 
 * {boolean}
 
-一个用于指示服务是是否在监听连接的布尔值。
+A Boolean indicating whether or not the server is listening for connections.
 
 ### server.maxHeadersCount
 
@@ -777,7 +777,7 @@ added: v5.7.0
 added: v0.7.0
 -->
 
-* {number} **默认值：** `2000`
+* {number} **Default:** `2000`
 
 Limits maximum incoming headers count. If set to 0 - no limit will be applied.
 
@@ -787,7 +787,7 @@ Limits maximum incoming headers count. If set to 0 - no limit will be applied.
 added: v8.14.0
 -->
 
-* {number} **默认值：** `40000`
+* {number} **Default:** `40000`
 
 Limit the amount of time the parser will wait to receive the complete HTTP headers.
 
@@ -808,7 +808,7 @@ If there is a `'timeout'` event listener on the Server object, then it will be c
 
 By default, the Server's timeout value is 2 minutes, and sockets are destroyed automatically if they time out. However, if a callback is assigned to the Server's `'timeout'` event, timeouts must be handled explicitly.
 
-返回 `server`。
+Returns `server`.
 
 ### server.timeout
 
@@ -848,7 +848,7 @@ This object is created internally by an HTTP server — not by the user. It is p
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
 
-### 事件：'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.6.7
@@ -856,7 +856,7 @@ added: v0.6.7
 
 Indicates that the underlying connection was terminated before [`response.end()`][] was called or able to flush.
 
-### 事件：'finish'
+### Event: 'finish'
 
 <!-- YAML
 added: v0.3.6
@@ -933,11 +933,11 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* 返回：{string}
+* Returns: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-例如：
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -949,11 +949,11 @@ const contentType = response.getHeader('content-type');
 added: v7.7.0
 -->
 
-* 返回：{Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-例如：
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -969,13 +969,13 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* 返回：{Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
-*注意*：`response.getHeaders()` 方法返回的对象 *不是* 从 JavaScript `Object` 原型继承来的。 这意味着典型的 `Object` 方法例如 `obj.toString()`, `obj.hasOwnProperty()`，以及其他方法都未定义且 *无法工作*。
+*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-例如：
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -992,11 +992,11 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-例如：
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1022,7 +1022,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-例如：
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1036,7 +1036,7 @@ added: v0.7.5
 
 * {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -1051,13 +1051,13 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-例如：
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-或
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1102,7 +1102,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-例如：
+Example:
 
 ```js
 const http = require('http');
@@ -1123,7 +1123,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-例如：
+Example:
 
 ```js
 response.statusCode = 404;
@@ -1141,7 +1141,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-例如：
+Example:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1158,7 +1158,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* 返回：{boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1172,7 +1172,7 @@ Note that in the `http` module, the response body is omitted when the request is
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 ### response.writeContinue()
 
@@ -1200,7 +1200,7 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-例如：
+Example:
 
 ```js
 const body = 'hello world';
@@ -1247,7 +1247,7 @@ added: v0.3.8
 
 Emitted when the request has been aborted.
 
-### 事件：'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.4.2
@@ -1312,7 +1312,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. 例如：
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -1476,7 +1476,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. 例如：
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -1496,7 +1496,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. 例如：
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -1545,7 +1545,7 @@ added: v0.1.13
 
 * `requestListener` {Function}
 
-* 返回：{http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1564,7 +1564,7 @@ changes:
 
 * `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* 返回：{http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1658,7 +1658,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* 返回：{http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
@@ -1668,7 +1668,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-例如：
+Example:
 
 ```js
 const postData = querystring.stringify({
