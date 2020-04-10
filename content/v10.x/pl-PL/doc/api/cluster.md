@@ -1,10 +1,10 @@
-# Grono
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
-Pojedyncza instancja Node.js tworzy pojedynczy wątek. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -49,7 +49,7 @@ Worker 5644 started
 
 Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
 
-## Jak to działa
+## How It Works
 
 <!--type=misc-->
 
@@ -75,7 +75,7 @@ Because workers are all separate processes, they can be killed or re-spawned dep
 
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
-## Klasa: Worker
+## Class: Worker
 
 <!-- YAML
 added: v0.7.0
@@ -83,7 +83,7 @@ added: v0.7.0
 
 A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
-### Zdarzene: 'disconnect'
+### Event: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
@@ -155,7 +155,7 @@ It is not emitted in the worker.
 added: v0.7.0
 -->
 
-* `wiadomość` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Similar to the `'message'` event of `cluster`, but specific to this worker.
@@ -313,7 +313,7 @@ worker.kill();
 added: v0.8.0
 -->
 
-* {liczba}
+* {number}
 
 Each new worker is given its own unique id, this id is stored in the `id`.
 
@@ -378,7 +378,7 @@ changes:
     description: The `callback` parameter is supported now.
 -->
 
-* `wiadomość` {Object}
+* `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
 * Returns: {boolean}
@@ -403,7 +403,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Zdarzene: 'disconnect'
+## Event: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -512,7 +512,7 @@ changes:
 -->
 
 * `worker` {cluster.Worker}
-* `wiadomość` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Emitted when the cluster master receives a message from any worker.
