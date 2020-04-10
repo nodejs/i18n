@@ -29,7 +29,7 @@
 </tr>
 </table>
 
-* Outras versões
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
@@ -39,9 +39,9 @@
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
-  * [0.10x](CHANGELOG_V010.md)
+  * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arquivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="11.14.0"></a>
 
@@ -200,9 +200,9 @@
 
 ### Notable Changes
 
-* **cripto**
+* **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **eventos**
+* **events**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
@@ -2374,7 +2374,7 @@ Fixes for the following CVEs are included in this release:
   * Updated ICU to 63.1. [#23715](https://github.com/nodejs/node/pull/23715)
 * **repl**
   * Top-level for-await-of is now supported in the REPL. [#23841](https://github.com/nodejs/node/pull/23841)
-* **temporizadores**
+* **timers**
   * Fixed an issue that could cause timers to enter an infinite loop. [#23870](https://github.com/nodejs/node/pull/23870)
 
 ### Commits
@@ -2489,7 +2489,7 @@ Fixes for the following CVEs are included in this release:
 * Internal
   * Windows performance-counter support has been removed. [#22485](https://github.com/nodejs/node/pull/22485)
   * The `--expose-http2` command-line option has been removed. [#20887](https://github.com/nodejs/node/pull/20887)
-* Temporizadores
+* Timers
   * Interval timers will be rescheduled even if previous interval threw an error. [#20002](https://github.com/nodejs/node/pull/20002)
   * `nextTick` queue will be run after each immediate and timer. [#22842](https://github.com/nodejs/node/pull/22842)
 * `util`
