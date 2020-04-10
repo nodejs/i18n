@@ -1,18 +1,18 @@
-# Node.js のリリースプロセス
+# Node.js Release Process
 
-このドキュメントでは、Node.js のリリースプロセスを技術的側面から説明します。 The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Table of Contents
 
-* [誰がリリースできますか？](#who-can-make-a-release) 
-  * [1. Jenkins へのリリースアクセス](#1-jenkins-release-access)
-  * [2. <nodejs.org> アクセス](#2-nodejsorg-access)
+* [Who can make a release?](#who-can-make-a-release) 
+  * [1. Jenkins Release Access](#1-jenkins-release-access)
+  * [2. <nodejs.org> Access](#2-nodejsorg-access)
   * [3. A Publicly Listed GPG Key](#3-a-publicly-listed-gpg-key)
-* [リリースの作成方法](#how-to-create-a-release) 
+* [How to create a release](#how-to-create-a-release) 
   * [0. Pre-release steps](#0-pre-release-steps)
   * [1. Update the staging branch](#1-update-the-staging-branch)
   * [2. Create a new branch for the release](#2-create-a-new-branch-for-the-release)
-  * [3. `src/node_version.h` の更新](#3-update-srcnode_versionh)
+  * [3. Update `src/node_version.h`](#3-update-srcnode_versionh)
   * [4. Update the Changelog](#4-update-the-changelog)
   * [5. Create Release Commit](#5-create-release-commit)
   * [6. Propose Release on GitHub](#6-propose-release-on-github)
@@ -23,20 +23,20 @@
   * [11. Tag and Sign the Release Commit](#11-tag-and-sign-the-release-commit)
   * [12. Set Up For the Next Release](#12-set-up-for-the-next-release)
   * [13. Promote and Sign the Release Builds](#13-promote-and-sign-the-release-builds)
-  * [14. リリースを確認する](#14-check-the-release)
-  * [15. ブログ記事を作成する](#15-create-a-blog-post)
+  * [14. Check the Release](#14-check-the-release)
+  * [15. Create a Blog Post](#15-create-a-blog-post)
   * [16. Create the release on GitHub](#16-create-the-release-on-github)
-  * [17. クリーンアップ](#17-cleanup)
-  * [18. アナウンス](#18-announce)
-  * [19. お祝い](#19-celebrate)
+  * [17. Cleanup](#17-cleanup)
+  * [18. Announce](#18-announce)
+  * [19. Celebrate](#19-celebrate)
 
-## 誰がリリースできますか？
+## Who can make a release?
 
-リリースの権限は Node.js TSC によって与えられます。 Once authorized, an individual must have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must have the following:
 
-### 1. Jenkins へのリリースアクセス
+### 1. Jenkins Release Access
 
-リリースフローには、次の3つの関連する Jenkins ジョブを使用する必要があります:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
@@ -46,7 +46,7 @@
 
 The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 2. <nodejs.org> アクセス
+### 2. <nodejs.org> Access
 
 The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
@@ -70,9 +70,9 @@ The key you use may be a child/subkey of an existing key.
 
 Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
-## リリースの作成方法
+## How to create a release
 
-備考:
+Notes:
 
 * Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
 * Version strings are listed below as *"vx.y.z"* or *"x.y.z"*. Substitute for the release version.
@@ -141,7 +141,7 @@ Create a new branch named `vx.y.z-proposal`, off the corresponding staging branc
 $ git checkout -b v1.2.3-proposal upstream/v1.x-staging
 ```
 
-### 3. `src/node_version.h` の更新
+### 3. Update `src/node_version.h`
 
 Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
@@ -376,11 +376,11 @@ If you didn't wait for ARM builds in the previous step before promoting the rele
 It is possible to only sign a release by running `./tools/release.sh -s
 vX.Y.Z`.
 
-### 14. リリースを確認する
+### 14. Check the Release
 
 Your release should be available at `https://nodejs.org/dist/vx.y.z/` and <https://nodejs.org/dist/latest/>. Check that the appropriate files are in place. You may want to check that the binaries are working as appropriate and have the right internal version strings. Check that the API docs are available at <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
 
-### 15. ブログ記事を作成する
+### 15. Create a Blog Post
 
 There is an automatic build that is kicked off when you promote new builds, so within a few minutes nodejs.org will be listing your new version as the latest release. However, the blog post is not yet fully automatic.
 
@@ -407,11 +407,11 @@ Create a new blog post by running the [nodejs.org release-post.js script](https:
 * For the description, copy the rest of the changelog entry.
 * Click on the "Publish release" button.
 
-### 17. クリーンアップ
+### 17. Cleanup
 
 Close your release proposal PR and delete the proposal branch.
 
-### 18. アナウンス
+### 18. Announce
 
 The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
@@ -421,6 +421,6 @@ To ensure communication goes out with the timing of the blog post, please allow 
 
 Ping the IRC ops and the other [Partner Communities](https://github.com/nodejs/community-committee/blob/master/governance/PARTNER_COMMUNITIES.md) liaisons.
 
-### 19. お祝い
+### 19. Celebrate
 
-*どんな形であれ、お祝いしましょう。*
+*In whatever form you do this...*
