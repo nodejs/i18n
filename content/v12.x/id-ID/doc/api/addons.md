@@ -1,4 +1,4 @@
-# Addon C++
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -9,25 +9,25 @@ There are three options for implementing Addons: N-API, nan, or direct use of in
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
-* V8: library C++ yang digunakan pada Node.js untuk menyediakan implementasi JavaScript. V8 menyediakan mekanisme untuk membuat objek, memanggil fungsi, dsb. API V8 didokumentasikan pada file header `v8.h` (`deps/v8/include/v8.h` dalam kode sumber Node.js), yang juga tersedia [online](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): Pustaka C yang mengimplementasikan acara loop Node.js, Pekerjanya dan semua hal yang dikerjakan cocok dengan platfrom It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv juga menyediakan pthreads seperti abstraksi threading yang mungkin digunakan untuk kekuatan lebih canggih pada Addons yang sinkron untuk bergerak melampaui acara standar loop. Penulis addon diajak berfikir tentang bagaimana untuk menghindari serta memblokir acara loop untuk I/O atau tugas-tugas lain dalam waktu yang intensif oleh karena itu proses memuat kerja melalui opersi sistem  yang tidak menghalangi, utas pekerja.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Perpustakaan internal Node.js Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
+* Internal Node.js libraries. Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
 
 * Node.js includes other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Halo, Dunia
+## Hello world
 
-Contoh "Halo, Dunia" ini adalah Addon sederhana, yang ditulis dalam C ++, yaitu setara dengan kode JavaScript berikut:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-Pertama, buat file `hello.cc`:
+First, create the file `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -65,7 +65,7 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Tidak ada titik koma setelah `NODE_MODULE` karena tidak fungsi (Lihat `node.h`).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
@@ -239,9 +239,9 @@ Test in JavaScript by running:
 require('./build/Release/addon');
 ```
 
-### Bangunan
+### Building
 
-Setelah kode sumber telah ditulis, kemudian harus disusun ke dalam file biner `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. File ini digunakan oleh [node-gyp](https://github.com/nodejs/node-gyp) — alat ditulis khusus untuk mengkompilasi Addons Node.js.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -254,13 +254,13 @@ Setelah kode sumber telah ditulis, kemudian harus disusun ke dalam file biner `a
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Versi ini tidak tersedia secara langsung untuk pengembang  yang menggunakan dan memasukan hanya untuk mendukung kemampuan di `NPM menginstal` sebagai perintah untuk kompilasi dan memasang Addons. Pengembang yang ingin menggunakan `node-gyp` langsung dapat menginstal menggunakan perintah `npm menginstal -g node-gyp`. Lihat `node-gyp` [petunjuk instalasi](https://github.com/nodejs/node-gyp#installation) untuk informasi lebih lanjut, termasuk persyaratan spesifik platform.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
-Setelah file `binding.gyp` yang telah dibuat, menggunakan `simpul-gyp mengkonfigurasi` untuk menghasilkan file bangunan proyek yang tepat untuk platform saat ini. Ini akan menghasilkan sebuah `Makefile` (pada platform Unix) atau `vcxproj` file (pada Windows) di `bangunan /` direktori.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Selanjutnya, aktifkan ` node-gyp build ` sebagai perintah untuk menghasilkan  kompilasi `addon.node` Ini akan dimasukkan ke dalam direktori `build/Release/`
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
-Bila menggunakan `npm install` untuk menginstal Addon Node.js, npm menggunakan bundelnya sendiri versi ` node-gyp ` untuk melakukan serangkaian tindakan yang sama, menghasilkan dari Addon untuk platform pengguna sesuai permintaan.
+When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require_id) to the built `addon.node` module:
 
@@ -272,47 +272,47 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Karena jalur yang tepat ke biner Addon yang dikompilasi dapat bervariasi tergantung pada caranya melakukan kompilasi (i.e. sometimes it may be in `./build/Debug/`)Addons dapat menggunakan paket [bindings](https://github.com/TooTallNate/node-bindings) untuk memuat modul yang dikompilasi.
+Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
 
 While the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a `try…catch` pattern similar to:
 
 ```js
-coba {
-  kembali membutuhkan('./build/Release/addon.node');
-} menangkap (err) {
-  kembali membutuhkan('./build/Debug/addon.node');
+try {
+  return require('./build/Release/addon.node');
+} catch (err) {
+  return require('./build/Debug/addon.node');
 }
 ```
 
-### Menautkan ke dependensi Node.js sendiri
+### Linking to Node.js' own dependencies
 
 Node.js uses statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
-* Ketika ` node-gyp ` berjalan, ia akan mendeteksi versi rilis spesifik Node.js dan mengunduh  sumber lengkap tarball atau hanya header saja. Jika penuh sumber download, Addons akan memiliki akses penuh ke set lengkap dependensi Node.js. Namun, jika hanya header Node.js yang di-download, kemudian hanya simbol-simbol yang diekspor oleh Node.js saja akan tersedia.
+* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
-* ` node-gyp ` dapat dijalankan menggunakan flag ` --nodedir ` yang menunjuk ke Node.js lokal gambar sumber. Menggunakan opsi ini, Addon akan memiliki akses ke set lengkap dependensi.
+* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
 ### Loading Addons using `require()`
 
-Ekstensi nama file biner Addon yang dikompilasi adalah ` .node ` (sebagai lawan ke ` .dll ` atau ` .so `). The [`require()`](modules.html#modules_require_id) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require_id) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-When calling [`require()`](modules.html#modules_require_id), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Satu peringatan, bahwa Node.js akan berupaya untuk mencari dan memuat modul atau File JavaScript yang kebetulan memiliki nama dasar yang sama. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require_id) will give precedence to the `addon.js` file and load it instead.
+When calling [`require()`](modules.html#modules_require_id), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require_id) will give precedence to the `addon.js` file and load it instead.
 
-## Abstraksi Asli untuk Node.js
+## Native Abstractions for Node.js
 
-Setiap contoh yang diilustrasikan dalam dokumen ini menggunakan langsung dari API Node.js dan V8 untuk mengimplementasikan Addons. The V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
+Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. The V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
-[ Abstraksi Asli untuk Node.js ](https://github.com/nodejs/nan) (atau ` nan `) menyediakan seperangkat alat Pengembang Addon yang disarankan supaya digunakan untuk menjaga kompatibilitas antara masa lalu dan rilis mendatang dari V8 dan Node.js. Lihat ` nan ` [ contoh ](https://github.com/nodejs/nan/tree/master/examples/) untuk sebuah ilustrasi cara penggunaannya.
+The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
 ## N-API
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
-N-API adalah API untuk membangun Addons asli. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Ini dimaksudkan untuk mengisolasi Addons dari perubahan pada mesin JavaScript yang mendasarinya dan izinkan modul dan memungkingkan modul dikompilasi pada satu versi untuk menjalankan pada versi Node.js yang lebih baru tanpa kompilasi ulang. Addons dibangun / dikemas dengan pendekatan / alat yang sama diuraikan dalam dokumen ini (node-gyp, dll). Satu-satunya perbedaan adalah set API yang digunakan oleh kode asli. Sebagai gantinya menggunakan V8 atau [ Abstraksi Asli untuk Node.js ](https://github.com/nodejs/nan) API, fungsi tersedia di N-API digunakan.
+N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Semua instruksi lainnya tetap sama.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. All other instructions remain the same.
 
 ```cpp
 // hello.cc using N-API
