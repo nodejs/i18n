@@ -42,7 +42,7 @@ server.on('stream', (stream, headers) => {
     'content-type': 'text/html',
     ':status': 200
   });
-  stream.end('<h1>Ola mundo</h1>');
+  stream.end('<h1>Hello World</h1>');
 });
 
 server.listen(8443);
@@ -225,8 +225,8 @@ session.on('stream', (stream, headers, flags) => {
     ':status': 200,
     'content-type': 'text/plain'
   });
-  stream.write('ola ');
-  stream.end('mundo');
+  stream.write('hello ');
+  stream.end('world');
 });
 ```
 
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -651,7 +651,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Retorna: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -939,7 +939,7 @@ const client = http2.connect('http://example.org:8000');
 const { NGHTTP2_CANCEL } = http2.constants;
 const req = client.request({ ':path': '/' });
 
-// Cancela o stream se não tiver atividade após 5 segundos
+// Cancel the stream if there's no activity after 5 seconds
 req.setTimeout(5000, () => req.close(NGHTTP2_CANCEL));
 ```
 
@@ -1178,7 +1178,7 @@ const fs = require('fs');
 
 const server = http2.createServer();
 server.on('stream', (stream) => {
-  const fd = fs.openSync('/algum/arquivo', 'r');
+  const fd = fs.openSync('/some/file', 'r');
 
   const stat = fs.fstatSync(fd);
   const headers = {
@@ -1388,8 +1388,8 @@ server.on('stream', (stream, headers, flags) => {
     [HTTP2_HEADER_STATUS]: 200,
     [HTTP2_HEADER_CONTENT_TYPE]: 'text/plain'
   });
-  stream.write('ola ');
-  stream.end('mundo');
+  stream.write('hello ');
+  stream.end('world');
 });
 ```
 
@@ -1404,7 +1404,7 @@ changes:
 
 The `'timeout'` event is emitted when there is no activity on the Server for a given number of milliseconds set using `http2server.setTimeout()`. **Default:** 0 (no timeout)
 
-#### `server.close ([callback])`
+#### `server.close([callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1415,7 +1415,7 @@ Stops the server from establishing new sessions. This does not prevent new reque
 
 If `callback` is provided, it is not invoked until all active sessions have been closed, although the server has already stopped allowing new sessions. See [`net.Server.close()`][] for more details.
 
-#### `server.setTimeout ([msecs][, callback])`
+#### `server.setTimeout([msecs][, callback])`
 <!-- YAML
 added: v8.4.0
 changes:
@@ -1426,13 +1426,30 @@ changes:
 
 * `msecs` {number} **Default:** 0 (no timeout)
 * `callback` {Function}
-* Retorna: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
 The given callback is registered as a listener on the `'timeout'` event.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Timeout in milliseconds. **Default:** 0 (no timeout)
+
+The number of milliseconds of inactivity before a socket is presumed to have timed out.
+
+A value of `0` will disable the timeout behavior on incoming connections.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### Class: `Http2SecureServer`
 <!-- YAML
@@ -1508,8 +1525,8 @@ server.on('stream', (stream, headers, flags) => {
     [HTTP2_HEADER_STATUS]: 200,
     [HTTP2_HEADER_CONTENT_TYPE]: 'text/plain'
   });
-  stream.write('ola ');
-  stream.end('mundo');
+  stream.write('hello ');
+  stream.end('world');
 });
 ```
 
@@ -1527,7 +1544,7 @@ added: v8.4.0
 
 The `'unknownProtocol'` event is emitted when a connecting client fails to negotiate an allowed protocol (i.e. HTTP/2 or HTTP/1.1). The event handler receives the socket for handling. If no listener is registered for this event, the connection is terminated. See the [Compatibility API](#http2_compatibility_api).
 
-#### `server.close ([callback])`
+#### `server.close([callback])`
 <!-- YAML
 added: v8.4.0
 -->
@@ -1538,20 +1555,37 @@ Stops the server from establishing new sessions. This does not prevent new reque
 
 If `callback` is provided, it is not invoked until all active sessions have been closed, although the server has already stopped allowing new sessions. See [`tls.Server.close()`][] for more details.
 
-#### `server.setTimeout ([msecs][, callback])`
+#### `server.setTimeout([msecs][, callback])`
 <!-- YAML
 added: v8.4.0
 -->
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Retorna: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
 The given callback is registered as a listener on the `'timeout'` event.
 
-In case of no callback function were assigned, a new `ERR_INVALID_CALLBACK` error will be thrown.
+In case if `callback` is not a function, a new `ERR_INVALID_CALLBACK` error will be thrown.
+
+#### `server.timeout`
+<!-- YAML
+added: v8.4.0
+changes:
+  - version: v13.0.0
+    pr-url: https://github.com/nodejs/node/pull/27558
+    description: The default timeout changed from 120s to 0 (no timeout).
+-->
+
+* {number} Timeout in milliseconds. **Default:** 0 (no timeout)
+
+The number of milliseconds of inactivity before a socket is presumed to have timed out.
+
+A value of `0` will disable the timeout behavior on incoming connections.
+
+The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
 ### `http2.createServer(options[, onRequestHandler])`<!-- YAML
 added: v8.4.0
@@ -1603,7 +1637,7 @@ changes:
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Retorna: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1673,7 +1707,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Retorna: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1716,7 +1750,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/16676
     description: Added the `maxHeaderListPairs` option with a default limit of
                  128 header pairs.
--->* `authority` {string|URL}
+-->* `authority` {string|URL} The remote HTTP/2 server to connect to. This must be in the form of a minimal, valid URL with the `http://` or `https://` prefix, host name, and IP port (if a non-default port is used). Userinfo (user ID and password), path, querystring, and fragment details in the URL will be ignored.
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
@@ -1734,7 +1768,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function} Will be registered as a one-time listener of the [`'connect'`][] event.
-* Retorna: {ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1742,7 +1776,7 @@ Returns a `ClientHttp2Session` instance.
 const http2 = require('http2');
 const client = http2.connect('https://localhost:1234');
 
-/* Usa o cliente */
+/* Use the client */
 
 client.close();
 ```
@@ -1756,7 +1790,7 @@ added: v8.4.0
 
 <a id="error_codes"></a>
 
-| Valor  | Nome                | Constante                                     |
+| Value  | Name                | Constant                                      |
 | ------ | ------------------- | --------------------------------------------- |
 | `0x00` | No Error            | `http2.constants.NGHTTP2_NO_ERROR`            |
 | `0x01` | Protocol Error      | `http2.constants.NGHTTP2_PROTOCOL_ERROR`      |
@@ -1790,7 +1824,7 @@ added: v8.4.0
 -->
 
 * `settings` {HTTP/2 Settings Object}
-* Retorna: {Buffer}
+* Returns: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 
@@ -1800,7 +1834,7 @@ const http2 = require('http2');
 const packed = http2.getPackedSettings({ enablePush: false });
 
 console.log(packed.toString('base64'));
-// Imprime: AAIAAAAA
+// Prints: AAIAAAAA
 ```
 
 ### `http2.getUnpackedSettings(buf)`
@@ -1871,7 +1905,7 @@ The
 
 All additional properties on the settings object are ignored.
 
-### Tratamento de erros
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -1927,7 +1961,7 @@ const server = net.createServer((socket) => {
   let name = '';
   socket.setEncoding('utf8');
   socket.on('data', (chunk) => name += chunk);
-  socket.on('end', () => socket.end(`ola ${name}`));
+  socket.on('end', () => socket.end(`hello ${name}`));
 });
 
 server.listen(8000);
@@ -2125,7 +2159,7 @@ added: v8.4.0
 deprecated: v13.0.0
 -->
 
-> Estabilidade: 0 - Descontinuado. Use [`request.socket`][].
+> Stability: 0 - Deprecated. Use [`request.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2243,7 +2277,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Retorna: {http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2350,7 +2384,7 @@ Url {
 added: v8.4.0
 -->* Extends: {Stream}
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+This object is created internally by an HTTP server, not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 #### Event: `'close'`
 <!-- YAML
@@ -2382,7 +2416,7 @@ Attempting to set a header field name or value that contains invalid characters 
 #### `response.connection`<!-- YAML
 added: v8.4.0
 deprecated: v13.0.0
--->> Estabilidade: 0 - Descontinuado. Use [`response.socket`][].
+-->> Stability: 0 - Deprecated. Use [`response.socket`][].
 
 * {net.Socket|tls.TLSSocket}
 
@@ -2397,7 +2431,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retorna: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2408,7 +2442,7 @@ If `callback` is specified, it will be called when the response stream is finish
 #### `response.finished`<!-- YAML
 added: v8.4.0
 deprecated: v13.4.0
--->> Estabilidade: 0 - Descontinuado. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -2417,7 +2451,7 @@ Boolean value that indicates whether the response has completed. Starts as `fals
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* Retorna: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
@@ -2430,7 +2464,7 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* Retorna: {string []}
+* Returns: {string[]}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
@@ -2447,7 +2481,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2467,7 +2501,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -2522,7 +2556,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-ou
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -2549,7 +2583,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Retorna: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2627,7 +2661,7 @@ added: v8.4.0
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -2660,7 +2694,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Retorna: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
@@ -2669,7 +2703,7 @@ Returns a reference to the `Http2ServerResponse`, so that calls can be chained.
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
 ```js
-const body = 'ola mundo';
+const body = 'hello world';
 response.writeHead(200, {
   'Content-Length': Buffer.byteLength(body),
   'Content-Type': 'text/plain' });
