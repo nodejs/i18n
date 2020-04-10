@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* その他のバージョン
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -42,7 +42,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [アーカイブ](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.1"></a>
 
@@ -2016,18 +2016,18 @@ _This is a security release impacting Windows 10 users._
 
 ### Notable changes
 
-* バッファ
+* Buffer
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
 * Child Process
   * The fork and execFile methods now have stronger argument validation [#7399](https://github.com/nodejs/node/pull/7399).
-* クラスタ
+* Cluster
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
 * Deps
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
-* ファイルシステム
+* File System
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).
 * Intl
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
