@@ -1,4 +1,4 @@
-# Proces
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 <!-- type=global -->
@@ -575,7 +575,7 @@ Once `process.connected` is `false`, it is no longer possible to send messages o
 ## `process.cpuUsage([previousValue])`<!-- YAML
 added: v6.1.0
 -->* `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Retourneert: {Object}
+* Returns: {Object}
   * `user` {integer}
   * `system` {integer}
 
@@ -597,7 +597,7 @@ console.log(process.cpuUsage(startUsage));
 
 ## `process.cwd()`<!-- YAML
 added: v0.1.8
--->* Retourneert: {string}
+-->* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -936,7 +936,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.geteuid()`<!-- YAML
 added: v2.0.0
--->* Retourneert: {Object}
+-->* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -950,7 +950,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.getgid()`<!-- YAML
 added: v0.1.31
--->* Retourneert: {Object}
+-->* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -972,7 +972,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.getuid()`<!-- YAML
 added: v0.1.28
--->* Retourneert: {integer}
+-->* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -986,7 +986,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.hasUncaughtExceptionCaptureCallback()`<!-- YAML
 added: v9.3.0
--->* Retourneert: {boolean}
+-->* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1019,7 +1019,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Retourneert: {bigint}
+-->* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
@@ -1105,7 +1105,7 @@ changes:
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9587
     description: Added `external` to the returned object.
--->* Retourneert: {Object}
+-->* Returns: {Object}
   * `rss` {integer}
   * `heapTotal` {integer}
   * `heapUsed` {integer}
@@ -1304,7 +1304,7 @@ In custom builds from non-release versions of the source tree, only the `name` p
 
 ## `process.report`<!-- YAML
 added: v11.8.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {Object}
 
@@ -1312,7 +1312,7 @@ added: v11.8.0
 
 ### `process.report.directory`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1324,7 +1324,7 @@ console.log(`Report directory is ${process.report.directory}`);
 
 ### `process.report.filename`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1336,10 +1336,10 @@ console.log(`Report filename is ${process.report.filename}`);
 
 ### `process.report.getReport([err])`<!-- YAML
 added: v11.8.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * `err` {Error} A custom error used for reporting the JavaScript stack.
-* Retourneert: {Object}
+* Returns: {Object}
 
 Returns a JavaScript Object representation of a diagnostic report for the running process. The report's JavaScript stack trace is taken from `err`, if present.
 
@@ -1356,7 +1356,7 @@ Additional documentation is available in the [report documentation](report.html)
 
 ### `process.report.reportOnFatalError`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1368,7 +1368,7 @@ console.log(`Report on fatal error: ${process.report.reportOnFatalError}`);
 
 ### `process.report.reportOnSignal`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1380,7 +1380,7 @@ console.log(`Report on signal: ${process.report.reportOnSignal}`);
 
 ### `process.report.reportOnUncaughtException`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1392,7 +1392,7 @@ console.log(`Report on exception: ${process.report.reportOnUncaughtException}`);
 
 ### `process.report.signal`<!-- YAML
 added: v11.12.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1404,7 +1404,7 @@ console.log(`Report signal: ${process.report.signal}`);
 
 ### `process.report.writeReport([filename][, err])`<!-- YAML
 added: v11.8.0
--->> Stabiliteit: 1 - Experimenteel
+-->> Stability: 1 - Experimental
 
 * `filename` {string} Name of the file where the report is written. This should be a relative path, that will be appended to the directory specified in `process.report.directory`, or the current working directory of the Node.js process, if unspecified.
 * `err` {Error} A custom error used for reporting the JavaScript stack.
@@ -1471,7 +1471,7 @@ added: v0.5.9
 * `options` {Object} used to parameterize the sending of certain types of handles.`options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1665,7 +1665,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Bijvoorbeeld:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1734,7 +1734,7 @@ console.log(
 
 ## `process.uptime()`<!-- YAML
 added: v0.5.0
--->* Retourneert: {number}
+-->* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
