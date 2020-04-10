@@ -1,8 +1,8 @@
-# 경로
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
@@ -301,8 +301,7 @@ added: v0.1.23
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform-specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform-specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
@@ -502,9 +501,7 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-On Windows, both the forward slash (`/`) and backward slash (``\`) are accepted
-as path segment separators; however, the``path`methods only add backward
-slashes (`\`).
+On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.toNamespacedPath(path)
 
