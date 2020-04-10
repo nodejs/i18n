@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estability: 2 - Estable
+> Stability: 2 - Stable
 
-HTTPS es el protocolo de HTTP sobre TLS/SSL. En Node.js, esto se implementa como un módulo separado.
+HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
 ## Class: `https.Agent`
 <!-- YAML
@@ -19,7 +19,7 @@ changes:
     description: support `0` `maxCachedSessions` to disable TLS session caching.
 -->
 
-Un objeto [`Agent`][] para HTTPS similar a [`http.Agent`][]. See [`https.request()`][] for more information.
+An [`Agent`][] object for HTTPS similar to [`http.Agent`][]. See [`https.request()`][] for more information.
 
 ### `new Agent([options])`
 <!-- YAML
@@ -60,9 +60,9 @@ https.globalAgent.on('keylog', (line, tlsSocket) => {
 added: v0.3.4
 -->
 
-* Extiende a: {tls.Server}
+* Extends: {tls.Server}
 
-Vea [`http.Server`][] para más información.
+See [`http.Server`][] for more information.
 
 ### `server.close([callback])`
 <!-- YAML
@@ -72,7 +72,7 @@ added: v0.1.90
 * `callback` {Function}
 * Returns: {https.Server}
 
-Vea [`server.close()`][`http.close()`] desde el módulo HTTP para detalles.
+See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 ### `server.headersTimeout`
 <!-- YAML
@@ -85,13 +85,13 @@ See [`http.Server#headersTimeout`][].
 
 ### `server.listen()`
 
-Inicia el servidor HTTPS escuchando por conexiones encriptadas. Este método es idéntico a [`server.listen()`][] de [`net.Server`][].
+Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### `server.maxHeadersCount`
 
 * {number} **Default:** `2000`
 
-Vea [`http.Server#maxHeadersCount`][].
+See [`http.Server#maxHeadersCount`][].
 
 ### `server.setTimeout([msecs][, callback])`
 <!-- YAML
@@ -102,7 +102,7 @@ added: v0.11.2
 * `callback` {Function}
 * Returns: {https.Server}
 
-Vea [`http.Server#setTimeout()`][].
+See [`http.Server#setTimeout()`][].
 
 ### `server.timeout`
 <!-- YAML
@@ -111,7 +111,7 @@ added: v0.11.2
 
 * {number} **Default:** `120000` (2 minutes)
 
-Vea [`http.Server#timeout`][].
+See [`http.Server#timeout`][].
 
 ### `server.keepAliveTimeout`
 <!-- YAML
@@ -120,7 +120,7 @@ added: v8.0.0
 
 * {number} **Default:** `5000` (5 seconds)
 
-Vea [`http.Server#keepAliveTimeout`][].
+See [`http.Server#keepAliveTimeout`][].
 
 ## `https.createServer([options][, requestListener])`
 <!-- YAML
@@ -128,7 +128,7 @@ added: v0.3.4
 -->
 
 * `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
-* `requestListener` {Function} Un oyente a ser añadido al evento `'request'`.
+* `requestListener` {Function} A listener to be added to the `'request'` event.
 * Returns: {https.Server}
 
 ```js
@@ -147,7 +147,7 @@ https.createServer(options, (req, res) => {
 }).listen(8000);
 ```
 
-O
+Or
 
 ```js
 const https = require('https');
@@ -182,9 +182,9 @@ changes:
 * `options` {Object | string | URL} Accepts the same `options` as [`https.request()`][], with the `method` always set to `GET`.
 * `callback` {Function}
 
-Como [`http.get()`][] pero para HTTPS.
+Like [`http.get()`][] but for HTTPS.
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -207,7 +207,7 @@ https.get('https://encrypted.google.com/', (res) => {
 added: v0.5.9
 -->
 
-Instancia global de [`https.Agent`][] para todas las solicitudes de cliente de HTTPS.
+Global instance of [`https.Agent`][] for all HTTPS client requests.
 
 ## `https.request(options[, callback])`
 ## `https.request(url[, options][, callback])`
@@ -233,11 +233,11 @@ changes:
   * `agent` **Default:** `https.globalAgent`
 * `callback` {Function}
 
-Hace una solicitud a un servidor web seguro.
+Makes a request to a secure web server.
 
 The following additional `options` from [`tls.connect()`][] are also accepted: `ca`, `cert`, `ciphers`, `clientCertEngine`, `crl`, `dhparam`, `ecdhCurve`, `honorCipherOrder`, `key`, `passphrase`, `pfx`, `rejectUnauthorized`, `secureOptions`, `secureProtocol`, `servername`, `sessionIdContext`.
 
-`options` puede ser un objeto, una string o un objeto [`URL`][]. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
+`options` can be an object, a string, or a [`URL`][] object. If `options` is a string, it is automatically parsed with [`new URL()`][]. If it is a [`URL`][] object, it will be automatically converted to an ordinary `options` object.
 
 ```js
 const https = require('https');
@@ -264,7 +264,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Ejemplo utilizando opciones de [`tls.connect()`][]:
+Example using options from [`tls.connect()`][]:
 
 ```js
 const options = {
@@ -282,7 +282,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Alternativamente, se puede optar por la agrupación de conexiones al no usar [`Agent`][].
+Alternatively, opt out of connection pooling by not using an [`Agent`][].
 
 ```js
 const options = {
@@ -300,7 +300,7 @@ const req = https.request(options, (res) => {
 });
 ```
 
-Ejemplo utilizando un [`URL`][] como `options`:
+Example using a [`URL`][] as `options`:
 
 ```js
 const options = new URL('https://abc:xyz@example.com');
@@ -326,13 +326,13 @@ const options = {
   path: '/',
   method: 'GET',
   checkServerIdentity: function(host, cert) {
-    // Asegúrese de que el certificado sea emitido al host al cual estamos conectados
+    // Make sure the certificate is issued to the host we are connected to
     const err = tls.checkServerIdentity(host, cert);
     if (err) {
       return err;
     }
 
-    // Fije la clave pública, similar a fijar HPKP pin-sha25
+    // Pin the public key, similar to HPKP pin-sha25 pinning
     const pubkey256 = 'pL1+qb9HTMRZJmuC/bB/ZI9d302BYrrqiVuRyW+DGrU=';
     if (sha256(cert.pubkey) !== pubkey256) {
       const msg = 'Certificate verification error: ' +
@@ -341,7 +341,7 @@ const options = {
       return new Error(msg);
     }
 
-    // Fijar el certificado exacto, en lugar de la clave pública
+    // Pin the exact certificate, rather then the pub key
     const cert256 = '25:FE:39:32:D9:63:8C:8A:FC:A1:9A:29:87:' +
       'D8:3E:4C:1D:98:DB:71:E4:1A:48:03:98:EA:22:6A:BD:8B:93:16';
     if (cert.fingerprint256 !== cert256) {
@@ -351,11 +351,11 @@ const options = {
       return new Error(msg);
     }
 
-    // Este bucle es sólo informativo.
-    // Imprima el certificado y las huellas digitales de clave pública de todos los certs en la
-    // cadena. Es común fijar la clave pública del emisor en el internet
-    // público, mientras se fija la clave pública del servicio en entornos
-    // sensibles.
+    // This loop is informational only.
+    // Print the certificate and public key fingerprints of all certs in the
+    // chain. Its common to pin the public key of the issuer on the public
+    // internet, while pinning the public key of the service in sensitive
+    // environments.
     do {
       console.log('Subject Common Name:', cert.subject.CN);
       console.log('  Certificate SHA256 fingerprint:', cert.fingerprint256);
@@ -374,7 +374,7 @@ options.agent = new https.Agent(options);
 const req = https.request(options, (res) => {
   console.log('All OK. Server matched our pinned cert or public key');
   console.log('statusCode:', res.statusCode);
-  // Imprimir los valores HPKP
+  // Print the HPKP values
   console.log('headers:', res.headers['public-key-pins']);
 
   res.on('data', (d) => {});
@@ -386,7 +386,7 @@ req.on('error', (e) => {
 req.end();
 ```
 
-Salidas de ejemplo:
+Outputs for example:
 
 ```text
 Subject Common Name: github.com
