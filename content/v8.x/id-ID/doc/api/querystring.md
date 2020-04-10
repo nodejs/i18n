@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
@@ -52,6 +52,8 @@ The `querystring.parse()` method parses a URL query string (`str`) into a collec
 
 For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 
+<!-- eslint-skip -->
+
 ```js
 {
   foo: 'bar',
@@ -70,14 +72,14 @@ querystring.parse('w=%D6%D0%CE%C4&foo=bar', null, null,
                   { decodeURIComponent: gbkDecodeURIComponent });
 ```
 
-## querystring.stringify(obj[, sep[, eq[, options]]])<!-- YAML
+## querystring.stringify(obj[, sep[, eq[, options]]])
+
+<!-- YAML
 added: v0.1.25
 -->
 
 * `obj` {Object} The object to serialize into a URL query string
-
 * `sep` {string} The substring used to delimit key and value pairs in the query string. **Default:** `'&'`.
-
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
 * `options` 
   * `encodeURIComponent` {Function} The function to use when converting URL-unsafe characters to percent-encoding in the query string. **Default:** `querystring.escape()`.
