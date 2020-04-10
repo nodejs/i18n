@@ -1,6 +1,6 @@
-# Процесс выпуска Node.js
+# Node.js Release Process
 
-Этот документ описывает технические аспекты процесса выпуска Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Who can make a release?
 
@@ -44,7 +44,7 @@ Additionally, full GPG key fingerprints for individuals authorized to release sh
 
 ## How to create a release
 
-Примечания:
+Notes:
 
 * Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
 * Version strings are listed below as *"vx.y.z"*. Substitute for the release version.
