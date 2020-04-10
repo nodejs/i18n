@@ -921,7 +921,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **σύμπλεγμα**
+* **cluster**
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps**
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
@@ -932,7 +932,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
 * **perf_hooks**
   * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
-* **ροή**
+* **stream**
   * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
 
 ### Commits
@@ -2093,7 +2093,7 @@ Fixes for the following CVEs are included in this release:
 * **Async hooks**
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] - [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Σφάλματα**
+* **Errors**
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] - [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues:
     * `buffer`: [[`e79a61cf80`](https://github.com/nodejs/node/commit/e79a61cf80)] - [#16352](https://github.com/nodejs/node/pull/16352), [[`dbfe8c4ea2`](https://github.com/nodejs/node/commit/dbfe8c4ea2)] - [#13976](https://github.com/nodejs/node/pull/13976)
@@ -2120,7 +2120,7 @@ Fixes for the following CVEs are included in this release:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] - [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] - [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] - [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **Θυγατρικές διεργασίες**
+* **Child Processes**
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] - [#4670](https://github.com/nodejs/node/pull/4670)
 
 * **Domains**
@@ -2139,10 +2139,10 @@ Fixes for the following CVEs are included in this release:
 * **Intl**
   * The deprecated `Intl.v8BreakIterator` has been removed. [[`668ad44922`](https://github.com/nodejs/node/commit/668ad44922)] - [#15238](https://github.com/nodejs/node/pull/15238)
 
-* **Λειτουργικό Σύστημα**
+* **OS**
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] - [#14622](https://github.com/nodejs/node/pull/14622)
 
-* **Χρονομετρητές**
+* **Timers**
   * `setTimeout()` will emit a warning if the timeout is larger that the maximum 32-bit unsigned integer. [[`ce3586da31`](https://github.com/nodejs/node/commit/ce3586da31)] - [#15627](https://github.com/nodejs/node/pull/15627)
 
 ### Commits
