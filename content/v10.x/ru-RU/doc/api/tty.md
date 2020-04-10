@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -35,7 +35,7 @@ The `tty.ReadStream` class is a subclass of [`net.Socket`][] that represents the
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. По умолчанию: `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### readStream.isTTY
 
@@ -127,10 +127,10 @@ added: v0.7.7
 added: v9.9.0
 -->
 
-* `env` {Object} An object containing the environment variables to check. **По умолчанию:** `process.env`.
-* Возвращает: {number}
+* `env` {Object} An object containing the environment variables to check. **Default:** `process.env`.
+* Returns: {number}
 
-Возвращает:
+Returns:
 
 * `1` for 2,
 * `4` for 16,
@@ -157,9 +157,9 @@ added: v0.7.7
 added: v10.16.0
 -->
 
-* `count` {integer} The number of colors that are requested (minimum 2). **По умолчанию:** 16.
-* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **По умолчанию:** `process.env`.
-* Возвращает: {boolean}
+* `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
+* `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
+* Returns: {boolean}
 
 Returns `true` if the `writeStream` supports at least as many colors as provided in `count`. Minimum support is 2 (black and white).
 
