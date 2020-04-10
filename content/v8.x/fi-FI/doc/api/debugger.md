@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.9.12-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
