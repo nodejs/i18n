@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -325,7 +325,7 @@ added: v8.4.0
 
 * `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
 
@@ -452,7 +452,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. The given `callback` is registered as a listener on the `'timeout'` event.
 
@@ -684,7 +684,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* 戻り値: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -846,7 +846,7 @@ added: v8.4.0
 
 * code {number} Unsigned 32-bit integer identifying the error code. **Default:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
 * `callback` {Function} An optional function registered to listen for the `'close'` event.
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Closes the `Http2Stream` instance by sending an `RST_STREAM` frame to the connected HTTP/2 peer.
 
@@ -901,7 +901,7 @@ added: v8.4.0
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Updates the priority for this `Http2Stream` instance.
 
@@ -963,7 +963,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 ```js
 const http2 = require('http2');
@@ -1136,7 +1136,7 @@ added: v8.4.0
   * `err` {Error}
   * `pushStream` {ServerHttp2Stream} The returned pushStream object.
   * `headers` {HTTP/2 Headers Object} Headers object the pushStream was initiated with.
-* 戻り値: {undefined}
+* Returns: {undefined}
 
 Initiates a push stream. The callback is invoked with the new `Http2Stream` instance created for the push stream passed as the second argument, or an `Error` passed as the first argument.
 
@@ -1463,7 +1463,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 戻り値: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1592,7 +1592,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* 戻り値: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1639,7 +1639,7 @@ changes:
   * `Http2ServerRequest` {http2.Http2ServerRequest} Specifies the Http2ServerRequest class to use. Useful for extending the original `Http2ServerRequest`. **Default:** `Http2ServerRequest`.
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the Http2ServerResponse class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 戻り値: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1703,7 +1703,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* 戻り値: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -2437,7 +2437,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -2453,7 +2453,7 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* 戻り値: {Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
