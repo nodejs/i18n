@@ -1,32 +1,32 @@
-# Guia de Estilos
+# Style Guide
 
-* Documentação escrita em arquivos de markdown com nomes formatados em letras `minusculas-com-hifens.md`. 
-  * Underline em nomes de arquivo são permitidos apenas quando eles estão presentes no tópico que o documento irá descrever (por exemplo, `child_process`).
-  * Alguns arquivos, como os arquivos markdown de nível superior, são exceções.
-* Documentos devem ter quebra de palavras (word-wrap) em 80 caracteres.
-* A formatação descrita no `.editorconfig` é preferencial. 
-  * Um [plugin](http://editorconfig.org/#download) está disponível para alguns editores que aplicam automaticamente estas regras.
-* Problemas mecânicos, como a ortografia e a gramática, devem ser identificados por ferramentas, na medida em que for possível. Se não for pego por uma ferramenta, então deverá ser apontado aos revisores humanos.
-* A ortografia preferida é o inglês Americano. "Capitalize" vs. "Capitalise", "Cor" vs. "colour", etc.
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* Mechanical issues, like spelling and grammar, should be identified by tools, insofar as is possible. If not caught by a tool, they should be pointed out by human reviewers.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
-* Evite pronomes pessoais na documentação de referência ("Eu", "você", "nós"). 
-  * Pronomes pessoais são aceitáveis na documentação coloquial, como guias.
-  * Use pronomes de gênero neutro e substantivos plurais de gênero neutro. 
-    * CERTO: "eles(as)", "seus", "lhes", "pessoal", "pessoas", "desenvolvedores(as)"
-    * ERRADO: "ele", "dela", "ele", "ela", "rapazes", "caras"
-* Ao combinar elementos de envolvimento (parênteses e aspas), a pontuação final deve ser colocada: 
-  * Dentro do elemento envolto se o elemento de quebra contém uma cláusula completa — um sujeito, verbo e um objeto.
-  * Fora do elemento envolto se o elemento de quebra contém apenas um fragmento de uma cláusula.
-* Coloque a pontuação de fim-de-frase dentro dos elementos envoltos — pontos finais vão dentro de parênteses e aspas, não depois.
-* Documentos devem começar com um título de nível 1. Eventualmente um documento de exemplo será linkado aqui.
-* Dê preferência em afixar links para endereços inline — preferir `[um link][]` ao invés de `[um link](http://exemplo.com)`.
-* Quando documentar APIs, observe que a versão da API foi introduzida no fim da seção. Se uma API foi descontinuada, anotar também a primeira versão que a API foi descontinuada.
+* Avoid personal pronouns in reference documentation ("I", "you", "we"). 
+  * Personal pronouns are acceptable in colloquial documentation such as guides.
+  * Use gender-neutral pronouns and gender-neutral plural nouns. 
+    * OK: "they", "their", "them", "folks", "people", "developers"
+    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
+  * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
+  * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
+* Place end-of-sentence punctuation inside wrapping elements — periods go inside parentheses and quotes, not after.
+* Documents must start with a level-one heading. An example document will be linked here eventually.
+* Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
+* When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
 * Including assets: 
   * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
   * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
-* Para blocos de código: 
+* For code blocks: 
   * Use language aware fences. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
@@ -44,10 +44,10 @@
 * Function returns should use the following format: 
   * `* Returns: {type|type2} Optional description.`
   * E.g. `* Returns: {AsyncHook} A reference to <code>asyncHook`.</code>
-* Use o estilo oficial para capitalização em produtos e projetos. 
-  * CERTO: JavaScript, Google V8
-  * ERRADO: Javascript, v8 do Google
+* Use official styling for capitalization in products and projects. 
+  * OK: JavaScript, Google's V8
+  * NOT OK: Javascript, Google's v8
 * Use *Node.js* and not *Node*, *NodeJS*, or similar variants. 
   * When referring to the executable, *`node`* is acceptable.
 
-Veja também a visão geral da estrutura da documentação da API em [doctools README](../tools/doc/README.md).
+See also API documentation structure overview in [doctools README](../tools/doc/README.md).
