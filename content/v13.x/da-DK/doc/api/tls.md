@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitet: 2 - Stabil
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
