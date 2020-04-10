@@ -1,8 +1,8 @@
-# Depurador
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
