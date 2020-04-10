@@ -1,4 +1,4 @@
-# Veraltete APIs
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
