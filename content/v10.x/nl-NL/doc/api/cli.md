@@ -1,14 +1,14 @@
-# Command Line Opties
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
 <!--type=misc-->
 
-Node.js heeft een aantal CLI opties. Die maken een aantal zaken mogelijk zoals built-in debugging, meerdere manieren om scripts uit te voeren en andere nuttige runtime opties. 
+Node.js comes with a variety of CLI options. These options expose built-in debugging, multiple ways to execute scripts, and other helpful runtime options.
 
-Om deze documentatie als een pagina in een terminal te bekijken, voer je `man node` uit.
+To view this documentation as a manual page in a terminal, run `man node`.
 
-## Samenvatting
+## Synopsis
 
 `node [options] [V8 options] [script.js | -e "script" | -] [--] [arguments]`
 
@@ -16,11 +16,11 @@ Om deze documentatie als een pagina in een terminal te bekijken, voer je `man no
 
 `node --v8-options`
 
-Voer dit uit zonder argumenten om de [REPL](repl.html) te starten.
+Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
-## Opties
+## Options
 
 <!-- YAML
 changes:
@@ -41,7 +41,7 @@ For example, `--pending-deprecation` is equivalent to `--pending_deprecation`.
 added: v8.0.0
 -->
 
-Alias voor stdin, analoog met het gebruik van - in andere command line utilities. Dit betekent dat het script zal gelezen worden vanaf stdin en de rest van de opties worden aan het script doorgegeven.
+Alias for stdin, analogous to the use of - in other command line utilities, meaning that the script will be read from stdin, and the rest of the options are passed to that script.
 
 ### `--`
 
