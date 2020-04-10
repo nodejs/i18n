@@ -5,7 +5,7 @@
 <table>
   
 <tr>
-<th title="Previamente llamado 'Stable'">Actual</th>
+<th title="Previously called 'Stable'">Current</th>
 </tr>
   
   <tr>
@@ -31,7 +31,7 @@
   </tr>
 </table>
 
-* Otras versiones 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [6.x](CHANGELOG_V6.md)
   * [5.x](CHANGELOG_V5.md)
@@ -39,16 +39,16 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="7.10.0"></a>
 
 ## 2017-05-02, Version 7.10.0 (Current), @evanlucas
 
-### Cambios Notables
+### Notable Changes
 
-* **crypto**: añadir randomFill y randomFillSync (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
-* **meta**: Nuevos colaboradores agregados 
+* **crypto**: add randomFill and randomFillSync (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
+* **meta**: Added new collaborators 
   * add lucamaraschi to collaborators (Luca Maraschi) [#12538](https://github.com/nodejs/node/pull/12538)
   * add DavidCai1993 to collaborators (David Cai) [#12435](https://github.com/nodejs/node/pull/12435)
   * add jkrems to collaborators (Jan Krems) [#12427](https://github.com/nodejs/node/pull/12427)
@@ -246,7 +246,7 @@
 
 ## 2017-04-11, Version 7.9.0 (Current), @italoacasas
 
-### Cambios Notables
+### Notable Changes
 
 * **util**: console is now closer to what is supported in all major browsers (Roman Reiss) [#10308](https://github.com/nodejs/node/pull/10308)
 
@@ -310,7 +310,7 @@
 
 ## 2017-03-28, Version 7.8.0 (Current), @MylesBorins
 
-### Cambios Notables
+### Notable Changes
 
 * **buffer**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
@@ -320,7 +320,7 @@
   * upgrade npm to 4.2.0 (Kat Marchán) [#11389](https://github.com/nodejs/node/pull/11389)
   * fix async await desugaring in V8 (Michaël Zasso) [#12004](https://github.com/nodejs/node/pull/12004)
 * **readline**: 
-  * añadir opción para detener duplicados en la historia (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
+  * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
 
 ### Commits
 
@@ -395,7 +395,7 @@
 
 ## 2017-03-21, Version 7.7.4 (Current), @cjihrig
 
-### Cambios notables
+### Notable changes
 
 Thank you to @italoacasas for preparing the majority of this release.
 
@@ -456,7 +456,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ## 2017-03-14, Version 7.7.3 (Current), @italoacasas
 
-### Cambios notables
+### Notable changes
 
 * **module**: The [module loading global fallback](https://nodejs.org/dist/latest-v6.x/docs/api/modules.html#modules_loading_from_the_global_folders) to the Node executable's directory now works correctly on Windows. (Richard Lau) [#9283](https://github.com/nodejs/node/pull/9283)
 * **net**: `Socket.prototype.connect` now once again functions without a callback. (Juwan Yoo) [#11762](https://github.com/nodejs/node/pull/11762)
@@ -496,7 +496,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ## 2017-03-08, Version 7.7.2 (Current), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **doc**: add `Daijiro Wachi` to collaborators (Daijiro Wachi) [#11676](https://github.com/nodejs/node/pull/11676)
 * **tty**: add ref() so process.stdin.ref() etc. work (Ben Schmidt) [#7360](https://github.com/nodejs/node/pull/7360)
@@ -757,7 +757,7 @@ Thank you to @addaleax for helping in the release proposal.
 
 This release contains **v8 5.5**, you can read more about this version in the official [blog post](https://v8project.blogspot.com/2016/10/v8-release-55.html)
 
-### Cambios notables
+### Notable changes
 
 * **deps**: * update V8 to 5.5 (Michaël Zasso) [#11029](https://github.com/nodejs/node/pull/11029) * upgrade libuv to 1.11.0 (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094) * add node-inspect 1.10.4 (Jan Krems) [#10187](https://github.com/nodejs/node/pull/10187) * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
 * **lib**: build `node inspect` into `node` (Anna Henningsen) [#10187](https://github.com/nodejs/node/pull/10187)
@@ -896,13 +896,13 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 This release contains security fixes to upgrade OpenSSL to version 1.0.2k.
 
-A pesar de que el equipo de OpenSSL ha determinado una clasificación de severidad máxima de "moderado", el equipo de crypto de Node.js (Ben Noordhuis, Shigeki Ohtsu y Fedor Indutny) ha determinado que el impacto a usuarios de Node es "bajo". Detalles sobre esta determinación pueden ser encontrados [en la página web de Nodejs.org](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
+Although the OpenSSL team have determined a maximum severity rating of "moderate", the Node.js crypto team (Ben Noordhuis, Shigeki Ohtsu and Fedor Indutny) have determined the impact to Node users is "low". Details on this determination can be found [on the Nodejs.org website](https://nodejs.org/en/blog/vulnerability/openssl-january-2017/).
 
-### Cambios notables
+### Notable changes
 
 * **crypto**: 
-  * capacidad para selecionar el almacenaje certificado en tiempo de ejecución (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
-  * Usar CAs del sistema en vez de usar los empaquetados (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
+  * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
+  * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
 * **deps**: 
   * upgrade npm to 4.1.2 (Kat Marchán) [#11020](https://github.com/nodejs/node/pull/11020)
   * upgrade openssl sources to 1.0.2k (Shigeki Ohtsu) [#11021](https://github.com/nodejs/node/pull/11021)
@@ -1206,7 +1206,7 @@ A pesar de que el equipo de OpenSSL ha determinado una clasificación de severid
 
 ## 2017-01-04, Version 7.4.0 (Current), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: 
   * Improve performance of Buffer allocation by ~11%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
@@ -1224,7 +1224,7 @@ A pesar de que el equipo de OpenSSL ha determinado una clasificación de severid
 * [[`10b3297e8f`](https://github.com/nodejs/node/commit/10b3297e8f)] - **benchmark**: use commas in non-csv rate output (Brian White) [#10360](https://github.com/nodejs/node/pull/10360)
 * [[`6d15e7b528`](https://github.com/nodejs/node/commit/6d15e7b528)] - **benchmark**: refactor buffer benchmarks (Troy Connor) [#10175](https://github.com/nodejs/node/pull/10175)
 * [[`797495a84a`](https://github.com/nodejs/node/commit/797495a84a)] - **buffer**: improve allocation performance (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
-* [[`ad5ae922ce`](https://github.com/nodejs/node/commit/ad5ae922ce)] - **build**: add /opt/freeware/... a ruta de biblioteca de AIX (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
+* [[`ad5ae922ce`](https://github.com/nodejs/node/commit/ad5ae922ce)] - **build**: add /opt/freeware/... to AIX library path (Stewart X Addison) [#10128](https://github.com/nodejs/node/pull/10128)
 * [[`cff57be2b6`](https://github.com/nodejs/node/commit/cff57be2b6)] - **build**: add (not) cross-compiled configure flags (Jesús Leganés-Combarro 'piranna) [#10287](https://github.com/nodejs/node/pull/10287)
 * [[`80e798e324`](https://github.com/nodejs/node/commit/80e798e324)] - **crypto**: use CHECK_NE instead of ABORT or abort (Sam Roberts) [#10413](https://github.com/nodejs/node/pull/10413)
 * [[`92eacdb5c6`](https://github.com/nodejs/node/commit/92eacdb5c6)] - **(SEMVER-MINOR)** **deps**: upgrade npm to 4.0.5 (Kat Marchán) [#10330](https://github.com/nodejs/node/pull/10330)
@@ -1367,18 +1367,18 @@ A pesar de que el equipo de OpenSSL ha determinado una clasificación de severid
 
 Thank you to @italoacasas for preparing the majority of this release.
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: 
   * buffer.fill() now works properly for the UCS2 encoding on Big-Endian machines. (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
 * **cluster**: 
-  * disconnect() ahora devuelve una referencia al worker desconectado. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
+  * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
   * The built-in list of Well-Known CAs (Certificate Authorities) can now be extended via a NODE_EXTRA_CA_CERTS environment variable. (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **http**: 
   * Remove stale timeout listeners in order to prevent a memory leak when using keep alive. (Karl Böhlmark) [#9440](https://github.com/nodejs/node/pull/9440)
 * **tls**: 
-  * Permitir combinaciones obvias de clave/contraseña. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
+  * Allow obvious key/passphrase combinations. (Sam Roberts) [#10294](https://github.com/nodejs/node/pull/10294)
 * **url**: 
   * Including base argument in URL.originFor() to meet specification compliance. (joyeecheung) [#10021](https://github.com/nodejs/node/pull/10021)
   * Improve URLSearchParams to meet specification compliance. (Timothy Gu) [#9484](https://github.com/nodejs/node/pull/9484)
@@ -1518,7 +1518,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ## 2016-12-06, Version 7.2.1 (Current), @Fishrock123
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: 
   * Reverted the runtime deprecation of calling `Buffer()` without `new`. (Anna Henningsen) [#9529](https://github.com/nodejs/node/pull/9529)
@@ -1547,7 +1547,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 * [[`03b1c314cd`](https://github.com/nodejs/node/commit/03b1c314cd)] - **deps**: cherry-pick 08377af from v8 upstream (Franziska Hinkelmann) [#9730](https://github.com/nodejs/node/pull/9730)
 * [[`e9c2ffd20c`](https://github.com/nodejs/node/commit/e9c2ffd20c)] - **deps**: backport GYP fix to fix AIX shared suffix (Stewart Addison)
 * [[`3bc40ce725`](https://github.com/nodejs/node/commit/3bc40ce725)] - **doc**: remove repeated info onboarding.md (BethGriggs) [#9635](https://github.com/nodejs/node/pull/9635)
-* [[`446bcbea4e`](https://github.com/nodejs/node/commit/446bcbea4e)] - **doc**: correct it's vs. "its" (Rich Trott) [#10098](https://github.com/nodejs/node/pull/10098)
+* [[`446bcbea4e`](https://github.com/nodejs/node/commit/446bcbea4e)] - **doc**: correct it's vs. its usage (Rich Trott) [#10098](https://github.com/nodejs/node/pull/10098)
 * [[`b9bd9a2fcb`](https://github.com/nodejs/node/commit/b9bd9a2fcb)] - **doc**: remove Sam Roberts from release team (Sam Roberts) [#9862](https://github.com/nodejs/node/pull/9862)
 * [[`51b77aa44a`](https://github.com/nodejs/node/commit/51b77aa44a)] - **doc**: add people to cc for async_wrap (Anna Henningsen) [#9471](https://github.com/nodejs/node/pull/9471)
 * [[`346204d77e`](https://github.com/nodejs/node/commit/346204d77e)] - **doc**: add link to `net.Server` in tls.md (Devon Rifkin) [#10109](https://github.com/nodejs/node/pull/10109)
@@ -1729,7 +1729,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 *This is a security release impacting Windows 10 users.*
 
-### Cambios notables
+### Notable changes
 
 * **crypto**: The `Decipher` methods `setAuthTag()` and `setAAD` now return `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
 * **dns**: Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
@@ -1850,7 +1850,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ## 2016-11-08, Version 7.1.0 (Current), @evanlucas
 
-### Cambios notables
+### Notable changes
 
 * **buffer**: add buffer.transcode to transcode a buffer's content from one encoding to another primarily using ICU (James M Snell) [#9038](https://github.com/nodejs/node/pull/9038)
 * **child_process**: add public API for IPC channel (cjihrig) [#9322](https://github.com/nodejs/node/pull/9322)
@@ -1988,7 +1988,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ## 2016-10-25, Version 7.0.0 (Current), @jasnell
 
-### Cambios notables
+### Notable changes
 
 * Buffer 
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
@@ -2001,13 +2001,13 @@ Thank you to @italoacasas for preparing the majority of this release.
 * Deps 
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
-* Sistema de Archivos 
+* File System 
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).
 * Intl 
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
-* Promesas 
+* Promises 
   * Unhandled Promise rejections have been deprecated and will emit a process warning [#8217](https://github.com/nodejs/node/pull/8217).
-* Código Púny 
+* Punycode 
   * The `punycode` module has been deprecated [#7941](https://github.com/nodejs/node/pull/7941).
 * URL 
   * An Experimental WHATWG URL Parser has been introduced [#7448](https://github.com/nodejs/node/pull/7448).
