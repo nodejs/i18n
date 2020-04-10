@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.1.25-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. 以下のように利用できます。
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
