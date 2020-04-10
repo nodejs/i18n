@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -84,8 +84,8 @@ http.get({
 added: v0.3.4
 -->
 
-* `opties` {Object} Set of configurable options to set on the agent. Can have the following fields: 
-  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. Not to be confused with the `keep-alive` value of the `Connection` header. The `Connection: keep-alive` header is always sent when using an agent except when the `Connection` header is explicitly specified or when the `keepAlive` and `maxSockets` options are respectively set to `false` and `Infinity`, in which case `Connection: close` will be used. **Standaard:** `false`.
+* `options` {Object} Set of configurable options to set on the agent. Can have the following fields: 
+  * `keepAlive` {boolean} Keep sockets around even when there are no outstanding requests, so they can be used for future requests without having to reestablish a TCP connection. Not to be confused with the `keep-alive` value of the `Connection` header. The `Connection: keep-alive` header is always sent when using an agent except when the `Connection` header is explicitly specified or when the `keepAlive` and `maxSockets` options are respectively set to `false` and `Infinity`, in which case `Connection: close` will be used. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay) for TCP Keep-Alive packets. Ignored when the `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
   * `maxSockets` {number} Maximum number of sockets to allow per host. Each request will use a new socket until the maximum is reached. **Default:** `Infinity`.
   * `maxFreeSockets` {number} Maximum number of sockets to leave open in a free state. Only relevant if `keepAlive` is set to `true`. **Default:** `256`.
@@ -112,7 +112,7 @@ added: v0.11.4
 
 * `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
 * `callback` {Function} Callback function that receives the created socket
-* Retourneert: {net.Socket}
+* Returns: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
@@ -183,12 +183,12 @@ An object which contains arrays of sockets currently awaiting use by the agent w
 added: v0.11.4
 -->
 
-* `opties` {Object} A set of options providing information for name generation 
+* `options` {Object} A set of options providing information for name generation 
   * `host` {string} A domain name or IP address of the server to issue the request to
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Retourneert: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -488,7 +488,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {this}
+* Returns: {this}
 
 Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
@@ -525,7 +525,7 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Retourneert: {any}
+* Returns: {any}
 
 Reads out a header on the request. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`request.setHeader()`][].
 
@@ -616,7 +616,7 @@ changes:
 
 * `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -654,7 +654,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
@@ -865,7 +865,7 @@ added: v0.9.12
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Retourneert: {http.Server}
+* Returns: {http.Server}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
 
@@ -975,7 +975,7 @@ changes:
 * `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -1000,7 +1000,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Retourneert: {any}
+* Returns: {any}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive. The type of the return value depends on the arguments provided to [`response.setHeader()`][].
 
@@ -1040,7 +1040,7 @@ const headerNames = response.getHeaderNames();
 added: v7.7.0
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -1061,7 +1061,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
@@ -1150,7 +1150,7 @@ added: v0.9.12
 
 * `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -1216,7 +1216,7 @@ added: v0.1.29
 * `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1259,7 +1259,7 @@ changes:
 * `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Retourneert: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
@@ -1476,7 +1476,7 @@ added: v0.5.9
 
 * `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http.IncomingMessage}
+* Returns: {http.IncomingMessage}
 
 Calls `message.connection.setTimeout(msecs, callback)`.
 
@@ -1628,14 +1628,14 @@ changes:
     description: The `options` argument is supported now.
 -->
 
-* `opties` {Object} 
+* `options` {Object} 
   * `IncomingMessage` {http.IncomingMessage} Specifies the `IncomingMessage` class to be used. Useful for extending the original `IncomingMessage`. **Default:** `IncomingMessage`.
   * `ServerResponse` {http.ServerResponse} Specifies the `ServerResponse` class to be used. Useful for extending the original `ServerResponse`. **Default:** `ServerResponse`.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
 
 * `requestListener` {Function}
 
-* Retourneert: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1661,7 +1661,7 @@ changes:
 * `url` {string | URL}
 * `options` {Object} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1746,7 +1746,7 @@ changes:
 -->
 
 * `url` {string | URL}
-* `opties` {Object} 
+* `options` {Object} 
   * `protocol` {string} Protocol to use. **Default:** `'http:'`.
   * `host` {string} A domain name or IP address of the server to issue the request to. **Default:** `'localhost'`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
@@ -1767,7 +1767,7 @@ changes:
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
   * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
 * `callback` {Function}
-* Retourneert: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
