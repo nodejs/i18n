@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -362,7 +362,7 @@ Any invalid URL characters appearing in the value assigned the `username` proper
 
 #### url.toString()
 
-* Retorna: {string}
+* Returns: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -370,7 +370,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Retorna: {string}
+* Returns: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -546,7 +546,7 @@ Remove all name-value pairs whose name is `name`.
 
 #### urlSearchParams.entries()
 
-* Retorna: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -580,20 +580,20 @@ Returns the value of the first name-value pair whose name is `name`. If there ar
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
-* Retorna: {Array}
+* Returns: {Array}
 
 Returns the values of all name-value pairs whose name is `name`. If there are no such pairs, an empty array is returned.
 
 #### urlSearchParams.has(name)
 
 * `name` {string}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if there is at least one name-value pair whose name is `name`.
 
 #### urlSearchParams.keys()
 
-* Retorna: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 Iterator over the names of each name-value pair.
 
@@ -651,19 +651,19 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Retorna: {string}
+* Returns: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### urlSearchParams.values()
 
-* Retorna: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 Iterator over the values of each name-value pair.
 
 #### urlSearchParams\[@@iterator\]()
 
-* Retorna: {Iterator}
+* Returns: {Iterator}
 
 Returns an ES6 Iterator over each of the name-value pairs in the query string. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
@@ -687,7 +687,7 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Retorna: {string}
+* Returns: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -710,7 +710,7 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Retorna: {string}
+* Returns: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -734,16 +734,16 @@ added: v7.6.0
 
 * `URL` {URL} A [WHATWG URL](#url_the_whatwg_url_api) object
 * `options` {Object} 
-  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Padrão:** `true`.
-  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Padrão:** `true`.
-  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Padrão:** `true`.
+  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
+  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
 
 Returns a customizable serialization of a URL String representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
 The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
-Por exemplo:
+For example:
 
 ```js
 const { URL } = require('url');
@@ -953,7 +953,7 @@ changes:
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
-Por exemplo:
+For example:
 
 ```js
 const url = require('url');
@@ -994,7 +994,7 @@ The WHATWG algorithm defines four "percent-encode sets" that describe ranges of 
 
 The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Por exemplo:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
 
 ```js
 const { URL } = require('url');
