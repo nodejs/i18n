@@ -1,9 +1,9 @@
-# Modules ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 ## Introduction
 
