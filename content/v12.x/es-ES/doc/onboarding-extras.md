@@ -2,7 +2,7 @@
 
 ## Labels
 
-### Subsistemas
+### Subsystems
 
 * `lib/*.js` (`assert`, `buffer`, etc.)
 * `build`
@@ -19,7 +19,7 @@ There may be more than one subsystem valid for any particular issue or pull requ
 * `discuss` - Things that need larger discussion
 * `feature request` - Any issue that requests a new feature (usually not PRs)
 * `good first issue` - Issues suitable for newcomers to process
-* `meta` - Para issues cuyo tema es la gobernanza, políticas, procedimientos, etc.
+* `meta` - For issues whose topic is governance, policies, procedures, etc.
 
 --
 
