@@ -1,21 +1,21 @@
-# Módulos
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 <!--name=module-->
 
-No sistema de módulos do Node.js, cada arquivo é tratado como um módulo separado. Por exemplo, considere o arquivo `foo.js`:
+In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-Na primeira linha, `foo.js` carrega o módulo `circle.js` que está no mesmo diretório de `foo.js`.
+On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
 
-Eis o conteúdo de `circle.js`:
+Here are the contents of `circle.js`:
 
 ```js
 const { PI } = Math;
@@ -25,7 +25,7 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-O módulo `circle.js` exportou as funções `area()` e `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
+The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
 Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 
@@ -466,7 +466,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Estabilidade: 0 - Descontinuado
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -500,7 +500,7 @@ changes:
 * `request` {string} The module path to resolve.
 * `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Retorna: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
@@ -511,7 +511,7 @@ added: v8.9.0
 -->
 
 * `request` {string} The module path whose lookup paths are being retrieved.
-* Retorna: {Array|null}
+* Returns: {Array|null}
 
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
