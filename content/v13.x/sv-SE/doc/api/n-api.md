@@ -593,7 +593,7 @@ Do not rely on the content or format of any of the extended information as it is
 
 This API can be called even if there is a pending JavaScript exception.
 
-### Undantag
+### Exceptions
 
 Any N-API function call may result in a pending JavaScript exception. This is obviously the case for any function that may cause the execution of JavaScript, but N-API specifies that an exception may be pending on return from any of the API functions.
 
