@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Vakaus: 2 - Vakaa
+> Stability: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
