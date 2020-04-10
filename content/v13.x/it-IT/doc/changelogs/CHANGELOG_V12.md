@@ -30,7 +30,7 @@
 </tr>
 </table>
 
-* Altre versioni
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -43,7 +43,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="12.12.0"></a>
 
@@ -1821,7 +1821,7 @@ Vulnerabilities fixed:
 
 ## 2019-04-23, Version 12.0.0 (Current), @BethGriggs
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **assert**:
   * validate required arguments (Ruben Bridgewater) [#26641](https://github.com/nodejs/node/pull/26641)
