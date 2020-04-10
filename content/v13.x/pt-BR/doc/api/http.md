@@ -6,7 +6,7 @@
 
 To use the HTTP server and client one must `require('http')`.
 
-The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
+The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses, so the user is able to stream data.
 
 HTTP message headers are represented by an object like this:
 ```js
@@ -19,7 +19,7 @@ HTTP message headers are represented by an object like this:
 
 Keys are lowercased. Values are not modified.
 
-In order to support the full spectrum of possible HTTP applications, Node.js's HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
+In order to support the full spectrum of possible HTTP applications, the Node.js HTTP API is very low-level. It deals with stream handling and message parsing only. It parses a message into headers and body but it does not parse the actual headers or the body.
 
 See [`message.headers`][] for details on how duplicate headers are handled.
 
@@ -151,6 +151,8 @@ added: v0.11.4
 
 An object which contains arrays of sockets currently awaiting use by the agent when `keepAlive` is enabled. Do not modify.
 
+Sockets in the `freeSockets` list will be automatically destroyed and removed from the array on `'timeout'`.
+
 ### `agent.getName(options)`
 <!-- YAML
 added: v0.11.4
@@ -161,7 +163,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Retorna: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -404,7 +406,7 @@ The `request.aborted` property will be `true` if the request has been aborted.
 ### `request.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Estabilidade: 0 - Descontinuado. Use [`request.socket`][].
+-->> Stability: 0 - Deprecated. Use [`request.socket`][].
 
 * {stream.Duplex}
 
@@ -419,7 +421,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retorna: {this}
+* Returns: {this}
 
 Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
@@ -430,7 +432,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v13.4.0
--->> Estabilidade: 0 - Descontinuado. Use [`request.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -549,7 +551,7 @@ Sets a single header value for headers object. If this header already exists in 
 request.setHeader('Content-Type', 'application/json');
 ```
 
-ou
+or
 
 ```js
 request.setHeader('Cookie', ['type=ninja', 'language=javascript']);
@@ -576,7 +578,7 @@ changes:
     description: Consistently set socket timeout only when the socket connects.
 -->* `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* Retorna: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -620,9 +622,9 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
-Sends a chunk of the body. By calling this method many times, a request body can be sent to a server — in that case it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
+Sends a chunk of the body. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
 The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
 
@@ -755,7 +757,7 @@ After this event is emitted, the request's socket will not have a `'data'` event
 
 This event is guaranteed to be passed an instance of the {net.Socket} class, a subclass of {stream.Duplex}, unless the user specifies a socket type other than {net.Socket}.
 
-### `server.close ([callback])`<!-- YAML
+### `server.close([callback])`<!-- YAML
 added: v0.1.90
 -->* `callback` {Function}
 
@@ -771,7 +773,7 @@ In case of inactivity, the rules defined in [`server.timeout`][] apply. However,
 
 ### `server.listen()`
 
-Starts the HTTP server listening for connections. Esse método é idêntico ao [`server.listen()`] [] do [`net. Server`] [].
+Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### `server.listening`<!-- YAML
 added: v5.7.0
@@ -783,7 +785,7 @@ added: v0.7.0
 
 Limits maximum incoming headers count. If set to 0, no limit will be applied.
 
-### `server.setTimeout ([msecs][, callback])`<!-- YAML
+### `server.setTimeout([msecs][, callback])`<!-- YAML
 added: v0.9.12
 changes:
   - version: v13.0.0
@@ -791,7 +793,7 @@ changes:
     description: The default timeout changed from 120s to 0 (no timeout).
 -->* `msecs` {number} **Default:** 0 (no timeout)
 * `callback` {Function}
-* Retorna: {http.Server}
+* Returns: {http.Server}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
 
@@ -827,7 +829,7 @@ The socket timeout logic is set up on connection, so changing this value only af
 added: v0.1.17
 -->* Extends: {Stream}
 
-This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
+This object is created internally by an HTTP server, not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
 ### Event: `'close'`<!-- YAML
 added: v0.6.7
@@ -860,7 +862,7 @@ Attempting to set a header field name or value that contains invalid characters 
 ### `response.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> Estabilidade: 0 - Descontinuado. Use [`response.socket`][].
+-->> Stability: 0 - Deprecated. Use [`response.socket`][].
 
 * {stream.Duplex}
 
@@ -879,7 +881,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retorna: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -890,7 +892,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v13.4.0
--->> Estabilidade: 0 - Descontinuado. Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -921,7 +923,7 @@ const setCookie = response.getHeader('set-cookie');
 
 ### `response.getHeaderNames()`<!-- YAML
 added: v7.7.0
--->* Retorna: {string []}
+-->* Returns: {string[]}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
@@ -935,7 +937,7 @@ const headerNames = response.getHeaderNames();
 
 ### `response.getHeaders()`<!-- YAML
 added: v7.7.0
--->* Retorna: {Object}
+-->* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -955,7 +957,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -1001,7 +1003,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-ou
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1027,7 +1029,7 @@ If [`response.writeHead()`][] method is called and this method has not been call
 added: v0.9.12
 -->* `msecs` {number}
 * `callback` {Function}
-* Retorna: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -1044,7 +1046,7 @@ const http = require('http');
 const server = http.createServer((req, res) => {
   const ip = res.socket.remoteAddress;
   const port = res.socket.remotePort;
-  res.end(`Seu endereço IP é ${ip} e sua porta é ${port}.`);
+  res.end(`Your IP address is ${ip} and your source port is ${port}.`);
 }).listen(3000);
 ```
 
@@ -1095,7 +1097,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1129,7 +1131,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Retorna: {http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
@@ -1298,7 +1300,7 @@ The raw request/response trailer keys and values exactly as they were received. 
 added: v0.5.9
 -->* `msecs` {number}
 * `callback` {Function}
-* Retorna: {http.IncomingMessage}
+* Returns: {http.IncomingMessage}
 
 Calls `message.connection.setTimeout(msecs, callback)`.
 
@@ -1408,7 +1410,7 @@ changes:
   * `maxHeaderSize` {number} Optionally overrides the value of [`--max-http-header-size`][] for requests received by this server, i.e. the maximum length of request headers in bytes. **Default:** 8192 (8KB).
 * `requestListener` {Function}
 
-* Retorna: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1428,7 +1430,7 @@ changes:
 -->* `url` {string | URL}
 * `options` {Object} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Retorna: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. The callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1528,7 +1530,7 @@ changes:
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Retorna: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
@@ -1591,7 +1593,7 @@ There are a few special headers that should be noted.
 
 * Sending an Authorization header will override using the `auth` option to compute basic authentication.
 
-Exemplo usando uma [`URL`] [] como `options`:
+Example using a [`URL`][] as `options`:
 
 ```js
 const options = new URL('http://abc:xyz@example.com');
