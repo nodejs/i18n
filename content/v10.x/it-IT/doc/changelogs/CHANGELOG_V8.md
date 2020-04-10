@@ -45,7 +45,7 @@
   </tr>
 </table>
 
-* Altre versioni 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [7.x](CHANGELOG_V7.md)
@@ -55,7 +55,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v8 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be supported actively until April 2019 and maintained until December 2019.
 
@@ -63,7 +63,7 @@
 
 ## 2018-03-29, Version 8.11.1 'Carbon' (LTS), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 No additional commits.
 
@@ -83,7 +83,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2018-7159
 * CVE-2018-7160
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
 * **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
@@ -101,8 +101,8 @@ Fixes for the following CVEs are included in this release:
 * [[`987138e488`](https://github.com/nodejs/node/commit/987138e488)] - **deps**: upgrade openssl sources to 1.0.2o (Shigeki Ohtsu) [#19638](https://github.com/nodejs/node/pull/19638)
 * [[`1b7f6d9072`](https://github.com/nodejs/node/commit/1b7f6d9072)] - **deps**: reject interior blanks in Content-Length (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
 * [[`86c9ec6c5c`](https://github.com/nodejs/node/commit/86c9ec6c5c)] - **deps**: upgrade http-parser to v2.8.0 (Ben Noordhuis) [nodejs-private/http-parser-private#1](https://github.com/nodejs-private/http-parser-private/pull/1)
-* [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: minor adjustments (Eugene Ostroukhov)
-* [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: check Host header (Ali Ijaz Sheikh)
+* [[`de0c84889b`](https://github.com/nodejs/node/commit/de0c84889b)] - **inspector**: minor adjustments (Eugene Ostroukhov) 
+* [[`b7690655ef`](https://github.com/nodejs/node/commit/b7690655ef)] - **inspector**: check Host header (Ali Ijaz Sheikh) 
 * [[`0641f2dbf9`](https://github.com/nodejs/node/commit/0641f2dbf9)] - **openssl**: fix keypress requirement in apps on win32 (Shigeki Ohtsu) [iojs/io.js#1389](https://github.com/iojs/io.js/pull/1389)
 * [[`6ee4228c1d`](https://github.com/nodejs/node/commit/6ee4228c1d)] - **src**: drop CNNIC+StartCom certificate whitelisting (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
 * [[`633e23a618`](https://github.com/nodejs/node/commit/633e23a618)] - **tools**: update certdata.txt (Ben Noordhuis) [#19322](https://github.com/nodejs/node/pull/19322)
@@ -111,7 +111,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-03-06, Version 8.10.0 'Carbon' (LTS), @gibfahn
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: 
   * update V8 to 6.2.414.46 (Michaël Zasso) [#16413](https://github.com/nodejs/node/pull/16413)
@@ -149,7 +149,7 @@ Fixes for the following CVEs are included in this release:
   * support generic `Duplex` streams (Anna Henningsen) [#16267](https://github.com/nodejs/node/pull/16267)
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
   * better support for IPv6 addresses (Mattias Holmlund) [#14772](https://github.com/nodejs/node/pull/14772)
-* **rete**: 
+* **net**: 
   * remove ADDRCONFIG DNS hint on Windows (Bartosz Sosnowski) [#17662](https://github.com/nodejs/node/pull/17662)
 * **process**: 
   * fix reading zero-length env vars on win32 (Anna Henningsen) [#18463](https://github.com/nodejs/node/pull/18463)
@@ -434,7 +434,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2018-01-02, Version 8.9.4 'Carbon' (LTS), @gibfahn
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: 
   * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
@@ -742,7 +742,7 @@ Fixes for the following CVEs are included in this release:
 * CVE-2017-15897
 * CVE-2017-3738 (from the openssl project)
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
@@ -775,7 +775,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-12-05, Version 8.9.2 'Carbon' (LTS), @gibfahn
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **console**: 
   * avoid adding infinite error listeners (Matteo Collina) [#16770](https://github.com/nodejs/node/pull/16770)
@@ -897,7 +897,7 @@ Fixes for the following CVEs are included in this release:
 
 ## 2017-11-07, Version 8.9.1 'Carbon' (LTS), @gibfahn
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **openssl**: 
   * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
@@ -926,7 +926,7 @@ Fixes for the following CVEs are included in this release:
 
 This release marks the transition of Node.js v8 into Long Term Support (LTS) with the codename 'Carbon'. The v8 release line now moves in to "Active LTS" and will remain so until April 2019. After that time it will move in to "Maintenance" until end of life in December 2019.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **doc**: 
   * add Gibson Fahnestock to Release team (Gibson Fahnestock) [#16620](https://github.com/nodejs/node/pull/16620)
@@ -1041,9 +1041,9 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ## 2017-10-25, Version 8.8.1 (Current), @cjihrig
 
-### Modifiche di rilievo
+### Notable Changes
 
-* **rete**: 
+* **net**: 
   * Fix timeout with null handle issue. This is a regression in Node 8.8.0 [#16489](https://github.com/nodejs/node/pull/16489)
 
 ### Commits
@@ -1066,7 +1066,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ## 2017-10-24, Version 8.8.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **crypto**: 
   * expose ECDH class [#8188](https://github.com/nodejs/node/pull/8188)
@@ -1376,7 +1376,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ## 2017-10-11, Version 8.7.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **deps**: 
   * update npm to 5.4.2 [#15600](https://github.com/nodejs/node/pull/15600)
@@ -1609,7 +1609,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ## 2017-09-26, Version 8.6.0 (Current), @jasnell
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **crypto** 
   * Support for multiple ECDH curves. [#15206](https://github.com/nodejs/node/pull/15206)
@@ -1772,7 +1772,7 @@ This release marks the transition of Node.js v8 into Long Term Support (LTS) wit
 
 ## 2017-09-12, Version 8.5.0 (Current), @MylesBorins
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **build** 
   * Snapshots are now re-enabled in V8 [#14875](https://github.com/nodejs/node/pull/14875)
@@ -2827,7 +2827,7 @@ Release to fix broken `process.release` properties Ref: https://github.com/nodej
 
 ## 2017-06-07, Version 8.1.0 (Current), @jasnell
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Async Hooks** 
   * When one `Promise` leads to the creation of a new `Promise`, the parent `Promise` will be identified as the trigger [[`135f4e6643`](https://github.com/nodejs/node/commit/135f4e6643)] [#13367](https://github.com/nodejs/node/pull/13367).
@@ -2967,7 +2967,7 @@ Node.js 8.0.0 is a major new release that includes a significant number of `semv
 
 The Node.js 8.x release branch is scheduled to become the *next* actively maintained Long Term Support (LTS) release line in October, 2017 under the LTS codename `'Carbon'`. Note that the [LTS lifespan](https://github.com/nodejs/lts) for 8.x will end on December 31st, 2019.
 
-### Modifiche di rilievo
+### Notable Changes
 
 * **Async Hooks**
   
@@ -2997,7 +2997,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Native `Promise` instances are now `Domain` aware [[`84dabe8373`](https://github.com/nodejs/node/commit/84dabe8373)] [#12489](https://github.com/nodejs/node/pull/12489).
 
-* **Errori**
+* **Errors**
   
   * We have started assigning static error codes to errors generated by Node.js. This has been done through multiple commits and is still a work in progress.
 
@@ -3022,7 +3022,7 @@ The Node.js 8.x release branch is scheduled to become the *next* actively mainta
   
   * Experimental support for the new N-API API has been added [[`56e881d0b0`](https://github.com/nodejs/node/commit/56e881d0b0)] [#11975](https://github.com/nodejs/node/pull/11975).
 
-* **Processo**
+* **Process**
   
   * Process warning output can be redirected to a file using the `--redirect-warnings` command-line argument [[`03e89b3ff2`](https://github.com/nodejs/node/commit/03e89b3ff2)] [#10116](https://github.com/nodejs/node/pull/10116).
   * Process warnings may now include additional detail [[`dd20e68b0f`](https://github.com/nodejs/node/commit/dd20e68b0f)] [#12725](https://github.com/nodejs/node/pull/12725).
