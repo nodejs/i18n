@@ -1,8 +1,8 @@
-# Ereignisse
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--type=module-->
 
