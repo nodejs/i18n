@@ -91,16 +91,16 @@ The tools are currently assigned to Tiers as follows:
  | Memory    | V8 heap profiler          | No                            | Yes                     | 1           |
  | Memory    | V8 sampling heap profiler | No                            | Yes                     | 1           |
  | AsyncFlow | Async Hooks (API)         | ?                             | Yes                     | 1           |
- | 调试器       | V8 Debug protocol (API)   | No                            | Yes                     | 1           |
- | 调试器       | Command line Debug Client | ?                             | Yes                     | 1           |
- | 调试器       | llnode                    | ?                             | No                      | 2           |
- | 调试器       | Chrome Dev tools          | ?                             | No                      | 3           |
- | 调试器       | Chakracore - time-travel  | No                            | Data source only        | too early   |
- | 跟踪        | trace_events (API)        | No                            | Yes                     | 1           |
- | 跟踪        | DTrace                    | No                            | Partial                 | 3           |
- | 跟踪        | LTTng                     | No                            | Removed?                | N/A         |
- | 跟踪        | ETW                       | No                            | Partial                 | 3           |
- | 跟踪        | Systemtap                 | No                            | Partial                 | ?           |
+ | Debugger  | V8 Debug protocol (API)   | No                            | Yes                     | 1           |
+ | Debugger  | Command line Debug Client | ?                             | Yes                     | 1           |
+ | Debugger  | llnode                    | ?                             | No                      | 2           |
+ | Debugger  | Chrome Dev tools          | ?                             | No                      | 3           |
+ | Debugger  | Chakracore - time-travel  | No                            | Data source only        | too early   |
+ | Tracing   | trace_events (API)        | No                            | Yes                     | 1           |
+ | Tracing   | DTrace                    | No                            | Partial                 | 3           |
+ | Tracing   | LTTng                     | No                            | Removed?                | N/A         |
+ | Tracing   | ETW                       | No                            | Partial                 | 3           |
+ | Tracing   | Systemtap                 | No                            | Partial                 | ?           |
  | Profiling | DTrace                    | No                            | Partial                 | 3           |
  | Profiling | Windows Xperf             | No                            | ?                       | ?           |
  | Profiling | 0x                        | No                            | No                      | 4           |
