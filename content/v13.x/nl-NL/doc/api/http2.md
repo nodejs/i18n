@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -381,7 +381,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -651,7 +651,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Retourneert: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -1426,7 +1426,7 @@ changes:
 
 * `msecs` {number} **Default:** 0 (no timeout)
 * `callback` {Function}
-* Retourneert: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1562,7 +1562,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Retourneert: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1637,7 +1637,7 @@ changes:
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the `Http2ServerResponse` class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Retourneert: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1707,7 +1707,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Retourneert: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1768,7 +1768,7 @@ changes:
   * `createConnection` {Function} An optional callback that receives the `URL` instance passed to `connect` and the `options` object, and returns any [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
 * `listener` {Function} Will be registered as a one-time listener of the [`'connect'`][] event.
-* Retourneert: {ClientHttp2Session}
+* Returns: {ClientHttp2Session}
 
 Returns a `ClientHttp2Session` instance.
 
@@ -1824,7 +1824,7 @@ added: v8.4.0
 -->
 
 * `settings` {HTTP/2 Settings Object}
-* Retourneert: {Buffer}
+* Returns: {Buffer}
 
 Returns a `Buffer` instance containing serialized representation of the given HTTP/2 settings as specified in the [HTTP/2](https://tools.ietf.org/html/rfc7540) specification. This is intended for use with the `HTTP2-Settings` header field.
 
@@ -1905,7 +1905,7 @@ The
 
 All additional properties on the settings object are ignored.
 
-### Foutafhandeling
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2277,7 +2277,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http2.Http2ServerRequest}
+* Returns: {http2.Http2ServerRequest}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2431,7 +2431,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -2451,7 +2451,7 @@ Boolean value that indicates whether the response has completed. Starts as `fals
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* Retourneert: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
@@ -2481,7 +2481,7 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -2501,7 +2501,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -2583,7 +2583,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Retourneert: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sets the [`Http2Stream`][]'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -2661,7 +2661,7 @@ added: v8.4.0
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -2694,7 +2694,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* Retourneert: {http2.Http2ServerResponse}
+* Returns: {http2.Http2ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
