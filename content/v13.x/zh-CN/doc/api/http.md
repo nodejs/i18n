@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -163,7 +163,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* 返回：{string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -406,7 +406,7 @@ The `request.aborted` property will be `true` if the request has been aborted.
 ### `request.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> 稳定性：0 - 已弃用。 Use [`request.socket`][].
+-->> Stability: 0 - Deprecated. Use [`request.socket`][].
 
 * {stream.Duplex}
 
@@ -421,7 +421,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 返回：{this}
+* Returns: {this}
 
 Finishes sending the request. If any parts of the body are unsent, it will flush them to the stream. If the request is chunked, this will send the terminating `'0\r\n\r\n'`.
 
@@ -432,7 +432,7 @@ If `callback` is specified, it will be called when the request stream is finishe
 ### `request.finished`<!-- YAML
 added: v0.0.1
 deprecated: v13.4.0
--->> 稳定性：0 - 已弃用。 Use [`request.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`request.writableEnded`][].
 
 * {boolean}
 
@@ -551,7 +551,7 @@ Sets a single header value for headers object. If this header already exists in 
 request.setHeader('Content-Type', 'application/json');
 ```
 
-或
+or
 
 ```js
 request.setHeader('Cookie', ['type=ninja', 'language=javascript']);
@@ -578,7 +578,7 @@ changes:
     description: Consistently set socket timeout only when the socket connects.
 -->* `timeout` {number} Milliseconds before a request times out.
 * `callback` {Function} Optional function to be called when a timeout occurs. Same as binding to the `'timeout'` event.
-* 返回：{http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Once a socket is assigned to this request and is connected [`socket.setTimeout()`][] will be called.
 
@@ -622,15 +622,15 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Sends a chunk of the body. By calling this method many times, a request body can be sent to a server. In that case, it is suggested to use the `['Transfer-Encoding', 'chunked']` header line when creating the request.
 
-The `encoding` argument is optional and only applies when `chunk` is a string. 默认值为 `'utf8'`。
+The `encoding` argument is optional and only applies when `chunk` is a string. Defaults to `'utf8'`.
 
 The `callback` argument is optional and will be called when this chunk of data is flushed, but only if the chunk is non-empty.
 
-如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 When `write` function is called with empty string or buffer, it does nothing and waits for more input.
 
@@ -707,7 +707,7 @@ When the `'clientError'` event occurs, there is no `request` or `response` objec
 
 ### Event: `'close'`<!-- YAML
 added: v0.1.4
--->当服务器关闭时发出。
+-->Emitted when the server closes.
 
 ### Event: `'connect'`<!-- YAML
 added: v0.7.0
@@ -773,7 +773,7 @@ In case of inactivity, the rules defined in [`server.timeout`][] apply. However,
 
 ### `server.listen()`
 
-Starts the HTTP server listening for connections. 此方法与 [`net.Server`][] 中的 [`server.listen()`][] 相同。
+Starts the HTTP server listening for connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
 ### `server.listening`<!-- YAML
 added: v5.7.0
@@ -793,7 +793,7 @@ changes:
     description: The default timeout changed from 120s to 0 (no timeout).
 -->* `msecs` {number} **Default:** 0 (no timeout)
 * `callback` {Function}
-* 返回：{http.Server}
+* Returns: {http.Server}
 
 Sets the timeout value for sockets, and emits a `'timeout'` event on the Server object, passing the socket as an argument, if a timeout occurs.
 
@@ -862,7 +862,7 @@ Attempting to set a header field name or value that contains invalid characters 
 ### `response.connection`<!-- YAML
 added: v0.3.0
 deprecated: v13.0.0
--->> 稳定性：0 - 已弃用。 Use [`response.socket`][].
+-->> Stability: 0 - Deprecated. Use [`response.socket`][].
 
 * {stream.Duplex}
 
@@ -881,7 +881,7 @@ changes:
 -->* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* 返回：{this}
+* Returns: {this}
 
 This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
@@ -892,7 +892,7 @@ If `callback` is specified, it will be called when the response stream is finish
 ### `response.finished`<!-- YAML
 added: v0.0.2
 deprecated: v13.4.0
--->> 稳定性：0 - 已弃用。 Use [`response.writableEnded`][].
+-->> Stability: 0 - Deprecated. Use [`response.writableEnded`][].
 
 * {boolean}
 
@@ -937,7 +937,7 @@ const headerNames = response.getHeaderNames();
 
 ### `response.getHeaders()`<!-- YAML
 added: v7.7.0
--->* 返回：{Object}
+-->* Returns: {Object}
 
 Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
@@ -957,7 +957,7 @@ added: v7.7.0
 -->
 
 * `name` {string}
-* 返回：{boolean}
+* Returns: {boolean}
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. The header name matching is case-insensitive.
 
@@ -985,7 +985,7 @@ response.removeHeader('Content-Encoding');
 added: v0.7.5
 -->* {boolean}
 
-When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. 默认值为 true。
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
 
 This should only be disabled for testing; HTTP requires the Date header in responses.
 
@@ -1003,7 +1003,7 @@ Sets a single header value for implicit headers. If this header already exists i
 response.setHeader('Content-Type', 'text/html');
 ```
 
-或
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
@@ -1029,7 +1029,7 @@ If [`response.writeHead()`][] method is called and this method has not been call
 added: v0.9.12
 -->* `msecs` {number}
 * `callback` {Function}
-* 返回：{http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sets the Socket's timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
@@ -1097,7 +1097,7 @@ added: v0.1.29
 -->* `chunk` {string|Buffer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
-* 返回：{boolean}
+* Returns: {boolean}
 
 If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
@@ -1111,7 +1111,7 @@ This is the raw HTTP body and has nothing to do with higher-level multi-part bod
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-如果全部数据都被成功刷新到内核缓冲区，则返回 `true`。 如果全部或部分数据在用户内存中排队，则返回 `false`。 `'drain'` will be emitted when the buffer is free again.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 ### `response.writeContinue()`<!-- YAML
 added: v0.3.0
@@ -1131,7 +1131,7 @@ changes:
 -->* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
-* 返回：{http.ServerResponse}
+* Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
@@ -1300,7 +1300,7 @@ The raw request/response trailer keys and values exactly as they were received. 
 added: v0.5.9
 -->* `msecs` {number}
 * `callback` {Function}
-* 返回：{http.IncomingMessage}
+* Returns: {http.IncomingMessage}
 
 Calls `message.connection.setTimeout(msecs, callback)`.
 
@@ -1410,7 +1410,7 @@ changes:
   * `maxHeaderSize` {number} Optionally overrides the value of [`--max-http-header-size`][] for requests received by this server, i.e. the maximum length of request headers in bytes. **Default:** 8192 (8KB).
 * `requestListener` {Function}
 
-* 返回：{http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1430,7 +1430,7 @@ changes:
 -->* `url` {string | URL}
 * `options` {Object} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* 返回：{http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. The callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1520,17 +1520,17 @@ changes:
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][], `hostname` will be used if both `host` and `hostname` are specified.
   * `insecureHTTPParser` {boolean} Use an insecure HTTP parser that accepts invalid HTTP headers when `true`. Using the insecure parser should be avoided. See [`--insecure-http-parser`][] for more information. **Default:** `false`
   * `localAddress` {string} Local interface to bind for network connections.
-  * `lookup` {Function} 自定义查找函数。 **Default:** [`dns.lookup()`][].
+  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
   * `maxHeaderSize` {number} Optionally overrides the value of [`--max-http-header-size`][] for requests received from the server, i.e. the maximum length of response headers in bytes. **Default:** 8192 (8KB).
   * `method` {string} A string specifying the HTTP request method. **Default:** `'GET'`.
   * `path` {string} Request path. Should include query string if any. E.G. `'/index.html?page=12'`. An exception is thrown when the request path contains illegal characters. Currently, only spaces are rejected but that may change in the future. **Default:** `'/'`.
   * `port` {number} Port of remote server. **Default:** `defaultPort` if set, else `80`.
   * `protocol` {string} Protocol to use. **Default:** `'http:'`.
-  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. 默认值为 `true`。
+  * `setHost` {boolean}: Specifies whether or not to automatically add the `Host` header. Defaults to `true`.
   * `socketPath` {string} Unix Domain Socket (cannot be used if one of `host` or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* 返回：{http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
