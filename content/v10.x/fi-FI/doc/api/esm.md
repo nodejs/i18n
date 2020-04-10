@@ -4,7 +4,7 @@
 
 <!-- type=misc -->
 
-> Vakaus: 1 - Kokeellinen
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
