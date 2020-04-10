@@ -1,10 +1,10 @@
-# Путь
+# Path
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
-The `path` module provides utilities for working with file and directory paths. Это осуществляется с помощью:
+The `path` module provides utilities for working with file and directory paths. It can be accessed using:
 
 ```js
 const path = require('path');
@@ -63,11 +63,11 @@ changes:
 
 * `path` {string}
 * `ext` {string} An optional file extension
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.basename()` methods returns the last portion of a `path`, similar to the Unix `basename` command. Trailing directory separators are ignored, see [`path.sep`][].
 
-Например:
+For example:
 
 ```js
 path.basename('/foo/bar/baz/asdf/quux.html');
@@ -124,11 +124,11 @@ changes:
 -->
 
 * `path` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.dirname()` method returns the directory name of a `path`, similar to the Unix `dirname` command. Trailing directory separators are ignored, see [`path.sep`][].
 
-Например:
+For example:
 
 ```js
 path.dirname('/foo/bar/baz/asdf/quux');
@@ -149,11 +149,11 @@ changes:
 -->
 
 * `path` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.extname()` method returns the extension of the `path`, from the last occurrence of the `.` (period) character to end of string in the last portion of the `path`. If there is no `.` in the last portion of the `path`, or if the first character of the basename of `path` (see `path.basename()`) is `.`, then an empty string is returned.
 
-Например:
+For example:
 
 ```js
 path.extname('index.html');
@@ -186,7 +186,7 @@ added: v0.11.15
   * `base` {string}
   * `name` {string}
   * `ext` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.format()` method returns a path string from an object. This is the opposite of [`path.parse()`][].
 
@@ -244,7 +244,7 @@ added: v0.11.2
 -->
 
 * `path` {string}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 The `path.isAbsolute()` method determines if `path` is an absolute path.
 
@@ -280,13 +280,13 @@ added: v0.1.16
 -->
 
 * `...paths` {string} A sequence of path segments
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.join()` method joins all given `path` segments together using the platform specific separator as a delimiter, then normalizes the resulting path.
 
 Zero-length `path` segments are ignored. If the joined path string is a zero-length string then `'.'` will be returned, representing the current working directory.
 
-Например:
+For example:
 
 ```js
 path.join('/foo', 'bar', 'baz/asdf', 'quux', '..');
@@ -305,12 +305,11 @@ added: v0.1.23
 -->
 
 * `path` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.normalize()` method normalizes the given `path`, resolving `'..'` and `'.'` segments.
 
-When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either ``\` or``/`on Windows), they are replaced by a single
-instance of the platform specific path segment separator (`/`on POSIX and`\` on Windows). Trailing separators are preserved.
+When multiple, sequential path segment separation characters are found (e.g. `/` on POSIX and either `` or `/` on Windows), they are replaced by a single instance of the platform specific path segment separator (`/` on POSIX and `` on Windows). Trailing separators are preserved.
 
 If the `path` is a zero-length string, `'.'` is returned, representing the current working directory.
 
@@ -344,7 +343,7 @@ added: v0.11.15
 -->
 
 * `path` {string}
-* Возвращает: {Object}
+* Returns: {Object}
 
 The `path.parse()` method returns an object whose properties represent significant elements of the `path`. Trailing directory separators are ignored, see [`path.sep`][].
 
@@ -426,7 +425,7 @@ changes:
 
 * `from` {string}
 * `to` {string}
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.relative()` method returns the relative path from `from` to `to` based on the current working directory. If `from` and `to` each resolve to the same path (after calling `path.resolve()` on each), a zero-length string is returned.
 
@@ -455,7 +454,7 @@ added: v0.3.4
 -->
 
 * `...paths` {string} A sequence of paths or path segments
-* Возвращает: {string}
+* Returns: {string}
 
 The `path.resolve()` method resolves a sequence of paths or path segments into an absolute path.
 
@@ -469,7 +468,7 @@ Zero-length `path` segments are ignored.
 
 If no `path` segments are passed, `path.resolve()` will return the absolute path of the current working directory.
 
-Например:
+For example:
 
 ```js
 path.resolve('/foo/bar', './baz');
@@ -512,9 +511,7 @@ On Windows:
 // Returns: ['foo', 'bar', 'baz']
 ```
 
-*Note*: On Windows, both the forward slash (`/`) and backward slash (``\`) are
-accepted as path segment separators; however, the``path`methods only add
-backward slashes (`\`).
+*Note*: On Windows, both the forward slash (`/`) and backward slash (``) are accepted as path segment separators; however, the `path` methods only add backward slashes (``).
 
 ## path.win32
 
