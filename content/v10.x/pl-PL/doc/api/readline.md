@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
@@ -286,7 +286,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator}
 
@@ -318,7 +318,7 @@ added: v0.7.7
 -->
 
 * `stream` {stream.Writable}
-* `dir` {liczba} 
+* `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
   * `0` - the entire line
