@@ -1,9 +1,9 @@
-# Καθολικά Αντικείμενα
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
 
-Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -11,7 +11,7 @@
 * [`module`][]
 * [`require()`][]
 
-Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. There are [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
+The objects listed here are specific to Node.js. There are [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: `Buffer`
 <!-- YAML
@@ -22,15 +22,15 @@ added: v0.1.103
 
 * {Function}
 
-Χρησιμοποιείται για τον χειρισμό binary δεδομένων. Δείτε την [ενότητα buffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## `__dirname`
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`__dirname`][].
+This variable may appear to be global but is not. See [`__dirname`][].
 
 ## `__filename`
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`__filename`][].
+This variable may appear to be global but is not. See [`__filename`][].
 
 ## `clearImmediate(immediateObject)`
 <!-- YAML
@@ -68,11 +68,11 @@ added: v0.1.100
 
 * {Object}
 
-Χρησιμοποιείται για εκτύπωση στο stdout και το stderr. Δείτε την ενότητα [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## `exports`
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`exports`][].
+This variable may appear to be global but is not. See [`exports`][].
 
 ## `global`
 <!-- YAML
@@ -81,13 +81,13 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} Το καθολικό αντικείμενο ονομάτων.
+* {Object} The global namespace object.
 
-Στα προγράμματα περιήγησης, το ανώτατο πεδίο εφαρμογής, είναι το καθολικό πεδίο εφαρμογής. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## `module`
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`module`][].
+This variable may appear to be global but is not. See [`module`][].
 
 ## `process`
 <!-- YAML
@@ -98,7 +98,7 @@ added: v0.1.7
 
 * {Object}
 
-Το αντικείμενο process. Δείτε την ενότητα [Αντικείμενο `process`][].
+The process object. See the [`process` object][] section.
 
 ## `queueMicrotask(callback)`
 <!-- YAML
@@ -136,7 +136,7 @@ DataHandler.prototype.load = async function load(key) {
 
 ## `require()`
 
-Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. See [`require()`][].
+This variable may appear to be global but is not. See [`require()`][].
 
 ## `setImmediate(callback[, ...args])`
 <!-- YAML
