@@ -43,7 +43,7 @@ An overview of available Node.js and JavaScript features for each `configure` op
 | `Date.prototype.toLocale*String()`                   | partial (not locale-aware)        | partial/full (depends on OS) | partial (English-only) | full       |
 | [WHATWG URL Parser](url.html#url_the_whatwg_url_api) | partial (no IDN support)          | full                         | full                   | full       |
 | [`require('buffer').transcode()`][]                  | none (function does not exist)    | full                         | full                   | full       |
-| [आरईपीएल](repl.html#repl_repl)                       | partial (inaccurate line editing) | full                         | full                   | full       |
+| [REPL](repl.html#repl_repl)                          | partial (inaccurate line editing) | full                         | full                   | full       |
 | [`require('util').TextDecoder`][]                    | partial (basic encodings support) | partial/full (depends on OS) | partial (Unicode-only) | full       |
 | [`RegExp` Unicode Property Escapes][]                | none (invalid `RegExp` error)     | full                         | full                   | full       |
 
