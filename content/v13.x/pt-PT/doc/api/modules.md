@@ -1,8 +1,8 @@
-# Módulos
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Estabilidade: 1 - Experimental
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
