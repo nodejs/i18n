@@ -1,12 +1,12 @@
-# Inspecteur
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> Stabiliteit: 1 - Experimenteel
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-Het kan worden bereikt met behulp van:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
@@ -16,7 +16,7 @@ const inspector = require('inspector');
 
 * `port` {number} Port to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
 * `host` {string} Host to listen on for inspector connections. Optional. **Default:** what was specified on the CLI.
-* `wait` {boolean} Block until a client has connected. Optional. **Standaard:** `false`.
+* `wait` {boolean} Block until a client has connected. Optional. **Default:** `false`.
 
 Activate inspector on host and port. Equivalent to `node
 --inspect=[[host:]port]`, but can be done programmatically after node has started.
@@ -120,7 +120,7 @@ added: v8.0.0
 
 Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
-## Gebruiksvoorbeeld
+## Example usage
 
 ### CPU Profiler
 
