@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -110,7 +110,7 @@ Because the of the specific serialization and processing requirements imposed by
 
 Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
 
-#### Συμβάν: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -118,7 +118,7 @@ added: v8.4.0
 
 The `'close'` event is emitted once the `Http2Session` has been destroyed. Its listener does not expect any arguments.
 
-#### Συμβάν: 'connect'
+#### Event: 'connect'
 
 <!-- YAML
 added: v8.4.0
@@ -262,7 +262,7 @@ server.on('stream', (stream, headers) => {
 server.listen(80);
 ```
 
-#### Συμβάν: 'timeout'
+#### Event: 'timeout'
 
 <!-- YAML
 added: v8.4.0
@@ -325,7 +325,7 @@ added: v8.4.0
 
 * `error` {Error} An `Error` object if the `Http2Session` is being destroyed due to an error.
 * `code` {number} The HTTP/2 error code to send in the final `GOAWAY` frame. If unspecified, and `error` is not undefined, the default is `INTERNAL_ERROR`, otherwise defaults to `NO_ERROR`.
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Immediately terminates the `Http2Session` and the associated `net.Socket` or `tls.TLSSocket`.
 
@@ -405,7 +405,7 @@ added: v8.9.3
 
 * `payload` {Buffer|TypedArray|DataView} Optional ping payload.
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Sends a `PING` frame to the connected HTTP/2 peer. A `callback` function must be provided. The method will return `true` if the `PING` was sent, `false` otherwise.
 
@@ -452,7 +452,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Used to set a callback function that is called when there is no activity on the `Http2Session` after `msecs` milliseconds. The given `callback` is registered as a listener on the `'timeout'` event.
 
@@ -679,12 +679,12 @@ added: v8.4.0
 * `options` {Object}
   
   * `endStream` {boolean} `true` if the `Http2Stream` *writable* side should be closed initially, such as when sending a `GET` request that should not expect a payload body.
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Προεπιλογή:** `false`.
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Επιστρέφει: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -758,7 +758,7 @@ When the `Http2Stream` instance is destroyed, the `'close'` event will be emitte
 
 After the `Http2Stream` has been destroyed, the `http2stream.destroyed` property will be `true` and the `http2stream.rstCode` property will specify the `RST_STREAM` error code. The `Http2Stream` instance is no longer usable once destroyed.
 
-#### Συμβάν: 'aborted'
+#### Event: 'aborted'
 
 <!-- YAML
 added: v8.4.0
@@ -768,7 +768,7 @@ The `'aborted'` event is emitted whenever a `Http2Stream` instance is abnormally
 
 *Note*: The `'aborted'` event will only be emitted if the `Http2Stream` writable side has not been ended.
 
-#### Συμβάν: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -796,7 +796,7 @@ added: v8.4.0
 
 The `'frameError'` event is emitted when an error occurs while attempting to send a frame. When invoked, the handler function will receive an integer argument identifying the frame type, and an integer argument identifying the error code. The `Http2Stream` instance will be destroyed immediately after the `'frameError'` event is emitted.
 
-#### Συμβάν: 'timeout'
+#### Event: 'timeout'
 
 <!-- YAML
 added: v8.4.0
@@ -846,7 +846,7 @@ added: v8.4.0
 
 * code {number} Unsigned 32-bit integer identifying the error code. **Default:** `http2.constants.NGHTTP2_NO_ERROR` (`0x00`).
 * `callback` {Function} An optional function registered to listen for the `'close'` event.
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Closes the `Http2Stream` instance by sending an `RST_STREAM` frame to the connected HTTP/2 peer.
 
@@ -901,7 +901,7 @@ added: v8.4.0
   * `parent` {number} Specifies the numeric identifier of a stream this stream is dependent on.
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `silent` {boolean} When `true`, changes the priority locally without sending a `PRIORITY` frame to the connected peer.
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Updates the priority for this `Http2Stream` instance.
 
@@ -963,7 +963,7 @@ added: v8.4.0
 
 * `msecs` {number}
 * `callback` {Function}
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 ```js
 const http2 = require('http2');
@@ -1027,13 +1027,13 @@ added: v8.4.0
 
 The `ClientHttp2Stream` class is an extension of `Http2Stream` that is used exclusively on HTTP/2 Clients. `Http2Stream` instances on the client provide events such as `'response'` and `'push'` that are only relevant on the client.
 
-#### Συμβάν: 'continue'
+#### Event: 'continue'
 
 <!-- YAML
 added: v8.5.0
 -->
 
-Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. Αυτή είναι μια οδηγία που ο πελάτης θα πρέπει να αποστείλει το σώμα του αιτήματος.
+Emitted when the server sends a `100 Continue` status, usually because the request contained `Expect: 100-continue`. This is an instruction that the client should send the request body.
 
 #### Event: 'headers'
 
@@ -1063,7 +1063,7 @@ stream.on('push', (headers, flags) => {
 });
 ```
 
-#### Συμβάν: 'response'
+#### Event: 'response'
 
 <!-- YAML
 added: v8.4.0
@@ -1110,7 +1110,7 @@ added: v8.4.0
 
 * Value: {boolean}
 
-Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
+Boolean (read-only). True if headers were sent, false otherwise.
 
 #### http2stream.pushAllowed
 
@@ -1130,13 +1130,13 @@ added: v8.4.0
 
 * `headers` {HTTP/2 Headers Object}
 * `options` {Object} 
-  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Προεπιλογή:** `false`.
+  * `exclusive` {boolean} When `true` and `parent` identifies a parent Stream, the created stream is made the sole direct dependency of the parent, with all other existing dependents made a dependent of the newly created stream. **Default:** `false`.
   * `parent` {number} Specifies the numeric identifier of a stream the newly created stream is dependent on.
 * `callback` {Function} Callback that is called once the push stream has been initiated. 
   * `err` {Error}
   * `pushStream` {ServerHttp2Stream} The returned pushStream object.
   * `headers` {HTTP/2 Headers Object} Headers object the pushStream was initiated with.
-* Επιστρέφει: {undefined}
+* Returns: {undefined}
 
 Initiates a push stream. The callback is invoked with the new `Http2Stream` instance created for the push stream passed as the second argument, or an `Error` passed as the first argument.
 
@@ -1362,7 +1362,7 @@ added: v8.4.0
 
 Instances of `Http2Server` are created using the `http2.createServer()` function. The `Http2Server` class is not exported directly by the `http2` module.
 
-#### Συμβάν: 'checkContinue'
+#### Event: 'checkContinue'
 
 <!-- YAML
 added: v8.5.0
@@ -1375,9 +1375,9 @@ If a [`'request'`][] listener is registered or [`http2.createServer()`][] is sup
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
-#### Συμβάν: 'request'
+#### Event: 'request'
 
 <!-- YAML
 added: v8.4.0
@@ -1386,7 +1386,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Μεταδίδεται κάθε φορά που υπάρχει ένα αίτημα. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Emitted each time there is a request. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1435,7 +1435,7 @@ server.on('stream', (stream, headers, flags) => {
 });
 ```
 
-#### Συμβάν: 'timeout'
+#### Event: 'timeout'
 
 <!-- YAML
 added: v8.4.0
@@ -1451,7 +1451,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Διακόπτει την αποδοχή νέων συνδέσεων από τον εξυπηρετητή. Δείτε [`net.Server.close()`][].
+Stops the server from accepting new connections. See [`net.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1461,9 +1461,9 @@ Note that this is not analogous to restricting new requests since HTTP/2 connect
 added: v8.4.0
 -->
 
-* `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
+* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Επιστρέφει: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1481,7 +1481,7 @@ added: v8.4.0
 
 Instances of `Http2SecureServer` are created using the `http2.createSecureServer()` function. The `Http2SecureServer` class is not exported directly by the `http2` module.
 
-#### Συμβάν: 'checkContinue'
+#### Event: 'checkContinue'
 
 <!-- YAML
 added: v8.5.0
@@ -1494,9 +1494,9 @@ If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
-#### Συμβάν: 'request'
+#### Event: 'request'
 
 <!-- YAML
 added: v8.4.0
@@ -1505,7 +1505,7 @@ added: v8.4.0
 * `request` {http2.Http2ServerRequest}
 * `response` {http2.Http2ServerResponse}
 
-Μεταδίδεται κάθε φορά που υπάρχει ένα αίτημα. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
+Emitted each time there is a request. Note that there may be multiple requests per session. See the [Compatibility API](#http2_compatibility_api).
 
 #### Event: 'session'
 
@@ -1556,7 +1556,7 @@ server.on('stream', (stream, headers, flags) => {
 });
 ```
 
-#### Συμβάν: 'timeout'
+#### Event: 'timeout'
 
 <!-- YAML
 added: v8.4.0
@@ -1580,7 +1580,7 @@ added: v8.4.0
 
 * `callback` {Function}
 
-Διακόπτει την αποδοχή νέων συνδέσεων από τον εξυπηρετητή. See [`tls.Server.close()`][].
+Stops the server from accepting new connections. See [`tls.Server.close()`][].
 
 Note that this is not analogous to restricting new requests since HTTP/2 connections are persistent. To achieve a similar graceful shutdown behavior, consider also using [`http2session.close()`] on active sessions.
 
@@ -1590,9 +1590,9 @@ Note that this is not analogous to restricting new requests since HTTP/2 connect
 added: v8.4.0
 -->
 
-* `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
+* `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Επιστρέφει: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1626,7 +1626,7 @@ changes:
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Προεπιλογή:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1639,7 +1639,7 @@ changes:
   * `Http2ServerRequest` {http2.Http2ServerRequest} Specifies the Http2ServerRequest class to use. Useful for extending the original `Http2ServerRequest`. **Default:** `Http2ServerRequest`.
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the Http2ServerResponse class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Επιστρέφει: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1686,13 +1686,13 @@ changes:
 -->
 
 * `options` {Object} 
-  * `allowHTTP1` {boolean} Incoming client connections that do not support HTTP/2 will be downgraded to HTTP/1.x when set to `true`. See the [`'unknownProtocol'`][] event. See [ALPN negotiation](#http2_alpn_negotiation). **Προεπιλογή:** `false`.
+  * `allowHTTP1` {boolean} Incoming client connections that do not support HTTP/2 will be downgraded to HTTP/1.x when set to `true`. See the [`'unknownProtocol'`][] event. See [ALPN negotiation](#http2_alpn_negotiation). **Default:** `false`.
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size for deflating header fields. **Default:** `4Kib`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session` is permitted to use. The value is expressed in terms of number of megabytes, e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a credit based limit, existing `Http2Stream`s may cause this limit to be exceeded, but new `Http2Stream` instances will be rejected while this limit is exceeded. The current number of `Http2Stream` sessions, the current memory use of the header compression tables, current data queued to be sent, and unacknowledged `PING` and `SETTINGS` frames are all counted towards the current limit. **Default:** `10`.
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Προεπιλογή:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1703,7 +1703,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Επιστρέφει: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1754,7 +1754,7 @@ changes:
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Προεπιλογή:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1870,9 +1870,9 @@ For incoming headers:
 
 * The `:status` header is converted to `number`.
 * Duplicates of `:status`, `:method`, `:authority`, `:scheme`, `:path`, `age`, `authorization`, `access-control-allow-credentials`, `access-control-max-age`, `access-control-request-method`, `content-encoding`, `content-language`, `content-length`, `content-location`, `content-md5`, `content-range`, `content-type`, `date`, `dnt`, `etag`, `expires`, `from`, `if-match`, `if-modified-since`, `if-none-match`, `if-range`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `range`, `referer`,`retry-after`, `tk`, `upgrade-insecure-requests`, `user-agent` or `x-content-type-options` are discarded.
-* Το `set-cookie` είναι πάντα πίνακας. Τα διπλότυπα προστίθενται στον πίνακα.
+* `set-cookie` is always an array. Duplicates are added to the array.
 * `cookie`: the values are joined together with '; '.
-* Για όλες τις άλλες κεφαλίδες, οι τιμές συνενώνονται με διαχωριστικό ', '.
+* For all other headers, the values are joined together with ', '.
 
 ```js
 const http2 = require('http2');
@@ -2103,9 +2103,9 @@ added: v8.4.0
 
 A `Http2ServerRequest` object is created by [`http2.Server`][] or [`http2.SecureServer`][] and passed as the first argument to the [`'request'`][] event. It may be used to access a request status, headers, and data.
 
-Υλοποιεί τη διεπαφή [Αναγνώσιμης Ροής](stream.html#stream_class_stream_readable) καθώς και τα παρακάτω συμβάντα, τις μεθόδους και τις ιδιότητες.
+It implements the [Readable Stream](stream.html#stream_class_stream_readable) interface, as well as the following additional events, methods, and properties.
 
-#### Συμβάν: 'aborted'
+#### Event: 'aborted'
 
 <!-- YAML
 added: v8.4.0
@@ -2115,13 +2115,13 @@ The `'aborted'` event is emitted whenever a `Http2ServerRequest` instance is abn
 
 *Note*: The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable side has not been ended.
 
-#### Συμβάν: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-Indicates that the underlying [`Http2Stream`][] was closed. Όπως και στο `'end'`, αυτό το συμβάν εκτελείται μόνο μια φορά ανά απόκριση.
+Indicates that the underlying [`Http2Stream`][] was closed. Just like `'end'`, this event occurs only once per response.
 
 #### request.aborted
 
@@ -2153,12 +2153,12 @@ added: v8.4.0
 
 * {Object}
 
-Το αντικείμενο κεφαλίδων αιτήματος/απόκρισης.
+The request/response headers object.
 
-Ζεύγη κλειδιών-τιμών των ονομάτων και των τιμών των κεφαλίδων. Τα ονόματα των κεφαλίδων μετατρέπονται σε πεζούς χαρακτήρες. Παράδειγμα:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
-// Εμφανίζει κάτι σαν το παρακάτω:
+// Prints something like:
 //
 // { 'user-agent': 'curl/7.22.0',
 //   host: '127.0.0.1:8000',
@@ -2183,9 +2183,9 @@ added: v8.4.0
 
 * {string}
 
-Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. Στην περίπτωση της απάντηση πελάτη, είναι η έκδοση HTTP του server που έχει συνδεθεί. Returns `'2.0'`.
+In case of server request, the HTTP version sent by the client. In the case of client response, the HTTP version of the connected-to server. Returns `'2.0'`.
 
-Επίσης το `message.httpVersionMajor` είναι το πρώτο integer, και το `message.httpVersionMinor` είναι το δεύτερο.
+Also `message.httpVersionMajor` is the first integer and `message.httpVersionMinor` is the second.
 
 #### request.method
 
@@ -2195,7 +2195,7 @@ added: v8.4.0
 
 * {string}
 
-Η μέθοδος αιτήματος είναι string. Read-only. Παράδειγμα: `'GET'`, `'DELETE'`.
+The request method as a string. Read-only. Example: `'GET'`, `'DELETE'`.
 
 #### request.rawHeaders
 
@@ -2205,14 +2205,14 @@ added: v8.4.0
 
 * {Array}
 
-Η λίστα ανεπεξέργαστων κεφαλίδων αιτήματος/απόκρισης, όπως έχουν ληφθεί.
+The raw request/response headers list exactly as they were received.
 
-Σημειώστε ότι τα κλειδιά και οι τιμές βρίσκονται στην ίδια λίστα. *Δεν* είναι μια λίστα πλειάδων. Έτσι, οι μονοί αριθμοί είναι τα κλειδιά, και οι ζυγοί αριθμοί είναι οι αντίστοιχες τιμές τους.
+Note that the keys and values are in the same list. It is *not* a list of tuples. So, the even-numbered offsets are key values, and the odd-numbered offsets are the associated values.
 
-Τα ονόματα κεφαλίδων δεν έχουν μετατραπεί σε πεζούς χαρακτήρες, και τα διπλότυπα δεν έχουν ενωθεί.
+Header names are not lowercased, and duplicates are not merged.
 
 ```js
-// Εμφανίζει κάτι σαν το παρακάτω:
+// Prints something like:
 //
 // [ 'user-agent',
 //   'this is invalid because there can be only one',
@@ -2233,7 +2233,7 @@ added: v8.4.0
 
 * {Array}
 
-Τα κλειδιά ουράς και οι τιμές των ακατέργαστων αιτημάτων αίτησης/απόκρισης, ακριβώς όπως παραλήφθηκαν. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
+The raw request/response trailer keys and values exactly as they were received. Only populated at the `'end'` event.
 
 #### request.setTimeout(msecs, callback)
 
@@ -2244,7 +2244,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
+Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2288,7 +2288,7 @@ added: v8.4.0
 
 * {Object}
 
-Το αντικείμενο ουράς αιτήματος/απόκρισης. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
+The request/response trailers object. Only populated at the `'end'` event.
 
 #### request.url
 
@@ -2298,7 +2298,7 @@ added: v8.4.0
 
 * {string}
 
-String URL αιτήματος. Περιέχει μόνο το URL που είναι παρόν στο αίτημα HTTP. Αν το αίτημα είναι:
+Request URL string. This contains only the URL that is present in the actual HTTP request. If the request is:
 
 ```txt
 GET /status?name=ryan HTTP/1.1\r\n
@@ -2306,7 +2306,7 @@ Accept: text/plain\r\n
 \r\n
 ```
 
-Τότε το `request.url` θα είναι:
+Then `request.url` will be:
 
 <!-- eslint-disable semi -->
 
@@ -2314,7 +2314,7 @@ Accept: text/plain\r\n
 '/status?name=ryan'
 ```
 
-Για να αναλύσετε το url στα επιμέρους κομμάτια του, μπορεί να χρησιμοποιηθεί το `require('url').parse(request.url)`. Παράδειγμα:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -2334,7 +2334,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Παράδειγμα:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -2360,11 +2360,11 @@ Url {
 added: v8.4.0
 -->
 
-Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
+This object is created internally by an HTTP server — not by the user. It is passed as the second parameter to the [`'request'`][] event.
 
-The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
+The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. This is an [`EventEmitter`][] with the following events:
 
-#### Συμβάν: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -2372,15 +2372,15 @@ added: v8.4.0
 
 Indicates that the underlying [`Http2Stream`]() was terminated before [`response.end()`][] was called or able to flush.
 
-#### Συμβάν: 'finish'
+#### Event: 'finish'
 
 <!-- YAML
 added: v8.4.0
 -->
 
-Μεταδίδεται όταν έχει αποσταλεί η απόκριση. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. Αυτό δεν υπονοεί ότι ο πελάτης έχει παραλάβει οτιδήποτε ακόμα.
+Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-Μετά από αυτό το συμβάν, δεν γίνεται μετάδοση άλλων συμβάντων στο αντικείμενο απόκρισης.
+After this event, no more events will be emitted on the response object.
 
 #### response.addTrailers(headers)
 
@@ -2390,9 +2390,9 @@ added: v8.4.0
 
 * `headers` {Object}
 
-Αυτή η μέθοδος προσθέτει τελικές κεφαλίδες HTTP (μια κεφαλίδα στο τέλος του μηνύματος) στην απόκριση.
+This method adds HTTP trailing headers (a header but at the end of the message) to the response.
 
-Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 #### response.connection
 
@@ -2402,7 +2402,7 @@ added: v8.4.0
 
 * {net.Socket|tls.TLSSocket}
 
-Δείτε το [`response.socket`][].
+See [`response.socket`][].
 
 #### response.end(\[data\]\[, encoding\][, callback])
 
@@ -2414,11 +2414,11 @@ added: v8.4.0
 * `encoding` {string}
 * `callback` {Function}
 
-Αυτή η μέθοδος αποστέλλει σήμα στον εξυπηρετητή ότι οι κεφαλίδες απόκρισης και το σώμα έχουν αποσταλεί, ο εξυπηρετητής θα πρέπει να θεωρήσει αυτό το μήνυμα ως ολοκληρωμένο. Η μέθοδος, `response.end()`, ΕΙΝΑΙ ΑΠΑΡΑΙΤΗΤΟ να καλείται σε κάθε απόκριση.
+This method signals to the server that all of the response headers and body have been sent; that server should consider this message complete. The method, `response.end()`, MUST be called on each response.
 
-Ο ορισμός του `data`, είναι ισοδύναμος με την κλήση του [`response.write(data, encoding)`][] ακολουθούμενου από `response.end(callback)`.
+If `data` is specified, it is equivalent to calling [`response.write(data, encoding)`][] followed by `response.end(callback)`.
 
-Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
+If `callback` is specified, it will be called when the response stream is finished.
 
 #### response.finished
 
@@ -2428,7 +2428,7 @@ added: v8.4.0
 
 * {boolean}
 
-Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Ξεκινάει ως `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
+Boolean value that indicates whether the response has completed. Starts as `false`. After [`response.end()`][] executes, the value will be `true`.
 
 #### response.getHeader(name)
 
@@ -2437,11 +2437,11 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Επιστρέφει: {string}
+* Returns: {string}
 
-Reads out a header that has already been queued but not sent to the client. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα.
+Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Παράδειγμα:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2453,11 +2453,11 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* Επιστρέφει: {Array}
+* Returns: {Array}
 
-Επιστρέφει έναν πίνακα που περιέχει τις μοναδικές τιμές των τρεχόντων εξερχομένων κεφαλίδων. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
+Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Παράδειγμα:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2473,13 +2473,13 @@ const headerNames = response.getHeaderNames();
 added: v8.4.0
 -->
 
-* Επιστρέφει: {Object}
+* Returns: {Object}
 
-Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
+Returns a shallow copy of the current outgoing headers. Since a shallow copy is used, array values may be mutated without additional calls to various header-related http module methods. The keys of the returned object are the header names and the values are the respective header values. All header names are lowercase.
 
-*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
+*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Παράδειγμα:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2496,11 +2496,11 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
-Returns `true` if the header identified by `name` is currently set in the outgoing headers. Σημειώστε ότι δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα της κεφαλίδας.
+Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Παράδειγμα:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2514,7 +2514,7 @@ added: v8.4.0
 
 * {boolean}
 
-Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
+Boolean (read-only). True if headers were sent, false otherwise.
 
 #### response.removeHeader(name)
 
@@ -2526,7 +2526,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Παράδειγμα:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2540,9 +2540,9 @@ added: v8.4.0
 
 * {boolean}
 
-Όταν είναι True, η κεφαλίδα της Ημερομηνίας θα δημιουργηθεί με αυτόματο τρόπο και θα αποσταλεί με την απόκριση, αν δεν είναι ήδη ορισμένη ως κεφαλίδα. Από προεπιλογή είναι True.
+When true, the Date header will be automatically generated and sent in the response if it is not already present in the headers. Defaults to true.
 
-Αυτό πρέπει να απενεργοποιηθεί μόνο για δοκιμές. Το πρωτόκολλο HTTP απαιτεί την κεφαλίδα της Ημερομηνίας στις αποκρίσεις.
+This should only be disabled for testing; HTTP requires the Date header in responses.
 
 #### response.setHeader(name, value)
 
@@ -2553,21 +2553,21 @@ added: v8.4.0
 * `name` {string}
 * `value` {string|string[]}
 
-Ορίζει μια μοναδική τιμή κεφαλίδας για τις υπονοούμενες κεφαλίδες. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή της θα αντικατασταθεί με την ορισμένη. Use an array of strings here to send multiple headers with the same name.
+Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Παράδειγμα:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
 ```
 
-ή
+or
 
 ```js
 response.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 When headers have been set with [`response.setHeader()`][], they will be merged with any headers passed to [`response.writeHead()`][], with the headers passed to [`response.writeHead()`][] given precedence.
 
@@ -2590,7 +2590,7 @@ added: v8.4.0
 * `msecs` {number}
 * `callback` {Function}
 
-Sets the [`Http2Stream`]()'s timeout value to `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
+Sets the [`Http2Stream`]()'s timeout value to `msecs`. If a callback is provided, then it is added as a listener on the `'timeout'` event on the response object.
 
 If no `'timeout'` listener is added to the request, the response, or the server, then [`Http2Stream`]()s are destroyed when they time out. If a handler is assigned to the request, the response, or the server's `'timeout'` events, timed out sockets must be handled explicitly.
 
@@ -2616,7 +2616,7 @@ Returns a Proxy object that acts as a `net.Socket` (or `tls.TLSSocket`) but appl
 
 All other interactions will be routed directly to the socket.
 
-Παράδειγμα:
+Example:
 
 ```js
 const http2 = require('http2');
@@ -2635,15 +2635,15 @@ added: v8.4.0
 
 * {number}
 
-Όταν χρησιμοποιούνται υπονοούμενες κεφαλίδες (χωρίς δηλαδή την ρητή κλήση του [`response.writeHead()`][]), αυτή η ιδιότητα ελέγχει τον κωδικό κατάστασης που θα αποσταλεί στον πελάτη όταν οι κεφαλίδες εκκαθαριστούν.
+When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Παράδειγμα:
+Example:
 
 ```js
 response.statusCode = 404;
 ```
 
-Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει τον κωδικό κατάστασης που έχει αποσταλεί.
+After response header was sent to the client, this property indicates the status code which was sent out.
 
 #### response.statusMessage
 
@@ -2674,21 +2674,21 @@ added: v8.4.0
 * `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
-Αν κληθεί αυτή η μέθοδος και δεν έχει κληθεί το [`response.writeHead()`][], θα γίνει εναλλαγή σε λειτουργία υπονοούμενων κεφαλίδων και θα γίνει εκκαθάριση των υπονοούμενων κεφαλίδων.
+If this method is called and [`response.writeHead()`][] has not been called, it will switch to implicit header mode and flush the implicit headers.
 
-Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
+This sends a chunk of the response body. This method may be called multiple times to provide successive parts of the body.
 
-Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Παρομοίως, οι αποκρίσεις `204` και `304` *δεν πρέπει* να συμπεριλαμβάνουν ένα σώμα απόκρισης.
+Note that in the `http` module, the response body is omitted when the request is a HEAD request. Similarly, the `204` and `304` responses *must not* include a message body.
 
-Το `chunk` μπορεί να είναι ένα string ή ένα buffer. Αν το `chunk` είναι string, η δεύτερη παράμετρος καθορίζει πως θα γίνει η κωδικοποίησή του σε μια ροή byte. By default the `encoding` is `'utf8'`. `callback` will be called when this chunk of data is flushed.
+`chunk` can be a string or a buffer. If `chunk` is a string, the second parameter specifies how to encode it into a byte stream. By default the `encoding` is `'utf8'`. `callback` will be called when this chunk of data is flushed.
 
 *Note*: This is the raw HTTP body and has nothing to do with higher-level multi-part body encodings that may be used.
 
 The first time [`response.write()`][] is called, it will send the buffered header information and the first chunk of the body to the client. The second time [`response.write()`][] is called, Node.js assumes data will be streamed, and sends the new data separately. That is, the response is buffered up to the first chunk of the body.
 
-Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
+Returns `true` if the entire data was flushed successfully to the kernel buffer. Returns `false` if all or part of the data was queued in user memory. `'drain'` will be emitted when the buffer is free again.
 
 #### response.writeContinue()
 
@@ -2708,11 +2708,11 @@ added: v8.4.0
 * `statusMessage` {string}
 * `headers` {Object}
 
-Αποστέλλει μια κεφαλίδα απόκρισης στο αίτημα. Ο κωδικός κατάστασης είναι ένας 3ψήφιος κωδικός κατάστασης HTTP, όπως το `404`. Η τελευταία παράμετρος, `headers`, είναι οι κεφαλίδες απόκρισης.
+Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers.
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Παράδειγμα:
+Example:
 
 ```js
 const body = 'hello world';
@@ -2721,7 +2721,7 @@ response.writeHead(200, {
   'Content-Type': 'text/plain' });
 ```
 
-Σημειώστε ότι το Content-Length ορίζεται σε byte και όχι σε αριθμό χαρακτήρων. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
+Note that Content-Length is given in bytes not characters. The `Buffer.byteLength()` API may be used to determine the number of bytes in a given encoding. On outbound messages, Node.js does not check if Content-Length and the length of the body being transmitted are equal or not. However, when receiving messages, Node.js will automatically reject messages when the Content-Length does not match the actual payload size.
 
 This method may be called at most one time on a message before [`response.end()`][] is called.
 
@@ -2739,7 +2739,7 @@ const server = http2.createServer((req, res) => {
 });
 ```
 
-Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
+Attempting to set a header field name or value that contains invalid characters will result in a [`TypeError`][] being thrown.
 
 #### response.createPushResponse(headers, callback)
 
