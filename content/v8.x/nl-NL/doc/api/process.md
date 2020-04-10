@@ -1,4 +1,4 @@
-# Proces
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -477,7 +477,7 @@ added: v6.1.0
 -->
 
 * `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Retourneert: {Object} 
+* Returns: {Object} 
     * `user` {integer}
     * `system` {integer}
 
@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retourneert: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -544,7 +544,7 @@ added: 8.0.0
 -->
 
 * `warning` {string|Error} The warning to emit.
-* `opties` {Object} 
+* `options` {Object} 
     * `type` {string} When `warning` is a String, `type` is the name to use for the *type* of warning being emitted. **Default:** `Warning`.
     * `code` {string} A unique identifier for the warning instance being emitted.
     * `ctor` {Function} When `warning` is a String, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Voorbeeld:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Voorbeeld:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Voorbeeld:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -865,7 +865,7 @@ if (process.getegid) {
 added: v2.0.0
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -883,7 +883,7 @@ if (process.geteuid) {
 added: v0.1.31
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -901,7 +901,7 @@ if (process.getgid) {
 added: v0.9.4
 -->
 
-* Retourneert: {Array}
+* Returns: {Array}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -913,7 +913,7 @@ The `process.getgroups()` method returns an array with the supplementary group I
 added: v0.1.28
 -->
 
-* Retourneert: {integer}
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -932,7 +932,7 @@ added: v0.7.6
 -->
 
 * `time` {Array} The result of a previous call to `process.hrtime()`
-* Retourneert: {Array}
+* Returns: {Array}
 
 The `process.hrtime()` method returns the current high-resolution real time in a `[seconds, nanoseconds]` tuple Array, where `nanoseconds` is the remaining part of the real time that can't be represented in second precision.
 
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Voorbeeld:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -984,7 +984,7 @@ added: v0.0.6
 -->
 
 * `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. **Standaard:** `'SIGTERM'`.
+* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
@@ -1034,7 +1034,7 @@ changes:
     description: Added `external` to the returned object.
 -->
 
-* Retourneert: {Object} 
+* Returns: {Object} 
     * `rss` {integer}
     * `heapTotal` {integer}
     * `heapUsed` {integer}
@@ -1271,7 +1271,7 @@ added: v0.5.9
 * `sendHandle` {Handle object}
 * `options` {Object}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1454,7 +1454,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Bijvoorbeeld:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1525,7 +1525,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Retourneert: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
