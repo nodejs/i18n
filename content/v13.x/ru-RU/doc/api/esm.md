@@ -1,9 +1,9 @@
-# Модули ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -502,7 +502,7 @@ As with the previous approach, a variant of this approach not requiring conditio
 
 ## `import` Specifiers
 
-### Терминология
+### Terminology
 
 The _specifier_ of an `import` statement is the string after the `from` keyword, e.g. `'path'` in `import { sep } from 'path'`. Specifiers are also used in `export from` statements, and as the argument to an `import()` expression.
 
@@ -784,7 +784,7 @@ export async function resolve(specifier, context, defaultResolve) {
 
 The `getFormat` hook provides a way to define a custom method of determining how a URL should be interpreted. This can be one of the following:
 
-| `format`     | Описание                                                                 |
+| `format`     | Description                                                              |
 | ------------ | ------------------------------------------------------------------------ |
 | `'builtin'`  | Load a Node.js builtin module                                            |
 | `'commonjs'` | Load a Node.js CommonJS module                                           |
@@ -905,7 +905,7 @@ export async function dynamicInstantiate(url) {
 
 With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.
 
-### Примеры
+### Examples
 
 The various loader hooks can be used together to accomplish wide-ranging customizations of Node.js’ code loading and evaluation behaviors.
 
