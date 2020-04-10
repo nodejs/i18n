@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
