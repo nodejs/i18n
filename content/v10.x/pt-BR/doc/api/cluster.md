@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -107,7 +107,7 @@ This event is the same as the one provided by [`child_process.fork()`][].
 
 Within a worker, `process.on('error')` may also be used.
 
-### Evento: 'exit'
+### Event: 'exit'
 
 <!-- YAML
 added: v0.11.2
@@ -381,7 +381,7 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -421,7 +421,7 @@ cluster.on('disconnect', (worker) => {
 });
 ```
 
-## Evento: 'exit'
+## Event: 'exit'
 
 <!-- YAML
 added: v0.7.9
@@ -564,7 +564,7 @@ The `settings` object is the `cluster.settings` object at the time `.setupMaster
 
 If accuracy is important, use `cluster.settings`.
 
-## cluster.disconnect ([callback])
+## cluster.disconnect([callback])
 
 <!-- YAML
 added: v0.7.7
@@ -587,7 +587,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Retorna: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
