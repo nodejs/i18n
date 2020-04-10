@@ -136,7 +136,7 @@ Once a bug in Node.js has been identified to be caused by V8, the first step is 
 
 If the bug can be reproduced on the [Node.js `canary` branch][], Chromium canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed upstream first.
 
-* Beginnen Sie mit dem Öffnen eines Fehlers mit [dieser Vorlage](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
+* Start by opening a bug upstream using [this template](https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug).
 * Make sure to include a link to the corresponding Node.js issue (if one exists).
 * If the fix is simple enough, you may fix it yourself; [contributions](https://github.com/v8/v8/wiki/Contributing) are welcome.
 * V8's build waterfall tests your change.
@@ -160,7 +160,7 @@ If the bug exists in any of the active V8 branches, we may need to get the fix b
 
 ### Backporting to Abandoned Branches
 
-Zweig V8 Links wird im repository-Knoten unterstützt.js. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
+Abandoned V8 branches are supported in the Node.js repository. The fix needs to be cherry-picked in the Node.js repository and V8-CI must test the change.
 
 * For each abandoned V8 branch corresponding to an LTS branch that is affected by the bug:
   * Checkout a branch off the appropriate *vY.x-staging* branch (e.g. *v6.x-staging* to fix an issue in V8 5.1).
