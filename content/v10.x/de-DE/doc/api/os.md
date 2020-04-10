@@ -1,10 +1,10 @@
-# Betriebssystem (OS)
+# OS
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. Es kann zugegriffen werden durch:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -29,7 +29,7 @@ A string constant defining the operating system-specific end-of-line marker:
 added: v0.5.0
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
@@ -171,7 +171,7 @@ Because `nice` values are UNIX-specific, on Windows the `nice` values of all pro
 added: v0.9.4
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
@@ -207,7 +207,7 @@ The `os.getPriority()` method returns the scheduling priority for the process sp
 added: v2.3.0
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
@@ -217,7 +217,7 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.hostname()` method returns the hostname of the operating system as a string.
 
@@ -308,7 +308,7 @@ The properties available on the assigned network address object include:
 added: v0.5.0
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -332,7 +332,7 @@ The value `'android'` may also be returned if the Node.js is built on the Androi
 added: v0.3.3
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
@@ -365,7 +365,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -385,7 +385,7 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Gibt zurück: {string}
+* Returns: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example, `'Linux'` on Linux, `'Darwin'` on macOS, and `'Windows_NT'` on Windows.
 
@@ -414,7 +414,7 @@ added: v6.0.0
 -->
 
 * `options` {Object} 
-  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Standard:** `'utf8'`.
+  * `encoding` {string} Character encoding used to interpret resulting strings. If `encoding` is set to `'buffer'`, the `username`, `shell`, and `homedir` values will be `Buffer` instances. **Default:** `'utf8'`.
 * Returns: {Object}
 
 The `os.userInfo()` method returns information about the currently effective user — on POSIX platforms, this is typically a subset of the password file. The returned object includes the `username`, `uid`, `gid`, `shell`, and `homedir`. On Windows, the `uid` and `gid` fields are `-1`, and `shell` is `null`.
