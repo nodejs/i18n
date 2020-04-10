@@ -1,8 +1,8 @@
-# Depurador
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -23,6 +23,8 @@ debug>
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
 
 Inserting the statement `debugger;` into the source code of a script will enable a breakpoint at that position in the code:
+
+<!-- eslint-disable no-debugger -->
 
 ```js
 // myscript.js
