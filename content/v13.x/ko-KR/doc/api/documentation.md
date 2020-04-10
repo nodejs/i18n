@@ -23,11 +23,11 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. The feature is not subject to Semantic Versioning rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
+> Stability: 1 - Experimental. The feature is not subject to [Semantic Versioning](https://semver.org/) rules. Non-backward compatible changes or removal may occur in any future release. Use of the feature is not recommended in production environments.
 
 <!-- separator -->
 
-> 안정성: 2 - 안정. Compatibility with the npm ecosystem is a high priority.
+> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Use caution when making use of Experimental features, particularly within modules. End users may not be aware that experimental features are being used. Bugs or behavior changes may surprise end users when Experimental API modifications occur. To avoid surprises, use of an Experimental feature may need a command-line flag. Experimental features may also emit a [warning](process.html#process_event_warning).
 
