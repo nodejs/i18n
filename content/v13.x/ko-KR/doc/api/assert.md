@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -926,6 +926,21 @@ If specified, `message` will be the message provided by the [`AssertionError`][]
     {
       name: 'TypeError',
       message: 'Wrong value'
+    }
+  );
+})();
+```
+
+```js
+(async () => {
+  await assert.rejects(
+    async () => {
+      throw new TypeError('Wrong value');
+    },
+    (err) => {
+      assert.strictEqual(err.name, 'TypeError');
+      assert.strictEqual(err.message, 'Wrong value');
+      return true;
     }
   );
 })();
