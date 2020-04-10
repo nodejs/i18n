@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -128,9 +128,9 @@ added: v9.9.0
 -->
 
 * `env` {Object} An object containing the environment variables to check. **Default:** `process.env`.
-* 戻り値: {number}
+* Returns: {number}
 
-戻り値:
+Returns:
 
 * `1` for 2,
 * `4` for 16,
