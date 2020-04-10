@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`][]) one line at a time. It can be accessed using:
 
@@ -271,7 +271,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-* 戻り値: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for await...of` loops.
 
