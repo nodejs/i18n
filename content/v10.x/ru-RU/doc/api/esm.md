@@ -1,10 +1,10 @@
-# Модули ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
 <!-- type=misc -->
 
-> Стабильность: 1 - экспериментальный
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
@@ -67,7 +67,8 @@ ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) seman
 Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
-import './foo?query=1'; // loads ./foo with query of "?query=1"import './foo?query=2'; // loads ./foo with query of "?query=2"
+import './foo?query=1'; // loads ./foo with query of "?query=1"
+import './foo?query=2'; // loads ./foo with query of "?query=2"
 ```
 
 For now, only modules using the `file:` protocol can be loaded.
@@ -147,7 +148,7 @@ The default Node.js ES module resolution function is provided as a third argumen
 
 In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. This can be one of the following:
 
-| `format`    | Описание                                                        |
+| `format`    | Description                                                     |
 | ----------- | --------------------------------------------------------------- |
 | `'esm'`     | Load a standard JavaScript module                               |
 | `'cjs'`     | Load a node-style CommonJS module                               |
