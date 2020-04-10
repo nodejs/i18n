@@ -1,8 +1,8 @@
-# Gebeurtenissen
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -199,7 +199,7 @@ added: v0.9.12
 deprecated: v4.0.0
 -->
 
-> Stabiliteit: 0 - Afgekeurd: Gebruik als alternatief [`emitter.listenerCount()`][].
+> Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
 
 A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
