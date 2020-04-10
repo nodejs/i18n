@@ -1,4 +1,4 @@
-# 域
+# Domain
 
 <!-- YAML
 changes:
@@ -16,7 +16,7 @@ changes:
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：0 - 已弃用
+> Stability: 0 - Deprecated
 
 **This module is pending deprecation**. Once a replacement API has been finalized, this module will be fully deprecated. Most end users should **not** have cause to use this module. Users who absolutely must have the functionality that domains provide may rely on it for the time being but should expect to have to migrate to a different solution in the future.
 
@@ -197,7 +197,7 @@ For example, there could be one domain in use for an HTTP server, but perhaps we
 
 That is possible via explicit binding.
 
-例如：
+For example:
 
 ```js
 // create a top-level domain for the server
@@ -229,7 +229,7 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* 返回：{Domain}
+* Returns: {Domain}
 
 Returns a new Domain object.
 
@@ -262,7 +262,7 @@ If the Timer or EventEmitter was already bound to a domain, it is removed from t
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### 示例
+#### Example
 
 ```js
 const d = domain.create();
@@ -283,7 +283,7 @@ d.on('error', (er) => {
 
 ### domain.dispose()
 
-> 稳定性：0 - 已弃用。 Please recover from failed IO actions explicitly via error event handlers set on the domain.
+> Stability: 0 - Deprecated. Please recover from failed IO actions explicitly via error event handlers set on the domain.
 
 Once `dispose` has been called, the domain will no longer be used by callbacks bound into the domain via `run`, `bind`, or `intercept`, and a `'dispose'` event is emitted.
 
@@ -314,7 +314,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### 示例
+#### Example
 
 ```js
 const d = domain.create();
@@ -355,7 +355,7 @@ Run the supplied function in the context of the domain, implicitly binding all e
 
 This is the most basic way to use a domain.
 
-例如：
+Example:
 
 ```js
 const domain = require('domain');
