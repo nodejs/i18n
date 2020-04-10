@@ -1,10 +1,10 @@
-# Кластер
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
-Один экземпляр Node.js запускается в одном потоке. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
+A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
 The cluster module allows easy creation of child processes that all share server ports.
 
@@ -25,8 +25,8 @@ if (cluster.isMaster) {
     console.log(`worker ${worker.process.pid} died`);
   });
 } else {
-  // Рабочие процессы могут разделять любое соединение TCP 
-  // В данном случае это HTTP-сервер
+  // Workers can share any TCP connection
+  // In this case it is an HTTP server
   http.createServer((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -36,20 +36,20 @@ if (cluster.isMaster) {
 }
 ```
 
-Теперь Node.js при запуске разделит порт 8000 между рабочими процессами:
+Running Node.js will now share port 8000 between the workers:
 
 ```txt
 $ node server.js
-Основной процесс 3596 работает
-Рабочий процесс 4324 запущен
-Рабочий процесс 4520 запущен
-Рабочий процесс 6056 запущен
-Рабочий процесс 5644 запущен
+Master 3596 is running
+Worker 4324 started
+Worker 4520 started
+Worker 6056 started
+Worker 5644 started
 ```
 
 Please note that on Windows, it is not yet possible to set up a named pipe server in a worker.
 
-## Как это работает
+## How It Works
 
 <!--type=misc-->
 
@@ -61,7 +61,7 @@ The first one (and the default one on all platforms except Windows), is the roun
 
 The second approach is where the master process creates the listen socket and sends it to interested workers. The workers then accept incoming connections directly.
 
-Теоретически второй метод должен давать лучшие результаты. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
+The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
 
 Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
 
@@ -75,48 +75,48 @@ Because workers are all separate processes, they can be killed or re-spawned dep
 
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
-## Класс: Worker
+## Class: Worker
 
 <!-- YAML
 added: v0.7.0
 -->
 
-A `Worker` object contains all public information and method about a worker. В основном процессе это можно получить через `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
+A `Worker` object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
-### Событие: 'disconnect'
+### Event: 'disconnect'
 
 <!-- YAML
 added: v0.7.7
 -->
 
-Аналогично событию `cluster.on('disconnect')`, но для данного конкретного рабочего процесса.
+Similar to the `cluster.on('disconnect')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('disconnect', () => {
-  // Рабочий процесс отключился
+  // Worker has disconnected
 });
 ```
 
-### Событие: 'error'
+### Event: 'error'
 
 <!-- YAML
 added: v0.7.3
 -->
 
-Это то же самое событие, которое предоставляется [`child_process.fork()`][].
+This event is the same as the one provided by [`child_process.fork()`][].
 
 Within a worker, `process.on('error')` may also be used.
 
-### Событие: 'exit'
+### Event: 'exit'
 
 <!-- YAML
 added: v0.11.2
 -->
 
-* `code` {number} Код завершения, если процесс заканчивается нормально.
+* `code` {number} The exit code, if it exited normally.
 * `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
 
-Аналогично событию `cluster.on('exit')`, но для данного конкретного рабочего процесса.
+Similar to the `cluster.on('exit')` event, but specific to this worker.
 
 ```js
 const worker = cluster.fork();
@@ -131,7 +131,7 @@ worker.on('exit', (code, signal) => {
 });
 ```
 
-### Событие: 'listening'
+### Event: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -139,17 +139,17 @@ added: v0.7.0
 
 * `address` {Object}
 
-Аналогично событию `cluster.on('listening')`, но для данного конкретного рабочего процесса.
+Similar to the `cluster.on('listening')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('listening', (address) => {
-  // Рабочий процесс прослушивает
+  // Worker is listening
 });
 ```
 
-Не создается в рабочем процессе.
+It is not emitted in the worker.
 
-### Событие: 'message'
+### Event: 'message'
 
 <!-- YAML
 added: v0.7.0
@@ -162,7 +162,7 @@ Similar to the `'message'` event of `cluster`, but specific to this worker.
 
 Within a worker, `process.on('message')` may also be used.
 
-Смотрите [`process` event: `'message'`][].
+See [`process` event: `'message'`][].
 
 Here is an example using the message system. It keeps a count in the master process of the number of HTTP requests received by the workers:
 
@@ -172,20 +172,20 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Отслеживание запросов http 
+  // Keep track of http requests
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
   }, 1000);
 
-  // Подсчет запросов
+  // Count requests
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd === 'notifyRequest') {
       numReqs += 1;
     }
   }
 
-  // Запуск рабочих процессов и прослушивание сообщений, содержащих notifyRequest
+  // Start workers and listen for messages containing notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -197,32 +197,32 @@ if (cluster.isMaster) {
 
 } else {
 
-  // Рабочие процессы имеют http-сервер.
+  // Worker processes have a http server.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
 
-    // уведомить основной процесс о запросе
+    // notify master about the request
     process.send({ cmd: 'notifyRequest' });
   }).listen(8000);
 }
 ```
 
-### Событие: 'online'
+### Event: 'online'
 
 <!-- YAML
 added: v0.7.0
 -->
 
-Аналогично событию `cluster.on('online')`, но для данного конкретного рабочего процесса.
+Similar to the `cluster.on('online')` event, but specific to this worker.
 
 ```js
 cluster.fork().on('online', () => {
-  // Рабочий процесс online
+  // Worker is online
 });
 ```
 
-Не создается в рабочем процессе.
+It is not emitted in the worker.
 
 ### worker.disconnect()
 
@@ -235,13 +235,13 @@ changes:
     description: This method now returns a reference to `worker`.
 -->
 
-* Возвращает: {cluster.Worker} Ссылка на `worker`.
+* Returns: {cluster.Worker} A reference to `worker`.
 
 In a worker, this function will close all servers, wait for the `'close'` event on those servers, and then disconnect the IPC channel.
 
 In the master, an internal message is sent to the worker causing it to call `.disconnect()` on itself.
 
-Приводит к установке `.exitedAfterDisconnect`.
+Causes `.exitedAfterDisconnect` to be set.
 
 Note that after a server is closed, it will no longer accept new connections, but connections may be accepted by any other listening worker. Existing connections will be allowed to close as usual. When no more connections exist, see [`server.close()`][], the IPC channel to the worker will close allowing it to die gracefully.
 
@@ -271,14 +271,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // соединения никогда не завершаются
+    // connections never end
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // инициируйте постепенное закрытие любых соединений с сервером
+      // initiate graceful close of any connections to server
     }
   });
 }
@@ -292,18 +292,18 @@ added: v6.0.0
 
 * {boolean}
 
-Установка с помощью `.kill()` или `.disconnect()`. До тех пор, пока это `не определено`.
+Set by calling `.kill()` or `.disconnect()`. Until then, it is `undefined`.
 
 The boolean [`worker.exitedAfterDisconnect`][] allows distinguishing between voluntary and accidental exit, the master may choose not to respawn a worker based on this value.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
   if (worker.exitedAfterDisconnect === true) {
-    console.log('Ох, это было запланировано - не надо волноваться');
+    console.log('Oh, it was just voluntary – no need to worry');
   }
 });
 
-// завершите рабочий процесс
+// kill worker
 worker.kill();
 ```
 
@@ -325,7 +325,7 @@ While a worker is alive, this is the key that indexes it in `cluster.workers`.
 added: v0.11.14
 -->
 
-This function returns `true` if the worker is connected to its master via its IPC channel, `false` otherwise. A worker is connected to its master after it has been created. Они разъединяются после выполнения события `'disconnect'`.
+This function returns `true` if the worker is connected to its master via its IPC channel, `false` otherwise. A worker is connected to its master after it has been created. It is disconnected after the `'disconnect'` event is emitted.
 
 ### worker.isDead()
 
@@ -333,7 +333,7 @@ This function returns `true` if the worker is connected to its master via its IP
 added: v0.11.14
 -->
 
-This function returns `true` if the worker's process has terminated (either because of exiting or being signaled). В противном случае она возвращает `false`.
+This function returns `true` if the worker's process has terminated (either because of exiting or being signaled). Otherwise, it returns `false`.
 
 ### worker.kill([signal='SIGTERM'])
 
@@ -343,13 +343,13 @@ added: v0.9.12
 
 * `signal` {string} Name of the kill signal to send to the worker process.
 
-Эта функция завершит рабочий процесс. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
+This function will kill the worker. In the master, it does this by disconnecting the `worker.process`, and once disconnected, killing with `signal`. In the worker, it does it by disconnecting the channel, and then exiting with code `0`.
 
 Because `kill()` attempts to gracefully disconnect the worker process, it is susceptible to waiting indefinitely for the disconnect to complete. For example, if the worker enters an infinite loop, a graceful disconnect will never occur. If the graceful disconnect behavior is not needed, use `worker.process.kill()`.
 
-Приводит к установке `.exitedAfterDisconnect`.
+Causes `.exitedAfterDisconnect` to be set.
 
-Для обратной совместимости этот метод также называется `worker.destroy()`.
+This method is aliased as `worker.destroy()` for backwards compatibility.
 
 Note that in a worker, `process.kill()` exists, but it is not this function, it is [`kill`][].
 
@@ -363,7 +363,7 @@ added: v0.7.0
 
 All workers are created using [`child_process.fork()`][], the returned object from this function is stored as `.process`. In a worker, the global `process` is stored.
 
-Смотрите: [Child Process module](child_process.html#child_process_child_process_fork_modulepath_args_options).
+See: [Child Process module](child_process.html#child_process_child_process_fork_modulepath_args_options).
 
 Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
 
@@ -381,15 +381,15 @@ changes:
 * `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
-Передается сообщение рабочему или основному процессу, опционально с обработчиком.
+Send a message to a worker or master, optionally with a handle.
 
-В основном процессе отправляет сообщение конкретному рабочему процессу. It is identical to [`ChildProcess.send()`][].
+In the master this sends a message to a specific worker. It is identical to [`ChildProcess.send()`][].
 
-В рабочем процессе отправляет сообщение основному. It is identical to `process.send()`.
+In a worker this sends a message to the master. It is identical to `process.send()`.
 
-Этот пример вернет все сообщения от основного процесса:
+This example will echo back all messages from the master:
 
 ```js
 if (cluster.isMaster) {
@@ -403,7 +403,7 @@ if (cluster.isMaster) {
 }
 ```
 
-## Событие: 'disconnect'
+## Event: 'disconnect'
 
 <!-- YAML
 added: v0.7.9
@@ -411,29 +411,29 @@ added: v0.7.9
 
 * `worker` {cluster.Worker}
 
-Создается после отсоединения канала IPC рабочего процесса. This can occur when a worker exits gracefully, is killed, or is disconnected manually (such as with `worker.disconnect()`).
+Emitted after the worker IPC channel has disconnected. This can occur when a worker exits gracefully, is killed, or is disconnected manually (such as with `worker.disconnect()`).
 
-Может возникнуть задержка между событиями `'disconnect'` и `'exit'`. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
+There may be a delay between the `'disconnect'` and `'exit'` events. These events can be used to detect if the process is stuck in a cleanup or if there are long-living connections.
 
 ```js
 cluster.on('disconnect', (worker) => {
-  console.log(`Рабочий процесс #${worker.id} отсоединен`);
+  console.log(`The worker #${worker.id} has disconnected`);
 });
 ```
 
-## Событие: 'exit'
+## Event: 'exit'
 
 <!-- YAML
 added: v0.7.9
 -->
 
 * `worker` {cluster.Worker}
-* `code` {number} Код завершения, если процесс заканчивается нормально.
+* `code` {number} The exit code, if it exited normally.
 * `signal` {string} The name of the signal (e.g. `'SIGHUP'`) that caused the process to be killed.
 
-Когда любой из рабочих процессов завершается, модуль кластера создает событие `'exit'`.
+When any of the workers die the cluster module will emit the `'exit'` event.
 
-Это может быть использовано для перезапуска рабочего процесса с помощью повторного вызова `.fork()`.
+This can be used to restart the worker by calling `.fork()` again.
 
 ```js
 cluster.on('exit', (worker, code, signal) => {
@@ -445,7 +445,7 @@ cluster.on('exit', (worker, code, signal) => {
 
 See [`child_process` event: `'exit'`][].
 
-## Событие: 'fork'
+## Event: 'fork'
 
 <!-- YAML
 added: v0.7.0
@@ -453,12 +453,12 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-Когда создается копия нового рабочего процесса, модуль кластера создает событие `'fork'`. This can be used to log worker activity, and create a custom timeout.
+When a new worker is forked the cluster module will emit a `'fork'` event. This can be used to log worker activity, and create a custom timeout.
 
 ```js
 const timeouts = [];
 function errorMsg() {
-  console.error('Должно быть что-то не так с соединением ...');
+  console.error('Something must be wrong with the connection ...');
 }
 
 cluster.on('fork', (worker) => {
@@ -473,7 +473,7 @@ cluster.on('exit', (worker, code, signal) => {
 });
 ```
 
-## Событие: 'listening'
+## Event: 'listening'
 
 <!-- YAML
 added: v0.7.0
@@ -489,18 +489,18 @@ The event handler is executed with two arguments, the `worker` contains the work
 ```js
 cluster.on('listening', (worker, address) => {
   console.log(
-    `Рабочий процесс теперь подключен к ${address.address}:${address.port}`);
+    `A worker is now connected to ${address.address}:${address.port}`);
 });
 ```
 
-`addressType` является одним из:
+The `addressType` is one of:
 
 * `4` (TCPv4)
 * `6` (TCPv6)
-* `-1` (доменной сокет unix)
-* `'udp4'` или `'udp6'` (UDP v4 или v6)
+* `-1` (unix domain socket)
+* `'udp4'` or `'udp6'` (UDP v4 or v6)
 
-## Событие: 'message'
+## Event: 'message'
 
 <!-- YAML
 added: v2.5.0
@@ -515,7 +515,7 @@ changes:
 * `message` {Object}
 * `handle` {undefined|Object}
 
-Выполняется, когда кластер основного процесса получает сообщение от любого из рабочих процессов.
+Emitted when the cluster master receives a message from any worker.
 
 See [`child_process` event: `'message'`][].
 
@@ -534,7 +534,7 @@ cluster.on('message', (worker, message, handle) => {
 });
 ```
 
-## Событие: 'online'
+## Event: 'online'
 
 <!-- YAML
 added: v0.7.0
@@ -542,7 +542,7 @@ added: v0.7.0
 
 * `worker` {cluster.Worker}
 
-После создания копии нового рабочего процесса, рабочий процесс должен ответить онлайн-сообщением. Когда основной процесс получает онлайн-сообщение, он выполняет данное событие. The difference between `'fork'` and `'online'` is that fork is emitted when the master forks a worker, and `'online'` is emitted when the worker is running.
+After forking a new worker, the worker should respond with an online message. When the master receives an online message it will emit this event. The difference between `'fork'` and `'online'` is that fork is emitted when the master forks a worker, and `'online'` is emitted when the worker is running.
 
 ```js
 cluster.on('online', (worker) => {
@@ -550,7 +550,7 @@ cluster.on('online', (worker) => {
 });
 ```
 
-## Событие: 'setup'
+## Event: 'setup'
 
 <!-- YAML
 added: v0.7.1
@@ -558,11 +558,11 @@ added: v0.7.1
 
 * `settings` {Object}
 
-Выполняется каждый раз, когда вызывается `.setupMaster()`.
+Emitted every time `.setupMaster()` is called.
 
 The `settings` object is the `cluster.settings` object at the time `.setupMaster()` was called and is advisory only, since multiple calls to `.setupMaster()` can be made in a single tick.
 
-Если важна точность, используйте `cluster.settings`.
+If accuracy is important, use `cluster.settings`.
 
 ## cluster.disconnect([callback])
 
@@ -572,13 +572,13 @@ added: v0.7.7
 
 * `callback` {Function} Called when all workers are disconnected and handles are closed.
 
-Вызывает `.disconnect()` для каждого рабочего процесса в `cluster.workers`.
+Calls `.disconnect()` on each worker in `cluster.workers`.
 
 When they are disconnected all internal handles will be closed, allowing the master process to die gracefully if no other event is waiting.
 
-Метод принимает необязательный аргумент обратного вызова, который будет вызван при завершении.
+The method takes an optional callback argument which will be called when finished.
 
-Этот метод может быть вызван только из основного процесса.
+This can only be called from the master process.
 
 ## cluster.fork([env])
 
@@ -586,12 +586,12 @@ When they are disconnected all internal handles will be closed, allowing the mas
 added: v0.6.0
 -->
 
-* `env` {Object} Пары ключ/значение для добавления в среду рабочего процесса.
-* Возвращает: {cluster.Worker}
+* `env` {Object} Key/value pairs to add to worker process environment.
+* Returns: {cluster.Worker}
 
-Создает новый рабочий процесс.
+Spawn a new worker process.
 
-Этот метод может быть вызван только из основного процесса.
+This can only be called from the master process.
 
 ## cluster.isMaster
 
@@ -601,7 +601,7 @@ added: v0.8.1
 
 * {boolean}
 
-Истинно, если процесс является основным. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
+True if the process is a master. This is determined by the `process.env.NODE_UNIQUE_ID`. If `process.env.NODE_UNIQUE_ID` is undefined, then `isMaster` is `true`.
 
 ## cluster.isWorker
 
@@ -611,7 +611,7 @@ added: v0.6.0
 
 * {boolean}
 
-Истинно, если процесс не является основным (это отрицание `cluster.isMaster`).
+True if the process is not a master (it is the negation of `cluster.isMaster`).
 
 ## cluster.schedulingPolicy
 
@@ -621,7 +621,7 @@ added: v0.11.2
 
 The scheduling policy, either `cluster.SCHED_RR` for round-robin or `cluster.SCHED_NONE` to leave it to the operating system. This is a global setting and effectively frozen once either the first worker is spawned, or `cluster.setupMaster()` is called, whichever comes first.
 
-`SCHED_RR` установлено по умолчанию на всех операционных системах, кроме Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
+`SCHED_RR` is the default on all operating systems except Windows. Windows will change to `SCHED_RR` once libuv is able to effectively distribute IOCP handles without incurring a large performance hit.
 
 `cluster.schedulingPolicy` can also be set through the `NODE_CLUSTER_SCHED_POLICY` environment variable. Valid values are `'rr'` and `'none'`.
 
@@ -646,16 +646,16 @@ changes:
 -->
 
 * {Object} 
-  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **По умолчанию:** `process.execArgv`.
-  * `exec` {string} File path to worker file. **По умолчанию:** `process.argv[1]`.
+  * `execArgv` {string[]} List of string arguments passed to the Node.js executable. **Default:** `process.execArgv`.
+  * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
   * `args` {string[]} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
   * `cwd` {string} Current working directory of the worker process. **Default:** `undefined` (inherits from parent process).
-  * `silent` {boolean} Whether or not to send output to parent's stdio. **По умолчанию:** `false`.
-  * `stdio` {Array} Настраивает stdio процессов-потомков. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. Когда эта опция предоставляется, она отменяет `silent`.
-  * `uid` {number} Устанавливает личность пользователя процесса. (См. setuid(2).)
-  * `gid` {number} Устанавливает групповой идентификатор процесса. (См. setgid(2).)
+  * `silent` {boolean} Whether or not to send output to parent's stdio. **Default:** `false`.
+  * `stdio` {Array} Configures the stdio of forked processes. Because the cluster module relies on IPC to function, this configuration must contain an `'ipc'` entry. When this option is provided, it overrides `silent`.
+  * `uid` {number} Sets the user identity of the process. (See setuid(2).)
+  * `gid` {number} Sets the group identity of the process. (See setgid(2).)
   * `inspectPort` {number|Function} Sets inspector port of worker. This can be a number, or a function that takes no arguments and returns a number. By default each worker gets its own port, incremented from the master's `process.debugPort`.
-  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **По умолчанию:** `false`.
+  * `windowsHide` {boolean} Hide the forked processes console window that would normally be created on Windows systems. **Default:** `false`.
 
 After calling `.setupMaster()` (or `.fork()`) this settings object will contain the settings, including the default values.
 
@@ -674,9 +674,9 @@ changes:
 
 * `settings` {Object} See [`cluster.settings`][].
 
-`setupMaster` используется для изменения поведения 'fork' по умолчанию. Once called, the settings will be present in `cluster.settings`.
+`setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
 
-Примечание:
+Note that:
 
 * Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
@@ -697,7 +697,7 @@ cluster.setupMaster({
 cluster.fork(); // http worker
 ```
 
-Этот метод может быть вызван только из основного процесса.
+This can only be called from the master process.
 
 ## cluster.worker
 
@@ -707,7 +707,7 @@ added: v0.7.0
 
 * {Object}
 
-Ссылка на текущий объект рабочего процесса. Не доступно в основном процессе.
+A reference to the current worker object. Not available in the master process.
 
 ```js
 const cluster = require('cluster');
@@ -729,12 +729,12 @@ added: v0.7.0
 
 * {Object}
 
-Хеш, в котором хранятся активные объекты рабочего процесса, снабжен полем `id`. Makes it easy to loop through all the workers. It is only available in the master process.
+A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. It is only available in the master process.
 
-A worker is removed from `cluster.workers` after the worker has disconnected *and* exited. Невозможно заранее определить порядок между этими двумя событиями. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
+A worker is removed from `cluster.workers` after the worker has disconnected *and* exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the `cluster.workers` list happens before last `'disconnect'` or `'exit'` event is emitted.
 
 ```js
-// Проверить все рабочие процессы
+// Go through all workers
 function eachWorker(callback) {
   for (const id in cluster.workers) {
     callback(cluster.workers[id]);
