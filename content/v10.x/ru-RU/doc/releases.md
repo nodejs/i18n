@@ -1,6 +1,6 @@
-# Процесс выпуска Node.js
+# Node.js Release Process
 
-Этот документ описывает технические аспекты процесса выпуска Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Table of Contents
 
@@ -72,7 +72,7 @@ Additionally, full GPG key fingerprints for individuals authorized to release sh
 
 ## How to create a release
 
-Примечания:
+Notes:
 
 * Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
 * Version strings are listed below as *"vx.y.z"* or *"x.y.z"*. Substitute for the release version.
@@ -82,7 +82,7 @@ Additionally, full GPG key fingerprints for individuals authorized to release sh
 
 Before preparing a Node.js release, the Build Working Group must be notified at least one business day in advance of the expected release. Coordinating with Build is essential to make sure that the CI works, release files are published, and the release blog post is available on the project website.
 
-Build can be contacted best by opening up an issue on the \[Build issue tracker\]\[\], and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
+Build can be contacted best by opening up an issue on the [Build issue tracker](https://github.com/nodejs/build/issues/new), and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
 
 When preparing a security release, contact Build at least two weekdays in advance of the expected release. To ensure that the security patch(es) can be properly tested, run a `node-test-pull-request` job against the `master` branch of the `nodejs-private/node-private` repository a day or so before the [CI lockdown procedure](https://github.com/nodejs/build/blob/master/doc/jenkins-guide.md#restricting-access-for-security-releases) begins. This is to confirm that Jenkins can properly access the private repository.
 
