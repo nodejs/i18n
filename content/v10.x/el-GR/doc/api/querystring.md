@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. Μπορεί να αποκτηθεί πρόσβαση χρησιμοποιώντας:
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
@@ -62,7 +62,7 @@ changes:
 * `eq` {string}. The substring used to delimit keys and values in the query string. **Default:** `'='`.
 * `options` {Object} 
   * `decodeURIComponent` {Function} The function to use when decoding percent-encoded characters in the query string. **Default:** `querystring.unescape()`.
-  * `maxKeys` {number} Specifies the maximum number of keys to parse. Specify `0` to remove key counting limitations. **Προεπιλογή:** `1000`.
+  * `maxKeys` {number} Specifies the maximum number of keys to parse. Specify `0` to remove key counting limitations. **Default:** `1000`.
 
 The `querystring.parse()` method parses a URL query string (`str`) into a collection of key and value pairs.
 
@@ -77,7 +77,7 @@ For example, the query string `'foo=bar&abc=xyz&abc=123'` is parsed into:
 }
 ```
 
-The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
+The object returned by the `querystring.parse()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
 By default, percent-encoded characters within the query string will be assumed to use UTF-8 encoding. If an alternative character encoding is used, then an alternative `decodeURIComponent` option will need to be specified:
 
