@@ -1,4 +1,4 @@
-# 利用方法とサンプル
+# Usage & Example
 
 ## Usage
 
