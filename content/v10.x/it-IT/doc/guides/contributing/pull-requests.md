@@ -1,48 +1,48 @@
 # Pull Requests
 
-There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. Questo è da dove inizieremo.
+There are two fundamental components of the Pull Request process: one concrete and technical, and one more process oriented. The concrete and technical component involves the specific details of setting up your local environment so that you can make the actual changes. This is where we will start.
 
-* [Dipendenze](#dependencies)
-* [Configurazione del local environment](#setting-up-your-local-environment) 
+* [Dependencies](#dependencies)
+* [Setting up your local environment](#setting-up-your-local-environment) 
   * [Step 1: Fork](#step-1-fork)
   * [Step 2: Branch](#step-2-branch)
-* [Il Processo per Fare Modifiche](#the-process-of-making-changes) 
+* [The Process of Making Changes](#the-process-of-making-changes) 
   * [Step 3: Code](#step-3-code)
   * [Step 4: Commit](#step-4-commit) 
-    * [Linee Guida per il Commit Message](#commit-message-guidelines)
+    * [Commit message guidelines](#commit-message-guidelines)
   * [Step 5: Rebase](#step-5-rebase)
   * [Step 6: Test](#step-6-test) 
     * [Test Coverage](#test-coverage)
   * [Step 7: Push](#step-7-push)
-  * [Step 8: Aprire la Pull Request](#step-8-opening-the-pull-request)
-  * [Step 9: Discutere ed Aggiornare](#step-9-discuss-and-update) 
-    * [Workflow dell'Approval e delle Request Changes](#approval-and-request-changes-workflow)
-  * [Step 10: Conferma (Landing)](#step-10-landing)
-* [Revisione delle Pull Requests](#reviewing-pull-requests) 
-  * [Revisionare un pò alla volta](#review-a-bit-at-a-time)
-  * [Essere consapevoli della persona dietro il codice](#be-aware-of-the-person-behind-the-code)
-  * [Rispettare il tempo di attesa minimo per i commenti](#respect-the-minimum-wait-time-for-comments)
-  * [Pull Request Abbandonate o Bloccate](#abandoned-or-stalled-pull-requests)
-  * [Approvare una modifica](#approving-a-change)
-  * [Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
-  * [Le prestazioni non sono tutto](#performance-is-not-everything)
+  * [Step 8: Opening the Pull Request](#step-8-opening-the-pull-request)
+  * [Step 9: Discuss and Update](#step-9-discuss-and-update) 
+    * [Approval and Request Changes Workflow](#approval-and-request-changes-workflow)
+  * [Step 10: Landing](#step-10-landing)
+* [Reviewing Pull Requests](#reviewing-pull-requests) 
+  * [Review a bit at a time](#review-a-bit-at-a-time)
+  * [Be aware of the person behind the code](#be-aware-of-the-person-behind-the-code)
+  * [Respect the minimum wait time for comments](#respect-the-minimum-wait-time-for-comments)
+  * [Abandoned or Stalled Pull Requests](#abandoned-or-stalled-pull-requests)
+  * [Approving a change](#approving-a-change)
+  * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
+  * [Performance is not everything](#performance-is-not-everything)
   * [Continuous Integration Testing](#continuous-integration-testing)
-* [Note](#notes) 
+* [Notes](#notes) 
   * [Commit Squashing](#commit-squashing)
-  * [Ottenere Approvazioni per la Pull Request](#getting-approvals-for-your-pull-request)
+  * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
-  * [Attendere fino a quando la Pull Request non viene confermata](#waiting-until-the-pull-request-gets-landed)
-  * [Consultare la Collaborator Guide](#check-out-the-collaborator-guide)
+  * [Waiting Until the Pull Request Gets Landed](#waiting-until-the-pull-request-gets-landed)
+  * [Check Out the Collaborator Guide](#check-out-the-collaborator-guide)
 
-## Dipendenze
+## Dependencies
 
-Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. Non possiamo accettare tali patch.
+Node.js has several bundled dependencies in the *deps/* and the *tools/* directories that are not part of the project proper. Changes to files in those directories should be sent to their respective projects. Do not send a patch to Node.js. We cannot accept such patches.
 
 In case of doubt, open an issue in the [issue tracker](https://github.com/nodejs/node/issues/) or contact one of the [project Collaborators](https://github.com/nodejs/node/#current-project-team-members). Node.js has two IRC channels: [#Node.js](https://webchat.freenode.net/?channels=node.js) for general help and questions, and [#Node-dev](https://webchat.freenode.net/?channels=node-dev) for development of Node.js core specifically.
 
-## Configurazione del local environment
+## Setting up your local environment
 
-Per iniziare, bisogna avere `git` installato in local. Depending on your operating system, there are also a number of other dependencies required. Queste sono approfondite nella [Building guide](../../../BUILDING.md).
+To get started, you will need to have `git` installed locally. Depending on your operating system, there are also a number of other dependencies required. These are detailed in the [Building guide](../../../BUILDING.md).
 
 Once you have `git` and are sure you have all of the necessary dependencies, it's time to create a fork.
 
@@ -57,7 +57,7 @@ $ git remote add upstream https://github.com/nodejs/node.git
 $ git fetch upstream
 ```
 
-Si consiglia di configurare `git` in modo che sappia chi sei:
+It is recommended to configure `git` so that it knows who you are:
 
 ```text
 $ git config user.name "J. Random User"
@@ -76,16 +76,16 @@ As a best practice to keep your development environment as organized as possible
 $ git checkout -b my-branch -t upstream/master
 ```
 
-## Il Processo per Fare Modifiche
+## The Process of Making Changes
 
 ### Step 3: Code
 
 The vast majority of Pull Requests opened against the `nodejs/node` repository includes changes to one or more of the following:
 
-     - Il codice C/C++ all'interno della directory `src`
-     - Il codice JavaScript all'interno della directory `lib`
-     - la documentazione in `doc/api`
-     - i test all'interno della directory `test`.
+     - the C/C++ code contained in the `src` directory
+     - the JavaScript code contained in the `lib` directory
+     - the documentation in `doc/api`
+     - tests within the `test` directory.
     
 
 If you are modifying code, please be sure to run `make lint` from time to time to ensure that the changes follow the Node.js code style guide.
@@ -105,29 +105,29 @@ $ git commit
 
 Note that multiple commits often get squashed when they are landed (see the notes about [commit squashing](#commit-squashing)).
 
-#### Linee Guida per il Commit Message
+#### Commit message guidelines
 
-Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
+A good commit message should describe what changed and why.
 
-1. La prima riga dovrebbe:
+1. The first line should:
   
   * contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
   * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
   * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
     
-    Esempi:
+    Examples:
   
-  * `net: Aggiunge localAddress e localPort al Socket`
+  * `net: add localAddress and localPort to Socket`
   
-  * `src: corregge gli errori di battitura in async_wrap.h`
+  * `src: fix typos in async_wrap.h`
 
-2. Lascia vuota la seconda riga.
+2. Keep the second line blank.
 
-3. Esegui il wrapping di tutte le altre righe a 72 colonne (ad eccezione di URL lunghi).
+3. Wrap all other lines at 72 columns (except for long URLs).
 
-4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Usa il prefisso `Fixes:` ed l'URL completo dell'issue. For other references use `Refs:`.
+4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
   
-  Esempi:
+  Examples:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
@@ -135,20 +135,19 @@ Un buon commit message dovrebbe descrivere cosa è stato modificato e perchè.
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-Esempio di commit message completo:
+Sample complete commit message:
 
 ```txt
-subsystem: spiega il commit in una riga
+subsystem: explain the commit in one line
 
-Il corpo (body) del commit message è composto da poche 
-righe di testo, le quali spiegano le cose in modo
-più dettagliato, dando eventualmente qualche informazione
-sul problema da correggere, ecc.
+Body of commit message is a few lines of text, explaining things
+in more detail, possibly giving some background about the issue
+being fixed, etc.
 
-Il corpo del commit message può essere di diversi paragrafi, 
-e si prega di andare a capo e mantenere le colonne 
-più corte di 72 caratteri all'incirca. In questo modo, `git log` 
-mostrerà le cose bene anche quando è indentato.
+The body of the commit message can be several paragraphs, and
+please do proper word-wrap and keep columns shorter than about
+72 characters or so. That way, `git log` will show things
+nicely even when it is indented.
 
 Fixes: https://github.com/nodejs/node/issues/1337
 Refs: http://eslint.org/docs/rules/space-in-parens.html
@@ -171,29 +170,29 @@ This ensures that your working branch has the latest changes from `nodejs/node` 
 
 ### Step 6: Test
 
-Le correzioni dei bug e le funzionalità dovrebbero sempre arrivare facendo i test. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
+Bug fixes and features should always come with tests. A [guide for writing tests in Node.js](../writing-tests.md) has been provided to make the process easier. Looking at other tests to see how they should be structured can also help.
 
 The `test` directory within the `nodejs/node` repository is complex and it is often not clear where a new test file should go. When in doubt, add new tests to the `test/parallel/` directory and the right location will be sorted out later.
 
-Before submitting your changes in a Pull Request, always run the full Node.js test suite. Per eseguire i test (incluso il code linting) su Unix / macOS:
+Before submitting your changes in a Pull Request, always run the full Node.js test suite. To run the tests (including code linting) on Unix / macOS:
 
 ```text
 $ ./configure && make -j4 test
 ```
 
-E su Windows:
+And on Windows:
 
 ```text
 > vcbuild test
 ```
 
-(Vedi la [Building guide](../../../BUILDING.md) per maggiori dettagli.)
+(See the [Building guide](../../../BUILDING.md) for more details.)
 
-Assicurarsi che il linter non segnali alcun problema e che tutti i test passino con successo. Please do not submit patches that fail either check.
+Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
 
 If you want to run the linter without running tests, use `make lint`/`vcbuild lint`. It will run both JavaScript linting and C++ linting.
 
-Se stai aggiornando i test e ne vuoi eseguire uno solo per controllarlo:
+If you are updating tests and just want to run a single test to check it:
 
 ```text
 $ python tools/test.py -J --mode=release parallel/test-stream2-transform
@@ -211,7 +210,7 @@ If you want to check the other options, please refer to the help by using the `-
 $ python tools/test.py --help
 ```
 
-In genere puoi eseguire test direttamente con il node:
+You can usually run tests directly with node:
 
 ```text
 $ ./node ./test/parallel/test-stream2-transform.js
@@ -221,7 +220,7 @@ Remember to recompile with `make -j4` in between test runs if you change code in
 
 #### Test Coverage
 
-È buona pratica garantire che qualsiasi codice aggiunto o modificato sia coperto dai test. Puoi farlo eseguendo l'insieme dei test con la coverage abilitata:
+It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
 
 ```text
 $ ./configure --coverage && make coverage
@@ -229,7 +228,7 @@ $ ./configure --coverage && make coverage
 
 A detailed coverage report will be written to `coverage/index.html` for JavaScript coverage and to `coverage/cxxcoverage.html` for C++ coverage.
 
-*Si noti che la generazione di un test coverage report può richiedere diversi minuti.*
+*Note that generating a test coverage report can take several minutes.*
 
 To collect coverage for a subset of tests you can set the `CI_JS_SUITES` and `CI_NATIVE_SUITES` variables:
 
@@ -239,7 +238,7 @@ $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 
 The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
 
-Running tests with coverage will create and modify several directories and files. Per pulire in seguito, esegui:
+Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
 
 ```text
 make coverage-clean
@@ -254,37 +253,38 @@ Once you are sure your commits are ready to go, with passing tests and linting, 
 $ git push origin my-branch
 ```
 
-### Step 8: Aprire la Pull Request
+### Step 8: Opening the Pull Request
 
 From within GitHub, opening a new Pull Request will present you with a template that should be filled out:
 
 ```markdown
 <!--
-Grazie per la tua Pull Request. Si prega di fornire una descrizione sopra e ricontrollare i requisiti di seguito.
+Thank you for your Pull Request. Please provide a description above and review
+the requirements below.
 
-Le correzioni di bug e nuove funzionalità dovrebbero includere i test ed eventualmente i benchmark.
+Bug fixes and new features should include tests and possibly benchmarks.
 
 Contributors guide: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
 -->
 
 #### Checklist
-<!-- Rimuovi gli elementi che non si applicano. Per gli elementi completati, modificare [ ] to [x]. -->
+<!-- Remove items that do not apply. For completed items, change [ ] to [x]. -->
 
-- [ ] `make -j4 test` (UNIX), oppure `vcbuild test` (Windows) passa
-- [ ] i test e/o i benchmark sono inclusi
-- [ ] la documentazione è modificata o aggiunta
-- [ ] il commit message segue le [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
+- [ ] `make -j4 test` (UNIX), or `vcbuild test` (Windows) passes
+- [ ] tests and/or benchmarks are included
+- [ ] documentation is changed or added
+- [ ] commit message follows [commit guidelines](https://github.com/nodejs/node/blob/master/doc/guides/contributing/pull-requests.md#commit-message-guidelines)
 ```
 
 Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
 
-Una volta aperte, le Pull Request vengono generalmente esaminate entro pochi giorni.
+Once opened, Pull Requests are usually reviewed within a few days.
 
-### Step 9: Discutere ed Aggiornare
+### Step 9: Discuss and update
 
-Probabilmente riceverai feedback o richieste di modifiche per la tua Pull Request. Questa è una parte importante del processo di invio quindi non scoraggiarti! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub aggiornerà automaticamente la Pull Request.
+To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
 
 ```text
 $ git add my/changed/files
@@ -302,7 +302,7 @@ $ git push --force-with-lease origin my-branch
 
 **Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-Se ti capita di fare un errore in uno dei tuoi commits, non preoccuparti. You can amend the last commit (for example if you want to change the commit log).
+If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
 
 ```text
 $ git add any/changed/files
@@ -314,68 +314,68 @@ There are a number of more advanced mechanisms for managing commits using `git r
 
 Feel free to post a comment in the Pull Request to ping reviewers if you are awaiting an answer on something. If you encounter words or acronyms that seem unfamiliar, refer to this [glossary](https://sites.google.com/a/chromium.org/dev/glossary).
 
-#### Workflow dell'Approval e delle Request Changes
+#### Approval and Request Changes Workflow
 
-Tutte le Pull Request richiedono lo "sign off" per essere confermate. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
 
-Cerca di non scoraggiarti. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
-### Step 10: Conferma (Landing)
+### Step 10: Landing
 
 In order to land, a Pull Request needs to be reviewed and [approved](#getting-approvals-for-your-pull-request) by at least two Node.js Collaborators (one Collaborator approval is enough if the pull request has been open for more than 7 days) and pass a [CI (Continuous Integration) test run](#ci-testing). After that, as long as there are no objections from other contributors, the Pull Request can be merged. If you find your Pull Request waiting longer than you expect, see the [notes about the waiting time](#waiting-until-the-pull-request-gets-landed).
 
-When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulazioni e grazie per il tuo contributo!
+When a collaborator lands your Pull Request, they will post a comment to the Pull Request page mentioning the commit(s) it landed as. GitHub often shows the Pull Request as `Closed` at this point, but don't worry. If you look at the branch you raised your Pull Request against (probably `master`), you should see a commit with your name on it. Congratulations and thanks for your contribution!
 
-## Revisione delle Pull Requests
+## Reviewing Pull Requests
 
-All Node.js contributors who choose to review and provide feedback on Pull Requests have a responsibility to both the project and the individual making the contribution. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Sii aperto ad avere una mentalità flessibile. Be open to working with the contributor to make the Pull Request better.
+All Node.js contributors who choose to review and provide feedback on Pull Requests have a responsibility to both the project and the individual making the contribution. Reviews and feedback must be helpful, insightful, and geared towards improving the contribution as opposed to simply blocking it. If there are reasons why you feel the PR should not land, explain what those are. Do not expect to be able to block a Pull Request from advancing simply because you say "No" without giving an explanation. Be open to having your mind changed. Be open to working with the contributor to make the Pull Request better.
 
 Reviews that are dismissive or disrespectful of the contributor or any other reviewers are strictly counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
 When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
 
-### Revisionare un pò alla volta.
+### Review a bit at a time.
 
-Non sovraccaricare i nuovi contributors.
+Do not overwhelm new contributors.
 
-It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Non cedere a questa tentazione.
+It is tempting to micro-optimize and make everything about relative performance, perfect grammar, or exact style matches. Do not succumb to that temptation.
 
-Concentrati innanzitutto sugli aspetti più significativi della modifica:
+Focus first on the most significant aspects of the change:
 
-1. Questa modifica ha senso per Node.js?
-2. Questa modifica rende Node.js migliore, anche se solo in modo incrementale?
-3. Ci sono chiari bug o problemi su larga scala che devono essere seguiti?
-4. Il commit message è leggibile e corretto? Se contiene una breaking change è abbastanza chiaro?
+1. Does this change make sense for Node.js?
+2. Does this change make Node.js better, even if only incrementally?
+3. Are there clear bugs or larger scale issues that need attending to?
+4. Is the commit message readable and correct? If it contains a breaking change is it clear enough?
 
 When changes are necessary, *request* them, do not *demand* them, and do not assume that the submitter already knows how to add a test or run a benchmark.
 
-Specific performance optimization techniques, coding styles and conventions change over time. La prima impressione che date ad un nuovo contributor non cambia mai più.
+Specific performance optimization techniques, coding styles and conventions change over time. The first impression you give to a new contributor never does.
 
 Nits (requests for small changes that are not essential) are fine, but try to avoid stalling the Pull Request. Most nits can typically be fixed by the Node.js Collaborator landing the Pull Request but they can also be an opportunity for the contributor to learn a bit more about the project.
 
-It is always good to clearly indicate nits when you comment: e.g. `Nit: change foo() to bar(). Ma questo non sta bloccando`
+It is always good to clearly indicate nits when you comment: e.g. `Nit: change foo() to bar(). But this is not blocking.`
 
 If your comments were addressed but were not folded automatically after new commits or if they proved to be mistaken, please, [hide them](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) with the appropriate reason to keep the conversation flow concise and relevant.
 
-### Essere consapevoli della persona dietro il codice
+### Be aware of the person behind the code
 
 Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
 
-### Rispettare il tempo di attesa minimo per i commenti
+### Respect the minimum wait time for comments
 
 There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
 
-For non-trivial changes, Pull Requests must be left open for at least 48 hours. In most cases, when the PR is relatively small and focused on a narrow set of changes, that will provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. Se c'è qualche dubbio, non avere fretta.
+For non-trivial changes, Pull Requests must be left open for at least 48 hours. In most cases, when the PR is relatively small and focused on a narrow set of changes, that will provide more than enough time to adequately review. Sometimes changes take far longer to review, or need more specialized review from subject matter experts. When in doubt, do not rush.
 
 Trivial changes, typically limited to small formatting changes or fixes to documentation, may be landed within the minimum 48 hour window.
 
-### Pull Request Abbandonate o Bloccate
+### Abandoned or Stalled Pull Requests
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
-### Approvare una modifica
+### Approving a change
 
-Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. I collaborators non sono autorizzati ad approvare le proprie Pull Requests.
+Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
 
 Collaborators indicate that they have reviewed and approve of the changes in a Pull Request either by using GitHub's Approval Workflow, which is preferred, or by leaving an `LGTM` ("Looks Good To Me") comment.
 
@@ -389,7 +389,7 @@ Change requests that are vague, dismissive, or unconstructive may also be dismis
 
 If you do not believe that the Pull Request should land at all, use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing. When doing so, explain *why* you believe the Pull Request should not land along with an explanation of what may be an acceptable alternative course, if any.
 
-### Accettare che ci siano opinioni diverse su ciò che appartiene a Node.js
+### Accept that there are different opinions about what belongs in Node.js
 
 Opinions on this vary, even among the members of the Technical Steering Committee.
 
@@ -399,11 +399,11 @@ Also, functionality that either cannot be implemented outside of core in any rea
 
 It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-### Le prestazioni non sono tutto
+### Performance is not everything
 
-Node.js ha sempre ottimizzato la velocità di esecuzione. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
+Node.js has always optimized for speed of execution. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
 
-Detto questo, le prestazioni non sono l'unico fattore da considerare. Node.js also optimizes in favor of not breaking existing code in the ecosystem, and not changing working functional code just for the sake of changing.
+That said, performance is not the only factor to consider. Node.js also optimizes in favor of not breaking existing code in the ecosystem, and not changing working functional code just for the sake of changing.
 
 If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
 
@@ -413,9 +413,9 @@ All Pull Requests that contain changes to code must be run through continuous in
 
 Only Node.js core Collaborators with commit rights to the `nodejs/node` repository may start a CI testing run. The specific details of how to do this are included in the new Collaborator [Onboarding guide](../../onboarding.md).
 
-Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). Ciò significa che tutti i test sono superati e non ci sono linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
+Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
 
-## Note
+## Notes
 
 ### Commit Squashing
 
@@ -423,22 +423,22 @@ In most cases, do not squash commits that you add to your Pull Request during th
 
 For the size of "one logical change", [0b5191f](https://github.com/nodejs/node/commit/0b5191f15d0f311c804d542b67e2e922d98834f8) can be a good example. It touches the implementation, the documentation, and the tests, but is still one logical change. All tests should always pass when each individual commit lands on the master branch.
 
-### Ottenere Approvazioni per la Pull Request
+### Getting Approvals for Your Pull Request
 
-A Pull Request is approved either by saying LGTM, which stands for "Looks Good To Me", or by using GitHub's Approve button. La funzione di revisione (review feature) della Pull Request di GitHub può essere utilizzata durante il processo di approvazione. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
+A Pull Request is approved either by saying LGTM, which stands for "Looks Good To Me", or by using GitHub's Approve button. GitHub's Pull Request review feature can be used during the process. For more information, check out [the video tutorial](https://www.youtube.com/watch?v=HW0RPaJqm4g) or [the official documentation](https://help.github.com/articles/reviewing-changes-in-pull-requests/).
 
 After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
 
 ### CI Testing
 
-Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. Questo viene fatto eseguendo il codice attraverso il CI system.
+Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. This is done by running the code through the CI system.
 
-Solo un Collaborator può avviare un'esecuzione CI. Usually one of them will do it for you as approvals for the Pull Request come in. In caso contrario, puoi chiedere ad un Collaborator di avviare un'esecuzione CI.
+Only a Collaborator can start a CI run. Usually one of them will do it for you as approvals for the Pull Request come in. If not, you can ask a Collaborator to start a CI run.
 
-### Attendere fino a quando la Pull Request non viene confermata
+### Waiting Until the Pull Request Gets Landed
 
 A Pull Request needs to stay open for at least 48 hours from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### Consultare la Collaborator Guide
+### Check Out the Collaborator Guide
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
