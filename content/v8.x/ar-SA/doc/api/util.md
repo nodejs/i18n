@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
@@ -40,7 +40,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-مرحبا بالعالم
+hello world
 ```
 
 *Note*:
@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## واجهات برمجة التطبيقات المهملة
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
