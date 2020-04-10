@@ -29,7 +29,7 @@
 </tr>
 </table>
 
-* その他のバージョン
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
@@ -41,7 +41,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [アーカイブ](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="11.14.0"></a>
 
@@ -200,9 +200,9 @@
 
 ### Notable Changes
 
-* **暗号化**
+* **crypto**
   * Allow deriving public from private keys (Tobias Nießen) [#26278](https://github.com/nodejs/node/pull/26278).
-* **イベント**
+* **events**
   * Added a `once` function to use `EventEmitter` with promises (Matteo Collina) [#26078](https://github.com/nodejs/node/pull/26078).
 * **tty**
   * Added a `hasColors` method to `WriteStream` (Ruben Bridgewater) [#26247](https://github.com/nodejs/node/pull/26247).
@@ -2374,7 +2374,7 @@ Fixes for the following CVEs are included in this release:
   * Updated ICU to 63.1. [#23715](https://github.com/nodejs/node/pull/23715)
 * **repl**
   * Top-level for-await-of is now supported in the REPL. [#23841](https://github.com/nodejs/node/pull/23841)
-* **タイマー**
+* **timers**
   * Fixed an issue that could cause timers to enter an infinite loop. [#23870](https://github.com/nodejs/node/pull/23870)
 
 ### Commits
@@ -2473,7 +2473,7 @@ Fixes for the following CVEs are included in this release:
   * FreeBSD 10 is no longer supported. [#22617](https://github.com/nodejs/node/pull/22617)
 * `child_process`
   * The default value of the `windowsHide` option has been changed to `true`. [#21316](https://github.com/nodejs/node/pull/21316)
-* `コンソール`
+* `console`
   * `console.countReset()` will emit a warning if the timer being reset does not exist. [#21649](https://github.com/nodejs/node/pull/21649)
   * `console.time()` will no longer reset a timer if it already exists. [#20442](https://github.com/nodejs/node/pull/20442)
 * Dependencies
@@ -2489,7 +2489,7 @@ Fixes for the following CVEs are included in this release:
 * Internal
   * Windows performance-counter support has been removed. [#22485](https://github.com/nodejs/node/pull/22485)
   * The `--expose-http2` command-line option has been removed. [#20887](https://github.com/nodejs/node/pull/20887)
-* タイマー
+* Timers
   * Interval timers will be rescheduled even if previous interval threw an error. [#20002](https://github.com/nodejs/node/pull/20002)
   * `nextTick` queue will be run after each immediate and timer. [#22842](https://github.com/nodejs/node/pull/22842)
 * `util`
