@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
-The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. É possível acessá-lo utilizando:
+The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. It can be accessed using:
 
 ```js
 const zlib = require('zlib');
@@ -209,7 +209,7 @@ http.createServer((request, response) => {
 }).listen(1337);
 ```
 
-## Constantes
+## Constants
 
 <!-- YAML
 added: v0.5.8
@@ -367,7 +367,7 @@ Each Brotli-based class takes an `options` object. All options are optional.
 * `chunkSize` {integer} **Default:** `16 * 1024`
 * `params` {Object} Key-value object containing indexed [Brotli parameters](#zlib_brotli_constants).
 
-Por exemplo:
+For example:
 
 ```js
 const stream = zlib.createBrotliCompress({
