@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
@@ -90,7 +90,7 @@ Cancel all outstanding DNS queries made by this resolver. The corresponding call
 added: v0.11.3
 -->
 
-* Επιστρέφει: {string[]}
+* Returns: {string[]}
 
 Returns an array of IP address strings, formatted according to [RFC 5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 ```js
@@ -130,7 +130,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Παράδειγμα χρήσης:
+Example usage:
 
 ```js
 const dns = require('dns');
@@ -486,7 +486,7 @@ The following methods from the `dnsPromises` API are available:
 
 ### `dnsPromises.getServers()`<!-- YAML
 added: v10.6.0
--->* Επιστρέφει: {string[]}
+-->* Returns: {string[]}
 
 Returns an array of IP address strings, formatted according to [RFC 5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 ```js
@@ -515,7 +515,7 @@ On error, the `Promise` is rejected with an [`Error`][] object, where `err.code`
 
 [`dnsPromises.lookup()`][] does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dnsPromises.lookup()`.
 
-Παράδειγμα χρήσης:
+Example usage:
 
 ```js
 const dns = require('dns');
