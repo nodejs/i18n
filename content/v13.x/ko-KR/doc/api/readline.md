@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`][]) one line at a time. It can be accessed using:
 
@@ -296,7 +296,7 @@ async function processLineByLine() {
 
 ### `rl.line`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {string|undefined}
@@ -327,7 +327,7 @@ process.stdin.on('keypress', (c, k) => {
 
 ### `rl.cursor`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {number|undefined}
