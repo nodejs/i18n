@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retourne : {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Exemple:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Exemple:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Exemple:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Exemple:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -1525,7 +1525,7 @@ console.log(
 added: v0.5.0
 -->
 
-* Renvoie : {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
