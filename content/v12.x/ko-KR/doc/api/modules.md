@@ -1,8 +1,8 @@
-# 모듈
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=module-->
 
