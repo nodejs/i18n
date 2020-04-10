@@ -1,12 +1,12 @@
-# Ispektor
+# Inspector
 
 <!--introduced_in=v8.0.0-->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-Es kann zugegriffen werden durch:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
