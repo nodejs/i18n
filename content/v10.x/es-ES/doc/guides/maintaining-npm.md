@@ -1,4 +1,4 @@
-# Mantenimiento del npm en Node.js
+# Maintaining npm in Node.js
 
 New pull requests should be opened when a "next" version of npm has been released. Once the "next" version has been promoted to "latest" the PR should be updated as necessary.
 
@@ -8,21 +8,21 @@ The specific Node.js release streams the new version will be able to land into a
 
 This process only covers full updates to new versions of npm. Cherry-picked changes can be reviewed and landed via the normal consensus seeking process.
 
-## Paso 1: Clone el npm
+## Step 1: Clone npm
 
 ```console
 $ git clone https://github.com/npm/cli.git npm
 $ cd npm
 ```
 
-o si ya ha clonado el npm, asegúrese de que el repositorio este actualizado
+or if you already have npm cloned make sure the repo is up to date
 
 ```console
 $ git remote update -p
 $ git reset --hard origin latest
 ```
 
-## Paso 2: Compilar lanzamiento
+## Step 2: Build release
 
 ```console
 $ git checkout vX.Y.Z
@@ -31,7 +31,7 @@ $ make release
 
 Note: please run `npm dist-tag ls npm` and make sure this is the `latest` **dist-tag**. `latest` on git is usually released as `next` when it's time to downstream
 
-## Paso 3: Remover el npm anterior
+## Step 3: Remove old npm
 
 ```console
 $ cd /path/to/node
@@ -41,7 +41,7 @@ $ cd deps
 $ rm -rf npm
 ```
 
-## Paso 4: Extraer y asentar nuevo npm
+## Step 4: Extract and commit new npm
 
 ```console
 $ tar zxf /path/to/npm/release/npm-x.y.z.tgz
@@ -50,26 +50,26 @@ $ git commit -m "deps: upgrade npm to x.y.z"
 $ cd ..
 ```
 
-## Paso 5: Actualizar licencias
+## Step 5: Update licenses
 
 ```console
 $ ./configure
 $ make -j4
 $ ./tools/license-builder.sh
-# Los siguientes comandos solo son necesarios si hay cambios
+# The following commands are only necessary if there are changes
 $ git add .
 $ git commit -m "doc: update npm LICENSE using license-builder.sh"
 ```
 
-Nota: por favor asegúrese que solo está haciendo actualizaciones que son cambiadas por el npm.
+Note: please ensure you are only making the updates that are changed by npm.
 
-## Paso 6: Aplicar revisión de Whitespace
+## Step 6: Apply Whitespace fix
 
 ```console
 $ git rebase --whitespace=fix master
 ```
 
-## Paso 7: Probar la compilación
+## Step 7: Test the build
 
 ```console
 $ make test-npm
