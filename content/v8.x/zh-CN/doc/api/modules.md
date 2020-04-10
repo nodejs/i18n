@@ -1,21 +1,21 @@
-# 模块
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!--name=module-->
 
-在 Node.js 模块系统中，每个文件都被视为一个单独的模块。 例如：假设有一个名为 `foo.js` 的模块：
+In the Node.js module system, each file is treated as a separate module. For example, consider a file named `foo.js`:
 
 ```js
 const circle = require('./circle.js');
 console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
 ```
 
-在第一行，`foo.js` 装载和 `foo.js` 位于同一个目录下的模块 `circle.js`。
+On the first line, `foo.js` loads the module `circle.js` that is in the same directory as `foo.js`.
 
-如下是 `circle.js` 的内容：
+Here are the contents of `circle.js`:
 
 ```js
 const { PI } = Math;
@@ -25,13 +25,13 @@ exports.area = (r) => PI * r ** 2;
 exports.circumference = (r) => 2 * PI * r;
 ```
 
-`circle.js` 模块导出了 `area()` 和 `circumference()` 函数。 通过在特殊的 `exports` 对象上指定额外的属性，可将函数和对象添加到模块的根部。
+The module `circle.js` has exported the functions `area()` and `circumference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
-因为模块由 Node.js 包装在一个函数中 (请参阅 [模块包装器](#modules_the_module_wrapper))，因此模块的本地变量将会是私有的。 在此示例中，变量 `PI` 在 `circle.js` 中是私有的。
+Variables local to the module will be private, because the module is wrapped in a function by Node.js (see [module wrapper](#modules_the_module_wrapper)). In this example, the variable `PI` is private to `circle.js`.
 
-`module.exports` 属性可被赋予一个新的值 (例如一个函数或对象)。
+The `module.exports` property can be assigned a new value (such as a function or object).
 
-如下所示，`bar.js` 中使用了 `square` 模块，在该模块中导出了 Square 类：
+Below, `bar.js` makes use of the `square` module, which exports a Square class:
 
 ```js
 const Square = require('./square.js');
@@ -39,7 +39,7 @@ const mySquare = new Square(2);
 console.log(`The area of mySquare is ${mySquare.area()}`);
 ```
 
-`square` 模块是在 `square.js` 中定义的：
+The `square` module is defined in `square.js`:
 
 ```js
 // assigning to exports will not modify module, must use module.exports
@@ -54,13 +54,13 @@ module.exports = class Square {
 };
 ```
 
-模块系统是在 `require('module')` 模块中实现的。
+The module system is implemented in the `require('module')` module.
 
-## 访问主模块
+## Accessing the main module
 
 <!-- type=misc -->
 
-当 Node.js 直接运行一个文件时，`require.main` 会被设为它的 `module`。 这意味着可以通过测试 `require.main === module` 来判断一个文件是否被直接运行。
+When a file is run directly from Node.js, `require.main` is set to its `module`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but `false` if run by `require('./foo')`.
 
@@ -386,7 +386,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-例如：
+Examples:
 
 Running `node example.js` from `/Users/mjr`
 
@@ -466,7 +466,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> 稳定性：0 - 已弃用
+> Stability: 0 - Deprecated
 
 * {Object}
 
@@ -500,7 +500,7 @@ changes:
 * `request` {string} The module path to resolve.
 * `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* 返回：{string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
@@ -511,7 +511,7 @@ added: v8.9.0
 -->
 
 * `request` {string} The module path whose lookup paths are being retrieved.
-* 返回：{Array|null}
+* Returns: {Array|null}
 
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
