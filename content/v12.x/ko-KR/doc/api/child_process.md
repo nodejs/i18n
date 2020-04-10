@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
