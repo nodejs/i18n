@@ -14,7 +14,7 @@ These objects are available in all modules. The following variables may appear t
 
 The objects listed here are specific to Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
-## Classe: Buffer
+## Class: Buffer
 
 <!-- YAML
 added: v0.1.103
@@ -96,7 +96,7 @@ In browsers, the top-level scope is the global scope. This means that within the
 
 This variable may appear to be global but is not. See [`module`].
 
-## processo
+## process
 
 <!-- YAML
 added: v0.1.7
