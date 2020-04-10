@@ -1,8 +1,8 @@
-# 암호화
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -268,7 +268,7 @@ added: v1.0.0
 -->
 
 * `buffer` {Buffer}
-* `옵션` {Object} [`stream.transform` options][] 
+* `options` {Object} [`stream.transform` options][] 
   * `plaintextLength` {number}
 * Returns: {Cipher} for method chaining.
 
@@ -439,7 +439,7 @@ changes:
 -->
 
 * `buffer` {Buffer | TypedArray | DataView}
-* `옵션` {Object} [`stream.transform` options][] 
+* `options` {Object} [`stream.transform` options][] 
   * `plaintextLength` {number}
 * Returns: {Decipher} for method chaining.
 
@@ -1289,7 +1289,7 @@ The `password` is used to derive the cipher key and initialization vector (IV). 
 
 The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
-In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see \[Nonce-Disrespecting Adversaries\]\[\] for details.
+In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
 
@@ -1571,7 +1571,7 @@ added: v10.12.0
 -->
 
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `옵션`: {Object} 
+* `options`: {Object} 
   * `modulusLength`: {number} Key size in bits (RSA, DSA).
   * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
   * `divisorLength`: {number} Size of `q` in bits (DSA).
@@ -1623,7 +1623,7 @@ added: v10.12.0
 -->
 
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `옵션`: {Object} 
+* `options`: {Object} 
   * `modulusLength`: {number} Key size in bits (RSA, DSA).
   * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
   * `divisorLength`: {number} Size of `q` in bits (DSA).
@@ -2103,7 +2103,7 @@ changes:
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `옵션` {Object} 
+* `options` {Object} 
   * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
   * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
   * `blockSize` {number} Block size parameter. **Default:** `8`.
@@ -2156,7 +2156,7 @@ changes:
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `옵션` {Object} 
+* `options` {Object} 
   * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
   * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
   * `blockSize` {number} Block size parameter. **Default:** `8`.
