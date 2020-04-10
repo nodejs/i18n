@@ -1,4 +1,4 @@
-# Error
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -43,8 +43,11 @@ With few exceptions, *Synchronous* APIs (any blocking method that does not accep
 
 Errors that occur within *Asynchronous APIs* may be reported in multiple ways:
 
-- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled. 
-      js
+- Most asynchronous methods that accept a `callback` function will accept an `Error` object passed as the first argument to that function. If that first argument is not `null` and is an instance of `Error`, then an error occurred that should be handled.
+
+<!-- eslint-disable no-useless-return -->
+
+    js
       const fs = require('fs');
       fs.readFile('a file that does not exist', (err, data) => {
         if (err) {
@@ -92,9 +95,11 @@ Errors generated in this way *cannot* be intercepted using `try / catch` as they
 
 Developers must refer to the documentation for each method to determine exactly how errors raised by those methods are propagated.
 
-### Error-first callbacks<!--type=misc-->Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an 
+### Error-first callbacks
 
-*error-first callback* (sometimes referred to as a *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
+<!--type=misc-->
+
+Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as an *error-first callback* (sometimes referred to as a *Node.js style callback*). With this pattern, a callback function is passed to the method as an argument. When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. If no error was raised, the first argument will be passed as `null`.
 
 ```js
 const fs = require('fs');
@@ -132,9 +137,11 @@ try {
 
 This will not work because the callback function passed to `fs.readFile()` is called asynchronously. By the time the callback has been called, the surrounding code (including the `try { } catch (err) { }` block will have already exited. Throwing an error inside the callback **can crash the Node.js process** in most cases. If [domains](domain.html) are enabled, or a handler has been registered with `process.on('uncaughtException')`, such errors can be intercepted.
 
-## Class: Error<!--type=class-->A generic JavaScript 
+## Class: Error
 
-`Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
+<!--type=class-->
+
+A generic JavaScript `Error` object that does not denote any specific circumstance of why the error occurred. `Error` objects capture a "stack trace" detailing the point in the code at which the `Error` was instantiated, and may provide a text description of the error.
 
 For crypto only, `Error` objects will include the OpenSSL error stack in a separate property called `opensslErrorStack` if it is available when the error is thrown.
 
@@ -326,9 +333,11 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a 
+## Exceptions vs. Errors
 
-`throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of Error.
+<!--type=misc-->
+
+A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of Error.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -889,7 +898,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but does not provide a `dynamicInstantiate` hook.
 
@@ -897,7 +906,7 @@ Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but doe
 
 ### ERR_MISSING_MODULE
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] cannot be resolved.
 
@@ -905,7 +914,7 @@ Used when an \[ES6 module\]\[\] cannot be resolved.
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 Used when a failure occurred resolving imports in an \[ES6 module\]\[\].
 
@@ -1016,7 +1025,9 @@ A call was made and the UDP subsystem was not running.
 
 <a id="ERR_STDERR_CLOSE"></a>
 
-### ERR_STDERR_CLOSE<!-- YAML
+### ERR_STDERR_CLOSE
+
+<!-- YAML
 removed: v8.16.0
 changes:
 
@@ -1025,9 +1036,9 @@ changes:
     description: Rather than emitting an error, `process.stderr.end()` now
                  only closes the stream side but not the underlying resource,
                  making this error obsolete.
--->An attempt was made to close the 
+-->
 
-`process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
+An attempt was made to close the `process.stderr` stream. By design, Node.js does not allow `stdout` or `stderr` streams to be closed by user code.
 
 <a id="ERR_STDOUT_CLOSE"></a>
 
