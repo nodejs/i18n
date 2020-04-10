@@ -27,7 +27,7 @@ There are two fundamental components of the Pull Request process: one concrete a
   * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Performance is not everything](#performance-is-not-everything)
   * [Continuous Integration Testing](#continuous-integration-testing)
-* [附注](#additional-notes) 
+* [Additional Notes](#additional-notes) 
   * [Commit Squashing](#commit-squashing)
   * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
@@ -107,7 +107,7 @@ A good commit message should describe what changed and why.
   * be entirely in lowercase with the exception of proper nouns, acronyms, and the words that refer to code, like function/variable names
   * be prefixed with the name of the changed subsystem and start with an imperative verb. Check the output of `git log --oneline files/you/changed` to find out what subsystems your changes touch.
     
-    例如：
+    Examples:
   
   * `net: add localAddress and localPort to Socket`
   
@@ -119,7 +119,7 @@ A good commit message should describe what changed and why.
 
 4. If your patch fixes an open issue, you can add a reference to it at the end of the log. Use the `Fixes:` prefix and the full issue URL. For other references use `Refs:`.
   
-  例如：
+  Examples:
   
   * `Fixes: https://github.com/nodejs/node/issues/1337`
   * `Refs: http://eslint.org/docs/rules/space-in-parens.html`
@@ -410,7 +410,7 @@ Only Node.js core Collaborators with commit rights to the `nodejs/node` reposito
 
 Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
 
-## 附注
+## Additional Notes
 
 ### Commit Squashing
 
