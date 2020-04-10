@@ -1,13 +1,13 @@
-# イシュー
+# Issues
 
-* [イシュー上で貢献する方法](#how-to-contribute-in-issues)
-* [一般的なヘルプ](#asking-for-general-help)
-* [非技術的な話題についての議論](#discussing-non-technical-topics)
-* [バグレポートの提出](#submitting-a-bug-report)
-* [バグレポートのトリアージ](#triaging-a-bug-report)
-* [バグレポートの解決](#resolving-a-bug-report)
+* [How to Contribute in Issues](#how-to-contribute-in-issues)
+* [Asking for General Help](#asking-for-general-help)
+* [Discussing non-technical topics](#discussing-non-technical-topics)
+* [Submitting a Bug Report](#submitting-a-bug-report)
+* [Triaging a Bug Report](#triaging-a-bug-report)
+* [Resolving a Bug Report](#resolving-a-bug-report)
 
-## イシュー上で貢献する方法
+## How to Contribute in Issues
 
 For any issue, there are fundamentally three ways an individual can contribute:
 
@@ -15,40 +15,42 @@ For any issue, there are fundamentally three ways an individual can contribute:
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
 3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
-## 一般的なヘルプ
+## Asking for General Help
 
 Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## 非技術的な話題についての議論
+## Discussing non-technical topics
 
 Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## バグレポートの提出
+## Submitting a Bug Report
 
 When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
 ```markdown
 <!--
-問題を報告してくれてありがとうございます。
+Thank you for reporting an issue.
 
-このイシュートラッカーは Node.js のコア部分で見つかったバグや問題のためのものです。
-もし、より一般的なサポートが必要な場合は、ヘルプリポジトリにイシューを開いてください。 https://github.com/nodejs/help
+This issue tracker is for bugs and issues found within Node.js core.
+If you require more general support please file an issue on our help
+repo. https://github.com/nodejs/help
 
 
-以下のテンプレートに可能な限り記入をしてください。
+Please fill in as much of the template below as you're able.
 
-Version: `node -v` の出力
-Platform: `uname -a` の出力 (UNIX)、もしくは、バージョンと 32 あるいは 64-bit か (Windows)
-Subsystem: わかっている場合は、該当するコアモジュール名を指定してください
+Version: output of `node -v`
+Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
+Subsystem: if known, please specify affected core module name
 
-できれば、可能な限りシンプルで外部依存関係のない、問題を再現するコードを書いてください。
+If possible, please provide code that demonstrates the problem, keeping it as
+simple and free of external dependencies as you are able.
 -->
 
 * **Version**:
 * **Platform**:
 * **Subsystem**:
 
-<!-- このコメントの下に問題の詳細を入力してください。 -->
+<!-- Enter your issue details below this comment. -->
 ```
 
 If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
