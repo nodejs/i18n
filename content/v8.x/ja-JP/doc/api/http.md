@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-HTTPサーバとクライアントを利用するには、`require('http')` を使う必要があります。
+To use the HTTP server and client one must `require('http')`.
 
-Node.jsのHTTPインターフェースは、HTTPプロトコルにおいて従来利用することが難しかった多くの機能をサポートできるように作られています。 特に、大規模で、ひとまとめにエンコードされたメッセージに向いています。 このインターフェースでは、要求と応答の全体をバッファすることが決してないため、ユーザーはデータをストリームすることができます。
+The HTTP interfaces in Node.js are designed to support many features of the protocol which have been traditionally difficult to use. In particular, large, possibly chunk-encoded, messages. The interface is careful to never buffer entire requests or responses — the user is able to stream data.
 
-オブジェクトのHTTPメッセージヘッダはこのような形式です：
+HTTP message headers are represented by an object like this:
 
 <!-- eslint-skip -->
 
@@ -109,7 +109,7 @@ added: v0.11.4
 
 * `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
 * `callback` {Function} Callback function that receives the created socket
-* 戻り値: {net.Socket}
+* Returns: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
@@ -185,7 +185,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* 戻り値: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -478,7 +478,7 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
@@ -933,7 +933,7 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* 戻り値: {string}
+* Returns: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
@@ -949,7 +949,7 @@ const contentType = response.getHeader('content-type');
 added: v7.7.0
 -->
 
-* 戻り値: {Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
@@ -1545,7 +1545,7 @@ added: v0.1.13
 
 * `requestListener` {Function}
 
-* 戻り値: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1564,7 +1564,7 @@ changes:
 
 * `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* 戻り値: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1658,7 +1658,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* 戻り値: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
