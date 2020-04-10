@@ -1,26 +1,26 @@
-# How to: Zurückportieren eines Pull Requests zu einem Versionszweig
+# How to Backport a Pull Request to a Release Line
 
-## Staging Branches
+## Staging branches
 
 Each release line has a staging branch that the releaser will use as a scratch pad while preparing a release. The branch name is formatted as follows: `vN.x-staging` where `N` is the major release number.
 
 For the active staging branches see the [Release Schedule](https://github.com/nodejs/Release#release-schedule1).
 
-## Was wird zurückportiert?
+## What needs to be backported?
 
 If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
 
-## Was kann zurückportiert werden?
+## What can be backported?
 
 The "Current" release line is much more lenient than the LTS release lines in what can be landed. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
 
-## Wie reicht man einen Pull-Request für eine Zurückportierung ein?
+## How to submit a backport pull request
 
 For the following steps, let's assume that a backport is needed for the v8.x release line. All commands will use the `v8.x-staging` branch as the target branch. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
 
-1. Checke den Staging-Branch für den Ziel-Versionszweig aus
-2. Stelle sicher, dass der lokale Staging-Branch ist auf dem aktuellen Stand ist
-3. Erstelle vom Staging-Branch aus einen neuen Branch
+1. Checkout the staging branch for the targeted release line
+2. Make sure that the local staging branch is up to date with the remote
+3. Create a new branch off of the staging branch
 
 ```shell
 # Assuming your fork of Node.js is checked out in $NODE_DIR,
@@ -34,7 +34,7 @@ git checkout -b backport-10157-to-v8.x v8.x-staging
 # Ensure there are no test artifacts from previous builds
 # Note that this command deletes all files and directories
 # not under revision control below the ./test directory.
-# Es ist optional und sollte mit Bedacht verwendet werden.
+# It is optional and should be used with caution.
 git clean -xfd ./test/
 ```
 
