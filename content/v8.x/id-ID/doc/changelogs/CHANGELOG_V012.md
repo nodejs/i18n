@@ -5,7 +5,7 @@
 <table>
   
 <tr>
-<th>Stabil</th>
+<th>Stable</th>
 </tr>
   
   <tr>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Versi lain 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -42,7 +42,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arsip](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.12 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until December 31st, 2016.
 
