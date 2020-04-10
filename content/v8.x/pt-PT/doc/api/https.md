@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -173,9 +173,9 @@ changes:
 -->
 
 - `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-  - `protocol` **Default:** `https:`
-  - `port` **Default:** `443`
-  - `agent` **Default:** `https.globalAgent`
+    - `protocol` **Default:** `https:`
+    - `port` **Default:** `443`
+    - `agent` **Default:** `https.globalAgent`
 - `callback` {Function}
 
 Makes a request to a secure web server.
