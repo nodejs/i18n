@@ -1,9 +1,9 @@
-# ECMAScript-Module
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 ## Introduction
 
@@ -853,7 +853,7 @@ export async function dynamicInstantiate(url) {
 
 With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.
 
-### Beispiele
+### Examples
 
 The various loader hooks can be used together to accomplish wide-ranging customizations of Node.js’ code loading and evaluation behaviors.
 
