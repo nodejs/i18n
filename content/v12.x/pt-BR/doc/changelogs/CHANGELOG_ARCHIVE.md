@@ -153,7 +153,7 @@
 </tr>
 </table>
 
-* Outras versões
+* Other Versions
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
@@ -164,7 +164,7 @@
   * [5.x](CHANGELOG_V5.md)
   * [4.x](CHANGELOG_V4.md)
   * [0.12.x](CHANGELOG_V012.md)
-  * [0.10x](CHANGELOG_V010.md)
+  * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
 
 <a id="0.11.14"></a>
