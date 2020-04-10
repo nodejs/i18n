@@ -1,8 +1,8 @@
-# Modul
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -511,7 +511,7 @@ added: v0.3.0
 deprecated: v0.10.6
 -->
 
-> Stabilitas: 0 - Usang
+> Stability: 0 - Deprecated
 
 * {Object}
 
