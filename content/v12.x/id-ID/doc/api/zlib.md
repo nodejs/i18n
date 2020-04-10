@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 The `zlib` module provides compression functionality implemented using Gzip and Deflate/Inflate, as well as Brotli. It can be accessed using:
 
