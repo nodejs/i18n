@@ -193,7 +193,7 @@ added: v0.1.27
 
 Uses the DNS protocol to resolve a host name (e.g. `'nodejs.org'`) into an array of the resource records. The `callback` function has arguments `(err, records)`. When successful, `records` will be an array of resource records. The type and structure of individual results varies based on `rrtype`:
 
-| `rrtype`  | `records` contains             | Resultattyp | Shorthand method         |
+| `rrtype`  | `records` contains             | Result type | Shorthand method         |
 | --------- | ------------------------------ | ----------- | ------------------------ |
 | `'A'`     | IPv4 addresses (default)       | {string}    | [`dns.resolve4()`][]     |
 | `'AAAA'`  | IPv6 addresses                 | {string}    | [`dns.resolve6()`][]     |
@@ -313,7 +313,7 @@ added: v0.9.12
 Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. The `addresses` argument passed to the `callback` function will contain an array of objects with the following properties:
 
 * `flags`
-* `tjänst`
+* `service`
 * `regexp`
 * `replacement`
 * `order`
@@ -387,7 +387,7 @@ Uses the DNS protocol to resolve service records (`SRV` records) for the `hostna
 * `priority`
 * `weight`
 * `port`
-* `namn`
+* `name`
 ```js
 {
   priority: 10,
@@ -564,7 +564,7 @@ added: v10.6.0
 
 Uses the DNS protocol to resolve a host name (e.g. `'nodejs.org'`) into an array of the resource records. When successful, the `Promise` is resolved with an array of resource records. The type and structure of individual results vary based on `rrtype`:
 
-| `rrtype`  | `records` contains             | Resultattyp | Shorthand method                 |
+| `rrtype`  | `records` contains             | Result type | Shorthand method                 |
 | --------- | ------------------------------ | ----------- | -------------------------------- |
 | `'A'`     | IPv4 addresses (default)       | {string}    | [`dnsPromises.resolve4()`][]     |
 | `'AAAA'`  | IPv6 addresses                 | {string}    | [`dnsPromises.resolve6()`][]     |
@@ -666,7 +666,7 @@ added: v10.6.0
 Uses the DNS protocol to resolve regular expression based records (`NAPTR` records) for the `hostname`. On success, the `Promise` is resolved with an array of objects with the following properties:
 
 * `flags`
-* `tjänst`
+* `service`
 * `regexp`
 * `replacement`
 * `order`
@@ -737,7 +737,7 @@ Uses the DNS protocol to resolve service records (`SRV` records) for the `hostna
 * `priority`
 * `weight`
 * `port`
-* `namn`
+* `name`
 ```js
 {
   priority: 10,
