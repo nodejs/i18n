@@ -1,4 +1,4 @@
-# Fehler
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -333,7 +333,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Fehler
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
@@ -898,7 +898,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but does not provide a `dynamicInstantiate` hook.
 
@@ -906,7 +906,7 @@ Used when an \[ES6 module\]\[\] loader hook specifies `format: 'dynamic` but doe
 
 ### ERR_MISSING_MODULE
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Used when an \[ES6 module\]\[\] cannot be resolved.
 
@@ -914,7 +914,7 @@ Used when an \[ES6 module\]\[\] cannot be resolved.
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 Used when a failure occurred resolving imports in an \[ES6 module\]\[\].
 
