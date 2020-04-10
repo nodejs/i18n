@@ -2332,8 +2332,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>SSL_OP_ALL</code></td>
@@ -2490,8 +2490,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>ENGINE_METHOD_RSA</code></td>
@@ -2543,8 +2543,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>DH_CHECK_P_NOT_SAFE_PRIME</code></td>
@@ -2623,8 +2623,8 @@ The following constants exported by `crypto.constants` apply to various uses of 
 
 <table>
   <tr>
-    <th>Konstant</th>
-    <th>Beskrivning</th>
+    <th>Constant</th>
+    <th>Description</th>
   </tr>
   <tr>
     <td><code>defaultCoreCipherList</code></td>
