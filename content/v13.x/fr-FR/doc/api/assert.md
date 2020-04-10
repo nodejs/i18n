@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilité: 2 - stable
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -32,7 +32,7 @@ To use strict assertion mode:
 const assert = require('assert').strict;
 ```
 
-Exemple de diff:
+Example error diff:
 
 ```js
 const assert = require('assert').strict;
@@ -73,11 +73,11 @@ const assert = require('assert');
 Whenever possible, use the [strict assertion mode](#assert_strict_assertion_mode) instead. Otherwise, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) may cause surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
-// ATTENTION: Ceci ne soulève pas d'AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-## Classe: assert.AssertionError
+## Class: assert.AssertionError
 
 * Extends: {errors.Error}
 
@@ -95,7 +95,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance.
   * `stackStartFn` {Function} If provided, the generated stack trace omits frames before this function.
 
-Une sous-classe d' `Error` qui indique l’échec d’une assertion.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -130,7 +130,7 @@ try {
 }
 ```
 
-## `assert(valeur[, message])`
+## `assert(value[, message])`
 <!-- YAML
 added: v0.5.9
 -->
@@ -138,7 +138,7 @@ added: v0.5.9
 * `value` {any} The input that is checked for being truthy.
 * `message` {string|Error}
 
-Un alias de [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## `assert.deepEqual(actual, expected[, message])`
 <!-- YAML
@@ -171,11 +171,11 @@ changes:
 
 **Strict assertion mode**
 
-Un alias de [`assert.ok()`][].
+An alias of [`assert.deepStrictEqual()`][].
 
 **Legacy assertion mode**
 
-> Stabilité : 0 - obsolète : utilisez [`emitter.listenerCount()`] [] à la place.
+> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
 Tests for deep equality between the `actual` and `expected` parameters. Consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have surprising results.
 
@@ -198,7 +198,7 @@ _Deep equality_ means that the enumerable "own" properties of child objects are 
 The following example does not throw an [`AssertionError`][] because the primitives are considered equal by the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 ```js
-// ATTENTION: Ceci ne soulève pas d'AssertionError!
+// WARNING: This does not throw an AssertionError!
 assert.deepEqual('+00000000', false);
 ```
 
@@ -393,7 +393,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -512,11 +512,11 @@ added: v0.1.21
 
 **Strict assertion mode**
 
-Un alias de [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
 **Legacy assertion mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.strictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
 Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
@@ -619,7 +619,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/18247
     description: Value may now only be `undefined` or `null`. Before all falsy
                  values were handled the same as `null` and did not throw.
--->* `valeur` {any}
+-->* `value` {any}
 
 Throws `value` if `value` is not `undefined` or `null`. This is useful when testing the `error` argument in callbacks. The stack trace contains all frames from the error passed to `ifError()` including the potential new frames for `ifError()` itself.
 
@@ -655,7 +655,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilité: 1 - Expérimental
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
@@ -700,11 +700,11 @@ changes:
 
 **Strict assertion mode**
 
-Un alias de [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy assertion mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.notDeepStrictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
@@ -792,11 +792,11 @@ added: v0.1.21
 
 **Strict assertion mode**
 
-Un alias de [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
 **Legacy assertion mode**
 
-> Stabilité : 0 - obsolète : utilisez [`assert.notStrictEqual()`][] à la place.
+> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -851,7 +851,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/18319
     description: The `assert.ok()` (no arguments) will now use a predefined
                  error message.
--->* `valeur` {any}
+-->* `value` {any}
 * `message` {string|Error}
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
