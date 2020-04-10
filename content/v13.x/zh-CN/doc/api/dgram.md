@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> Stability: 2 - Stable
 
 <!-- name=dgram -->
 
@@ -126,7 +126,7 @@ Tells the kernel to join a source-specific multicast channel at the given `sourc
 added: v0.1.99
 -->
 
-* 返回：{Object}
+* Returns: {Object}
 
 Returns an object containing the address information for a socket. For UDP sockets, this object will contain `address`, `family` and `port` properties.
 
@@ -181,7 +181,7 @@ server.bind(41234);
 added: v0.11.14
 -->
 
-* `options` {Object} 必填。 支持如下属性：
+* `options` {Object} Required. Supports the following properties:
   * `port` {integer}
   * `address` {string}
   * `exclusive` {boolean}
@@ -281,7 +281,7 @@ added: v8.7.0
 added: v0.9.1
 -->
 
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
 
@@ -294,7 +294,7 @@ The `socket.ref()` method returns a reference to the socket so calls can be chai
 added: v12.0.0
 -->
 
-* 返回：{Object}
+* Returns: {Object}
 
 Returns an object containing the `address`, `family`, and `port` of the remote endpoint. It throws an [`ERR_SOCKET_DGRAM_NOT_CONNECTED`][] exception if the socket is not connected.
 
@@ -515,7 +515,7 @@ The `ttl` argument may be between between 1 and 255. The default on most systems
 added: v0.9.1
 -->
 
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
 
@@ -547,9 +547,9 @@ changes:
   * `ipv6Only` {boolean} Setting `ipv6Only` to `true` will disable dual-stack support, i.e., binding to address `::` won't make `0.0.0.0` be bound. **Default:** `false`.
   * `recvBufferSize` {number} Sets the `SO_RCVBUF` socket value.
   * `sendBufferSize` {number} Sets the `SO_SNDBUF` socket value.
-  * `lookup` {Function} 自定义查找函数。 **Default:** [`dns.lookup()`][].
+  * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
 * `callback` {Function} Attached as a listener for `'message'` events. Optional.
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 Creates a `dgram.Socket` object. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
@@ -560,7 +560,7 @@ added: v0.1.99
 
 * `type` {string} Either `'udp4'` or `'udp6'`.
 * `callback` {Function} Attached as a listener to `'message'` events.
-* 返回：{dgram.Socket}
+* Returns: {dgram.Socket}
 
 Creates a `dgram.Socket` object of the specified `type`.
 
