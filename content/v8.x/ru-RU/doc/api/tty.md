@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Стабильность: 2 - Стабильно
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -35,7 +35,7 @@ The `tty.ReadStream` class is a subclass of [`net.Socket`][] that represents the
 added: v0.7.7
 -->
 
-A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. По умолчанию: `false`.
+A `boolean` that is `true` if the TTY is currently configured to operate as a raw device. Defaults to `false`.
 
 ### readStream.isTTY
 
