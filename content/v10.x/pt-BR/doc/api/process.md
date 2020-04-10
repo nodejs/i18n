@@ -1,4 +1,4 @@
-# Processo
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -32,7 +32,7 @@ added: v0.7.7
 
 If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
 
-### Evento: 'exit'
+### Event: 'exit'
 
 <!-- YAML
 added: v0.1.7
@@ -405,7 +405,7 @@ added: v0.5.0
 
 The `process.arch` property returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
-Os atuais valores possíveis são: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
+The current possible values are: `'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, and `'x64'`.
 
 ```js
 console.log(`This processor architecture is ${process.arch}`);
@@ -582,7 +582,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retorna: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -975,7 +975,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v2.0.0
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -993,7 +993,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Retorna: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -1011,7 +1011,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.9.4
 -->
 
-* Retorna: {integer}[]}
+* Returns: {integer[]}
 
 The `process.getgroups()` method returns an array with the supplementary group IDs. POSIX leaves it unspecified if the effective group ID is included but Node.js ensures it always is.
 
@@ -1023,7 +1023,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.28
 -->
 
-* Retorna: {integer}
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -1041,7 +1041,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1052,7 +1052,7 @@ added: v0.7.6
 -->
 
 * `time` {integer[]} The result of a previous call to `process.hrtime()`
-* Retorna: {integer}[]}
+* Returns: {integer[]}
 
 This is the legacy version of [`process.hrtime.bigint()`][] before `bigint` was introduced in JavaScript.
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Retorna: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1412,7 +1412,7 @@ added: v0.5.9
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
-* Retorna: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1606,13 +1606,13 @@ process.stdin.pipe(process.stdout);
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. Consulte [`process.exit()`] [-] para obter mais informações.
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Por exemplo:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1685,7 +1685,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Retorna: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
