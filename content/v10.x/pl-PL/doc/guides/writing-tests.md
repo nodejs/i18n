@@ -99,7 +99,7 @@ This is the body of the test. This test is simple, it just tests that an HTTP se
 
 ## General recommendations
 
-### Liczniki
+### Timers
 
 Avoid timers unless the test is specifically testing timers. There are multiple reasons for this. Mainly, they are a source of flakiness. For a thorough explanation go [here](https://github.com/nodejs/testing/issues/27).
 
@@ -351,6 +351,6 @@ There is a [test fixture](https://github.com/google/googletest/blob/master/googl
 
 It also contains a helper to create arguments to be passed into Node.js. It will depend on what is being tested if this is required or not.
 
-### Zakres Testu
+### Test Coverage
 
 To generate a test coverage report, see the [Test Coverage section of the Building guide](https://github.com/nodejs/node/blob/master/BUILDING.md#running-coverage).
