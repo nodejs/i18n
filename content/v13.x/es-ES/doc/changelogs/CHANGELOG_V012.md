@@ -5,7 +5,7 @@
 
 <table>
 <tr>
-<th>Estable</th>
+<th>Stable</th>
 </tr>
 <tr>
 <td>
@@ -32,7 +32,7 @@
 </tr>
 </table>
 
-* Otras versiones
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -45,7 +45,7 @@
   * [4.x](CHANGELOG_V4.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Archivo](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 *Note*: Node.js v0.12 is covered by the [Node.js Long Term Support Plan](https://github.com/nodejs/LTS) and will be maintained until December 31st, 2016.
 
@@ -53,7 +53,7 @@
 
 ## 2016-12-21, Version 0.12.18 (Maintenance), @rvagg
 
-### Cambios Notables:
+### Notable changes:
 
 * npm: upgrade from v2.15.1 to v2.15.11, including accurate updated license (Jeremiah Senkpiel)
 * process: `process.versions.ares` now outputs the c-ares version (Johan Bergström)
@@ -72,9 +72,9 @@
 
 ## 2016-10-18, Version 0.12.17 (Maintenance), @rvagg
 
-Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ para más detalles sobre vulnerabilidades parcheadas.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
-### Cambios Notables:
+### Notable changes:
 
 * c-ares: fix for single-byte buffer overwrite, CVE-2016-5180, more information at https://c-ares.haxx.se/adv_20160929.html (Daniel Stenberg)
 
@@ -86,18 +86,18 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-09-27, Version 0.12.16 (Maintenance), @rvagg
 
-Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en https://nodejs.org/en/blog/vulnerability/september-2016-security releases/ para más detalles sobre vulnerabilidades parcheadas.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
-### Cambios Notables:
+### Notable changes:
 
 * buffer: Zero-fill excess bytes in new `Buffer` objects created with `Buffer.concat()` while providing a `totalLength` parameter that exceeds the total length of the original `Buffer` objects being concatenated. (Сковорода Никита Андреевич)
 * http:
-  * CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Arregla un posible vector de ataque de división de respuesta. Esto introduce un nuevo caso donde `throw` puede ocurrir cuando se configuran respuestas de HTTP, los usuarios deberían estar ya adoptando try/catch aquí. Originalmente reportado por Evan Lucas y Romain Gaucher. (Evan Lucas)
-  * Los códigos de estatus inválidos no pueden ser enviados. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
+  * CVE-2016-5325 - Properly validate for allowable characters in the `reason` argument in `ServerResponse#writeHead()`. Fixes a possible response splitting attack vector. This introduces a new case where `throw` may occur when configuring HTTP responses, users should already be adopting try/catch here. Originally reported independently by Evan Lucas and Romain Gaucher. (Evan Lucas)
+  * Invalid status codes can no longer be sent. Limited to 3 digit numbers between 100 - 999. Lack of proper validation may also serve as a potential response splitting attack vector. Backported from v4.x. (Brian White)
 * openssl:
   * Upgrade to 1.0.1u, fixes a number of defects impacting Node.js: CVE-2016-6304 ("OCSP Status Request extension unbounded memory growth", high severity), CVE-2016-2183, CVE-2016-6303, CVE-2016-2178 and CVE-2016-6306.
-  * Remover soporte para cargar módulos de motores de terceros dinámicos. Un atacante puede esconder código malicioso para ser insertado en Node.js al momento de la ejecución enmascarándose como uno de los módulos de motor dinámicos. Originalmente reportado por Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
-* tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originalmente reportado por Alexander Minozhenko y James Bunton (Atlassian). (Ben Noordhuis)
+  * Remove support for loading dynamic third-party engine modules. An attacker may be able to hide malicious code to be inserted into Node.js at runtime by masquerading as one of the dynamic engine modules. Originally reported by Ahmed Zaki (Skype). (Ben Noordhuis, Rod Vagg)
+* tls: CVE-2016-7099 - Fix invalid wildcard certificate validation check whereby a TLS server may be able to serve an invalid wildcard certificate for its hostname due to improper validation of `*.` in the wildcard string. Originally reported by Alexander Minozhenko and James Bunton (Atlassian). (Ben Noordhuis)
 
 ### Commits:
 
@@ -118,9 +118,9 @@ Esta es una actualización de seguridad. Todos los usuarios de Node.js deberían
 
 ## 2016-06-23, Version 0.12.15 (Maintenance), @rvagg
 
-### Cambios Notables:
+### Notable changes:
 
-Esta es una actualización de seguridad. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/ for details on patched vulnerabilities.
 
 * libuv: (CVE-2014-9748) Fixes a bug in the read/write locks implementation for Windows XP and Windows 2003 that can lead to undefined and potentially unsafe behaviour. More information can be found at https://github.com/libuv/libuv/issues/515 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
 * V8: (CVE-2016-1669) Fixes a potential Buffer overflow vulnerability discovered in V8, more details can be found in the CVE at https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1669 or at https://nodejs.org/en/blog/vulnerability/june-2016-security-releases/.
@@ -139,13 +139,13 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 ## 2016-05-06, Version 0.12.14 (Maintenance), @rvagg
 
-### Cambios Notables:
+### Notable changes:
 
-* npm: Corregir números de versión erróneos en el código v2.15.1 (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
-* openssl: Actualizar a v1.0.1t, abordando las vulnerabilidades de seguridad (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
-  * Repara CVE-2016-2107 "Oráculo de relleno en la verificación AES-NI CBC MAC"
+* npm: Correct erroneous version number in v2.15.1 code (Forrest L Norvell) https://github.com/nodejs/node/pull/5988
+* openssl: Upgrade to v1.0.1t, addressing security vulnerabilities (Shigeki Ohtsu) https://github.com/nodejs/node/pull/6553
+  * Fixes CVE-2016-2107 "Padding oracle in AES-NI CBC MAC check"
   * Fixes CVE-2016-2105 "EVP_EncodeUpdate overflow"
-  * Vea https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ para los detalles completos
+  * See https://nodejs.org/en/blog/vulnerability/openssl-may-2016/ for full details
 
 ### Commits:
 
@@ -163,10 +163,10 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 ## 2016-03-31, Version 0.12.13 (LTS), @rvagg
 
-### Cambios notables
+### Notable changes
 
-* npm: Actualizar a v2.15.1. (Forrest L Norvell)
-* openssl: OpenSSL v1.0.1s deshabilita los cifrados EXPORT y LOW ya que son obsoletos y no se consideran seguros. Esta versión de Node.js activa ` OPENSSL_NO_WEAK_SSL_CIPHERS ` para deshabilitar completamente los 27 cifrados incluidos en estas listas que pueden ser usados en SSLv3 y superiores. Los detalles completos sobre el asunto pueden ser encontrardos en nuestra discusión de LTS (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
+* npm: Upgrade to v2.15.1. (Forrest L Norvell)
+* openssl: OpenSSL v1.0.1s disables the EXPORT and LOW ciphers as they are obsolete and not considered safe. This release of Node.js turns on `OPENSSL_NO_WEAK_SSL_CIPHERS` to fully disable the 27 ciphers included in these lists which can be used in SSLv3 and higher. Full details can be found in our LTS discussion on the matter (https://github.com/nodejs/LTS/issues/85). (Shigeki Ohtsu) https://github.com/nodejs/node/pull/5712
 
 ### Commits
 
@@ -181,11 +181,11 @@ Esta es una actualización de seguridad. All Node.js users should consult the se
 
 ## 2016-03-08, Version 0.12.12 (LTS), @rvagg
 
-### Cambios Notables:
+### Notable changes:
 
-* openssl: Remover completamente soporte para SSLv2, el argumento de línea de comando `--enable-ssl2` producirá ahora un error. El ataque DROWN (https://drownattack.com/) crea una vulnerabilidad en la cual SSLv2 es habilitado por un servidor, incluso si una conexión al cliente no está usando SSLv2. El protocolo SSLv2 es ampliamente considerado como inaceptablemente roto y no debería ser soportado. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0800
+* openssl: Fully remove SSLv2 support, the `--enable-ssl2` command line argument will now produce an error. The DROWN Attack (https://drownattack.com/) creates a vulnerability where SSLv2 is enabled by a server, even if a client connection is not using SSLv2. The SSLv2 protocol is widely considered unacceptably broken and should not be supported. More information is available at https://www.openssl.org/news/vulnerabilities.html#2016-0800
 
-Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 eliminó el soporte interno de SSLv2. El cambio en esta versión fue originalmente pensado para v0.12.11. El argumento de línea de comando `--enable-ssl2` ahora produce un error en lugar de ser un no-op.
+Note that the upgrade to OpenSSL 1.0.1s in Node.js v0.12.11 removed internal SSLv2 support. The change in this release was originally intended for v0.12.11. The `--enable-ssl2` command line argument now produces an error rather than being a no-op.
 
 ### Commits:
 
@@ -195,16 +195,16 @@ Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 elimi
 
 ## 2016-03-03, Version 0.12.11 (LTS), @rvagg
 
-### Cambios Notables:
+### Notable changes:
 
-* http_parser: Actualizar a http-parser 2.3.2 para reparar una limitación estricta no intencional de caracteres de cabecera permitidos. (James M Snell) https://github.com/nodejs/node/pull/5241
-* dominio:
-  * Impedir que se produzca una salida debido a que se arroja una excepción en lugar de emitir un evento 'uncaughtException' en el objeto `process` cuando no se establece ningún manejador de errores en el dominio dentro del cual se arroja un error y se establece un listener del evento 'uncaughtException' en `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3885
-  * Repara un problema donde el proceso no abortaría en la llamada de función adecuada si se arroja un error dentro del dominio sin un manejador de errores y se utiliza ` --abort-on-uncught-exception `. (Julien Gilli) https://github.com/nodejs/node/pull/3885
-* openssl: Actualizar de 1.0.1r a 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509
-  * Repara un defecto doble-libre en el análisis de claves DSA malformadas que potencialmente pudieran ser usadas para los ataques DoS o de corrupción de memoria. Es probable que sea muy difícil usar este defecto para un ataque práctico y es por lo tanto considerado como una severidad baja para usuarios de Node.js. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0705
-  * Repara un defecto que puede causar corrupción en la memoria en ciertos casos muy raros relacionados con las funciones internas `BN_hex2bn()` and `BN_dec2bn()`. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0797
-  * Arreglar un defecto que hace que el ataque CacheBleed (https://ssrg.nicta.com.au/projects/TS/cachebleed/) sea posible. Este defecto permite a los atacantes ejecutar ataques de canales laterales conduciendo a la recuperación potencial de todas las claves privadas RSA. Solo afecta a la microarquitectura de los Sandy Bridge de Intel (y posiblemente más viejos) cuando se usa hyper-threading. Las microarquitecturas más nuevas, incluyendo la Haswell, no se ven afectadas. Hay más información disponible en https://www.openssl.org/news/vulnerabilities.html#2016-0702
+* http_parser: Update to http-parser 2.3.2 to fix an unintentionally strict limitation of allowable header characters. (James M Snell) https://github.com/nodejs/node/pull/5241
+* domains:
+  * Prevent an exit due to an exception being thrown rather than emitting an 'uncaughtException' event on the `process` object when no error handler is set on the domain within which an error is thrown and an 'uncaughtException' event listener is set on `process`. (Julien Gilli) https://github.com/nodejs/node/pull/3885
+  * Fix an issue where the process would not abort in the proper function call if an error is thrown within a domain with no error handler and `--abort-on-uncaught-exception` is used. (Julien Gilli) https://github.com/nodejs/node/pull/3885
+* openssl: Upgrade from 1.0.1r to 1.0.1s (Ben Noordhuis) https://github.com/nodejs/node/pull/5509
+  * Fix a double-free defect in parsing malformed DSA keys that may potentially be used for DoS or memory corruption attacks. It is likely to be very difficult to use this defect for a practical attack and is therefore considered low severity for Node.js users. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0705
+  * Fix a defect that can cause memory corruption in certain very rare cases relating to the internal `BN_hex2bn()` and `BN_dec2bn()` functions. It is believed that Node.js is not invoking the code paths that use these functions so practical attacks via Node.js using this defect are _unlikely_ to be possible. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0797
+  * Fix a defect that makes the CacheBleed Attack (https://ssrg.nicta.com.au/projects/TS/cachebleed/) possible. This defect enables attackers to execute side-channel attacks leading to the potential recovery of entire RSA private keys. It only affects the Intel Sandy Bridge (and possibly older) microarchitecture when using hyper-threading. Newer microarchitectures, including Haswell, are unaffected. More info is available at https://www.openssl.org/news/vulnerabilities.html#2016-0702
 
 ### Commits:
 
@@ -225,21 +225,21 @@ Tenga en cuenta que la actualización a OpenSSL 1.0.1s en Node.js v0.12.11 elimi
 
 <a id="0.12.10"></a>
 
-## 2016-02-09, Versión 0.12.10 (LTS), @jasnell
+## 2016-02-09, Version 0.12.10 (LTS), @jasnell
 
-Esta es una actualización de seguridad importante. Todos los usuarios de Node.js deberían consultar el resumen de la actualización de seguridad en nodejs.org para los detalles de vulnerabilidades parcheadas.
+This is an important security release. All Node.js users should consult the security release summary at nodejs.org for details on patched vulnerabilities.
 
-### Cambios notables
+### Notable changes
 
-* http: arreglar los defectos en el análisis de cabeceras HTTP para solicitudes y respuestas que puedan permitir el contrabando de solicitudes (CVE-2016-2086) o la división de respuestas (CVE-2016-2216). El análisis de cabeceras HTTP ahora se alinea más cerca con la especificación HTTP, incluyendo la restricción de caracteres aceptables.
-* http-parser: actualizar de 2.3.0 a 2.3.1
-* openssl: actualizar de 1.0.1q a 1.0.1r. Para mitigar los ataques Logjam, los clientes TLS ahora reflejan el establecimiento de comunicación Diffie-Hellman con parámetros más cortos que 1024-bits, mejorado del límite previo de 768-bits.
+* http: fix defects in HTTP header parsing for requests and responses that can allow request smuggling (CVE-2016-2086) or response splitting (CVE-2016-2216). HTTP header parsing now aligns more closely with the HTTP spec including restricting the acceptable characters.
+* http-parser: upgrade from 2.3.0 to 2.3.1
+* openssl: upgrade from 1.0.1q to 1.0.1r. To mitigate against the Logjam attack, TLS clients now reject Diffie-Hellman handshakes with parameters shorter than 1024-bits, up from the previous limit of 768-bits.
 * src:
-  * introducir una nueva bandera de línea de comando `--security-revert={cvenum}` para reversión selectiva de reparaciones CVE específicas
-  * permitir la corrección para que CVE-2016-2216 sea revertida selectivamente usando `--security-revert=CVE-2016-2216`
+  * introduce new `--security-revert={cvenum}` command line flag for selective reversion of specific CVE fixes
+  * allow the fix for CVE-2016-2216 to be selectively reverted using `--security-revert=CVE-2016-2216`
 * build:
-  * archivos tar comprimidos en xz serán hechos disponibles desde nodejs.org para compilaciones v.012 desde v0.12.10 en adelante
-  * Un archivo header.tar.gz será hecho disponible desde nodejs.org para compilaciones v0.12 desde v0.12.10 en adelante, un cambio futuro a node-gyp será requerido para hacer uso de este
+  * xz compressed tar files will be made available from nodejs.org for v0.12 builds from v0.12.10 onward
+  * A headers.tar.gz file will be made available from nodejs.org for v0.12 builds from v0.12.10 onward, a future change to node-gyp will be required to make use of these
 
 ### Commits
 
@@ -254,14 +254,14 @@ Esta es una actualización de seguridad importante. Todos los usuarios de Node.j
 
 <a id="0.12.9"></a>
 
-## 2015-12-04, Versión 0.12.9 (LTS), @rvagg
+## 2015-12-04, Version 0.12.9 (LTS), @rvagg
 
-Actualización de Seguridad
+Security Update
 
-### Cambios notables
+### Notable changes
 
-* http: Reparar CVE-2015-8027, un bug por el que un socket HTTP ya no puede tener un analizador asociado, pero una solicitud pipelined intenta desencadenar una pausa o reanudar en el analizador inexistente, una vulnerabilidad potencial de denegación de servicio. (Fedor Indutny)
-* openssl: Actualizar a 1.0.1q, repara CVE-2015-3194 "Fallo de verificación de certificado con parámetro PSS perdido", un potencial vector de denegación de servicio para los servidores TLS de Node.js mediante la autenticación de certificado de cliente; los clientes TLS también son impactados. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
+* http: Fix CVE-2015-8027, a bug whereby an HTTP socket may no longer have a parser associated with it but a pipelined request attempts to trigger a pause or resume on the non-existent parser, a potential denial-of-service vulnerability. (Fedor Indutny)
+* openssl: Upgrade to 1.0.1q, fixes CVE-2015-3194 "Certificate verify crash with missing PSS parameter", a potential denial-of-service vector for Node.js TLS servers using client certificate authentication; TLS clients are also impacted. Details are available at <http://openssl.org/news/secadv/20151203.txt>. (Ben Noordhuis) https://github.com/nodejs/node/pull/4133
 
 ### Commits
 
@@ -270,7 +270,7 @@ Actualización de Seguridad
 
 <a id="0.12.8"></a>
 
-## 2015.11.25, Versión 0.12.8 (LTS), @rvagg
+## 2015.11.25, Version 0.12.8 (LTS), @rvagg
 
 * [[`d9399569bd`](https://github.com/nodejs/node/commit/d9399569bd) - build: backport tools/release.sh (Rod Vagg) https://github.com/nodejs/node/pull/3642
 * [[`78c5b4c8bd`](https://github.com/nodejs/node/commit/78c5b4c8bd) - build: backport config for new CI infrastructure (Rod Vagg) https://github.com/nodejs/node/pull/3642
@@ -346,7 +346,7 @@ Actualización de Seguridad
 
 <a id="0.12.7"></a>
 
-## 2015-07-09, Versión 0.12.7 (Estable)
+## 2015-07-09, Version 0.12.7 (Stable)
 
 ### Commits
 
@@ -357,9 +357,9 @@ Actualización de Seguridad
 
 <a id="0.12.6"></a>
 
-## 2015-07-03, Versión 0.12.6 (Estable)
+## 2015-07-03, Version 0.12.6 (Stable)
 
-### Cambios notables
+### Notable changes
 
 * **deps**: Fixed an out-of-band write in utf8 decoder. **This is an important security update** as it can be used to cause a denial of service attack.
 
@@ -369,7 +369,7 @@ Actualización de Seguridad
 
 <a id="0.12.5"></a>
 
-## 2015-06-22, Versión 0.12.5 (Estable)
+## 2015-06-22, Version 0.12.5 (Stable)
 
 ### Commits
 
@@ -384,7 +384,7 @@ Actualización de Seguridad
 
 <a id="0.12.4"></a>
 
-## 2015-05-22, Versión 0.12.4 (Estable)
+## 2015-05-22, Version 0.12.4 (Stable)
 
 ### Commits
 
@@ -394,7 +394,7 @@ Actualización de Seguridad
 
 <a id="0.12.3"></a>
 
-## 2015-05-13, Versión 0.12.3 (Estable)
+## 2015-05-13, Version 0.12.3 (Stable)
 
 ### Commits
 
@@ -411,7 +411,7 @@ Actualización de Seguridad
 
 <a id="0.12.2"></a>
 
-## 2015-03-31, Versión 0.12.2 (Estable)
+## 2015-03-31, Version 0.12.2 (Stable)
 
 ### Commits
 
@@ -440,7 +440,7 @@ Actualización de Seguridad
 
 <a id="0.12.1"></a>
 
-## 2015-03-23, Versión 0.12.1 (Estable)
+## 2015-03-23, Version 0.12.1 (Stable)
 
 ### Commits
 
@@ -448,7 +448,7 @@ Actualización de Seguridad
 
 <a id="0.12.0"></a>
 
-## 2015-02-06, Versión 0.12.0 (Estable)
+## 2015-02-06, Version 0.12.0 (Stable)
 
 ### Commits
 
