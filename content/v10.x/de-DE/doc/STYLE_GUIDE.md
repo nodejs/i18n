@@ -1,11 +1,11 @@
-# Styleguide
+# Style Guide
 
-* Die Dokumentation wird in Markdown-Dateien geschrieben, deren Dateinamen als `kleinbuchstaben-mit-bindestrichen.md`formatiert sind. 
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
   * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
-  * Einige Dateien sind davon ausgenommen, z. B. Markdown-Dateien auf der obersten Ebene.
-* Der Text in Dokumenten sollte nach 80 Zeichen umgebrochen werden.
-* In `.editorconfig` ist beschrieben, welche Formatierung bevorzugt wird. 
-  * Für einige Programme steht ein [Plugin](http://editorconfig.org/#download) zur Verfügung, um diese Regeln automatisch anzuwenden.
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
