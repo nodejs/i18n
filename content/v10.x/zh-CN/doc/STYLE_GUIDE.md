@@ -1,11 +1,11 @@
 # 文档规范指南
 
-* 文档使用 markdown 文件编写，命名格式为 `lowercase-with-dashes.md`。 
-  * 文件名的字下线“_”仅当文件名出现在文档描述的主题中才允许使用（例如 `child_process`）。
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
   * 某些文件是例外，例如顶级 markdown 文件。
 * Documents should be word-wrapped at 80 characters.
 * 首选 `. editorconfig ` 中描述的格式。 
-  * 某些编辑器可以使用 [插件](http://editorconfig.org/#download) 自动应用这些规则。
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Changes to documentation should be checked with `make lint-md`.
 * American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
@@ -38,7 +38,7 @@
     
     <!--lint disable maximum-line-length remark-lint-->
   
-  * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **默认值：** `0`。</code> <!--lint enable maximum-line-length remark-lint-->
+  * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Default:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
   
   * The `type` should refer to a Node.js type or a [JavaScript type](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types).
 
