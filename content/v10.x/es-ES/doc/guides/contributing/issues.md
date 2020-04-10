@@ -1,13 +1,13 @@
-# Problemas
+# Issues
 
-* [Como contribuir en Problemas](#how-to-contribute-in-issues)
-* [Pidiendo ayuda en General](#asking-for-general-help)
-* [Discusión de temas no técnicos](#discussing-non-technical-topics)
-* [Enviar un reporte de Bug](#submitting-a-bug-report)
-* [Hacer triage de un Bug](#triaging-a-bug-report)
-* [Resolver un reporte de Bug](#resolving-a-bug-report)
+* [How to Contribute in Issues](#how-to-contribute-in-issues)
+* [Asking for General Help](#asking-for-general-help)
+* [Discussing non-technical topics](#discussing-non-technical-topics)
+* [Submitting a Bug Report](#submitting-a-bug-report)
+* [Triaging a Bug Report](#triaging-a-bug-report)
+* [Resolving a Bug Report](#resolving-a-bug-report)
 
-## Como contribuir en Problemas
+## How to Contribute in Issues
 
 For any issue, there are fundamentally three ways an individual can contribute:
 
@@ -15,15 +15,15 @@ For any issue, there are fundamentally three ways an individual can contribute:
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
 3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
-## Pidiendo ayuda en General
+## Asking for General Help
 
 Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## Discusión de temas no técnicos
+## Discussing non-technical topics
 
 Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## Enviar un reporte de bug
+## Submitting a Bug Report
 
 When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
@@ -59,9 +59,9 @@ The two most important pieces of information we need in order to properly evalua
 
 In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
-Ver [Como crear un ejemplo Mínimo, Completo y Verificable](https://stackoverflow.com/help/mcve).
+See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
-## Hacer triage de un Bug
+## Triaging a Bug Report
 
 Once an issue has been opened, it is not uncommon for there to be discussion around it. Some contributors may have differing opinions about the issue, including whether the behavior being seen is a bug or a feature. This discussion is part of the process and should be kept focused, helpful, and professional.
 
@@ -69,6 +69,6 @@ Short, clipped responses—that provide neither additional context nor supportin
 
 Contributors are encouraged to help one another make forward progress as much as possible, empowering one another to solve issues collaboratively. If you choose to comment on an issue that you feel either is not a problem that needs to be fixed, or if you encounter information in an issue that you feel is incorrect, explain *why* you feel that way with additional supporting context, and be willing to be convinced that you may be wrong. By doing so, we can often reach the correct outcome much faster.
 
-## Resolver un reporte de Bug
+## Resolving a Bug Report
 
-En la amplia mayoría de los casos, los problemas se resuelven abriendo un Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
+In the vast majority of cases, issues are resolved by opening a Pull Request. The process for opening and reviewing a Pull Request is similar to that of opening and triaging issues, but carries with it a necessary review and approval workflow that ensures that the proposed changes meet the minimal quality and functional guidelines of the Node.js project.
