@@ -53,7 +53,7 @@
   </tr>
 </table>
 
-* Versi lain 
+* Other Versions 
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -63,7 +63,7 @@
   * [0.12.x](CHANGELOG_V012.md)
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
-  * [Arsip](CHANGELOG_ARCHIVE.md)
+  * [Archive](CHANGELOG_ARCHIVE.md)
 
 <a id="10.19.0"></a>
 
@@ -3737,7 +3737,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter 
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* Sistem File 
+* File System 
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
@@ -3771,7 +3771,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
   * Support for NPN (next protocol negotiation) has been dropped. [[`5bfbe5ceae`](https://github.com/nodejs/node/commit/5bfbe5ceae)]
   * The `ecdhCurve` default is now `'auto'`. [[`af78840b19`](https://github.com/nodejs/node/commit/af78840b19)]
-* Mengikuti Jejak Event 
+* Trace Events 
   * A new `trace_events` top-level module allows trace event categories to be enabled/disabled at runtime. [[`da5d818a54`](https://github.com/nodejs/node/commit/da5d818a54)]
 * URL 
   * The WHATWG URL API is now a global. [[`312414662b`](https://github.com/nodejs/node/commit/312414662b)]
