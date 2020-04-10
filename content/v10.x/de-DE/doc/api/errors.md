@@ -1,4 +1,4 @@
-# Fehler
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -316,7 +316,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Fehler
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
@@ -1256,7 +1256,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1270,7 +1270,7 @@ A `MessagePort` was found in the object passed to a `postMessage()` call, but no
 
 ### ERR_MISSING_MODULE
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 An [ES6 module](esm.html) could not be resolved.
 
@@ -1284,7 +1284,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### ERR_MODULE_RESOLUTION_LEGACY
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 A failure occurred resolving imports in an [ES6 module](esm.html).
 
@@ -1373,7 +1373,7 @@ A given value is out of the accepted range.
 
 ### ERR_REQUIRE_ESM
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 An attempt was made to `require()` an [ES6 module](esm.html).
 
@@ -1644,7 +1644,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### ERR_UNKNOWN_FILE_EXTENSION
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1652,7 +1652,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### ERR_UNKNOWN_MODULE_FORMAT
 
-> Stabilität: 1 - Experimentell
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1778,7 +1778,7 @@ A module file could not be resolved while attempting a [`require()`][] or `impor
 
 ## Legacy Node.js Error Codes
 
-> Stabilität: 0 - Veraltet. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_HTTP2_FRAME_ERROR"></a>
 
