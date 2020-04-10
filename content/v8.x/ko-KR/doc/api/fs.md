@@ -1,8 +1,8 @@
-# 파일 시스템
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
@@ -550,7 +550,7 @@ changes:
 
 * `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
@@ -604,7 +604,7 @@ changes:
 
 * `file` {string|Buffer|URL|number} filename or file descriptor
 * `data` {string|Buffer}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'a'`
@@ -891,7 +891,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string}
   * `encoding` {string}
   * `fd` {integer}
@@ -956,7 +956,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `flags` {string}
   * `encoding` {string}
   * `fd` {integer}
@@ -1570,7 +1570,7 @@ changes:
 -->
 
 * `prefix` {string}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -1628,7 +1628,7 @@ added: v5.10.0
 -->
 
 * `prefix` {string}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 
 The synchronous version of [`fs.mkdtemp()`][]. Returns the created folder path.
@@ -1790,7 +1790,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -1813,7 +1813,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous readdir(3). Returns an array of filenames excluding `'.'` and `'..'`.
@@ -1844,7 +1844,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} **Default:** `'r'`
 * `callback` {Function} 
@@ -1906,7 +1906,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL|integer} filename or file descriptor
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} **Default:** `'r'`
 
@@ -1942,7 +1942,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -1966,7 +1966,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous readlink(2). Returns the symbolic link's string value.
@@ -2019,7 +2019,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function} 
   * `err` {Error}
@@ -2057,7 +2057,7 @@ changes:
 -->
 
 * `path` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
 
 Synchronous realpath(3). Returns the resolved path.
@@ -2431,7 +2431,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `옵션` {string|Object} 
+* `options` {string|Object} 
   * `persistent` {boolean} Indicates whether the process should continue to run as long as files are being watched. **Default:** `true`.
   * `recursive` {boolean} Indicates whether all subdirectories should be watched, or only the current directory. This applies when a directory is specified, and only on supported platforms (See [Caveats](#fs_caveats)). **Default:** `false`.
   * `encoding` {string} Specifies the character encoding to be used for the filename passed to the listener. **Default:** `'utf8'`.
@@ -2512,7 +2512,7 @@ changes:
 -->
 
 * `filename` {string|Buffer|URL}
-* `옵션` {Object} 
+* `options` {Object} 
   * `persistent` {boolean} **Default:** `true`
   * `interval` {integer} **Default:** `5007`
 * `listener` {Function} 
@@ -2647,7 +2647,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
@@ -2695,7 +2695,7 @@ changes:
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
 * `data` {string|Buffer|Uint8Array}
-* `옵션` {Object|string} 
+* `options` {Object|string} 
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
   * `flag` {string} **Default:** `'w'`
