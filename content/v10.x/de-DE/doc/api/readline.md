@@ -1,10 +1,10 @@
-# ReadLine
+# Readline
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. Es kann zugegriffen werden durch:
+The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
 ```js
 const readline = require('readline');
@@ -286,9 +286,9 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
-* Gibt zurück: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
 
