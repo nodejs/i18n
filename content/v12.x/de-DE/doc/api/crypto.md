@@ -1,8 +1,8 @@
-# Krypto
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 
-> Stabilität: 2 - Stabil
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -305,7 +305,7 @@ changes:
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the data.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Updates the cipher with `data`. If the `inputEncoding` argument is given, the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
@@ -480,7 +480,7 @@ changes:
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -525,7 +525,7 @@ added: v0.5.0
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of an `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -537,7 +537,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -547,7 +547,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -557,7 +557,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -567,7 +567,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -577,7 +577,7 @@ added: v0.5.0
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -680,7 +680,7 @@ added: v10.0.0
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `key` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`.
 
@@ -726,7 +726,7 @@ changes:
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -741,7 +741,7 @@ added: v0.11.14
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -790,7 +790,7 @@ added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
@@ -888,7 +888,7 @@ added: v12.16.0
 -->
 
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Hash}
+* Returns: {Hash}
 
 Creates a new `Hash` object that contains a deep copy of the internal state of the current `Hash` object.
 
@@ -919,7 +919,7 @@ added: v0.1.92
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -1005,7 +1005,7 @@ added: v0.1.94
 -->
 
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -1196,7 +1196,7 @@ changes:
   * `padding` {integer}
   * `saltLength` {integer}
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
-* Gibt zurück: {Buffer | string}
+* Returns: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
@@ -1322,7 +1322,7 @@ added: v0.9.3
 deprecated: v10.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 The default encoding to use for functions that can take either strings or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods default to [`Buffer`][] objects.
 
@@ -1338,7 +1338,7 @@ added: v6.0.0
 deprecated: v10.0.0
 -->
 
-> Stabilität: 0 - Veraltet
+> Stability: 0 - Deprecated
 
 Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Setting to true requires a FIPS build of Node.js.
 
@@ -1363,7 +1363,7 @@ changes:
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1404,7 +1404,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `iv` {string | Buffer | TypedArray | DataView | null}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1431,7 +1431,7 @@ changes:
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
 
@@ -1468,7 +1468,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `iv` {string | Buffer | TypedArray | DataView | null}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1500,7 +1500,7 @@ changes:
 * `primeEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `prime` string.
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 * `generatorEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `generator` string.
-* Gibt zurück: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
@@ -1517,7 +1517,7 @@ added: v0.5.0
 
 * `primeLength` {number}
 * `generator` {number} **Default:** `2`
-* Gibt zurück: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
 
@@ -1537,7 +1537,7 @@ added: v0.11.14
 -->
 
 * `curveName` {string}
-* Gibt zurück: {ECDH}
+* Returns: {ECDH}
 
 Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
@@ -1552,7 +1552,7 @@ changes:
 
 * `algorithm` {string}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Hash}
+* Returns: {Hash}
 
 Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior. For XOF hash functions such as `'shake256'`, the `outputLength` option can be used to specify the desired output length in bytes.
 
@@ -1592,7 +1592,7 @@ changes:
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `options` {Object} [`stream.transform` options][]
-* Gibt zurück: {Hmac}
+* Returns: {Hmac}
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
 
@@ -1680,7 +1680,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Gibt zurück: {Sign}
+* Returns: {Sign}
 
 Creates and returns a `Sign` object that uses the given `algorithm`.  Use [`crypto.getHashes()`][] to obtain the names of the available digest algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1693,7 +1693,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Gibt zurück: {Verify}
+* Returns: {Verify}
 
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
