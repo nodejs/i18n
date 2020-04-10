@@ -1,4 +1,4 @@
-# حول هذه الوثائق
+# About this Documentation
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -7,11 +7,11 @@ Welcome to the official API reference documentation for Node.js!
 
 Node.js is a JavaScript runtime built on the [V8 JavaScript engine](https://v8.dev/).
 
-## المساهمة
+## Contributing
 
 Report errors in this documentation in [the issue tracker](https://github.com/nodejs/node/issues/new). See [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit pull requests.
 
-## مؤشر الإستقرار
+## Stability Index
 
 <!--type=misc-->
 
@@ -27,7 +27,7 @@ The stability indices are as follows:
 
 <!-- separator -->
 
-> درجة الإستقرار: 2 - مستقر. Compatibility with the npm ecosystem is a high priority.
+> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
 
 Use caution when making use of Experimental features, particularly within modules. End users may not be aware that experimental features are being used. Bugs or behavior changes may surprise end users when Experimental API modifications occur. To avoid surprises, use of an Experimental feature may need a command-line flag. Experimental features may also emit a [warning](process.html#process_event_warning).
 
