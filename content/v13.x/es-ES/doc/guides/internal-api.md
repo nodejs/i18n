@@ -4,7 +4,7 @@ These flags are for Node.js core development usage only. Do not use these flags 
 
 ## CLI
 
-### Banderas
+### Flags
 
 #### `--inspect-brk-node[=[host:]port]`
 
@@ -13,4 +13,4 @@ These flags are for Node.js core development usage only. Do not use these flags 
 added: v7.6.0
 -->
 
-Activate inspector on `host:port` and break at start of the first internal JavaScript script executed when the inspector is available. El `host:port` predeterminado es `127.0.0.1:9229`.
+Activate inspector on `host:port` and break at start of the first internal JavaScript script executed when the inspector is available. Default `host:port` is `127.0.0.1:9229`.
