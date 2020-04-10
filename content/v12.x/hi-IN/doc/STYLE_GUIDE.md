@@ -1,8 +1,8 @@
-# शैली मार्गदर्शिका
+# Style Guide
 
 * Documentation is in markdown files with names formatted as `lowercase-with-dashes.md`.
   * Use an underscore in the filename only if the underscore is part of the topic name (e.g., `child_process`).
-  * कुछ फ़ाइलें, जैसे कि उच्च-स्तरीय मार्कअप फ़ाइलें, अपवाद हैं ।
+  * Some files, such as top-level markdown files, are exceptions.
 * Documents should be word-wrapped at 80 characters.
 * `.editorconfig` describes the preferred formatting.
   * A [plugin](https://editorconfig.org/#download) is available for some editors to apply these rules.
