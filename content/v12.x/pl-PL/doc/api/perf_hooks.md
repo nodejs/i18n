@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stabilność: 2 - Stabilna
+> Stability: 2 - Stable
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -83,7 +83,7 @@ Returns the current high resolution millisecond timestamp, where 0 represents th
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The [`timeOrigin`][] specifies the high resolution millisecond timestamp at which the current `node` process began, measured in Unix time.
 
@@ -128,7 +128,7 @@ added: v8.5.0
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The total number of milliseconds elapsed for this entry. This value will not be meaningful for all Performance Entry types.
 
@@ -146,7 +146,7 @@ The name of the performance entry.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp marking the starting time of the Performance Entry.
 
@@ -164,7 +164,7 @@ The type of the performance entry. Currently it may be one of: `'node'`, `'mark'
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` property identifies the type of garbage collection operation that occurred. The value may be one of:
 
@@ -185,7 +185,7 @@ Provides timing details for Node.js itself.
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
@@ -194,7 +194,7 @@ The high resolution millisecond timestamp at which the Node.js process completed
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js environment was initialized.
 
@@ -203,7 +203,7 @@ The high resolution millisecond timestamp at which the Node.js environment was i
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js event loop exited. If the event loop has not yet exited, the property has the value of -1. It can only have a value of not -1 in a handler of the [`'exit'`][] event.
 
@@ -212,7 +212,7 @@ The high resolution millisecond timestamp at which the Node.js event loop exited
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
@@ -221,7 +221,7 @@ The high resolution millisecond timestamp at which the Node.js event loop starte
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the Node.js process was initialized.
 
@@ -230,7 +230,7 @@ The high resolution millisecond timestamp at which the Node.js process was initi
 added: v8.5.0
 -->
 
-* {liczba}
+* {number}
 
 The high resolution millisecond timestamp at which the V8 platform was initialized.
 
@@ -411,7 +411,7 @@ Enables the event loop delay sample timer. Returns `true` if the timer was start
 added: v11.10.0
 -->
 
-* {liczba}
+* {number}
 
 The number of times the event loop delay exceeded the maximum 1 hour event loop delay threshold.
 
@@ -420,7 +420,7 @@ The number of times the event loop delay exceeded the maximum 1 hour event loop 
 added: v11.10.0
 -->
 
-* {liczba}
+* {number}
 
 The maximum recorded event loop delay.
 
@@ -429,7 +429,7 @@ The maximum recorded event loop delay.
 added: v11.10.0
 -->
 
-* {liczba}
+* {number}
 
 The mean of the recorded event loop delays.
 
@@ -438,7 +438,7 @@ The mean of the recorded event loop delays.
 added: v11.10.0
 -->
 
-* {liczba}
+* {number}
 
 The minimum recorded event loop delay.
 
@@ -473,11 +473,11 @@ Resets the collected histogram data.
 added: v11.10.0
 -->
 
-* {liczba}
+* {number}
 
 The standard deviation of the recorded event loop delays.
 
-## Przykłady
+## Examples
 
 ### Measuring the duration of async operations
 
