@@ -1,4 +1,4 @@
-# 추적 이벤트
+# Trace Events
 
 <!--introduced_in=v7.7.0-->
 
@@ -133,7 +133,7 @@ added: v10.0.0
 added: v10.0.0
 -->
 
-* `옵션` {Object} 
+* `options` {Object} 
   * `categories` {string[]} An array of trace category names. Values included in the array are coerced to a string when possible. An error will be thrown if the value cannot be coerced.
 * Returns: {Tracing}.
 
