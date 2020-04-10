@@ -73,7 +73,7 @@ Please use these when possible / appropriate
 
 * `semver-{minor,major}` 
   * be conservative – that is, if a change has the remote *chance* of breaking something, go for semver-major
-  * dodając etykietę semver, dodaj komentarz wyjaśniający, dlaczego ją dodajesz
+  * when adding a semver label, add a comment explaining why you're adding it
   * minor vs. patch: roughly: "does it add a new method / does it add a new section to the docs"
   * major vs. everything else: run last versions tests against this version, if they pass, **probably** minor or patch
   * A breaking change helper ([full source](https://gist.github.com/chrisdickinson/ba532fa0e4e243fb7b44)): 
