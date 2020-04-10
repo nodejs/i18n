@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabiliteit: 2 - stabiel
+> Stability: 2 - Stable
 
-The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. Het kan worden bereikt met behulp van:
+The `repl` module provides a Read-Eval-Print-Loop (REPL) implementation that is available both as a standalone program or includible in other applications. It can be accessed using:
 
 ```js
 const repl = require('repl');
@@ -335,10 +335,10 @@ changes:
     description: The `options` parameter is optional now.
 -->
 
-* `opties` {Object|string} 
+* `options` {Object|string} 
   * `prompt` {string} The input prompt to display. **Default:** `>`. (with a trailing space).
-  * `input` {stream.Readable} The Readable stream from which REPL input will be read. **Standaard:** `process.stdin`.
-  * `output` {stream.Writable} The Writable stream to which REPL output will be written. **Standaard:** `process.stdout`.
+  * `input` {stream.Readable} The Readable stream from which REPL input will be read. **Default:** `process.stdin`.
+  * `output` {stream.Writable} The Writable stream to which REPL output will be written. **Default:** `process.stdout`.
   * `terminal` {boolean} If `true`, specifies that the `output` should be treated as a TTY terminal, and have ANSI/VT100 escape codes written to it. **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
   * `eval` {Function} The function to be used when evaluating each given line of input. **Default:** an async wrapper for the JavaScript `eval()` function. An `eval` function can error with `repl.Recoverable` to indicate the input was incomplete and prompt for additional lines.
   * `useColors` {boolean} If `true`, specifies that the default `writer` function should include ANSI color styling to REPL output. If a custom `writer` function is provided then this has no effect. **Default:** the REPL instances `terminal` value.
