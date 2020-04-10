@@ -1,13 +1,13 @@
-# Probleme
+# Issues
 
-* [Wie man bei Problemen mitwirkt](#how-to-contribute-in-issues)
-* [Nach allgemeiner Hilfe suchen](#asking-for-general-help)
-* [Diskussion von nicht technischen Themen](#discussing-non-technical-topics)
-* [Einen Fehlerbreicht übermitteln](#submitting-a-bug-report)
-* [Fehlerbericht vorselektieren](#triaging-a-bug-report)
-* [Fehlerbericht aufheben](#resolving-a-bug-report)
+* [How to Contribute in Issues](#how-to-contribute-in-issues)
+* [Asking for General Help](#asking-for-general-help)
+* [Discussing non-technical topics](#discussing-non-technical-topics)
+* [Submitting a Bug Report](#submitting-a-bug-report)
+* [Triaging a Bug Report](#triaging-a-bug-report)
+* [Resolving a Bug Report](#resolving-a-bug-report)
 
-## Wie man bei Problemen mitwirkt
+## How to Contribute in Issues
 
 For any issue, there are fundamentally three ways an individual can contribute:
 
@@ -15,38 +15,42 @@ For any issue, there are fundamentally three ways an individual can contribute:
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.
 3. By helping to resolve the issue: Typically this is done either in the form of demonstrating that the issue reported is not a problem after all, or more often, by opening a Pull Request that changes some bit of something in `nodejs/node` in a concrete and reviewable manner.
 
-## Allgemeine Hilfe erbitten
+## Asking for General Help
 
 Because the level of activity in the `nodejs/node` repository is so high, questions or requests for general help using Node.js should be directed at the [Node.js help repository](https://github.com/nodejs/help/issues).
 
-## Diskussion von nicht technischen Themen
+## Discussing non-technical topics
 
 Discussion of non-technical topics (such as intellectual property and trademark) should be directed to the [Technical Steering Committee (TSC) repository](https://github.com/nodejs/TSC/issues).
 
-## Einen Fehlerbericht einreichen
+## Submitting a Bug Report
 
 When opening a new issue in the `nodejs/node` issue tracker, users will be presented with a basic template that should be filled in.
 
 ```markdown
-<!-- Vielen Dank für die Übermittlung eines Fehlers.
+<!--
+Thank you for reporting an issue.
 
-Dieser Problem Tracker ist für Fehler und Probleme, welche im Node.js Kern gefunden werden.
-Sollten Sie weiterführende Unterstützung benötigen, stellen Sie das Problem in unserer Hilfe Repo ein. https://github.com/nodejs/help
+This issue tracker is for bugs and issues found within Node.js core.
+If you require more general support please file an issue on our help
+repo. https://github.com/nodejs/help
 
-Bitte füllen sie die Vorlage so detailliert aus, wie es Ihnen möglich ist.
 
-Version: Ausgabe von `node -v`
-Plattform: Ausgabe von `uname -a` (UNIX), oder version und ob 32 oder 64-bit (Windows)
-Subsystem: Wenn bekannt, spezifizieren Sie bitte den betroffenen Kern Modul Namen
+Please fill in as much of the template below as you're able.
 
-Wenn möglich, liefern Sie den Code der das Problem aufzeigt, dabei halten Sie es so einfach und frei von Abhängikeiten wie möglich.
+Version: output of `node -v`
+Platform: output of `uname -a` (UNIX), or version and 32 or 64-bit (Windows)
+Subsystem: if known, please specify affected core module name
+
+If possible, please provide code that demonstrates the problem, keeping it as
+simple and free of external dependencies as you are able.
 -->
 
 * **Version**:
 * **Platform**:
 * **Subsystem**:
 
-<!-- Geben sie die Details zu dem Problem unterhalb dieses Kommentars ein. -->
+<!-- Enter your issue details below this comment. -->
 ```
 
 If you believe that you have uncovered a bug in Node.js, please fill out this form, following the template to the best of your ability. Do not worry if you cannot answer every detail, just fill in what you can.
@@ -55,7 +59,7 @@ The two most important pieces of information we need in order to properly evalua
 
 In order to rule out the possibility of bugs introduced by userland code, test cases should be limited, as much as possible, to using *only* Node.js APIs. If the bug occurs only when you're using a specific userland module, there is a very good chance that either (a) the module has a bug or (b) something in Node.js changed that broke the module.
 
-Siehe [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
+See [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve).
 
 ## Triaging a Bug Report
 
