@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidade: 2 - estável
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
@@ -322,7 +322,7 @@ changes:
 -->
 
 * `encoding` {string} The new default encoding
-* Retorna: {this}
+* Returns: {this}
 
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
 
@@ -420,7 +420,7 @@ A Writable stream in object mode will always ignore the `encoding` argument.
 added: v8.0.0
 -->
 
-* Retorna: {this}
+* Returns: {this}
 
 Destroy the stream, and emit the passed error. After this call, the writable stream has ended. Implementors should not override this method, but instead implement [`writable._destroy`](#stream_writable_destroy_err_callback).
 
@@ -619,7 +619,7 @@ end
 added: v0.11.14
 -->
 
-* Retorna: {boolean}
+* Returns: {boolean}
 
 The `readable.isPaused()` method returns the current operating state of the Readable. This is used primarily by the mechanism that underlies the `readable.pipe()` method. In most typical cases, there will be no reason to use this method directly.
 
@@ -639,7 +639,7 @@ readable.isPaused(); // === false
 added: v0.9.4
 -->
 
-* Retorna: {this}
+* Returns: {this}
 
 The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
 
@@ -664,7 +664,7 @@ added: v0.9.4
 
 * `destination` {stream.Writable} The destination for writing data
 * `options` {Object} Pipe options 
-  * `end` {boolean} End the writer when the reader ends. **Padrão:** `true`.
+  * `end` {boolean} End the writer when the reader ends. **Default:** `true`.
 
 The `readable.pipe()` method attaches a [Writable](#stream_class_stream_writable) stream to the `readable`, causing it to switch automatically into flowing mode and push all of its data to the attached [Writable](#stream_class_stream_writable). The flow of data will be automatically managed so that the destination Writable stream is not overwhelmed by a faster Readable stream.
 
@@ -693,7 +693,7 @@ By default, [`stream.end()`](#stream_writable_end_chunk_encoding_callback) is ca
 ```js
 reader.pipe(writer, { end: false });
 reader.on('end', () => {
-  writer.end('Adeus\n');
+  writer.end('Goodbye\n');
 });
 ```
 
@@ -716,7 +716,7 @@ added: v0.9.4
 -->
 
 * `size` {number} Optional argument to specify how much data to read.
-* Retorna: {string|Buffer|null}
+* Returns: {string|Buffer|null}
 
 The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
 
@@ -731,7 +731,7 @@ const readable = getReadableStreamSomehow();
 readable.on('readable', () => {
   let chunk;
   while (null !== (chunk = readable.read())) {
-    console.log(`Recebeu ${chunk.length} bytes de dados.`);
+    console.log(`Received ${chunk.length} bytes of data.`);
   }
 });
 ```
@@ -748,7 +748,7 @@ A Readable stream in object mode will always return a single item from a call to
 added: v0.9.4
 -->
 
-* Retorna: {this}
+* Returns: {this}
 
 The `readable.resume()` method causes an explicitly paused Readable stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
@@ -769,7 +769,7 @@ added: v0.9.4
 -->
 
 * `encoding` {string} The encoding to use.
-* Retorna: {this}
+* Returns: {this}
 
 The `readable.setEncoding()` method sets the character encoding for data read from the Readable stream.
 
@@ -885,7 +885,7 @@ When using an older Node.js library that emits [`'data'`][] events and has a [`s
 
 It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
 
-Por exemplo:
+For example:
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -1047,7 +1047,7 @@ added: v1.2.0
 
 For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
 
-Por exemplo:
+For example:
 
 ```js
 const { Writable } = require('stream');
@@ -1067,23 +1067,23 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
 
 #### Constructor: new stream.Writable([options])
 
-* `opções` {Object} 
+* `options` {Object} 
   * `highWaterMark` {number} Buffer level when [`stream.write()`](#stream_writable_write_chunk_encoding_callback) starts returning `false`. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
-  * `decodeStrings` {boolean} Whether or not to decode strings into Buffers before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Padrão:** `true`.
+  * `decodeStrings` {boolean} Whether or not to decode strings into Buffers before passing them to [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1). **Default:** `true`.
   * `objectMode` {boolean} Whether or not the [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) is a valid operation. When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **Default:** `false`.
   * `write` {Function} Implementation for the [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) method.
   * `writev` {Function} Implementation for the [`stream._writev()`](#stream_writable_writev_chunks_callback) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
   * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
 
-Por exemplo:
+For example:
 
 ```js
 const { Writable } = require('stream');
 
 class MyWritable extends Writable {
   constructor(options) {
-    // Chama o construtor stream.Writable()
+    // Calls the stream.Writable() constructor
     super(options);
     // ...
   }
@@ -1185,7 +1185,7 @@ const { Writable } = require('stream');
 const myWritable = new Writable({
   write(chunk, encoding, callback) {
     if (chunk.toString().indexOf('a') >= 0) {
-      callback(new Error('chunk é inválido'));
+      callback(new Error('chunk is invalid'));
     } else {
       callback();
     }
@@ -1208,7 +1208,7 @@ class MyWritable extends Writable {
 
   _write(chunk, encoding, callback) {
     if (chunk.toString().indexOf('a') >= 0) {
-      callback(new Error('chunk é invalido'));
+      callback(new Error('chunk is invalid'));
     } else {
       callback();
     }
@@ -1262,21 +1262,21 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
 
 #### new stream.Readable([options])
 
-* `opções` {Object} 
+* `options` {Object} 
   * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} If specified, then buffers will be decoded to strings using the specified encoding. **Default:** `null`.
   * `objectMode` {boolean} Whether this stream should behave as a stream of objects. Meaning that [`stream.read(n)`](#stream_readable_read_size) returns a single value instead of a Buffer of size n. **Default:** `false`.
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
-Por exemplo:
+For example:
 
 ```js
 const { Readable } = require('stream');
 
 class MyReadable extends Readable {
   constructor(options) {
-    // Chama o construtor stream.Readable(options) 
+    // Calls the stream.Readable(options) constructor
     super(options);
     // ...
   }
@@ -1397,6 +1397,8 @@ For streams not operating in object mode, if the `chunk` parameter of `readable.
 
 It is recommended that errors occurring during the processing of the `readable._read()` method are emitted using the `'error'` event rather than being thrown. Throwing an Error from within `readable._read()` can result in unexpected and inconsistent behavior depending on whether the stream is operating in flowing or paused mode. Using the `'error'` event ensures consistent and predictable handling of errors.
 
+<!-- eslint-disable no-useless-return -->
+
 ```js
 const { Readable } = require('stream');
 
@@ -1406,12 +1408,16 @@ const myReadable = new Readable({
       process.nextTick(() => this.emit('error', err));
       return;
     }
-    // faz algo
+    // do some work
   }
 });
 ```
 
-#### An Example Counting Stream<!--type=example-->The following is a basic example of a Readable stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
+#### An Example Counting Stream
+
+<!--type=example-->
+
+The following is a basic example of a Readable stream that emits the numerals from 1 to 1,000,000 in ascending order, and then ends.
 
 ```js
 const { Readable } = require('stream');
@@ -1446,7 +1452,9 @@ Because JavaScript does not have support for multiple inheritance, the `stream.D
 
 Custom Duplex streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
 
-#### new stream.Duplex(options)<!-- YAML
+#### new stream.Duplex(options)
+
+<!-- YAML
 changes:
 
   - version: v8.4.0
@@ -1455,14 +1463,14 @@ changes:
                  are supported now.
 -->
 
-* `opções` {Object} Passed to both Writable and Readable constructors. Also has the following fields: 
-  * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Padrão:** `true`.
+* `options` {Object} Passed to both Writable and Readable constructors. Also has the following fields: 
+  * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
   * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
   * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **Default:** `false`.
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
-Por exemplo:
+For example:
 
 ```js
 const { Duplex } = require('stream');
@@ -1590,7 +1598,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-Por exemplo:
+For example:
 
 ```js
 const { Transform } = require('stream');
@@ -1682,7 +1690,11 @@ The `transform._transform()` method is prefixed with an underscore because it is
 
 The `stream.PassThrough` class is a trivial implementation of a [Transform](#stream_class_stream_transform) stream that simply passes the input bytes across to the output. Its purpose is primarily for examples and testing, but there are some use cases where `stream.PassThrough` is useful as a building block for novel sorts of streams.
 
-## Additional Notes<!--type=misc-->### Compatibility with Older Node.js Versions
+## Additional Notes
+
+<!--type=misc-->
+
+### Compatibility with Older Node.js Versions
 
 <!--type=misc-->
 
