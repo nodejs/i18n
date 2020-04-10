@@ -1,26 +1,26 @@
-# Процесс
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 <!-- type=global -->
 
-Объект `process` является глобальным, который предоставляет информацию и возможность контроля текущего процесса Node.js. Будучи глобальным, он всегда доступен в приложениях Node.js без использования функции `require()`. It can also be explicitly accessed using `require()`:
+The `process` object is a `global` that provides information about, and control over, the current Node.js process. As a global, it is always available to Node.js applications without using `require()`. It can also be explicitly accessed using `require()`:
 
 ```js
 const process = require('process');
 ```
 
-## События процесса
+## Process Events
 
-Объект `process` является экземпляром класса [`EventEmitter`][].
+The `process` object is an instance of [`EventEmitter`][].
 
 ### Event: `'beforeExit'`
 <!-- YAML
 added: v0.11.12
 -->
 
-Событие `'beforeExit'` генерируется, когда Node.js очищает свой цикл событий и никаких дополнительных действий не планируется. Обычно процесс Node.js завершится, когда не запланировано никаких действий, но слушатель, зарегистрированный на событие `'beforeExit'`, может выполнять асинхронные вызовы и таким образом заставлять процесс Node.js продолжать существовать.
+The `'beforeExit'` event is emitted when Node.js empties its event loop and has no additional work to schedule. Normally, the Node.js process will exit when there is no work scheduled, but a listener registered on the `'beforeExit'` event can make asynchronous calls, and thereby cause the Node.js process to continue.
 
-Слушающая функция обратного вызова вызывается с единственным аргументом [`process.exitCode`][].
+The listener callback function is invoked with the value of [`process.exitCode`][] passed as the only argument.
 
 The `'beforeExit'` event is *not* emitted for conditions causing explicit termination, such as calling [`process.exit()`][] or uncaught exceptions.
 
@@ -48,7 +48,7 @@ console.log('This message is displayed first.');
 added: v0.7.7
 -->
 
-Если процесс Node.js был порожден с каналом IPC (смотри документацию по [Дочернему процессу](child_process.html) и [Кластеру](cluster.html)), событие `'disconnect'` будет сгенерировано при закрытии канала IPC.
+If the Node.js process is spawned with an IPC channel (see the [Child Process](child_process.html) and [Cluster](cluster.html) documentation), the `'disconnect'` event will be emitted when the IPC channel is closed.
 
 ### Event: `'exit'`
 <!-- YAML
@@ -548,7 +548,7 @@ Once `process.connected` is `false`, it is no longer possible to send messages o
 ## `process.cpuUsage([previousValue])`<!-- YAML
 added: v6.1.0
 -->* `previousValue` {Object} A previous return value from calling `process.cpuUsage()`
-* Возвращает: {Object}
+* Returns: {Object}
   * `user` {integer}
   * `system` {integer}
 
@@ -570,7 +570,7 @@ console.log(process.cpuUsage(startUsage));
 
 ## `process.cwd()`<!-- YAML
 added: v0.1.8
--->* Возвращает: {string}
+-->* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -909,7 +909,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.geteuid()`<!-- YAML
 added: v2.0.0
--->* Возвращает: {Object}
+-->* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -923,7 +923,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.getgid()`<!-- YAML
 added: v0.1.31
--->* Возвращает: {Object}
+-->* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -945,7 +945,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.getuid()`<!-- YAML
 added: v0.1.28
--->* Возвращает: {integer}
+-->* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -959,7 +959,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 
 ## `process.hasUncaughtExceptionCaptureCallback()`<!-- YAML
 added: v9.3.0
--->* Возвращает: {boolean}
+-->* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -992,7 +992,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Возвращает: {bigint}
+-->* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
@@ -1075,7 +1075,7 @@ changes:
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9587
     description: Added `external` to the returned object.
--->* Возвращает: {Object}
+-->* Returns: {Object}
   * `rss` {integer}
   * `heapTotal` {integer}
   * `heapUsed` {integer}
@@ -1271,7 +1271,7 @@ In custom builds from non-release versions of the source tree, only the `name` p
 
 ## `process.report`<!-- YAML
 added: v11.8.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {Object}
 
@@ -1279,7 +1279,7 @@ added: v11.8.0
 
 ### `process.report.directory`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1291,7 +1291,7 @@ console.log(`Report directory is ${process.report.directory}`);
 
 ### `process.report.filename`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1303,10 +1303,10 @@ console.log(`Report filename is ${process.report.filename}`);
 
 ### `process.report.getReport([err])`<!-- YAML
 added: v11.8.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * `err` {Error} A custom error used for reporting the JavaScript stack.
-* Возвращает: {Object}
+* Returns: {Object}
 
 Returns a JavaScript Object representation of a diagnostic report for the running process. The report's JavaScript stack trace is taken from `err`, if present.
 
@@ -1323,7 +1323,7 @@ Additional documentation is available in the [report documentation](report.html)
 
 ### `process.report.reportOnFatalError`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1335,7 +1335,7 @@ console.log(`Report on fatal error: ${process.report.reportOnFatalError}`);
 
 ### `process.report.reportOnSignal`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1347,7 +1347,7 @@ console.log(`Report on signal: ${process.report.reportOnSignal}`);
 
 ### `process.report.reportOnUncaughtException`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1359,7 +1359,7 @@ console.log(`Report on exception: ${process.report.reportOnUncaughtException}`);
 
 ### `process.report.signal`<!-- YAML
 added: v11.12.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1371,7 +1371,7 @@ console.log(`Report signal: ${process.report.signal}`);
 
 ### `process.report.writeReport([filename][, err])`<!-- YAML
 added: v11.8.0
--->> Стабильность: 1 - экспериментальный
+-->> Stability: 1 - Experimental
 
 * `filename` {string} Name of the file where the report is written. This should be a relative path, that will be appended to the directory specified in `process.report.directory`, or the current working directory of the Node.js process, if unspecified.
 * `err` {Error} A custom error used for reporting the JavaScript stack.
@@ -1438,7 +1438,7 @@ added: v0.5.9
 * `options` {Object} used to parameterize the sending of certain types of handles.`options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
-* Возвращает: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1608,13 +1608,13 @@ process.stdin.pipe(process.stdout);
 
 These behaviors are partly for historical reasons, as changing them would create backwards incompatibility, but they are also expected by some users.
 
-Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. За подробностями обращайтесь к [`process.exit()`][].
+Synchronous writes avoid problems such as output written with `console.log()` or `console.error()` being unexpectedly interleaved, or not written at all if `process.exit()` is called before an asynchronous write completes. See [`process.exit()`][] for more information.
 
 ***Warning***: Synchronous writes block the event loop until the write has completed. This can be near instantaneous in the case of output to a file, but under high system load, pipes that are not being read at the receiving end, or with slow terminals or file systems, its possible for the event loop to be blocked often enough and long enough to have severe negative performance impacts. This may not be a problem when writing to an interactive terminal session, but consider this particularly careful when doing production logging to the process output streams.
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Например:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1683,7 +1683,7 @@ console.log(
 
 ## `process.uptime()`<!-- YAML
 added: v0.5.0
--->* Возвращает: {number}
+-->* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
