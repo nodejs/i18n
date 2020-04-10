@@ -1,4 +1,4 @@
-# पढ़ने के लिए लाइन
+# Readline
 
 <!--introduced_in=v0.10.0-->
 
@@ -296,7 +296,7 @@ async function processLineByLine() {
 
 ### `rl.line`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {string|undefined}
@@ -327,7 +327,7 @@ process.stdin.on('keypress', (c, k) => {
 
 ### `rl.cursor`
 <!-- YAML
-added: 0.1.98
+added: v0.1.98
 -->
 
 * {number|undefined}
