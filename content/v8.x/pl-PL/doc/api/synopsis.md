@@ -8,7 +8,7 @@
 
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Przykład
+## Example
 
 An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
 
@@ -75,7 +75,7 @@ $ node hello-world.js
 An output like this should appear in the terminal to indicate Node.js server is running:
 
     console
-     Server running at http://127.0.0.1:3000/
+     Server running at http://127.0.0.1:3000/`
 
 Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
