@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Estabilidad: 2 - Estable
+> Stability: 2 - Stable
 
-El módulo `util` está diseñado principalmente para soportar las necesidades de las APIs internas de Node.js. Sin embargo, muchas de las utilidades también son útiles para desarrolladores de aplicaciones y módulos. Puede ser accedido usando:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -16,10 +16,10 @@ const util = require('util');
 added: v8.2.0
 -->
 
-* `original` {Function} Una función `async`
-* Retorna: {Function} una función de estilo callback
+* `original` {Function} An `async` function
+* Returns: {Function} a callback style function
 
-Toma una función `async` (o una función que retorna una `Promise`) y retorna una función siguiendo el estilo de callback error-first, p. ej. tomando un callback `(err, value) => ...` como el último argumento. En el callback, el primer argumento va a ser la razón de rechazo (o `null` si la `Promise` se resolvió), y el segundo argumento va a ser el valor resuelto.
+Takes an `async` function (or a function that returns a `Promise`) and returns a function following the error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument. In the callback, the first argument will be the rejection reason (or `null` if the `Promise` resolved), and the second argument will be the resolved value.
 
 ```js
 const util = require('util');
@@ -35,15 +35,15 @@ callbackFunction((err, ret) => {
 });
 ```
 
-Va a imprimir:
+Will print:
 
 ```txt
 hello world
 ```
 
-El callback es ejecutado asincrónicamente, y va a tener un stack trace limitado. Si el callback arroja, el proceso va a emitir un evento [`'uncaughtException'`][], y si no es gestionado, saldrá.
+The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
 
-Ya que `null` tiene un significado especial como el primer argumento para un callback, si una función envuelta rechaza una `Promise` con un valor falso como motivo, el valor es envuelto en un `Error` con el valor original almacenado en un campo llamado `reason`.
+Since `null` has a special meaning as the first argument to a callback, if a wrapped function rejects a `Promise` with a falsy value as a reason, the value is wrapped in an `Error` with the original value stored in a field named `reason`.
 
 ```js
 function fn() {
@@ -52,8 +52,8 @@ function fn() {
 const callbackFunction = util.callbackify(fn);
 
 callbackFunction((err, ret) => {
-  // Cuando la Promise fue rechazada con `null` se envuelve con un Error y
-  // el valor original es almacenado en `reason`.
+  // When the Promise was rejected with `null` it is wrapped with an Error and
+  // the original value is stored in `reason`.
   err && err.hasOwnProperty('reason') && err.reason === null;  // true
 });
 ```
@@ -64,10 +64,10 @@ callbackFunction((err, ret) => {
 added: v0.11.3
 -->
 
-* `section` {string} Un string identificando la porción de la aplicación para la cual la función `debuglog` está siendo creada.
-* Retorna: {Function} La función de registro
+* `section` {string} A string identifying the portion of the application for which the `debuglog` function is being created.
+* Returns: {Function} The logging function
 
-El método `util.debuglog()` es utilizado para crear una función que condicionalmente escribe mensajes de depuración para `stderr` basándose en la existencia de la variable de entorno `NODE_DEBUG`. Si el nombre de la `section` aparece dentro del valor de esa variable de entorno, entonces la función retornada opera de manera similar a [`console.error()`][]. Si no, entonces la función retornada es un no-op.
+The `util.debuglog()` method is used to create a function that conditionally writes debug messages to `stderr` based on the existence of the `NODE_DEBUG` environment variable. If the `section` name appears within the value of that environment variable, then the returned function operates similar to [`console.error()`][]. If not, then the returned function is a no-op.
 
 ```js
 const util = require('util');
@@ -76,15 +76,15 @@ const debuglog = util.debuglog('foo');
 debuglog('hello from foo [%d]', 123);
 ```
 
-Si el programa es ejecutado con `NODE_DEBUG=foo` en el entorno, entonces el resultado va a ser algo como:
+If this program is run with `NODE_DEBUG=foo` in the environment, then it will output something like:
 
 ```txt
 FOO 3245: hello from foo [123]
 ```
 
-donde `3245` es la identificación del proceso. Si no es ejecutado con ese grupo de variables de entorno, entonces no va a estampar nada.
+where `3245` is the process id. If it is not run with that environment variable set, then it will not print anything.
 
-La `section` también soporta wildcard:
+The `section` supports wildcard also:
 
 ```js
 const util = require('util');
@@ -93,13 +93,13 @@ const debuglog = util.debuglog('foo-bar');
 debuglog('hi there, it\'s foo-bar [%d]', 2333);
 ```
 
-si es ejecutado con `NODE_DEBUG=foo*` en el entorno, entonces el resultado va a ser algo como:
+if it is run with `NODE_DEBUG=foo*` in the environment, then it will output something like:
 
 ```txt
-FOO-BAR 3257: hola, es foo-bar [2333]
+FOO-BAR 3257: hi there, it's foo-bar [2333]
 ```
 
-Múltiples nombres de `section` separados por coma pueden ser específicados en la variable de entorno `NODE_DEBUG`: `NODE_DEBUG=fs,net,tls`.
+Multiple comma-separated `section` names may be specified in the `NODE_DEBUG` environment variable: `NODE_DEBUG=fs,net,tls`.
 
 ## util.deprecate(fn, msg[, code])
 
@@ -112,41 +112,41 @@ changes:
     description: Deprecation warnings are only emitted once for each code.
 -->
 
-* `fn` {Function} La función que está siendo desaprobada.
-* `msg` {string} Un mensaje de advertencia para mostrar cuando la función desaprobada es invocada.
-* `code` {string} Un código de desaprobación. Vea la [lista de APIs desaprobadas](deprecations.html#deprecations_list_of_deprecated_apis) para una lista de códigos.
-* Retorna: {Function} La función desaprobada se envolvió para emitir una advertencia.
+* `fn` {Function} The function that is being deprecated.
+* `msg` {string} A warning message to display when the deprecated function is invoked.
+* `code` {string} A deprecation code. See the [list of deprecated APIs](deprecations.html#deprecations_list_of_deprecated_apis) for a list of codes.
+* Returns: {Function} The deprecated function wrapped to emit a warning.
 
-El método `util.deprecate()` envuelve a `fn` (que puede ser una función o una clase) de tal manera, que es marcado como obsoleto.
+The `util.deprecate()` method wraps `fn` (which may be a function or class) in such a way that it is marked as deprecated.
 
 ```js
 const util = require('util');
 
 exports.obsoleteFunction = util.deprecate(() => {
-  // Hacer algo aquí.
-}, 'obsoleteFunction() está obsoleto. En cambio, use newShinyFunction().');
+  // Do something here.
+}, 'obsoleteFunction() is deprecated. Use newShinyFunction() instead.');
 ```
 
-Cuando sea llamada, `util.deprecate()` va a retornar una función que va a emitir una `DeprecationWarning` usando el evento [`'warning'`][]. La advertencia va a ser emitida y estampada a `stderr` la primera vez que la función retornada sea llamada. Después de que la advertencia sea emitida, la función envuelta es llamada sin emitir una advertencia.
+When called, `util.deprecate()` will return a function that will emit a `DeprecationWarning` using the [`'warning'`][] event. The warning will be emitted and printed to `stderr` the first time the returned function is called. After the warning is emitted, the wrapped function is called without emitting a warning.
 
-Si el mismo `código` opcional es suministrado en múltiples llamadas a `util.deprecate()`, la advertencia va a ser emitida solo una vez por ese `código`.
+If the same optional `code` is supplied in multiple calls to `util.deprecate()`, the warning will be emitted only once for that `code`.
 
 ```js
 const util = require('util');
 
 const fn1 = util.deprecate(someFunction, someMessage, 'DEP0001');
 const fn2 = util.deprecate(someOtherFunction, someOtherMessage, 'DEP0001');
-fn1(); // emite una advertencia de desaprobación con el código DEP0001
-fn2(); // no emite una advertencia de desaprobación porque tiene el mismo código
+fn1(); // emits a deprecation warning with code DEP0001
+fn2(); // does not emit a deprecation warning because it has the same code
 ```
 
-Si las banderas de línea de comando `--no-deprecation` o `--nowarnings` son usadas, o si la propiedad `process.noDeprecation` está establecida como `true` *antes* de la primera advertencia de desaprobación, el método `util.deprecate()` no hace nada.
+If either the `--no-deprecation` or `--no-warnings` command line flags are used, or if the `process.noDeprecation` property is set to `true` *prior* to the first deprecation warning, the `util.deprecate()` method does nothing.
 
-Si las banderas de línea de comando `--trace-deprecation` o `--tracewarnings` están establecidas, o la propiedad `process.traceDeprecation` está establecida como `true`, una advertencia y un stack trace son estampados a `stderr` la primera vez que la función obsoleta sea llamada.
+If the `--trace-deprecation` or `--trace-warnings` command line flags are set, or the `process.traceDeprecation` property is set to `true`, a warning and a stack trace are printed to `stderr` the first time the deprecated function is called.
 
-Si la bandera de línea de comando `--throw-deprecation` está establecida, o la propiedad `process.throwDeprecation` está establecida en `true`, entonces una excepción va a ser arrojada cuando la función obsoleta sea llamada.
+If the `--throw-deprecation` command line flag is set, or the `process.throwDeprecation` property is set to `true`, then an exception will be thrown when the deprecated function is called.
 
-La bandera de línea de comando `--throw-deprecation` y la propiedad `process.throwDeprecation` toman precedencia sobre `--trace-deprecation` y `process.traceDeprecation`.
+The `--throw-deprecation` command line flag and `process.throwDeprecation` property take precedence over `--trace-deprecation` and `process.traceDeprecation`.
 
 ## util.format(format[, ...args])
 
@@ -162,48 +162,48 @@ changes:
     description: The `%o` and `%O` specifiers are supported now.
 -->
 
-* 0>format</code> {string} Un formato de string parecido a `printf`.
+* `format` {string} A `printf`-like format string.
 
-El método `util.format()` retorna un string con formato usando el primer argumento como un formato parecido a `printf`.
+The `util.format()` method returns a formatted string using the first argument as a `printf`-like format.
 
-El primer argumento es un string conteniendo cero o más tokens *placeholder*. Cada token placeholder es reemplazado con el valor convertido del argumento correspondiente. Los placeholders soportados son:
+The first argument is a string containing zero or more *placeholder* tokens. Each placeholder token is replaced with the converted value from the corresponding argument. Supported placeholders are:
 
 * `%s` - `String`.
 * `%d` - `Number` (integer or floating point value) or `BigInt`.
 * `%i` - Integer or `BigInt`.
-* `%f` - Valor de punto flotante.
-* `%j` - JSON. Reemplazado con la string `'[Circular]'` si el argumento contiene referencias circulares.
-* `%o` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` con opciones `{ showHidden: true, showProxy: true }`. Esto va a mostrar el objeto completo incluyendo propiedades y proxies no enumerables.
-* `%O` - `Object`. Una representación de string de un objeto con formato de objeto de JavaScript genérico. Similar a `util.inspect()` sin opciones. Esto va a mostrar el objeto completo no incluyendo propiedades y proxies no enumerables.
-* `%%` - signo de porcentaje individual (`'%'`). Esto no consume un argumento.
-* Retorna: {string} El string con formato
+* `%f` - Floating point value.
+* `%j` - JSON. Replaced with the string `'[Circular]'` if the argument contains circular references.
+* `%o` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` with options `{ showHidden: true, showProxy: true }`. This will show the full object including non-enumerable properties and proxies.
+* `%O` - `Object`. A string representation of an object with generic JavaScript object formatting. Similar to `util.inspect()` without options. This will show the full object not including non-enumerable properties and proxies.
+* `%%` - single percent sign (`'%'`). This does not consume an argument.
+* Returns: {string} The formatted string
 
-Si el placeholder no tiene un argumento correspondiente, el placeholder es reemplazado.
+If the placeholder does not have a corresponding argument, the placeholder is not replaced.
 
 ```js
 util.format('%s:%s', 'foo');
-// Retorna: 'foo:%s'
+// Returns: 'foo:%s'
 ```
 
-Si hay más argumentos pasados al método `util.format()` que el número de placeholders, los argumentos extra son coaccionados en strings, luego cocatenados a la string retornada, cada uno delimitado por un espacio. Argumentos excesivos cuyos `typeof` sea `'object'` o `'symbol'` (excepto `null`), serán transformados por `util.inspect()`.
+If there are more arguments passed to the `util.format()` method than the number of placeholders, the extra arguments are coerced into strings then concatenated to the returned string, each delimited by a space. Excessive arguments whose `typeof` is `'object'` or `'symbol'` (except `null`) will be transformed by `util.inspect()`.
 
 ```js
 util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
 ```
 
-Si el primer argumento no es un string, entonces `util.format()` retorna un string que es la concatenación de todos los argumentos separados por espacios. Cada argumento es convertido a un string usando `util.inspect()`.
+If the first argument is not a string then `util.format()` returns a string that is the concatenation of all arguments separated by spaces. Each argument is converted to a string using `util.inspect()`.
 
 ```js
 util.format(1, 2, 3); // '1 2 3'
 ```
 
-Si solo un argumento es pasado a `util.format()`, este es retornado tal como está, sin ningún formato.
+If only one argument is passed to `util.format()`, it is returned as it is without any formatting.
 
 ```js
 util.format('%% %s'); // '%% %s'
 ```
 
-Por favor, tenga en cuenta que `util.format()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
+Please note that `util.format()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
 
 ## util.formatWithOptions(inspectOptions, format[, ...args])
 
@@ -214,12 +214,12 @@ added: v10.0.0
 * `inspectOptions` {Object}
 * `format` {string}
 
-Esta función es idéntica a [`util.format()`][], excepto en que esta toma un argumento `inspectOptions` que especifica las opciones que son pasadas a [`util.inspect()`][].
+This function is identical to [`util.format()`][], except in that it takes an `inspectOptions` argument which specifies options that are passed along to [`util.inspect()`][].
 
 ```js
 util.formatWithOptions({ colors: true }, 'See object %O', { foo: 42 });
-// Retorna 'See object { foo: 42 }', donde `42` es coloreado como un número
-// cuando es estampado a un terminal.
+// Returns 'See object { foo: 42 }', where `42` is colored as a number
+// when printed to a terminal.
 ```
 
 ## util.getSystemErrorName(err)
@@ -229,9 +229,9 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Retorna: {string}
+* Returns: {string}
 
-Retorna un nombre de string por un código de error numérico que viene de una API de Node.js. El mapeo entre códigos de error y nombres de error es dependiente de la plataforma. Vea [Errores Comunes del Sistema](errors.html#errors_common_system_errors) para los nombres de los errores comunes.
+Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
 ```js
 fs.access('file/that/does/not/exist', (err) => {
@@ -254,11 +254,11 @@ changes:
 * `constructor` {Function}
 * `superConstructor` {Function}
 
-El uso de `util.inherits()` está desalentado. Por favor use la `clase` ES6 y `extienda` palabras clave para obtener soporte de herencia de nivel de lenguaje. También note que los dos estilos son [semánticamente incompatibles](https://github.com/nodejs/node/issues/4179).
+Usage of `util.inherits()` is discouraged. Please use the ES6 `class` and `extends` keywords to get language level inheritance support. Also note that the two styles are [semantically incompatible](https://github.com/nodejs/node/issues/4179).
 
-Herede los métodos prototipo de un [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) a otro. El prototipo del `constructor` se establecerá a un nuevo objeto creado a partir de `superConstructor`.
+Inherit the prototype methods from one [constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor) into another. The prototype of `constructor` will be set to a new object created from `superConstructor`.
 
-Como una conveniencia adicional, `superConstructor` va a ser accesible por medio de la propiedad `constructor.super_`.
+As an additional convenience, `superConstructor` will be accessible through the `constructor.super_` property.
 
 ```js
 const util = require('util');
@@ -285,7 +285,7 @@ stream.on('data', (data) => {
 stream.write('It works!'); // Received data: "It works!"
 ```
 
-Ejemplo de ES6 usando `class` y `extends`:
+ES6 example using `class` and `extends`:
 
 ```js
 const EventEmitter = require('events');
@@ -340,20 +340,20 @@ changes:
     description: The `showProxy` option is supported now.
 -->
 
-* `object` {any} Cualquier JavaScript primitivo u `Object`.
+* `object` {any} Any JavaScript primitive or `Object`.
 * `options` {Object} 
-  * `showHidden` {boolean} Si `true`, los símbolos y propiedades no enumerables del `object` van a ser incluidos en el resultado formateado, así como también las entradas [`WeakMap`][] y [`WeakSet`][]. **Predeterminado:** `false`.
-  * `depth` {number} Especifica el número de veces a repetir mientras se formatea el `object`. Esto es útil para inspeccionar objetos grandes y complicados. To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
-  * `colors` {boolean} Si es `true`, el output va a ser diseñado con códigos de colores ANSI. Los colores son personalizables, vea [Customizing `util.inspect` colors][]. **Predeterminado:** `false`.
-  * `customInspect` {boolean} Si `false`, entonces las funciones personalizadas `inspect(depth, opts)` no van a ser llamadas. **Predeterminado:** `true`.
-  * `showProxy` {boolean} Si `true`, entonces los objetos y funciones que son objetos `Proxy` van a ser analizados para mostrar sus objetos `target` y `handler`. **Predeterminado:** `false`.
-  * `maxArrayLength` {number} Especifica el número máximo de elementos de `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] a incluir al formatear. Establecer a `null` o `Infinity` para mostrar todos los elementos. Establecer a `0` o negativo, para no mostrar ningún elemento. **Predeterminado:** `100`.
-  * `breakLength` {number} La longitud en la cual las claves de un objeto son divididas a través de múltiples líneas. Establecer a `Infinity` para formatear un objeto como una sola línea. **Predeterminado:** `60` para compatibilidad con versiones anteriores.
-  * `compact` {boolean} Establecer esto a `false` cambia la sangría predeterminada para usar un salto de línea por cada clave de objeto, en vez de alinear múltiples propiedades en una sola línea. Esto también romperá el texto que está por encima del tamaño `breakLength` en pedazos más pequeños y más fáciles de leer, y posicionará objetos igual que las arrays. Note que ningún texto va a ser reducido a por debajo de 16 caracteres, sin importar el tamaño del `breakLength`. Para más información, vea el ejemplo de abajo. **Predeterminado:** `true`.
+  * `showHidden` {boolean} If `true`, the `object`'s non-enumerable symbols and properties will be included in the formatted result as well as [`WeakMap`][] and [`WeakSet`][] entries. **Default:** `false`.
+  * `depth` {number} Specifies the number of times to recurse while formatting the `object`. This is useful for inspecting large complicated objects. To make it recurse up to the maximum call stack size pass `Infinity` or `null`. **Default:** `2`.
+  * `colors` {boolean} If `true`, the output will be styled with ANSI color codes. Colors are customizable, see [Customizing `util.inspect` colors][]. **Default:** `false`.
+  * `customInspect` {boolean} If `false`, then custom `inspect(depth, opts)` functions will not be called. **Default:** `true`.
+  * `showProxy` {boolean} If `true`, then objects and functions that are `Proxy` objects will be introspected to show their `target` and `handler` objects. **Default:** `false`.
+  * `maxArrayLength` {number} Specifies the maximum number of `Array`, [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or negative to show no elements. **Default:** `100`.
+  * `breakLength` {number} The length at which an object's keys are split across multiple lines. Set to `Infinity` to format an object as a single line. **Default:** `60` for legacy compatibility.
+  * `compact` {boolean} Setting this to `false` changes the default indentation to use a line break for each object key instead of lining up multiple properties in one line. It will also break text that is above the `breakLength` size into smaller and better readable chunks and indents objects the same as arrays. Note that no text will be reduced below 16 characters, no matter the `breakLength` size. For more information, see the example below. **Default:** `true`.
   * `sorted` {boolean|Function} If set to `true` or a function, all properties of an object and Set and Map entries will be sorted in the returned string. If set to `true` the [default sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) is going to be used. If set to a function, it is used as a [compare function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters).
-* Devuelve: {string} La representación de un objeto pasado
+* Returns: {string} The representation of passed object
 
-El método `util.inspect()` devuelve una representación string del `object` que está destinado a la depuración. El output de `util.inspect` puede cambiar en cualquier momento y no se debe depender de él programáticamente. `options` adicionales pueden ser pasadas, ya que alteran ciertos aspectos del string con formato. `util.inspect()` va a usar el nombre del constructor y/o `@@toStringTag` para hacer una etiqueta identificable para un valor inspeccionado.
+The `util.inspect()` method returns a string representation of `object` that is intended for debugging. The output of `util.inspect` may change at any time and should not be depended upon programmatically. Additional `options` may be passed that alter certain aspects of the formatted string. `util.inspect()` will use the constructor's name and/or `@@toStringTag` to make an identifiable tag for an inspected value.
 
 ```js
 class Foo {
@@ -371,7 +371,7 @@ util.inspect(new Bar()); // 'Bar {}'
 util.inspect(baz);       // '[foo] {}'
 ```
 
-El siguiente ejemplo inspecciona todas las propiedades del objeto `util`:
+The following example inspects all properties of the `util` object:
 
 ```js
 const util = require('util');
@@ -379,9 +379,9 @@ const util = require('util');
 console.log(util.inspect(util, { showHidden: true, depth: null }));
 ```
 
-Los valores pueden proporcionar sus propias funciones personalizadas `inspect(depth, opts)`, cuando son llamadas estas reciben el `depth` actual en una inspección recursiva, así como también los objetos de opción pasados a `util.inspect()`.
+Values may supply their own custom `inspect(depth, opts)` functions, when called these receive the current `depth` in the recursive inspection, as well as the options object passed to `util.inspect()`.
 
-El siguiente ejemplo resalta la diferencia con la opción `compact`:
+The following example highlights the difference with the `compact` option:
 
 ```js
 const util = require('util');
@@ -396,7 +396,7 @@ const o = {
 };
 console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 
-// Esto va a estampar
+// This will print
 
 // { a:
 //   [ 1,
@@ -407,7 +407,7 @@ console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 //     4 ],
 //   b: Map { 'za' => 1, 'zb' => 'test' } }
 
-// Establecer `compact` como falso, cambia el output para que sea más amigable con el lector.
+// Setting `compact` to false changes the output to be more reader friendly.
 console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 
 // {
@@ -432,13 +432,13 @@ console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 //   }
 // }
 
-// Establecer `breakLength` a p. ej 150 va a estampar el texto "Lorem ipsum" en una
-// sola línea.
-// Reducir el `breakLength` va a dividir el texto "Lorem ipsum" en pedazos 
-// más pequeños.
+// Setting `breakLength` to e.g. 150 will print the "Lorem ipsum" text in a
+// single line.
+// Reducing the `breakLength` will split the "Lorem ipsum" text in smaller
+// chunks.
 ```
 
-Usar la opción `showHidden` permite inspeccionar las entradas [`WeakMap`][] and [`WeakSet`][]. Si hay más entradas que `maxArrayLength`, no hay ninguna garantía de cuales entradas son desplegadas. Esto significa, que recuperar la misma entrada [`WeakSet`][] dos veces puede resultar en un output diferente. Además de esto, cualquier ítem puede ser coleccionado en cualquier momento por el colector de basura, si no hay una referencia fuerte dejada para ese objeto. Por lo tanto, no hay garantía de obtener un output confiable.
+Using the `showHidden` option allows to inspect [`WeakMap`][] and [`WeakSet`][] entries. If there are more entries than `maxArrayLength`, there is no guarantee which entries are displayed. That means retrieving the same [`WeakSet`][] entries twice might actually result in a different output. Besides this any item might be collected at any point of time by the garbage collector if there is no strong reference left to that object. Therefore there is no guarantee to get a reliable output.
 
 ```js
 const { inspect } = require('util');
@@ -478,17 +478,17 @@ assert.strict.equal(
 );
 ```
 
-Por favor, tenga en cuenta que `util.inspect()` es un método sincrónico que es principalmente concebido como una herramienta de depuración. Algunos valores de entrada pueden tener una significativa recarga de rendimiento que puede bloquear el bucle de eventos. Use esta función con cuidado y nunca en una ruta de código caliente.
+Please note that `util.inspect()` is a synchronous method that is mainly intended as a debugging tool. Some input values can have a significant performance overhead that can block the event loop. Use this function with care and never in a hot code path.
 
-### Personalizar colores `util.inspect`
+### Customizing `util.inspect` colors
 
 <!-- type=misc -->
 
-El output de color (si está habilitado) de `util.inspect` es globalmente personalizable por medio de las propiedades `util.inspect.styles` y `util.inspect.colors`.
+Color output (if enabled) of `util.inspect` is customizable globally via the `util.inspect.styles` and `util.inspect.colors` properties.
 
-`util.inspect.styles` es un mapa que asocia un nombre de estilo con un color de `util.inspect.colors`.
+`util.inspect.styles` is a map associating a style name to a color from `util.inspect.colors`.
 
-Los estilos predeterminados y colores asociados son:
+The default styles and associated colors are:
 
 * `number` - `yellow`
 * `boolean` - `yellow`
@@ -497,14 +497,14 @@ Los estilos predeterminados y colores asociados son:
 * `regexp` - `red`
 * `null` - `bold`
 * `undefined` - `grey`
-* `special` - `cyan` (solo aplicado a funciones en este momento)
-* `name` - (sin estilo)
+* `special` - `cyan` (only applied to functions at this time)
+* `name` - (no styling)
 
-Los códigos de colores predefinidos son: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` y `yellow`. También hay códigos `bold`, `italic`, `underline` e `inverse`.
+The predefined color codes are: `white`, `grey`, `black`, `blue`, `cyan`, `green`, `magenta`, `red` and `yellow`. There are also `bold`, `italic`, `underline` and `inverse` codes.
 
-El estilo de color usa códigos de control ANSI que pueden no ser suportados en todos los terminales.
+Color styling uses ANSI control codes that may not be supported on all terminals.
 
-### Funciones de inspección personalizada en Objetos
+### Custom inspection functions on Objects
 
 <!-- type=misc -->
 
@@ -527,7 +527,7 @@ class Box {
       depth: options.depth === null ? null : options.depth - 1
     });
 
-    // Cinco espacios rellenados porque ese es el tamaño de "Box< ".
+    // Five space padding because that's the size of "Box< ".
     const padding = ' '.repeat(5);
     const inner = util.inspect(this.value, newOptions)
                       .replace(/\n/g, `\n${padding}`);
@@ -538,10 +538,10 @@ class Box {
 const box = new Box(true);
 
 util.inspect(box);
-// Retorna: "Box< true >"
+// Returns: "Box< true >"
 ```
 
-Las funciones personalizadas `[util.inspect.custom](depth, opts)` devuelven típicamente un string, pero pueden devolver un valor de cualquier tipo, al que `util.inspect()` le dará formato consecuentemente.
+Custom `[util.inspect.custom](depth, opts)` functions typically return a string but may return a value of any type that will be formatted accordingly by `util.inspect()`.
 
 ```js
 const util = require('util');
@@ -552,7 +552,7 @@ obj[util.inspect.custom] = (depth) => {
 };
 
 util.inspect(obj);
-// Devuelve: "{ bar: 'baz' }"
+// Returns: "{ bar: 'baz' }"
 ```
 
 ### util.inspect.custom
@@ -600,15 +600,15 @@ See [Custom inspection functions on Objects](#util_custom_inspection_functions_o
 added: v6.4.0
 -->
 
-El valor `defaultOptions` permite la personalización de la opción predeterminada usada por `util.inspect`. Esto es útil para funciones como `console.log` o `util.format` que implícitamente llaman a `util.inspect`. Debería ser establecido en un objeto conteniendo una o más opciones [`util.inspect()`][] válidas. Establecer directamente propiedades de opciones también está soportado.
+The `defaultOptions` value allows customization of the default options used by `util.inspect`. This is useful for functions like `console.log` or `util.format` which implicitly call into `util.inspect`. It shall be set to an object containing one or more valid [`util.inspect()`][] options. Setting option properties directly is also supported.
 
 ```js
 const util = require('util');
 const arr = Array(101).fill(0);
 
-console.log(arr); // registra el array truncado
+console.log(arr); // logs the truncated array
 util.inspect.defaultOptions.maxArrayLength = null;
-console.log(arr); // registra el array completo
+console.log(arr); // logs the full array
 ```
 
 ## util.isDeepStrictEqual(val1, val2)
@@ -619,11 +619,11 @@ added: v9.0.0
 
 * `val1` {any}
 * `val2` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si hay una estricta igualdad profunda entre `val1` and `val2`. De otra manera, devuelve `false`.
+Returns `true` if there is deep strict equality between `val1` and `val2`. Otherwise, returns `false`.
 
-Vea [`assert.deepStrictEqual()`][] para más información sobre estricta igualdad profunda.
+See [`assert.deepStrictEqual()`][] for more information about deep strict equality.
 
 ## util.promisify(original)
 
@@ -632,9 +632,9 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* Devuelve: {Function}
+* Returns: {Function}
 
-Toma una función siguiendo el estilo común de callback de primero-error, i.e. tomar un callback `(err, value) => ...` como el último argumento, y devuelve una versión que devuelve promesas.
+Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
 ```js
 const util = require('util');
@@ -642,13 +642,13 @@ const fs = require('fs');
 
 const stat = util.promisify(fs.stat);
 stat('.').then((stats) => {
-  // Hacer algo con `stats`
+  // Do something with `stats`
 }).catch((error) => {
-  // Gestionar el error.
+  // Handle the error.
 });
 ```
 
-O, equivalentemente usando `async function`s:
+Or, equivalently using `async function`s:
 
 ```js
 const util = require('util');
@@ -662,13 +662,13 @@ async function callStat() {
 }
 ```
 
-Si hay una propiedad `original[util.promisify.custom]` presente, `promisify` va a devolver su valor, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
+If there is an `original[util.promisify.custom]` property present, `promisify` will return its value, see [Custom promisified functions](#util_custom_promisified_functions).
 
-`promisify()` asume que `original` es una función tomando un callback como su argumento final en todos los casos. Si `original` no es una función, `promisify()` va a arrojar un error. Si `original` es una función pero su último argumento no es un callback de primer error, aún así va a pasar un callback de primer error como su último argumento.
+`promisify()` assumes that `original` is a function taking a callback as its final argument in all cases. If `original` is not a function, `promisify()` will throw an error. If `original` is a function but its last argument is not an error-first callback, it will still be passed an error-first callback as its last argument.
 
-### Funciones promisificadas personalizadas
+### Custom promisified functions
 
-Al usar el símbolo `util.promisify.custom`, uno puede anular el valor de retorno de [`util.promisify()`][]:
+Using the `util.promisify.custom` symbol one can override the return value of [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -683,13 +683,12 @@ doSomething[util.promisify.custom] = (foo) => {
 
 const promisified = util.promisify(doSomething);
 console.log(promisified === doSomething[util.promisify.custom]);
-// imprimir 'true'
+// prints 'true'
 ```
 
-Esto puede ser útil para casos donde la función original no siga un formato estándar para tomar un callback de primero-error como el último argumento.
+This can be useful for cases where the original function does not follow the standard format of taking an error-first callback as the last argument.
 
-Por ejemplo, con una función que toma `(foo, onSuccessCallback,
-onErrorCallback)`:
+For example, with a function that takes in `(foo, onSuccessCallback, onErrorCallback)`:
 
 ```js
 doSomething[util.promisify.custom] = (foo) => {
@@ -699,7 +698,7 @@ doSomething[util.promisify.custom] = (foo) => {
 };
 ```
 
-Si `promisify.custom` está definido pero no es una función, `promisify()` va a arrojar un error.
+If `promisify.custom` is defined but is not a function, `promisify()` will throw an error.
 
 ### util.promisify.custom
 
@@ -709,15 +708,15 @@ added: v8.0.0
 
 * {symbol}
 
-Un {symbol} que puede ser usado para declarar variantes promisificadas personalizadas de funciones, vea [Funciones personalizadas promisificadas](#util_custom_promisified_functions).
+A {symbol} that can be used to declare custom promisified variants of functions, see [Custom promisified functions](#util_custom_promisified_functions).
 
-## Clase: util.TextDecoder
+## Class: util.TextDecoder
 
 <!-- YAML
 added: v8.3.0
 -->
 
-Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/).
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextDecoder` API.
 
 ```js
 const decoder = new TextDecoder('shift_jis');
@@ -729,30 +728,30 @@ while (buffer = getNextChunkSomehow()) {
 string += decoder.decode(); // end-of-stream
 ```
 
-### Codificaciones Soportadas por WHATWG
+### WHATWG Supported Encodings
 
-Según el [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/), las codificaciones soportadas por la API `TextDecoder` están delineadas en las tablas a continuación. Para cada codificación, uno o más alias pueden ser usados.
+Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-Diferentes configuraciones de construcción de Node.js soportan diferentes conjuntos de codificaciones. Mientras que un conjunto de codificaciones bastante básico es soportado incluso en construcciones de Node.js sin tener ICU habilitado, el soporte para algunas codificaciones es provisto solo cuando Node.js es construido con ICU y usando los datos completos de ICU (vea [Internacionalización](intl.html)).
+Different Node.js build configurations support different sets of encodings. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
-#### Codificaciones Soportadas Sin ICU
+#### Encodings Supported Without ICU
 
-| Codificación | Alias                           |
+| Encoding     | Aliases                         |
 | ------------ | ------------------------------- |
 | `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
 | `'utf-16le'` | `'utf-16'`                      |
 
-#### Codificaciones Soportadas Por Defecto (Sin ICU)
+#### Encodings Supported by Default (With ICU)
 
-| Codificación | Alias                           |
+| Encoding     | Aliases                         |
 | ------------ | ------------------------------- |
 | `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
 | `'utf-16le'` | `'utf-16'`                      |
 | `'utf-16be'` |                                 |
 
-#### Codificaciones que Requieren los Datos Completos de ICU
+#### Encodings Requiring Full ICU Data
 
-| Codificación       | Alias                                                                                                                                                                                                                               |
+| Encoding           | Aliases                                                                                                                                                                                                                             |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `'ibm866'`         | `'866'`, `'cp866'`, `'csibm866'`                                                                                                                                                                                                    |
 | `'iso-8859-2'`     | `'csisolatin2'`, `'iso-ir-101'`, `'iso8859-2'`, `'iso88592'`, `'iso_8859-2'`, `'iso_8859-2:1987'`, `'l2'`, `'latin2'`                                                                                                               |
@@ -789,53 +788,53 @@ Diferentes configuraciones de construcción de Node.js soportan diferentes conju
 | `'shift_jis'`      | `'csshiftjis'`, `'ms932'`, `'ms_kanji'`, `'shift-jis'`, `'sjis'`, `'windows-31j'`, `'x-sjis'`                                                                                                                                       |
 | `'euc-kr'`         | `'cseuckr'`, `'csksc56011987'`, `'iso-ir-149'`, `'korean'`, `'ks_c_5601-1987'`, `'ks_c_5601-1989'`, `'ksc5601'`, `'ksc_5601'`, `'windows-949'`                                                                                      |
 
-La codificación `'iso-8859-16'` listada en el [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/) no es soportada.
+The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) is not supported.
 
-### nuevo TextDecoder([encoding[, options]])
+### new TextDecoder([encoding[, options]])
 
-* `encoding` {string} Identifica el `encoding` que esta instancia `TextDecoder` soporta. **Predeterminado:** `'utf-8'`.
+* `encoding` {string} Identifies the `encoding` that this `TextDecoder` instance supports. **Default:** `'utf-8'`.
 * `options` {Object} 
-  * `fatal` {boolean} `true` si las fallas de decodificación son fatales. Esta opción es soportada solo cuando ICU está habilitado (vea [Internacionalización](intl.html)). **Predeterminado:** `false`.
-  * `ignoreBOM` {boolean} Cuando sea `true`, el `TextDecoder` va a incluir la marca de orden de bytes en el resultado decodificado. Cuando sea `false`, la marca de orden de bytes va a ser removida del output. Esta opción es usada solo cuando `encoding` es `'utf-8'`, `'utf16be'` o `'utf-16le'`. **Default:**`false`.
+  * `fatal` {boolean} `true` if decoding failures are fatal. This option is only supported when ICU is enabled (see [Internationalization](intl.html)). **Default:** `false`.
+  * `ignoreBOM` {boolean} When `true`, the `TextDecoder` will include the byte order mark in the decoded result. When `false`, the byte order mark will be removed from the output. This option is only used when `encoding` is `'utf-8'`, `'utf-16be'` or `'utf-16le'`. **Default:** `false`.
 
-Crea una nueva instancia `TextDecoder`. El `encoding` puede especificar una de las decodificaciones soportadas o un alias.
+Creates an new `TextDecoder` instance. The `encoding` may specify one of the supported encodings or an alias.
 
 ### textDecoder.decode([input[, options]])
 
-* `input` {ArrayBuffer|DataView|TypedArray} Una instancia `ArrayBuffer`, `DataView` o `Typed Array` conteniendo los datos codificados.
-* `opciones` {Object} 
-  * `stream` {boolean} `true` si pedazos adicionales de datos son esperados. **Default:**`false`.
-* Devuelve: {string}
+* `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
+* `options` {Object} 
+  * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
+* Returns: {string}
 
-Decodifica el `input` y devuelve un string. Si `options.stream` es `true`, las secuencias de bytes incompletas que ocurran al final del `input` son almacenadas internamente y emitidas después de la siguiente llamada a `textDecoder.decode()`.
+Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
-Si `textDecoder.fatal` es `true`, decodificar errores que ocurran resultará en un `TypeError` siendo arrojado.
+If `textDecoder.fatal` is `true`, decoding errors that occur will result in a `TypeError` being thrown.
 
 ### textDecoder.encoding
 
 * {string}
 
-La codificación soportada por la instancia `TextDecoder`.
+The encoding supported by the `TextDecoder` instance.
 
 ### textDecoder.fatal
 
 * {boolean}
 
-El valor será `true` si la decodificación de errores resulta en un `TypeError` siendo arrojado.
+The value will be `true` if decoding errors result in a `TypeError` being thrown.
 
 ### textDecoder.ignoreBOM
 
 * {boolean}
 
-El valor será `true` si el resultado de la decodificación va a incluir la marca de orden de bytes.
+The value will be `true` if the decoding result will include the byte order mark.
 
-## Clase: util.TextEncoder
+## Class: util.TextEncoder
 
 <!-- YAML
 added: v8.3.0
 -->
 
-Una implementación de la API `TextDecoder` del [Estándar de Codificación WHATWG](https://encoding.spec.whatwg.org/). Todas las instancias de `TextEncoder` solo soportan codificación UTF-8.
+An implementation of the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/) `TextEncoder` API. All instances of `TextEncoder` only support UTF-8 encoding.
 
 ```js
 const encoder = new TextEncoder();
@@ -844,16 +843,16 @@ const uint8array = encoder.encode('this is some data');
 
 ### textEncoder.encode([input])
 
-* `input` {string} El texto para codificar. **Predeterminado:** un string vacío.
-* Devuelve: {Uint8Array}
+* `input` {string} The text to encode. **Default:** an empty string.
+* Returns: {Uint8Array}
 
-UTF-8 codifica el string `input` y devuelve un `Uint8Array` conteniendo los bytes codificados.
+UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
 ### textEncoder.encoding
 
 * {string}
 
-La codificación soportada por la instancia `TextEncoder`. Siempre configurado para `'utf-8'`.
+The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
 ## util.types
 
@@ -861,9 +860,9 @@ La codificación soportada por la instancia `TextEncoder`. Siempre configurado p
 added: v10.0.0
 -->
 
-`util.types` proporciona un número de chequeos de tipo para diferentes clases de objetos incorporados. A diferencia de `instanceof` u `Object.prototype.toString.call(value)`, estos chequeos no inspeccionan propiedades del objeto que sean accesibles desde JavaScript (como su prototipo), y usualmente tienen la sobrecarga de llamar a C++.
+`util.types` provides a number of type checks for different kinds of built-in objects. Unlike `instanceof` or `Object.prototype.toString.call(value)`, these checks do not inspect properties of the object that are accessible from JavaScript (like their prototype), and usually have the overhead of calling into C++.
 
-El resultado generalmente no da ninguna garantía sobre qué tipos de propiedades o comportamientos expone un valor en JavaScript. Ellos son principalmente útiles para desarrolladores de complementos que prefieren hacer el chequeo de tipo en JavaScript.
+The result generally does not make any guarantees about what kinds of properties or behavior a value exposes in JavaScript. They are primarily useful for addon developers who prefer to do type checking in JavaScript.
 
 ### util.types.isAnyArrayBuffer(value)
 
@@ -872,15 +871,15 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia incorporada [`ArrayBuffer`][] o [`SharedArrayBuffer`][].
+Returns `true` if the value is a built-in [`ArrayBuffer`][] or [`SharedArrayBuffer`][] instance.
 
-Ver también [`util.types.isArrayBuffer()`][] y [`util.types.isSharedArrayBuffer()`][].
+See also [`util.types.isArrayBuffer()`][] and [`util.types.isSharedArrayBuffer()`][].
 
 ```js
-util.types.isAnyArrayBuffer(new ArrayBuffer());  // Devuelve true
-util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Devuelve true
+util.types.isAnyArrayBuffer(new ArrayBuffer());  // Returns true
+util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isArgumentsObject(value)
@@ -890,15 +889,15 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto de `arguments`.
+Returns `true` if the value is an `arguments` object.
 
 <!-- eslint-disable prefer-rest-params -->
 
 ```js
 function foo() {
-  util.types.isArgumentsObject(arguments);  // Devuelve true
+  util.types.isArgumentsObject(arguments);  // Returns true
 }
 ```
 
@@ -909,13 +908,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`ArrayBuffer`][] incorporada. Esto *no* incluye instancias [`SharedArrayBuffer`][]. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
+Returns `true` if the value is a built-in [`ArrayBuffer`][] instance. This does *not* include [`SharedArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
 ```js
-util.types.isArrayBuffer(new ArrayBuffer());  // Devuelve true
-util.types.isArrayBuffer(new SharedArrayBuffer());  // Devuelve false
+util.types.isArrayBuffer(new ArrayBuffer());  // Returns true
+util.types.isArrayBuffer(new SharedArrayBuffer());  // Returns false
 ```
 
 ### util.types.isAsyncFunction(value)
@@ -925,13 +924,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una [función asíncrona](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Returns `true` if the value is an [async function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function). Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
 ```js
-util.types.isAsyncFunction(function foo() {});  // Devuelve false
-util.types.isAsyncFunction(async function foo() {});  // Devuelve true
+util.types.isAsyncFunction(function foo() {});  // Returns false
+util.types.isAsyncFunction(async function foo() {});  // Returns true
 ```
 
 ### util.types.isBigInt64Array(value)
@@ -941,7 +940,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigInt64Array` instance.
 
@@ -957,7 +956,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is a `BigUint64Array` instance.
 
@@ -973,9 +972,9 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto booleano, p. ej. creado por `new Boolean()`.
+Returns `true` if the value is a boolean object, e.g. created by `new Boolean()`.
 
 ```js
 util.types.isBooleanObject(false);  // Returns false
@@ -993,7 +992,7 @@ added: v10.11.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
@@ -1014,17 +1013,17 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`DataView`][] incorporada.
+Returns `true` if the value is a built-in [`DataView`][] instance.
 
 ```js
 const ab = new ArrayBuffer(20);
-util.types.isDataView(new DataView(ab));  // Devuelve true
-util.types.isDataView(new Float64Array());  // Devuelve false
+util.types.isDataView(new DataView(ab));  // Returns true
+util.types.isDataView(new Float64Array());  // Returns false
 ```
 
-Ver también [`ArrayBuffer.isView()`][].
+See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isDate(value)
 
@@ -1033,12 +1032,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Date`][] incorporada.
+Returns `true` if the value is a built-in [`Date`][] instance.
 
 ```js
-util.types.isDate(new Date());  // Devuelve true
+util.types.isDate(new Date());  // Returns true
 ```
 
 ### util.types.isExternal(value)
@@ -1048,9 +1047,9 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un valor `External` nativo.
+Returns `true` if the value is a native `External` value.
 
 ### util.types.isFloat32Array(value)
 
@@ -1059,14 +1058,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Float32Array`][] incorporada.
+Returns `true` if the value is a built-in [`Float32Array`][] instance.
 
 ```js
-util.types.isFloat32Array(new ArrayBuffer());  // Devuelve false
-util.types.isFloat32Array(new Float32Array());  // Devuelve  true
-util.types.isFloat32Array(new Float64Array());  // Devuelve false
+util.types.isFloat32Array(new ArrayBuffer());  // Returns false
+util.types.isFloat32Array(new Float32Array());  // Returns true
+util.types.isFloat32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isFloat64Array(value)
@@ -1076,14 +1075,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Float64Array`][] incorporada.
+Returns `true` if the value is a built-in [`Float64Array`][] instance.
 
 ```js
-util.types.isFloat64Array(new ArrayBuffer());  // Devuelve false
-util.types.isFloat64Array(new Uint8Array());  // Devuelve  false
-util.types.isFloat64Array(new Float64Array());  // Devuelve true
+util.types.isFloat64Array(new ArrayBuffer());  // Returns false
+util.types.isFloat64Array(new Uint8Array());  // Returns false
+util.types.isFloat64Array(new Float64Array());  // Returns true
 ```
 
 ### util.types.isGeneratorFunction(value)
@@ -1093,13 +1092,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una función generadora. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Returns `true` if the value is a generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
 ```js
-util.types.isGeneratorFunction(function foo() {});  // Devuelve false
-util.types.isGeneratorFunction(function* foo() {});  // Devuelve true
+util.types.isGeneratorFunction(function foo() {});  // Returns false
+util.types.isGeneratorFunction(function* foo() {});  // Returns true
 ```
 
 ### util.types.isGeneratorObject(value)
@@ -1109,14 +1108,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto generador como se devuelve de una función generadora incorporada. Tenga en cuenta que esto solo reporta lo que el motor JavaScript está viendo; en particular, el valor devuelto puede no ser igual al código fuente original si una herramienta de transpilación fue usada.
+Returns `true` if the value is a generator object as returned from a built-in generator function. Note that this only reports back what the JavaScript engine is seeing; in particular, the return value may not match the original source code if a transpilation tool was used.
 
 ```js
 function* foo() {}
 const generator = foo();
-util.types.isGeneratorObject(generator);  // Devuelve true
+util.types.isGeneratorObject(generator);  // Returns true
 ```
 
 ### util.types.isInt8Array(value)
@@ -1126,14 +1125,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Int8Array`][] incorporada.
+Returns `true` if the value is a built-in [`Int8Array`][] instance.
 
 ```js
-util.types.isInt8Array(new ArrayBuffer());  // Devuelve false
-util.types.isInt8Array(new Int8Array());  // Devuelve  true
-util.types.isInt8Array(new Float64Array());  // Devuelve false
+util.types.isInt8Array(new ArrayBuffer());  // Returns false
+util.types.isInt8Array(new Int8Array());  // Returns true
+util.types.isInt8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt16Array(value)
@@ -1143,14 +1142,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Int16Array`][] incorporada.
+Returns `true` if the value is a built-in [`Int16Array`][] instance.
 
 ```js
-util.types.isInt16Array(new ArrayBuffer());  // Devuelve false
-util.types.isInt16Array(new Int16Array());  // Devuelve true
-util.types.isInt16Array(new Float64Array());  // Devuelve false
+util.types.isInt16Array(new ArrayBuffer());  // Returns false
+util.types.isInt16Array(new Int16Array());  // Returns true
+util.types.isInt16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isInt32Array(value)
@@ -1160,14 +1159,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Int32Array`][] incorporada.
+Returns `true` if the value is a built-in [`Int32Array`][] instance.
 
 ```js
-util.types.isInt32Array(new ArrayBuffer());  // Devuelve false
-util.types.isInt32Array(new Int32Array());  // Devuelve true
-util.types.isInt32Array(new Float64Array());  // Devuelve false
+util.types.isInt32Array(new ArrayBuffer());  // Returns false
+util.types.isInt32Array(new Int32Array());  // Returns true
+util.types.isInt32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isMap(value)
@@ -1177,12 +1176,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Map`][] incorporada.
+Returns `true` if the value is a built-in [`Map`][] instance.
 
 ```js
-util.types.isMap(new Map());  // Devuelve true
+util.types.isMap(new Map());  // Returns true
 ```
 
 ### util.types.isMapIterator(value)
@@ -1192,16 +1191,16 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un iterador devuelto para una instancia [`Map`][] incorporada.
+Returns `true` if the value is an iterator returned for a built-in [`Map`][] instance.
 
 ```js
 const map = new Map();
-util.types.isMapIterator(map.keys());  // Devuelve true
-util.types.isMapIterator(map.values());  // Devuelve true
-util.types.isMapIterator(map.entries());  // Devuelve true
-util.types.isMapIterator(map[Symbol.iterator]());  // Devuelve true
+util.types.isMapIterator(map.keys());  // Returns true
+util.types.isMapIterator(map.values());  // Returns true
+util.types.isMapIterator(map.entries());  // Returns true
+util.types.isMapIterator(map[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isModuleNamespaceObject(value)
@@ -1211,7 +1210,7 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
 Returns `true` if the value is an instance of a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects).
 
@@ -1230,14 +1229,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia del tipo [`Error`][] incorporado.
+Returns `true` if the value is an instance of a built-in [`Error`][] type.
 
 ```js
-util.types.isNativeError(new Error());  // Devuelve true
-util.types.isNativeError(new TypeError());  // Devuelve true
-util.types.isNativeError(new RangeError());  // Devuelve true
+util.types.isNativeError(new Error());  // Returns true
+util.types.isNativeError(new TypeError());  // Returns true
+util.types.isNativeError(new RangeError());  // Returns true
 ```
 
 ### util.types.isNumberObject(value)
@@ -1247,13 +1246,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto número, p. ej. creado por `new Number()`.
+Returns `true` if the value is a number object, e.g. created by `new Number()`.
 
 ```js
-util.types.isNumberObject(0);  // Devuelve false
-util.types.isNumberObject(new Number(0));   // Devuelve true
+util.types.isNumberObject(0);  // Returns false
+util.types.isNumberObject(new Number(0));   // Returns true
 ```
 
 ### util.types.isPromise(value)
@@ -1263,12 +1262,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una [`Promise`][] incorporada.
+Returns `true` if the value is a built-in [`Promise`][].
 
 ```js
-util.types.isPromise(Promise.resolve(42));  // Devuelve true
+util.types.isPromise(Promise.resolve(42));  // Returns true
 ```
 
 ### util.types.isProxy(value)
@@ -1278,15 +1277,15 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Proxy`][].
+Returns `true` if the value is a [`Proxy`][] instance.
 
 ```js
 const target = {};
 const proxy = new Proxy(target, {});
-util.types.isProxy(target);  // Devuelve false
-util.types.isProxy(proxy);  // Devuelve true
+util.types.isProxy(target);  // Returns false
+util.types.isProxy(proxy);  // Returns true
 ```
 
 ### util.types.isRegExp(value)
@@ -1296,13 +1295,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto de expresión regular.
+Returns `true` if the value is a regular expression object.
 
 ```js
-util.types.isRegExp(/abc/);  // Devuelve true
-util.types.isRegExp(new RegExp('abc'));  // Devuelve true
+util.types.isRegExp(/abc/);  // Returns true
+util.types.isRegExp(new RegExp('abc'));  // Returns true
 ```
 
 ### util.types.isSet(value)
@@ -1312,12 +1311,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Set`][] incorporada.
+Returns `true` if the value is a built-in [`Set`][] instance.
 
 ```js
-util.types.isSet(new Set());  // Devuelve true
+util.types.isSet(new Set());  // Returns true
 ```
 
 ### util.types.isSetIterator(value)
@@ -1327,16 +1326,16 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un iterador devuelto para una instancia [`Set`][] incorporada.
+Returns `true` if the value is an iterator returned for a built-in [`Set`][] instance.
 
 ```js
 const set = new Set();
-util.types.isSetIterator(set.keys());  // Devuelve true
-util.types.isSetIterator(set.values());  // Devuelve true
-util.types.isSetIterator(set.entries());  // Devuelve true
-util.types.isSetIterator(set[Symbol.iterator]());  // Devuelve true
+util.types.isSetIterator(set.keys());  // Returns true
+util.types.isSetIterator(set.values());  // Returns true
+util.types.isSetIterator(set.entries());  // Returns true
+util.types.isSetIterator(set[Symbol.iterator]());  // Returns true
 ```
 
 ### util.types.isSharedArrayBuffer(value)
@@ -1346,13 +1345,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`SharedArrayBuffer`][] incorporada. Esto *no* incluye a instancias [`ArrayBuffer`][]. Usualmente, es deseable probar a ambos; Para eso, vea [`util.types.isAnyArrayBuffer()`][].
+Returns `true` if the value is a built-in [`SharedArrayBuffer`][] instance. This does *not* include [`ArrayBuffer`][] instances. Usually, it is desirable to test for both; See [`util.types.isAnyArrayBuffer()`][] for that.
 
 ```js
-util.types.isSharedArrayBuffer(new ArrayBuffer());  // Devuelve false
-util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Devuelve true
+util.types.isSharedArrayBuffer(new ArrayBuffer());  // Returns false
+util.types.isSharedArrayBuffer(new SharedArrayBuffer());  // Returns true
 ```
 
 ### util.types.isStringObject(value)
@@ -1362,13 +1361,13 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto de string, p. ej. creado por `new String()`.
+Returns `true` if the value is a string object, e.g. created by `new String()`.
 
 ```js
-util.types.isStringObject('foo');  // Devuelve false
-util.types.isStringObject(new String('foo'));   // Devuelve true
+util.types.isStringObject('foo');  // Returns false
+util.types.isStringObject(new String('foo'));   // Returns true
 ```
 
 ### util.types.isSymbolObject(value)
@@ -1378,14 +1377,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es un objeto de símbolo, creado al llamar a `Object()` en un `Symbol` primitivo.
+Returns `true` if the value is a symbol object, created by calling `Object()` on a `Symbol` primitive.
 
 ```js
 const symbol = Symbol('foo');
-util.types.isSymbolObject(symbol);  // Devuelve false
-util.types.isSymbolObject(Object(symbol));   // Devuelve true
+util.types.isSymbolObject(symbol);  // Returns false
+util.types.isSymbolObject(Object(symbol));   // Returns true
 ```
 
 ### util.types.isTypedArray(value)
@@ -1395,17 +1394,17 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`TypedArray`][] incorporada.
+Returns `true` if the value is a built-in [`TypedArray`][] instance.
 
 ```js
-util.types.isTypedArray(new ArrayBuffer());  // Devuelve false
-util.types.isTypedArray(new Uint8Array());  // Devuelve true
-util.types.isTypedArray(new Float64Array());  // Devuelve true
+util.types.isTypedArray(new ArrayBuffer());  // Returns false
+util.types.isTypedArray(new Uint8Array());  // Returns true
+util.types.isTypedArray(new Float64Array());  // Returns true
 ```
 
-Ver también [`ArrayBuffer.isView()`][].
+See also [`ArrayBuffer.isView()`][].
 
 ### util.types.isUint8Array(value)
 
@@ -1414,14 +1413,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Uint8Array`][] incorporada.
+Returns `true` if the value is a built-in [`Uint8Array`][] instance.
 
 ```js
-util.types.isUint8Array(new ArrayBuffer());  // Devuelve false
-util.types.isUint8Array(new Uint8Array());  // Devuelve true
-util.types.isUint8Array(new Float64Array());  // Devuelve false
+util.types.isUint8Array(new ArrayBuffer());  // Returns false
+util.types.isUint8Array(new Uint8Array());  // Returns true
+util.types.isUint8Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint8ClampedArray(value)
@@ -1431,14 +1430,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Uint8ClampedArray`][] incorporada.
+Returns `true` if the value is a built-in [`Uint8ClampedArray`][] instance.
 
 ```js
-util.types.isUint8ClampedArray(new ArrayBuffer());  // Devuelve false
-util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Devuelve true
-util.types.isUint8ClampedArray(new Float64Array());  // Devuelve false
+util.types.isUint8ClampedArray(new ArrayBuffer());  // Returns false
+util.types.isUint8ClampedArray(new Uint8ClampedArray());  // Returns true
+util.types.isUint8ClampedArray(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint16Array(value)
@@ -1448,14 +1447,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Uint16Array`][] incorporada.
+Returns `true` if the value is a built-in [`Uint16Array`][] instance.
 
 ```js
-util.types.isUint16Array(new ArrayBuffer());  // Devuelve false
-util.types.isUint16Array(new Uint16Array());  // Devuelve true
-util.types.isUint16Array(new Float64Array());  // Devuelve false
+util.types.isUint16Array(new ArrayBuffer());  // Returns false
+util.types.isUint16Array(new Uint16Array());  // Returns true
+util.types.isUint16Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isUint32Array(value)
@@ -1465,14 +1464,14 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`Uint32Array`][] incorporada.
+Returns `true` if the value is a built-in [`Uint32Array`][] instance.
 
 ```js
-util.types.isUint32Array(new ArrayBuffer());  // Devuelve false
-util.types.isUint32Array(new Uint32Array());  // Devuelve true
-util.types.isUint32Array(new Float64Array());  // Devuelve false
+util.types.isUint32Array(new ArrayBuffer());  // Returns false
+util.types.isUint32Array(new Uint32Array());  // Returns true
+util.types.isUint32Array(new Float64Array());  // Returns false
 ```
 
 ### util.types.isWeakMap(value)
@@ -1482,12 +1481,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`WeakMap`][] incorporada.
+Returns `true` if the value is a built-in [`WeakMap`][] instance.
 
 ```js
-util.types.isWeakMap(new WeakMap());  // Devuelve true
+util.types.isWeakMap(new WeakMap());  // Returns true
 ```
 
 ### util.types.isWeakSet(value)
@@ -1497,12 +1496,12 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`WeakSet`][] incorporada.
+Returns `true` if the value is a built-in [`WeakSet`][] instance.
 
 ```js
-util.types.isWeakSet(new WeakSet());  // Devuelve true
+util.types.isWeakSet(new WeakSet());  // Returns true
 ```
 
 ### util.types.isWebAssemblyCompiledModule(value)
@@ -1512,18 +1511,18 @@ added: v10.0.0
 -->
 
 * `value` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el valor es una instancia [`WebAssembly.Module`][] incorporada.
+Returns `true` if the value is a built-in [`WebAssembly.Module`][] instance.
 
 ```js
 const module = new WebAssembly.Module(wasmBuffer);
-util.types.isWebAssemblyCompiledModule(module);  // Devuelve true
+util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## APIs Desaprobadas
+## Deprecated APIs
 
-The following APIs are deprecated and should no longer be used. Los módulos y aplicaciones existentes deberían ser actualizados para encontrar enfoques alternativos.
+The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
 ### util.\_extend(target, source)
 
@@ -1535,11 +1534,11 @@ deprecated: v6.0.0
 * `target` {Object}
 * `source` {Object}
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`Object.assign()`].
+> Stability: 0 - Deprecated: Use [`Object.assign()`] instead.
 
-El método `util._extend()` nunca fue pensado para ser usado fuera de los módulos internos de Node.js. De todas maneras, la comunidad lo encontró y lo usó.
+The `util._extend()` method was never intended to be used outside of internal Node.js modules. The community found and used it anyway.
 
-Está desaprobado y no debería ser usado en código nuevo. JavaScript viene con funcionabilidades incorporadas muy similares por medio de [`Object.assign()`].
+It is deprecated and should not be used in new code. JavaScript comes with very similar built-in functionality through [`Object.assign()`].
 
 ### util.debug(string)
 
@@ -1548,11 +1547,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Desaprobado: Utilice [`console.error()`][] en su lugar.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
-* `string` {string} El mensaje para imprimir en `stderr`
+* `string` {string} The message to print to `stderr`
 
-Predecesor desaprobado de `console.error`.
+Deprecated predecessor of `console.error`.
 
 ### util.error([...strings])
 
@@ -1561,11 +1560,11 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`console.error()`][].
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
-* `...strings` {string} El mensaje para imprimir en `stderr`
+* `...strings` {string} The message to print to `stderr`
 
-Predecesor desaprobado de `console.error`.
+Deprecated predecessor of `console.error`.
 
 ### util.isArray(object)
 
@@ -1574,24 +1573,24 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`Array.isArray()`][].
+> Stability: 0 - Deprecated: Use [`Array.isArray()`][] instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Alias para [`Array.isArray()`][].
+Alias for [`Array.isArray()`][].
 
-Devuelve `true` si el `object` dado es un `Array`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is an `Array`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isArray([]);
-// Devuelve: true
+// Returns: true
 util.isArray(new Array());
-// Devuelve: true
+// Returns: true
 util.isArray({});
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isBoolean(object)
@@ -1601,22 +1600,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'boolean'`.
+> Stability: 0 - Deprecated: Use `typeof value === 'boolean'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `Boolean`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Boolean`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isBoolean(1);
-// Devuelve: false
+// Returns: false
 util.isBoolean(0);
-// Devuelve: false
+// Returns: false
 util.isBoolean(false);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isBuffer(object)
@@ -1626,22 +1625,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: Utilice [`Buffer.isBuffer()`][] en su lugar.
+> Stability: 0 - Deprecated: Use [`Buffer.isBuffer()`][] instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `Buffer`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Buffer`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isBuffer({ length: 0 });
-// Devuelve: false
+// Returns: false
 util.isBuffer([]);
-// Devuelve: false
+// Returns: false
 util.isBuffer(Buffer.from('hello world'));
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isDate(object)
@@ -1651,22 +1650,22 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isDate()`][].
+> Stability: 0 - Deprecated: Use [`util.types.isDate()`][] instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` es una `Date`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Date`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isDate(new Date());
-// Devuelve: true
+// Returns: true
 util.isDate(Date());
-// false (sin 'new' devuelve un String)
+// false (without 'new' returns a String)
 util.isDate({});
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isError(object)
@@ -1676,35 +1675,35 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`util.types.isNativeError()`][].
+> Stability: 0 - Deprecated: Use [`util.types.isNativeError()`][] instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un [`Error`][]. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is an [`Error`][]. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isError(new Error());
-// Devuelve: true
+// Returns: true
 util.isError(new TypeError());
-// Devuelve: true
+// Returns: true
 util.isError({ name: 'Error', message: 'an error occurred' });
-// Devuelve: false
+// Returns: false
 ```
 
-Tenga en cuenta que este método depende del comportamiento de `Object.prototype.toString()`. Es posible obtener un resultado incorrecto cuando el argumento del `object` manipula a `@@toStringTag`.
+Note that this method relies on `Object.prototype.toString()` behavior. It is possible to obtain an incorrect result when the `object` argument manipulates `@@toStringTag`.
 
 ```js
 const util = require('util');
 const obj = { name: 'Error', message: 'an error occurred' };
 
 util.isError(obj);
-// Devuelve: false
+// Returns: false
 obj[Symbol.toStringTag] = 'Error';
 util.isError(obj);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isFunction(object)
@@ -1714,12 +1713,12 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'function'`.
+> Stability: 0 - Deprecated: Use `typeof value === 'function'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es una `Function`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Function`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
@@ -1728,11 +1727,11 @@ function Foo() {}
 const Bar = () => {};
 
 util.isFunction({});
-// Devuelve: false
+// Returns: false
 util.isFunction(Foo);
-// Devuelve: true
+// Returns: true
 util.isFunction(Bar);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isNull(object)
@@ -1742,22 +1741,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `value === null`.
+> Stability: 0 - Deprecated: Use `value === null` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` es estrictamente `null`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is strictly `null`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNull(0);
-// Devuelve: false
+// Returns: false
 util.isNull(undefined);
-// Devuelve: false
+// Returns: false
 util.isNull(null);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isNullOrUndefined(object)
@@ -1767,22 +1766,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined || value === null`.
+> Stability: 0 - Deprecated: Use `value === undefined || value === null` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es `null` o `undefined`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is `null` or `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNullOrUndefined(0);
-// Devuelve: false
+// Returns: false
 util.isNullOrUndefined(undefined);
-// Devuelve: true
+// Returns: true
 util.isNullOrUndefined(null);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isNumber(object)
@@ -1792,24 +1791,24 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'number'`.
+> Stability: 0 - Deprecated: Use `typeof value === 'number'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `Number`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Number`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isNumber(false);
-// Devuelve: false
+// Returns: false
 util.isNumber(Infinity);
-// Devuelve: true
+// Returns: true
 util.isNumber(0);
-// Devuelve: true
+// Returns: true
 util.isNumber(NaN);
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isObject(object)
@@ -1819,24 +1818,24 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `value !== null && typeof value === 'object'`.
+> Stability: 0 - Deprecated: Use `value !== null && typeof value === 'object'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es estrictamente un `Object` **y** no una `Function` (a pesar de que las funciones son objetos en JavaScript). De otra manera, devuelve `false`.
+Returns `true` if the given `object` is strictly an `Object` **and** not a `Function` (even though functions are objects in JavaScript). Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isObject(5);
-// Devuelve: false
+// Returns: false
 util.isObject(null);
-// Devuelve: false
+// Returns: false
 util.isObject({});
-// Devuelve: true
+// Returns: true
 util.isObject(() => {});
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isPrimitive(object)
@@ -1846,34 +1845,34 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `(typeof value !== 'object' && typeof value !== 'function') || value === null`.
+> Stability: 0 - Deprecated: Use `(typeof value !== 'object' && typeof value !== 'function') || value === null` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es de un tipo primitivo. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a primitive type. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isPrimitive(5);
-// Devuelve: true
+// Returns: true
 util.isPrimitive('foo');
-// Devuelve: true
+// Returns: true
 util.isPrimitive(false);
-// Devuelve: true
+// Returns: true
 util.isPrimitive(null);
-// Devuelve: true
+// Returns: true
 util.isPrimitive(undefined);
-// Devuelve: true
+// Returns: true
 util.isPrimitive({});
-// Devuelve: false
+// Returns: false
 util.isPrimitive(() => {});
-// Devuelve: false
+// Returns: false
 util.isPrimitive(/^$/);
-// Devuelve: false
+// Returns: false
 util.isPrimitive(new Date());
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isRegExp(object)
@@ -1883,22 +1882,22 @@ added: v0.6.0
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desactualización
+> Stability: 0 - Deprecated
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `RegExp`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `RegExp`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isRegExp(/some regexp/);
-// Devuelve: true
+// Returns: true
 util.isRegExp(new RegExp('another regexp'));
-// Devuelve: true
+// Returns: true
 util.isRegExp({});
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isString(object)
@@ -1908,24 +1907,24 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'string'`.
+> Stability: 0 - Deprecated: Use `typeof value === 'string'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `string`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `string`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isString('');
-// Devuelve: true
+// Returns: true
 util.isString('foo');
-// Devuelve: true
+// Returns: true
 util.isString(String('foo'));
-// Devuelve: true
+// Returns: true
 util.isString(5);
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.isSymbol(object)
@@ -1935,22 +1934,22 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `typeof value === 'symbol'`.
+> Stability: 0 - Deprecated: Use `typeof value === 'symbol'` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es un `Symbol`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is a `Symbol`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 util.isSymbol(5);
-// Devuelve: false
+// Returns: false
 util.isSymbol('foo');
-// Devuelve: false
+// Returns: false
 util.isSymbol(Symbol('foo'));
-// Devuelve: true
+// Returns: true
 ```
 
 ### util.isUndefined(object)
@@ -1960,23 +1959,23 @@ added: v0.11.5
 deprecated: v4.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use `value === undefined`.
+> Stability: 0 - Deprecated: Use `value === undefined` instead.
 
 * `object` {any}
-* Devuelve: {boolean}
+* Returns: {boolean}
 
-Devuelve `true` si el `object` dado es `undefined`. De otra manera, devuelve `false`.
+Returns `true` if the given `object` is `undefined`. Otherwise, returns `false`.
 
 ```js
 const util = require('util');
 
 const foo = undefined;
 util.isUndefined(5);
-// Devuelve: false
+// Returns: false
 util.isUndefined(foo);
-// Devuelve: true
+// Returns: true
 util.isUndefined(null);
-// Devuelve: false
+// Returns: false
 ```
 
 ### util.log(string)
@@ -1986,11 +1985,11 @@ added: v0.3.0
 deprecated: v6.0.0
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use un módulo de terceros.
+> Stability: 0 - Deprecated: Use a third party module instead.
 
 * `string` {string}
 
-El método `util.log()` imprime el `string` dado a `stdout` con una marca de tiempo incluida.
+The `util.log()` method prints the given `string` to `stdout` with an included timestamp.
 
 ```js
 const util = require('util');
@@ -2005,9 +2004,9 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
-Predecesor desaprobado de `console.log`.
+Deprecated predecessor of `console.log`.
 
 ### util.puts([...strings])
 
@@ -2016,6 +2015,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Estabilidad: 0 - Desaprobado: En cambio, use [`console.log()`][].
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
-Predecesor desaprobado de `console.log`.
+Deprecated predecessor of `console.log`.
