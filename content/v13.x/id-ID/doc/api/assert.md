@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Stabilitas: 2 - Stabil
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -393,7 +393,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -655,7 +655,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Stabilitas: 1 - Eksperimental
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
@@ -926,6 +926,21 @@ If specified, `message` will be the message provided by the [`AssertionError`][]
     {
       name: 'TypeError',
       message: 'Wrong value'
+    }
+  );
+})();
+```
+
+```js
+(async () => {
+  await assert.rejects(
+    async () => {
+      throw new TypeError('Wrong value');
+    },
+    (err) => {
+      assert.strictEqual(err.name, 'TypeError');
+      assert.strictEqual(err.message, 'Wrong value');
+      return true;
     }
   );
 })();
