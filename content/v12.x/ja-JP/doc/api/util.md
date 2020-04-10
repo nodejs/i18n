@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. 以下のように利用できます。
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -250,7 +250,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* 戻り値: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -748,7 +748,7 @@ added: v8.0.0
 -->
 
 * `original` {Function}
-* 戻り値: {Function}
+* Returns: {Function}
 
 Takes a function following the common error-first callback style, i.e. taking an `(err, value) => ...` callback as the last argument, and returns a version that returns promises.
 
@@ -952,7 +952,7 @@ The `TextDecoder` class is also available on the global object.
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `TypedArray` instance containing the encoded data.
 * `options` {Object}
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* 戻り値: {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -997,7 +997,7 @@ The `TextEncoder` class is also available on the global object.
 ### `textEncoder.encode([input])`
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* 戻り値: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -1632,7 +1632,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## 非推奨となったAPI
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
