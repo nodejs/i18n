@@ -28,13 +28,13 @@
     "builtins": "^3.0.1",
     "crowdin-glossary": "^1.2.0",
     "dotenv-safe": "^8.2.0",
-    "download": "^7.1.0",
-    "fs-extra": "^8.1.0",
+    "download": "^8.0.0",
+    "fs-extra": "^9.0.0",
     "globals": "^12.4.0",
-    "jest": "^25.1.0",
+    "jest": "^25.3.0",
     "request": "^2.88.2",
-    "semver": "^7.1.3",
-    "standard": "^14.3.2",
+    "semver": "^7.2.1",
+    "standard": "^14.3.3",
     "walk-sync": "^2.0.2"
   },
   "standard": {

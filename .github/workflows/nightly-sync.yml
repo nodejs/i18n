@@ -5,7 +5,7 @@ on:
   - cron: '0 3 * * *' # run daily at 3am
 
 jobs:
-  checks:
+  sync:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,11 +28,12 @@ jobs:
       - name: Collect latest releases
         run: npm run collect
 
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -am "Nightly Sync"
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          author_name: GitHub Action
+          author_email: action@github.com
+          message: "feat: Content updates"
 
       - name: Push changes
         # Only run this on the main nodejs repo and not forks

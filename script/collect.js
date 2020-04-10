@@ -24,6 +24,9 @@ async function getDocsForNodeVersion (major, version) {
 
   // TODO exit early if docs for this version have already been downloaded
 
+  // clean out english translations to ensure old files are removed
+  fs.remove(docDir)
+
   // download repo bundle and extract to a temporary directory
   const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
   console.log('downloading', tarballUrl)
