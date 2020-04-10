@@ -1,9 +1,9 @@
-# Erros
+# Errors
 
 <!--introduced_in=v4.0.0-->
 <!--type=misc-->
 
-Os aplicativos que são executados no Node.js geralmente experimentam quatro categorias de erros:
+Applications running in Node.js will generally experience four categories of errors:
 
 * Standard JavaScript errors such as {EvalError}, {SyntaxError}, {RangeError},
 {ReferenceError}, {TypeError}, and {URIError}.
@@ -152,7 +152,7 @@ The first line of the trace will be prefixed with `${myObject.name}: ${myObject.
 
 The optional `constructorOpt` argument accepts a function. If given, all frames above `constructorOpt`, including `constructorOpt`, will be omitted from the generated stack trace.
 
-The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. Por exemplo:
+The `constructorOpt` argument is useful for hiding implementation details of error generation from an end user. For instance:
 
 ```js
 function MyError() {
@@ -391,11 +391,11 @@ This is a list of system errors commonly-encountered when writing a Node.js prog
 
 * `EMFILE` (Too many open files in system): Maximum number of [file descriptors](https://en.wikipedia.org/wiki/File_descriptor) allowable on the system has been reached, and requests for another descriptor cannot be fulfilled until at least one has been closed. This is encountered when opening many files at once in parallel, especially on systems (in particular, macOS) where there is a low file descriptor limit for processes. To remedy a low limit, run `ulimit -n 2048` in the same shell that will run the Node.js process.
 
-* `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist — no entity (file or directory) could be found by the given path.
+* `ENOENT` (No such file or directory): Commonly raised by [`fs`][] operations to indicate that a component of the specified pathname does not exist. No entity (file or directory) could be found by the given path.
 
 * `ENOTDIR` (Not a directory): A component of the given pathname existed, but was not a directory as expected. Commonly raised by [`fs.readdir`][].
 
-* `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory — usually [`fs.unlink`][].
+* `ENOTEMPTY` (Directory not empty): A directory with entries was the target of an operation that requires an empty directory, usually [`fs.unlink`][].
 
 * `ENOTFOUND` (DNS lookup failed): Indicates a DNS failure of either `EAI_NODATA` or `EAI_NONAME`. This is not a standard POSIX error.
 
@@ -403,7 +403,7 @@ This is a list of system errors commonly-encountered when writing a Node.js prog
 
 * `EPIPE` (Broken pipe): A write on a pipe, socket, or FIFO for which there is no process to read the data. Commonly encountered at the [`net`][] and [`http`][] layers, indicative that the remote side of the stream being written to has been closed.
 
-* `ETIMEDOUT` (Operation timed out): A connect or send request failed because the connected party did not properly respond after a period of time. Usually encountered by [`http`][] or [`net`][] — often a sign that a `socket.end()` was not properly called.
+* `ETIMEDOUT` (Operation timed out): A connect or send request failed because the connected party did not properly respond after a period of time. Usually encountered by [`http`][] or [`net`][]. Often a sign that a `socket.end()` was not properly called.
 
 ## Class: `TypeError`
 
@@ -418,7 +418,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Erros<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
+## Exceptions vs. Errors<!--type=misc-->A JavaScript exception is a value that is thrown as a result of an invalid operation or as the target of a `throw` statement. While it is not required that these values are instances of `Error` or classes which inherit from `Error`, all exceptions thrown by Node.js or the JavaScript runtime *will* be instances of `Error`.
 
 Some exceptions are *unrecoverable* at the JavaScript layer. Such exceptions will *always* cause the Node.js process to crash. Examples include `assert()` checks or `abort()` calls in the C++ layer.
 
@@ -537,6 +537,12 @@ Used when the main process is trying to read data from the child process's STDER
 ### `ERR_CONSOLE_WRITABLE_STREAM`
 
 `Console` was instantiated without `stdout` stream, or `Console` has a non-writable `stdout` or `stderr` stream.
+
+<a id="ERR_CONTEXT_NOT_INITIALIZED"></a>
+
+### `ERR_CONTEXT_NOT_INITIALIZED`
+
+The vm context passed into the API is not yet initialized. This could happen when an error occurs (and is caught) during the creation of the context, for example, when the allocation fails or the maximum call stack size is reached when the context is created.
 
 <a id="ERR_CONSTRUCT_CALL_REQUIRED"></a>
 
@@ -713,6 +719,12 @@ Data provided to `TextDecoder()` API was invalid according to the encoding provi
 ### `ERR_ENCODING_NOT_SUPPORTED`
 
 Encoding provided to `TextDecoder()` API was not one of the [WHATWG Supported Encodings](util.html#util_whatwg_supported_encodings).
+
+<a id="ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE"></a>
+
+### `ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE`
+
+The JS execution context is not associated with a Node.js environment. This may occur when Node.js is used as an embedded library and some hooks for the JS engine are not set up properly.
 
 <a id="ERR_FALSY_VALUE_REJECTION"></a>
 
@@ -1036,7 +1048,7 @@ An option pair is incompatible with each other and cannot be used at the same ti
 
 ### `ERR_INPUT_TYPE_NOT_ALLOWED`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 The `--input-type` flag was used to attempt to execute a file. This flag can only be used with input via `--eval`, `--print` or `STDIN`.
 
@@ -1172,6 +1184,12 @@ An invalid HTTP token was supplied.
 
 An IP address is not valid.
 
+<a id="ERR_INVALID_MODULE_SPECIFIER"></a>
+
+### `ERR_INVALID_MODULE_SPECIFIER`
+
+The imported module string is an invalid URL, package name, or package subpath specifier.
+
 <a id="ERR_INVALID_OPT_VALUE"></a>
 
 ### `ERR_INVALID_OPT_VALUE`
@@ -1189,6 +1207,12 @@ An invalid or unknown file encoding was passed.
 ### `ERR_INVALID_PACKAGE_CONFIG`
 
 An invalid `package.json` file was found which failed parsing.
+
+<a id="ERR_INVALID_PACKAGE_TARGET"></a>
+
+### `ERR_INVALID_PACKAGE_TARGET`
+
+The `package.json` [exports](esm.html#esm_package_exports) field contains an invalid target mapping value for the attempted module resolution.
 
 <a id="ERR_INVALID_PERFORMANCE_MARK"></a>
 
@@ -1370,7 +1394,7 @@ A required argument of a Node.js API was not passed. This is only used for stric
 
 ### `ERR_MISSING_DYNAMIC_INSTANTIATE_HOOK`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 An [ES Module](esm.html) loader hook specified `format: 'dynamic'` but did not provide a `dynamicInstantiate` hook.
 
@@ -1402,7 +1426,7 @@ The V8 platform used by this instance of Node.js does not support creating Worke
 
 ### `ERR_MODULE_NOT_FOUND`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 An [ES Module](esm.html) could not be resolved.
 
@@ -1487,11 +1511,17 @@ A non-context-aware native addon was loaded in a process that disallows them.
 
 A given value is out of the accepted range.
 
+<a id="ERR_PACKAGE_PATH_NOT_EXPORTED"></a>
+
+### `ERR_PACKAGE_PATH_NOT_EXPORTED`
+
+The `package.json` [exports](esm.html#esm_package_exports) field does not export the requested subpath. Because exports are encapsulated, private internal modules that are not exported cannot be imported through the package resolution, unless using an absolute URL.
+
 <a id="ERR_REQUIRE_ESM"></a>
 
 ### `ERR_REQUIRE_ESM`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 An attempt was made to `require()` an [ES Module](esm.html).
 
@@ -1682,10 +1712,17 @@ While using TLS, the parameter offered for the Diffie-Hellman (`DH`) key-agreeme
 
 A TLS/SSL handshake timed out. In this case, the server must also abort the connection.
 
-<a id="ERR_TLS_INVALID_CONTEXT">
+<a id="ERR_TLS_INVALID_CONTEXT"></a>
+
 ### `ERR_TLS_INVALID_CONTEXT`<!-- YAML
 added: v13.3.0
 -->The context must be a `SecureContext`.
+
+<a id="ERR_TLS_INVALID_STATE"></a>
+
+### `ERR_TLS_INVALID_STATE`<!-- YAML
+added: v13.10.0
+-->The TLS socket must be connected and securily established. Ensure the 'secure' event is emitted before continuing.
 
 <a id="ERR_TLS_INVALID_PROTOCOL_METHOD"></a>
 
@@ -1815,7 +1852,7 @@ An invalid or unknown encoding option was passed to an API.
 
 ### `ERR_UNKNOWN_FILE_EXTENSION`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported file extension.
 
@@ -1823,7 +1860,7 @@ An attempt was made to load a module with an unknown or unsupported file extensi
 
 ### `ERR_UNKNOWN_MODULE_FORMAT`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 An attempt was made to load a module with an unknown or unsupported format.
 
@@ -1909,6 +1946,12 @@ The current module's status does not allow for this operation. The specific mean
 
 The WASI instance has already started.
 
+<a id="ERR_WORKER_INIT_FAILED"></a>
+
+### `ERR_WORKER_INIT_FAILED`
+
+The `Worker` initialization failed.
+
 <a id="ERR_WORKER_INVALID_EXEC_ARGV"></a>
 
 ### `ERR_WORKER_INVALID_EXEC_ARGV`
@@ -1979,7 +2022,7 @@ changes:
 
 ## Legacy Node.js Error Codes
 
-> Estabilidade: 0 - Descontinuado. These error codes are either inconsistent, or have been removed.
+> Stability: 0 - Deprecated. These error codes are either inconsistent, or have been removed.
 
 <a id="ERR_CANNOT_TRANSFER_OBJECT"></a>
 
@@ -2198,7 +2241,7 @@ These errors have never been released, but had been present on master between re
 
 #### `ERR_ENTRY_TYPE_MISMATCH`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 The `--entry-type=commonjs` flag was used to attempt to execute an `.mjs` file or a `.js` file where the nearest parent `package.json` contains `"type": "module"`; or the `--entry-type=module` flag was used to attempt to execute a `.cjs` file or a `.js` file where the nearest parent `package.json` either lacks a `"type"` field or contains `"type": "commonjs"`.
 
@@ -2236,7 +2279,7 @@ Used in the `repl` in case the old history file is used and an error occurred wh
 
 #### `ERR_INVALID_REPL_TYPE`
 
-> Estabilidade: 1 - Experimental
+> Stability: 1 - Experimental
 
 The `--entry-type=...` flag is not compatible with the Node.js REPL.
 
