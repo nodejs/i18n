@@ -2,15 +2,15 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stabilità: 2 - Stable
+> Stability: 2 - Stable
 
-The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. Ci si può accedere utilizzando:
+The `string_decoder` module provides an API for decoding `Buffer` objects into strings in a manner that preserves encoded multi-byte UTF-8 and UTF-16 characters. It can be accessed using:
 
 ```js
 const { StringDecoder } = require('string_decoder');
 ```
 
-L'esempio seguente mostra l'uso di base della `StringDecoder` class.
+The following example shows the basic use of the `StringDecoder` class.
 
 ```js
 const { StringDecoder } = require('string_decoder');
@@ -44,9 +44,9 @@ console.log(decoder.end(Buffer.from([0xAC])));
 added: v0.1.99
 -->
 
-* `encoding`{string} La codifica del carattere che verrà usata da `StringDecoder`. **Default:** `'utf8'`.
+* `encoding` {string} The character encoding the `StringDecoder` will use. **Default:** `'utf8'`.
 
-Crea una nuova istanza `StringDecoder`.
+Creates a new `StringDecoder` instance.
 
 ### stringDecoder.end([buffer])
 
@@ -55,9 +55,9 @@ added: v0.9.3
 -->
 
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
-* Restituisce: {string}
+* Returns: {string}
 
-Restituisce qualsiasi restante input memorizzato nel buffer interno come una stringa. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
+Returns any remaining input stored in the internal buffer as a string. Bytes representing incomplete UTF-8 and UTF-16 characters will be replaced with substitution characters appropriate for the character encoding.
 
 If the `buffer` argument is provided, one final call to `stringDecoder.write()` is performed before returning the remaining input.
 
@@ -74,6 +74,6 @@ changes:
 -->
 
 * `buffer` {Buffer|TypedArray|DataView} A `Buffer`, or `TypedArray`, or `DataView` containing the bytes to decode.
-* Restituisce: {string}
+* Returns: {string}
 
 Returns a decoded string, ensuring that any incomplete multibyte characters at the end of the `Buffer`, or `TypedArray`, or `DataView` are omitted from the returned string and stored in an internal buffer for the next call to `stringDecoder.write()` or `stringDecoder.end()`.
