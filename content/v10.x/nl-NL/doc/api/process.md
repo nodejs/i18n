@@ -1,4 +1,4 @@
-# Proces
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -582,7 +582,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Retourneert: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -655,7 +655,7 @@ added: v8.0.0
 -->
 
 * `warning` {string|Error} The warning to emit.
-* `opties` {Object} 
+* `options` {Object} 
   * `type` {string} When `warning` is a `String`, `type` is the name to use for the *type* of warning being emitted. **Default:** `'Warning'`.
   * `code` {string} A unique identifier for the warning instance being emitted.
   * `ctor` {Function} When `warning` is a `String`, `ctor` is an optional function used to limit the generated stack trace. **Default:** `process.emitWarning`.
@@ -975,7 +975,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v2.0.0
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 The `process.geteuid()` method returns the numerical effective user identity of the process. (See geteuid(2).)
 
@@ -993,7 +993,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.31
 -->
 
-* Retourneert: {Object}
+* Returns: {Object}
 
 The `process.getgid()` method returns the numerical group identity of the process. (See getgid(2).)
 
@@ -1023,7 +1023,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v0.1.28
 -->
 
-* Retourneert: {integer}
+* Returns: {integer}
 
 The `process.getuid()` method returns the numeric user identity of the process. (See getuid(2).)
 
@@ -1041,7 +1041,7 @@ This function is only available on POSIX platforms (i.e. not Windows or Android)
 added: v9.3.0
 -->
 
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 Indicates whether a callback has been set using [`process.setUncaughtExceptionCaptureCallback()`][].
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Retourneert: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
@@ -1131,7 +1131,7 @@ added: v0.0.6
 -->
 
 * `pid` {number} A process ID
-* `signal` {string|number} The signal to send, either as a string or number. **Standaard:** `'SIGTERM'`.
+* `signal` {string|number} The signal to send, either as a string or number. **Default:** `'SIGTERM'`.
 
 The `process.kill()` method sends the `signal` to the process identified by `pid`.
 
@@ -1412,7 +1412,7 @@ added: v0.5.9
 * `sendHandle` {net.Server|net.Socket}
 * `options` {Object}
 * `callback` {Function}
-* Retourneert: {boolean}
+* Returns: {boolean}
 
 If Node.js is spawned with an IPC channel, the `process.send()` method can be used to send messages to the parent process. Messages will be received as a [`'message'`][] event on the parent's [`ChildProcess`][] object.
 
@@ -1612,7 +1612,7 @@ Synchronous writes avoid problems such as output written with `console.log()` or
 
 To check if a stream is connected to a [TTY](tty.html#tty_tty) context, check the `isTTY` property.
 
-Bijvoorbeeld:
+For instance:
 
 ```console
 $ node -p "Boolean(process.stdin.isTTY)"
@@ -1685,7 +1685,7 @@ This feature is not available in [`Worker`][] threads.
 added: v0.5.0
 -->
 
-* Retourneert: {number}
+* Returns: {number}
 
 The `process.uptime()` method returns the number of seconds the current Node.js process has been running.
 
