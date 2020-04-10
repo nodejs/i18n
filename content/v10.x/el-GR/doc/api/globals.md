@@ -12,7 +12,7 @@
 * [`module`][]
 * [`require()`][]
 
-Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. Υπάρχει ένας αριθμός από [ενσωματωμένα αντικείμενα](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) που είναι μέρος της γλώσσας της JavaScript, τα οποία είναι επίσης καθολικά προσβάσιμα.
+Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
 
