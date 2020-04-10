@@ -1,8 +1,8 @@
-# 이벤트
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> 안정성: 2 - 안정
+> Stability: 2 - Stable
 
 <!--type=module-->
 
