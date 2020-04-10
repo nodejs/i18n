@@ -1,8 +1,8 @@
-# Ασυγχρόνιστα Αγκίστρια
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Σταθερότητα: 1 - Πειραματικό
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
@@ -552,7 +552,7 @@ asyncResource.triggerAsyncId();
   * `triggerAsyncId` {number} The ID of the execution context that created this async event. **Default:** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the object is garbage collected. This usually does not need to be set (even if `emitDestroy` is called manually), unless the resource's `asyncId` is retrieved and the sensitive API's `emitDestroy` is called with it. **Default:** `false`.
 
-Παράδειγμα χρήσης:
+Example usage:
 
 ```js
 class DBQuery extends AsyncResource {
@@ -797,7 +797,7 @@ added: v13.11.0
 
 Calling `asyncLocalStorage.enterWith(store)` will transition into the context for the remainder of the current synchronous execution and will persist through any following asynchronous calls.
 
-Παράδειγμα:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -840,7 +840,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Παράδειγμα:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -867,7 +867,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Παράδειγμα:
+Example:
 
 ```js
 asyncLocalStorage.run('store value', () => {
@@ -894,7 +894,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `runSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be exited.
 
-Παράδειγμα:
+Example:
 
 ```js
 const store = { id: 2 };
@@ -923,7 +923,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `exitSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be re-entered.
 
-Παράδειγμα:
+Example:
 
 ```js
 // Within a call to run or runSyncAndReturn
