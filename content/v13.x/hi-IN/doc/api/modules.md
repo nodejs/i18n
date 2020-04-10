@@ -1,4 +1,4 @@
-# मॉड्यूल
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> स्थिरता: 1 - प्रायोगिक
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
