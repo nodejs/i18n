@@ -1,14 +1,14 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
 
-* [O dokumentaciji](documentation.html)
-* [Korišenje & primjeri](synopsis.html)
+* [About these Docs](documentation.html)
+* [Usage & Example](synopsis.html)
 
 <div class="line"></div>
 
 * [Assertion Testing](assert.html)
 * [Async Hooks](async_hooks.html)
 * [Buffer](buffer.html)
-* [C++ Dodaci](addons.html)
+* [C++ Addons](addons.html)
 * [C/C++ Addons - N-API](n-api.html)
 * [Child Processes](child_process.html)
 * [Cluster](cluster.html)
@@ -54,4 +54,4 @@
 
 <div class="line"></div>
 
-* [GitHub projekat & Issue Tracker](https://github.com/nodejs/node)
+* [GitHub Repo & Issue Tracker](https://github.com/nodejs/node)
