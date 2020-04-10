@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Buffer Antes da introdução de [TypedArray], a linguagem JavaScript não tinha nenhum mecanismo para ler ou manipular streams de dados binários. A classe Buffer foi introduzida como parte da Api Node. js para permitir a interação com streams de octetos em streams TCP, operações do sistema de arquivos e outros contextos
+> Stability: 2 - Stable
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
@@ -749,6 +749,8 @@ assert.throws(
 ```
 
 Note that `error` can not be a string. If a string is provided as the second argument, then `error` is assumed to be omitted and the string will be used for `message` instead. This can lead to easy-to-miss mistakes. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
 
 ```js
 function throwingFirst() {
