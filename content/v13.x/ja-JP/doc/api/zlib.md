@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 安定性: 2 - ステーブル
+> Stability: 2 - Stable
 
 The `zlib` module provides compression functionality implemented using Gzip, Deflate/Inflate, and Brotli.
 
@@ -111,7 +111,7 @@ In the preceding example, 30,000 deflate instances are created concurrently. Bec
 
 It is strongly recommended that the results of compression operations be cached to avoid duplication of effort.
 
-## HTTP リクエストとレスポンスの圧縮
+## Compressing HTTP requests and responses
 
 The `zlib` module can be used to implement support for the `gzip`, `deflate` and `br` content-encoding mechanisms defined by [HTTP](https://tools.ietf.org/html/rfc7230#section-4.2).
 
