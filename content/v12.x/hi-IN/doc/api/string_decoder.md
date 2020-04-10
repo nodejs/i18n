@@ -1,4 +1,4 @@
-# स्ट्रिंग डीकोडर
+# String Decoder
 
 <!--introduced_in=v0.10.0-->
 
