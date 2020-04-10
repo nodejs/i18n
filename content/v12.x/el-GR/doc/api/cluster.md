@@ -1,8 +1,8 @@
-# Σύμπλεγμα
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Σταθερότητα: 2 - Σταθερό
+> Stability: 2 - Stable
 
 A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -398,7 +398,7 @@ changes:
 * `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties:
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
 * `callback` {Function}
-* Επιστρέφει: {boolean}
+* Returns: {boolean}
 
 Send a message to a worker or master, optionally with a handle.
 
@@ -579,7 +579,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Επιστρέφει: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
