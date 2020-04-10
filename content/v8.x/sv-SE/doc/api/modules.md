@@ -386,7 +386,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-Exempel:
+Examples:
 
 Running `node example.js` from `/Users/mjr`
 
