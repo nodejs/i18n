@@ -1,4 +1,4 @@
-# Χρήση
+# Usage
 
 <!--introduced_in=v0.10.0-->
 
@@ -6,9 +6,9 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Παρακαλούμε δείτε το έγρραφο για τα [Command Line Options](cli.html#cli_command_line_options) για πληροφορίες σχετικά με τις διαφορετικές επιλογές και τρόπους με τους οποίους μπορείτε να τρέξετε Node.js scripts.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Παράδειγμα
+## Example
 
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
@@ -18,18 +18,18 @@ There are many tutorials and examples that follow this convention: `$` or `>` fo
 
 Lines that don’t start with `$` or `>` character are typically showing the output of the previous command.
 
-Αρχικά, βεβαιωθείτε ότι έχει κατεβάσει και εγκαταστήσει το Node.js. Δείτε [εδώ](https://nodejs.org/en/download/package-manager/) αναλυτικές οδηγίες εγκατάστασης.
+Firstly, make sure to have downloaded and installed Node.js. See [this guide](https://nodejs.org/en/download/package-manager/) for further install information.
 
 Now, create an empty project folder called `projects`, then navigate into it. The project folder can be named based on the user's current project title, but this example will use `projects` as the project folder.
 
-Linux και Mac:
+Linux and Mac:
 
 ```console
 $ mkdir ~/projects
 $ cd ~/projects
 ```
 
-WIndows:
+Windows CMD:
 
 ```console
 > mkdir %USERPROFILE%\projects
@@ -43,7 +43,7 @@ Windows PowerShell:
 > cd $env:USERPROFILE\projects
 ```
 
-Δημιουργήστε ένα νέο αρχείο μέσα στο φάκελο `projects` και ονομάστε το `hello-world.js`.
+Next, create a new source file in the `projects` folder and call it `hello-world.js`.
 
 In Node.js it is considered good style to use hyphens (`-`) or underscores (`_`) to separate multiple words in filenames.
 
@@ -78,8 +78,8 @@ An output like this should appear in the terminal to indicate Node.js server is 
 Server running at http://127.0.0.1:3000/
 ```
 
-Τώρα, ανοίξτε τον web browser της επιλογής σας και επισκεφθείτε την διεύθυνση `http://127.0.0.1:3000`.
+Now, open any preferred web browser and visit `http://127.0.0.1:3000`.
 
 If the browser displays the string `Hello, World!`, that indicates the server is working.
 
-Πολλά από τα παραδείγματα της τεκμηρίωσης μπορούν να τρέξουν με παρόμοιο τρόπο.
+Many of the examples in the documentation can be run similarly.
