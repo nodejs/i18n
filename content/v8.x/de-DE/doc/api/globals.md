@@ -1,10 +1,10 @@
-# Globale Objekte
+# Global Objects
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Diese Objekte sind in jedem Modul verfügbar. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
+These objects are available in all modules. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
 * [`__dirname`][]
 * [`__filename`][]
@@ -24,7 +24,7 @@ added: v0.1.103
 
 * {Function}
 
-Verarbeitet binäre Daten. Siehe [Abschnitt Puffer](buffer.html).
+Used to handle binary data. See the [buffer section](buffer.html).
 
 ## \_\_dirname
 
@@ -42,7 +42,7 @@ added: v0.9.1
 
 <!--type=global-->
 
-[`clearImmediate`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`clearImmediate`] is described in the [timers](timers.html) section.
 
 ## clearInterval(intervalObject)
 
@@ -52,7 +52,7 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearInterval`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`clearInterval`] is described in the [timers](timers.html) section.
 
 ## clearTimeout(timeoutObject)
 
@@ -62,9 +62,9 @@ added: v0.0.1
 
 <!--type=global-->
 
-[`clearTimeout`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`clearTimeout`] is described in the [timers](timers.html) section.
 
-## konsole
+## console
 
 <!-- YAML
 added: v0.1.100
@@ -74,7 +74,7 @@ added: v0.1.100
 
 * {Object}
 
-Wird zur Ausgabe mit stdout und stderr verwendet. Siehe Abschnitt [`console`][].
+Used to print to stdout and stderr. See the [`console`][] section.
 
 ## exports
 
@@ -88,15 +88,15 @@ added: v0.1.27
 
 <!-- type=global -->
 
-* {Object} Das globale namespace Objekt.
+* {Object} The global namespace object.
 
-In Browsern, ist der Top-Level Bereich der globale Bereich. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
+In browsers, the top-level scope is the global scope. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
 This variable may appear to be global but is not. See [`module`].
 
-## prozess
+## process
 
 <!-- YAML
 added: v0.1.7
@@ -106,7 +106,7 @@ added: v0.1.7
 
 * {Object}
 
-Das Objekt Prozess. Siehe Abschnitt [`process` object][].
+The process object. See the [`process` object][] section.
 
 ## require()
 
@@ -120,7 +120,7 @@ added: v0.9.1
 
 <!-- type=global -->
 
-[`setImmediate`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`setImmediate`] is described in the [timers](timers.html) section.
 
 ## setInterval(callback, delay[, ...args])
 
@@ -130,7 +130,7 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setInterval`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`setInterval`] is described in the [timers](timers.html) section.
 
 ## setTimeout(callback, delay[, ...args])
 
@@ -140,4 +140,4 @@ added: v0.0.1
 
 <!-- type=global -->
 
-[`setTimeout`] wird im Abschnitt [timers](timers.html) beschrieben.
+[`setTimeout`] is described in the [timers](timers.html) section.
