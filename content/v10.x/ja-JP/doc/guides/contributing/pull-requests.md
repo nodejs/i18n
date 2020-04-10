@@ -27,7 +27,7 @@ There are two fundamental components of the Pull Request process: one concrete a
   * [Accept that there are different opinions about what belongs in Node.js](#accept-that-there-are-different-opinions-about-what-belongs-in-nodejs)
   * [Performance is not everything](#performance-is-not-everything)
   * [Continuous Integration Testing](#continuous-integration-testing)
-* [備考](#notes) 
+* [Notes](#notes) 
   * [Commit Squashing](#commit-squashing)
   * [Getting Approvals for your Pull Request](#getting-approvals-for-your-pull-request)
   * [CI Testing](#ci-testing)
@@ -415,7 +415,7 @@ Only Node.js core Collaborators with commit rights to the `nodejs/node` reposito
 
 Ideally, the code change will pass ("be green") on all platform configurations supported by Node.js (there are over 30 platform configurations currently). This means that all tests pass and there are no linting errors. In reality, however, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red"). It is vital to visually inspect the results of all failed ("red") tests to determine whether the failure was caused by the changes in the Pull Request.
 
-## 備考
+## Notes
 
 ### Commit Squashing
 
