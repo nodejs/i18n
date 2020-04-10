@@ -1,4 +1,4 @@
-# 퓨니코드
+# Punycode
 <!-- YAML
 changes:
   - version: v7.0.0
