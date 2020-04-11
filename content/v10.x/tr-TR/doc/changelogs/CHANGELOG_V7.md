@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -336,9 +336,9 @@ This is a security release. All Node.js users should consult the security releas
 
 ### Notable Changes
 
-* **arabellek**: 
+* **buffer**: 
   * do not segfault on out-of-range index (Timothy Gu) [#11927](https://github.com/nodejs/node/pull/11927)
-* **kripto**: 
+* **crypto**: 
   * Fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade npm to 4.2.0 (Kat Marchán) [#11389](https://github.com/nodejs/node/pull/11389)
@@ -783,7 +783,7 @@ This release contains **v8 5.5**, you can read more about this version in the of
 
 ### Notable changes
 
-* **deps**: * V8’den 5.5’e güncelleyin (Michaël Zasso) [#11029](https://github.com/nodejs/node/pull/11029) * libuv'u 1.11.0'a yükseltin (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094) * düğüm incelemesi ekleyin 1.10.4 (Jan Krems) [#10187](https://github.com/nodejs/node/pull/10187) * zlib'i 1.2.11'e yükseltin (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
+* **deps**: * update V8 to 5.5 (Michaël Zasso) [#11029](https://github.com/nodejs/node/pull/11029) * upgrade libuv to 1.11.0 (cjihrig) [#11094](https://github.com/nodejs/node/pull/11094) * add node-inspect 1.10.4 (Jan Krems) [#10187](https://github.com/nodejs/node/pull/10187) * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
 * **lib**: build `node inspect` into `node` (Anna Henningsen) [#10187](https://github.com/nodejs/node/pull/10187)
 * **crypto**: Remove expired certs from CNNIC whitelist (Shigeki Ohtsu) [#9469](https://github.com/nodejs/node/pull/9469)
 * **inspector**: add --inspect-brk (Josh Gavant) [#11149](https://github.com/nodejs/node/pull/11149)
@@ -924,7 +924,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ### Notable changes
 
-* **kripto**: 
+* **crypto**: 
   * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
 * **deps**: 
@@ -1232,7 +1232,7 @@ Although the OpenSSL team have determined a maximum severity rating of "moderate
 
 ### Notable changes
 
-* **arabellek**: 
+* **buffer**: 
   * Improve performance of Buffer allocation by ~11%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
   * Improve performance of Buffer.from() by ~50%. (Brian White) [#10443](https://github.com/nodejs/node/pull/10443)
 * **events**: Improve performance of `EventEmitter.once()` by ~27%. (Brian White) [#10445](https://github.com/nodejs/node/pull/10445)
@@ -1393,11 +1393,11 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **arabellek**: 
+* **buffer**: 
   * buffer.fill() now works properly for the UCS2 encoding on Big-Endian machines. (Anna Henningsen) [#9837](https://github.com/nodejs/node/pull/9837)
-* **küme**: 
+* **cluster**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
-* **kripto**: 
+* **crypto**: 
   * The built-in list of Well-Known CAs (Certificate Authorities) can now be extended via a NODE_EXTRA_CA_CERTS environment variable. (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **http**: 
   * Remove stale timeout listeners in order to prevent a memory leak when using keep alive. (Karl Böhlmark) [#9440](https://github.com/nodejs/node/pull/9440)
@@ -1544,7 +1544,7 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* **arabellek**: 
+* **buffer**: 
   * Reverted the runtime deprecation of calling `Buffer()` without `new`. (Anna Henningsen) [#9529](https://github.com/nodejs/node/pull/9529)
   * Fixed `buffer.transcode()` for single-byte character encodings to `UCS2`. (Anna Henningsen) [#9838](https://github.com/nodejs/node/pull/9838)
 * **promise**: `--trace-warnings` now produces useful stacktraces for Promise warnings. (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
@@ -2014,18 +2014,18 @@ Thank you to @italoacasas for preparing the majority of this release.
 
 ### Notable changes
 
-* Arabellek 
+* Buffer 
   * Passing invalid input to Buffer.byteLength will now throw an error [#8946](https://github.com/nodejs/node/pull/8946).
   * Calling Buffer without new is now deprecated and will emit a process warning [#8169](https://github.com/nodejs/node/pull/8169).
   * Passing a negative number to allocUnsafe will now throw an error [#7079](https://github.com/nodejs/node/pull/7079).
 * Child Process 
   * The fork and execFile methods now have stronger argument validation [#7399](https://github.com/nodejs/node/pull/7399).
-* Küme 
+* Cluster 
   * The worker.suicide method is deprecated and will emit a process warning [#3747](https://github.com/nodejs/node/pull/3747).
 * Deps 
   * V8 has been updated to 5.4.500.36 [#8317](https://github.com/nodejs/node/pull/8317), [#8852](https://github.com/nodejs/node/pull/8852), [#9253](https://github.com/nodejs/node/pull/9253).
   * NODE_MODULE_VERSION has been updated to 51 [#8808](https://github.com/nodejs/node/pull/8808).
-* Dosya Sistemi 
+* File System 
   * A process warning is emitted if a callback is not passed to async file system methods [#7897](https://github.com/nodejs/node/pull/7897).
 * Intl 
   * Intl.v8BreakIterator constructor has been deprecated and will emit a process warning [#8908](https://github.com/nodejs/node/pull/8908).
