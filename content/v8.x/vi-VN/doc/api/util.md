@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Nó có thể truy cập bằng cách sử dụng:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -620,7 +620,7 @@ const uint8array = encoder.encode('this is some data');
 ### textEncoder.encode([input])
 
 * `input` {string} The text to encode. **Default:** an empty string.
-* Trả về: {Uint8Array}
+* Returns: {Uint8Array}
 
 UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encoded bytes.
 
@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## API không được chấp nhận
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
@@ -654,7 +654,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`console.error()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `string` {string} The message to print to `stderr`
 
@@ -667,7 +667,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`console.error()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`console.error()`][] instead.
 
 * `...strings` {string} The message to print to `stderr`
 
@@ -1096,7 +1096,7 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`console.log()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
 
@@ -1107,6 +1107,6 @@ added: v0.3.0
 deprecated: v0.11.3
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`console.log()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`console.log()`][] instead.
 
 Deprecated predecessor of `console.log`.
