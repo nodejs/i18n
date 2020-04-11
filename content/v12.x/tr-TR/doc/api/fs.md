@@ -1,22 +1,22 @@
-# Dosya Sistemi
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
 The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
 
-Bu modülü kullanmak için:
+To use this module:
 
 ```js
 const fs = require('fs');
 ```
 
-Tüm dosya sistemi işlemleri senkron ve asenkron formlara sahiptir.
+All file system operations have synchronous and asynchronous forms.
 
-Asenkrom form herzaman son argümanı olarak bir tamamlama callback'i alır. Tamamlama callback'ine geçilen argümanlar, yönteme bağlıdır, ancak ilk argüman her zaman bir istisna için ayrılmıştır. Eğer işlem başarıyla tamamlandıysa, ilk argüman `null` veya `undefined` olacaktır.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 ```js
 const fs = require('fs');
@@ -153,20 +153,20 @@ Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
 
 ```js
-// Windows'ta :
+// On Windows :
 
-// - WHATWG dosya URL'leri ana bilgisayar adı ile birlikte UNC yoluna dönüştürülür
+// - WHATWG file URLs with hostname convert to UNC path
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - WHATWG dosya URL'leri sürücü harfleri ile birlikte mutlak yola dönüştürülür
+// - WHATWG file URLs with drive letters convert to absolute path
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - Ana bilgisayar adı olmadan WHATWG dosya URL'leri bir sürücü harfine sahip olmak zorundadır
+// - WHATWG file URLs without hostname must have a drive letters
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: Dosya URL yolu mutlak olmalı
+// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
 ```
 
 `file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
@@ -1248,7 +1248,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | sadece oku               |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -1480,7 +1480,7 @@ Unlike the 16 kb default `highWaterMark` for a readable stream, the stream retur
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0, allowed values are in the [0, [`Number.MAX_SAFE_INTEGER`][]] range. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
-If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `fd` points to a character device that only supports blocking reads (such as keyboard or sound card), read operations do not finish until data is available. This can prevent the process from exiting and the stream from closing naturally.
 
@@ -1553,7 +1553,7 @@ If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the 
 
 By default, the stream will not emit a `'close'` event after it has been destroyed. This is the opposite of the default for other `Writable` streams. Set the `emitClose` option to `true` to change this behavior.
 
-Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `options` is a string, then it specifies the encoding.
 
@@ -2273,7 +2273,7 @@ added: v5.10.0
 * `prefix` {string}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the created folder path.
 
@@ -2577,7 +2577,7 @@ changes:
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the contents of the `path`.
 
@@ -2639,7 +2639,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2767,7 +2767,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the resolved pathname.
 
@@ -2781,7 +2781,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object}
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous realpath(3).
 
