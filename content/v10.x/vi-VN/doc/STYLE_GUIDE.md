@@ -1,13 +1,13 @@
 # Style Guide
 
-* Tài liệu được viết trong các tập tin markdown và đặt tên theo định dạng là `chữ-thường-và-gạch-ngang.md`. 
-  * Các dấu gạch chân trong tên tập tin chỉ được phép dùng khi chúng xuất hiện trong chủ đề mà tài liệu sẽ mô tả (ví dụ `child_process`).
-  * Có các ngoại lệ cho một số tập tin, chẳng hạn như các tập tin markdown ở mức cao nhất.
-* Tài liệu nên giới hạn mỗi dòng dài nhất là 80 ký tự.
-* Ưu tiên mô tả các định dạng trong `.editorconfig`. 
-  * Một [plugin](http://editorconfig.org/#download) có sẵn trong một số chương trình soạn thảo văn bản để tự động áp dụng các quy tắc này.
-* Các thay đổi trong tài liệu cần được kiểm tra với `make lint-md`.
-* Ưu tiên sử dụng chính tả kiểu Anh Mỹ. "Capitalize" thay cho "Capitalise", "color" thay cho "colour". "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
+* Changes to documentation should be checked with `make lint-md`.
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "colour", etc.
 * Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
