@@ -8,7 +8,7 @@
 
 Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Ví dụ
+## Example
 
 An example of a [web server](http.html) written with Node.js which responds with `'Hello World!'`:
 
