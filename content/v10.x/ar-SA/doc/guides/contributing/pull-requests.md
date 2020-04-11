@@ -107,7 +107,7 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 #### إرشادات رسالة الإلتزام
 
-رسالة التزام جيدة ينبغي أن تصف ما الذي تغير، ولماذا.
+A good commit message should describe what changed and why.
 
 1. يجب على السطر الأول أن:
   
@@ -135,7 +135,7 @@ Note that multiple commits often get squashed when they are landed (see the note
 
 5. If your commit introduces a breaking change (`semver-major`), it should contain an explanation about the reason of the breaking change, which situation would trigger the breaking change and what is the exact change.
 
-عينة كاملة لرسالة آلإلتزام:
+Sample complete commit message:
 
 ```txt
 النظام الفرعي: شرح الالتزام في سطر واحد
@@ -180,7 +180,7 @@ Before submitting your changes in a Pull Request, always run the full Node.js te
 $ ./configure && make -j4 test
 ```
 
-وفي نظام الويندوز:
+And on Windows:
 
 ```text
 > vcbuild test
@@ -220,7 +220,7 @@ Remember to recompile with `make -j4` in between test runs if you change code in
 
 #### تغطية الاختبار
 
-من الممارسات الجيدة لضمان أن أي شيفرة تضيفها أو تغيرها قد تم تغطيتها من خلال الاختبارات. يمكنك القيام بذلك عن طريق تشغيل مجموعة الاختبار مع تمكين التغطية:
+It's good practice to ensure any code you add or change is covered by tests. You can do so by running the test suite with coverage enabled:
 
 ```text
 $ ./configure --coverage && make coverage
@@ -238,7 +238,7 @@ $ CI_JS_SUITES=child-process CI_NATIVE_SUITES= make coverage
 
 The above command executes tests for the `child-process` subsystem and outputs the resulting coverage report.
 
-Running tests with coverage will create and modify several directories and files. للتنظيف بعد ذلك، قم بتشغيل:
+Running tests with coverage will create and modify several directories and files. To clean up afterwards, run:
 
 ```text
 make coverage-clean
@@ -276,13 +276,13 @@ From within GitHub, opening a new Pull Request will present you with a template 
 
 Please try to do your best at filling out the details, but feel free to skip parts if you're not sure what to put.
 
-بمجرد فتحها، تتم مراجعة طلبات السحب عادة في غضون بضعة أيام.
+Once opened, Pull Requests are usually reviewed within a few days.
 
 ### الخطوة 9: النقاش والتحديث
 
-من المحتمل أن تحصل على ملاحظات أو طلبات لإجراء تعديلات على طلب السحب. هذا جزء كبير من عملية التقديم، لذا لا تصب بالإحباط! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+You will probably get feedback or requests for changes to your Pull Request. This is a big part of the submission process so don't be discouraged! Some contributors may sign off on the Pull Request right away, others may have more detailed comments or feedback. This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
 
-To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub سيقوم تلقائياً بتحديث "طلب السحب".
+To make changes to an existing Pull Request, make the changes to your local branch, add a new commit with those changes, and push those to your fork. GitHub will automatically update the Pull Request.
 
 ```text
 $ git add my/changed/files
@@ -300,7 +300,7 @@ $ git push --force-with-lease origin my-branch
 
 **Important:** The `git push --force-with-lease` command is one of the few ways to delete history in `git`. Before you use it, make sure you understand the risks. If in doubt, you can always ask for guidance in the Pull Request or on [IRC in the #node-dev channel](https://webchat.freenode.net?channels=node-dev&uio=d4).
 
-إذا ارتكبت خطأ في أي من التزاماتك ، فلا تقلق. You can amend the last commit (for example if you want to change the commit log).
+If you happen to make a mistake in any of your commits, do not worry. You can amend the last commit (for example if you want to change the commit log).
 
 ```text
 $ git add any/changed/files
@@ -314,9 +314,9 @@ Feel free to post a comment in the Pull Request to ping reviewers if you are awa
 
 #### الموافقة وطلب تغييرات سير العمل
 
-تتطلب كافة طلبات سحب "تسجيل الخروج" من أجل النزول. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
+All Pull Requests require "sign off" in order to land. Whenever a contributor reviews a Pull Request they may find specific details that they would like to see changed or fixed. These may be as simple as fixing a typo, or may involve substantive changes to the code you have written. While such requests are intended to be helpful, they may come across as abrupt or unhelpful, especially requests to change things that do not include concrete suggestions on *how* to change them.
 
-حاول ألا يصيبك الإحباط. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
+Try not to be discouraged. If you feel that a particular review is unfair, say so, or contact one of the other contributors in the project and seek their input. Often such comments are the result of the reviewer having only taken a short amount of time to review and are not ill-intended. Such issues can often be resolved with a bit of patience. That said, reviewers should be expected to be helpful in their feedback, and feedback that is simply vague, dismissive and unhelpful is likely safe to ignore.
 
 ### الخطوة 10: النزول
 
@@ -332,7 +332,7 @@ Reviews that are dismissive or disrespectful of the contributor or any other rev
 
 When reviewing a Pull Request, the primary goals are for the codebase to improve and for the person submitting the request to succeed. Even if a Pull Request does not land, the submitters should come away from the experience feeling like their effort was not wasted or unappreciated. Every Pull Request from a new contributor is an opportunity to grow the community.
 
-### راجع جزء صغير في كل وقت.
+### Review a bit at a time.
 
 Do not overwhelm new contributors.
 
@@ -355,11 +355,11 @@ It is always good to clearly indicate nits when you comment: e.g. `Nit: change f
 
 If your comments were addressed but were not folded automatically after new commits or if they proved to be mistaken, please, [hide them](https://help.github.com/articles/managing-disruptive-comments/#hiding-a-comment) with the appropriate reason to keep the conversation flow concise and relevant.
 
-### كن حذرا من الشخص المسؤول عن الشيفرة
+### Be aware of the person behind the code
 
 Be aware that *how* you communicate requests and reviews in your feedback can have a significant impact on the success of the Pull Request. Yes, we may land a particular change that makes Node.js better, but the individual might just not want to have anything to do with Node.js ever again. The goal is not just having good code.
 
-### احترام الحد الأدنى من وقت الانتظار للتعليقات
+### Respect the minimum wait time for comments
 
 There is a minimum waiting time which we try to respect for non-trivial changes, so that people who may have important input in such a distributed project are able to respond.
 
@@ -371,7 +371,7 @@ Trivial changes, typically limited to small formatting changes or fixes to docum
 
 If a Pull Request appears to be abandoned or stalled, it is polite to first check with the contributor to see if they intend to continue the work before checking if they would mind if you took it over (especially if it just has nits left). When doing so, it is courteous to give the original contributor credit for the work they started (either by preserving their name and email address in the commit log, or by using an `Author:` meta-data tag in the commit.
 
-### الموافقة على تعديل
+### Approving a change
 
 Any Node.js core Collaborator (any GitHub user with commit rights in the `nodejs/node` repository) is authorized to approve any other contributor's work. Collaborators are not permitted to approve their own Pull Requests.
 
@@ -387,7 +387,7 @@ Change requests that are vague, dismissive, or unconstructive may also be dismis
 
 If you do not believe that the Pull Request should land at all, use `Changes requested` to indicate that you are considering some of your comments to block the PR from landing. When doing so, explain *why* you believe the Pull Request should not land along with an explanation of what may be an acceptable alternative course, if any.
 
-### تقبل أن هناك آراء مختلفة حول ما ينتمي لـ Node.js
+### Accept that there are different opinions about what belongs in Node.js
 
 Opinions on this vary, even among the members of the Technical Steering Committee.
 
@@ -397,7 +397,7 @@ Also, functionality that either cannot be implemented outside of core in any rea
 
 It is not uncommon for contributors to suggest new features they feel would make Node.js better. These may or may not make sense to add, but as with all changes, be courteous in how you communicate your stance on these. Comments that make the contributor feel like they should have "known better" or ridiculed for even trying run counter to the [Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
 
-### الأداء ليس كل شيء
+### Performance is not everything
 
 Node.js has always optimized for speed of execution. If a particular change can be shown to make some part of Node.js faster, it's quite likely to be accepted. Claims that a particular Pull Request will make things faster will almost always be met by requests for performance [benchmark results](../writing-and-running-benchmarks.md) that demonstrate the improvement.
 
@@ -405,7 +405,7 @@ That said, performance is not the only factor to consider. Node.js also optimize
 
 If a particular Pull Request introduces a performance or functional regression, rather than simply rejecting the Pull Request, take the time to work *with* the contributor on improving the change. Offer feedback and advice on what would make the Pull Request acceptable, and do not assume that the contributor should already know how to do that. Be explicit in your feedback.
 
-### اختبار التكامل المتواصل
+### Continuous Integration Testing
 
 All Pull Requests that contain changes to code must be run through continuous integration (CI) testing at <https://ci.nodejs.org/>.
 
@@ -415,7 +415,7 @@ Ideally, the code change will pass ("be green") on all platform configurations s
 
 ## Notes
 
-### دمج الإلتزام
+### Commit Squashing
 
 In most cases, do not squash commits that you add to your Pull Request during the review process. When the commits in your Pull Request land, they may be squashed into one commit per logical change. Metadata will be added to the commit message (including links to the Pull Request, links to relevant issues, and the names of the reviewers). The commit history of your Pull Request, however, will stay intact on the Pull Request page.
 
@@ -427,16 +427,16 @@ A Pull Request is approved either by saying LGTM, which stands for "Looks Good T
 
 After you push new changes to your branch, you need to get approval for these new changes again, even if GitHub shows "Approved" because the reviewers have hit the buttons before.
 
-### اختبار CI
+### CI Testing
 
 Every Pull Request needs to be tested to make sure that it works on the platforms that Node.js supports. This is done by running the code through the CI system.
 
 Only a Collaborator can start a CI run. Usually one of them will do it for you as approvals for the Pull Request come in. If not, you can ask a Collaborator to start a CI run.
 
-### الانتظار حتى ينزل طلب السحب
+### Waiting Until the Pull Request Gets Landed
 
 A Pull Request needs to stay open for at least 48 hours from when it is submitted, even after it gets approved and passes the CI. This is to make sure that everyone has a chance to weigh in. If the changes are trivial, collaborators may decide it doesn't need to wait. A Pull Request may well take longer to be merged in. All these precautions are important because Node.js is widely used, so don't be discouraged!
 
-### ألق نضرة على دليل التعاون
+### Check Out the Collaborator Guide
 
 If you want to know more about the code review and the landing process, see the [Collaborator Guide](../../../COLLABORATOR_GUIDE.md).
