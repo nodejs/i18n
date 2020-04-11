@@ -162,7 +162,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 
 ### Notable Changes
 
-* **điều khiển**: 
+* **console**: 
   * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
 * **crypto**: 
   * expose ECDH class (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
@@ -758,7 +758,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 ### Notable Changes
 
-* **xác nhận (Assert)**: 
+* **assert**: 
   * assert.fail() can now take one or two arguments (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
 * **crypto**: 
   * add sign/verify support for RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
@@ -772,7 +772,7 @@ This release includes a security update to openssl that has been deemed low seve
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
 * **inspector**: 
   * enable --inspect-brk (Refael Ackermann) [#12615](https://github.com/nodejs/node/pull/12615)
-* **tiến trình**: 
+* **process**: 
   * add --redirect-warnings command line argument (James M Snell) [#10116](https://github.com/nodejs/node/pull/10116)
 * **src**: 
   * allow CLI args in env with NODE_OPTIONS (Sam Roberts) [#12028](https://github.com/nodejs/node/pull/12028)
@@ -1044,7 +1044,7 @@ This LTS release comes with 152 commits. This includes 75 which are test related
   * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
   * Snapshots are turned back on!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
-* **đường dẫn**: 
+* **path**: 
   * win32 volume-relative paths are working again! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
   * v6.x can now build with ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
@@ -1480,7 +1480,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
 
 * **build**: 
   * support for building mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
-* **máy chủ song hành**: 
+* **cluster**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
 * **crypto**: 
   * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
@@ -1495,9 +1495,9 @@ This LTS release comes with 126 commits. This includes 40 which are test related
   * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
   * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
-* **tiến trình**: 
+* **process**: 
   * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
-* **hàm Readline**: 
+* **readline**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
 * **src**: 
   * support "--" after "-e" as end-of-options (John Barboza) [#10651](https://github.com/nodejs/node/pull/10651)
@@ -3636,7 +3636,7 @@ Semver Patch:
 
 ### Notable changes
 
-* **bộ đệm**: 
+* **buffer**: 
   * Improve performance of Buffer.from(str, 'hex') and Buffer#write(str, 'hex'). (Christopher Jeffrey) [#7602](https://github.com/nodejs/node/pull/7602)
   * Fix creating from zero-length ArrayBuffer. (Ingvar Stepanyan) [#7176](https://github.com/nodejs/node/pull/7176)
 * **deps**: 
@@ -4381,16 +4381,16 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 The following significant changes have been made since the previous Node.js v5.0.0 release.
 
-* Bộ đệm 
+* Buffer 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
   * Improved error handling [#4514](https://github.com/nodejs/node/pull/4514).
   * The `Buffer.prototype.lastIndexOf()` method has been added [#4846](https://github.com/nodejs/node/pull/4846).
-* Máy chủ song hành 
+* Cluster 
   * Worker emitted as first argument in 'message' event [#5361](https://github.com/nodejs/node/pull/5361).
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
-* Điều khiển 
+* Console 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
 * Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
@@ -4404,17 +4404,17 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Sự kiện 
+* Events 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* Tập tin hệ thống 
+* File System 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Các Mô-đun 
+* Modules 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
 * Net 
@@ -4424,20 +4424,20 @@ The following significant changes have been made since the previous Node.js v5.0
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Đường dẫn 
+* Path 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Tiến trình 
+* Process 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
   * The object returned by `querystring.parse()` no longer inherits from Object.prototype [#6055](https://github.com/nodejs/node/pull/6055).
-* Hàm Readline 
+* Readline 
   * Key info is emitted unconditionally [#6024](https://github.com/nodejs/node/pull/6024).
   * History can now be explicitly disabled [#6352](https://github.com/nodejs/node/pull/6352).
 * REPL 
   * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
   * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
-* Bộ hẹn giờ 
+* Timers 
   * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams 
   * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
