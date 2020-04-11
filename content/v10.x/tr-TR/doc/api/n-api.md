@@ -4,9 +4,9 @@
 
 <!-- type=misc -->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Temel JavaScript çalışma zamanından bağımsızdır (eski V8) ve Node.js öğesinin bir parçası olarak korunur. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The [ABI Stability](https://nodejs.org/en/docs/guides/abi-stability/) guide provides a more in-depth explanation.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -179,13 +179,13 @@ This is an opaque pointer that is used to represent a JavaScript value.
 
 ### napi_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 This is an opaque pointer that represents a JavaScript function which can be called asynchronously from multiple threads via `napi_call_threadsafe_function()`.
 
 ### napi_threadsafe_function_release_mode
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A value to be given to `napi_release_threadsafe_function()` to indicate whether the thread-safe function is to be closed immediately (`napi_tsfn_abort`) or merely released (`napi_tsfn_release`) and thus available for subsequent use via `napi_acquire_threadsafe_function()` and `napi_call_threadsafe_function()`.
 
@@ -198,7 +198,7 @@ typedef enum {
 
 ### napi_threadsafe_function_call_mode
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A value to be given to `napi_call_threadsafe_function()` to indicate whether the call should block whenever the queue associated with the thread-safe function is full.
 
@@ -275,7 +275,7 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 #### napi_threadsafe_function_call_js
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 Function pointer used with asynchronous thread-safe function calls. The callback will be called on the main thread. Its purpose is to use a data item arriving via the queue from one of the secondary threads to construct the parameters necessary for a call into JavaScript, usually via `napi_call_function`, and then make the call into JavaScript.
 
@@ -297,7 +297,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 - `[in] context`: The optional data with which the thread-safe function was created.
 - `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## Hata işleme
+## Error Handling
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
@@ -373,7 +373,7 @@ The first approach is to do any appropriate cleanup and then return so that exec
 
 The second approach is to try to handle the exception. There will be cases where the native code can catch the exception, take the appropriate action, and then continue. This is only recommended in specific cases where it is known that the exception can be safely handled. In these cases [`napi_get_and_clear_last_exception`][] can be used to get and clear the exception. On success, result will contain the handle to the last JavaScript `Object` thrown. If it is determined, after retrieving the exception, the exception cannot be handled after all it can be re-thrown it with [`napi_throw`][] where error is the JavaScript `Error` object to be thrown.
 
-Yerel kodun bir istisna atması veya bir `napi_value`'nün bir JavaScript `Hata` nesnesinin bir örneği olup olmadığına karar vermesi durumunda aşağıdaki yardımcı işlevler de kullanılabilir: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] ve [`napi_is_error`][].
+The following utility functions are also available in case native code needs to throw an exception or determine if a `napi_value` is an instance of a JavaScript `Error` object: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] and [`napi_is_error`][].
 
 The following utility functions are also available in case native code needs to create an `Error` object: [`napi_create_error`][], [`napi_create_type_error`][], and [`napi_create_range_error`][], where result is the `napi_value` that refers to the newly created JavaScript `Error` object.
 
@@ -659,11 +659,11 @@ It is often necessary to make the lifespan of handles shorter than the lifespan 
 ```C
 for (int i = 0; i < 1000000; i++) {
   napi_value result;
-  napi_status durumu = napi_get_element(env, object, i, &result);
+  napi_status status = napi_get_element(env, object, i, &result);
   if (status != napi_ok) {
     break;
   }
-  // element ile bir şeyler yapın
+  // do something with element
 }
 ```
 
@@ -678,17 +678,17 @@ Taking the earlier example, adding calls to [`napi_open_handle_scope`][] and [`n
 ```C
 for (int i = 0; i < 1000000; i++) {
   napi_handle_scope scope;
-  napi_status durumu = napi_open_handle_scope(env, &scope);
+  napi_status status = napi_open_handle_scope(env, &scope);
   if (status != napi_ok) {
     break;
   }
-  napi_value sonuçları;
-  durumu = napi_get_element(env, object, i, &result);
+  napi_value result;
+  status = napi_get_element(env, object, i, &result);
   if (status != napi_ok) {
     break;
   }
-  // element ile bir şeyler yapın
-  durumu = napi_close_handle_scope(env, scope);
+  // do something with element
+  status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
   }
@@ -1016,25 +1016,25 @@ napi_value Init(napi_env env, napi_value exports) {
 To define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOT: kısmi örnek, referans verilen tüm kodlar dahil değil
+// NOTE: partial example, not all referenced code is included
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status durumu;
+  napi_status status;
   napi_property_descriptor properties[] = {
-    { "value", nullptr, GetValue, SetValue, 0, napi_default, 0 },
+    { "value", NULL, NULL, GetValue, SetValue, NULL, napi_default, NULL },
     DECLARE_NAPI_METHOD("plusOne", PlusOne),
     DECLARE_NAPI_METHOD("multiply", Multiply),
   };
 
   napi_value cons;
   status =
-      napi_define_class(env, "MyObject", New, nullptr, 3, properties, &cons);
-  if (status != napi_ok) return nullptr;
+      napi_define_class(env, "MyObject", New, NULL, 3, properties, &cons);
+  if (status != napi_ok) return NULL;
 
   status = napi_create_reference(env, cons, 1, &constructor);
-  if (status != napi_ok) return nullptr;
+  if (status != napi_ok) return NULL;
 
   status = napi_set_named_property(env, exports, "MyObject", cons);
-  if (status != napi_ok) return nullptr;
+  if (status != napi_ok) return NULL;
 
   return exports;
 }
@@ -1544,7 +1544,7 @@ The JavaScript `Number` type is described in [Section 6.1.6](https://tc39.github
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1566,7 +1566,7 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1588,7 +1588,7 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -1904,7 +1904,7 @@ This API returns the C double primitive equivalent of the given JavaScript `Numb
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -1928,7 +1928,7 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript `B
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -1952,7 +1952,7 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript `
 added: v10.7.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -2532,19 +2532,19 @@ obj.myProp = 123;
 The equivalent can be done using N-API values with the following snippet:
 
 ```C
-napi_status durumu = napi_generic_failure;
+napi_status status = napi_generic_failure;
 
 // const obj = {}
-napi_value obj, değeri;
-durumu = napi_create_object(env, &obj);
+napi_value obj, value;
+status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// 123 için bir napi_value oluşturun
-durumu = napi_create_int32(env, 123, &value);
+// Create a napi_value for 123
+status = napi_create_int32(env, 123, &value);
 if (status != napi_ok) return status;
 
 // obj.myProp = 123
-durumu = napi_set_named_property(env, obj, "myProp", value);
+status = napi_set_named_property(env, obj, "myProp", value);
 if (status != napi_ok) return status;
 ```
 
@@ -2558,18 +2558,18 @@ arr[123] = 'hello';
 The equivalent can be done using N-API values with the following snippet:
 
 ```C
-napi_status durumu = napi_generic_failure;
+napi_status status = napi_generic_failure;
 
 // const arr = [];
 napi_value arr, value;
-durumu = napi_create_array(env, &arr);
+status = napi_create_array(env, &arr);
 if (status != napi_ok) return status;
 
-// 'merhaba' için bir napi_value oluşturun
-status = napi_create_string_utf8(env, "merhaba", NAPI_AUTO_LENGTH, &value);
+// Create a napi_value for 'hello'
+status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &value);
 if (status != napi_ok) return status;
 
-// arr[123] = 'merhaba';
+// arr[123] = 'hello';
 status = napi_set_element(env, arr, 123, value);
 if (status != napi_ok) return status;
 ```
@@ -2609,26 +2609,26 @@ Object.defineProperties(obj, {
 The following is the approximate equivalent of the N-API counterpart:
 
 ```C
-napi_status durumu = napi_status_generic_failure;
+napi_status status = napi_status_generic_failure;
 
 // const obj = {};
 napi_value obj;
-durum = napi_create_object(env, &obj);
+status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-//123 ve 456 için napi_values oluşturun
+// Create napi_values for 123 and 456
 napi_value fooValue, barValue;
-durum = napi_create_int32(env, 123, &fooValue);
+status = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Özellikleri ayarlayın
+// Set the properties
 napi_property_descriptor descriptors[] = {
-  { "foo", BOŞ, BOŞ, BOŞ, BOŞ, fooDeğeri, napi_default, BOŞ },
-  { "bar", BOŞ, BOŞ, BOŞ, BOŞ, barDeğeri, napi_default, BOŞ }
+  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
+  { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
 }
-durum = napi_define_properties(env,
+status = napi_define_properties(env,
                                 obj,
                                 sizeof(descriptors) / sizeof(descriptors[0]),
                                 descriptors);
@@ -3059,7 +3059,7 @@ function AddTwo(num) {
 Then, the above function can be invoked from a native add-on using the following code:
 
 ```C
-// Küresel nesnede "AddTwo" adlı fonksiyonu alın
+// Get the function named "AddTwo" on the global object
 napi_value global, add_two, arg;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -3079,7 +3079,7 @@ napi_value return_val;
 status = napi_call_function(env, global, add_two, argc, argv, &return_val);
 if (status != napi_ok) return;
 
-// Sonucu tekrar yerel tipe dönüştürün
+// Convert the result back to a native type
 int32_t result;
 status = napi_get_value_int32(env, return_val, &result);
 if (status != napi_ok) return;
@@ -3117,23 +3117,25 @@ The newly created function is not automatically visible from script after this c
 In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
 
 ```C
-napi_value MerhabaDe(napi_env env, napi_callback_info info) {
-  printf("Merhaba\n");
-  return nullptr;
+napi_value SayHello(napi_env env, napi_callback_info info) {
+  printf("Hello\n");
+  return NULL;
 }
 
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status durumu;
+  napi_status status;
 
   napi_value fn;
-  status =  napi_create_function(env, nullptr, 0, MerhabaDe, nullptr, &fn);
-  if (status != napi_ok) return nullptr;
+  status = napi_create_function(env, NULL, 0, SayHello, NULL, &fn);
+  if (status != napi_ok) return NULL;
 
-  status = napi_set_named_property(env, exports, "deMerhaba", fn);
-  if (status != napi_ok) return nullptr;
+  status = napi_set_named_property(env, exports, "sayHello", fn);
+  if (status != napi_ok) return NULL;
 
   return exports;
 }
+
+NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 Given the above code, the add-on can be used from JavaScript as follows:
@@ -3232,7 +3234,7 @@ const value = new MyObject(arg);
 The following can be approximated in N-API using the following snippet:
 
 ```C
-// MyObject yapıcı fonksiyonunu alın
+// Get the constructor function MyObject
 napi_value global, constructor, arg, value;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -3240,14 +3242,14 @@ if (status != napi_ok) return;
 status = napi_get_named_property(env, global, "MyObject", &constructor);
 if (status != napi_ok) return;
 
-// const arg = "merhaba"
+// const arg = "hello"
 status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg);
 if (status != napi_ok) return;
 
 napi_value* argv = &arg;
 size_t argc = 1;
 
-// const değeri = yeni MyObject(arg)
+// const value = new MyObject(arg)
 status = napi_new_instance(env, constructor, argc, argv, &value);
 ```
 
@@ -3487,8 +3489,8 @@ napi_status napi_create_async_work(napi_env env,
                                    napi_value async_resource_name,
                                    napi_async_execute_callback execute,
                                    napi_async_complete_callback complete,
-                                   void* veri,
-                                   napi_async_work* sonuç);
+                                   void* data,
+                                   napi_async_work* result);
 ```
 
 - `[in] env`: The environment that the API is invoked under.
@@ -3570,7 +3572,7 @@ This API can be called even if there is a pending JavaScript exception.
 
 ## Custom Asynchronous Operations
 
-The simple asynchronous work APIs above may not be appropriate for every scenario. Başka bir eşzamansız mekanizma kullanırken, aşağıdaki API'ler eş zamanlı olmayan bir işlemin çalışma zamanı tarafından düzgün bir şekilde izlenmesini sağlamak için gereklidir.
+The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
 
 ### napi_async_init
 
@@ -3941,7 +3943,7 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
 
 ## Asynchronous Thread-safe Function Calls
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 JavaScript functions can normally only be called from a native addon's main thread. If an addon creates additional threads, then N-API functions that require a `napi_env`, `napi_value`, or `napi_ref` must not be called from those threads.
 
@@ -3973,7 +3975,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4014,7 +4016,7 @@ napi_create_threadsafe_function(napi_env env,
 
 ### napi_get_threadsafe_function_context
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4033,7 +4035,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4056,7 +4058,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4075,7 +4077,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4096,7 +4098,7 @@ This API may be called from any thread which will stop making use of `func`.
 
 ### napi_ref_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
@@ -4116,7 +4118,7 @@ This API may only be called from the main thread.
 
 ### napi_unref_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v10.6.0
