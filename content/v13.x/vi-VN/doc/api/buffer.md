@@ -1,8 +1,8 @@
-# Bộ đệm
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 In Node.js, `Buffer` objects are used to represent binary data in the form of a sequence of bytes. Many Node.js APIs, for example streams and file system operations, support `Buffer`s, as interactions with the operating system or other processes generally always happen in terms of binary data.
 
@@ -1123,7 +1123,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Trả về: {bigint}
+* Returns: {bigint}
 
 Reads a signed 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigInt64BE()` reads as big endian, `readBigInt64LE()` reads as little endian).
 
@@ -1136,7 +1136,7 @@ added: v12.0.0
 -->
 
 * `offset` {integer} Number of bytes to skip before starting to read. Must satisfy: `0 <= offset <= buf.length - 8`. **Default:** `0`.
-* Trả về: {bigint}
+* Returns: {bigint}
 
 Reads an unsigned 64-bit integer from `buf` at the specified `offset` with the specified [endianness](https://en.wikipedia.org/wiki/Endianness) (`readBigUInt64BE()` reads as big endian, `readBigUInt64LE()` reads as little endian).
 
