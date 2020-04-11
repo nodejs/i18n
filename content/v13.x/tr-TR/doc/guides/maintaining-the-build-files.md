@@ -2,7 +2,7 @@
 
 This document explains how to maintain the build files in the codebase.
 
-## Genel Bakış
+## Overview
 
 On how to build the Node.js core, see [Building Node.js](../../BUILDING.md).
 
@@ -32,6 +32,6 @@ To see the help text, run `python configure --help`. Update this file when you n
 
 To see the help text, run `make help`. This file is not generated, it is maintained by humans. This is not usually run on Windows, where [vcbuild.bat](#vcbuildbat) is used instead.
 
-### Seçenekler
+### Options
 
 * `-j <n>`: number of threads used to build the binary. On the non-CI targets, the parallel tests will take up all the available cores, regardless of this option.
