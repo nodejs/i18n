@@ -1,8 +1,8 @@
-# Máy chủ song hành
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -587,7 +587,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Trả về: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
