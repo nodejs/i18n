@@ -162,9 +162,9 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 
 ### Notable Changes
 
-* **консоль**: 
+* **console**: 
   * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
-* **крипто**: 
+* **crypto**: 
   * expose ECDH class (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
   * added cypto.randomFill() and crypto.randomFillSync() (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
   * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
@@ -178,7 +178,7 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
   * return this from net.Socket.end() (Sam Roberts) [#13481](https://github.com/nodejs/node/pull/13481)
 * **module**: 
   * add builtinModules api that provides list of all builtin modules in Node (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
-* **мережа**: 
+* **net**: 
   * return this from getConnections() (Sam Roberts) [#13553](https://github.com/nodejs/node/pull/13553)
 * **promises**: 
   * more robust stringification for unhandled rejections (Timothy Gu) [#13784](https://github.com/nodejs/node/pull/13784)
@@ -760,7 +760,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 * **assert**: 
   * assert.fail() can now take one or two arguments (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
-* **крипто**: 
+* **crypto**: 
   * add sign/verify support for RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
 * **deps**: 
   * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
@@ -770,9 +770,9 @@ This release includes a security update to openssl that has been deemed low seve
   * upgrade libuv to 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
 * **fs**: 
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
-* **інспектор**: 
+* **inspector**: 
   * enable --inspect-brk (Refael Ackermann) [#12615](https://github.com/nodejs/node/pull/12615)
-* **процес**: 
+* **process**: 
   * add --redirect-warnings command line argument (James M Snell) [#10116](https://github.com/nodejs/node/pull/10116)
 * **src**: 
   * allow CLI args in env with NODE_OPTIONS (Sam Roberts) [#12028](https://github.com/nodejs/node/pull/12028)
@@ -935,7 +935,7 @@ This LTS release comes with 91 commits. This includes 29 which are test related,
 
 ### Notable Changes
 
-* **мережа**: 
+* **net**: 
   * support passing undefined to listen() to match behavior in v4.x and v8.x (Sam Roberts) [#14234](https://github.com/nodejs/node/pull/14234)
 
 ### Commits
@@ -1044,7 +1044,7 @@ This LTS release comes with 152 commits. This includes 75 which are test related
   * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
   * Snapshots are turned back on!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
-* **шлях**: 
+* **path**: 
   * win32 volume-relative paths are working again! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
   * v6.x can now build with ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
@@ -1214,7 +1214,7 @@ This LTS release comes with 221 commits. This includes 80 which are test related
 
 * **configure**: 
   * add mips64el to valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
-* **крипто**: 
+* **crypto**: 
   * Updated root certificates based on [NSS 3.30](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.30_release_notes) (Ben Noordhuis) 
     * [#13279](https://github.com/nodejs/node/pull/13279)
     * [#12402](https://github.com/nodejs/node/pull/12402)
@@ -1480,9 +1480,9 @@ This LTS release comes with 126 commits. This includes 40 which are test related
 
 * **build**: 
   * support for building mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
-* **кластер**: 
+* **cluster**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
-* **крипто**: 
+* **crypto**: 
   * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * The `Decipher` methods `setAuthTag()` and `setAAD` now return `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
@@ -1495,7 +1495,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
   * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
   * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
-* **процес**: 
+* **process**: 
   * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
@@ -1819,7 +1819,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable changes
 
-* **крипто**: 
+* **crypto**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -3359,7 +3359,7 @@ Semver Patch:
 
 * **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
 * **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
-* **інспектор**: 
+* **inspector**: 
   * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
@@ -3636,7 +3636,7 @@ Semver Patch:
 
 ### Notable changes
 
-* **буфер**: 
+* **buffer**: 
   * Improve performance of Buffer.from(str, 'hex') and Buffer#write(str, 'hex'). (Christopher Jeffrey) [#7602](https://github.com/nodejs/node/pull/7602)
   * Fix creating from zero-length ArrayBuffer. (Ingvar Stepanyan) [#7176](https://github.com/nodejs/node/pull/7176)
 * **deps**: 
@@ -4299,7 +4299,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 * **debugger**: Arrays are now formatted correctly in the debugger repl. (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **deps**: Upgrade OpenSSL sources to 1.0.2h (Shigeki Ohtsu) [#6550](https://github.com/nodejs/node/pull/6550) 
   * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
-* **мережа**: Introduced a `Socket#connecting` property. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
+* **net**: Introduced a `Socket#connecting` property. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
   * Previously this information was only available as the undocumented, internal `_connecting` property.
 * **process**: Introduced `process.cpuUsage()`. (Patrick Mueller) [#6157](https://github.com/nodejs/node/pull/6157)
 * **stream**: `Writable#setDefaultEncoding()` now returns `this`. (Alexander Makarenko) [#5040](https://github.com/nodejs/node/pull/5040)
@@ -4381,18 +4381,18 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 The following significant changes have been made since the previous Node.js v5.0.0 release.
 
-* Буфер 
+* Buffer 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
   * Improved error handling [#4514](https://github.com/nodejs/node/pull/4514).
   * The `Buffer.prototype.lastIndexOf()` method has been added [#4846](https://github.com/nodejs/node/pull/4846).
-* Кластер 
+* Cluster 
   * Worker emitted as first argument in 'message' event [#5361](https://github.com/nodejs/node/pull/5361).
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
-* Консоль 
+* Console 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
-* Крипто 
+* Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
   * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
   * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
@@ -4404,29 +4404,29 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Події 
+* Events 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* Файлова система 
+* File System 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Модулі 
+* Modules 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
-* Мережа 
+* Net 
   * DNS hints no longer implicitly set [#6021](https://github.com/nodejs/node/pull/6021).
   * Improved error handling and type checking [#5981](https://github.com/nodejs/node/pull/5981), [#5733](https://github.com/nodejs/node/pull/5733), [#2904](https://github.com/nodejs/node/pull/2904).
 * npm 
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Шлях 
+* Path 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* Процес 
+* Process 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
@@ -4437,7 +4437,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * REPL 
   * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
   * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
-* Таймери 
+* Timers 
   * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams 
   * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
