@@ -1,4 +1,4 @@
-# إضافات C++
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -9,17 +9,17 @@ There are three options for implementing Addons: N-API, nan, or direct use of in
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
-* V8: مكتبة C ++ التي يستخدمها Node.js حالياً لتنفيذ JavaScript. يوفر V8 آليات لإنشاء الكائنات ووظائف الاستدعاء والمزيد. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
 * [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* مكتبات Node.js الداخلية. Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
+* Internal Node.js libraries. Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
 
 * Node.js includes other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## مرحبا بالعالم
+## Hello world
 
 This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
@@ -27,7 +27,7 @@ This "Hello world" example is a simple Addon, written in C++, that is the equiva
 module.exports.hello = () => 'world';
 ```
 
-أولاً، قم بإنشاء ملف `hello.cc`:
+First, create the file `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -239,7 +239,7 @@ Test in JavaScript by running:
 require('./build/Release/addon');
 ```
 
-### بناء
+### Building
 
 Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
@@ -306,7 +306,7 @@ The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) 
 
 ## N-API
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -348,7 +348,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in [C/C++ Addons with N-API](n-api.html).
 
-## أمثلة على الإضافة
+## Addon examples
 
 Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
@@ -452,7 +452,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### معاودة الاتصال
+### Callbacks
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
@@ -504,7 +504,7 @@ const addon = require('./build/Release/addon');
 
 addon((msg) => {
   console.log(msg);
-// Stampa: 'hello world'
+// Prints: 'hello world'
 });
 ```
 
