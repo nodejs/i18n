@@ -40,7 +40,7 @@
 </tr>
 </table>
 
-* Diğer Versiyonlar
+* Other Versions
   * [11.x](CHANGELOG_V11.md)
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
