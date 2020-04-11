@@ -1,8 +1,8 @@
-# Etkinlikler
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -59,7 +59,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Asynchronous vs. Synchronous
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. Uygun olduğunda, dinleyici fonksiyonları `setImmediate()` veya `process.nextTick()` yöntemlerini kullanarak eş zamanlı olmayan işlem moduna geçebilir:
+The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -153,7 +153,7 @@ The `EventEmitter` instance will emit its own `'newListener'` event *before* a l
 
 Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
 
-Etkinliğin dinleyiciyi eklemeden önce tetiklenmesi gerçeği, ince ancak önemli bir yan etkiye sahiptir: `'newListener'` geri çağrısı *içinde* aynı `isme` kayıtlı olan herhangi bir *ek* dinleyici, eklenme sürecinde olan dinleyiciden *önce* eklenecektir.
+The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -567,22 +567,22 @@ Returns a copy of the array of listeners for the event named `eventName`, includ
 const emitter = new EventEmitter();
 emitter.once('log', () => console.log('log once'));
 
-// Bir özelliğe sahip olan `onceWrapper` fonksiyonuna sahip yeni bir Dizi döndürür
-// `listener` yukarıda bağlanan orijinal dinleyiciyi içerir
+// Returns a new Array with a function `onceWrapper` which has a property
+// `listener` which contains the original listener bound above
 const listeners = emitter.rawListeners('log');
 const logFnWrapper = listeners[0];
 
-// günlükler, konsola "tek seferlik günlük" kaydeder ve `once` olayını kesmez
+// logs "log once" to the console and does not unbind the `once` event
 logFnWrapper.listener();
 
-// günlükler, konsola "tek seferlik günlük" kaydeder ve dinleyiciyi kaldırır
+// logs "log once" to the console and removes the listener
 logFnWrapper();
 
 emitter.on('log', () => console.log('log persistently'));
-// yukarıdaki `.on()` ile sınırlı tek bir işleve sahip olan yeni bir Dizi döndürecek
+// will return a new Array with a single function bound by `.on()` above
 const newListeners = emitter.rawListeners('log');
 
-// günlükler, "sürekli günlük" iki defa
+// logs "log persistently" twice
 newListeners[0]();
 emitter.emit('log');
 ```
