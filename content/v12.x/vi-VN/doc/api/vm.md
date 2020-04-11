@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -222,7 +222,7 @@ console.log(globalVar);
 added: v12.16.0
 -->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -331,7 +331,7 @@ Corresponds to the `[[EvaluationError]]` field of [Cyclic Module Record](https:/
 * `options` {Object}
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown. **Default:** `false`.
-* Trả về: {Promise}
+* Returns: {Promise}
 
 Evaluate the module.
 
@@ -356,7 +356,7 @@ Corresponds to the [Evaluate() concrete method](https://tc39.es/ecma262/#sec-mod
 
   * `referencingModule` {vm.Module} The `Module` object `link()` is called on.
   * Returns: {vm.Module|Promise}
-* Trả về: {Promise}
+* Returns: {Promise}
 
 Link module dependencies. This method must be called before evaluation, and can only be called once per module.
 
@@ -416,7 +416,7 @@ The identifier of the current module, as set in the constructor.
 added: v9.6.0
 -->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -479,7 +479,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 added: v12.16.0
 -->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
