@@ -6,9 +6,9 @@
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
 
-Farklı seçenekler ve Node.js ile komut dosyalarını çalıştırma yolları hakkında bilgi için lütfen [Komut Satırı Seçenekleri](cli.html#cli_command_line_options) belgesine bakın.
+Please see the [Command Line Options](cli.html#cli_command_line_options) document for information about different options and ways to run scripts with Node.js.
 
-## Örnek
+## Example
 
 An example of a [web server](http.html) written with Node.js which responds with `'Hello, World!'`:
 
