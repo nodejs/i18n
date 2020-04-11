@@ -1,4 +1,4 @@
-# Tên miền
+# Domain
 
 <!-- YAML
 changes:
@@ -227,7 +227,7 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* Trả về: {Domain}
+* Returns: {Domain}
 
 ## Class: Domain
 
