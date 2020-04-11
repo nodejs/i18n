@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -188,7 +188,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Çıktı: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -687,7 +687,7 @@ Emitted each time a request with an HTTP `Expect: 100-continue` is received. If 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 ### Event: 'checkExpectation'
 
@@ -700,7 +700,7 @@ added: v5.5.0
 
 Emitted each time a request with an HTTP `Expect` header is received, where the value is not `100-continue`. If this event is not listened for, the server will automatically respond with a `417 Expectation Failed` as appropriate.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 ### Event: 'clientError'
 
@@ -768,7 +768,7 @@ added: v0.7.0
 
 Emitted each time a client requests an HTTP `CONNECT` method. If this event is not listened for, then clients requesting a `CONNECT` method will have their connections closed.
 
-Bu olayın yayınlanmasından sonra, isteğin soketinde bir `'veri'` olay dinleyicisine sahip olmayacak, yani o soketteki sunucuya gönderilen verileri işlemek için bağlanması gerekecek.
+After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
 ### Event: 'connection'
 
@@ -811,7 +811,7 @@ changes:
 
 Emitted each time a client requests an HTTP upgrade. Listening to this event is optional and clients cannot insist on a protocol change.
 
-Bu olayın yayınlanmasından sonra, isteğin soketinde bir `'veri'` olay dinleyicisine sahip olmayacak, yani o soketteki sunucuya gönderilen verileri işlemek için bağlanması gerekecek.
+After this event is emitted, the request's socket will not have a `'data'` event listener, meaning it will need to be bound in order to handle data sent to the server on that socket.
 
 ### server.close([callback])
 
@@ -1401,7 +1401,7 @@ console.log(request.headers);
 
 Duplicates in raw headers are handled in the following ways, depending on the header name:
 
-* `Yaş`, `yetkilendirme`, `içerik uzunluğu`, `içerik türü`, `etag`, `sona eren`, `kimden`, `ana bilgisayar`, `eğer o zamandan beri değiştirilmişse`, `eğer o zaman değiştirilmemişse`, `son düzenleme`, `lokasyon`, `en fazla ileri sürülen`, `vekil yetkilendirme`, `hakem`, `yeniden denedikten sonra` veya `kullanıcı aracısının` kopyaları atılır.
+* Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
 * `set-cookie` is always an array. Duplicates are added to the array.
 * For duplicate `cookie` headers, the values are joined together with '; '.
 * For all other headers, the values are joined together with ', '.
@@ -1428,7 +1428,7 @@ added: v0.1.1
 
 **Only valid for request obtained from [`http.Server`][].**
 
-The request method as a string. Sadece oku. Examples: `'GET'`, `'DELETE'`.
+The request method as a string. Read only. Examples: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders
 
@@ -1676,15 +1676,15 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
 
   let error;
   if (statusCode !== 200) {
-    hata = new Error('Request Failed.\n' +
-                      `Durum Kodu: ${statusCode}`);
+    error = new Error('Request Failed.\n' +
+                      `Status Code: ${statusCode}`);
   } else if (!/^application\/json/.test(contentType)) {
-    hata = new Error('Invalid content-type.\n' +
-                      `Beklenen uygulama/json fakat ${contentType} aldı`);
+    error = new Error('Invalid content-type.\n' +
+                      `Expected application/json but received ${contentType}`);
   }
   if (error) {
     console.error(error.message);
-    // belleği boşaltmak için yanıt verilerini tüket
+    // consume response data to free up memory
     res.resume();
     return;
   }
@@ -1701,7 +1701,7 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
     }
   });
 }).on('error', (e) => {
-  console.error(`Hata var: ${e.message}`);
+  console.error(`Got error: ${e.message}`);
 });
 ```
 
