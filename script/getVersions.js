@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const semver = require('semver')
 const superagent = require('superagent')
 
