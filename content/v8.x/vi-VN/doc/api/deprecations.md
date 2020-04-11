@@ -1,4 +1,4 @@
-# API không được chấp nhận
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 
