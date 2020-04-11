@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -1392,7 +1392,7 @@ If a [`'request'`][] listener is registered or [`http2.createServer()`][] is sup
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 #### Event: 'request'
 
@@ -1511,7 +1511,7 @@ If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 #### Event: 'request'
 
@@ -1643,7 +1643,7 @@ changes:
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
@@ -1709,7 +1709,7 @@ changes:
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
@@ -1771,7 +1771,7 @@ changes:
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding()` callback is to be used to determine the amount of padding.
@@ -1939,7 +1939,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Hata işleme
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2437,9 +2437,9 @@ Indicates that the underlying [`Http2Stream`]() was terminated before [`response
 added: v8.4.0
 -->
 
-Emitted when the response has been sent. Daha spesifik olarak, bu olay cevap başlıklarının ve gövdesinin son bölümü ağ üzerinden aktarım için HTTP/2 çoğullamasına bırakıldığında ortaya çıkar. It does not imply that the client has received anything yet.
+Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-Bu olaydan sonra, tepki nesnesine daha fazla olay yayınlanmayacak.
+After this event, no more events will be emitted on the response object.
 
 #### response.addTrailers(headers)
 
@@ -2502,7 +2502,7 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
