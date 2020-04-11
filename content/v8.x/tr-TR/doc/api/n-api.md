@@ -2,9 +2,9 @@
 
 <!--introduced_in=v7.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. Temel JavaScript çalışma zamanından bağımsızdır (eski V8) ve Node.js öğesinin bir parçası olarak korunur. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır.
+N-API (pronounced N as in the letter, followed by API) is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation.
 
 Addons are built/packaged with the same approach/tools outlined in the section titled [C++ Addons](addons.html). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
@@ -18,7 +18,7 @@ APIs exposed by N-API are generally used to create and manipulate JavaScript val
 The documentation for N-API is structured as follows:
 
 - [Basic N-API Data Types](#n_api_basic_n_api_data_types)
-- [Hata işleme](#n_api_error_handling)
+- [Error Handling](#n_api_error_handling)
 - [Object Lifetime Management](#n_api_object_lifetime_management)
 - [Module Registration](#n_api_module_registration)
 - [Working with JavaScript Values](#n_api_working_with_javascript_values)
@@ -35,7 +35,7 @@ The N-API is a C API that ensures ABI stability across Node.js versions and diff
 
 ## Usage
 
-In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. Örneğin:
+In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. For example:
 
 ```C
 #include <node_api.h>
@@ -133,13 +133,13 @@ This is an opaque pointer that is used to represent a JavaScript value.
 
 ### napi_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 This is an opaque pointer that represents a JavaScript function which can be called asynchronously from multiple threads via `napi_call_threadsafe_function()`.
 
 ### napi_threadsafe_function_release_mode
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A value to be given to `napi_release_threadsafe_function()` to indicate whether the thread-safe function is to be closed immediately (`napi_tsfn_abort`) or merely released (`napi_tsfn_release`) and thus available for subsequent use via `napi_acquire_threadsafe_function()` and `napi_call_threadsafe_function()`.
 
@@ -152,7 +152,7 @@ typedef enum {
 
 ### napi_threadsafe_function_call_mode
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A value to be given to `napi_call_threadsafe_function()` to indicate whether the call should block whenever the queue associated with the thread-safe function is full.
 
@@ -227,7 +227,7 @@ typedef void (*napi_async_complete_callback)(napi_env env,
 
 #### napi_threadsafe_function_call_js
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 Function pointer used with asynchronous thread-safe function calls. The callback will be called on the main thread. Its purpose is to use a data item arriving via the queue from one of the secondary threads to construct the parameters necessary for a call into JavaScript, usually via `napi_call_function`, and then make the call into JavaScript.
 
@@ -249,7 +249,7 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 - `[in] context`: The optional data with which the thread-safe function was created.
 - `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
-## Hata işleme
+## Error Handling
 
 N-API uses both return values and JavaScript exceptions for error handling. The following sections explain the approach for each case.
 
@@ -609,11 +609,11 @@ It is often necessary to make the lifespan of handles shorter than the lifespan 
 ```C
 for (int i = 0; i < 1000000; i++) {
   napi_value result;
-  napi_status durumu = napi_get_element(env, object, i, &result);
+  napi_status status = napi_get_element(env, object, i, &result);
   if (status != napi_ok) {
     break;
   }
-  // element ile bir şeyler yapın
+  // do something with element
 }
 ```
 
@@ -628,17 +628,17 @@ Taking the earlier example, adding calls to [`napi_open_handle_scope`][] and [`n
 ```C
 for (int i = 0; i < 1000000; i++) {
   napi_handle_scope scope;
-  napi_status durumu = napi_open_handle_scope(env, &scope);
+  napi_status status = napi_open_handle_scope(env, &scope);
   if (status != napi_ok) {
     break;
   }
-  napi_value sonuçları;
-  durumu = napi_get_element(env, object, i, &result);
+  napi_value result;
+  status = napi_get_element(env, object, i, &result);
   if (status != napi_ok) {
     break;
   }
-  // element ile bir şeyler yapın
-  durumu = napi_close_handle_scope(env, scope);
+  // do something with element
+  status = napi_close_handle_scope(env, scope);
   if (status != napi_ok) {
     break;
   }
@@ -967,25 +967,25 @@ napi_value Init(napi_env env, napi_value exports) {
 For example, to define a class so that new instances can be created (often used with [Object Wrap](#n_api_object_wrap)):
 
 ```C
-// NOT: kısmi örnek, referans verilen tüm kodlar dahil değildir
+// NOTE: partial example, not all referenced code is included
 napi_value Init(napi_env env, napi_value exports) {
-  napi_status durumu;
+  napi_status status;
   napi_property_descriptor properties[] = {
-    { "value", nullptr, GetValue, SetValue, 0, napi_default, 0 },
+    { "value", NULL, GetValue, SetValue, 0, napi_default, 0 },
     DECLARE_NAPI_METHOD("plusOne", PlusOne),
     DECLARE_NAPI_METHOD("multiply", Multiply),
   };
 
   napi_value cons;
   status =
-      napi_define_class(env, "MyObject", New, nullptr, 3, properties, &cons);
-  if (status != napi_ok) return nullptr;
+      napi_define_class(env, "MyObject", New, NULL, 3, properties, &cons);
+  if (status != napi_ok) return NULL;
 
   status = napi_create_reference(env, cons, 1, &constructor);
-  if (status != napi_ok) return nullptr;
+  if (status != napi_ok) return NULL;
 
   status = napi_set_named_property(env, exports, "MyObject", cons);
-  if (status != napi_ok) return nullptr;
+  if (status != napi_ok) return NULL;
 
   return exports;
 }
@@ -2275,19 +2275,19 @@ obj.myProp = 123;
 The equivalent can be done using N-API values with the following snippet:
 
 ```C
-napi_status durumu = napi_generic_failure;
+napi_status status = napi_generic_failure;
 
 // const obj = {}
-napi_value obj, değeri;
-durumu = napi_create_object(env, &obj);
+napi_value obj, value;
+status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-// 123 için bir napi_value oluşturun
-durumu = napi_create_int32(env, 123, &value);
+// Create a napi_value for 123
+status = napi_create_int32(env, 123, &value);
 if (status != napi_ok) return status;
 
 // obj.myProp = 123
-durumu = napi_set_named_property(env, obj, "myProp", value);
+status = napi_set_named_property(env, obj, "myProp", value);
 if (status != napi_ok) return status;
 ```
 
@@ -2301,18 +2301,18 @@ arr[123] = 'hello';
 The equivalent can be done using N-API values with the following snippet:
 
 ```C
-napi_status durumu = napi_generic_failure;
+napi_status status = napi_generic_failure;
 
 // const arr = [];
 napi_value arr, value;
-durumu = napi_create_array(env, &arr);
+status = napi_create_array(env, &arr);
 if (status != napi_ok) return status;
 
-// 'merhaba' için bir napi_value oluşturun
-status = napi_create_string_utf8(env, "merhaba", NAPI_AUTO_LENGTH, &value);
+// Create a napi_value for 'hello'
+status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &value);
 if (status != napi_ok) return status;
 
-// arr[123] = 'merhaba';
+// arr[123] = 'hello';
 status = napi_set_element(env, arr, 123, value);
 if (status != napi_ok) return status;
 ```
@@ -2352,26 +2352,26 @@ Object.defineProperties(obj, {
 The following is the approximate equivalent of the N-API counterpart:
 
 ```C
-napi_status durumu = napi_status_generic_failure;
+napi_status status = napi_status_generic_failure;
 
 // const obj = {};
 napi_value obj;
-durum = napi_create_object(env, &obj);
+status = napi_create_object(env, &obj);
 if (status != napi_ok) return status;
 
-//123 ve 456 için napi_values oluşturun
+// Create napi_values for 123 and 456
 napi_value fooValue, barValue;
-durum = napi_create_int32(env, 123, &fooValue);
+status = napi_create_int32(env, 123, &fooValue);
 if (status != napi_ok) return status;
 status = napi_create_int32(env, 456, &barValue);
 if (status != napi_ok) return status;
 
-// Özellikleri ayarlayın
+// Set the properties
 napi_property_descriptor descriptors[] = {
-  { "foo", BOŞ, 0, 0, 0, fooDeğeri, napi_default, 0 },
-  { "bar", BOŞ, 0, 0, 0, barDeğeri, napi_default, 0 }
+  { "foo", NULL, 0, 0, 0, fooValue, napi_default, 0 },
+  { "bar", NULL, 0, 0, 0, barValue, napi_default, 0 }
 }
-durum = napi_define_properties(env,
+status = napi_define_properties(env,
                                 obj,
                                 sizeof(descriptors) / sizeof(descriptors[0]),
                                 descriptors);
@@ -2800,7 +2800,7 @@ function AddTwo(num) {
 Then, the above function can be invoked from a native add-on using the following code:
 
 ```C
-// Küresel nesnede "AddTwo" adlı fonksiyonu alın
+// Get the function named "AddTwo" on the global object
 napi_value global, add_two, arg;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2820,7 +2820,7 @@ napi_value return_val;
 status = napi_call_function(env, global, add_two, argc, argv, &return_val);
 if (status != napi_ok) return;
 
-// Sonucu tekrar yerel tipe dönüştürün
+// Convert the result back to a native type
 int32_t result;
 status = napi_get_value_int32(env, return_val, &result);
 if (status != napi_ok) return;
@@ -2969,7 +2969,7 @@ const value = new MyObject(arg);
 The following can be approximated in N-API using the following snippet:
 
 ```C
-// MyObject yapıcı fonksiyonunu alın
+// Get the constructor function MyObject
 napi_value global, constructor, arg, value;
 napi_status status = napi_get_global(env, &global);
 if (status != napi_ok) return;
@@ -2977,14 +2977,14 @@ if (status != napi_ok) return;
 status = napi_get_named_property(env, global, "MyObject", &constructor);
 if (status != napi_ok) return;
 
-// const arg = "merhaba"
+// const arg = "hello"
 status = napi_create_string_utf8(env, "hello", NAPI_AUTO_LENGTH, &arg);
 if (status != napi_ok) return;
 
 napi_value* argv = &arg;
 size_t argc = 1;
 
-// const değeri = yeni MyObject(arg)
+// const value = new MyObject(arg)
 status = napi_new_instance(env, constructor, argc, argv, &value);
 ```
 
@@ -3189,8 +3189,8 @@ napi_status napi_create_async_work(napi_env env,
                                    napi_value async_resource_name,
                                    napi_async_execute_callback execute,
                                    napi_async_complete_callback complete,
-                                   void* veri,
-                                   napi_async_work* sonuç);
+                                   void* data,
+                                   napi_async_work* result);
 ```
 
 - `[in] env`: The environment that the API is invoked under.
@@ -3272,7 +3272,7 @@ This API can be called even if there is a pending JavaScript exception.
 
 ## Custom Asynchronous Operations
 
-The simple asynchronous work APIs above may not be appropriate for every scenario. Başka bir eşzamansız mekanizma kullanırken, aşağıdaki API'ler eş zamanlı olmayan bir işlemin çalışma zamanı tarafından düzgün bir şekilde izlenmesini sağlamak için gereklidir.
+The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
 
 ### napi_async_init
 
@@ -3636,7 +3636,7 @@ NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
 
 ## Asynchronous Thread-safe Function Calls
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 JavaScript functions can normally only be called from a native addon's main thread. If an addon creates additional threads, then N-API functions that require a `napi_env`, `napi_value`, or `napi_ref` must not be called from those threads.
 
@@ -3668,7 +3668,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 
 ### napi_create_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3703,7 +3703,7 @@ napi_create_threadsafe_function(napi_env env,
 
 ### napi_get_threadsafe_function_context
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3722,7 +3722,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_call_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3745,7 +3745,7 @@ This API may be called from any thread which makes use of `func`.
 
 ### napi_acquire_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3764,7 +3764,7 @@ This API may be called from any thread which will start making use of `func`.
 
 ### napi_release_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3785,7 +3785,7 @@ This API may be called from any thread which will stop making use of `func`.
 
 ### napi_ref_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
@@ -3805,7 +3805,7 @@ This API may only be called from the main thread.
 
 ### napi_unref_threadsafe_function
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- YAML
 added: v8.16.0
