@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -163,7 +163,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Çıktı: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -1264,7 +1264,7 @@ added: v0.1.1
 
 **Only valid for request obtained from [`http.Server`][].**
 
-The request method as a string. Sadece oku. Examples: `'GET'`, `'DELETE'`.
+The request method as a string. Read only. Examples: `'GET'`, `'DELETE'`.
 
 ### `message.rawHeaders`<!-- YAML
 added: v0.11.6
