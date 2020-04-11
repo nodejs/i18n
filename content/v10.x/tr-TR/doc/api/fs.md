@@ -1,22 +1,22 @@
-# Dosya Sistemi
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
-`fs` modülü, dosya sistemi ile etkileşim için standart POSIX fonksiyonlarına benzer sekilde modellenmiş bir API sağlar.
+The `fs` module provides an API for interacting with the file system in a manner closely modeled around standard POSIX functions.
 
-Bu modülü kullanmak için:
+To use this module:
 
 ```js
 const fs = require('fs');
 ```
 
-Tüm dosya sistemi işlemleri senkron ve asenkron formlara sahiptir.
+All file system operations have synchronous and asynchronous forms.
 
-Asenkrom form herzaman son argümanı olarak bir tamamlama callback'i alır. Tamamlama callback'ine geçilen argümanlar, yönteme bağlıdır, ancak ilk argüman her zaman bir istisna için ayrılmıştır. Eğer işlem başarıyla tamamlandıysa, ilk argüman `null` veya `undefined` olacaktır.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 ```js
 const fs = require('fs');
@@ -129,7 +129,7 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 });
 ```
 
-On Windows, Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. [Bu MSDN sayfasında](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths) detaylı açıklamasını bulabilirsiniz.
+On Windows, Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths).
 
 ### URL object support
 
@@ -153,20 +153,20 @@ Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw:
 
 ```js
-// Windows'ta :
+// On Windows :
 
-// - WHATWG dosya URL'leri ana bilgisayar adı ile birlikte UNC yoluna dönüştürülür
+// - WHATWG file URLs with hostname convert to UNC path
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - WHATWG dosya URL'leri sürücü harfleri ile birlikte mutlak yola dönüştürülür
+// - WHATWG file URLs with drive letters convert to absolute path
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - Ana bilgisayar adı olmadan WHATWG dosya URL'leri bir sürücü harfine sahip olmak zorundadır
+// - WHATWG file URLs without hostname must have a drive letters
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: Dosya URL yolu mutlak olmalıdır
+// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
 ```
 
 `file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
@@ -1132,7 +1132,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | sadece oku               |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -1263,7 +1263,7 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Varsayılan:** `0`.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
@@ -1302,7 +1302,7 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Varsayılan:** `0`.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 
 Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
@@ -1364,7 +1364,7 @@ Unlike the 16 kb default `highWaterMark` for a readable stream, the stream retur
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
-If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `fd` points to a character device that only supports blocking reads (such as keyboard or sound card), read operations do not finish until data is available. This can prevent the process from exiting and the stream from closing naturally.
 
@@ -1431,7 +1431,7 @@ changes:
 
 If `autoClose` is set to true (default behavior) on `'error'` or `'finish'` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak.
 
-Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `options` is a string, then it specifies the encoding.
 
@@ -2194,7 +2194,7 @@ added: v5.10.0
 * `prefix` {string}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the created folder path.
 
@@ -2468,7 +2468,7 @@ changes:
 * `options` {Object|string} 
   * `encoding` {string|null} **Default:** `null`
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'r'`.
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the contents of the `path`.
 
@@ -2534,7 +2534,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous readlink(2). Returns the symbolic link's string value.
 
@@ -2669,7 +2669,7 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Returns the resolved pathname.
 
@@ -2684,7 +2684,7 @@ added: v9.2.0
 * `path` {string|Buffer|URL}
 * `options` {string|Object} 
   * `encoding` {string} **Default:** `'utf8'`
-* Çıktı: {string|Buffer}
+* Returns: {string|Buffer}
 
 Synchronous realpath(3).
 
@@ -3446,7 +3446,7 @@ For detailed information, see the documentation of the asynchronous version of t
 
 ## fs Promises API
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `fs.promises` API provides an alternative set of asynchronous file system methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('fs').promises`.
 
@@ -3475,7 +3475,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to this file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. `Söz`, başarı üzerine hiçbir argüman olmadan çözülecektir.
+Asynchronously append data to this file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -3490,7 +3490,7 @@ added: v10.0.0
 * `mode` {integer}
 * Returns: {Promise}
 
-Modifies the permissions on the file. `Söz`, başarı üzerine hiçbir argüman olmadan çözülür.
+Modifies the permissions on the file. The `Promise` is resolved with no arguments upon success.
 
 #### filehandle.chown(uid, gid)
 
@@ -3535,7 +3535,7 @@ added: v10.0.0
 
 * Returns: {Promise}
 
-Asynchronous fdatasync(2). `Söz`, başarı üzerine hiçbir argüman olmadan çözülür.
+Asynchronous fdatasync(2). The `Promise` is resolved with no arguments upon success.
 
 #### filehandle.fd
 
@@ -3567,7 +3567,7 @@ Read data from the file.
 
 `position` is an argument specifying where to begin reading from in the file. If `position` is `null`, data will be read from the current file position, and the file position will be updated. If `position` is an integer, the file position will remain unchanged.
 
-Başarılı bir okumayı takiben, `Söz`, okunan bayt sayısını belirten bir `bytesRead` özelliğine ve iletilen `arabellek` argümanına referans olan bir `arabellek` özelliğine sahip olan bir nesneyle çözümlenir.
+Following successful read, the `Promise` is resolved with an object with a `bytesRead` property specifying the number of bytes read, and a `buffer` property that is a reference to the passed in `buffer` argument.
 
 #### filehandle.readFile(options)
 
@@ -3582,7 +3582,7 @@ added: v10.0.0
 
 Asynchronously reads the entire contents of a file.
 
-`Söz`, dosyanın içeriği ile birlikte çözülür. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
+The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -3618,7 +3618,7 @@ added: v10.0.0
 
 * Returns: {Promise}
 
-Asynchronous fsync(2). `Söz`, başarı üzerine hiçbir argüman olmadan çözülür.
+Asynchronous fsync(2). The `Promise` is resolved with no arguments upon success.
 
 #### filehandle.truncate(len)
 
@@ -3715,13 +3715,13 @@ added: v10.0.0
 
 Write `buffer` to the file.
 
-`Söz`, yazılan bayt sayısını tanımlayan bir `bytesWritten` özelliği ve yazılan `arabellek` için bir referans içeren bir `arabellek` özelliği içeren bir nesneyle çözümlenir.
+The `Promise` is resolved with an object containing a `bytesWritten` property identifying the number of bytes written, and a `buffer` property containing a reference to the `buffer` written.
 
 `offset` determines the part of the buffer to be written, and `length` is an integer specifying the number of bytes to write.
 
 `position` refers to the offset from the beginning of the file where this data should be written. If `typeof position !== 'number'`, the data will be written at the current position. See pwrite(2).
 
-`Söz`'ün çözülmesini (veya reddedilmesini) beklemeden `filehandle.write()` öğesini aynı dosya üzerinde birden çok kez kullanmak güvenli değildir. For this scenario, [`fs.createWriteStream()`][] is strongly recommended.
+It is unsafe to use `filehandle.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). For this scenario, [`fs.createWriteStream()`][] is strongly recommended.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3744,7 +3744,7 @@ The `Promise` is resolved with an object containing a `bytesWritten` property id
 
 `encoding` is the expected string encoding.
 
-`Söz`'ün çözülmesini (veya reddedilmesini) beklemeden `filehandle.write()` öğesini aynı dosya üzerinde birden çok kez kullanmak güvenli değildir. For this scenario, [`fs.createWriteStream()`][] is strongly recommended.
+It is unsafe to use `filehandle.write()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected). For this scenario, [`fs.createWriteStream()`][] is strongly recommended.
 
 On Linux, positional writes do not work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -3761,7 +3761,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 * Returns: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. `Söz`, başarı üzerine hiçbir argüman olmadan çözülecektir.
+Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
 The `encoding` option is ignored if `data` is a buffer.
 
@@ -3769,7 +3769,7 @@ If `options` is a string, then it specifies the encoding.
 
 The `FileHandle` has to support writing.
 
-`Söz`'ün çözülmesini (veya reddedilmesini) beklemeden `filehandle.writeFile()` öğesini aynı dosya üzerinde birden çok kez kullanmak güvenli değildir.
+It is unsafe to use `filehandle.writeFile()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected).
 
 If one or more `filehandle.write()` calls are made on a file handle and then a `filehandle.writeFile()` call is made, the data will be written from the current position till the end of the file. It doesn't always write from the beginning of the file.
 
@@ -3812,7 +3812,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'a'`.
 * Returns: {Promise}
 
-Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. `Söz`, başarı üzerine hiçbir argüman olmadan çözülecektir.
+Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][]. The `Promise` will be resolved with no arguments upon success.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -3851,10 +3851,10 @@ added: v10.0.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Varsayılan:** `0`.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 * Returns: {Promise}
 
-Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. `Söz`, başarı üzerine hiçbir argüman olmadan çözülecektir.
+Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. The `Promise` will be resolved with no arguments upon success.
 
 Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
@@ -3926,7 +3926,7 @@ added: v10.0.0
 * `newPath` {string|Buffer|URL}
 * Returns: {Promise}
 
-Asynchronous link(2). `Söz`, başarı üzerine hiçbir argüman olmadan çözülür.
+Asynchronous link(2). The `Promise` is resolved with no arguments upon success.
 
 ### fsPromises.lstat(path[, options])
 
@@ -4044,7 +4044,7 @@ added: v10.0.0
 
 Asynchronously reads the entire contents of a file.
 
-`Söz`, dosyanın içeriği ile birlikte çözülür. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
+The `Promise` is resolved with the contents of the file. If no encoding is specified (using `options.encoding`), the data is returned as a `Buffer` object. Otherwise, the data will be a string.
 
 If `options` is a string, then it specifies the encoding.
 
@@ -4166,7 +4166,7 @@ added: v10.0.0
 * `path` {string|Buffer|URL}
 * Returns: {Promise}
 
-Asynchronous unlink(2). `Söz`, başarı üzerine hiçbir argüman olmadan çözülür.
+Asynchronous unlink(2). The `Promise` is resolved with no arguments upon success.
 
 ### fsPromises.utimes(path, atime, mtime)
 
@@ -4200,7 +4200,7 @@ added: v10.0.0
   * `flag` {string} See [support of file system `flags`][]. **Default:** `'w'`.
 * Returns: {Promise}
 
-Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. `Söz`, başarı üzerine hiçbir argüman olmadan çözülecektir.
+Asynchronously writes data to a file, replacing the file if it already exists. `data` can be a string or a buffer. The `Promise` will be resolved with no arguments upon success.
 
 The `encoding` option is ignored if `data` is a buffer.
 
@@ -4208,7 +4208,7 @@ If `options` is a string, then it specifies the encoding.
 
 Any specified `FileHandle` has to support writing.
 
-`Söz`'ün çözülmesini (veya reddedilmesini) beklemeden `fsPromises.writeFile()` öğesini aynı dosya üzerinde birden çok kez kullanmak güvenli değildir.
+It is unsafe to use `fsPromises.writeFile()` multiple times on the same file without waiting for the `Promise` to be resolved (or rejected).
 
 ## FS Constants
 
