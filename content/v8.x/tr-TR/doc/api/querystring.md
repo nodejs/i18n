@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=querystring-->
 
-The `querystring` module provides utilities for parsing and formatting URL query strings. Modülü yüklemek için:
+The `querystring` module provides utilities for parsing and formatting URL query strings. It can be accessed using:
 
 ```js
 const querystring = require('querystring');
@@ -88,7 +88,7 @@ The `querystring.stringify()` method produces a URL query string from a given `o
 
 It serializes the following types of values passed in `obj`: {string|number|boolean|string[]|number[]|boolean[]} Any other input values will be coerced to empty strings.
 
-Örneğin:
+For example:
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
