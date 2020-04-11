@@ -1,8 +1,8 @@
-# Các Mô-đun
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -809,7 +809,7 @@ import('fs').then((esmFS) => {
 
 ## Source Map V3 Support<!-- YAML
 added: v13.7.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 Helpers for for interacting with the source map cache. This cache is populated when source map parsing is enabled and [source map include directives](https://sourcemaps.info/spec.html#h.lmz475t4mvbx) are found in a modules' footer.
 
