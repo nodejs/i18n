@@ -2,13 +2,13 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Sadece [`strict mode`][] kullanımı önerildiğinde `strict` ve `legacy` modları vardır.
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Kullanılan eşitlik karşılaştırmalarıyla ilgili daha fazla bilgi için [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) kılavuzuna bakınız.
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Strict mode
 
@@ -23,7 +23,7 @@ changes:
 
 When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
 
-Modülü yüklemek için:
+It can be accessed using:
 
 ```js
 const assert = require('assert').strict;
@@ -35,7 +35,7 @@ const assert = require('assert').strict;
 
 When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-Modülü yüklemek için:
+It can be accessed using:
 
 ```js
 const assert = require('assert');
@@ -55,7 +55,7 @@ added: v0.5.9
 -->
 
 * `value` {any}
-* `mesaj` {any}
+* `message` {any}
 
 An alias of [`assert.ok()`][].
 
@@ -79,9 +79,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 **Strict mode**
 
@@ -164,9 +164,9 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 Generally identical to `assert.deepEqual()` with a few exceptions:
 
@@ -228,7 +228,7 @@ added: V8.13.0
 
 * `block` {Function}
 * `error` {RegExp|Function}
-* `mesaj` {any}
+* `message` {any}
 
 Awaits for the promise returned by function `block` to complete and not be rejected. See [`assert.rejects()`][] for more details.
 
@@ -272,7 +272,7 @@ changes:
 
 * `block` {Function}
 * `error` {RegExp|Function}
-* `mesaj` {any}
+* `message` {any}
 
 Asserts that the function `block` does not throw an error. See [`assert.throws()`][] for more details.
 
@@ -323,9 +323,9 @@ assert.doesNotThrow(
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 **Strict mode**
 
@@ -361,9 +361,9 @@ If the values are not equal, an `AssertionError` is thrown with a `message` prop
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 * `operator` {string} **Default:** `'!='`
 * `stackStartFunction` {Function} **Default:** `assert.fail`
 
@@ -439,9 +439,9 @@ assert.ifError(new Error());
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 **Strict mode**
 
@@ -494,9 +494,9 @@ If the values are deeply equal, an `AssertionError` is thrown with a `message` p
 added: v1.2.0
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 Tests for deep strict inequality. Opposite of [`assert.deepStrictEqual()`][].
 
@@ -518,9 +518,9 @@ If the values are deeply and strictly equal, an `AssertionError` is thrown with 
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 **Strict mode**
 
@@ -553,9 +553,9 @@ If the values are equal, an `AssertionError` is thrown with a `message` property
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 Tests strict inequality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `!==` ).
 
@@ -581,7 +581,7 @@ added: v0.1.21
 -->
 
 * `value` {any}
-* `mesaj` {any}
+* `message` {any}
 
 Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
 
@@ -608,9 +608,9 @@ assert.ok(false, 'it\'s false');
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
-* `mesaj` {any}
+* `message` {any}
 
 Tests strict equality as determined by the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
 
@@ -637,7 +637,7 @@ added: V8.13.0
 
 * `block` {Function}
 * `error` {RegExp|Function|Object}
-* `mesaj` {any}
+* `message` {any}
 
 Awaits for promise returned by function `block` to be rejected.
 
@@ -685,7 +685,7 @@ changes:
 
 * `block` {Function}
 * `error` {RegExp|Function|object}
-* `mesaj` {any}
+* `message` {any}
 
 Expects the function `block` to throw an error.
 
