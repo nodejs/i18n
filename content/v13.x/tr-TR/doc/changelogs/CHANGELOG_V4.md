@@ -56,7 +56,7 @@
 </tr>
 </table>
 
-* Diğer Versiyonlar
+* Other Versions
   * [13.x](CHANGELOG_V13.md)
   * [12.x](CHANGELOG_V12.md)
   * [11.x](CHANGELOG_V11.md)
@@ -1794,7 +1794,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 * **deps**:
   * update openssl to 1.0.2h. (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551)
-    * Bu sürümün güvenlik içeriği hakkında daha fazla bilgi için lütfen [blog gönderimize](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) bakın.
+    * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
 
 ### Commits
 
@@ -2355,7 +2355,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **arabellek**
+* **buffer**
   * make byteLength work with Buffer correctly (Jackson Tian)
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger**
@@ -3335,7 +3335,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-Bu değişiklik listesi, son io.js v3.x şube sürümüne, v3.3.0, göredir. Lütfen 0.12.x'teki değişikliklerin daha eksiksiz bir listesi için v3.x, v2.x ve v1.x sürümlerindeki önemli değişikliklerin listesine bakın. v3.x serisindeki bazı değişikliklerin yanı sıra bu sürümdeki önemli değişikliklerin, Node.js ve io.js projelerinin tam birleşimi için gereken değişiklikleri oluşturduğunu unutmayın.
+This list of changes is relative to the last io.js v3.x branch release, v3.3.0. Please see the list of notable changes in the v3.x, v2.x and v1.x releases for a more complete list of changes from 0.12.x. Note, that some changes in the v3.x series as well as major breaking changes in this release constitute changes required for full convergence of the Node.js and io.js projects.
 
 * **child_process**: `ChildProcess.prototype.send()` and `process.send()` operate asynchronously across all platforms so an optional callback parameter has been introduced that will be invoked once the message has been sent, i.e. `.send(message[, sendHandle][, callback])` (Ben Noordhuis) [#2620](https://github.com/nodejs/node/pull/2620).
 * **node**: Rename "io.js" code to "Node.js" (cjihrig) [#2367](https://github.com/nodejs/node/pull/2367).
@@ -3344,7 +3344,7 @@ Bu değişiklik listesi, son io.js v3.x şube sürümüne, v3.3.0, göredir. Lü
 * **timers**: Improved timer performance from porting the 0.12 implementation, plus minor fixes (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
 * **util**: The `util.is*()` functions have been deprecated, beginning with deprecation warnings in the documentation for this release, users are encouraged to seek more robust alternatives in the npm registry, (Sakthipriyan Vairamani) [#2447](https://github.com/nodejs/node/pull/2447).
 * **v8**: Upgrade to version 4.5.103.30 from 4.4.63.30 (Ali Ijaz Sheikh) [#2632](https://github.com/nodejs/node/pull/2632).
-  * Yeni `TypedArray` prototip yöntemlerini uygulayın: `içindeKopyala()`, `her()`, `doldur()`, `filtrele()`, `bul()`, `indexBul()`, `herbiriİçin()`, `indeksi()`, `katıl()`, `sonİndeksi()`, `harita()`, `azalt()`, `sağaAzalt()`, `ters()`, `dilimle()`, `bazı()`, `çeşit()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
+  * Implement new `TypedArray` prototype methods: `copyWithin()`, `every()`, `fill()`, `filter()`, `find()`, `findIndex()`, `forEach()`, `indexOf()`, `join()`, `lastIndexOf()`, `map()`, `reduce()`, `reduceRight()`, `reverse()`, `slice()`, `some()`, `sort()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
   * Implement new `TypedArray.from()` and `TypedArray.of()` functions. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
   * Implement arrow functions, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions for further information.
   * Full ChangeLog available at https://github.com/v8/v8-git-mirror/blob/4.5.103/ChangeLog
