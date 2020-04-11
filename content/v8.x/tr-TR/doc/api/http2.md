@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -1071,7 +1071,7 @@ added: v8.4.0
 
 The `'response'` event is emitted when a response `HEADERS` frame has been received for this stream from the connected HTTP/2 server. The listener is invoked with two arguments: an Object containing the received [HTTP/2 Headers Object](#http2_headers_object), and flags associated with the headers.
 
-Örneğin:
+For example:
 
 ```js
 const http2 = require('http2');
@@ -1375,7 +1375,7 @@ If a [`'request'`][] listener is registered or [`http2.createServer()`][] is sup
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 #### Event: 'request'
 
@@ -1494,7 +1494,7 @@ If a [`'request'`][] listener is registered or [`http2.createSecureServer()`][] 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 #### Event: 'request'
 
@@ -1626,7 +1626,7 @@ changes:
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1692,7 +1692,7 @@ changes:
   * `maxHeaderListPairs` {number} Sets the maximum number of header entries. The minimum value is `4`. **Default:** `128`.
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1754,7 +1754,7 @@ changes:
   * `maxOutstandingPings` {number} Sets the maximum number of outstanding, unacknowledged pings. **Default:** `10`.
   * `maxReservedRemoteStreams` {number} Sets the maximum number of reserved push streams the client will accept at any given time. Once the current number of currently reserved push streams exceeds reaches this limit, new push streams sent by the server will be automatically rejected.
   * `maxSendHeaderBlockLength` {number} Sets the maximum allowed size for a serialized, compressed block of headers. Attempts to send headers that exceed this limit will result in a `'frameError'` event being emitted and the stream being closed and destroyed.
-  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Varsayılan:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
+  * `paddingStrategy` {number} Identifies the strategy used for determining the amount of padding to use for `HEADERS` and `DATA` frames. **Default:** `http2.constants.PADDING_STRATEGY_NONE`. Value may be one of: 
     * `http2.constants.PADDING_STRATEGY_NONE` - Specifies that no padding is to be applied.
     * `http2.constants.PADDING_STRATEGY_MAX` - Specifies that the maximum amount of padding, as determined by the internal implementation, is to be applied.
     * `http2.constants.PADDING_STRATEGY_CALLBACK` - Specifies that the user provided `options.selectPadding` callback is to be used to determine the amount of padding.
@@ -1852,7 +1852,7 @@ Returns a [HTTP/2 Settings Object](#http2_settings_object) containing the deseri
 
 Headers are represented as own-properties on JavaScript objects. The property keys will be serialized to lower-case. Property values should be strings (if they are not they will be coerced to strings) or an Array of strings (in order to send more than one value per header field).
 
-Örneğin:
+For example:
 
 ```js
 const headers = {
@@ -1923,7 +1923,7 @@ const server = http2.createServer({
 
 *Note*: The `options.selectPadding` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Hata işleme
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2155,7 +2155,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Örnek:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -2314,7 +2314,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Örnek:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -2334,7 +2334,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Örnek:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -2380,7 +2380,7 @@ added: v8.4.0
 
 Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-Bu olaydan sonra, tepki nesnesine daha fazla olay yayınlanmayacak.
+After this event, no more events will be emitted on the response object.
 
 #### response.addTrailers(headers)
 
@@ -2437,11 +2437,11 @@ added: v8.4.0
 -->
 
 * `name` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Örnek:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2457,7 +2457,7 @@ added: v8.4.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2479,7 +2479,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2500,7 +2500,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Örnek:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2526,7 +2526,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Örnek:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2555,7 +2555,7 @@ added: v8.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2616,7 +2616,7 @@ Returns a Proxy object that acts as a `net.Socket` (or `tls.TLSSocket`) but appl
 
 All other interactions will be routed directly to the socket.
 
-Örnek:
+Example:
 
 ```js
 const http2 = require('http2');
@@ -2637,7 +2637,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Örnek:
+Example:
 
 ```js
 response.statusCode = 404;
@@ -2712,7 +2712,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Örnek:
+Example:
 
 ```js
 const body = 'hello world';
