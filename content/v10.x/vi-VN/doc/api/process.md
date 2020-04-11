@@ -1,4 +1,4 @@
-# Tiến trình
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -1082,7 +1082,7 @@ setTimeout(() => {
 added: v10.7.0
 -->
 
-* Trả về: {bigint}
+* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in a `bigint`.
 
