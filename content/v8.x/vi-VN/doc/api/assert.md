@@ -1,16 +1,16 @@
-# Xác nhận (Assert)
+# Assert
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-Mô-đun `assert` cung cấp một tập các thí nghiệm xác nhận đơn giản dùng để kiểm tra các bất biến.
+The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Mặc dù có sẵn chế độ `strict` và `legacy`, nhưng chúng tôi khuyến nghị chỉ sử dụng [`strict mode`][].
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Để biết thêm thông tin về các so sánh bình đằng được sử dụng, tham khảo thêm [hướng dẫn MDN về sự giống nhau và các so sánh bình đẳng](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Chế độ nghiêm ngặt (Strict mode)
+## Strict mode
 
 <!-- YAML
 added: V8.13.0
@@ -23,25 +23,25 @@ changes:
 
 When using the `strict mode`, any `assert` function will use the equality used in the strict function mode. So [`assert.deepEqual()`][] will, for example, work the same as [`assert.deepStrictEqual()`][].
 
-Nó có thể truy cập bằng cách sử dụng:
+It can be accessed using:
 
 ```js
 const assert = require('assert').strict;
 ```
 
-## Chế độ Legacy
+## Legacy mode
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng chế độ nghiêm ngặt thay thế.
+> Stability: 0 - Deprecated: Use strict mode instead.
 
-Khi truy cập trực tiếp `assert` thay vì truy cập thuộc tính `strict`, [Abstract Equality Comparison (So sánh đẳng thức trừu tượng)](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) sẽ được dùng cho các hàm không chứa "strict", ví dụ như [`assert.deepEqual()`][].
+When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-Nó có thể truy cập bằng cách sử dụng:
+It can be accessed using:
 
 ```js
 const assert = require('assert');
 ```
 
-Chúng tôi khuyến nghị sử dụng [`strict mode`][] thay vì [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison), vì thông thường kết quả trả về sẽ không như mong đợi. Điều này đặc biệt đúng khi các quy tắc so sánh là sai, ví dụ như trong [`assert.deepEqual()`][]:
+It is recommended to use the [`strict mode`][] instead as the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) can often have surprising results. This is especially true for [`assert.deepEqual()`][], where the comparison rules are lax:
 
 ```js
 // WARNING: This does not throw an AssertionError!
@@ -57,7 +57,7 @@ added: v0.5.9
 * `value` {any}
 * `message` {any}
 
-Cách gọi khác của [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
 
@@ -83,26 +83,26 @@ changes:
 * `expected` {any}
 * `message` {any}
 
-**Chế độ nghiêm ngặt (Strict mode)**
+**Strict mode**
 
-Cách gọi khác của [`assert.deepStrictEqual()`][].
+An alias of [`assert.deepStrictEqual()`][].
 
-**Chế độ Legacy**
+**Legacy mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.deepStrictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.deepStrictEqual()`][] instead.
 
-Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Giá trị ban đầu được so sánh với [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
+Tests for deep equality between the `actual` and `expected` parameters. Primitive values are compared with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
-Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties). The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
+Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered. The [`assert.deepEqual()`][] implementation does not test the [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects, attached symbols, or non-enumerable properties — for such checks, consider using [`assert.deepStrictEqual()`][] instead. This can lead to some potentially surprising results. For example, the following example does not throw an `AssertionError` because the properties on the [`RegExp`][] object are not enumerable:
 
 ```js
 // WARNING: This does not throw an AssertionError!
 assert.deepEqual(/a/gi, new Date());
 ```
 
-[`Map`][] và [`Set`][] là có ngoại lệ. Bởi vì Map và Set đã so sánh các hạng mục bao hàm trong nó như mong đợi.
+An exception is made for [`Map`][] and [`Set`][]. Maps and Sets have their contained items compared too, as expected.
 
-Đẳng thức "deep" (sâu) nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
+"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
 ```js
 const assert = require('assert');
@@ -139,7 +139,7 @@ assert.deepEqual(obj1, obj4);
 // Prototypes are ignored
 ```
 
-Nếu như các giá trị không thỏa mãn bằng nhau, nó sẽ hiển thị`AssertionError` với thuộc tính `message` có giá trị bằng với thuộc tính `message`. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.deepStrictEqual(actual, expected[, message])
 
@@ -170,18 +170,18 @@ changes:
 
 Generally identical to `assert.deepEqual()` with a few exceptions:
 
-### Chi tiết so sánh
+### Comparison details
 
 * Primitive values are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison) ( `===` ).
 * Set values and Map keys are compared using the [SameValueZero](https://tc39.github.io/ecma262/#sec-samevaluezero) comparison. (Which means they are free of the [caveats](#assert_caveats)).
-* [Các loại thẻ gắn](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) của đối tượng cần giống nhau.
-* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) của các đối tượng được so sánh sử dụng [So sánh đẳng thức nghiêm ngặt](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
-* Chỉ xem xét [thuộc tính "own" có thể đếm được](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
+* [Type tags](https://tc39.github.io/ecma262/#sec-object.prototype.tostring) of objects should be the same.
+* [`[[Prototype]]`](https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots) of objects are compared using the [Strict Equality Comparison](https://tc39.github.io/ecma262/#sec-strict-equality-comparison).
+* Only [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) are considered.
 * [`Error`][] messages are always compared, even though this property is non-enumerable.
-* [Các lớp bọc đối tượng](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) được so sánh như là các đối tượng và giá trị không bọc.
+* [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) are compared both as objects and unwrapped values.
 * Object properties are compared unordered.
 * Map keys and Set items are compared unordered.
-* Quá trình đệ quy dừng khi hai bên khác nhau hoặc hai bên gặp phải tham chiếu vòng tròn.
+* Recursion stops when both sides differ or both sides encounter a circular reference.
 
 ```js
 const assert = require('assert').strict;
@@ -218,7 +218,7 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-Nếu như các giá trị không thỏa mãn bằng nhau, nó sẽ hiển thị`AssertionError` với thuộc tính `message` có giá trị bằng với thuộc tính `message`. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
 
@@ -274,15 +274,15 @@ changes:
 * `error` {RegExp|Function}
 * `message` {any}
 
-Xác nhận hàm `block` không gửi đi kết quả lỗi. See [`assert.throws()`][] for more details.
+Asserts that the function `block` does not throw an error. See [`assert.throws()`][] for more details.
 
-Hãy nhớ: Việc sử dụng `assert.doesNotThrow()` không thực sự hữu ích vì nó không có lợi ích gì từ việc bắt lỗi sau đó tiếp tục lại gửi đi. Thay vào đó, hãy xem xét việc thêm các nhận xét cạnh các đoạn mã cụ thể đáng lẽ không nên gửi đi và giữ các thông báo lỗi càng chi tiết rõ ràng càng tốt.
+Please note: Using `assert.doesNotThrow()` is actually not useful because there is no benefit by catching an error and then rethrowing it. Instead, consider adding a comment next to the specific code path that should not throw and keep error messages as expressive as possible.
 
-Khi gọi `assert.doesNotThrow()`, nó sẽ gọi ngay lập tức hàm `block`.
+When `assert.doesNotThrow()` is called, it will immediately call the `block` function.
 
-Khi phát hiện có lỗi, nó sẽ được chỉ định cùng loại từ tham số `error`, sau đó gửi đi `AssertionError`. Nếu đó là một lỗi khác, hoặc tham số `error` không được xác định, thì lỗi đó sẽ truyền lại cho trình gọi.
+If an error is thrown and it is the same type as that specified by the `error` parameter, then an `AssertionError` is thrown. If the error is of a different type, or if the `error` parameter is undefined, the error is propagated back to the caller.
 
-Trong ví dụ dưới đây sẽ trả giá trị [`TypeError`][] vì không có loại lỗi nào tương tự trong bộ phận xác nhận:
+The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 
 ```js
 assert.doesNotThrow(
@@ -304,7 +304,7 @@ assert.doesNotThrow(
 );
 ```
 
-Nếu đưa ra `AssertionError` và giá trị được cung cấp cho tham số `message`, giá trị của `message` sẽ được thêm vào thông báo `AssertionError`:
+If an `AssertionError` is thrown and a value is provided for the `message` parameter, the value of `message` will be appended to the `AssertionError` message:
 
 ```js
 assert.doesNotThrow(
@@ -327,15 +327,15 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Chế độ nghiêm ngặt (Strict mode)**
+**Strict mode**
 
-Cách gọi khác của [`assert.strictEqual()`][].
+An alias of [`assert.strictEqual()`][].
 
-**Chế độ Legacy**
+**Legacy mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.strictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.strictEqual()`][] instead.
 
-Thử nghiệm nhanh, sử dụng [So sánh đẳng thức trừu tượng](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ) để so sánh giữa các tham số `actual` và `expected`.
+Tests shallow, coercive equality between the `actual` and `expected` parameters using the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `==` ).
 
 ```js
 const assert = require('assert');
@@ -351,7 +351,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 //AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-Nếu như các giá trị không thỏa mãn bằng nhau, nó sẽ hiển thị`AssertionError` với thuộc tính `message` có giá trị bằng với thuộc tính `message`. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định.
+If the values are not equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.fail(message)
 
@@ -395,7 +395,7 @@ assert.fail('a', 'b');
 // AssertionError [ERR_ASSERTION]: 'a' != 'b'
 ```
 
-Ví dụ sử dụng dưới đây của `stackStartFunction` dành cho việc cắt bớt dấu vết ngăn lớp dị thường:
+Example use of `stackStartFunction` for truncating the exception's stacktrace:
 
 ```js
 function suppressFrame() {
@@ -443,13 +443,13 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Chế độ nghiêm ngặt (Strict mode)**
+**Strict mode**
 
-Cách gọi khác của [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
-**Chế độ Legacy**
+**Legacy mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.notDeepStrictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
@@ -486,7 +486,7 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 and obj4 are not deeply equal
 ```
 
-If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi.
+If the values are deeply equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
 
@@ -522,13 +522,13 @@ added: v0.1.21
 * `expected` {any}
 * `message` {any}
 
-**Chế độ nghiêm ngặt (Strict mode)**
+**Strict mode**
 
-Cách gọi khác của [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
-**Chế độ Legacy**
+**Legacy mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.notStrictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -545,7 +545,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, thì sẽ được gắn với một thông báo lỗi mặc định.
+If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notStrictEqual(actual, expected[, message])
 
