@@ -199,7 +199,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
 
 * **async_hooks**
   * introduce async-context API (vdeturckheim) [#26540](https://github.com/nodejs/node/pull/26540)
-* **luồng**
+* **stream**
   * support passing generator functions into pipeline() (Robert Nagy) [#31223](https://github.com/nodejs/node/pull/31223)
 * **tls**
   * expose SSL\_export\_keying\_material (simon) [#31814](https://github.com/nodejs/node/pull/31814)
@@ -316,7 +316,7 @@ In Node.js 13.9.0 deps/zlib was switched to the chromium maintained implementati
   * skip keygen tests on arm systems (Tobias Nießen) [#31178](https://github.com/nodejs/node/pull/31178)
 * **perf_hooks**
   * add property flags to GCPerformanceEntry (Kirill Fomichev) [#29547](https://github.com/nodejs/node/pull/29547)
-* **tiến trình**
+* **process**
   * report ArrayBuffer memory in `memoryUsage()` (Anna Henningsen) [#31550](https://github.com/nodejs/node/pull/31550)
 * **readline**
   * make tab size configurable (Ruben Bridgewater) [#31318](https://github.com/nodejs/node/pull/31318)
