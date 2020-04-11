@@ -1,8 +1,8 @@
-# Các Mô-đun
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 <!--name=module-->
 
