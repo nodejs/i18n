@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 <!-- name=policy -->
 
