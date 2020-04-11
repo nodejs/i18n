@@ -1,8 +1,8 @@
-# Luồng
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
@@ -151,7 +151,7 @@ added: v0.9.4
 
 <!--type=class-->
 
-##### Sự kiện: 'close'
+##### Event: 'close'
 
 <!-- YAML
 added: v0.9.4
@@ -322,7 +322,7 @@ changes:
 -->
 
 * `encoding` {string} The new default encoding
-* Trả về: {this}
+* Returns: {this}
 
 The `writable.setDefaultEncoding()` method sets the default `encoding` for a [Writable](#stream_class_stream_writable) stream.
 
@@ -420,7 +420,7 @@ A Writable stream in object mode will always ignore the `encoding` argument.
 added: v8.0.0
 -->
 
-* Trả về: {this}
+* Returns: {this}
 
 Destroy the stream, and emit the passed error. After this call, the writable stream has ended. Implementors should not override this method, but instead implement [`writable._destroy`](#stream_writable_destroy_err_callback).
 
@@ -510,7 +510,7 @@ added: v0.9.4
 
 <!--type=class-->
 
-##### Sự kiện: 'close'
+##### Event: 'close'
 
 <!-- YAML
 added: v0.9.4
@@ -639,7 +639,7 @@ readable.isPaused(); // === false
 added: v0.9.4
 -->
 
-* Trả về: {this}
+* Returns: {this}
 
 The `readable.pause()` method will cause a stream in flowing mode to stop emitting [`'data'`][] events, switching out of flowing mode. Any data that becomes available will remain in the internal buffer.
 
@@ -748,7 +748,7 @@ A Readable stream in object mode will always return a single item from a call to
 added: v0.9.4
 -->
 
-* Trả về: {this}
+* Returns: {this}
 
 The `readable.resume()` method causes an explicitly paused Readable stream to resume emitting [`'data'`][] events, switching the stream into flowing mode.
 
@@ -769,7 +769,7 @@ added: v0.9.4
 -->
 
 * `encoding` {string} The encoding to use.
-* Trả về: {this}
+* Returns: {this}
 
 The `readable.setEncoding()` method sets the character encoding for data read from the Readable stream.
 
