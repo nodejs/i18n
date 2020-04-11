@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -379,7 +379,7 @@ added: v0.3.2
 -->
 
 * `callback` {Function} A listener callback that will be registered to listen for the server instance's `'close'` event.
-* Trả về: {tls.Server}
+* Returns: {tls.Server}
 
 The `server.close()` method stops the server from accepting new connections.
 
@@ -391,7 +391,7 @@ added: v0.3.2
 deprecated: v0.9.7
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`server.getConnections()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 * {number}
 
@@ -796,7 +796,7 @@ added: v13.10.0
 
 Keying material is used for validations to prevent different kind of attacks in network protocols, for example in the specifications of IEEE 802.1X.
 
-Ví dụ
+Example
 
 ```js
 const keyingMaterial = tlsSocket.exportKeyingMaterial(
@@ -982,7 +982,7 @@ changes:
   * ...: [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing, otherwise they are ignored.
   * ...: Any [`socket.connect()`][] option not already listed.
 * `callback` {Function}
-* Trả về: {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 The `callback` function, if specified, will be added as a listener for the [`'secureConnect'`][] event.
 
@@ -1030,7 +1030,7 @@ added: v0.11.3
 * `path` {string} Default value for `options.path`.
 * `options` {Object} See [`tls.connect()`][].
 * `callback` {Function} See [`tls.connect()`][].
-* Trả về: {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 Same as [`tls.connect()`][] except that `path` can be provided as an argument instead of an option.
 
@@ -1045,7 +1045,7 @@ added: v0.11.3
 * `host` {string} Default value for `options.host`.
 * `options` {Object} See [`tls.connect()`][].
 * `callback` {Function} See [`tls.connect()`][].
-* Trả về: {tls.TLSSocket}
+* Returns: {tls.TLSSocket}
 
 Same as [`tls.connect()`][] except that `port` and `host` can be provided as arguments instead of options.
 
@@ -1164,7 +1164,7 @@ changes:
   * ...: Any [`tls.createSecureContext()`][] option can be provided. For servers, the identity options (`pfx`, `key`/`cert` or `pskCallback`) are usually required.
   * ...: Any [`net.createServer()`][] option can be provided.
 * `secureConnectionListener` {Function}
-* Trả về: {tls.Server}
+* Returns: {tls.Server}
 
 Creates a new [`tls.Server`][]. The `secureConnectionListener`, if provided, is automatically set as a listener for the [`'secureConnection'`][] event.
 
@@ -1250,7 +1250,7 @@ added: v11.4.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `'TLSv1.3'`, `'TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1.2'`, unless changed using CLI options. Using `--tls-min-v1.0` sets the default to `'TLSv1'`. Using `--tls-min-v1.1` sets the default to `'TLSv1.1'`. Using `--tls-min-v1.3` sets the default to `'TLSv1.3'`. If multiple of the options are provided, the lowest minimum is used.
 
-## API không được chấp nhận
+## Deprecated APIs
 
 ### Class: `CryptoStream`
 <!-- YAML
