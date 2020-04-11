@@ -1,32 +1,32 @@
-# C++ Eklentileri
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 
 <!-- type=misc -->
 
-Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_require) fonksiyonu kullanılarak Node.js'ye yüklenebilen ve sıradan bir Node.js modülü gibi kullanılan, dinamik olarak bağlı, paylaşılan nesnelerdir. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
 
 At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
-* Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Internal Node.js libraries. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
-* Node.js, OpenSSL dahil olmak üzere bir dizi başka statik olarak bağlı kitaplık içerir. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
-## Merhaba dünya
+## Hello world
 
-Bu "Merhaba dünya" örneği, aşağıdaki JavaScript kodunun karşılığı olan C ++ ile yazılmış basit bir Eklentidir:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-İlk olarak, `hello.cc` dosyasını oluşturun:
+First, create the file `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -57,14 +57,14 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 }  // namespace demo
 ```
 
-Tüm Node.js Eklentilerinin, deseni izleyerek bir başlatma işlevini dışa aktarması gerektiğini unutmayın:
+Note that all Node.js Addons must export an initialization function following the pattern:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Bir işlev olmadığından `NODE_MODULE`'dan sonra hiçbir noktalı virgül yoktur (bkz. `node.h`).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
@@ -174,9 +174,9 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 }
 ```
 
-### Yapı
+### Building
 
-Kaynak kodu yazıldıktan sonra, ikili `addon.node` dosyasına derlenmelidir. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Bu dosya, [node-gyp](https://github.com/nodejs/node-gyp) tarafından — özellikle Node.js Eklentilerini derlemek için yazılmış bir araç olarak kullanılır.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -189,15 +189,15 @@ Kaynak kodu yazıldıktan sonra, ikili `addon.node` dosyasına derlenmelidir. To
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Bu versiyon, geliştiricilerin kullanımı için doğrudan kullanıma sunulmamıştır ve yalnızca Eklentileri derlemek ve kurmak için `npm install` komutunu kullanma özelliğini desteklemeyi amaçlamaktadır. `node-gyp`'yi doğrudan kullanmak isteyen geliştiriciler, `npm install -g node-gyp` komutunu kullanarak yükleyebilirler. Platforma özel gereksinimler dahil olmak üzere, daha fazla bilgi için `node-gyp` [yükleme yönergelerine](https://github.com/nodejs/node-gyp#installation) bakın.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
-`binding.gyp` dosyası oluşturulduktan sonra, geçerli platform için uygun proje derleme dosyalarını oluşturmak için `node-gyp configure` komutunu kullanın. Bu, `build/` dizininde bir `Makefile` (Unix platformlarında) veya bir `vcxproj` dosyası (Windows'ta) oluşturur.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Ardından, derlenmiş `addon.node` dosyasını üretmek için `node-gyp build` komutunu çağırın. Bu `build/Release/` dizinine konur.
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
-Bir Node.js Eklentisi yüklemek için `npm install` kullanırken, npm, talep edilen kullanıcı platformu için derlenmiş bir Eklenti sürümü oluşturarak, bu aynı işlem kümesini gerçekleştirmek için kendi paketlenmiş `node-gyp` sürümünü kullanır.
+When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
-Bir kere oluşturulduktan sonra, ikili Eklenti, kurulmuş `addon.node` modülüne [`require()`](modules.html#modules_require) işaretlenerek Node.js içinde kullanılabilir:
+Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
 ```js
 // hello.js
@@ -207,11 +207,11 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Lütfen daha fazla bilgi için aşağıdaki örneklere bakın veya üretimdeki bir örnek için <https://github.com/arturadib/node-qt> adresini ziyaret edin.
+Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
 
-Derlenmiş ikili Eklenti dosyasına giden kesin yol, nasıl derlendiğine bağlı olarak değişebildiği için (diğer bir deyişle, bazen `./build/Debug/` içinde olabilir), Eklentiler, derlenmiş modülü yüklemek için [bindings](https://github.com/TooTallNate/node-bindings) paketini kullanabilir.
+Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
 
-`bindings` paketi uygulaması Eklenti modüllerini nasıl konumlandırdığı konusunda daha komplike olsa da, esasen şuna benzer bir try-catch modeli kullandığını unutmayın:
+Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
 
 ```js
 try {
@@ -221,31 +221,31 @@ try {
 }
 ```
 
-### Node.js'in kendi bağımlılıklarına bağlanma
+### Linking to Node.js' own dependencies
 
-Node.js, V8, libuv ve OpenSSL gibi statik olarak bağlı bir dizi kütüphane kullanır. Tüm Eklentilerin V8'e bağlanması gerekir ve ayrıca diğer bağımlılıkların herhangi birine de bağlanabilir. Tipik olarak bu, `#include <...>` ifadelerini dahil etmek kadar basittir (örneğin, `#include <v8.h>`) ve `node-gyp` uygun başlıkları otomatik olarak bulacaktır. Ancak, dikkat edilmesi gereken birkaç uyarı vardır:
+Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
-* `node-gyp` çalıştırıldığı zaman, Node.js'nin belirli bir sürümünü algılar ve tam kaynak tarball'ı veya yalnızca başlıkları indirir. Eğer tam kaynak indirilirse, Eklentiler, Node.js bağımlılıklarının tümüne tam erişime sahip olur. Ancak, yalnızca Node.js başlıkları indirilirse, o halde yalnızca Node.js tarafından verilen semboller kullanılabilir olacaktır.
+* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
-* `node-gyp`, yerel bir Node.js kaynak görüntüsüne işaret eden `--nodedir` bayrağı kullanılarak çalıştırılabilir. Bu seçeneği kullanarak, Eklenti tüm bağımlılıklara erişebilir.
+* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
-### Eklentileri require() kullanarak yükleme
+### Loading Addons using require()
 
-Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). [`require()`](modules.html#modules_require) işlevi, `.node` dosya uzantısına sahip dosyaları aramak ve bunları dinamik olarak bağlı kitaplıklar olarak başlatmak için yazılmıştır.
+The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-[`require()`](modules.html#modules_require) çağrıldığı zaman, `.node` uzantısı genellikle ihmal edilebilir ve Node.js yine de Eklentiyi bulacak ve başlatacaktır. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
+When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
-## Node.js için Yerel Soyutlamalar
+## Native Abstractions for Node.js
 
-Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. V8 API'nın bir V8 sürümünden bir sonrakine (ve bir büyük Node.js sürümünden bir sonrakine) önemli ölçüde değişebildiğini ve değiştiğini anlamak önemlidir. With each change, Addons may need to be updated and recompiled in order to continue functioning. Node.js sürüm çizelgesi, bu tür değişikliklerin sıklığını ve etkisini en aza indirecek şekilde tasarlanmıştır ancak Node.js'nin V8 API'larının kararlılığını sağlamak için şu anda yapabilecekleri çok az şey vardır.
+Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
-Node.js için [Yerli Soyutlamalar](https://github.com/nodejs/nan) (veya `nan`), Addon geliştiricilerinin V8 ve Node.js sürümlerinin geçmiş ve gelecekteki sürümleri arasında uyumluluğu korumak için kullanmaları için tavsiye edilen araçlar sağlar. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
+The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
 ## N-API
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
@@ -285,9 +285,9 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 
 The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
-## Eklenti örnekleri
+## Addon examples
 
-Following are some example Addons intended to help developers get started. Örnekler V8 API'lerini kullanır. Çeşitli V8 çağrıları ile ilgili yardım için çevrimiçi [V8 referansına](https://v8docs.nodesource.com/) ve kulplar, kapsamlar, işlevler şablonu vb. gibi çeşitli kavramların açıklanması için V8'in [Embedder Kılavuzu'na](https://github.com/v8/v8/wiki/Embedder's%20Guide) bakın.
+Following are some example Addons intended to help developers get started. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 Each of these examples using the following `binding.gyp` file:
 
@@ -314,7 +314,7 @@ Once the `binding.gyp` file is ready, the example Addons can be configured and b
 $ node-gyp configure build
 ```
 
-### İşlev argümanları
+### Function arguments
 
 Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
@@ -380,7 +380,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Derlendikten sonra, örnek Eklenti gerekli olabilir ve Node.js içinden kullanılabilir:
+Once compiled, the example Addon can be required and used from within Node.js:
 
 ```js
 // test.js
@@ -389,7 +389,7 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-### Geri Aramalar
+### Callbacks
 
 It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
@@ -447,7 +447,7 @@ addon((msg) => {
 
 Note that, in this example, the callback function is invoked synchronously.
 
-### Obje fabrikası
+### Object factory
 
 Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
@@ -490,7 +490,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-JavaScript'te test etmek için:
+To test it in JavaScript:
 
 ```js
 // test.js
@@ -502,7 +502,7 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-### İşlev fabrikası
+### Function factory
 
 Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
 
@@ -552,7 +552,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Test için:
+To test:
 
 ```js
 // test.js
@@ -563,7 +563,7 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-### C++ objelerini sarma
+### Wrapping C++ objects
 
 It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
@@ -596,7 +596,7 @@ Then, in `myobject.h`, the wrapper class inherits from `node::ObjectWrap`:
 #include <node.h>
 #include <node_object_wrap.h>
 
-alan adı demosu {
+namespace demo {
 
 class MyObject : public node::ObjectWrap {
  public:
@@ -612,7 +612,7 @@ class MyObject : public node::ObjectWrap {
   double value_;
 };
 
-}  // alan adı demo
+}  // namespace demo
 
 #endif
 ```
@@ -715,7 +715,7 @@ To build this example, the `myobject.cc` file must be added to the `binding.gyp`
 }
 ```
 
-Şununla test et:
+Test it with:
 
 ```js
 // test.js
@@ -732,7 +732,7 @@ console.log(obj.plusOne());
 
 The destructor for a wrapper object will run when the object is garbage-collected. For destructor testing, there are command-line flags that can be used to make it possible to force garbage collection. These flags are provided by the underlying V8 JavaScript engine. They are subject to change or removal at any time. They are not documented by Node.js or V8, and they should never be used outside of testing.
 
-### Sarılmış objelerin fabrikası
+### Factory of wrapped objects
 
 Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
 
@@ -749,7 +749,7 @@ First, the `createObject()` method is implemented in `addon.cc`:
 #include <node.h>
 #include "myobject.h"
 
-alan adı demosu {
+namespace demo {
 
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
@@ -770,7 +770,7 @@ void InitAll(Local<Object> exports, Local<Object> module) {
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 
-}  // alan adı demosu
+}  // namespace demo
 ```
 
 In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
@@ -783,7 +783,7 @@ In `myobject.h`, the static method `NewInstance()` is added to handle instantiat
 #include <node.h>
 #include <node_object_wrap.h>
 
-ad alanı demo {
+namespace demo {
 
 class MyObject : public node::ObjectWrap {
  public:
@@ -800,7 +800,7 @@ class MyObject : public node::ObjectWrap {
   double value_;
 };
 
-}  // ad alanı demosu
+}  // namespace demo
 
 #endif
 ```
@@ -912,7 +912,7 @@ Once again, to build this example, the `myobject.cc` file must be added to the `
 }
 ```
 
-Şununla test et:
+Test it with:
 
 ```js
 // test.js
@@ -1095,7 +1095,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-Şununla test et:
+Test it with:
 
 ```js
 // test.js
@@ -1109,7 +1109,7 @@ console.log(result);
 // Prints: 30
 ```
 
-### AtExit kancaları
+### AtExit hooks
 
 An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
 
