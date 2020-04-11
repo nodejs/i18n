@@ -3,11 +3,11 @@
 <!--introduced_in=v0.10.0-->
 <!--lint disable maximum-line-length-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Nó có thể truy cập bằng cách sử dụng:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -45,7 +45,7 @@ This class is used to create a TCP or [IPC](#net_ipc_support) server.
 
 * `options` {Object} See [`net.createServer([options][, connectionListener])`][`net.createServer()`].
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 `net.Server` is an [`EventEmitter`][] with the following events:
 
@@ -102,11 +102,11 @@ const server = net.createServer((socket) => {
 
 // Grab an arbitrary unused port.
 server.listen(() => {
-  console.log('server được mở tại', server.address());
+  console.log('opened server on', server.address());
 });
 ```
 
-Không gọi `server.address()` cho đến khi sự kiện `'listening'` được gọi lên.
+Don't call `server.address()` until the `'listening'` event has been emitted.
 
 ### `server.close([callback])`
 <!-- YAML
@@ -114,7 +114,7 @@ added: v0.1.90
 -->
 
 * `callback` {Function} Called when the server is closed.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Stops the server from accepting new connections and keeps existing connections. This function is asynchronous, the server is finally closed when all connections are ended and the server emits a [`'close'`][] event. The optional `callback` will be called once the `'close'` event occurs. Unlike that event, it will be called with an `Error` as its only argument if the server was not open when it was closed.
 
@@ -124,7 +124,7 @@ added: v0.2.0
 deprecated: v0.9.7
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`server.getConnections()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`server.getConnections()`][] instead.
 
 * {integer|null}
 
@@ -138,7 +138,7 @@ added: v0.9.7
 -->
 
 * `callback` {Function}
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Asynchronously get the number of concurrent connections on the server. Works when sockets were sent to forks.
 
@@ -187,7 +187,7 @@ added: v0.5.10
 * `handle` {Object}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions
 * `callback` {Function}
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Start a server listening for connections on a given `handle` that has already been bound to a port, a Unix domain socket, or a Windows named pipe.
 
@@ -215,7 +215,7 @@ changes:
   * `ipv6Only` {boolean} For TCP servers, setting `ipv6Only` to `true` will disable dual-stack support, i.e., binding to host `::` won't make `0.0.0.0` be bound. **Default:** `false`.
 * `callback` {Function}
 functions.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 If `port` is specified, it behaves the same as
 <a href="#net_server_listen_port_host_backlog_callback">
@@ -241,7 +241,7 @@ added: v0.1.90
 * `path` {string} Path the server should listen to. See [Identifying paths for IPC connections](#net_identifying_paths_for_ipc_connections).
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function}.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Start an [IPC](#net_ipc_support) server listening for connections on the given `path`.
 
@@ -254,7 +254,7 @@ added: v0.1.90
 * `host` {string}
 * `backlog` {number} Common parameter of [`server.listen()`][] functions.
 * `callback` {Function}.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Start a TCP server listening for connections on the given `port` and `host`.
 
@@ -287,7 +287,7 @@ It is not recommended to use this option once a socket has been sent to a child 
 added: v0.9.1
 -->
 
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *not* let the program exit if it's the only server left (the default behavior). If the server is `ref`ed calling `ref()` again will have no effect.
 
@@ -296,7 +296,7 @@ Opposite of `unref()`, calling `ref()` on a previously `unref`ed server will *no
 added: v0.9.1
 -->
 
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Calling `unref()` on a server will allow the program to exit if this is the only active server in the event system. If the server is already `unref`ed calling `unref()` again will have no effect.
 
@@ -323,7 +323,7 @@ added: v0.3.4
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. See [`net.createServer()`][] and the [`'end'`][] event for details. **Default:** `false`.
   * `readable` {boolean} Allow reads on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
   * `writable` {boolean} Allow writes on the socket when an `fd` is passed, otherwise ignored. **Default:** `false`.
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Creates a new socket object.
 
@@ -569,7 +569,7 @@ added: v0.1.90
 -->
 
 * `exception` {Object}
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Ensures that no more I/O activity happens on this socket. Only necessary in case of errors (parse error or so).
 
@@ -776,7 +776,7 @@ added: v0.7.0
 
 * `options` {Object}
 * `connectListener` {Function}
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(options[, connectListener])`][`net.createConnection(options)`].
 
@@ -787,7 +787,7 @@ added: v0.1.90
 
 * `path` {string}
 * `connectListener` {Function}
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`].
 
@@ -799,7 +799,7 @@ added: v0.1.90
 * `port` {number}
 * `host` {string}
 * `connectListener` {Function}
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Alias to [`net.createConnection(port[, host][, connectListener])`][`net.createConnection(port, host)`].
 
@@ -892,7 +892,7 @@ added: v0.5.0
   * `allowHalfOpen` {boolean} Indicates whether half-opened TCP connections are allowed. **Default:** `false`.
   * `pauseOnConnect` {boolean} Indicates whether the socket should be paused on incoming connections. **Default:** `false`.
 * `connectionListener` {Function} Automatically set as a listener for the [`'connection'`][] event.
-* Trả về: {net.Server}
+* Returns: {net.Server}
 
 Creates a new TCP or [IPC](#net_ipc_support) server.
 
