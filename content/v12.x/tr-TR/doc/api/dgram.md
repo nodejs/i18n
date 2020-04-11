@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- name=dgram -->
 
@@ -477,7 +477,7 @@ added: v0.3.8
 
 * `ttl` {integer}
 
-Sets the `IP_MULTICAST_TTL` socket option. TTL genellikle "Yaşama Süresi" anlamına gelirken, bu bağlamda, bir paketin geçmesine izin verilen IP atlama sayısını belirtir. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
+Sets the `IP_MULTICAST_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded.
 
 The `ttl` argument may be between 0 and 255. The default on most systems is `1`.
 
@@ -506,7 +506,7 @@ added: v0.1.101
 
 * `ttl` {integer}
 
-Sets the `IP_TTL` socket option. TTL genellikle "Yaşama Süresi" anlamına gelirken, bu bağlamda, bir paketin geçmesine izin verilen IP atlama sayısını belirtir. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
+Sets the `IP_TTL` socket option. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. If the TTL is decremented to 0 by a router, it will not be forwarded. Changing TTL values is typically done for network probes or when multicasting.
 
 The `ttl` argument may be between between 1 and 255. The default on most systems is 64.
 
