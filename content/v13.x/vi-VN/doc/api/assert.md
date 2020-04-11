@@ -1,8 +1,8 @@
-# Xác nhận (Assert)
+# Assert
 
 <!--introduced_in=v0.1.21-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants.
 
@@ -138,7 +138,7 @@ added: v0.5.9
 * `value` {any} The input that is checked for being truthy.
 * `message` {string|Error}
 
-Cách gọi khác của [`assert.ok()`][].
+An alias of [`assert.ok()`][].
 
 ## `assert.deepEqual(actual, expected[, message])`
 <!-- YAML
@@ -177,7 +177,7 @@ Cách gọi khác của [`assert.deepStrictEqual()`][].
 
 > Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.deepStrictEqual()`][] thay thế.
 
-Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. Consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have surprising results.
+Tests for deep equality between the `actual` and `expected` parameters. Consider using [`assert.deepStrictEqual()`][] instead. [`assert.deepEqual()`][] can have surprising results.
 
 _Deep equality_ means that the enumerable "own" properties of child objects are also recursively evaluated by the following rules.
 
@@ -202,7 +202,7 @@ The following example does not throw an [`AssertionError`][] because the primiti
 assert.deepEqual('+00000000', false);
 ```
 
-Đẳng thức "deep" (sâu) nghĩa rằng các thuộc tính "own" của các đối tượng con cũng sẽ được đánh giá:
+"Deep" equality means that the enumerable "own" properties of child objects are evaluated also:
 
 ```js
 const assert = require('assert');
@@ -239,7 +239,7 @@ assert.deepEqual(obj1, obj4);
 // AssertionError: { a: { b: 1 } } deepEqual {}
 ```
 
-If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the [`AssertionError`][].
+If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the [`AssertionError`][].
 
 ## `assert.deepStrictEqual(actual, expected[, message])`
 <!-- YAML
@@ -274,7 +274,7 @@ changes:
 * `expected` {any}
 * `message` {string|Error}
 
-Thử nghiệm các thông số cho đẳng thức sâu giữa `actual` và `expected`. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
+Tests for deep equality between the `actual` and `expected` parameters. "Deep" equality means that the enumerable "own" properties of child objects are recursively evaluated also by the following rules.
 
 ### Chi tiết so sánh
 
@@ -382,7 +382,7 @@ assert.deepStrictEqual(weakMap1, weakMap3);
 //   }
 ```
 
-If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## `assert.doesNotMatch(string, regexp[, message])`
 <!-- YAML
@@ -393,7 +393,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -472,7 +472,7 @@ If an error is thrown and it is the same type as that specified by the `error` p
 
 If specified, `error` can be a [`Class`][], [`RegExp`][] or a validation function. Tham khảo thêm [`assert.throws()`][].
 
-Trong ví dụ dưới đây sẽ trả giá trị [`TypeError`][] vì không có loại lỗi nào tương tự trong bộ phận xác nhận:
+The following, for instance, will throw the [`TypeError`][] because there is no matching error type in the assertion:
 ```js
 assert.doesNotThrow(
   () => {
@@ -534,7 +534,7 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 // AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
 ```
 
-If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are not equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## `assert.fail([message])`<!-- YAML
 added: v0.1.21
@@ -655,7 +655,7 @@ added: v13.6.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
@@ -700,11 +700,11 @@ changes:
 
 **Strict assertion mode**
 
-Cách gọi khác của [`assert.notDeepStrictEqual()`][].
+An alias of [`assert.notDeepStrictEqual()`][].
 
 **Legacy assertion mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.notDeepStrictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.notDeepStrictEqual()`][] instead.
 
 Tests for any deep inequality. Opposite of [`assert.deepEqual()`][].
 
@@ -792,11 +792,11 @@ added: v0.1.21
 
 **Strict assertion mode**
 
-Cách gọi khác của [`assert.notStrictEqual()`][].
+An alias of [`assert.notStrictEqual()`][].
 
 **Legacy assertion mode**
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`assert.notStrictEqual()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`assert.notStrictEqual()`][] instead.
 
 Tests shallow, coercive inequality with the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) ( `!=` ).
 
@@ -813,7 +813,7 @@ assert.notEqual(1, '1');
 // AssertionError: 1 != '1'
 ```
 
-If the values are equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. Nếu tham số `message` chưa được định nghĩa, nó sẽ được chỉ định một thông báo lỗi. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
+If the values are equal, an [`AssertionError`][] is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned. If the `message` parameter is an instance of an [`Error`][] then it will be thrown instead of the `AssertionError`.
 
 ## `assert.notStrictEqual(actual, expected[, message])`<!-- YAML
 added: v0.1.21
