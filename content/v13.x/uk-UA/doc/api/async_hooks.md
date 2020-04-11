@@ -1,4 +1,4 @@
-# Асинхронні хуки
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
