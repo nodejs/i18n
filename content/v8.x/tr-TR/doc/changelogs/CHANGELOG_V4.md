@@ -54,7 +54,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -109,7 +109,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable Changes
 
-* **kripto**: 
+* **crypto**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -296,11 +296,11 @@ This LTS release comes with 118 commits. This includes 73 which are doc related,
 * **child_process**: add shell option to spawn() (cjihrig) [#4598](https://github.com/nodejs/node/pull/4598)
 * **deps**: 
   * **v8**: expose statistics about heap spaces (Ben Ripkens) [#4463](https://github.com/nodejs/node/pull/4463)
-* **kripto**: 
+* **crypto**: 
   * add ALPN Support (Shigeki Ohtsu) [#2564](https://github.com/nodejs/node/pull/2564)
   * allow adding extra certs to well-known CAs (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * **fs**: add the fs.mkdtemp() function. (Florian MARGAINE) [#5333](https://github.com/nodejs/node/pull/5333)
-* **işlem**: 
+* **process**: 
   * add `externalMemory` to `process` (Fedor Indutny) [#9587](https://github.com/nodejs/node/pull/9587)
   * add process.cpuUsage() (Patrick Mueller) [#10796](https://github.com/nodejs/node/pull/10796)
 
@@ -1052,7 +1052,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2016-09-27, Version 4.6.0 'Argon' (LTS), @rvagg
 
-This is a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -1098,7 +1098,7 @@ Semver Patch:
 
 Semver Minor:
 
-* **arabellek**: 
+* **buffer**: 
   * backport new buffer constructor APIs to v4.x (Сковорода Никита Андреевич) [#7562](https://github.com/nodejs/node/pull/7562)
   * backport --zero-fill-buffers cli option (James M Snell) [#5745](https://github.com/nodejs/node/pull/5745)
 * **build**: 
@@ -1114,9 +1114,9 @@ Semver Minor:
 
 Semver Patch:
 
-* **arabellek**: 
+* **buffer**: 
   * ignore negative allocation lengths (Anna Henningsen) [#7562](https://github.com/nodejs/node/pull/7562)
-* **kripto**: 
+* **crypto**: 
   * update root certificates (Ben Noordhuis) [#7363](https://github.com/nodejs/node/pull/7363)
 * **libuv**: 
   * upgrade libuv to 1.9.1 (Saúl Ibarra Corretgé) [#6796](https://github.com/nodejs/node/pull/6796)
@@ -1399,7 +1399,7 @@ This LTS release comes with 89 commits. This includes 46 commits that are docs r
   * All properties of an array (aside from length) can now be printed in the repl (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **npm**: 
   * Upgrade npm to 2.15.8 (Rebecca Turner) [#7412](https://github.com/nodejs/node/pull/7412)
-* **akış**: 
+* **stream**: 
   * Fix for a bug that became more prevalent with the stream changes that landed in v4.4.5. (Anna Henningsen) [#7160](https://github.com/nodejs/node/pull/7160)
 * **V8**: 
   * Fix for a bug in crankshaft that was causing crashes on arm64 (Myles Borins) [#7442](https://github.com/nodejs/node/pull/7442)
@@ -1519,7 +1519,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 ### Notable Changes
 
-* **arabellek**: 
+* **buffer**: 
   * Buffer.indexOf now returns correct values for all UTF-16 input (Anna Henningsen) [#6511](https://github.com/nodejs/node/pull/6511)
 * **contextify**: 
   * Context objects are now properly garbage collected, this solves a problem some individuals were experiencing with extreme memory growth (Ali Ijaz Sheikh) [#6871](https://github.com/nodejs/node/pull/6871)
@@ -1614,7 +1614,7 @@ This release is specifically related to a Buffer overflow vulnerability discover
 
 * **deps**: 
   * update openssl to 1.0.2h. (Shigeki Ohtsu) [#6551](https://github.com/nodejs/node/pull/6551) 
-    * Bu sürümün güvenlik içeriği hakkında daha fazla bilgi için lütfen [blog gönderimize](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) bakın.
+    * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
 
 ### Commits
 
@@ -1902,30 +1902,30 @@ This release also includes over 70 fixes to our docs and over 50 fixes to tests.
 
 The SEMVER-MINOR changes include:
 
-    * **vekiller**:
-      - Yeni bir bayrak takdim eden v8 güncellemesi --perf_basic_prof_only_functions (Ali Ijaz Sheikh) [#3609](https://github.com/nodejs/node/pull/3609)
+    * **deps**:
+      - An update to v8 that introduces a new flag --perf_basic_prof_only_functions (Ali Ijaz Sheikh) [#3609](https://github.com/nodejs/node/pull/3609)
     * **http**:
-      - Https(s) aracısında *canlı tutulan* bağlantılarda hataları yakalayan yeni bir özellik (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482)
-    * **kay**:
-      - Big-Endian sistemleri için daha iyi destek (Bryon Leung) [#3410](https://github.com/nodejs/node/pull/3410)
+      - A new feature in http(s) agent that catches errors on *keep alived* connections (José F. Romaniello) [#4482](https://github.com/nodejs/node/pull/4482)
+    * **src**:
+      - Better support for Big-Endian systems (Bryon Leung) [#3410](https://github.com/nodejs/node/pull/3410)
     * **tls**:
-      - Ortak SSL seçeneklerini `tls.createSecurePair`a iletmenizi sağlayan yeni bir özellik (Коренберг Марк) [#2441](https://github.com/nodejs/node/pull/2441)
-    * **araçlar**:
-      - işaret işlemcisini sağlanan ayırma dosyalarında çalıştıracak yeni bir bayrak `--prof-process` (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021)
+      - A new feature that allows you to pass common SSL options to `tls.createSecurePair` (Коренберг Марк) [#2441](https://github.com/nodejs/node/pull/2441)
+    * **tools**:
+      - a new flag `--prof-process` which will execute the tick processor on the provided isolate files (Matt Loring) [#4021](https://github.com/nodejs/node/pull/4021)
     
 
 Notable semver patch changes include:
 
     * **buld**:
-      - Support python path that includes spaces. Bu, `c:/Program Files` (Felix Becker) [#4841](https://github.com/nodejs/node/pull/4841) adresinde yaşayan python sahibi Windows kullanıcılarımız için özellikle ilgi çekici olmalıdır.
+      - Support python path that includes spaces. This should be of particular interest to our Windows users who may have python living in `c:/Program Files` (Felix Becker) [#4841](https://github.com/nodejs/node/pull/4841)
     * **https**:
-      - [#3692](https://github.com/nodejs/node/issues/3692) için potansiyel bir düzeltme HTTP/HTTPS istemcisi EPROTO (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982) atma isteğinde bulundu
-    * **yükleyici**:
-      - İzole işaret günlüklerinden daha fazla okunabilir profil bilgisi (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
+      - A potential fix for [#3692](https://github.com/nodejs/node/issues/3692) HTTP/HTTPS client requests throwing EPROTO (Fedor Indutny) [#4982](https://github.com/nodejs/node/pull/4982)
+    * **installer**:
+      - More readable profiling information from isolate tick logs (Matt Loring) [#3032](https://github.com/nodejs/node/pull/3032)
     * **npm**:
-      - npm 2.14.20'ye yükseltme (Kat Marchán) [#5510](https://github.com/nodejs/node/pull/5510)
-    * **işlem**:
-      - Etkinlik yayıcılardaki semboller için destek ekleyin. Symbols didn't exist when it was written ¯\_(ツ)_/¯ (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
+      - upgrade to npm 2.14.20 (Kat Marchán) [#5510](https://github.com/nodejs/node/pull/5510)
+    * **process**:
+      - Add support for symbols in event emitters. Symbols didn't exist when it was written ¯\_(ツ)_/¯ (cjihrig) [#4798](https://github.com/nodejs/node/pull/4798)
     * **querystring**:
       - querystring.parse() is now 13-22% faster! (Brian White) [#4675](https://github.com/nodejs/node/pull/4675)
     * **streams**:
@@ -2177,7 +2177,7 @@ This is a security release with only a single commit, an update to openssl due t
 
 ### Notable changes
 
-* **arabellek** 
+* **buffer** 
   * make byteLength work with Buffer correctly (Jackson Tian) 
     * [#4738](https://github.com/nodejs/node/pull/4738)
 * **debugger** 
@@ -3071,7 +3071,7 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-* **arabellek**: 
+* **buffer**: 
   * Buffers are now created in JavaScript, rather than C++. This increases the speed of buffer creation (Trevor Norris) [#2866](https://github.com/nodejs/node/pull/2866).
   * `Buffer#slice()` now uses `Uint8Array#subarray()` internally, increasing `slice()` performance (Karl Skomski) [#2777](https://github.com/nodejs/node/pull/2777).
 * **fs**: 
@@ -3157,16 +3157,16 @@ See https://github.com/nodejs/node/labels/confirmed-bug for complete and current
 
 ### Notable changes
 
-Bu değişiklik listesi, son io.js v3.x şube sürümüne, v3.3.0, göredir. Lütfen 0.12.x'teki değişikliklerin daha eksiksiz bir listesi için v3.x, v2.x ve v1.x sürümlerindeki önemli değişikliklerin listesine bakın. v3.x serisindeki bazı değişikliklerin yanı sıra bu sürümdeki önemli değişikliklerin, Node.js ve io.js projelerinin tam birleşimi için gereken değişiklikleri oluşturduğunu unutmayın.
+This list of changes is relative to the last io.js v3.x branch release, v3.3.0. Please see the list of notable changes in the v3.x, v2.x and v1.x releases for a more complete list of changes from 0.12.x. Note, that some changes in the v3.x series as well as major breaking changes in this release constitute changes required for full convergence of the Node.js and io.js projects.
 
 * **child_process**: `ChildProcess.prototype.send()` and `process.send()` operate asynchronously across all platforms so an optional callback parameter has been introduced that will be invoked once the message has been sent, i.e. `.send(message[, sendHandle][, callback])` (Ben Noordhuis) [#2620](https://github.com/nodejs/node/pull/2620).
 * **node**: Rename "io.js" code to "Node.js" (cjihrig) [#2367](https://github.com/nodejs/node/pull/2367).
 * **node-gyp**: This release bundles an updated version of node-gyp that works with all versions of Node.js and io.js including nightly and release candidate builds. From io.js v3 and Node.js v4 onward, it will only download a headers tarball when building addons rather than the entire source. (Rod Vagg) [#2700](https://github.com/nodejs/node/pull/2700)
 * **npm**: Upgrade to version 2.14.2 from 2.13.3, includes a security update, see https://github.com/npm/npm/releases/tag/v2.14.2 for more details, (Kat Marchán) [#2696](https://github.com/nodejs/node/pull/2696).
-* **zamanlayıcılar**: 0.12 uygulamasını taşımaktan gelişmiş zamanlayıcı performansı, artı küçük düzeltmeler (Jeremiah Senkpiel)[#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
+* **timers**: Improved timer performance from porting the 0.12 implementation, plus minor fixes (Jeremiah Senkpiel) [#2540](https://github.com/nodejs/node/pull/2540), (Julien Gilli) [nodejs/node-v0.x-archive#8751](https://github.com/nodejs/node-v0.x-archive/pull/8751) [nodejs/node-v0.x-archive#8905](https://github.com/nodejs/node-v0.x-archive/pull/8905)
 * **util**: The `util.is*()` functions have been deprecated, beginning with deprecation warnings in the documentation for this release, users are encouraged to seek more robust alternatives in the npm registry, (Sakthipriyan Vairamani) [#2447](https://github.com/nodejs/node/pull/2447).
 * **v8**: Upgrade to version 4.5.103.30 from 4.4.63.30 (Ali Ijaz Sheikh) [#2632](https://github.com/nodejs/node/pull/2632). 
-  * Yeni `TypedArray` prototip yöntemlerini uygulayın: `içindeKopyala()`, `her()`, `doldur()`, `filtrele()`, `bul()`, `indexBul()`, `herbiriİçin()`, `indeksi()`, `katıl()`, `sonİndeksi()`, `harita()`, `azalt()`, `sağaAzalt()`, `ters()`, `dilimle()`, `bazı()`, `çeşit()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
+  * Implement new `TypedArray` prototype methods: `copyWithin()`, `every()`, `fill()`, `filter()`, `find()`, `findIndex()`, `forEach()`, `indexOf()`, `join()`, `lastIndexOf()`, `map()`, `reduce()`, `reduceRight()`, `reverse()`, `slice()`, `some()`, `sort()`. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
   * Implement new `TypedArray.from()` and `TypedArray.of()` functions. See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray for further information.
   * Implement arrow functions, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions for further information.
   * Full ChangeLog available at https://github.com/v8/v8-git-mirror/blob/4.5.103/ChangeLog
