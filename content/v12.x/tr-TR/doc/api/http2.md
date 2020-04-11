@@ -8,7 +8,7 @@ changes:
 -->
 <!--introduced_in=v8.4.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -1875,7 +1875,7 @@ const server = http2.createServer({
 
 The `options.selectPadding()` function is invoked once for *every* `HEADERS` and `DATA` frame. This has a definite noticeable impact on performance.
 
-### Hata işleme
+### Error Handling
 
 There are several types of error conditions that may arise when using the `http2` module:
 
@@ -2358,7 +2358,7 @@ added: v8.4.0
 
 Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the HTTP/2 multiplexing for transmission over the network. It does not imply that the client has received anything yet.
 
-Bu olaydan sonra, tepki nesnesine daha fazla olay yayınlanmayacak.
+After this event, no more events will be emitted on the response object.
 
 #### `response.addTrailers(headers)`
 <!-- YAML
@@ -2409,7 +2409,7 @@ Boolean value that indicates whether the response has completed. Starts as `fals
 #### `response.getHeader(name)`<!-- YAML
 added: v8.4.0
 -->* `name` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Reads out a header that has already been queued but not sent to the client. The name is case-insensitive.
 
