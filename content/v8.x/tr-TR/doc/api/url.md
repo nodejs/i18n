@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -26,21 +26,21 @@ A comparison between the WHATWG and Legacy APIs is provided below. Above the URL
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                            href                                             │
 ├──────────┬──┬─────────────────────┬─────────────────────┬───────────────────────────┬───────┤
-│ protokol │  │        yazar         │        ana bilgisayar        │           yol            │ hash  │
+│ protocol │  │        auth         │        host         │           path            │ hash  │
 │          │  │                     ├──────────────┬──────┼──────────┬────────────────┤       │
-│          │  │                     │   ana bilgisayar ismi   │ port │ yol adı │     ara     │       │
+│          │  │                     │   hostname   │ port │ pathname │     search     │       │
 │          │  │                     │              │      │          ├─┬──────────────┤       │
-│          │  │                     │              │      │          │ │    sorgu     │       │
-"  https:   //    kullanıcı   :   şif   @ sub.host.com : 8080   /p/a/t/h  ?  sorgu=dizi   #hash "
-│          │  │          │          │   ana bilgisayar ismi   │ port │          │                │       │
+│          │  │                     │              │      │          │ │    query     │       │
+"  https:   //    user   :   pass   @ sub.host.com : 8080   /p/a/t/h  ?  query=string   #hash "
+│          │  │          │          │   hostname   │ port │          │                │       │
 │          │  │          │          ├──────────────┴──────┤          │                │       │
-│ protokol │  │ kullanıcı adı │ parola │        ana bilgisayar         │          │                │       │
+│ protocol │  │ username │ password │        host         │          │                │       │
 ├──────────┴──┼──────────┴──────────┼─────────────────────┤          │                │       │
-│   başnokta    │                     │       başnokta        │ yol adı │     ara     │ hash  │
+│   origin    │                     │       origin        │ pathname │     search     │ hash  │
 ├─────────────┴─────────────────────┴─────────────────────┴──────────┴────────────────┴───────┤
 │                                            href                                             │
 └─────────────────────────────────────────────────────────────────────────────────────────────┘
-("" satırındaki tüm boşluklar göz ardı edilmelidir — onlar sadece formatlama içindir)
+(all spaces in the "" line should be ignored — they are purely for formatting)
 ```
 
 Parsing the URL string using the WHATWG API:
@@ -67,7 +67,7 @@ const myURL =
 added: v7.0.0
 -->
 
-### Sınıf: URL
+### Class: URL
 
 Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Examples of parsed URLs](https://url.spec.whatwg.org/#example-url-parsing) may be found in the Standard itself.
 
@@ -122,7 +122,7 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.host
 
@@ -225,7 +225,7 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.pathname
 
@@ -256,41 +256,41 @@ Gets and sets the port portion of the URL.
 const { URL } = require('url');
 const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
-// Yazdırır 8888
+// Prints 8888
 
-// Varsayılan bağlantı noktaları otomatik olarak boş dizgeye dönüştürülür
-// (HTTPS protokolünün varsayılan portu 443tür)
+// Default ports are automatically transformed to the empty string
+// (HTTPS protocol's default port is 443)
 myURL.port = '443';
 console.log(myURL.port);
-// Boş dizeyi yazdırır
+// Prints the empty string
 console.log(myURL.href);
-// Yazdırır https://example.org/
+// Prints https://example.org/
 
 myURL.port = 1234;
 console.log(myURL.port);
-// Yazdırır 1234
+// Prints 1234
 console.log(myURL.href);
-// Yazdırır https://example.org:1234/
+// Prints https://example.org:1234/
 
-// Tamamen geçersiz olan port dizeleri yoksayılır
+// Completely invalid port strings are ignored
 myURL.port = 'abcd';
 console.log(myURL.port);
-// Yazdırır 1234
+// Prints 1234
 
-// Lider numaralar port numarası olarak kabul edilir
+// Leading numbers are treated as a port number
 myURL.port = '5678abcd';
 console.log(myURL.port);
-// Yazdırır 5678
+// Prints 5678
 
-// Tam sayı olmayanlar kesildi
+// Non-integers are truncated
 myURL.port = 1234.5678;
 console.log(myURL.port);
-// Yazdırır 1234
+// Prints 1234
 
-// Aralık dışı sayılar dikkate alınmaz
+// Out-of-range numbers are ignored
 myURL.port = 1e10;
 console.log(myURL.port);
-// Yazdır 1234
+// Prints 1234
 ```
 
 The port value may be set as either a number or as a String containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
@@ -316,7 +316,7 @@ console.log(myURL.href);
 
 Invalid URL protocol values assigned to the `protocol` property are ignored.
 
-#### url.origin
+#### url.search
 
 * {string}
 
@@ -333,7 +333,7 @@ console.log(myURL.href);
 // Prints https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.searchParams
 
@@ -358,11 +358,11 @@ console.log(myURL.href);
 // Prints https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.toString()
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -370,7 +370,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -401,34 +401,34 @@ const { URL, URLSearchParams } = require('url');
 
 const myURL = new URL('https://example.org/?abc=123');
 console.log(myURL.searchParams.get('abc'));
-// Yazdırır 123
+// Prints 123
 
 myURL.searchParams.append('abc', 'xyz');
 console.log(myURL.href);
-// Yazdırır https://example.org/?abc=123&abc=xyz
+// Prints https://example.org/?abc=123&abc=xyz
 
 myURL.searchParams.delete('abc');
 myURL.searchParams.set('a', 'b');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b
+// Prints https://example.org/?a=b
 
 const newSearchParams = new URLSearchParams(myURL.searchParams);
-// Yukarıdaki eşittir
+// The above is equivalent to
 // const newSearchParams = new URLSearchParams(myURL.search);
 
 newSearchParams.append('a', 'c');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b
+// Prints https://example.org/?a=b
 console.log(newSearchParams.toString());
-// Yazdırır a=b&a=c
+// Prints a=b&a=c
 
-// newSearchParams.toString() örtülü olarak adlandırılır 
+// newSearchParams.toString() is implicitly called
 myURL.search = newSearchParams;
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b&a=c
+// Prints https://example.org/?a=b&a=c
 newSearchParams.delete('a');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b&a=c
+// Prints https://example.org/?a=b&a=c
 ```
 
 #### Constructor: new URLSearchParams()
@@ -496,24 +496,24 @@ Duplicate keys are allowed.
 const { URLSearchParams } = require('url');
 let params;
 
-// Bir dizi kullanarak
+// Using an array
 params = new URLSearchParams([
   ['user', 'abc'],
   ['query', 'first'],
   ['query', 'second']
 ]);
 console.log(params.toString());
-// Yazdırır 'user=abc&query=first&query=second'
+// Prints 'user=abc&query=first&query=second'
 
-// Bir Harita objesi kullanarak
+// Using a Map object
 const map = new Map();
 map.set('user', 'abc');
 map.set('query', 'xyz');
 params = new URLSearchParams(map);
 console.log(params.toString());
-// Yazdırır 'user=abc&query=xyz'
+// Prints 'user=abc&query=xyz'
 
-// Jeneratör fonksiyonunu kullanarak
+// Using a generator function
 function* getQueryPairs() {
   yield ['user', 'abc'];
   yield ['query', 'first'];
@@ -521,14 +521,14 @@ function* getQueryPairs() {
 }
 params = new URLSearchParams(getQueryPairs());
 console.log(params.toString());
-// Yazdırır 'user=abc&query=first&query=second'
+// Prints 'user=abc&query=first&query=second'
 
-// Her anahtar-değer çiftinin tam olarak iki elemente sahip olması gerekir
+// Each key-value pair must have exactly two elements
 new URLSearchParams([
   ['user', 'abc', 'error']
 ]);
-// TypeError verir [ERR_INVALID_TUPLE]:
-//        tupleEach sorgu çifti yinelenebilir [ad, değer] tanım grubu olmalıdır
+// Throws TypeError [ERR_INVALID_TUPLE]:
+//        Each query pair must be an iterable [name, value] tuple
 ```
 
 #### urlSearchParams.append(name, value)
@@ -651,7 +651,7 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
@@ -687,7 +687,7 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -710,7 +710,7 @@ added: v7.4.0
 -->
 
 * `domain` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -743,7 +743,7 @@ Returns a customizable serialization of a URL String representation of a [WHATWG
 
 The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
-Örneğin:
+For example:
 
 ```js
 const { URL } = require('url');
@@ -953,7 +953,7 @@ changes:
 
 The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
-Örneğin:
+For example:
 
 ```js
 const url = require('url');
@@ -994,7 +994,7 @@ The WHATWG algorithm defines four "percent-encode sets" that describe ranges of 
 
 The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 
-When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Örneğin:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. For example:
 
 ```js
 const { URL } = require('url');
