@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `url` module provides utilities for URL resolution and parsing. It can be accessed using:
 
@@ -60,7 +60,7 @@ const myURL =
 
 ## The WHATWG URL API
 
-### Sınıf: URL
+### Class: URL
 
 <!-- YAML
 added:
@@ -144,7 +144,7 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.host
 
@@ -241,7 +241,7 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.pathname
 
@@ -288,39 +288,39 @@ If that string is invalid but it begins with a number, the leading number is ass
 ```js
 const myURL = new URL('https://example.org:8888');
 console.log(myURL.port);
-// Yazdırır 8888
+// Prints 8888
 
-// Varsayılan bağlantı noktaları otomatik olarak boş diziye dönüştürülür
-// (HTTPS protokolünün varsayılan portu 443'tür)
+// Default ports are automatically transformed to the empty string
+// (HTTPS protocol's default port is 443)
 myURL.port = '443';
 console.log(myURL.port);
-// Boş diziyi yazdırır
+// Prints the empty string
 console.log(myURL.href);
-// Yazdırır https://example.org/
+// Prints https://example.org/
 
 myURL.port = 1234;
 console.log(myURL.port);
-// Yazdırır 1234
+// Prints 1234
 console.log(myURL.href);
-// Yazdırır https://example.org:1234/
+// Prints https://example.org:1234/
 
-// Tamamen geçersiz olan port dizeleri yoksayılır
+// Completely invalid port strings are ignored
 myURL.port = 'abcd';
 console.log(myURL.port);
-// Yazdırır 1234
+// Prints 1234
 
-// Lider numaralar port numarası olarak kabul edilir
+// Leading numbers are treated as a port number
 myURL.port = '5678abcd';
 console.log(myURL.port);
-// Yazdırır 5678
+// Prints 5678
 
-// Tam sayı olmayanlar kesildi
+// Non-integers are truncated
 myURL.port = 1234.5678;
 console.log(myURL.port);
-// Yazdır 1234
+// Prints 1234
 
-// Bilimsel gösterimde gösterilmeyen aralık dışı sayılar
-// yok sayılacaktır.
+// Out-of-range numbers which are not represented in scientific notation
+// will be ignored.
 myURL.port = 1e10; // 10000000000, will be range-checked as described below
 console.log(myURL.port);
 // Prints 1234
@@ -385,7 +385,7 @@ console.log(u.href);
 
 The protocol schemes considered to be special by the WHATWG URL Standard include: `ftp`, `file`, `gopher`, `http`, `https`, `ws`, and `wss`.
 
-#### url.origin
+#### url.search
 
 * {string}
 
@@ -401,7 +401,7 @@ console.log(myURL.href);
 // Prints https://example.org/abc?abc=xyz
 ```
 
-Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.searchParams
 
@@ -425,11 +425,11 @@ console.log(myURL.href);
 // Prints https://123:xyz@example.com/
 ```
 
-Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Hangi karakterlerin yüzde olarak kodlanacağının seçilmesinin, [`url.parse()`][] ve [`url.format()`][] yöntemlerinin ürettiklerinden biraz farklı olabileceğini unutmayın.
+Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.toString()
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `toString()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
@@ -437,7 +437,7 @@ Because of the need for standard compliance, this method does not allow users to
 
 #### url.toJSON()
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `toJSON()` method on the `URL` object returns the serialized URL. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
@@ -472,34 +472,34 @@ The WHATWG `URLSearchParams` interface and the [`querystring`][] module have sim
 ```js
 const myURL = new URL('https://example.org/?abc=123');
 console.log(myURL.searchParams.get('abc'));
-// Yazdırır 123
+// Prints 123
 
 myURL.searchParams.append('abc', 'xyz');
 console.log(myURL.href);
-// Yazdırır https://example.org/?abc=123&abc=xyz
+// Prints https://example.org/?abc=123&abc=xyz
 
 myURL.searchParams.delete('abc');
 myURL.searchParams.set('a', 'b');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b
+// Prints https://example.org/?a=b
 
 const newSearchParams = new URLSearchParams(myURL.searchParams);
-// Yukarıdaki eşittir
+// The above is equivalent to
 // const newSearchParams = new URLSearchParams(myURL.search);
 
 newSearchParams.append('a', 'c');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b
+// Prints https://example.org/?a=b
 console.log(newSearchParams.toString());
-// Yazdırır a=b&a=c
+// Prints a=b&a=c
 
-// newSearchParams.toString() örtülü olarak adlandırılır 
+// newSearchParams.toString() is implicitly called
 myURL.search = newSearchParams;
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b&a=c
+// Prints https://example.org/?a=b&a=c
 newSearchParams.delete('a');
 console.log(myURL.href);
-// Yazdırır https://example.org/?a=b&a=c
+// Prints https://example.org/?a=b&a=c
 ```
 
 #### Constructor: new URLSearchParams()
@@ -723,7 +723,7 @@ console.log(params.toString());
 
 #### urlSearchParams.toString()
 
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
@@ -761,7 +761,7 @@ added:
 -->
 
 * `domain` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) ASCII serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -787,7 +787,7 @@ added:
 -->
 
 * `domain` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the Unicode serialization of the `domain`. If `domain` is an invalid domain, the empty string is returned.
 
@@ -840,7 +840,7 @@ added: v7.6.0
   * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
   * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
   * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
-* Çıktı: {string}
+* Returns: {string}
 
 Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
