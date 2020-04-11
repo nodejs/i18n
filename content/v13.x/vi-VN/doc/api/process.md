@@ -1,4 +1,4 @@
-# Tiến trình
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 <!-- type=global -->
@@ -1019,7 +1019,7 @@ setTimeout(() => {
 
 ## `process.hrtime.bigint()`<!-- YAML
 added: v10.7.0
--->* Trả về: {bigint}
+-->* Returns: {bigint}
 
 The `bigint` version of the [`process.hrtime()`][] method returning the current high-resolution real time in nanoseconds as a `bigint`.
 
@@ -1304,7 +1304,7 @@ In custom builds from non-release versions of the source tree, only the `name` p
 
 ## `process.report`<!-- YAML
 added: v11.8.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {Object}
 
@@ -1312,7 +1312,7 @@ added: v11.8.0
 
 ### `process.report.directory`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1324,7 +1324,7 @@ console.log(`Report directory is ${process.report.directory}`);
 
 ### `process.report.filename`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1336,7 +1336,7 @@ console.log(`Report filename is ${process.report.filename}`);
 
 ### `process.report.getReport([err])`<!-- YAML
 added: v11.8.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * `err` {Error} A custom error used for reporting the JavaScript stack.
 * Returns: {Object}
@@ -1356,7 +1356,7 @@ Additional documentation is available in the [report documentation](report.html)
 
 ### `process.report.reportOnFatalError`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1368,7 +1368,7 @@ console.log(`Report on fatal error: ${process.report.reportOnFatalError}`);
 
 ### `process.report.reportOnSignal`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1380,7 +1380,7 @@ console.log(`Report on signal: ${process.report.reportOnSignal}`);
 
 ### `process.report.reportOnUncaughtException`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1392,7 +1392,7 @@ console.log(`Report on exception: ${process.report.reportOnUncaughtException}`);
 
 ### `process.report.signal`<!-- YAML
 added: v11.12.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * {string}
 
@@ -1404,7 +1404,7 @@ console.log(`Report signal: ${process.report.signal}`);
 
 ### `process.report.writeReport([filename][, err])`<!-- YAML
 added: v11.8.0
--->> Tính ổn định: 1 - Thử nghiệm
+-->> Stability: 1 - Experimental
 
 * `filename` {string} Name of the file where the report is written. This should be a relative path, that will be appended to the directory specified in `process.report.directory`, or the current working directory of the Node.js process, if unspecified.
 * `err` {Error} A custom error used for reporting the JavaScript stack.
