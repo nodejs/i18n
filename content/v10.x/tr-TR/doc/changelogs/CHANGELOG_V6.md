@@ -59,7 +59,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -97,8 +97,8 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **OpenSSL 1.0.2o'ya yükseltme**: Node.js'yi etkilediği bilinen herhangi güvenlik düzeltmelerini içermez.
-* **Müfettiş DNS yeniden bağlama güvenlik açığı sorununu giderme (CVE-2018-7160)**: Kötü amaçlı bir web sitesi, bir web tarayıcısını aynı kaynak ilke denetimlerini atlamak ve HTTP bağlantılarının localhost'a veya yerel ağdaki ana makinelere, potansiyel olarak Bir hata ayıklayıcı olarak bir açık kontrolör limanı, bu nedenle tam kod yürütme erişimi kazanıyor. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
+* **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
+* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
 * **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
 * **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
@@ -162,9 +162,9 @@ This LTS release comes with 112 commits, 17 of which are considered Semver-Minor
 
 ### Notable Changes
 
-* **konsol**: 
+* **console**: 
   * added console.count() and console.clear() (James M Snell) [#12678](https://github.com/nodejs/node/pull/12678)
-* **kripto**: 
+* **crypto**: 
   * expose ECDH class (Bryan English) [#8188](https://github.com/nodejs/node/pull/8188)
   * added cypto.randomFill() and crypto.randomFillSync() (Evan Lucas) [#10209](https://github.com/nodejs/node/pull/10209)
   * warn on invalid authentication tag length (Tobias Nießen) [#17566](https://github.com/nodejs/node/pull/17566)
@@ -445,7 +445,7 @@ This LTS release comes with 115 commits. This includes 52 which are test related
 
 ## 2017-12-08, Version 6.12.2 'Boron' (LTS), @MylesBorins
 
-This is a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/december-2017-security-releases/ for details on patched vulnerabilities.
 
 Fixes for the following CVEs are included in this release:
 
@@ -760,7 +760,7 @@ This release includes a security update to openssl that has been deemed low seve
 
 * **assert**: 
   * assert.fail() can now take one or two arguments (Rich Trott) [#12293](https://github.com/nodejs/node/pull/12293)
-* **kripto**: 
+* **crypto**: 
   * add sign/verify support for RSASSA-PSS (Tobias Nießen) [#11705](https://github.com/nodejs/node/pull/11705)
 * **deps**: 
   * upgrade openssl sources to 1.0.2m (Shigeki Ohtsu) [#16691](https://github.com/nodejs/node/pull/16691)
@@ -770,9 +770,9 @@ This release includes a security update to openssl that has been deemed low seve
   * upgrade libuv to 1.12.0 (cjihrig) [#13306](https://github.com/nodejs/node/pull/13306)
 * **fs**: 
   * Add support for fs.write/fs.writeSync(fd, buffer, cb) and fs.write/fs.writeSync(fd, buffer, offset, cb) as documented (Andreas Lind) [#7856](https://github.com/nodejs/node/pull/7856)
-* **gözlemci**: 
+* **inspector**: 
   * enable --inspect-brk (Refael Ackermann) [#12615](https://github.com/nodejs/node/pull/12615)
-* **işlem**: 
+* **process**: 
   * add --redirect-warnings command line argument (James M Snell) [#10116](https://github.com/nodejs/node/pull/10116)
 * **src**: 
   * allow CLI args in env with NODE_OPTIONS (Sam Roberts) [#12028](https://github.com/nodejs/node/pull/12028)
@@ -1044,7 +1044,7 @@ This LTS release comes with 152 commits. This includes 75 which are test related
   * Codesigning is fixed on macOS (Evan Lucas) [#14179](https://github.com/nodejs/node/pull/14179)
 * **deps**: 
   * Snapshots are turned back on!!! (Yang Guo) [#14385](https://github.com/nodejs/node/pull/14385)
-* **yol**: 
+* **path**: 
   * win32 volume-relative paths are working again! (Timothy Gu) [#14440](https://github.com/nodejs/node/pull/14440)
 * **tools**: 
   * v6.x can now build with ICU 59 (Steven R. Loomis) [#12078](https://github.com/nodejs/node/pull/12078)
@@ -1214,7 +1214,7 @@ This LTS release comes with 221 commits. This includes 80 which are test related
 
 * **configure**: 
   * add mips64el to valid_arch (Aditya Anand) [#13620](https://github.com/nodejs/node/pull/13620)
-* **kripto**: 
+* **crypto**: 
   * Updated root certificates based on [NSS 3.30](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.30_release_notes) (Ben Noordhuis) 
     * [#13279](https://github.com/nodejs/node/pull/13279)
     * [#12402](https://github.com/nodejs/node/pull/12402)
@@ -1454,7 +1454,7 @@ This LTS release comes with 221 commits. This includes 80 which are test related
 
 ## 2017-07-11, Version 6.11.1 'Boron' (LTS), @MylesBorins
 
-This is a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/july-2017-security-releases/ for details on patched vulnerabilities.
 
 ### Notable Changes
 
@@ -1480,9 +1480,9 @@ This LTS release comes with 126 commits. This includes 40 which are test related
 
 * **build**: 
   * support for building mips64el (nanxiongchao) [#10991](https://github.com/nodejs/node/pull/10991)
-* **küme**: 
+* **cluster**: 
   * disconnect() now returns a reference to the disconnected worker. (Sean Villars) [#10019](https://github.com/nodejs/node/pull/10019)
-* **kripto**: 
+* **crypto**: 
   * ability to select cert store at runtime (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * Use system CAs instead of using bundled ones (Adam Majer) [#8334](https://github.com/nodejs/node/pull/8334)
   * The `Decipher` methods `setAuthTag()` and `setAAD` now return `this`. (Kirill Fomichev) [#9398](https://github.com/nodejs/node/pull/9398)
@@ -1495,7 +1495,7 @@ This LTS release comes with 126 commits. This includes 40 which are test related
   * upgrade libuv to 1.10.0 (cjihrig) [#9267](https://github.com/nodejs/node/pull/9267)
 * **dns**: 
   * Implemented `{ttl: true}` for `resolve4()` and `resolve6()`. (Ben Noordhuis) [#9296](https://github.com/nodejs/node/pull/9296)
-* **işlem**: 
+* **process**: 
   * add NODE_NO_WARNINGS environment variable (cjihrig) [#10842](https://github.com/nodejs/node/pull/10842)
 * **readline**: 
   * add option to stop duplicates in history (Danny Nemer) [#2982](https://github.com/nodejs/node/pull/2982)
@@ -1819,7 +1819,7 @@ It also includes an upgrade to zlib 1.2.11 to fix a [number of low severity CVEs
 
 ### Notable changes
 
-* **kripto**: 
+* **crypto**: 
   * fix memory leak if certificate is revoked (Tom Atkinson) [#12089](https://github.com/nodejs/node/pull/12089)
 * **deps**: 
   * upgrade zlib to 1.2.11 (Sam Roberts) [#10980](https://github.com/nodejs/node/pull/10980)
@@ -2252,7 +2252,7 @@ Notable SEMVER-PATCH changes include:
 * [[`6f8b32e754`](https://github.com/nodejs/node/commit/6f8b32e754)] - **promise**: better stack traces for --trace-warnings (Anna Henningsen) [#9525](https://github.com/nodejs/node/pull/9525)
 * [[`1d400ea484`](https://github.com/nodejs/node/commit/1d400ea484)] - ***Revert*** "**repl**: disable Ctrl+C support on win32 for now" (Anna Henningsen) [#8645](https://github.com/nodejs/node/pull/8645)
 * [[`57c4c6f5ae`](https://github.com/nodejs/node/commit/57c4c6f5ae)] - **repl**: allow autocompletion for scoped packages (Evan Lucas) [#10296](https://github.com/nodejs/node/pull/10296)
-* [[`5e07bce166`](https://github.com/nodejs/node/commit/5e07bce166)] - **(SEMVER-MINOR)** **kaynak**: process.emitWarning() (Sam Roberts) için sarıcı ekleyin [#9139](https://github.com/nodejs/node/pull/9139)
+* [[`5e07bce166`](https://github.com/nodejs/node/commit/5e07bce166)] - **(SEMVER-MINOR)** **src**: add wrapper for process.emitWarning() (Sam Roberts) [#9139](https://github.com/nodejs/node/pull/9139)
 * [[`7da06088eb`](https://github.com/nodejs/node/commit/7da06088eb)] - **src**: describe what NODE_MODULE_VERSION is for (Sam Roberts) [#10414](https://github.com/nodejs/node/pull/10414)
 * [[`7897e7685f`](https://github.com/nodejs/node/commit/7897e7685f)] - **src**: fix string format mistake for 32 bit node (Alex Newman) [#10082](https://github.com/nodejs/node/pull/10082)
 * [[`cfa1b5a9e7`](https://github.com/nodejs/node/commit/cfa1b5a9e7)] - **src**: fix memory leak introduced in 34febfbf4 (Ben Noordhuis) [#9604](https://github.com/nodejs/node/pull/9604)
@@ -2731,7 +2731,7 @@ This LTS release comes with 144 commits. This includes 47 that are docs related,
 ### Notable Changes
 
 * **buffer**: coerce slice parameters consistently (Sakthipriyan Vairamani (thefourtheye)) [#9101](https://github.com/nodejs/node/pull/9101)
-* **deps**: - *npm*: npm'yi 3.10.9'a yükseltin (Kat Marchán) [#9286](https://github.com/nodejs/node/pull/9286) - *V8*: Son vakaları imha etmek için çeşitli düzeltmeler - V8 yukarı yönünde kiraz toplama 3c39bac (Cristian Cavalli) [#9138](https://github.com/nodejs/node/pull/9138) - v8 yukarı yönünde kiraz toplama 7166503 (Cristian Cavalli) [#9173](https://github.com/nodejs/node/pull/9173)
+* **deps**: - *npm*: upgrade npm to 3.10.9 (Kat Marchán) [#9286](https://github.com/nodejs/node/pull/9286) - *V8*: Various fixes to destructuring edge cases - cherry-pick 3c39bac from V8 upstream (Cristian Cavalli) [#9138](https://github.com/nodejs/node/pull/9138) - cherry pick 7166503 from upstream v8 (Cristian Cavalli) [#9173](https://github.com/nodejs/node/pull/9173)
 * **gtest**: the test reporter now outputs tap comments as yamlish (Johan Bergström) [#9262](https://github.com/nodejs/node/pull/9262)
 * **inspector**: inspector now prompts user to use 127.0.0.1 rather than localhost (Eugene Ostroukhov) [#9451](https://github.com/nodejs/node/pull/9451)
 * **tls**: fix memory leak when writing data to TLSWrap instance during handshake (Fedor Indutny) [#9586](https://github.com/nodejs/node/pull/9586)
@@ -2906,7 +2906,7 @@ This LTS release comes with 144 commits. This includes 47 that are docs related,
 
 This release marks the transition of Node.js v6 into Long Term Support (LTS) with the codename 'Boron'. The v6 release line now moves in to "Active LTS" and will remain so until April 2018. After that time it will move in to "Maintenance" until end of life in April 2019.
 
-This is also a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is also a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/october-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable changes
 
@@ -3166,7 +3166,7 @@ This is also a security release. Tüm Node.js kullanıcıları, yamalı güvenli
 * [[`ac6927f549`](https://github.com/nodejs/node/commit/ac6927f549)] - **tools**: make argument alignment linting more strict (Rich Trott) [#8642](https://github.com/nodejs/node/pull/8642)
 * [[`8684cea9b7`](https://github.com/nodejs/node/commit/8684cea9b7)] - **tools**: make sure links are correctly passed to marked (Timothy Gu) [#8494](https://github.com/nodejs/node/pull/8494)
 * [[`a12ff5cc5d`](https://github.com/nodejs/node/commit/a12ff5cc5d)] - **tools**: clean up icu/README.md formatting (Сковорода Никита Андреевич) [#8660](https://github.com/nodejs/node/pull/8660)
-* [[`fc68b12bc3`](https://github.com/nodejs/node/commit/fc68b12bc3)] - **(SEMVER-MINOR)** **kullanım**: SharedArrayBuffer (Yosuke Furukawa) için format ekleyin [#8587](https://github.com/nodejs/node/pull/8587)
+* [[`fc68b12bc3`](https://github.com/nodejs/node/commit/fc68b12bc3)] - **(SEMVER-MINOR)** **util**: Add format for SharedArrayBuffer (Yosuke Furukawa) [#8587](https://github.com/nodejs/node/pull/8587)
 * [[`38be15549e`](https://github.com/nodejs/node/commit/38be15549e)] - **util**: don't init Debug if it's not needed yet (Bryan English) [#8452](https://github.com/nodejs/node/pull/8452)
 * [[`7728f95967`](https://github.com/nodejs/node/commit/7728f95967)] - **util**: simplify SIMD setup (Dany Shaanan) [#8579](https://github.com/nodejs/node/pull/8579)
 * [[`8282d6fc60`](https://github.com/nodejs/node/commit/8282d6fc60)] - **vm**: add error message if we abort (Franziska Hinkelmann) [#8634](https://github.com/nodejs/node/pull/8634)
@@ -3179,7 +3179,7 @@ This is also a security release. Tüm Node.js kullanıcıları, yamalı güvenli
 
 ## 2016-09-27, Version 6.7.0 (Current), @evanlucas
 
-This is a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable changes
 
@@ -3359,7 +3359,7 @@ Semver Patch:
 
 * **buffer**: Fix regression introduced in v6.4.0 that prevented .write() at buffer end (Anna Henningsen) [#8154](https://github.com/nodejs/node/pull/8154)
 * **deps**: update V8 to 5.1.281.75 (Ali Ijaz Sheikh) [#8054](https://github.com/nodejs/node/pull/8054)
-* **gözlemci**: 
+* **inspector**: 
   * fix inspector hang while disconnecting (Aleksei Koziatinskii) [#8021](https://github.com/nodejs/node/pull/8021)
   * add support for uncaught exception (Aleksei Koziatinskii) [#8043](https://github.com/nodejs/node/pull/8043)
 * **repl**: Fix saving editor mode text in `.save` (Prince J Wesley) [#8145](https://github.com/nodejs/node/pull/8145)
@@ -3636,7 +3636,7 @@ Semver Patch:
 
 ### Notable changes
 
-* **arabellek**: 
+* **buffer**: 
   * Improve performance of Buffer.from(str, 'hex') and Buffer#write(str, 'hex'). (Christopher Jeffrey) [#7602](https://github.com/nodejs/node/pull/7602)
   * Fix creating from zero-length ArrayBuffer. (Ingvar Stepanyan) [#7176](https://github.com/nodejs/node/pull/7176)
 * **deps**: 
@@ -3784,7 +3784,7 @@ Semver Patch:
 * [[`a4880b5b10`](https://github.com/nodejs/node/commit/a4880b5b10)] - **deps**: `MASM.UseSafeExceptionHandlers` for OpenSSL (Fedor Indutny) [#7427](https://github.com/nodejs/node/pull/7427)
 * [[`cbe57479c4`](https://github.com/nodejs/node/commit/cbe57479c4)] - **deps**: switch to upstream `v8_inspector` (Ali Ijaz Sheikh) [#7302](https://github.com/nodejs/node/pull/7302)
 * [[`f4777c77eb`](https://github.com/nodejs/node/commit/f4777c77eb)] - **deps**: update `v8_inspector` (Ali Ijaz Sheikh) [#7118](https://github.com/nodejs/node/pull/7118)
-* [[`62105288d3`](https://github.com/nodejs/node/commit/62105288d3)] - **(SEMVER-MINOR)** **ayrılma**:`müfettiş` içeriğini içe aktar (Ali Ijaz Sheikh) [#6792](https://github.com/nodejs/node/pull/6792)
+* [[`62105288d3`](https://github.com/nodejs/node/commit/62105288d3)] - **(SEMVER-MINOR)** **deps**: import `v8_inspector` (Ali Ijaz Sheikh) [#6792](https://github.com/nodejs/node/pull/6792)
 * [[`c544213717`](https://github.com/nodejs/node/commit/c544213717)] - **deps**: backport 7dfb5beeec from V8 upstream (Myles Borins) [#7348](https://github.com/nodejs/node/pull/7348)
 * [[`b0da07a788`](https://github.com/nodejs/node/commit/b0da07a788)] - **doc**: add `added:` information for timers (Anna Henningsen) [#7493](https://github.com/nodejs/node/pull/7493)
 * [[`63d361b531`](https://github.com/nodejs/node/commit/63d361b531)] - **doc**: fix documentation of process.argv (Tarun Garg) [#7449](https://github.com/nodejs/node/pull/7449)
@@ -4298,7 +4298,7 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 * **assert**: `deep{Strict}Equal()` now works correctly with circular references. (Rich Trott) [#6432](https://github.com/nodejs/node/pull/6432)
 * **debugger**: Arrays are now formatted correctly in the debugger repl. (cjihrig) [#6448](https://github.com/nodejs/node/pull/6448)
 * **deps**: Upgrade OpenSSL sources to 1.0.2h (Shigeki Ohtsu) [#6550](https://github.com/nodejs/node/pull/6550) 
-  * Bu sürümün güvenlik içeriği hakkında daha fazla bilgi için lütfen [blog gönderimize](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) bakın.
+  * Please see our [blog post](https://nodejs.org/en/blog/vulnerability/openssl-may-2016/) for more info on the security contents of this release.
 * **net**: Introduced a `Socket#connecting` property. (Fedor Indutny) [#6404](https://github.com/nodejs/node/pull/6404) 
   * Previously this information was only available as the undocumented, internal `_connecting` property.
 * **process**: Introduced `process.cpuUsage()`. (Patrick Mueller) [#6157](https://github.com/nodejs/node/pull/6157)
@@ -4381,18 +4381,18 @@ As of this release the 6.X line now includes 64-bit binaries for Linux on Power 
 
 The following significant changes have been made since the previous Node.js v5.0.0 release.
 
-* Arabellek 
+* Buffer 
   * New Buffer constructors have been added [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Existing `Buffer()` and `SlowBuffer()` constructors have been deprecated in docs [#4682](https://github.com/nodejs/node/pull/4682) and [#5833](https://github.com/nodejs/node/pull/5833).
   * Previously deprecated Buffer APIs are removed [#5048](https://github.com/nodejs/node/pull/5048), [#4594](https://github.com/nodejs/node/pull/4594).
   * Improved error handling [#4514](https://github.com/nodejs/node/pull/4514).
   * The `Buffer.prototype.lastIndexOf()` method has been added [#4846](https://github.com/nodejs/node/pull/4846).
-* Küme 
+* Cluster 
   * Worker emitted as first argument in 'message' event [#5361](https://github.com/nodejs/node/pull/5361).
   * The `worker.exitedAfterDisconnect` property replaces `worker.suicide` [#3743](https://github.com/nodejs/node/pull/3743).
-* Konsol 
+* Console 
   * Calling `console.timeEnd()` with an unknown label now emits a process warning rather than throwing [#5901](https://github.com/nodejs/node/pull/5901).
-* Kripto 
+* Crypto 
   * Improved error handling [#3100](https://github.com/nodejs/node/pull/3100), [#5611](https://github.com/nodejs/node/pull/5611).
   * Simplified Certificate class bindings [#5382](https://github.com/nodejs/node/pull/5382).
   * Improved control over FIPS mode [#5181](https://github.com/nodejs/node/pull/5181).
@@ -4404,17 +4404,17 @@ The following significant changes have been made since the previous Node.js v5.0
   * Add `dns.resolvePtr()` API to query plain DNS PTR records [#4921](https://github.com/nodejs/node/pull/4921).
 * Domains 
   * Clear stack when no error handler [#4659](https://github.com/nodejs/node/pull/4659).
-* Etkinlikler 
+* Events 
   * The `EventEmitter.prototype._events` object no longer inherits from Object.prototype [#6092](https://github.com/nodejs/node/pull/6092).
   * The `EventEmitter.prototype.prependListener()` and `EventEmitter.prototype.prependOnceListener()` methods have been added [#6032](https://github.com/nodejs/node/pull/6032).
-* Dosya Sistemi 
+* File System 
   * The `fs.realpath()` and `fs.realpathSync()` methods have been updated to use a more efficient libuv-based implementation. This change includes the removal of the `cache` argument and the method can throw new errors [#3594](https://github.com/nodejs/node/pull/3594).
   * FS apis can now accept and return paths as Buffers [#5616](https://github.com/nodejs/node/pull/5616).
   * Error handling and type checking improvements [#5616](https://github.com/nodejs/node/pull/5616), [#5590](https://github.com/nodejs/node/pull/5590), [#4518](https://github.com/nodejs/node/pull/4518), [#3917](https://github.com/nodejs/node/pull/3917).
   * fs.read's string interface is deprecated [#4525](https://github.com/nodejs/node/pull/4525).
 * HTTP 
   * 'clientError' can now be used to return custom errors from an HTTP server [#4557](https://github.com/nodejs/node/pull/4557).
-* Modüller 
+* Modules 
   * Current directory is now prioritized for local lookups [#5689](https://github.com/nodejs/node/pull/5689).
   * Symbolic links are preserved when requiring modules [#5950](https://github.com/nodejs/node/pull/5950).
 * Net 
@@ -4424,9 +4424,9 @@ The following significant changes have been made since the previous Node.js v5.0
   * Running npm requires the node binary to be in the path [#6098](https://github.com/nodejs/node/pull/6098).
 * OS X 
   * MACOSX_DEPLOYMENT_TARGET has been bumped up to 10.7 [#6402](https://github.com/nodejs/node/pull/6402).
-* Yol 
+* Path 
   * Improved type checking [#5348](https://github.com/nodejs/node/pull/5348).
-* İşlem 
+* Process 
   * Introduce process warnings API [#4782](https://github.com/nodejs/node/pull/4782).
   * Throw exception when non-function passed to nextTick [#3860](https://github.com/nodejs/node/pull/3860).
 * Querystring 
@@ -4437,7 +4437,7 @@ The following significant changes have been made since the previous Node.js v5.0
 * REPL 
   * Assignment to `_` will emit a warning [#5535](https://github.com/nodejs/node/pull/5535).
   * Expressions will no longer be completed when eval fails [#6328](https://github.com/nodejs/node/pull/6328).
-* Zamanlayıcılar 
+* Timers 
   * Fail early when callback is not a function [#4362](https://github.com/nodejs/node/pull/4362).
 * Streams 
   * `null` is now an invalid chunk to write in object mode [#6170](https://github.com/nodejs/node/pull/6170).
