@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `worker_threads` module enables the use of threads that execute JavaScript in parallel. To access it:
 
@@ -490,7 +490,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. Tham khảo thêm [`port.postMessage()`][].
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
 
 ### `worker.ref()`
 <!-- YAML
@@ -552,7 +552,7 @@ changes:
                  Terminating is now a fully asynchronous operation.
 -->
 
-* Trả về: {Promise}
+* Returns: {Promise}
 
 Stop all JavaScript execution in the worker thread as soon as possible. Returns a Promise for the exit code that is fulfilled when the [`'exit'` event][] is emitted.
 
