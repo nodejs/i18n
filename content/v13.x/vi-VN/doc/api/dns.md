@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `dns` module enables name resolution. For example, use it to look up IP addresses of host names.
 
