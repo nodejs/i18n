@@ -1,10 +1,10 @@
-# Hệ điều hành
+# OS
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. Nó có thể truy cập bằng cách sử dụng:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
