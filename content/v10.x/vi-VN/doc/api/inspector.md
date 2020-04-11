@@ -2,11 +2,11 @@
 
 <!--introduced_in=v8.0.0-->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 The `inspector` module provides an API for interacting with the V8 inspector.
 
-Nó có thể truy cập bằng cách sử dụng:
+It can be accessed using:
 
 ```js
 const inspector = require('inspector');
