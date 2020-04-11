@@ -1,14 +1,14 @@
-# Dosya Sistemi
+# File System
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=fs-->
 
 File I/O is provided by simple wrappers around standard POSIX functions. To use this module do `require('fs')`. All the methods have asynchronous and synchronous forms.
 
-Asenkrom form herzaman son argümanı olarak bir tamamlama callback'i alır. Tamamlama callback'ine geçilen argümanlar, yönteme bağlıdır, ancak ilk argüman her zaman bir istisna için ayrılmıştır. Eğer işlem başarıyla tamamlandıysa, ilk argüman `null` veya `undefined` olacaktır.
+The asynchronous form always takes a completion callback as its last argument. The arguments passed to the completion callback depend on the method, but the first argument is always reserved for an exception. If the operation was completed successfully, then the first argument will be `null` or `undefined`.
 
 When using the synchronous form any exceptions are immediately thrown. Exceptions may be handled using `try`/`catch`, or they may be allowed to bubble up.
 
@@ -80,7 +80,7 @@ Error: EISDIR: illegal operation on a directory, read
     <stack trace.>
 ```
 
-*Not:* Windows'ta, Node.js "her disk bir dizindir" mantığıyla çalışır. Bir dizin adresinde backslash kullanmayarak test edebilirsiniz. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
+*Note:* On Windows Node.js follows the concept of per-drive working directory. This behavior can be observed when using a drive path without a backslash. For example `fs.readdirSync('c:\\')` can potentially return a different result than `fs.readdirSync('c:')`. For more information, see [this MSDN page](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247.aspx#fully_qualified_vs._relative_paths).
 
 *Note:* On Windows, opening an existing hidden file using the `w` flag (either through `fs.open` or `fs.writeFile`) will fail with `EPERM`. Existing hidden files can be opened for writing with the `r+` flag. A call to `fs.ftruncate` can be used to reset the file contents.
 
@@ -94,7 +94,7 @@ Note that all file system APIs except `fs.FSWatcher()` and those that are explic
 added: v7.6.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 For most `fs` module functions, the `path` or `filename` argument may be passed as a WHATWG [`URL`][] object. Only [`URL`][] objects using the `file:` protocol are supported.
 
@@ -113,20 +113,20 @@ Using WHATWG [`URL`][] objects might introduce platform-specific behaviors.
 On Windows, `file:` URLs with a hostname convert to UNC paths, while `file:` URLs with drive letters convert to local absolute paths. `file:` URLs without a hostname nor a drive letter will result in a throw :
 
 ```js
-// Windows'ta :
+// On Windows :
 
-// - WHATWG dosya URL'leri ana bilgisayar adı ile birlikte UNC yoluna dönüştürülür
+// - WHATWG file URLs with hostname convert to UNC path
 // file://hostname/p/a/t/h/file => \\hostname\p\a\t\h\file
 fs.readFileSync(new URL('file://hostname/p/a/t/h/file'));
 
-// - WHATWG dosya URL'leri sürücü harfleri ile birlikte mutlak yola dönüştürülür
+// - WHATWG file URLs with drive letters convert to absolute path
 // file:///C:/tmp/hello => C:\tmp\hello
 fs.readFileSync(new URL('file:///C:/tmp/hello'));
 
-// - Ana bilgisayar adı olmadan WHATWG dosya URL'leri bir sürücü harfine sahip olmak zorundadır
+// - WHATWG file URLs without hostname must have a drive letters
 fs.readFileSync(new URL('file:///notdriveletter/p/a/t/h/file'));
 fs.readFileSync(new URL('file:///c/p/a/t/h/file'));
-// TypeError [ERR_INVALID_FILE_URL_PATH]: Dosya URL yolu mutlak olmalı
+// TypeError [ERR_INVALID_FILE_URL_PATH]: File URL path must be absolute
 ```
 
 *Note*: `file:` URLs with drive letters must use `:` as a separator just after the drive letter. Using another separator will result in a throw.
@@ -418,7 +418,7 @@ fs.access('/etc/passwd', fs.constants.R_OK | fs.constants.W_OK, (err) => {
 
 Using `fs.access()` to check for the accessibility of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file is not accessible.
 
-Örneğin:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -559,7 +559,7 @@ changes:
 
 Asynchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Örnek:
+Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', (err) => {
@@ -568,7 +568,7 @@ fs.appendFile('message.txt', 'data to append', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Örnek:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFile('message.txt', 'data to append', 'utf8', callback);
@@ -611,7 +611,7 @@ changes:
 
 Synchronously append data to a file, creating the file if it does not yet exist. `data` can be a string or a [`Buffer`][].
 
-Örnek:
+Example:
 
 ```js
 try {
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-If `options` is a string, then it specifies the encoding. Örnek:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.appendFileSync('message.txt', 'data to append', 'utf8');
@@ -692,7 +692,7 @@ An easier method of constructing the `mode` is to use a sequence of three octal 
 | `7`    | read, write, and execute |
 | `6`    | read and write           |
 | `5`    | read and execute         |
-| `4`    | sadece oku               |
+| `4`    | read only                |
 | `3`    | write and execute        |
 | `2`    | write only               |
 | `1`    | execute only             |
@@ -809,14 +809,14 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Varsayılan:** `0`.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 * `callback` {Function}
 
 Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. No arguments other than a possible exception are given to the callback function. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Örnek:
+Example:
 
 ```js
 const fs = require('fs');
@@ -846,13 +846,13 @@ added: v8.5.0
 
 * `src` {string|Buffer|URL} source filename to copy
 * `dest` {string|Buffer|URL} destination filename of the copy operation
-* `flags` {number} modifiers for copy operation. **Varsayılan:** `0`.
+* `flags` {number} modifiers for copy operation. **Default:** `0`.
 
 Synchronously copies `src` to `dest`. By default, `dest` is overwritten if it already exists. Returns `undefined`. Node.js makes no guarantees about the atomicity of the copy operation. If an error occurs after the destination file has been opened for writing, Node.js will attempt to remove the destination.
 
 `flags` is an optional integer that specifies the behavior of the copy operation. The only supported flag is `fs.constants.COPYFILE_EXCL`, which causes the copy operation to fail if `dest` already exists.
 
-Örnek:
+Example:
 
 ```js
 const fs = require('fs');
@@ -920,7 +920,7 @@ const defaults = {
 
 `options` can include `start` and `end` values to read a range of bytes from the file instead of the entire file. Both `start` and `end` are inclusive and start counting at 0. If `fd` is specified and `start` is omitted or `undefined`, `fs.createReadStream()` reads sequentially from the current file position. The `encoding` can be any one of those accepted by [`Buffer`][].
 
-If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+If `fd` is specified, `ReadStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak. If `autoClose` is set to true (default behavior), on `error` or `end` the file descriptor will be closed automatically.
 
@@ -982,7 +982,7 @@ const defaults = {
 
 If `autoClose` is set to true (default behavior) on `error` or `end` the file descriptor will be closed automatically. If `autoClose` is false, then the file descriptor won't be closed, even if there's an error. It is the application's responsibility to close it and make sure there's no file descriptor leak.
 
-Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. Bu, hiçbir `"açık"` etkinliğin yayınlanmayacağı anlamına gelir. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
+Like [`ReadStream`][], if `fd` is specified, `WriteStream` will ignore the `path` argument and will use the specified file descriptor. This means that no `'open'` event will be emitted. Note that `fd` should be blocking; non-blocking `fd`s should be passed to [`net.Socket`][].
 
 If `options` is a string, then it specifies the encoding.
 
@@ -1005,7 +1005,7 @@ deprecated: v1.0.0
 * `callback` {Function} 
   * `exists` {boolean}
 
-Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Örnek:
+Test whether or not the given path exists by checking with the file system. Then call the `callback` argument with either true or false. Example:
 
 ```js
 fs.exists('/etc/passwd', (exists) => {
@@ -1017,7 +1017,7 @@ fs.exists('/etc/passwd', (exists) => {
 
 Using `fs.exists()` to check for the existence of a file before calling `fs.open()`, `fs.readFile()` or `fs.writeFile()` is not recommended. Doing so introduces a race condition, since other processes may change the file's state between the two calls. Instead, user code should open/read/write the file directly and handle the error raised if the file does not exist.
 
-Örneğin:
+For example:
 
 **write (NOT RECOMMENDED)**
 
@@ -1290,7 +1290,7 @@ fs.ftruncate(fd, 4, (err) => {
 // Prints: Node
 ```
 
-If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). Örneğin,
+If the file previously was shorter than `len` bytes, it is extended, and the extended part is filled with null bytes ('\0'). For example,
 
 ```js
 console.log(fs.readFileSync('temp.txt', 'utf8'));
@@ -1584,7 +1584,7 @@ The created folder path is passed as a string to the callback's second parameter
 
 The optional `options` argument can be a string specifying an encoding, or an object with an `encoding` property specifying the character encoding to use.
 
-Örnek:
+Example:
 
 ```js
 fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
@@ -1851,7 +1851,7 @@ changes:
   * `err` {Error}
   * `data` {string|Buffer}
 
-Asynchronously reads the entire contents of a file. Örnek:
+Asynchronously reads the entire contents of a file. Example:
 
 ```js
 fs.readFile('/etc/passwd', (err, data) => {
@@ -1864,7 +1864,7 @@ The callback is passed two arguments `(err, data)`, where `data` is the contents
 
 If no encoding is specified, then the raw buffer is returned.
 
-If `options` is a string, then it specifies the encoding. Örnek:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.readFile('/etc/passwd', 'utf8', callback);
@@ -2585,7 +2585,7 @@ The callback will be given three arguments `(err, bytesWritten, buffer)` where `
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `bytesWritten` and `buffer` properties.
 
-Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.write` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -2623,7 +2623,7 @@ The callback will receive the arguments `(err, written, string)` where `written`
 
 Unlike when writing `buffer`, the entire string must be written. No substring may be specified. This is because the byte offset of the resulting data may not be the same as the string offset.
 
-Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.write` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.write` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 On Linux, positional writes don't work when the file is opened in append mode. The kernel ignores the position argument and always appends the data to the end of the file.
 
@@ -2658,7 +2658,7 @@ Asynchronously writes data to a file, replacing the file if it already exists. `
 
 The `encoding` option is ignored if `data` is a buffer.
 
-Örnek:
+Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', (err) => {
@@ -2667,7 +2667,7 @@ fs.writeFile('message.txt', 'Hello Node.js', (err) => {
 });
 ```
 
-If `options` is a string, then it specifies the encoding. Örnek:
+If `options` is a string, then it specifies the encoding. Example:
 
 ```js
 fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
@@ -2675,7 +2675,7 @@ fs.writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
 
 Any specified file descriptor has to support writing.
 
-Geri arama için beklemeden, aynı dosya üzerinde birden çok kez `fs.writeFile` kullanmanın güvenli olmadığını unutmayın. For this scenario, `fs.createWriteStream` is strongly recommended.
+Note that it is unsafe to use `fs.writeFile` multiple times on the same file without waiting for the callback. For this scenario, `fs.createWriteStream` is strongly recommended.
 
 *Note*: If a file descriptor is specified as the `file`, it will not be closed automatically.
 
