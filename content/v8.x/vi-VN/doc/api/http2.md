@@ -11,7 +11,7 @@ changes:
 
 <!--introduced_in=v8.4.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `http2` module provides an implementation of the [HTTP/2](https://tools.ietf.org/html/rfc7540) protocol. It can be accessed using:
 
@@ -110,7 +110,7 @@ Because the of the specific serialization and processing requirements imposed by
 
 Once a `Socket` has been bound to an `Http2Session`, user code should rely solely on the API of the `Http2Session`.
 
-#### Sự kiện: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -684,7 +684,7 @@ added: v8.4.0
   * `weight` {number} Specifies the relative dependency of a stream in relation to other streams with the same `parent`. The value is a number between `1` and `256` (inclusive).
   * `waitForTrailers` {boolean} When `true`, the `Http2Stream` will emit the `'wantTrailers'` event after the final `DATA` frame has been sent.
 
-* Trả về: {ClientHttp2Stream}
+* Returns: {ClientHttp2Stream}
 
 For HTTP/2 Client `Http2Session` instances only, the `http2session.request()` creates and returns an `Http2Stream` instance that can be used to send an HTTP/2 request to the connected server.
 
@@ -768,7 +768,7 @@ The `'aborted'` event is emitted whenever a `Http2Stream` instance is abnormally
 
 *Note*: The `'aborted'` event will only be emitted if the `Http2Stream` writable side has not been ended.
 
-#### Sự kiện: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -1463,7 +1463,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Trả về: {Http2Server}
+* Returns: {Http2Server}
 
 Used to set the timeout value for http2 server requests, and sets a callback function that is called when there is no activity on the `Http2Server` after `msecs` milliseconds.
 
@@ -1592,7 +1592,7 @@ added: v8.4.0
 
 * `msecs` {number} **Default:** `120000` (2 minutes)
 * `callback` {Function}
-* Trả về: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Used to set the timeout value for http2 secure server requests, and sets a callback function that is called when there is no activity on the `Http2SecureServer` after `msecs` milliseconds.
 
@@ -1639,7 +1639,7 @@ changes:
   * `Http2ServerRequest` {http2.Http2ServerRequest} Specifies the Http2ServerRequest class to use. Useful for extending the original `Http2ServerRequest`. **Default:** `Http2ServerRequest`.
   * `Http2ServerResponse` {http2.Http2ServerResponse} Specifies the Http2ServerResponse class to use. Useful for extending the original `Http2ServerResponse`. **Default:** `Http2ServerResponse`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Trả về: {Http2Server}
+* Returns: {Http2Server}
 
 Returns a `net.Server` instance that creates and manages `Http2Session` instances.
 
@@ -1703,7 +1703,7 @@ changes:
   * ...: Any [`tls.createServer()`][] options can be provided. For servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN` frame immediately following creation of a new server `Http2Session`.
 * `onRequestHandler` {Function} See [Compatibility API](#http2_compatibility_api)
-* Trả về: {Http2SecureServer}
+* Returns: {Http2SecureServer}
 
 Returns a `tls.Server` instance that creates and manages `Http2Session` instances.
 
@@ -2115,7 +2115,7 @@ The `'aborted'` event is emitted whenever a `Http2ServerRequest` instance is abn
 
 *Note*: The `'aborted'` event will only be emitted if the `Http2ServerRequest` writable side has not been ended.
 
-#### Sự kiện: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -2155,7 +2155,7 @@ added: v8.4.0
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Ví dụ:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -2314,7 +2314,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Ví dụ:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -2334,7 +2334,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ví dụ:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -2364,7 +2364,7 @@ This object is created internally by an HTTP server — not by the user. It is p
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_writable_streams) interface. This is an [`EventEmitter`][] with the following events:
 
-#### Sự kiện: 'close'
+#### Event: 'close'
 
 <!-- YAML
 added: v8.4.0
@@ -2441,7 +2441,7 @@ added: v8.4.0
 
 Reads out a header that has already been queued but not sent to the client. Note that the name is case insensitive.
 
-Ví dụ:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -2453,11 +2453,11 @@ const contentType = response.getHeader('content-type');
 added: v8.4.0
 -->
 
-* Trả về: {Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2479,7 +2479,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -2500,7 +2500,7 @@ added: v8.4.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Ví dụ:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -2526,7 +2526,7 @@ added: v8.4.0
 
 Removes a header that has been queued for implicit sending.
 
-Ví dụ:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -2555,7 +2555,7 @@ added: v8.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2616,7 +2616,7 @@ Returns a Proxy object that acts as a `net.Socket` (or `tls.TLSSocket`) but appl
 
 All other interactions will be routed directly to the socket.
 
-Ví dụ:
+Example:
 
 ```js
 const http2 = require('http2');
@@ -2637,7 +2637,7 @@ added: v8.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Ví dụ:
+Example:
 
 ```js
 response.statusCode = 404;
@@ -2712,7 +2712,7 @@ Sends a response header to the request. The status code is a 3-digit HTTP status
 
 For compatibility with [HTTP/1](http.html), a human-readable `statusMessage` may be passed as the second argument. However, because the `statusMessage` has no meaning within HTTP/2, the argument will have no effect and a process warning will be emitted.
 
-Ví dụ:
+Example:
 
 ```js
 const body = 'hello world';
