@@ -1,10 +1,10 @@
-# Hàm Readline
+# Readline
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. Nó có thể truy cập bằng cách sử dụng:
+The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
 ```js
 const readline = require('readline');
@@ -38,7 +38,7 @@ added: v0.1.104
 
 Instances of the `readline.Interface` class are constructed using the `readline.createInterface()` method. Every instance is associated with a single `input` [Readable](stream.html#stream_readable_streams) stream and a single `output` [Writable](stream.html#stream_writable_streams) stream. The `output` stream is used to print prompts for user input that arrives on, and is read from, the `input` stream.
 
-### Sự kiện: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.98
@@ -286,9 +286,9 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-* Trả về: {AsyncIterator}
+* Returns: {AsyncIterator}
 
 Create an `AsyncIterator` object that iterates through each line in the input stream as a string. This method allows asynchronous iteration of `readline.Interface` objects through `for`-`await`-`of` loops.
 
