@@ -1,4 +1,4 @@
-# Tên miền
+# Domain
 
 <!-- YAML
 changes:
@@ -229,7 +229,7 @@ serverDomain.run(() => {
 
 ## domain.create()
 
-* Trả về: {Domain}
+* Returns: {Domain}
 
 Returns a new Domain object.
 
@@ -262,7 +262,7 @@ If the Timer or EventEmitter was already bound to a domain, it is removed from t
 
 The returned function will be a wrapper around the supplied callback function. When the returned function is called, any errors that are thrown will be routed to the domain's `'error'` event.
 
-#### Ví dụ
+#### Example
 
 ```js
 const d = domain.create();
@@ -314,7 +314,7 @@ This method is almost identical to [`domain.bind(callback)`][]. However, in addi
 
 In this way, the common `if (err) return callback(err);` pattern can be replaced with a single error handler in a single place.
 
-#### Ví dụ
+#### Example
 
 ```js
 const d = domain.create();
@@ -355,7 +355,7 @@ Run the supplied function in the context of the domain, implicitly binding all e
 
 This is the most basic way to use a domain.
 
-Ví dụ:
+Example:
 
 ```js
 const domain = require('domain');
