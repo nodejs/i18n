@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
@@ -99,7 +99,7 @@ added: v0.11.3
 
 Returns an array of IP address strings, formatted according to [rfc5952](https://tools.ietf.org/html/rfc5952#section-6), that are currently configured for DNS resolution. A string will include a port section if a custom port is used.
 
-Örneğin:
+For example:
 
 <!-- eslint-disable semi-->
 
@@ -142,7 +142,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Örnek kullanım:
+Example usage:
 
 ```js
 const dns = require('dns');
@@ -317,7 +317,7 @@ Uses the DNS protocol to resolve regular expression based records (`NAPTR` recor
 - `order`
 - `preference`
 
-Örneğin:
+For example:
 
 <!-- eslint-skip -->
 
@@ -502,7 +502,7 @@ added: v0.11.3
 
 Sets the IP address and port of servers to be used when performing DNS resolution. The `servers` argument is an array of [rfc5952](https://tools.ietf.org/html/rfc5952#section-6) formatted addresses. If the port is the IANA default DNS port (53) it can be omitted.
 
-Örneğin:
+For example:
 
 ```js
 dns.setServers([
