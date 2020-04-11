@@ -1,4 +1,4 @@
-# Komut Satırı Seçenekleri
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
@@ -20,7 +20,7 @@ Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node debug`, please see the [debugger](debugger.html) documentation.*
 
-## Seçenekler
+## Options
 
 ### `-v`, `--version`
 
@@ -307,7 +307,7 @@ For example, `--stack-trace-limit` is equivalent to `--stack_trace_limit`.
 added: v4.0.0
 -->
 
-Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Varsayılan))
+Specify an alternative default TLS cipher list. (Requires Node.js to be built with crypto support. (Default))
 
 ### `--enable-fips`
 
