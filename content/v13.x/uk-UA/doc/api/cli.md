@@ -1,4 +1,4 @@
-# Параметри командної строки
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 <!--type=misc-->
