@@ -169,7 +169,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [9.x](CHANGELOG_V9.md)
   * [8.x](CHANGELOG_V8.md)
@@ -183,10 +183,10 @@
 
 <a id="0.11.14"></a>
 
-## 2014.09.24, Versiyon 0.11.14 (Kararsız)
+## 2014.09.24, Version 0.11.14 (Unstable)
 
-* uv: v1.0.0-rc1 yükseltmesi
-* http_parser: v2.3.0 yükseltmesi
+* uv: Upgrade to v1.0.0-rc1
+* http_parser: Upgrade to v2.3.0
 * npm: Upgrade to v2.0.0
 * openssl: Upgrade to v1.0.1i
 * v8: Upgrade to 3.26.33
@@ -271,7 +271,7 @@
 
 <a id="0.11.13"></a>
 
-## 2014.05.01, Versiyon 0.11.13 (Kararsız)
+## 2014.05.01, Version 0.11.13 (Unstable)
 
 https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
@@ -305,7 +305,7 @@ https://github.com/nodejs/node/commit/99c9930ad626e2796af23def7cac19b65c608d18
 
 <a id="0.11.12"></a>
 
-## 2014.03.11, Versiyon 0.11.12 (Kararsız)
+## 2014.03.11, Version 0.11.12 (Unstable)
 
 https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 
@@ -342,7 +342,7 @@ https://github.com/nodejs/node/commit/7d6b8db40f32e817ff145b7cfe6b3aec3179fba7
 
 <a id="0.11.11"></a>
 
-## 2014.01.29, Versiyon 0.11.11 (Kararsız)
+## 2014.01.29, Version 0.11.11 (Unstable)
 
 https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 
@@ -374,7 +374,7 @@ https://github.com/nodejs/node/commit/b46e77421581ea358e221a8a843d057c747f7e90
 
 <a id="0.11.10"></a>
 
-## 2013.12.31, Versiyon 0.11.10 (Kararsız)
+## 2013.12.31, Version 0.11.10 (Unstable)
 
 https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
@@ -406,7 +406,7 @@ https://github.com/nodejs/node/commit/66931791f06207d1cdfea5ec1529edf3c94026d3
 
 <a id="0.11.9"></a>
 
-## 2013.11.20, Versiyon 0.11.9 (Kararsız)
+## 2013.11.20, Version 0.11.9 (Unstable)
 
 https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
@@ -431,7 +431,7 @@ https://github.com/nodejs/node/commit/dcfd032bdd69dfb38c120e18438d6316ae522edc
 
 <a id="0.11.8"></a>
 
-## 2013.10.30, Versiyon 0.11.8 (Kararsız)
+## 2013.10.30, Version 0.11.8 (Unstable)
 
 https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
@@ -458,7 +458,7 @@ https://github.com/nodejs/node/commit/f8d86e24f3463c36f7f3f4c3b3ec779e5b6201e1
 
 <a id="0.11.7"></a>
 
-## 2013.08.21, Versiyon 0.11.7 (Kararsız)
+## 2013.08.21, Version 0.11.7 (Unstable)
 
 https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
@@ -483,7 +483,7 @@ https://github.com/nodejs/node/commit/be52549bfa5311208b5fcdb3ba09210460fa9ceb
 
 <a id="0.11.6"></a>
 
-## 2013.08.21, Versiyon 0.11.6 (Kararsız)
+## 2013.08.21, Version 0.11.6 (Unstable)
 
 https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 
@@ -517,7 +517,7 @@ https://github.com/nodejs/node/commit/04018d4b3938fd30ba14822e79195e4af2be36f6
 
 <a id="0.11.5"></a>
 
-## 2013.08.06, Versiyon 0.11.5 (Kararsız)
+## 2013.08.06, Version 0.11.5 (Unstable)
 
 https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 
@@ -540,7 +540,7 @@ https://github.com/nodejs/node/commit/6f92da2dd106b0c63fde563284f83e08e2a521b5
 
 <a id="0.11.4"></a>
 
-## 2013.07.12, Versiyon 0.11.4 (Kararsız)
+## 2013.07.12, Version 0.11.4 (Unstable)
 
 https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
@@ -563,7 +563,7 @@ https://github.com/nodejs/node/commit/b5b84197ed037918fd1a26e5cb87cce7c812ca55
 
 <a id="0.11.3"></a>
 
-## 2013.06.26, Versiyon 0.11.3 (Kararsız)
+## 2013.06.26, Version 0.11.3 (Unstable)
 
 https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
@@ -593,7 +593,7 @@ https://github.com/nodejs/node/commit/38c0c47bbe280ddc42054418091571e532d82a1e
 
 <a id="0.11.2"></a>
 
-## 2013.05.13, Versiyon 0.11.2 (Kararsız)
+## 2013.05.13, Version 0.11.2 (Unstable)
 
 https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
@@ -616,7 +616,7 @@ https://github.com/nodejs/node/commit/5d3dc0e4c3369dfb00b7b13e08936c2e652fa696
 
 <a id="0.11.1"></a>
 
-## 2013.04.19, Versiyon 0.11.1 (Kararsız)
+## 2013.04.19, Version 0.11.1 (Unstable)
 
 https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
@@ -635,7 +635,7 @@ https://github.com/nodejs/node/commit/4babd2b46ebf9fbea2c9946af5cfae25a33b2b22
 
 <a id="0.11.0"></a>
 
-## 2013.03.28, Versiyon 0.11.0 (Kararsız)
+## 2013.03.28, Version 0.11.0 (Unstable)
 
 https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 
@@ -658,7 +658,7 @@ https://github.com/nodejs/node/commit/bce38b3d74e64fcb7d04a2dd551151da6168cdc5
 
 <a id="0.9.12"></a>
 
-## 2013.03.06, Versiyon 0.9.12 (Kararsız)
+## 2013.03.06, Version 0.9.12 (Unstable)
 
 https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
@@ -685,7 +685,7 @@ https://github.com/nodejs/node/commit/0debf5a82934da805592b6496756cdf27c993abc
 
 <a id="0.9.11"></a>
 
-## 2013.03.01, Versiyon 0.9.11 (Kararsız)
+## 2013.03.01, Version 0.9.11 (Unstable)
 
 https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
@@ -709,7 +709,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 <a id="0.9.10"></a>
 
-## 2013.02.19, Versiyon 0.9.10 (Kararsız)
+## 2013.02.19, Version 0.9.10 (Unstable)
 
 * V8: Upgrade to 3.15.11.15
 * npm: Upgrade to 1.2.12
@@ -729,7 +729,7 @@ https://github.com/nodejs/node/commit/83392403b7a9b7782b37c17688938c75010f81ba
 
 <a id="0.9.9"></a>
 
-## 2013.02.07, Versiyon 0.9.9 (Kararsız)
+## 2013.02.07, Version 0.9.9 (Unstable)
 
 https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
@@ -748,7 +748,7 @@ https://github.com/nodejs/node/commit/4b9f0d190cd6b22853caeb0e07145a98ce1d1d7f
 
 <a id="0.9.8"></a>
 
-## 2013.01.24, Versiyon 0.9.8 (Kararsız)
+## 2013.01.24, Version 0.9.8 (Unstable)
 
 https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
@@ -765,7 +765,7 @@ https://github.com/nodejs/node/commit/5f2f8400f665dc32c3e10e7d31d53d756ded9156
 
 <a id="0.9.7"></a>
 
-## 2013.01.18, Versiyon 0.9.7 (Kararsız)
+## 2013.01.18, Version 0.9.7 (Unstable)
 
 https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
@@ -785,7 +785,7 @@ https://github.com/nodejs/node/commit/9e7bebeb8305edd55735a95955a98fdbe47572e5
 
 <a id="0.9.6"></a>
 
-## 2013.01.11, Versiyon 0.9.6 (Kararsız)
+## 2013.01.11, Version 0.9.6 (Unstable)
 
 https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
@@ -808,7 +808,7 @@ https://github.com/nodejs/node/commit/9313fdc71ca8335d5e3a391c103230ee6219b3e2
 
 <a id="0.9.5"></a>
 
-## 2012.12.30, Versiyon 0.9.5 (Kararsız)
+## 2012.12.30, Version 0.9.5 (Unstable)
 
 https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
@@ -829,7 +829,7 @@ https://github.com/nodejs/node/commit/01994e8119c24f2284bac0779b32acb49c95bee7
 
 <a id="0.9.4"></a>
 
-## 2012.12.21, Versiyon 0.9.4 (Kararsız)
+## 2012.12.21, Version 0.9.4 (Unstable)
 
 https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 
@@ -857,7 +857,7 @@ https://github.com/nodejs/node/commit/d86d83c75f6343b5368bb7bd328b4466a035e1d4
 
 <a id="0.9.3"></a>
 
-## 2012.10.24, Versiyon 0.9.3 (Kararsız)
+## 2012.10.24, Version 0.9.3 (Unstable)
 
 https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 
@@ -880,7 +880,7 @@ https://github.com/nodejs/node/commit/1ed4c6776e4f52956918b70565502e0f8869829d
 
 <a id="0.9.2"></a>
 
-## 2012.09.17, Versiyon 0.9.2 (Kararsız)
+## 2012.09.17, Version 0.9.2 (Unstable)
 
 https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
@@ -907,7 +907,7 @@ https://github.com/nodejs/node/commit/6e2055889091a424fbb5c500bc3ab9c05d1c28b4
 
 <a id="0.9.1"></a>
 
-## 2012.08.28, Versiyon 0.9.1 (Kararsız)
+## 2012.08.28, Version 0.9.1 (Unstable)
 
 https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
@@ -945,7 +945,7 @@ https://github.com/nodejs/node/commit/e6ce259d2caf338fec991c2dd447de763ce99ab7
 
 <a id="0.9.0"></a>
 
-## 2012.07.20, Versiyon 0.9.0 (Kararsız)
+## 2012.07.20, Version 0.9.0 (Unstable)
 
 https://github.com/nodejs/node/commit/f9b237f478c372fd55e4590d7399dcd8f25f3603
 
@@ -2207,7 +2207,7 @@ https://github.com/nodejs/node/commit/b49bec55806574a47403771bce1ee379c2b09ca2
 
 * [#752](https://github.com/joyent/node/issues/752) Remove headers sent check in OutgoingMessage.getHeader() (Peter Lyons)
 
-* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Libuv ile ilgili olan hatalar düzeltildi (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
+* [#1236](https://github.com/joyent/node/issues/1236), [#1438](https://github.com/joyent/node/issues/1438), [#1506](https://github.com/joyent/node/issues/1506), [#1513](https://github.com/joyent/node/issues/1513), [#1621](https://github.com/joyent/node/issues/1621), [#1640](https://github.com/joyent/node/issues/1640), [#1647](https://github.com/joyent/node/issues/1647) Libuv-related bugs fixed (Jorge Chamorro Bieling, Peter Bright, Luis Lavena, Igor Zinkovsky)
 
 * [#1296](https://github.com/joyent/node/issues/1296), [#1612](https://github.com/joyent/node/issues/1612) crypto: Fix BIO's usage. (Koichi Kobayashi)
 
@@ -3229,20 +3229,20 @@ https://github.com/nodejs/node/commit/618296ef571e873976f608d91a3d6b9e65fe8284
 
 https://github.com/nodejs/node/commit/61c801413544a50000faa7f58376e9b33ba6254f
 
-    * Tek dinleyici için olay vericiyi optimize edin
-    * Process.evalcx, request.registerExtension (Tim Smart) ekleyin
+    * Optimize event emitter for single listener
+    * Add process.evalcx, require.registerExtension (Tim Smart)
     
-    *  --cflags ile birlikte --vars'ın yerini değiştirin
-    * fs.create*yayın dosyasındaki hataları düzeltin (Felix Geisendörfer)
+    * Replace --cflags with --vars
+    * Fix bugs in fs.create*Stream (Felix Geisendörfer)
     
-    * process.mixin, process.unloop onaylamayın
-    * 'Hata: (mesaj yok)' istisnalarını kaldırın, yerine yığın 
-      izini yazdırın
+    * Deprecate process.mixin, process.unloop
+    * Remove the 'Error: (no message)' exceptions, print stack
+      trace instead
     
-    * INI ayrıştırıcı hata düzeltmeleri (Isaac Schlueter)
-    * FreeBSD düzeltmeleri (Vanilla Hsu) 
+    * INI parser bug fixes (Isaac Schlueter)
+    * FreeBSD fixes (Vanilla Hsu)
     
-    *V8 2.1.3, WAF 1.5.14a, libev sürümüne yükseltin
+    * Upgrade to V8 2.1.3, WAF 1.5.14a, libev
     
 
 <a id="0.1.31"></a>
@@ -3259,19 +3259,19 @@ https://github.com/nodejs/node/commit/39b63dfe1737d46a8c8818c92773ef181fd174b3
     * tcp.Connection.prototype.write now returns boolean to indicate if
       argument was flushed to the kernel buffer.
     
-    * fs.link, fs.symlink, fs.readlink, fs.realpath eklendi
+    * Added fs.link, fs.symlink, fs.readlink, fs.realpath
       (Rasmus Andersson)
     
-    * setgid,getgid ekleyin (James Duncan)
-    * sys.inspect'i geliştirin (Benjamin Thomas)
+    * Add setgid,getgid (James Duncan)
+    * Improve sys.inspect (Benjamin Thomas)
     
-    * Env'nin alt sürecine geçmesine izin verin (Isaac Schlueter)
+    * Allow passing env to child process (Isaac Schlueter)
     * fs.createWriteStream, fs.createReadStream (Felix Geisendörfer)
     
-    * INI ayrıştırıcısını ekleyin (Rob Ellis)
-    * Hata düzeltme: fs.readFile işleme kodlaması (Jacek Becela)
+    * Add INI parser (Rob Ellis)
+    * Bugfix: fs.readFile handling encoding (Jacek Becela)
     
-    * V8’i 2.1.2’ye yükseltin
+    * Upgrade V8 to 2.1.2
     
 
 <a id="0.1.30"></a>
@@ -3315,8 +3315,8 @@ https://github.com/nodejs/node/commit/bb0d1e65e1671aaeb21fac186b066701da0bc33b
 
 https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
 
-    * Önemli API Değişiklikleri
-      - 'file' modülü kaldırıldı
+    * Major API Changes
+      - Remove 'file' module
       - require('posix') -----------------> require('fs')
       - fs.cat ---------------------------> fs.readFile
       - file.write -----------------------> fs.writeFile
@@ -3327,8 +3327,8 @@ https://github.com/nodejs/node/commit/87d5e5b316a4276bcf881f176971c1a237dcdc7a
       - HTTP finish() --------------------> close()
       - HTTP 'body' event ----------------> 'data'
       - HTTP 'complete' event ------------> 'end'
-      - http.Client.prototype.close() artık (formerly finish()) değil
-        bir tartışma alır. Add the 'response' listener manually.
+      - http.Client.prototype.close() (formerly finish()) no longer
+        takes an argument. Add the 'response' listener manually.
       - Allow strings for the flag argument to fs.open
         ("r", "r+", "w", "w+", "a", "a+")
     
@@ -3410,22 +3410,22 @@ https://github.com/nodejs/node/commit/0cfa789cc530848725a8cb5595224e78ae7b9dd0
 
 https://github.com/nodejs/node/commit/da00413196e432247346d9e587f8c78ce5ceb087
 
-    * Hata Giderme, HTTP eof çökmesine sebep olan (Ben Williamson)
-    * SyntaxError'da daha iyi hata mesajı
+    * Bugfix, HTTP eof causing crash (Ben Williamson)
+    * Better error message on SyntaxError
     
-    * API: Promise ve EventEmitter'i 'etkinlikler' modülüne taşıyın
-    * API: process.nextTick() ekleyin
+    * API: Move Promise and EventEmitter into 'events' module
+    * API: Add process.nextTick()
     
-    * İsteğe bağlı parametrelerin setTimeout, setInterval değerini ayarlamasına izin verin.
+    * Allow optional params to setTimeout, setInterval
       (Micheil Smith)
     
-    * API: Promise davranışını biraz değiştirin (Felix Geisendörfer)
-      - Promise.cancel() kaldırıldı
-      - Geç geri arama bağlama desteği
-      - İşlenmemiş Promise hatalarının bir istisna oluşturmasını sağlayın.
+    * API: change some Promise behavior (Felix Geisendörfer)
+      - Removed Promise.cancel()
+      - Support late callback binding
+      - Make unhandled Promise errors throw an exception
     
-    * V8'i 2.0.6.1'e yükseltin
-    * Solaris portu (Erich Ocean)
+    * Upgrade V8 to 2.0.6.1
+    * Solaris port (Erich Ocean)
     
 
 <a id="0.1.25"></a>
@@ -3571,23 +3571,24 @@ https://github.com/nodejs/node/commit/633d6be328708055897b72327b88ac88e158935f
 
 https://github.com/nodejs/node/commit/027829d2853a14490e6de9fc5f7094652d045ab8
 
-    * Özellik: process.watchFile() process.unwatchFile()
-    * Özellik: "uncaughtException" olayı işleniyor
+    * Feature: process.watchFile() process.unwatchFile()
+    * Feature: "uncaughtException" event on process
       (Felix Geisendörfer)
     
-    * Özellik: 'tahliye' olayı tcp.Connection
-    Hata Giderme: Promise.timeout() olay döngüsünü engelledi
+    * Feature: 'drain' event to tcp.Connection
+    * Bugfix: Promise.timeout() blocked the event loop
       (Felix Geisendörfer)
     
-    * Hata Giderme: sendBody() ve yığınlanmış utf8 dizeleri
+    * Bugfix: sendBody() and chunked utf8 strings
       (Felix Geisendörfer)
-    * Strerror'yu tcp.Connection yakın olayına ikinci bir argüman olarak tedarik edin 
-      (Johan Sørensen)
     
-    * EventEmitter.removeListener ekleyin (frodenius@gmail.com)
-    * Nesneleri incelemek için JSON'u biçimlendirin (Felix Geisendörfer)
+    * Supply the strerror as a second arg to the tcp.Connection close
+      event (Johan Sørensen)
     
-    * Libev'i en son CVS'ye yükseltin
+    * Add EventEmitter.removeListener (frodenius@gmail.com)
+    * Format JSON for inspecting objects (Felix Geisendörfer)
+    
+    * Upgrade libev to latest CVS
     
 
 <a id="0.1.17"></a>
@@ -3657,23 +3658,23 @@ https://github.com/nodejs/node/commit/eca2de73ed786b935507fd1c6faccd8df9938fd3
 
 https://github.com/nodejs/node/commit/d79b6e9f7ffad4c6aabbe5bd89108e2005366469
 
-    * Özellik: Geliştirilmiş eklenti waf düğümü ile oluşturulur
-    * Özellik: node.SignalHandler (Brandon Beacher)
+    * Feature: Improved addon builds with node-waf
+    * Feature: node.SignalHandler (Brandon Beacher)
     
-    * Özellik: V8 hata ayıklamasını etkinleştirin (ancak yine de bir hata ayıklayıcı yapmanız gerekir)
-    * API: /utils.js kitaplığını /sys.js olarak yeniden adlandırın
+    * Feature: Enable V8 debugging (but still need to make a debugger)
+    * API: Rename library /utils.js to /sys.js
     
-    * Düğümün yapı sistemini temizleyin
-    * HTTP sunucusu için parseUri kullanmayınız
+    * Clean up Node's build system
+    * Don't use parseUri for HTTP server
     
-    * node.pc'yi kaldırın
-    * exec() harici alt süreç oluşturmak için /bin/sh kullanmayın
+    * Remove node.pc
+    * Don't use /bin/sh to create child process except with exec()
     
-    * API: Mevcut modüle referans vermek için __module ekleyin
-    * API: include()'u kaldırın, node.mixin()'i ekleyin
+    * API: Add __module to reference current module
+    * API: Remove include() add node.mixin()
     
-    * Http başlıklarını normalleştirme; "Content-Length", "içerik-uzunluğu" olur
-    * V8'i 1.3.15'e yükseltin
+    * Normalize http headers; "Content-Length" becomes "content-length"
+    * Upgrade V8 to 1.3.15
     
 
 <a id="0.1.13"></a>
