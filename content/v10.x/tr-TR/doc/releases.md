@@ -1,11 +1,11 @@
-# Node.js Sürüm Yöntemi
+# Node.js Release Process
 
-Bu belge, Node.js sürüm yönteminin teknik yönlerini açıklamaktadır. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Table of Contents
 
-* [Kim Sürüm Yapabilir?](#who-can-make-a-release) 
-  * [1. Jenkins Sürüm Erişimi](#1-jenkins-release-access)
+* [Who can make a release?](#who-can-make-a-release) 
+  * [1. Jenkins Release Access](#1-jenkins-release-access)
   * [2. <nodejs.org> Access](#2-nodejsorg-access)
   * [3. A Publicly Listed GPG Key](#3-a-publicly-listed-gpg-key)
 * [How to create a release](#how-to-create-a-release) 
@@ -30,13 +30,13 @@ Bu belge, Node.js sürüm yönteminin teknik yönlerini açıklamaktadır. The i
   * [18. Announce](#18-announce)
   * [19. Celebrate](#19-celebrate)
 
-## Kim Sürüm Yapabilir?
+## Who can make a release?
 
-Sürüm yetkisi Node.js TSC tarafından verilir. Once authorized, an individual must have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must have the following:
 
-### 1. Jenkins Sürüm Erişimi
+### 1. Jenkins Release Access
 
-Sürüm akışı için kullanılması gereken ilgili üç Jenkins görevi vardır:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
