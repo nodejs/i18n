@@ -1,8 +1,8 @@
-# ECMAScript Modülleri
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 <!--name=esm-->
 
@@ -139,16 +139,16 @@ export function resolve(specifier, parentModuleURL/*, defaultResolve */) {
     };
   }
   if (/^\.{0,2}[/]/.test(specifier) !== true && !specifier.startsWith('file:')) {
-    // node_modules desteği için:
-    // dönüş defaultResolve(specifier, parentModuleURL);
+    // For node_modules support:
+    // return defaultResolve(specifier, parentModuleURL);
     throw new Error(
-      `içe aktarma  '${specifier}' ile değil, '/', './', veya '../'; ile başlamak zorundadır`);
+      `imports must begin with '/', './', or '../'; '${specifier}' does not`);
   }
   const resolved = new url.URL(specifier, parentModuleURL);
   const ext = path.extname(resolved.pathname);
   if (!JS_EXTENSIONS.has(ext)) {
     throw new Error(
-      `JavaScript olmayan ${ext} dosya uzantısına sahip dosya yüklenemiyor.`);
+      `Cannot load file with non-JavaScript file extension ${ext}.`);
   }
   return {
     url: resolved.href,
