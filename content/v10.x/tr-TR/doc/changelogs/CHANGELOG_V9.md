@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [10.x](CHANGELOG_V10.md)
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
@@ -182,8 +182,8 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **OpenSSL 1.0.2o'ya yükseltme**: Node.js'yi etkilediği bilinen herhangi güvenlik düzeltmelerini içermez.
-* **Müfettiş DNS yeniden bağlama güvenlik açığı sorununu giderme (CVE-2018-7160)**: Kötü amaçlı bir web sitesi, bir web tarayıcısını aynı kaynak ilke denetimlerini atlamak ve HTTP bağlantılarının localhost'a veya yerel ağdaki ana makinelere, potansiyel olarak Bir hata ayıklayıcı olarak bir açık kontrolör limanı, bu nedenle tam kod yürütme erişimi kazanıyor. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
+* **Upgrade to OpenSSL 1.0.2o**: Does not contain any security fixes that are known to impact Node.js.
+* **Fix for inspector DNS rebinding vulnerability (CVE-2018-7160)**: A malicious website could use a DNS rebinding attack to trick a web browser to bypass same-origin-policy checks and allow HTTP connections to localhost or to hosts on the local network, potentially to an open inspector port as a debugger, therefore gaining full code execution access. The inspector now only allows connections that have a browser `Host` value of `localhost` or `localhost6`.
 * **Fix for `'path'` module regular expression denial of service (CVE-2018-7158)**: A regular expression used for parsing POSIX paths could be used to cause a denial of service if an attacker were able to have a specially crafted path string passed through one of the impacted `'path'` module functions.
 * **Reject spaces in HTTP `Content-Length` header values (CVE-2018-7159)**: The Node.js HTTP parser allowed for spaces inside `Content-Length` header values. Such values now lead to rejected connections in the same way as non-numeric values.
 * **Update root certificates**: 5 additional root certificates have been added to the Node.js binary and 30 have been removed.
@@ -191,13 +191,13 @@ Fixes for the following CVEs are included in this release:
 * **cluster**:
   
   * Add support for `NODE_OPTIONS="--inspect"` (Sameer Srivastava) [#19165](https://github.com/nodejs/node/pull/19165)
-* **kripto**: 
+* **crypto**: 
   * Expose the public key of a certificate (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **n-api**: 
   * Add `napi_fatal_exception` to trigger an `uncaughtException` in JavaScript (Mathias Buus) [#19337](https://github.com/nodejs/node/pull/19337)
-* **yol**: 
+* **path**: 
   * Fix regression in `posix.normalize` (Michaël Zasso) [#19520](https://github.com/nodejs/node/pull/19520)
-* **akış**: 
+* **stream**: 
   * Improve stream creation performance (Brian White) [#19401](https://github.com/nodejs/node/pull/19401)
 * **Added new collaborators** 
   * [BethGriggs](https://github.com/BethGriggs) Beth Griggs
@@ -299,7 +299,7 @@ Fixes for the following CVEs are included in this release:
 * **assert**: 
   * From now on all error messages produced by `assert` in strict mode will produce a error diff. (Ruben Bridgewater) [#17615](https://github.com/nodejs/node/pull/17615)
   * From now on it is possible to use a validation object in throws instead of the other possibilities. (Ruben Bridgewater) [#17584](https://github.com/nodejs/node/pull/17584)
-* **kripto**: 
+* **crypto**: 
   * allow passing null as IV unless required (Tobias Nießen) [#18644](https://github.com/nodejs/node/pull/18644)
 * **fs**: 
   * support as and as+ flags in stringToFlags() (Sarat Addepalli) [#18801](https://github.com/nodejs/node/pull/18801)
@@ -455,7 +455,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **kripto**: 
+* **crypto**: 
   * add cert.fingerprint256 as SHA256 fingerprint (Hannes Magnusson) [#17690](https://github.com/nodejs/node/pull/17690)
 * **http2**: 
   * Fixed issues with aborted connections in the HTTP/2 implementation (Anna Henningsen) [#18987](https://github.com/nodejs/node/pull/18987) [#19002](https://github.com/nodejs/node/pull/19002)
@@ -649,7 +649,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **etkinlikler**: 
+* **events**: 
   * `events.usingDomains` being set to `false` by default was removed in 9.6.0 which was a change in behavior compares to 9.5.0. This behavior change has been reverted and the `events` object now has `usingDomains` preset to `false`, which is the behavior in 9.x prior to 9.6.0 (Myles Borins) [#18944](https://github.com/nodejs/node/pull/18944)
 
 ### Commits
@@ -903,7 +903,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 
 ### Notable Changes
 
-* **küme** 
+* **cluster** 
   * add cwd to cluster.settings (cjihrig) [#18399](https://github.com/nodejs/node/pull/18399)
 * **deps** 
   * upgrade libuv to 1.19.1 (cjihrig) [#18260](https://github.com/nodejs/node/pull/18260)
@@ -914,7 +914,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * expose n-api version in process.versions (Michael Dawson) [#18067](https://github.com/nodejs/node/pull/18067)
 * **perf_hooks** 
   * add performance.clear() (James M Snell) [#18046](https://github.com/nodejs/node/pull/18046)
-* **akış** 
+* **stream** 
   * avoid writeAfterEnd() while ending (陈刚) [#18170](https://github.com/nodejs/node/pull/18170)
 
 ### Commits
@@ -1093,7 +1093,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * update nghttp2 to 1.29.0 (James M Snell) [#17908](https://github.com/nodejs/node/pull/17908)
   * upgrade npm to 5.6.0 (Kat Marchán) [#17535](https://github.com/nodejs/node/pull/17535)
   * cherry-pick 50f7455 from upstream V8 (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
-* **etkinlikler**: 
+* **events**: 
   * remove reaches into _events internals (Anatoli Papirovski) [#17440](https://github.com/nodejs/node/pull/17440)
 * **http**: 
   * add rawPacket in err of `clientError` event (XadillaX) [#17672](https://github.com/nodejs/node/pull/17672)
@@ -1107,7 +1107,7 @@ This is a special release to fix potentially Semver-Major regression that was re
   * remove Socket.prototype.listen (Ruben Bridgewater) [#13735](https://github.com/nodejs/node/pull/13735)
 * **repl**: 
   * show lexically scoped vars in tab completion (Michaël Zasso) [#16591](https://github.com/nodejs/node/pull/16591)
-* **akış**: 
+* **stream**: 
   * rm {writeable/readable}State.length (Calvin Metcalf) [#12857](https://github.com/nodejs/node/pull/12857)
   * add flow and buffer properties to streams (Calvin Metcalf) [#12855](https://github.com/nodejs/node/pull/12855)
 * **util**: 
@@ -1366,7 +1366,7 @@ This is a special release to fix potentially Semver-Major regression that was re
 * **async\_hooks**: 
   * add trace events to async_hooks (Andreas Madsen) [#15538](https://github.com/nodejs/node/pull/15538)
   * add provider types for net server (Andreas Madsen) [#17157](https://github.com/nodejs/node/pull/17157)
-* **konsol**: 
+* **console**: 
   * console.debug can now be used outside of the inspector (Benjamin Zaslavsky) [#17033](https://github.com/nodejs/node/pull/17033)
 * **deps**: 
   * upgrade libuv to 1.18.0 (cjihrig) [#17282](https://github.com/nodejs/node/pull/17282)
@@ -1375,12 +1375,12 @@ This is a special release to fix potentially Semver-Major regression that was re
   * module.builtinModules will return a list of built in modules (Jon Moss) [#16386](https://github.com/nodejs/node/pull/16386)
 * **n-api**: 
   * add helper for addons to get the event loop (Anna Henningsen) [#17109](https://github.com/nodejs/node/pull/17109)
-* **işlem**: 
+* **process**: 
   * process.setUncaughtExceptionCaptureCallback can now be used to customize behavior for `--abort-on-uncaught-exception` (Anna Henningsen) [#17159](https://github.com/nodejs/node/pull/17159)
   * A signal handler is now able to receive the signal code that triggered the handler. (Robert Rossmann) [#15606](https://github.com/nodejs/node/pull/15606)
 * **src**: 
   * embedders can now use Node::CreatePlatform to create an instance of NodePlatform (Cheng Zhao) [#16981](https://github.com/nodejs/node/pull/16981)
-* **akış**: 
+* **stream**: 
   * writable.writableHighWaterMark and readable.readableHighWaterMark will return the values the stream object was instantiated with (Calvin Metcalf) [#12860](https://github.com/nodejs/node/pull/12860)
 * **Added new collaborators** 
   * [maclover7](https://github.com/maclover7) Jon Moss
@@ -1782,7 +1782,7 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **arabellek**: 
+* **buffer**: 
   * buffer allocated with an invalid content will now be zero filled (Anna Henningsen) [#17428](https://github.com/nodejs/node/pull/17428)
 * **deps**: 
   * openssl updated to 1.0.2n (Shigeki Ohtsu) [#17526](https://github.com/nodejs/node/pull/17526)
@@ -1809,11 +1809,11 @@ Fixes for the following CVEs are included in this release:
 
 ### Notable Changes
 
-* **kripto**: 
+* **crypto**: 
   * Support building with both 1.1.0 and 1.0.2 (David Benjamin) [#16130](https://github.com/nodejs/node/pull/16130)
 * **fs**: 
   * fs.realpathSync.native and fs.realpath.native are now exposed (Ben Noordhuis) [#15776](https://github.com/nodejs/node/pull/15776)
-* **işlem**: 
+* **process**: 
   * expose process.ppid (cjihrig) [#16839](https://github.com/nodejs/node/pull/16839)
 
 ### Commits
@@ -2076,7 +2076,7 @@ Fixes for the following CVEs are included in this release:
   
   * Older experimental APIs have been removed. [[`d731369b1d`](https://github.com/nodejs/node/commit/d731369b1d)] [#14414](https://github.com/nodejs/node/pull/14414)
 
-* **Hatalar**
+* **Errors**
   
   * Improvements have been made to `buffer` module error messages. [[`9e0f771224`](https://github.com/nodejs/node/commit/9e0f771224)] [#14975](https://github.com/nodejs/node/pull/14975)
   * The assignment of static error codes to Node.js error continues: 
@@ -2095,7 +2095,7 @@ Fixes for the following CVEs are included in this release:
     * `querystring`: [[`9788e96836`](https://github.com/nodejs/node/commit/9788e96836)] [#15565](https://github.com/nodejs/node/pull/15565)
     * `readline`: [[`7f3f72c19b`](https://github.com/nodejs/node/commit/7f3f72c19b)] [#11390](https://github.com/nodejs/node/pull/11390)
     * `repl`: [[`aff8d358fa`](https://github.com/nodejs/node/commit/aff8d358fa)] [#11347](https://github.com/nodejs/node/pull/11347), [[`28227963fa`](https://github.com/nodejs/node/commit/28227963fa)] [#13299](https://github.com/nodejs/node/pull/13299)
-    * `yayınlar`: [[`d50a802feb`](https://github.com/nodejs/node/commit/d50a802feb)] [#13310](https://github.com/nodejs/node/pull/13310), [[`d2913384aa`](https://github.com/nodejs/node/commit/d2913384aa)] [#13291](https://github.com/nodejs/node/pull/13291), [[`6e86a6651c`](https://github.com/nodejs/node/commit/6e86a6651c)] [#16589](https://github.com/nodejs/node/pull/16589), [[`88fb359c57`](https://github.com/nodejs/node/commit/88fb359c57)] [#15042](https://github.com/nodejs/node/pull/15042), [[`db7d1339c3`](https://github.com/nodejs/node/commit/db7d1339c3)] [#15665](https://github.com/nodejs/node/pull/15665)
+    * `streams`: [[`d50a802feb`](https://github.com/nodejs/node/commit/d50a802feb)] [#13310](https://github.com/nodejs/node/pull/13310), [[`d2913384aa`](https://github.com/nodejs/node/commit/d2913384aa)] [#13291](https://github.com/nodejs/node/pull/13291), [[`6e86a6651c`](https://github.com/nodejs/node/commit/6e86a6651c)] [#16589](https://github.com/nodejs/node/pull/16589), [[`88fb359c57`](https://github.com/nodejs/node/commit/88fb359c57)] [#15042](https://github.com/nodejs/node/pull/15042), [[`db7d1339c3`](https://github.com/nodejs/node/commit/db7d1339c3)] [#15665](https://github.com/nodejs/node/pull/15665)
     * `string_decoder`: [[`eb4940e2d2`](https://github.com/nodejs/node/commit/eb4940e2d2)] [#14682](https://github.com/nodejs/node/pull/14682)
     * `timers`: [[`4d893e093a`](https://github.com/nodejs/node/commit/4d893e093a)] [#14659](https://github.com/nodejs/node/pull/14659)
     * `tls`: [[`f67aa566a6`](https://github.com/nodejs/node/commit/f67aa566a6)] [#13476](https://github.com/nodejs/node/pull/13476), [[`3ccfeb483d`](https://github.com/nodejs/node/commit/3ccfeb483d)] [#13994](https://github.com/nodejs/node/pull/13994)
@@ -2104,7 +2104,7 @@ Fixes for the following CVEs are included in this release:
     * `v8`: [[`ef238fb485`](https://github.com/nodejs/node/commit/ef238fb485)] [#16535](https://github.com/nodejs/node/pull/16535)
     * `zlib`: [[`896eaf6820`](https://github.com/nodejs/node/commit/896eaf6820)] [#16540](https://github.com/nodejs/node/pull/16540), [[`74891412f1`](https://github.com/nodejs/node/commit/74891412f1)] [#15618](https://github.com/nodejs/node/pull/15618)
 
-* **Alt İşlemler**
+* **Child Processes**
   
   * Errors are emitted on process nextTick. [[`f2b01cba7b`](https://github.com/nodejs/node/commit/f2b01cba7b)] [#4670](https://github.com/nodejs/node/pull/4670)
 
@@ -2132,7 +2132,7 @@ Fixes for the following CVEs are included in this release:
   
   * The `os.EOL` property is now read-only [[`f6caeb9526`](https://github.com/nodejs/node/commit/f6caeb9526)] [#14622](https://github.com/nodejs/node/pull/14622)
 
-* **Zamanlayıcılar**
+* **Timers**
   
   * `setTimeout()` will emit a warning if the timeout is larger that the maximum 32-bit unsigned integer. [[`ce3586da31`](https://github.com/nodejs/node/commit/ce3586da31)] [#15627](https://github.com/nodejs/node/pull/15627)
 
