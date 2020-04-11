@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -109,7 +109,7 @@ added: v0.11.4
 
 * `options` {Object} Options containing connection details. Check [`net.createConnection()`][] for the format of the options
 * `callback` {Function} Callback function that receives the created socket
-* Trả về: {net.Socket}
+* Returns: {net.Socket}
 
 Produces a socket/stream to be used for HTTP requests.
 
@@ -482,7 +482,7 @@ added: v1.6.0
 
 Reads out a header on the request. Note that the name is case insensitive.
 
-Ví dụ:
+Example:
 
 ```js
 const contentType = request.getHeader('Content-Type');
@@ -498,7 +498,7 @@ added: v1.6.0
 
 Removes a header that's already defined into headers object.
 
-Ví dụ:
+Example:
 
 ```js
 request.removeHeader('Content-Type');
@@ -515,7 +515,7 @@ added: v1.6.0
 
 Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Ví dụ:
+Example:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
@@ -571,7 +571,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
 
-Ví dụ:
+Example:
 
 ```js
 const http = require('http');
@@ -688,7 +688,7 @@ When the `'clientError'` event occurs, there is no `request` or `response` objec
 * `bytesParsed`: the bytes count of request packet that Node.js may have parsed correctly;
 * `rawPacket`: the raw packet of current request.
 
-### Sự kiện: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.1.4
@@ -848,7 +848,7 @@ This object is created internally by an HTTP server — not by the user. It is p
 
 The response implements, but does not inherit from, the [Writable Stream](stream.html#stream_class_stream_writable) interface. This is an [`EventEmitter`][] with the following events:
 
-### Sự kiện: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.6.7
@@ -937,7 +937,7 @@ added: v0.4.0
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-Ví dụ:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -949,11 +949,11 @@ const contentType = response.getHeader('content-type');
 added: v7.7.0
 -->
 
-* Trả về: {Array}
+* Returns: {Array}
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -975,7 +975,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -996,7 +996,7 @@ added: v7.7.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Ví dụ:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1022,7 +1022,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Ví dụ:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1051,7 +1051,7 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Ví dụ:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1102,7 +1102,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-Ví dụ:
+Example:
 
 ```js
 const http = require('http');
@@ -1123,7 +1123,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Ví dụ:
+Example:
 
 ```js
 response.statusCode = 404;
@@ -1141,7 +1141,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Ví dụ:
+Example:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1200,7 +1200,7 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Ví dụ:
+Example:
 
 ```js
 const body = 'hello world';
@@ -1247,7 +1247,7 @@ added: v0.3.8
 
 Emitted when the request has been aborted.
 
-### Sự kiện: 'close'
+### Event: 'close'
 
 <!-- YAML
 added: v0.4.2
@@ -1312,7 +1312,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Ví dụ:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -1476,7 +1476,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Ví dụ:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -1496,7 +1496,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Ví dụ:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -1545,7 +1545,7 @@ added: v0.1.13
 
 * `requestListener` {Function}
 
-* Trả về: {http.Server}
+* Returns: {http.Server}
 
 Returns a new instance of [`http.Server`][].
 
@@ -1564,7 +1564,7 @@ changes:
 
 * `options` {Object | string | URL} Accepts the same `options` as [`http.request()`][], with the `method` always set to `GET`. Properties that are inherited from the prototype are ignored.
 * `callback` {Function}
-* Trả về: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Since most requests are GET requests without bodies, Node.js provides this convenience method. The only difference between this method and [`http.request()`][] is that it sets the method to GET and calls `req.end()` automatically. Note that the callback must take care to consume the response data for reasons stated in [`http.ClientRequest`][] section.
 
@@ -1658,7 +1658,7 @@ changes:
   * `createConnection` {Function} A function that produces a socket/stream to use for the request when the `agent` option is not used. This can be used to avoid creating a custom `Agent` class just to override the default `createConnection` function. See [`agent.createConnection()`][] for more details. Any [`Duplex`][] stream is a valid return value.
   * `timeout` {number}: A number specifying the socket timeout in milliseconds. This will set the timeout before the socket is connected.
 * `callback` {Function}
-* Trả về: {http.ClientRequest}
+* Returns: {http.ClientRequest}
 
 Node.js maintains several connections per server to make HTTP requests. This function allows one to transparently issue requests.
 
@@ -1668,7 +1668,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Ví dụ:
+Example:
 
 ```js
 const postData = querystring.stringify({
