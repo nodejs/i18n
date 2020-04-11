@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=vm-->
 
@@ -39,7 +39,7 @@ console.log(x); // 1; y is not defined.
 added: v9.6.0
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 *This feature is only available with the `--experimental-vm-modules` command flag enabled.*
 
@@ -505,8 +505,8 @@ added: v10.10.0
 * `params` {string[]} An array of strings containing all parameters for the function.
 * `options` {Object} 
   * `filename` {string} Specifies the filename used in stack traces produced by this script. **Default:** `''`.
-  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Varsayılan:** `0`.
-  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Varsayılan:** `0`.
+  * `lineOffset` {number} Specifies the line number offset that is displayed in stack traces produced by this script. **Default:** `0`.
+  * `columnOffset` {number} Specifies the column number offset that is displayed in stack traces produced by this script. **Default:** `0`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or `TypedArray`, or `DataView` with V8's code cache data for the supplied source.
   * `produceCachedData` {boolean} Specifies whether to produce new cache data. **Default:** `false`.
   * `parsingContext` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) sandbox in which the said function should be compiled in.
