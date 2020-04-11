@@ -55,7 +55,7 @@ Unfortunately, the C++ linter (based on [Google’s `cpplint`][]), which can be 
 
 Use C++ style comments (`//`) for both single-line and multi-line comments. Comments should also start with uppercase and finish with a dot.
 
-Örnekler:
+Examples:
 
 ```c++
 // A single-line comment.
@@ -197,7 +197,7 @@ Use explicit comparisons to `nullptr` when testing pointers, i.e. `if (foo == nu
 * [R.20](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-owner): Use `std::unique_ptr` or `std::shared_ptr` to represent ownership
 * [R.21](http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-unique): Prefer `unique_ptr` over `shared_ptr` unless you need to share ownership
 
-Use `std::unique_ptr` to make ownership transfer explicit. Örneğin:
+Use `std::unique_ptr` to make ownership transfer explicit. For example:
 
 ```cpp
 std::unique_ptr<Foo> FooFactory();
@@ -307,7 +307,7 @@ When there is a need to throw errors from a C++ binding method, try to return th
 
 In general, type-checks on arguments should be done in JavaScript before the arguments are passed into C++. Then in the C++ binding, simply using `CHECK` assertions to guard against invalid arguments should be enough.
 
-If the return value of the binding cannot be used to signal failures or return the necessary data for constructing errors in JavaScript, pass a context object to the binding and put the necessary data inside in C++. Örneğin:
+If the return value of the binding cannot be used to signal failures or return the necessary data for constructing errors in JavaScript, pass a context object to the binding and put the necessary data inside in C++. For example:
 
 ```cpp
 void Foo(const FunctionCallbackInfo<Value>& args) {
