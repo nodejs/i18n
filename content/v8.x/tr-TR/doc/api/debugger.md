@@ -1,8 +1,8 @@
-# Hata Ayıklayıcı
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -43,38 +43,38 @@ $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help see https://nodejs.org/en/docs/inspector
 < Debugger attached.
-Myscript.js:1 başlangıcında kes
+Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
-  3   hata ayıklayıcı;
+  3   debugger;
 debug> cont
-< merhaba
-myscript.js:3'te kes
+< hello
+break in myscript.js:3
   1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
-> 3   hata ayıklayıcı;
-  4   console.log('dünya');
+> 3   debugger;
+  4   console.log('world');
   5 }, 1000);
-debug> sonraki
-myscript.js:4'te kes
+debug> next
+break in myscript.js:4
   2 setTimeout(() => {
-  3   hata ayıklayıcı;
-> 4   console.log('dünya');
+  3   debugger;
+> 4   console.log('world');
   5 }, 1000);
-  6 console.log('merhaba');
+  6 console.log('hello');
 debug> repl
-Hata ayıklama yanıtını bırakmak için Ctrl + C tuşlarına basın
+Press Ctrl + C to leave debug repl
 > x
 5
 > 2 + 2
 4
-debug> sonraki
-< dünya
-myscript.js:5'te kes
-  3   hata ayıklayıcı;
-  4   console.log('dünya');
+debug> next
+< world
+break in myscript.js:5
+  3   debugger;
+  4   console.log('world');
 > 5 }, 1000);
-  6 console.log('merhaba');
+  6 console.log('hello');
   7
 debug> .exit
 ```
