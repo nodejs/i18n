@@ -4,7 +4,7 @@
 
 <!--lint disable maximum-line-length-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `child_process` module provides the ability to spawn child processes in a manner that is similar, but not identical, to popen(3). This capability is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -860,7 +860,7 @@ changes:
     description: The `callback` parameter is supported now.
 -->
 
-* `mesaj` {Object}
+* `message` {Object}
 * `sendHandle` {Handle}
 * `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` supports the following properties: 
   * `keepOpen` {boolean} A value that can be used when passing instances of `net.Socket`. When `true`, the socket is kept open in the sending process. **Default:** `false`.
@@ -1034,9 +1034,9 @@ const child_process = require('child_process');
 
 const subprocess = child_process.spawn('ls', {
   stdio: [
-    0, // Alt öğe için üst öğenin stdin'ini kullanın
-    'pipe', // Alt öğenin stdout'unu üst öğeye taşıyın
-    fs.openSync('err.out', 'w') // Alt öğenin stderr'ini bir dosyaya yönlendirin
+    0, // Use parent's stdin for child
+    'pipe', // Pipe child's stdout to parent
+    fs.openSync('err.out', 'w') // Direct child's stderr to a file
   ]
 });
 
