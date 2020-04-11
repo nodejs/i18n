@@ -19,7 +19,7 @@ const fetchReleases = async () => {
 module.exports = async (supportedVersions) => {
   const releases = await fetchReleases()
   if (!releases) {
-    throw new Error('Something went wrong with relases fetching')
+    throw new Error('Something went wrong with release fetching')
   }
 
   return supportedVersions.reduce((prev, el) => {
