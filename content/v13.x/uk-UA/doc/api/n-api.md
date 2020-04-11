@@ -82,7 +82,7 @@ Thus, for an addon to remain ABI-compatible across Node.js major versions, it mu
 
 and by checking, for all external libraries that it uses, that the external library makes ABI stability guarantees similar to N-API.
 
-## Збірка
+## Building
 
 Unlike modules written in JavaScript, developing and deploying Node.js native addons using N-API requires an additional set of tools. Besides the basic tools required to develop for Node.js, the native addon developer requires a toolchain that can compile C and C++ code into a binary. In addition, depending upon how the native addon is deployed, the *user* of the native addon will also need to have a C/C++ toolchain installed.
 
