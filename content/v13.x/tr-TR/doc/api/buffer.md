@@ -1,8 +1,8 @@
-# Arabellek
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 In Node.js, `Buffer` objects are used to represent binary data in the form of a sequence of bytes. Many Node.js APIs, for example streams and file system operations, support `Buffer`s, as interactions with the operating system or other processes generally always happen in terms of binary data.
 
@@ -951,24 +951,24 @@ If `value` is:
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.indexOf('this'));
-// Yazdırır: 0
+// Prints: 0
 console.log(buf.indexOf('is'));
-// Yazdırır: 2
+// Prints: 2
 console.log(buf.indexOf(Buffer.from('a buffer')));
-// Yazdırır: 8
+// Prints: 8
 console.log(buf.indexOf(97));
-// Yazdırır: 8 (97, 'a' için ondalık ASCII değeridir)
+// Prints: 8 (97 is the decimal ASCII value for 'a')
 console.log(buf.indexOf(Buffer.from('a buffer example')));
-// Yazdırır: -1
+// Prints: -1
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
-// Yazdırır: 8
+// Prints: 8
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
-// Yazdırır: 4
+// Prints: 4
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
-// Yazdırır: 6
+// Prints: 6
 ```
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
@@ -1037,26 +1037,26 @@ Identical to [`buf.indexOf()`][], except the last occurrence of `value` is found
 const buf = Buffer.from('this buffer is a buffer');
 
 console.log(buf.lastIndexOf('this'));
-// Yazdırır: 0
+// Prints: 0
 console.log(buf.lastIndexOf('buffer'));
-// Yazdırır: 17
+// Prints: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
-// Yazdırır: 17
+// Prints: 17
 console.log(buf.lastIndexOf(97));
-// Yazdırır: 15 (97 'a' için ondalık ASCII değeridir)
+// Prints: 15 (97 is the decimal ASCII value for 'a')
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
-// Yazdırır: -1
+// Prints: -1
 console.log(buf.lastIndexOf('buffer', 5));
-// Yazdırır: 5
+// Prints: 5
 console.log(buf.lastIndexOf('buffer', 4));
-// Yazdırır: -1
+// Prints: -1
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
-// Yazdırır: 6
+// Prints: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
-// Yazdırır: 4
+// Prints: 4
 ```
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
@@ -1646,7 +1646,7 @@ added: v0.1.90
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
 * `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`][].
-* Çıktı: {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
