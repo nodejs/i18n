@@ -5,4 +5,3 @@ node_modules
 *.tgz
 .idea
 yarn.lock
-stats.json
