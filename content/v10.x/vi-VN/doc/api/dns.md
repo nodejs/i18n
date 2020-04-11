@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
@@ -524,7 +524,7 @@ Note that this method works much like [resolve.conf](http://man7.org/linux/man-p
 
 ## DNS Promises API
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `dns.promises` API provides an alternative set of asynchronous DNS methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('dns').promises`.
 
