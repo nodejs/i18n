@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. Modülü yüklemek için:
+The `readline` module provides an interface for reading data from a [Readable](stream.html#stream_readable_streams) stream (such as [`process.stdin`]) one line at a time. It can be accessed using:
 
 ```js
 const readline = require('readline');
@@ -218,7 +218,7 @@ When called, `rl.question()` will resume the `input` stream if it has been pause
 
 If the `readline.Interface` was created with `output` set to `null` or `undefined` the `query` is not written.
 
-Örnek kullanım:
+Example usage:
 
 ```js
 rl.question('What is your favorite food? ', (answer) => {
@@ -286,7 +286,7 @@ changes:
     description: Symbol.asyncIterator support is no longer experimental.
 -->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 * Returns: {AsyncIterator}
 
