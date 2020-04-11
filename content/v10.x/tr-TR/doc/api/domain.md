@@ -1,4 +1,4 @@
-# Alan adı
+# Domain
 
 <!-- YAML
 changes:
