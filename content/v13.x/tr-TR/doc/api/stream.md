@@ -1,8 +1,8 @@
-# Akış
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides an API for implementing the stream interface.
 
@@ -49,7 +49,7 @@ The amount of data potentially buffered depends on the `highWaterMark` option pa
 
 Data is buffered in `Readable` streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
-Dahili okuma arabelleğinin toplam büyüklüğü, `highWaterMark` tarafından belirtilen eşiğe ulaştığında, akış, halihazırda arabelleğe alınmış veri tüketilinceye kadar altta yatan kaynaktan veri okumayı geçici olarak durduracaktır (yani akış, okuma tamponunu doldurmak için kullanılan dahili `readable._read()` yöntemini çağırmayı durduracaktır).
+Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
 
 Data is buffered in `Writable` streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
@@ -737,11 +737,11 @@ The `readable.isPaused()` method returns the current operating state of the `Rea
 ```js
 const readable = new stream.Readable();
 
-readable.isPaused(); // === yanlış
+readable.isPaused(); // === false
 readable.pause();
-readable.isPaused(); // === doğru
+readable.isPaused(); // === true
 readable.resume();
-readable.isPaused(); // === yanlış
+readable.isPaused(); // === false
 ```
 
 ##### `readable.pause()`
@@ -821,7 +821,7 @@ added: v0.9.4
 -->
 
 * `size` {number} Optional argument to specify how much data to read.
-* Çıktı: {string|Buffer|null|any}
+* Returns: {string|Buffer|null|any}
 
 The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
 
@@ -1006,7 +1006,7 @@ changes:
 
 Passing `chunk` as `null` signals the end of the stream (EOF) and behaves the same as `readable.push(null)`, after which no more data can be written. The EOF signal is put at the end of the buffer and any buffered data will still be flushed.
 
-The `readable.unshift()` method pushes a chunk of data back into the internal buffer. Bu, bir akışın iyimser bir şekilde kaynaktan çıkardığı bir miktar veriyi "tüketmemesi" gereken kodla tüketildiği bazı durumlarda, verilerin başka bir tarafa aktarılabilmesi için kullanışlıdır.
+The `readable.unshift()` method pushes a chunk of data back into the internal buffer. This is useful in certain situations where a stream is being consumed by code that needs to "un-consume" some amount of data that it has optimistically pulled out of the source, so that the data can be passed on to some other party.
 
 The `stream.unshift(chunk)` method cannot be called after the [`'end'`][] event has been emitted or a runtime error will be thrown.
 
