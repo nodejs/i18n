@@ -1,8 +1,8 @@
-# Arabellek
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 Prior to the introduction of [`TypedArray`], the JavaScript language had no mechanism for reading or manipulating streams of binary data. The `Buffer` class was introduced as part of the Node.js API to enable interaction with octet streams in TCP streams, file system operations, and other contexts.
 
@@ -269,7 +269,7 @@ changes:
 > Stability: 0 - Deprecated: Use [`Buffer.from(arrayBuffer[, byteOffset[, length]])`][`Buffer.from(arrayBuf)`] instead.
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`] or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Varsayılan:** `0`.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] or [`SharedArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -426,7 +426,7 @@ changes:
 -->
 
 * `size` {integer} The desired length of the new `Buffer`.
-* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Varsayılan:** `0`.
+* `fill` {string|Buffer|integer} A value to pre-fill the new `Buffer` with. **Default:** `0`.
 * `encoding` {string} If `fill` is a string, this is its encoding. **Default:** `'utf8'`.
 
 Allocates a new `Buffer` of `size` bytes. If `fill` is `undefined`, the `Buffer` will be *zero-filled*.
@@ -661,7 +661,7 @@ added: v5.10.0
 -->
 
 * `arrayBuffer` {ArrayBuffer|SharedArrayBuffer} An [`ArrayBuffer`], [`SharedArrayBuffer`], or the `.buffer` property of a [`TypedArray`].
-* `byteOffset` {integer} Index of first byte to expose. **Varsayılan:** `0`.
+* `byteOffset` {integer} Index of first byte to expose. **Default:** `0`.
 * `length` {integer} Number of bytes to expose. **Default:** `arrayBuffer.length - byteOffset`.
 
 This creates a view of the [`ArrayBuffer`] without copying the underlying memory. For example, when passed a reference to the `.buffer` property of a [`TypedArray`] instance, the newly created `Buffer` will share the same allocated memory as the [`TypedArray`].
@@ -879,9 +879,9 @@ changes:
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] with which to compare `buf`.
-* `targetStart` {integer} The offset within `target` at which to begin comparison. **Varsayılan:** `0`.
+* `targetStart` {integer} The offset within `target` at which to begin comparison. **Default:** `0`.
 * `targetEnd` {integer} The offset with `target` at which to end comparison (not inclusive). **Default:** `target.length`.
-* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Varsayılan:** `0`.
+* `sourceStart` {integer} The offset within `buf` at which to begin comparison. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to end comparison (not inclusive). **Default:** [`buf.length`].
 * Returns: {integer}
 
@@ -934,8 +934,8 @@ added: v0.1.90
 -->
 
 * `target` {Buffer|Uint8Array} A `Buffer` or [`Uint8Array`] to copy into.
-* `targetStart` {integer} The offset within `target` at which to begin writing. **Varsayılan:** `0`.
-* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Varsayılan:** `0`.
+* `targetStart` {integer} The offset within `target` at which to begin writing. **Default:** `0`.
+* `sourceStart` {integer} The offset within `buf` from which to begin copying. **Default:** `0`.
 * `sourceEnd` {integer} The offset within `buf` at which to stop copying (not inclusive). **Default:** [`buf.length`].
 * Returns: {integer} The number of bytes copied.
 
@@ -1052,7 +1052,7 @@ changes:
 -->
 
 * `value` {string|Buffer|integer} The value with which to fill `buf`.
-* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Varsayılan:** `0`.
+* `offset` {integer} Number of bytes to skip before starting to fill `buf`. **Default:** `0`.
 * `end` {integer} Where to stop filling `buf` (not inclusive). **Default:** [`buf.length`].
 * `encoding` {string} The encoding for `value` if `value` is a string. **Default:** `'utf8'`.
 * Returns: {Buffer} A reference to `buf`.
@@ -1099,7 +1099,7 @@ added: v5.3.0
 -->
 
 * `value` {string|Buffer|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Varsayılan:** `0`.
+* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
 * `encoding` {string} If `value` is a string, this is its encoding. **Default:** `'utf8'`.
 * Returns: {boolean} `true` if `value` was found in `buf`, `false` otherwise.
 
@@ -1140,7 +1140,7 @@ changes:
 -->
 
 * `value` {string|Buffer|Uint8Array|integer} What to search for.
-* `byteOffset` {integer} Where to begin searching in `buf`. **Varsayılan:** `0`.
+* `byteOffset` {integer} Where to begin searching in `buf`. **Default:** `0`.
 * `encoding` {string} If `value` is a string, this is the encoding used to determine the binary representation of the string that will be searched for in `buf`. **Default:** `'utf8'`.
 * Returns: {integer} The index of the first occurrence of `value` in `buf`, or `-1` if `buf` does not contain `value`.
 
@@ -1154,24 +1154,24 @@ If `value` is:
 const buf = Buffer.from('this is a buffer');
 
 console.log(buf.indexOf('this'));
-// Yazdırır: 0
+// Prints: 0
 console.log(buf.indexOf('is'));
-// Yazdırır: 2
+// Prints: 2
 console.log(buf.indexOf(Buffer.from('a buffer')));
-// Yazdırır: 8
+// Prints: 8
 console.log(buf.indexOf(97));
-// Yazdırır: 8 (97, 'a' için ondalık ASCII değeridir)
+// Prints: 8 (97 is the decimal ASCII value for 'a')
 console.log(buf.indexOf(Buffer.from('a buffer example')));
-// Yazdırır: -1
+// Prints: -1
 console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
-// Yazdırır: 8
+// Prints: 8
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.indexOf('\u03a3', 0, 'utf16le'));
-// Yazdırır: 4
+// Prints: 4
 console.log(utf16Buffer.indexOf('\u03a3', -4, 'utf16le'));
-// Yazdırır: 6
+// Prints: 6
 ```
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
@@ -1243,26 +1243,26 @@ Identical to [`buf.indexOf()`], except the last occurrence of `value` is found r
 const buf = Buffer.from('this buffer is a buffer');
 
 console.log(buf.lastIndexOf('this'));
-// Yazdırır: 0
+// Prints: 0
 console.log(buf.lastIndexOf('buffer'));
-// Yazdırır: 17
+// Prints: 17
 console.log(buf.lastIndexOf(Buffer.from('buffer')));
-// Yazdırır: 17
+// Prints: 17
 console.log(buf.lastIndexOf(97));
-// Yazdırır: 15 (97 'a' için ondalık ASCII değeridir)
+// Prints: 15 (97 is the decimal ASCII value for 'a')
 console.log(buf.lastIndexOf(Buffer.from('yolo')));
-// Yazdırır: -1
+// Prints: -1
 console.log(buf.lastIndexOf('buffer', 5));
-// Yazdırır: 5
+// Prints: 5
 console.log(buf.lastIndexOf('buffer', 4));
-// Yazdırır: -1
+// Prints: -1
 
 const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'utf16le');
 
 console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'utf16le'));
-// Yazdırır: 6
+// Prints: 6
 console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'utf16le'));
-// Yazdırır: 4
+// Prints: 4
 ```
 
 If `value` is not a string, number, or `Buffer`, this method will throw a `TypeError`. If `value` is a number, it will be coerced to a valid byte value, an integer between 0 and 255.
@@ -1272,18 +1272,18 @@ If `byteOffset` is not a number, it will be coerced to a number. Any arguments t
 ```js
 const b = Buffer.from('abcdef');
 
-// Bir sayı olan ancak geçerli bir bayt olmayan bir değer iletme
-// Yazdırır: 2, 99 veya 'c' aramaya eş değer
+// Passing a value that's a number, but not a valid byte
+// Prints: 2, equivalent to searching for 99 or 'c'
 console.log(b.lastIndexOf(99.9));
 console.log(b.lastIndexOf(256 + 99));
 
-// NaN'ye zorlanan bir byteOffset'i iletme
-// Yazdırır: 1, tüm tamponu arama
+// Passing a byteOffset that coerces to NaN
+// Prints: 1, searching the whole buffer
 console.log(b.lastIndexOf('b', undefined));
 console.log(b.lastIndexOf('b', {}));
 
-// 0'a zorlanan bir byteOffset'i iletme
-// Yazdırır: -1, 0 iletimine eş değerdir
+// Passing a byteOffset that coerces to 0
+// Prints: -1, equivalent to passing 0
 console.log(b.lastIndexOf('b', null));
 console.log(b.lastIndexOf('b', []));
 ```
@@ -1666,7 +1666,7 @@ changes:
                  calculations with them.
 -->
 
-* `start` {integer} Where the new `Buffer` will start. **Varsayılan:** `0`.
+* `start` {integer} Where the new `Buffer` will start. **Default:** `0`.
 * `end` {integer} Where the new `Buffer` will end (not inclusive). **Default:** [`buf.length`].
 * Returns: {Buffer}
 
@@ -1840,9 +1840,9 @@ added: v0.1.90
 -->
 
 * `encoding` {string} The character encoding to use. **Default:** `'utf8'`.
-* `start` {integer} The byte offset to start decoding at. **Varsayılan:** `0`.
+* `start` {integer} The byte offset to start decoding at. **Default:** `0`.
 * `end` {integer} The byte offset to stop decoding at (not inclusive). **Default:** [`buf.length`].
-* Çıktı: {string}
+* Returns: {string}
 
 Decodes `buf` to a string according to the specified character encoding in `encoding`. `start` and `end` may be passed to decode only a subset of `buf`.
 
@@ -1914,7 +1914,7 @@ added: v0.1.90
 -->
 
 * `string` {string} String to write to `buf`.
-* `offset` {integer} Number of bytes to skip before starting to write `string`. **Varsayılan:** `0`.
+* `offset` {integer} Number of bytes to skip before starting to write `string`. **Default:** `0`.
 * `length` {integer} Number of bytes to write. **Default:** `buf.length - offset`.
 * `encoding` {string} The character encoding of `string`. **Default:** `'utf8'`.
 * Returns: {integer} Number of bytes written.
