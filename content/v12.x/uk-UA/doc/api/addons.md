@@ -1,4 +1,4 @@
-# Розширення С++
+# C++ Addons
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -9,11 +9,11 @@ There are three options for implementing Addons: N-API, nan, or direct use of in
 
 When not using N-API, implementing Addons is complicated, involving knowledge of several components and APIs:
 
-* V8: C++ бібліотека, що використовується для забезпечення реалізації JavaScript у Node.js. V8 забезпечує механізми для створення об'єктів, функцій виклику і т.д. API V8 документується в основному в файлі `v8.h` (`deps/v8/include/v8.h` у дереві джерел Node.js), який також доступний [онлайн](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
-* [libuv](https://github.com/libuv/libuv): бібліотека, що написана на C та реалізує цикл подій (event loop) у Node.js, його робочі потоки та всю асинхронну поведінку платформи. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv також надає pthreads-подібну потокову абстракцію, що може використовуватися для керування складнішими асинхронними додатками, які потребують виходу за межі стандартного циклу подій. Авторам розширення пропонується подумати про те, як уникнути блокування циклу подій за допомогою операцій вводу/виводу або інших тимчасових завдань, шляхом завантаження роботи через libuv до неблокуючих системних операцій, робочих потоків або користувальницького використання потоків libuv.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
-* Внутрішні бібліотеки Node.js. Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
+* Internal Node.js libraries. Node.js itself exports C++ APIs that Addons can use, the most important of which is the `node::ObjectWrap` class.
 
 * Node.js includes other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
@@ -21,13 +21,13 @@ All of the following examples are available for [download](https://github.com/no
 
 ## Hello world
 
-Приклад "Hello world" ― просте розширення, написане на мові C++ та є еквівалентом наступного коду JavaScript:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
 ```
 
-Спочатку створюємо файл `hello.cc`:
+First, create the file `hello.cc`:
 
 ```cpp
 // hello.cc
@@ -65,7 +65,7 @@ void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-Зауважте, що немає жодної крапки з комою після `NODE_MODULE`, оскільки це не є функцією (див. `node.h`).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
 The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
@@ -239,9 +239,9 @@ Test in JavaScript by running:
 require('./build/Release/addon');
 ```
 
-### Збірка
+### Building
 
-Після написання вихідного коду його необхідно скомпілювати у бінарний файл `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Цей файл використовується у [node-gyp](https://github.com/nodejs/node-gyp) ― інструменті, що написаний спеціально для компіляції розширень Node.js.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -254,13 +254,13 @@ require('./build/Release/addon');
 }
 ```
 
-A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Цей інструмент не доступний безпосередньо розробникам для використання і призначений лише для підтримки можливості використання команди `npm install`, компіляції та встановлення розширень. Розробники, які бажають використовувати `node-gyp` безпосередньо на машині, можуть встановити його за допомогою команди `npm install -g node-gyp`. Дивіться [інструкцію з установки](https://github.com/nodejs/node-gyp#installation) `node-gyp` для отримання додаткової інформації, в тому числі вимоги для конкретних платформ.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
-Після створення файлу `binding.gyp` використовуйте `node-gyp configure`, щоб створити відповідні файли збірки проекту для поточної платформи. Це створить або `Makefile` (на платформах Unix), або файл `vcxproj` (на Windows) у каталозі `build/`.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Далі викличте команду `node-gyp build`, щоб створити скомпільований файл `addon.node`. Він буде розміщений у каталозі `build/Release/`.
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. This will be put into the `build/Release/` directory.
 
-При використанні `npm install` для встановлення розширень Node.js, npm використовує свою власну пакетну версію `node-gyp` для виконання цього ж набору дій, генеруючи скомпільовану версію розширення для платформи користувача.
+When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
 Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require_id) to the built `addon.node` module:
 
@@ -806,7 +806,7 @@ Alternatively, it is possible to use a factory pattern to avoid explicitly creat
 
 ```js
 const obj = addon.createObject();
-// замість:
+// instead of:
 // const obj = new addon.Object();
 ```
 
