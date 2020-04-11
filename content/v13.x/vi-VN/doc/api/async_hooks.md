@@ -1,8 +1,8 @@
-# Đồng bộ hook
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 The `async_hooks` module provides an API to track asynchronous resources. It can be accessed using:
 
@@ -797,7 +797,7 @@ added: v13.11.0
 
 Calling `asyncLocalStorage.enterWith(store)` will transition into the context for the remainder of the current synchronous execution and will persist through any following asynchronous calls.
 
-Ví dụ:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -840,7 +840,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Ví dụ:
+Example:
 
 ```js
 const store = { id: 1 };
@@ -867,7 +867,7 @@ The callback will be ran asynchronously. Optionally, arguments can be passed to 
 
 If an error is thrown by the callback function, it will not be caught by a `try/catch` block as the callback is ran in a new asynchronous resource. Also, the stacktrace will be impacted by the asynchronous call.
 
-Ví dụ:
+Example:
 
 ```js
 asyncLocalStorage.run('store value', () => {
@@ -894,7 +894,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `runSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be exited.
 
-Ví dụ:
+Example:
 
 ```js
 const store = { id: 2 };
@@ -923,7 +923,7 @@ Optionally, arguments can be passed to the function. They will be passed to the 
 
 If the callback function throws an error, it will be thrown by `exitSyncAndReturn` too. The stacktrace will not be impacted by this call and the context will be re-entered.
 
-Ví dụ:
+Example:
 
 ```js
 // Within a call to run or runSyncAndReturn
