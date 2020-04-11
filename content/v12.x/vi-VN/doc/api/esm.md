@@ -1,9 +1,9 @@
-# Mô-đun ECMAScript
+# ECMAScript Modules
 
 <!--introduced_in=v8.5.0-->
 <!-- type=misc -->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 ## Introduction
 
