@@ -1,14 +1,14 @@
-# Node.js Sürüm Yöntemi
+# Node.js Release Process
 
-Bu belge, Node.js sürüm yönteminin teknik yönlerini açıklamaktadır. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
+This document describes the technical aspects of the Node.js release process. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
-## Kim Sürüm Yapabilir?
+## Who can make a release?
 
-Sürüm yetkisi Node.js TSC tarafından verilir. Once authorized, an individual must be have the following:
+Release authorization is given by the Node.js TSC. Once authorized, an individual must be have the following:
 
-### 1. Jenkins Sürüm Erişimi
+### 1. Jenkins Release Access
 
-Sürüm akışı için kullanılması gereken ilgili üç Jenkins görevi vardır:
+There are three relevant Jenkins jobs that should be used for a release flow:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
@@ -170,7 +170,7 @@ This is also a good time to update the release commit to include `PR-URL` metada
 
 Run a **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** test run to ensure that the build is stable and the HEAD commit is ready for release.
 
-Perform some smoke-testing. We have [citgm](https://github.com/nodejs/citgm) for this. Ayrıca ekosistemde bulunan önemli modülleri manuel olarak da test edebilirsiniz. Remember that node-gyp and npm both take a `--nodedir` flag to point to your local repository so that you can test unreleased versions without needing node-gyp to download headers for you.
+Perform some smoke-testing. We have [citgm](https://github.com/nodejs/citgm) for this. You can also manually test important modules from the ecosystem. Remember that node-gyp and npm both take a `--nodedir` flag to point to your local repository so that you can test unreleased versions without needing node-gyp to download headers for you.
 
 ### 7. Produce a Nightly Build *(optional)*
 
