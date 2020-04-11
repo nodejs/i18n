@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `tls` module provides an implementation of the Transport Layer Security (TLS) and Secure Socket Layer (SSL) protocols that is built on top of OpenSSL. The module can be accessed using:
 
@@ -211,7 +211,7 @@ The default cipher suite prefers GCM ciphers for \[Chrome's 'modern cryptography
 
 128 bit AES is preferred over 192 and 256 bit AES in light of \[specific attacks affecting larger AES key sizes\]\[\].
 
-Güvensiz ve kullanımdan kaldırılan RC4 veya DES tabanlı şifrelere (Internet Explorer 6 gibi) güvenen eski istemciler, uyuşma işlemini varsayılan yapılandırma ile tamamlayamaz. If these clients _must_ be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the OpenSSL [cipher list format](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html#CIPHER-LIST-FORMAT) documentation.
+Old clients that rely on insecure and deprecated RC4 or DES-based ciphers (like Internet Explorer 6) cannot complete the handshaking process with the default configuration. If these clients _must_ be supported, the [TLS recommendations](https://wiki.mozilla.org/Security/Server_Side_TLS) may offer a compatible cipher suite. For more details on the format, see the OpenSSL [cipher list format](https://www.openssl.org/docs/man1.1.1/man1/ciphers.html#CIPHER-LIST-FORMAT) documentation.
 
 There are only 5 TLSv1.3 cipher suites:
 
@@ -470,7 +470,7 @@ On the server side, any `Duplex` stream. On the client side, any instance of [`n
   * `ALPNProtocols`: See [`tls.createServer()`][]
   * `SNICallback`: See [`tls.createServer()`][]
   * `session` {Buffer} A `Buffer` instance containing a TLS session.
-  * `requestOCSP` {boolean} Eğer `true` ise, OCSP durum isteği uzantısının istemciye merhaba ekleneceğini ve güvenli bir iletişim kurmadan önce sokete bir `'OCSPResponse'` olayı gönderileceğini belirtir
+  * `requestOCSP` {boolean} If `true`, specifies that the OCSP status request extension will be added to the client hello and an `'OCSPResponse'` event will be emitted on the socket before establishing a secure communication
   * `secureContext`: TLS context object created with [`tls.createSecureContext()`][]. If a `secureContext` is _not_ provided, one will be created by passing the entire `options` object to `tls.createSecureContext()`.
   * ...: [`tls.createSecureContext()`][] options that are used if the `secureContext` option is missing. Otherwise, they are ignored.
 
@@ -618,7 +618,7 @@ changes:
 
 Returns an object containing information on the negotiated cipher suite.
 
-Örneğin:
+For example:
 ```json
 {
     "name": "AES128-SHA256",
@@ -705,22 +705,22 @@ For EC keys, the following properties may be defined:
 Example certificate:
 
 ```text
-{subject:
-   { OU: [ 'Etki Alanı Kontrolü Doğrulandı', 'PositiveSSL Wildcard' ],
+{ subject:
+   { OU: [ 'Domain Control Validated', 'PositiveSSL Wildcard' ],
      CN: '*.nodejs.org' },
-  veren:
+  issuer:
    { C: 'GB',
-     ST: 'Manchester Büyükşehir',
+     ST: 'Greater Manchester',
      L: 'Salford',
-     O: 'COMODO CA Sınırlı',
-     CN: 'COMODO RSA Etki Alanı Güvenli Sunucu Doğrulama CA' },
+     O: 'COMODO CA Limited',
+     CN: 'COMODO RSA Domain Validation Secure Server CA' },
   subjectaltname: 'DNS:*.nodejs.org, DNS:nodejs.org',
-  Erişimbilgisi:
-   { 'CA Verenleri - URI':
+  infoAccess:
+   { 'CA Issuers - URI':
       [ 'http://crt.comodoca.com/COMODORSADomainValidationSecureServerCA.crt' ],
      'OCSP - URI': [ 'http://ocsp.comodoca.com' ] },
-  modülü: 'B56CE45CB740B09A13F64AC543B712FF9EE8E4C284B542A1708A27E82A8D151CA178153E12E6DDA15BF70FFD96CB8A88618641BDFCCA03527E665B70D779C8A349A6F88FD4EF6557180BD4C98192872BCFE3AF56E863C09DDD8BC1EC58DF9D94F914F0369102B2870BECFA1348A0838C9C49BD1C20124B442477572347047506B1FCD658A80D0C44BCC16BC5C5496CFE6E4A8428EF654CD3D8972BF6E5BFAD59C93006830B5EB1056BBB38B53D1464FA6E02BFDF2FF66CD949486F0775EC43034EC2602AEFBF1703AD221DAA2A88353C3B6A688EFE8387811F645CEED7B3FE46E1F8B9F59FAD028F349B9BC14211D5830994D055EEA3D547911E07A0ADDEB8A82B9188E58720D95CD478EEC9AF1F17BE8141BE80906F1A339445A7EB5B285F68039B0F294598A7D1C0005FC22B5271B0752F58CCDEF8C8FD856FB7AE21C80B8A2CE983AE94046E53EDE4CB89F42502D31B5360771C01C80155918637490550E3F555E2EE75CC8C636DDE3633CFEDD62E91BF0F7688273694EEEBA20C2FC9F14A2A435517BC1D7373922463409AB603295CEB0BB53787A334C9CA3CA8B30005C5A62FC0715083462E00719A8FA3ED0A9828C3871360A73F8B04A4FC1E71302844E9BB9940B77E745C9D91F226D71AFCAD4B113AAF68D92B24DDB4A2136B55A1CD1ADF39605B63CB639038ED0F4C987689866743A68769CC55847E4A06D6E2E3F1',
-  kuvvet: '0x10001',
+  modulus: 'B56CE45CB740B09A13F64AC543B712FF9EE8E4C284B542A1708A27E82A8D151CA178153E12E6DDA15BF70FFD96CB8A88618641BDFCCA03527E665B70D779C8A349A6F88FD4EF6557180BD4C98192872BCFE3AF56E863C09DDD8BC1EC58DF9D94F914F0369102B2870BECFA1348A0838C9C49BD1C20124B442477572347047506B1FCD658A80D0C44BCC16BC5C5496CFE6E4A8428EF654CD3D8972BF6E5BFAD59C93006830B5EB1056BBB38B53D1464FA6E02BFDF2FF66CD949486F0775EC43034EC2602AEFBF1703AD221DAA2A88353C3B6A688EFE8387811F645CEED7B3FE46E1F8B9F59FAD028F349B9BC14211D5830994D055EEA3D547911E07A0ADDEB8A82B9188E58720D95CD478EEC9AF1F17BE8141BE80906F1A339445A7EB5B285F68039B0F294598A7D1C0005FC22B5271B0752F58CCDEF8C8FD856FB7AE21C80B8A2CE983AE94046E53EDE4CB89F42502D31B5360771C01C80155918637490550E3F555E2EE75CC8C636DDE3633CFEDD62E91BF0F7688273694EEEBA20C2FC9F14A2A435517BC1D7373922463409AB603295CEB0BB53787A334C9CA3CA8B30005C5A62FC0715083462E00719A8FA3ED0A9828C3871360A73F8B04A4FC1E71302844E9BB9940B77E745C9D91F226D71AFCAD4B113AAF68D92B24DDB4A2136B55A1CD1ADF39605B63CB639038ED0F4C987689866743A68769CC55847E4A06D6E2E3F1',
+  exponent: '0x10001',
   pubkey: <Buffer ... >,
   valid_from: 'Aug 14 00:00:00 2017 GMT',
   valid_to: 'Nov 20 23:59:59 2019 GMT',
@@ -747,7 +747,7 @@ Corresponds to the `SSL_get_peer_finished` routine in OpenSSL and may be used to
 added: v5.7.0
 -->
 
-* Çıktı: {string|null}
+* Returns: {string|null}
 
 Returns a string containing the negotiated SSL/TLS protocol version of the current connection. The value `'unknown'` will be returned for connected sockets that have not completed the handshaking process. The value `null` will be returned for server sockets or disconnected client sockets.
 
@@ -796,7 +796,7 @@ added: v13.10.0
 
 Keying material is used for validations to prevent different kind of attacks in network protocols, for example in the specifications of IEEE 802.1X.
 
-Örnek
+Example
 
 ```js
 const keyingMaterial = tlsSocket.exportKeyingMaterial(
@@ -909,7 +909,7 @@ added: v0.11.11
 
 The `tlsSocket.setMaxSendFragment()` method sets the maximum TLS fragment size. Returns `true` if setting the limit succeeded; `false` otherwise.
 
-Daha küçük parça boyutları, istemcide arabellek gecikmesini azaltır: daha büyük parçalar, tüm parça alınana ve bütünlüğü doğrulanana kadar TLS katmanı tarafından tamponlanır; büyük parçalar çoklu dönüşlere yayılabilir ve onların paket kaybı veya yeniden sıralanması nedeniyle işlemleri gecikebilir. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
+Smaller fragment sizes decrease the buffering latency on the client: larger fragments are buffered by the TLS layer until the entire fragment is received and its integrity is verified; large fragments can span multiple roundtrips and their processing can be delayed due to packet loss or reordering. However, smaller fragments add extra TLS framing bytes and CPU overhead, which may decrease overall server throughput.
 
 ## `tls.checkServerIdentity(hostname, cert)`
 <!-- YAML
@@ -1250,7 +1250,7 @@ added: v11.4.0
 
 * {string} The default value of the `minVersion` option of [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS protocol versions, `'TLSv1.3'`, `'TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`. **Default:** `'TLSv1.2'`, unless changed using CLI options. Using `--tls-min-v1.0` sets the default to `'TLSv1'`. Using `--tls-min-v1.1` sets the default to `'TLSv1.1'`. Using `--tls-min-v1.3` sets the default to `'TLSv1.3'`. If multiple of the options are provided, the lowest minimum is used.
 
-## Kullanımdan Kaldırılan API'ler
+## Deprecated APIs
 
 ### Class: `CryptoStream`
 <!-- YAML
