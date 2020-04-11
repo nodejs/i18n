@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. Modülü yüklemek için:
+The `util` module is primarily designed to support the needs of Node.js' own internal APIs. However, many of the utilities are useful for application and module developers as well. It can be accessed using:
 
 ```js
 const util = require('util');
@@ -25,7 +25,7 @@ Takes an `async` function (or a function that returns a `Promise`) and returns a
 const util = require('util');
 
 async function fn() {
-  return 'merhaba dünya';
+  return 'hello world';
 }
 const callbackFunction = util.callbackify(fn);
 
@@ -38,7 +38,7 @@ callbackFunction((err, ret) => {
 Will print:
 
 ```txt
-merhaba dünya
+hello world
 ```
 
 The callback is executed asynchronously, and will have a limited stack trace. If the callback throws, the process will emit an [`'uncaughtException'`][] event, and if not handled will exit.
@@ -229,7 +229,7 @@ added: v9.7.0
 -->
 
 * `err` {number}
-* Çıktı: {string}
+* Returns: {string}
 
 Returns the string name for a numeric error code that comes from a Node.js API. The mapping between error codes and error names is platform-dependent. See [Common System Errors](errors.html#errors_common_system_errors) for the names of common errors.
 
@@ -396,7 +396,7 @@ const o = {
 };
 console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 
-// Bu yazdıracaktır
+// This will print
 
 // { a:
 //   [ 1,
@@ -407,7 +407,7 @@ console.log(util.inspect(o, { compact: true, depth: 5, breakLength: 80 }));
 //     4 ],
 //   b: Map { 'za' => 1, 'zb' => 'test' } }
 
-// `compact`'ın yanlış olarak ayarlanması, çıktıyı daha okuyucu dostu yapar.
+// Setting `compact` to false changes the output to be more reader friendly.
 console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 
 // {
@@ -432,8 +432,8 @@ console.log(util.inspect(o, { compact: false, depth: 5, breakLength: 80 }));
 //   }
 // }
 
-// `breakLength`'i ayalarma, örn. 150 "Lorem ipsum" metnini yazdıracaktır
-// tek satırda.
+// Setting `breakLength` to e.g. 150 will print the "Lorem ipsum" text in a
+// single line.
 // Reducing the `breakLength` will split the "Lorem ipsum" text in smaller
 // chunks.
 ```
@@ -732,7 +732,7 @@ string += decoder.decode(); // end-of-stream
 
 Per the [WHATWG Encoding Standard](https://encoding.spec.whatwg.org/), the encodings supported by the `TextDecoder` API are outlined in the tables below. For each encoding, one or more aliases may be used.
 
-Different Node.js build configurations support different sets of encodings. Çok temel kodlamalar kümesi Node.js'de bile ICU etkinleştirilmemiş olsa bile desteklenirken, bazı kodlamalar için destek yalnızca Node.js ICU ile birlikte oluşturulduğunda ve tüm ICU verilerini kullanırken sağlanır (bkz. [Uluslararasılaştırma](intl.html)).
+Different Node.js build configurations support different sets of encodings. While a very basic set of encodings is supported even on Node.js builds without ICU enabled, support for some encodings is provided only when Node.js is built with ICU and using the full ICU data (see [Internationalization](intl.html)).
 
 #### Encodings Supported Without ICU
 
@@ -758,7 +758,7 @@ Different Node.js build configurations support different sets of encodings. Çok
 | `'iso-8859-3'`     | `'csisolatin3'`, `'iso-ir-109'`, `'iso8859-3'`, `'iso88593'`, `'iso_8859-3'`, `'iso_8859-3:1988'`, `'l3'`, `'latin3'`                                                                                                               |
 | `'iso-8859-4'`     | `'csisolatin4'`, `'iso-ir-110'`, `'iso8859-4'`, `'iso88594'`, `'iso_8859-4'`, `'iso_8859-4:1988'`, `'l4'`, `'latin4'`                                                                                                               |
 | `'iso-8859-5'`     | `'csisolatincyrillic'`, `'cyrillic'`, `'iso-ir-144'`, `'iso8859-5'`, `'iso88595'`, `'iso_8859-5'`, `'iso_8859-5:1988'`                                                                                                              |
-| `'iso-8859-6'`     | `'arapça'`, `'asmo-708'`, `'csiso88596e'`, `'csiso88596i'`, `'csisolatinarabic'`, `'ecma-114'`, `'iso-8859-6-e'`, `'iso-8859-6-i'`, `'iso-ir-127'`, `'iso8859-6'`, `'iso88596'`, `'iso_8859-6'`, `'iso_8859-6:1987'`                |
+| `'iso-8859-6'`     | `'arabic'`, `'asmo-708'`, `'csiso88596e'`, `'csiso88596i'`, `'csisolatinarabic'`, `'ecma-114'`, `'iso-8859-6-e'`, `'iso-8859-6-i'`, `'iso-ir-127'`, `'iso8859-6'`, `'iso88596'`, `'iso_8859-6'`, `'iso_8859-6:1987'`                |
 | `'iso-8859-7'`     | `'csisolatingreek'`, `'ecma-118'`, `'elot_928'`, `'greek'`, `'greek8'`, `'iso-ir-126'`, `'iso8859-7'`, `'iso88597'`, `'iso_8859-7'`, `'iso_8859-7:1987'`, `'sun_eu_greek'`                                                          |
 | `'iso-8859-8'`     | `'csiso88598e'`, `'csisolatinhebrew'`, `'hebrew'`, `'iso-8859-8-e'`, `'iso-ir-138'`, `'iso8859-8'`, `'iso88598'`, `'iso_8859-8'`, `'iso_8859-8:1988'`, `'visual'`                                                                   |
 | `'iso-8859-8-i'`   | `'csiso88598i'`, `'logical'`                                                                                                                                                                                                        |
@@ -804,7 +804,7 @@ Creates an new `TextDecoder` instance. The `encoding` may specify one of the sup
 * `input` {ArrayBuffer|DataView|TypedArray} An `ArrayBuffer`, `DataView` or `Typed Array` instance containing the encoded data.
 * `options` {Object} 
   * `stream` {boolean} `true` if additional chunks of data are expected. **Default:** `false`.
-* Çıktı: {string}
+* Returns: {string}
 
 Decodes the `input` and returns a string. If `options.stream` is `true`, any incomplete byte sequences occurring at the end of the `input` are buffered internally and emitted after the next call to `textDecoder.decode()`.
 
@@ -996,7 +996,7 @@ added: v10.11.0
 
 Returns `true` if the value is any boxed primitive object, e.g. created by `new Boolean()`, `new String()` or `Object(Symbol())`.
 
-Örneğin:
+For example:
 
 ```js
 util.types.isBoxedPrimitive(false); // Returns false
@@ -1520,7 +1520,7 @@ const module = new WebAssembly.Module(wasmBuffer);
 util.types.isWebAssemblyCompiledModule(module);  // Returns true
 ```
 
-## Kullanımdan Kaldırılan API'ler
+## Deprecated APIs
 
 The following APIs are deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
