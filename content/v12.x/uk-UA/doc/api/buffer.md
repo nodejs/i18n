@@ -1,4 +1,4 @@
-# Буфер
+# Buffer
 
 <!--introduced_in=v0.1.90-->
 
