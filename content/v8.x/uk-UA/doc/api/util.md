@@ -630,7 +630,7 @@ UTF-8 encodes the `input` string and returns a `Uint8Array` containing the encod
 
 The encoding supported by the `TextEncoder` instance. Always set to `'utf-8'`.
 
-## Застарілий API
+## Deprecated APIs
 
 The following APIs have been deprecated and should no longer be used. Existing applications and modules should be updated to find alternative approaches.
 
