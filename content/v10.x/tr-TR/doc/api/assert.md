@@ -2,17 +2,17 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `assert` module provides a simple set of assertion tests that can be used to test invariants.
 
-Sadece [`strict mode`][] kullanımı önerildiğinde `strict` ve `legacy` modları vardır.
+A `strict` and a `legacy` mode exist, while it is recommended to only use [`strict mode`][].
 
-Kullanılan eşitlik karşılaştırmalarıyla ilgili daha fazla bilgi için [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness) kılavuzuna bakınız.
+For more information about the used equality comparisons see [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
-## Sınıf: assert.AssertionError
+## Class: assert.AssertionError
 
-Karşılaştırmada hata olduğunu gösteren bir `Error` alt sınıfıdır. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
+A subclass of `Error` that indicates the failure of an assertion. All errors thrown by the `assert` module will be instances of the `AssertionError` class.
 
 ### new assert.AssertionError(options)
 
@@ -20,14 +20,14 @@ Karşılaştırmada hata olduğunu gösteren bir `Error` alt sınıfıdır. All 
 added: v0.1.21
 -->
 
-* `seçenekler` {Object} 
+* `options` {Object} 
   * `message` {string} If provided, the error message is going to be set to this value.
   * `actual` {any} The `actual` property on the error instance is going to contain this value. Internally used for the `actual` error input in case e.g., [`assert.strictEqual()`] is used.
   * `expected` {any} The `expected` property on the error instance is going to contain this value. Internally used for the `expected` error input in case e.g., [`assert.strictEqual()`] is used.
   * `operator` {string} The `operator` property on the error instance is going to contain this value. Internally used to indicate what operation was used for comparison (or what assertion function triggered the error).
   * `stackStartFn` {Function} If provided, the generated stack trace is going to remove all frames up to the provided function.
 
-Karşılaştırmada hata olduğunu gösteren bir `Error` alt sınıfıdır.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -40,14 +40,14 @@ All instances contain the built-in `Error` properties (`message` and `name`) and
 ```js
 const assert = require('assert');
 
-// Hata mesajını daha sonra karşılaştırmak için bir İddiaHatası oluşturun:
+// Generate an AssertionError to compare the error message later:
 const { message } = new assert.AssertionError({
   actual: 1,
   expected: 2,
   operator: 'strictEqual'
 });
 
-// Hata çıktısını doğrulayın:
+// Verify error output:
 try {
   assert.strictEqual(1, 2);
 } catch (err) {
@@ -80,7 +80,7 @@ When using the `strict mode`, any `assert` function will use the equality used i
 
 On top of that, error messages which involve objects produce an error diff instead of displaying both objects. That is not the case for the legacy mode.
 
-Modülü yüklemek için:
+It can be accessed using:
 
 ```js
 const assert = require('assert').strict;
@@ -115,7 +115,7 @@ To deactivate the colors, use the `NODE_DISABLE_COLORS` environment variable. Pl
 
 When accessing `assert` directly instead of using the `strict` property, the [Abstract Equality Comparison](https://tc39.github.io/ecma262/#sec-abstract-equality-comparison) will be used for any function without "strict" in its name, such as [`assert.deepEqual()`][].
 
-Modülü yüklemek için:
+It can be accessed using:
 
 ```js
 const assert = require('assert');
@@ -162,7 +162,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -255,7 +255,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -280,45 +280,45 @@ const assert = require('assert').strict;
 
 // This fails because 1 !== '1'.
 assert.deepStrictEqual({ a: 1 }, { a: '1' });
-// İddiaHatası: A girişinin tam olarak B'ye eşit giriş yapması bekleniyor:
-// + beklenen - mevcut
+// AssertionError: Input A expected to strictly deep-equal input B:
+// + expected - actual
 //   {
 // -   a: 1
 // +   a: '1'
 //   }
 
-// Aşağıdaki nesnelerin kendi özellikleri bulunmamaktadır
+// The following objects don't have own properties
 const date = new Date();
 const object = {};
 const fakeDate = {};
 Object.setPrototypeOf(fakeDate, Date.prototype);
 
-// Farklı [[Prototype]]:
+// Different [[Prototype]]:
 assert.deepStrictEqual(object, fakeDate);
-// İddiaHatası: A girişinin tam olarak B'ye eşit giriş yapması bekleniyor:
-// + beklenen - mevcut
+// AssertionError: Input A expected to strictly deep-equal input B:
+// + expected - actual
 // - {}
-// + Tarih {}
+// + Date {}
 
-// Farklı tip etiketler:
+// Different type tags:
 assert.deepStrictEqual(date, fakeDate);
-// İddiaHatası: A girişinin tam olarak B'ye eşit giriş yapması bekleniyor:
-// + beklenen - mevcut
+// AssertionError: Input A expected to strictly deep-equal input B:
+// + expected - actual
 // - 2018-04-26T00:49:08.604Z
-// + Tarih {}
+// + Date {}
 
 assert.deepStrictEqual(NaN, NaN);
-// Tamam, SameValue karşılaştırması sebebiyle
+// OK, because of the SameValue comparison
 
-// Sarılmamış farklı numaralar:
+// Different unwrapped numbers:
 assert.deepStrictEqual(new Number(1), new Number(2));
-// İddiaHatası: A girişinin tam olarak B'ye eşit giriş yapması bekleniyor:
-// + beklenen - mevcut
-// - [Numara: 1]
-// + [Numara: 2]
+// AssertionError: Input A expected to strictly deep-equal input B:
+// + expected - actual
+// - [Number: 1]
+// + [Number: 2]
 
 assert.deepStrictEqual(new String('foo'), Object('foo'));
-// Tamam, çünkü nesne ve dize açıldığında aynıdır.
+// OK because the object and the string are identical when unwrapped.
 
 assert.deepStrictEqual(-0, -0);
 // OK
@@ -335,9 +335,9 @@ const symbol2 = Symbol();
 assert.deepStrictEqual({ [symbol1]: 1 }, { [symbol1]: 1 });
 // OK, because it is the same symbol on both objects.
 assert.deepStrictEqual({ [symbol1]: 1 }, { [symbol2]: 1 });
-// İddiaHatası [ERR_ASSERTION]: Giriş objeleri aynı değil:
+// AssertionError [ERR_ASSERTION]: Input objects not identical:
 // {
-//   [Sembol()]: 1
+//   [Symbol()]: 1
 // }
 
 const weakMap1 = new WeakMap();
@@ -346,16 +346,16 @@ const weakMap3 = new WeakMap();
 weakMap3.unequal = true;
 
 assert.deepStrictEqual(weakMap1, weakMap2);
-// Tamam, çünkü girişleri karşılaştırmak imkansızdır
+// OK, because it is impossible to compare the entries
 
-// Başarısız olur çünkü weakMap3'ün sahip olduğu bir özelliği weakMap1 içermemektedir:
+// Fails because weakMap3 has a property that weakMap1 does not contain:
 assert.deepStrictEqual(weakMap1, weakMap3);
-// İddiaHatası: A girişinin tam olarak B'ye eşit giriş yapması bekleniyor:
-// + beklenen - mevcut
+// AssertionError: Input A expected to strictly deep-equal input B:
+// + expected - actual
 //   WeakMap {
-// -   [bilinmeyen öğeler]
-// +   [bilinmeyen öğeler],
-// +   eşit değil: doğru
+// -   [items unknown]
+// +   [items unknown],
+// +   unequal: true
 //   }
 ```
 
@@ -369,7 +369,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `mesaj` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
@@ -415,7 +415,7 @@ changes:
 
 * `fn` {Function}
 * `error` {RegExp|Function}
-* `mesaj` {string}
+* `message` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -474,7 +474,7 @@ assert.doesNotThrow(
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -541,7 +541,7 @@ changes:
                  deprecated and emits a warning.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 * `operator` {string} **Default:** `'!='`
@@ -654,7 +654,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -734,7 +734,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -755,7 +755,7 @@ If the values are deeply and strictly equal, an `AssertionError` is thrown with 
 added: v0.1.21
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -795,7 +795,7 @@ changes:
     description: Used comparison changed from Strict Equality to `Object.is()`
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -841,39 +841,39 @@ Be aware that in the `repl` the error message will be different to the one throw
 const assert = require('assert').strict;
 
 assert.ok(true);
-// Tamam
+// OK
 assert.ok(1);
-// Tamam
+// OK
 
 assert.ok();
-// İddiaHatası: `assert.ok()`'a değer değişkeni iletilmedi
+// AssertionError: No value argument passed to `assert.ok()`
 
 assert.ok(false, 'it\'s false');
-// İddiaHatası: bu yanlış
+// AssertionError: it's false
 
-// Cevapta:
+// In the repl:
 assert.ok(typeof 123 === 'string');
-// İddiaHatası: yanlış == doğru
+// AssertionError: false == true
 
-// Bir dosyada (örn. test.js):
+// In a file (e.g. test.js):
 assert.ok(typeof 123 === 'string');
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(typeof 123 === 'string')
 
 assert.ok(false);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(false)
 
 assert.ok(0);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(0)
 
-// `assert()` kullanımı aynı şekilde çalışır
+// Using `assert()` works the same:
 assert(0);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert(0)
 ```
@@ -886,7 +886,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `mesaj` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
@@ -934,7 +934,7 @@ changes:
     description: Used comparison changed from Strict Equality to `Object.is()`
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -981,7 +981,7 @@ changes:
 
 * `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `mesaj` {string}
+* `message` {string}
 
 Expects the function `fn` to throw an error.
 
