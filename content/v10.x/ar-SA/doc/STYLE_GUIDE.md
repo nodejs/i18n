@@ -1,32 +1,32 @@
 # دليل الاسلوب
 
-* كتبت الوثائق ب"markdown" والملفات سميت على شكل `lowercase-with-dashes.md`. 
-  * سطر السفلي في أسماء الملفات مسموح به فقط عندما يكون موجود في موضوع سوف تصفه الوثيقة (مثال: `child_process`).
-  * بعض الملفات، مثل ملفات المستوى العالي "markdown"، هي استثناءات.
-* يجب أن تكون المستندات بالكلمات مربوطة في 80 حرف.
-* البنية الموصوف في `.editorconfig` هي المفضلة. 
-  * في بعض المحررات النصوص تتوفر [ الإضافة ](http://editorconfig.org/#download) لتطبيق هذه قواعد تلقائيًا.
+* Documentation is written in markdown files with names formatted as `lowercase-with-dashes.md`. 
+  * Underscores in filenames are allowed only when they are present in the topic the document will describe (e.g. `child_process`).
+  * Some files, such as top-level markdown files, are exceptions.
+* Documents should be word-wrapped at 80 characters.
+* The formatting described in `.editorconfig` is preferred. 
+  * A [plugin](http://editorconfig.org/#download) is available for some editors to automatically apply these rules.
 * Changes to documentation should be checked with `make lint-md`.
-* التهجئة الإنجليزي الأمريكي المفضلة. "Capitalize" ضد. "Capitalise"، "color" ضد. "اللون"، إلخ.
-* استخدم [ سلسلة فواصل ](https://en.wikipedia.org/wiki/Serial_comma).
+* American English spelling is preferred. "Capitalize" vs. "Capitalise", "color" vs. "اللون"، إلخ.
+* Use [serial commas](https://en.wikipedia.org/wiki/Serial_comma).
 * Avoid personal pronouns in reference documentation ("I", "you", "we"). 
   * Personal pronouns are acceptable in colloquial documentation such as guides.
   * Use gender-neutral pronouns and gender-neutral plural nouns. 
     * OK: "they", "their", "them", "folks", "people", "developers"
-    * ليس جيد: "له" ، "لها" ، "هو" ، "هي" ، "شباب" ، "رجال"
-* عند ضم و تَطْوِيق العناصر (العلامات الحصر و علامات الاقتباس)، terminal يجب وضع علامات الترقيم: 
+    * NOT OK: "his", "hers", "him", "her", "guys", "dudes"
+* When combining wrapping elements (parentheses and quotes), terminal punctuation should be placed: 
   * Inside the wrapping element if the wrapping element contains a complete clause — a subject, verb, and an object.
   * Outside of the wrapping element if the wrapping element contains only a fragment of a clause.
 * Documents must start with a level-one heading.
 * Prefer affixing links to inlining links — prefer `[a link][]` to `[a link](http://example.com)`.
 * When documenting APIs, note the version the API was introduced in at the end of the section. If an API has been deprecated, also note the first version that the API appeared deprecated in.
 * When using dashes, use [Em dashes](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" or `Option+Shift+"-"` on macOS) surrounded by spaces, as per [The New York Times Manual of Style and Usage](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage).
-* إدراج الملفات: 
-  * إذا كنت ترغب في إضافة رسم توضيحي أو برنامج كامل ، فأضفه إلى داخل الملف الفرعي `assets/`.
+* Including assets: 
+  * If you wish to add an illustration or full program, add it to the appropriate sub-directory in the `assets/` dir.
   * Link to it like so: `[Asset](/assets/{subdir}/{filename})` for file-based assets, and `![Asset](/assets/{subdir}/{filename})` for image-based assets.
-  * بالنسبة إلى الرسوم التوضيحية، تفضل SVG على الملفات الأخرى. عندما يكون SVG غير ظاهر، رجاء إبقاء عينك على حجم الملفك الأصلي الذي قدمته.
-* لفقرات الكود: 
-  * استخدام الأسوار لتعريف باللغة البرمجة. ("```js")
+  * For illustrations, prefer SVG to other assets. When SVG is not feasible, please keep a close eye on the filesize of the asset you're introducing.
+* For code blocks: 
+  * Use language aware fences. ("```js")
   * Code need not be complete — treat code blocks as an illustration or aid to your point, not as complete running programs. If a complete running program is necessary, include it as an asset in `assets/code-examples` and link to it.
 * When using underscores, asterisks, and backticks, please use proper escaping (`\_`, `\*` and `` \` `` instead of `_`, `*` and `` ` ``).
 * References to constructor functions should use PascalCase.
