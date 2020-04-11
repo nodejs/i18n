@@ -1,8 +1,8 @@
-# Etkinlikler
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -59,7 +59,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Asynchronous vs. Synchronous
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. Uygun olduğunda, dinleyici fonksiyonları `setImmediate()` veya `process.nextTick()` yöntemlerini kullanarak eş zamanlı olmayan işlem moduna geçebilir:
+The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -153,7 +153,7 @@ The `EventEmitter` instance will emit its own `'newListener'` event *before* a l
 
 Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
 
-Etkinliğin dinleyiciyi eklemeden önce tetiklenmesi gerçeği, ince ancak önemli bir yan etkiye sahiptir: `'newListener'` geri çağrısı *içinde* aynı `isme` kayıtlı olan herhangi bir *ek* dinleyici, eklenme sürecinde olan dinleyiciden *önce* eklenecektir.
+The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
 
 ```js
 const myEmitter = new MyEmitter();
