@@ -34,7 +34,7 @@
   </tr>
 </table>
 
-* Diğer Versiyonlar 
+* Other Versions 
   * [8.x](CHANGELOG_V8.md)
   * [7.x](CHANGELOG_V7.md)
   * [6.x](CHANGELOG_V6.md)
@@ -83,7 +83,7 @@ This is a security release. All Node.js users should consult the security releas
 
 ## 2016-09-27, Version 0.12.16 (Maintenance), @rvagg
 
-This is a security release. Tüm Node.js kullanıcıları, yamalı güvenlik açıkları hakkında ayrıntılı bilgi için https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ adresindeki güvenlik açıklaması özetine bakmalıdır.
+This is a security release. All Node.js users should consult the security release summary at https://nodejs.org/en/blog/vulnerability/september-2016-security-releases/ for details on patched vulnerabilities.
 
 ### Notable changes:
 
