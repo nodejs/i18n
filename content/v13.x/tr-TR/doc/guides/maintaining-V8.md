@@ -53,7 +53,7 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
    </td>
    <td>2015-10-01
    </td>
-   <td>Nisan 2018
+   <td>April 2018
    </td>
    <td>4.5
    </td>
@@ -95,7 +95,7 @@ At any given time Node.js needs to be maintaining a few different V8 branches fo
    </td>
    <td>2017-10-31
    </td>
-   <td>Nisan 2018
+   <td>April 2018
    </td>
    <td>6.2
    </td>
@@ -177,7 +177,7 @@ An example for workflow how to cherry-pick consider the bug [RegExp show inconsi
 
 * Download and apply the commit linked-to in the issue (in this case a51f429). `curl -L https://github.com/v8/v8/commit/a51f429.patch | git am -3
 --directory=deps/v8`. If the branches have diverged significantly, this may not apply cleanly. It may help to try to cherry-pick the merge to the oldest branch that was done upstream in V8. In this example, this would be the patch from the merge to 5.2. The hope is that this would be closer to the V8 5.1, and has a better chance of applying cleanly. If you're stuck, feel free to ping @ofrobots for help.
-* Modify the commit message to match the format we use for V8 backports and replace yourself as the author. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Örnek:
+* Modify the commit message to match the format we use for V8 backports and replace yourself as the author. `git commit --amend --reset-author`. You may want to add extra description if necessary to indicate the impact of the fix on Node.js. In this case the original issue was descriptive enough. Example:
 
 ```console
 deps: cherry-pick a51f429 from V8 upstream
@@ -228,8 +228,8 @@ Because there may be floating patches on the version of V8 in Node.js, it is saf
 The rough outline of the process is:
 
 ```shell
-# Node.js kodunun çatalının $NODE_DIR içinde teslim alındığını varsayarak
-# ve Node.js ana dalını güncellemek istiyorsunuz.
+# Assuming your fork of Node.js is checked out in $NODE_DIR
+# and you want to update the Node.js master branch.
 # Find the current (OLD) version in
 # $NODE_DIR/deps/v8/include/v8-version.h
 cd $NODE_DIR
