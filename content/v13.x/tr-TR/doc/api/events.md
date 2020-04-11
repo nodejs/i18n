@@ -1,8 +1,8 @@
-# Etkinlikler
+# Events
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--type=module-->
 
@@ -59,7 +59,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Asynchronous vs. Synchronous
 
-The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This ensures the proper sequencing of events and helps avoid race conditions and logic errors. Uygun olduğunda, dinleyici fonksiyonları `setImmediate()` veya `process.nextTick()` yöntemlerini kullanarak eş zamanlı olmayan işlem moduna geçebilir:
+The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This ensures the proper sequencing of events and helps avoid race conditions and logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
 
 ```js
 const myEmitter = new MyEmitter();
