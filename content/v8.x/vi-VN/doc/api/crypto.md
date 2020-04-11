@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -1079,7 +1079,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Cipher}
+- Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`. Optional `options` argument controls stream behavior.
 
@@ -1107,7 +1107,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Cipher}
+- Returns: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
@@ -1122,7 +1122,7 @@ added: v0.1.92
 deprecated: v0.11.13
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`tls.createSecureContext()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`tls.createSecureContext()`][] instead.
 
 - `details` {Object} Identical to [`tls.createSecureContext()`][].
 
@@ -1139,7 +1139,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `password` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Decipher}
+- Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key). Optional `options` argument controls stream behavior.
 
@@ -1163,7 +1163,7 @@ changes:
 - `key` {string | Buffer | TypedArray | DataView}
 - `iv` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Decipher}
+- Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`). Optional `options` argument controls stream behavior.
 
@@ -1233,7 +1233,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Hash}
+- Returns: {Hash}
 
 Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior.
 
@@ -1268,7 +1268,7 @@ added: v0.1.94
 - `algorithm` {string}
 - `key` {string | Buffer | TypedArray | DataView}
 - `options` {Object} [`stream.transform` options][]
-- Trả về: {Hmac}
+- Returns: {Hmac}
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
 
@@ -1304,7 +1304,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Trả về: {Sign}
+- Returns: {Sign}
 
 Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1316,7 +1316,7 @@ added: v0.1.92
 
 - `algorithm` {string}
 - `options` {Object} [`stream.Writable` options][]
-- Trả về: {Verify}
+- Returns: {Verify}
 
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1328,7 +1328,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array with the names of the supported cipher algorithms.
 
-Ví dụ:
+Example:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1343,7 +1343,7 @@ added: v2.3.0
 
 - Returns: {string[]} An array with the names of the supported elliptic curves.
 
-Ví dụ:
+Example:
 
 ```js
 const curves = crypto.getCurves();
@@ -1386,7 +1386,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Ví dụ:
+Example:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1429,7 +1429,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Ví dụ:
+Example:
 
 ```js
 const crypto = require('crypto');
@@ -1474,7 +1474,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Ví dụ:
+Example:
 
 ```js
 const crypto = require('crypto');
