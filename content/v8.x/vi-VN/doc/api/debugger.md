@@ -1,8 +1,8 @@
-# Trình gỡ lỗi
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
