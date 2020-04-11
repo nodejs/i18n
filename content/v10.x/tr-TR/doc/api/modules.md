@@ -1,8 +1,8 @@
-# Modüller
+# Modules
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 <!--name=module-->
 
@@ -182,7 +182,7 @@ Node.js has several modules compiled into the binary. These modules are describe
 
 The core modules are defined within Node.js's source and are located in the `lib/` folder.
 
-Core modules are always preferentially loaded if their identifier is passed to `require()`. Örneğin, `require('http')` bu isimde bir dosya olsa bile, kurulmuş HTTP modülünü daima geri döndürür.
+Core modules are always preferentially loaded if their identifier is passed to `require()`. For instance, `require('http')` will always return the built in HTTP module, even if there is a file by that name.
 
 ## Cycles
 
@@ -386,7 +386,7 @@ For a main program this is not necessarily the same as the file name used in the
 
 See [`__dirname`][] for the directory name of the current module.
 
-Örnekler:
+Examples:
 
 Running `node example.js` from `/Users/mjr`
 
@@ -537,7 +537,7 @@ changes:
 * `request` {string} The module path to resolve.
 * `options` {Object} 
   * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
-* Çıktı: {string}
+* Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
