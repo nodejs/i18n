@@ -1,4 +1,4 @@
-# Ký tự Punnycode
+# Punycode
 <!-- YAML
 changes:
   - version: v7.0.0
