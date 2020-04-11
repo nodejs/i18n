@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `dns` module contains functions belonging to two different categories:
 
@@ -145,7 +145,7 @@ On error, `err` is an [`Error`][] object, where `err.code` is the error code. Ke
 
 `dns.lookup()` does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dns.lookup()`.
 
-Örnek kullanım:
+Example usage:
 
 ```js
 const dns = require('dns');
@@ -524,7 +524,7 @@ Note that this method works much like [resolve.conf](http://man7.org/linux/man-p
 
 ## DNS Promises API
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `dns.promises` API provides an alternative set of asynchronous DNS methods that return `Promise` objects rather than using callbacks. The API is accessible via `require('dns').promises`.
 
@@ -614,7 +614,7 @@ On error, the `Promise` is rejected with an [`Error`][] object, where `err.code`
 
 [`dnsPromises.lookup()`][] does not necessarily have anything to do with the DNS protocol. The implementation uses an operating system facility that can associate names with addresses, and vice versa. This implementation can have subtle but important consequences on the behavior of any Node.js program. Please take some time to consult the [Implementation considerations section](#dns_implementation_considerations) before using `dnsPromises.lookup()`.
 
-Örnek kullanım:
+Example usage:
 
 ```js
 const dns = require('dns');
