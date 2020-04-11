@@ -101,7 +101,7 @@ Collaborators should not block a pull request without providing a reason. Anothe
 
 ### Waiting for Approvals
 
-Before landing pull requests, allow 48 hours for input from other Collaborators. Certain types of pull requests can be fast-tracked and may land after a shorter delay. Örneğin:
+Before landing pull requests, allow 48 hours for input from other Collaborators. Certain types of pull requests can be fast-tracked and may land after a shorter delay. For example:
 
 * Focused changes that affect only documentation and/or the test suite:
   * `code-and-learn` tasks often fall into this category.
