@@ -1,8 +1,8 @@
-# Konsol
+# Console
 
 <!--introduced_in=v0.10.13-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `console` module provides a simple debugging console that is similar to the JavaScript console mechanism provided by web browsers.
 
@@ -355,15 +355,15 @@ console.timeEnd('process');
 
 ### `console.trace([message][, ...args])`<!-- YAML
 added: v0.1.104
--->* `mesaj` {any}
+-->* `message` {any}
 * `...args` {any}
 
 Prints to `stderr` the string `'Trace: '`, followed by the [`util.format()`][] formatted message and stack trace to the current position in the code.
 
 ```js
-console.trace('Göster bana');
-// Yazdırır: (yığın izleme, izlemenin çağrıldığı yere bağlı olarak değişiklik gösterecektir)
-//  İzleme: Göster bana
+console.trace('Show me');
+// Prints: (stack trace will vary based on where trace is called)
+//  Trace: Show me
 //    at repl:2:9
 //    at REPLServer.defaultEval (repl.js:248:27)
 //    at bound (domain.js:287:14)
