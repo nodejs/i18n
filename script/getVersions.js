@@ -1,7 +1,8 @@
 const semver = require('semver')
 const superagent = require('superagent')
 
-const url = 'https://api.github.com/repos/nodejs/node/releases'
+// Alternate resource is GitHub releases - https://api.github.com/repos/nodejs/node/releases
+const url = 'https://nodejs.org/dist/index.json'
 
 const fetchReleases = async () => {
   try {
@@ -21,12 +22,12 @@ module.exports = async (supportedVersions) => {
   }
 
   return supportedVersions.reduce((prev, el) => {
-    const targetRelease = releases.find(({ tag_name: tagName }) =>
-      semver.satisfies(tagName, el)
+    const targetRelease = releases.find(({ version }) =>
+      semver.satisfies(version, el)
     )
     return {
       ...prev,
-      [el]: targetRelease.tag_name
+      [el]: targetRelease.version
     }
   }, {})
 }
