@@ -3,7 +3,7 @@
 <!--introduced_in=v11.8.0-->
 <!-- type=misc -->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
 <!-- name=report -->
 
