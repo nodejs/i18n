@@ -1,4 +1,4 @@
-# Kullanımdan Kaldırılan API'ler
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 
@@ -504,7 +504,7 @@ changes:
 
 Type: Runtime
 
-The `os.tmpDir()` API is deprecated. Lütfen bunun yerine [`os.tmpdir()`][] kullanın.
+The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
 
 <a id="DEP0023"></a>
 
@@ -525,7 +525,7 @@ changes:
 
 Type: Runtime
 
-The `os.getNetworkInterfaces()` method is deprecated. Lütfen bunun yerine [`os.networkInterfaces`][] özelliğini kullanın.
+The `os.getNetworkInterfaces()` method is deprecated. Please use the [`os.networkInterfaces`][] property instead.
 
 <a id="DEP0024"></a>
 
@@ -565,7 +565,7 @@ changes:
 
 Type: Runtime
 
-The `sys` module is deprecated. Lütfen bunun yerine [`util`][] modülünü kullanın.
+The `sys` module is deprecated. Please use the [`util`][] module instead.
 
 <a id="DEP0026"></a>
 
@@ -586,7 +586,7 @@ changes:
 
 Type: Runtime
 
-The [`util.print()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
+The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 <a id="DEP0027"></a>
 
@@ -607,7 +607,7 @@ changes:
 
 Type: Runtime
 
-The [`util.puts()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
+The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 <a id="DEP0028"></a>
 
@@ -628,7 +628,7 @@ changes:
 
 Type: Runtime
 
-The [`util.debug()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
+The [`util.debug()`][] API is deprecated. Please use [`console.error()`][] instead.
 
 <a id="DEP0029"></a>
 
@@ -649,7 +649,7 @@ changes:
 
 Type: Runtime
 
-The [`util.error()`][] API is deprecated. Lütfen bunun yerine [`console.error()`][] kullanın.
+The [`util.error()`][] API is deprecated. Please use [`console.error()`][] instead.
 
 <a id="DEP0030"></a>
 
@@ -729,7 +729,7 @@ changes:
 
 Type: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API is deprecated. Lütfen bunun yerine [`emitter.listenerCount(eventName)`][] kullanın.
+The [`EventEmitter.listenerCount(emitter, eventName)`][] API is deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
 
 <a id="DEP0034"></a>
 
@@ -1385,7 +1385,7 @@ changes:
 
 Type: Documentation-only
 
-The `http` module `ServerResponse.prototype.writeHeader()` API is deprecated. Lütfen bunun yerine `ServerResponse.prototype.writeHead()` kullanın.
+The `http` module `ServerResponse.prototype.writeHeader()` API is deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
 
 The `ServerResponse.prototype.writeHeader()` method was never documented as an officially supported API.
 
@@ -1438,7 +1438,7 @@ Type: End-of-Life
 
 The `repl` module's `REPL_MODE_MAGIC` constant, used for `replMode` option, has been removed. Its behavior has been functionally identical to that of `REPL_MODE_SLOPPY` since Node.js 6.0.0, when V8 5.0 was imported. Please use `REPL_MODE_SLOPPY` instead.
 
-The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its value, `magic`, is also removed. Lütfen bunun yerine `sloppy` kullanın.
+The `NODE_REPL_MODE` environment variable is used to set the underlying `replMode` of an interactive `node` session. Its value, `magic`, is also removed. Please use `sloppy` instead.
 
 <a id="DEP0066"></a>
 
@@ -2060,7 +2060,7 @@ changes:
 
 Type: Runtime
 
-`process.assert()` is deprecated. Lütfen bunun yerine [`assert`][] modülünü kullanın.
+`process.assert()` is deprecated. Please use the [`assert`][] module instead.
 
 This was never a documented feature.
 
