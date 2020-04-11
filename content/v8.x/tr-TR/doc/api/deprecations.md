@@ -1,4 +1,4 @@
-# Kullanımdan Kaldırılan API'ler
+# Deprecated APIs
 
 <!--introduced_in=v7.7.0-->
 
@@ -86,7 +86,7 @@ Within the [`child_process`][] module's `spawn()`, `fork()`, and `exec()` method
 
 Type: Runtime
 
-Within the `cluster` module, the [`worker.suicide`][] property has been deprecated. Lütfen bunun yerine [`worker.exitedAfterDisconnect`][] kullanın.
+Within the `cluster` module, the [`worker.suicide`][] property has been deprecated. Please use [`worker.exitedAfterDisconnect`][] instead.
 
 <a id="DEP0008"></a>
 
@@ -206,7 +206,7 @@ The `Server.listenFD()` method is deprecated. Please use [`Server.listen({fd: <n
 
 Type: Runtime
 
-The `os.tmpDir()` API is deprecated. Lütfen bunun yerine [`os.tmpdir()`][] kullanın.
+The `os.tmpDir()` API is deprecated. Please use [`os.tmpdir()`][] instead.
 
 <a id="DEP0023"></a>
 
@@ -230,7 +230,7 @@ The `REPLServer.prototype.convertToContext()` API is deprecated and should not b
 
 Type: Runtime
 
-The `sys` module is deprecated. Lütfen bunun yerine [`util`][] modülünü kullanın.
+The `sys` module is deprecated. Please use the [`util`][] module instead.
 
 <a id="DEP0026"></a>
 
@@ -246,7 +246,7 @@ The [`util.print()`][] API is deprecated. Please use [`console.log()`][] instead
 
 Type: Runtime
 
-The [`util.puts()`][] API is deprecated. Lütfen bunun yerine [`console.log()`][] kullanın.
+The [`util.puts()`][] API is deprecated. Please use [`console.log()`][] instead.
 
 <a id="DEP0028"></a>
 
@@ -294,7 +294,7 @@ The [`domain`][] module is deprecated and should not be used.
 
 Type: Documentation-only
 
-The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Lütfen bunun yerine [`emitter.listenerCount(eventName)`][] kullanın.
+The [`EventEmitter.listenerCount(emitter, eventName)`][] API has been deprecated. Please use [`emitter.listenerCount(eventName)`][] instead.
 
 <a id="DEP0034"></a>
 
@@ -534,7 +534,7 @@ Type: Runtime
 
 Type: Documentation-only
 
-The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Lütfen bunun yerine `ServerResponse.prototype.writeHead()` kullanın.
+The `http` module `ServerResponse.prototype.writeHeader()` API has been deprecated. Please use `ServerResponse.prototype.writeHead()` instead.
 
 *Note*: The `ServerResponse.prototype.writeHeader()` method was never documented as an officially supported API.
 
