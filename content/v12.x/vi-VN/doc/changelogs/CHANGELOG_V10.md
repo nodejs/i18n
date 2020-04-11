@@ -63,7 +63,7 @@
   * add antsmartian to collaborators (Anto Aravinth) [#24655](https://github.com/nodejs/node/pull/24655)
 * **http**
   * fix error check in Execute() (Brian White) [#25863](https://github.com/nodejs/node/pull/25863)
-* **luồng**
+* **stream**
   * fix end-of-stream for HTTP/2 (Anna Henningsen) [#24926](https://github.com/nodejs/node/pull/24926)
 
 ### Commits
@@ -1026,7 +1026,7 @@ This release only includes minimal changes necessary to fix known regressions pr
 
 ### Notable changes
 
-* **xác nhận (Assert)**
+* **assert**
   * The diff output is now a tiny bit improved by sorting object properties when inspecting the values that are compared with each other. [#22788](https://github.com/nodejs/node/pull/22788)
 * **cli**
   * The options parser now normalizes `_` to `-` in all multi-word command-line flags, e.g. `--no_warnings` has the same effect as `--no-warnings`. [#23020](https://github.com/nodejs/node/pull/23020)
@@ -1042,7 +1042,7 @@ This release only includes minimal changes necessary to fix known regressions pr
   * Updated nghttp2 to 1.34.0. This adds RFC 8441 extended connect protocol support to allow use of WebSockets over HTTP/2. [#23284](https://github.com/nodejs/node/pull/23284)
 * **module**
   * Added `module.createRequireFromPath(filename)`. This new method can be used to create a custom require function that will resolve modules relative to the filename path. [#19360](https://github.com/nodejs/node/pull/19360)
-* **tiến trình**
+* **process**
   * Added a `'multipleResolves'` process event that is emitted whenever a `Promise` is attempted to be resolved multiple times, e.g. if the `resolve` and `reject` functions are both called in a `Promise` executor. [#22218](https://github.com/nodejs/node/pull/22218)
 * **url**
   * Added `url.fileURLToPath(url)` and `url.pathToFileURL(path)`. These methods can be used to correctly convert between file: URLs and absolute paths. [#22506](https://github.com/nodejs/node/pull/22506)
@@ -3072,7 +3072,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
 
 ### Notable Changes
 
-* Xác nhận (Assert)
+* Assert
   * Calling `assert.fail()` with more than one argument is deprecated. [[`70dcacd710`](https://github.com/nodejs/node/commit/70dcacd710)]
   * Calling `assert.ifError()` will now throw with any argument other than `undefined` or `null`. Previously the method would throw with any truthy value. [[`e65a6e81ef`](https://github.com/nodejs/node/commit/e65a6e81ef)]
   * The `assert.rejects()` and `assert.doesNotReject()` methods have been added for working with async functions. [[`599337f43e`](https://github.com/nodejs/node/commit/599337f43e)]
@@ -3081,14 +3081,14 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The error message from `assert.ok(expression)` now also contains the expression itself. [[`f76ef50432`](https://github.com/nodejs/node/commit/f76ef50432)]
 * Async_hooks
   * Older experimental async_hooks APIs have been removed. [[`1cc6b993b9`](https://github.com/nodejs/node/commit/1cc6b993b9)]
-* Bộ đệm
+* Buffer
   * Uses of `new Buffer()` and `Buffer()` outside of the `node_modules` directory will now emit a runtime deprecation warning. [[`9d4ab90117`](https://github.com/nodejs/node/commit/9d4ab90117)]
   * `Buffer.isEncoding()` now returns `undefined` for falsy values, including an empty string. [[`452eed956e`](https://github.com/nodejs/node/commit/452eed956e)]
   * `Buffer.fill()` will throw if an attempt is made to fill with an empty `Buffer`. [[`1e802539b2`](https://github.com/nodejs/node/commit/1e802539b2)]
   * `noAssert` argument was removed from all `Buffer` read and write functions. [[`e8bb1f35df`](https://github.com/nodejs/node/commit/e8bb1f35df)]
 * Child Process
   * Undefined properties of env are ignored. [[`38ee25e2e2`](https://github.com/nodejs/node/commit/38ee25e2e2)], [[`85739b6c5b`](https://github.com/nodejs/node/commit/85739b6c5b)]
-* Điều khiển
+* Console
   * The `console.table()` method has been added. [[`97ace04492`](https://github.com/nodejs/node/commit/97ace04492)]
 * Crypto
   * The `crypto.createCipher()` and `crypto.createDecipher()` methods have been deprecated. Please use `crypto.createCipheriv()` and `crypto.createDecipheriv()` instead. [[`81f88e30dd`](https://github.com/nodejs/node/commit/81f88e30dd)]
@@ -3102,7 +3102,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * OpenSSL has been updated to 1.1.0h. [[`66cb29e646`](https://github.com/nodejs/node/commit/66cb29e646)]
 * EventEmitter
   * The `EventEmitter.prototype.off()` method has been added as an alias for `EventEmitter.prototype.removeListener()`. [[`3bb6f07d52`](https://github.com/nodejs/node/commit/3bb6f07d52)]
-* Tập tin hệ thống
+* File System
   * The `fs/promises` API provides experimental promisified versions of the `fs` functions. [[`329fc78e49`](https://github.com/nodejs/node/commit/329fc78e49)]
   * Invalid path errors are now thrown synchronously. [[`d8f73385e2`](https://github.com/nodejs/node/commit/d8f73385e2)]
   * The `fs.readFile()` method now partitions reads to avoid thread pool exhaustion. [[`67a4ce1c6e`](https://github.com/nodejs/node/commit/67a4ce1c6e)]
@@ -3118,7 +3118,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * Trace events are now emitted for performance events. [[`9e509b622b`](https://github.com/nodejs/node/commit/9e509b622b)]
   * The `performance` API has been simplified. [[`2ec6995555`](https://github.com/nodejs/node/commit/2ec6995555)]
   * Performance milestone marks will be emitted as trace events. [[`96cb4fb795`](https://github.com/nodejs/node/commit/96cb4fb795)]
-* Tiến trình
+* Process
   * Using non-string values for `process.env` is deprecated. [[`5826fe4e79`](https://github.com/nodejs/node/commit/5826fe4e79)]
   * The `process.assert()` method is deprecated. [[`703e37cf3f`](https://github.com/nodejs/node/commit/703e37cf3f)]
 * REPL
@@ -3130,7 +3130,7 @@ This is a follow up release to fix two regressions that were introduced in v10.2
   * The `'readable'` event is now always deferred with nextTick. [[`1e0f3315c7`](https://github.com/nodejs/node/commit/1e0f3315c7)]
   * A new `pipeline()` method has been provided for building end-to-data stream pipelines. [[`a5cf3feaf1`](https://github.com/nodejs/node/commit/a5cf3feaf1)]
   * Experimental support for async for-await has been added to `stream.Readable`. [[`61b4d60c5d`](https://github.com/nodejs/node/commit/61b4d60c5d)]
-* Bộ hẹn giờ
+* Timers
   * The `enroll()` and `unenroll()` methods have been deprecated. [[`68783ae0b8`](https://github.com/nodejs/node/commit/68783ae0b8)]
 * TLS
   * The `tls.convertNPNProtocols()` method has been deprecated. [[`9204a0db6e`](https://github.com/nodejs/node/commit/9204a0db6e)]
