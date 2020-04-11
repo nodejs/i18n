@@ -23,17 +23,17 @@ For the following steps, let's assume that a backport is needed for the v6.x rel
 3. Create a new branch off of the staging branch
 
 ```shell
-# Node.js kodunun çatalının $NODE_DIR içinde teslim alındığını varsayarak,
-# orijin uzak noktalarına, çatalınıza ve yukarı yöndeki uzak noktalara
-# git://github.com/nodejs/node adresine
+# Assuming your fork of Node.js is checked out in $NODE_DIR,
+# the origin remote points to your fork, and the upstream remote points
+# to git://github.com/nodejs/node
 cd $NODE_DIR
-# Eğer v6.x-sahnelemesi kontrol edilirse, `fetch` yerine `pull` kullanılmalıdır
+# If v6.x-staging is checked out `pull` should be used instead of `fetch`
 git fetch upstream v6.x-staging:v6.x-staging -f
-# PR #10157'ye destek vermek istediğimizi varsayın
+# Assume we want to backport PR #10157
 git checkout -b backport-10157-to-v6.x v6.x-staging
-# Önceki sürümlerden hiçbir test eseri olmadığından emin olun
-# Bu komutun tüm dosyaları ve dizinleri sildiğini unutmayın
-# revizyon kontrolü altında değil, ./test dizininin altında.
+# Ensure there are no test artifacts from previous builds
+# Note that this command deletes all files and directories
+# not under revision control below the ./test directory.
 # It is optional and should be used with caution.
 git clean -xfd ./test/
 ```
