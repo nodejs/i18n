@@ -1,10 +1,10 @@
-# Đồng bộ hook
+# Async Hooks
 
 <!--introduced_in=v8.1.0-->
 
-> Tính ổn định: 1 - Thử nghiệm
+> Stability: 1 - Experimental
 
-The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. Nó có thể truy cập bằng cách sử dụng:
+The `async_hooks` module provides an API to register callbacks tracking the lifetime of asynchronous resources created inside a Node.js application. It can be accessed using:
 
 ```js
 const async_hooks = require('async_hooks');
@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `hàm callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
+* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register 
   * `init` {Function} The [`init` callback][].
   * `before` {Function} The [`before` callback][].
   * `after` {Function} The [`after` callback][].
@@ -444,7 +444,7 @@ Promise.resolve(1729).then(() => {
 
 Observe that the `then` callback claims to have executed in the context of the outer scope even though there was an asynchronous hop involved. Also note that the triggerAsyncId value is 0, which means that we are missing context about the resource that caused (triggered) the `then` callback to be executed.
 
-Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Ví dụ:
+Installing async hooks via `async_hooks.createHook` enables promise execution tracking. Example:
 
 ```js
 const ah = require('async_hooks');
