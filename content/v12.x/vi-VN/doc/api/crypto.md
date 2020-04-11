@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.3.6-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -888,7 +888,7 @@ added: v12.16.0
 -->
 
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Hash}
+* Returns: {Hash}
 
 Creates a new `Hash` object that contains a deep copy of the internal state of the current `Hash` object.
 
@@ -1358,12 +1358,12 @@ changes:
                  authentication tags in GCM mode and defaults to 16 bytes.
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`crypto.createCipheriv()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1404,7 +1404,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `iv` {string | Buffer | TypedArray | DataView | null}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object, with the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1426,12 +1426,12 @@ changes:
     description: Ciphers in OCB mode are now supported.
 -->
 
-> Tính ổn định: 0 - Không chấp thuận: Sử dụng [`crypto.createDecipheriv()`][] thay thế.
+> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm` and `password` (key).
 
@@ -1468,7 +1468,7 @@ changes:
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `iv` {string | Buffer | TypedArray | DataView | null}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Decipher}
+* Returns: {Decipher}
 
 Creates and returns a `Decipher` object that uses the given `algorithm`, `key` and initialization vector (`iv`).
 
@@ -1500,7 +1500,7 @@ changes:
 * `primeEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `prime` string.
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 * `generatorEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `generator` string.
-* Trả về: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
@@ -1517,7 +1517,7 @@ added: v0.5.0
 
 * `primeLength` {number}
 * `generator` {number} **Default:** `2`
-* Trả về: {DiffieHellman}
+* Returns: {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
 
@@ -1537,7 +1537,7 @@ added: v0.11.14
 -->
 
 * `curveName` {string}
-* Trả về: {ECDH}
+* Returns: {ECDH}
 
 Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
@@ -1552,7 +1552,7 @@ changes:
 
 * `algorithm` {string}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Hash}
+* Returns: {Hash}
 
 Creates and returns a `Hash` object that can be used to generate hash digests using the given `algorithm`. Optional `options` argument controls stream behavior. For XOF hash functions such as `'shake256'`, the `outputLength` option can be used to specify the desired output length in bytes.
 
@@ -1592,7 +1592,7 @@ changes:
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView | KeyObject}
 * `options` {Object} [`stream.transform` options][]
-* Trả về: {Hmac}
+* Returns: {Hmac}
 
 Creates and returns an `Hmac` object that uses the given `algorithm` and `key`. Optional `options` argument controls stream behavior.
 
@@ -1680,7 +1680,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Trả về: {Sign}
+* Returns: {Sign}
 
 Creates and returns a `Sign` object that uses the given `algorithm`.  Use [`crypto.getHashes()`][] to obtain the names of the available digest algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -1693,7 +1693,7 @@ added: v0.1.92
 
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
-* Trả về: {Verify}
+* Returns: {Verify}
 
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
