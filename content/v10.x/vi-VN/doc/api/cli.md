@@ -1,4 +1,4 @@
-# Tùy chọn dòng lệnh
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
