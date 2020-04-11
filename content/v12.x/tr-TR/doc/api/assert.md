@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.1.21-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `assert` module provides a set of assertion functions for verifying invariants. The module provides a recommended [`strict` mode][] and a more lenient legacy mode.
 
-## Sınıf: assert.AssertionError
+## Class: assert.AssertionError
 
 * Extends: {errors.Error}
 
@@ -24,7 +24,7 @@ added: v0.1.21
   * `operator` {string} The `operator` property on the error instance.
   * `stackStartFn` {Function} If provided, the generated stack trace omits frames before this function.
 
-Karşılaştırmada hata olduğunu gösteren bir `Error` alt sınıfıdır.
+A subclass of `Error` that indicates the failure of an assertion.
 
 All instances contain the built-in `Error` properties (`message` and `name`) and:
 
@@ -163,7 +163,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -268,7 +268,7 @@ changes:
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -391,7 +391,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 Expects the `string` input not to match the regular expression.
 
@@ -419,7 +419,7 @@ added: v10.0.0
 
 * `asyncFn` {Function|Promise}
 * `error` {RegExp|Function}
-* `mesaj` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is not rejected.
 
@@ -458,7 +458,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function}
-* `mesaj` {string}
+* `message` {string}
 
 Asserts that the function `fn` does not throw an error.
 
@@ -504,7 +504,7 @@ assert.doesNotThrow(
 
 ## `assert.equal(actual, expected[, message])`<!-- YAML
 added: v0.1.21
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -564,7 +564,7 @@ changes:
                  deprecated and emits a warning.
 -->> Stability: 0 - Deprecated: Use `assert.fail([message])` or other assert functions instead.
 
-* `gerçek` {any}
+* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 * `operator` {string} **Default:** `'!='`
@@ -653,7 +653,7 @@ added: v12.16.0
 * `regexp` {RegExp}
 * `message` {string|Error}
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 Expects the `string` input to match the regular expression.
 
@@ -692,7 +692,7 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -767,7 +767,7 @@ changes:
   - version: v5.10.1, v4.4.3
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -784,7 +784,7 @@ If the values are deeply and strictly equal, an [`AssertionError`][] is thrown w
 
 ## `assert.notEqual(actual, expected[, message])`<!-- YAML
 added: v0.1.21
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -819,7 +819,7 @@ changes:
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -862,39 +862,39 @@ Be aware that in the `repl` the error message will be different to the one throw
 const assert = require('assert').strict;
 
 assert.ok(true);
-// Tamam
+// OK
 assert.ok(1);
-// Tamam
+// OK
 
 assert.ok();
-// İddiaHatası: `assert.ok()`'a değer değişkeni iletilmedi
+// AssertionError: No value argument passed to `assert.ok()`
 
 assert.ok(false, 'it\'s false');
-// İddiaHatası: bu yanlış
+// AssertionError: it's false
 
-// Cevapta:
+// In the repl:
 assert.ok(typeof 123 === 'string');
-// İddiaHatası: yanlış == doğru
+// AssertionError: false == true
 
-// Bir dosyada (örn. test.js):
+// In a file (e.g. test.js):
 assert.ok(typeof 123 === 'string');
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(typeof 123 === 'string')
 
 assert.ok(false);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(false)
 
 assert.ok(0);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert.ok(0)
 
-// `assert()` kullanımı aynı şekilde çalışır
+// Using `assert()` works the same:
 assert(0);
-// İddiaHatası: İfade, sahte bir değere göre değerlendirildi:
+// AssertionError: The expression evaluated to a falsy value:
 //
 //   assert(0)
 ```
@@ -903,7 +903,7 @@ assert(0);
 added: v10.0.0
 -->* `asyncFn` {Function|Promise}
 * `error` {RegExp|Function|Object|Error}
-* `mesaj` {string}
+* `message` {string}
 
 Awaits the `asyncFn` promise or, if `asyncFn` is a function, immediately calls the function and awaits the returned promise to complete. It will then check that the promise is rejected.
 
@@ -946,7 +946,7 @@ changes:
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/17003
     description: Used comparison changed from Strict Equality to `Object.is()`
--->* `gerçek` {any}
+-->* `actual` {any}
 * `expected` {any}
 * `message` {string|Error}
 
@@ -997,7 +997,7 @@ changes:
     description: The `error` parameter can now be an arrow function.
 -->* `fn` {Function}
 * `error` {RegExp|Function|Object|Error}
-* `mesaj` {string}
+* `message` {string}
 
 Expects the function `fn` to throw an error.
 
