@@ -164,7 +164,7 @@ For analysing the benchmark results use the `compare.R` tool.
 ```console
 $ cat compare-pr-5134.csv | Rscript benchmark/compare.R
 
-                                                                                      güven iyileştirme      p.value
+                                                                                      improvement confidence      p.value
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=1024 encoding=ascii           12.46 %         *** 1.165345e-04
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=1024 encoding=base64-ascii    24.70 %         *** 1.820615e-15
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=1024 encoding=base64-utf8     23.60 %         *** 2.105625e-12
@@ -184,7 +184,7 @@ The `compare.R` tool can also produce a box plot by using the `--plot filename` 
 ```console
 $ cat compare-pr-5134.csv | sed '1p;/encoding=ascii/!d' | Rscript benchmark/compare.R --plot compare-plot.png
 
-                                                                               güven iyileştirme      p.value
+                                                                               improvement confidence      p.value
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=1024 encoding=ascii    12.46 %         *** 1.165345e-04
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=128 encoding=ascii      6.70 %           * 2.928003e-02
 string_decoder/string-decoder.js n=250000 chunk=1024 inlen=32 encoding=ascii       7.47 %         *** 5.780583e-04
