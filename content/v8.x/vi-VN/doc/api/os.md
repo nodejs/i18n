@@ -1,10 +1,10 @@
-# Hệ điều hành
+# OS
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. Nó có thể truy cập bằng cách sử dụng:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -53,7 +53,7 @@ Returns an object containing commonly used operating system specific constants f
 added: v0.3.3
 -->
 
-* Trả về: {Array}
+* Returns: {Array}
 
 The `os.cpus()` method returns an array of objects containing information about each logical CPU core.
 
@@ -218,7 +218,7 @@ The `os.hostname()` method returns the hostname of the operating system as a str
 added: v0.3.3
 -->
 
-* Trả về: {Array}
+* Returns: {Array}
 
 The `os.loadavg()` method returns an array containing the 1, 5, and 15 minute load averages.
 
