@@ -1,4 +1,4 @@
-# Komut Satırı Seçenekleri
+# Command Line Options
 
 <!--introduced_in=v5.9.1-->
 
@@ -20,7 +20,7 @@ Execute without arguments to start the [REPL](repl.html).
 
 *For more info about `node inspect`, please see the [debugger](debugger.html) documentation.*
 
-## Seçenekler
+## Options
 
 <!-- YAML
 changes:
