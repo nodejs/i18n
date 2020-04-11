@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -273,7 +273,7 @@ When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` pro
 added: v8.5.0
 -->
 
-Node.js'in kendisi için zamanlama ayrıntıları sağlar.
+Provides timing details for Node.js itself.
 
 ### performanceNodeTiming.bootstrapComplete
 
@@ -536,14 +536,14 @@ for (let n = 0; n < 3; n++)
   performance.mark(`test${n}`);
 ```
 
-## Örnekler
+## Examples
 
 ### Measuring the duration of async operations
 
 The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
 
 ```js
-'harfi harfine kullan';
+'use strict';
 const async_hooks = require('async_hooks');
 const {
   performance,
@@ -588,26 +588,26 @@ The following example measures the duration of `require()` operations to load de
 <!-- eslint-disable no-global-assign -->
 
 ```js
-'harfi harine kullan';
+'use strict';
 const {
   performance,
   PerformanceObserver
 } = require('perf_hooks');
 const mod = require('module');
 
-// Maymun yama gerekli fonksiyonu
+// Monkey patch the require function
 mod.Module.prototype.require =
   performance.timerify(mod.Module.prototype.require);
 require = performance.timerify(require);
 
-// Gözlemciyi aktif edin
+// Activate the observer
 const obs = new PerformanceObserver((list) => {
   const entries = list.getEntries();
   entries.forEach((entry) => {
     console.log(`require('${entry[0]}')`, entry.duration);
   });
   obs.disconnect();
-  // Boş hafıza
+  // Free memory
   performance.clearFunctions();
 });
 obs.observe({ entryTypes: ['function'], buffered: true });
