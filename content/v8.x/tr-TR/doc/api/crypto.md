@@ -1,8 +1,8 @@
-# Kripto
+# Crypto
 
 <!--introduced_in=v0.3.6-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `crypto` module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -228,7 +228,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Updates the cipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'utf8'`, `'ascii'`, or `'latin1'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][], `TypedArray`, or `DataView`. If `data` is a [`Buffer`][], `TypedArray`, or `DataView`, then `inputEncoding` is ignored.
 
@@ -377,7 +377,7 @@ changes:
 - `data` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Updates the decipher with `data`. If the `inputEncoding` argument is given, its value must be one of `'latin1'`, `'base64'`, or `'hex'` and the `data` argument is a string using the specified encoding. If the `inputEncoding` argument is not given, `data` must be a [`Buffer`][]. If `data` is a [`Buffer`][] then `inputEncoding` is ignored.
 
@@ -411,7 +411,7 @@ const bobKey = bob.generateKeys();
 const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
-// TAMAM
+// OK
 assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 ```
 
@@ -424,7 +424,7 @@ added: v0.5.0
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using the specified `inputEncoding`, and secret is encoded using specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -437,7 +437,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Generates private and public Diffie-Hellman key values, and returns the public key in the specified `encoding`. This key should be transferred to the other party. Encoding can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -448,7 +448,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -459,7 +459,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -470,7 +470,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -481,7 +481,7 @@ added: v0.5.0
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`, which can be `'latin1'`, `'hex'`, or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
@@ -549,7 +549,7 @@ const aliceSecret = alice.computeSecret(bobKey);
 const bobSecret = bob.computeSecret(aliceKey);
 
 assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
-// TAMAM
+// OK
 ```
 
 ### ecdh.computeSecret(otherPublicKey\[, inputEncoding\]\[, outputEncoding\])
@@ -566,7 +566,7 @@ changes:
 - `otherPublicKey` {string | Buffer | TypedArray | DataView}
 - `inputEncoding` {string}
 - `outputEncoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Computes the shared secret using `otherPublicKey` as the other party's public key and returns the computed shared secret. The supplied key is interpreted using specified `inputEncoding`, and the returned secret is encoded using the specified `outputEncoding`. Encodings can be `'latin1'`, `'hex'`, or `'base64'`. If the `inputEncoding` is not provided, `otherPublicKey` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
 
@@ -580,7 +580,7 @@ added: v0.11.14
 
 - `encoding` {string}
 - `format` {string} **Default:** `uncompressed`
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Generates private and public EC Diffie-Hellman key values, and returns the public key in the specified `format` and `encoding`. This key should be transferred to the other party.
 
@@ -727,7 +727,7 @@ added: v0.1.92
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the digest of all of the data passed to be hashed (using the [`hash.update()`][] method). The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string will be returned; otherwise a [`Buffer`][] is returned.
 
@@ -813,7 +813,7 @@ added: v0.1.94
 -->
 
 - `encoding` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the HMAC digest of all of the data passed using [`hmac.update()`][]. The `encoding` can be `'hex'`, `'latin1'` or `'base64'`. If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned;
 
@@ -909,7 +909,7 @@ changes:
   - `key` {string}
   - `passphrase` {string}
 - `outputFormat` {string}
-- Çıktı: {Buffer | string}
+- Returns: {Buffer | string}
 
 Calculates the signature on all the data passed through using either [`sign.update()`][] or [`sign.write()`](stream.html#stream_writable_write_chunk_encoding_callback).
 
@@ -1328,7 +1328,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array with the names of the supported cipher algorithms.
 
-Örnek:
+Example:
 
 ```js
 const ciphers = crypto.getCiphers();
@@ -1343,7 +1343,7 @@ added: v2.3.0
 
 - Returns: {string[]} An array with the names of the supported elliptic curves.
 
-Örnek:
+Example:
 
 ```js
 const curves = crypto.getCurves();
@@ -1359,7 +1359,7 @@ added: v0.7.5
 - `groupName` {string}
 - Returns: {Object}
 
-Creates a predefined `DiffieHellman` key exchange object. Desteklenen gruplar şunlardır: `'modp1'`, `'modp2'`, `'modp5'` ([RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt)'de tanımlanmıştır, ancak bakınız [Uyarılar](#crypto_support_for_weak_or_compromised_algorithms)) ve `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` ([RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)'de tanımlanmıştır). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
+Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][] for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
 Example (obtaining a shared secret):
 
@@ -1386,7 +1386,7 @@ added: v0.9.3
 
 - Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
-Örnek:
+Example:
 
 ```js
 const hashes = crypto.getHashes();
@@ -1429,7 +1429,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Örnek:
+Example:
 
 ```js
 const crypto = require('crypto');
@@ -1474,7 +1474,7 @@ The `iterations` argument must be a number set as high as possible. The higher t
 
 The `salt` should also be as unique as possible. It is recommended that the salts are random and their lengths are at least 16 bytes. See [NIST SP 800-132](http://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf) for details.
 
-Örnek:
+Example:
 
 ```js
 const crypto = require('crypto');
