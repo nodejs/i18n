@@ -1,4 +1,4 @@
-# Помилки
+# Errors
 
 <!--introduced_in=v4.0.0-->
 
@@ -333,7 +333,7 @@ require('url').parse(() => { });
 
 Node.js will generate and throw `TypeError` instances *immediately* as a form of argument validation.
 
-## Exceptions vs. Помилки
+## Exceptions vs. Errors
 
 <!--type=misc-->
 
