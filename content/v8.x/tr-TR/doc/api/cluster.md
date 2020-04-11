@@ -1,8 +1,8 @@
-# Küme
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -63,7 +63,7 @@ The second approach is where the master process creates the listen socket and se
 
 The second approach should, in theory, give the best performance. In practice however, distribution tends to be very unbalanced due to operating system scheduler vagaries. Loads have been observed where over 70% of all connections ended up in just two processes, out of a total of eight.
 
-`server.listen()`, işin çoğunu ana işleme ayırdığından, normal bir Node.js işlemi ve bir küme çalışanı arasındaki davranışın farklılık gösterdiği üç durum vardır:
+Because `server.listen()` hands off most of the work to the master process, there are three cases where the behavior between a normal Node.js process and a cluster worker differs:
 
 1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
 2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
@@ -155,7 +155,7 @@ It is not emitted in the worker.
 added: v0.7.0
 -->
 
-* `mesaj` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Similar to the `cluster.on('message')` event, but specific to this worker.
@@ -172,20 +172,20 @@ const http = require('http');
 
 if (cluster.isMaster) {
 
-  // Http taleplerini takip edin
+  // Keep track of http requests
   let numReqs = 0;
   setInterval(() => {
     console.log(`numReqs = ${numReqs}`);
   }, 1000);
 
-  // Talepleri sayın
+  // Count requests
   function messageHandler(msg) {
     if (msg.cmd && msg.cmd === 'notifyRequest') {
       numReqs += 1;
     }
   }
 
-  // Çalışanları başlatın ve notifyRequest içeren mesajları dinleyin
+  // Start workers and listen for messages containing notifyRequest
   const numCPUs = require('os').cpus().length;
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
@@ -197,7 +197,7 @@ if (cluster.isMaster) {
 
 } else {
 
-  // Çalışan işlemler bir http sunucusuna sahiptir.
+  // Worker processes have a http server.
   http.Server((req, res) => {
     res.writeHead(200);
     res.end('hello world\n');
@@ -271,14 +271,14 @@ if (cluster.isMaster) {
 } else if (cluster.isWorker) {
   const net = require('net');
   const server = net.createServer((socket) => {
-    // bağlantılar asla sona ermeyecektir
+    // connections never end
   });
 
   server.listen(8000);
 
   process.on('message', (msg) => {
     if (msg === 'shutdown') {
-      // sunucuya herhangi bir bağlantının ince bir şekilde kapatılmasını başlatın
+      // initiate graceful close of any connections to server
     }
   });
 }
@@ -376,7 +376,7 @@ changes:
     description: The `callback` parameter is supported now.
 -->
 
-* `mesaj` {Object}
+* `message` {Object}
 * `sendHandle` {Handle}
 * `callback` {Function}
 * Returns: {boolean}
@@ -543,7 +543,7 @@ changes:
 -->
 
 * `worker` {cluster.Worker}
-* `mesaj` {Object}
+* `message` {Object}
 * `handle` {undefined|Object}
 
 Emitted when the cluster master receives a message from any worker.
@@ -707,13 +707,13 @@ changes:
 
 `setupMaster` is used to change the default 'fork' behavior. Once called, the settings will be present in `cluster.settings`.
 
-Bunu not et:
+Note that:
 
 * Any settings changes only affect future calls to `.fork()` and have no effect on workers that are already running.
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
 * The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
 
-Örnek:
+Example:
 
 ```js
 const cluster = require('cluster');
