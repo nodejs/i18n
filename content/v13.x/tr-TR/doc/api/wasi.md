@@ -2,7 +2,7 @@
 
 <!--introduced_in=v13.3.0-->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 The WASI API provides an implementation of the [WebAssembly System Interface](https://wasi.dev/) specification. WASI gives sandboxed WebAssembly applications access to the underlying operating system via a collection of POSIX-like functions.
 
