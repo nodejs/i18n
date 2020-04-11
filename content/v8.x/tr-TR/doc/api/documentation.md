@@ -1,4 +1,4 @@
-# Bu Döküman Hakkında
+# About this Documentation
 
 <!--introduced_in=v0.10.0-->
 
@@ -8,13 +8,13 @@ The goal of this documentation is to comprehensively explain the Node.js API, bo
 
 Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
-## Katkıda bulunma
+## Contributing
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
 Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
-## Kararlılık Endeksi
+## Stability Index
 
 <!--type=misc-->
 
@@ -45,17 +45,17 @@ is a high priority, and will not be broken unless absolutely necessary.
 
 *Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
-## JSON Çıktısı
+## JSON Output
 
 <!-- YAML
 added: v0.6.12
 -->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
-## Syscalls ve man sayfaları
+## Syscalls and man pages
 
 System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
