@@ -2,9 +2,9 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
-The `os` module provides a number of operating system-related utility methods. Modülü yüklemek için:
+The `os` module provides a number of operating system-related utility methods. It can be accessed using:
 
 ```js
 const os = require('os');
@@ -29,7 +29,7 @@ A string constant defining the operating system-specific end-of-line marker:
 added: v0.5.0
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.arch()` method returns a string identifying the operating system CPU architecture for which the Node.js binary was compiled.
 
@@ -68,7 +68,7 @@ The properties included on each object include:
   * `idle` {number} The number of milliseconds the CPU has spent in idle mode.
   * `irq` {number} The number of milliseconds the CPU has spent in irq mode.
 
-Örneğin:
+For example:
 
 <!-- eslint-disable semi -->
 
@@ -76,89 +76,89 @@ The properties included on each object include:
 [
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 252020,
-      iyi: 0,
-      sis: 30340,
-      kullanılmayan: 1070356870,
+    speed: 2926,
+    times: {
+      user: 252020,
+      nice: 0,
+      sys: 30340,
+      idle: 1070356870,
       irq: 0
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 306960,
-      iyi: 0,
-      sis: 26980,
-      kullanılmayan: 1071569080,
+    speed: 2926,
+    times: {
+      user: 306960,
+      nice: 0,
+      sys: 26980,
+      idle: 1071569080,
       irq: 0
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 248450,
-      iyi: 0,
-      sis: 21750,
-      kullanılmayan: 1070919370,
+    speed: 2926,
+    times: {
+      user: 248450,
+      nice: 0,
+      sys: 21750,
+      idle: 1070919370,
       irq: 0
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 256880,
-      iyi: 0,
-      sis: 19430,
-      kullanılmayan: 1070905480,
+    speed: 2926,
+    times: {
+      user: 256880,
+      nice: 0,
+      sys: 19430,
+      idle: 1070905480,
       irq: 20
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 511580,
-      iyi: 20,
-      sis: 40900,
-      kullanılmayan: 1070842510,
+    speed: 2926,
+    times: {
+      user: 511580,
+      nice: 20,
+      sys: 40900,
+      idle: 1070842510,
       irq: 0
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 291660,
-      iyi: 0,
-      sis: 34360,
-      kullanılmayan: 1070888000,
+    speed: 2926,
+    times: {
+      user: 291660,
+      nice: 0,
+      sys: 34360,
+      idle: 1070888000,
       irq: 10
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 308260,
-      iyi: 0,
-      sis: 55410,
-      kullanılmayan: 1071129970,
+    speed: 2926,
+    times: {
+      user: 308260,
+      nice: 0,
+      sys: 55410,
+      idle: 1071129970,
       irq: 880
     }
   },
   {
     model: 'Intel(R) Core(TM) i7 CPU         860  @ 2.80GHz',
-    hız: 2926,
-    zamanlar: {
-      kullanıcı: 266450,
-      iyi: 1480,
-      sis: 34920,
-      kullanılmayan: 1072572010,
+    speed: 2926,
+    times: {
+      user: 266450,
+      nice: 1480,
+      sys: 34920,
+      idle: 1072572010,
       irq: 30
     }
   }
@@ -173,7 +173,7 @@ The properties included on each object include:
 added: v0.9.4
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
 
@@ -198,7 +198,7 @@ The `os.freemem()` method returns the amount of free system memory in bytes as a
 added: v2.3.0
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.homedir()` method returns the home directory of the current user as a string.
 
@@ -208,7 +208,7 @@ The `os.homedir()` method returns the home directory of the current user as a st
 added: v0.3.3
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.hostname()` method returns the hostname of the operating system as a string.
 
@@ -254,37 +254,37 @@ The properties available on the assigned network address object include:
 {
   lo: [
     {
-      adres: '127.0.0.1',
-      ağ maskesi: '255.0.0.0',
-      aile: 'IPv4',
+      address: '127.0.0.1',
+      netmask: '255.0.0.0',
+      family: 'IPv4',
       mac: '00:00:00:00:00:00',
-      dahili: doğru,
+      internal: true,
       cidr: '127.0.0.1/8'
     },
     {
-      adres: '::1',
-      ağ maskesi: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
-      aile: 'IPv6',
+      address: '::1',
+      netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+      family: 'IPv6',
       mac: '00:00:00:00:00:00',
-      dahili: doğru,
+      internal: true,
       cidr: '::1/128'
     }
   ],
   eth0: [
     {
-      adres: '192.168.1.108',
-      ağ maskesi: '255.255.255.0',
-      aile: 'IPv4',
+      address: '192.168.1.108',
+      netmask: '255.255.255.0',
+      family: 'IPv4',
       mac: '01:02:03:0a:0b:0c',
-      dahili: yanlış,
+      internal: false,
       cidr: '192.168.1.108/24'
     },
     {
-      adres: 'fe80::a00:27ff:fe4e:66a1',
-      ağ maskesi: 'ffff:ffff:ffff:ffff::',
-      aile: 'IPv6',
+      address: 'fe80::a00:27ff:fe4e:66a1',
+      netmask: 'ffff:ffff:ffff:ffff::',
+      family: 'IPv6',
       mac: '01:02:03:0a:0b:0c',
-      dahili: yanlış,
+      internal: false,
       cidr: 'fe80::a00:27ff:fe4e:66a1/64'
     }
   ]
@@ -297,7 +297,7 @@ The properties available on the assigned network address object include:
 added: v0.5.0
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.platform()` method returns a string identifying the operating system platform as set during compile time of Node.js.
 
@@ -321,11 +321,11 @@ Equivalent to [`process.platform`][].
 added: v0.3.3
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.release()` method returns a string identifying the operating system release.
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Lütfen daha fazla bilgi için https://en.wikipedia.org/wiki/Uname#Examples bakınız.
+*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). On Windows, `GetVersionExW()` is used. Please see https://en.wikipedia.org/wiki/Uname#Examples for more information.
 
 ## os.tmpdir()
 
@@ -339,7 +339,7 @@ changes:
                  returns a path with a trailing slash on any platform
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.tmpdir()` method returns a string specifying the operating system's default directory for temporary files.
 
@@ -359,11 +359,11 @@ The `os.totalmem()` method returns the total amount of system memory in bytes as
 added: v0.3.3
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `os.type()` method returns a string identifying the operating system name as returned by [uname(3)](https://linux.die.net/man/3/uname). For example `'Linux'` on Linux, `'Darwin'` on macOS and `'Windows_NT'` on Windows.
 
-Lütfen çeşitli işletim sistemlerinde [uname(3)](https://linux.die.net/man/3/uname) çalıştırma çıktısı hakkında ek bilgi için https://en.wikipedia.org/wiki/Uname#Examples adresine bakın.
+Please see https://en.wikipedia.org/wiki/Uname#Examples for additional information about the output of running [uname(3)](https://linux.die.net/man/3/uname) on various operating systems.
 
 ## os.uptime()
 
