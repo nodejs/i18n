@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 To use the HTTP server and client one must `require('http')`.
 
@@ -185,7 +185,7 @@ added: v0.11.4
   * `port` {number} Port of remote server
   * `localAddress` {string} Local interface to bind for network connections when issuing the request
   * `family` {integer} Must be 4 or 6 if this doesn't equal `undefined`.
-* Çıktı: {string}
+* Returns: {string}
 
 Get a unique name for a set of request options, to determine whether a connection can be reused. For an HTTP agent, this returns `host:port:localAddress` or `host:port:localAddress:family`. For an HTTPS agent, the name includes the CA, cert, ciphers, and other HTTPS/TLS-specific options that determine socket reusability.
 
@@ -274,13 +274,13 @@ const http = require('http');
 const net = require('net');
 const url = require('url');
 
-// HTTP tünel oluşturma vekili oluşturun
+// Create an HTTP tunneling proxy
 const proxy = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
 });
 proxy.on('connect', (req, cltSocket, head) => {
-  // kaynak sunucuya bağlanın
+  // connect to an origin server
   const srvUrl = url.parse(`http://${req.url}`);
   const srvSocket = net.connect(srvUrl.port, srvUrl.hostname, () => {
     cltSocket.write('HTTP/1.1 200 Connection Established\r\n' +
@@ -292,10 +292,10 @@ proxy.on('connect', (req, cltSocket, head) => {
   });
 });
 
-// bu vekil şimdi çalışıyor
+// now that proxy is running
 proxy.listen(1337, '127.0.0.1', () => {
 
-  // bir tünel oluşturmak için istekte bulunun
+  // make a request to a tunneling proxy
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -309,7 +309,7 @@ proxy.listen(1337, '127.0.0.1', () => {
   req.on('connect', (res, socket, head) => {
     console.log('got connected!');
 
-    // HTTP tüneli üzerinden bir istek oluşturun
+    // make a request over an HTTP tunnel
     socket.write('GET / HTTP/1.1\r\n' +
                  'Host: www.google.com:80\r\n' +
                  'Connection: close\r\n' +
@@ -379,7 +379,7 @@ A client server pair demonstrating how to listen for the `'upgrade'` event.
 ```js
 const http = require('http');
 
-// Bir HTTP sunucusu oluşturun
+// Create an HTTP server
 const srv = http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('okay');
@@ -390,13 +390,13 @@ srv.on('upgrade', (req, socket, head) => {
                'Connection: Upgrade\r\n' +
                '\r\n');
 
-  socket.pipe(socket); // geri yansıt
+  socket.pipe(socket); // echo back
 });
 
-// bu sunucu şimdi çalışıyor
+// now that server is running
 srv.listen(1337, '127.0.0.1', () => {
 
-  // bir istek yapın
+  // make a request
   const options = {
     port: 1337,
     hostname: '127.0.0.1',
@@ -478,11 +478,11 @@ added: v1.6.0
 -->
 
 * `name` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Reads out a header on the request. Note that the name is case insensitive.
 
-Örnek:
+Example:
 
 ```js
 const contentType = request.getHeader('Content-Type');
@@ -498,7 +498,7 @@ added: v1.6.0
 
 Removes a header that's already defined into headers object.
 
-Örnek:
+Example:
 
 ```js
 request.removeHeader('Content-Type');
@@ -515,7 +515,7 @@ added: v1.6.0
 
 Sets a single header value for headers object. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Örnek:
+Example:
 
 ```js
 request.setHeader('Content-Type', 'application/json');
@@ -571,7 +571,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `request.connection`.
 
-Örnek:
+Example:
 
 ```js
 const http = require('http');
@@ -627,7 +627,7 @@ Emitted each time a request with an HTTP `Expect: 100-continue` is received. If 
 
 Handling this event involves calling [`response.writeContinue()`][] if the client should continue to send the request body, or generating an appropriate HTTP response (e.g. 400 Bad Request) if the client should not continue to send the request body.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 ### Event: 'checkExpectation'
 
@@ -640,7 +640,7 @@ added: v5.5.0
 
 Emitted each time a request with an HTTP `Expect` header is received, where the value is not `100-continue`. If this event is not listened for, the server will automatically respond with a `417 Expectation Failed` as appropriate.
 
-Bu olay yayınlanıp işlendiğinde, [`'istek'`][] olayının yayınlanmayacağını unutmayın.
+Note that when this event is emitted and handled, the [`'request'`][] event will not be emitted.
 
 ### Event: 'clientError'
 
@@ -864,7 +864,7 @@ added: v0.3.6
 
 Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
 
-Bu olaydan sonra, tepki nesnesine daha fazla olay yayınlanmayacak.
+After this event, no more events will be emitted on the response object.
 
 ### response.addTrailers(headers)
 
@@ -933,11 +933,11 @@ added: v0.4.0
 -->
 
 * `name` {string}
-* Çıktı: {string}
+* Returns: {string}
 
 Reads out a header that's already been queued but not sent to the client. Note that the name is case insensitive.
 
-Örnek:
+Example:
 
 ```js
 const contentType = response.getHeader('content-type');
@@ -953,7 +953,7 @@ added: v7.7.0
 
 Returns an array containing the unique names of the current outgoing headers. All header names are lowercase.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -975,7 +975,7 @@ Returns a shallow copy of the current outgoing headers. Since a shallow copy is 
 
 *Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. This means that typical `Object` methods such as `obj.toString()`, `obj.hasOwnProperty()`, and others are not defined and *will not work*.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Foo', 'bar');
@@ -996,7 +996,7 @@ added: v7.7.0
 
 Returns `true` if the header identified by `name` is currently set in the outgoing headers. Note that the header name matching is case-insensitive.
 
-Örnek:
+Example:
 
 ```js
 const hasContentType = response.hasHeader('content-type');
@@ -1022,7 +1022,7 @@ added: v0.4.0
 
 Removes a header that's queued for implicit sending.
 
-Örnek:
+Example:
 
 ```js
 response.removeHeader('Content-Encoding');
@@ -1051,7 +1051,7 @@ added: v0.4.0
 
 Sets a single header value for implicit headers. If this header already exists in the to-be-sent headers, its value will be replaced. Use an array of strings here to send multiple headers with the same name.
 
-Örnek:
+Example:
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1102,7 +1102,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access this property. In particular, the socket will not emit `'readable'` events because of how the protocol parser attaches to the socket. After `response.end()`, the property is nulled. The `socket` may also be accessed via `response.connection`.
 
-Örnek:
+Example:
 
 ```js
 const http = require('http');
@@ -1123,7 +1123,7 @@ added: v0.4.0
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status code that will be sent to the client when the headers get flushed.
 
-Örnek:
+Example:
 
 ```js
 response.statusCode = 404;
@@ -1141,7 +1141,7 @@ added: v0.11.8
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
-Örnek:
+Example:
 
 ```js
 response.statusMessage = 'Not found';
@@ -1200,7 +1200,7 @@ changes:
 
 Sends a response header to the request. The status code is a 3-digit HTTP status code, like `404`. The last argument, `headers`, are the response headers. Optionally one can give a human-readable `statusMessage` as the second argument.
 
-Örnek:
+Example:
 
 ```js
 const body = 'hello world';
@@ -1312,7 +1312,7 @@ added: v0.1.5
 
 The request/response headers object.
 
-Key-value pairs of header names and values. Header names are lower-cased. Örnek:
+Key-value pairs of header names and values. Header names are lower-cased. Example:
 
 ```js
 // Prints something like:
@@ -1325,7 +1325,7 @@ console.log(request.headers);
 
 Duplicates in raw headers are handled in the following ways, depending on the header name:
 
-* `Yaş`, `yetkilendirme`, `içerik uzunluğu`, `içerik türü`, `etag`, `sona eren`, `kimden`, `ana bilgisayar`, `eğer o zamandan beri değiştirilmişse`, `eğer o zaman değiştirilmemişse`, `son düzenleme`, `lokasyon`, `en fazla ileri sürülen`, `vekil yetkilendirme`, `hakem`, `yeniden denedikten sonra` veya `kullanıcı aracısının` kopyaları atılır.
+* Duplicates of `age`, `authorization`, `content-length`, `content-type`, `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`, `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`, `retry-after`, or `user-agent` are discarded.
 * `set-cookie` is always an array. Duplicates are added to the array.
 * For all other headers, the values are joined together with ', '.
 
@@ -1351,7 +1351,7 @@ added: v0.1.1
 
 **Only valid for request obtained from [`http.Server`][].**
 
-The request method as a string. Sadece oku. Example: `'GET'`, `'DELETE'`.
+The request method as a string. Read only. Example: `'GET'`, `'DELETE'`.
 
 ### message.rawHeaders
 
@@ -1476,7 +1476,7 @@ Then `request.url` will be:
 '/status?name=ryan'
 ```
 
-To parse the url into its parts `require('url').parse(request.url)` can be used. Örnek:
+To parse the url into its parts `require('url').parse(request.url)` can be used. Example:
 
 ```txt
 $ node
@@ -1496,7 +1496,7 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Örnek:
+To extract the parameters from the query string, the `require('querystring').parse` function can be used, or `true` can be passed as the second argument to `require('url').parse`. Example:
 
 ```txt
 $ node
@@ -1579,15 +1579,15 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
 
   let error;
   if (statusCode !== 200) {
-    hata = new Error('Request Failed.\n' +
-                      `Durum Kodu: ${statusCode}`);
+    error = new Error('Request Failed.\n' +
+                      `Status Code: ${statusCode}`);
   } else if (!/^application\/json/.test(contentType)) {
-    hata = new Error('Invalid content-type.\n' +
-                      `Beklenen uygulama/json fakat ${contentType} aldı`);
+    error = new Error('Invalid content-type.\n' +
+                      `Expected application/json but received ${contentType}`);
   }
   if (error) {
     console.error(error.message);
-    // belleği boşaltmak için yanıt verilerini tüket
+    // consume response data to free up memory
     res.resume();
     return;
   }
@@ -1604,7 +1604,7 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
     }
   });
 }).on('error', (e) => {
-  console.error(`Hata var: ${e.message}`);
+  console.error(`Got error: ${e.message}`);
 });
 ```
 
@@ -1668,7 +1668,7 @@ The optional `callback` parameter will be added as a one-time listener for the [
 
 `http.request()` returns an instance of the [`http.ClientRequest`][] class. The `ClientRequest` instance is a writable stream. If one needs to upload a file with a POST request, then write to the `ClientRequest` object.
 
-Örnek:
+Example:
 
 ```js
 const postData = querystring.stringify({
