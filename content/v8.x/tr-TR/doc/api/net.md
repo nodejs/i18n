@@ -2,11 +2,11 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `net` module provides an asynchronous network API for creating stream-based TCP or [IPC](#net_ipc_support) servers ([`net.createServer()`][]) and clients ([`net.createConnection()`][]).
 
-Modülü yüklemek için:
+It can be accessed using:
 
 ```js
 const net = require('net');
@@ -91,7 +91,7 @@ Returns the bound address, the address family name, and port of the server as re
 
 For a server listening on a pipe or UNIX domain socket, the name is returned as a string.
 
-Örnek:
+Example:
 
 ```js
 const server = net.createServer((socket) => {
