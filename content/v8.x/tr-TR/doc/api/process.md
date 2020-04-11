@@ -1,4 +1,4 @@
-# İşlem
+# Process
 
 <!-- introduced_in=v0.10.0 -->
 
@@ -47,7 +47,7 @@ There is no way to prevent the exiting of the event loop at this point, and once
 
 The listener callback function is invoked with the exit code specified either by the [`process.exitCode`][] property, or the `exitCode` argument passed to the [`process.exit()`] method, as the only argument.
 
-Örneğin:
+For example:
 
 ```js
 process.on('exit', (code) => {
@@ -100,7 +100,7 @@ In synchronous code, the `'uncaughtException'` event is emitted when the list of
 
 In asynchronous code, the `'unhandledRejection'` event is emitted when the list of unhandled rejections grows, and the `'rejectionHandled'` event is emitted when the list of unhandled rejections shrinks.
 
-Örneğin:
+For example:
 
 ```js
 const unhandledRejections = new Map();
@@ -124,7 +124,7 @@ The `'uncaughtException'` event is emitted when an uncaught JavaScript exception
 
 The listener function is called with the `Error` object passed as the only argument.
 
-Örneğin:
+For example:
 
 ```js
 process.on('uncaughtException', (err) => {
@@ -174,7 +174,7 @@ The listener function is called with the following arguments:
 * `reason` {Error|any} The object with which the promise was rejected (typically an [`Error`][] object).
 * `p` the `Promise` that was rejected.
 
-Örneğin:
+For example:
 
 ```js
 process.on('unhandledRejection', (reason, p) => {
@@ -275,7 +275,7 @@ The signal handler will receive the signal's name (`'SIGINT'`, `'SIGTERM'`, etc.
 
 The name of each event will be the uppercase common name for the signal (e.g. `'SIGINT'` for `SIGINT` signals).
 
-Örneğin:
+For example:
 
 ```js
 // Begin reading from stdin so the process does not exit.
@@ -503,7 +503,7 @@ console.log(process.cpuUsage(startUsage));
 added: v0.1.8
 -->
 
-* Çıktı: {string}
+* Returns: {string}
 
 The `process.cwd()` method returns the current working directory of the Node.js process.
 
@@ -702,7 +702,7 @@ console.log(process.env.foo);
 
 Assigning a property on `process.env` will implicitly convert the value to a string.
 
-Örnek:
+Example:
 
 ```js
 process.env.test = null;
@@ -715,7 +715,7 @@ console.log(process.env.test);
 
 Use `delete` to delete a property from `process.env`.
 
-Örnek:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -726,7 +726,7 @@ console.log(process.env.TEST);
 
 On Windows operating systems, environment variables are case-insensitive.
 
-Örnek:
+Example:
 
 ```js
 process.env.TEST = 1;
@@ -744,7 +744,7 @@ added: v0.7.7
 
 The `process.execArgv` property returns the set of Node.js-specific command-line options passed when the Node.js process was launched. These options do not appear in the array returned by the [`process.argv`][] property, and do not include the Node.js executable, the name of the script, or any options following the script name. These options are useful in order to spawn child processes with the same execution environment as the parent.
 
-Örneğin:
+For example:
 
 ```console
 $ node --harmony script.js --version
@@ -776,7 +776,7 @@ added: v0.1.100
 
 The `process.execPath` property returns the absolute pathname of the executable that started the Node.js process.
 
-Örneğin:
+For example:
 
 <!-- eslint-disable semi -->
 
@@ -790,7 +790,7 @@ The `process.execPath` property returns the absolute pathname of the executable 
 added: v0.1.13
 -->
 
-* `code` {integer} The exit code. **Varsayılan:** `0`.
+* `code` {integer} The exit code. **Default:** `0`.
 
 The `process.exit()` method instructs Node.js to terminate the process synchronously with an exit status of `code`. If `code` is omitted, exit uses either the 'success' code `0` or the value of `process.exitCode` if it has been set. Node.js will not terminate until all the [`'exit'`] event listeners are called.
 
@@ -965,7 +965,7 @@ added: v0.9.4
 
 The `process.initgroups()` method reads the `/etc/group` file and initializes the group access list, using all groups of which the user is a member. This is a privileged operation that requires that the Node.js process either have `root` access or the `CAP_SETGID` capability.
 
-Note that care must be taken when dropping privileges. Örnek:
+Note that care must be taken when dropping privileges. Example:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
@@ -994,7 +994,7 @@ This method will throw an error if the target `pid` does not exist. As a special
 
 *Note*: Even though the name of this function is `process.kill()`, it is really just a signal sender, like the `kill` system call. The signal sent may do something other than kill the target process.
 
-Örneğin:
+For example:
 
 ```js
 process.on('SIGHUP', () => {
@@ -1245,7 +1245,7 @@ The `process.release` property returns an Object containing metadata related to 
     * `'Boron'` for the 6.x LTS line beginning with 6.9.0.
     * `'Carbon'` for the 8.x LTS line beginning with 8.9.1.
 
-Örneğin:
+For example:
 
 <!-- eslint-skip -->
 
@@ -1267,7 +1267,7 @@ In custom builds from non-release versions of the source tree, only the `name` p
 added: v0.5.9
 -->
 
-* `mesaj` {Object}
+* `message` {Object}
 * `sendHandle` {Handle object}
 * `options` {Object}
 * `callback` {Function}
@@ -1401,7 +1401,7 @@ The `process.stderr` property returns a stream connected to `stderr` (fd `2`). I
 
 The `process.stdin` property returns a stream connected to `stdin` (fd `0`). It is a [`net.Socket`][] (which is a [Duplex](stream.html#stream_duplex_and_transform_streams) stream) unless fd `0` refers to a file, in which case it is a [Readable](stream.html#stream_readable_streams) stream.
 
-Örneğin:
+For example:
 
 ```js
 process.stdin.setEncoding('utf8');
@@ -1591,14 +1591,14 @@ Node.js will normally exit with a `0` status code when no more async operations 
 
 * `1` **Uncaught Fatal Exception** - There was an uncaught exception, and it was not handled by a domain or an [`'uncaughtException'`][] event handler.
 * `2` - Unused (reserved by Bash for builtin misuse)
-* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. Bu son derece nadirdir ve genellikle yalnızca Node.js'in geliştirilmesi sırasında olabilir.
-* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. Bu son derece nadirdir ve genellikle yalnızca Node.js'in geliştirilmesi sırasında olabilir.
+* `3` **Internal JavaScript Parse Error** - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
+* `4` **Internal JavaScript Evaluation Failure** - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `5` **Fatal Error** - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix `FATAL
 ERROR`.
 * `6` **Non-function Internal Exception Handler** - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
 * `7` **Internal Exception Handler Run-Time Failure** - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if a [`'uncaughtException'`][] or `domain.on('error')` handler throws an error.
 * `8` - Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
 * `9` - **Invalid Argument** - Either an unknown option was specified, or an option requiring a value was provided without a value.
-* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. Bu son derece nadirdir ve genellikle yalnızca Node.js'in geliştirilmesi sırasında olabilir.
+* `10` **Internal JavaScript Run-Time Failure** - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
 * `12` **Invalid Debug Argument** - The `--inspect` and/or `--inspect-brk` options were set, but the port number chosen was invalid or unavailable.
 * `>128` **Signal Exits** - If Node.js receives a fatal signal such as `SIGKILL` or `SIGHUP`, then its exit code will be `128` plus the value of the signal code. This is a standard POSIX practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code.
