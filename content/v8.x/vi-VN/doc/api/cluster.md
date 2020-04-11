@@ -1,8 +1,8 @@
-# Máy chủ song hành
+# Cluster
 
 <!--introduced_in=v0.10.0-->
 
-> Tính ổn định: 2 - Stable
+> Stability: 2 - Stable
 
 A single instance of Node.js runs in a single thread. To take advantage of multi-core systems, the user will sometimes want to launch a cluster of Node.js processes to handle the load.
 
@@ -618,7 +618,7 @@ added: v0.6.0
 -->
 
 * `env` {Object} Key/value pairs to add to worker process environment.
-* Trả về: {cluster.Worker}
+* Returns: {cluster.Worker}
 
 Spawn a new worker process.
 
@@ -713,7 +713,7 @@ Note that:
 * The *only* attribute of a worker that cannot be set via `.setupMaster()` is the `env` passed to `.fork()`.
 * The defaults above apply to the first call only, the defaults for later calls is the current value at the time of `cluster.setupMaster()` is called.
 
-Ví dụ:
+Example:
 
 ```js
 const cluster = require('cluster');
