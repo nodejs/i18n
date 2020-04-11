@@ -1,8 +1,8 @@
-# Akış
+# Stream
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 A stream is an abstract interface for working with streaming data in Node.js. The `stream` module provides a base API that makes it easy to build objects that implement the stream interface.
 
@@ -16,7 +16,7 @@ The `stream` module can be accessed using:
 const stream = require('stream');
 ```
 
-Akışların nasıl çalıştığını anlamak önemli olsa da, `akış` modülünün kendisi, yeni tür akış örnekleri oluşturan geliştiriciler için en faydalı olanıdır. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
+While it is important to understand how streams work, the `stream` module itself is most useful for developers that are creating new types of stream instances. Developers who are primarily *consuming* stream objects will rarely need to use the `stream` module directly.
 
 ## Organization of this Document
 
@@ -47,13 +47,13 @@ The amount of data potentially buffered depends on the `highWaterMark` option pa
 
 Data is buffered in Readable streams when the implementation calls [`stream.push(chunk)`](#stream_readable_push_chunk_encoding). If the consumer of the Stream does not call [`stream.read()`](#stream_readable_read_size), the data will sit in the internal queue until it is consumed.
 
-Dahili okuma arabelleğinin toplam büyüklüğü, `highWaterMark` tarafından belirtilen eşiğe ulaştığında, akış, halihazırda arabelleğe alınmış veri tüketilinceye kadar altta yatan kaynaktan veri okumayı geçici olarak durduracaktır (yani akış, okuma tamponunu doldurmak için kullanılan dahili `readable._read()` yöntemini çağırmayı durduracaktır).
+Once the total size of the internal read buffer reaches the threshold specified by `highWaterMark`, the stream will temporarily stop reading data from the underlying resource until the data currently buffered can be consumed (that is, the stream will stop calling the internal `readable._read()` method that is used to fill the read buffer).
 
 Data is buffered in Writable streams when the [`writable.write(chunk)`](#stream_writable_write_chunk_encoding_callback) method is called repeatedly. While the total size of the internal write buffer is below the threshold set by `highWaterMark`, calls to `writable.write()` will return `true`. Once the size of the internal buffer reaches or exceeds the `highWaterMark`, `false` will be returned.
 
 A key goal of the `stream` API, particularly the [`stream.pipe()`] method, is to limit the buffering of data to acceptable levels such that sources and destinations of differing speeds will not overwhelm the available memory.
 
-[Duplex](#stream_class_stream_duplex) ve [Transform](#stream_class_stream_transform) akışları hem Okunabilir hem de Yazılabilir olduğundan, her biri, okuma ve yazma için kullanılan, ayrı ve uygun bir veri akışını korurken diğer taraftan bağımsız olarak çalışabilmelerini sağlayan *iki* ayrı dahili tampon sağlar. For example, [`net.Socket`][] instances are [Duplex](#stream_class_stream_duplex) streams whose Readable side allows consumption of data received *from* the socket and whose Writable side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
+Because [Duplex](#stream_class_stream_duplex) and [Transform](#stream_class_stream_transform) streams are both Readable and Writable, each maintain *two* separate internal buffers used for reading and writing, allowing each side to operate independently of the other while maintaining an appropriate and efficient flow of data. For example, [`net.Socket`][] instances are [Duplex](#stream_class_stream_duplex) streams whose Readable side allows consumption of data received *from* the socket and whose Writable side allows writing data *to* the socket. Because data may be written to the socket at a faster or slower rate than data is received, it is important for each side to operate (and buffer) independently of the other.
 
 ## API for Stream Consumers
 
@@ -73,16 +73,16 @@ const server = http.createServer((req, res) => {
   // If an encoding is not set, Buffer objects will be received.
   req.setEncoding('utf8');
 
-  // Okunabilir akışlar, bir dinleyici eklendiğinde 'veri' olayları yayar
+  // Readable streams emit 'data' events once a listener is added
   req.on('data', (chunk) => {
     body += chunk;
   });
 
-  // son olayı, tüm bedenin alındığını gösterir
+  // the end event indicates that the entire body has been received
   req.on('end', () => {
     try {
       const data = JSON.parse(body);
-      // kullanıcıya ilginç bir şeyler yazın:
+      // write back something interesting to the user:
       res.write(typeof data);
       res.end();
     } catch (er) {
@@ -626,11 +626,11 @@ The `readable.isPaused()` method returns the current operating state of the Read
 ```js
 const readable = new stream.Readable();
 
-readable.isPaused(); // === yanlış
+readable.isPaused(); // === false
 readable.pause();
-readable.isPaused(); // === doğru
+readable.isPaused(); // === true
 readable.resume();
-readable.isPaused(); // === yanlış
+readable.isPaused(); // === false
 ```
 
 ##### readable.pause()
@@ -716,7 +716,7 @@ added: v0.9.4
 -->
 
 * `size` {number} Optional argument to specify how much data to read.
-* Çıktı: {string|Buffer|null}
+* Returns: {string|Buffer|null}
 
 The `readable.read()` method pulls some data out of the internal buffer and returns it. If no data available to be read, `null` is returned. By default, the data will be returned as a `Buffer` object unless an encoding has been specified using the `readable.setEncoding()` method or the stream is operating in object mode.
 
@@ -827,16 +827,16 @@ changes:
 
 * `chunk` {Buffer|Uint8Array|string|any} Chunk of data to unshift onto the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 
-The `readable.unshift()` method pushes a chunk of data back into the internal buffer. Bu, bir akışın iyimser bir şekilde kaynaktan çıkardığı bir miktar veriyi "tüketmemesi" gereken kodla tüketildiği bazı durumlarda, verilerin başka bir tarafa aktarılabilmesi için kullanışlıdır.
+The `readable.unshift()` method pushes a chunk of data back into the internal buffer. This is useful in certain situations where a stream is being consumed by code that needs to "un-consume" some amount of data that it has optimistically pulled out of the source, so that the data can be passed on to some other party.
 
 *Note*: The `stream.unshift(chunk)` method cannot be called after the [`'end'`][] event has been emitted or a runtime error will be thrown.
 
 Developers using `stream.unshift()` often should consider switching to use of a [Transform](#stream_class_stream_transform) stream instead. See the [API for Stream Implementers](#stream_api_for_stream_implementers) section for more information.
 
 ```js
-// \n\n ile sınırlandırılmış bir başlığı çekin
-// eğer çok fazla alırsak unshift() kullanın
-// Geri çağırmayı şunlar ile çağırın (hata, başlık, akış)
+// Pull off a header delimited by \n\n
+// use unshift() if we get too much
+// Call the callback with (error, header, stream)
 const { StringDecoder } = require('string_decoder');
 function parseHeader(stream, callback) {
   stream.on('error', callback);
@@ -848,17 +848,17 @@ function parseHeader(stream, callback) {
     while (null !== (chunk = stream.read())) {
       const str = decoder.write(chunk);
       if (str.match(/\n\n/)) {
-        // başlık sınırı bulundu
+        // found the header boundary
         const split = str.split(/\n\n/);
         header += split.shift();
         const remaining = split.join('\n\n');
         const buf = Buffer.from(remaining, 'utf8');
         stream.removeListener('error', callback);
-        // değiştirmeden önce okunabilir dinleyiciyi kaldırın
+        // remove the readable listener before unshifting
         stream.removeListener('readable', onReadable);
         if (buf.length)
           stream.unshift(buf);
-        // şimdi mesajın gövdesi akıştan okunabilir.
+        // now the body of the message can be read from the stream.
         callback(null, header, stream);
       } else {
         // still reading the header.
@@ -885,7 +885,7 @@ When using an older Node.js library that emits [`'data'`][] events and has a [`s
 
 It will rarely be necessary to use `readable.wrap()` but the method has been provided as a convenience for interacting with older Node.js applications and libraries.
 
-Örneğin:
+For example:
 
 ```js
 const { OldReader } = require('./old-api-module.js');
@@ -1047,7 +1047,7 @@ added: v1.2.0
 
 For many simple cases, it is possible to construct a stream without relying on inheritance. This can be accomplished by directly creating instances of the `stream.Writable`, `stream.Readable`, `stream.Duplex` or `stream.Transform` objects and passing appropriate methods as constructor options.
 
-Örneğin:
+For example:
 
 ```js
 const { Writable } = require('stream');
@@ -1076,7 +1076,7 @@ Custom Writable streams *must* call the `new stream.Writable([options])` constru
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
   * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
 
-Örneğin:
+For example:
 
 ```js
 const { Writable } = require('stream');
@@ -1269,7 +1269,7 @@ Custom Readable streams *must* call the `new stream.Readable([options])` constru
   * `read` {Function} Implementation for the [`stream._read()`](#stream_readable_read_size_1) method.
   * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
-Örneğin:
+For example:
 
 ```js
 const { Readable } = require('stream');
@@ -1371,18 +1371,18 @@ class SourceWrapper extends Readable {
 
     // Every time there's data, push it into the internal buffer.
     this._source.ondata = (chunk) => {
-      // eğer push() false döndürürse, ondan sonra kaynaktan okumayı bırak
+      // if push() returns false, then stop reading from source
       if (!this.push(chunk))
         this._source.readStop();
     };
 
-    // Kaynak sona erdiği zaman, EOF-sinyalleşme `null` öbeğine basın
+    // When the source ends, push the EOF-signaling `null` chunk
     this._source.onend = () => {
       this.push(null);
     };
   }
-  // akış daha fazla veri çekmek istediği zaman _read çağrılacak
-  // danışma boyutu argümanı bu durumda göz ardı edilir.
+  // _read will be called when the stream wants to pull more data in
+  // the advisory size argument is ignored in this case.
   _read(size) {
     this._source.readStart();
   }
@@ -1470,7 +1470,7 @@ changes:
   * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. Has no effect if `highWaterMark` is provided.
   * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. Has no effect if `highWaterMark` is provided.
 
-Örneğin:
+For example:
 
 ```js
 const { Duplex } = require('stream');
@@ -1527,7 +1527,7 @@ class MyDuplex extends Duplex {
   }
 
   _write(chunk, encoding, callback) {
-    // Temel kaynak sadece karakter dizileriyle ilgilidir.
+    // The underlying source only deals with strings
     if (Buffer.isBuffer(chunk))
       chunk = chunk.toString();
     this[kSource].writeSomeData(chunk);
@@ -1598,7 +1598,7 @@ The `stream.Transform` class prototypically inherits from `stream.Duplex` and im
   * `transform` {Function} Implementation for the [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) method.
   * `flush` {Function} Implementation for the [`stream._flush()`](#stream_transform_flush_callback) method.
 
-Örneğin:
+For example:
 
 ```js
 const { Transform } = require('stream');
