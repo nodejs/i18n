@@ -1,8 +1,8 @@
-# مصحح الأخطاء
+# Debugger
 
 <!--introduced_in=v0.9.12-->
 
-> درجة الإستقرار: 2 - مستقر
+> Stability: 2 - Stable
 
 <!-- type=misc -->
 
@@ -13,18 +13,11 @@ $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help, see: https://nodejs.org/en/docs/inspector
 < Debugger attached.
-
 Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
   3   console.log('world');
 debug>
-
-Break on start in myscript.js:1
-> 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
-  2 setTimeout(() => {
-  3   console.log('world');
-debug
 ```
 
 Node.js's debugger client is not a full-featured debugger, but simple step and inspection are possible.
@@ -47,12 +40,6 @@ $ node inspect myscript.js
 < Debugger listening on ws://127.0.0.1:9229/80e7a814-7cd3-49fb-921a-2e02228cd5ba
 < For help, see: https://nodejs.org/en/docs/inspector
 < Debugger attached.
-
-Break on start in myscript.js:1
-> 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
-  2 setTimeout(() => {
-  3   console.log('world');
-debug>
 Break on start in myscript.js:1
 > 1 (function (exports, require, module, __filename, __dirname) { global.x = 5;
   2 setTimeout(() => {
