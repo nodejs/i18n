@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Kararlılık: 2 - Kararlı
+> Stability: 2 - Stable
 
 The `tty` module provides the `tty.ReadStream` and `tty.WriteStream` classes. In most cases, it will not be necessary or possible to use this module directly. However, it can be accessed using:
 
@@ -157,7 +157,7 @@ added: v0.7.7
 added: v10.16.0
 -->
 
-* `count` {integer} The number of colors that are requested (minimum 2). **Varsayılan:** 16.
+* `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
 * Returns: {boolean}
 
