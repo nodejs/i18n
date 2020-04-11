@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 The Performance Timing API provides an implementation of the [W3C Performance Timeline](https://w3c.github.io/performance-timeline/) specification. The purpose of the API is to support collection of high resolution performance metrics. This is the same Performance API as implemented in modern Web browsers.
 
@@ -193,7 +193,7 @@ When `performanceEntry.entryType` is equal to `'gc'`, the `performance.kind` pro
 added: v8.5.0
 -->
 
-Node.js'in kendisi için zamanlama ayrıntıları sağlar.
+Provides timing details for Node.js itself.
 
 ### performanceNodeTiming.bootstrapComplete
 
@@ -371,14 +371,14 @@ added: v8.5.0
 
 Returns a list of `PerformanceEntry` objects in chronological order with respect to `performanceEntry.startTime` whose `performanceEntry.entryType` is equal to `type`.
 
-## Örnekler
+## Examples
 
 ### Measuring the duration of async operations
 
 The following example uses the [Async Hooks](async_hooks.html) and Performance APIs to measure the actual duration of a Timeout operation (including the amount of time it to execute the callback).
 
 ```js
-'harfi harfine kullan';
+'use strict';
 const async_hooks = require('async_hooks');
 const {
   performance,
@@ -429,12 +429,12 @@ const {
 } = require('perf_hooks');
 const mod = require('module');
 
-// Maymun yama gerekli fonksiyonu
+// Monkey patch the require function
 mod.Module.prototype.require =
   performance.timerify(mod.Module.prototype.require);
 require = performance.timerify(require);
 
-// Gözlemciyi aktif edin
+// Activate the observer
 const obs = new PerformanceObserver((list) => {
   const entries = list.getEntries();
   entries.forEach((entry) => {
