@@ -2,7 +2,7 @@
 
 <!--introduced_in=v10.5.0-->
 
-> Kararlılık: 1 - Deneysel
+> Stability: 1 - Experimental
 
 The `worker` module provides a way to create multiple environments running on independent threads, and to create message channels between them. It can be accessed using the `--experimental-worker` flag and:
 
