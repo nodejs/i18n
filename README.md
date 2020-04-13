@@ -2,11 +2,11 @@
 
 [![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
 
-Here you can find contribution guides, discuss ideas or join meetings. Here also contains original and translated Node.js API documentation.
+Here you can find contribution guides, discuss ideas or join meetings. This repo also contains the source English Node.js API documentation as well as translated versions of the documentation. The source English is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our Crowdin integration.
 
 ## Contributing
 
-Help us get Node.js translated into your native language and reach more people's hearts. Please read next guides before:
+Help us get Node.js translated into your native language and reach more people's hearts. Please read these guides to get started:
 
 - [Getting started](./guides/GETTING_STARTED.md) - basic understanding about translation process
 - [Roles](./guides/ROLES.md) - information about roles and hierarchy in Node.js localization process
@@ -83,4 +83,4 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 
 ## Joining
 
-If you're interested in joining this group, or would like to leave a question or comment for its members - please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request. Keep in mind, you don't have to be a member of this group to start translating. You can read more about contributing translations in the [Getting started](./guides/GETTING_STARTED.md) guide.
+If you're interested in joining this group or would like to leave a question or comment for its members, please [create an issue](https://github.com/nodejs/i18n/issues/new) or submit a pull request. Keep in mind, you don't have to be a member of this group to start translating. You can read more about contributing translations in the [Getting started](./guides/GETTING_STARTED.md) guide.

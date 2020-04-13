@@ -28,7 +28,7 @@ For more information how to work with Crowdin please read official [guide for vo
 
 ### Step #1: Translation
 
-After successful log in to Crowdin and selecting project to translate find your locale from list and enjoy volunteering.
+After successfully logging in to Crowdin and selecting a project to translate, find your language on the list.
 
 > NOTE: If you cannot find your locale in list, please create a new issue in base repo ([see table](/#i18n-projects)) with mention to managers team
 
