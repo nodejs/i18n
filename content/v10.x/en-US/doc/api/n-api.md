@@ -157,6 +157,84 @@ available to the module code.
 
 \* Indicates that the N-API version was released as experimental
 
+## Environment Life Cycle APIs
+
+> Stability: 1 - Experimental
+
+[Section 8.7][] of the [ECMAScript Language Specification][] defines the concept
+of an "Agent" as a self-contained environment in which JavaScript code runs.
+Multiple such Agents may be started and terminated either concurrently or in
+sequence by the process.
+
+A Node.js environment corresponds to an ECMAScript Agent. In the main process,
+an environment is created at startup, and additional environments can be created
+on separate threads to serve as [worker threads][]. When Node.js is embedded in
+another application, the main thread of the application may also construct and
+destroy a Node.js environment multiple times during the life cycle of the
+application process such that each Node.js environment created by the
+application may, in turn, during its life cycle create and destroy additional
+environments as worker threads.
+
+From the perspective of a native addon this means that the bindings it provides
+may be called multiple times, from multiple contexts, and even concurrently from
+multiple threads.
+
+Native addons may need to allocate global state of which they make use during
+their entire life cycle such that the state must be unique to each instance of
+the addon.
+
+To this env, N-API provides a way to allocate data such that its life cycle is
+tied to the life cycle of the Agent.
+
+### napi_set_instance_data
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+napi_status napi_set_instance_data(napi_env env,
+                                   void* data,
+                                   napi_finalize finalize_cb,
+                                   void* finalize_hint);
+```
+
+- `[in] env`: The environment that the N-API call is invoked under.
+- `[in] data`: The data item to make available to bindings of this instance.
+- `[in] finalize_cb`: The function to call when the environment is being torn
+down. The function receives `data` so that it might free it.
+- `[in] finalize_hint`: Optional hint to pass to the finalize callback
+during collection.
+
+Returns `napi_ok` if the API succeeded.
+
+This API associates `data` with the currently running Agent. `data` can later
+be retrieved using `napi_get_instance_data()`. Any existing data associated with
+the currently running Agent which was set by means of a previous call to
+`napi_set_instance_data()` will be overwritten. If a `finalize_cb` was provided
+by the previous call, it will not be called.
+
+### napi_get_instance_data
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+napi_status napi_get_instance_data(napi_env env,
+                                   void** data);
+```
+
+- `[in] env`: The environment that the N-API call is invoked under.
+- `[out] data`: The data item that was previously associated with the currently
+running Agent by a call to `napi_set_instance_data()`.
+
+Returns `napi_ok` if the API succeeded.
+
+This API retrieves data that was previously associated with the currently
+running Agent via `napi_set_instance_data()`. If no data is set, the call will
+succeed and `data` will be set to `NULL`.
+
 ## Basic N-API Data Types
 
 N-API exposes the following fundamental datatypes as abstractions that are
@@ -1296,6 +1374,63 @@ However, for better performance, it's better for the caller to make sure that
 the `napi_value` in question is of the JavaScript type expected by the API.
 
 ### Enum types
+#### napi_key_collection_mode
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+typedef enum {
+  napi_key_include_prototypes,
+  napi_key_own_only
+} napi_key_collection_mode;
+```
+
+Describes the `Keys/Properties` filter enums:
+
+`napi_key_collection_mode` limits the range of collected properties.
+
+`napi_key_own_only` limits the collected properties to the given
+object only. `napi_key_include_prototypes` will include all keys
+of the objects's prototype chain as well.
+
+#### napi_key_filter
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+typedef enum {
+  napi_key_all_properties = 0,
+  napi_key_writable = 1,
+  napi_key_enumerable = 1 << 1,
+  napi_key_configurable = 1 << 2,
+  napi_key_skip_strings = 1 << 3,
+  napi_key_skip_symbols = 1 << 4
+} napi_key_filter;
+```
+
+Property filter bits. They can be or'ed to build a composite filter.
+
+#### napi_key_conversion
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+typedef enum {
+  napi_key_keep_numbers,
+  napi_key_numbers_to_strings
+} napi_key_conversion;
+```
+
+`napi_key_numbers_to_strings` will convert integer indices to
+strings. `napi_key_keep_numbers` will return numbers for integer
+indices.
+
 #### napi_valuetype
 ```C
 typedef enum {
@@ -1804,9 +1939,8 @@ The JavaScript `Number` type is described in
 #### napi_create_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_int64(napi_env env,
@@ -1825,9 +1959,8 @@ This API converts the C `int64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_uint64(napi_env env,
@@ -1846,9 +1979,8 @@ This API converts the C `uint64_t` type to the JavaScript `BigInt` type.
 #### napi_create_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_create_bigint_words(napi_env env,
@@ -2183,9 +2315,8 @@ This API returns the C double primitive equivalent of the given JavaScript
 #### napi_get_value_bigint_int64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_int64(napi_env env,
@@ -2211,9 +2342,8 @@ This API returns the C `int64_t` primitive equivalent of the given JavaScript
 #### napi_get_value_bigint_uint64
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_uint64(napi_env env,
@@ -2239,9 +2369,8 @@ This API returns the C `uint64_t` primitive equivalent of the given JavaScript
 #### napi_get_value_bigint_words
 <!-- YAML
 added: v10.7.0
+napiVersion: 6
 -->
-
-> Stability: 1 - Experimental
 
 ```C
 napi_status napi_get_value_bigint_words(napi_env env,
@@ -3049,6 +3178,36 @@ Returns `napi_ok` if the API succeeded.
 This API returns the names of the enumerable properties of `object` as an array
 of strings. The properties of `object` whose key is a symbol will not be
 included.
+
+#### napi_get_all_property_names
+<!-- YAML
+added: v10.20.0
+napiVersion: 6
+-->
+
+```C
+napi_get_all_property_names(napi_env env,
+                            napi_value object,
+                            napi_key_collection_mode key_mode,
+                            napi_key_filter key_filter,
+                            napi_key_conversion key_conversion,
+                            napi_value* result);
+```
+
+* `[in] env`: The environment that the N-API call is invoked under.
+* `[in] object`: The object from which to retrieve the properties.
+* `[in] key_mode`: Whether to retrieve prototype properties as well.
+* `[in] key_filter`: Which properties to retrieve
+(enumerable/readable/writable).
+* `[in] key_conversion`: Whether to convert numbered property keys to strings.
+* `[out] result`: A `napi_value` representing an array of JavaScript values
+that represent the property names of the object. [`napi_get_array_length`][] and
+[`napi_get_element`][] can be used to iterate over `result`.
+
+Returns `napi_ok` if the API succeeded.
+
+This API returns an array containing the names of the available properties
+of this object.
 
 #### napi_set_property
 <!-- YAML
@@ -4735,6 +4894,7 @@ This API may only be called from the main thread.
 [Section 6.1.4]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type
 [Section 6.1.6]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type
 [Section 6.1.7.1]: https://tc39.github.io/ecma262/#table-2
+[Section 8.7]: https://tc39.es/ecma262/#sec-agents
 [Section 9.1.6]: https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc
 [Working with JavaScript Functions]: #n_api_working_with_javascript_functions
 [Working with JavaScript Properties]: #n_api_working_with_javascript_properties
@@ -4789,3 +4949,4 @@ This API may only be called from the main thread.
 [`uv_unref`]: http://docs.libuv.org/en/v1.x/handle.html#c.uv_unref
 [async_hooks `type`]: async_hooks.html#async_hooks_type
 [context-aware addons]: addons.html#addons_context_aware_addons
+[worker threads]: https://nodejs.org/api/worker_threads.html
