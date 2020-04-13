@@ -47,7 +47,7 @@ From GitHub side we have just two type of roles:
 - maintainer - admin of some l10n team/repository
 - contributor - part of some l10n team/repository
 
-To avoid any confusion with "team" and "repository" in context of our process, here is quick description:
+To avoid any confusion with "team" and "repository" in context of our process, here is a quick description:
 
 - Teams are groups of organization members that reflect your company or group's structure with cascading access permissions and mentions. Used for group mentions like `@nodejs/nodejs-es` in issues/PRs, or for target announcements.
 - l10n repository is basement for translators to discuss language team specific questions. For example, glossary, priorities, guidelines etc. Here translators can speak in their native language.

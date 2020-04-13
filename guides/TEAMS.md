@@ -44,11 +44,11 @@ Our localization process structure is based on language community, so we have on
 
 ## About
 
-All these teams created just to simplify communication and management processes for each locale group. There is no any other functional reasons have this teams, that why we're not forcing you to join everywhere.
+All these teams exist to simplify communication and management processes for each locale group. There is no other functional reason these teams; you're not required to join them to participate.
 
 ### Repository
 
-GitHub repository for locale group is good place to host some language specific documentation, guidelines in markdown. You can collaborate to work on docs like this or just read. In other hand repository issues it's a great place to discuss some questions related to translations like glossary, style guide, and team management on both GitHub and Crowdin.
+The repositories for your locale group is a good place to host some language-specific documentation and guidelines in markdown files. You can collaborate to work on docs like this or just read. On the other hand, repository issues are a great place to discuss some questions related to translations like glossary, style guide, and team management on both GitHub and Crowdin.
 
 > NOTE: Feel free to use your native language under this repo
 

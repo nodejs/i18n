@@ -32,7 +32,7 @@ After successfully logging in to Crowdin and selecting a project to translate, f
 
 > NOTE: If you cannot find your locale in list, please create a new issue in base repo ([see table](/#i18n-projects)) with mention to managers team
 
-All translations going to be approved by other translators, and then automatically pushed to GitHub repository, so you don't need to go outside Crowdin platform. Don't open pull requests to translate Node.js, and focus just on translation content.
+All translations are made on Crowdin and then automatically pushed to the GitHub repository by an integration, so you don't need to go outside the Crowdin platform to translate content. **Do not open pull requests with content translations!**
 
 > NOTE: If you find an error in the original docs, feel free to open PR to the base repository ([see table](/#i18n-projects)).
 
@@ -42,7 +42,7 @@ We really appreciate any contribution, but should validate translated content, s
 
 ### Step #3: Sync
 
-Crowdin automatically create PR with updates to base GitHub repository around 24 hours after updates was approved. If you think that's something goes wrong with sync process, please create a new issue with managers mention.
+Crowdin automatically creates and updates a pull request to this GitHub repository within 24 hours after the updates are approved. If you think that's something is going wrong with sync process please create a new issue.
 
 ## Communication process
 
@@ -58,9 +58,9 @@ We propose a few ways to communicate:
   - [nodejs/i18n](https://github.com/nodejs/i18n) - create issue/PR if you have not language specific question
   - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](https://github.com/nodejs/i18n/blob/master/TEAMS.md)
 
-Feel free to choose most comfortable way for your goals, but we'd like to recommend to use GitHub for most cases. It's standardized and controlled by Node.js community.
+Feel free to choose what's most comfortable for you, but we recommend using GitHub issues for most cases as it's standardized and controlled by the Node.js community.
 
-Localization process for each language have specific questions, that should be discussed and agreed somewhere, and for these reasons we've created l10n teams for each current active locale. Main aim is to gather people interested in taking part in the translation process in one place, so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
+The localization process for each language can have specific questions that should be discussed somewhere. For this reason we've created l10n teams for each current active locale. The main goal is to gather people interested in taking part in the translation process in one place so that it can be used as a source of help when problems/doubts arise during the translation process. To contact a specific l10n team, all you need is an account on GitHub.
 
 > NOTE: You don't have to be a member of this group to start translating
 
