@@ -34,7 +34,7 @@
     "semver": "^7.3.0",
     "standard": "^14.3.3",
     "superagent": "^5.2.2",
-    "walk-sync": "^2.0.2"
+    "walk-sync": "^2.1.0"
   },
   "standard": {
     "env": [
