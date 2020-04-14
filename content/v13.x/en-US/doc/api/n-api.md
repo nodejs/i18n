@@ -246,10 +246,10 @@ listed as supporting a later version.
 | v6.x  |         |          | v6.14.2* |          |           |
 | v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |
 | v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |
-| v10.x |         |          | v10.0.0  | v10.16.0 |           |
-| v11.x |         |          | v11.0.0  | v11.8.0  |           |
-| v12.x |         |          |          | v12.0.0  | v12.11.0  |
-| v13.x |         |          |          |          | v13.0.0   |
+| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  |
+| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |
+| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |
+| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |
 
 \* Indicates that the N-API version was released as experimental
 
@@ -799,9 +799,8 @@ This API can be called even if there is a pending JavaScript exception.
 ### Exceptions
 
 Any N-API function call may result in a pending JavaScript exception. This is
-obviously the case for any function that may cause the execution of
-JavaScript, but N-API specifies that an exception may be pending
-on return from any of the API functions.
+the case for any of the API functions, even those that may not cause the
+execution of JavaScript.
 
 If the `napi_status` returned by a function is `napi_ok` then no
 exception is pending and no additional action is required. If the

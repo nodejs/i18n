@@ -2,12 +2,12 @@
   "name": "node-i18n",
   "private": true,
   "version": "1.0.0",
-  "nodeVersions": {
-    "v13.x": "v13.11.0",
-    "v12.x": "v12.16.1",
-    "v10.x": "v10.19.0",
-    "v8.x": "v8.17.0"
-  },
+  "supportedVersions": [
+    "v13.x",
+    "v12.x",
+    "v10.x",
+    "v8.x"
+  ],
   "description": "The home of translated Node.js documentation",
   "repository": "https://github.com/nodejs/i18n",
   "contributors": [
@@ -21,8 +21,7 @@
     "upload-crowdin-glossary": "node script/upload-crowdin-glossary.js",
     "test": "jest",
     "lint": "standard",
-    "lint:fix": "standard --fix",
-    "status": "node script/status.js"
+    "lint:fix": "standard --fix"
   },
   "devDependencies": {
     "builtins": "^3.0.1",
@@ -30,12 +29,12 @@
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
     "fs-extra": "^9.0.0",
-    "globals": "^12.4.0",
+    "globals": "^13.0.0",
     "jest": "^25.3.0",
-    "request": "^2.88.2",
-    "semver": "^7.2.1",
+    "semver": "^7.3.0",
     "standard": "^14.3.3",
-    "walk-sync": "^2.0.2"
+    "superagent": "^5.2.2",
+    "walk-sync": "^2.1.0"
   },
   "standard": {
     "env": [
