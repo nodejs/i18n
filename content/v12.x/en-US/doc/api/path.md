@@ -389,7 +389,7 @@ path.parse('/home/user/dir/file.txt');
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 On Windows:
@@ -411,7 +411,7 @@ path.parse('C:\\path\\dir\\file.txt');
 │ root │              │ name │ ext │
 " C:\      path\dir   \ file  .txt "
 └──────┴──────────────┴──────┴─────┘
-(all spaces in the "" line should be ignored — they are purely for formatting)
+(All spaces in the "" line should be ignored. They are purely for formatting.)
 ```
 
 A [`TypeError`][] is thrown if `path` is not a string.
@@ -477,7 +477,8 @@ an absolute path.
 The given sequence of paths is processed from right to left, with each
 subsequent `path` prepended until an absolute path is constructed.
 For instance, given the sequence of path segments: `/foo`, `/bar`, `baz`,
-calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`.
+calling `path.resolve('/foo', '/bar', 'baz')` would return `/bar/baz`
+because `'baz'` is not an absolute path but `'/bar' + '/' + 'baz'` is.
 
 If after processing all given `path` segments an absolute path has not yet
 been generated, the current working directory is used.
