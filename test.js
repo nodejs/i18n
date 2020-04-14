@@ -1,12 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 const walk = require('walk-sync').entries
-const difference = require('lodash.difference');
+const difference = require('lodash.difference')
 const { supportedVersions } = require('./package.json')
 
 const contentDir = path.join(__dirname, 'content')
-const versions = fs.readdirSync(contentDir);
-const originalSourceLocale = 'en-US';
+const versions = fs.readdirSync(contentDir)
+const originalSourceLocale = 'en-US'
 
 describe('original content', () => {
   test('exist for all supported versions', () => {
@@ -16,7 +16,7 @@ describe('original content', () => {
       expect(languages.includes(originalSourceLocale)).toBe(true)
     })
   })
-  
+
   test('includes only markdown files', () => {
     expect(versions.length).toBeGreaterThan(1)
     versions.forEach(version => {
@@ -33,13 +33,13 @@ describe('translated content', () => {
     versions.forEach(version => {
       const languages = fs.readdirSync(path.join(contentDir, version))
       const originalPath = path.join(contentDir, version, originalSourceLocale, 'doc')
-      const originalFiles = fs.readdirSync(originalPath);
+      const originalFiles = fs.readdirSync(originalPath)
       languages.forEach(language => {
         const translatedPath = path.join(contentDir, version, language, 'doc')
-        const translatedFiles = fs.readdirSync(translatedPath);
-        const originTranslatedDiff = difference(originalFiles, translatedFiles);
-        const translatedOriginDiff = difference(translatedFiles, originalFiles);
-        
+        const translatedFiles = fs.readdirSync(translatedPath)
+        const originTranslatedDiff = difference(originalFiles, translatedFiles)
+        const translatedOriginDiff = difference(translatedFiles, originalFiles)
+
         expect(originTranslatedDiff.length).toBe(0)
         expect(translatedOriginDiff.length).toBe(0)
       })
