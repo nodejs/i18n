@@ -44,8 +44,8 @@ To become a translator, just read our guidelines and go ahead! We really appreci
 
 From GitHub side we have just two type of roles:
 
-- maintainer - admin of some l10n team/repository
-- contributor - part of some l10n team/repository
+- Maintainer - admin of some l10n team/repository
+- Contributor - part of some l10n team/repository
 
 To avoid any confusion with "team" and "repository" in context of our process, here is a quick description:
 
