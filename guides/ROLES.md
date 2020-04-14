@@ -28,7 +28,7 @@ To become a manager of project, please create a new issue with request in base r
 
 ### Proofreader
 
-This role it's kind of translators team lead, who have enough experience to approve/decline translations. One member can be a proofreader just for one language without exceptions for multi language speakers, because it helps to focus on details. Proofreader can translate content, but main goal is to validate incoming content.
+This role is kind of a translators team lead, who has enough experience to approve/decline translations. One member can be a proofreader just for one language without exceptions for multi language speakers, because it helps to focus on details. Proofreader can translate content, but main goal is to validate incoming content.
 
 > NOTE: Not approved translation never go live, that's why we recommend for proofreaders to focus on validation process instead of translating
 
@@ -38,7 +38,7 @@ To become a proofreader of locale, please create a new issue with request in bas
 
 Main player in localization process, who actually make translation.
 
-To become a translator just complete with our guidelines and go ahead! We really appreciate your volunteering.
+To become a translator, just read our guidelines and go ahead! We really appreciate your volunteering.
 
 ## GitHub
 
@@ -56,7 +56,7 @@ To avoid any confusion with "team" and "repository" in context of our process, h
 
 ## Maintainer
 
-User who manage l10n team issues/discussions, helps with global localization process updates under controlled repository. Has "write" access to l10n repository.
+User who manages l10n team issues/discussions, helps with global localization process updates under controlled repository. Has "write" access to l10n repository.
 
 To become a maintainer of l10n repository you should be active contributor and translator. Create a new issue with request in base repository of project ([see table](./GETTING_STARTED.md/#i18n-projects)).
 
