@@ -18,7 +18,7 @@ const main = async () => {
 
   // Node.js core modules
   supportedVersions.forEach(ver => {
-    const nodeCoreModules = builtins(semver.valid(ver));
+    const nodeCoreModules = builtins(semver.valid(ver))
     nodeCoreModules.forEach(coreModule => {
       if (!Object.keys(glossary.entries).includes(coreModule)) {
         glossary.add(coreModule, 'This is a Node.js core module and should usually not be translated')
