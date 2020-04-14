@@ -983,7 +983,7 @@ added: v0.1.90
 The `'exit'` event is emitted after the child process ends. If the process
 exited, `code` is the final exit code of the process, otherwise `null`. If the
 process terminated due to receipt of a signal, `signal` is the string name of
-the signal, otherwise `null`. One of the two will always be non-null.
+the signal, otherwise `null`. One of the two will always be non-`null`.
 
 When the `'exit'` event is triggered, child process stdio streams might still be
 open.
@@ -1054,6 +1054,13 @@ calling `subprocess.disconnect()`.
 When the child process is a Node.js instance (e.g. spawned using
 [`child_process.fork()`][]), the `process.disconnect()` method can be invoked
 within the child process to close the IPC channel as well.
+
+### `subprocess.exitCode`
+
+* {integer}
+
+The `subprocess.exitCode` property indicates the exit code of the child process.
+If the child process is still running, the field will be `null`.
 
 ### `subprocess.kill([signal])`
 <!-- YAML
@@ -1347,6 +1354,34 @@ this occurs.
 It is also recommended that any `'message'` handlers in the child process
 verify that `socket` exists, as the connection may have been closed during the
 time it takes to send the connection to the child.
+
+### `subprocess.signalCode`
+
+* {integer}
+
+The `subprocess.signalCode` property indicates the signal number received by
+the child process if any, else `null`.
+
+### `subprocess.spawnargs`
+
+* {Array}
+
+The `subprocess.spawnargs` property represents the full list of command line
+arguments the child process was launched with.
+
+### `subprocess.spawnfile`
+
+* {string}
+
+The `subprocess.spawnfile` property indicates the executable file name of
+the child process that is launched.
+
+For [`child_process.fork()`][], its value will be equal to
+[`process.execPath`][].
+For [`child_process.spawn()`][], its value will be the name of
+the executable file.
+For [`child_process.exec()`][],  its value will be the name of the shell
+in which the child process is launched.
 
 ### `subprocess.stderr`
 <!-- YAML
