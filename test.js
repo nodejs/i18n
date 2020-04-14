@@ -33,3 +33,4 @@ test('includes only markdown files, ignoring images and other files', () => {
     })
   })
 })
+
