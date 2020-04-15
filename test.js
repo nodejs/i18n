@@ -1,6 +1,6 @@
 const fs = require('fs-extra')
 const path = require('path')
-const walk = require('walk-sync').entries
+const walk = require('walk-sync')
 const difference = require('lodash.difference')
 const { supportedVersions } = require('./package.json')
 
@@ -26,7 +26,7 @@ describe('original content', () => {
         originalSourceLocale,
         'doc'
       )
-      const files = walk(docsDir, { directories: false })
+      const files = walk.entries(docsDir, { directories: false })
       expect(files.length).toBeGreaterThan(0)
       expect(files.every((file) => file.relativePath.endsWith('.md')))
     })
@@ -43,20 +43,18 @@ describe('translated content', () => {
         originalSourceLocale,
         'doc'
       )
-      const originalFiles = walk(originalPath, { directories: false }).map(
-        ({ relativePath }) => relativePath
-      )
+      const originalFiles = walk(originalPath, { directories: false })
       languages.forEach((language) => {
         const translatedPath = path.join(contentDir, version, language, 'doc')
         const translatedFiles = walk(translatedPath, {
           directories: false
-        }).map(({ relativePath }) => relativePath)
+        })
         const translatedOriginDiff = difference(translatedFiles, originalFiles)
 
         // can be used to remove mismatch files
         // translatedOriginDiff.map(filePath => fs.remove(path.join(translatedPath, filePath)))
 
-        expect(translatedOriginDiff.length).toBe(0)
+        expect(translatedOriginDiff).toEqual([])
       })
     })
   })
