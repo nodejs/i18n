@@ -1050,11 +1050,22 @@ and parent URL. The module specifier is the string in an `import` statement or
 `import()` expression, and the parent URL is the URL of the module that imported
 this one, or `undefined` if this is the main entry point for the application.
 
+The `conditions` property on the `context` is an array of conditions for
+[Conditional Exports][] that apply to this resolution request. They can be used
+for looking up conditional mappings elsewhere or to modify the list when calling
+the default resolution logic.
+
+The [current set of Node.js default conditions][Conditional Exports] will always
+be in the `context.conditions` list passed to the hook. If the hook wants to
+ensure Node.js-compatible resolution logic, all items from this default
+condition list **must** be passed through to the `defaultResolve` function.
+
 ```js
 /**
  * @param {string} specifier
  * @param {object} context
  * @param {string} context.parentURL
+ * @param {string[]} context.conditions
  * @param {function} defaultResolve
  * @returns {object} response
  * @returns {string} response.url
@@ -1068,6 +1079,14 @@ export async function resolve(specifier, context, defaultResolve) {
       url: (parentURL) ?
         new URL(specifier, parentURL).href : new URL(specifier).href
     };
+  }
+  if (anotherCondition) {
+    // When calling the defaultResolve, the arguments can be modified. In this
+    // case it's adding another value for matching conditional exports.
+    return defaultResolve(specifier, {
+      ...context,
+      conditions: [...context.conditions, 'another-condition'],
+    });
   }
   // Defer to Node.js for all other specifiers.
   return defaultResolve(specifier, context, defaultResolve);
@@ -1635,7 +1654,7 @@ The resolver can throw the following errors:
 >    1. If _exports_ contains any index property keys, as defined in ECMA-262
 >       [6.1.7 Array Index][], throw an _Invalid Package Configuration_ error.
 >    1. For each property _p_ of _target_, in object insertion order as,
->       1. If _env_ contains an entry for _p_, then
+>       1. If _p_ equals _"default"_ or _env_ contains an entry for _p_, then
 >          1. Let _targetValue_ be the value of the _p_ property in _target_.
 >          1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(
 >             _packageURL_, _targetValue_, _subpath_, _env_), continuing the
