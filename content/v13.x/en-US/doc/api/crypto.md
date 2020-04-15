@@ -2308,8 +2308,9 @@ console.log(aliceSecret === bobSecret);
 added: v10.0.0
 -->
 
-* Returns: {boolean} `true` if and only if a FIPS compliant crypto provider is
-  currently in use.
+* Returns: {number} `1` if and only if a FIPS compliant crypto provider is
+  currently in use, `0` otherwise. A future semver-major release may change
+  the return type of this API to a {boolean}.
 
 ### `crypto.getHashes()`
 <!-- YAML
@@ -2474,7 +2475,7 @@ changes:
 -->
 
 * `privateKey` {Object | string | Buffer | KeyObject}
-  * `oaepHash` {string} The hash function to use for OAEP padding.
+  * `oaepHash` {string} The hash function to use for OAEP padding and MGF1.
     **Default:** `'sha1'`
   * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP
      padding. If not specified, no label is used.
@@ -2564,7 +2565,7 @@ changes:
 
 * `key` {Object | string | Buffer | KeyObject}
   * `key` {string | Buffer | KeyObject} A PEM encoded public or private key.
-  * `oaepHash` {string} The hash function to use for OAEP padding.
+  * `oaepHash` {string} The hash function to use for OAEP padding and MGF1.
     **Default:** `'sha1'`
   * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP
      padding. If not specified, no label is used.
