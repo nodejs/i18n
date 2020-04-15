@@ -299,6 +299,34 @@ added: v0.3.2
 The `tls.Server` class is a subclass of `net.Server` that accepts encrypted
 connections using TLS or SSL.
 
+### Event: 'keylog'
+<!-- YAML
+added: v10.20.0
+-->
+
+* `line` {Buffer} Line of ASCII text, in NSS `SSLKEYLOGFILE` format.
+* `tlsSocket` {tls.TLSSocket} The `tls.TLSSocket` instance on which it was
+  generated.
+
+The `keylog` event is emitted when key material is generated or received by
+a connection to this server (typically before handshake has completed, but not
+necessarily). This keying material can be stored for debugging, as it allows
+captured TLS traffic to be decrypted. It may be emitted multiple times for
+each socket.
+
+A typical use case is to append received lines to a common text file, which
+is later used by software (such as Wireshark) to decrypt the traffic:
+
+```js
+const logFile = fs.createWriteStream('/tmp/ssl-keys.log', { flags: 'a' });
+// ...
+server.on('keylog', (line, tlsSocket) => {
+  if (tlsSocket.remoteAddress !== '...')
+    return; // Only log keys for a particular IP
+  logFile.write(line);
+});
+```
+
 ### Event: 'newSession'
 <!-- YAML
 added: v0.9.2
@@ -572,6 +600,27 @@ changes:
     `secureContext` option is missing. Otherwise, they are ignored.
 
 Construct a new `tls.TLSSocket` object from an existing TCP socket.
+
+### Event: 'keylog'
+<!-- YAML
+added: v10.20.0
+-->
+
+* `line` {Buffer} Line of ASCII text, in NSS `SSLKEYLOGFILE` format.
+
+The `keylog` event is emitted on a client `tls.TLSSocket` when key material
+is generated or received by the socket. This keying material can be stored
+for debugging, as it allows captured TLS traffic to be decrypted. It may
+be emitted multiple times, before or after the handshake completes.
+
+A typical use case is to append received lines to a common text file, which
+is later used by software (such as Wireshark) to decrypt the traffic:
+
+```js
+const logFile = fs.createWriteStream('/tmp/ssl-keys.log', { flags: 'a' });
+// ...
+tlsSocket.on('keylog', (line) => logFile.write(line));
+```
 
 ### Event: 'OCSPResponse'
 <!-- YAML
@@ -1378,7 +1427,11 @@ added: v10.6.0
 * {string} The default value of the `minVersion` option of
   [`tls.createSecureContext()`][]. It can be assigned any of the supported TLS
   protocol versions, `TLSv1.2'`, `'TLSv1.1'`, or `'TLSv1'`.
-  **Default:** `'TLSv1'`.
+  **Default:** `'TLSv1'`, unless changed using CLI options. Using
+  `--tls-min-v1.0` sets the default to `'TLSv1'`. Using `--tls-min-v1.1` sets
+  the default to `'TLSv1.1'`. Using `--tls-min-v1.2` sets the default to
+  `'TLSv1.2'`. If multiple of the options are provided, the lowest minimum is
+  used.
 
 ## Deprecated APIs
 

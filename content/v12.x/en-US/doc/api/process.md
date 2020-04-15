@@ -190,7 +190,7 @@ rejection handler.
 
 There is no notion of a top level for a `Promise` chain at which rejections can
 always be handled. Being inherently asynchronous in nature, a `Promise`
-rejection can be handled at a future point in time — possibly much later than
+rejection can be handled at a future point in time, possibly much later than
 the event loop turn it takes for the `'unhandledRejection'` event to be emitted.
 
 Another way of stating this is that, unlike in synchronous code where there is
@@ -470,7 +470,7 @@ process.on('SIGTERM', handle);
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
 * `'SIGINT'` from the terminal is supported on all platforms, and can usually be
   generated with `<Ctrl>+C` (though this may be configurable). It is not
-  generated when terminal raw mode is enabled.
+  generated when [terminal raw mode][] is enabled and `<Ctrl>+C` is used.
 * `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on
   non-Windows platforms it can be listened on, but there is no way to send or
   generate it.
@@ -773,7 +773,7 @@ added: v0.7.2
 
 * {number}
 
-The port used by Node.js's debugger when enabled.
+The port used by the Node.js debugger when enabled.
 
 ```js
 process.debugPort = 5858;
@@ -2130,6 +2130,14 @@ a [Writable][] stream.
 `process.stderr` differs from other Node.js streams in important ways. See
 [note on process I/O][] for more information.
 
+### `process.stderr.fd`
+
+* {number}
+
+This property refers to the value of underlying file descriptor of
+`process.stderr`. The value is fixed at `2`. In [`Worker`][] threads,
+this field does not exist.
+
 ## `process.stdin`
 
 * {Stream}
@@ -2163,6 +2171,14 @@ In "old" streams mode the `stdin` stream is paused by default, so one
 must call `process.stdin.resume()` to read from it. Note also that calling
 `process.stdin.resume()` itself would switch stream to "old" mode.
 
+### `process.stdin.fd`
+
+* {number}
+
+This property refers to the value of underlying file descriptor of
+`process.stdin`. The value is fixed at `0`. In [`Worker`][] threads,
+this field does not exist.
+
 ## `process.stdout`
 
 * {Stream}
@@ -2180,6 +2196,14 @@ process.stdin.pipe(process.stdout);
 
 `process.stdout` differs from other Node.js streams in important ways. See
 [note on process I/O][] for more information.
+
+### `process.stdout.fd`
+
+* {number}
+
+This property refers to the value of underlying file descriptor of
+`process.stdout`. The value is fixed at `1`. In [`Worker`][] threads,
+this field does not exist.
 
 ### A note on process I/O
 
@@ -2396,11 +2420,11 @@ cases:
   handler.
 * `2`: Unused (reserved by Bash for builtin misuse)
 * `3` **Internal JavaScript Parse Error**: The JavaScript source code
-  internal in Node.js's bootstrapping process caused a parse error. This
+  internal in the Node.js bootstrapping process caused a parse error. This
   is extremely rare, and generally can only happen during development
   of Node.js itself.
 * `4` **Internal JavaScript Evaluation Failure**: The JavaScript
-  source code internal in Node.js's bootstrapping process failed to
+  source code internal in the Node.js bootstrapping process failed to
   return a function value when evaluated. This is extremely rare, and
   generally can only happen during development of Node.js itself.
 * `5` **Fatal Error**: There was a fatal unrecoverable error in V8.
@@ -2419,7 +2443,7 @@ cases:
 * `9` **Invalid Argument**: Either an unknown option was specified,
   or an option requiring a value was provided without a value.
 * `10` **Internal JavaScript Run-Time Failure**: The JavaScript
-  source code internal in Node.js's bootstrapping process threw an error
+  source code internal in the Node.js bootstrapping process threw an error
   when the bootstrapping function was called. This is extremely rare,
   and generally can only happen during development of Node.js itself.
 * `12` **Invalid Debug Argument**: The `--inspect` and/or `--inspect-brk`
@@ -2482,6 +2506,7 @@ cases:
 [process_emit_warning]: #process_process_emitwarning_warning_type_code_ctor
 [process_warning]: #process_event_warning
 [report documentation]: report.html
+[terminal raw mode]: tty.html#tty_readstream_setrawmode_mode
 [uv_rusage_t]: http://docs.libuv.org/en/v1.x/misc.html#c.uv_rusage_t
 [wikipedia_minor_fault]: https://en.wikipedia.org/wiki/Page_fault#Minor
 [wikipedia_major_fault]: https://en.wikipedia.org/wiki/Page_fault#Major
