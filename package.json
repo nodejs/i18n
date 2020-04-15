@@ -26,6 +26,7 @@
   "devDependencies": {
     "builtins": "^3.0.1",
     "crowdin-glossary": "^1.2.0",
+    "dir-compare": "^2.2.0",
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
     "fs-extra": "^9.0.0",
