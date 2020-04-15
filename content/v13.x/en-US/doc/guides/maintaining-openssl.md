@@ -83,8 +83,8 @@ Update all architecture dependent files. Do not forget to git add or remove
 files if they are changed before commit:
 ```sh
 % git add deps/openssl/config/archs
-% git add deps/openssl/openssl/crypto/include/internal/bn_conf.h
-% git add deps/openssl/openssl/crypto/include/internal/dso_conf.h
+% git add deps/openssl/openssl/include/crypto/bn_conf.h
+% git add deps/openssl/openssl/include/crypto/dso_conf.h
 % git add deps/openssl/openssl/include/openssl/opensslconf.h
 % git commit
 ```
@@ -93,13 +93,13 @@ The commit message can be (with the openssl version set to the relevant value):
 ```text
  deps: update archs files for OpenSSL-1.1.0
 
- After an OpenSSL source update, all the config files need to be regenerated and
- comitted by:
+ After an OpenSSL source update, all the config files need to be
+ regenerated and committed by:
     $ cd deps/openssl/config
     $ make
     $ git add deps/openssl/config/archs
-    $ git add deps/openssl/openssl/crypto/include/internal/bn_conf.h
-    $ git add deps/openssl/openssl/crypto/include/internal/dso_conf.h
+    $ git add deps/openssl/openssl/include/crypto/bn_conf.h
+    $ git add deps/openssl/openssl/include/crypto/dso_conf.h
     $ git add deps/openssl/openssl/include/openssl/opensslconf.h
     $ git commit
 ```
