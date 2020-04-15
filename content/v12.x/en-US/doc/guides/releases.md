@@ -2,7 +2,7 @@
 
 This document describes the technical aspects of the Node.js release process.
 The intended audience is those who have been authorized by the Node.js
-Foundation Technical Steering Committee (TSC) to create, promote, and sign
+Technical Steering Committee (TSC) to create, promote, and sign
 official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Table of Contents
@@ -32,6 +32,7 @@ official release builds for Node.js, hosted on <https://nodejs.org/>.
   * [17. Cleanup](#17-cleanup)
   * [18. Announce](#18-announce)
   * [19. Celebrate](#19-celebrate)
+* [LTS Releases](#lts-releases)
 * [Major Releases](#major-releases)
 
 ## Who can make a release?
@@ -497,17 +498,6 @@ $ git secure-tag <vx.y.z> <commit-sha> -sm "YYYY-MM-DD Node.js vx.y.z (<release-
 The tag **must** be signed using the GPG key that's listed for you on the
 project README.
 
-Push the tag to the repo before you promote the builds. If you haven't pushed
-your tag first, then build promotion won't work properly. Push the tag using the
-following command:
-
-```console
-$ git push <remote> <vx.y.z>
-```
-
-*Note*: Please do not push the tag unless you are ready to complete the
-remainder of the release steps.
-
 ### 12. Set Up For the Next Release
 
 On release proposal branch, edit `src/node_version.h` again and:
@@ -546,14 +536,49 @@ cherry-pick the "Working on vx.y.z" commit to `master`.
 Run `make lint` before pushing to `master`, to make sure the Changelog
 formatting passes the lint rules on `master`.
 
-### 13. Promote and Sign the Release Builds
+### 13. Push the release tag
+
+Push the tag to the repo before you promote the builds. If you haven't pushed
+your tag first, then build promotion won't work properly. Push the tag using the
+following command:
+
+```console
+$ git push <remote> <vx.y.z>
+```
+
+*Note*: Please do not push the tag unless you are ready to complete the
+remainder of the release steps.
+
+### 14. Promote and Sign the Release Builds
 
 **The same individual who signed the release tag must be the one
 to promote the builds as the `SHASUMS256.txt` file needs to be signed with the
 same GPG key!**
 
-Use `tools/release.sh` to promote and sign the build. When run, it will perform
-the following actions:
+Use `tools/release.sh` to promote and sign the build. Before doing this, you'll
+need to ensure you've loaded the correct ssh key, or you'll see the following:
+
+```sh
+# Checking for releases ...
+Enter passphrase for key '/Users/<user>/.ssh/id_rsa':
+dist@direct.nodejs.org's password:
+```
+
+The key can be loaded either with `ssh-add`:
+
+```sh
+# Substitute node_id_rsa with whatever you've named the key
+$ ssh-add ~/.ssh/node_id_rsa
+```
+
+or at runtime with:
+
+```sh
+# Substitute node_id_rsa with whatever you've named the key
+$ ./tools/release.sh -i ~/.ssh/node_id_rsa
+```
+
+`tools/release.sh` will perform the following actions when run:
 
 **a.** Select a GPG key from your private keys. It will use a command similar
 to: `gpg --list-secret-keys` to list your keys. If you don't have any keys, it
@@ -597,7 +622,7 @@ be prompted to re-sign `SHASUMS256.txt`.
 **It is possible to only sign a release by running `./tools/release.sh -s
 vX.Y.Z`.**
 
-### 14. Check the Release
+### 15. Check the Release
 
 Your release should be available at `https://nodejs.org/dist/vx.y.z/` and
 <https://nodejs.org/dist/latest/>. Check that the appropriate files are in
@@ -606,7 +631,7 @@ have the right internal version strings. Check that the API docs are available
 at <https://nodejs.org/api/>. Check that the release catalog files are correct
 at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
 
-### 15. Create a Blog Post
+### 16. Create a Blog Post
 
 There is an automatic build that is kicked off when you promote new builds, so
 within a few minutes nodejs.org will be listing your new version as the latest
@@ -639,7 +664,7 @@ This script will use the promoted builds and changelog to generate the post. Run
 * Changes to `master` on the [nodejs.org repository][] will trigger a new build
   of nodejs.org so your changes should appear a few minutes after pushing.
 
-### 16. Create the release on GitHub
+### 17. Create the release on GitHub
 
 * Go to the [New release page](https://github.com/nodejs/node/releases/new).
 * Select the tag version you pushed earlier.
@@ -647,11 +672,11 @@ This script will use the promoted builds and changelog to generate the post. Run
 * For the description, copy the rest of the changelog entry.
 * Click on the "Publish release" button.
 
-### 17. Cleanup
+### 18. Cleanup
 
 Close your release proposal PR and delete the proposal branch.
 
-### 18. Announce
+### 19. Announce
 
 The nodejs.org website will automatically rebuild and include the new version.
 To announce the build on Twitter through the official @nodejs account, email
@@ -668,9 +693,41 @@ announcements.
 
 Ping the IRC ops and the other [Partner Communities][] liaisons.
 
-### 19. Celebrate
+### 20. Celebrate
 
 _In whatever form you do this..._
+
+## LTS Releases
+
+### Marking a Release Line as LTS
+
+To mark a release line as LTS, the following changes must be made to
+`src/node_version.h`:
+
+* The `NODE_MINOR_VERSION` macro must be incremented by one
+* The `NODE_PATCH_VERSION` macro must be set to `0`
+* The `NODE_VERSION_IS_LTS` macro must be set to `1`
+* The `NODE_VERSION_LTS_CODENAME` macro must be set to the codename selected
+for the LTS release.
+
+For example:
+
+```diff
+-#define NODE_MINOR_VERSION 12
+-#define NODE_PATCH_VERSION 1
++#define NODE_MINOR_VERSION 13
++#define NODE_PATCH_VERSION 0
+
+-#define NODE_VERSION_IS_LTS 0
+-#define NODE_VERSION_LTS_CODENAME ""
++#define NODE_VERSION_IS_LTS 1
++#define NODE_VERSION_LTS_CODENAME "Erbium"
+
+-#define NODE_VERSION_IS_RELEASE 0
++#define NODE_VERSION_IS_RELEASE 1
+```
+
+The changes must be made as part of a new semver-minor release.
 
 ## Major Releases
 

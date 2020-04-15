@@ -493,8 +493,12 @@ implementation can use to persist VM-specific state. This structure is passed
 to native functions when they're invoked, and it must be passed back when
 making N-API calls. Specifically, the same `napi_env` that was passed in when
 the initial native function was called must be passed to any subsequent
-nested N-API calls. Caching the `napi_env` for the purpose of general reuse is
-not allowed.
+nested N-API calls. Caching the `napi_env` for the purpose of general reuse,
+and passing the `napi_env` between instances of the same addon running on
+different [`Worker`][] threads is not allowed. The `napi_env` becomes invalid
+when an instance of a native addon is unloaded. Notification of this event is
+delivered through the callbacks given to [`napi_add_env_cleanup_hook`][] and
+[`napi_set_instance_data`][].
 
 ### napi_value
 
@@ -1432,7 +1436,7 @@ napiVersion: 1
 ```C
 NAPI_EXTERN napi_status napi_reference_unref(napi_env env,
                                              napi_ref ref,
-                                             uint32_t* result););
+                                             uint32_t* result);
 ```
 
 * `[in] env`: The environment that the API is invoked under.
@@ -4899,12 +4903,12 @@ napiVersion: 1
 
 ```C
 napi_status napi_is_promise(napi_env env,
-                            napi_value promise,
+                            napi_value value,
                             bool* is_promise);
 ```
 
 * `[in] env`: The environment that the API is invoked under.
-* `[in] promise`: The promise to examine
+* `[in] value`: The value to examine
 * `[out] is_promise`: Flag indicating whether `promise` is a native promise
   object (that is, a promise object created by the underlying engine).
 
@@ -5304,8 +5308,10 @@ This API may only be called from the main thread.
 [Xcode]: https://developer.apple.com/xcode/
 [`Number.MAX_SAFE_INTEGER`]: https://tc39.github.io/ecma262/#sec-number.max_safe_integer
 [`Number.MIN_SAFE_INTEGER`]: https://tc39.github.io/ecma262/#sec-number.min_safe_integer
+[`Worker`]: worker_threads.html#worker_threads_class_worker
 [`global`]: globals.html#globals_global
 [`init` hooks]: async_hooks.html#async_hooks_init_asyncid_type_triggerasyncid_resource
+[`napi_add_env_cleanup_hook`]: #n_api_napi_add_env_cleanup_hook
 [`napi_add_finalizer`]: #n_api_napi_add_finalizer
 [`napi_async_init`]: #n_api_napi_async_init
 [`napi_cancel_async_work`]: #n_api_napi_cancel_async_work
@@ -5341,6 +5347,7 @@ This API may only be called from the main thread.
 [`napi_queue_async_work`]: #n_api_napi_queue_async_work
 [`napi_reference_ref`]: #n_api_napi_reference_ref
 [`napi_reference_unref`]: #n_api_napi_reference_unref
+[`napi_set_instance_data`]: #n_api_napi_set_instance_data
 [`napi_set_property`]: #n_api_napi_set_property
 [`napi_throw_error`]: #n_api_napi_throw_error
 [`napi_throw_range_error`]: #n_api_napi_throw_range_error
