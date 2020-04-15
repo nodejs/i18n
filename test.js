@@ -11,7 +11,7 @@ const originalSourceLocale = 'en-US'
 describe('original content', () => {
   test('exist for all supported versions', () => {
     expect(supportedVersions.sort()).toEqual(versions.sort())
-    versions.forEach(major => {
+    versions.forEach((major) => {
       const languages = fs.readdirSync(path.join(contentDir, major))
       expect(languages.includes(originalSourceLocale)).toBe(true)
     })
@@ -19,24 +19,38 @@ describe('original content', () => {
 
   test('includes only markdown files', () => {
     expect(versions.length).toBeGreaterThan(1)
-    versions.forEach(version => {
-      const docsDir = path.join(contentDir, version, originalSourceLocale, 'doc')
+    versions.forEach((version) => {
+      const docsDir = path.join(
+        contentDir,
+        version,
+        originalSourceLocale,
+        'doc'
+      )
       const files = walk(docsDir, { directories: false })
       expect(files.length).toBeGreaterThan(0)
-      expect(files.every(file => file.relativePath.endsWith('.md')))
+      expect(files.every((file) => file.relativePath.endsWith('.md')))
     })
   })
 })
 
 describe('translated content', () => {
   test('saves original structure', () => {
-    versions.forEach(version => {
+    versions.forEach((version) => {
       const languages = fs.readdirSync(path.join(contentDir, version))
-      const originalPath = path.join(contentDir, version, originalSourceLocale, 'doc')
-      const originalFiles = fs.readdirSync(originalPath)
-      languages.forEach(language => {
+      const originalPath = path.join(
+        contentDir,
+        version,
+        originalSourceLocale,
+        'doc'
+      )
+      const originalFiles = walk(originalPath, { directories: false }).map(
+        ({ relativePath }) => relativePath
+      )
+      languages.forEach((language) => {
         const translatedPath = path.join(contentDir, version, language, 'doc')
-        const translatedFiles = fs.readdirSync(translatedPath)
+        const translatedFiles = walk(translatedPath, {
+          directories: false
+        }).map(({ relativePath }) => relativePath)
         const originTranslatedDiff = difference(originalFiles, translatedFiles)
         const translatedOriginDiff = difference(translatedFiles, originalFiles)
 
