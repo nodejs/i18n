@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs-extra')
 const path = require('path')
 const walk = require('walk-sync').entries
 const difference = require('lodash.difference')
@@ -51,10 +51,11 @@ describe('translated content', () => {
         const translatedFiles = walk(translatedPath, {
           directories: false
         }).map(({ relativePath }) => relativePath)
-        const originTranslatedDiff = difference(originalFiles, translatedFiles)
         const translatedOriginDiff = difference(translatedFiles, originalFiles)
 
-        expect(originTranslatedDiff.length).toBe(0)
+        // can be used to remove mismatch files
+        // translatedOriginDiff.map(filePath => fs.remove(path.join(translatedPath, filePath)))
+
         expect(translatedOriginDiff.length).toBe(0)
       })
     })
