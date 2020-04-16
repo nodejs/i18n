@@ -246,10 +246,10 @@ listed as supporting a later version.
 | v6.x  |         |          | v6.14.2* |          |           |
 | v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |
 | v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |
-| v10.x |         |          | v10.0.0  | v10.16.0 |           |
-| v11.x |         |          | v11.0.0  | v11.8.0  |           |
-| v12.x |         |          |          | v12.0.0  | v12.11.0  |
-| v13.x |         |          |          |          | v13.0.0   |
+| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  |
+| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |
+| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |
+| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |
 
 \* Indicates that the N-API version was released as experimental
 
@@ -457,6 +457,7 @@ typedef enum {
   napi_date_expected,
   napi_arraybuffer_expected,
   napi_detachable_arraybuffer_expected,
+  napi_would_deadlock,
 } napi_status;
 ```
 
@@ -799,9 +800,8 @@ This API can be called even if there is a pending JavaScript exception.
 ### Exceptions
 
 Any N-API function call may result in a pending JavaScript exception. This is
-obviously the case for any function that may cause the execution of
-JavaScript, but N-API specifies that an exception may be pending
-on return from any of the API functions.
+the case for any of the API functions, even those that may not cause the
+execution of JavaScript.
 
 If the `napi_status` returned by a function is `napi_ok` then no
 exception is pending and no additional action is required. If the
@@ -2448,7 +2448,8 @@ napi_status napi_get_arraybuffer_info(napi_env env,
 
 * `[in] env`: The environment that the API is invoked under.
 * `[in] arraybuffer`: `napi_value` representing the `ArrayBuffer` being queried.
-* `[out] data`: The underlying data buffer of the `ArrayBuffer`.
+* `[out] data`: The underlying data buffer of the `ArrayBuffer`. If byte_length
+  is `0`, this may be `NULL` or any other pointer value.
 * `[out] byte_length`: Length in bytes of the underlying data buffer.
 
 Returns `napi_ok` if the API succeeded.
@@ -2480,6 +2481,7 @@ napi_status napi_get_buffer_info(napi_env env,
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing the `node::Buffer` being queried.
 * `[out] data`: The underlying data buffer of the `node::Buffer`.
+  If length is `0`, this may be `NULL` or any other pointer value.
 * `[out] length`: Length in bytes of the underlying data buffer.
 
 Returns `napi_ok` if the API succeeded.
@@ -2533,7 +2535,8 @@ napi_status napi_get_typedarray_info(napi_env env,
 * `[out] length`: The number of elements in the `TypedArray`.
 * `[out] data`: The data buffer underlying the `TypedArray` adjusted by
   the `byte_offset` value so that it points to the first element in the
-  `TypedArray`.
+  `TypedArray`. If the length of the array is `0`, this may be `NULL` or
+  any other pointer value.
 * `[out] arraybuffer`: The `ArrayBuffer` underlying the `TypedArray`.
 * `[out] byte_offset`: The byte offset within the underlying native array
   at which the first element of the arrays is located. The value for the data
@@ -2568,6 +2571,7 @@ napi_status napi_get_dataview_info(napi_env env,
   properties to query.
 * `[out] byte_length`: `Number` of bytes in the `DataView`.
 * `[out] data`: The data buffer underlying the `DataView`.
+  If byte_length is `0`, this may be `NULL` or any other pointer value.
 * `[out] arraybuffer`: `ArrayBuffer` underlying the `DataView`.
 * `[out] byte_offset`: The byte offset within the data buffer from which
   to start projecting the `DataView`.
@@ -5092,6 +5096,12 @@ preventing data from being successfully added to the queue. If set to
 `napi_call_threadsafe_function()` never blocks if the thread-safe function was
 created with a maximum queue size of 0.
 
+As a special case, when `napi_call_threadsafe_function()` is called from the
+main thread, it will return `napi_would_deadlock` if the queue is full and it
+was called with `napi_tsfn_blocking`. The reason for this is that the main
+thread is responsible for reducing the number of items in the queue so, if it
+waits for room to become available on the queue, then it will deadlock.
+
 The actual call into JavaScript is controlled by the callback given via the
 `call_js_cb` parameter. `call_js_cb` is invoked on the main thread once for each
 value that was placed into the queue by a successful call to
@@ -5228,6 +5238,12 @@ This API may be called from any thread which makes use of `func`.
 <!-- YAML
 added: v10.6.0
 napiVersion: 4
+changes:
+  - version: v13.13.0
+    pr-url: https://github.com/nodejs/node/pull/32689
+    description: >
+      Return `napi_would_deadlock` when called with `napi_tsfn_blocking` from
+      the main thread and the queue is full.
 -->
 
 ```C
@@ -5245,9 +5261,13 @@ napi_call_threadsafe_function(napi_threadsafe_function func,
   `napi_tsfn_nonblocking` to indicate that the call should return immediately
   with a status of `napi_queue_full` whenever the queue is full.
 
+This API will return `napi_would_deadlock` if called with `napi_tsfn_blocking`
+from the main thread and the queue is full.
+
 This API will return `napi_closing` if `napi_release_threadsafe_function()` was
-called with `abort` set to `napi_tsfn_abort` from any thread. The value is only
-added to the queue if the API returns `napi_ok`.
+called with `abort` set to `napi_tsfn_abort` from any thread.
+
+The value is only added to the queue if the API returns `napi_ok`.
 
 This API may be called from any thread which makes use of `func`.
 

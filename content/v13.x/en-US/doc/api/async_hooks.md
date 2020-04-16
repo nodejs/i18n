@@ -681,10 +681,12 @@ asyncResource.triggerAsyncId();
 * `options` {Object}
   * `triggerAsyncId` {number} The ID of the execution context that created this
   async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the
-  object is garbage collected. This usually does not need to be set (even if
-  `emitDestroy` is called manually), unless the resource's `asyncId` is
-  retrieved and the sensitive API's `emitDestroy` is called with it.
+  * `requireManualDestroy` {boolean} If set to `true`, disables `emitDestroy`
+  when the object is garbage collected. This usually does not need to be set
+  (even if `emitDestroy` is called manually), unless the resource's `asyncId`
+  is retrieved and the sensitive API's `emitDestroy` is called with it.
+  When set to `false`, the `emitDestroy` call on garbage collection
+  will only take place if there is at least one active `destroy` hook.
   **Default:** `false`.
 
 Example usage:
@@ -952,7 +954,7 @@ added: v13.10.0
 
 This method returns the current store.
 If this method is called outside of an asynchronous context initialized by
-calling `asyncLocalStorage.run` or `asyncLocalStorage.runAndReturn`, it will
+calling `asyncLocalStorage.run` or `asyncLocalStorage.runSyncAndReturn`, it will
 return `undefined`.
 
 ### `asyncLocalStorage.enterWith(store)`

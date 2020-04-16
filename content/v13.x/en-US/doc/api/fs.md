@@ -152,8 +152,8 @@ fs.open(Buffer.from('/open/some/file.txt'), 'r', (err, fd) => {
 
 On Windows, Node.js follows the concept of per-drive working directory. This
 behavior can be observed when using a drive path without a backslash. For
-example `fs.readdirSync('c:\\')` can potentially return a different result than
-`fs.readdirSync('c:')`. For more information, see
+example `fs.readdirSync('C:\\')` can potentially return a different result than
+`fs.readdirSync('C:')`. For more information, see
 [this MSDN page][MSDN-Rel-Path].
 
 ### URL object support
@@ -2438,6 +2438,10 @@ Synchronous lstat(2).
 <!-- YAML
 added: v0.1.8
 changes:
+  - version: v13.11.0
+    pr-url: https://github.com/nodejs/node/pull/31530
+    description: In `recursive` mode, the callback now receives the first
+                 created path as an argument.
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/21875
     description: The second argument can now be an `options` object with
@@ -2496,6 +2500,9 @@ See also: mkdir(2).
 <!-- YAML
 added: v0.1.21
 changes:
+  - version: v13.11.0
+    pr-url: https://github.com/nodejs/node/pull/31530
+    description: In `recursive` mode, the first created path is returned now.
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/21875
     description: The second argument can now be an `options` object with
@@ -2759,7 +2766,7 @@ changes:
 
 Read data from the file specified by `fd`.
 
-`buffer` is the buffer that the data will be written to.
+`buffer` is the buffer that the data (read from the fd) will be written to.
 
 `offset` is the offset in the buffer to start writing at.
 
@@ -3072,6 +3079,68 @@ Returns the number of `bytesRead`.
 
 For detailed information, see the documentation of the asynchronous version of
 this API: [`fs.read()`][].
+
+## `fs.readSync(fd, buffer, [options])`
+<!-- YAML
+added: v13.13.0
+changes:
+  - version: v13.13.0
+    pr-url: https://github.com/nodejs/node/pull/32460
+    description: Options object can be passed in
+                 to make offset, length and position optional
+-->
+
+* `fd` {integer}
+* `buffer` {Buffer|TypedArray|DataView}
+* `options` {Object}
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* Returns: {number}
+
+Returns the number of `bytesRead`.
+
+Similar to the above `fs.readSync` function, this version takes an optional `options` object.
+If no `options` object is specified, it will default with the above values.
+
+For detailed information, see the documentation of the asynchronous version of
+this API: [`fs.read()`][].
+
+## `fs.readv(fd, buffers[, position], callback)`
+<!-- YAML
+added: v13.13.0
+-->
+
+* `fd` {integer}
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* `callback` {Function}
+  * `err` {Error}
+  * `bytesRead` {integer}
+  * `buffers` {ArrayBufferView[]}
+
+Read from a file specified by `fd` and write to an array of `ArrayBufferView`s
+using `readv()`.
+
+`position` is the offset from the beginning of the file from where data
+should be read. If `typeof position !== 'number'`, the data will be read
+from the current position.
+
+The callback will be given three arguments: `err`, `bytesRead`, and
+`buffers`. `bytesRead` is how many bytes were read from the file.
+
+## `fs.readvSync(fd, buffers[, position])`
+<!-- YAML
+added: v13.13.0
+-->
+
+* `fd` {integer}
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* Returns: {number} The number of bytes read.
+
+For detailed information, see the documentation of the asynchronous version of
+this API: [`fs.readv()`][].
 
 ## `fs.realpath(path[, options], callback)`
 <!-- YAML
@@ -3805,6 +3874,9 @@ unavailable in some situations.
 
 The recursive option is only supported on macOS and Windows.
 
+On Windows, no events will be emitted if the watched directory is moved or
+renamed. An `EPERM` error is reported when the watched directory is deleted.
+
 #### Availability
 
 <!--type=misc-->
@@ -3821,10 +3893,10 @@ to be notified of filesystem changes.
 * On Aix systems, this feature depends on [`AHAFS`][], which must be enabled.
 
 If the underlying functionality is not available for some reason, then
-`fs.watch` will not be able to function. For example, watching files or
-directories can be unreliable, and in some cases impossible, on network file
-systems (NFS, SMB, etc), or host file systems when using virtualization software
-such as Vagrant, Docker, etc.
+`fs.watch()` will not be able to function and may thrown an exception.
+For example, watching files or directories can be unreliable, and in some
+cases impossible, on network file systems (NFS, SMB, etc) or host file systems
+when using virtualization software such as Vagrant or Docker.
 
 It is still possible to use `fs.watchFile()`, which uses stat polling, but
 this method is slower and less reliable.
@@ -4419,6 +4491,25 @@ If one or more `filehandle.read()` calls are made on a file handle and then a
 `filehandle.readFile()` call is made, the data will be read from the current
 position till the end of the file. It doesn't always read from the beginning
 of the file.
+
+#### `filehandle.readv(buffers[, position])`
+<!-- YAML
+added: v13.13.0
+-->
+
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* Returns: {Promise}
+
+Read from a file and write to an array of `ArrayBufferView`s
+
+The `Promise` is resolved with an object containing a `bytesRead` property
+identifying the number of bytes read, and a `buffers` property containing
+a reference to the `buffers` input.
+
+`position` is the offset from the beginning of the file where this data
+should be read from. If `typeof position !== 'number'`, the data will be read
+from the current position.
 
 #### `filehandle.stat([options])`
 <!-- YAML
@@ -5613,6 +5704,7 @@ the file contents.
 [`fs.readFileSync()`]: #fs_fs_readfilesync_path_options
 [`fs.readdir()`]: #fs_fs_readdir_path_options_callback
 [`fs.readdirSync()`]: #fs_fs_readdirsync_path_options
+[`fs.readv()`]: #fs_fs_readv_fd_buffers_position_callback
 [`fs.realpath()`]: #fs_fs_realpath_path_options_callback
 [`fs.rmdir()`]: #fs_fs_rmdir_path_options_callback
 [`fs.stat()`]: #fs_fs_stat_path_options_callback

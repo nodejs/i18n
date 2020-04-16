@@ -3,8 +3,6 @@
 coverage
 node_modules
 *.tgz
-temp
 .idea
 .vscode
 yarn.lock
-stats.json

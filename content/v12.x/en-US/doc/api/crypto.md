@@ -1364,8 +1364,8 @@ const signature = sign.sign(privateKey, 'hex');
 const verify = crypto.createVerify('SHA256');
 verify.write('some data to sign');
 verify.end();
-console.log(verify.verify(publicKey, signature));
-// Prints: true or false
+console.log(verify.verify(publicKey, signature, 'hex'));
+// Prints: true
 ```
 
 Example: Using the [`sign.update()`][] and [`verify.update()`][] methods:
@@ -2441,6 +2441,8 @@ changes:
 * `privateKey` {Object | string | Buffer | KeyObject}
   * `oaepHash` {string} The hash function to use for OAEP padding.
     **Default:** `'sha1'`
+  * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP
+     padding. If not specified, no label is used.
   * `padding` {crypto.constants} An optional padding value defined in
     `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`,
     `crypto.constants.RSA_PKCS1_PADDING`, or
@@ -2529,6 +2531,8 @@ changes:
   * `key` {string | Buffer | KeyObject} A PEM encoded public or private key.
   * `oaepHash` {string} The hash function to use for OAEP padding.
     **Default:** `'sha1'`
+  * `oaepLabel` {Buffer | TypedArray | DataView} The label to use for OAEP
+     padding. If not specified, no label is used.
   * `passphrase` {string | Buffer} An optional passphrase for the private key.
   * `padding` {crypto.constants} An optional padding value defined in
     `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`,
