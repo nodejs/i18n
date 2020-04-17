@@ -85,6 +85,6 @@ An async convenience function that returns a subset of pages by Node.js version 
 
 An array of all the locale codes used in the project, like `en-US`, `es-ES`, etc.
 
-### `nodeVersions`
+### `supportedVersions`
 
 An array of the major Node.js version ranges supported in the project, like `v12.x` and `v10.x`.
