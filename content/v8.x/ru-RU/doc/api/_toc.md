@@ -1,7 +1,7 @@
-@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+@// NB(chrisdickinson): Если вы перемещаете этот файл, обязательно обновите tools/doc/html.js до @// в месте нового расположения.
 
 * [Об этих документах](documentation.html)
-* [Примеры использования &](synopsis.html)
+* [Примеры использования](synopsis.html)
 
 <div class="line"></div>
 
