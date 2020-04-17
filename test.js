@@ -65,7 +65,7 @@ describe('npm module', () => {
     allPages,
     getPages,
     locales,
-    nodeVersions
+    supportedVersions
   } = require('.')
 
   test('exports `allPages` array', () => {
@@ -81,6 +81,7 @@ describe('npm module', () => {
   })
 
   test('exports `supportedVersions` object from package.json', () => {
+    expect(Array.isArray(supportedVersions)).toBe(true)
     expect(supportedVersions).toEqual(require('./package.json').supportedVersions)
   })
 
