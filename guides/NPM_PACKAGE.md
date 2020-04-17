@@ -10,6 +10,8 @@ You can install from the repo's master branch:
 
 ```sh
 npm install nodejs/i18n
+# or
+yarn add nodejs/i18n
 ```
 
 Or install from a specific branch or tag:
