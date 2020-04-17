@@ -1,23 +1,24 @@
 # Об этой документации
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Цель данной документации - всестороннее объяснение API Node.js как со справочной, так и с концептуальной точки зрения. Каждый раздел описывает встроенный модуль или концепт высокого уровня.
+The goal of this documentation is to comprehensively explain the Node.js API, both from a reference as well as a conceptual point of view. Each section describes a built-in module or high-level concept.
 
-При необходимости типы свойств, аргументы методов и аргументы, предоставляемые обработчикам событий, подробно описываются в списке под заголовком темы.
+Where appropriate, property types, method arguments, and the arguments provided to event handlers are detailed in a list underneath the topic heading.
 
 ## Помощь проекту
 
 If errors are found in this documentation, please [submit an issue](https://github.com/nodejs/node/issues/new) or see [the contributing guide](https://github.com/nodejs/node/blob/master/CONTRIBUTING.md) for directions on how to submit a patch.
 
-Каждый файл генерируется на основе соответствующего файла `.md` в папке `doc/api/` в исходном дереве Node.js. Документация генерируется с помощью программы `tools/doc/generate.js`. Шаблон HTML находится по адресу `doc/template.html`.
+Every file is generated based on the corresponding `.md` file in the `doc/api/` folder in Node.js's source tree. The documentation is generated using the `tools/doc/generate.js` program. An HTML template is located at `doc/template.html`.
 
 ## Индекс стабильности
 
 <!--type=misc-->
 
-Throughout the documentation are indications of a section's stability. API Node.js все еще меняется, и по мере его развития некоторые части становятся более надежными, чем другие. Некоторые из них настолько хорошо проверены и настолько надежны, что вряд ли они когда-нибудь изменятся. Другие являются совершенно новыми и экспериментальными, или, как известно, опасны и находятся в процессе доработки.
+Throughout the documentation are indications of a section's stability. The Node.js API is still somewhat changing, and as it matures, certain parts are more reliable than others. Some are so proven, and so relied upon, that they are unlikely to ever change at all. Others are brand new and experimental, or known to be hazardous and in the process of being redesigned.
 
 Индексы стабильности следующие:
 
@@ -25,25 +26,26 @@ Throughout the documentation are indications of a section's stability. API Node.
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Стабильность: 1 - экспериментальный. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Стабильность: 2 - Стабильно. Compatibility with the npm ecosystem is a high priority.
 
-Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Конечные пользователи могут не знать, что используются экспериментальные функции, и, следовательно, могут возникать непредвиденные сбои или изменения в поведении при модификации API. Чтобы избежать подобного рода сюрпризов, `Экспериментальные` функции могут потребовать флаг командной строки, чтобы точно разрешить их, или может появиться предупреждение процесса. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. End users may not be aware that experimental features are being used, and therefore may experience unexpected failures or behavior changes when API modifications occur. To help avoid such surprises, `Experimental` features may require a command-line flag to explicitly enable them, or may cause a process warning to be emitted. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Вывод в формате JSON
+
 <!-- YAML
 added: v0.6.12
 -->
 
 > Стабильность: 1 - экспериментальный
 
-Каждый документ `.html` имеет соответствующий документ `.json`, представляющий ту же информацию в структурированном виде. Эта функция является экспериментальной и добавлена в помощь IDE и других утилит, которые хотят выполнять программные действия с документацией.
+Every `.html` document has a corresponding `.json` document presenting the same information in a structured manner. This feature is experimental, and added for the benefit of IDEs and other utilities that wish to do programmatic things with the documentation.
 
 ## Системные вызовы и справочные страницы
 
-Системные вызовы, такие как open (2) и read (2), определяют интерфейс между пользовательскими программами и базовой операционной системой. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. Документы ссылаются на соответствующие справочные страницы, которые описывают работу системных вызовов.
+System calls like open(2) and read(2) define the interface between user programs and the underlying operating system. Node.js functions which simply wrap a syscall, like [`fs.open()`][], will document that. The docs link to the corresponding man pages (short for manual pages) which describe how the syscalls work.
 
-Большинство системных вызовов Unix имеют эквивалентные вызовы в Windows, но поведение может отличаться в Windows относительно Linux и macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).
+Most Unix syscalls have Windows equivalents, but behavior may differ on Windows relative to Linux and macOS. For an example of the subtle ways in which it's sometimes impossible to replace Unix syscall semantics on Windows, see [Node.js issue 4760](https://github.com/nodejs/node/issues/4760).

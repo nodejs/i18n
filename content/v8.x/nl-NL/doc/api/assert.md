@@ -11,9 +11,11 @@ Een `strict` en een `legacy` module bestaan, maar het is aanbevolen om alleen de
 Voor meer informatie over de gebruikte gelijkheidsvergelijkingen zie [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Strikte modus
+
 <!-- YAML
 added: V8.13.0
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/17002
     description: Added strict mode to the assert module.
@@ -47,18 +49,22 @@ assert.deepEqual(/a/gi, new Date());
 ```
 
 ## assert(value[, message])
+
 <!-- YAML
 added: v0.5.9
 -->
+
 * `value` {any}
 * `message` {any}
 
 Een alias van [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12142
     description: Set and Map content is also compared
@@ -72,6 +78,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -135,9 +142,11 @@ assert.deepEqual(obj1, obj4);
 Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.deepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 changes:
+
   - version: v8.5.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: Error names and messages are now properly compared
@@ -154,6 +163,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -169,8 +179,8 @@ Generally identical to `assert.deepEqual()` with a few exceptions:
 * Enkel [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties) worden overwogen.
 * [`Error`][] messages are always compared, even though this property is non-enumerable.
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) worden zowel als object als oningepakte waarden vergeleken.
-* Object eigenschappen worden ongeordend vergeleken.
-* Map sleutels en Set items worden ongeordend vergeleken.
+* Object properties are compared unordered.
+* Map keys and Set items are compared unordered.
 * Recursie stopt als beide zijden verschillen of beide zijden een circulaire verwijzing tegenkomen.
 
 ```js
@@ -208,12 +218,14 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, ingesteld gelijk aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
+Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -245,9 +257,11 @@ assert.doesNotReject(
 ```
 
 ## assert.doesNotThrow(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/2407
     description: The `message` parameter is respected now.
@@ -255,6 +269,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -303,9 +318,11 @@ assert.doesNotThrow(
 ```
 
 ## assert.equal(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -337,10 +354,13 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 Wanneer de waarden niet gelijk zijn, wordt er een `AssertionError` gegooid met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.fail(message)
+
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -376,6 +396,7 @@ assert.fail('a', 'b');
 ```
 
 Voorbeeld van gebruik van `stackStartFunction` om de stacktrace van de uitzondering af te korten:
+
 ```js
 function suppressFrame() {
   assert.fail('a', 'b', undefined, '!==', suppressFrame);
@@ -388,9 +409,11 @@ suppressFrame();
 ```
 
 ## assert.ifError(value)
+
 <!-- YAML
 added: v0.1.97
 -->
+
 * `value` {any}
 
 Throws `value` if `value` is truthy. This is useful when testing the `error` argument in callbacks.
@@ -411,9 +434,11 @@ assert.ifError(new Error());
 ```
 
 ## assert.notDeepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -464,9 +489,11 @@ assert.notDeepEqual(obj1, obj4);
 Wanneer de waarden diep gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -486,9 +513,11 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 If the values are deeply and strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. If the `message` parameter is undefined, a default error message is assigned.
 
 ## assert.notEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -519,9 +548,11 @@ assert.notEqual(1, '1');
 If the values are equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een foutmelding toegewezen.
 
 ## assert.notStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -544,9 +575,11 @@ assert.notStrictEqual(1, '1');
 If the values are strictly equal, an `AssertionError` is thrown with a `message` property set equal to the value of the `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
 
 ## assert.ok(value[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `value` {any}
 * `message` {any}
 
@@ -570,9 +603,11 @@ assert.ok(false, 'it\'s false');
 ```
 
 ## assert.strictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -595,9 +630,11 @@ assert.strictEqual(1, '1');
 Wanneer de waarden niet strikt gelijk zijn, wordt er een `AssertionError` geworpen met een `message` eigenschap, gelijkgesteld aan de waarde van de `message` parameter. Wanneer de `message` parameter onbepaald is, wordt er een standaard foutmelding toegewezen.
 
 ## assert.rejects(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|Object}
 * `message` {any}
@@ -633,9 +670,11 @@ assert.rejects(
 ```
 
 ## assert.throws(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/23223
     description: The `error` parameter can now be an object as well.
@@ -643,6 +682,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|object}
 * `message` {any}
@@ -709,6 +749,9 @@ assert.throws(
 ```
 
 Note that `error` can not be a string. Wanneer een tekenreeks wordt verstrekt als tweede argument, dan wordt verondersteld dat `error` wordt weggelaten, en wordt als alternatief de tekenreeks voor `message` gebruikt. Dit kan leiden tot makkelijk te missen fouten. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
+
 ```js
 function throwingFirst() {
   throw new Error('First');

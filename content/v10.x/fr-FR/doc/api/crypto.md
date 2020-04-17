@@ -1,4 +1,4 @@
-# Crypto
+# Cryptographie
 
 <!--introduced_in=v0.3.6-->
 
@@ -34,6 +34,7 @@ try {
 ```
 
 ## Classe : Certificate
+
 <!-- YAML
 added: v0.11.8
 -->
@@ -42,12 +43,14 @@ SPKAC est un mécanisme de requête de signature de certificat implémenté à l
 
 Notez que `<keygen>` est obsolète depuis [HTML 5.2](https://www.w3.org/TR/html52/changes.html#features-removed) et les nouveaux projets ne devraient plus utiliser cet élément.
 
-Le module `crypto` fournit la classe `Certificate` pour travailler avec les données de SPKAC. L'utilisation la plus courante est la gestion de la sortie générée par l'élément `<keygen>` de HTML5. Node.js uses [OpenSSL's SPKAC implementation](https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html) internally.
+Le module `crypto` fournit la classe `Certificate` pour travailler avec les données de SPKAC. L'utilisation la plus courante est la gestion de la sortie générée par l'élément `<keygen>` de HTML5. Node.js utilise [l'implémentation SPKAC d'OpenSSL](https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html) en interne.
 
 ### Certificate.exportChallenge(spkac)
+
 <!-- YAML
 added: v9.0.0
 -->
+
 * `spkac` {string | Buffer | TypedArray | DataView}
 * Renvoie : {Buffer} Le composant challenge de la structure de données `spkac`, qui inclut une clé publique et un challenge.
 
@@ -60,9 +63,11 @@ console.log(challenge.toString('utf8'));
 ```
 
 ### Certificate.exportPublicKey(spkac[, encoding])
+
 <!-- YAML
 added: v9.0.0
 -->
+
 * `spkac` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `spkac` string.
 * Renvoie : {Buffer} Le composant clé publique de la structure de données `spkac`, qui inclut une clé publique et un challenge.
@@ -76,9 +81,11 @@ console.log(publicKey);
 ```
 
 ### Certificate.verifySpkac(spkac)
+
 <!-- YAML
 added: v9.0.0
 -->
+
 * `spkac` {Buffer | TypedArray | DataView}
 * Renvoie : {boolean} `true` si la structure de données `spkac` est valide, `false` dans le cas contraire.
 
@@ -91,7 +98,7 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 
 ### API obsolète
 
-As a still supported legacy interface, it is possible (but not recommended) to create new instances of the `crypto.Certificate` class as illustrated in the examples below.
+Comme l'interface obsolète est toujours supporté, il est possible (mais non recommandé), de créer de nouvelles instances de la classe `crypto.Certificate` comme illustré dans les exemples ci-dessous.
 
 #### new crypto.Certificate()
 
@@ -105,9 +112,11 @@ const cert2 = crypto.Certificate();
 ```
 
 #### certificate.exportChallenge(spkac)
+
 <!-- YAML
 added: v0.11.8
 -->
+
 * `spkac` {string | Buffer | TypedArray | DataView}
 * Renvoie : {Buffer} Le composant challenge de la structure de données `spkac`, qui inclut une clé publique et un challenge.
 
@@ -120,9 +129,11 @@ console.log(challenge.toString('utf8'));
 ```
 
 #### certificate.exportPublicKey(spkac)
+
 <!-- YAML
 added: v0.11.8
 -->
+
 * `spkac` {string | Buffer | TypedArray | DataView}
 * Renvoie : {Buffer} Le composant clé publique de la structure de données `spkac`, qui inclut une clé publique et un challenge.
 
@@ -135,9 +146,11 @@ console.log(publicKey);
 ```
 
 #### certificate.verifySpkac(spkac)
+
 <!-- YAML
 added: v0.11.8
 -->
+
 * `spkac` {Buffer | TypedArray | DataView}
 * Renvoie : {boolean} `true` si la structure de données `spkac` est valide, `false` dans le cas contraire.
 
@@ -149,14 +162,15 @@ console.log(cert.verifySpkac(Buffer.from(spkac)));
 ```
 
 ## Classe : Cipher
+
 <!-- YAML
 added: v0.1.94
 -->
 
 Les instances de la classe `Cipher` sont utilisées pour crypter des données. La classe peut être utilisée de deux manières :
 
-- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes non cryptées sont écrites pour produire des données cryptées côté lecture, ou bien
-- En utilisant les méthodes [`cipher.update()`][] et [`cipher.final()`][] pour produire les données cryptées.
+* En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes non cryptées sont écrites pour produire des données cryptées côté lecture, ou bien
+* En utilisant les méthodes [`cipher.update()`][] et [`cipher.final()`][] pour produire les données cryptées.
 
 Les méthodes [`crypto.createCipher()`][] ou [`crypto.createCipheriv()`][] sont utilisées pour créer des instances de `Cipher`. Les objets `Cipher` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -215,7 +229,7 @@ const output = fs.createWriteStream('test.enc');
 input.pipe(cipher).pipe(output);
 ```
 
-Exemple : Utilisation des méthodes [`cipher.update()`][] et [`cipher.final()`][] :
+Exemple : utilisation des méthodes [`cipher.update()`][] et [`cipher.final()`][] :
 
 ```js
 const crypto = require('crypto');
@@ -237,58 +251,69 @@ console.log(encrypted);
 ```
 
 ### cipher.final([outputEncoding])
+
 <!-- YAML
 added: v0.1.94
 -->
+
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string} Tout contenu chiffré restant. If `outputEncoding` is specified, a string is returned. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `cipher.final()` appelée, l'objet `Cipher` ne peut plus être utilisé pour crypter des données. Appeler `cipher.final()` plus d'une fois génèrera une erreur.
 
 ### cipher.setAAD(buffer[, options])
+
 <!-- YAML
 added: v1.0.0
 -->
+
 * `buffer` {Buffer}
-* `options` {Object} [`stream.transform` options][]
-  - `plaintextLength` {number}
+* `options` {Object} [`stream.transform` options][] 
+  * `plaintextLength` {number}
 * Renvoie : {Cipher} pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `cipher.setAAD()` method sets the value used for the _additional authenticated data_ (AAD) input parameter.
+When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `cipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
-The `options` argument is optional for `GCM` and `OCB`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
+The `options` argument is optional for `GCM` and `OCB`. Lorsque vous utilisez `CCM`, l'option `plaintextLength` doit être spécifiée et ses valeurs doivent correspondre à la longueur du texte brut en octets. Voir [mode CCM](#crypto_ccm_mode).
 
 La méthode `cipher.setAAD()` doit être appelée avant [`cipher.update()`][].
 
 ### cipher.getAuthTag()
+
 <!-- YAML
 added: v1.0.0
 -->
-* Returns: {Buffer} When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the _authentication tag_ that has been computed from the given data.
+
+* Returns: {Buffer} When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `cipher.getAuthTag()` method returns a [`Buffer`][] containing the *authentication tag* that has been computed from the given data.
 
 La méthode `cipher.getAuthTag()` ne devrait être appelée qu'après la finalisation du cryptage par l'appel à la méthode [`cipher.final()`][].
 
 ### cipher.setAutoPadding([autoPadding])
+
 <!-- YAML
 added: v0.7.1
 -->
-* `autoPadding` {boolean} **Par défaut :** `true`
+
+* `autoPadding` {boolean} **Default:** `true`
 * Renvoie : {Cipher} pour le chaînage de méthodes.
 
 Lors de l'utilisation d'algorithmes de chiffrement par blocs, la classe `Cipher` ajoutera automatiquement du remplissage aux données d'entrée pour obtenir la taille de bloc appropriée. Pour désactiver le remplissage par défaut, appelez `cipher.setAutoPadding(false)`.
 
-When `autoPadding` is `false`, the length of the entire input data must be a multiple of the cipher's block size or [`cipher.final()`][] will throw an error. Désactiver le remplissage automatique est utile pour des remplissages non-standard, par exemple utilisant `0x0` au lieu du remplissage PKCS.
+Quand `autoPadding` vaut `false`, la longueur de la totalité des données d'entrée doit être un multiple de la longueur du bloc de chiffrement, ou [`cipher.final()`][] génèrera une erreur. Désactiver le remplissage automatique est utile pour des remplissages non-standard, par exemple utilisant `0x0` au lieu du remplissage PKCS.
 
 La méthode `cipher.setAutoPadding()` doit être appelée avant [`cipher.final()`][].
 
 ### cipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+
 <!-- YAML
 added: v0.1.94
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the data.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
@@ -301,14 +326,15 @@ The `outputEncoding` specifies the output format of the enciphered data. Si `out
 La méthode `cipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`cipher.final()`][]. Appeler `cipher.update()` après [`cipher.final()`][] génèrera une erreur.
 
 ## Classe : Decipher
+
 <!-- YAML
 added: v0.1.94
 -->
 
 Les instances de la classe `Decipher` sont utilisées pour déchiffre des données. La classe peut être utilisée de deux manières :
 
-- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes cryptées sont écrites pour produire des données non cryptées côté lecture, ou bien
-- En utilisant les méthodes [`decipher.update()`][] and [`decipher.final()`][] pour produire les données non cryptées.
+* En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données brutes cryptées sont écrites pour produire des données non cryptées côté lecture, ou bien
+* En utilisant les méthodes [`decipher.update()`][] and [`decipher.final()`][] pour produire les données non cryptées.
 
 Les méthodes [`crypto.createDecipher()`][] ou [`crypto.createDecipheriv()`][] sont utilisées pour créer des instances de `Decipher`. Les objets `Decipher` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -367,7 +393,7 @@ const output = fs.createWriteStream('test.js');
 input.pipe(decipher).pipe(output);
 ```
 
-Exemple : Utilisation des méthodes [`decipher.update()`][] et [`decipher.final()`][] :
+Exemple : utilisation des méthodes [`decipher.update()`][] et [`decipher.final()`][] :
 
 ```js
 const crypto = require('crypto');
@@ -391,56 +417,66 @@ console.log(decrypted);
 ```
 
 ### decipher.final([outputEncoding])
+
 <!-- YAML
 added: v0.1.94
 -->
+
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string} Tout contenu déchiffré restant. If `outputEncoding` is specified, a string is returned. Si `outputEncoding` est omis, un [`Buffer`][] est renvoyé.
 
 Une fois la méthode `decipher.final()` appelée, l'objet `Decipher` ne peut plus être utilisé pour décrypter des données. Appeler `decipher.final()` plus d'une fois génèrera une erreur.
 
 ### decipher.setAAD(buffer[, options])
+
 <!-- YAML
 added: v1.0.0
 changes:
+
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9398
     description: This method now returns a reference to `decipher`.
 -->
+
 * `buffer` {Buffer | TypedArray | DataView}
-* `options` {Object} [`stream.transform` options][]
-  - `plaintextLength` {number}
-* Returns: {Decipher} for method chaining.
+* `options` {Object} [`stream.transform` options][] 
+  * `plaintextLength` {number}
+* Renvoie : {Decipher} pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `decipher.setAAD()` method sets the value used for the _additional authenticated data_ (AAD) input parameter.
+When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `decipher.setAAD()` method sets the value used for the *additional authenticated data* (AAD) input parameter.
 
-The `options` argument is optional for `GCM`. When using `CCM`, the `plaintextLength` option must be specified and its value must match the length of the plaintext in bytes. See [CCM mode](#crypto_ccm_mode).
+L'argument `options` est optionnel pour `GCM`. Lorsque vous utilisez `CCM`, l'option `plaintextLength` doit être spécifiée et ses valeurs doivent correspondre à la longueur du texte brut en octets. Voir [mode CCM](#crypto_ccm_mode).
 
 La méthode `decipher.setAAD()` doit être appelée avant [`decipher.update()`][].
 
 ### decipher.setAuthTag(buffer)
+
 <!-- YAML
 added: v1.0.0
 changes:
+
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9398
     description: This method now returns a reference to `decipher`.
 -->
+
 * `buffer` {Buffer | TypedArray | DataView}
-* Returns: {Decipher} for method chaining.
+* Renvoie : {Decipher} pour le chaînage de méthodes.
 
-When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received _authentication tag_. Si aucun tag n'est fourni ou si le texte chiffré a été falsifié [`decipher.final()`][] sera lancé, isera lancé, indiquant que le texte chiffré devrait être rejeté en raison de l'échec de l'authentification.
+When using an authenticated encryption mode (`GCM`, `CCM` and `OCB` are currently supported), the `decipher.setAuthTag()` method is used to pass in the received *authentication tag*. Si aucun tag n'est fourni ou si le texte chiffré a été falsifié [`decipher.final()`][] sera lancé, isera lancé, indiquant que le texte chiffré devrait être rejeté en raison de l'échec de l'authentification.
 
-Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Un tel contrôle *doit* doit être implémenté par les applications et est crucial pour l'authenticité des données cryptées, sinon une attaque peut utiliser un tag d'authentification arbitrairement court pour augmenter ses chances de passer l'authentification avec succès (jusqu'à 0.39%). It is highly recommended to associate one of the values 16, 15, 14, 13, 12, 8 or 4 bytes with each key, and to only permit authentication tags of that length, see [NIST SP 800-38D](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
+Notez que cette version de Node.js ne vérifie pas la longueur du tag d'authentification GCM. Un tel contrôle *doit* doit être implémenté par les applications et est crucial pour l'authenticité des données cryptées, sinon une attaque peut utiliser un tag d'authentification arbitrairement court pour augmenter ses chances de passer l'authentification avec succès (jusqu'à 0.39%). Il est fortement recommandé d'associer à chaque clé une des valeurs 16, 15, 14, 13, 12, 8 ou 4 octets, et de ne permettre que des tags d'authentification de cette longueur, voir [NIST SP 800-38D](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf).
 
 La méthode `decipher.setAuthTag()` doit être appelée avant [`decipher.final()`][].
 
 ### decipher.setAutoPadding([autoPadding])
+
 <!-- YAML
 added: v0.7.1
 -->
+
 * `autoPadding` {boolean} **Par défaut :** `true`
-* Returns: {Decipher} for method chaining.
+* Renvoie : {Decipher} pour le chaînage de méthodes.
 
 Lorsque des données ont été cryptées sans remplissage de bloc standard, l'appel à `decipher.setAutoPadding(false)` désactivera le remplissage automatique pour empêcher [`decipher.final()`][] de rechercher et supprimer le remplissage.
 
@@ -449,13 +485,16 @@ Désactiver le remplissage automatique ne fonctionnera que si la longueur des do
 La méthode `decipher.setAutoPadding()` doit être appelée avant [`decipher.final()`][].
 
 ### decipher.update(data\[, inputEncoding\]\[, outputEncoding\])
+
 <!-- YAML
 added: v0.1.94
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
@@ -468,6 +507,7 @@ The `outputEncoding` specifies the output format of the enciphered data. Si `out
 La méthode `decipher.update()` peut être appelée plusieurs fois avec de nouvelles données jusqu'à l'appel de [`decipher.final()`][]. Appeler `decipher.update()` après [`decipher.final()`][] génèrera une erreur.
 
 ## Classe : DiffieHellman
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -497,9 +537,11 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 ```
 
 ### diffieHellman.computeSecret(otherPublicKey\[, inputEncoding\]\[, outputEncoding\])
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of an `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
@@ -510,69 +552,84 @@ Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de 
 Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.generateKeys([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
 Génère des valeurs de clés Diffie-Hellman privée et publique, et retourne la clé publique dans l'`encoding` spécifié. Cette clé devrait être transférée à l'autre partie. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getGenerator([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
 Returns the Diffie-Hellman generator in the specified `encoding`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPrime([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
 Returns the Diffie-Hellman prime in the specified `encoding`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPrivateKey([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
 Returns the Diffie-Hellman private key in the specified `encoding`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.getPublicKey([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
 Returns the Diffie-Hellman public key in the specified `encoding`. Si `Encoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
 ### diffieHellman.setPrivateKey(privateKey[, encoding])
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `privateKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `privateKey` string.
 
 Définit la clé privée Diffie-Hellman. If the `encoding` argument is provided, `privateKey` is expected to be a string. Si `encoding` est omis, `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.setPublicKey(publicKey[, encoding])
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
 
 Définit la clé publique Diffie-Hellman. If the `encoding` argument is provided, `publicKey` is expected to be a string. Si `encoding` est omis, `publicKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
 ### diffieHellman.verifyError
+
 <!-- YAML
 added: v0.11.12
 -->
@@ -587,6 +644,7 @@ Les valeurs suivantes sont valides pour cette propriété (comme définies dans 
 * `DH_NOT_SUITABLE_GENERATOR`
 
 ## Classe : ECDH
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -616,6 +674,7 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 ```
 
 ### Class Method: ECDH.convertKey(key, curve[, inputEncoding[, outputEncoding[, format]]])
+
 <!-- YAML
 added: v10.0.0
 -->
@@ -627,15 +686,15 @@ added: v10.0.0
 * `format` {string} **Default:** `'uncompressed'`
 * Renvoie : {Buffer | string}
 
-Converts the EC Diffie-Hellman public key specified by `key` and `curve` to the format specified by `format`. The `format` argument specifies point encoding and can be `'compressed'`, `'uncompressed'` or `'hybrid'`. The supplied key is interpreted using the specified `inputEncoding`, and the returned key is encoded using the specified `outputEncoding`.
+Convertit la clé publique de Courbe Elliptique Diffie-Hellman spécifié par `key` et `curve` au format spécifié par `format`. L'argument `format` spécifie l'encodage du point et peut être `'compressed'`, `'uncompressed'` ou `'hybrid'`. La clé fournie est interprétée à l’aide de l'`inputEncoding` spécifié, et la clé renvoyée est encodée à l’aide de l'`outputEncoding` spécifié.
 
-Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
+Utilisez [`crypto.getCurves()`][] pour obtenir une liste des noms de courbes disponibles. Sur les versions OpenSSL récentes, `openssl ecparam -list_curves` affichera également le noms et la description de chaque courbe elliptique disponible.
 
-If `format` is not specified the point will be returned in `'uncompressed'` format.
+Si `format` est omis, le point sera renvoyé au format `'uncompressed'`.
 
-If the `inputEncoding` is not provided, `key` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
+Si `inputEncoding` est omis, `key` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-Example (uncompressing a key):
+Exemple (décompression d'une clé) :
 
 ```js
 const { createECDH, ECDH } = require('crypto');
@@ -656,9 +715,11 @@ console.log(uncompressedKey === ecdh.getPublicKey('hex'));
 ```
 
 ### ecdh.computeSecret(otherPublicKey\[, inputEncoding\]\[, outputEncoding\])
+
 <!-- YAML
 added: v0.11.14
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`
@@ -667,6 +728,7 @@ changes:
     description: Changed error format to better support invalid public key
                  error
 -->
+
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `otherPublicKey` string.
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
@@ -676,12 +738,14 @@ Calcule le secret partagé en utilisant `otherPublicKey` comme clé publique de 
 
 Si `outputEncoding` est fourni un chaîne est retournée ; Sinon, un [`Buffer`][] est retourné.
 
-`ecdh.computeSecret` will throw an `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey` lies outside of the elliptic curve. Since `otherPublicKey` is usually supplied from a remote user over an insecure network, its recommended for developers to handle this exception accordingly.
+`ecdh.computeSecret` génèrera une erreur `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` si `otherPublicKey` est en dehors de la courbe elliptique. Puisque `otherPublicKey` est habituellement fourni par un utilisateur distant sur un réseau non sécurisé, il est recommandé aux développeurs de gérer cette exception en conséquence.
 
 ### ecdh.generateKeys([encoding[, format]])
+
 <!-- YAML
 added: v0.11.14
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
 * Renvoie : {Buffer | string}
@@ -693,18 +757,22 @@ L'argument `format` spécifie l'encodage du point et peut être `'compressed'` o
 If `encoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
 
 ### ecdh.getPrivateKey([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.11.14
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Returns: {Buffer | string} The EC Diffie-Hellman in the specified `encoding`.
 
 If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
 
 ### ecdh.getPublicKey([encoding](buffer.html#buffer_buffers_and_character_encodings)[, format])
+
 <!-- YAML
 added: v0.11.14
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * `format` {string} **Default:** `'uncompressed'`
 * Renvoie : {Buffer | string} La clé publique de Courbe Elliptique Diffie-Hellman dans l'`encoding` et au `format` spécifiés.
@@ -714,23 +782,26 @@ L'argument `format` spécifie l'encodage du point et peut être `'compressed'` o
 If `encoding` is specified, a string is returned; otherwise a [`Buffer`][] is returned.
 
 ### ecdh.setPrivateKey(privateKey[, encoding])
+
 <!-- YAML
 added: v0.11.14
 -->
+
 * `privateKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `privateKey` string.
 
 Définit la clé privée de Courbe Elliptique Diffie-Hellman. Si `encoding` est fourni, `privateKey` doit être une chaîne ; sinon `privateKey` doit être un [`Buffer`][], un `TypedArray` ou un `DataView`.
 
-Si `privateKey` n'est pas valide pour la courbe spécifiée quand l'objet `ECDH` a été créé, une erreur est générée. Upon setting the private key, the associated public point (key) is also generated and set in the `ECDH` object.
+Si `privateKey` n'est pas valide pour la courbe spécifiée quand l'objet `ECDH` a été créé, une erreur est générée. À la définition de la clé privée, le point (clé) public associé est également défini dans l'objet `ECDH`.
 
 ### ecdh.setPublicKey(publicKey[, encoding])
+
 <!-- YAML
 added: v0.11.14
 deprecated: v5.2.0
 -->
 
-> Stabilité : 0 - obsolète
+> Stabilité : 0 - Obsolète
 
 * `publicKey` {string | Buffer | TypedArray | DataView}
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `publicKey` string.
@@ -765,14 +836,15 @@ console.log(aliceSecret === bobSecret);
 ```
 
 ## Classe : Hash
+
 <!-- YAML
 added: v0.1.92
 -->
 
 La classe `Hash` est un utilitaire pour créer des condensés de données de hachage. Elle peut être utilisée de deux manières :
 
-- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé de données de hachage côté lecture, ou bien
-- En utilisant les méthodes [`hash.update()`][] et [`hash.digest()`][] pour produire le hachage.
+* En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé de données de hachage côté lecture, ou bien
+* En utilisant les méthodes [`hash.update()`][] et [`hash.digest()`][] pour produire le hachage.
 
 La méthode [`crypto.createHash()`][] est utilisée pour créer les instances de `Hash`. Les objets `Hash` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -821,9 +893,11 @@ console.log(hash.digest('hex'));
 ```
 
 ### hash.digest([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.1.92
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
@@ -832,13 +906,16 @@ Calcule le condensé de toutes les données passées pour le hachage (via la mé
 L'objet `Hash` ne peut pas être à nouveau utilisé une fois la méthode `hash.digest()` appelée. Plusieurs appels génèreront une erreur.
 
 ### hash.update(data[, inputEncoding])
+
 <!-- YAML
 added: v0.1.92
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 
@@ -847,14 +924,15 @@ Updates the hash content with the given `data`, the encoding of which is given i
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
 ## Classe : Hmac
+
 <!-- YAML
 added: v0.1.94
 -->
 
 La classe `Hmac` est un utilitaire pour la création de condensés cryptographiques HMAC. Elle peut être utilisée de deux manières :
 
-- En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé HMAC côté lecture, ou bien
-- En utilisant les méthodes [`hmac.update()`][] et [`hmac.digest()`][] pour produire le condensé HMAC.
+* En tant que [flux](stream.html) à la fois lisible et accessible en écriture, où des données sont écrites pour produire un condensé HMAC côté lecture, ou bien
+* En utilisant les méthodes [`hmac.update()`][] et [`hmac.digest()`][] pour produire le condensé HMAC.
 
 La méthode [`crypto.createHmac()`][] est utilisée pour créer les instances de `Hash`. Les objets `Hmac` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -903,9 +981,11 @@ console.log(hmac.digest('hex'));
 ```
 
 ### hmac.digest([encoding](buffer.html#buffer_buffers_and_character_encodings))
+
 <!-- YAML
 added: v0.1.94
 -->
+
 * `encoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
@@ -914,13 +994,16 @@ Calcule le condensé HMAC de toutes les données passées via [`hmac.update()`][
 L'objet `Hmac` ne peut pas être à nouveau utilisé une fois la méthode `hmac.digest()` appelée. Plusieurs appels à `hmac.digest()` génèreront une erreur.
 
 ### hmac.update(data[, inputEncoding])
+
 <!-- YAML
 added: v0.1.94
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 
@@ -929,14 +1012,15 @@ Updates the `Hmac` content with the given `data`, the encoding of which is given
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
 ## Classe : Sign
+
 <!-- YAML
 added: v0.1.92
 -->
 
 La classe `Sign` est un utilitaire pour générer des signatures. Elle peut être utilisée de deux manières :
 
-- En tant que [stream](stream.html), où les données à signer sont écrites et la méthode [`sign.sign()`][] est utilisée pour générer et renvoyer la signature, ou bien
-- En utilisant les méthodes [`sign.update()`][] et [`sign.sign()`][] pour produire la signature.
+* En tant que [stream](stream.html), où les données à signer sont écrites et la méthode [`sign.sign()`][] est utilisée pour générer et renvoyer la signature, ou bien
+* En utilisant les méthodes [`sign.update()`][] et [`sign.sign()`][] pour produire la signature.
 
 La méthode [`crypto.createSign()`][] est utilisée pour créer les instances de `Sign`. L’argument est le nom de chaîne de la fonction de hachage à utiliser. Les objets `Sign` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -985,18 +1069,21 @@ console.log(sign.sign(privateKey, 'hex'));
 ```
 
 ### sign.sign(privateKey[, outputEncoding])
+
 <!-- YAML
 added: v0.1.92
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11705
     description: Support for RSASSA-PSS and additional options was added.
 -->
-* `privateKey` {string | Object}
-  - `key` {string}
-  - `passphrase` {string}
-  - `padding` {integer}
-  - `saltLength` {integer}
+
+* `privateKey` {string | Object} 
+  * `key` {string}
+  * `passphrase` {string}
+  * `padding` {integer}
+  * `saltLength` {integer}
 * `outputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the return value.
 * Renvoie : {Buffer | string}
 
@@ -1007,10 +1094,12 @@ L'argument `privateKey` peut être un objet ou une chaîne. Si `privateKey` est 
 * `key`: {string} - clé privée encodée au format PEM (requise)
 * `passphrase`: {string} - phrase secrète pour la clé privée
 * `padding`: {integer} - valeur de remplissage optionnelle pour RSA, une des suivantes :
+  
   * `crypto.constants.RSA_PKCS1_PADDING` (par défaut)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
-
+  
   Notez que `RSA_PKCS1_PSS_PADDING` utilisera MGF1 avec la même fonction de hachage utilisée pour signer le message comme spécifié dans la section 3.1 de la [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+
 * `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_MAX_SIGN` (par défaut) la définit à la taille maximale permise.
 
 If `outputEncoding` is provided a string is returned; otherwise a [`Buffer`][] is returned.
@@ -1018,13 +1107,16 @@ If `outputEncoding` is provided a string is returned; otherwise a [`Buffer`][] i
 L'objet `Sign` ne peut pas être à nouveau utilisé une fois la méthode `sign.sign()` appelée. Plusieurs appels à `sign.sign()` génèreront une erreur.
 
 ### sign.update(data[, inputEncoding])
+
 <!-- YAML
 added: v0.1.92
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 
@@ -1033,14 +1125,15 @@ Updates the `Sign` content with the given `data`, the encoding of which is given
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
 ## Classe : Verify
+
 <!-- YAML
 added: v0.1.92
 -->
 
 La classe `Verify` est un utilitaire pour vérifier des signatures. Elle peut être utilisée de deux manières :
 
-- En tant que [stream](stream.html), où les données écrites sont utilisées pour valider avec la signature fournie, ou bien
-- En utilisant les méthodes [`verify.update()`][] et [`verify.verify()`][] pour vérifier la signature.
+* En tant que [stream](stream.html), où les données écrites sont utilisées pour valider avec la signature fournie, ou bien
+* En utilisant les méthodes [`verify.update()`][] et [`verify.verify()`][] pour vérifier la signature.
 
 La méthode [`crypto.createVerify()`][] est utilisée pour créer les instances de `Verify`. Les objets `Verify` ne doivent pas être créés directement avec le mot-clé `new`.
 
@@ -1074,13 +1167,16 @@ console.log(verify.verify(publicKey, signature));
 ```
 
 ### verify.update(data[, inputEncoding])
+
 <!-- YAML
 added: v0.1.92
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5522
     description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
+
 * `data` {string | Buffer | TypedArray | DataView}
 * `inputEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `data` string.
 
@@ -1089,13 +1185,16 @@ Updates the `Verify` content with the given `data`, the encoding of which is giv
 Elle peut être plusieurs fois avec de nouvelles données alors qu'elle est en flux.
 
 ### verify.verify(object, signature[, signatureEncoding])
+
 <!-- YAML
 added: v0.1.92
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11705
     description: Support for RSASSA-PSS and additional options was added.
 -->
+
 * `object` {string | Object}
 * `signature` {string | Buffer | TypedArray | DataView}
 * `signatureEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `signature` string.
@@ -1105,10 +1204,12 @@ Vérifie les données fournies en utilisant `object` et `signature`. L'argument 
 
 * `key`: {string} - clé publique encodée au format PEM (requis)
 * `padding`: {integer} - valeur de remplissage optionnelle pour RSA, une des suivantes :
+  
   * `crypto.constants.RSA_PKCS1_PADDING` (par défaut)
   * `crypto.constants.RSA_PKCS1_PSS_PADDING`
-
+  
   Notez que `RSA_PKCS1_PSS_PADDING` utilisera MGF1 avec la même fonction de hachage utilisée pour vérifier le message comme spécifié dans la section 3.1 de la [RFC 4055](https://www.rfc-editor.org/rfc/rfc4055.txt).
+
 * `saltLength`: {integer} - longueur du salage quand le remplissage est `RSA_PKCS1_PSS_PADDING`. La valeur spéciale `crypto.constants.RSA_PSS_SALTLEN_DIGEST` définit la longueur du salage égale à celle de l'empreinte, `crypto.constants.RSA_PSS_SALTLEN_AUTO` (par défaut) la détermine automatiquement.
 
 The `signature` argument is the previously calculated signature for the data, in the `signatureEncoding`. If a `signatureEncoding` is specified, the `signature` is expected to be a string; otherwise `signature` is expected to be a [`Buffer`][], `TypedArray`, or `DataView`.
@@ -1118,12 +1219,15 @@ L'objet `verify` ne peut pas être à nouveau utilisé une fois la méthode `ver
 ## Méthodes et propriétés du module `crypto`
 
 ### crypto.constants
+
 <!-- YAML
 added: v6.3.0
 -->
+
 * Renvoie : {Object} Un objet contenant les constants couramment utilisées pour la cryptographie et les opérations de sécurité liées. Les constantes spécifiques actuellement définies sont décrites dans [Crypto Constants](#crypto_crypto_constants_1).
 
 ### crypto.DEFAULT_ENCODING
+
 <!-- YAML
 added: v0.9.3
 deprecated: v10.0.0
@@ -1137,9 +1241,10 @@ Le mécanisme `crypto.DEFAULT_ENCODING` est fourni pour rétro-compatibilité av
 
 Les nouvelles applications devraient attendre `'buffer'` comme encodage par défaut.
 
-This property is deprecated.
+Cette propriété est obsolète.
 
 ### crypto.fips
+
 <!-- YAML
 added: v6.0.0
 deprecated: v10.0.0
@@ -1147,15 +1252,17 @@ deprecated: v10.0.0
 
 > Stabilité : 0 - obsolète
 
-Property for checking and controlling whether a FIPS compliant crypto provider is currently in use. Définir à true requiert une version FIPS de Node.js.
+Propriété pour vérifier et contrôler si un fournisseur crypto conforme à FIPS est actuellement utilisé. Définir à true requiert une version FIPS de Node.js.
 
-This property is deprecated. Please use `crypto.setFips()` and `crypto.getFips()` instead.
+Cette propriété est obsolète. Utilisez `crypto.setFips()` et `crypto.getFips()` à la place.
 
 ### crypto.createCipher(algorithm, password[, options])
+
 <!-- YAML
 added: v0.1.94
 deprecated: v10.0.0
 changes:
+
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1165,12 +1272,12 @@ changes:
                  authentication tags in GCM mode and defaults to 16 bytes.
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createCipheriv()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`crypto.createCipheriv()`][] à la place.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
-* Renvoie : {Cipher}
+* Returns: {Cipher}
 
 Creates and returns a `Cipher` object that uses the given `algorithm` and `password`.
 
@@ -1182,12 +1289,17 @@ The `password` is used to derive the cipher key and initialization vector (IV). 
 
 The implementation of `crypto.createCipher()` derives keys using the OpenSSL function [`EVP_BytesToKey`][] with the digest algorithm set to MD5, one iteration, and no salt. The lack of salt allows dictionary attacks as the same password always creates the same key. The low iteration count and non-cryptographically secure hash algorithm allow passwords to be tested very rapidly.
 
-In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see \[Nonce-Disrespecting Adversaries\]\[\] for details.
+In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createCipheriv()`][] to create the `Cipher` object. Users should not use ciphers with counter mode (e.g. CTR, GCM, or CCM) in `crypto.createCipher()`. A warning is emitted when they are used in order to avoid the risk of IV reuse that causes vulnerabilities. For the case when IV is reused in GCM, see [Nonce-Disrespecting Adversaries](https://github.com/nonce-disrespect/nonce-disrespect) for details.
 
 ### crypto.createCipheriv(algorithm, key, iv[, options])
+
 <!-- YAML
 added: v0.1.94
 changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1200,6 +1312,7 @@ changes:
     description: The `iv` parameter may now be `null` for ciphers which do not
                  need an initialization vector.
 -->
+
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView}
 * `iv` {string | Buffer | TypedArray | DataView}
@@ -1217,6 +1330,7 @@ The `key` is the raw key used by the `algorithm` and `iv` is an [initialization 
 Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
 ### crypto.createCredentials(details)
+
 <!-- YAML
 added: v0.1.92
 deprecated: v0.11.13
@@ -1224,24 +1338,26 @@ deprecated: v0.11.13
 
 > Stabilité : 0 - obsolète : utilisez [`tls.createSecureContext()`][] à la place.
 
-- `details` {Object} Identical to [`tls.createSecureContext()`][].
-- Returns: {tls.SecureContext}
+* `details` {Object} Identical to [`tls.createSecureContext()`][].
+* Renvoie : {tls.SecureContext}
 
 The `crypto.createCredentials()` method is a deprecated function for creating and returning a `tls.SecureContext`. It should not be used. Replace it with [`tls.createSecureContext()`][] which has the exact same arguments and return value.
 
 Returns a `tls.SecureContext`, as-if [`tls.createSecureContext()`][] had been called.
 
 ### crypto.createDecipher(algorithm, password[, options])
+
 <!-- YAML
 added: v0.1.94
 deprecated: v10.0.0
 changes:
+
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
 -->
 
-> Stability: 0 - Deprecated: Use [`crypto.createDecipheriv()`][] instead.
+> Stabilité : 0 - obsolète : utilisez [`crypto.createDecipheriv()`][] à la place.
 
 * `algorithm` {string}
 * `password` {string | Buffer | TypedArray | DataView}
@@ -1257,9 +1373,14 @@ The implementation of `crypto.createDecipher()` derives keys using the OpenSSL f
 In line with OpenSSL's recommendation to use a more modern algorithm instead of [`EVP_BytesToKey`][] it is recommended that developers derive a key and IV on their own using [`crypto.scrypt()`][] and to use [`crypto.createDecipheriv()`][] to create the `Decipher` object.
 
 ### crypto.createDecipheriv(algorithm, key, iv[, options])
+
 <!-- YAML
 added: v0.1.94
 changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/24081
+    description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/21447
     description: Ciphers in OCB mode are now supported.
@@ -1272,6 +1393,7 @@ changes:
     description: The `iv` parameter may now be `null` for ciphers which do not
                  need an initialization vector.
 -->
+
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView}
 * `iv` {string | Buffer | TypedArray | DataView}
@@ -1289,9 +1411,11 @@ The `key` is the raw key used by the `algorithm` and `iv` is an [initialization 
 Initialization vectors should be unpredictable and unique; ideally, they will be cryptographically random. They do not have to be secret: IVs are typically just added to ciphertext messages unencrypted. It may sound contradictory that something has to be unpredictable and unique, but does not have to be secret; it is important to remember that an attacker must not be able to predict ahead of time what a given IV will be.
 
 ### crypto.createDiffieHellman(prime\[, primeEncoding\]\[, generator\][, generatorEncoding])
+
 <!-- YAML
 added: v0.11.12
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12223
     description: The `prime` argument can be any `TypedArray` or `DataView` now.
@@ -1303,11 +1427,12 @@ changes:
     description: The default for the encoding parameters changed
                  from `binary` to `utf8`.
 -->
+
 * `prime` {string | Buffer | TypedArray | DataView}
 * `primeEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `prime` string.
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
 * `generatorEncoding` {string} The [encoding](buffer.html#buffer_buffers_and_character_encodings) of the `generator` string.
-* Returns: {DiffieHellman}
+* Renvoie : {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object using the supplied `prime` and an optional specific `generator`.
 
@@ -1318,28 +1443,34 @@ If `primeEncoding` is specified, `prime` is expected to be a string; otherwise a
 If `generatorEncoding` is specified, `generator` is expected to be a string; otherwise a number, [`Buffer`][], `TypedArray`, or `DataView` is expected.
 
 ### crypto.createDiffieHellman(primeLength[, generator])
+
 <!-- YAML
 added: v0.5.0
 -->
+
 * `primeLength` {number}
 * `generator` {number | string | Buffer | TypedArray | DataView} **Default:** `2`
-* Returns: {DiffieHellman}
+* Renvoie : {DiffieHellman}
 
 Creates a `DiffieHellman` key exchange object and generates a prime of `primeLength` bits using an optional specific numeric `generator`. If `generator` is not specified, the value `2` is used.
 
 ### crypto.createECDH(curveName)
+
 <!-- YAML
 added: v0.11.14
 -->
+
 * `curveName` {string}
-* Returns: {ECDH}
+* Renvoie : {ECDH}
 
 Creates an Elliptic Curve Diffie-Hellman (`ECDH`) key exchange object using a predefined curve specified by the `curveName` string. Use [`crypto.getCurves()`][] to obtain a list of available curve names. On recent OpenSSL releases, `openssl ecparam -list_curves` will also display the name and description of each available elliptic curve.
 
 ### crypto.createHash(algorithm[, options])
+
 <!-- YAML
 added: v0.1.92
 -->
+
 * `algorithm` {string}
 * `options` {Object} [`stream.transform` options][]
 * Renvoie : {Hash}
@@ -1371,9 +1502,11 @@ input.on('readable', () => {
 ```
 
 ### crypto.createHmac(algorithm, key[, options])
+
 <!-- YAML
 added: v0.1.94
 -->
+
 * `algorithm` {string}
 * `key` {string | Buffer | TypedArray | DataView}
 * `options` {Object} [`stream.transform` options][]
@@ -1408,9 +1541,11 @@ input.on('readable', () => {
 ```
 
 ### crypto.createSign(algorithm[, options])
+
 <!-- YAML
 added: v0.1.92
 -->
+
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
 * Renvoie : {Sign}
@@ -1418,9 +1553,11 @@ added: v0.1.92
 Creates and returns a `Sign` object that uses the given `algorithm`. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.createVerify(algorithm[, options])
+
 <!-- YAML
 added: v0.1.92
 -->
+
 * `algorithm` {string}
 * `options` {Object} [`stream.Writable` options][]
 * Renvoie : {Verify}
@@ -1428,27 +1565,29 @@ added: v0.1.92
 Creates and returns a `Verify` object that uses the given algorithm. Use [`crypto.getHashes()`][] to obtain an array of names of the available signing algorithms. Optional `options` argument controls the `stream.Writable` behavior.
 
 ### crypto.generateKeyPair(type, options, callback)
+
 <!-- YAML
 added: v10.12.0
 -->
+
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `options`: {Object}
-  - `modulusLength`: {number} Key size in bits (RSA, DSA).
-  - `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
-  - `divisorLength`: {number} Size of `q` in bits (DSA).
-  - `namedCurve`: {string} Name of the curve to use (EC).
-  - `publicKeyEncoding`: {Object}
-    - `type`: {string} Must be one of `'pkcs1'` (RSA only) or `'spki'`.
-    - `format`: {string} Must be `'pem'` or `'der'`.
-  - `privateKeyEncoding`: {Object}
-    - `type`: {string} Must be one of `'pkcs1'` (RSA only), `'pkcs8'` or `'sec1'` (EC only).
-    - `format`: {string} Must be `'pem'` or `'der'`.
-    - `cipher`: {string} If specified, the private key will be encrypted with the given `cipher` and `passphrase` using PKCS#5 v2.0 password based encryption.
-    - `passphrase`: {string} The passphrase to use for encryption, see `cipher`.
-* `callback`: {Function}
-  - `err`: {Error}
-  - `publicKey`: {string|Buffer}
-  - `privateKey`: {string|Buffer}
+* `options`: {Object} 
+  * `modulusLength`: {number} Key size in bits (RSA, DSA).
+  * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
+  * `divisorLength`: {number} Size of `q` in bits (DSA).
+  * `namedCurve`: {string} Name of the curve to use (EC).
+  * `publicKeyEncoding`: {Object} 
+    * `type`: {string} Must be one of `'pkcs1'` (RSA only) or `'spki'`.
+    * `format`: {string} Must be `'pem'` or `'der'`.
+  * `privateKeyEncoding`: {Object} 
+    * `type`: {string} Must be one of `'pkcs1'` (RSA only), `'pkcs8'` or `'sec1'` (EC only).
+    * `format`: {string} Must be `'pem'` or `'der'`.
+    * `cipher`: {string} If specified, the private key will be encrypted with the given `cipher` and `passphrase` using PKCS#5 v2.0 password based encryption.
+    * `passphrase`: {string} The passphrase to use for encryption, see `cipher`.
+* `callback`: {Function} 
+  * `err`: {Error}
+  * `publicKey`: {string|Buffer}
+  * `privateKey`: {string|Buffer}
 
 Generates a new asymmetric key pair of the given `type`. Only RSA, DSA and EC are currently supported.
 
@@ -1478,26 +1617,28 @@ On completion, `callback` will be called with `err` set to `undefined` and `publ
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a `Promise` for an `Object` with `publicKey` and `privateKey` properties.
 
 ### crypto.generateKeyPairSync(type, options)
+
 <!-- YAML
 added: v10.12.0
 -->
+
 * `type`: {string} Must be `'rsa'`, `'dsa'` or `'ec'`.
-* `options`: {Object}
-  - `modulusLength`: {number} Key size in bits (RSA, DSA).
-  - `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
-  - `divisorLength`: {number} Size of `q` in bits (DSA).
-  - `namedCurve`: {string} Name of the curve to use (EC).
-  - `publicKeyEncoding`: {Object}
-    - `type`: {string} Must be one of `'pkcs1'` (RSA only) or `'spki'`.
-    - `format`: {string} Must be `'pem'` or `'der'`.
-  - `privateKeyEncoding`: {Object}
-    - `type`: {string} Must be one of `'pkcs1'` (RSA only), `'pkcs8'` or `'sec1'` (EC only).
-    - `format`: {string} Must be `'pem'` or `'der'`.
-    - `cipher`: {string} If specified, the private key will be encrypted with the given `cipher` and `passphrase` using PKCS#5 v2.0 password based encryption.
-    - `passphrase`: {string} The passphrase to use for encryption, see `cipher`.
-* Returns: {Object}
-  - `publicKey`: {string|Buffer}
-  - `privateKey`: {string|Buffer}
+* `options`: {Object} 
+  * `modulusLength`: {number} Key size in bits (RSA, DSA).
+  * `publicExponent`: {number} Public exponent (RSA). **Default:** `0x10001`.
+  * `divisorLength`: {number} Size of `q` in bits (DSA).
+  * `namedCurve`: {string} Name of the curve to use (EC).
+  * `publicKeyEncoding`: {Object} 
+    * `type`: {string} Must be one of `'pkcs1'` (RSA only) or `'spki'`.
+    * `format`: {string} Must be `'pem'` or `'der'`.
+  * `privateKeyEncoding`: {Object} 
+    * `type`: {string} Must be one of `'pkcs1'` (RSA only), `'pkcs8'` or `'sec1'` (EC only).
+    * `format`: {string} Must be `'pem'` or `'der'`.
+    * `cipher`: {string} If specified, the private key will be encrypted with the given `cipher` and `passphrase` using PKCS#5 v2.0 password based encryption.
+    * `passphrase`: {string} The passphrase to use for encryption, see `cipher`.
+* Returns: {Object} 
+  * `publicKey`: {string|Buffer}
+  * `privateKey`: {string|Buffer}
 
 Generates a new asymmetric key pair of the given `type`. Only RSA, DSA and EC are currently supported.
 
@@ -1523,9 +1664,11 @@ const { publicKey, privateKey } = generateKeyPairSync('rsa', {
 The return value `{ publicKey, privateKey }` represents the generated key pair. When PEM encoding was selected, the respective key will be a string, otherwise it will be a buffer containing the data encoded as DER.
 
 ### crypto.getCiphers()
+
 <!-- YAML
 added: v0.9.3
 -->
+
 * Returns: {string[]} An array with the names of the supported cipher algorithms.
 
 ```js
@@ -1534,9 +1677,11 @@ console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
 ```
 
 ### crypto.getCurves()
+
 <!-- YAML
 added: v2.3.0
 -->
+
 * Returns: {string[]} An array with the names of the supported elliptic curves.
 
 ```js
@@ -1545,11 +1690,13 @@ console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
 ```
 
 ### crypto.getDiffieHellman(groupName)
+
 <!-- YAML
 added: v0.7.5
 -->
+
 * `groupName` {string}
-* Returns: {DiffieHellman}
+* Renvoie : {DiffieHellman}
 
 Creates a predefined `DiffieHellman` key exchange object. The supported groups are: `'modp1'`, `'modp2'`, `'modp5'` (defined in [RFC 2412](https://www.rfc-editor.org/rfc/rfc2412.txt), but see [Caveats](#crypto_support_for_weak_or_compromised_algorithms)) and `'modp14'`, `'modp15'`, `'modp16'`, `'modp17'`, `'modp18'` (defined in [RFC 3526](https://www.rfc-editor.org/rfc/rfc3526.txt)). The returned object mimics the interface of objects created by [`crypto.createDiffieHellman()`][], but will not allow changing the keys (with [`diffieHellman.setPublicKey()`][], for example). The advantage of using this method is that the parties do not have to generate nor exchange a group modulus beforehand, saving both processor and communication time.
 
@@ -1571,15 +1718,19 @@ console.log(aliceSecret === bobSecret);
 ```
 
 ### crypto.getFips()
+
 <!-- YAML
 added: v10.0.0
 -->
+
 * Returns: {boolean} `true` if and only if a FIPS compliant crypto provider is currently in use.
 
 ### crypto.getHashes()
+
 <!-- YAML
 added: v0.9.3
 -->
+
 * Returns: {string[]} An array of the names of the supported hash algorithms, such as `'RSA-SHA256'`.
 
 ```js
@@ -1588,9 +1739,11 @@ console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
 ```
 
 ### crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)
+
 <!-- YAML
 added: v0.5.5
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11305
     description: The `digest` parameter is always required now.
@@ -1603,14 +1756,15 @@ changes:
     description: The default encoding for `password` if it is a string changed
                  from `binary` to `utf8`.
 -->
+
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `iterations` {number}
 * `keylen` {number}
 * `digest` {string}
-* `callback` {Function}
-  - `err` {Error}
-  - `derivedKey` {Buffer}
+* `callback` {Function} 
+  * `err` {Error}
+  * `derivedKey` {Buffer}
 
 Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2) implementation. A selected HMAC digest algorithm specified by `digest` is applied to derive a key of the requested byte length (`keylen`) from the `password`, `salt` and `iterations`.
 
@@ -1646,9 +1800,11 @@ An array of supported digest functions can be retrieved using [`crypto.getHashes
 Note that this API uses libuv's threadpool, which can have surprising and negative performance implications for some applications, see the [`UV_THREADPOOL_SIZE`][] documentation for more information.
 
 ### crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
+
 <!-- YAML
 added: v0.9.3
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/4047
     description: Calling this function without passing the `digest` parameter
@@ -1658,6 +1814,7 @@ changes:
     description: The default encoding for `password` if it is a string changed
                  from `binary` to `utf8`.
 -->
+
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `iterations` {number}
@@ -1693,13 +1850,15 @@ console.log(key);  // '3745e48...aa39b34'
 An array of supported digest functions can be retrieved using [`crypto.getHashes()`][].
 
 ### crypto.privateDecrypt(privateKey, buffer)
+
 <!-- YAML
 added: v0.11.14
 -->
-* `privateKey` {Object | string}
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+
+* `privateKey` {Object | string} 
+  * `key` {string} A PEM encoded private key.
+  * `passphrase` {string} An optional passphrase for the private key.
+  * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
 * Returns: {Buffer} A new `Buffer` with the decrypted content.
 
@@ -1708,13 +1867,15 @@ Decrypts `buffer` with `privateKey`. `buffer` was previously encrypted using the
 `privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_OAEP_PADDING`.
 
 ### crypto.privateEncrypt(privateKey, buffer)
+
 <!-- YAML
 added: v1.1.0
 -->
-* `privateKey` {Object | string}
-  - `key` {string} A PEM encoded private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `crypto.constants.RSA_PKCS1_PADDING`.
+
+* `privateKey` {Object | string} 
+  * `key` {string} A PEM encoded private key.
+  * `passphrase` {string} An optional passphrase for the private key.
+  * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `crypto.constants.RSA_PKCS1_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
 * Returns: {Buffer} A new `Buffer` with the encrypted content.
 
@@ -1723,13 +1884,15 @@ Encrypts `buffer` with `privateKey`. The returned data can be decrypted using th
 `privateKey` can be an object or a string. If `privateKey` is a string, it is treated as the key with no passphrase and will use `RSA_PKCS1_PADDING`.
 
 ### crypto.publicDecrypt(key, buffer)
+
 <!-- YAML
 added: v1.1.0
 -->
-* `key` {Object | string}
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `crypto.constants.RSA_PKCS1_PADDING`.
+
+* `key` {Object | string} 
+  * `key` {string} A PEM encoded public or private key.
+  * `passphrase` {string} An optional passphrase for the private key.
+  * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING` or `crypto.constants.RSA_PKCS1_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
 * Returns: {Buffer} A new `Buffer` with the decrypted content.
 
@@ -1740,13 +1903,15 @@ Decrypts `buffer` with `key`.`buffer` was previously encrypted using the corresp
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
 ### crypto.publicEncrypt(key, buffer)
+
 <!-- YAML
 added: v0.11.14
 -->
-* `key` {Object | string}
-  - `key` {string} A PEM encoded public or private key.
-  - `passphrase` {string} An optional passphrase for the private key.
-  - `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
+
+* `key` {Object | string} 
+  * `key` {string} A PEM encoded public or private key.
+  * `passphrase` {string} An optional passphrase for the private key.
+  * `padding` {crypto.constants} An optional padding value defined in `crypto.constants`, which may be: `crypto.constants.RSA_NO_PADDING`, `crypto.constants.RSA_PKCS1_PADDING`, or `crypto.constants.RSA_PKCS1_OAEP_PADDING`.
 * `buffer` {Buffer | TypedArray | DataView}
 * Returns: {Buffer} A new `Buffer` with the encrypted content.
 
@@ -1757,18 +1922,21 @@ Encrypts the content of `buffer` with `key` and returns a new [`Buffer`][] with 
 Because RSA public keys can be derived from private keys, a private key may be passed instead of a public key.
 
 ### crypto.randomBytes(size[, callback])
+
 <!-- YAML
 added: v0.5.8
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/16454
     description: Passing `null` as the `callback` argument now throws
                  `ERR_INVALID_CALLBACK`.
 -->
+
 * `size` {number}
-* `callback` {Function}
-  - `err` {Error}
-  - `buf` {Buffer}
+* `callback` {Function} 
+  * `err` {Error}
+  * `buf` {Buffer}
 * Returns: {Buffer} if the `callback` function is not provided.
 
 Generates cryptographically strong pseudo-random data. The `size` argument is a number indicating the number of bytes to generate.
@@ -1800,8 +1968,10 @@ Note that this API uses libuv's threadpool, which can have surprising and negati
 The asynchronous version of `crypto.randomBytes()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomBytes` requests when doing so as part of fulfilling a client request.
 
 ### crypto.randomFillSync(buffer\[, offset\]\[, size\])
+
 <!-- YAML
 added:
+
   - v7.10.0
   - v6.13.0
 changes:
@@ -1846,8 +2016,10 @@ console.log(Buffer.from(crypto.randomFillSync(c).buffer,
 ```
 
 ### crypto.randomFill(buffer\[, offset\]\[, size\], callback)
+
 <!-- YAML
 added:
+
   - v7.10.0
   - v6.13.0
 changes:
@@ -1914,29 +2086,35 @@ Note that this API uses libuv's threadpool, which can have surprising and negati
 The asynchronous version of `crypto.randomFill()` is carried out in a single threadpool request. To minimize threadpool task length variation, partition large `randomFill` requests when doing so as part of fulfilling a client request.
 
 ### crypto.scrypt(password, salt, keylen[, options], callback)
+
 <!-- YAML
 added: v10.5.0
 changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
                  have been added.
 -->
+
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `options` {Object}
-  - `cost` {number} CPU/memory cost parameter. Must be a power of two greater
-  - `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
-  - `blockSize` {number} Block size parameter. **Default:** `8`.
-  - `parallelization` {number} Parallelization parameter. **Default:** `1`.
-  - `N` {number} Alias for `cost`. Only one of both may be specified.
-  - `r` {number} Alias for `blockSize`. Only one of both may be specified.
-  - `p` {number} Alias for `parallelization`. Only one of both may be specified.
-  - `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
-* `callback` {Function}
-  - `err` {Error}
-  - `derivedKey` {Buffer}
+* `options` {Object} 
+  * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
+  * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
+  * `blockSize` {number} Block size parameter. **Default:** `8`.
+  * `parallelization` {number} Parallelization parameter. **Default:** `1`.
+  * `N` {number} Alias for `cost`. Only one of both may be specified.
+  * `r` {number} Alias for `blockSize`. Only one of both may be specified.
+  * `p` {number} Alias for `parallelization`. Only one of both may be specified.
+  * `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
+* `callback` {Function} 
+  * `err` {Error}
+  * `derivedKey` {Buffer}
 
 Provides an asynchronous [scrypt](https://en.wikipedia.org/wiki/Scrypt) implementation. Scrypt is a password-based key derivation function that is designed to be expensive computationally and memory-wise in order to make brute-force attacks unrewarding.
 
@@ -1961,26 +2139,32 @@ crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
 ```
 
 ### crypto.scryptSync(password, salt, keylen[, options])
+
 <!-- YAML
 added: v10.5.0
 changes:
+
+  - version: v10.17.0
+    pr-url: https://github.com/nodejs/node/pull/28799
+    description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
     pr-url: https://github.com/nodejs/node/pull/21525
     description: The `cost`, `blockSize` and `parallelization` option names
                  have been added.
 -->
+
 * `password` {string|Buffer|TypedArray|DataView}
 * `salt` {string|Buffer|TypedArray|DataView}
 * `keylen` {number}
-* `options` {Object}
-  - `cost` {number} CPU/memory cost parameter. Must be a power of two greater
-  - `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
-  - `blockSize` {number} Block size parameter. **Default:** `8`.
-  - `parallelization` {number} Parallelization parameter. **Default:** `1`.
-  - `N` {number} Alias for `cost`. Only one of both may be specified.
-  - `r` {number} Alias for `blockSize`. Only one of both may be specified.
-  - `p` {number} Alias for `parallelization`. Only one of both may be specified.
-  - `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
+* `options` {Object} 
+  * `cost` {number} CPU/memory cost parameter. Must be a power of two greater
+  * `N` {number} CPU/memory cost parameter. Must be a power of two greater than one. **Default:** `16384`.
+  * `blockSize` {number} Block size parameter. **Default:** `8`.
+  * `parallelization` {number} Parallelization parameter. **Default:** `1`.
+  * `N` {number} Alias for `cost`. Only one of both may be specified.
+  * `r` {number} Alias for `blockSize`. Only one of both may be specified.
+  * `p` {number} Alias for `parallelization`. Only one of both may be specified.
+  * `maxmem` {number} Memory upper bound. It is an error when (approximately) `128 * N * r > maxmem`. **Default:** `32 * 1024 * 1024`.
 * Renvoie : {Buffer}
 
 Provides a synchronous [scrypt](https://en.wikipedia.org/wiki/Scrypt) implementation. Scrypt is a password-based key derivation function that is designed to be expensive computationally and memory-wise in order to make brute-force attacks unrewarding.
@@ -2002,9 +2186,11 @@ console.log(key2.toString('hex'));  // '3745e48...aa39b34'
 ```
 
 ### crypto.setEngine(engine[, flags])
+
 <!-- YAML
 added: v0.11.11
 -->
+
 * `engine` {string}
 * `flags` {crypto.constants} **Default:** `crypto.constants.ENGINE_METHOD_ALL`
 
@@ -2033,17 +2219,21 @@ The flags below are deprecated in OpenSSL-1.1.0.
 * `crypto.constants.ENGINE_METHOD_STORE`
 
 ### crypto.setFips(bool)
+
 <!-- YAML
 added: v10.0.0
 -->
+
 * `bool` {boolean} `true` to enable FIPS mode.
 
 Enables the FIPS compliant crypto provider in a FIPS-enabled Node.js build. Throws an error if FIPS mode is not available.
 
 ### crypto.timingSafeEqual(a, b)
+
 <!-- YAML
 added: v6.6.0
 -->
+
 * `a` {Buffer | TypedArray | DataView}
 * `b` {Buffer | TypedArray | DataView}
 * Returns: {boolean}
@@ -2074,9 +2264,9 @@ Users should take full responsibility for selecting the crypto algorithm and key
 
 Based on the recommendations of [NIST SP 800-131A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf):
 
-- MD5 and SHA-1 are no longer acceptable where collision resistance is required such as digital signatures.
-- The key used with RSA, DSA, and DH algorithms is recommended to have at least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to be safe to use for several years.
-- The DH groups of `modp1`, `modp2` and `modp5` have a key size smaller than 2048 bits and are not recommended.
+* MD5 and SHA-1 are no longer acceptable where collision resistance is required such as digital signatures.
+* The key used with RSA, DSA, and DH algorithms is recommended to have at least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to be safe to use for several years.
+* The DH groups of `modp1`, `modp2` and `modp5` have a key size smaller than 2048 bits and are not recommended.
 
 See the reference for other recommendations and details.
 
@@ -2084,14 +2274,14 @@ See the reference for other recommendations and details.
 
 CCM is one of the supported [AEAD algorithms](https://en.wikipedia.org/wiki/Authenticated_encryption). Applications which use this mode must adhere to certain restrictions when using the cipher API:
 
-- The authentication tag length must be specified during cipher creation by setting the `authTagLength` option and must be one of 4, 6, 8, 10, 12, 14 or 16 bytes.
-- The length of the initialization vector (nonce) `N` must be between 7 and 13 bytes (`7 ≤ N ≤ 13`).
-- The length of the plaintext is limited to `2 ** (8 * (15 - N))` bytes.
-- When decrypting, the authentication tag must be set via `setAuthTag()` before specifying additional authenticated data or calling `update()`. Otherwise, decryption will fail and `final()` will throw an error in compliance with section 2.6 of [RFC 3610](https://www.rfc-editor.org/rfc/rfc3610.txt).
-- Using stream methods such as `write(data)`, `end(data)` or `pipe()` in CCM mode might fail as CCM cannot handle more than one chunk of data per instance.
-- When passing additional authenticated data (AAD), the length of the actual message in bytes must be passed to `setAAD()` via the `plaintextLength` option. This is not necessary if no AAD is used.
-- As CCM processes the whole message at once, `update()` can only be called once.
-- Even though calling `update()` is sufficient to encrypt/decrypt the message, applications *must* call `final()` to compute or verify the authentication tag.
+* The authentication tag length must be specified during cipher creation by setting the `authTagLength` option and must be one of 4, 6, 8, 10, 12, 14 or 16 bytes.
+* The length of the initialization vector (nonce) `N` must be between 7 and 13 bytes (`7 ≤ N ≤ 13`).
+* The length of the plaintext is limited to `2 ** (8 * (15 - N))` bytes.
+* When decrypting, the authentication tag must be set via `setAuthTag()` before specifying additional authenticated data or calling `update()`. Otherwise, decryption will fail and `final()` will throw an error in compliance with section 2.6 of [RFC 3610](https://www.rfc-editor.org/rfc/rfc3610.txt).
+* Using stream methods such as `write(data)`, `end(data)` or `pipe()` in CCM mode might fail as CCM cannot handle more than one chunk of data per instance.
+* When passing additional authenticated data (AAD), the length of the actual message in bytes must be passed to `setAAD()` via the `plaintextLength` option. This is not necessary if no AAD is used.
+* As CCM processes the whole message at once, `update()` can only be called once.
+* Even though calling `update()` is sufficient to encrypt/decrypt the message, applications *must* call `final()` to compute or verify the authentication tag.
 
 ```js
 const crypto = require('crypto');
@@ -2137,7 +2327,9 @@ console.log(receivedPlaintext);
 The following constants exported by `crypto.constants` apply to various uses of the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 
 ### OpenSSL Options
+
 <!--lint disable maximum-line-length-->
+
 <table>
   <tr>
     <th>Constant</th>
@@ -2293,6 +2485,7 @@ The following constants exported by `crypto.constants` apply to various uses of 
 </table>
 
 ### OpenSSL Engine Constants
+
 <!--lint enable maximum-line-length remark-lint-->
 
 <table>
@@ -2443,4 +2636,3 @@ The following constants exported by `crypto.constants` apply to various uses of 
     process.</td>
   </tr>
 </table>
-

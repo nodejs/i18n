@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 `tty` 模块提供了 `tty.ReadStream` 和 `tty.WriteStream` 类。 在大多数情况下，不需要或不可能直接使用此模块。 然而，可以通过如下方式访问它：
 
@@ -22,6 +22,7 @@ false
 在大多数情况下，应用程序几乎没有理由手工创建 `tty.ReadStream` 和 `tty.WriteStream` 类的实例。
 
 ## 类：tty.ReadStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -29,6 +30,7 @@ added: v0.5.8
 `tty.ReadStream` 类是 [`net.Socket`][] 的子类，用来表示和 TTY 读取相关的特性。 在正常情况下 [`process.stdin`][] 是 Node.js 进程中唯一的 `tty.ReadStream` 实例，且没有任何理由需要创建其他实例。
 
 ### readStream.isRaw
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -36,6 +38,7 @@ added: v0.7.7
 如果 TTY 被配置为原始设备，则该 `boolean` 值为 `true`。 默认值为 `false`。
 
 ### readStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -43,6 +46,7 @@ added: v0.5.8
 对于 `tty.ReadStream` 实例，该 `boolean` 值始终为 `true`。
 
 ### readStream.setRawMode(mode)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -54,6 +58,7 @@ added: v0.7.7
 * `mode` {boolean} 如果为 `true`，将 `tty.ReadStream` 配置为原始设备。 如果为 `false`，将 `tty.ReadStream` 以其原始模式运行。 `readStream.isRaw` 属性将被设置为结果中对应的模式。
 
 ## 类：tty.WriteStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -61,6 +66,7 @@ added: v0.5.8
 `tty.WriteStream` 类是 `net.Socket` 的子类，用来表示和 TTY 写入相关的特性。 在正常情况下，[`process.stdout`][] 和 [`process.stderr`][] 将会是为 Node.js 进程创建的唯一的 `tty.WriteStream` 实例，且没有任何理由需要创建其他实例。
 
 ### 事件：'resize'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -75,6 +81,7 @@ process.stdout.on('resize', () => {
 ```
 
 ### writeStream.columns
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -82,6 +89,7 @@ added: v0.7.7
 用来表示当前 TTY 列数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
 
 ### writeStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -89,6 +97,7 @@ added: v0.5.8
 一个始终为 `true` 的 `boolean` 值。
 
 ### writeStream.rows
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -96,6 +105,7 @@ added: v0.7.7
 用来表示 TTY 当前行数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
 
 ## tty.isatty(fd)
+
 <!-- YAML
 added: v0.5.8
 -->

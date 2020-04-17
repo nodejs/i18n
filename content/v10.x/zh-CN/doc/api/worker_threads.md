@@ -110,7 +110,7 @@ added: v10.5.0
 
 The `'close'` event is emitted once either side of the channel has been disconnected.
 
-### 事件：'message'
+### 事件: 'message'
 <!-- YAML
 added: v10.5.0
 -->
@@ -283,7 +283,7 @@ added: v10.5.0
 * `value` {any}
 * `transferList` {Object[]}
 
-Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. See [`port.postMessage()`][] for more details.
+Send a message to the worker that will be received via [`require('worker_threads').parentPort.on('message')`][]. 请参考 [`port.postMessage()`][] 以获取更多详细信息。
 
 ### worker.ref()
 <!-- YAML

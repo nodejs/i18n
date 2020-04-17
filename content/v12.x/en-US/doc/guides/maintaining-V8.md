@@ -30,7 +30,7 @@ For example, at the time of this writing:
 
 All older branches are abandoned and are not maintained by the V8 team.
 
-### V8 merge process overview
+### V8 Merge Process Overview
 
 The process for backporting bug fixes to active branches is officially
 documented [on the V8 wiki][V8MergingPatching]. The summary of the process is:
@@ -141,7 +141,6 @@ includes the following branches<sup>1</sup>:
   </tr>
 </table>
 
-
 The versions of V8 used in Node.js v4.x, v6.x, and 8.x have already been
 abandoned by upstream V8. However, Node.js needs to continue supporting
 these branches for many months (Current branches) or several
@@ -163,9 +162,9 @@ process.
 
 ### Unfixed Upstream Bugs
 
-If the bug can be reproduced on the [Node.js `canary` branch], Chromium canary,
-or V8 tip-of-tree, and the test case is valid, then the bug needs to be fixed
-upstream first.
+If the bug can be reproduced on the [Node.js `canary` branch][], Chromium
+canary, or V8 tip-of-tree, and the test case is valid, then the bug needs to be
+fixed upstream first.
 
 * Start by opening a bug upstream using [this template][V8TemplateUpstreamBug].
 * Make sure to include a link to the corresponding Node.js issue
@@ -227,12 +226,12 @@ to be cherry-picked in the Node.js repository and V8-CI must test the change.
     V8 team to get help with reimplementing the patch.
   * Open a cherry-pick PR on `nodejs/node` targeting the *vY.x-staging* branch
     and notify the `@nodejs/v8` team.
-  * Run the Node.js [V8 CI] in addition to the [Node.js CI].
+  * Run the Node.js [V8 CI][] in addition to the [Node.js CI][].
     The CI uses the `test-v8` target in the `Makefile`, which uses
     `tools/make-v8.sh` to reconstruct a git tree in the `deps/v8` directory to
     run V8 tests.
 
-The [`git-node`] tool can be used to simplify this task. Run
+The [`git-node`][] tool can be used to simplify this task. Run
 `git node v8 backport <sha>` to cherry-pick a commit.
 
 An example for workflow how to cherry-pick consider the bug
@@ -276,10 +275,10 @@ PR-URL: https://github.com/nodejs/node/pull/7833
 ```
 
 * Open a PR against the `v6.x-staging` branch in the Node.js repo. Launch the
-  normal and [V8 CI] using the Node.js CI system. We only needed to backport to
-  `v6.x` as the other LTS branches weren't affected by this bug.
+  normal and [V8 CI][] using the Node.js CI system. We only needed to backport
+  to `v6.x` as the other LTS branches weren't affected by this bug.
 
-### Backports Identified by the V8 team
+### Backports Identified by the V8 Team
 
 For bugs found through the browser or other channels, the V8 team marks bugs
 that might be applicable to the abandoned branches in use by Node.js. This is
@@ -314,7 +313,7 @@ Node.js keeps a vendored copy of V8 inside of the deps/ directory. In addition,
 Node.js may need to float patches that do not exist upstream. This means that
 some care may need to be taken to update the vendored copy of V8.
 
-### Minor updates (patch level)
+### Minor Updates (Patch Level)
 
 Because there may be floating patches on the version of V8 in Node.js, it is
 safest to apply the patch level updates as a patch. For example, imagine that
@@ -341,7 +340,7 @@ curl -L https://github.com/v8/v8/compare/${V8_OLD_VERSION}...${V8_NEW_VERSION}.p
 V8 also keeps tags of the form *5.4-lkgr* which point to the *Last Known Good
 Revision* from the 5.4 branch that can be useful in the update process above.
 
-The [`git-node`] tool can be used to simplify this task. Run `git node v8 minor`
+The [`git-node`][] tool can be used to simplify this task. Run `git node v8 minor`
 to apply a minor update.
 
 ### Major Updates
@@ -368,8 +367,8 @@ To audit for floating patches:
 git log --oneline deps/v8
 ```
 
-To replace the copy of V8 in Node.js, use the [`git-node`] tool. For example, if
-you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1
+To replace the copy of V8 in Node.js, use the [`git-node`][] tool. For example,
+if you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1
 branch:
 
 ```shell
@@ -379,7 +378,7 @@ git node v8 major --branch=5.1-lkgr
 
 This should be followed up with manual refloating of all relevant patches.
 
-## Proposal: Using a fork repo to track upstream V8
+## Proposal: Using a Fork Repo to Track Upstream V8
 
 The fact that Node.js keeps a vendored, potentially edited copy of V8 in deps/
 makes the above processes a bit complicated. An alternative proposal would be to

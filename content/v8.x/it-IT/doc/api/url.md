@@ -12,13 +12,13 @@ const url = require('url');
 
 ## Stringhe URL e URL Objects
 
-Una stringa URL è una stringa strutturata contenente più componenti significativi. Quando analizzato, viene restituito un URL object contenente proprietà per ciascuno di questi componenti.
+Una stringa URL è una stringa strutturata contenente più componenti significativi. When parsed, a URL object is returned containing properties for each of these components.
 
-Il modulo `url` fornisce due API per lavorare con gli URL: un'API legacy specifica per Node.js ed un'API più recente che implementa lo stesso [WHATWG URL Standard](https://url.spec.whatwg.org/) utilizzato dai browser web.
+The `url` module provides two APIs for working with URLs: a legacy API that is Node.js specific, and a newer API that implements the same [WHATWG URL Standard](https://url.spec.whatwg.org/) used by web browsers.
 
-*Note*: While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. Il nuovo codice dell'applicazione deve utilizzare l'API WHATWG.
+*Note*: While the Legacy API has not been deprecated, it is maintained solely for backwards compatibility with existing applications. New application code should use the WHATWG API.
 
-Di seguito viene fornito un confronto tra le API WHATWG e Legacy. Sopra l'URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'` vengono mostrate le proprietà di un object restituito dal legacy `url.parse()`. Sotto di esso si trovano le proprietà di un WHATWG `URL` object.
+Di seguito viene fornito un confronto tra le API WHATWG e Legacy. Above the URL `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`, properties of an object returned by the legacy `url.parse()` are shown. Below it are properties of a WHATWG `URL` object.
 
 *Note*: WHATWG URL's `origin` property includes `protocol` and `host`, but not `username` or `password`.
 
@@ -62,13 +62,14 @@ const myURL =
 ```
 
 ## L'API di WHATWG URL
+
 <!-- YAML
 added: v7.0.0
 -->
 
 ### Class: URL
 
-Classe `URL` compatibile con browser, implementata seguendo il WHATWG URL Standard. [Esempi di URL analizzati](https://url.spec.whatwg.org/#example-url-parsing) possono essere trovati nello Standard stesso.
+Browser-compatible `URL` class, implemented by following the WHATWG URL Standard. [Esempi di URL analizzati](https://url.spec.whatwg.org/#example-url-parsing) possono essere trovati nello Standard stesso.
 
 *Note*: In accordance with browser conventions, all properties of `URL` objects are implemented as getters and setters on the class prototype, rather than as data properties on the object itself. Thus, unlike [legacy urlObject](#url_legacy_urlobject)s, using the `delete` keyword on any properties of `URL` objects (e.g. `delete
 myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still return `true`.
@@ -76,9 +77,9 @@ myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still retu
 #### Constructor: new URL(input[, base])
 
 * `input` {string} The input URL to parse
-* `base` {string|URL} L'URL di base da risolvere se l'`input` non è assoluto.
+* `base` {string|URL} The base URL to resolve against if the `input` is not absolute.
 
-Crea un nuovo `URL` object analizzando l'`input` relativo alla `base`. Se la `base` viene passata come stringa, verrà analizzata in modo equivalente a `new URL(base)`.
+Crea un nuovo `URL` object analizzando l'`input` relativo alla `base`. If `base` is passed as a string, it will be parsed equivalent to `new URL(base)`.
 
 ```js
 const { URL } = require('url');
@@ -86,7 +87,7 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
-Verrà generato un `TypeError` se l'`input` o la `base` non sono URL validi. Notare che ci si impegnerà a forzare i valori indicati affinché si convertano in stringhe. Ad esempio:
+Verrà generato un `TypeError` se l'`input` o la `base` non sono URL validi. Note that an effort will be made to coerce the given values into strings. Ad esempio:
 
 ```js
 const { URL } = require('url');
@@ -94,7 +95,7 @@ const myURL = new URL({ toString: () => 'https://example.org/' });
 // https://example.org/
 ```
 
-I caratteri Unicode che appaiono all'interno dell'hostname di `input` verranno automaticamente convertiti in ASCII utilizzando l'algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4).
+Unicode characters appearing within the hostname of `input` will be automatically converted to ASCII using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm.
 
 ```js
 const { URL } = require('url');
@@ -121,7 +122,7 @@ console.log(myURL.href);
 // Prints https://example.org/foo#baz
 ```
 
-I caratteri URL non validi inclusi nel valore assegnato alla proprietà `hash` sono [percent-encoded](#whatwg-percent-encoding). Notare che la selezione dei caratteri da codificare in percentuale può variare leggermente da ciò che produrrebbero i metodi [`url.parse()`][] e [`url.format()`][].
+Invalid URL characters included in the value assigned to the `hash` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.host
 
@@ -146,7 +147,7 @@ I valori host non validi assegnati alla proprietà `host` vengono ignorati.
 
 * {string}
 
-Ottiene e imposta la parte hostname dell'URL. La differenza chiave tra `url.host` e `url.hostname` è che `url.hostname` *non* include la porta.
+Ottiene e imposta la parte hostname dell'URL. The key difference between `url.host` and `url.hostname` is that `url.hostname` does *not* include the port.
 
 ```js
 const { URL } = require('url');
@@ -178,11 +179,11 @@ console.log(myURL.href);
 // Prints https://example.com/bar
 ```
 
-Ottenere il valore della proprietà `href` equivale a chiamare [`url.toString()`][].
+Getting the value of the `href` property is equivalent to calling [`url.toString()`][].
 
-L'impostazione del valore di questa proprietà su un nuovo valore equivale alla creazione di un nuovo `URL` object utilizzando [`new URL(value)`][`new URL()`]. Ogni proprietà dell'`URL` object verrà modificata.
+Setting the value of this property to a new value is equivalent to creating a new `URL` object using [`new URL(value)`][`new URL()`]. Each of the `URL` object's properties will be modified.
 
-Se il valore assegnato alla proprietà `href` non è un URL valido, verrà generato un `TypeError`.
+If the value assigned to the `href` property is not a valid URL, a `TypeError` will be thrown.
 
 #### url.origin
 
@@ -224,7 +225,7 @@ console.log(myURL.href);
 // Prints https://abc:123@example.com
 ```
 
-I caratteri URL non validi inclusi nel valore assegnato alla proprietà della `password` sono [percent-encoded](#whatwg-percent-encoding). Notare che la selezione dei caratteri da codificare in percentuale può variare leggermente da ciò che produrrebbero i metodi [`url.parse()`][] e [`url.format()`][].
+Invalid URL characters included in the value assigned to the `password` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.pathname
 
@@ -243,7 +244,7 @@ console.log(myURL.href);
 // Prints https://example.org/abcdef?123
 ```
 
-I caratteri URL non validi inclusi nel valore assegnato alla proprietà `pathname` sono [percent-encoded](#whatwg-percent-encoding). Notare che la selezione dei caratteri da codificare in percentuale può variare leggermente da ciò che produrrebbero i metodi [`url.parse()`][] e [`url.format()`][].
+Invalid URL characters included in the value assigned to the `pathname` property are [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.port
 
@@ -292,7 +293,7 @@ console.log(myURL.port);
 // Prints 1234
 ```
 
-The port value may be set as either a number or as a String containing a number in the range `0` to `65535` (inclusive). Impostando il valore sulla porta predefinita degli `URL` object specificati, il `protocol` risulterà nel valore della `port` diventando la stringa vuota (`''`).
+The port value may be set as either a number or as a String containing a number in the range `0` to `65535` (inclusive). Setting the value to the default port of the `URL` objects given `protocol` will result in the `port` value becoming the empty string (`''`).
 
 If an invalid string is assigned to the `port` property, but it begins with a number, the leading number is assigned to `port`. Otherwise, or if the number lies outside the range denoted above, it is ignored.
 
@@ -332,13 +333,13 @@ console.log(myURL.href);
 // Prints https://example.org/abc?abc=xyz
 ```
 
-Tutti i caratteri URL non validi che appaiono nel valore assegnato alla proprietà `search` saranno [percent-encoded](#whatwg-percent-encoding). Notare che la selezione dei caratteri da codificare in percentuale può variare leggermente da ciò che produrrebbero i metodi [`url.parse()`][] e [`url.format()`][].
+Any invalid URL characters appearing in the value assigned the `search` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.searchParams
 
 * {URLSearchParams}
 
-Ottiene l'[`URLSearchParams`][] object che rappresenta i parametri di query dell'URL. Questa proprietà è di sola lettura; per sostituire la totalità dei parametri di query dell'URL, utilizza l'[`url.search`][] setter. Consultare la documentazione di [`URLSearchParams`][] per i dettagli.
+Gets the [`URLSearchParams`][] object representing the query parameters of the URL. This property is read-only; to replace the entirety of query parameters of the URL, use the [`url.search`][] setter. See [`URLSearchParams`][] documentation for details.
 
 #### url.username
 
@@ -357,23 +358,23 @@ console.log(myURL.href);
 // Prints https://123:xyz@example.com/
 ```
 
-Tutti i caratteri URL non validi che appaiono nel valore assegnato alla proprietà `username` saranno [percent-encoded](#whatwg-percent-encoding). Notare che la selezione dei caratteri da codificare in percentuale può variare leggermente da ciò che produrrebbero i metodi [`url.parse()`][] e [`url.format()`][].
+Any invalid URL characters appearing in the value assigned the `username` property will be [percent-encoded](#whatwg-percent-encoding). Note that the selection of which characters to percent-encode may vary somewhat from what the [`url.parse()`][] and [`url.format()`][] methods would produce.
 
 #### url.toString()
 
 * Restituisce: {string}
 
-Il metodo `toString()` sull'`URL` object restituisce l'URL serializzato. Il valore restituito è equivalente a quello di [`url.href`][] e di [`url.toJSON()`][].
+Il metodo `toString()` sull'`URL` object restituisce l'URL serializzato. The value returned is equivalent to that of [`url.href`][] and [`url.toJSON()`][].
 
-A causa della necessità di conformità standard, questo metodo non consente agli utenti di personalizzare il processo di serializzazione dell'URL. Per maggiore flessibilità, potrebbe essere interessante il metodo [`require('url').format()`][].
+Because of the need for standard compliance, this method does not allow users to customize the serialization process of the URL. For more flexibility, [`require('url').format()`][] method might be of interest.
 
 #### url.toJSON()
 
 * Restituisce: {string}
 
-Il metodo `toJSON()` sull'`URL` object restituisce l'URL serializzato. Il valore restituito è equivalente a quello di [`url.href`][] e di [`url.toString()`][].
+Il metodo `toJSON()` sull'`URL` object restituisce l'URL serializzato. The value returned is equivalent to that of [`url.href`][] and [`url.toString()`][].
 
-Questo metodo viene chiamato automaticamente quando un `URL` object viene serializzato con [`JSON.stringify()`][].
+This method is automatically called when an `URL` object is serialized with [`JSON.stringify()`][].
 
 ```js
 const { URL } = require('url');
@@ -386,13 +387,14 @@ console.log(JSON.stringify(myURLs));
 ```
 
 ### Class: URLSearchParams
+
 <!-- YAML
 added: v7.5.0
 -->
 
-L'API `URLSearchParams` fornisce accesso in lettura e scrittura alla query di un `URL`. La classe `URLSearchParams` può anche essere utilizzata standalone con uno dei quattro seguenti constructor.
+The `URLSearchParams` API provides read and write access to the query of a `URL`. The `URLSearchParams` class can also be used standalone with one of the four following constructors.
 
-L'interfaccia WHATWG `URLSearchParams` e il modulo [`querystring`][] hanno uno scopo simile, ma quello del modulo [`querystring`][] è più generale, in quanto consente la personalizzazione dei caratteri delimitatori (`&` e `=`). D'altra parte, questa API è progettata esclusivamente per stringhe di query URL.
+The WHATWG `URLSearchParams` interface and the [`querystring`][] module have similar purpose, but the purpose of the [`querystring`][] module is more general, as it allows the customization of delimiter characters (`&` and `=`). D'altra parte, questa API è progettata esclusivamente per stringhe di query URL.
 
 ```js
 const { URL, URLSearchParams } = require('url');
@@ -437,7 +439,7 @@ Istanziare un nuovo `URLSearchParams` object vuoto.
 
 * `string` {string} Una stringa di query
 
-Analizzare `string` come stringa di query ed utilizzarla per istanziare un nuovo `URLSearchParams` object. Un `'?'` iniziale, se presente, viene ignorato.
+Parse the `string` as a query string, and use it to instantiate a new `URLSearchParams` object. Un `'?'` iniziale, se presente, viene ignorato.
 
 ```js
 const { URLSearchParams } = require('url');
@@ -455,13 +457,14 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(obj)
+
 <!-- YAML
 added: v7.10.0
 -->
 
 * `obj` {Object} Un object che rappresenta una raccolta di coppie chiave-valore
 
-Istanziare un nuovo `URLSearchParams` object con una mappa hash di query. La chiave e il valore di ogni proprietà di `obj` vengono sempre costretti in stringhe.
+Istanziare un nuovo `URLSearchParams` object con una mappa hash di query. The key and value of each property of `obj` are always coerced to strings.
 
 *Note*: Unlike [`querystring`][] module, duplicate keys in the form of array values are not allowed. Arrays are stringified using [`array.toString()`][], which simply joins all array elements with commas.
 
@@ -478,13 +481,14 @@ console.log(params.toString());
 ```
 
 #### Constructor: new URLSearchParams(iterable)
+
 <!-- YAML
 added: v7.10.0
 -->
 
 * `iterable` {Iterable} Un object iterabile i cui elementi sono coppie chiave-valore
 
-Istanziare un nuovo `URLSearchParams` object con una mappa iterabile in un modo simile al constructor di [`Map`][]. `iterable` can be an Array or any iterable object. Ciò significa che `iterable` può essere un altro `URLSearchParams`, nel qual caso il constructor creerà semplicemente un clone dell'`URLSearchParams` fornito. Gli elementi di `iterable` sono coppie chiave-valore e possono essere essi stessi qualsiasi object iterabile.
+Instantiate a new `URLSearchParams` object with an iterable map in a way that is similar to [`Map`][]'s constructor. `iterable` can be an Array or any iterable object. That means `iterable` can be another `URLSearchParams`, in which case the constructor will simply create a clone of the provided `URLSearchParams`. Elements of `iterable` are key-value pairs, and can themselves be any iterable object.
 
 Sono consentite chiavi duplicate.
 
@@ -544,7 +548,7 @@ Rimuovi tutte le coppie nome-valore il cui nome è `name`.
 
 * Restituisce: {Iterator}
 
-Returns an ES6 Iterator over each of the name-value pairs in the query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
+Restituisce un Iterator di ES6 su ciascuna delle coppie nome-valore nella query. Ogni elemento dell'iteratore è un Array di JavaScript. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
 Alias per [`urlSearchParams[@@iterator]()`][`urlSearchParams@@iterator()`].
 
@@ -569,16 +573,16 @@ myURL.searchParams.forEach((value, name, searchParams) => {
 #### urlSearchParams.get(name)
 
 * `name` {string}
-* Restituisce: {string} o `null` se non esiste una coppia nome-valore con il `name` specificato.
+* Returns: {string} or `null` if there is no name-value pair with the given `name`.
 
-Restituisce il valore della prima coppia nome-valore il cui nome è `name`. Se non ci sono coppie di questo tipo, viene restituito `null`.
+Restituisce il valore della prima coppia nome-valore il cui nome è `name`. If there are no such pairs, `null` is returned.
 
 #### urlSearchParams.getAll(name)
 
 * `name` {string}
 * Restituisce: {Array}
 
-Restituisce i valori di tutte le coppie nome-valore il cui nome è `name`. Se non ci sono coppie di questo tipo, viene restituito un array vuoto.
+Restituisce i valori di tutte le coppie nome-valore il cui nome è `name`. If there are no such pairs, an empty array is returned.
 
 #### urlSearchParams.has(name)
 
@@ -609,7 +613,7 @@ for (const name of params.keys()) {
 * `name` {string}
 * `value` {string}
 
-Imposta il valore nell'`URLSearchParams` object associato al `name` su `value`. Se sono presenti coppie nome-valore preesistenti i cui nomi sono `name`, impostare il valore della prima coppia di questo tipo su `value` e rimuovere tutti gli altri. In caso contrario, aggiungere la coppia nome-valore alla stringa di query.
+Sets the value in the `URLSearchParams` object associated with `name` to `value`. If there are any pre-existing name-value pairs whose names are `name`, set the first such pair's value to `value` and remove all others. If not, append the name-value pair to the query string.
 
 ```js
 const { URLSearchParams } = require('url');
@@ -628,11 +632,12 @@ console.log(params.toString());
 ```
 
 #### urlSearchParams.sort()
+
 <!-- YAML
 added: v7.7.0
 -->
 
-Ordina tutte le coppie nome-valore esistenti a seconda del loro nome. L'ordinamento viene eseguito con un [algoritmo di ordinamento stabile](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), affinché venga mantenuto l'ordine relativo tra coppie nome-valore con lo stesso nome.
+Ordina tutte le coppie nome-valore esistenti a seconda del loro nome. Sorting is done with a [stable sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm#Stability), so relative order between name-value pairs with the same name is preserved.
 
 Questo metodo può essere utilizzato, in particolare, per aumentare i cache hit.
 
@@ -648,7 +653,7 @@ console.log(params.toString());
 
 * Restituisce: {string}
 
-Restituisce i parametri di ricerca serializzati come una stringa, con caratteri codificati in percentuale ove necessario.
+Returns the search parameters serialized as a string, with characters percent-encoded where necessary.
 
 #### urlSearchParams.values()
 
@@ -660,7 +665,7 @@ Restituisce un Iterator di ES6 sui valori di ciascuna coppia nome-valore.
 
 * Restituisce: {Iterator}
 
-Restituisce un Iterator di ES6 su ciascuna delle coppie nome-valore nella stringa di query. Each item of the iterator is a JavaScript Array. The first item of the Array is the `name`, the second item of the Array is the `value`.
+Restituisce un Iterator di ES6 su ciascuna delle coppie nome-valore nella stringa di query. Ogni elemento dell'iteratore è un Array di JavaScript. The first item of the Array is the `name`, the second item of the Array is the `value`.
 
 Alias per [`urlSearchParams.entries()`][].
 
@@ -676,6 +681,7 @@ for (const [name, value] of params) {
 ```
 
 ### url.domainToASCII(domain)
+
 <!-- YAML
 added: v7.4.0
 -->
@@ -683,7 +689,7 @@ added: v7.4.0
 * `domain` {string}
 * Restituisce: {string}
 
-Restituisce la serializzazione ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. Se `domain` è un dominio non valido, viene restituita la stringa vuota.
+Restituisce la serializzazione ASCII [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) del `domain`. If `domain` is an invalid domain, the empty string is returned.
 
 Esegue l'operazione inversa su [`url.domainToUnicode()`][].
 
@@ -698,6 +704,7 @@ console.log(url.domainToASCII('xn--iñvalid.com'));
 ```
 
 ### url.domainToUnicode(domain)
+
 <!-- YAML
 added: v7.4.0
 -->
@@ -705,7 +712,7 @@ added: v7.4.0
 * `domain` {string}
 * Restituisce: {string}
 
-Restituisce la serializzazione Unicode del `domain`. Se `domain` è un dominio non valido, viene restituita la stringa vuota.
+Restituisce la serializzazione Unicode del `domain`. If `domain` is an invalid domain, the empty string is returned.
 
 Esegue l'operazione inversa su [`url.domainToASCII()`][].
 
@@ -720,20 +727,21 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 ```
 
 ### url.format(URL[, options])
+
 <!-- YAML
 added: v7.6.0
 -->
 
 * `URL` {URL} Un [WHATWG URL](#url_the_whatwg_url_api) object
-* `options` {Object}
-  * `auth` {boolean} `true` se la stringa dell'URL serializzato deve includere nome utente e password, altrimenti `false`. **Default:** `true`.
-  * `fragment` {boolean} `true` se la stringa dell'URL serializzato deve includere il frammento, altrimenti `false`. **Default:** `true`.
-  * `search` {boolean} `true` se la stringa dell'URL serializzato deve includere la query di ricerca, altrimenti `false`. **Default:** `true`.
-  * `unicode` {boolean} `true` se i caratteri Unicode che appaiono nel componente host della stringa URL devono essere codificati direttamente anziché essere codificati con Punycode. **Default:** `false`.
+* `options` {Object} 
+  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
+  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **Default:** `false`.
 
 Returns a customizable serialization of a URL String representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
-L'URL object ha sia un metodo `toString()` che una proprietà `href` che restituiscono le serializzazioni della stringa dell'URL. Tuttavia, questi non sono personalizzabili in alcun modo. Il metodo `url.format(URL[, options])` consente la personalizzazione di base dell'output.
+The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
 Per esempio:
 
@@ -755,41 +763,41 @@ console.log(url.format(myURL, { fragment: false, unicode: true, auth: false }));
 
 ### Legacy urlObject
 
-Il legacy urlObject (`require('url').Url`) viene creato e restituito dalla funzione `url.parse()`.
+The legacy urlObject (`require('url').Url`) is created and returned by the `url.parse()` function.
 
 #### urlObject.auth
 
-La proprietà `auth` è la parte del nome utente e della password dell'URL, detta anche "userinfo". Questo sottoinsieme di stringa segue il `protocol` e il doppio slash (se presente) e precede il componente `host`, delimitato da una "chiocciola" in formato ASCII (`@`). Il formato della stringa è `{username}[:{password}]`, con la parte `[:{password}]` facoltativa.
+The `auth` property is the username and password portion of the URL, also referred to as "userinfo". This string subset follows the `protocol` and double slashes (if present) and precedes the `host` component, delimited by an ASCII "at sign" (`@`). The format of the string is `{username}[:{password}]`, with the `[:{password}]` portion being optional.
 
 Per esempio: `'user:pass'`
 
 #### urlObject.hash
 
-La proprietà `hash` è composta dalla parte "frammento" dell'URL che include il carattere ASCII cancelletto (`#`) iniziale.
+The `hash` property consists of the "fragment" portion of the URL including the leading ASCII hash (`#`) character.
 
 Per esempio: `'#hash'`
 
 #### urlObject.host
 
-La proprietà `host` è la parte completa dell'host dell'URL in minuscolo, inclusa la `port` se specificata.
+The `host` property is the full lower-cased host portion of the URL, including the `port` if specified.
 
 Per esempio: `'sub.host.com:8080'`
 
 #### urlObject.hostname
 
-La proprietà `hostname` è la parte del nome host in minuscolo del componente `host` *senza* includere la `port`.
+The `hostname` property is the lower-cased host name portion of the `host` component *without* the `port` included.
 
 Per esempio: `'sub.host.com'`
 
 #### urlObject.href
 
-La proprietà `href` è la stringa URL completa che è stata analizzata con entrambi i componenti del `protocol` e dell'`host` convertiti in caratteri minuscoli.
+The `href` property is the full URL string that was parsed with both the `protocol` and `host` components converted to lower-case.
 
 Per esempio: `'http://user:pass@sub.host.com:8080/p/a/t/h?query=string#hash'`
 
 #### urlObject.path
 
-La proprietà `path` è una concatenazione del `pathname` e dei componenti di `search`.
+The `path` property is a concatenation of the `pathname` and `search` components.
 
 Per esempio: `'/p/a/t/h?query=string'`
 
@@ -797,7 +805,7 @@ Non viene eseguita alcuna decodifica del `path`.
 
 #### urlObject.pathname
 
-La proprietà `pathname` è costituita dall'intera sezione del percorso dell'URL. Questo è tutto ciò che segue l'`host` (inclusa la `port`) e precede l'inizio dei componenti `query` o `hash`, delimitati dai caratteri ASCII punto interrogativo (`?`) o hash (`#`).
+La proprietà `pathname` è costituita dall'intera sezione del percorso dell'URL. This is everything following the `host` (including the `port`) and before the start of the `query` or `hash` components, delimited by either the ASCII question mark (`?`) or hash (`#`) characters.
 
 Per esempio `'/p/a/t/h'`
 
@@ -817,15 +825,15 @@ Per esempio: `'http:'`
 
 #### urlObject.query
 
-La proprietà `query` è la stringa di query senza il punto interrogativo ASCII iniziale (`?`) o un object restituito dal metodo `parse()` del modulo [`querystring`][]. Se la proprietà della `query` sia una stringa o un object viene determinato dall'argomento `parseQueryString` passato a `url.parse()`.
+The `query` property is either the query string without the leading ASCII question mark (`?`), or an object returned by the [`querystring`][] module's `parse()` method. Whether the `query` property is a string or object is determined by the `parseQueryString` argument passed to `url.parse()`.
 
 Per esempio: `'query=string'` o `{'query': 'string'}`
 
-Se restituito come stringa, non viene eseguita alcuna decodifica della stringa di query. Se restituito come object, vengono decodificati sia le chiavi che i valori.
+Se restituito come stringa, non viene eseguita alcuna decodifica della stringa di query. If returned as an object, both keys and values are decoded.
 
 #### urlObject.search
 
-La proprietà `search` è composta dall'intera porzione "stringa di query" dell'URL, compreso il carattere iniziale ASCII punto interrogativo (`?`).
+The `search` property consists of the entire "query string" portion of the URL, including the leading ASCII question mark (`?`) character.
 
 Per esempio: `'?query=string'`
 
@@ -833,12 +841,14 @@ Non viene eseguita alcuna decodifica della stringa di query.
 
 #### urlObject.slashes
 
-La proprietà `slashes` è un `boolean` con valore `true` se nel `protocol` vengono richiesti due caratteri slash ASCII (`/`) dopo i due punti.
+The `slashes` property is a `boolean` with a value of `true` if two ASCII forward-slash characters (`/`) are required following the colon in the `protocol`.
 
 ### url.format(urlObject)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7234
     description: URLs with a `file:` scheme will now always use the correct
@@ -847,9 +857,9 @@ changes:
                  times.
 -->
 
-* `urlObject` {Object|string} Un URL object (restituito da `url.parse()` o costruito diversamente). Se è una stringa, viene convertita in un object passandola a `url.parse()`.
+* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). If a string, it is converted to an object by passing it to `url.parse()`.
 
-Il metodo `url.format()` restituisce una stringa di URL formattata derivata da `urlObject`.
+The `url.format()` method returns a formatted URL string derived from `urlObject`.
 
 ```js
 url.format({
@@ -865,45 +875,44 @@ url.format({
 // => 'https://example.com/some/path?page=1&format=json'
 ```
 
-Se `urlObject` non è un object né una stringa, `url.format()` genererà un [`TypeError`][].
+If `urlObject` is not an object or a string, `url.format()` will throw a [`TypeError`][].
 
 Il processo di formattazione funziona come segue:
 
 * Viene creata un nuovo stringa vuota `result`.
 * Se `urlObject.protocol` è una stringa, viene aggiunta così com'è a `result`.
-* Altrimenti, se `urlObject.protocol` non è `undefined` e non è una stringa, viene generato un [`Error`][].
-* Per tutti i valori stringa di `urlObject.protocol` che *non terminano* con il carattere ASCII due punti (`:`), la stringa letterale `:` verrà aggiunta al `result`.
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`:
-    * `urlObject.slashes` property is true;
-    * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
+* Otherwise, if `urlObject.protocol` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* For all string values of `urlObject.protocol` that *do not end* with an ASCII colon (`:`) character, the literal string `:` will be appended to `result`.
+* If either of the following conditions is true, then the literal string `//` will be appended to `result`: * `urlObject.slashes` property is true; * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
 * If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* Se la proprietà `urlObject.host` è `undefined` allora:
+* Se la proprietà `urlObject.host` è `undefined` allora: 
   * Se l'`urlObject.hostname` è una stringa, viene aggiunta al `result`.
-  * Altrimenti, se `urlObject.hostname` non è `undefined` e non è una stringa, viene generato un [`Error`][].
-  * Se il valore della proprietà `urlObject.port` è veritiero e `urlObject.hostname` non è `undefined`:
+  * Otherwise, if `urlObject.hostname` is not `undefined` and is not a string, an [`Error`][] is thrown.
+  * If the `urlObject.port` property value is truthy, and `urlObject.hostname` is not `undefined`: 
     * La stringa letterale `:` viene aggiunta al `result` e
-    * Il valore di `urlObject.port` è forzato in una stringa e aggiunto al `result`.
-* Altrimenti, se il valore della proprietà `urlObject.host` è veritiero, il valore di `urlObject.host` viene forzato in una stringa e aggiunto al `result`.
-* Se la proprietà `urlObject.pathname` è una stringa che non è una stringa vuota:
+    * The value of `urlObject.port` is coerced to a string and appended to `result`.
+* Otherwise, if the `urlObject.host` property value is truthy, the value of `urlObject.host` is coerced to a string and appended to `result`.
+* Se la proprietà `urlObject.pathname` è una stringa che non è una stringa vuota: 
   * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string '/' is appended to `result`.
   * Il valore di `urlObject.pathname` viene aggiunto al `result`.
-* Altrimenti, se `urlObject.pathname` non è `undefined` e non è una stringa, viene generato un [`Error`][].
-* Se la proprietà `urlObject.search` è `undefined` e la proprietà `urlObject.query` è un `Object`, la stringa letterale `?` viene aggiunta al `result` seguita dall'output della chiamata al metodo `stringify()` del modulo [`querystring`][] passando il valore di `urlObject.query`.
-* Altrimenti, se `urlObject.search` è una stringa:
-  * Se il valore di `urlObject.search` *non inizia* con il carattere ASCII punto interrogativo (`?`), la stringa letterale `?` viene aggiunta al `result`.
+* Otherwise, if `urlObject.pathname` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* If the `urlObject.search` property is `undefined` and if the `urlObject.query` property is an `Object`, the literal string `?` is appended to `result` followed by the output of calling the [`querystring`][] module's `stringify()` method passing the value of `urlObject.query`.
+* Altrimenti, se `urlObject.search` è una stringa: 
+  * If the value of `urlObject.search` *does not start* with the ASCII question mark (`?`) character, the literal string `?` is appended to `result`.
   * Il valore di `urlObject.search` viene aggiunto al `result`.
-* Altrimenti, se `urlObject.search` non è `undefined` e non è una stringa, viene generato un [`Error`][].
-* Se la proprietà `urlObject.hash` è una stringa:
-  * Se il valore di `urlObject.hash` *non inizia* con il carattere ASCII cancelletto (`#`), la stringa letterale `#` viene aggiunta al `result`.
+* Otherwise, if `urlObject.search` is not `undefined` and is not a string, an [`Error`][] is thrown.
+* Se la proprietà `urlObject.hash` è una stringa: 
+  * If the value of `urlObject.hash` *does not start* with the ASCII hash (`#`) character, the literal string `#` is appended to `result`.
   * Il valore di `urlObject.hash` viene aggiunto al `result`.
-* Altrimenti, se la proprietà `urlObject.hash` non è `undefined` e non è una stringa, viene generato un [`Error`][].
+* Otherwise, if the `urlObject.hash` property is not `undefined` and is not a string, an [`Error`][] is thrown.
 * Viene restituito `result`.
 
-
 ### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/13606
     description: The `search` property on the returned URL object is now `null`
@@ -911,19 +920,21 @@ changes:
 -->
 
 * `urlString` {string} La stringa dell'URL da analizzare.
-* `parseQueryString` {boolean} Se `true`, la proprietà `query` sarà sempre impostata su un object restituito dal metodo `parse()` del modulo [`querystring`][]. Se `false`, la proprietà `query` sull'URL object restituito sarà una stringa non analizzata e non codificata. **Default:** `false`.
-* `slashesDenoteHost` {boolean} Se `true`, il primo token dopo la stringa letterale `//` e precedente al successivo `/` verrà interpretato come `host`. Ad esempio, considerando `//foo/bar`, il risultato sarebbe `{host: 'foo', pathname: '/bar'}` piuttosto che `{pathname: '//foo/bar'}`. **Default:** `false`.
+* `parseQueryString` {boolean} If `true`, the `query` property will always be set to an object returned by the [`querystring`][] module's `parse()` method. If `false`, the `query` property on the returned URL object will be an unparsed, undecoded string. **Default:** `false`.
+* `slashesDenoteHost` {boolean} If `true`, the first token after the literal string `//` and preceding the next `/` will be interpreted as the `host`. For instance, given `//foo/bar`, the result would be `{host: 'foo', pathname: '/bar'}` rather than `{pathname: '//foo/bar'}`. **Default:** `false`.
 
-Il metodo `url.parse()` prende una stringa URL, la analizza e restituisce un URL object.
+The `url.parse()` method takes a URL string, parses it, and returns a URL object.
 
 Verrà generato un `TypeError` se `urlString` non è una stringa.
 
 Viene generato un `URIError` se la proprietà `auth` è presente ma non può essere decodificata.
 
 ### url.resolve(from, to)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8215
     description: The `auth` fields are now kept intact when `from` and `to`
@@ -940,7 +951,7 @@ changes:
 * `from` {string} L'URL di Base da risolvere.
 * `to` {string} L'URL di HREF da risolvere.
 
-Il metodo `url.resolve()` risolve un URL di destinazione relativo a un URL di base in un modo similare a quello con cui un browser Web risolve un tag di ancoraggio HREF.
+The `url.resolve()` method resolves a target URL relative to a base URL in a manner similar to that of a Web browser resolving an anchor tag HREF.
 
 Per esempio:
 
@@ -955,25 +966,25 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 
 ## Codifica Percentuale negli URL
 
-Gli URL sono autorizzati a contenere esclusivamente un determinato intervallo di caratteri. Qualsiasi carattere che si trova al di fuori di tale intervallo deve essere codificato. In che modo tali caratteri vengono codificati e quali caratteri codificare dipende interamente da dove si trova il carattere all'interno della struttura dell'URL.
+Gli URL sono autorizzati a contenere esclusivamente un determinato intervallo di caratteri. Any character falling outside of that range must be encoded. How such characters are encoded, and which characters to encode depends entirely on where the character is located within the structure of the URL.
 
 ### API Legacy
 
-All'interno dell'API Legacy, verranno automaticamente ignorati gli spazi (`' '`) ed i caratteri seguenti nelle proprietà degli URL object:
+Within the Legacy API, spaces (`' '`) and the following characters will be automatically escaped in the properties of URL objects:
 
 ```txt
 < > " ` \r \n \t { } | \ ^ '
 ```
 
-Ad esempio, Il carattere ASCII spazio (`' '`) viene codificato come `%20`. Il carattere ASCII slash (`/`) viene codificato come `%3C`.
+Ad esempio, Il carattere ASCII spazio (`' '`) viene codificato come `%20`. The ASCII forward slash (`/`) character is encoded as `%3C`.
 
 ### API di WHATWG
 
-Il [WHATWG URL Standard](https://url.spec.whatwg.org/) utilizza un approccio per la selezione dei caratteri codificati più selettivo e minuzioso di quello utilizzato dall'API Legacy.
+The [WHATWG URL Standard](https://url.spec.whatwg.org/) uses a more selective and fine grained approach to selecting encoded characters than that used by the Legacy API.
 
-L'algoritmo di WHATWG definisce quattro "set di codifica percentuale" che descrivono intervalli di caratteri che devono essere codificati in percentuale:
+The WHATWG algorithm defines four "percent-encode sets" that describe ranges of characters that must be percent-encoded:
 
-* Il *set di codifica percentuale di controllo C0* include punti di codice nell'intervallo da U+0000 a U+001F (compresi) e tutti i punti di codice superiori a U+007E.
+* The *C0 control percent-encode set* includes code points in range U+0000 to U+001F (inclusive) and all code points greater than U+007E.
 
 * The *fragment percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+003C, U+003E, and U+0060.
 
@@ -981,9 +992,9 @@ L'algoritmo di WHATWG definisce quattro "set di codifica percentuale" che descri
 
 * The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
 
-Il *set di codifica percentuale di userinfo* viene utilizzato esclusivamente per il nome utente e le password codificate all'interno dell'URL. Il *set di codifica percentuale del percorso* viene utilizzato per il percorso della maggior parte degli URL. Il *set di codifica percentuale del frammento* viene utilizzato per i frammenti degli URL. Il *set di codifica percentuale di controllo C0* viene utilizzato per l'host e per il percorso ad alcune condizioni specifiche, in aggiunta a tutti gli altri casi.
+The *userinfo percent-encode set* is used exclusively for username and passwords encoded within the URL. The *path percent-encode set* is used for the path of most URLs. Il *set di codifica percentuale del frammento* viene utilizzato per i frammenti degli URL. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 
-Quando appaiono caratteri non-ASCII all'interno dell'hostname, l'hostname stesso viene codificato utilizzando l'algoritmo [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4). Da notare, tuttavia, che un hostname *potrebbe* contenere *sia* caratteri codificati con Punycode che con codifica percentuale. Per esempio:
+When non-ASCII characters appear within a hostname, the hostname is encoded using the [Punycode](https://tools.ietf.org/html/rfc5891#section-4.4) algorithm. Note, however, that a hostname *may* contain *both* Punycode encoded and percent-encoded characters. Per esempio:
 
 ```js
 const { URL } = require('url');

@@ -1,8 +1,8 @@
-# UDP / Datagram Sockets
+# UDP/Datagram Sockets
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilitas: 2 - Stabil
 
 <!-- name=dgram -->
 
@@ -91,6 +91,22 @@ added: v0.6.9
 * `multicastInterface` {string}
 
 Tells the kernel to join a multicast group at the given `multicastAddress` and `multicastInterface` using the `IP_ADD_MEMBERSHIP` socket option. If the `multicastInterface` argument is not specified, the operating system will choose one interface and will add membership to it. To add membership to every available interface, call `addMembership` multiple times, once per interface.
+
+When sharing a UDP socket across multiple `cluster` workers, the `socket.addMembership()` function must be called only once or an `EADDRINUSE` error will occur:
+
+```js
+const cluster = require('cluster');
+const dgram = require('dgram');
+if (cluster.isMaster) {
+  cluster.fork(); // Works ok.
+  cluster.fork(); // Fails with EADDRINUSE.
+} else {
+  const s = dgram.createSocket('udp4');
+  s.bind(1234, () => {
+    s.addMembership('224.0.0.114');
+  });
+}
+```
 
 ### socket.address()
 
@@ -182,6 +198,8 @@ socket.bind({
 added: v0.1.99
 -->
 
+* `callback` {Function} Called when the socket has been closed.
+
 Close the underlying socket and stop listening for data on it. If a callback is provided, it is added as a listener for the [`'close'`][] event.
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
@@ -225,7 +243,7 @@ Calling `socket.ref()` multiples times will have no additional effect.
 
 The `socket.ref()` method returns a reference to the socket so calls can be chained.
 
-### socket.send(msg, \[offset, length,] port [, address\] \[, callback\])
+### socket.send(msg\[, offset, length], port[, address\]\[, callback\])
 
 <!-- YAML
 added: v0.1.99
@@ -323,7 +341,7 @@ added: v8.6.0
 
 * `multicastInterface` {string}
 
-*Note: All references to scope in this section are referring to [IPv6 Zone Indices](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), which are defined by [RFC 4007](https://tools.ietf.org/html/rfc4007). In string form, an IP with a scope index is written as `'IP%scope'` where scope is an interface name or interface number.*
+*All references to scope in this section are referring to [IPv6 Zone Indices](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), which are defined by [RFC 4007](https://tools.ietf.org/html/rfc4007). In string form, an IP with a scope index is written as `'IP%scope'` where scope is an interface name or interface number.*
 
 Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. The `multicastInterface` must be a valid string representation of an IP from the socket's family.
 
@@ -445,7 +463,7 @@ The `socket.unref()` method returns a reference to the socket so calls can be ch
 
 ### Change to asynchronous `socket.bind()` behavior
 
-As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code that assumes synchronous behavior, as in the following example:
+As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code would use synchronous behavior:
 
 ```js
 const s = dgram.createSocket('udp4');
@@ -453,7 +471,7 @@ s.bind(1234);
 s.addMembership('224.0.0.114');
 ```
 
-Must be changed to pass a callback function to the [`dgram.Socket#bind()`][] function:
+Such legacy code would need to be changed to pass a callback function to the [`dgram.Socket#bind()`][] function:
 
 ```js
 const s = dgram.createSocket('udp4');

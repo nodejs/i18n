@@ -6,7 +6,7 @@ The `require('internal/errors')` module is an internal-only module that can be u
 
 The intent of the module is to allow errors provided by Node.js to be assigned a permanent identifier. Without a permanent identifier, userland code may need to inspect error messages to distinguish one error from another. An unfortunate result of that practice is that changes to error messages result in broken code in the ecosystem. For that reason, Node.js has considered error message changes to be breaking changes. By providing a permanent identifier for a specific error, we reduce the need for userland code to inspect error messages.
 
-*Note*: Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
+Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
 
 ## Using internal/errors.js
 

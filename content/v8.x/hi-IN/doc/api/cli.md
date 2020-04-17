@@ -1,4 +1,4 @@
-# Command Line Options
+# कमांड लाइन विकल्प
 
 <!--introduced_in=v5.9.1-->
 
@@ -229,6 +229,14 @@ added: v7.7.0
 
 A comma separated list of categories that should be traced when trace event tracing is enabled using `--trace-events-enabled`.
 
+### `--trace-event-file-pattern`
+
+<!-- YAML
+added: v8.12.0
+-->
+
+Template string specifying the filepath for the trace event data, it supports `${rotation}` and `${pid}`.
+
 ### `--zero-fill-buffers`
 
 <!-- YAML
@@ -363,6 +371,14 @@ added: v7.5.0
 
 Indicate the end of node options. Pass the rest of the arguments to the script. If no script filename or eval/print script is supplied prior to this, then the next argument will be used as a script filename.
 
+### `--max-http-header-size=size`
+
+<!-- YAML
+added: v8.15.0
+-->
+
+Specify the maximum size, in bytes, of HTTP headers. Defaults to 8KB.
+
 ## Environment Variables
 
 ### `NODE_DEBUG=module[,…]`
@@ -423,7 +439,7 @@ added: v8.0.0
 
 A space-separated list of command line options. `options...` are interpreted as if they had been specified on the command line before the actual command line (so they can be overridden). Node will exit with an error if an option that is not allowed in the environment is used, such as `-p` or a script file.
 
-Node options that are allowed are:
+Node.js options that are allowed are:
 
 - `--enable-fips`
 - `--force-fips`
@@ -431,6 +447,7 @@ Node options that are allowed are:
 - `--inspect-brk`
 - `--inspect-port`
 - `--inspect`
+- `--max-http-header-size`
 - `--no-deprecation`
 - `--no-warnings`
 - `--openssl-config`
@@ -441,6 +458,7 @@ Node options that are allowed are:
 - `--trace-deprecation`
 - `--trace-events-categories`
 - `--trace-events-enabled`
+- `--trace-event-file-pattern`
 - `--trace-sync-io`
 - `--trace-warnings`
 - `--track-heap-objects`
@@ -453,6 +471,8 @@ V8 options that are allowed are:
 
 - `--abort-on-uncaught-exception`
 - `--max-old-space-size`
+- `--perf-basic-prof`
+- `--perf-prof`
 - `--stack-trace-limit`
 
 ### `NODE_PENDING_DEPRECATION=1`
@@ -479,7 +499,7 @@ When set to `1`, instructs the module loader to preserve symbolic links when res
 added: v3.0.0
 -->
 
-Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`""` or `" "`) disables persistent REPL history.
+Path to the file used to store the persistent REPL history. The default path is `~/.node_repl_history`, which is overridden by this variable. Setting the value to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `NODE_EXTRA_CA_CERTS=file`
 

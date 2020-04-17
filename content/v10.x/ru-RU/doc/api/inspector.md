@@ -6,7 +6,7 @@
 
 Модуль `инспектора` предоставляет API для взаимодействия с инспектором V8.
 
-Доступ к нему можно получить с помощью:
+Это осуществляется с помощью:
 
 ```js
 const inspector = require('inspector');
@@ -32,16 +32,16 @@ The inspector console does not have API parity with Node.js console.
 * `host` {string} Хост для прослушивания соединений инспектора. Необязательный. **По умолчанию:** что было указано в CLI.
 * `wait` {boolean} Блокировать, пока клиент не подключился. Необязательный. **По умолчанию:** `false`.
 
-Активируйте инспектор на хосте и порте. Эквивалент узла `
---inspect = [[host:] port] `, но может быть сделано программно после того, как узел имеет началось.
+Активируйте инспектор на хосте и порте. Equivalent to `node
+--inspect=[[host:]port]`, but can be done programmatically after node has started.
 
-Если wait ` true `, блокируется, пока клиент не подключится к порту проверки и управление потоком было передано клиенту отладчика.
+If wait is `true`, will block until a client has connected to the inspect port and flow control has been passed to the debugger client.
 
 See the [security warning](cli.html#inspector_security) regarding the `host` parameter usage.
 
 ## inspector.url()
 
-* Returns: {string|undefined}
+* Возвращает: {string|undefined}
 
 Вернёт URL-адрес активного инспектора или ` undefined `, если его нет.
 
@@ -50,6 +50,7 @@ See the [security warning](cli.html#inspector_security) regarding the `host` par
 The `inspector.Session` is used for dispatching messages to the V8 inspector back-end and receiving message responses and notifications.
 
 ### Constructor: new inspector.Session()
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -59,6 +60,7 @@ Create a new instance of the `inspector.Session` class. The inspector session ne
 `inspector.Session` is an [`EventEmitter`][] with the following events:
 
 ### Event: 'inspectorNotification'
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -76,6 +78,7 @@ session.on('inspectorNotification', (message) => console.log(message.method));
 It is also possible to subscribe only to notifications with specific method:
 
 ### Event: &lt;inspector-protocol-method&gt;
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -94,6 +97,7 @@ session.on('Debugger.paused', ({ params }) => {
 ```
 
 ### session.connect()
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -101,6 +105,7 @@ added: v8.0.0
 Connects a session to the inspector back-end. An exception will be thrown if there is already a connected session established either through the API or by a front-end connected to the Inspector WebSocket port.
 
 ### session.disconnect()
+
 <!-- YAML
 added: v8.0.0
 -->
@@ -108,6 +113,7 @@ added: v8.0.0
 Immediately close the session. All pending message callbacks will be called with an error. [`session.connect()`] will need to be called to be able to send messages again. Reconnected session will lose all inspector state, such as enabled agents or configured breakpoints.
 
 ### session.post(method\[, params\]\[, callback\])
+
 <!-- YAML
 added: v8.0.0
 -->

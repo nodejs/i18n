@@ -72,8 +72,8 @@ const { Console } = console;
 
 ### new Console(stdout[, stderr])
 
-* `stdout` {Writable}
-* `stderr` {Writable}
+* `stdout` {stream.Writable}
+* `stderr` {stream.Writable}
 
 Creates a new `Console` with one or two writable stream instances. `stdout` is a writable stream to print log or info output. `stderr` is used for warning or error output. If `stderr` is not provided, `stdout` is used for `stderr`.
 
@@ -170,7 +170,7 @@ When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY.
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. Defaults to `'default'`.
+* `label` {string} The display label for the counter. **Default:** `'default'`.
 
 Maintains an internal counter specific to `label` and outputs to `stdout` the number of times `console.count()` has been called with the given `label`.
 
@@ -204,7 +204,7 @@ undefined
 added: v8.3.0
 -->
 
-* `label` {string} The display label for the counter. Defaults to `'default'`.
+* `label` {string} The display label for the counter. **Default:** `'default'`.
 
 Resets the internal counter specific to `label`.
 
@@ -226,6 +226,11 @@ undefined
 
 <!-- YAML
 added: v8.0.0
+changes:
+
+  - version: v8.10.0
+    pr-url: https://github.com/nodejs/node/pull/17033
+    description: "`console.debug` is now an alias for `console.log`."
 -->
 
 * `data` {any}
@@ -241,17 +246,11 @@ added: v0.1.101
 
 * `obj` {any}
 * `options` {Object} 
-  * `showHidden` {boolean}
-  * `depth` {number}
-  * `colors` {boolean}
+  * `showHidden` {boolean} If `true` then the object's non-enumerable and symbol properties will be shown too. **Default:** `false`.
+  * `depth` {number} Tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. To make it recurse indefinitely, pass `null`. **Default:** `2`.
+  * `colors` {boolean} If `true`, then the output will be styled with ANSI color codes. Colors are customizable; see [customizing `util.inspect()` colors][]. **Default:** `false`.
 
-Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`. An optional `options` object may be passed to alter certain aspects of the formatted string:
-
-* `showHidden` - if `true` then the object's non-enumerable and symbol properties will be shown too. Defaults to `false`.
-
-* `depth` - tells [`util.inspect()`][] how many times to recurse while formatting the object. This is useful for inspecting large complicated objects. Defaults to `2`. To make it recurse indefinitely, pass `null`.
-
-* `colors` - if `true`, then the output will be styled with ANSI color codes. Defaults to `false`. Colors are customizable; see [customizing `util.inspect()` colors][].
+Uses [`util.inspect()`][] on `obj` and prints the resulting string to `stdout`. This function bypasses any custom `inspect()` function defined on `obj`.
 
 ### console.error(\[data\]\[, ...args\])
 
@@ -406,3 +405,93 @@ added: v0.1.100
 * `...args` {any}
 
 The `console.warn()` function is an alias for [`console.error()`][].
+
+## Inspector only methods
+
+The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
+
+### console.dirxml(object)
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `object` {string}
+
+This method does not display anything unless used in the inspector. The `console.dirxml()` method displays in `stdout` an XML interactive tree representation of the descendants of the specified `object` if possible, or the JavaScript representation if not. Calling `console.dirxml()` on an HTML or XML element is equivalent to calling `console.log()`.
+
+### console.markTimeline(label)
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `label` {string} Defaults to `'default'`.
+
+This method does not display anything unless used in the inspector. The `console.markTimeline()` method is the deprecated form of [`console.timeStamp()`][].
+
+### console.profile([label])
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `label` {string}
+
+This method does not display anything unless used in the inspector. The `console.profile()` method starts a JavaScript CPU profile with an optional label until [`console.profileEnd()`][] is called. The profile is then added to the **Profile** panel of the inspector.
+
+```js
+console.profile('MyLabel');
+// Some code
+console.profileEnd();
+// Adds the profile 'MyLabel' to the Profiles panel of the inspector.
+```
+
+### console.profileEnd()
+
+<!-- YAML
+added: v8.0.0
+-->
+
+This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+
+### console.table(array[, columns])
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `array` {Array|Object}
+* `columns` {Array}
+
+This method does not display anything unless used in the inspector. Prints to `stdout` the array `array` formatted as a table.
+
+### console.timeStamp([label])
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `label` {string}
+
+This method does not display anything unless used in the inspector. The `console.timeStamp()` method adds an event with the label `label` to the **Timeline** panel of the inspector.
+
+### console.timeline([label])
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `label` {string} Defaults to `'default'`.
+
+This method does not display anything unless used in the inspector. The `console.timeline()` method is the deprecated form of [`console.time()`][].
+
+### console.timelineEnd([label])
+
+<!-- YAML
+added: v8.0.0
+-->
+
+* `label` {string} Defaults to `'default'`.
+
+This method does not display anything unless used in the inspector. The `console.timelineEnd()` method is the deprecated form of [`console.timeEnd()`][].

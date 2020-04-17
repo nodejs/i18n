@@ -1,19 +1,21 @@
 # Object Globali
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Questi object sono disponibili in tutti i moduli. Le seguenti variabili potrebbero sembrare globali ma non lo sono. Esistono solo nel campo di applicazione dei moduli, visualizza la [module system documentation](modules.html):
+Questi object sono disponibili in tutti i moduli. The following variables may appear to be global but are not. They exist only in the scope of modules, see the [module system documentation](modules.html):
 
-- [`__dirname`][]
-- [`__filename`][]
-- [`exports`][]
-- [`module`][]
-- [`require()`][]
+* [`__dirname`][]
+* [`__filename`][]
+* [`exports`][]
+* [`module`][]
+* [`require()`][]
 
-Gli object qui elencati sono specifici a Node.js. Ci sono un numero di [object incorporati](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) che sono parte del linguaggio JavaScript, i quali sono anch'essi accessibili a livello globale.
+Gli object qui elencati sono specifici a Node.js. There are a number of [built-in objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) that are part of the JavaScript language itself, which are also globally accessible.
 
 ## Class: Buffer
+
 <!-- YAML
 added: v0.1.103
 -->
@@ -33,6 +35,7 @@ Questa variabile può sembrare globale ma non lo è. Visualizza [`__dirname`].
 Questa variabile può sembrare globale ma non lo è. Visualizza [`__filename`].
 
 ## clearImmediate(immediateObject)
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -42,6 +45,7 @@ added: v0.9.1
 [`clearImmediate`] è descritta nella sezione [timers](timers.html).
 
 ## clearInterval(intervalObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -51,6 +55,7 @@ added: v0.0.1
 [`clearInterval`] è descritto nella sezione [timers](timers.html).
 
 ## clearTimeout(timeoutObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -60,6 +65,7 @@ added: v0.0.1
 [`clearTimeout`] è descritto nella sezione [timers](timers.html).
 
 ## console
+
 <!-- YAML
 added: v0.1.100
 -->
@@ -75,6 +81,7 @@ Utilizzato per la stampa su stdout e stderr. Visualizza la sezione [`console`][]
 Questa variabile può sembrare globale ma non lo è. Visualizza [`exports`].
 
 ## globale
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -83,13 +90,14 @@ added: v0.1.27
 
 * {Object} Il namespace object globale.
 
-Nei browser, l'ambito principale è l'ambito globale. Ciò significa che all'interno del browser `var qualcosa` definirà una nuova variabile globale. In Node.js tutto ciò è diverso. L'ambito di livello superiore non è l'ambito globale; `var qualcosa` all'interno di un modulo Node.js sarà locale a quel modulo.
+Nei browser, l'ambito principale è l'ambito globale. This means that within the browser `var something` will define a new global variable. In Node.js this is different. The top-level scope is not the global scope; `var something` inside a Node.js module will be local to that module.
 
 ## module
 
 Questa variabile può sembrare globale ma non lo è. Visualizza [`module`].
 
 ## process
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -105,6 +113,7 @@ L'object del processo. Visualizza la sezione [object del `processo`][].
 Questa variabile può sembrare globale ma non lo è. Visualizza [`require()`].
 
 ## setImmediate(callback[, ...args])
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -114,6 +123,7 @@ added: v0.9.1
 [`setImmediate`] è descritto nella sezione [timers](timers.html).
 
 ## setInterval(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -123,6 +133,7 @@ added: v0.0.1
 [`setInterval`] è descritto nella sezione [timers](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -132,24 +143,27 @@ added: v0.0.1
 [`setTimeout`] è descritto nella sezione [timers](timers.html).
 
 ## URL
+
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-The WHATWG `URL` class. See the [`URL`][] section.
+La classe di `URL` WHATWG. Visualizza la sezione [`URL`][].
 
 ## URLSearchParams
+
 <!-- YAML
 added: v10.0.0
 -->
 
 <!-- type=global -->
 
-The WHATWG `URLSearchParams` class. See the [`URLSearchParams`][] section.
+La classe di `URLSearchParams` WHATWG. Visualizza la sezione [`URLSearchParams`][].
 
 ## WebAssembly
+
 <!-- YAML
 added: v8.0.0
 -->

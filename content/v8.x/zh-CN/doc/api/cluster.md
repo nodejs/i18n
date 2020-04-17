@@ -65,9 +65,9 @@ cluster 模块支持两种分发传入连接的方法。
 
 因为 `server.listen()` 将大部分的工作都交给了 master 进程，在以下三种情况下，一个正常 Node.js 进程和一个 cluster Worker 进程之间的行为表现不同：
 
-1. `server.listen({fd: 7})` Because the message is passed to the master, file descriptor 7 **in the parent** will be listened on, and the handle passed to the worker, rather than listening to the worker's idea of what the number 7 file descriptor references.
-2. `server.listen(handle)` Listening on handles explicitly will cause the worker to use the supplied handle, rather than talk to the master process.
-3. `server.listen(0)` Normally, this will cause servers to listen on a random port. However, in a cluster, each worker will receive the same "random" port each time they do `listen(0)`. In essence, the port is random the first time, but predictable thereafter. To listen on a unique port, generate a port number based on the cluster worker ID.
+1. `server.listen({fd: 7})` 由于消息是传递到 master 进程，所以 **父进程** 中的 file descriptor 7 将被侦听，并且传递该句柄到 worker 进程，而不是侦听 Worker 进程中关于编号为7的 file descriptor 的引用。
+2. `server.listen(handle)` 显示的句柄侦听将导致 worker 进程直接使用提供的句柄，而不是跟 master 进程通讯。
+3. `server.listen(0)` 通常，这将导致服务器在随机端口上侦听。 然而，在 cluster 中，每个 Worker 每次执行 `listen(0)` 时都会收到相同的 "随机" 端口。 实质上，端口第一次是随机的，但是随后是可预测的。 要侦听唯一端口，生成一个基于 cluster worker ID 的端口号。
 
 *Note*: Node.js does not provide routing logic. It is, therefore important to design an application such that it does not rely too heavily on in-memory data objects for things like sessions and login.
 
@@ -76,6 +76,7 @@ Because workers are all separate processes, they can be killed or re-spawned dep
 Although a primary use case for the `cluster` module is networking, it can also be used for other use cases requiring worker processes.
 
 ## 类: Worker
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -83,6 +84,7 @@ added: v0.7.0
 A Worker object contains all public information and method about a worker. In the master it can be obtained using `cluster.workers`. In a worker it can be obtained using `cluster.worker`.
 
 ### 事件: 'disconnect'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -96,6 +98,7 @@ cluster.fork().on('disconnect', () => {
 ```
 
 ### 事件: 'error'
+
 <!-- YAML
 added: v0.7.3
 -->
@@ -105,6 +108,7 @@ This event is the same as the one provided by [`child_process.fork()`][].
 Within a worker, `process.on('error')` may also be used.
 
 ### 事件：'exit'
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -128,6 +132,7 @@ worker.on('exit', (code, signal) => {
 ```
 
 ### 事件：'listening'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -145,6 +150,7 @@ cluster.fork().on('listening', (address) => {
 It is not emitted in the worker.
 
 ### 事件：'message'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -203,6 +209,7 @@ if (cluster.isMaster) {
 ```
 
 ### 事件: 'online'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -218,9 +225,11 @@ cluster.fork().on('online', () => {
 It is not emitted in the worker.
 
 ### worker.disconnect()
+
 <!-- YAML
 added: v0.7.7
 changes:
+
   - version: v7.3.0
     pr-url: https://github.com/nodejs/node/pull/10019
     description: This method now returns a reference to `worker`.
@@ -276,6 +285,7 @@ if (cluster.isMaster) {
 ```
 
 ### worker.exitedAfterDisconnect
+
 <!-- YAML
 added: v6.0.0
 -->
@@ -298,6 +308,7 @@ worker.kill();
 ```
 
 ### worker.id
+
 <!-- YAML
 added: v0.8.0
 -->
@@ -309,6 +320,7 @@ Each new worker is given its own unique id, this id is stored in the `id`.
 While a worker is alive, this is the key that indexes it in cluster.workers
 
 ### worker.isConnected()
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -316,6 +328,7 @@ added: v0.11.14
 This function returns `true` if the worker is connected to its master via its IPC channel, `false` otherwise. A worker is connected to its master after it has been created. It is disconnected after the `'disconnect'` event is emitted.
 
 ### worker.isDead()
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -323,6 +336,7 @@ added: v0.11.14
 This function returns `true` if the worker's process has terminated (either because of exiting or being signaled). Otherwise, it returns `false`.
 
 ### worker.kill([signal='SIGTERM'])
+
 <!-- YAML
 added: v0.9.12
 -->
@@ -338,6 +352,7 @@ This method is aliased as `worker.destroy()` for backwards compatibility.
 Note that in a worker, `process.kill()` exists, but it is not this function, it is [`kill`][].
 
 ### worker.process
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -351,9 +366,11 @@ See: [Child Process module](child_process.html#child_process_child_process_fork_
 Note that workers will call `process.exit(0)` if the `'disconnect'` event occurs on `process` and `.exitedAfterDisconnect` is not `true`. This protects against accidental disconnection.
 
 ### worker.send(message\[, sendHandle\]\[, callback\])
+
 <!-- YAML
 added: v0.7.0
 changes:
+
   - version: v4.0.0
     pr-url: https://github.com/nodejs/node/pull/2620
     description: The `callback` parameter is supported now.
@@ -385,10 +402,12 @@ if (cluster.isMaster) {
 ```
 
 ### worker.suicide
+
 <!-- YAML
 added: v0.7.0
 deprecated: v6.0.0
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/3747
     description: Accessing this property will now emit a deprecation warning.
@@ -415,7 +434,8 @@ worker.kill();
 
 This API only exists for backwards compatibility and will be removed in the future.
 
-## 事件：'disconnect'
+## 事件: 'disconnect'
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -433,6 +453,7 @@ cluster.on('disconnect', (worker) => {
 ```
 
 ## 事件: 'exit'
+
 <!-- YAML
 added: v0.7.9
 -->
@@ -456,6 +477,7 @@ cluster.on('exit', (worker, code, signal) => {
 See [child_process event: 'exit'](child_process.html#child_process_event_exit).
 
 ## 事件: 'fork'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -483,6 +505,7 @@ cluster.on('exit', (worker, code, signal) => {
 ```
 
 ## 事件: 'listening'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -509,9 +532,11 @@ cluster.on('listening', (worker, address) => {
 * `'udp4'` 或 `'udp6'` (UDP v4 或 v6)
 
 ## 事件: 'message'
+
 <!-- YAML
 added: v2.5.0
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/5361
     description: The `worker` parameter is passed now; see below for details.
@@ -541,6 +566,7 @@ cluster.on('message', (worker, message, handle) => {
 ```
 
 ## 事件: 'online'
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -556,6 +582,7 @@ cluster.on('online', (worker) => {
 ```
 
 ## 事件: 'setup'
+
 <!-- YAML
 added: v0.7.1
 -->
@@ -569,6 +596,7 @@ The `settings` object is the `cluster.settings` object at the time `.setupMaster
 If accuracy is important, use `cluster.settings`.
 
 ## cluster.disconnect([callback])
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -584,6 +612,7 @@ The method takes an optional callback argument which will be called when finishe
 This can only be called from the master process.
 
 ## cluster.fork([env])
+
 <!-- YAML
 added: v0.6.0
 -->
@@ -596,6 +625,7 @@ Spawn a new worker process.
 This can only be called from the master process.
 
 ## cluster.isMaster
+
 <!-- YAML
 added: v0.8.1
 -->
@@ -605,6 +635,7 @@ added: v0.8.1
 True 表示当前进程为 master 进程。 这是通过 `process.env.NODE_UNIQUE_ID` 决定的。 如果 `process.env.NODE_UNIQUE_ID` 为 undefined, 则 `isMaster` 为 `true`。
 
 ## cluster.isWorker
+
 <!-- YAML
 added: v0.6.0
 -->
@@ -614,6 +645,7 @@ added: v0.6.0
 True 表示当前进程不是 master 进程 (它是 `cluster.isMaster` 的反面)。
 
 ## cluster.schedulingPolicy
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -625,9 +657,11 @@ The scheduling policy, either `cluster.SCHED_RR` for round-robin or `cluster.SCH
 `cluster.schedulingPolicy` can also be set through the `NODE_CLUSTER_SCHED_POLICY` environment variable. Valid values are `'rr'` and `'none'`.
 
 ## cluster.settings
+
 <!-- YAML
 added: v0.7.1
 changes:
+
   - version: v8.12.0
     pr-url: https://github.com/nodejs/node/pull/18399
     description: The `cwd` option is supported now.
@@ -642,7 +676,7 @@ changes:
     description: The `stdio` option is supported now.
 -->
 
-* {Object}
+* {Object} 
   * `execArgv` {Array} List of string arguments passed to the Node.js executable. **默认值：** `process.execArgv`.
   * `exec` {string} File path to worker file. **Default:** `process.argv[1]`.
   * `args` {Array} String arguments passed to worker. **Default:** `process.argv.slice(2)`.
@@ -659,9 +693,11 @@ After calling `.setupMaster()` (or `.fork()`) this settings object will contain 
 This object is not intended to be changed or set manually.
 
 ## cluster.setupMaster([settings])
+
 <!-- YAML
 added: v0.7.1
 changes:
+
   - version: v6.4.0
     pr-url: https://github.com/nodejs/node/pull/7838
     description: The `stdio` option is supported now.
@@ -697,6 +733,7 @@ cluster.fork(); // http worker
 This can only be called from the master process.
 
 ## cluster.worker
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -718,6 +755,7 @@ if (cluster.isMaster) {
 ```
 
 ## cluster.workers
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -726,7 +764,7 @@ added: v0.7.0
 
 A hash that stores the active worker objects, keyed by `id` field. Makes it easy to loop through all the workers. It is only available in the master process.
 
-A worker is removed from cluster.workers after the worker has disconnected _and_ exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the cluster.workers list happens before last `'disconnect'` or `'exit'` event is emitted.
+A worker is removed from cluster.workers after the worker has disconnected *and* exited. The order between these two events cannot be determined in advance. However, it is guaranteed that the removal from the cluster.workers list happens before last `'disconnect'` or `'exit'` event is emitted.
 
 ```js
 // Go through all workers

@@ -11,9 +11,11 @@ Existe un modo `strict` y un modo `legacy`, pero se recomiendo utilizar solo el 
 Para mayor información acerca de las comparaciones de igualdad utilizadas vea la [MDN's guide on equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness).
 
 ## Modo estricto
+
 <!-- YAML
 added: V8.13.0
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/17002
     description: Added strict mode to the assert module.
@@ -47,18 +49,22 @@ assert.deepEqual(/a/gi, new Date());
 ```
 
 ## assert(value[, message])
+
 <!-- YAML
 added: v0.5.9
 -->
+
 * `value` {any}
 * `message` {any}
 
 Un alias de [`assert.ok()`][].
 
 ## assert.deepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/12142
     description: Set and Map content is also compared
@@ -72,6 +78,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected`{any}
 * `message` {any}
@@ -99,40 +106,47 @@ Igualdad "profunda" significa que las propiedades enumerables "propias" de objet
 
 ```js
 const assert = require('assert');
+
 const obj1 = {
-   a: {
-     b: 1
-   }
- };
- const obj2 = {
-   a: {
-     b: 2
-   }
- };
- const obj3 = {
-   a: {
-     b: 1
-   }
- };
- const obj4 = Object.create(obj1);
- assert.deepEqual(obj1, obj1);
- // OK, objeto es igual a si mismo
-assert.deepEqual(obj1, obj2); 
+  a: {
+    b: 1
+  }
+};
+const obj2 = {
+  a: {
+    b: 2
+  }
+};
+const obj3 = {
+  a: {
+    b: 1
+  }
+};
+const obj4 = Object.create(obj1);
+
+assert.deepEqual(obj1, obj1);
+// OK, el objeto es igual a si mismo
+
+assert.deepEqual(obj1, obj2);
 // AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
- // los valores de b son diferentes
+// los valores de b son diferentes
 
 assert.deepEqual(obj1, obj3);
- // OK, los objetos son iguales
+// OK, los objetos son iguales
 
- assert.deepEqual(obj1, obj4); // AssertionError: { a: { b: 1 } } deepEqual {} // Los prototipos son ignorados
+assert.deepEqual(obj1, obj4);
+// AssertionError: { a: { b: 1 } } deepEqual {}
+//Los prototipos son ignorados
 ```
 
 Si los valores no son iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.deepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 changes:
+
   - version: v8.5.0
     pr-url: https://github.com/nodejs/node/pull/15001
     description: Error names and messages are now properly compared
@@ -149,6 +163,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/5910
     description: Handle non-`Uint8Array` typed arrays correctly.
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -164,8 +179,8 @@ Generally identical to `assert.deepEqual()` with a few exceptions:
 * Sólo se consideran las [enumerable "own" properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Enumerability_and_ownership_of_properties).
 * [`Error`][] messages are always compared, even though this property is non-enumerable.
 * [Object wrappers](https://developer.mozilla.org/en-US/docs/Glossary/Primitive#Primitive_wrapper_objects_in_JavaScript) son comparados como objetos y como valores desenvueltos.
-* Las propiedades Object son comparadas sin orden.
-* Las claves de Map y los artículos de Set son comparados sin orden.
+* Object properties are compared unordered.
+* Map keys and Set items are compared unordered.
 * La recursión se detiene cuando ambos lados difieren o cuando ambos lados encuentran una referencia circular.
 
 ```js
@@ -203,12 +218,14 @@ assert.deepStrictEqual(new String('foo'), Object('foo'));
 // OK because the object and the string are identical when unwrapped.
 ```
 
-Si los valores no son iguales, se arroja un `AssertionError` con una propiedad `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
+Si los valores no son iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.doesNotReject(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -240,9 +257,11 @@ assert.doesNotReject(
 ```
 
 ## assert.doesNotThrow(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/2407
     description: The `message` parameter is respected now.
@@ -250,6 +269,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function}
 * `message` {any}
@@ -258,7 +278,7 @@ Afirma que la función `block` no arroja un error. Véase [`assert.throws()`][] 
 
 Por favor, note: El uso de `assert.doesNotThrow()` no es realmente útil porque hay muy poco beneficio por coger un rechazo y luego devolverlo. En su lugar, considere añadir un comentario al lado de la ruta de código específica que no deba arrojar y mantenga los mensajes de error lo más expresivos posibles.
 
-Cuando `assert.doesNotThrow()` es llamado, llamará inmediatamente a la función `block`.
+Cuando se llama a `assert.doesNotThrow()`, se llamará inmediatamente a la función `block`.
 
 Si se arroja un error y es el del mismo tipo que el especificado por el parámetro `error`, entonces se arroja un `AssertionError`. Si el error es de un tipo diferente, o si el parámetro `error` no está definido, el error se propaga de nuevo a la persona que llama.
 
@@ -298,9 +318,11 @@ TypeError,
 ```
 
 ## assert.equal(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -332,10 +354,13 @@ assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
 Si los valores no son iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.fail(message)
+
 ## assert.fail(actual, expected[, message[, operator[, stackStartFunction]]])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -371,6 +396,7 @@ assert.fail('a', 'b');
 ```
 
 Caso ejemplo de `stackStartFunction` al truncar la pila de llamadas de excepciones:
+
 ```js
 function suppressFrame() {
   assert.fail('a', 'b', undefined, '!==', suppressFrame);
@@ -383,9 +409,11 @@ suppressFrame();
 ```
 
 ## assert.ifError(value)
+
 <!-- YAML
 added: v0.1.97
 -->
+
 * `value` {any}
 
 Arroja `value` si `value` es verdadero. Esto es útil cuando se evalúan los argumentos `error` en llamadas de retorno.
@@ -406,9 +434,11 @@ assert.ifError(new Error());
 ```
 
 ## assert.notDeepEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -456,12 +486,14 @@ assert.notDeepEqual(obj1, obj4);
 // OK: obj1 y obj4 no son profundamente iguales
 ```
 
-Si los valores son profundamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
+Si los valores son profundamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, se asigna un mensaje de error predeterminado.
 
 ## assert.notDeepStrictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v1.2.0
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -481,9 +513,11 @@ assert.notDeepStrictEqual({ a: 1 }, { a: '1' });
 Si los valores son profunda y estrictamente iguales, un `AssertionError` es arrojado con una propiedad `message` colocada igual al valor del parámetro `message`. Si el parámetro `message` es indefinido, un mensaje predeterminado de error es asignado.
 
 ## assert.notEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -514,9 +548,11 @@ assert.notEqual(1, '1');
 Si los valores son iguales, un `AssertionError` es arrojado con una propiedad `message` colocada igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.notStrictEqual(actual, esperado[, mensaje])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -539,15 +575,17 @@ assert.notStrictEqual(1, '1');
 Si los valores son estrictamente iguales, un `AssertionError` es arrojado con una propiedad `message` colocada igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.ok(value[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `value` {any}
 * `message` {any}
 
-Prueba si `value` es verdadero. Es equivalente a `assert.equal(!!value, true, message)`.
+Prueba si el `value` es truthy. Es equivalente a `assert.equal(!!value, true, message)`.
 
-Si `value` no es verdadero, un `AssertionError` es arrojado con una propiedad `message` colocada igual al valor del parámetro `message`. Si el parámetro `message` es `undefined`, un mensaje de error predeterminado es asignado.
+Si el valor `value` no es truthy, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` está `undefined`, un mensaje de error predeterminado es asignado.
 
 ```js
 const assert = require('assert').strict;
@@ -565,9 +603,11 @@ assert.ok(false, 'it\'s false');
 ```
 
 ## assert.strictEqual(actual, expected[, message])
+
 <!-- YAML
 added: v0.1.21
 -->
+
 * `actual` {any}
 * `expected` {any}
 * `message` {any}
@@ -587,12 +627,14 @@ assert.strictEqual(1, '1');
 // AssertionError: 1 === '1'
 ```
 
-Si los valores no son estrictamente iguales, se arroja `AssertionError` con una propiedad `message` establecida igual al parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
+Si los valores no son estrictamente iguales, se arroja un `AssertionError` con una propiedad de `message` establecida igual al valor del parámetro `message`. Si el parámetro `message` no está definido, un mensaje de error predeterminado es asignado.
 
 ## assert.rejects(block\[, error\]\[, message\])
+
 <!-- YAML
 added: V8.13.0
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|Object}
 * `message` {any}
@@ -628,9 +670,11 @@ assert.rejects(
 ```
 
 ## assert.throws(block\[, error\]\[, message\])
+
 <!-- YAML
 added: v0.1.21
 changes:
+
   - version: V8.13.0
     pr-url: https://github.com/nodejs/node/pull/23223
     description: The `error` parameter can now be an object as well.
@@ -638,6 +682,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/3276
     description: The `error` parameter can now be an arrow function.
 -->
+
 * `block` {Function}
 * `error` {RegExp|Function|object}
 * `message` {any}
@@ -704,6 +749,9 @@ assert.throws(
 ```
 
 Note que el `error` no puede ser una string. Si se proporciona una string como segundo argumento, entonces se asume que el `error` se omitirá y que la string será utilizada para el `message` en su lugar. Esto puede conducir a errores fáciles de perder. Please read the example below carefully if using a string as the second argument gets considered:
+
+<!-- eslint-disable no-restricted-syntax -->
+
 ```js
 function throwingFirst() {
   throw new Error('First');

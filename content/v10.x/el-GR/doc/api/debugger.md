@@ -6,7 +6,7 @@
 
 <!-- type=misc -->
 
-H Node.js συμπεριλαμβάνει ένα πρόγραμμα εντοπισμού σφαλμάτων, που λειτουργεί ως ξεχωριστή εφαρμογή, και χρησιμοποιείται μέσω ενός [Επιθεωρητή V8](#debugger_v8_inspector_integration_for_node_js) και ενός ενσωματωμένου πελάτη αποσφαλμάτωσης. Για να το χρησιμοποιήσετε, εκκινήστε την Node.js με την παράμετρο `inspect` ακολουθούμενη από το μονοπάτι προς το σενάριο που θέλετε να εντοπίσετε τα σφάλματα· θα εμφανιστεί ένα μήνυμα, που ενημερώνει για την επιτυχή εκκίνηση του προγράμματος αποσφαλμάτωσης:
+Node.js includes an out-of-process debugging utility accessible via a [V8 Inspector](#debugger_v8_inspector_integration_for_node_js) and built-in debugging client. To use it, start Node.js with the `inspect` argument followed by the path to the script to debug; a prompt will be displayed indicating successful launch of the debugger:
 
 ```txt
 $ node inspect myscript.js
@@ -23,6 +23,9 @@ debug>
 Το πρόγραμμα εντοπισμού σφαλμάτων της Node.js δεν είναι ένα πρόγραμμα με πλήρη χαρακτηριστικά, όμως είναι δυνατό να γίνεται επιθεώρηση ανά βήμα.
 
 Εισάγοντας μια δήλωση `debugger;` στον πηγαίο κώδικα ενός σεναρίου, θα ενεργοποιήσει ένα σημείο διακοπής σε αυτό το σημείο του κώδικα:
+
+<!-- eslint-disable no-debugger -->
+
 ```js
 // myscript.js
 global.x = 5;
@@ -152,11 +155,11 @@ debug>
 
 ### Ενσωμάτωση του Επιθεωρητή V8 στη Node.js
 
-Ο Επιθεωρητής V8 επιτρέπει την σύνδεση του Chrome DevTools με τα στιγμιότυπα της Node.js για εντοπισμό σφαλμάτων και την δημιουργία προφίλ. Χρησιμοποιεί το [Πρωτόκολλο Chrome DevTools](https://chromedevtools.github.io/devtools-protocol/).
+Ο Επιθεωρητής V8 επιτρέπει την σύνδεση του Chrome DevTools με τα στιγμιότυπα της Node.js για εντοπισμό σφαλμάτων και την δημιουργία προφίλ. It uses the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 
 Ο Επιθεωρητής V8 μπορεί να ενεργοποιηθεί με τη χρήση της επιλογης `--inspect` κατά την εκκίνηση μιας εφαρμογής Node.js. Είναι επίσης δυνατό να οριστεί μια προσαρμοσμένη θύρα με τη χρήση της ίδιας επιλογής, π.χ. ο ορισμός `--inspect=9222` θα δώσει εντολή στη Node.js να αναμένει για συνδέσεις από το DevTools στην θύρα 9222.
 
-Για να γίνει παύση στην πρώτη γραμμή κώδικα της εφαρμογής, χρησιμοποιήστε την επιλογή `--inspect-brk`, αντί της επιλογής `--inspect`.
+To break on the first line of the application code, pass the `--inspect-brk` flag instead of `--inspect`.
 
 ```txt
 $ node --inspect index.js
@@ -165,6 +168,6 @@ To start debugging, open the following URL in Chrome:
     chrome-devtools://devtools/bundled/js_app.html?experiments=true&v8only=true&ws=127.0.0.1:9229/dc9010dd-f8b8-4ac5-a510-c1a114ec7d29
 ```
 
-(στο παραπάνω παράδειγμα, το UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 στο τέλος της διεύθυνσης, δημιουργείται αυτόματα, και είναι διαφορετικό σε κάθε συνεδρία εντοπισμού σφαλμάτων.)
+(In the example above, the UUID dc9010dd-f8b8-4ac5-a510-c1a114ec7d29 at the end of the URL is generated on the fly, it varies in different debugging sessions.)
 
 If the Chrome browser is older than 66.0.3345.0, use `inspector.html` instead of `js_app.html` in the above URL.

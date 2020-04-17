@@ -22,7 +22,7 @@ const net = require('net');
 
 在 UNIX 系统上，本地域也被称作 UNIX 域。 这里的 path 参数是一个文件系统路径名。 它会在 `sizeof(sockaddr_un.sun_path) - 1` 处被截断，具体长度会根据不同的操作系统而介于 91 和 107 个字节之间。 在 Linux 系统上的典型值是 107，在 macOS 系统上的典型值是 103。 该路径受到与创建文件时相同的命名约定和权限检查的影响。 它将在文件系统中可见，并将 *持续到取消链接的时候为止*。
 
-在 Windows 系统上，本地域是通过命名管道实现的。 The path *must* refer to an entry in ``\\?\pipe\` or``\\.\pipe\`. 路径中允许任何字符，但后面的字符可能会对管道名称进行处理，例如，解析 `..` 序列。 尽管如此，管道名称空间是扁平的。 管道将 *不会持续*，当最后一个引用关闭时，它们将被删除。 不要忘记 JavaScript 字符串转义需要通过双反斜杠来指定路径，例如：
+在 Windows 系统上，本地域是通过命名管道实现的。 此路径 *必须* 引用在 `\\?\pipe` 或 `\\.\pipe` 中的条目。 路径中允许任何字符，但后面的字符可能会对管道名称进行处理，例如，解析 `..` 序列。 尽管如此，管道名称空间是扁平的。 管道将 *不会持续*，当最后一个引用关闭时，它们将被删除。 不要忘记 JavaScript 字符串转义需要通过双反斜杠来指定路径，例如：
 
 ```js
 net.createServer().listen(
@@ -30,6 +30,7 @@ net.createServer().listen(
 ```
 
 ## 类：net.Server
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -45,6 +46,7 @@ added: v0.1.90
 `net.Server` 是一个含有如下事件的 [`EventEmitter`][]。
 
 ### 事件：'close'
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -52,6 +54,7 @@ added: v0.5.0
 当服务器关闭时发出。 注意如果存在连接，直到所有连接结束时才会发出此事件。
 
 ### 事件：'connection'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -61,6 +64,7 @@ added: v0.1.90
 当创建了新连接时会发出此事件。 `socket` 是 `net.Socket` 的实例。
 
 ### 事件：'error'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -70,6 +74,7 @@ added: v0.1.90
 当发生错误时会发出此事件。 和 [`net.Socket`][] 不同，除非手动调用了 [`server.close()`][]，[`'close'`][] 事件 **不会** 在此事件后被直接发出。 请参阅关于 [`server.listen()`][] 讨论时的示例。
 
 ### 事件：'listening'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -77,6 +82,7 @@ added: v0.1.90
 当在调用 [`server.listen()`][] 后绑定了服务器时会发出此事件。
 
 ### server.address()
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -104,6 +110,7 @@ server.listen(() => {
 在发出 `'listening'` 事件之前，不要调用 `server.address()`。
 
 ### server.close([callback])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -115,6 +122,7 @@ added: v0.1.90
 返回 `server`。
 
 ### server.connections
+
 <!-- YAML
 added: v0.2.0
 deprecated: v0.9.7
@@ -127,6 +135,7 @@ deprecated: v0.9.7
 当通过 [`child_process.fork()`][] 向子进程发送套接字时，其值为 `null`。 若要轮询子进程，并获取当前活跃连接数，请使用异步的 [`server.getConnections()`][] 方法。
 
 ### server.getConnections(callback)
+
 <!-- YAML
 added: v0.9.7
 -->
@@ -152,7 +161,6 @@ added: v0.9.7
 
 所有 `listen()` 方法可以接受一个 `backlog` 参数来指定待连接队列的最大长度。 实际的长度将由操作系统的 sysctl 设置决定，例如：Linux 系统上的 `tcp_max_syn_backlog` 和 `somaxconn`。 此参数的默认值为 511 (而不是 512)。
 
-
 *注意*：
 
 * 所有的 [`net.Socket`][] 被设置为 `SO_REUSEADDR` (请参阅 [socket(7)](http://man7.org/linux/man-pages/man7/socket.7.html) 以获取更多细节)。
@@ -174,6 +182,7 @@ server.on('error', (e) => {
 ```
 
 #### server.listen(handle\[, backlog\]\[, callback\])
+
 <!-- YAML
 added: v0.5.10
 -->
@@ -190,11 +199,12 @@ added: v0.5.10
 *注意*：在 Windows 系统上不支持对文件描述符的监听。
 
 #### server.listen(options[, callback])
+
 <!-- YAML
 added: v0.11.14
 -->
 
-* `options` {Object} 必填。 支持如下属性：
+* `options` {Object} 必须的。 支持如下属性： 
   * `port` {number}
   * `host` {string}
   * `path` {string} 如果指定了 `port`，此选项会被忽略。 请参阅 [识别 IPC 连接的路径](#net_identifying_paths_for_ipc_connections)。
@@ -216,6 +226,7 @@ server.listen({
 ```
 
 #### server.listen(path\[, backlog\]\[, callback\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -228,9 +239,11 @@ added: v0.1.90
 开始一个监听给定 `path` 上连接的 [IPC](#net_ipc_support) 服务器。
 
 #### server.listen(\[port\]\[, host\]\[, backlog\]\[, callback\])
+
 <!-- YAML
 added: v0.1.90
 -->
+
 * `port` {number}
 * `host` {string}
 * `backlog` {number} [`server.listen()`][] 函数的通用参数。
@@ -246,6 +259,7 @@ added: v0.1.90
 *注意*：在大多数操作系统上，监听 [未指定 IPv6 地址](https://en.wikipedia.org/wiki/IPv6_address#Unspecified_address) (`::`) 会导致 `net.Server` 同时监听 [未指定 IPv4 地址](https://en.wikipedia.org/wiki/0.0.0.0) (`0.0.0.0`)。
 
 ### server.listening
+
 <!-- YAML
 added: v5.7.0
 -->
@@ -253,6 +267,7 @@ added: v5.7.0
 一个用于指示服务是是否在监听连接的布尔值。
 
 ### server.maxConnections
+
 <!-- YAML
 added: v0.2.0
 -->
@@ -262,6 +277,7 @@ added: v0.2.0
 不推荐在通过 [`child_process.fork()`][] 将套接字发送给子进程后使用此选项。
 
 ### server.ref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -271,6 +287,7 @@ added: v0.9.1
 和 `unref` 恰恰相反，如果当前服务器为唯一的服务器，在之前调用过 `unref` 的服务器上调用 `ref` 将 *不会* 使程序退出 (默认行为)。 如果已经在服务器上调用过 `ref`，再次调用 `ref` 将不会有任何影响。
 
 ### server.unref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -280,6 +297,7 @@ added: v0.9.1
 如果在事件系统中此服务器为唯一活跃的服务器，在服务器上调用 `unref` 将允许程序退出。 如果已经在服务器上调用过 `unref`，再次调用 `unref` 将不会产生任何影响。
 
 ## 类：net.Socket
+
 <!-- YAML
 added: v0.3.4
 -->
@@ -291,13 +309,14 @@ added: v0.3.4
 它还可以由 Node.js 创建，并在接收到连接时传递给用户。 例如：它被传递给在 [`net.Server`][] 上发出的 [`'connection'`][] 事件的监听器，这样用户就可以使用它和客户端交互。
 
 ### new net.Socket([options])
+
 <!-- YAML
 added: v0.3.4
 -->
 
 创建一个新的套接字对象。
 
-* `options` {Object} Available options are:
+* `options` {Object} 可用的选项包括： 
   * `fd`: {number} 如果指定，使用给定的文件描述符来包装现有的套接字，否则将会创建一个新的套接字。
   * `allowHalfOpen` {boolean} 指示是否允许半打开的 TCP 连接。 请参阅 [`net.createServer()`][] 和 [`'end'`][] 事件以获取更多信息。 **默认:** `false`.
   * `readable` {boolean} 当接收了 `fd` 参数时，允许读取套接字，否则忽略之。 **默认:** `false`.
@@ -307,6 +326,7 @@ added: v0.3.4
 新创建的套接字可能是 TCP 套接字或流媒体 [IPC](#net_ipc_support) 端点，具体取决于它通过 [`connect()`][`socket.connect()`] 连接到哪里。
 
 ### 事件：'close'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -316,6 +336,7 @@ added: v0.1.90
 在套接字完全关闭后发出此事件。 `had_error` 参数为布尔值，说明是否由于传输错误导致套接字被关闭。
 
 ### 事件：'connect'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -323,6 +344,7 @@ added: v0.1.90
 当成功建立了套接字连接时发出此事件。 请参阅 [`net.createConnection()`][]。
 
 ### 事件：'data'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -334,6 +356,7 @@ added: v0.1.90
 注意：如果在 `Socket` 发出 `'data'` 事件时没有监听器，**数据将丢失**。
 
 ### 事件：'drain'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -343,6 +366,7 @@ added: v0.1.90
 请参阅：`socket.write()` 的返回值
 
 ### 事件：'end'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -352,6 +376,7 @@ added: v0.1.90
 默认情况下 (`allowHalfOpen` 的值为 `false`)，一旦写出其待写入队列，套接字将会发送回一个 FIN 包，并销毁其文件描述符。 然而，如果 `allowHalfOpen` 的值被设为 `true`，套接字将不会自动通过调用 [`end()`][`socket.end()`] 结束其写入端，以允许用户写入任意数量的数据。 用户必须显式调用 [`end()`][`socket.end()`] 来关闭连接 (即：发送回一个 FIN 包)。
 
 ### 事件：'error'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -361,9 +386,11 @@ added: v0.1.90
 当发生错误时会发出此事件。 在此事件之后，`'close'` 事件将被调用。
 
 ### 事件：'lookup'
+
 <!-- YAML
 added: v0.11.3
 changes:
+
   - version: v5.10.0
     pr-url: https://github.com/nodejs/node/pull/5598
     description: The `host` parameter is supported now.
@@ -377,6 +404,7 @@ changes:
 * `host` {string} 主机名。
 
 ### 事件：'timeout'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -386,6 +414,7 @@ added: v0.1.90
 请参阅：[`socket.setTimeout()`][]
 
 ### socket.address()
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -393,6 +422,7 @@ added: v0.1.90
 返回操作系统报告的绑定地址，地址系列名，以及套接字端口号。 返回包含三个属性的对象，例如：`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`
 
 ### socket.bufferSize
+
 <!-- YAML
 added: v0.3.8
 -->
@@ -404,6 +434,7 @@ added: v0.3.8
 对于面临大量或持续增长的 `bufferSize` 的用户而言，应在程序中使用 [`socket.pause()`][] 和 [`socket.resume()`][] 来控制数据流。
 
 ### socket.bytesRead
+
 <!-- YAML
 added: v0.5.3
 -->
@@ -411,6 +442,7 @@ added: v0.5.3
 收到的字节数。
 
 ### socket.bytesWritten
+
 <!-- YAML
 added: v0.5.3
 -->
@@ -431,9 +463,11 @@ added: v0.5.3
 此函数为异步的。 当连接建立时，会发出 [`'connect'`][] 事件。 如果连接存在问题，将会发出 [`'error'`][] 事件，而不是 [`'connect'`][] 事件，同时错误会被传递给 [`'error'`][] 事件的监听器。 如果提供了最后一个参数 `connectListener` ，它将被作为 [`'connect'`][] 事件的监听器添加 **一次**。
 
 #### socket.connect(options[, connectListener])
+
 <!-- YAML
 added: v0.1.90
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/6021
     description: The `hints` option defaults to `0` in all cases now.
@@ -446,7 +480,7 @@ changes:
 
 * `options` {Object}
 * `connectListener` {Function} [`socket.connect()`][] 方法的通用参数。 将被作为 [`'connect'`][] 事件的监听器添加一次。
-* 返回：{net.Socket} 套接字本身。
+* 返回： {net.Socket} 套接字本身。
 
 启动一个到给定套接字的连接。 通常不需要此方法，应该通过 [`net.createConnection()`][] 来创建并打开套接字。 只有在实现自定义套接字时使用此方法。
 
@@ -456,7 +490,7 @@ changes:
 * `host` {string} 套接字应连接到的主机。 **默认值：** `'localhost'`.
 * `localAddress` {string} 套接字连接的本地地址。
 * `localPort` {number} 套接字连接的本地端口。
-* `family` {number}: Version of IP stack, can be either `4` or `6`. **Default:** `4`.
+* `family` {number}: Version of IP stack, can be either `4` or `6`. **默认值：** `4`.
 * `hints` {number} 可选的 [`dns.lookup()` hints][]。
 * `lookup` {Function} 自定义查找函数。 **默认值：** [`dns.lookup()`][].
 
@@ -479,6 +513,7 @@ changes:
 返回 `socket`。
 
 #### socket.connect(port\[, host\]\[, connectListener\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -495,6 +530,7 @@ added: v0.1.90
 返回 `socket`。
 
 ### socket.connecting
+
 <!-- YAML
 added: v6.1.0
 -->
@@ -502,6 +538,7 @@ added: v6.1.0
 如果其值为 `true` - 表示 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 被调用但尚未完成。 在发出 `connect` 事件和/或调用 [`socket.connect(options[, connectListener])`][`socket.connect(options)`] 的回调函数之前，其值将被设为 `false`。
 
 ### socket.destroy([exception])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -517,6 +554,7 @@ added: v0.1.90
 一个用于表示连接是否被销毁的布尔值。 一旦连接被销毁，就不能再使用它传输任何数据。
 
 ### socket.end(\[data\]\[, encoding\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -528,6 +566,7 @@ added: v0.1.90
 如果指定了 `data`，这就等同于调用 `socket.write(data, encoding)` 后再调用[`socket.end()`][]。
 
 ### socket.localAddress
+
 <!-- YAML
 added: v0.9.6
 -->
@@ -535,6 +574,7 @@ added: v0.9.6
 代表远程客户端连接的本地 IP 地址字符串。 例如：对于监听 `'0.0.0.0'` 的服务器，如果客户端连接到 `'192.168.1.1'`，则 `socket.localAddress` 的值会是 `'192.168.1.1'`。
 
 ### socket.localPort
+
 <!-- YAML
 added: v0.9.6
 -->
@@ -548,6 +588,7 @@ added: v0.9.6
 暂停数据读取。 也就是说，不会发出 [`'data'`][] 事件。 在控制上传时非常有用。
 
 ### socket.ref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -557,13 +598,15 @@ added: v0.9.1
 和 `unref` 恰恰相反，如果当前套接字为仅存的套接字，在之前调用过 `unref` 的套接字上调用 `ref` 将 *不会* 使程序退出 (默认行为)。 如果已经在套接字上调用过 `ref`，再次调用 `ref` 将不会有任何影响。
 
 ### socket.remoteAddress
+
 <!-- YAML
 added: v0.5.10
 -->
 
-返回代表远程 IP 地址的字符串。 例如： `'74.125.127.100'` 或 `'2001:4860:a005::68'`。 如果套接字被销毁 (例如：如果客户端断开连接)，其值可能为 `undefined`。
+返回代表远程 IP 地址的字符串。 例如：`'74.125.127.100'` 或 `'2001:4860:a005::68'`。 如果套接字被销毁 (例如：如果客户端断开连接)，其值可能为 `undefined`。
 
 ### socket.remoteFamily
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -571,6 +614,7 @@ added: v0.11.14
 返回代表远程 IP 系列的字符串。 `'IPv4'` 或 `'IPv6'`。
 
 ### socket.remotePort
+
 <!-- YAML
 added: v0.5.10
 -->
@@ -584,6 +628,7 @@ added: v0.5.10
 在调用 [`socket.pause()`][] 后恢复读取。
 
 ### socket.setEncoding([encoding])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -593,6 +638,7 @@ added: v0.1.90
 设置套接字的编码为 [Readable 流](stream.html#stream_class_stream_readable)。 请参阅 [`stream.setEncoding()`][] 获取更多信息。
 
 ### socket.setKeepAlive(\[enable\]\[, initialDelay\])
+
 <!-- YAML
 added: v0.1.92
 -->
@@ -606,6 +652,7 @@ added: v0.1.92
 设置 `initialDelay` (毫秒) 来设置收到的最后一个数据包和首个长连接探针之间的延迟。 将 initialDelay 的值设置为 0 时，将保持该值的默认 (或之前的) 设置不变。
 
 ### socket.setNoDelay([noDelay])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -616,6 +663,7 @@ added: v0.1.90
 禁用 Nagle 算法。 在默认情况下，TCP 连接使用 Nagle 算法，它们在发送数据之前对其缓冲。 将 `noDelay` 的值设为 `true` 将会导致在每次 `socket.write()` 被调用时，立即发送数据。
 
 ### socket.setTimeout(timeout[, callback])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -639,6 +687,7 @@ socket.on('timeout', () => {
 可选的 `callback` 参数将被作为一次性监听器添加到 [`'timeout'`][] 事件上。
 
 ### socket.unref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -648,6 +697,7 @@ added: v0.9.1
 如果在事件系统中此套接字为唯一活跃的套接字，在套接字上调用 `unref` 将允许程序退出。 如果已经在套接字上调用过 `unref`，再次调用 `unref` 将不会产生任何影响。
 
 ### socket.write(data\[, encoding\]\[, callback\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -669,14 +719,15 @@ added: v0.1.90
 * [`net.connect(port[, host][, connectListener])`][`net.connect(port, host)`] 针对 TCP 的连接。
 
 ### net.connect(options[, connectListener])
+
 <!-- YAML
 added: v0.7.0
--->
-[
+--> [
 
 `net.createConnection(options[, connectListener])`][`net.createConnection(options)`] 的别名。
 
 ### net.connect(path[, connectListener])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -684,6 +735,7 @@ added: v0.1.90
 [`net.createConnection(path[, connectListener])`][`net.createConnection(path)`] 的别名。
 
 ### net.connect(port\[, host\]\[, connectListener\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -705,6 +757,7 @@ added: v0.1.90
 *注意*：[`net.connect()`][] 函数是此函数的别名。
 
 ### net.createConnection(options[, connectListener])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -744,6 +797,7 @@ const client = net.createConnection({ path: '/tmp/echo.sock' });
 ```
 
 ### net.createConnection(path[, connectListener])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -757,6 +811,7 @@ added: v0.1.90
 此函数在所有选项都为默认值的情况下创建一个新的 [`net.Socket`][]，立刻通过 [`socket.connect(path[, connectListener])`][`socket.connect(path)`] 初始化连接，然后返回启动连接的 `net.Socket`。
 
 ### net.createConnection(port\[, host\]\[, connectListener\])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -771,13 +826,14 @@ added: v0.1.90
 此函数在所有选项都为默认值的情况下创建一个新的 [`net.Socket`][]，并通过 [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`] 立即初始化连接，最后返回开启连接的 `net.Socket`。
 
 ## net.createServer(\[options\]\[, connectionListener\])
+
 <!-- YAML
 added: v0.5.0
 -->
 
 创建一个新的 TCP 或 [IPC](#net_ipc_support) 服务器。
 
-* `options` {Object}
+* `options` {Object} 
   * `allowHalfOpen` {boolean} 指示是否允许半打开的 TCP 连接。 **默认:** `false`.
   * `pauseOnConnect` {boolean} 指明在传入连接上是否暂停套接字。 **默认:** `false`.
 * `connectionListener` {Function} 自动设为 [`'connection'`][] 事件的监听器。
@@ -831,22 +887,23 @@ $ nc -U /tmp/echo.sock
 ```
 
 ## net.isIP(input)
+
 <!-- YAML
 added: v0.3.0
 -->
 
 测试输入是否为 IP 地址。 如果是无效字符串，则返回 0，如果为 IPv4 地址，则返回 4，如果为 IPv6 地址，则返回 6。
 
-
 ## net.isIPv4(input)
+
 <!-- YAML
 added: v0.3.0
 -->
 
 如果输入为 IPv4 地址，返回 true，否则返回 false。
 
-
 ## net.isIPv6(input)
+
 <!-- YAML
 added: v0.3.0
 -->

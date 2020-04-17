@@ -6,15 +6,15 @@
 
 <!--type=module-->
 
-Большая часть API, основанного на ядре Node.js, строится вокруг идиоматического асинхронного события, управляемого архитектурой, в которой определенные виды объектов (называемые "эмиттерами") периодически создают именованные события, вызывающие функциональные объекты ("слушатели").
+Much of the Node.js core API is built around an idiomatic asynchronous event-driven architecture in which certain kinds of objects (called "emitters") periodically emit named events that cause Function objects ("listeners") to be called.
 
-Например: объект [`net.Server`][] создает событие каждый раз, когда пир подключается к нему; [`fs.ReadStream`][] создает событие при открытии файла; [stream](stream.html) создает событие каждый раз, когда данные доступны для чтения.
+For instance: a [`net.Server`][] object emits an event each time a peer connects to it; a [`fs.ReadStream`][] emits an event when the file is opened; a [stream](stream.html) emits an event whenever data is available to be read.
 
-Все объекты, которые создают события, являются экземплярами класса `EventEmitter`. Эти объекты выставляют функцию `eventEmitter.on()`, что позволяет прикрепить одну или несколько функций к именованным событиям, которые созданы объектом. Обычно имена событий являются строками в стиле camel-case, но может быть использован любой допустимый ключ свойства JavaScript.
+Все объекты, которые создают события, являются экземплярами класса `EventEmitter`. These objects expose an `eventEmitter.on()` function that allows one or more functions to be attached to named events emitted by the object. Typically, event names are camel-cased strings but any valid JavaScript property key can be used.
 
-Когда объект `EventEmitter` создает событие, все функции, связанные с этим конкретным событием, вызываются _синхронно_. Любые значения, возвращенные вызываемыми слушателями, _игнорируются_ и будут отброшены.
+When the `EventEmitter` object emits an event, all of the functions attached to that specific event are called *synchronously*. Any values returned by the called listeners are *ignored* and will be discarded.
 
-Следующий пример показывает простой экземпляр `EventEmitter` с одним слушателем. Метод `eventEmitter.on()` используется для регистрации слушателей, когда метод `eventEmitter.emit()` используется для запуска события.
+The following example shows a simple `EventEmitter` instance with a single listener. The `eventEmitter.on()` method is used to register listeners, while the `eventEmitter.emit()` method is used to trigger the event.
 
 ```js
 const EventEmitter = require('events');
@@ -30,7 +30,7 @@ myEmitter.emit('event');
 
 ## Передача аргументов и `this` слушателям
 
-Метод `eventEmitter.emit()` позволяет передачу произвольного набора аргументов функциям слушателя. Важно помнить, что когда `EventEmitter` вызывает обычную функцию слушателя, стандартное ключевое слово `this` намеренно установлено для ссылки на `EventEmitter`, к которому подключен слушатель.
+The `eventEmitter.emit()` method allows an arbitrary set of arguments to be passed to the listener functions. It is important to keep in mind that when an ordinary listener function is called by the `EventEmitter`, the standard `this` keyword is intentionally set to reference the `EventEmitter` to which the listener is attached.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -46,7 +46,7 @@ myEmitter.on('event', function(a, b) {
 myEmitter.emit('event', 'a', 'b');
 ```
 
-Можно использовать ES6 Стрелочные функции в качестве слушателей, однако при этом ключевое слово `this` больше не будет ссылаться на экземпляр `EventEmitter`:
+It is possible to use ES6 Arrow Functions as listeners, however, when doing so, the `this` keyword will no longer reference the `EventEmitter` instance:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -59,7 +59,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Асинхронный против Синхронный
 
-`EventEmitter` вызывает всех слушателей синхронно в порядке, в котором они были зарегистрированы. Это важно для обеспечения правильной последовательности событий и во избежание состояний гонки или логических ошибок. При необходимости функции слушателя могут переключаться в асинхронный режим работы с помощью методов `setImmediate()` или `process.nextTick()`:
+The `EventEmitter` calls all listeners synchronously in the order in which they were registered. This is important to ensure the proper sequencing of events and to avoid race conditions or logic errors. When appropriate, listener functions can switch to an asynchronous mode of operation using the `setImmediate()` or `process.nextTick()` methods:
 
 ```js
 const myEmitter = new MyEmitter();
@@ -73,7 +73,7 @@ myEmitter.emit('event', 'a', 'b');
 
 ## Обработка событий только один раз
 
-Когда слушатель регистрируется с помощью метода `eventEmitter.on()`, то слушатель будет вызываться _каждый раз_ при создании именованного события.
+When a listener is registered using the `eventEmitter.on()` method, that listener will be invoked *every time* the named event is emitted.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -87,7 +87,7 @@ myEmitter.emit("событие");
 // Печатает: 2
 ```
 
-С помощью метода `eventEmitter.once()` можно зарегистрировать слушателя, который вызывается только один раз для определенного события. Как только событие создается, слушатель перестает быть зарегистрированным и *затем* вызывается.
+Using the `eventEmitter.once()` method, it is possible to register a listener that is called at most once for a particular event. Once the event is emitted, the listener is unregistered and *then* called.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -103,9 +103,9 @@ myEmitter.emit("событие");
 
 ## События ошибок
 
-Когда в экземпляре `EventEmitter` возникает ошибка, типичным действием является создание события `'error'`. В Node.js такие случаи рассматриваются как особые.
+When an error occurs within an `EventEmitter` instance, the typical action is for an `'error'` event to be emitted. These are treated as special cases within Node.js.
 
-Если `EventEmitter` _не_ имеет хотя бы одного слушателя, зарегистрированного для события `'error'`, а событие `'error'` создается, то выводится ошибка, печатается трассировка стека и процесс Node.js завершается.
+If an `EventEmitter` does *not* have at least one listener registered for the `'error'` event, and an `'error'` event is emitted, the error is thrown, a stack trace is printed, and the Node.js process exits.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -127,6 +127,7 @@ myEmitter.emit('error', new Error("упс!"));
 ```
 
 ## Класс: EventEmitter
+
 <!-- YAML
 added: v0.1.26
 -->
@@ -137,19 +138,20 @@ added: v0.1.26
 const EventEmitter = require('events');
 ```
 
-Все EventEmitters создают событие `'newListener'`, когда добавляются новые слушатели, и `'removeListener'`, когда удаляются существующие слушатели.
+All EventEmitters emit the event `'newListener'` when new listeners are added and `'removeListener'` when existing listeners are removed.
 
 ### Событие: 'newListener'
+
 <!-- YAML
 added: v0.1.26
 -->
 
-* `eventName` {any} Имя события, которое прослушивается
-* `listener` {Function} Функция обработчика события
+- `eventName` {any} Имя события, которое прослушивается
+- `listener` {Function} Функция обработчика события
 
-Экземпляр `EventEmitter` создаст свое собственное событие `'newListener'` *до* того, как слушатель будет добавлен в свой внутренний массив слушателей.
+The `EventEmitter` instance will emit its own `'newListener'` event *before* a listener is added to its internal array of listeners.
 
-Слушателям, зарегистрированным для события `'newListener'`, будет передано имя события и ссылка на добавляемого слушателя.
+Listeners registered for the `'newListener'` event will be passed the event name and a reference to the listener being added.
 
 The fact that the event is triggered before adding the listener has a subtle but important side effect: any *additional* listeners registered to the same `name` *within* the `'newListener'` callback will be inserted *before* the listener that is in the process of being added.
 
@@ -174,21 +176,24 @@ myEmitter.emit('event');
 ```
 
 ### Событие: 'removeListener'
+
 <!-- YAML
 added: v0.9.3
 changes:
+
   - version: v6.1.0, v4.7.0
     pr-url: https://github.com/nodejs/node/pull/6394
     description: For listeners attached using `.once()`, the `listener` argument
                  now yields the original listener function.
 -->
 
-* `eventName` {any} Имя события
-* `listener` {Function} Функция обработчика события
+- `eventName` {any} Имя события
+- `listener` {Function} Функция обработчика события
 
 Событие `'removeListener'` создается *после* того, как `listener` удален.
 
 ### EventEmitter.listenerCount(emitter, eventName)
+
 <!-- YAML
 added: v0.9.12
 deprecated: v4.0.0
@@ -196,7 +201,7 @@ deprecated: v4.0.0
 
 > Стабильность: 0 - Устарело: Вместо этого используйте [`emitter.listenerCount()`][].
 
-Метод класса, который возвращает количество слушателей для данного `eventName`, зарегистрированных на данном `emitter`.
+A class method that returns the number of listeners for the given `eventName` registered on the given `emitter`.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -207,15 +212,16 @@ console.log(EventEmitter.listenerCount(myEmitter, 'event'));
 ```
 
 ### EventEmitter.defaultMaxListeners
+
 <!-- YAML
 added: v0.11.2
 -->
 
-По умолчанию для любого события можно зарегистрировать максимум `10` слушателей. Этот лимит можно изменить для отдельных экземпляров `EventEmitter` с помощью метода [`emitter.setMaxListeners(n)`][]. Чтобы изменить значение по умолчанию для *всех* экземпляров `EventEmitter` можно использовать свойство `EventEmitter.defaultMaxListeners`. If this value is not a positive number, a `TypeError` will be thrown.
+By default, a maximum of `10` listeners can be registered for any single event. This limit can be changed for individual `EventEmitter` instances using the [`emitter.setMaxListeners(n)`][] method. To change the default for *all* `EventEmitter` instances, the `EventEmitter.defaultMaxListeners` property can be used. If this value is not a positive number, a `TypeError` will be thrown.
 
-Будьте осторожны при установке `EventEmitter.defaultMaxListeners`, потому что изменения влияют на *все* экземпляры `EventEmitter`, включая те, что были созданы до изменения. Однако вызов [`emitter.setMaxListeners(n)`][] все еще имеет приоритет над `EventEmitter.defaultMaxListeners`.
+Take caution when setting the `EventEmitter.defaultMaxListeners` because the change affects *all* `EventEmitter` instances, including those created before the change is made. However, calling [`emitter.setMaxListeners(n)`][] still has precedence over `EventEmitter.defaultMaxListeners`.
 
-Обратите внимание, что это не жесткое ограничение. Экземпляр `EventEmitter` позволит добавить больше слушателей, но выведет предупреждение трассировки в stderr, указывающее, что обнаружена "возможная утечка памяти EventEmitter". Чтобы временно избежать этого предупреждения, можно использовать методы `emitter.getMaxListeners()` и `emitter.setMaxListeners()` для каждого отдельного `EventEmitter`:
+Обратите внимание, что это не жесткое ограничение. The `EventEmitter` instance will allow more listeners to be added but will output a trace warning to stderr indicating that a "possible EventEmitter memory leak" has been detected. For any single `EventEmitter`, the `emitter.getMaxListeners()` and `emitter.setMaxListeners()` methods can be used to temporarily avoid this warning:
 
 ```js
 emitter.setMaxListeners(emitter.getMaxListeners() + 1);
@@ -225,36 +231,41 @@ emitter.once('event', () => {
 });
 ```
 
-Флаг командной строки [`--trace-warnings`][] может использоваться для отображения трассировки стека для подобных предупреждений.
+The [`--trace-warnings`][] command line flag can be used to display the stack trace for such warnings.
 
-Созданное предупреждение можно проверить с помощью [`process.on('warning')`][], оно будет иметь дополнительные свойства `emitter`, `type` и `count`, которые ссылаются на экземпляр генератора события, имя события и количество подключенных слушателей соответственно. Its `name` property is set to `'MaxListenersExceededWarning'`.
+The emitted warning can be inspected with [`process.on('warning')`][] and will have the additional `emitter`, `type` and `count` properties, referring to the event emitter instance, the event’s name and the number of attached listeners, respectively. Its `name` property is set to `'MaxListenersExceededWarning'`.
 
 ### emitter.addListener(eventName, listener)
+
 <!-- YAML
 added: v0.1.26
 -->
+
 - `eventName` {any}
 - `listener` {Function}
 
 Другое название для `emitter.on(eventName, listener)`.
 
 ### emitter.emit(eventName[, ...args])
+
 <!-- YAML
 added: v0.1.26
 -->
+
 - `eventName` {any}
 - `...args` {any}
 
-Синхронно вызывает каждого из слушателей, зарегистрированных для события с именем `eventName`, в том порядке, в котором они были зарегистрированы, передавая каждому из них предоставленные аргументы.
+Synchronously calls each of the listeners registered for the event named `eventName`, in the order they were registered, passing the supplied arguments to each.
 
 Если событие имело слушателей, то возвращает `true`, в противном случае - `false`.
 
 ### emitter.eventNames()
+
 <!-- YAML
 added: v6.0.0
 -->
 
-Возвращает массив, где перечислены события, для которых генератор зарегистрировал слушателей. Значения в массиве будут строками или символами.
+Returns an array listing the events for which the emitter has registered listeners. Значения в массиве будут строками или символами.
 
 ```js
 const EventEmitter = require('events');
@@ -270,30 +281,35 @@ console.log(myEE.eventNames());
 ```
 
 ### emitter.getMaxListeners()
+
 <!-- YAML
 added: v1.0.0
 -->
 
-Возвращает текущее максимальное значение слушателя для `EventEmitter`, которое может быть установлено с помощью [`emitter.setMaxListeners(n)`][] или быть значением по умолчанию [`EventEmitter.defaultMaxListeners`][].
+Returns the current max listener value for the `EventEmitter` which is either set by [`emitter.setMaxListeners(n)`][] or defaults to [`EventEmitter.defaultMaxListeners`][].
 
 ### emitter.listenerCount(eventName)
+
 <!-- YAML
 added: v3.2.0
 -->
 
-* `eventName` {any} Имя события, которое прослушивается
+- `eventName` {any} Имя события, которое прослушивается
 
 Возвращает количество слушателей, прослушивающих событие с именем `eventName`.
 
 ### emitter.listeners(eventName)
+
 <!-- YAML
 added: v0.1.26
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/6881
     description: For listeners attached using `.once()` this returns the
                  original listeners instead of wrapper functions now.
 -->
+
 - `eventName` {any}
 
 Возвращает копию массива слушателей для события с именем `eventName`.
@@ -307,14 +323,15 @@ console.log(util.inspect(server.listeners('connection')));
 ```
 
 ### emitter.on(eventName, listener)
+
 <!-- YAML
 added: v0.1.101
 -->
 
-* `eventName` {any} Имя события.
-* `listener` {Function} Функция обратного вызова
+- `eventName` {any} Имя события.
+- `listener` {Function} Функция обратного вызова
 
-Добавляет функцию `listener` в конец массива слушателей для события с именем `eventName`. Не делается никаких проверок, чтобы увидеть, был ли уже добавлен `listener`. Несколько вызовов, передающих одну и ту же комбинацию `eventName` и `listener`, приведут к добавлению и множественным вызовам `listener`.
+Adds the `listener` function to the end of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
 ```js
 server.on('connection', (stream) => {
@@ -324,7 +341,7 @@ server.on('connection', (stream) => {
 
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
-По умолчанию слушатели события вызываются в том порядке, в котором они были добавлены. Метод `emitter.prependListener()` может быть использован в качестве альтернативы для добавления слушателя события в начало массива слушателей.
+По умолчанию слушатели события вызываются в том порядке, в котором они были добавлены. The `emitter.prependListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
 
 ```js
 const myEE = new EventEmitter();
@@ -337,14 +354,15 @@ myEE.emit('foo');
 ```
 
 ### emitter.once(eventName, listener)
+
 <!-- YAML
 added: v0.3.0
 -->
 
-* `eventName` {any} Имя события.
-* `listener` {Function} Функция обратного вызова
+- `eventName` {any} Имя события.
+- `listener` {Function} Функция обратного вызова
 
-Добавляет функцию **одноразового** `слушателя` для события с именем `eventName`. В следующий раз, когда срабатывает `eventName`, этот слушатель удаляется и затем вызывается.
+Добавляет функцию **одноразового** `слушателя` для события с именем `eventName`. The next time `eventName` is triggered, this listener is removed and then invoked.
 
 ```js
 server.once('connection', (stream) => {
@@ -354,7 +372,7 @@ server.once('connection', (stream) => {
 
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
-По умолчанию слушатели события вызываются в том порядке, в котором они были добавлены. Метод `emitter.prependOnceListener()` может быть использован в качестве альтернативы для добавления слушателя события в начало массива слушателей.
+По умолчанию слушатели события вызываются в том порядке, в котором они были добавлены. The `emitter.prependOnceListener()` method can be used as an alternative to add the event listener to the beginning of the listeners array.
 
 ```js
 const myEE = new EventEmitter();
@@ -367,14 +385,15 @@ myEE.emit('foo');
 ```
 
 ### emitter.prependListener(eventName, listener)
+
 <!-- YAML
 added: v6.0.0
 -->
 
-* `eventName` {any} Имя события.
-* `listener` {Function} Функция обратного вызова
+- `eventName` {any} Имя события.
+- `listener` {Function} Функция обратного вызова
 
-Добавляет функцию `listener` в *начало* массива слушателей для события с именем `eventName`. Не делается никаких проверок, чтобы увидеть, был ли уже добавлен `listener`. Несколько вызовов, передающих одну и ту же комбинацию `eventName` и `listener`, приведут к добавлению и множественным вызовам `listener`.
+Adds the `listener` function to the *beginning* of the listeners array for the event named `eventName`. No checks are made to see if the `listener` has already been added. Multiple calls passing the same combination of `eventName` and `listener` will result in the `listener` being added, and called, multiple times.
 
 ```js
 server.prependListener('connection', (stream) => {
@@ -385,14 +404,15 @@ server.prependListener('connection', (stream) => {
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
 ### emitter.prependOnceListener(eventName, listener)
+
 <!-- YAML
 added: v6.0.0
 -->
 
-* `eventName` {any} Имя события.
-* `listener` {Function} Функция обратного вызова
+- `eventName` {any} Имя события.
+- `listener` {Function} Функция обратного вызова
 
-Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. В следующий раз, когда срабатывает `eventName`, этот слушатель удаляется и затем вызывается.
+Adds a **one-time** `listener` function for the event named `eventName` to the *beginning* of the listeners array. The next time `eventName` is triggered, this listener is removed, and then invoked.
 
 ```js
 server.prependOnceListener('connection', (stream) => {
@@ -403,25 +423,29 @@ server.prependOnceListener('connection', (stream) => {
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
 ### emitter.removeAllListeners([eventName])
+
 <!-- YAML
 added: v0.1.26
 -->
+
 - `eventName` {any}
 
 Удаляет все слушатели или слушатели с указанным `eventName`.
 
-Обратите внимание, что неправильно удалять слушателей, которые добавлены где-либо в коде, особенно когда экземпляр `EventEmitter` был создан другим компонентом или модулем (например, сокетами или файловыми потоками).
+Note that it is bad practice to remove listeners added elsewhere in the code, particularly when the `EventEmitter` instance was created by some other component or module (e.g. sockets or file streams).
 
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
 ### emitter.removeListener(eventName, listener)
+
 <!-- YAML
 added: v0.1.26
 -->
+
 - `eventName` {any}
 - `listener` {Function}
 
-Удаляет указанный `listener` из массива слушателей для события с именем `eventName`.
+Removes the specified `listener` from the listener array for the event named `eventName`.
 
 ```js
 const callback = (stream) => {
@@ -432,9 +456,9 @@ server.on('connection', callback);
 server.removeListener('connection', callback);
 ```
 
-`removeListener` удалит не более одного экземпляра слушателя из массива слушателей. Если один слушатель добавлен в массив слушателей для указанного `eventName` несколько раз, то `removeListener` должен быть вызван несколько раз для удаления каждого экземпляра.
+`removeListener` will remove, at most, one instance of a listener from the listener array. If any single listener has been added multiple times to the listener array for the specified `eventName`, then `removeListener` must be called multiple times to remove each instance.
 
-Обратите внимание, что после создания события, все слушатели, прикрепленные к нему во время создания, будут вызваны по порядку. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Последующие события будут вести себя, как ожидалось.
+Note that once an event has been emitted, all listeners attached to it at the time of emitting will be called in order. This implies that any `removeListener()` or `removeAllListeners()` calls *after* emitting and *before* the last listener finishes execution will not remove them from `emit()` in progress. Subsequent events will behave as expected.
 
 ```js
 const myEmitter = new MyEmitter();
@@ -467,7 +491,7 @@ myEmitter.emit('event');
 
 ```
 
-Поскольку слушатели управляются с помощью внутреннего массива, то подобный вызов приведет к изменению индексов позиций любого слушателя, зарегистрированного *после* удаления данного слушателя. Это не повлияет на порядок, в котором вызываются слушатели, но это означает, что любые копии массива слушателей, возвращаемые методом `emitter.listeners()`, нужно будет создать заново.
+Because listeners are managed using an internal array, calling this will change the position indices of any listener registered *after* the listener being removed. This will not impact the order in which listeners are called, but it means that any copies of the listener array as returned by the `emitter.listeners()` method will need to be recreated.
 
 When a single function has been added as a handler multiple times for a single event (as in the example below), `removeListener()` will remove the most recently added instance. In the example the `once('ping')` listener is removed:
 
@@ -489,11 +513,13 @@ ee.emit('ping');
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.
 
 ### emitter.setMaxListeners(n)
+
 <!-- YAML
 added: v0.3.5
 -->
+
 - `n` {integer}
 
-По умолчанию EventEmitters напечатает предупреждение, если для конкретного события добавляется более `10` слушателей. Это полезное значение по умолчанию, которое помогает обнаружить утечки памяти. Очевидно, что не все события должны быть ограничены 10 слушателями. Метод `emitter.setMaxListeners()` позволяет изменять лимит для этого определенного экземпляра `EventEmitter`. Значение может быть установлено на `Бесконечность` (или `0`) для указания неограниченного количества слушателей.
+By default EventEmitters will print a warning if more than `10` listeners are added for a particular event. This is a useful default that helps finding memory leaks. Очевидно, что не все события должны быть ограничены 10 слушателями. The `emitter.setMaxListeners()` method allows the limit to be modified for this specific `EventEmitter` instance. The value can be set to `Infinity` (or `0`) to indicate an unlimited number of listeners.
 
 Возвращает ссылку на `EventEmitter`, так что эти вызовы могут быть привязаны.

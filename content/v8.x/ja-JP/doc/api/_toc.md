@@ -1,11 +1,12 @@
 @// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+
 * [これらのドキュメントについて](documentation.html)
-* [使用方法](synopsis.html)
+* [利用方法とサンプル](synopsis.html)
 
 <div class="line"></div>
 
 * [Assertion Testing](assert.html)
-* [Async Hooks](async_hooks.html)
+* [非同期フック](async_hooks.html)
 * [バッファ](buffer.html)
 * [C++ アドオン](addons.html)
 * [C++ アドオン - N-API](n-api.html)
@@ -18,7 +19,7 @@
 * [非推奨となったAPI](deprecations.html)
 * [DNS](dns.html)
 * [ドメイン](domain.html)
-* [ECMAスクリプトモジュール](esm.html)
+* [ECMAScriptモジュール](esm.html)
 * [エラー](errors.html)
 * [イベント](events.html)
 * [ファイルシステム](fs.html)

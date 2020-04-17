@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 `os` 模块提供了一些和操作系统相关的实用方法。 可以通过如下方式访问：
 
@@ -11,6 +11,7 @@ const os = require('os');
 ```
 
 ## os.EOL
+
 <!-- YAML
 added: v0.7.8
 -->
@@ -23,6 +24,7 @@ added: v0.7.8
 * `\r\n` 在 Windows 系统上
 
 ## os.arch()
+
 <!-- YAML
 added: v0.5.0
 -->
@@ -33,9 +35,10 @@ added: v0.5.0
 
 当前的可能值包括：`'arm'`, `'arm64'`, `'ia32'`, `'mips'`, `'mipsel'`, `'ppc'`, `'ppc64'`, `'s390'`, `'s390x'`, `'x32'`, 和 `'x64'`。
 
-它们等同于 [`process.arch`][]。
+等同于 [`process.arch`][]。
 
 ## os.constants
+
 <!-- YAML
 added: v6.3.0
 -->
@@ -45,6 +48,7 @@ added: v6.3.0
 返回一个包含错误码，进程信号等常用的操作系统特定常量的对象。 目前定义的这些特定常量在 [操作系统常量](#os_os_constants_1) 中被描述。
 
 ## os.cpus()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -57,7 +61,7 @@ added: v0.3.3
 
 * `model` {string}
 * `speed` {number} (以 MHz 为单位)
-* `times` {Object}
+* `times` {Object} 
   * `user` {number} 在用户模式下使用的 CPU 毫秒数。
   * `nice` {number} 在良好模式下使用的 CPU 毫秒数。
   * `sys` {number} 在系统模式下使用的 CPU 毫秒数。
@@ -65,6 +69,9 @@ added: v0.3.3
   * `irq` {number} 在中断模式下使用的 CPU 毫秒数。
 
 例如：
+
+<!-- eslint-disable semi -->
+
 ```js
 [
   {
@@ -158,38 +165,55 @@ added: v0.3.3
 ]
 ```
 
-*Note*: Because `nice` values are UNIX-specific, on Windows the `nice` values of all processors are always 0.
+*注意*：由于 `nice` 的值是针对 UNIX 系统的，在 Windows 系统上所有处理器的 `nice` 值都是 0。
 
-## os.endianness()<!-- YAML
+## os.endianness()
+
+<!-- YAML
 added: v0.9.4
--->* 返回：{string}
+-->
 
-The `os.endianness()` method returns a string identifying the endianness of the CPU *for which the Node.js binary was compiled*.
+* 返回：{string}
+
+`os.endianness()` 方法返回用于标识 *Node.js 二进制文件在其中编译的* CPU 字节序格式的字符串。
 
 可能的值包括：
 
 * `'BE'` 为大端格式
 * `'LE'` 为小端格式。
 
-## os.freemem()<!-- YAML
+## os.freemem()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{integer}
+-->
+
+* 返回：{integer}
 
 `os.freemem()` 方法返回以整型数表示的空闲系统内存字节数。
 
-## os.homedir()<!-- YAML
+## os.homedir()
+
+<!-- YAML
 added: v2.3.0
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.homedir()` 方法以字符串方式返回当前用户的主目录。
 
-## os.hostname()<!-- YAML
+## os.hostname()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.hostname()` 方法以字符串方式返回操作系统的主机名。
 
 ## os.loadavg()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -202,9 +226,13 @@ added: v0.3.3
 
 平均负载是一个特定于 UNIX 的概念，在 Windows 平台上没有对应概念。 在 Windows 系统上，其返回值始终为 `[0, 0, 0]`。
 
-## os.networkInterfaces()<!-- YAML
+## os.networkInterfaces()
+
+<!-- YAML
 added: v0.6.0
--->* 返回：{Object}
+-->
+
+* 返回：{Object}
 
 `os.networkInterfaces()` 方法返回一个只包含被分配了网址的网络接口的对象。
 
@@ -219,6 +247,9 @@ added: v0.6.0
 * `internal` {boolean} 当网络接口为 loopback 或相似的不能远程访问的接口时，其值为 `true`，否则其值为 `false`
 * `scopeid` {number} 数字型的 IPv6 域 ID (只有当 `family` 为`IPv6` 时需要指定)
 * `cidr` {string} 以 CIDR 表示法分配的带有路由前缀的 IPv4 或 IPv6 地址。 `netmask` 不可用，此属性会被设置为 `null`
+
+<!-- eslint-skip -->
+
 ```js
 {
   lo: [
@@ -260,9 +291,13 @@ added: v0.6.0
 }
 ```
 
-## os.platform()<!-- YAML
+## os.platform()
+
+<!-- YAML
 added: v0.5.0
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.platform()` 方法返回一个在编译 Node.js 时设置的用于标识操作系统平台的字符串。
 
@@ -278,28 +313,38 @@ added: v0.5.0
 
 它们等同于 [`process.platform`][]。
 
-*Note*: The value `'android'` may also be returned if the Node.js is built on the Android operating system. However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
+*注意*：如果 Node.js 是在 Android 操作系统上构建的，返回值还可能会是 `'android'`。 However, Android support in Node.js is considered [to be experimental](https://github.com/nodejs/node/blob/master/BUILDING.md#androidandroid-based-devices-eg-firefox-os) at this time.
 
-## os.release()<!-- YAML
+## os.release()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.release()` 方法返回一个用于标识操作系统版本的字符串。
 
-*Note*: On POSIX systems, the operating system release is determined by calling [uname(3)](https://linux.die.net/man/3/uname). 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
+*注意*：在 POSIX 系统上，可以通过调用 [uname(3)](https://linux.die.net/man/3/uname) 来识别操作系统版本。 在 Windows 系统上，使用 `GetVersionExW()`。 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取更多信息。
 
-## os.tmpdir()<!-- YAML
+## os.tmpdir()
+
+<!-- YAML
 added: v0.9.9
 changes:
+
   - version: v2.0.0
     pr-url: https://github.com/nodejs/node/pull/747
     description: This function is now cross-platform consistent and no longer
                  returns a path with a trailing slash on any platform
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 `os.tmpdir()` 方法返回一个字符串，用于标识操作系统中存放临时文件的默认目录。
 
 ## os.totalmem()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -308,15 +353,20 @@ added: v0.3.3
 
 `os.totalmem()` 方法返回代表系统内存总字节数的整数。
 
-## os.type()<!-- YAML
+## os.type()
+
+<!-- YAML
 added: v0.3.3
--->* 返回：{string}
+-->
+
+* 返回：{string}
 
 和 [uname(3)](https://linux.die.net/man/3/uname) 的返回值一样，`os.type()` 方法返回一个标识操作系统名称的字符串。 例如：在 Linux 系统上为 `'Linux'`，在 macOS 系统上为 `'Darwin'`，在 Windows 系统上为 `'Windows_NT'`。
 
 请参阅 https://en.wikipedia.org/wiki/Uname#Examples 以获取在不同操作系统上运行 [uname(3)](https://linux.die.net/man/3/uname) 时输出的更多信息。
 
 ## os.uptime()
+
 <!-- YAML
 added: v0.3.3
 -->
@@ -325,11 +375,15 @@ added: v0.3.3
 
 `os.uptime()` 方法返回以秒计的系统运行时间。
 
-*Note*: On Windows the returned value includes fractions of a second. 使用 `Math.floor()` 来获取整秒值。
+*注意*：在 Windows 系统上，返回值精确到几分之一秒。 使用 `Math.floor()` 来获取整秒值。
 
-## os.userInfo([options])<!-- YAML
+## os.userInfo([options])
+
+<!-- YAML
 added: v6.0.0
--->* `options` {Object}
+-->
+
+* `options` {Object} 
   * `encoding` {string} 用于解释结果字符串的字符编码。 如果 `encoding` 被设置为 `'buffer'`，则 `username`, `shell`, 和 `homedir` 将会是 `Buffer` 的实例。 **默认值:**`‘utf8'`。
 * 返回：{Object}
 
@@ -341,14 +395,19 @@ The `os.userInfo()` method returns information about the currently effective use
 
 `os.constants` 会导出如下常量。
 
-*Note*: Not all constants will be available on every operating system.
+*注意*：并非所有常量在每个操作系统上都可用。
 
-### 信号常量<!-- YAML
+### 信号常量
+
+<!-- YAML
 changes:
+
   - version: v5.11.0
     pr-url: https://github.com/nodejs/node/pull/6093
     description: Added support for `SIGINFO`.
--->如下的信号常量由 `os.constants.signals` 导出：
+-->
+
+如下的信号常量由 `os.constants.signals` 导出：
 
 <table>
   <tr>
@@ -1086,4 +1145,3 @@ changes:
     <td></td>
   </tr>
 </table>
-

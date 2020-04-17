@@ -1,6 +1,7 @@
 # Acerca de esta documentación
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 El objetivo de esta documentación es explicar de forma exhaustiva la API de Node.js, tanto de un punto de vista referencial como conceptual. Cada sección describe un módulo integrado o un concepto de alto nivel.
@@ -40,6 +41,7 @@ La API ha sido probado satisfactoriamente. Compatibilidad con el ecosistema npm 
 *Nota*: Debe tener precaución al usar funcionalidades `Experimentales`, particularmente dentro de módulos que pueden ser usado como dependencias (o dependencias de dependencias) dentro de una aplicación Node.js. Los usuarios finales pueden no ser conscientes que funcionalidades experimentales están siendo usadas, y por lo tanto, pueden experimentar fallos no esperados o cambios en el comportamiento cuando ocurran modificaciones a la API. Para ayudar a evitar tales sorpresas, funcionalidades `Experimentales` pueden requerir una bandera de la línea de comandos para permitirlas explícitamente, o puede causar que una advertencia del proceso sea emitida. Por defecto, dichas advertencias son impresas en [`stderr`][] y pueden ser manejadas adjuntandoles una función oyente al evento [`process.on('warning')`][].
 
 ## Salida JSON
+
 <!-- YAML
 added: v0.6.12
 -->

@@ -1,0 +1,38 @@
+name: Nightly Sync of content
+
+on:
+  schedule:
+  - cron: '0 3 * * *' # run daily at 3am
+
+jobs:
+  sync:
+    if: github.repository == 'nodejs/i18n'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install
+        run: npm ci
+
+      - name: Collect latest releases
+        run: npm run collect
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          commit-message: 'feat: Original content updates'
+          title: Original content updates
+          body: Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo
+          team-reviewers: nodejs/i18n,nodejs/i18n-api

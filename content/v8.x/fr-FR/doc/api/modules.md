@@ -25,11 +25,11 @@ exports.aire = (r) => PI * r ** 2;
 exports.circonference = (r) => 2 * PI * r;
 ```
 
-Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Fonctions et objets sont ajoutés à la racine d’un module en ajoutant des propriétés à l’objet spécial `exports`.
+Le module `cercle.js` a exporté les fonctions `aire()` et `circonference()`. Functions and objects are added to the root of a module by specifying additional properties on the special `exports` object.
 
 Les variables locales au module seront privées, car le module est enveloppé dans une fonction par Node.js (voir [module wrapper](#modules_the_module_wrapper)). Dans cet exemple, la variable `PI` est une variable privée de `cercle.js`.
 
-Il est possible d'assigner une nouvelle valeur à `module.exports` (telle qu'une fonction ou un objet).
+The `module.exports` property can be assigned a new value (such as a function or object).
 
 Ci-dessous, `bar.js` utilise le module `carré`, qui exporte une classe Carré :
 
@@ -60,7 +60,7 @@ Le système de module est implémenté dans le module `require('module')`.
 
 <!-- type=misc -->
 
-Lorsqu’un fichier est exécuté directement par Node.js, son `module` est assigné à `require.main`. Cela signifie qu’il est possible de déterminer si un fichier est exécuté directement en testant que `require.main === module`.
+Lorsqu’un fichier est exécuté directement par Node.js, son `module` est assigné à `require.main`. That means that it is possible to determine whether a file has been run directly by testing `require.main === module`.
 
 Pour un fichier `foo.js`, cette comparaison renverra `true` si le fichier est exécuté via la commande `node foo.js`, `false` s'il est exécuté par `require('./foo')`.
 
@@ -76,7 +76,7 @@ Ci-dessous une suggestion d'arborescence de répertoire qui pourrait fonctionner
 
 Disons que nous voudrions que le dossier situé à `/usr/lib/node/<some-package>/<some-version>` contienne une version spécifique d'un paquet.
 
-Les paquets peuvent dépendre les uns des autres. Afin d’installer le paquet `foo`, il peut être nécessaire d’installer une version spécifique du paquet `bar`. Le paquet `bar` peut lui-même avoir des dépendances, et dans certains cas, elles pourraient même entrer en collision ou former des cycles de dépendances.
+Les paquets peuvent dépendre les uns des autres. In order to install package `foo`, it may be necessary to install a specific version of package `bar`. The `bar` package may itself have dependencies, and in some cases, these may even collide or form cyclic dependencies.
 
 Puisque Node.js vérifie le `chemin d'accès réel` de tous les modules qu'il charge (autrement dit, résoud les liens symboliques), puis cherche leurs dépendances dans le dossier `node_modules` comme décrit [ici](#modules_loading_from_node_modules_folders), ce cas est très simple à résoudre avec l'architecture suivante :
 
@@ -115,17 +115,20 @@ require(X) depuis le module situé au chemin d'accès Y
 5. LEVER ERREUR "non trouvé"
 
 CHARGER_COMME_FICHIER(X)
+
 1. Si X est un fichier, charger X comme texte JavaScript.  ARRET
 2. Si X.js est un fichier, charger X.js comme texte JavaScript.  ARRET
 3. Si X.json est un fichier, parser X.json vers un Objet JavaScript.  ARRET
 4. Si X.node est un fichier, charger X.node comme une extension binaire.  ARRET
 
 CHARGER_INDEX(X)
+
 1. Si X/index.js est un fichier, charger X/index.js comme texte JavaScript.  ARRET
 2. Si X/index.json est un fichier, parser X/index.json vers un Objet JavaScript. ARRET
 3. Si X/index.node est un fichier, charger X/index.node comme une extension binaire.  STOP
 
 CHARGER_COMME_DOSSIER(X)
+
 1. Si X/package.json est un fichier,
    a. Parser X/package.json, et chercher un champ "main".
    b. soit M = X + (contenu du champ json main)
@@ -134,12 +137,14 @@ CHARGER_COMME_DOSSIER(X)
 2. CHARGER_INDEX(X)
 
 CHARGER_MODULES_NODE(X, DEBUT)
+
 1. soit DOSSIERS=CHEMINS_NODE_MODULES(DEBUT)
 2. pour chaque DOSSIER de DOSSIERS :
    a. CHARGER_COMME_FICHIER(DOSSIER/X)
    b. CHARGER_COMME_DOSSIER(DOSSIER/X)
 
 CHEMINS_NODE_MODULES(DEBUT)
+
 1. soit SEGMENTS = separation_chemin(DEBUT)
 2. soit I = nombre de SEGMENTS - 1
 3. soit DOSSIERS = []
@@ -159,7 +164,7 @@ Les modules sont mis en cache après leur premier chargement. Cela signifie (ent
 
 Plusieurs appels à `require('foo')` ne devraient pas causer plusieurs exécutions du code du module. Il s'agit d'une fonctionnalité importante. Avec elle, des objets « partiellement construits » peuvent être retournés, ce qui permet de charger des dépendances transitives même dans le cas où elles provoqueraient des cycles.
 
-Pour qu'un module exécute une portion de code à plusieurs reprise, exportez une fonction avec ce code, et exécutez cette fonction.
+To have a module execute code multiple times, export a function, and call that function.
 
 ### Mises en garde relatives à la mise en cache de modules
 
@@ -234,7 +239,7 @@ a terminé
 en main, a.done = true, b.done = true
 ```
 
-Une planification minutieuse est requise pour permettre aux dépendances de modules cycliques de fonctionner correctement au sein d'une application.
+Careful planning is required to allow cyclic module dependencies to work correctly within an application.
 
 ## File Modules
 
@@ -337,14 +342,15 @@ Before a module's code is executed, Node.js will wrap it with a function wrapper
 
 By doing this, Node.js achieves a few things:
 
-- It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
-- It helps to provide some global-looking variables that are actually specific to the module, such as:
-  - The `module` and `exports` objects that the implementor can use to export values from the module.
-  - The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+* It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
+* It helps to provide some global-looking variables that are actually specific to the module, such as: 
+  * The `module` and `exports` objects that the implementor can use to export values from the module.
+  * The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
 
 ## The module scope
 
 ### \_\_dirname
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -365,6 +371,7 @@ console.log(path.dirname(__filename));
 ```
 
 ### \_\_filename
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -398,6 +405,7 @@ Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a 
 References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
 
 ### exports
+
 <!-- YAML
 added: v0.1.12
 -->
@@ -407,6 +415,7 @@ added: v0.1.12
 A reference to the `module.exports` that is shorter to type. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
 
 ### module
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -418,6 +427,7 @@ added: v0.1.16
 A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
 
 ### require()
+
 <!-- YAML
 added: v0.1.13
 -->
@@ -440,6 +450,7 @@ const crypto = require('crypto');
 ```
 
 #### require.cache
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -449,6 +460,7 @@ added: v0.3.0
 Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an Error.
 
 #### require.extensions
+
 <!-- YAML
 added: v0.3.0
 deprecated: v0.10.6
@@ -475,22 +487,25 @@ Note that the number of file system operations that the module system has to per
 In other words, adding extensions slows down the module loader and should be discouraged.
 
 #### require.resolve(request[, options])
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v8.9.0
     pr-url: https://github.com/nodejs/node/pull/16397
     description: The `paths` option is now supported.
 -->
 
 * `request` {string} The module path to resolve.
-* `options` {Object}
+* `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
 * Retourne : {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
 #### require.resolve.paths(request)
+
 <!-- YAML
 added: v8.9.0
 -->
@@ -501,11 +516,13 @@ added: v8.9.0
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
 ## The `module` Object
+
 <!-- YAML
 added: v0.1.16
 -->
 
 <!-- type=var -->
+
 <!-- name=module -->
 
 * {Object}
@@ -513,6 +530,7 @@ added: v0.1.16
 In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` is not actually a global but rather local to each module.
 
 ### module.children
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -522,6 +540,7 @@ added: v0.1.16
 The module objects required by this one.
 
 ### module.exports
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -553,7 +572,6 @@ a.on('ready', () => {
 });
 ```
 
-
 Note that assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. This does not work:
 
 x.js:
@@ -572,6 +590,7 @@ console.log(x.a);
 ```
 
 #### exports shortcut
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -586,6 +605,9 @@ exports = { hello: false };  // Not exported, only available in the module
 ```
 
 When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`, for example:
+
+<!-- eslint-disable func-name-matching -->
+
 ```js
 module.exports = exports = function Constructor() {
   // ... etc.
@@ -611,13 +633,18 @@ function require(/* ... */) {
 }
 ```
 
-### module.filename<!-- YAML
+### module.filename
+
+<!-- YAML
 added: v0.1.16
--->* {string}
+-->
+
+* {string}
 
 The fully resolved filename to the module.
 
 ### module.id
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -627,6 +654,7 @@ added: v0.1.16
 The identifier for the module. Typically this is the fully resolved filename.
 
 ### module.loaded
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -636,6 +664,7 @@ added: v0.1.16
 Whether or not the module is done loading, or is in the process of loading.
 
 ### module.parent
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -644,29 +673,45 @@ added: v0.1.16
 
 The module that first required this one.
 
-### module.paths<!-- YAML
+### module.paths
+
+<!-- YAML
 added: v0.4.0
--->* {string[]}
+-->
+
+* {string[]}
 
 The search paths for the module.
 
-### module.require(id)<!-- YAML
+### module.require(id)
+
+<!-- YAML
 added: v0.5.1
--->* `id` {string}
+-->
+
+* `id` {string}
 * Returns: {Object} `module.exports` from the resolved module
 
 The `module.require` method provides a way to load a module as if `require()` was called from the original module.
 
 *Note*: In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## The `Module` Object<!-- YAML
+## The `Module` Object
+
+<!-- YAML
 added: v0.3.7
--->* {Object}
+-->
+
+* {Object}
 
 Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
 
-### module.builtinModules<!-- YAML
+### module.builtinModules
+
+<!-- YAML
 added: v8.10.0
--->* {string[]}
+-->
+
+* {string[]}
 
 A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third-party module or not.

@@ -1,23 +1,24 @@
 # Moduli ECMAScript
 
 <!--introduced_in=v8.5.0-->
+
 <!-- type=misc -->
 
-> Stability: 1 - Experimental
+> Stabilità: 1 - Sperimentale
 
 <!--name=esm-->
 
-Node.js contiene il supporto per i moduli ES basati sul [Node.js EP per i moduli ES](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
-Non tutte le funzionalità dell'EP sono complete e verranno rilasciate quando sia il supporto VM che la sua implementazione saranno pronti. I messaggi di errore sono ancora in via di ottimizzazione.
+Not all features of the EP are complete and will be landing as both VM support and implementation is ready. I messaggi di errore sono ancora in via di ottimizzazione.
 
 ## Abilitazione
 
 <!-- type=misc -->
 
-Il flag dei `--experimental-modules` può essere utilizzato per attivare le funzionalità per il caricamento dei moduli ESM.
+The `--experimental-modules` flag can be used to enable features for loading ESM modules.
 
-Uno volta che è stato impostato, i file che terminano con l'estensione `.mjs` saranno in grado di essere caricati come moduli ES.
+Once this has been set, files ending with `.mjs` will be able to be loaded as ES Modules.
 
 ```sh
 node --experimental-modules my-app.mjs
@@ -29,13 +30,13 @@ node --experimental-modules my-app.mjs
 
 ### Supportato
 
-Solamente l'argomento CLI per il per il punto di ingresso principale del programma può essere un punto di entrata in un grafico ESM. L'importazione dinamica può anche essere utilizzata per creare un punto di ingresso in un grafico ESM in esecuzione.
+Only the CLI argument for the main entry point to the program can be an entry point into an ESM graph. Dynamic import can also be used to create entry points into ESM graphs at runtime.
 
 #### import.meta
 
 * {Object}
 
-La metaproprietà `import.meta` è un `Object` che contiene le seguenti proprietà:
+The `import.meta` metaproperty is an `Object` that contains the following property:
 
 * `url` {string} L’URL assoluto `file:` del modulo.
 
@@ -49,11 +50,11 @@ La metaproprietà `import.meta` è un `Object` che contiene le seguenti propriet
 
 ### Nessuna NODE_PATH
 
-`NODE_PATH` non fa parte dei "resolving `import` specifiers". Si prega di utilizzare i "symlink" se questo comportamento è desiderato.
+`NODE_PATH` non fa parte dei "resolving `import` specifiers". Please use symlinks if this behavior is desired.
 
 ### Nessun `require.extensions`
 
-`require.extensions` non è utilizzato da `import`. L'aspettativa è che il "loader hook" possa fornire questo flusso di lavoro in futuro.
+`require.extensions` non è utilizzato da `import`. The expectation is that loader hooks can provide this workflow in the future.
 
 ### Nessun `require.cache`
 
@@ -61,9 +62,9 @@ La metaproprietà `import.meta` è un `Object` che contiene le seguenti propriet
 
 ### Percorsi basati su URL
 
-Gli ESM sono risolti e memorizzati sulla cache basandosi sulla semantica dell'[URL](https://url.spec.whatwg.org/). Questo significa che i file contenenti caratteri speciali come `#` e `?` devono essere esclusi.
+ESM are resolved and cached based upon [URL](https://url.spec.whatwg.org/) semantics. This means that files containing special characters such as `#` and `?` need to be escaped.
 
-I moduli saranno caricati più volte se l'identificatore `import` utilizzato per risolverli ha una query diversa o un frammento di essa.
+Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
 import './foo?query=1'; // loads ./foo with query of "?query=1"
@@ -76,9 +77,9 @@ Per il momento, solo i moduli che utilizzano il protocollo `file:` possono esser
 
 Tutti i moduli CommonJS, JSON e C++ possono essere utilizzati con `import`.
 
-I moduli caricati in questo modo saranno caricati solo una volta, anche se la loro query o la stringa di frammento differiscono tra `import` istruzioni.
+Modules loaded this way will only be loaded once, even if their query or fragment string differs between `import` statements.
 
-Quando caricato tramite `importa` questi moduli forniranno un'esportazione singola `predefinita` che rappresenta il valore di `modulo.export` al momento della valutazione.
+When loaded via `import` these modules will provide a single `default` export representing the value of `module.exports` at the time they finished evaluating.
 
 ```js
 // foo.js
@@ -121,11 +122,11 @@ fs.readFileSync === readFileSync;
 
 To customize the default module resolution, loader hooks can optionally be provided via a `--loader ./loader-name.mjs` argument to Node.js.
 
-Quando si utilizzano gli hooks, questi si applicano solo al caricamento dei moduli ES e non ad ogni modulo CommonJS caricato.
+When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
 ### Risolvi hook
 
-L'hook di risoluzione restituisce l'URL del file e il formato del modulo risolto per un dato modulo specificatore e URL del file genitore:
+The resolve hook returns the resolved file URL and module format for a given module specifier and parent file URL:
 
 ```js
 const baseURL = new URL('file://');
@@ -145,7 +146,7 @@ The `parentModuleURL` is provided as `undefined` when performing main Node.js lo
 
 The default Node.js ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
-In aggiunta alla restituzione del valore del file URL risolto, il gancio risolvi restituisce anche una proprietà `formato` specificando il formato del modulo del modulo risolto. Questo può essere uno dei seguenti:
+In addition to returning the resolved file URL value, the resolve hook also returns a `format` property specifying the module format of the resolved module. Questo può essere uno dei seguenti:
 
 | `format`     | Descrizione                                                      |
 | ------------ | ---------------------------------------------------------------- |
@@ -201,11 +202,11 @@ Con questo loader, se si esegue:
 NODE_OPTIONS='--sperimentale-modules --loader ./custom-loader.mjs' node x.js
 ```
 
-caricherebbe il modulo `x.js` come modulo ES con supporto relativo alla risoluzione (con `node_modules` caricamento saltato in questo esempio).
+would load the module `x.js` as an ES module with relative resolution support (with `node_modules` loading skipped in this example).
 
 ### Gancio istanziato dinamico
 
-Per creare un modulo dinamico personalizzato che non corrisponde a una delle interpretazioni esistenti `format` è possibile utilizzare l'hook `dynamic cInstantiate`. Questo hook è chiamato solo per i moduli che restituiscono `format: 'dinamico'` da l'hook `risolvere`.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. This hook is called only for modules that return `format: 'dynamic'` from the `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {
@@ -219,4 +220,4 @@ export async function dynamicInstantiate(url) {
 }
 ```
 
-Con l'elenco delle esportazioni del modulo fornito dinnanzi, la funzione `esegui` sarà quindi chiamata al punto esatto dell'ordine di valutazione del modulo per quel modulo nell'albero di importazione.
+With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.

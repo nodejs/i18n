@@ -31,7 +31,7 @@ Las variables locales del módulo serán privadas, porque los módulos están en
 
 Un nuevo valor puede ser asignado a `module.exports` (como una función u objeto).
 
-A continuación,, `bar.js` hace uso del modulo `square` que exporta una clase cuadrada:
+Abajo, `bar.js` hace uso del módulo `square`, el cual exporta una clase Square:
 
 ```js
 const Square = require('./square.js');
@@ -56,7 +56,7 @@ module.exports = class Square {
 
 El sistema de módulos está implementado en el módulo `require('module')`.
 
-## Accediendo al modulo principal
+## Accediendo al módulo principal
 
 <!-- type=misc -->
 
@@ -93,7 +93,7 @@ Además, para realizar un proceso aún más óptimo de la búsqueda del módulo,
 
 Para poder hacer que los módulos estén disponibles para la REPL de Node.js, quizás sea útil añadir también la carpeta `/usr/lib/node_modules` a la variable de entorno `$NODE_PATH`. Debido a que los buscadores de módulos que usan las carpetas de `node_modules` son todos relativos, y basados en la ruta real de los archivos haciendo las llamadas a `require()`, los paquetes mismos pueden estar en cualquier lado.
 
-## Todo junto...
+## Todo Junto...
 
 <!-- type=misc -->
 
@@ -115,17 +115,20 @@ require(X) from module at path Y
 5. THROW "not found"
 
 LOAD_AS_FILE(X)
+
 1. If X is a file, load X as JavaScript text.  STOP
 2. If X.js is a file, load X.js as JavaScript text.  STOP
 3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
 4. If X.node is a file, load X.node as binary addon.  STOP
 
 LOAD_INDEX(X)
+
 1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
 2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
 3. If X/index.node is a file, load X/index.node as binary addon.  STOP
 
 LOAD_AS_DIRECTORY(X)
+
 1. If X/package.json is a file,
    a. Parse X/package.json, and look for "main" field.
    b. let M = X + (json main field)
@@ -134,12 +137,14 @@ LOAD_AS_DIRECTORY(X)
 2. LOAD_INDEX(X)
 
 LOAD_NODE_MODULES(X, START)
+
 1. let DIRS=NODE_MODULES_PATHS(START)
 2. for each DIR in DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
+
 1. let PARTS = path split(START)
 2. let I = count of PARTS - 1
 3. let DIRS = []
@@ -155,7 +160,7 @@ NODE_MODULES_PATHS(START)
 
 <!--type=misc-->
 
-Los módulos se almacenan en caché después de la primera vez que se cargan. Esto significa (entre otras cosas) que cada llamada a `require('foo')` obtendrá exactamente el mismo objeto devuelto, si se resolviera en el mismo archivo.
+Los módulos se almacenan en caché después de que se cargan por primera vez. Esto significa (entre otras cosas) que cada llamada a `require('foo')` obtendrá exactamente el mismo objeto devuelto, si se resolviera en el mismo archivo.
 
 Múltiples llamadas a `require('foo')` podrían no causar que el código del módulo sea ejecutado múltiples veces. Esta es una función importante. Con esto, objetos "parcialmente hechos" pueden ser devueltos, de este modo permitiendo que dependencias transitivas sean cargadas aún cuando puedan causar ciclos.
 
@@ -337,14 +342,15 @@ Antes de que se ejecute un código del módulo, Node.js lo envolverá con un env
 
 Al hacer esto, Node.js logra unas cuantas cosas:
 
-- Mantiene las variables de alto nivel (definidas con `var`, `const` o `let`) enfocadas al módulo en vez de al objeto global.
-- Ayuda proporcionar algunas variables de búsqueda global que verdaderamente sean específicas al módulo, como:
-  - Los objetos `module` y `exports` que el implemtador puede usar para exportar valores desde el módulo.
-  - Las variables de conveniencia `__filename` y `__dirname`, que contienen el nombre de archivo absoluto del módulo y la ruta del directorio.
+* Mantiene las variables de alto nivel (definidas con `var`, `const` o `let`) enfocadas al módulo en vez de al objeto global.
+* Ayuda proporcionar algunas variables de búsqueda global que verdaderamente sean específicas al módulo, como: 
+  * Los objetos `module` y `exports` que el implemtador puede usar para exportar valores desde el módulo.
+  * Las variables de conveniencia `__filename` y `__dirname`, que contienen el nombre de archivo absoluto del módulo y la ruta del directorio.
 
 ## El ámbito del módulo
 
 ### \_\_dirname
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -365,6 +371,7 @@ console.log(path.dirname(__filename));
 ```
 
 ### \_\_filename
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -398,6 +405,7 @@ Dados dos módulos: `a` y `b`, siendo que `b` es una dependencia de `a` y la est
 Las referencias a `__filename` dentro de `b.js` devolverán `/Users/mjr/app/node_modules/b/b.js`, mientras que las referencias a `__filename` dentro de `a.js` devolverán `/Users/mjr/app/a.js`.
 
 ### exportaciones
+
 <!-- YAML
 added: v0.1.12
 -->
@@ -407,6 +415,7 @@ added: v0.1.12
 Una referencia al `module.exports` que es más corta de escribir. Consulte la sección sobre [exports shortcut (exportar atajos)](#modules_exports_shortcut) para obtener detalles sobre cuando usar `exports` y cuándo usar `module.exports (módulo de exportación)`.
 
 ### módulo
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -418,6 +427,7 @@ added: v0.1.16
 Una referencia al módulo actual. Vea la sección acerca de [`module` object][]. En particular, `module.exports` es utilizado para definir lo que exporta un módulo y lo hace disponibles a través de `require()`.
 
 ### require()
+
 <!-- YAML
 added: v0.1.13
 -->
@@ -440,6 +450,7 @@ const crypto = require('crypto');
 ```
 
 #### require.cache
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -449,6 +460,7 @@ added: v0.3.0
 Los módulos son almacenados en caché en este objeto cuando son requeridos. Al eliminar un valor clave de este objeto, el siguiente `require` volverá a cargar el módulo. Tenga en cuenta que esto no aplica para [complementos nativos](addons.html), para los cuales volver a cargarlo resultaría en un Error.
 
 #### require.extensions
+
 <!-- YAML
 added: v0.3.0
 deprecated: v0.10.6
@@ -475,22 +487,25 @@ Note que el número de operaciones de sistema de archivos que el sistema de mód
 En otras palabras, añadir extensiones ralentiza el cargador de módulos y debe ser desalentado.
 
 #### require.resolve(request[, options])
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v8.9.0
     pr-url: https://github.com/nodejs/node/pull/16397
     description: The `paths` option is now supported.
 -->
 
 * `request` {string} La ruta de módulo a resolver.
-* `opciones` {Object}
+* `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. Si están presentes, estas rutas son utilizadas en lugar de las rutas de resolución por defecto. Note que cada una de estas rutas es utilizada como un punto de partida para el algoritmo de resolución del módulo, lo que significa que la jerarquía de `node_modules` es verificada desde esta ubicación.
 * Devuelve: {string}
 
 Utiliza la maquinaria `require()` interna para ver la ubicación de un módulo, pero en lugar de cargar el módulo, sólo devuelve el nombre de archivo resuelto.
 
 #### require.resolve.paths(request)
+
 <!-- YAML
 added: v8.9.0
 -->
@@ -501,11 +516,13 @@ added: v8.9.0
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
 ## El Objeto `module`
+
 <!-- YAML
 added: v0.1.16
 -->
 
 <!-- type=var -->
+
 <!-- name=module -->
 
 * {Object}
@@ -513,6 +530,7 @@ added: v0.1.16
 En cada módulo, la variable libre de `module` es una referencia para el objeto que representa el módulo actual. Por conveniencia, `module.exports` también es accesible a través del módulo global `exports`. `module` no es en realidad global sino local para cada módulo.
 
 ### module.children
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -522,6 +540,7 @@ added: v0.1.16
 Los objetos de módulo requeridos por este.
 
 ### module.exports
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -553,7 +572,6 @@ a.on('ready', () => {
 });
 ```
 
-
 Note que la asignación a `module.exports` debe hacerse inmediatamente. No puede hacerse en ningún callback. Esto no funciona:
 
 x.js:
@@ -572,6 +590,7 @@ console.log(x.a);
 ```
 
 #### acceso directo de exports
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -586,6 +605,9 @@ exports = { hello: false };  // No exportado, solo disponible en el módulo
 ```
 
 Cuando la propiedad `module.exports` está siendo completamente reemplazada con un nuevo objeto, es común reasignar `exports`, por ejemplo:
+
+<!-- eslint-disable func-name-matching -->
+
 ```js
 module.exports = exports = function Constructor() {
   // ... etc.
@@ -611,13 +633,18 @@ function require(/* ... */) {
 }
 ```
 
-### module.filename<!-- YAML
+### module.filename
+
+<!-- YAML
 added: v0.1.16
--->* {string}
+-->
+
+* {string}
 
 El nombre de archivo completamente resuelto al módulo.
 
 ### module.id
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -627,6 +654,7 @@ added: v0.1.16
 El identificador para el módulo. Típicamente, este es el nombre de archivo completamente resuelto.
 
 ### module.loaded
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -636,6 +664,7 @@ added: v0.1.16
 Si el módulo terminó de cargarse o si está en proceso de carga.
 
 ### module.parent
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -644,29 +673,45 @@ added: v0.1.16
 
 El módulo que primero requirió de este.
 
-### module.paths<!-- YAML
+### module.paths
+
+<!-- YAML
 added: v0.4.0
--->* {string[]}
+-->
+
+* {string[]}
 
 La ruta de búsqueda para el módulo.
 
-### module.require(id)<!-- YAML
+### module.require(id)
+
+<!-- YAML
 added: v0.5.1
--->* `id` {string}
+-->
+
+* `id` {string}
 * Devuelve: {Object} `module.exports` desde el módulo resuelto
 
 El método `module.require` proporciona una manera de cargar un módulo como si `require()` fuese llamado desde el módulo original.
 
 *Note*: In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## El Objeto `Module`<!-- YAML
+## El Objeto `Module`
+
+<!-- YAML
 added: v0.3.7
--->* {Object}
+-->
+
+* {Object}
 
 Proporciona métodos de utilidad generales al interactuar con instancias de `Module` — la variable `module` vista con frecuencia en los módulos de archivos. Accedido a través de `require('module')`.
 
-### module.builtinModules<!-- YAML
+### module.builtinModules
+
+<!-- YAML
 added: v8.10.0
--->* {string[]}
+-->
+
+* {string[]}
 
 Una lista de los nombres de todos los módulos proporcionados por Node.js. Puede ser usada para verificar si un módulo es mantenido por un módulo de un tercero o no.

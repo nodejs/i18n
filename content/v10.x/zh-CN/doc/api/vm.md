@@ -34,6 +34,7 @@ console.log(x); // 1; y is not defined.
 ```
 
 ## Class: vm.SourceTextModule
+
 <!-- YAML
 added: v9.6.0
 -->
@@ -48,7 +49,7 @@ Unlike `vm.Script` however, every `vm.SourceTextModule` object is bound to a con
 
 Using a `vm.SourceTextModule` object requires four distinct steps: creation/parsing, linking, instantiation, and evaluation. These four steps are illustrated in the following example.
 
-This implementation lies at a lower level than the \[ECMAScript Module loader\]\[\]. There is also currently no way to interact with the Loader, though support is planned.
+This implementation lies at a lower level than the [ECMAScript Module loader](esm.html#esm_ecmascript_modules). There is also currently no way to interact with the Loader, though support is planned.
 
 ```js
 const vm = require('vm');
@@ -136,7 +137,7 @@ const contextifiedSandbox = vm.createContext({ secret: 42 });
 ### Constructor: new vm.SourceTextModule(code[, options])
 
 * `code` {string} JavaScript Module code to parse
-* `options`
+* `options` 
   * `url` {string} URL used in module resolution and stack traces. **Default:** `'vm:module(i)'` where `i` is a context-specific ascending index.
   * `context` {Object} The [contextified](#vm_what_does_it_mean_to_contextify_an_object) object as returned by the `vm.createContext()` method, to compile and evaluate this `Module` in.
   * `lineOffset` {integer} Specifies the line number offset that is displayed in stack traces produced by this `Module`.
@@ -200,21 +201,21 @@ Corresponds to the `[[EvaluationError]]` field of [Source Text Module Record](ht
 
 ### module.evaluate([options])
 
-* `options` {Object}
+* `options` {Object} 
   * `timeout` {integer} Specifies the number of milliseconds to evaluate before terminating execution. If execution is interrupted, an [`Error`][] will be thrown. This value must be a strictly positive integer.
   * `breakOnSigint` {boolean} If `true`, the execution will be terminated when `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have been attached via `process.on('SIGINT')` will be disabled during script execution, but will continue to work after that. If execution is interrupted, an [`Error`][] will be thrown.
-* Returns: {Promise}
+* 返回：{Promise}
 
 Evaluate the module.
 
 This must be called after the module has been instantiated; otherwise it will throw an error. It could be called also when the module has already been evaluated, in which case it will do one of the following two things:
 
-- return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
-- rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
+* return `undefined` if the initial evaluation ended in success (`module.status` is `'evaluated'`)
+* rethrow the same exception the initial evaluation threw if the initial evaluation ended in an error (`module.status` is `'errored'`)
 
 This method cannot be called while the module is being evaluated (`module.status` is `'evaluating'`) to prevent infinite recursion.
 
-Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Evaluate() concrete method](https://tc39.github.io/ecma262/#sec-moduleevaluation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.instantiate()
 
@@ -224,29 +225,29 @@ However, if this function succeeded, further calls to this function after the in
 
 Unlike other methods operating on `Module`, this function completes synchronously and returns nothing.
 
-Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of \[Source Text Module Record\]\[\]s in the ECMAScript specification.
+Corresponds to the [Instantiate() concrete method](https://tc39.github.io/ecma262/#sec-moduledeclarationinstantiation) field of [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)s in the ECMAScript specification.
 
 ### module.link(linker)
 
 * `linker` {Function}
-* Returns: {Promise}
+* 返回：{Promise}
 
 Link module dependencies. This method must be called before instantiation, and can only be called once per module.
 
 Two parameters will be passed to the `linker` function:
 
-- `specifier` The specifier of the requested module:
-  <!-- eslint-skip -->
-  ```js
-  import foo from 'foo';
-  //              ^^^^^ the module specifier
-  ```
-- `referencingModule` The `Module` object `link()` is called on.
+* `specifier` The specifier of the requested module: <!-- eslint-skip -->
+  
+      js
+      import foo from 'foo';
+      //              ^^^^^ the module specifier
+
+* `referencingModule` The `Module` object `link()` is called on.
 
 The function is expected to return a `Module` object or a `Promise` that eventually resolves to a `Module` object. The returned `Module` must satisfy the following two invariants:
 
-- It must belong to the same context as the parent `Module`.
-- Its `linkingStatus` must not be `'errored'`.
+* It must belong to the same context as the parent `Module`.
+* Its `linkingStatus` must not be `'errored'`.
 
 If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be recursively called on the returned `Module` with the same provided `linker` function.
 
@@ -254,8 +255,8 @@ If the returned `Module`'s `linkingStatus` is `'unlinked'`, this method will be 
 
 The linker function roughly corresponds to the implementation-defined [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) abstract operation in the ECMAScript specification, with a few key differences:
 
-- The linker function is allowed to be asynchronous while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is synchronous.
-- The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
+* The linker function is allowed to be asynchronous while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is synchronous.
+* The linker function is executed during linking, a Node.js-specific stage before instantiation, while [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) is called during instantiation.
 
 The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation used during module instantiation is one that returns the modules linked during linking. Since at that point all modules would have been fully linked already, the [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostresolveimportedmodule) implementation is fully synchronous per specification.
 
@@ -265,10 +266,10 @@ The actual [HostResolveImportedModule](https://tc39.github.io/ecma262/#sec-hostr
 
 The current linking status of `module`. It will be one of the following values:
 
-- `'unlinked'`: `module.link()` has not yet been called.
-- `'linking'`: `module.link()` has been called, but not all Promises returned by the linker function have been resolved yet.
-- `'linked'`: `module.link()` has been called, and all its dependencies have been successfully linked.
-- `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
+* `'unlinked'`: `module.link()` has not yet been called.
+* `'linking'`: `module.link()` has been called, but not all Promises returned by the linker function have been resolved yet.
+* `'linked'`: `module.link()` has been called, and all its dependencies have been successfully linked.
+* `'errored'`: `module.link()` has been called, but at least one of its dependencies failed to link, either because the callback returned a `Promise` that is rejected, or because the `Module` the callback returned is invalid.
 
 ### module.namespace
 
@@ -284,22 +285,22 @@ Corresponds to the [GetModuleNamespace](https://tc39.github.io/ecma262/#sec-getm
 
 The current status of the module. Will be one of:
 
-- `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
-
-  - The module was just created.
-  - `module.instantiate()` has been called on this module, but it failed for some reason.
-
+* `'uninstantiated'`: The module is not instantiated. It may because of any of the following reasons:
+  
+  * The module was just created.
+  * `module.instantiate()` has been called on this module, but it failed for some reason.
+  
   This status does not convey any information regarding if `module.link()` has been called. See `module.linkingStatus` for that.
 
-- `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
+* `'instantiating'`: The module is currently being instantiated through a `module.instantiate()` call on itself or a parent module.
 
-- `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
+* `'instantiated'`: The module has been instantiated successfully, but `module.evaluate()` has not yet been called.
 
-- `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
+* `'evaluating'`: The module is being evaluated through a `module.evaluate()` on itself or a parent module.
 
-- `'evaluated'`: The module has been successfully evaluated.
+* `'evaluated'`: The module has been successfully evaluated.
 
-- `'errored'`: The module has been evaluated, but an exception was thrown.
+* `'errored'`: The module has been evaluated, but an exception was thrown.
 
 Other than `'errored'`, this status string corresponds to the specification's [Source Text Module Record](https://tc39.github.io/ecma262/#sec-source-text-module-records)'s `[[Status]]` field. `'errored'` corresponds to `'evaluated'` in the specification, but with `[[EvaluationError]]` set to a value that is not `undefined`.
 
@@ -310,6 +311,7 @@ Other than `'errored'`, this status string corresponds to the specification's [S
 The URL of the current module, as set in the constructor.
 
 ## 类：vm.Script
+
 <!-- YAML
 added: v0.3.1
 -->
@@ -317,9 +319,11 @@ added: v0.3.1
 `vm.Script` 类的实例包含预编译的，可在特定沙盒（或 “上下文”）中运行的脚本。
 
 ### new vm.Script(code, options)
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v5.7.0
     pr-url: https://github.com/nodejs/node/pull/4777
     description: The `cachedData` and `produceCachedData` options are
@@ -331,7 +335,7 @@ changes:
 -->
 
 * `code` {string} 要编译的 JavaScript 代码。
-* `options`
+* `options` 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -339,9 +343,10 @@ changes:
   * `produceCachedData` {boolean} 当值为 `true` 时，且 `cachedData` 不存在时，V8 会尝试为 `code` 生成代码缓存数据。 成功后，将生成具有 V8 代码缓存数据的 `Buffer`，并存储在返回的 `vm.Script` 实例的 `cachedData` 属性中。 `cachedDataProduced` 的值将被设置为 `true` 或 `false`，具体取决于代码缓存数据是否被成功生成。 This option is deprecated in favor of `script.createCachedData()`.
   * `importModuleDynamically` {Function} Called during evaluation of this module when `import()` is called. This function has the signature `(specifier, module)` where `specifier` is the specifier passed to `import()` and `module` is this `vm.SourceTextModule`. If this option is not specified, calls to `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][]. This method can return a [Module Namespace Object](https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects), but returning a `vm.SourceTextModule` is recommended in order to take advantage of error tracking, and to avoid issues with namespaces that contain `then` function exports.
 
-创建新的 `vm.Script` 对象会编译 `code` 但不会运行它。 编译过的 `vm.Script` 可以在以后被多次运行。 `code` 不会被绑定到任何全局对象；恰恰相反，它在每次运行前被绑定，并只针对该次运行而绑定。
+创建新的 `vm.Script` 对象会编译 `code` 但不会运行它。 编译过的 `vm.Script` 可以在以后被多次运行。 The `code` is not bound to any global object; rather, it is bound before each run, just for that run.
 
 ### script.createCachedData()
+
 <!-- YAML
 added: v10.6.0
 -->
@@ -367,16 +372,18 @@ const cacheWithX = script.createCachedData();
 ```
 
 ### script.runInContext(contextifiedSandbox[, options])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v6.3.0
     pr-url: https://github.com/nodejs/node/pull/6635
     description: The `breakOnSigint` option is supported now.
 -->
 
 * `contextifiedSandbox` {Object} 由 `vm.createContext()` 方法返回的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象。
-* `options` {Object}
+* `options` {Object} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -412,16 +419,18 @@ console.log(util.inspect(sandbox));
 Using the `timeout` or `breakOnSigint` options will result in new event loops and corresponding threads being started, which have a non-zero performance overhead.
 
 ### script.runInNewContext([sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19016
     description: The `contextCodeGeneration` option is supported now.
 -->
 
 * `sandbox` {Object} 将被 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 的对象。 如果 `undefined`，将会创建一个新的对象。
-* `options` {Object}
+* `options` {Object} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -429,7 +438,7 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code` before terminating execution. 如果运行被终止，则抛出 [`Error`][]。 This value must be a strictly positive integer.
   * `contextName` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `contextOrigin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
-  * `contextCodeGeneration` {Object}
+  * `contextCodeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
@@ -454,11 +463,12 @@ console.log(util.inspect(sandboxes));
 ```
 
 ### script.runInThisContext([options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
-* `options` {Object}
+* `options` {Object} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -486,12 +496,14 @@ console.log(globalVar);
 ```
 
 ## vm.compileFunction(code[, params[, options]])
+
 <!-- YAML
 added: v10.10.0
 -->
+
 * `code` {string} The body of the function to compile.
 * `params` {string[]} An array of strings containing all parameters for the function.
-* `options` {Object}
+* `options` {Object} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。 **Default:** `''`.
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。 **默认值：** `0`。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。 **默认值：** `0`。
@@ -503,9 +515,11 @@ added: v10.10.0
 Compiles the given code into the provided context/sandbox (if no context is supplied, the current context is used), and returns it wrapped inside a function with the given `params`.
 
 ## vm.createContext([sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19398
     description: The `sandbox` option can no longer be a function.
@@ -515,10 +529,10 @@ changes:
 -->
 
 * `sandbox` {Object}
-* `options` {Object}
+* `options` {Object} 
   * `name` {string} Human-readable name of the newly created context. **Default:** `'VM Context i'`, where `i` is an ascending numerical index of the created context.
   * `origin` {string} [Origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) corresponding to the newly created context for display purposes. The origin should be formatted like a URL, but with only the scheme, host, and port (if necessary), like the value of the [`url.origin`][] property of a [`URL`][] object. Most notably, this string should omit the trailing slash, as that denotes a path. **Default:** `''`.
-  * `codeGeneration` {Object}
+  * `codeGeneration` {Object} 
     * `strings` {boolean} If set to false any calls to `eval` or function constructors (`Function`, `GeneratorFunction`, etc) will throw an `EvalError`. **Default:** `true`.
     * `wasm` {boolean} If set to false any attempt to compile a WebAssembly module will throw a `WebAssembly.CompileError`. **Default:** `true`.
 
@@ -547,6 +561,7 @@ console.log(util.inspect(globalVar)); // 3
 The provided `name` and `origin` of the context are made visible through the Inspector API.
 
 ## vm.isContext(sandbox)
+
 <!-- YAML
 added: v0.11.7
 -->
@@ -560,7 +575,7 @@ added: v0.11.7
 
 * `code` {string} 要编译和运行的 JavaScript 代码。
 * `contextifiedSandbox` {Object} 当 `code` 被编译和运行时，将被作为 `global` 的 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 对象。
-* `options` {Object|string}
+* `options` {Object|string} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -589,13 +604,14 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInNewContext(code[, sandbox[, options]])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} 要编译和运行的 JavaScript 代码。
 * `sandbox` {Object} 将被 [contextified](#vm_what_does_it_mean_to_contextify_an_object) 的对象。 如果 `undefined`，将会创建一个新的对象。
-* `options` {Object|string}
+* `options` {Object|string} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -626,12 +642,13 @@ console.log(util.inspect(sandbox));
 ```
 
 ## vm.runInThisContext(code[, options])
+
 <!-- YAML
 added: v0.3.1
 -->
 
 * `code` {string} 要编译和运行的 JavaScript 代码。
-* `options` {Object|string}
+* `options` {Object|string} 
   * `filename` {string} 指定此脚本生成的追溯栈中使用的文件名。
   * `lineOffset` {number} 指定此脚本生成的追溯栈中显示的行号偏移量。
   * `columnOffset` {number} 指定此脚本生成的追溯栈中显示的列号偏移量。
@@ -643,6 +660,9 @@ added: v0.3.1
 If `options` is a string, then it specifies the filename.
 
 下面的示例演示如何使用 `vm.runInThisContext()` 和 JavaScript [`eval()`][] 函数来运行同样的代码：
+
+<!-- eslint-disable prefer-const -->
+
 ```js
 const vm = require('vm');
 let localVar = 'initial value';
@@ -694,7 +714,7 @@ The `require()` in the above case shares the state with the context it is passed
 
 > 在 V8 中，上下文是一个执行环境，它允许在一个单一的 V8 实例中运行分离的，不相关的 JavaScript 应用程序。 你必须显式指定要在其中运行任何 JavaScript 代码的上下文。
 
-当 `vm.createContext()` 方法被调用时，传入的（如果 `sandbox` 是 `undefined`，则是新创建的对象） `sandbox` 对象在内部和一个 V8 上下文的实例相关联。 此 V8 上下文提供了使用 `vm` 模块的方法在一个隔离的，可操作的全局环境中运行的 `code` 。 创建 V8 上下文以及将其和 `sandbox` 对象相关联的过程在此文档中被称作 "contextifying" `sandbox`。
+当 `vm.createContext()` 方法被调用时，传入的（如果 `sandbox` 是 `undefined`，则是新创建的对象） `sandbox` 对象在内部和一个 V8 上下文的实例相关联。 This V8 Context provides the `code` run using the `vm` module's methods with an isolated global environment within which it can operate. 创建 V8 上下文以及将其和 `sandbox` 对象相关联的过程在此文档中被称作 "contextifying" `sandbox`。
 
 ## Timeout limitations when using process.nextTick(), and Promises
 

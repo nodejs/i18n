@@ -4,7 +4,7 @@
 
 > 稳定性：1 - 实验中
 
-`async_hooks` 模块提供了一个用来注册回调函数的API，它可以用来追踪在Node.js应用程序中创建的异步资源的生存期。 可以通过如下方式访问：
+`async_hooks` 模块提供了一个用来注册回调函数的API，它可以用来追踪在Node.js应用程序中创建的异步资源的生存期。 它可以使用如下方式来访问：
 
 ```js
 const async_hooks = require('async_hooks');
@@ -74,7 +74,7 @@ function promiseResolve(asyncId) { }
 added: v8.1.0
 -->
 
-* `callbacks` {Object} The [Hook Callbacks](#async_hooks_hook_callbacks) to register
+* `callbacks` {Object} 要注册的 [钩子回调函数](#async_hooks_hook_callbacks) 
   * `init` {Function} [`init` 回调函数][]。
   * `before` {Function} [`before` 回调函数][]
   * `after` {Function} [`after` 回调函数][]。
@@ -117,7 +117,6 @@ const asyncHook = async_hooks.createHook(new MyAddedCallbacks());
 如果任何 `AsyncHook` 回调函数抛出异常，应用程序会打印追溯栈并退出。 退出路径确实遵循未捕获异常中的路径, 但所有的 `uncaughtException` 监听器都将被删除, 从而强制进程退出。 除非应用程序在运行时添加了`--abort-on-uncaught-exception`参数，`'exit'`回调函数仍会被调用，在这种情况下，回溯栈仍会被打印，应用程序会退出，并留下一个核心文件。
 
 此错误处理行为的原因在于这些回调函数正在运行在对象的生命周期中潜在的不稳定点上，例如在类构造和析构时。 正因为如此，为了防止在未来被无意中止，迅速杀死进程被认为是必要的。 如果进行综合分析，这点在将来可能会发生变化，以确保异常可以遵循正常的控制流程而不会产生无意的副作用。
-
 
 ##### 在AsyncHooks回调函数中打印
 
@@ -166,9 +165,9 @@ const hook = async_hooks.createHook(callbacks).enable();
 * `asyncId` {number} 异步资源的唯一 ID。
 * `type` {string} 异步资源的类型。
 * `triggerAsyncId` {number} 异步资源在其被创建的执行上下文中的唯一 ID。
-* `resource` {Object} 对代表异步操作的资源的引用，在_destroy_时需要被释放。
+* `resource` {Object} 对代表异步操作的资源的引用，在*destroy*时需要被释放。
 
-当一个类被构造时，如果有 _可能_ 会发出异步事件，则回调函数会被调用。 这并 _不_ 意味着在 `destroy` 被调用之前实例必须调用 `before`/`after`，只是这种可能性存在。
+当一个类被构造时，如果有 *可能* 会发出异步事件，则回调函数会被调用。 这并 *不* 意味着在 `destroy` 被调用之前实例必须调用 `before`/`after`，只是这种可能性存在。
 
 这种行为可以通过类似如下操作进行观察：打开一个资源然后在资源可用之前立即关闭它。 下面的代码片段可以就此进行演示。
 
@@ -200,8 +199,7 @@ RANDOMBYTESREQUEST, TLSWRAP, Timeout, Immediate, TickObject
 
 ###### `triggerId`
 
-`triggerAsyncId` 是导致 (或 “触发”) 新资源被初始化以及`init`被调用的资源的`asyncId`。 This is different from `async_hooks.executionAsyncId()` that only shows *when* a resource was created, while `triggerAsyncId` shows *why* a resource was created.
-
+`triggerAsyncId` 是导致 (或 “触发”) 新资源被初始化以及`init`被调用的资源的`asyncId`。 它和`async_hooks.executionAsyncId()`不同，后者只是显示新资源在 *何时* 被创建，而 `triggerAsyncId` 显示 *为什么* 新资源被创建。
 
 下面是 `triggerAsyncId` 的简单演示：
 
@@ -301,7 +299,7 @@ destroy: 9
 destroy: 5
 ```
 
-*Note*: As illustrated in the example, `executionAsyncId()` and `execution` each specify the value of the current execution context; which is delineated by calls to `before` and `after`.
+*注意*：正如示例所示，`executionAsyncId()` 和 `execution` 两者都提供当前执行上下文的值；该值由对 `before` 和 `after` 的调用所设定。
 
 仅使用 `execution` 来图示资源分配，会导致如下结果：
 
@@ -309,10 +307,9 @@ destroy: 5
 TTYWRAP(6) -> Timeout(4) -> TIMERWRAP(5) -> TickObject(3) -> root(1)
 ```
 
-尽管是 `console.log()` 被调用的原因，但 `TCPSERVERWRAP` 并不是此图的一部分。 This is because binding to a port without a hostname is a *synchronous* operation, but to maintain a completely asynchronous API the user's callback is placed in a `process.nextTick()`.
+尽管是 `console.log()` 被调用的原因，但 `TCPSERVERWRAP` 并不是此图的一部分。 这是因为在不提供主机名的情况下绑定端口是 *同步* 操作，但要维护完全的异步 API，用户的回调函数位于 `process.nextTick()`。
 
-The graph only shows *when* a resource was created, not *why*, so to track the *why* use `triggerAsyncId`.
-
+该图仅显示 *何时*，而不是 *为什么* 资源会被创建，因此要想跟踪 *为什么*，请使用 `triggerAsyncId`。
 
 ##### `before(asyncId)`
 
@@ -322,15 +319,13 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 `before` 回调函数将被调用0到N次。 如果异步操作被取消，则`before`回调函数通常只会被调用0次，或者，例如，如果TCP服务器没有接收到任何连接。 将像TCP服务器这样的异步资源持久化通常会多次调用`before`回调函数，而其他诸如 `fs.open()` 这样的操作只会调用一次。
 
-
 ##### `after(asyncId)`
 
 * `asyncId` {number}
 
 在 `before` 中指定的回调函数结束后立即调用。
 
-*Note:* If an uncaught exception occurs during execution of the callback, then `after` will run *after* the `'uncaughtException'` event is emitted or a `domain`'s handler runs.
-
+*注意：* 如果在执行回调函数时发生未捕获异常，`after`回调函数会在`'uncaughtException'`事件发出，或`域`处理器执行*后*运行。
 
 ##### `destroy(asyncId)`
 
@@ -338,7 +333,7 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 在与 `asyncId` 对应的资源被销毁后调用。 它也从 embedder API 中的 `emitDestroy()` 中被异步调用。
 
-*Note:* Some resources depend on garbage collection for cleanup, so if a reference is made to the `resource` object passed to `init` it is possible that `destroy` will never be called, causing a memory leak in the application. 如果资源不依赖于垃圾回收，这就没有问题。
+*注意：* 一些资源依赖于垃圾回收以进行清理，因此如果一个引用是到传递给`init`的`资源`对象的，就有可能导致 `destroy` 从不会被调用，进而导致应用程序中的内存泄露。 如果资源不依赖于垃圾回收，这就没有问题。
 
 ##### `promiseResolve(asyncId)`
 
@@ -348,7 +343,7 @@ The graph only shows *when* a resource was created, not *why*, so to track the *
 
 注意 `resolve()` 不会做任何可观察的同步工作。
 
-*Note:* This does not necessarily mean that the `Promise` is fulfilled or rejected at this point, if the `Promise` was resolved by assuming the state of another `Promise`.
+*注意：如果通过假定另一个 `Promise` 的状态而完成当前的 `Promise`，* 这并不意味着 `Promise` 被完成或在这一点上被拒绝了。
 
 例如：
 
@@ -372,6 +367,7 @@ init for PROMISE with id 6, trigger id: 5  # the Promise returned by then()
 <!-- YAML
 added: v8.1.0
 changes:
+
   - version: v8.2.0
     pr-url: https://github.com/nodejs/node/pull/13490
     description: Renamed from currentId
@@ -515,7 +511,7 @@ asyncResource.emitAfter();
 #### `AsyncResource(type[, options])`
 
 * `type` {string} 异步事件的类型。
-* `options` {Object}
+* `options` {Object} 
   * `triggerAsyncId` {number} 创建此异步事件的执行上下文ID。 **默认值：** `executionAsyncId()`.
   * `requireManualDestroy` {boolean} 当对象被垃圾回收时，禁用自动的 `emitDestroy`。 这通常不需要进行设置 (即使 `emitDestroy` 是通过手工方式调用的)，除非资源的 asyncId 被获取，且使用它调用敏感 API 的 `emitDestroy`。 **默认:** `false`.
 
@@ -542,6 +538,7 @@ class DBQuery extends AsyncResource {
 ```
 
 #### `asyncResource.runInAsyncScope(fn[, thisArg, ...args])`
+
 <!-- YAML
 added: v8.12.0
 -->
@@ -553,9 +550,11 @@ added: v8.12.0
 Call the provided function with the provided arguments in the execution context of the async resource. This will establish the context, trigger the AsyncHooks before callbacks, call the function, trigger the AsyncHooks after callbacks, and then restore the original execution context.
 
 #### `asyncResource.emitBefore()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * 返回：{undefined}
@@ -565,9 +564,11 @@ deprecated: v8.12.0
 `before` and `after` calls must be unwound in the same order that they are called. 否则，会发生不可恢复错误且进程被终止。 For this reason, the `emitBefore` and `emitAfter` APIs are considered deprecated. Please use `runInAsyncScope`, as it provides a much safer alternative.
 
 #### `asyncResource.emitAfter()`
+
 <!-- YAML
 deprecated: v8.12.0
 -->
+
 > Stability: 0 - Deprecated: Use [`asyncResource.runInAsyncScope()`][] instead.
 
 * 返回：{undefined}

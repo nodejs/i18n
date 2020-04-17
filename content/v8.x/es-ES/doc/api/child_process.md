@@ -27,13 +27,20 @@ Por defecto, los pipes para `stdin`, `stdout` y `stderr` son establecidos entre 
 
 El método [`child_process.spawn()`][] genera el proceso secundario asincrónicamente, sin bloquear el bucle de evento Node.js. La función [`child_process.spawnSync()`][] proporciona una funcionalidad equivalente en una forma sincrónica que bloquea el bucle de evento hasta que el proceso generado exista o sea finalizado.
 
-Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas para [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Note que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o de [`child_process.spawnSync()`][].*
+Por conveniencia, el módulo `child_process` proporciona un puñado de alternativas sincrónicas y asincrónicas para [`child_process.spawn()`][] y [`child_process.spawnSync()`][]. *Tenga en cuenta que cada una de estas alternativas son implementadas por encima de [`child_process.spawn()`][] o [`child_process.spawnSync()`][].*
 
-  * [`child_process.exec()`][]: spawns a shell and runs a command within that shell, passing the `stdout` and `stderr` to a callback function when complete.
-  * [`child_process.execFile()`][]: similar to [`child_process.exec()`][] except that it spawns the command directly without first spawning a shell by default.
-  * [`child_process.fork()`][]: spawns a new Node.js process and invokes a specified module with an IPC communication channel established that allows sending messages between parent and child.
-  * [`child_process.execSync()`][]: a synchronous version of [`child_process.exec()`][] that *will* block the Node.js event loop.
-  * [`child_process.execFileSync()`][]: a synchronous version of [`child_process.execFile()`][] that *will* block the Node.js event loop.
+    * [`child_process.exec()`][]: genera un shell y ejecuta un comando dentro de ese shell,
+      pasar `stdout` y `stderr` a una función de callback cuando termine.
+    * [`child_process.execFile()`][]: es similar a [`child_process.exec()`][] excepto que
+      genera el comando directamente sin generar primero un shell por defecto.
+    * [`child_process.fork()`][]: genera un nuevo proceso de Node.js e invoca un
+      módulo especificado con un canal de comunicación IPC establecido que permite
+      enviar mensajes entre primario y secundario.
+    * [`child_process.execSync()`][]: una versión sincrónica de 
+      [`child_process.exec()`][] que *bloqueará* el bucle de evento de Node.js.
+    * [`child_process.execFileSync()`][]: una versión sincrónica de 
+      [`child_process.execFile()`][] que *bloqueará* el bucle de evento de Node.js.
+    
 
 Para ciertos casos de uso, como la automatización de scripts de shell, las [contrapartes sincrónicas](#child_process_synchronous_process_creation) pueden ser más convenientes. Sin embargo, en muchos casos, los métodos sincrónicos pueden tener un impacto significativo en el rendimiento debido al bloqueo del bucle de eventos mientras se completan los procesos generados.
 
@@ -87,33 +94,36 @@ exec('"my script.cmd" a b', (err, stdout, stderr) => {
 ```
 
 ### child_process.exec(command\[, options\]\[, callback\])
+
 <!-- YAML
 added: v0.1.90
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
 -->
 
 * `command` {string} El comando a ejecutar, con argumentos separados por espacios.
-* `opciones` {Object}
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo. **Predeterminado:** `null`.
   * `env` {Object} Pares clave-valor del entorno. **Predeterminado:** `null`.
   * `encoding` {string} **Predeterminado:** `'utf8'`
-  * `shell` {string} Shell con el que ejecutar el comando. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
+  * `shell` {string} Shell con el que ejecutar el comando. Vea [Shell Requirements](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `timeout` {number} **Predeterminado:** `0`
-  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} La cantidad más grande datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
-  * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
+  * `uid` {number} Establece la identidad del usuario del proceso (vea stuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
-  * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
-* `callback` {Function} called with the output when process terminates.
+  * `windowsHide` {boolean} Ocultar la ventana de la consola de sub-proceso que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
+* `callback` {Function} llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
 * Devuelve: {ChildProcess}
 
 Genera un shell, luego ejecuta el `command` dentro de esa shell, cargando cualquier salida generada. La string `command` pasada a la función exec es procesada directamente por el shell y los caracteres especiales (varía dependiendo del [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)) necesitan ser tratados en consecuencia:
+
 ```js
 exec('"/path/to/test file/test.sh" arg1 arg2');
 //Double quotes are used so that the space in the path is not interpreted as
@@ -137,9 +147,9 @@ exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
 });
 ```
 
-Si se proporciona una función `callback`, se llama con los argumentos `(error, stdout, stderr)`. En éxito, el `error` será `null`. En error, el `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` se establecerá a la señal que finalizó el proceso. Cualquier otro código de salida distinto a `0` se considera como un error.
+Si se proporciona una función `callback`, es llamada con los argumentos `(error, stdout, stderr)`. Si tiene éxito, `error` será `null`. Si falla, `error` será una instancia de [`Error`][]. La propiedad `error.code` será el código de salida del proceso secundario, mientras que `error.signal` será establecido a la señal que terminó el proceso. Cualquier otro código de salida distinto a `0` es considerado como un error.
 
-Los argumentos `stdout` y `stderr` pasados al callback contendrán la salida stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `codificación` puede ser utilizada para especificar la codificación de caracteres para decodificar las salida stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocido, los objetos `Buffer` serán pasados al callback en su lugar.
+Los argumentos `stdout` y `stderr` pasados a la callback contendrán las outputs stdout y stderr del proceso secundario. Por defecto, Node.js decodificará el output como UTF-8 y pasará las strings a la callback. La opción `encoding` puede ser usada para especificar la codificación de caracteres para decodificar las outputs stdout y stderr. Si `encoding` es `'buffer'`, o una codificación de caracteres no reconocida, los objetos `Buffer` serán pasados a la callback en su lugar.
 
 Si `timeout` es mayor que `0`, el proceso primario enviará la señal identificada por la propiedad `killSignal` (por defecto es `'SIGTERM'`) si el proceso secundario se ejecuta por más de `timeout` milisegundos.
 
@@ -162,29 +172,31 @@ lsExample();
 ```
 
 ### child_process.execFile(file\[, args\]\[, options\][, callback])
+
 <!-- YAML
 added: v0.1.91
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
 -->
 
-* `file` {string} El nombre o la ruta del archivo ejecutable a ejecutar.
-* `args` {string[]} Lista de argumentos de strings.
-* `opciones` {Object}
+* `file` {string} El nombre o la ruta del archivo a ejecutar.
+* `args` {string[]} Lista de argumentos de string.
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Pares clave-valor del entorno.
   * `encoding` {string} **Predeterminado:** `'utf8'`
   * `timeout` {number} **Predeterminado:** `0`
-  * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
+  * `maxBuffer` {number} Cantidad más grande de datos en bytes permitidos en stdout o stderr. Si se excede, se finaliza el proceso secundario. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `killSignal` {string|integer} **Predeterminado:** `'SIGTERM'`
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
-  * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Oculta la ventada de la consola de subproceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
   * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. **Predeterminado:** `false`.
   * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-* `callback` {Function} Called with the output when process terminates.
+* `callback` {Function} Llamada con la salida cuando el proceso finaliza. 
   * `error` {Error}
   * `stdout` {string|Buffer}
   * `stderr` {string|Buffer}
@@ -204,7 +216,7 @@ const child = execFile('node', ['--version'], (error, stdout, stderr) => {
 });
 ```
 
-Los argumentos `stdout` y `stderr` pasados al callback contendrán las salidas stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `encoding` puede ser usada para especificar la codificación de caracter usada para decodificar las salidas stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocido, los objetos `Buffer` serán pasados al callback en su lugar.
+Los argumentos `stdout` y `stderr` pasados al callback contendrán las salidas stdout y stderr del proceso secundario. Por defecto, Node.js decodificará la salida como UTF-8 y pasará las strings al callback. La opción `encoding` puede ser usada para especificar la codificación de caracter usada para decodificar las salidas stdout y stderr. Si `encoding` es `'buffer'` o una codificación de caracter no reconocida, los objetos `Buffer` serán pasados al callback en su lugar.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns a Promise for an object with `stdout` and `stderr` properties. In case of an error, a rejected promise is returned, with the same `error` object given in the callback, but with an additional two properties `stdout` and `stderr`.
 
@@ -221,9 +233,11 @@ getVersion();
 *Note*: If the `shell` option is enabled, do not pass unsanitized user input to this function. Cualquier input que contenga metacaracteres de shell puede ser utilizada para activar la ejecución arbitraria de comandos.
 
 ### child_process.fork(modulePath\[, args\]\[, options\])
+
 <!-- YAML
 added: v0.5.0
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10866
     description: The `stdio` option can now be a string.
@@ -234,7 +248,7 @@ changes:
 
 * `modulePath` {string} El módulo a ejecutar en el proceso secundario.
 * `args` {Array} Lista de argumentos de string.
-* `opciones` {Object}
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Pares clave-valor del entorno.
   * `execPath` {string} Ejecutable utilizado para crear el proceso secundario.
@@ -242,8 +256,8 @@ changes:
   * `silent` {boolean} Si es `true`, stdin, stdout, y stderr del proceso secundario serán piped al proceso primario, de lo contrario serán heredadas del proceso primario, vea las opciones `'pipe'` y `'inherit'` para el [`stdio`][] de [`child_process.spawn()`][] para más detalles. **Predeterminado:** `false`.
   * `stdio` {Array|string} Vea el [`stdio`][] del [`child_process.spawn()`][]'. Cuando se proporciona esta opción, se anula `silent`. Si la variante del array es usada, debe contener exactamente un artículo con el valor `'ipc'` o se arrojará un error. Por ejemplo `[0, 1, 2, 'ipc']`.
   * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. **Predeterminado:** `false`.
-  * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
-  * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
+  * `uid` {number} Establece la identidad del usuario del proceso (vea setuid(2)).
+  * `gid` {number} Establece la identidad del grupo del proceso (vea setgid(2)).
 * Devuelve: {ChildProcess}
 
 El método `child_process.fork()` es un caso especial de [`child_process.spawn()`][] usado específicamente para generar nuevos procesos Node.js. Al igual que [`child_process.spawn()`][], se devuelve un objeto [`ChildProcess`][]. El [`ChildProcess`][] devuelto tendrá un canal de comunicación integrado que permite que los mensajes se pasen de un lado a otro entre el proceso primario y el proceso secundario. Vea [`subprocess.send()`][] para más detalles.
@@ -259,9 +273,11 @@ Los procesos Node.js iniciados con una `execPath` personalizada se comunicarán 
 *Note*: La opción `shell` disponible en [`child_process.spawn()`][] no es soportada por `child_process.fork()` y será ignorada si se establece.
 
 ### child_process.spawn(command\[, args\]\[, options\])
+
 <!-- YAML
 added: v0.1.90
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
@@ -275,7 +291,7 @@ changes:
 
 * `command` {string} El comando a ejecutar.
 * `args` {Array} Lista de argumentos de string.
-* `opciones` {Object}
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `env` {Object} Pares clave-valor del entorno.
   * `argv0` {string} Establecer explícitamente el valor de `argv[0]` enviado al proceso secundario. Esto será establecido a `command` si no es especificado.
@@ -283,9 +299,9 @@ changes:
   * `detached` {boolean} Prepare el proceso secundario para que sea ejecutado independientemente de su proceso primario. El comportamiento específico depende de la plataforma, vea [`options.detached`][]).
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
-  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de una shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Default Windows Shell](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
   * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica `shell`. **Predeterminado:** `false`.
-  * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Ocultar la ventada de la consola de sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
 * Devuelve: {ChildProcess}
 
 El método `child_process.spawn()` genera un nuevo proceso usando el `command` dado con los argumentos de línea de comando en `args`. Si se omite, `args` se establece de manera predeterminada a un array vacío.
@@ -324,7 +340,6 @@ ls.on('close', (code) => {
 });
 ```
 
-
 Ejemplo: Una manera muy elaborada para ejecutar `ps ax | grep ssh`
 
 ```js
@@ -348,7 +363,6 @@ ps.on('close', (code) => {
 });
 ```
 
-
 Ejemplo de verificación para `spawn` fallido:
 
 ```js
@@ -365,6 +379,7 @@ subprocess.on('error', (err) => {
 *Note*: Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so `process.argv[0]` in a Node.js child process will not match the `argv0` parameter passed to `spawn` from the parent, retrieve it with the `process.argv0` property instead.
 
 #### options.detached
+
 <!-- YAML
 added: v0.7.10
 -->
@@ -405,9 +420,11 @@ subprocess.unref();
 ```
 
 #### options.stdio
+
 <!-- YAML
 added: v0.7.10
 changes:
+
   - version: v3.3.1
     pr-url: https://github.com/nodejs/node/pull/2727
     description: The value `0` is now accepted as a file descriptor.
@@ -423,14 +440,16 @@ Por conveniencia, `options.stdio` puede ser uno de los siguientes strings:
 
 De otra manera, el valor de `options.stdio` es un array en donde cada índice corresponde a un fd en el proceso secundario. Los fds 0, 1 y 2 corresponden a stdin, stdout y stderr respectivamente. Fds adicionales pueden especificarse para crear pipes adicionales entre el proceso primario y el proceso secundario. El valor es uno de los siguientes:
 
-1. `'pipe'` - Crear un pipe entre el proceso secundario y el proceso primario. The parent end of the pipe is exposed to the parent as a property on the `child_process` object as [`subprocess.stdio[fd]`][`stdio`]. Pipes created for fds 0 - 2 are also available as [`subprocess.stdin`][], [`subprocess.stdout`][] and [`subprocess.stderr`][], respectively.
-2. `'ipc'` - Create an IPC channel for passing messages/file descriptors between parent and child. A [`ChildProcess`][] may have at most *one* IPC stdio file descriptor. Setting this option enables the [`subprocess.send()`][] method. If the child is a Node.js process, the presence of an IPC channel will enable [`process.send()`][], [`process.disconnect()`][], [`process.on('disconnect')`][], and [`process.on('message')`] within the child.
+1. `'pipe'` - Crear un pipe entre el proceso secundario y el proceso primario. El final del pipe del proceso primario es expuesto a éste como una propiedad en el objeto `child_process` como [`subprocess.stdio[fd]`][`stdio`]. Los pipes creados para fds 0 - 2 también están disponibles como [`subprocess.stdin`][], [`subprocess.stdout`][] y [`subprocess.stderr`][], respectivamente.
+2. `'ipc'` - Crea un canal IPC para pasar descriptores de mensajes/archivos entre el proceso primario y secundario. Un [`ChildProcess`][] puede tener hasta *un* descriptor de archivo stdio IPC. Configurar esta opción habilita el método [`subprocess.send()`][]. Si el proceso secundario es un proceso de Node.js, la presencia de un canal IPC habilitará los métodos [`process.send()`][], [`process.disconnect()`][], [`process.on('disconnect')`][], y [`process.on('message')`] dentro del proceso secundario.
+  
+  Acceder al fd del canal IPC de cualquier manera distinta a [`process.send()`][] o usar un canal IPC con un proceso secundario que no es una instancia de Node.js no es soportado.
 
-   Accessing the IPC channel fd in any way other than [`process.send()`][] or using the IPC channel with a child process that is not a Node.js instance is not supported.
-3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. While Node.js will always open fds 0 - 2 for the processes it spawns, setting the fd to `'ignore'` will cause Node.js to open `/dev/null` and attach it to the child's fd.
-4. {Stream} object - Share a readable or writable stream that refers to a tty, file, socket, or a pipe with the child process. The stream's underlying file descriptor is duplicated in the child process to the fd that corresponds to the index in the `stdio` array. Note that the stream must have an underlying descriptor (file streams do not until the `'open'` event has occurred).
-5. Positive integer - The integer value is interpreted as a file descriptor that is currently open in the parent process. It is shared with the child process, similar to how {Stream} objects can be shared.
-6. `null`, `undefined` - Utiliza el valor por defecto. For stdio fds 0, 1, and 2 (in other words, stdin, stdout, and stderr) a pipe is created. For fd 3 and up, the default is `'ignore'`.
+3. `'ignore'` - Enseña a Node.js a ignorar el fd en el proceso secundario. Mientras que Node.js siempre abrirá los fds 0 - 2 para los procesos que genera, configurar el fd a `'ignore'` causará que Node.js abra `/dev/null` y lo adjunte al del proceso secundario.
+
+4. {Stream} object - Comparte un stream legible o escribible que se refiere a un tty, archivo, conector o un pipe con el proceso secundario. El descriptor del archivo subyacente del stream es duplicado en el proceso secundario al fd que corresponde al índice en el array de `stdio`. Tenga en cuenta que el stream debe tener un descriptor subyacente (archivos de streams no lo tienen hasta que se ha producido el evento `'open'`).
+5. Entero positivo - El valor del entero es interpretado como un descriptor de archivo que está actualmente abierto en el proceso primario. Es compartido con el proceso secundario, similar a como los objetos {Stream} pueden ser compartidos.
+6. `null`, `undefined` - Utiliza el valor por defecto. Para los fds stdio 0, 1 y 2 (en otras palabras, stdin, stdout y stderr) se crea un pipe. Para fd 3 y mayores, el predeterminado es `'ignore'`.
 
 Ejemplo:
 
@@ -454,14 +473,16 @@ Vea también: [`child_process.exec()`][] y [`child_process.fork()`][]
 
 ## Creación de Procesos Sincrónicos
 
-The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and [`child_process.execFileSync()`][] methods are **synchronous** and **WILL** block the Node.js event loop, pausing execution of any additional code until the spawned process exits.
+Los métodos [`child_process.spawnSync()`][], [`child_process.execSync()`][] y [`child_process.execFileSync()`][] son **sincrónicos** y **VAN** a bloquear el bucle del evento Node.js, pausando la ejecución de cualquier código adicional hasta que se cierre el proceso generado.
 
 El bloquear llamadas como estas es sobre todo útil para la simplificación de tareas de uso general y para simplificar la carga/el procesamiento de la configuración de aplicación en el inicio.
 
 ### child_process.execFileSync(file\[, args\]\[, options\])
+
 <!-- YAML
 added: v0.11.12
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
@@ -475,33 +496,35 @@ changes:
 
 * `file` {string} El nombre o la ruta del archivo ejecutable a ejecutar.
 * `args` {string[]} Lista de argumentos de strings.
-* `opciones` {Object}
-  * `cwd` {string} Directorio del proceso secundario actualmente operativo.
+* `options` {Object} 
+  * `cwd` {string} El directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
-  * `stdio` {string|Array} Configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
+  * `stdio` {string|Array} Configuración del stdio del proceso secundario. Por defecto, `stderr` será la salida del stderr del proceso primario, a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
   * `env` {Object} Pares clave-valor del entorno.
   * `uid` {number} Establece la identidad de usuario del proceso (vea setuid(2)).
   * `gid` {number} Establece la identidad de grupo del proceso (vea setgid(2)).
   * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que se permite que se ejecute el proceso. **Predeterminado:** `undefined`.
   * `killSignal` {string|integer} El valor de la señal a ser usada cuando el proceso generado vaya a ser eliminado. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
-  * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
-  * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
-  * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
+  * `encoding` {string} La codificación usada para todas las inputs y outputs de stdio. **Predeterminado:** `'buffer'`.
+  * `windowsHide` {boolean} Oculta la ventada de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
+  * `shell` {boolean|string} Si es `true`, ejecuta el `command` dentro de un shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
 * Devuelve: {Buffer|string} El stdout desde el comando.
 
 El método `child_process.execFileSync()` es generalmente idéntico a [`child_process.execFile()`][] con la excepción de que el método no se devolverá hasta que el proceso secundario haya sido completamente cerrado. Cuando se ha encontrado un timeout y se ha enviado una `killSignal`, el método no se devolverá hasta que el proceso haya sido completamente cerrado.
 
 *Note*: If the child process intercepts and handles the `SIGTERM` signal and does not exit, the parent process will still wait until the child process has exited.
 
-If the process times out or has a non-zero exit code, this method ***will*** throw an [`Error`][] that will include the full result of the underlying [`child_process.spawnSync()`][].
+Si el proceso expira o tiene un código de salida distinto de cero, este método ***arrojará*** un [`Error`][] que incluirá el resultado total del [`child_process.spawnSync()`][] subyacente.
 
 *Note*: If the `shell` option is enabled, do not pass unsanitized user input to this function. Cualquier input que contenga metacaracteres de shell puede ser utilizada para activar la ejecución arbitraria de comandos.
 
 ### child_process.execSync(command[, options])
+
 <!-- YAML
 added: v0.11.12
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
@@ -511,16 +534,16 @@ changes:
 -->
 
 * `command` {string} El comando a ejecutar.
-* `opciones` {Object}
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
-  * `stdio` {string|Array} Configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
+  * `stdio` {string|Array} La configuración del stdio del proceso secundario. `stderr` por defecto será la salida del stderr del proceso primario a menos que se especifique el `stdio`. **Predeterminado:** `'pipe'`.
   * `env` {Object} Pares clave-valor del entorno.
   * `shell` {string} Shell con el que ejecutar el comando. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Default:** `'/bin/sh'` en UNIX, `process.env.ComSpec` en Windows.
   * `uid` {number} Establece la identidad del usuario del proceso. (Vea setuid(2)).
   * `gid` {number} Establece la identidad del grupo del proceso. (Vea setgid(2)).
-  * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que se permite que se ejecute el proceso. **Predeterminado:** `undefined`.
-  * `killSignal` {string|integer} El valor de la señal a ser usada cuando el proceso generado vaya a ser eliminado. **Predeterminado:** `'SIGTERM'`.
+  * `timeout` {number} En milisegundos, la cantidad máxima de tiempo que permite que se ejecute el proceso. **Predeterminado:** `undefined`.
+  * `killSignal` {string|integer} El valor de la señal a ser usado cuando el proceso generado vaya a ser aniquilado. **Predeterminado:** `'SIGTERM'`.
   * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
@@ -533,9 +556,11 @@ Si el proceso expira o tiene un código de salida diferente a cero, este método
 *Note*: Never pass unsanitized user input to this function. Cualquier input que contenga metacaracteres shell puede ser usada para activar la ejecución de comando arbitrario.
 
 ### child_process.spawnSync(command\[, args\]\[, options\])
+
 <!-- YAML
 added: v0.11.12
 changes:
+
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
@@ -552,7 +577,7 @@ changes:
 
 * `command` {string} El comando a ejecutar.
 * `args` {Array} Lista de argumentos de string.
-* `opciones` {Object}
+* `options` {Object} 
   * `cwd` {string} Directorio del proceso secundario actualmente operativo.
   * `input` {string|Buffer|Uint8Array} El valor que será pasado como stdin al proceso generado. Suministrar este valor anulará `stdio[0]`.
   * `stdio` {string|Array} Configuración del stdio del proceso secundario.
@@ -564,9 +589,9 @@ changes:
   * `maxBuffer` {number} La mayor cantidad de datos en bytes permitidos en stdout o stderr. Si se excede, el proceso secundario se finaliza. Vea caveat en [`maxBuffer` y Unicode][]. **Predeterminado:** `200 * 1024`.
   * `encoding` {string} La codificación usada para todas las entradas y salidas de stdio. **Predeterminado:** `'buffer'`.
   * `shell` {boolean|string} Si es `true`, se ejecuta el `command` dentro del shell. Utiliza `'/bin/sh'` en UNIX y `process.env.ComSpec` en Windows. Una shell diferente puede especificarse como una string. Vea los [Requerimientos de Shell](#child_process_shell_requirements) y [Shell de Windows Predeterminado](#child_process_default_windows_shell). **Predeterminado:** `false` (sin shell).
-  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica `shell`. **Predeterminado:** `false`.
-  * `windowsHide` {boolean} Oculta la ventana de la consola del sub-proceso que normalmente se crea en los sistemas Windows. **Predeterminado:** `false`.
-* Devuelve: {Object}
+  * `windowsVerbatimArguments` {boolean} No se realiza ninguna cita o escape de argumentos en Windows. Se ignora en Unix. Esto se establece automáticamente a `true` cuando se especifica el `shell`. **Predeterminado:** `false`.
+  * `windowsHide` {boolean} Oculta la ventana de la consola de sub-procesos que normalmente estaría creada en sistemas Windows. **Predeterminado:** `false`.
+* Devuelve: {Object} 
   * `pid` {number} Pid del proceso secundario.
   * `output` {Array} Array de los resultados del output stdio.
   * `stdout` {Buffer|string} Los contenidos de `output[1]`.
@@ -580,6 +605,7 @@ El método `child_process.spawnSync()` es generalmente idéntico a [`child_proce
 *Note*: If the `shell` option is enabled, do not pass unsanitized user input to this function. Cualquier input que contenga metacaracteres de shell puede ser utilizada para activar la ejecución arbitraria de comandos.
 
 ## Clase: ChildProcess
+
 <!-- YAML
 added: v2.2.0
 -->
@@ -589,6 +615,7 @@ Las instancias de la clase `ChildProcess` son [`EventEmitters`][`EventEmitter`] 
 Las instancias del `ChildProcess` no se supone que sean creadas directamente. En su lugar, utilice los métodos [`child_process.spawn()`][], [`child_process.exec()`][], [`child_process.execFile()`][] o [`child_process.fork()`][] para crear instancias de `ChildProcess`.
 
 ### Evento: 'close' (cerrar)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -599,6 +626,7 @@ added: v0.7.7
 El evento `'close'` es emitido cuando los streams stdio de un proceso secundario han sido cerrados. Esto es distinto del evento [`'exit'`][], ya que múltiples procesos pueden compartir los mismos streams stdio.
 
 ### Evento: 'disconnect'
+
 <!-- YAML
 added: v0.7.2
 -->
@@ -620,6 +648,7 @@ El evento `'error'` es emitido cuando:
 Vea también [`subprocess.kill()`][] y [`subprocess.send()`][].
 
 ### Evento: 'exit'
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -636,6 +665,7 @@ También note que Node.js establece manejadores de señal para `SIGINT` y `SIGTE
 Vea waitpid(2).
 
 ### Evento: 'message'
+
 <!-- YAML
 added: v0.5.9
 -->
@@ -650,6 +680,7 @@ El evento `'message'` se desencadena cuando un proceso secundario utiliza [`proc
 <a name="child_process_child_channel"></a>
 
 ### subprocess.channel
+
 <!-- YAML
 added: v7.1.0
 -->
@@ -661,6 +692,7 @@ La propiedad `subprocess.channel` es una referencia al canal IPC del proceso sec
 <a name="child_process_child_connected"></a>
 
 ### subprocess.connected
+
 <!-- YAML
 added: v0.7.2
 -->
@@ -672,6 +704,7 @@ La propiedad `subprocess.connected` indica si todavía es posible enviar y recib
 <a name="child_process_child_disconnect"></a>
 
 ### subprocess.disconnect()
+
 <!-- YAML
 added: v0.7.2
 -->
@@ -685,6 +718,7 @@ Note que cuando el proceso secundario es una instancia Node.js (por ejemplo, cua
 <a name="child_process_child_kill_signal"></a>
 
 ### subprocess.kill([signal])
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -736,6 +770,7 @@ setTimeout(() => {
 ```
 
 ### subprocess.killed
+
 <!-- YAML
 added: v0.5.10
 -->
@@ -747,6 +782,7 @@ La propiedad `subprocess.killed` indica si el proceso secundario recibió con é
 <a name="child_process_child_pid"></a>
 
 ### subprocess.pid
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -768,9 +804,11 @@ grep.stdin.end();
 <a name="child_process_child_send_message_sendhandle_options_callback"></a>
 
 ### subprocess.send(message\[, sendHandle[, options]\]\[, callback\])
+
 <!-- YAML
 added: v0.5.9
 changes:
+
   - version: v5.8.0
     pr-url: https://github.com/nodejs/node/pull/5283
     description: The `options` parameter, and the `keepOpen` option
@@ -785,8 +823,8 @@ changes:
 
 * `message` {Object}
 * `sendHandle` {Handle}
-* `options` {Object} The `options` argument, if present, is an object used to parameterize the sending of certain types of handles. `options` soporta las siguientes propiedades:
-  * `keepOpen` - A Boolean value that can be used when passing instances of `net.Socket`. Cuando es `true`, la conexión se mantiene abierta en el proceso de envío. **Predeterminado:** `false`.
+* `opciones` {Object} El argumento `options`, si está presente, es un objeto usado para parametizar el envío de ciertos tipos de manejos. `options` soporta las siguientes propiedades: 
+  * `keepOpen` - A Boolean value that can be used when passing instances of `net.Socket`. Cuando es `true`, la conexión se mantiene abierta en el proceso de envío. **Default:**`false`.
 * `callback` {Function}
 * Devuelve: {boolean}
 
@@ -839,7 +877,7 @@ El argumento `sendHandle` puede ser usado, por ejemplo, para pasar el handle de 
 ```js
 const subprocess = require('child_process').fork('subprocess.js');
 
-// Abra el objeto del servidor y envíe el manejador.
+// Abre el objeto de servidor y envía el handle.
 const server = require('net').createServer();
 server.on('connection', (socket) => {
   socket.end('handled by parent');
@@ -874,7 +912,7 @@ const { fork } = require('child_process');
 const normal = fork('subprocess.js', ['normal']);
 const special = fork('subprocess.js', ['special']);
 
-// Abra el servidor y envíe los sockets al proceso secundario. Use pauseOnConnect para prevenir
+// Abre el servidor y envía conectores al proceso secundario. Use pauseOnConnect para prevenir
 // que los sockets sean leídos antes de ser enviados al proceso secundario.
 const server = require('net').createServer({ pauseOnConnect: true });
 server.on('connection', (socket) => {
@@ -896,9 +934,9 @@ El `subprocess.js` recibiría el handle del socket como el segundo argumento pas
 process.on('message', (m, socket) => {
   if (m === 'socket') {
     if (socket) {
-      // Verifique que el socket del cliente exista.
-      // Es posible que se cierre el socket entre el tiempo en que se
-      // envía y el tiempo en el que se recibe el proceso secundario.
+      // Verifica la existencia de un socket de cliente.
+      // Es posible que se cierre el conector entre el tiempo en que se
+      // envía y el tiempo en el que se recibe en el proceso secundario.
       socket.end(`Request handled with ${process.argv[2]} priority`);
     }
   }
@@ -914,6 +952,7 @@ También se recomienda que cualquier manejador de `'message'` en el proceso secu
 <a name="child_process_child_stderr"></a>
 
 ### subprocess.stderr
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -929,6 +968,7 @@ Si el proceso secundario fue generado con el `stdio[2]` establecido a cualquier 
 <a name="child_process_child_stdin"></a>
 
 ### subprocess.stdin
+
 <!-- YAML
 added: v0.1.90
 -->
@@ -946,6 +986,7 @@ Si el proceso secundario fue generado con `stdio[0]` establecido a cualquier val
 <a name="child_process_child_stdio"></a>
 
 ### subprocess.stdio
+
 <!-- YAML
 added: v0.7.10
 -->
@@ -982,6 +1023,7 @@ assert.strictEqual(subprocess.stdio[2], subprocess.stderr);
 <a name="child_process_child_stdout"></a>
 
 ### subprocess.stdout
+
 <!-- YAML
 added: v0.1.90
 -->

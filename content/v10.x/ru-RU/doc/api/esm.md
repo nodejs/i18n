@@ -1,13 +1,14 @@
 # Модули ECMAScript
 
 <!--introduced_in=v8.5.0-->
+
 <!-- type=misc -->
 
 > Стабильность: 1 - экспериментальный
 
 <!--name=esm-->
 
-Node.js поддерживает Модули ES в соответствии с [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
 Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 

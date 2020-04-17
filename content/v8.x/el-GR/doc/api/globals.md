@@ -1,19 +1,21 @@
 # Καθολικά Αντικείμενα
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Αυτά τα αντικείμενα είναι διαθέσιμα σε όλες τις ενότητες. Οι παρακάτω μεταβλητές μπορεί να φαίνονται ως καθολικές, αλλά δεν είναι. Υπάρχουν μόνο σε πεδία εφαρμογής των ενοτήτων, δείτε την [τεκμηρίωση ενοτήτων συστήματος](modules.html):
 
-- [`__dirname`][]
-- [`__filename`][]
-- [`exports`][]
-- [`module`][]
-- [`require()`][]
+* [`__dirname`][]
+* [`__filename`][]
+* [`exports`][]
+* [`module`][]
+* [`require()`][]
 
 Τα αντικείμενα που αναφέρονται εδώ, είναι αποκλειστικά της Node.js. Υπάρχει ένας αριθμός από [ενσωματωμένα αντικείμενα](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects) που είναι μέρος της γλώσσας της JavaScript, τα οποία είναι επίσης καθολικά προσβάσιμα.
 
 ## Class: Buffer
+
 <!-- YAML
 added: v0.1.103
 -->
@@ -33,6 +35,7 @@ added: v0.1.103
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε το [`__filename`].
 
 ## clearImmediate(immediateObject)
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -42,6 +45,7 @@ added: v0.9.1
 Το [`clearImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearInterval(intervalObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -51,6 +55,7 @@ added: v0.0.1
 Το [`clearInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## clearTimeout(timeoutObject)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -60,6 +65,7 @@ added: v0.0.1
 Το [`clearTimeout`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## console
+
 <!-- YAML
 added: v0.1.100
 -->
@@ -75,6 +81,7 @@ added: v0.1.100
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`exports`].
 
 ## global
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -90,6 +97,7 @@ added: v0.1.27
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`module`].
 
 ## process
+
 <!-- YAML
 added: v0.1.7
 -->
@@ -105,6 +113,7 @@ added: v0.1.7
 Η μεταβλητή φαίνεται ως καθολική, αλλά δεν είναι. Δείτε την ενότητα [`require()`].
 
 ## setImmediate(callback[, ...args])
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -114,6 +123,7 @@ added: v0.9.1
 Το [`setImmediate`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setInterval(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -123,6 +133,7 @@ added: v0.0.1
 Το [`setInterval`] περιγράφεται στην ενότητα [Χρονομετρητές](timers.html).
 
 ## setTimeout(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->

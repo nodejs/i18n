@@ -4,11 +4,11 @@ This document describes the technical aspects of the Node.js release process. Th
 
 ## Table of Contents
 
-* [Who can make a release?](#who-can-make-a-release)
+* [Who can make a release?](#who-can-make-a-release) 
   * [1. Jenkins Release Access](#1-jenkins-release-access)
   * [2. <nodejs.org> Access](#2-nodejsorg-access)
   * [3. A Publicly Listed GPG Key](#3-a-publicly-listed-gpg-key)
-* [How to create a release](#how-to-create-a-release)
+* [How to create a release](#how-to-create-a-release) 
   * [0. Pre-release steps](#0-pre-release-steps)
   * [1. Update the staging branch](#1-update-the-staging-branch)
   * [2. Create a new branch for the release](#2-create-a-new-branch-for-the-release)
@@ -17,7 +17,7 @@ This document describes the technical aspects of the Node.js release process. Th
   * [5. Create Release Commit](#5-create-release-commit)
   * [6. Propose Release on GitHub](#6-propose-release-on-github)
   * [7. Ensure that the Release Branch is Stable](#7-ensure-that-the-release-branch-is-stable)
-  * [8. Produce a Nightly Build _(optional)_](#8-produce-a-nightly-build-optional)
+  * [8. Produce a Nightly Build *(optional)*](#8-produce-a-nightly-build-optional)
   * [9. Produce Release Builds](#9-produce-release-builds)
   * [10. Test the Build](#10-test-the-build)
   * [11. Tag and Sign the Release Commit](#11-tag-and-sign-the-release-commit)
@@ -48,13 +48,13 @@ The [Node.js build team](https://github.com/nodejs/build) is able to provide thi
 
 ### 2. <nodejs.org> Access
 
-The _dist_ user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
+The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
-The Jenkins release build workers upload their artifacts to the web server as the _staging_ user. The _dist_ user has access to move these assets to public access while, for security, the _staging_ user does not.
+The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
 
-Nightly builds are promoted automatically on the server by a cron task for the _dist_ user.
+Nightly builds are promoted automatically on the server by a cron task for the *dist* user.
 
-Release builds require manual promotion by an individual with SSH access to the server as the _dist_ user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
+Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
 ### 3. A Publicly Listed GPG Key
 
@@ -74,9 +74,9 @@ Additionally, full GPG key fingerprints for individuals authorized to release sh
 
 Notes:
 
-- Dates listed below as _"YYYY-MM-DD"_ should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
-- Version strings are listed below as _"vx.y.z"_ or _"x.y.z"_. Substitute for the release version.
-- Examples will use the fictional release version `1.2.3`.
+* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Use `date -u +'%Y-%m-%d'` to find out what this is.
+* Version strings are listed below as *"vx.y.z"* or *"x.y.z"*. Substitute for the release version.
+* Examples will use the fictional release version `1.2.3`.
 
 ### 0. Pre-release steps
 
@@ -101,10 +101,11 @@ If the staging branch is not up to date relative to `master`, bring the appropri
 Go through PRs with the label `vN.x`. e.g. [PRs with the `v8.x` label](https://github.com/nodejs/node/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+label%3Av8.x).
 
 For each PR:
-- Run or check that there is a passing CI.
-- Check approvals (you can approve yourself).
-- Check that the commit metadata was not changed from the `master` commit.
-- If there are merge conflicts, ask the PR author to rebase. Simple conflicts can be resolved when landing.
+
+* Run or check that there is a passing CI.
+* Check approvals (you can approve yourself).
+* Check that the commit metadata was not changed from the `master` commit.
+* If there are merge conflicts, ask the PR author to rebase. Simple conflicts can be resolved when landing.
 
 When landing the PR add the `Backport-PR-URL:` line to each commit. Close the backport PR with `Landed in ...`. Update the label on the original PR from `backport-requested-vN.x` to `backported-to-vN.x`.
 
@@ -119,9 +120,10 @@ $ branch-diff v1.x-staging master --exclude-label=semver-major,semver-minor,dont
 Previous release commits and version bumps do not need to be cherry-picked.
 
 Carefully review the list of commits:
-- Checking for errors (incorrect `PR-URL`)
-- Checking semver status - Commits labeled as `semver-minor` or `semver-major` should only be cherry-picked when appropriate for the type of release being made.
-- If you think it's risky so should wait for a while, add the `baking-for-lts` tag.
+
+* Checking for errors (incorrect `PR-URL`)
+* Checking semver status - Commits labeled as `semver-minor` or `semver-major` should only be cherry-picked when appropriate for the type of release being made.
+* If you think it's risky so should wait for a while, add the `baking-for-lts` tag.
 
 When cherry-picking commits, if there are simple conflicts you can resolve them. Otherwise, add the `backport-requested-vN.x` label to the original PR and post a comment stating that it does not land cleanly and will require a backport PR.
 
@@ -159,10 +161,10 @@ Set the `NODE_VERSION_IS_RELEASE` macro value to `1`. This causes the build to b
 
 This macro is used to signal an ABI version for native addons. It currently has two common uses in the community:
 
-- Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
-- Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
+* Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
+* Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
 
-The general rule is to bump this version when there are _breaking ABI_ changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
+The general rule is to bump this version when there are *breaking ABI* changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
 
 It is current TSC policy to bump major version when ABI changes. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Commits may need to be reverted or a major version bump may need to happen.
 
@@ -259,7 +261,7 @@ Also run a **[`node-test-commit-v8-linux`](https://ci.nodejs.org/job/node-test-c
 
 Perform some smoke-testing. There is the **[`citgm-smoker`](https://ci.nodejs.org/job/citgm-smoker/)** CI job for this purpose. Run it once with the base `vx.x` branch as a reference and with the proposal branch to check if new regressions could be introduced in the ecosystem.
 
-### 8. Produce a Nightly Build _(optional)_
+### 8. Produce a Nightly Build *(optional)*
 
 If there is a reason to produce a test release for the purpose of having others try out installers or specifics of builds, produce a nightly build using **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** and wait for it to drop in <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
 
@@ -279,7 +281,7 @@ If you have an error on Windows and need to start again, be aware that you'll ge
 
 ARMv7 takes the longest to compile. Unfortunately ccache isn't as effective on release builds, I think it's because of the additional macro settings that go in to a release build that nullify previous builds. Also most of the release build machines are separate to the test build machines so they don't get any benefit from ongoing compiles between releases. You can expect 1.5 hours for the ARMv7 builder to complete and you should normally wait for this to finish. It is possible to rush a release out if you want and add additional builds later but we normally provide ARMv7 from initial promotion.
 
-You do not have to wait for the ARMv6 / Raspberry PI builds if they take longer than the others. It is only necessary to have the main Linux (x64 and x86), macOS .pkg and .tar.gz, Windows (x64 and x86) .msi and .exe, source, headers, and docs (both produced currently by an macOS worker). **If you promote builds _before_ ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. If the ARMv6 build failed for some reason you can use the [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) build in the release CI to re-run the build only for ARMv6. When launching the build make sure to use the same commit hash as for the original release.
+You do not have to wait for the ARMv6 / Raspberry PI builds if they take longer than the others. It is only necessary to have the main Linux (x64 and x86), macOS .pkg and .tar.gz, Windows (x64 and x86) .msi and .exe, source, headers, and docs (both produced currently by an macOS worker). **If you promote builds *before* ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. If the ARMv6 build failed for some reason you can use the [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) build in the release CI to re-run the build only for ARMv6. When launching the build make sure to use the same commit hash as for the original release.
 
 ### 10. Test the Build
 
@@ -319,8 +321,8 @@ $ git push <remote> <vx.y.z>
 
 On release proposal branch, edit `src/node_version.h` again and:
 
-- Increment `NODE_PATCH_VERSION` by one
-- Change `NODE_VERSION_IS_RELEASE` back to `0`
+* Increment `NODE_PATCH_VERSION` by one
+* Change `NODE_VERSION_IS_RELEASE` back to `0`
 
 Commit this change with the following commit message format:
 
@@ -330,7 +332,7 @@ Working on vx.y.z # where 'z' is the incremented patch number
 PR-URL: <full URL to your release proposal PR>
 ```
 
-This sets up the branch so that nightly builds are produced with the next version number _and_ a pre-release tag.
+This sets up the branch so that nightly builds are produced with the next version number *and* a pre-release tag.
 
 Merge your release proposal branch into the stable branch that you are releasing from and rebase the corresponding staging branch on top of that.
 
@@ -384,26 +386,26 @@ There is an automatic build that is kicked off when you promote new builds, so w
 
 Create a new blog post by running the [nodejs.org release-post.js script](https://github.com/nodejs/nodejs.org/blob/master/scripts/release-post.js). This script will use the promoted builds and changelog to generate the post. Run `npm run serve` to preview the post locally before pushing to the [nodejs.org](https://github.com/nodejs/nodejs.org) repo.
 
-- You can add a short blurb just under the main heading if you want to say something important, otherwise the text should be publication ready.
-- The links to the download files won't be complete unless you waited for the ARMv6 builds. Any downloads that are missing will have `*Coming soon*` next to them. It's your responsibility to manually update these later when you have the outstanding builds.
-- The SHASUMS256.txt.asc content is at the bottom of the post. When you update the list of tarballs you'll need to copy/paste the new contents of this file to reflect those changes.
-- Always use pull-requests on the nodejs.org repo. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately _should_ be fine. However, please follow the following commit message format:
-
+* You can add a short blurb just under the main heading if you want to say something important, otherwise the text should be publication ready.
+* The links to the download files won't be complete unless you waited for the ARMv6 builds. Any downloads that are missing will have `*Coming soon*` next to them. It's your responsibility to manually update these later when you have the outstanding builds.
+* The SHASUMS256.txt.asc content is at the bottom of the post. When you update the list of tarballs you'll need to copy/paste the new contents of this file to reflect those changes.
+* Always use pull-requests on the nodejs.org repo. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
+  
   ```console
   Blog: vX.Y.Z release post
-
+  
   Refs: <full URL to your release proposal PR>
   ```
 
-- Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
+* Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
 
 ### 16. Create the release on GitHub
 
-- Go to the [New release page](https://github.com/nodejs/node/releases/new).
-- Select the tag version you pushed earlier.
-- For release title, copy the title from the changelog.
-- For the description, copy the rest of the changelog entry.
-- Click on the "Publish release" button.
+* Go to the [New release page](https://github.com/nodejs/node/releases/new).
+* Select the tag version you pushed earlier.
+* For release title, copy the title from the changelog.
+* For the description, copy the rest of the changelog entry.
+* Click on the "Publish release" button.
 
 ### 17. Cleanup
 
@@ -411,7 +413,7 @@ Close your release proposal PR and delete the proposal branch.
 
 ### 18. Announce
 
-The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email [pr@nodejs.org](mailto:pr@nodejs.org) with a message such as:
+The nodejs.org website will automatically rebuild and include the new version. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
 > v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
@@ -421,4 +423,4 @@ Ping the IRC ops and the other [Partner Communities](https://github.com/nodejs/c
 
 ### 19. Celebrate
 
-_In whatever form you do this..._
+*In whatever form you do this...*

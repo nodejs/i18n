@@ -1,21 +1,22 @@
 # C++ Addons
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Node.js Addons zijn dynamisch gekoppelde gedeelde objecten, geschreven in C++ die in Node.js kunnen worden geladen met behulp van de [`require()`](modules.html#modules_require)functie, en kunnen worden gebruikt alsof zij een gewone Node.js module zijn. Ze worden voornamelijk gebruikt als interface tussen JavaScript uitgevoerd in Node.js en C/C++ bibliotheken.
 
-Op dit moment is de methode voor het implementeren van Addons nogal ingewikkeld, waarbij kennis van de verschillende componenten en API's noodzakelijk is:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - V8: de C++ bibliotheek die Node.js momenteel gebruikt ten behoeve van de uitvoering van JavaScript. V8 biedt het mechanisme voor het creëren van objecten, aanroepfuncties, enz. V8 API wordt meestal gedocumenteerd in het `v8.h`headerbestand (`deps/v8/include/v8.h` in de Node.js source tree), die ook beschikbaar is [online](https://v8docs.nodesource.com/).
+* V8: de C++ bibliotheek die Node.js momenteel gebruikt ten behoeve van de uitvoering van JavaScript. V8 biedt het mechanisme voor het creëren van objecten, aanroepfuncties, enz. V8 API wordt meestal gedocumenteerd in het `v8.h`headerbestand (`deps/v8/include/v8.h` in de Node.js source tree), die ook beschikbaar is [online](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenissenlus, zijn werk-items, en alle asynchrone procesvoering van het platform implementeert. Het fungeert ook als een platformoverschrijdende abstractie bibliotheek, wat gemakkelijke, POSIX-achtige toegang geeft tot alle belangrijke besturingssystemen naar populaire systeemtaken, zoals de interactie met het bestandssysteem, sockets, timers, en systeemgebeurtenissen. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon auteurs worden aangemoedigd om na te denken over hoe ze kunnen voorkomen dat een gebeurtenissenlus met I/O en andere tijdsintensieve taken wordt geblokkeerd, door het werk te off-loaden via libuv naar niet-blokkerende systeem operaties, werk-threads of een aangepast gebruik van libuv's threads.
+* [libuv](https://github.com/libuv/libuv): De C bibliotheek die de Node.js gebeurtenissenlus, zijn werk-items, en alle asynchrone procesvoering van het platform implementeert. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv biedt ook een pthreads-achtige threading abstractie, die kan worden ingezet om meer kracht te geven aan meer geavanceerde asynchrone addons die verder moeten gaan dan de standaard gebeurtenis-iteratie. Addon auteurs worden aangemoedigd om na te denken over hoe ze kunnen voorkomen dat een gebeurtenissenlus met I/O en andere tijdsintensieve taken wordt geblokkeerd, door het werk te off-loaden via libuv naar niet-blokkerende systeem operaties, werk-threads of een aangepast gebruik van libuv's threads.
 
- - Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
+* Interne Node.js bibliotheken. Node.js exporteert zelf een aantal C++ APIs die Addons kunnen gebruiken &mdash; de meest belangrijke daarvan is de `node::ObjectWrap` klasse.
 
- - Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
+* Node.js bevat een aantal andere statisch gekoppelde bibliotheken, zoals OpenSSL. Deze andere bibliotheken bevinden zich in de `deps/` map in de Node.js source tree. Alleen de libuv, OpenSSL, V8 en zlib symbolen zijn doelbewust wederuitgevoerd door Node.js en kunnen in verschillende mate door Addons worden gebruikt. Zie [Link naar eigen afhankelijkheden van Node.js](#addons_linking_to_node_js_own_dependencies) voor meer informatie.
 
-Alle van de volgende voorbeelden zijn beschikbaar om te [downloaden](https://github.com/nodejs/node-addon-examples) en kunnen worden gebruikt als uitgangspunt voor een Addon.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hallo wereld
 
@@ -65,7 +66,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Er is geen puntkomma na `NODE_MODULE` omdat het geen functie is (zie `node.h`).
 
-De `module_name` moet overeenstemmen met de bestandsnaam van de laatste binary (exclusief het `.node` achtervoegsel).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
 In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
@@ -91,6 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -98,6 +100,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -173,7 +176,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 
 ### Bouwen
 
-Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. Om dit te doen, maak een bestand genaamd `binding.gyp` in het top-level van het project met een beschrijving van de bouwconfiguratie van de module met behulp van een JSON-achtig format. Dit bestand wordt gebruikt door [node-gyp](https://github.com/nodejs/node-gyp) — een tool die specifiek is geschreven om Node.js Addons te compileren.
+Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand worden gecompileerd. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Dit bestand wordt gebruikt door [node-gyp](https://github.com/nodejs/node-gyp) — een tool die specifiek is geschreven om Node.js Addons te compileren.
 
 ```json
 {
@@ -186,7 +189,7 @@ Zodra de broncode is geschreven, moet het in het binaire `addon.node` bestand wo
 }
 ```
 
-Een versie van het `node-gyp` hulpprogramma is gebundeld en gedistribueerd met Node.js als onderdeel van `npm`. Deze versie is niet direct beschikbaar gesteld om door ontwikkelaars gebruikt te worden en dient alleen ter ondersteuning van de mogelijkheid om de `npm install` opdracht te compileren en het installeren van Addons. Ontwikkelaars die rechtstreeks gebruik willen maken van `node-gyp`, kunnen dit installeren met behulp van de opdracht `npm install -g node-gyp`. Zie de `node-gyp` [installatie instructies](https://github.com/nodejs/node-gyp#installation) voor meer informatie, inclusief platform-specifieke eisen.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Deze versie is niet direct beschikbaar gesteld om door ontwikkelaars gebruikt te worden en dient alleen ter ondersteuning van de mogelijkheid om de `npm install` opdracht te compileren en het installeren van Addons. Ontwikkelaars die rechtstreeks gebruik willen maken van `node-gyp`, kunnen dit installeren met behulp van de opdracht `npm install -g node-gyp`. Zie de `node-gyp` [installatie instructies](https://github.com/nodejs/node-gyp#installation) voor meer informatie, inclusief platform-specifieke eisen.
 
 Wanneer het `binding.gyp` bestand eenmaal is gemaakt, gebruik dan `node-gyp configure` om de passende project bouwbestanden voor het huidige platform te genereren. Dit genereert ofwel een `Makefile` (op Unix platforms) of een `vcxproj` bestand (op Windows) in de `build/` map.
 
@@ -242,11 +245,11 @@ De [ Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) (o
 
 > Stabiliteit: 2 - stabiel
 
-N-API is een API voor het bouwen van oorspronkelijke Addons. Het is onafhankelijk van de onderliggende JavaScript runtime (bijv. V8) en wordt onderhouden als een deel van Node.js zelf. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. In plaats van de V8 of [Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) API's, worden de beschikbare functies in de N-API gebruikt.
+N-API is een API voor het bouwen van oorspronkelijke Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Het is bedoeld om Addons te isoleren van veranderingen in de onderliggende JavaScript motor, én het mogelijk te maken voor modules die samengesteld zijn om op één versie te draaien, dat zij dat ook op nieuwere versies van Node.js kunnen zonder dat zij opnieuw gecompileerd moeten worden. Addons zijn gebouwd/verpakt met dezelfde aanpak/hulpmiddelen die beschreven worden in dit document (node-gyp, etc.). Het enige verschil is de set API's die zijn gebruikt bij de oorspronkelijke code. In plaats van de V8 of [Oorspronkelijke Abstracties voor Node.js](https://github.com/nodejs/nan) API's, worden de beschikbare functies in de N-API gebruikt.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-Om de N-API in het bovenstaande "Hallo wereld" voorbeeld te gebruiken, vervang de inhoud van `hallo.cc` met het volgende. Alle andere instructies blijven hetzelfde.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Alle andere instructies blijven hetzelfde.
 
 ```cpp
 // hello.cc using N-API
@@ -299,7 +302,7 @@ Elk van deze voorbeelden met gebruik van het volgende `binding.gyp` bestand:
 }
 ```
 
-In gevallen waar er meer dan één `.cc` bestand is, voeg simpelweg de extra bestandsnaam aan de reeks van `bronnen` toe:
+In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
 
 ```json
 "bronnen": ["addon.cc", "myexample.cc"]
@@ -1106,16 +1109,16 @@ console.log(result);
 
 ### AtExit haken
 
-Een `AtExit` haak is een functie die is opgeroepen nadat de Node.js gebeurtenis-lus is afgelopen maar vóórdat JavaScript VM is beëindigd en Node.js afsluit. `AtExit` haken worden geregistreerd met behulp van de `node::AtExit` API.
+An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` haken worden geregistreerd met behulp van de `node::AtExit` API.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> Een pointer om aan de callback door te geven bij het afsluiten.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
+* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
 Registreert exit haken die draaien nadat de gebeurtenis-lus is beëindigd, maar vóórdat de VM wordt afgesloten.
 
-`AtExit` neemt twee parameters: een pointer naar een callback functie om te draaien bij het afsluiten, en een pointer naar ongetypte context data wat doorgegeven moet worden naar die callback.
+`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
 Callbacks worden gedraaid in 'laatste in, eerste uit' volgorde.
 

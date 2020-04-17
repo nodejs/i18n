@@ -61,8 +61,10 @@ const myURL =
 ## The WHATWG URL API
 
 ### 类：URL
+
 <!-- YAML
 added:
+
   - v7.0.0
   - v6.13.0
 changes:
@@ -166,7 +168,7 @@ console.log(myURL.href);
 
 * {string}
 
-获取并设置 URL 中的主机名部分。 The key difference between `url.host` and `url.hostname` is that `url.hostname` does *not* include the port.
+获取并设置 URL 中的主机名部分。 `url.host` 和 `url.hostname` 的关键区别在于，`url.hostname` *不* 包含端口。
 
 ```js
 const myURL = new URL('https://example.org:81/foo');
@@ -352,7 +354,7 @@ console.log(myURL.href);
 
 ##### Special Schemes
 
-The [WHATWG URL Standard](https://url.spec.whatwg.org/) considers a handful of URL protocol schemes to be _special_ in terms of how they are parsed and serialized. When a URL is parsed using one of these special protocols, the `url.protocol` property may be changed to another special protocol but cannot be changed to a non-special protocol, and vice versa.
+The [WHATWG URL Standard](https://url.spec.whatwg.org/) considers a handful of URL protocol schemes to be *special* in terms of how they are parsed and serialized. When a URL is parsed using one of these special protocols, the `url.protocol` property may be changed to another special protocol but cannot be changed to a non-special protocol, and vice versa.
 
 For instance, changing from `http` to `https` works:
 
@@ -431,7 +433,7 @@ console.log(myURL.href);
 
 `URL` 对象的 `toString()` 方法返回序列化的 URL。 返回的值等同于 [`url.href`][] 和 [`url.toJSON()`][] 的值。
 
-由于需要符合规范，此方法不允许用户自定义 URL 的序列化过程。 为了获得更大的灵活性，可以使用 [`require('url').format()`][] 方法。
+由于需要符合规范，此方法不允许用户自定义 URL 的序列化过程。 For more flexibility, [`require('url').format()`][] method might be of interest.
 
 #### url.toJSON()
 
@@ -451,8 +453,10 @@ console.log(JSON.stringify(myURLs));
 ```
 
 ### 类：URLSearchParams
+
 <!-- YAML
 added:
+
   - v7.5.0
   - v6.13.0
 changes:
@@ -523,8 +527,10 @@ console.log(params.toString());
 ```
 
 #### 构造函数：new URLSearchParams(obj)
+
 <!-- YAML
 added:
+
   - v7.10.0
   - v6.13.0
 -->
@@ -547,8 +553,10 @@ console.log(params.toString());
 ```
 
 #### 构造函数：new URLSearchParams(iterable)
+
 <!-- YAML
 added:
+
   - v7.10.0
   - v6.13.0
 -->
@@ -694,8 +702,10 @@ console.log(params.toString());
 ```
 
 #### urlSearchParams.sort()
+
 <!-- YAML
 added:
+
   - v7.7.0
   - v6.13.0
 -->
@@ -742,8 +752,10 @@ for (const [name, value] of params) {
 ```
 
 ### url.domainToASCII(domain)
+
 <!-- YAML
 added:
+
   - v7.4.0
   - v6.13.0
 -->
@@ -766,8 +778,10 @@ console.log(url.domainToASCII('xn--iñvalid.com'));
 ```
 
 ### url.domainToUnicode(domain)
+
 <!-- YAML
 added:
+
   - v7.4.0
   - v6.13.0
 -->
@@ -790,6 +804,7 @@ console.log(url.domainToUnicode('xn--iñvalid.com'));
 ```
 
 ### url.fileURLToPath(url)
+
 <!-- YAML
 added: v10.12.0
 -->
@@ -814,21 +829,22 @@ fileURLToPath('file:///hello world');    // Correct:   /hello world (POSIX)
 ```
 
 ### url.format(URL[, options])
+
 <!-- YAML
 added: v7.6.0
 -->
 
 * `URL` {URL} 一个 [WHATWG URL](#url_the_whatwg_url_api) 对象
-* `options` {Object}
-  * `auth` {boolean} `true` 如果序列化的 URL 字符串应当包含用户名和密码，否则为 `false`。 **Default:** `true`.
-  * `fragment` {boolean} `true` 如果序列化 URL 字符串应当包含片段，否则为 `false`。 **Default:** `true`.
-  * `search` {boolean} `true` 如果序列化 URL 字符串应当包含查询参数，否则为 `false`。 **Default:** `true`.
-  * `unicode` {boolean} `true` 如果 Unicode 字符出现在 URL 字符串中的主机部分，则应对其进行直接编码，而不是进行 Punycode 编码。 **默认:** `false`.
+* `options` {Object} 
+  * `auth` {boolean} `true` if the serialized URL string should include the username and password, `false` otherwise. **Default:** `true`.
+  * `fragment` {boolean} `true` if the serialized URL string should include the fragment, `false` otherwise. **Default:** `true`.
+  * `search` {boolean} `true` if the serialized URL string should include the search query, `false` otherwise. **Default:** `true`.
+  * `unicode` {boolean} `true` if Unicode characters appearing in the host component of the URL string should be encoded directly as opposed to being Punycode encoded. **默认:** `false`.
 * 返回：{string}
 
 Returns a customizable serialization of a URL `String` representation of a [WHATWG URL](#url_the_whatwg_url_api) object.
 
-URL 对象具有 `toString()` 方法和 `href` 属性，它们都返回 URL 的字符串序列化编码。 然而，它们都不能进行自定义。 `url.format(URL[, options])` 方法允许对输出进行基本的自定义。
+The URL object has both a `toString()` method and `href` property that return string serializations of the URL. These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic customization of the output.
 
 ```js
 const myURL = new URL('https://a:b@測試?abc#foo');
@@ -844,6 +860,7 @@ console.log(url.format(myURL, { fragment: false, unicode: true, auth: false }));
 ```
 
 ### url.pathToFileURL(path)
+
 <!-- YAML
 added: v10.12.0
 -->
@@ -874,39 +891,39 @@ The legacy `urlObject` (`require('url').Url`) is created and returned by the `ur
 
 #### urlObject.auth
 
-The `auth` property is the username and password portion of the URL, also referred to as _userinfo_. This string subset follows the `protocol` and double slashes (if present) and precedes the `host` component, delimited by `@`. The string is either the username, or it is the username and password separated by `:`.
+The `auth` property is the username and password portion of the URL, also referred to as *userinfo*. This string subset follows the `protocol` and double slashes (if present) and precedes the `host` component, delimited by `@`. The string is either the username, or it is the username and password separated by `:`.
 
-For example: `'user:pass'`.
+例如：`'user:pass'`.
 
 #### urlObject.hash
 
 The `hash` property is the fragment identifier portion of the URL including the leading `#` character.
 
-For example: `'#hash'`.
+例如：`'#hash'`.
 
 #### urlObject.host
 
 `host` 属性是 URL 中主机部分的小写字母表示，如果指定 `port` 的话，也包含 该部分。
 
-For example: `'sub.example.com:8080'`.
+例如：`'sub.example.com:8080'`.
 
 #### urlObject.hostname
 
 `hostname` 是 `host` 部分中的小写主机名部分，*不* 包含 `port`。
 
-For example: `'sub.example.com'`.
+例如：`'sub.example.com'`.
 
 #### urlObject.href
 
 `href` 属性是完整的 URL 字符串，其中的 `protocol` 和 `host` 部分都被转换为小写字母。
 
-For example: `'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`.
+例如：`'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`.
 
 #### urlObject.path
 
 `path` 属性是 `pathname` 和 `search` 部分连接到一起的结果。
 
-For example: `'/p/a/t/h?query=string'`.
+例如：`'/p/a/t/h?query=string'`.
 
 不对 `path` 进行解码。
 
@@ -922,19 +939,19 @@ For example: `'/p/a/t/h'`.
 
 `port` 属性是 `host` 部分中的数字端口号。
 
-For example: `'8080'`.
+例如：`'8080'`.
 
 #### urlObject.protocol
 
 `protocol` 属性标识 URL 中以小写字母表示的协议。
 
-For example: `'http:'`.
+例如：`'http:'`.
 
 #### urlObject.query
 
 `query` 属性是不含起始 ASCII 编码问号 (`?`) 的查询字符串，或者是 [`querystring`][] 模块中 `parse()` 方法的返回对象。 `query` 属性是字符串还是对象，取决于传递给 `url.parse()` 的 `parseQueryString` 参数。
 
-For example: `'query=string'` or `{'query': 'string'}`.
+例如：`'query=string'` 或 `{'query': 'string'}`.
 
 如果以字符串方式返回，则不执行对查询字符串的解码。 如果以对象方式返回，则会对键和值进行解码。
 
@@ -942,7 +959,7 @@ For example: `'query=string'` or `{'query': 'string'}`.
 
 `search` 属性包含 URL 中的 "查询字符串" 部分，该部分包含起始的 ASCII 编码的问号 (`?`) 。
 
-For example: `'?query=string'`.
+例如：`'?query=string'`.
 
 不对查询字符串进行解码。
 
@@ -951,9 +968,11 @@ For example: `'?query=string'`.
 如果在 `protocol` 中的冒号之后需要两个 ASCII 编码的斜杠字符 (`/`)， `slashes` 属性的类型为 `boolean`，且值为 `true`。
 
 ### url.format(urlObject)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7234
     description: URLs with a `file:` scheme will now always use the correct
@@ -962,7 +981,7 @@ changes:
                  times.
 -->
 
-* `urlObject` {Object|string} 一个 URL 对象 (由 `url.parse()` 返回，否则由构造函数创建)。 如果是字符串，通过将其传递给 `url.parse()` 转换为一个对象。
+* `urlObject` {Object|string} A URL object (as returned by `url.parse()` or constructed otherwise). 如果是字符串，通过将其传递给 `url.parse()` 转换为一个对象。
 
 `url.format()` 方法返回由 `urlObject` 派生的格式化 URL 字符串。
 
@@ -988,36 +1007,36 @@ url.format({
 * 如果 `urlObject.protocol` 是字符串，它会原样不动的被追加到 `result`。
 * 否则，如果 `urlObject.protocol` 不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
 * 对于 `urlObject.protocol` 中 所有 *不以* ASCII 编码冒号 (`:`) 字符结尾的字符串值，字符串 `:` 会被以文字字符串的方式追加到 `result`。
-* If either of the following conditions is true, then the literal string `//` will be appended to `result`:
-    * `urlObject.slashes` property is true;
-    * `urlObject.protocol` begins with `http`, `https`, `ftp`, `gopher`, or `file`;
-* If the value of the `urlObject.auth` property is truthy, and either `urlObject.host` or `urlObject.hostname` are not `undefined`, the value of `urlObject.auth` will be coerced into a string and appended to `result` followed by the literal string `@`.
-* 如果 `urlObject.host` 属性是 `undefined`，则：
+* 如果满足任何一个以下条件，则文字字符串 `//` 会被追加到 `result`： * `urlObject.slashes` 属性值为 true； * `urlObject.protocol` 以 `http`, `https`, `ftp`, `gopher`, 或 `file` 开头；
+* 如果 `urlObject.auth` 属性为真值，且 `urlObject.host` 或 `urlObject.hostname` 之一不是 `undefined`，`urlObject.auth` 的值会被强制转换为字符串，并被追加到 `result`中，其后面是 文字字符串 `@`。
+* 如果 `urlObject.host` 属性是 `undefined`，则： 
   * 如果 `urlObject.hostname` 是字符串，则会被追加到 `result`。
   * 否则，如果 `urlObject.hostname` 不是 `undefined`，且不是字符串，则会抛出 [`Error`][]。
-  * 如果 `urlObject.port` 属性值为真值，且 `urlObject.hostname` 不是 `undefined`：
+  * 如果 `urlObject.port` 属性值为真值，且 `urlObject.hostname` 不是 `undefined`： 
     * 文本字符串 `:` 会被追加到 `result`，且
     * `urlObject.port` 的值会被强制转换为字符串，并被追加到 `result`。
 * 否则，如果 `urlObject.host` 属性的值为真值，`urlObject.host` 的值会被强制转换为字符串，且被追加到 `result`。
-* 如果 `urlObject.pathname` 属性是非空字符串：
+* 如果 `urlObject.pathname` 属性是非空字符串： 
   * If the `urlObject.pathname` *does not start* with an ASCII forward slash (`/`), then the literal string `'/'` is appended to `result`.
   * `urlObject.pathname` 的值被追加到 `result`。
 * 否则，如果 `urlObject.pathname` 不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
 * 如果 `urlObject.search` 属性为 `undefined`，同时如果 `urlObject.query` 属性是一个 `Object`，文本字符串 `?` 会被追加到 `result`，其后是将 `urlObject.query` 的值传递给 [`querystring`][] 模块的 `stringify()` 方法的输出结果。
-* 否则，如果 `urlObject.search` 是字符串：
+* 否则，如果 `urlObject.search` 是字符串： 
   * 如果 `urlObject.search` 的值 *不以* ASCII 编码的问号 (`?`) 字符开头，文本字符串 `?` 会被追加到 `result`。
   * `urlObject.search` 的值被追加到 `result`。
 * 否则，如果 `urlObject.search` 不是 `undefined`，且不是字符串，会抛出 [`Error`][] 。
-* 如果 `urlObject.hash` 属性是字符串：
+* 如果 `urlObject.hash` 属性是字符串： 
   * 如果 `urlObject.hash` 的值 *不以* ASCII 编码中的哈希 (`#`) 字符开始，文本字符串 `#` 会被追加到 `result`。
   * `urlObject.hash` 的值会被追加到 `result`。
 * 否则，如果 `urlObject.hash` 属性不是 `undefined`，且不是字符串，会抛出 [`Error`][]。
 * 返回 `result`。
 
 ### url.parse(urlString[, parseQueryString[, slashesDenoteHost]])
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/13606
     description: The `search` property on the returned URL object is now `null`
@@ -1035,9 +1054,11 @@ changes:
 如果 `auth` 属性存在但无法被解码，则会抛出 `URIError`。
 
 ### url.resolve(from, to)
+
 <!-- YAML
 added: v0.1.25
 changes:
+
   - version: v6.6.0
     pr-url: https://github.com/nodejs/node/pull/8215
     description: The `auth` fields are now kept intact when `from` and `to`
@@ -1089,9 +1110,9 @@ The WHATWG algorithm defines four "percent-encode sets" that describe ranges of 
 
 * The *fragment percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+003C, U+003E, and U+0060.
 
-* The *path percent-encode set* includes the *C0 control percent-encode set* and code points U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, and U+007D.
+* *路径百分比编码集* 包含 *C0 控制百分比编码集* 以及 U+0020, U+0022, U+0023, U+003C, U+003E, U+003F, U+0060, U+007B, 和 U+007D 这些代码点。
 
-* The *userinfo encode set* includes the *path percent-encode set* and code points U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, and U+007C.
+* *userinfo 编码集* 包含 *路径百分比编码集* 以及 U+002F, U+003A, U+003B, U+003D, U+0040, U+005B, U+005C, U+005D, U+005E, 和 U+007C 等代码点。
 
 *userinfo 百分比编码集* 专用于在 URL 中用户名和密码的编码。 *路径百分比编码集* 用于大多数 URL 的路径。 The *fragment percent-encode set* is used for URL fragments. The *C0 control percent-encode set* is used for host and path under certain specific conditions, in addition to all other cases.
 

@@ -6,7 +6,7 @@
 
 <!--name=esm-->
 
-В Node.js имеется поддержка Модулей ES, реализованная на основании [Node.js EP для ES Модулей](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
+Node.js contains support for ES Modules based upon the [Node.js EP for ES Modules](https://github.com/nodejs/node-eps/blob/master/002-es-modules.md).
 
 Not all features of the EP are complete and will be landing as both VM support and implementation is ready. Error messages are still being polished.
 

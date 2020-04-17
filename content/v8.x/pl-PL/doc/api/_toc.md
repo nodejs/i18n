@@ -1,4 +1,5 @@
-@/ / NB(chrisdickinson): Jeśli ten plik zostanie przeniesiony, należy zaktualizować tools/doc/html.js @/ / punkt w nowej lokalizacji.
+@// NB(chrisdickinson): if you move this file, be sure to update tools/doc/html.js to @// point at the new location.
+
 * [O tej dokumentacji](documentation.html)
 * [Przykład użycia &](synopsis.html)
 

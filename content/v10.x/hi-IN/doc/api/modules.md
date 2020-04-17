@@ -1,4 +1,4 @@
-# Modules
+# मॉड्यूल
 
 <!--introduced_in=v0.10.0-->
 
@@ -138,7 +138,7 @@ LOAD_AS_DIRECTORY(X)
 
 LOAD_NODE_MODULES(X, START)
 
-1. let DIRS=NODE_MODULES_PATHS(START)
+1. let DIRS = NODE_MODULES_PATHS(START)
 2. for each DIR in DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
@@ -147,7 +147,7 @@ NODE_MODULES_PATHS(START)
 
 1. let PARTS = path split(START)
 2. let I = count of PARTS - 1
-3. let DIRS = []
+3. let DIRS = [GLOBAL_FOLDERS]
 4. while I >= 0,
    a. if PARTS[I] = "node_modules" CONTINUE
    b. DIR = path join(PARTS[0 .. I] + "node_modules")
@@ -162,7 +162,7 @@ NODE_MODULES_PATHS(START)
 
 Modules are cached after the first time they are loaded. This means (among other things) that every call to `require('foo')` will get exactly the same object returned, if it would resolve to the same file.
 
-Multiple calls to `require('foo')` may not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
+Provided `require.cache` is not modified, multiple calls to `require('foo')` will not cause the module code to be executed multiple times. This is an important feature. With it, "partially done" objects can be returned, thus allowing transitive dependencies to be loaded even when they would cause cycles.
 
 To have a module execute code multiple times, export a function, and call that function.
 
@@ -274,22 +274,22 @@ If this was in a folder at `./some-library`, then `require('./some-library')` wo
 
 This is the extent of Node.js's awareness of `package.json` files.
 
-If the file specified by the `'main'` entry of `package.json` is missing and can not be resolved, Node.js will report the entire module as missing with the default error:
+If there is no `package.json` file present in the directory, or if the `'main'` entry is missing or cannot be resolved, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
+
+* `./some-library/index.js`
+* `./some-library/index.node`
+
+If these attempts fail, then Node.js will report the entire module as missing with the default error:
 
 ```txt
 Error: Cannot find module 'some-library'
 ```
 
-If there is no `package.json` file present in the directory, then Node.js will attempt to load an `index.js` or `index.node` file out of that directory. For example, if there was no `package.json` file in the above example, then `require('./some-library')` would attempt to load:
-
-* `./some-library/index.js`
-* `./some-library/index.node`
-
 ## Loading from `node_modules` Folders
 
 <!--type=misc-->
 
-If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node will not append `node_modules` to a path already ending in `node_modules`.
+If the module identifier passed to `require()` is not a [core](#modules_core_modules) module, and does not begin with `'/'`, `'../'`, or `'./'`, then Node.js starts at the parent directory of the current module, and adds `/node_modules`, and attempts to load the module from that location. Node.js will not append `node_modules` to a path already ending in `node_modules`.
 
 If it is not found there, then it moves to the parent directory, and so on, until the root of the file system is reached.
 
@@ -316,7 +316,7 @@ On Windows, `NODE_PATH` is delimited by semicolons (`;`) instead of colons.
 
 `NODE_PATH` is still supported, but is less necessary now that the Node.js ecosystem has settled on a convention for locating dependent modules. Sometimes deployments that rely on `NODE_PATH` show surprising behavior when people are unaware that `NODE_PATH` must be set. Sometimes a module's dependencies change, causing a different version (or even a different module) to be loaded as the `NODE_PATH` is searched.
 
-Additionally, Node.js will search in the following locations:
+Additionally, Node.js will search in the following list of GLOBAL_FOLDERS:
 
 * 1: `$HOME/.node_modules`
 * 2: `$HOME/.node_libraries`
@@ -380,7 +380,7 @@ added: v0.0.1
 
 * {string}
 
-The file name of the current module. This is the resolved absolute path of the current module file.
+The file name of the current module. This is the current module file's absolute path with symlinks resolved.
 
 For a main program this is not necessarily the same as the file name used in the command line.
 
@@ -436,7 +436,18 @@ added: v0.1.13
 
 * {Function}
 
-To require modules.
+Used to import modules, `JSON`, and local files. Modules can be imported from `node_modules`. Local modules and JSON files can be imported using a relative path (e.g. `./`, `./foo`, `./bar/baz`, `../foo`) that will be resolved against the directory named by [`__dirname`][] (if defined) or the current working directory.
+
+```js
+// Importing a local module:
+const myLocalModule = require('./path/myLocalModule');
+
+// Importing a JSON file:
+const jsonData = require('./path/filename.json');
+
+// Importing a module from node_modules or Node.js built-in module:
+const crypto = require('crypto');
+```
 
 #### require.cache
 
@@ -525,7 +536,7 @@ changes:
 
 * `request` {string} The module path to resolve.
 * `options` {Object} 
-  * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
+  * `paths` {string[]} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths, with the exception of [GLOBAL_FOLDERS](#modules_loading_from_the_global_folders) like `$HOME/.node_modules`, which are always included. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
 * Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
@@ -563,7 +574,7 @@ added: v0.1.16
 
 * {module[]}
 
-The module objects required by this one.
+The module objects required for the first time by this one.
 
 ### module.exports
 
@@ -575,7 +586,7 @@ added: v0.1.16
 
 The `module.exports` object is created by the `Module` system. Sometimes this is not acceptable; many want their module to be an instance of some class. To do this, assign the desired export object to `module.exports`. Note that assigning the desired object to `exports` will simply rebind the local `exports` variable, which is probably not what is desired.
 
-For example suppose we were making a module called `a.js`:
+For example, suppose we were making a module called `a.js`:
 
 ```js
 const EventEmitter = require('events');
@@ -746,4 +757,21 @@ Note that `module` in this context isn't the same object that's provided by the 
 
 ```js
 const builtin = require('module').builtinModules;
+```
+
+### module.createRequireFromPath(filename)
+
+<!-- YAML
+added: v10.12.0
+-->
+
+* `filename` {string} Filename to be used to construct the relative require function.
+* Returns: {[`require`][]} Require function
+
+```js
+const { createRequireFromPath } = require('module');
+const requireUtil = createRequireFromPath('../src/utils');
+
+// require `../src/utils/some-tool`
+requireUtil('./some-tool');
 ```

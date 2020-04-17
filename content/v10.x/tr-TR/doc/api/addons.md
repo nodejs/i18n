@@ -1,19 +1,20 @@
 # C++ Eklentileri
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_require) fonksiyonu kullanılarak Node.js'ye yüklenebilen ve sıradan bir Node.js modülü gibi kullanılan, dinamik olarak bağlı, paylaşılan nesnelerdir. Onlar öncelikle, C / C ++ kitaplıkları ile Node.js içinde çalışan JavaScript arasında bir arayüz sağlamak için kullanılırlar.
+Node.js eklentileri, C++ ile yazılmış, [`require()`](modules.html#modules_require) fonksiyonu kullanılarak Node.js'ye yüklenebilen ve sıradan bir Node.js modülü gibi kullanılan, dinamik olarak bağlı, paylaşılan nesnelerdir. Öncelikle Node.js'de çalışan JavaScript ve C/C ++ kütüphaneleri arasında bir arayüz sağlamak için kullanılırlar.
 
-Eklenti implementasyon yöntemi oldukça karmaşıktır, çeşitli bileşenlerin ve API'lerin bilgi birikimini gerektirir:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
+* Node.js C ++ kütüphanesi şu anda JavaScript implementasyonunu sağlamak için kullanıyor. V8 nesne oluşturma, fonksiyon çağrıları vb. için mekanizmalar sağlar. V8 APIsi çoğunlukla `v8.h` header dosyasında (Node.js kaynak ağacında `deps/v8/include/v8.h`) ayrıca [online](https://v8docs.nodesource.com/) olarak belgelenmiştir.
 
- - [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. Ayrıca, bütün büyük işletim sistemlerinde dosya sistemi, soketler, zamanlayıcılar ve sistem olayları ile etkileşimde bulunma gibi birçok genel sistem görevine POSIX benzeri kolay erişim sağlayan, çapraz platformlu bir soyutlama kütüphanesi olarak da işlev görür. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
+* [libuv](https://github.com/libuv/libuv): Node.js olay döngüsünün, çalışan iş parçacıklarının ve platformun tüm asenkron davranışlarının yerine getirilmesini sağlayan C kitaplığıdır. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv ayrıca standart olay döngüsünün ötesine geçmesi gereken, daha sofistike asenkron Eklentilere güç vermek için kullanılabilecek bir pthreads benzeri iş parçacığı soyutlaması sağlar. Eklenti yazarları, etkinlik döngüsünü I/O ile veya diğer yoğun zaman gerektiren görevlerle engellemekten kaçınmanın, libuv üzerinden yapılan çalışmaları engellemeyen sistem işlemlerine, çalışan iş parçacıklarına veya libuv ipliklerinin özel kullanımına indirilmesinden nasıl kaçınacağını düşünmeleri konusunda teşvik edilir.
 
- - Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
+* Dahili Node.js kütüphaneleri. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
- - Node.js, OpenSSL dahil olmak üzere bir dizi başka statik olarak bağlı kitaplık içerir. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
+* Node.js, OpenSSL dahil olmak üzere bir dizi başka statik olarak bağlı kitaplık içerir. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. See [Linking to Node.js' own dependencies](#addons_linking_to_node_js_own_dependencies) for additional information.
 
 All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
@@ -91,6 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -98,6 +100,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -194,7 +197,7 @@ Ardından, derlenmiş `addon.node` dosyasını üretmek için `node-gyp build` k
 
 Bir Node.js Eklentisi yüklemek için `npm install` kullanırken, npm, talep edilen kullanıcı platformu için derlenmiş bir Eklenti sürümü oluşturarak, bu aynı işlem kümesini gerçekleştirmek için kendi paketlenmiş `node-gyp` sürümünü kullanır.
 
-Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
+Bir kere oluşturulduktan sonra, ikili Eklenti, kurulmuş `addon.node` modülüne [`require()`](modules.html#modules_require) işaretlenerek Node.js içinde kullanılabilir:
 
 ```js
 // hello.js
@@ -204,7 +207,7 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
+Lütfen daha fazla bilgi için aşağıdaki örneklere bakın veya üretimdeki bir örnek için <https://github.com/arturadib/node-qt> adresini ziyaret edin.
 
 Derlenmiş ikili Eklenti dosyasına giden kesin yol, nasıl derlendiğine bağlı olarak değişebildiği için (diğer bir deyişle, bazen `./build/Debug/` içinde olabilir), Eklentiler, derlenmiş modülü yüklemek için [bindings](https://github.com/TooTallNate/node-bindings) paketini kullanabilir.
 
@@ -228,9 +231,9 @@ Node.js, V8, libuv ve OpenSSL gibi statik olarak bağlı bir dizi kütüphane ku
 
 ### Eklentileri require() kullanarak yükleme
 
-Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
+Derlenmiş ikili Eklentinin dosya adı uzantısı `.node`'dur (`.dll` veya `.so`'nun aksine). [`require()`](modules.html#modules_require) işlevi, `.node` dosya uzantısına sahip dosyaları aramak ve bunları dinamik olarak bağlı kitaplıklar olarak başlatmak için yazılmıştır.
 
-When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
+[`require()`](modules.html#modules_require) çağrıldığı zaman, `.node` uzantısı genellikle ihmal edilebilir ve Node.js yine de Eklentiyi bulacak ve başlatacaktır. Bununla birlikte, bir uyarı, Node.js'in önce aynı taban adını paylaşan modülleri veya JavaScript dosyalarını bulmaya ve yüklemeye çalışacağıdır. Örneğin, eğer ikili `addon.node` ile aynı dizinde bir `addon.js` dosyası varsa, [`require('addon')`](modules.html#modules_require), `addon.js` dosyasına öncelik verecektir ve yerine onu yükleyecektir.
 
 ## Node.js için Yerel Soyutlamalar
 
@@ -242,7 +245,7 @@ Node.js için [Yerli Soyutlamalar](https://github.com/nodejs/nan) (veya `nan`), 
 
 > Kararlılık: 2 - Kararlı
 
-N-API is an API for building native Addons. Temel JavaScript çalışma zamanından bağımsızdır (örn. V8) ve Node.js öğesinin bir parçası olarak korunur. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
+N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Eklentileri, temel JavaScript motorundaki değişikliklerden izole etmek ve bir sürüm için derlenmiş modüllerin, yeniden derlenmeden Node.js'nin daha sonraki sürümlerinde çalışmasına izin vermek amaçlanmıştır. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). The only difference is the set of APIs that are used by the native code. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
@@ -1112,7 +1115,7 @@ An `AtExit` hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
 * `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
 Registers exit hooks that run after the event loop has ended but before the VM is killed.

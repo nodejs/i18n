@@ -1,6 +1,7 @@
-# Módulos de ECMAScript
+# Módulos ECMAScript
 
 <!--introduced_in=v8.5.0-->
+
 <!-- type=misc -->
 
 > Estabilidad: 1 - Experimental
@@ -29,13 +30,13 @@ node --experimental-modules my-app.mjs
 
 ### Soportado
 
-Sólo el argumento CLI para el punto principal de entrada al programa puede ser un punto de entrada a un gráfico ESM. La importación dinámica también puede ser usada para crear puntos de entrada a gráficos ESM en tiempo de ejecución.
+Sólo el argumento CLI para el punto de entrada principal al programa puede ser un punto de entrada a un gráfico ESM. La importación dinámica también puede ser usada para crear puntos de entrada a gráficos ESM en tiempo de ejecución.
 
 #### import.meta
 
 * {Object}
 
-La metapropiedad `import.meta` es un `Object` que contiene la siguiente propiedad:
+The `import.meta` metaproperty is an `Object` that contains the following property:
 
 * `url` {string} La URL del `file:` del módulo absoluta.
 
@@ -49,11 +50,11 @@ La metapropiedad `import.meta` es un `Object` que contiene la siguiente propieda
 
 ### No hay NODE_PATH
 
-`NODE_PATH` no es parte de la resolución de especificadores de `import`. Por favor, utilice symlinks si se desea este comportamiento.
+`NODE_PATH` no es parte de la resolución de especificadores de `import`. Please use symlinks if this behavior is desired.
 
 ### No hay `require.extensions`
 
-`require.extensions` no es utilizado por `import`. Lo que se espera es que los loader hooks puedan proporcionar este flujo de trabajo en el futuro.
+`require.extensions` no es utilizado por `import`. The expectation is that loader hooks can provide this workflow in the future.
 
 ### No hay `require.cache`
 
@@ -63,7 +64,7 @@ La metapropiedad `import.meta` es un `Object` que contiene la siguiente propieda
 
 Los ESM son resueltos y almacenados en caché basándose en la semántica de [URL](https://url.spec.whatwg.org/). Esto significa que se necesita escapar de los archivos que contienen caracteres especiales, como `#` y `?`.
 
-Los módulos serán cargados múltiples veces si el especificador `import` utilizado para resolverlos tiene una consulta o fragmento diferente.
+Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
 import './foo?query=1'; // carga ./foo con la consulta de "?query=1"
@@ -76,9 +77,9 @@ Por ahora, sólo los módulos que utilicen el protocolo `file:` pueden ser carga
 
 Todos los módulos CommonJS, JSON y C++ pueden ser utilizados con `import`.
 
-Los módulos que se carguen de esta manera sólo se cargarán una vez, incluso si su string de consulta o fragmento difiere entre las declaraciones de `import`.
+Los módulos cargados de esta manera sólo se cargarán una vez, incluso si su string de consulta o fragmento es distinto entre las declaraciones de `import`.
 
-Al cargarlos a través de `import`, estos módulos proporcionarán una exportación `default` simple que representa el valor de `module.exports` al momento de culminar la evaluación.
+Al cargarlos a través de `import`, estos módulos proporcionarán una exportación de `default` simple que representa el valor de `module.exports` al momento de culminar la evaluación.
 
 ```js
 // foo.js
@@ -119,9 +120,9 @@ fs.readFileSync === readFileSync;
 
 <!-- type=misc -->
 
-Para personalizar la resolución del módulo predeterminado, los loader hooks pueden, opcionalmente, ser proporcionados a través de un argumento `--loader ./loader-name.mjs` a Node.js.
+To customize the default module resolution, loader hooks can optionally be provided via a `--loader ./loader-name.mjs` argument to Node.js.
 
-Cuando los hooks son utilizados, solo son aplicados a la carga de los módulos ES y no a ningún modulo CommonJS cargado.
+When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
 ### Resolve hook
 
@@ -141,7 +142,7 @@ export async function resolve(specifier,
 }
 ```
 
-El `parentModuleURL` es proporcionado como `undefined` al realizar la carga principal de Node.js.
+The `parentModuleURL` is provided as `undefined` when performing main Node.js load itself.
 
 The default Node.js ES module resolution function is provided as a third argument to the resolver for easy compatibility workflows.
 
@@ -205,7 +206,7 @@ debería de cargar el modulo `x.js` como un modulo ES con soporte de resolución
 
 ### Dynamic instantiate hook
 
-Para crear un modulo dinámico personalizado que no corresponda a uno de las interpretaciones del `format` existente, se puede utilizar el hook `dynamicInstantiate`. Este hook es llamado solo para módulos que retornan `format: 'dynamic'` desde el hook `resolve`.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. Este hook es llamado solo para módulos que retornan `format: 'dynamic'` desde el hook `resolve`.
 
 ```js
 export async function dynamicInstantiate(url) {

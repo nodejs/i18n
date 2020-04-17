@@ -1,6 +1,7 @@
 # Tästä dokumentaatiosta
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Tämän dokumentaation tavoittena on selittää Node.js rajapinta sekä viittauksellisesta että käsitteellisestä näkökulmasta. Jokainen osio kuvaa sisäänrakennetun moduulin tai korkeamman tason käsitteen.
@@ -45,6 +46,7 @@ is a high priority, and will not be broken unless absolutely necessary.
 *Note*: Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Loppukäyttäjät eivät välttämättä ole tietoisia kokeellisten toimintojen käytöstä ja siksi voivat kokea odottamattomia virheitä tai käyttäytymismuutoksia kun API muutoksia sattuu. Tällaisten yllätysten välttämiseksi, `Kokeelliset` toiminnot voivat vaatia komentorivioption niiden aktivoimista varten, tai voivat aiheuttaa prosessivaroituksen näkymisen. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`process.on('warning')`][] event.
 
 ## JSON Output
+
 <!-- YAML
 added: v0.6.12
 -->

@@ -115,17 +115,20 @@ require(X) from module at path Y
 5. THROW "not found"
 
 LOAD_AS_FILE(X)
+
 1. If X is a file, load X as JavaScript text.  STOP
 2. If X.js is a file, load X.js as JavaScript text.  STOP
 3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
 4. If X.node is a file, load X.node as binary addon.  STOP
 
 LOAD_INDEX(X)
+
 1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
 2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
 3. If X/index.node is a file, load X/index.node as binary addon.  STOP
 
 LOAD_AS_DIRECTORY(X)
+
 1. If X/package.json is a file,
    a. Parse X/package.json, and look for "main" field.
    b. let M = X + (json main field)
@@ -134,12 +137,14 @@ LOAD_AS_DIRECTORY(X)
 2. LOAD_INDEX(X)
 
 LOAD_NODE_MODULES(X, START)
+
 1. let DIRS=NODE_MODULES_PATHS(START)
 2. for each DIR in DIRS:
    a. LOAD_AS_FILE(DIR/X)
    b. LOAD_AS_DIRECTORY(DIR/X)
 
 NODE_MODULES_PATHS(START)
+
 1. let PARTS = path split(START)
 2. let I = count of PARTS - 1
 3. let DIRS = []
@@ -337,14 +342,15 @@ Before a module's code is executed, Node.js will wrap it with a function wrapper
 
 By doing this, Node.js achieves a few things:
 
-- It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
-- It helps to provide some global-looking variables that are actually specific to the module, such as:
-  - The `module` and `exports` objects that the implementor can use to export values from the module.
-  - The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
+* It keeps top-level variables (defined with `var`, `const` or `let`) scoped to the module rather than the global object.
+* It helps to provide some global-looking variables that are actually specific to the module, such as: 
+  * The `module` and `exports` objects that the implementor can use to export values from the module.
+  * The convenience variables `__filename` and `__dirname`, containing the module's absolute filename and directory path.
 
 ## The module scope
 
 ### \_\_dirname
+
 <!-- YAML
 added: v0.1.27
 -->
@@ -365,6 +371,7 @@ console.log(path.dirname(__filename));
 ```
 
 ### \_\_filename
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -398,6 +405,7 @@ Given two modules: `a` and `b`, where `b` is a dependency of `a` and there is a 
 References to `__filename` within `b.js` will return `/Users/mjr/app/node_modules/b/b.js` while references to `__filename` within `a.js` will return `/Users/mjr/app/a.js`.
 
 ### exports
+
 <!-- YAML
 added: v0.1.12
 -->
@@ -407,6 +415,7 @@ added: v0.1.12
 A reference to the `module.exports` that is shorter to type. See the section about the [exports shortcut](#modules_exports_shortcut) for details on when to use `exports` and when to use `module.exports`.
 
 ### module
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -418,6 +427,7 @@ added: v0.1.16
 A reference to the current module, see the section about the [`module` object][]. In particular, `module.exports` is used for defining what a module exports and makes available through `require()`.
 
 ### require()
+
 <!-- YAML
 added: v0.1.13
 -->
@@ -440,6 +450,7 @@ const crypto = require('crypto');
 ```
 
 #### require.cache
+
 <!-- YAML
 added: v0.3.0
 -->
@@ -449,6 +460,7 @@ added: v0.3.0
 Modules are cached in this object when they are required. By deleting a key value from this object, the next `require` will reload the module. Note that this does not apply to [native addons](addons.html), for which reloading will result in an Error.
 
 #### require.extensions
+
 <!-- YAML
 added: v0.3.0
 deprecated: v0.10.6
@@ -475,22 +487,25 @@ Note that the number of file system operations that the module system has to per
 In other words, adding extensions slows down the module loader and should be discouraged.
 
 #### require.resolve(request[, options])
+
 <!-- YAML
 added: v0.3.0
 changes:
+
   - version: v8.9.0
     pr-url: https://github.com/nodejs/node/pull/16397
     description: The `paths` option is now supported.
 -->
 
 * `request` {string} The module path to resolve.
-* `options` {Object}
+* `options` {Object} 
   * `paths` {Array} Paths to resolve module location from. If present, these paths are used instead of the default resolution paths. Note that each of these paths is used as a starting point for the module resolution algorithm, meaning that the `node_modules` hierarchy is checked from this location.
 * Returns: {string}
 
 Use the internal `require()` machinery to look up the location of a module, but rather than loading the module, just return the resolved filename.
 
 #### require.resolve.paths(request)
+
 <!-- YAML
 added: v8.9.0
 -->
@@ -501,11 +516,13 @@ added: v8.9.0
 Returns an array containing the paths searched during resolution of `request` or null if the `request` string references a core module, for example `http` or `fs`.
 
 ## The `module` Object
+
 <!-- YAML
 added: v0.1.16
 -->
 
 <!-- type=var -->
+
 <!-- name=module -->
 
 * {Object}
@@ -513,6 +530,7 @@ added: v0.1.16
 In each module, the `module` free variable is a reference to the object representing the current module. For convenience, `module.exports` is also accessible via the `exports` module-global. `module` is not actually a global but rather local to each module.
 
 ### module.children
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -522,6 +540,7 @@ added: v0.1.16
 The module objects required by this one.
 
 ### module.exports
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -553,7 +572,6 @@ a.on('ready', () => {
 });
 ```
 
-
 Note that assignment to `module.exports` must be done immediately. It cannot be done in any callbacks. This does not work:
 
 x.js:
@@ -572,6 +590,7 @@ console.log(x.a);
 ```
 
 #### exports shortcut
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -586,6 +605,9 @@ exports = { hello: false };  // Not exported, only available in the module
 ```
 
 When the `module.exports` property is being completely replaced by a new object, it is common to also reassign `exports`, for example:
+
+<!-- eslint-disable func-name-matching -->
+
 ```js
 module.exports = exports = function Constructor() {
   // ... etc.
@@ -611,13 +633,18 @@ function require(/* ... */) {
 }
 ```
 
-### module.filename<!-- YAML
+### module.filename
+
+<!-- YAML
 added: v0.1.16
--->* {string}
+-->
+
+* {string}
 
 The fully resolved filename to the module.
 
 ### module.id
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -627,6 +654,7 @@ added: v0.1.16
 The identifier for the module. Typically this is the fully resolved filename.
 
 ### module.loaded
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -636,6 +664,7 @@ added: v0.1.16
 Whether or not the module is done loading, or is in the process of loading.
 
 ### module.parent
+
 <!-- YAML
 added: v0.1.16
 -->
@@ -644,29 +673,45 @@ added: v0.1.16
 
 The module that first required this one.
 
-### module.paths<!-- YAML
+### module.paths
+
+<!-- YAML
 added: v0.4.0
--->* {string[]}
+-->
+
+* {string[]}
 
 The search paths for the module.
 
-### module.require(id)<!-- YAML
+### module.require(id)
+
+<!-- YAML
 added: v0.5.1
--->* `id` {string}
+-->
+
+* `id` {string}
 * Returns: {Object} `module.exports` from the resolved module
 
 The `module.require` method provides a way to load a module as if `require()` was called from the original module.
 
 *Note*: In order to do this, it is necessary to get a reference to the `module` object. Since `require()` returns the `module.exports`, and the `module` is typically *only* available within a specific module's code, it must be explicitly exported in order to be used.
 
-## The `Module` Object<!-- YAML
+## The `Module` Object
+
+<!-- YAML
 added: v0.3.7
--->* {Object}
+-->
+
+* {Object}
 
 Provides general utility methods when interacting with instances of `Module` — the `module` variable often seen in file modules. Accessed via `require('module')`.
 
-### module.builtinModules<!-- YAML
+### module.builtinModules
+
+<!-- YAML
 added: v8.10.0
--->* {string[]}
+-->
+
+* {string[]}
 
 A list of the names of all modules provided by Node.js. Can be used to verify if a module is maintained by a third-party module or not.

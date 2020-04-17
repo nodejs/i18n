@@ -1,24 +1,25 @@
-# Timers（定时器）
+# 定时器
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 `定时器`模块暴露了全局方法。用来对将要执行的函数进行线程调度。 因为定时器函数时全局的，因此不需要通过 `require('timers')`来使用该API。
 
 在 Node.js 中的定时器函数实现了一个 API，该 API 和 Web 浏览器提供的定时器 API 类似，但其内部实现不同，它是采用了 [Node.js 事件循环](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick) 来构建的。
 
-## Class：Immediate
+## 类：Immediate
 
 此对象是在内部创建的，且由 [`setImmediate()`][] 返回。 为了取消计划的操作，可将其传递给 [`clearImmediate()`][]。
 
-## Class: Timeout
+## 类：Timeout
 
 此对象是在内部创建的，且由 [`setTimeout()`][] 和 [`setInterval()`][] 返回。 可将其 (分别) 传递给 [`clearTimeout()`][] 或 [`clearInterval()`][] 来取消预定的操作。
 
 默认情况下，当使用 [`setTimeout()`][] 或 [`setInterval()`][] 计划了一个定时器，只要定时器处于活跃状态，Node.js 事件循环就会继续运行 。 由这些函数返回的每一个 `Timeout` 对象会导出 `timeout.ref()` 和 `timeout.unref()` 函数，这个两个函数可被用于控制此默认行为。
 
 ### timeout.ref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -30,6 +31,7 @@ added: v0.9.1
 返回一个 `Timeout` 的引用。
 
 ### timeout.unref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -40,11 +42,12 @@ added: v0.9.1
 
 返回一个 `Timeout` 的引用。
 
-## Scheduling Timers
+## 计划定时器
 
 在 Node.js 中，定时器是一个内部结构，它会在特定的一段时间后调用一个给定的函数。 至于定时器具体何时被调用，要取决于创建定时器的方法，以及 Node.js 事件循环还在做什么其他的工作。
 
 ### setImmediate(callback[, ...args])
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -52,13 +55,13 @@ added: v0.9.1
 * `callback` {Function} 在此轮 [Node.js 事件循环](https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick) 结束时要调用的函数
 * `...args` {any} 当 `callback` 被调用时，要传递的可选参数。
 
-在 I/O 事件的回调函数后，计划 "立即" 执行的 `callback`。 返回一个和 [`clearImmediate()`][] 一同使用的 `Immediate`。
+Schedules the "immediate" execution of the `callback` after I/O events' callbacks. 返回一个和 [`clearImmediate()`][] 一同使用的 `Immediate`。
 
 当多次调用 `setImmediate()` 时，`callback` 函数将以它们被创建的次序排队等待执行。 每个事件循环迭代都会处理整个回调函数队列。 如果立即定时器是从正在执行的回调函数排入队列的，则在下一个事件循环迭代之前，该定时器不会被触发。
 
-如果`callback`（回调函数）不是一个函数，将会抛出 [`TypeError`][] 错误。
+如果 `callback` 不是一个函数，则将抛出 [`TypeError`][]。
 
-*注意*：此方法具有一个用于 promises 的自定义变体，它可以通过 [`util.promisify()`][] 来获得：
+*Note*: This method has a custom variant for promises that is available using [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -79,6 +82,7 @@ timerExample();
 ```
 
 ### setInterval(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -94,6 +98,7 @@ added: v0.0.1
 如果 `callback` 不是一个函数，则将抛出 [`TypeError`][]。
 
 ### setTimeout(callback, delay[, ...args])
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -108,9 +113,9 @@ added: v0.0.1
 
 *注意*：当 `delay` 大于 `2147483647` 或小于 `1` 时，`delay` 的值将被设置为 `1`。
 
-如果`callback`（回调函数）不是一个函数，将会抛出 [`TypeError`][] 错误。
+如果 `callback` 不是一个函数，则将抛出 [`TypeError`][]。
 
-*注意*：此方法具有一个用于 promises 的自定义变体，它可以通过 [`util.promisify()`][] 来获得：
+*Note*: This method has a custom variant for promises that is available using [`util.promisify()`][]:
 
 ```js
 const util = require('util');
@@ -126,18 +131,20 @@ setTimeoutPromise(40, 'foobar').then((value) => {
 
 [`setImmediate()`][], [`setInterval()`][], 和 [`setTimeout()`][] 中的每个方法都会返回代表已计划定时器的对象。 它们可被用于取消定时器并防止其被触发。
 
-不可能取消使用 [`setImmediate()`][] 和 [`setTimeout()`][] 中 promisified 变体创建的定时器。
+It is not possible to cancel timers that were created using the promisified variants of [`setImmediate()`][], [`setTimeout()`][].
 
 ### clearImmediate(immediate)
+
 <!-- YAML
 added: v0.9.1
 -->
 
 * `immediate` {Immediate} 由 [`setImmediate()`][] 返回的 `Immediate` 对象。
 
-取消掉由[`setImmediate()`][] 创建的立即执行对象`Immediate`
+取消由 [`setImmediate()`][] 创建的 `Immediate` 对象。
 
 ### clearInterval(timeout)
+
 <!-- YAML
 added: v0.0.1
 -->
@@ -147,6 +154,7 @@ added: v0.0.1
 取消由 [`setInterval()`][] 创建的 `Timeout` 对象。
 
 ### clearTimeout(timeout)
+
 <!-- YAML
 added: v0.0.1
 -->

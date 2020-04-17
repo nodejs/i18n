@@ -146,7 +146,7 @@ It is also possible to create new [`TypedArray`] instances from a `Buffer` with 
 
 2. The `Buffer` object's memory is interpreted as an array of distinct elements, and not as a byte array of the target type. That is, `new Uint32Array(Buffer.from([1, 2, 3, 4]))` creates a 4-element [`Uint32Array`] with elements `[1, 2, 3, 4]`, not a [`Uint32Array`] with a single element `[0x1020304]` or `[0x4030201]`.
 
-It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypeArray` object's `.buffer` property.
+It is possible to create a new `Buffer` that shares the same allocated memory as a [`TypedArray`] instance by using the `TypedArray` object's `.buffer` property.
 
 ```js
 const arr = new Uint16Array(2);
@@ -518,15 +518,16 @@ However, in the case where a developer may need to retain a small chunk of memor
 const store = [];
 
 socket.on('readable', () => {
-  const data = socket.read();
+  let data;
+  while (null !== (data = readable.read())) {
+    // Allocate for retained data
+    const sb = Buffer.allocUnsafeSlow(10);
 
-  // Allocate for retained data
-  const sb = Buffer.allocUnsafeSlow(10);
+    // Copy the data into the new allocation
+    data.copy(sb, 0, 0, 10);
 
-  // Copy the data into the new allocation
-  data.copy(sb, 0, 0, 10);
-
-  store.push(sb);
+    store.push(sb);
+  }
 });
 ```
 
@@ -720,31 +721,6 @@ console.log(buf2.toString());
 
 A `TypeError` will be thrown if `buffer` is not a `Buffer`.
 
-### Class Method: Buffer.from(string[, encoding])
-
-<!-- YAML
-added: v5.10.0
--->
-
-* `string` {string} A string to encode.
-* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
-
-Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
-
-```js
-const buf1 = Buffer.from('this is a tést');
-const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
-
-console.log(buf1.toString());
-// Prints: this is a tést
-console.log(buf2.toString());
-// Prints: this is a tést
-console.log(buf1.toString('ascii'));
-// Prints: this is a tC)st
-```
-
-A `TypeError` will be thrown if `string` is not a string.
-
 ### Class Method: Buffer.from(object[, offsetOrEncoding[, length]])
 
 <!-- YAML
@@ -774,6 +750,31 @@ class Foo {
 const buf = Buffer.from(new Foo(), 'utf8');
 // Prints: <Buffer 74 68 69 73 20 69 73 20 61 20 74 65 73 74>
 ```
+
+### Class Method: Buffer.from(string[, encoding])
+
+<!-- YAML
+added: v5.10.0
+-->
+
+* `string` {string} A string to encode.
+* `encoding` {string} The encoding of `string`. **Default:** `'utf8'`.
+
+Creates a new `Buffer` containing `string`. The `encoding` parameter identifies the character encoding of `string`.
+
+```js
+const buf1 = Buffer.from('this is a tést');
+const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
+
+console.log(buf1.toString());
+// Prints: this is a tést
+console.log(buf2.toString());
+// Prints: this is a tést
+console.log(buf1.toString('ascii'));
+// Prints: this is a tC)st
+```
+
+A `TypeError` will be thrown if `string` is not a string.
 
 ### Class Method: Buffer.isBuffer(obj)
 
@@ -842,6 +843,25 @@ const buffer = Buffer.from(arrayBuffer);
 
 console.log(buffer.buffer === arrayBuffer);
 // Prints: true
+```
+
+### buf.byteOffset
+
+* {integer} The `byteOffset` on the underlying `ArrayBuffer` object based on which this `Buffer` object is created.
+
+When setting `byteOffset` in `Buffer.from(ArrayBuffer, byteOffset, length)` or sometimes when allocating a buffer smaller than `Buffer.poolSize` the buffer doesn't start from a zero offset on the underlying `ArrayBuffer`.
+
+This can cause problems when accessing the underlying `ArrayBuffer` directly using `buf.buffer`, as the first bytes in this `ArrayBuffer` may be unrelated to the `buf` object itself.
+
+A common issue is when casting a `Buffer` object to a `TypedArray` object, in this case one needs to specify the `byteOffset` correctly:
+
+```js
+// Create a buffer smaller than `Buffer.poolSize`.
+const nodeBuffer = new Buffer.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+// When casting the Node.js Buffer to an Int8 TypedArray remember to use the
+// byteOffset.
+new Int8Array(nodeBuffer.buffer, nodeBuffer.byteOffset, nodeBuffer.length);
 ```
 
 ### buf.compare(target[, targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])
@@ -1048,7 +1068,7 @@ console.log(b.toString());
 // Prints: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ```
 
-`value` is coerced to a `uint32` value if it is not a string or integer.
+`value` is coerced to a `uint32` value if it is not a string, `Buffer`, or integer. If the resulting integer is greater than `255` (decimal), `buf` will be filled with `value & 255`.
 
 If the final write of a `fill()` operation falls on a multi-byte character, then only the bytes of that character that fit into `buf` are written:
 
@@ -1723,6 +1743,13 @@ buf2.swap16();
 // Throws ERR_INVALID_BUFFER_SIZE
 ```
 
+One convenient use of `buf.swap16()` is to perform a fast in-place conversion between UTF-16 little-endian and UTF-16 big-endian:
+
+```js
+const buf = Buffer.from('This is little-endian UTF-16', 'utf16le');
+buf.swap16(); // Convert to big-endian UTF-16 text.
+```
+
 ### buf.swap32()
 
 <!-- YAML
@@ -1926,15 +1953,15 @@ Writes `value` to `buf` at the specified `offset` with specified endian format (
 ```js
 const buf = Buffer.allocUnsafe(8);
 
-buf.writeDoubleBE(0xdeadbeefcafebabe, 0);
+buf.writeDoubleBE(123.456, 0);
 
 console.log(buf);
-// Prints: <Buffer 43 eb d5 b7 dd f9 5f d7>
+// Prints: <Buffer 40 5e dd 2f 1a 9f be 77>
 
-buf.writeDoubleLE(0xdeadbeefcafebabe, 0);
+buf.writeDoubleLE(123.456, 0);
 
 console.log(buf);
-// Prints: <Buffer d7 5f f9 dd b7 d5 eb 43>
+// Prints: <Buffer 77 be 9f 1a 2f dd 5e 40>
 ```
 
 ### buf.writeFloatBE(value, offset)
@@ -2278,6 +2305,8 @@ Re-encodes the given `Buffer` or `Uint8Array` instance from one character encodi
 
 Throws if the `fromEnc` or `toEnc` specify invalid character encodings or if conversion from `fromEnc` to `toEnc` is not permitted.
 
+Encodings supported by `buffer.transcode()` are: `'ascii'`, `'utf8'`, `'utf16le'`, `'ucs2'`, `'latin1'`, and `'binary'`.
+
 The transcoding process will use substitution characters if a given byte sequence cannot be adequately represented in the target encoding. For instance:
 
 ```js
@@ -2311,15 +2340,16 @@ In the case where a developer may need to retain a small chunk of memory from a 
 const store = [];
 
 socket.on('readable', () => {
-  const data = socket.read();
+  let data;
+  while (null !== (data = readable.read())) {
+    // Allocate for retained data
+    const sb = SlowBuffer(10);
 
-  // Allocate for retained data
-  const sb = SlowBuffer(10);
+    // Copy the data into the new allocation
+    data.copy(sb, 0, 0, 10);
 
-  // Copy the data into the new allocation
-  data.copy(sb, 0, 0, 10);
-
-  store.push(sb);
+    store.push(sb);
+  }
 });
 ```
 

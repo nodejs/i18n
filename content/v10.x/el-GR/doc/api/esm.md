@@ -1,6 +1,7 @@
 # Ενότητες ECMAScript
 
 <!--introduced_in=v8.5.0-->
+
 <!-- type=misc -->
 
 > Σταθερότητα: 1 - Πειραματικό
@@ -35,7 +36,7 @@ node --experimental-modules my-app.mjs
 
 * {Object}
 
-Η μεταιδιότητα `import.meta` είναι ένα `Object` που περιέχει την παρακάτω ιδιότητα:
+The `import.meta` metaproperty is an `Object` that contains the following property:
 
 * `url` {string} Το απόλυτο `file:` URL της ενότητας.
 
@@ -49,11 +50,11 @@ node --experimental-modules my-app.mjs
 
 ### Δεν υπάρχει NODE_PATH
 
-Το `NODE_PATH` δεν είναι μέρος της επίλυσης των προσδιοριστών `import`. Παρακαλούμε χρησιμοποιήστε symlinks αν επιθυμείτε αυτή τη συμπεριφορά.
+Το `NODE_PATH` δεν είναι μέρος της επίλυσης των προσδιοριστών `import`. Please use symlinks if this behavior is desired.
 
 ### Δεν υπάρχει `require.extensions`
 
-Το `require.extensions` δεν χρησιμοποιείται από το `import`. Το αναμενόμενο είναι ότι τα loader hooks μπορούν να προσφέρουν αυτή τη λειτουργικότητα στο μέλλον.
+Το `require.extensions` δεν χρησιμοποιείται από το `import`. The expectation is that loader hooks can provide this workflow in the future.
 
 ### Δεν υπάρχει `require.cache`
 
@@ -63,7 +64,7 @@ node --experimental-modules my-app.mjs
 
 Τα ESM επιλύονται και αποθηκεύονται προσωρινά με τη χρήση σημασιολογίας [URL](https://url.spec.whatwg.org/). Αυτό σημαίνει ότι πρέπει να γίνει χρήση χαρακτήρα διαφυγής, όταν εμφανίζονται χαρακτήρες όπως το `#` και το `?`.
 
-Οι ενότητες θα φορτωθούν πολλαπλές φορές αν οι προσδιοριστές `import` που χρησιμοποιούνται για την επίλυση τους έχουν διαφορετικό επερώτημα.
+Modules will be loaded multiple times if the `import` specifier used to resolve them have a different query or fragment.
 
 ```js
 import './foo?query=1'; // loads ./foo with query of "?query=1"
@@ -121,7 +122,7 @@ fs.readFileSync === readFileSync;
 
 To customize the default module resolution, loader hooks can optionally be provided via a `--loader ./loader-name.mjs` argument to Node.js.
 
-Όταν χρησιμοποιούνται τα hook, ισχύουν μόνο για τις μονάδες ES που φορτώνονται, και όχι για μονάδες CommonJS.
+When hooks are used they only apply to ES module loading and not to any CommonJS modules loaded.
 
 ### Hook επίλυσης
 
@@ -205,7 +206,7 @@ NODE_OPTIONS='--experimental-modules --loader ./custom-loader.mjs' node x.js
 
 ### Δυναμικό instantiate hook
 
-Για τη δημιουργία μιας προσαρμοσμένης δυναμικής ενότητας που δεν αντιστοιχεί σε μια από τις υπάρχουσες ερμηνείες `format`, μπορεί να χρησιμοποιηθεί το `dynamicInstantiate` hook. Αυτό το hook καλείται μόνο για ενότητες που επιστρέφουν `format: 'dynamic'` από το `resolve` hook.
+To create a custom dynamic module that doesn't correspond to one of the existing `format` interpretations, the `dynamicInstantiate` hook can be used. Αυτό το hook καλείται μόνο για ενότητες που επιστρέφουν `format: 'dynamic'` από το `resolve` hook.
 
 ```js
 export async function dynamicInstantiate(url) {
@@ -219,4 +220,4 @@ export async function dynamicInstantiate(url) {
 }
 ```
 
-Με τη λίστα εξαγόμενων ενοτήτων να παρέχεται εκ των προτέρων, η συνάρτηση `execute` θα κληθεί στο ακριβές σημείο της αξιολόγησης σειράς των ενοτήτων, για την ενότητα στο δέντρο εισαγωγής.
+With the list of module exports provided upfront, the `execute` function will then be called at the exact point of module evaluation order for that module in the import tree.

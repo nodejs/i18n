@@ -278,7 +278,7 @@ The [`SlowBuffer`][] class has been deprecated. Please use [`Buffer.allocUnsafeS
 
 Type: Documentation-only
 
-В настоящее время метод [`ecdh.setPublicKey()`][] устарел, поскольку его включение в API является бесполезным.
+The [`ecdh.setPublicKey()`][] method is now deprecated as its inclusion in the API is not useful.
 
 <a id="DEP0032"></a>
 

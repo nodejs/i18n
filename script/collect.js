@@ -3,12 +3,14 @@
 const fs = require('fs-extra')
 const path = require('path')
 const download = require('download')
-const walk = require('walk-sync').entries
-const { nodeVersions } = require('../package.json')
+
+const getVersions = require('./getVersions')
+const { supportedVersions } = require('../package.json')
 
 collect()
 
 async function collect () {
+  const nodeVersions = await getVersions(supportedVersions)
   for (const major in nodeVersions) {
     const version = nodeVersions[major]
     await getDocsForNodeVersion(major, version).catch(err => {
@@ -19,25 +21,18 @@ async function collect () {
 }
 
 async function getDocsForNodeVersion (major, version) {
-  const docDir = path.join(__dirname, `../content/${major}/en-US/doc`)
-  const tempDir = path.join(__dirname, `../temp/${major}`)
+  const docDir = path.join(__dirname, `../content/${major}/en-US`)
+  const downloadOptions = {
+    extract: true,
+    strip: 1,
+    filter: file => path.extname(file.path) === '.md' && file.path.startsWith('doc')
+  }
 
-  // TODO exit early if docs for this version have already been downloaded
+  // clean out english translations to ensure old files are removed
+  fs.remove(docDir)
 
-  // download repo bundle and extract to a temporary directory
+  // download repo bundle and extract
   const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
   console.log('downloading', tarballUrl)
-  await download(tarballUrl, tempDir, { extract: true })
-
-  // move docs from temp dir to this repo
-  const tempDocDir = path.join(tempDir, `node-${version.replace('v', '')}`, 'doc')
-
-  // removes files other than markdown
-  walk(tempDocDir, { directories: false })
-    .filter(file => path.extname(file.relativePath.toLowerCase()) !== '.md')
-    .forEach(file => fs.unlinkSync(path.join(tempDocDir, file.relativePath)))
-
-  await fs.copy(tempDocDir, docDir)
-
-  fs.remove(tempDir)
+  await download(tarballUrl, docDir, downloadOptions)
 }

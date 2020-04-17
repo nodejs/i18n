@@ -1,21 +1,22 @@
 # Complementos em C++
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 Complementos Node.js são vinculados dinamicamente como objetos compartilhados, escritos em C++, que podem ser carregados no Node.js com a função [`require()`](modules.html#modules_require), e usados como se fossem um módulo Node.js comum. Eles são usados principalmente para fornecer uma interface entre o JavaScript em execução e bibliotecas de Node.js e C/C++.
 
-No momento, a forma para implementar complementos é complicada, envolvendo conhecimento de vários componentes e APIs:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - V8: biblioteca C++ que o Node.js usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamada de funções, etc. A API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
+* V8: biblioteca C++ que o Node.js usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamada de funções, etc. A API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos do Node.js, suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração multi-plataforma, dando acesso fácil, no estilo POSIX, aos principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar assíncronos mais sofisticados, Complementos que precisam ir além do ciclo de eventos padrão. Autores de complementos são encorajados a pensar em como evitar o bloqueio do loop de eventos com E/S ou outras tarefas de uso intensivo, descarregando o trabalho via libuv para operações de sistema não-bloqueantes, worker threads ou uso personalizado de threads do libuv.
+* [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos do Node.js, suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar assíncronos mais sofisticados, Complementos que precisam ir além do ciclo de eventos padrão. Autores de complementos são encorajados a pensar em como evitar o bloqueio do loop de eventos com E/S ou outras tarefas de uso intensivo, descarregando o trabalho via libuv para operações de sistema não-bloqueantes, worker threads ou uso personalizado de threads do libuv.
 
- - Bibliotecas internas de Node.js. Node.js exporta para si um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
+* Bibliotecas internas de Node.js. Node.js exporta para si um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
 
- - Node.js inclui um grande número de outras bibliotecas estaticamente vinculadas, incluindo OpenSSL. Estas outras bibliotecas estão localizadas no diretório `deps` na árvore de código fonte do Node.js. Apenas os símbolos de libuv, OpenSSl, V8 e zlib são propositalmente reexportados e podem ser usados em fins diferentes por Complementos. Veja [Vinculando às próprias dependências do Node.js](#addons_linking_to_node_js_own_dependencies) para mais informações.
+* Node.js inclui um grande número de outras bibliotecas estaticamente vinculadas, incluindo OpenSSL. Estas outras bibliotecas estão localizadas no diretório `deps` na árvore de código fonte do Node.js. Apenas os símbolos de libuv, OpenSSl, V8 e zlib são propositalmente reexportados e podem ser usados em fins diferentes por Complementos. Veja [Vinculando às próprias dependências do Node.js](#addons_linking_to_node_js_own_dependencies) para mais informações.
 
-Todos os exemplos a seguir estão disponíveis para [download](https://github.com/nodejs/node-addon-examples) e podem ser usados como um ponto de partida para um Addon.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello World
 
@@ -65,7 +66,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 
 Não há ponto e vírgula depois de `NODE_MODULE` já que não é uma função (veja em `node.h`).
 
-O `module_name` deve coincidir com o nome do arquivo do binário final (excluindo o sufixo `.node`).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
 In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
@@ -91,6 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -98,6 +100,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -173,7 +176,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 
 ### Construindo
 
-Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arquivo binário `addon.node`. Para fazer isso, crie um arquivo chamado `binding.gyp` na raiz do projeto descrevendo a build de configuração do módulo utilizando um formato estilo JSON. Esse arquivo é utilizado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar complementos de Node.js.
+Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arquivo binário `addon.node`. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. Esse arquivo é utilizado pelo [node-gyp](https://github.com/nodejs/node-gyp) — uma ferramenta escrita especificamente para compilar complementos de Node.js.
 
 ```json
 {
@@ -186,7 +189,7 @@ Uma vez que o código fonte tenha sido escrito, ele precisa se compilado no arqu
 }
 ```
 
-Uma versão do utilitário `node-gyp` é despachada e distribuída com Node.js como parte do `npm`. Esta versão não é diretamente disponibilizada para desenvolvedores usarem e serve apenas para usar o comando `npm install` para compilar e instalar Complementos. Desenvolvedores que desejam usar `node-gyp` diretamente podem instalá-lo usando o comando `npm install -g node-gyp`. Veja as [instruções de instalação](https://github.com/nodejs/node-gyp#installation) do `node-gyp` para mais informações, incluindo requisitos específicos de cada plataforma.
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. Esta versão não é diretamente disponibilizada para desenvolvedores usarem e serve apenas para usar o comando `npm install` para compilar e instalar Complementos. Desenvolvedores que desejam usar `node-gyp` diretamente podem instalá-lo usando o comando `npm install -g node-gyp`. Veja as [instruções de instalação](https://github.com/nodejs/node-gyp#installation) do `node-gyp` para mais informações, incluindo requisitos específicos de cada plataforma.
 
 Uma vez que o arquivo do `binding.gyp` foi criado, use `node-gyp configure` para gerar os arquivos de construção do projeto apropriados para a atual plataforma. Isto pode gerar tanto um arquivo `Makefile` (em plataformas do tipo Unix) quanto um `vcxproj` (no Windows) no diretório `build/`.
 
@@ -242,11 +245,11 @@ As [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ou `nan`) p
 
 > Estabilidade: 2 - estável
 
-N-API é uma API para construir Complementos nativos. É independente do tempo de execução subjacente do JavaScript (por exemplo, V8) e é mantido como parte do Node.js, em si. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Destina-se a isolar Complementos de mudanças no motor JavaScript subjacente e permitir módulos compilado para uma versão para rodar em versões posteriores do Node.js sem recompilação. Os complementos são construídos/empacotados com a mesma abordagem/ferramentas descrito neste documento (node-gyp, etc.). A única diferença é o conjunto de APIs usados pelo código nativo. Em vez de usar o V8 ou [Abstrações Nativa para Node.js](https://github.com/nodejs/nan) APIs, as funções que está disponíveis no N-API são usadas.
+N-API é uma API para construir Complementos nativos. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. Destina-se a isolar Complementos de mudanças no motor JavaScript subjacente e permitir módulos compilado para uma versão para rodar em versões posteriores do Node.js sem recompilação. Os complementos são construídos/empacotados com a mesma abordagem/ferramentas descrito neste documento (node-gyp, etc.). A única diferença é o conjunto de APIs usados pelo código nativo. Em vez de usar o V8 ou [Abstrações Nativa para Node.js](https://github.com/nodejs/nan) APIs, as funções que está disponíveis no N-API são usadas.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-Para usar N-API no exemplo acima "Hello world", substitua o conteúdo de `hello.cc` com o seguinte. Todas as outras instruções permanecem as mesmas.
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Todas as outras instruções permanecem as mesmas.
 
 ```cpp
 // hello.cc using N-API
@@ -299,7 +302,7 @@ Cada um destes exemplos usando o seguinte arquivo `binding.gyp`:
 }
 ```
 
-Nos casos em que há mais de um arquivo `.cc` simplesmente adicione o nome de arquivo adicional para o `sources` array:
+In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
 
 ```json
 "sources": ["addon.cc", "myexample.cc"]
@@ -1108,16 +1111,16 @@ console.log(result);
 
 ### AtExit hooks
 
-Um hook `AtExit` é uma função que é chamada após o loop de eventos Node.js terminou, mas antes que a VM do JavaScript seja encerrada e o Node.js seja encerrado. `AtExit` hooks estão registrados usando a API `node::AtExit`.
+An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks estão registrados usando a API `node::AtExit`.
 
 #### void AtExit(callback, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
-* `args` <span class="type">&lt;void\*&gt;</span> Um comando para passar para o callback na saída.
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
+* `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
 Registra exit hooks que são executados após o término do loop de eventos ser finalizado mas antes da VM ser encerrada.
 
-`AtExit` usa dois parâmetros: um comando para uma função de callback para executar na saída, e um comando para dados de contexto não tipificados a serem passados ​​para esse callback.
+`AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
 Callbacks são executadas no último pedido de entrada.
 

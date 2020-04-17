@@ -22,6 +22,7 @@ false
 En la mayoría de los casos, no debería haber motivos para que una aplicación cree manualmente instancias de las clases `tty.ReadStream` y `tty.WriteStream` .
 
 ## Clase: tty.ReadStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -29,6 +30,7 @@ added: v0.5.8
 La clase `tty.ReadStream` es una subclase de [`net.Socket`][] que representa el lado legible de un TTY. En circunstancias normales, [`process.stdin`][] será la única instancia `tty.ReadStream` en un proceso de Node.js y no debería haber ningún motivo para crear instancias adicionales.
 
 ### readStream.isRaw
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -36,6 +38,7 @@ added: v0.7.7
 Un `boolean` que es `true` si la TTY está configurada para operar como un dispositivo raw. Por defecto su valor es `false`.
 
 ### readStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -43,6 +46,7 @@ added: v0.5.8
 Un `boolean` que siempre es `true` para las instancias de `tty.ReadStream` .
 
 ### readStream.setRawMode(mode)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -54,6 +58,7 @@ Cuando se encuentra en modo raw, la entrada siempre está disponible carácter p
 * `mode` {boolean} Si es `true`, configura `tty.ReadStream` para operar como un dispositivo raw. Si es `false`, configura el `tty.ReadStream` para operar en su modo predeterminado. La propiedad `readStream.isRaw` será establecida al modo resultante.
 
 ## Clase: tty.WriteStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -61,6 +66,7 @@ added: v0.5.8
 La clase `tty.WriteStream` es una subclase de `net.Socket` que representa el lado editable de una TTY. En circunstancias normales, [`process.stdout`][] y [`process.stderr`][] serán las únicas instancias de `tty.WriteStream` creadas para un proceso de Node.js y no debería haber ningún motivo para crear instancias adicionales.
 
 ### Evento: 'resize'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -75,6 +81,7 @@ process.stdout.on('resize', () => {
 ```
 
 ### writeStream.columns
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -82,6 +89,7 @@ added: v0.7.7
 Un `number` que especifica el número de columnas que posee actualmente un TTY. Esta propiedad se actualiza cada vez que se emite el evento `'resize'` .
 
 ### writeStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -89,6 +97,7 @@ added: v0.5.8
 Un `boolean` que siempre es `true`.
 
 ### writeStream.rows
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -96,10 +105,11 @@ added: v0.7.7
 Un `number` que especifica el número de filas que posee actualmente un TTY. Esta propiedad se actualiza cada vez que se emite el evento `'resize'` .
 
 ## tty.isatty(fd)
+
 <!-- YAML
 added: v0.5.8
 -->
 
 * `fd` {number} Un descriptor numérico de archivos
 
-El método `tty.isatty()` retorna `true` si el `fd` provisto esta asociado con una TTY, y `false` si no lo esta, incluyendo cuando `fd` es un entero no negativo.
+El método `tty.isatty()` devuelve `true` si el `fd` dado está asociado a una TTY, y `false` si no lo está, incluyendo cuando `fd` no sea un entero no negativo.

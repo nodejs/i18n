@@ -1,6 +1,7 @@
 # Uso
 
 <!--introduced_in=v0.10.0-->
+
 <!--type=misc-->
 
 `node [options] [V8 options] [script.js | -e "script" | - ] [arguments]`
@@ -8,6 +9,7 @@
 Por favor vea las [ Opciones de Linea de Comando](cli.html#cli_command_line_options) para obtener infomación sobre diferentes opciones y maneras de ejecutar scripts con Node.js.
 
 ## Ejemplo
+
 Un ejemplo de un [servidor web](http.html) escrito con Node.js cuya respuesta es `"¡Hola Mundo!"`:
 
 Los comandos mostrados en este documento comienzan con `$` o con `>` para indicar como debería aparecer en la terminal de un usuario. Do not include the `$` and `>` characters. They are there to indicate the start of each command.
@@ -45,7 +47,7 @@ A continuación, cree un nuevo archivo en la carpeta `projects` y llamela `hola-
 
 En Node.js está considerado buen estilo usar guiones (`-`) o guiones bajos (`_`) para separar múltiples palabras en los nombres de archivo.
 
-Abrir `hola-mundo.js` en cualquier editor de texto y pegue el siguiente contenido:
+Open `hello-world.js` in any preferred text editor and paste in the following content:
 
 ```js
 const http = require('http');
@@ -72,12 +74,11 @@ $ node hola-mundo.js
 
 Un mensaje de salida como este debería aparecer en la terminal para indicar que Node.js guardo lo que se está ejecutando:
 
- ```console
- Server running at http://127.0.0.1:3000/
- ```
+    console
+     Server running at http://127.0.0.1:3000/`
 
-Luego, abrir cualquier browser y visitar la URL `http://127.0.0.1:3000`.
+Ahora, abra cualquier navegador web y visite `http://127.0.0.1:3000`.
 
-Si el browser muestra el string `Hello World!`, esto indica que el servidor esta funcionando.
+Si el navegador muestra el mensaje `¡Hola, Mundo!`, indica que el servidor está funcionando.
 
-Muchos de los ejemplos en la documentación pueden ser ejecutados de manera similar.
+Cualquiera de los ejemplos en el documento pueden ser ejecutado del mismo modo.

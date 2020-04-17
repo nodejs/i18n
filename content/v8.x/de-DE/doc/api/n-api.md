@@ -4,11 +4,12 @@
 
 > Stabilität: 2 - Stabil
 
-N-API (ausgesprochen N wie der Buchstabe, gefolgt von API) ist eine API zum Erstellen von nativen Addons. Sie ist unabhängig von der zugrunde liegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst verwaltet. Diese API wird über alle Versionen von Node.js hinweg Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Erweiterungen von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
+N-API (ausgesprochen N wie der Buchstabe, gefolgt von API) ist eine API zum Erstellen von nativen Addons. Sie ist unabhängig von der zugrunde liegenden JavaScript-Runtime (z.B. V8) und wird als Teil von Node.js selbst verwaltet. Diese API wird über alle Versionen von Node.js hinweg Application-Binary-Interface-stabil (ABI) sein. Es ist vorgesehen, Addons von Änderungen in der zugrunde liegenden JavaScript-Engine zu isolieren und es zu ermöglichen, dass Module, die für eine Version kompiliert wurden, auf späteren Versionen von Node.js ohne Neukompilierung ausgeführt werden können.
 
 Addons werden mit dem gleichen Ansatz/den gleichen Tools gebaut/bepackt, wie im Abschnitt [C++-Addons](addons.html) beschrieben wird. Der einzige Unterschied ist das Set an APIs, die vom nativen Code verwendet werden. Anstatt die V8 oder die [Nativen Abstraktionen für Node.js](https://github.com/nodejs/nan)-APIs zu verwenden, werden die in der N-API verfügbaren Funktionen verwendet.
 
 APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, um JavaScript-Werte zu erzeugen und zu manipulieren. Konzepte und Abläufe entsprechen in der Regel den in der ECMA262-Sprachspezifikation festgelegten Ideen. Die APIs haben folgende Eigenschaften:
+
 - Alle N-API-Anfragen liefern einen Statuscode vom Typ `napi_status`. Dieser Status gibt an, ob die API-Anfrage erfolgreich war oder nicht.
 - Der Rückgabewert der API wird über einen Out-Parameter ausgegeben.
 - Alle JavaScript-Werte werden hinter einem undurchsichtigen Typ namens `napi_value` abstrahiert.
@@ -16,25 +17,26 @@ APIs, die von N-API zur Verfügung gestellt werden, werden generell verwendet, u
 
 The documentation for N-API is structured as follows:
 
-* [Grundlegende N-API-Datentypen](#n_api_basic_n_api_data_types)
-* [Fehlerbehandlung](#n_api_error_handling)
-* [Object Lifetime Management](#n_api_object_lifetime_management)
-* [Module Registration](#n_api_module_registration)
-* [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_values)
-* \[Arbeiten mit JavaScript-Werten - Abstrakte Operationen\]\[\]
-* [Working with JavaScript Properties](#n_api_working_with_javascript_properties)
-* [Working with JavaScript Functions](#n_api_working_with_javascript_functions)
-* [Object Wrap](#n_api_object_wrap)
-* [Simple Asynchronous Operations](#n_api_simple_asynchronous_operations)
-* [Custom Asynchronous Operations](#n_api_custom_asynchronous_operations)
-* [Promises](#n_api_promises)
-* [Script Execution](#n_api_script_execution)
+- [Grundlegende N-API-Datentypen](#n_api_basic_n_api_data_types)
+- [Fehlerbehandlung](#n_api_error_handling)
+- [Object Lifetime Management](#n_api_object_lifetime_management)
+- [Module Registration](#n_api_module_registration)
+- [Arbeiten mit JavaScript-Eigenschaften](#n_api_working_with_javascript_values)
+- [Arbeiten mit JavaScript-Werten - Abstrakte Operationen](#n_api_working_with_javascript_values_abstract_operations)
+- [Working with JavaScript Properties](#n_api_working_with_javascript_properties)
+- [Working with JavaScript Functions](#n_api_working_with_javascript_functions)
+- [Object Wrap](#n_api_object_wrap)
+- [Simple Asynchronous Operations](#n_api_simple_asynchronous_operations)
+- [Custom Asynchronous Operations](#n_api_custom_asynchronous_operations)
+- [Promises](#n_api_promises)
+- [Script Execution](#n_api_script_execution)
 
-Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. Ein solches Beispiel ist: [node-addon-api](https://github.com/nodejs/node-addon-api).
+Die N-API ist eine C-API, die ABI-Stabilität über Node.js-Versionen und verschiedene Compiler-Level hinweg gewährleistet. Wir verstehen aber auch, dass eine C++-API in vielen Fällen einfacher zu verwenden sein kann. Um diese Fälle zu unterstützen, erwarten wir, dass es eine oder mehrere C++-Wrapper-Module gibt, die eine inlinierbare C++-API bereitstellen. Binärdateien, die mit diesen Wrapper-Modulen erstellt wurden, hängen von den Symbolen für die N-API C-basierten Funktionen ab, die von Node.js exportiert wurden. Diese Wrapper sind weder Teil der N-API, noch werden sie als Teil von Node.js verwaltet. One such example is: [node-addon-api](https://github.com/nodejs/node-addon-api).
 
 ## Usage
 
 In order to use the N-API functions, include the file [node_api.h](https://github.com/nodejs/node/blob/master/src/node_api.h) which is located in the src directory in the node development tree. For example:
+
 ```C
 #include <node_api.h>
 ```
@@ -74,7 +76,9 @@ In this case the entire API surface, including any experimental APIs, will be av
 N-API stellt die folgenden grundlegenden Datentypen als Abstraktionen dar, die von den verschiedenen APIs verbraucht werden. Diese APIs sollten nur mit anderen N-API-Anfragen als undurchsichtig und introspektierbar behandelt werden.
 
 ### napi_status
+
 Integrierter Statuscode, der den Erfolg oder Misserfolg einer N-API-Anfrage anzeigt. Derzeit werden die folgenden Statuscodes unterstützt.
+
 ```C
 typedef enum {
   napi_ok,
@@ -98,9 +102,11 @@ typedef enum {
 #endif  // NAPI_EXPERIMENTAL
 } napi_status;
 ```
+
 Werden zusätzliche Informationen benötigt, wenn eine API einen fehlgeschlagenen Status zurücksendet, können diese durch eine Anfrage von `napi_get_last_error_info` erlangt werden.
 
 ### napi_extended_error_info
+
 ```C
 typedef struct {
   const char* error_message;
@@ -118,9 +124,11 @@ typedef struct {
 Siehe Abschnitt [Fehlerbehandlung](#n_api_error_handling) für weitere Informationen.
 
 ### napi_env
+
 `napi_env` wird verwendet, um einen Kontext darzustellen, den die zugrunde liegende N-API-Implementierung verwenden kann, um den VM-spezifischen Zustand zu erhalten. Diese Struktur wird an native Funktionen übertragen, wenn sie aufgerufen werden und sie muss bei N-API-Anfragen rückübertragen werden. Insbesondere müssen die gleichen `napi_env`, die beim Aufruf der ursprünglichen nativen Funktion übergeben wurden, an alle nachfolgenden geschachtelten N-API-Anfragen übergeben werden. Das Zwischenspeichern der `napi_env`-Datei zum Zweck der allgemeinen Wiederverwendung ist nicht erlaubt.
 
 ### napi_value
+
 Dies ist ein undurchsichtiger Verweis, der verwendet wird, um einen JavaScript-Wert darzustellen.
 
 ### napi_threadsafe_function
@@ -134,6 +142,7 @@ This is an opaque pointer that represents a JavaScript function which can be cal
 > Stabilität: 2 - Stabil
 
 A value to be given to `napi_release_threadsafe_function()` to indicate whether the thread-safe function is to be closed immediately (`napi_tsfn_abort`) or merely released (`napi_tsfn_release`) and thus available for subsequent use via `napi_acquire_threadsafe_function()` and `napi_call_threadsafe_function()`.
+
 ```C
 typedef enum {
   napi_tsfn_release,
@@ -146,6 +155,7 @@ typedef enum {
 > Stabilität: 2 - Stabil
 
 A value to be given to `napi_call_threadsafe_function()` to indicate whether the call should block whenever the queue associated with the thread-safe function is full.
+
 ```C
 typedef enum {
   napi_tsfn_nonblocking,
@@ -154,7 +164,9 @@ typedef enum {
 ```
 
 ### N-API Memory Management types
+
 #### napi_handle_scope
+
 Dies ist eine Abstraktion, die verwendet wird, um die Lebensdauer von Objekten, die in einem bestimmten Bereich erstellt wurden, zu steuern und zu verändern. Im Allgemeinen werden N-API-Werte im Rahmen eines Handle-Scopes erstellt. Wenn eine native Methode von JavaScript abgerufen wird, existiert ein Standard-Handle-Bereich. Wenn der Benutzer nicht explizit einen neuen Handle-Bereich anlegt, werden N-API-Werte im Standard-Handle-Bereich angelegt. Für alle Aufrufe von Code außerhalb der Ausführung einer nativen Methode (z.B. während einer libuv-Callback-Anfrage) muss das Modul einen Bereich erstellen, bevor es Funktionen aufruft, die zur Erzeugung von JavaScript-Werten führen können.
 
 Handle-Scopes werden mit [`napi_open_handle_scope`][] erstellt und mit [`napi_close_handle_scope`][] vernichtet. Closing the scope can indicate to the GC that all `napi_value`s created during the lifetime of the handle scope are no longer referenced from the current stack frame.
@@ -162,24 +174,31 @@ Handle-Scopes werden mit [`napi_open_handle_scope`][] erstellt und mit [`napi_cl
 Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
 #### napi_escapable_handle_scope
+
 Escapable-Handle-Bereiche sind eine spezielle Art von Handle-Bereichen, deren Zweck es ist, die innerhalb eines bestimmten Handle-Bereichs erzeugten Werte an einen übergeordneten Bereich zurückzusenden.
 
 #### napi_ref
+
 Dies ist die Abstraktion, die verwendet wird, um auf eine `napi_value` zu verweisen. Dies ermöglicht es den Benutzern, die Lebensdauer von JavaScript-Werten, einschließlich der genauen Festlegung ihrer Mindestlebensdauer, zu verwalten.
 
 Weitere Informationen finden Sie unter [Object Lifetime Management](#n_api_object_lifetime_management).
 
 ### N-API Callback-Typen
+
 #### napi_callback_info
+
 Undurchsichtiger Datentyp, der an eine Callback-Funktion weitergegeben wird. Er kann verwendet werden, um zusätzliche Informationen über den Kontext, in dem der Callback aufgerufen wurde, zu erhalten.
 
 #### napi_callback
+
 Funktionsverweistyp für vom Benutzer bereitgestellte native Funktionen, die in JavaScript über die N-API eingebunden werden sollen. Callback-Funktionen sollten die folgende Signatur erfüllen:
+
 ```C
 typedef napi_value (*napi_callback)(napi_env, napi_callback_info);
 ```
 
 #### napi_finalize
+
 Funktionsverweistyp für zusätzlich zur Verfügung gestellte Funktionen, der es dem Benutzer ermöglicht benachrichtigt zu werden, wenn externe Daten bereit sind, bereinigt zu werden, weil das Objekt, mit dem sie verknüpft waren, unbrauchbar geworden ist. Der Benutzer muss eine Funktion zur Verfügung stellen, welche die folgende Signatur erfüllt, die auf die Sammlung des Objekts angewandt wird. Derzeit kann `napi_finalize` verwendet werden, um herauszufinden, wann Objekte mit externen Daten gesammelt werden.
 
 ```C
@@ -188,8 +207,8 @@ typedef void (*napi_finalize)(napi_env env,
                               void* finalize_hint);
 ```
 
-
 #### napi_async_execute_callback
+
 Funktionsverweis, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
@@ -197,6 +216,7 @@ typedef void (*napi_async_execute_callback)(napi_env env, void* data);
 ```
 
 #### napi_async_complete_callback
+
 Funktionsverweis, der mit Funktionen benutzt wird, die asynchrone Operationen unterstützen. Callback-Funktionen müssen die folgende Signatur erfüllen:
 
 ```C
@@ -216,21 +236,25 @@ The data arriving from the secondary thread via the queue is given in the `data`
 N-API sets up the environment prior to calling this callback, so it is sufficient to call the JavaScript function via `napi_call_function` rather than via `napi_make_callback`.
 
 Callback functions must satisfy the following signature:
+
 ```C
 typedef void (*napi_threadsafe_function_call_js)(napi_env env,
                                                  napi_value js_callback,
                                                  void* context,
                                                  void* data);
 ```
+
 - `[in] env`: The environment to use for API calls, or `NULL` if the thread-safe function is being torn down and `data` may need to be freed.
 - `[in] js_callback`: The JavaScript function to call, or `NULL` if the thread-safe function is being torn down and `data` may need to be freed.
 - `[in] context`: The optional data with which the thread-safe function was created.
 - `[in] data`: Data created by the secondary thread. It is the responsibility of the callback to convert this native data to JavaScript values (with N-API functions) that can be passed as parameters when `js_callback` is invoked. This pointer is managed entirely by the threads and this callback. Thus this callback should free the data.
 
 ## Fehlerbehandlung
+
 Die N-API verwendet sowohl Rückgabewerte als auch JavaScript-Exceptions zur Fehlerbehandlung. Die folgenden Abschnitte erklären die Vorgehensweise für den jeweiligen Fall.
 
 ### Rückgabewerte
+
 Alle N-API-Funktionen haben das gleiche Fehlerbehandlungsmuster. Der Rückgabetyp aller API-Funktionen ist `napi_status`.
 
 Der Rückgabewert ist `napi_ok`, wenn die Anfrage erfolgreich war und keine nicht abgefangene Javascript-Exception aufgetreten ist. Wenn ein Fehler UND eine Exception aufgetreten sind, wird der `napi_status`-Wert für den Fehler zurückgesendet. Wenn eine Exception, aber kein Fehler aufgetreten ist, wird `napi_pending_exception` zurückgesendet.
@@ -251,6 +275,7 @@ typedef struct napi_extended_error_info {
   napi_status error_code;
 };
 ```
+
 - `error_message`: Textliche Darstellung des aufgetretenen Fehlers.
 - `engine_reserved`: Opaque-Handle, der nur für die Verwendung der Engine reserviert ist.
 - `engine_error_code`: VM-spezifischer Fehler-Code.
@@ -261,21 +286,24 @@ typedef struct napi_extended_error_info {
 *Note*: Do not rely on the content or format of any of the extended information as it is not subject to SemVer and may change at any time. It is intended only for logging purposes.
 
 #### napi_get_last_error_info
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status
 napi_get_last_error_info(napi_env env,
                          const napi_extended_error_info** result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[out] result`: Die `napi_extended_error_info`-Struktur mit mehr Informationen über den Fehler.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-Diese API liefert eine `napi_extended_error_info`-Struktur mit Informationen über den zuletzt aufgetretenen Fehler.
+This API retrieves a `napi_extended_error_info` structure with information about the last error that occurred.
 
 *Note*: The content of the `napi_extended_error_info` returned is only valid up until an n-api function is called on the same `env`.
 
@@ -283,8 +311,8 @@ Diese API liefert eine `napi_extended_error_info`-Struktur mit Informationen üb
 
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
-
 ### Exceptions
+
 Jeder N-API-Funktionsaufruf kann zu einer ausstehenden JavaScript-Exception führen. Dies ist natürlich der Fall für jede Funktion, die die Ausführung von JavaScript verursachen kann, aber die N-API gibt an, dass eine Exception bei der Rückkehr von einer der vielen API-Funktionen ausstehen kann.
 
 Wenn der von einer Funktion zurückgegebene `napi_status` `napi_ok` ist, dann ist keine Exception ausstehend und es ist keine zusätzliche Aktion erforderlich. Wenn der zurückgegebene `napi_status` etwas anderes als `napi_ok` oder `napi_pending_exception` ist, muss, um zu versuchen, sich wiederherzustellen und fortzusetzen, anstatt einfach sofort zurückzusenden, [`napi_is_exception_pending`][] aufgerufen werden, um festzustellen, ob eine Exception ausstehend ist oder nicht.
@@ -295,7 +323,7 @@ Der erste Ansatz besteht darin, eine entsprechende Bereinigung durchzuführen un
 
 Der zweite Ansatz ist der Versuch, die Exception zu behandeln. Es wird Fälle geben, in denen der native Code die Exception abfangen, die entsprechenden Maßnahmen ergreifen und dann fortfahren kann. Dies wird nur in bestimmten Fällen empfohlen, in denen bekannt ist, dass die Exception sicher behandelt werden kann. In diesen Fällen kann[`napi_get_and_clear_last_exception`][] verwendet werden, um die Exception zu erfassen und zu löschen. Bei Erfolg enthält das Ergebnis den Handle zum letzten ausgeworfenen JavaScript-Object. If it is determined, after retrieving the exception, the exception cannot be handled after all it can be re-thrown it with [`napi_throw`][] where error is the JavaScript Error object to be thrown.
 
-Die folgenden Hilfsfunktionen sind auch verfügbar, falls der native Code eine Exception auslösen muss oder bestimmen soll, ob eine `napi_value` eine Instanz eines JavaScript-`Error`-Objekts ist: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] und [`napi_is_error`][].
+The following utility functions are also available in case native code needs to throw an exception or determine if a `napi_value` is an instance of a JavaScript `Error` object: [`napi_throw_error`][], [`napi_throw_type_error`][], [`napi_throw_range_error`][] and [`napi_is_error`][].
 
 The following utility functions are also available in case native code needs to create an Error object: [`napi_create_error`][], [`napi_create_type_error`][], and [`napi_create_range_error`][]. where result is the napi_value that refers to the newly created JavaScript Error object.
 
@@ -312,13 +340,16 @@ TypeError [ERR_ERROR_1]
 ```
 
 #### napi_throw
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_throw(napi_env env, napi_value error);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] error`: The `napi_value` for the Error to be thrown.
 
@@ -326,17 +357,19 @@ Gibt `napi_ok` aus, wenn die API erfolgreich war.
 
 This API throws the JavaScript Error provided.
 
-
 #### napi_throw_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_throw_error(napi_env env,
                                          const char* code,
                                          const char* msg);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
@@ -346,15 +379,18 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API wirft einen JavaScript-Fehler mit dem angegebenen Text aus.
 
 #### napi_throw_type_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_throw_type_error(napi_env env,
                                               const char* code,
                                               const char* msg);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
@@ -364,15 +400,18 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API wirft einen JavaScript-Schreibfehler mit dem angegebenen Text aus.
 
 #### napi_throw_range_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_throw_range_error(napi_env env,
                                                const char* code,
                                                const char* msg);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optionaler Fehlercode, der bei einem Fehler eingestellt werden kann.
 - `[in] msg`: C-String, der den Text darstellt, der dem Fehler zugeordnet werden soll.
@@ -381,17 +420,19 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API wirft einen JavaScript-Bereichsfehler mit dem angegebenen Text aus.
 
-
 #### napi_is_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_is_error(napi_env env,
                                       napi_value value,
                                       bool* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] msg`: Die `napi_value`, die überprüft werden soll.
 - `[out] result`: Boolean-Wert, der auf true gesetzt wird, wenn `napi_value` einen Fehler darstellt, sonst false.
@@ -400,18 +441,20 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API fragt eine `napi_value` ab, um zu prüfen, ob es sich um ein Fehlerobjekt handelt.
 
-
 #### napi_create_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_create_error(napi_env env,
                                           napi_value code,
                                           napi_value msg,
                                           napi_value* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
 - `[in] msg`: napi_value that references a JavaScript String to be used as the message for the Error.
@@ -422,16 +465,19 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API gibt einen JavaScript-Fehler mit dem angegebenen Text aus.
 
 #### napi_create_type_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_create_type_error(napi_env env,
                                                napi_value code,
                                                napi_value msg,
                                                napi_value* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
 - `[in] msg`: napi_value that references a JavaScript String to be used as the message for the Error.
@@ -441,18 +487,20 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API gibt einen JavaScript-TypeError mit dem angegebenen Text aus.
 
-
 #### napi_create_range_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_create_range_error(napi_env env,
                                                 napi_value code,
                                                 const char* msg,
                                                 napi_value* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] code`: Optional `napi_value` with the string for the error code to be associated with the error.
 - `[in] msg`: napi_value that references a JavaScript String to be used as the message for the Error.
@@ -463,10 +511,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API gibt einen JavaScript-RangeError mit dem angegebenen Text aus.
 
 #### napi_get_and_clear_last_exception
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_and_clear_last_exception(napi_env env,
                                               napi_value* result);
@@ -482,10 +532,12 @@ Diese API gibt true aus, wenn die Exception aussteht.
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_is_exception_pending
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_exception_pending(napi_env env, bool* result);
 ```
@@ -500,6 +552,7 @@ Diese API gibt true aus, wenn die Exception aussteht.
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_fatal_exception
+
 <!-- YAML
 added: v8.11.2
 napiVersion: 3
@@ -519,10 +572,12 @@ Trigger an `uncaughtException` in JavaScript. Nützlich, wenn ein asynchroner R�
 Im Falle eines nicht behebbaren Fehlers in einem nativen Modul kann ein schwerer Fehler ausgelöst werden, um den Prozess sofort zu beenden.
 
 #### napi_fatal_error
+
 <!-- YAML
 added: v8.2.0
 napiVersion: 1
 -->
+
 ```C
 NAPI_NO_RETURN void napi_fatal_error(const char* location,
                                                  size_t location_len,
@@ -548,6 +603,7 @@ Wenn Objekt-Handles zurückgesendet werden, sind sie mit einem 'Scope' verknüpf
 In vielen Fällen ist es jedoch notwendig, dass die Handles entweder für eine kürzere oder längere Lebensdauer als die der nativen Methode gültig bleiben. Die folgenden Abschnitte beschreiben die N-API-Funktionen, mit denen Sie die Lebensdauer des Handles gegenüber dem Standard ändern können.
 
 ### Die Lebensdauer des Handles kürzer halten als bei der nativen Methode
+
 Oftmals ist es notwendig, die Lebensdauer von Handles kürzer zu halten als die Lebensdauer einer nativen Methode. Betrachten Sie zum Beispiel eine native Methode, die einen Loop hat, die die Elemente in einem großen Array durchläuft:
 
 ```C
@@ -596,14 +652,17 @@ The methods available to open/close escapable scopes are [`napi_open_escapable_h
 Die Aufforderung zur Förderung eines Handles erfolgt über [`napi_escape_handle`][], die nur einmal aufgerufen werden kann.
 
 #### napi_open_handle_scope
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_open_handle_scope(napi_env env,
                                                napi_handle_scope* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
@@ -612,14 +671,17 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API öffnet ein neues Scope.
 
 #### napi_close_handle_scope
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_close_handle_scope(napi_env env,
                                                 napi_handle_scope scope);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
@@ -630,15 +692,18 @@ Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Re
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_open_escapable_handle_scope
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status
     napi_open_escapable_handle_scope(napi_env env,
                                      napi_handle_scope* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[out] result`: `napi_value` repräsentiert den neuen Scope.
 
@@ -647,15 +712,18 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API öffnet einen neuen Scope, von dem aus ein Objekt in den äußeren Scope verschoben werden kann.
 
 #### napi_close_escapable_handle_scope
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status
     napi_close_escapable_handle_scope(napi_env env,
                                       napi_handle_scope scope);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] scope`: `napi_value` repräsentiert den zu schließenden Scope.
 
@@ -666,10 +734,12 @@ Diese API schließt den eingegebenen Scope. Die Scopes müssen in umgekehrter Re
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_escape_handle
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_escape_handle(napi_env env,
                                napi_escapable_handle_scope scope,
@@ -701,10 +771,12 @@ Referenzen müssen gelöscht werden, wenn sie vom Addon nicht mehr benötigt wer
 Es können mehrere persistente Referenzen erstellt werden, die sich auf das gleiche Objekt beziehen, von denen jede das Objekt entweder am Leben erhält oder nicht auf seinem individuellen Zählwert basiert.
 
 #### napi_create_reference
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_create_reference(napi_env env,
                                               napi_value value,
@@ -717,15 +789,17 @@ NODE_EXTERN napi_status napi_create_reference(napi_env env,
 - `[in] initial_refcount`: Initialer Referenzzählwert für die neue Referenz.
 - `[out] result`: `napi_ref` mit dem Hinweis auf die neue Referenz.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API erstellt eine neue Referenz mit dem angegebenen Referenzzählwert auf das eingegebene Objekt.
 
 #### napi_delete_reference
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 ```
@@ -733,22 +807,25 @@ NODE_EXTERN napi_status napi_delete_reference(napi_env env, napi_ref ref);
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, die gelöscht werden soll.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API löscht die eingegebene Referenz.
 
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 #### napi_reference_ref
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_reference_ref(napi_env env,
                                            napi_ref ref,
                                            int* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, für die der Referenzzählwert erhöht wird.
 - `[out] result`: Der neue Referenzzählwert.
@@ -758,15 +835,18 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API erhöht den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierenden Referenzzählwert zurück.
 
 #### napi_reference_unref
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_reference_unref(napi_env env,
                                              napi_ref ref,
                                              int* result);
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref`, für die der Referenzzählwert verringert wird.
 - `[out] result`: Der neue Referenzzählwert.
@@ -776,10 +856,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API verringert den Referenzzählwert für die eingegebene Referenz und gibt den daraus resultierenden Referenzzählwert zurück.
 
 #### napi_get_reference_value
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
                                                  napi_ref ref,
@@ -787,6 +869,7 @@ NODE_EXTERN napi_status napi_get_reference_value(napi_env env,
 ```
 
 Die `napi_value`, die in oder aus diesen Methoden übertragen wird, ist ein Handle für das Objekt, auf das sich die Referenz bezieht.
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] ref`: `napi_ref` for which we requesting the corresponding Object.
 - `[out] result`: The `napi_value` for the Object referenced by the `napi_ref`.
@@ -802,6 +885,7 @@ While a Node.js process typically releases all its resources when exiting, embed
 N-API provides functions for registering and un-registering such callbacks. When those callbacks are run, all resources that are being held by the addon should be freed up.
 
 #### napi_add_env_cleanup_hook
+
 <!-- YAML
 added: v8.12.0
 napiVersion: 3
@@ -822,6 +906,7 @@ The hooks will be called in reverse order, i.e. the most recently added one will
 Removing this hook can be done by using `napi_remove_env_cleanup_hook`. Typically, that happens when the resource for which this hook was added is being torn down anyway.
 
 #### napi_remove_env_cleanup_hook
+
 <!-- YAML
 added: v8.12.0
 napiVersion: 3
@@ -838,6 +923,7 @@ Unregisters `fun` as a function to be run with the `arg` parameter once the curr
 The function must have originally been registered with `napi_add_env_cleanup_hook`, otherwise the process will abort.
 
 ## Modulregistrierung
+
 N-API-Module werden ähnlich wie andere Module registriert, nur dass anstatt des `NODE_MODULE`-Makros Folgendes verwendet wird:
 
 ```C
@@ -910,9 +996,11 @@ Weitere Informationen zum Einstellen der Eigenschaften von Objekten finden Sie i
 For more details on building addon modules in general, refer to the existing API
 
 ## Arbeiten mit JavaScript-Eigenschaften
+
 N-API stellt eine Reihe von APIs zur Verfügung, um alle Arten von JavaScript-Werten zu erstellen. Einige dieser Arten sind unter [Section 6](https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values) der [ECMAScript Language Specification](https://tc39.github.io/ecma262/) dokumentiert.
 
 Grundsätzlich werden diese APIs verwendet, um eine der folgenden Aktionen durchzuführen:
+
 1. Erstellen eines neuen JavaScript-Objekts
 2. Konvertierung von einem primitiven C-Typ in einen N-API-Wert
 3. Konvertierung vom N-API-Wert in einen primitiven C-Typ
@@ -921,7 +1009,9 @@ Grundsätzlich werden diese APIs verwendet, um eine der folgenden Aktionen durch
 N-API-Werte werden durch den Typ `napi_value` dargestellt. Jeder N-API-Aufruf, der einen JavaScript-Wert erfordert, nimmt einen `napi_value` auf. In einigen Fällen überprüft die API im Voraus den Typ des `napi_value`. Für eine bessere Performance ist es jedoch besser für den Aufrufer, sicherzustellen, dass die betreffende `napi_value` dem von der API erwarteten JavaScript-Typ entspricht.
 
 ### Enum-Typen
+
 #### napi_valuetype
+
 ```C
 typedef enum {
   // ES6 types (corresponds to typeof)
@@ -940,6 +1030,7 @@ typedef enum {
 Beschreibt den Typ einer `napi_value`. Dies entspricht im Allgemeinen den in [Section 6.1](https://tc39.github.io/ecma262/#sec-ecmascript-language-types) der ECMAScript Language Specification beschriebenen Typen. In addition to types in that section, `napi_valuetype` can also represent Functions and Objects with external data.
 
 #### napi_typedarray_type
+
 ```C
 typedef enum {
   napi_int8_array,
@@ -954,14 +1045,17 @@ typedef enum {
 } napi_typedarray_type;
 ```
 
-This represents the underlying binary scalar datatype of the TypedArray. Elements of this enum correspond to [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
+Dies stellt den zugrunde liegenden, binären Skalar-Datentyp des TypedArray dar. Elements of this enum correspond to [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 ### Funktionen zur Objekterstellung
+
 #### napi_create_array
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_array(napi_env env, napi_value* result)
 ```
@@ -971,13 +1065,15 @@ napi_status napi_create_array(napi_env env, napi_value* result)
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API returns an N-API value corresponding to a JavaScript Array type. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
+Diese API gibt einen N-API-Wert zurück, der einem JavaScript-Array-Typ entspricht. JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
 
 #### napi_create_array_with_length
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_array_with_length(napi_env env,
                                           size_t length,
@@ -990,15 +1086,17 @@ napi_status napi_create_array_with_length(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API returns an N-API value corresponding to a JavaScript Array type. The Array's length property is set to the passed-in length parameter. Es ist jedoch nicht garantiert, dass der zugrunde liegende Puffer beim Erstellen des Arrays von der VM vorab zugewiesen wird - dieses Verhalten bleibt der zugrunde liegenden VM-Implementierung überlassen. Wenn der Puffer ein zusammenhängender Speicherblock sein muss, der direkt über C gelesen und/oder beschrieben werden kann, sollten Sie die Verwendung von [`napi_create_external_arraybuffer`][] in Betracht ziehen.
+Diese API gibt einen N-API-Wert zurück, der einem JavaScript-Array-Typ entspricht. Die Längeneigenschaft von Array wird auf den eingegebenen Längenparameter festgelegt. Es ist jedoch nicht garantiert, dass der zugrunde liegende Puffer beim Erstellen des Arrays von der VM vorab zugewiesen wird - dieses Verhalten bleibt der zugrunde liegenden VM-Implementierung überlassen. Wenn der Puffer ein zusammenhängender Speicherblock sein muss, der direkt über C gelesen und/oder beschrieben werden kann, sollten Sie die Verwendung von [`napi_create_external_arraybuffer`][] in Betracht ziehen.
 
 JavaScript arrays are described in [Section 22.1](https://tc39.github.io/ecma262/#sec-array-objects) of the ECMAScript Language Specification.
 
 #### napi_create_arraybuffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_arraybuffer(napi_env env,
                                     size_t byte_length,
@@ -1013,15 +1111,17 @@ napi_status napi_create_arraybuffer(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API returns an N-API value corresponding to a JavaScript ArrayBuffer. ArrayBuffers are used to represent fixed-length binary data buffers. They are normally used as a backing-buffer for TypedArray objects. The ArrayBuffer allocated will have an underlying byte buffer whose size is determined by the `length` parameter that's passed in. Der zugrunde liegende Puffer wird optional an den Aufrufer zurückgegeben, falls der Aufrufer den Puffer direkt manipulieren möchte. An diesen Puffer kann nur direkt aus dem nativen Code geschrieben werden. To write to this buffer from JavaScript, a typed array or DataView object would need to be created.
+Diese API gibt einen N-API-Wert zurück, der einem JavaScript ArrayBuffer entspricht. ArrayBuffers werden zur Darstellung von binären Datenpuffern mit fester Länge verwendet. Sie werden normalerweise als Backing-Puffer für TypedArray-Objekte verwendet. Dem ArrayBuffer wird ein zugrunde liegender Bytepuffer zugewiesen, dessen Größe durch den `length`-Parameter bestimmt wird, der eingegeben wird. Der zugrunde liegende Puffer wird optional an den Aufrufer zurückgegeben, falls der Aufrufer den Puffer direkt manipulieren möchte. An diesen Puffer kann nur direkt aus dem nativen Code geschrieben werden. Um an diesen Puffer aus JavaScript zu schreiben, müsste ein typisiertes Array oder ein DataView-Objekt erstellt werden.
 
 JavaScript ArrayBuffer objects are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
 
 #### napi_create_buffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_buffer(napi_env env,
                                size_t size,
@@ -1034,15 +1134,17 @@ napi_status napi_create_buffer(napi_env env,
 - `[out] data`: Raw-Verweis auf den darunter liegenden Puffer.
 - `[out] result`: Eine `napi_value`, die einen `node::buffer` darstellt.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API weist ein `node::Buffer`-Objekt zu. Während es sich hierbei immer noch um eine vollständig unterstützte Datenstruktur handelt, genügt in den meisten Fällen die Verwendung eines TypedArray.
 
 #### napi_create_buffer_copy
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_buffer_copy(napi_env env,
                                     size_t length,
@@ -1057,15 +1159,17 @@ napi_status napi_create_buffer_copy(napi_env env,
 - `[out] result_data`: Pointer to the new Buffer's underlying data buffer.
 - `[out] result`: Eine `napi_value`, die einen `node::buffer` darstellt.
 
-Gibt `napi_ok` aus, wenn die API erfolgreich war.
+Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Diese API weist ein `node::buffer`-Objekt zu und initialisiert es mit Daten, die aus dem eingegebenen Puffer kopiert wurden. Während es sich hierbei immer noch um eine vollständig unterstützte Datenstruktur handelt, genügt in den meisten Fällen die Verwendung eines TypedArray.
 
 #### napi_create_external
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_external(napi_env env,
                                  void* data,
@@ -1087,10 +1191,12 @@ Diese API weist einen JavaScript-Wert mit externen Daten zu. Dies wird verwendet
 *Note*: The created value is not an object, and therefore does not support additional properties. It is considered a distinct value type: calling `napi_typeof()` with an external value yields `napi_external`.
 
 #### napi_create_external_arraybuffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status
 napi_create_external_arraybuffer(napi_env env,
@@ -1110,15 +1216,17 @@ napi_create_external_arraybuffer(napi_env env,
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
-This API returns an N-API value corresponding to a JavaScript ArrayBuffer. Der zugrunde liegende Bytepuffer des ArrayBuffer wird extern zugewiesen und verwaltet. Der Aufrufer muss sicherstellen, dass der Bytepuffer gültig bleibt, bis der endgültige Rückruf aufgerufen wird.
+Diese API gibt einen N-API-Wert zurück, der einem JavaScript ArrayBuffer entspricht. Der zugrunde liegende Bytepuffer des ArrayBuffer wird extern zugewiesen und verwaltet. Der Aufrufer muss sicherstellen, dass der Bytepuffer gültig bleibt, bis der endgültige Rückruf aufgerufen wird.
 
 JavaScript ArrayBuffers are described in [Section 24.1](https://tc39.github.io/ecma262/#sec-arraybuffer-objects) of the ECMAScript Language Specification.
 
 #### napi_create_external_buffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_external_buffer(napi_env env,
                                         size_t length,
@@ -1142,10 +1250,12 @@ Diese API weist ein `node::Buffer`-Objekt zu und initialisiert es mit Daten, die
 *Note*: For Node.js >=4 `Buffers` are Uint8Arrays.
 
 #### napi_create_function
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_function(napi_env env,
                                  const char* utf8name,
@@ -1169,10 +1279,12 @@ Diese API gibt einen N-API-Wert zurück, der einem JavaScript-Function-Objekt en
 JavaScript Functions are described in [Section 19.2](https://tc39.github.io/ecma262/#sec-function-objects) of the ECMAScript Language Specification.
 
 #### napi_create_object
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_object(napi_env env, napi_value* result)
 ```
@@ -1187,10 +1299,12 @@ Diese API weist ein Standard-JavaScript-Objekt zu. Es ist das Äquivalent zu `ne
 The JavaScript Object type is described in [Section 6.1.7](https://tc39.github.io/ecma262/#sec-object-type) of the ECMAScript Language Specification.
 
 #### napi_create_symbol
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_symbol(napi_env env,
                                napi_value description,
@@ -1208,10 +1322,12 @@ Diese API erstellt ein JavaScript-Symbol-Objekt aus einem UTF8-kodierten C-Strin
 The JavaScript Symbol type is described in [Section 19.4](https://tc39.github.io/ecma262/#sec-symbol-objects) of the ECMAScript Language Specification.
 
 #### napi_create_typedarray
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_typedarray(napi_env env,
                                    napi_typedarray_type type,
@@ -1232,12 +1348,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API creates a JavaScript TypedArray object over an existing ArrayBuffer. TypedArray objects provide an array-like view over an underlying data buffer where each element has the same underlying binary scalar datatype.
 
-It's required that (length * size_of_element) + byte_offset should be <= the size in bytes of the array passed in. Wenn nicht, wird eine RangeError-Ausnahme ausgelöst.
+It's required that (length * size_of_element) + byte_offset should be <= the size in bytes of the array passed in. If not, a RangeError exception is raised.
 
 JavaScript TypedArray Objects are described in [Section 22.2](https://tc39.github.io/ecma262/#sec-typedarray-objects) of the ECMAScript Language Specification.
 
-
 #### napi_create_dataview
+
 <!-- YAML
 added: v8.3.0
 napiVersion: 1
@@ -1267,11 +1383,14 @@ Es ist erforderlich, dass `byte_length + byte_offset` kleiner oder gleich der Gr
 JavaScript DataView Objects are described in [Section 24.3](https://tc39.github.io/ecma262/#sec-dataview-objects) of the ECMAScript Language Specification.
 
 ### Funktionen zur Konvertierung von C-Typen in N-API
+
 #### napi_create_int32
+
 <!-- YAML
 added: v8.4.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_int32(napi_env env, int32_t value, napi_value* result)
 ```
@@ -1287,10 +1406,12 @@ This API is used to convert from the C `int32_t` type to the JavaScript Number t
 The JavaScript Number type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
 
 #### napi_create_uint32
+
 <!-- YAML
 added: v8.4.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_uint32(napi_env env, uint32_t value, napi_value* result)
 ```
@@ -1306,10 +1427,12 @@ This API is used to convert from the C `uint32_t` type to the JavaScript Number 
 The JavaScript Number type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
 
 #### napi_create_int64
+
 <!-- YAML
 added: v8.4.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_int64(napi_env env, int64_t value, napi_value* result)
 ```
@@ -1325,10 +1448,12 @@ This API is used to convert from the C `int64_t` type to the JavaScript Number t
 The JavaScript Number type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification. Beachten Sie, dass der gesamte Bereich von `int64_t` nicht mit voller Präzision in JavaScript dargestellt werden kann. Integer-Werte außerhalb des Bereichs von [`Number.MIN_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.min_safe_integer)-(2^53 - 1) -[`Number.MAX_SAFE_INTEGER`](https://tc39.github.io/ecma262/#sec-number.max_safe_integer)(2^53 - 1) verlieren an Genauigkeit.
 
 #### napi_create_double
+
 <!-- YAML
 added: v8.4.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_double(napi_env env, double value, napi_value* result)
 ```
@@ -1344,10 +1469,12 @@ This API is used to convert from the C `double` type to the JavaScript Number ty
 The JavaScript Number type is described in [Section 6.1.6](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type) of the ECMAScript Language Specification.
 
 #### napi_create_string_latin1
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_string_latin1(napi_env env,
                                       const char* str,
@@ -1367,10 +1494,12 @@ This API creates a JavaScript String object from a ISO-8859-1-encoded C string.
 The JavaScript String type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
 
 #### napi_create_string_utf16
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_string_utf16(napi_env env,
                                      const char16_t* str,
@@ -1390,10 +1519,12 @@ Diese API erstellt ein JavaScript-String-Objekt aus einem UTF16-LE-kodierten C-S
 The JavaScript String type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
 
 #### napi_create_string_utf8
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_string_utf8(napi_env env,
                                     const char* str,
@@ -1413,11 +1544,14 @@ Diese API erstellt ein JavaScript-String-Objekt aus einem UTF8-kodierten C-Strin
 The JavaScript String type is described in [Section 6.1.4](https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type) of the ECMAScript Language Specification.
 
 ### Funktionen zur Konvertierung von N-API in C-Typen
+
 #### napi_get_array_length
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_array_length(napi_env env,
                                   napi_value value,
@@ -1435,10 +1569,12 @@ Diese API gibt die Länge des Arrays zurück.
 Array length is described in [Section 22.1.4.1](https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length) of the ECMAScript Language Specification.
 
 #### napi_get_arraybuffer_info
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_arraybuffer_info(napi_env env,
                                       napi_value arraybuffer,
@@ -1458,10 +1594,12 @@ Diese API wird verwendet, um den zugrunde liegenden Datenpuffer eines ArrayBuffe
 *WARNING*: Seien Sie bei der Verwendung dieser API vorsichtig. Die Lebensdauer des zugrunde liegenden Datenpuffers wird vom ArrayBuffer auch nach seiner Rückgabe verwaltet. A possible safe way to use this API is in conjunction with [`napi_create_reference`][], which can be used to guarantee control over the lifetime of the ArrayBuffer. It's also safe to use the returned data buffer within the same callback as long as there are no calls to other APIs that might trigger a GC.
 
 #### napi_get_buffer_info
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_buffer_info(napi_env env,
                                  napi_value value,
@@ -1481,10 +1619,12 @@ Diese API wird verwendet, um den zugrunde liegenden Datenpuffer eines `node::Buf
 *Warning*: Seien Sie bei der Verwendung dieser API vorsichtig, da die Lebensdauer des zugrunde liegenden Datenpuffers nicht garantiert ist, wenn er von der VM verwaltet wird.
 
 #### napi_get_prototype
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_prototype(napi_env env,
                                napi_value object,
@@ -1498,10 +1638,12 @@ napi_status napi_get_prototype(napi_env env,
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 #### napi_get_typedarray_info
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_typedarray_info(napi_env env,
                                      napi_value typedarray,
@@ -1526,6 +1668,7 @@ Diese API gibt verschiedene Eigenschaften eines Typed-Arrays zurück.
 *Warning*: Seien Sie bei der Verwendung dieser API vorsichtig, da der zugrunde liegende Datenpuffer von der VM verwaltet wird
 
 #### napi_get_dataview_info
+
 <!-- YAML
 added: v8.3.0
 napiVersion: 1
@@ -1552,10 +1695,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API gibt verschiedene Eigenschaften einer DataView zurück.
 
 #### napi_get_value_bool
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_bool(napi_env env, napi_value value, bool* result)
 ```
@@ -1569,10 +1714,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn eine nicht boolesche 
 Diese API gibt das C-boolesche primitive Äquivalent des angegebenen JavaScript-Boolean zurück.
 
 #### napi_get_value_double
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_double(napi_env env,
                                   napi_value value,
@@ -1588,10 +1735,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn eine Nicht Zahl `napi
 Diese API gibt das C-doppelte primitive Äquivalent der angegebenen JavaScript-Number zurück.
 
 #### napi_get_value_external
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_external(napi_env env,
                                     napi_value value,
@@ -1607,10 +1756,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn eine nicht externe `n
 Diese API ruft den externen Datenverweis ab, der zuvor an `napi_create_external()` übergeben wurde.
 
 #### napi_get_value_int32
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_int32(napi_env env,
                                  napi_value value,
@@ -1625,15 +1776,17 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn eine Nicht Zahl `napi
 
 Diese API gibt das primitive Äquivalent C-int32 der angegebenen JavaScript-Number zurück.
 
-Wenn die Zahl den Bereich des 32-Bit-Integer überschreitet, wird das Ergebnis auf das Äquivalent der unteren 32 Bit abgeschnitten. This can result in a large positive number becoming a negative number if the value is > 2^31 -1.
+Wenn die Zahl den Bereich des 32-Bit-Integer überschreitet, wird das Ergebnis auf das Äquivalent der unteren 32 Bit abgeschnitten. Dies kann dazu führen, dass eine große positive Zahl zu einer negativen Zahl wird, wenn der Wert > 2^31 -1 ist.
 
 Non-finite number values (NaN, positive infinity, or negative infinity) set the result to zero.
 
 #### napi_get_value_int64
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_int64(napi_env env,
                                  napi_value value,
@@ -1653,10 +1806,12 @@ Number values outside the range of [`Number.MIN_SAFE_INTEGER`](https://tc39.gith
 Non-finite number values (NaN, positive infinity, or negative infinity) set the result to zero.
 
 #### napi_get_value_string_latin1
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_string_latin1(napi_env env,
                                          napi_value value,
@@ -1676,10 +1831,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn ein Nicht- String `na
 Diese API gibt den ISO-8859-1-kodierten String zurück, der dem übergebenen Wert entspricht.
 
 #### napi_get_value_string_utf8
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_string_utf8(napi_env env,
                                        napi_value value,
@@ -1699,10 +1856,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn ein Nicht- String `na
 Diese API gibt den UTF8-kodierten String zurück, der dem übergebenen Wert entspricht.
 
 #### napi_get_value_string_utf16
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_string_utf16(napi_env env,
                                         napi_value value,
@@ -1722,10 +1881,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn ein Nicht- String `na
 Diese API gibt den UTF16-kodierten String zurück, der dem übergebenen Wert entspricht.
 
 #### napi_get_value_uint32
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_value_uint32(napi_env env,
                                   napi_value value,
@@ -1741,11 +1902,14 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war. Wenn eine Nicht-Zahl `napi
 Diese API gibt das C-primitive Äquivalent der gegebenen `napi_value` als `uint32_t` zurück.
 
 ### Funktionen zum Abrufen globaler Instanzen
+
 #### napi_get_boolean
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_boolean(napi_env env, bool value, napi_value* result)
 ```
@@ -1759,10 +1923,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API wird verwendet, um das JavaScript-Singleton-Objekt zurückzugeben, das verwendet wird, um den angegebenen booleschen Wert darzustellen
 
 #### napi_get_global
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_global(napi_env env, napi_value* result)
 ```
@@ -1775,10 +1941,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API returns the global Object.
 
 #### napi_get_null
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_null(napi_env env, napi_value* result)
 ```
@@ -1791,10 +1959,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API returns the null Object.
 
 #### napi_get_undefined
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_undefined(napi_env env, napi_value* result)
 ```
@@ -1811,15 +1981,18 @@ Diese API gibt das undefinierte Objekt aus.
 N-API stellt eine Reihe von APIs zur Verfügung, um einige abstrakte Operationen mit JavaScript-Werten durchzuführen. Einige dieser Operationen sind unter [Section 7](https://tc39.github.io/ecma262/#sec-abstract-operations) der [ECMAScript Language Specification](https://tc39.github.io/ecma262/) dokumentiert.
 
 Diese APIs unterstützen die Durchführung einer der folgenden:
+
 1. JavaScript-Werte auf bestimmte JavaScript-Typen zuweisen (wie z.B. Number oder String)
 2. Check the type of a JavaScript value
 3. Check for equality between two JavaScript values
 
 ### napi_coerce_to_bool
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_coerce_to_bool(napi_env env,
                                 napi_value value,
@@ -1835,10 +2008,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API implements the abstract operation ToBoolean as defined in [Section 7.1.2](https://tc39.github.io/ecma262/#sec-toboolean) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in Object.
 
 ### napi_coerce_to_number
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_coerce_to_number(napi_env env,
                                   napi_value value,
@@ -1854,10 +2029,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API implements the abstract operation ToNumber as defined in [Section 7.1.3](https://tc39.github.io/ecma262/#sec-tonumber) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in Object.
 
 ### napi_coerce_to_object
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_coerce_to_object(napi_env env,
                                   napi_value value,
@@ -1873,10 +2050,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API implements the abstract operation ToObject as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-toobject) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in Object.
 
 ### napi_coerce_to_string
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_coerce_to_string(napi_env env,
                                   napi_value value,
@@ -1892,10 +2071,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API implements the abstract operation ToString as defined in [Section 7.1.13](https://tc39.github.io/ecma262/#sec-tostring) of the ECMAScript Language Specification. This API can be re-entrant if getters are defined on the passed-in Object.
 
 ### napi_typeof
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
 ```
@@ -1905,15 +2086,18 @@ napi_status napi_typeof(napi_env env, napi_value value, napi_valuetype* result)
 - `[out] result`: The type of the JavaScript value.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
+
 - `napi_invalid_arg` if the type of `value` is not a known ECMAScript type and `value` is not an External value.
 
 This API represents behavior similar to invoking the `typeof` Operator on the object as defined in [Section 12.5.5](https://tc39.github.io/ecma262/#sec-typeof-operator) of the ECMAScript Language Specification. However, it has support for detecting an External value. If `value` has a type that is invalid, an error is returned.
 
 ### napi_instanceof
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_instanceof(napi_env env,
                             napi_value object,
@@ -1931,10 +2115,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API represents invoking the `instanceof` Operator on the object as defined in [Section 12.10.4](https://tc39.github.io/ecma262/#sec-instanceofoperator) of the ECMAScript Language Specification.
 
 ### napi_is_array
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_array(napi_env env, napi_value value, bool* result)
 ```
@@ -1948,10 +2134,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API represents invoking the `IsArray` operation on the object as defined in [Section 7.2.2](https://tc39.github.io/ecma262/#sec-isarray) of the ECMAScript Language Specification.
 
 ### napi_is_arraybuffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_arraybuffer(napi_env env, napi_value value, bool* result)
 ```
@@ -1965,10 +2153,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API checks if the Object passed in is an array buffer.
 
 ### napi_is_buffer
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_buffer(napi_env env, napi_value value, bool* result)
 ```
@@ -1982,10 +2172,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API checks if the Object passed in is a buffer.
 
 ### napi_is_error
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_error(napi_env env, napi_value value, bool* result)
 ```
@@ -1999,10 +2191,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API checks if the Object passed in is an Error.
 
 ### napi_is_typedarray
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_typedarray(napi_env env, napi_value value, bool* result)
 ```
@@ -2016,6 +2210,7 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API checks if the Object passed in is a typed array.
 
 ### napi_is_dataview
+
 <!-- YAML
 added: v8.3.0
 napiVersion: 1
@@ -2034,10 +2229,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API checks if the Object passed in is a DataView.
 
 ### napi_strict_equals
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_strict_equals(napi_env env,
                                napi_value lhs,
@@ -2059,6 +2256,7 @@ This API represents the invocation of the Strict Equality algorithm as defined i
 N-API exposes a set of APIs to get and set properties on JavaScript objects. Some of these types are documented under [Section 7](https://tc39.github.io/ecma262/#sec-operations-on-objects) of the [ECMAScript Language Specification](https://tc39.github.io/ecma262/).
 
 Properties in JavaScript are represented as a tuple of a key and a value. Fundamentally, all property keys in N-API can be represented in one of the following forms:
+
 - Named: a simple UTF8-encoded string
 - Integer-Indexed: an index value represented by `uint32_t`
 - JavaScript value: these are represented in N-API by `napi_value`. This can be a `napi_value` representing a String, Number, or Symbol.
@@ -2068,11 +2266,14 @@ N-API-Werte werden durch den Typ `napi_value` dargestellt. Jeder N-API-Aufruf, d
 The APIs documented in this section provide a simple interface to get and set properties on arbitrary JavaScript objects represented by `napi_value`.
 
 For instance, consider the following JavaScript code snippet:
+
 ```js
 const obj = {};
 obj.myProp = 123;
 ```
+
 The equivalent can be done using N-API values with the following snippet:
+
 ```C
 napi_status status = napi_generic_failure;
 
@@ -2091,11 +2292,14 @@ if (status != napi_ok) return status;
 ```
 
 Indexed properties can be set in a similar manner. Consider the following JavaScript snippet:
+
 ```js
 const arr = [];
 arr[123] = 'hello';
 ```
+
 The equivalent can be done using N-API values with the following snippet:
+
 ```C
 napi_status status = napi_generic_failure;
 
@@ -2114,12 +2318,14 @@ if (status != napi_ok) return status;
 ```
 
 Properties can be retrieved using the APIs described in this section. Consider the following JavaScript snippet:
+
 ```js
 const arr = [];
 const value = arr[123];
 ```
 
 The following is the approximate equivalent of the N-API counterpart:
+
 ```C
 napi_status status = napi_generic_failure;
 
@@ -2134,6 +2340,7 @@ if (status != napi_ok) return status;
 ```
 
 Finally, multiple properties can also be defined on an object for performance reasons. Consider the following JavaScript:
+
 ```js
 const obj = {};
 Object.defineProperties(obj, {
@@ -2143,6 +2350,7 @@ Object.defineProperties(obj, {
 ```
 
 The following is the approximate equivalent of the N-API counterpart:
+
 ```C
 napi_status status = napi_status_generic_failure;
 
@@ -2171,7 +2379,9 @@ if (status != napi_ok) return status;
 ```
 
 ### Structures
+
 #### napi_property_attributes
+
 ```C
 typedef enum {
   napi_default = 0,
@@ -2194,6 +2404,7 @@ typedef enum {
 - `napi_static` - Used to indicate that the property will be defined as a static property on a class as opposed to an instance property, which is the default. This is used only by [`napi_define_class`][]. It is ignored by `napi_define_properties`.
 
 #### napi_property_descriptor
+
 ```C
 typedef struct {
   // One of utf8name or name should be NULL.
@@ -2220,11 +2431,14 @@ typedef struct {
 - `data`: The callback data passed into `method`, `getter` and `setter` if this function is invoked.
 
 ### Functions
+
 #### napi_get_property_names
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_property_names(napi_env env,
                                     napi_value object,
@@ -2240,10 +2454,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API returns the array of properties for the Object passed in
 
 #### napi_set_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_set_property(napi_env env,
                               napi_value object,
@@ -2261,10 +2477,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API set a property on the Object passed in.
 
 #### napi_get_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_property(napi_env env,
                               napi_value object,
@@ -2281,12 +2499,13 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API gets the requested property from the Object passed in.
 
-
 #### napi_has_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_has_property(napi_env env,
                               napi_value object,
@@ -2303,12 +2522,13 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API checks if the Object passed in has the named property.
 
-
 #### napi_delete_property
+
 <!-- YAML
 added: v8.2.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_delete_property(napi_env env,
                                  napi_value object,
@@ -2325,12 +2545,13 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API attempts to delete the `key` own property from `object`.
 
-
 #### napi_has_own_property
+
 <!-- YAML
 added: v8.2.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_has_own_property(napi_env env,
                                   napi_value object,
@@ -2347,12 +2568,13 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API checks if the Object passed in has the named own property. `key` must be a string or a Symbol, or an error will be thrown. N-API will not perform any conversion between data types.
 
-
 #### napi_set_named_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_set_named_property(napi_env env,
                                     napi_value object,
@@ -2370,10 +2592,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This method is equivalent to calling [`napi_set_property`][] with a `napi_value` created from the string passed in as `utf8Name`
 
 #### napi_get_named_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_named_property(napi_env env,
                                     napi_value object,
@@ -2391,10 +2615,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This method is equivalent to calling [`napi_get_property`][] with a `napi_value` created from the string passed in as `utf8Name`
 
 #### napi_has_named_property
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_has_named_property(napi_env env,
                                     napi_value object,
@@ -2412,10 +2638,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This method is equivalent to calling [`napi_has_property`][] with a `napi_value` created from the string passed in as `utf8Name`
 
 #### napi_set_element
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_set_element(napi_env env,
                              napi_value object,
@@ -2433,10 +2661,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API sets and element on the Object passed in.
 
 #### napi_get_element
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_element(napi_env env,
                              napi_value object,
@@ -2454,10 +2684,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API gets the element at the requested index.
 
 #### napi_has_element
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_has_element(napi_env env,
                              napi_value object,
@@ -2475,10 +2707,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API returns if the Object passed in has an element at the requested index.
 
 #### napi_delete_element
+
 <!-- YAML
 added: v8.2.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_delete_element(napi_env env,
                                 napi_value object,
@@ -2496,10 +2730,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API attempts to delete the specified `index` from `object`.
 
 #### napi_define_properties
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_define_properties(napi_env env,
                                    napi_value object,
@@ -2519,18 +2755,20 @@ This method allows the efficient definition of multiple properties on a given ob
 ## Working with JavaScript Functions
 
 N-API provides a set of APIs that allow JavaScript code to call back into native code. N-API APIs that support calling back into native code take in a callback functions represented by the `napi_callback` type. When the JavaScript VM calls back to native code, the `napi_callback` function provided is invoked. The APIs documented in this section allow the callback function to do the following:
+
 - Get information about the context in which the callback was invoked.
 - Get the arguments passed into the callback.
 - Return a `napi_value` back from the callback.
 
 Additionally, N-API provides a set of functions which allow calling JavaScript functions from native code. One can either call a function like a regular JavaScript function call, or as a constructor function.
 
-
 ### napi_call_function
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_call_function(napi_env env,
                                napi_value recv,
@@ -2552,6 +2790,7 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This method allows a JavaScript function object to be called from a native add-on. This is the primary mechanism of calling back *from* the add-on's native code *into* JavaScript. For the special case of calling into JavaScript after an async operation, see [`napi_make_callback`][].
 
 A sample use case might look as follows. Consider the following JavaScript snippet:
+
 ```js
 function AddTwo(num) {
   return num + 2;
@@ -2559,6 +2798,7 @@ function AddTwo(num) {
 ```
 
 Then, the above function can be invoked from a native add-on using the following code:
+
 ```C
 // Get the function named "AddTwo" on the global object
 napi_value global, add_two, arg;
@@ -2587,10 +2827,12 @@ if (status != napi_ok) return;
 ```
 
 ### napi_create_function
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_function(napi_env env,
                                  const char* utf8name,
@@ -2612,6 +2854,7 @@ This API allows an add-on author to create a function object in native code. Thi
 *Note*: The newly created function is not automatically visible from script after this call. Instead, a property must be explicitly set on any object that is visible to JavaScript, in order for the function to be accessible from script.
 
 In order to expose a function as part of the add-on's module exports, set the newly created function on the exports object. A sample module might look as follows:
+
 ```C
 napi_value SayHello(napi_env env, napi_callback_info info) {
   printf("Hello\n");
@@ -2635,6 +2878,7 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 Given the above code, the add-on can be used from JavaScript as follows:
+
 ```js
 const myaddon = require('./addon');
 myaddon.sayHello();
@@ -2643,10 +2887,12 @@ myaddon.sayHello();
 *Note*: The string passed to require is not necessarily the name passed into `NAPI_MODULE` in the earlier snippet but the name of the target in `binding.gyp` responsible for creating the `.node` file.
 
 ### napi_get_cb_info
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_cb_info(napi_env env,
                              napi_callback_info cbinfo,
@@ -2668,10 +2914,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This method is used within a callback function to retrieve details about the call like the arguments and the `this` pointer from a given callback info.
 
 ### napi_get_new_target
+
 <!-- YAML
 added: v8.6.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_new_target(napi_env env,
                                 napi_callback_info cbinfo,
@@ -2687,10 +2935,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API returns the `new.target` of the constructor call. If the current callback is not a constructor call, the result is `NULL`.
 
 ### napi_new_instance
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_new_instance(napi_env env,
                               napi_value cons,
@@ -2706,6 +2956,7 @@ napi_status napi_new_instance(napi_env env,
 - `[out] result`: `napi_value` representing the JavaScript object returned, which in this case is the constructed object.
 
 This method is used to instantiate a new JavaScript value using a given `napi_value` that represents the constructor for the object. For example, consider the following snippet:
+
 ```js
 function MyObject(param) {
   this.param = param;
@@ -2716,6 +2967,7 @@ const value = new MyObject(arg);
 ```
 
 The following can be approximated in N-API using the following snippet:
+
 ```C
 // Get the constructor function MyObject
 napi_value global, constructor, arg, value;
@@ -2742,9 +2994,9 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 N-API offers a way to "wrap" C++ classes and instances so that the class constructor and methods can be called from JavaScript.
 
- 1. The [`napi_define_class`][] API defines a JavaScript class with constructor, static properties and methods, and instance properties and methods that correspond to the C++ class.
- 2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
- 3. When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` C++ function is invoked. For an instance callback, [`napi_unwrap`][] obtains the C++ instance that is the target of the call.
+1. The [`napi_define_class`][] API defines a JavaScript class with constructor, static properties and methods, and instance properties and methods that correspond to the C++ class.
+2. When JavaScript code invokes the constructor, the constructor callback uses [`napi_wrap`][] to wrap a new C++ instance in a JavaScript object, then returns the wrapper object.
+3. When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` C++ function is invoked. For an instance callback, [`napi_unwrap`][] obtains the C++ instance that is the target of the call.
 
 For wrapped objects it may be difficult to distinguish between a function called on a class prototype and a function called on an instance of a class. A common pattern used to address this problem is to save a persistent reference to the class constructor for later `instanceof` checks.
 
@@ -2767,10 +3019,12 @@ if (is_instance) {
 The reference must be freed once it is no longer needed.
 
 ### napi_define_class
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_define_class(napi_env env,
                               const char* utf8name,
@@ -2782,31 +3036,34 @@ napi_status napi_define_class(napi_env env,
                               napi_value* result);
 ```
 
- - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
- - `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
- - `[in] length`: The length of the utf8name in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
- - `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
- - `[in] data`: Optional data to be passed to the constructor callback as the `data` property of the callback info.
- - `[in] property_count`: Number of items in the `properties` array argument.
- - `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
- - `[out] result`: A `napi_value` representing the constructor function for the class.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] utf8name`: Name of the JavaScript constructor function; this is not required to be the same as the C++ class name, though it is recommended for clarity.
+- `[in] length`: The length of the utf8name in bytes, or `NAPI_AUTO_LENGTH` if it is null-terminated.
+- `[in] constructor`: Callback function that handles constructing instances of the class. (This should be a static method on the class, not an actual C++ constructor function.)
+- `[in] data`: Optional data to be passed to the constructor callback as the `data` property of the callback info.
+- `[in] property_count`: Number of items in the `properties` array argument.
+- `[in] properties`: Array of property descriptors describing static and instance data properties, accessors, and methods on the class See `napi_property_descriptor`.
+- `[out] result`: A `napi_value` representing the constructor function for the class.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 Defines a JavaScript class that corresponds to a C++ class, including:
- - A JavaScript constructor function that has the class name and invokes the provided C++ constructor callback.
- - Properties on the constructor function corresponding to _static_ data properties, accessors, and methods of the C++ class (defined by property descriptors with the `napi_static` attribute).
- - Properties on the constructor function's `prototype` object corresponding to _non-static_ data properties, accessors, and methods of the C++ class (defined by property descriptors without the `napi_static` attribute).
+
+- A JavaScript constructor function that has the class name and invokes the provided C++ constructor callback.
+- Properties on the constructor function corresponding to *static* data properties, accessors, and methods of the C++ class (defined by property descriptors with the `napi_static` attribute).
+- Properties on the constructor function's `prototype` object corresponding to *non-static* data properties, accessors, and methods of the C++ class (defined by property descriptors without the `napi_static` attribute).
 
 The C++ constructor callback should be a static method on the class that calls the actual class constructor, then wraps the new C++ instance in a JavaScript object, and returns the wrapper object. See `napi_wrap()` for details.
 
 The JavaScript constructor function returned from [`napi_define_class`][] is often saved and used later, to construct new instances of the class from native code, and/or check whether provided values are instances of the class. In that case, to prevent the function value from being garbage-collected, create a persistent reference to it using [`napi_create_reference`][] and ensure the reference count is kept >= 1.
 
 ### napi_wrap
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_wrap(napi_env env,
                       napi_value js_object,
@@ -2816,12 +3073,12 @@ napi_status napi_wrap(napi_env env,
                       napi_ref* result);
 ```
 
- - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
- - `[in] js_object`: The JavaScript object that will be the wrapper for the native object. This object _must_ have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
- - `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
- - `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
- - `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
- - `[out] result`: Optional reference to the wrapped object.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] js_object`: The JavaScript object that will be the wrapper for the native object. This object *must* have been created from the `prototype` of a constructor that was created using `napi_define_class()`.
+- `[in] native_object`: The native instance that will be wrapped in the JavaScript object.
+- `[in] finalize_cb`: Optional native callback that can be used to free the native instance when the JavaScript object is ready for garbage-collection.
+- `[in] finalize_hint`: Optional contextual hint that is passed to the finalize callback.
+- `[out] result`: Optional reference to the wrapped object.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
@@ -2840,19 +3097,21 @@ The optional returned reference is initially a weak reference, meaning it has a 
 Calling napi_wrap() a second time on an object will return an error. To associate another native instance with the object, use napi_remove_wrap() first.
 
 ### napi_unwrap
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_unwrap(napi_env env,
                         napi_value js_object,
                         void** result);
 ```
 
- - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
- - `[in] js_object`: The object associated with the native instance.
- - `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] js_object`: The object associated with the native instance.
+- `[out] result`: Pointer to the wrapped native instance.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
@@ -2861,19 +3120,21 @@ Retrieves a native instance that was previously wrapped in a JavaScript object u
 When JavaScript code invokes a method or property accessor on the class, the corresponding `napi_callback` is invoked. If the callback is for an instance method or accessor, then the `this` argument to the callback is the wrapper object; the wrapped C++ instance that is the target of the call can be obtained then by calling `napi_unwrap()` on the wrapper object.
 
 ### napi_remove_wrap
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_remove_wrap(napi_env env,
                              napi_value js_object,
                              void** result);
 ```
 
- - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
- - `[in] js_object`: The object associated with the native instance.
- - `[out] result`: Pointer to the wrapped native instance.
+- `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
+- `[in] js_object`: The object associated with the native instance.
+- `[out] result`: Pointer to the wrapped native instance.
 
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
@@ -2897,7 +3158,6 @@ typedef void (*napi_async_complete_callback)(napi_env env,
                                              void* data);
 ```
 
-
 When these methods are invoked, the `data` parameter passed will be the addon-provided void* data that was passed into the `napi_create_async_work` call.
 
 Once created the async worker can be queued for execution using the [`napi_queue_async_work`][] function:
@@ -2912,14 +3172,17 @@ napi_status napi_queue_async_work(napi_env env,
 After calling [`napi_cancel_async_work`][], the `complete` callback will be invoked with a status value of `napi_cancelled`. The work should not be deleted before the `complete` callback invocation, even when it was cancelled.
 
 ### napi_create_async_work
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 changes:
+
   - version: v8.6.0
     pr-url: https://github.com/nodejs/node/pull/14697
     description: Added `async_resource` and `async_resource_name` parameters.
 -->
+
 ```C
 napi_status napi_create_async_work(napi_env env,
                                    napi_value async_resource,
@@ -2947,10 +3210,12 @@ This API allocates a work object that is used to execute logic asynchronously. I
 *Note*: The `async_resource_name` identifier is provided by the user and should be representative of the type of async work being performed. It is also recommended to apply namespacing to the identifier, e.g. by including the module name. See the [`async_hooks` documentation][async_hooks `type`] for more information.
 
 ### napi_delete_async_work
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_delete_async_work(napi_env env,
                                    napi_async_work work);
@@ -2966,10 +3231,12 @@ This API frees a previously allocated work object.
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 ### napi_queue_async_work
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_queue_async_work(napi_env env,
                                   napi_async_work work);
@@ -2983,10 +3250,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API requests that the previously allocated work be scheduled for execution.
 
 ### napi_cancel_async_work
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_cancel_async_work(napi_env env,
                                    napi_async_work work);
@@ -3002,13 +3271,16 @@ This API cancels queued work if it has not yet been started. If it has already s
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 ## Custom Asynchronous Operations
+
 The simple asynchronous work APIs above may not be appropriate for every scenario. When using any other asynchronous mechanism, the following APIs are necessary to ensure an asynchronous operation is properly tracked by the runtime.
 
 ### napi_async_init
+
 <!-- YAML
 added: v8.6.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_async_init(napi_env env,
                             napi_value async_resource,
@@ -3024,10 +3296,12 @@ napi_status napi_async_init(napi_env env,
 Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 ### napi_async_destroy
+
 <!-- YAML
 added: v8.6.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_async_destroy(napi_env env,
                                napi_async_context async_context);
@@ -3041,13 +3315,16 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception aussteht.
 
 ### napi_make_callback
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 changes:
+
   - version: v8.6.0
     description: Added `async_context` parameter.
 -->
+
 ```C
 napi_status napi_make_callback(napi_env env,
                                napi_async_context async_context,
@@ -3073,32 +3350,38 @@ This method allows a JavaScript function object to be called from a native add-o
 Note it is *not* necessary to use `napi_make_callback` from within a `napi_async_complete_callback`; in that situation the callback's async context has already been set up, so a direct call to `napi_call_function` is sufficient and appropriate. Use of the `napi_make_callback` function may be required when implementing custom async behavior that does not use `napi_create_async_work`.
 
 ### *napi_open_callback_scope*
+
 <!-- YAML
 added: v8.11.2
 napiVersion: 3
 -->
+
 ```C
 NAPI_EXTERN napi_status napi_open_callback_scope(napi_env env,
                                                  napi_value resource_object,
                                                  napi_async_context context,
                                                  napi_callback_scope* result)
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] resource_object`: An optional object associated with the async work that will be passed to possible async_hooks [`init` hooks][].
 - `[in] context`: Context for the async operation that is invoking the callback. This should be a value previously obtained from [`napi_async_init`][].
 - `[out] result`: The newly created scope.
 
-There are cases (for example resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-API calls.  If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
+There are cases (for example resolving promises) where it is necessary to have the equivalent of the scope associated with a callback in place when making certain N-API calls. If there is no other script on the stack the [`napi_open_callback_scope`][] and [`napi_close_callback_scope`][] functions can be used to open/close the required scope.
 
 ### *napi_close_callback_scope*
+
 <!-- YAML
 added: v8.11.2
 napiVersion: 3
 -->
+
 ```C
 NAPI_EXTERN napi_status napi_close_callback_scope(napi_env env,
                                                   napi_callback_scope scope)
 ```
+
 - `[in] env`: Die Umgebung, unter der die API aufgerufen wird.
 - `[in] scope`: The scope to be closed.
 
@@ -3107,6 +3390,7 @@ Diese API kann auch dann aufgerufen werden, wenn eine JavaScript-Exception ausst
 ## Version Management
 
 ### napi_get_node_version
+
 <!-- YAML
 added: v8.4.0
 napiVersion: 1
@@ -3134,10 +3418,12 @@ This function fills the `version` struct with the major, minor, and patch versio
 The returned buffer is statically allocated and does not need to be freed.
 
 ### napi_get_version
+
 <!-- YAML
 added: v8.0.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_get_version(napi_env env,
                              uint32_t* result);
@@ -3150,18 +3436,20 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 
 This API returns the highest N-API version supported by the Node.js runtime. N-API is planned to be additive such that newer releases of Node.js may support additional API functions. In order to allow an addon to use a newer function when running with versions of Node.js that support it, while providing fallback behavior when running with Node.js versions that don't support it:
 
-* Call `napi_get_version()` to determine if the API is available.
-* If available, dynamically load a pointer to the function using `uv_dlsym()`.
-* Use the dynamically loaded pointer to invoke the function.
-* If the function is not available, provide an alternate implementation that does not use the function.
+- Call `napi_get_version()` to determine if the API is available.
+- If available, dynamically load a pointer to the function using `uv_dlsym()`.
+- Use the dynamically loaded pointer to invoke the function.
+- If the function is not available, provide an alternate implementation that does not use the function.
 
 ## Memory Management
 
 ### napi_adjust_external_memory
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 NAPI_EXTERN napi_status napi_adjust_external_memory(napi_env env,
                                                     int64_t change_in_bytes,
@@ -3177,12 +3465,15 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This function gives V8 an indication of the amount of externally allocated memory that is kept alive by JavaScript objects (i.e. a JavaScript object that points to its own memory allocated by a native module). Registering externally allocated memory will trigger global garbage collections more often than it would otherwise.
 
 <!-- it's very convenient to have all the anchors indexed -->
+
 <!--lint disable no-unused-definitions remark-lint-->
+
 ## Promises
 
 N-API provides facilities for creating `Promise` objects as described in [Section 25.4](https://tc39.github.io/ecma262/#sec-promise-objects) of the ECMA specification. It implements promises as a pair of objects. When a promise is created by `napi_create_promise()`, a "deferred" object is created and returned alongside the `Promise`. The deferred object is bound to the created `Promise` and is the only means to resolve or reject the `Promise` using `napi_resolve_deferred()` or `napi_reject_deferred()`. The deferred object that is created by `napi_create_promise()` is freed by `napi_resolve_deferred()` or `napi_reject_deferred()`. The `Promise` object may be returned to JavaScript where it can be used in the usual fashion.
 
 For example, to create a promise and pass it to an asynchronous worker:
+
 ```c
 napi_deferred deferred;
 napi_value promise;
@@ -3200,6 +3491,7 @@ return promise;
 ```
 
 The above function `do_something_asynchronous()` would perform its asynchronous action and then it would resolve or reject the deferred, thereby concluding the promise and freeing the deferred:
+
 ```c
 napi_deferred deferred;
 napi_value undefined;
@@ -3223,10 +3515,12 @@ deferred = NULL;
 ```
 
 ### napi_create_promise
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_create_promise(napi_env env,
                                 napi_deferred* deferred,
@@ -3242,10 +3536,12 @@ Gibt `napi_ok` zurück, wenn die API erfolgreich war.
 This API creates a deferred object and a JavaScript promise.
 
 ### napi_resolve_deferred
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_resolve_deferred(napi_env env,
                                   napi_deferred deferred,
@@ -3261,10 +3557,12 @@ This API resolves a JavaScript promise by way of the deferred object with which 
 The deferred object is freed upon successful completion.
 
 ### napi_reject_deferred
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_reject_deferred(napi_env env,
                                  napi_deferred deferred,
@@ -3280,10 +3578,12 @@ This API rejects a JavaScript promise by way of the deferred object with which i
 The deferred object is freed upon successful completion.
 
 ### napi_is_promise
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 napi_status napi_is_promise(napi_env env,
                             napi_value promise,
@@ -3299,10 +3599,12 @@ napi_status napi_is_promise(napi_env env,
 N-API provides an API for executing a string containing JavaScript using the underlying JavaScript engine.
 
 ### napi_run_script
+
 <!-- YAML
 added: v8.5.0
 napiVersion: 1
 -->
+
 ```C
 NAPI_EXTERN napi_status napi_run_script(napi_env env,
                                         napi_value script,
@@ -3318,10 +3620,12 @@ NAPI_EXTERN napi_status napi_run_script(napi_env env,
 N-API provides a function for getting the current event loop associated with a specific `napi_env`.
 
 ### napi_get_uv_event_loop
+
 <!-- YAML
 added: v8.10.0
 napiVersion: 2
 -->
+
 ```C
 NAPI_EXTERN napi_status napi_get_uv_event_loop(napi_env env,
                                                uv_loop_t** loop);
@@ -3369,6 +3673,7 @@ Similarly to libuv handles, thread-safe functions can be "referenced" and "unref
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_create_threadsafe_function(napi_env env,
@@ -3403,6 +3708,7 @@ napi_create_threadsafe_function(napi_env env,
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_get_threadsafe_function_context(napi_threadsafe_function func,
@@ -3421,6 +3727,7 @@ This API may be called from any thread which makes use of `func`.
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_call_threadsafe_function(napi_threadsafe_function func,
@@ -3443,6 +3750,7 @@ This API may be called from any thread which makes use of `func`.
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_acquire_threadsafe_function(napi_threadsafe_function func);
@@ -3461,6 +3769,7 @@ This API may be called from any thread which will start making use of `func`.
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_release_threadsafe_function(napi_threadsafe_function func,
@@ -3481,6 +3790,7 @@ This API may be called from any thread which will stop making use of `func`.
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_ref_threadsafe_function(napi_env env, napi_threadsafe_function func);
@@ -3500,6 +3810,7 @@ This API may only be called from the main thread.
 <!-- YAML
 added: v8.16.0
 -->
+
 ```C
 NAPI_EXTERN napi_status
 napi_unref_threadsafe_function(napi_env env, napi_threadsafe_function func);

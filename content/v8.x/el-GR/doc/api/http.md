@@ -9,6 +9,9 @@
 Οι διεπαφές HTTP στο Node.js έχουν σχεδιαστεί για να υποστηρίζουν πολλά χαρακτηριστικά των πρωτοκόλλων που είναι κατά παράδοση δύσκολα στη χρήση. Ειδικότερα, μεγάλα, ενδεχομένως κωδικοποιημένα μπλοκ μηνυμάτων. Η διεπαφή έχει σχεδιαστεί να μην μεταφέρει buffer ολόκληρων αιτημάτων ή απαντήσεων — ο χρήστης μπορεί να αποκτήσει τα δεδομένα με ροή.
 
 Τα μηνύματα κεφαλίδας HTTP παρουσιάζονται σαν αντικείμενα, όπως αυτό:
+
+<!-- eslint-skip -->
+
 ```js
 { 'content-length': '123',
   'content-type': 'text/plain',
@@ -24,6 +27,9 @@
 Δείτε το [`message.headers`][] για λεπτομέρειες στο πώς μεταχειρίζονται οι διπλότυπες κεφαλίδες.
 
 Οι ανεπεξέργαστες κεφαλίδες, διατηρούνται όπως παραλήφθηκαν στην ιδιότητα `rawHeaders`, που είναι ένας πίνακας από `[key, value, key2, value2, ...]`. Για παράδειγμα, το προηγούμενο αντικείμενο μηνύματος κεφαλίδας, θα είχε μια λίστα `rawHeaders` όπως η παρακάτω:
+
+<!-- eslint-disable semi -->
+
 ```js
 [ 'ConTent-Length', '123456',
   'content-LENGTH', '123',
@@ -33,9 +39,13 @@
   'accepT', '*/*' ]
 ```
 
-## Class: http.Agent<!-- YAML
+## Class: http.Agent
+
+<!-- YAML
 added: v0.3.4
--->Ο `Agent` είναι υπεύθυνος για την διαχείριση της διατήρησης συνδέσεων και την επαναχρησιμοποίηση τους, με τους πελάτες HTTP. Διατηρεί μια ουρά από αιτήματα σε αναμονή για κάθε υπολογιστή και θύρα, επαναχρησιμοποιώντας ένα μοναδικό socket σύνδεσης για κάθε αίτημα, μέχρι να αδειάσει η ουρά, οπότε και το socket καταστρέφεται ή τοποθετείται σε μια δεξαμενή όπου και κρατείται μέχρι να χρησιμοποιηθεί ξανά για αιτήματα του ίδιου υπολογιστή και της ίδιας θύρας. Το αν θα καταστραφεί ή θα μπει στην δεξαμενή, εξαρτάται από την [επιλογή](#http_new_agent_options) `keepAlive`.
+-->
+
+Ο `Agent` είναι υπεύθυνος για την διαχείριση της διατήρησης συνδέσεων και την επαναχρησιμοποίηση τους, με τους πελάτες HTTP. Διατηρεί μια ουρά από αιτήματα σε αναμονή για κάθε υπολογιστή και θύρα, επαναχρησιμοποιώντας ένα μοναδικό socket σύνδεσης για κάθε αίτημα, μέχρι να αδειάσει η ουρά, οπότε και το socket καταστρέφεται ή τοποθετείται σε μια δεξαμενή όπου και κρατείται μέχρι να χρησιμοποιηθεί ξανά για αιτήματα του ίδιου υπολογιστή και της ίδιας θύρας. Το αν θα καταστραφεί ή θα μπει στην δεξαμενή, εξαρτάται από την [επιλογή](#http_new_agent_options) `keepAlive`.
 
 Οι συνδέσεις σε δεξαμενή έχουν ενεργοποιημένο το TCP Keep-Alive, αλλά οι εξυπηρετητές ενδέχεται να κλείνουν τις αδρανείς συνδέσεις, στην οποία περίπτωση αφαιρούνται από την δεξαμενή και μια νέα σύνδεση θα γίνει όταν ένα νέο αίτημα HTTP δημιουργηθεί για αυτόν τον υπολογιστή και αυτή τη θύρα. Οι εξυπηρετητές ενδέχεται να αρνούνται τα πολλαπλά αιτήματα μέσω της ίδιας σύνδεσης, στην οποία περίπτωση η σύνδεση θα πρέπει να επαναδημιουργηθεί για κάθε αίτημα και δε μπορεί να γίνει δεξαμενή. Ο `Agent` θα συνεχίσει να στέλνει νέα αιτήματα στον εξυπηρετητή, αλλά το κάθε ένα θα γίνεται μέσω μιας νέας σύνδεσης.
 
@@ -68,9 +78,13 @@ http.get({
 });
 ```
 
-### new Agent([options])<!-- YAML
+### new Agent([options])
+
+<!-- YAML
 added: v0.3.4
--->* `options` {Object} Set of configurable options to set on the agent. Μπορεί να περιέχει τα παρακάτω πεδία:
+-->
+
+* `options` {Object} Ένα σύνολο επεξεργάσιμων ρυθμίσεων που θα οριστούν για τον agent. Μπορεί να περιέχει τα παρακάτω πεδία: 
   * `keepAlive` {boolean} Να παραμένουν ενεργά τα socket ακόμα και όταν δεν υπάρχουν εκκρεμή αιτήματα, ώστε να μπορούν να χρησιμοποιηθούν για μελλοντικά αιτήματα χωρίς την ανάγκη αποκατάστασης μιας σύνδεσης TCP. **Προεπιλογή:** `false`.
   * `keepAliveMsecs` {number} Όταν χρησιμοποιείται η επιλογή `keepAlive`, ορίζει την [αρχική καθυστέρηση](net.html#net_socket_setkeepalive_enable_initialdelay) των πακέτων TCP Keep-Alive. Αγνοείται όταν η επιλογή `keepAlive` είναι `false` ή `undefined`. **Προεπιλογή:** `1000`.
   * `maxSockets` {number} Ο μέγιστος αριθμός socket που επιτρέπονται ανά υπολογιστή. **Προεπιλογή:** `Infinity`.
@@ -87,9 +101,13 @@ options.agent = keepAliveAgent;
 http.request(options, onResponseCallback);
 ```
 
-### agent.createConnection(options[, callback])<!-- YAML
+### agent.createConnection(options[, callback])
+
+<!-- YAML
 added: v0.11.4
--->* `options` {Object} Επιλογές που περιέχουν τα στοιχεία σύνδεσης. Δείτε την συνάρτηση [`net.createConnection()`][] για τη μορφή των επιλογών της
+-->
+
+* `options` {Object} Επιλογές που περιέχουν τα στοιχεία σύνδεσης. Δείτε την συνάρτηση [`net.createConnection()`][] για τη μορφή των επιλογών της
 * `callback` {Function} Η συνάρτηση Callback που παραλαμβάνει το δημιουργημένο socket
 * Επιστρέφει: {net.Socket}
 
@@ -101,9 +119,13 @@ added: v0.11.4
 
 Το `callback` έχει υπογραφή `(err, stream)`.
 
-### agent.keepSocketAlive(socket)<!-- YAML
+### agent.keepSocketAlive(socket)
+
+<!-- YAML
 added: v8.1.0
--->* `socket` {net.Socket}
+-->
+
+* `socket` {net.Socket}
 
 Called when `socket` is detached from a request and could be persisted by the Agent. Η προεπιλεγμένη συμπεριφορά είναι:
 
@@ -115,9 +137,13 @@ return true;
 
 Αυτή η μέθοδος μπορεί να παρακαμφθεί από μια συγκεκριμένη subclass του `Agent`. Εάν αυτή η μέθοδος επιστρέψει μια τιμή falsy, το socket θα καταστραφεί αντί να διατηρηθεί για χρήση με το επόμενο αίτημα.
 
-### agent.reuseSocket(socket, request)<!-- YAML
+### agent.reuseSocket(socket, request)
+
+<!-- YAML
 added: v8.1.0
--->* `socket` {net.Socket}
+-->
+
+* `socket` {net.Socket}
 * `request` {http.ClientRequest}
 
 Καλείται όταν ένα `socket` έχει συνδεθεί στο `request` αφού έχει διατηρηθεί λόγω των επιλογών keep-alive. Η προεπιλεγμένη συμπεριφορά είναι:
@@ -128,24 +154,33 @@ socket.ref();
 
 Αυτή η μέθοδος μπορεί να παρακαμφθεί από μια συγκεκριμένη subclass του `Agent`.
 
-### agent.destroy()<!-- YAML
-added: v0.11.4
--->Καταστρέφει όλα τα socket που είναι σε χρήση από τον agent αυτή τη στιγμή.
+### agent.destroy()
 
-Συνήθως, δεν χρειάζεται να γίνει αυτό. Ωστόσο, αν χρησιμοποιείτε έναν agent με ενεργό το `keepAlive`, τότε το καλύτερο είναι να γίνεται ρητός τερματισμός του agent όταν δεν θα χρησιμοποιηθεί άλλο. Διαφορετικά, τα socket μπορεί να παραμείνουν ανοιχτά για μεγάλο χρονικό διάστημα πριν ο εξυπηρετητής τερματίσει την λειτουργία τους.
-
-### agent.freeSockets<!-- YAML
-added: v0.11.4
--->* {Object}
-
-Ένα αντικείμενο που περιέχει πίνακες με socket που αναμένουν την χρήση τους από τον agent, όταν έχει ενεργοποιηθεί το `keepAlive`. Να μην τροποποιηθεί.
-
-### agent.getName(options)
 <!-- YAML
 added: v0.11.4
 -->
 
-* `options` {Object} A set of options providing information for name generation
+Καταστρέφει όλα τα socket που είναι σε χρήση από τον agent αυτή τη στιγμή.
+
+Συνήθως, δεν χρειάζεται να γίνει αυτό. Ωστόσο, αν χρησιμοποιείτε έναν agent με ενεργό το `keepAlive`, τότε το καλύτερο είναι να γίνεται ρητός τερματισμός του agent όταν δεν θα χρησιμοποιηθεί άλλο. Διαφορετικά, τα socket μπορεί να παραμείνουν ανοιχτά για μεγάλο χρονικό διάστημα πριν ο εξυπηρετητής τερματίσει την λειτουργία τους.
+
+### agent.freeSockets
+
+<!-- YAML
+added: v0.11.4
+-->
+
+* {Object}
+
+Ένα αντικείμενο που περιέχει πίνακες με socket που αναμένουν την χρήση τους από τον agent, όταν έχει ενεργοποιηθεί το `keepAlive`. Να μην τροποποιηθεί.
+
+### agent.getName(options)
+
+<!-- YAML
+added: v0.11.4
+-->
+
+* `options` {Object} Ένα σύνολο επιλογών που παρέχουν πληροφορίες για την γεννήτρια ονομάτων 
   * `host` {string} A domain name or IP address of the server to issue the request to
   * `port` {number} Θύρα του απομακρυσμένου εξυπηρετητή
   * `localAddress` {string} Τοπική διεπαφή η οποία θα δεσμευτεί για συνδέσεις δικτύου όταν γίνεται έκδοση του αιτήματος
@@ -154,25 +189,38 @@ added: v0.11.4
 
 Λαμβάνει ένα μοναδικό όνομα για ένα σύνολο επιλογών αιτημάτων, για τον προσδιορισμό της επαναχρησιμοποίησης μιας σύνδεσης. Για έναν HTTP agent, η συνάρτηση επιστρέφει `host:port:localAddress` ή `host:port:localAddress:family`. Για έναν HTTPS agent, το όνομα συμπεριλαμβάνει την αρχή πιστοποίησης, το πιστοποιητικό, τους cipher και άλλες συγκεκριμένες HTTPS/TLS επιλογές, για τον προσδιορισμό της επαναχρησιμοποίησης του socket.
 
-### agent.maxFreeSockets<!-- YAML
+### agent.maxFreeSockets
+
+<!-- YAML
 added: v0.11.7
--->* {number}
+-->
+
+* {number}
 
 Από προεπιλογή, είναι ορισμένο ως 256. Για agents με ενεργοποιημένο το `keepAlive`, αυτό ορίζει τον μέγιστο αριθμό των socket που μπορούν να παραμείνουν ανοιχτά σε ελεύθερη κατάσταση.
 
-### agent.maxSockets<!-- YAML
+### agent.maxSockets
+
+<!-- YAML
 added: v0.3.6
--->* {number}
+-->
+
+* {number}
 
 Από προεπιλογή, είναι ορισμένο ως Infinity. Προσδιορίζει πόσα παράλληλα socket μπορεί να κρατάει ανοιχτά ο agent ανά προέλευση. Η προέλευση είναι η τιμή επιστροφής της συνάρτησης [`agent.getName()`][].
 
-### agent.requests<!-- YAML
+### agent.requests
+
+<!-- YAML
 added: v0.5.9
--->* {Object}
+-->
+
+* {Object}
 
 Ένα αντικείμενο που περιέχει την ουρά των αιτημάτων που δεν έχουν ανατεθεί ακόμα σε κάποιο socket. Να μην τροποποιηθεί.
 
 ### agent.sockets
+
 <!-- YAML
 added: v0.3.6
 -->
@@ -181,9 +229,13 @@ added: v0.3.6
 
 Ένα αντικείμενο που περιέχει πίνακες των socket που χρησιμοποιούνται αυτή τη στιγμή από τον agent. Να μην τροποποιηθεί.
 
-## Class: http.ClientRequest<!-- YAML
+## Class: http.ClientRequest
+
+<!-- YAML
 added: v0.1.17
--->Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα _in-progress_, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. Η κεφαλίδα μπορεί ακόμα να μεταβληθεί χρησιμοποιώντας τις συναρτήσεις API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. Η πραγματική κεφαλίδα θα σταλεί μαζί με το πρώτο κομμάτι δεδομένων ή όταν γίνει κλήση της συνάρτησης [`request.end()`][].
+-->
+
+Αυτό το αντικείμενο δημιουργείται εσωτερικά και επιστρέφεται από την συνάρτηση [`http.request()`][]. Αντιπροσωπεύει ένα αίτημα *in-progress*, του οποίου οι κεφαλίδες έχουν ήδη μπει στην ουρά. Η κεφαλίδα μπορεί ακόμα να μεταβληθεί χρησιμοποιώντας τις συναρτήσεις API [`setHeader(name, value)`][], [`getHeader(name)`][], [`removeHeader(name)`][]. Η πραγματική κεφαλίδα θα σταλεί μαζί με το πρώτο κομμάτι δεδομένων ή όταν γίνει κλήση της συνάρτησης [`request.end()`][].
 
 Για να λάβετε την απάντηση, προσθέστε έναν ακροατή [`'response'`][] στο αντικείμενο της αίτησης. To [`'response'`][] θα μεταδοθεί από το αντικείμενο του αιτήματος όταν ληφθούν οι κεφαλίδες της απόκρισης. Το συμβάν [`'response'`][] εκτελείται με μια παράμετρο, η οποία είναι ένα στιγμιότυπο του [`http.IncomingMessage`][].
 
@@ -195,13 +247,21 @@ added: v0.1.17
 
 Το αίτημα υλοποιεί την διεπαφή [Επεξεργάσιμης Ροής](stream.html#stream_class_stream_writable). Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
-### Συμβάν: 'abort'<!-- YAML
-added: v1.4.1
--->Μεταδίδεται όταν το αίτημα έχει ματαιωθεί από τον πελάτη. Αυτό το συμβάν μεταδίδεται μόνο στην πρώτη κλήση του `abort()`.
+### Συμβάν: 'abort'
 
-### Συμβάν: 'connect'<!-- YAML
+<!-- YAML
+added: v1.4.1
+-->
+
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί από τον πελάτη. Αυτό το συμβάν μεταδίδεται μόνο στην πρώτη κλήση του `abort()`.
+
+### Συμβάν: 'connect'
+
+<!-- YAML
 added: v0.7.0
--->* `response` {http.IncomingMessage}
+-->
+
+* `response` {http.IncomingMessage}
 * `socket` {net.Socket}
 * `head` {Buffer}
 
@@ -264,31 +324,51 @@ proxy.listen(1337, '127.0.0.1', () => {
 });
 ```
 
-### Συμβάν: 'continue'<!-- YAML
-added: v0.3.2
--->Μεταδίδεται όταν ο εξυπηρετητής αποστέλλει μια απόκριση HTTP '100 Continue', συνήθως επειδή το αίτημα περιείχε το 'Expect: 100-continue'. Αυτή είναι μια οδηγία που ο πελάτης θα πρέπει να αποστείλει το σώμα του αιτήματος.
+### Συμβάν: 'continue'
 
-### Συμβάν: 'response'<!-- YAML
+<!-- YAML
+added: v0.3.2
+-->
+
+Μεταδίδεται όταν ο εξυπηρετητής αποστέλλει μια απόκριση HTTP '100 Continue', συνήθως επειδή το αίτημα περιείχε το 'Expect: 100-continue'. Αυτή είναι μια οδηγία που ο πελάτης θα πρέπει να αποστείλει το σώμα του αιτήματος.
+
+### Συμβάν: 'response'
+
+<!-- YAML
 added: v0.1.0
--->* `response` {http.IncomingMessage}
+-->
+
+* `response` {http.IncomingMessage}
 
 Μεταδίδεται όταν ληφθεί μια απόκριση σε αυτό το αίτημα. Το συμβάν μεταδίδεται μόνο μια φορά.
 
-### Συμβάν: 'socket'<!-- YAML
+### Συμβάν: 'socket'
+
+<!-- YAML
 added: v0.5.3
--->* `socket` {net.Socket}
+-->
+
+* `socket` {net.Socket}
 
 Μεταδίδεται αφού ένα socket αντιστοιχιστεί σε αυτό το αίτημα.
 
-### Συμβάν: 'timeout'<!-- YAML
+### Συμβάν: 'timeout'
+
+<!-- YAML
 added: v0.7.8
--->Μεταδίδεται όταν το υποκείμενο socket εξαντλεί το χρονικό περιθώριο λόγω αδράνειας. Αυτό ειδοποιεί, μόνο, πως το socket έχει μείνει αδρανές. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
+-->
+
+Μεταδίδεται όταν το υποκείμενο socket εξαντλεί το χρονικό περιθώριο λόγω αδράνειας. Αυτό ειδοποιεί, μόνο, πως το socket έχει μείνει αδρανές. Το αίτημα πρέπει να ματαιωθεί χειροκίνητα.
 
 Δείτε επίσης: [`request.setTimeout()`][]
 
-### Συμβάν: 'upgrade'<!-- YAML
+### Συμβάν: 'upgrade'
+
+<!-- YAML
 added: v0.1.94
--->* `response` {http.IncomingMessage}
+-->
+
+* `response` {http.IncomingMessage}
 * `socket` {net.Socket}
 * `head` {Buffer}
 
@@ -337,23 +417,39 @@ srv.listen(1337, '127.0.0.1', () => {
 });
 ```
 
-### request.abort()<!-- YAML
+### request.abort()
+
+<!-- YAML
 added: v0.3.8
--->Σημειώνει πως το αίτημα ματαιώνεται. Η κλήση αυτής της μεθόδου θα προκαλέσει την απόρριψη των εναπομεινάντων δεδομένων του αιτήματος, καθώς και την καταστροφή του socket.
+-->
 
-### request.aborted<!-- YAML
+Σημειώνει πως το αίτημα ματαιώνεται. Η κλήση αυτής της μεθόδου θα προκαλέσει την απόρριψη των εναπομεινάντων δεδομένων του αιτήματος, καθώς και την καταστροφή του socket.
+
+### request.aborted
+
+<!-- YAML
 added: v0.11.14
--->Αν ένα αίτημα έχει ματαιωθεί, αυτή τη τιμή είναι ο στιγμή που ακυρώθηκε το αίτημα, σε χιλιοστά του δευτερολέπτου από την 1η Ιανουαρίου 1970 00:00:00 UTC.
+-->
 
-### request.connection<!-- YAML
+Αν ένα αίτημα έχει ματαιωθεί, αυτή τη τιμή είναι ο στιγμή που ακυρώθηκε το αίτημα, σε χιλιοστά του δευτερολέπτου από την 1η Ιανουαρίου 1970 00:00:00 UTC.
+
+### request.connection
+
+<!-- YAML
 added: v0.3.0
--->* {net.Socket}
+-->
 
-See [`request.socket`][]
+* {net.Socket}
 
-### request.end(\[data[, encoding]\]\[, callback\])<!-- YAML
+Δείτε το [`request.socket`][]
+
+### request.end(\[data[, encoding]\]\[, callback\])
+
+<!-- YAML
 added: v0.1.90
--->* `data` {string|Buffer}
+-->
+
+* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
 
@@ -363,27 +459,37 @@ added: v0.1.90
 
 Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
-### request.flushHeaders()<!-- YAML
+### request.flushHeaders()
+
+<!-- YAML
 added: v1.6.0
--->Εκκαθάριση των κεφαλίδων του αιτήματος.
+-->
+
+Εκκαθάριση των κεφαλίδων του αιτήματος.
 
 Για λόγους αποδοτικότητας, το Node.js κάνει προσωρινή αποθήκευση των κεφαλίδων του αιτήματος μέχρι να κληθεί το `request.end()` ή μέχρι να γραφτεί το πρώτο τμήμα των δεδομένων του αιτήματος. Στη συνέχεια, προσπαθεί να εισάγει όλες τις κεφαλίδες και τα δεδομένα του αιτήματος σε ένα πακέτο TCP.
 
 Αυτό συνήθως είναι το επιθυμητό (εξοικονομεί μια πλήρη διαδρομή TCP), αλλά όχι όταν τα πρώτα δεδομένα δεν έχουν αποσταλεί μέχρι πιθανώς πολύ αργότερα. Το `request.flushHeaders()` αγνοεί οποιαδήποτε βελτιστοποίηση και ξεκινάει το αίτημα άμεσα.
 
-### request.getHeader(name)<!-- YAML
+### request.getHeader(name)
+
+<!-- YAML
 added: v1.6.0
--->* `name` {string}
+-->
+
+* `name` {string}
 * Επιστρέφει: {string}
 
 Διαβάζει μια από τις κεφαλίδες του αιτήματος. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα.
 
 Παράδειγμα:
+
 ```js
 const contentType = request.getHeader('Content-Type');
 ```
 
 ### request.removeHeader(name)
+
 <!-- YAML
 added: v1.6.0
 -->
@@ -393,11 +499,13 @@ added: v1.6.0
 Αφαιρεί μια κεφαλίδα που έχει ήδη οριστεί στο αντικείμενο κεφαλίδων.
 
 Παράδειγμα:
+
 ```js
 request.removeHeader('Content-Type');
 ```
 
 ### request.setHeader(name, value)
+
 <!-- YAML
 added: v1.6.0
 -->
@@ -408,6 +516,7 @@ added: v1.6.0
 Ορίζει μια μοναδική τιμή για το αντικείμενο κεφαλίδων. Αν αυτή η κεφαλίδα υπάρχει ήδη στις κεφαλίδες προς αποστολή, η τιμή του θα αντικατασταθεί με την ορισμένη. Χρησιμοποιήστε έναν πίνακα με string εδώ, για να αποστείλετε πολλαπλές κεφαλίδες με το ίδιο όνομα.
 
 Παράδειγμα:
+
 ```js
 request.setHeader('Content-Type', 'application/json');
 ```
@@ -418,20 +527,29 @@ request.setHeader('Content-Type', 'application/json');
 request.setHeader('Set-Cookie', ['type=ninja', 'language=javascript']);
 ```
 
-### request.setNoDelay([noDelay])<!-- YAML
+### request.setNoDelay([noDelay])
+
+<!-- YAML
 added: v0.5.9
--->* `noDelay` {boolean}
+-->
+
+* `noDelay` {boolean}
 
 Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setNoDelay()`][].
 
-### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])<!-- YAML
+### request.setSocketKeepAlive(\[enable\]\[, initialDelay\])
+
+<!-- YAML
 added: v0.5.9
--->* `enable` {boolean}
+-->
+
+* `enable` {boolean}
 * `initialDelay` {number}
 
 Όταν ανατεθεί ένα socket σε αυτό το αίτημα και γίνει η σύνδεση, θα γίνει κλήση του [`socket.setKeepAlive()`][].
 
 ### request.setTimeout(timeout[, callback])
+
 <!-- YAML
 added: v0.5.9
 -->
@@ -443,9 +561,13 @@ If no socket is assigned to this request then [`socket.setTimeout()`][] will be 
 
 Returns `request`.
 
-### request.socket<!-- YAML
+### request.socket
+
+<!-- YAML
 added: v0.3.0
--->* {net.Socket}
+-->
+
+* {net.Socket}
 
 Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μετά το `response.end()`, η ιδιότητα εκμηδενίζεται. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `request.connection`.
 
@@ -466,9 +588,13 @@ req.once('response', (res) => {
 });
 ```
 
-### request.write(chunk\[, encoding\]\[, callback\])<!-- YAML
+### request.write(chunk\[, encoding\]\[, callback\])
+
+<!-- YAML
 added: v0.1.29
--->* `chunk` {string|Buffer}
+-->
+
+* `chunk` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
 
@@ -480,13 +606,21 @@ added: v0.1.29
 
 Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
-## Class: http.Server<!-- YAML
-added: v0.1.17
--->This class inherits from [`net.Server`][] and has the following additional events:
+## Class: http.Server
 
-### Συμβάν: 'checkContinue'<!-- YAML
+<!-- YAML
+added: v0.1.17
+-->
+
+This class inherits from [`net.Server`][] and has the following additional events:
+
+### Συμβάν: 'checkContinue'
+
+<!-- YAML
 added: v0.3.0
--->* `request` {http.IncomingMessage}
+-->
+
+* `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
 Μεταδίδεται κάθε φορά που λαμβάνεται ένα αίτημα με κωδικό HTTP `Expect: 100-continue`. Αν δε γίνεται ακρόαση για αυτό το συμβάν, ο εξυπηρετητής θα αποκριθεί αυτόματα με απάντηση `100 Continue` ανάλογα με την περίπτωση.
@@ -495,18 +629,25 @@ Handling this event involves calling [`response.writeContinue()`][] if the clien
 
 Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
-### Συμβάν: 'checkExpectation'<!-- YAML
+### Συμβάν: 'checkExpectation'
+
+<!-- YAML
 added: v5.5.0
--->* `request` {http.IncomingMessage}
+-->
+
+* `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
 Μεταδίδεται κάθε φορά που λαμβάνεται ένα αίτημα HTTP με κεφαλίδα `Expect`, όταν η τιμή δεν είναι `100-continue`. Αν δε γίνεται ακρόαση για αυτό το συμβάν, ο εξυπηρετητής θα αποκριθεί αυτόματα με απάντηση `417 Expectation Failed` ανάλογα με την περίπτωση.
 
 Σημειώστε πως όταν αυτό το συμβάν μεταδίδεται και χειρίζεται, το συμβάν [`'request'`][] δεν θα μεταδοθεί.
 
-### Συμβάν: 'clientError'<!-- YAML
+### Συμβάν: 'clientError'
+
+<!-- YAML
 added: v0.1.94
 changes:
+
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/4557
     description: The default action of calling `.destroy()` on the `socket`
@@ -517,7 +658,9 @@ changes:
     description: The rawPacket is the current buffer that just parsed. Adding
                  this buffer to the error object of clientError event is to make
                  it possible that developers can log the broken packet.
--->* `exception` {Error}
+-->
+
+* `exception` {Error}
 * `socket` {net.Socket}
 
 Αν η σύνδεση ενός πελάτη μεταδώσει ένα συμβάν `'error'`, θα προωθηθεί εδώ. Η ακρόαση του συμβάντος είναι υπεύθυνη για το κλείσιμο/την καταστροφή του υποκείμενου socket. Για παράδειγμα, κάποιος μπορεί να θέλει να κλείσει ένα socket πιο δυναμικά, με μια προσαρμοσμένη απόκριση HTTP αντί να αποκόψει απότομα την σύνδεση.
@@ -542,16 +685,24 @@ server.listen(8000);
 
 Το `err` είναι ένα στιγμιότυπο του `Error` με δύο επιπλέον στήλες:
 
-+ `bytesParsed`: ο αριθμός των byte του πακέτου αιτήματος που η Node.js έχει πιθανώς αναλύσει σωστά,
-+ `rawPacket`: το ακατέργαστο πακέτο του τρέχοντος αιτήματος.
+* `bytesParsed`: ο αριθμός των byte του πακέτου αιτήματος που η Node.js έχει πιθανώς αναλύσει σωστά,
+* `rawPacket`: το ακατέργαστο πακέτο του τρέχοντος αιτήματος.
 
-### Συμβάν: 'close'<!-- YAML
+### Συμβάν: 'close'
+
+<!-- YAML
 added: v0.1.4
--->Μεταδίδεται όταν ο εξυπηρετητής τερματίζει τη λειτουργία του.
+-->
 
-### Συμβάν: 'connect'<!-- YAML
+Μεταδίδεται όταν ο εξυπηρετητής τερματίζει τη λειτουργία του.
+
+### Συμβάν: 'connect'
+
+<!-- YAML
 added: v0.7.0
--->* `request` {http.IncomingMessage} Οι παράμετροι για το αίτημα HTTP, όπως εντοπίζονται στο συμβάν [`'request'`][]
+-->
+
+* `request` {http.IncomingMessage} Οι παράμετροι για το αίτημα HTTP, όπως εντοπίζονται στο συμβάν [`'request'`][]
 * `socket` {net.Socket} Το δικτυακό socket μεταξύ του εξυπηρετητή και του πελάτη
 * `head` {Buffer} Το πρώτο πακέτο της σήραγγας ροής (ενδέχεται να είναι κενό)
 
@@ -559,24 +710,36 @@ added: v0.7.0
 
 Αφού μεταδοθεί αυτό το συμβάν, το socket του αιτήματος δε θα έχει ακρόαση του συμβάντος `'data'`, που σημαίνει πως θα πρέπει να δεσμευτεί με σκοπό να διαχειριστεί τα δεδομένα που αποστέλλονται στον εξυπηρετητή μέσω αυτού του socket.
 
-### Συμβάν: 'connection'<!-- YAML
+### Συμβάν: 'connection'
+
+<!-- YAML
 added: v0.1.0
--->* `socket` {net.Socket}
+-->
+
+* `socket` {net.Socket}
 
 Αυτό το συμβάν μεταδίδεται όταν δημιουργείται μια νέα ροή δεδομένων TCP. Το `socket` είναι συνήθως ένα αντικείμενο τύπου [`net.Socket`][]. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτό το συμβάν. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` κατά τη διάρκεια του συμβάντος `request.connection`.
 
 *Note*: This event can also be explicitly emitted by users to inject connections into the HTTP server. Σε αυτήν την περίπτωση, μπορεί να μεταβιβαστεί οποιαδήποτε ροή [`Duplex`][].
 
-### Συμβάν: 'request'<!-- YAML
+### Συμβάν: 'request'
+
+<!-- YAML
 added: v0.1.0
--->* `request` {http.IncomingMessage}
+-->
+
+* `request` {http.IncomingMessage}
 * `response` {http.ServerResponse}
 
 Μεταδίδεται κάθε φορά που υπάρχει ένα αίτημα. Σημειώστε ότι ενδέχεται να υπάρχουν πολλαπλά αιτήματα ανά σύνδεση (σε περίπτωση συνδέσεων με κεφαλίδα HTTP Keep-Alive).
 
-### Συμβάν: 'upgrade'<!-- YAML
+### Συμβάν: 'upgrade'
+
+<!-- YAML
 added: v0.1.94
--->* `request` {http.IncomingMessage} Οι παράμετροι για το αίτημα HTTP, όπως εντοπίζονται στο συμβάν [`'request'`][]
+-->
+
+* `request` {http.IncomingMessage} Οι παράμετροι για το αίτημα HTTP, όπως εντοπίζονται στο συμβάν [`'request'`][]
 * `socket` {net.Socket} Το δικτυακό socket μεταξύ του εξυπηρετητή και του πελάτη
 * `head` {Buffer} Το πρώτο πακέτο της αναβαθμισμένης ροής (ενδέχεται να είναι κενό)
 
@@ -584,9 +747,13 @@ added: v0.1.94
 
 Αφού μεταδοθεί αυτό το συμβάν, το socket του αιτήματος δε θα έχει ακρόαση του συμβάντος `'data'`, που σημαίνει πως θα πρέπει να δεσμευτεί με σκοπό να διαχειριστεί τα δεδομένα που αποστέλλονται στον εξυπηρετητή μέσω αυτού του socket.
 
-### server.close([callback])<!-- YAML
+### server.close([callback])
+
+<!-- YAML
 added: v0.1.90
--->* `callback` {Function}
+-->
+
+* `callback` {Function}
 
 Διακόπτει την αποδοχή νέων συνδέσεων από τον εξυπηρετητή. Δείτε [`net.Server.close()`][].
 
@@ -594,29 +761,45 @@ added: v0.1.90
 
 Εκκινεί τον εξυπηρετητή HTTP για ακρόαση συνδέσεων. Η μέθοδος είναι πανομοιότυπη με το [`server.listen()`][] από το [`net.Server`][].
 
-### server.listening<!-- YAML
+### server.listening
+
+<!-- YAML
 added: v5.7.0
--->* {boolean}
+-->
+
+* {boolean}
 
 A Boolean indicating whether or not the server is listening for connections.
 
-### server.maxHeadersCount<!-- YAML
+### server.maxHeadersCount
+
+<!-- YAML
 added: v0.7.0
--->* {number} **Προεπιλογή:** `2000`
+-->
+
+* {number} **Προεπιλογή:** `2000`
 
 Προσθέτει μέγιστο όριο στον αριθμό εισερχομένων κεφαλίδων. If set to 0 - no limit will be applied.
 
-### server.headersTimeout<!-- YAML
+### server.headersTimeout
+
+<!-- YAML
 added: v8.14.0
--->* {number} **Προεπιλογή:** `40000`
+-->
+
+* {number} **Προεπιλογή:** `40000`
 
 Limit the amount of time the parser will wait to receive the complete HTTP headers.
 
 In case of inactivity, the rules defined in \[server.timeout\]\[\] apply. However, that inactivity based timeout would still allow the connection to be kept open if the headers are being sent very slowly (by default, up to a byte per 2 minutes). In order to prevent this, whenever header data arrives an additional check is made that more than `server.headersTimeout` milliseconds has not passed since the connection was established. If the check fails, a `'timeout'` event is emitted on the server object, and (by default) the socket is destroyed. See \[server.timeout\]\[\] for more information on how timeout behaviour can be customised.
 
-### server.setTimeout(\[msecs\]\[, callback\])<!-- YAML
+### server.setTimeout(\[msecs\]\[, callback\])
+
+<!-- YAML
 added: v0.9.12
--->* `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
+-->
+
+* `msecs` {number} **Προεπιλογή:** `120000` (2 λεπτά)
 * `callback` {Function}
 
 Ορίζει την τιμή της εξάντλησης του χρονικού ορίου για τα socket, και μεταδίδει ένα συμβάν `'timeout'` στο αντικείμενο του εξυπηρετητή, μεταβιβάζοντας το socket σαν παράμετρο, αν γίνει εξάντληση του χρονικού ορίου.
@@ -627,9 +810,13 @@ added: v0.9.12
 
 Returns `server`.
 
-### server.timeout<!-- YAML
+### server.timeout
+
+<!-- YAML
 added: v0.9.12
--->* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `120000` (2 λεπτά).
+-->
+
+* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `120000` (2 λεπτά).
 
 Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου, πριν υποτεθεί ότι έχει εξαντληθεί το χρονικό περιθώριο του socket.
 
@@ -637,9 +824,13 @@ added: v0.9.12
 
 *Note*: The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
-### server.keepAliveTimeout<!-- YAML
+### server.keepAliveTimeout
+
+<!-- YAML
 added: v8.0.0
--->* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `5000` (5 δευτερόλεπτα).
+-->
+
+* {number} Χρονικό όριο σε χιλιοστά δευτερολέπτου. **Προεπιλογή:** `5000` (5 δευτερόλεπτα).
 
 Ο χρόνος αδράνειας σε χιλιοστά δευτερολέπτου που θα πρέπει να περιμένει ο εξυπηρετητής για περαιτέρω δεδομένα, αφού έχει ολοκληρώσει την εγγραφή της τελευταίας απόκρισης, πριν την καταστροφή του socket. Αν ο εξυπηρετητής λάβει νέα δεδομένα πριν την εξάντληση του χρονικού ορίου του keep-alive, θα γίνει επαναφορά του χρονικού περιθωρίου αδράνειας του [`server.timeout`][].
 
@@ -647,25 +838,41 @@ A value of `0` will disable the keep-alive timeout behavior on incoming connecti
 
 *Note*: The socket timeout logic is set up on connection, so changing this value only affects new connections to the server, not any existing connections.
 
-## Class: http.ServerResponse<!-- YAML
+## Class: http.ServerResponse
+
+<!-- YAML
 added: v0.1.17
--->Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
+-->
+
+Το αντικείμενο δημιουργείται εσωτερικά από έναν εξυπηρετητή HTTP — όχι από τον χρήστη. Μεταβιβάζεται ως η δεύτερη παράμετρος στο συμβάν [`'request'`][].
 
 Η απόκριση εφαρμόζει, αλλά δεν κληρονομεί από την διασύνδεση [Εγγράψιμης Ροής](stream.html#stream_class_stream_writable). Αυτό είναι ένα [`EventEmitter`][] με τα ακόλουθα συμβάντα:
 
-### Συμβάν: 'close'<!-- YAML
-added: v0.6.7
--->Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί πριν γίνει κλήση του [`response.end()`][] ή εκκαθάριση.
+### Συμβάν: 'close'
 
-### Συμβάν: 'finish'<!-- YAML
+<!-- YAML
+added: v0.6.7
+-->
+
+Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί πριν γίνει κλήση του [`response.end()`][] ή εκκαθάριση.
+
+### Συμβάν: 'finish'
+
+<!-- YAML
 added: v0.3.6
--->Μεταδίδεται όταν έχει αποσταλεί η απόκριση. Πιο συγκεκριμένα, αυτό το συμβάν μεταδίδεται όταν το τελευταίο κομμάτι των κεφαλίδων απόκρισης και του σώματος έχουν παραδοθεί στο λειτουργικό σύστημα για μετάδοση μέσω του δικτύου. Αυτό δεν υπονοεί ότι ο πελάτης έχει παραλάβει οτιδήποτε ακόμα.
+-->
+
+Μεταδίδεται όταν έχει αποσταλεί η απόκριση. Πιο συγκεκριμένα, αυτό το συμβάν μεταδίδεται όταν το τελευταίο κομμάτι των κεφαλίδων απόκρισης και του σώματος έχουν παραδοθεί στο λειτουργικό σύστημα για μετάδοση μέσω του δικτύου. Αυτό δεν υπονοεί ότι ο πελάτης έχει παραλάβει οτιδήποτε ακόμα.
 
 Μετά από αυτό το συμβάν, δεν γίνεται μετάδοση άλλων συμβάντων στο αντικείμενο απόκρισης.
 
-### response.addTrailers(headers)<!-- YAML
+### response.addTrailers(headers)
+
+<!-- YAML
 added: v0.3.0
--->* `headers` {Object}
+-->
+
+* `headers` {Object}
 
 Αυτή η μέθοδος προσθέτει τελικές κεφαλίδες HTTP (μια κεφαλίδα στο τέλος του μηνύματος) στην απόκριση.
 
@@ -683,16 +890,23 @@ response.end();
 
 Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
+### response.connection
 
-### response.connection<!-- YAML
+<!-- YAML
 added: v0.3.0
--->* {net.Socket}
+-->
+
+* {net.Socket}
 
 Δείτε το [`response.socket`][].
 
-### response.end(\[data\]\[, encoding\][, callback])<!-- YAML
+### response.end(\[data\]\[, encoding\][, callback])
+
+<!-- YAML
 added: v0.1.90
--->* `data` {string|Buffer}
+-->
+
+* `data` {string|Buffer}
 * `encoding` {string}
 * `callback` {Function}
 
@@ -702,15 +916,23 @@ added: v0.1.90
 
 Αν έχει οριστεί το `callback`, τότε θα κληθεί με την ολοκλήρωση του αιτήματος ροής.
 
-### response.finished<!-- YAML
+### response.finished
+
+<!-- YAML
 added: v0.0.2
--->* {boolean}
+-->
+
+* {boolean}
 
 Τιμή Boolean που δηλώνει αν η απόκριση έχει ολοκληρωθεί ή όχι. Ξεκινάει ως `false`. Αφού εκτελεσθεί το [`response.end()`][], η τιμή του θα είναι `true`.
 
-### response.getHeader(name)<!-- YAML
+### response.getHeader(name)
+
+<!-- YAML
 added: v0.4.0
--->* `name` {string}
+-->
+
+* `name` {string}
 * Επιστρέφει: {string}
 
 Διαβάζει μια κεφαλίδα η οποία έχει προστεθεί στην ουρά, αλλά δεν έχει αποσταλεί στον πελάτη. Σημειώστε πως δεν γίνεται διάκριση πεζών-κεφαλαίων στο όνομα.
@@ -721,9 +943,13 @@ added: v0.4.0
 const contentType = response.getHeader('content-type');
 ```
 
-### response.getHeaderNames()<!-- YAML
+### response.getHeaderNames()
+
+<!-- YAML
 added: v7.7.0
--->* Επιστρέφει: {Array}
+-->
+
+* Επιστρέφει: {Array}
 
 Επιστρέφει έναν πίνακα που περιέχει τις μοναδικές τιμές των τρεχόντων εξερχομένων κεφαλίδων. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
@@ -737,13 +963,17 @@ const headerNames = response.getHeaderNames();
 // headerNames === ['foo', 'set-cookie']
 ```
 
-### response.getHeaders()<!-- YAML
+### response.getHeaders()
+
+<!-- YAML
 added: v7.7.0
--->* Επιστρέφει: {Object}
+-->
+
+* Επιστρέφει: {Object}
 
 Επιστρέφει ένα ρηχό αντίγραφο των τρεχόντων εξερχομένων κεφαλίδων. Από την στιγμή που χρησιμοποιείται ένα ρηχό αντίγραφο, οι τιμές του πίνακα μπορούν να μεταλλαχθούν χωρίς περαιτέρω κλήσεις στις διάφορες μεθόδους που σχετίζονται με τις κεφαλίδες της ενότητας http. Τα κλειδιά του επιστρεφόμενου αντικειμένου είναι τα ονόματα των κεφαλίδων, και οι τιμές του είναι οι τιμές της αντίστοιχης κεφαλίδας. Όλα τα ονόματα κεφαλίδων είναι με πεζούς χαρακτήρες.
 
-*Note*: The object returned by the `response.getHeaders()` method _does not_ prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
+*Note*: The object returned by the `response.getHeaders()` method *does not* prototypically inherit from the JavaScript `Object`. Αυτό σημαίνει ότι οι τυπικές μέθοδοι του `Object` όπως η μέθοδος `obj.toString()`, η μέθοδος `obj.hasOwnProperty()`, και άλλες μέθοδοι, δεν ορίζονται και *δεν θα λειτουργήσουν*.
 
 Παράδειγμα:
 
@@ -756,6 +986,7 @@ const headers = response.getHeaders();
 ```
 
 ### response.hasHeader(name)
+
 <!-- YAML
 added: v7.7.0
 -->
@@ -771,15 +1002,23 @@ added: v7.7.0
 const hasContentType = response.hasHeader('content-type');
 ```
 
-### response.headersSent<!-- YAML
+### response.headersSent
+
+<!-- YAML
 added: v0.9.3
--->* {boolean}
+-->
+
+* {boolean}
 
 Boolean (μόνο για ανάγνωση). True αν οι κεφαλίδες έχουν αποσταλεί, false αν δεν έχουν αποσταλεί.
 
-### response.removeHeader(name)<!-- YAML
+### response.removeHeader(name)
+
+<!-- YAML
 added: v0.4.0
--->* `name` {string}
+-->
+
+* `name` {string}
 
 Αφαιρεί μια κεφαλίδα που έχει τοποθετηθεί σε ουρά για υπονοούμενη αποστολή.
 
@@ -789,15 +1028,20 @@ added: v0.4.0
 response.removeHeader('Content-Encoding');
 ```
 
-### response.sendDate<!-- YAML
+### response.sendDate
+
+<!-- YAML
 added: v0.7.5
--->* {boolean}
+-->
+
+* {boolean}
 
 Όταν είναι True, η κεφαλίδα της Ημερομηνίας θα δημιουργηθεί με αυτόματο τρόπο και θα αποσταλεί με την απόκριση, αν δεν είναι ήδη ορισμένη ως κεφαλίδα. Από προεπιλογή είναι True.
 
 Αυτό πρέπει να απενεργοποιηθεί μόνο για δοκιμές. Το πρωτόκολλο HTTP απαιτεί την κεφαλίδα της Ημερομηνίας στις αποκρίσεις.
 
 ### response.setHeader(name, value)
+
 <!-- YAML
 added: v0.4.0
 -->
@@ -833,9 +1077,13 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-### response.setTimeout(msecs[, callback])<!-- YAML
+### response.setTimeout(msecs[, callback])
+
+<!-- YAML
 added: v0.9.12
--->* `msecs` {number}
+-->
+
+* `msecs` {number}
 * `callback` {Function}
 
 Ορίζει την τιμή της εξάντλησης του χρονικού περιθωρίου του Socket σε `msecs`. Αν έχει οριστεί ένα callback, τότε προστίθεται σαν ακροατής στο συμβάν `'timeout'` στην απόκριση του αντικειμένου.
@@ -844,9 +1092,13 @@ added: v0.9.12
 
 Returns `response`.
 
-### response.socket<!-- YAML
+### response.socket
+
+<!-- YAML
 added: v0.3.0
--->* {net.Socket}
+-->
+
+* {net.Socket}
 
 Αναφορά στο υποκείμενο socket. Συνήθως οι χρήστες δε θέλουν πρόσβαση σε αυτήν την ιδιότητα. Ειδικότερα, το socket δε θα μεταδώσει συμβάντα `'readable'`, εξαιτίας του τρόπου που ο αναλυτής πρωτοκόλλου συνδέεται στο socket. Μετά το `response.end()`, η ιδιότητα εκμηδενίζεται. Μπορείτε επίσης να αποκτήσετε πρόσβαση στο `socket` μέσω του `response.connection`.
 
@@ -861,9 +1113,13 @@ const server = http.createServer((req, res) => {
 }).listen(3000);
 ```
 
-### response.statusCode<!-- YAML
+### response.statusCode
+
+<!-- YAML
 added: v0.4.0
--->* {number}
+-->
+
+* {number}
 
 Όταν χρησιμοποιούνται υπονοούμενες κεφαλίδες (χωρίς δηλαδή την ρητή κλήση του [`response.writeHead()`][]), αυτή η ιδιότητα ελέγχει τον κωδικό κατάστασης που θα αποσταλεί στον πελάτη όταν οι κεφαλίδες εκκαθαριστούν.
 
@@ -875,9 +1131,13 @@ response.statusCode = 404;
 
 Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει τον κωδικό κατάστασης που έχει αποσταλεί.
 
-### response.statusMessage<!-- YAML
+### response.statusMessage
+
+<!-- YAML
 added: v0.11.8
--->* {string}
+-->
+
+* {string}
 
 When using implicit headers (not calling [`response.writeHead()`][] explicitly), this property controls the status message that will be sent to the client when the headers get flushed. If this is left as `undefined` then the standard message for the status code will be used.
 
@@ -889,9 +1149,13 @@ response.statusMessage = 'Not found';
 
 Αφού η κεφαλίδα απόκρισης αποσταλεί στον πελάτη, αυτή η ιδιότητα υποδεικνύει το μήνυμα κατάστασης που έχει αποσταλεί.
 
-### response.write(chunk\[, encoding\]\[, callback\])<!-- YAML
+### response.write(chunk\[, encoding\]\[, callback\])
+
+<!-- YAML
 added: v0.1.29
--->* `chunk` {string|Buffer}
+-->
+
+* `chunk` {string|Buffer}
 * `encoding` {string} **Προεπιλογή:** `'utf8'`
 * `callback` {Function}
 * Επιστρέφει: {boolean}
@@ -900,7 +1164,7 @@ added: v0.1.29
 
 Αυτό στέλνει ένα κομμάτι του σώματος απόκρισης. Αυτή η μέθοδος μπορεί να κληθεί πολλαπλές φορές για να εφοδιάσει την ροή με τα επόμενα κομμάτια του σώματος.
 
-Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Παρομοίως, οι αποκρίσεις `204` και `304` _δεν πρέπει_ να συμπεριλαμβάνουν ένα σώμα απόκρισης.
+Σημειώστε ότι στην ενότητα `http`, το σώμα απόκρισης παραλείπεται αν το αίτημα είναι ένα αίτημα HEAD. Παρομοίως, οι αποκρίσεις `204` και `304` *δεν πρέπει* να συμπεριλαμβάνουν ένα σώμα απόκρισης.
 
 Το `chunk` μπορεί να είναι ένα string ή ένα buffer. Αν το `chunk` είναι string, η δεύτερη παράμετρος καθορίζει πως θα γίνει η κωδικοποίησή του σε μια ροή byte. To `callback` θα κληθεί όταν αυτό το κομμάτι των δεδομένων εκκαθαριστεί.
 
@@ -910,18 +1174,27 @@ added: v0.1.29
 
 Επιστρέφει `true` εάν το σύνολο των δεδομένων έχει εκκαθαριστεί με επιτυχία στην προσωρινή μνήμη αποθήκευσης του πυρήνα. Επιστρέφει `false` αν όλα ή μέρος των δεδομένων έχουν μπει σε ουρά στη μνήμη του χρήστη. Το `'drain'` θα μεταδοθεί όταν ο χώρος προσωρινής αποθήκευσης είναι πάλι ελεύθερος.
 
-### response.writeContinue()<!-- YAML
-added: v0.3.0
--->Στέλνει στον πελάτη ένα μήνυμα HTTP/1.1 100 Continue, υποδεικνύοντας ότι πρέπει να αποσταλεί το σώμα του αιτήματος. See the [`'checkContinue'`][] event on `Server`.
+### response.writeContinue()
 
-### response.writeHead(statusCode\[, statusMessage\]\[, headers\])<!-- YAML
+<!-- YAML
+added: v0.3.0
+-->
+
+Στέλνει στον πελάτη ένα μήνυμα HTTP/1.1 100 Continue, υποδεικνύοντας ότι πρέπει να αποσταλεί το σώμα του αιτήματος. See the [`'checkContinue'`][] event on `Server`.
+
+### response.writeHead(statusCode\[, statusMessage\]\[, headers\])
+
+<!-- YAML
 added: v0.1.30
 changes:
+
   - version: v5.11.0, v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
                  the range `[100, 999]`.
--->* `statusCode` {number}
+-->
+
+* `statusCode` {number}
 * `statusMessage` {string}
 * `headers` {Object}
 
@@ -956,29 +1229,49 @@ const server = http.createServer((req, res) => {
 
 Η προσπάθεια ορισμού ονόματος πεδίου μιας κεφαλίδας ή τιμής που συμπεριλαμβάνει λανθασμένους χαρακτήρες, έχει ως αποτέλεσμα την εμφάνιση σφάλματος [`TypeError`][].
 
-## Class: http.IncomingMessage<!-- YAML
+## Class: http.IncomingMessage
+
+<!-- YAML
 added: v0.1.17
--->Ένα αντικείμενο `IncomingMessage` δημιουργείται από το [`http.Server`][] ή το [`http.ClientRequest`][] και μεταβιβάζεται ως η πρώτη παράμετρος στο [`'request'`][] ή στο συμβάν [`'response'`][] αντίστοιχα. It may be used to access response status, headers and data.
+-->
+
+Ένα αντικείμενο `IncomingMessage` δημιουργείται από το [`http.Server`][] ή το [`http.ClientRequest`][] και μεταβιβάζεται ως η πρώτη παράμετρος στο [`'request'`][] ή στο συμβάν [`'response'`][] αντίστοιχα. It may be used to access response status, headers and data.
 
 Υλοποιεί τη διεπαφή [Αναγνώσιμης Ροής](stream.html#stream_class_stream_readable) καθώς και τα παρακάτω συμβάντα, τις μεθόδους και τις ιδιότητες.
 
-### Συμβάν: 'aborted'<!-- YAML
+### Συμβάν: 'aborted'
+
+<!-- YAML
 added: v0.3.8
--->Μεταδίδεται όταν το αίτημα έχει ματαιωθεί.
+-->
 
-### Συμβάν: 'close'<!-- YAML
+Μεταδίδεται όταν το αίτημα έχει ματαιωθεί.
+
+### Συμβάν: 'close'
+
+<!-- YAML
 added: v0.4.2
--->Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί. Όπως και στο `'end'`, αυτό το συμβάν εκτελείται μόνο μια φορά ανά απόκριση.
+-->
 
-### message.aborted<!-- YAML
+Δηλώνει ότι η υποκείμενη σύνδεση έχει τερματιστεί. Όπως και στο `'end'`, αυτό το συμβάν εκτελείται μόνο μια φορά ανά απόκριση.
+
+### message.aborted
+
+<!-- YAML
 added: v8.13.0
--->* {boolean}
+-->
+
+* {boolean}
 
 Η ιδιότητα `message.aborted` θα έχει οριστεί ως `true` αν το αίτημα έχει ματαιωθεί.
 
-### message.complete<!-- YAML
+### message.complete
+
+<!-- YAML
 added: v0.3.0
--->* {boolean}
+-->
+
+* {boolean}
 
 The `message.complete` property will be `true` if a complete HTTP message has been received and successfully parsed.
 
@@ -999,15 +1292,23 @@ const req = http.request({
 });
 ```
 
-### message.destroy([error])<!-- YAML
+### message.destroy([error])
+
+<!-- YAML
 added: v0.3.0
--->* `error` {Error}
+-->
+
+* `error` {Error}
 
 Καλεί το `destroy()` στο socket που έχει λάβει το `IncomingMessage`. Αν το `error` έχει οριστεί, τότε θα μεταδοθεί ένα συμβάν `'error'` και το `error` μεταβιβάζεται ως παράμετρος σε οποιονδήποτε ακροατή (αν υπάρχει) του συμβάντος.
 
-### message.headers<!-- YAML
+### message.headers
+
+<!-- YAML
 added: v0.1.5
--->* {Object}
+-->
+
+* {Object}
 
 Το αντικείμενο κεφαλίδων αιτήματος/απόκρισης.
 
@@ -1028,25 +1329,37 @@ console.log(request.headers);
 * Το `set-cookie` είναι πάντα πίνακας. Τα διπλότυπα προστίθενται στον πίνακα.
 * Για όλες τις άλλες κεφαλίδες, οι τιμές συνενώνονται με διαχωριστικό ', '.
 
-### message.httpVersion<!-- YAML
+### message.httpVersion
+
+<!-- YAML
 added: v0.1.1
--->* {string}
+-->
+
+* {string}
 
 Σε περίπτωση αιτήματος του εξυπηρετητή, η έκδοση HTTP αποστέλλεται από τον πελάτη. Στην περίπτωση της απάντηση πελάτη, είναι η έκδοση HTTP του server που έχει συνδεθεί. Κατά πάσα πιθανότητα είναι `'1.1'` ή `'1.0'`.
 
 Επίσης το `message.httpVersionMajor` είναι το πρώτο integer, και το `message.httpVersionMinor` είναι το δεύτερο.
 
-### message.method<!-- YAML
+### message.method
+
+<!-- YAML
 added: v0.1.1
--->* {string}
+-->
+
+* {string}
 
 **Είναι έγκυρο μόνο για αιτήματα που έχουν προέλθει από το [`http.Server`][].**
 
 Η μέθοδος αιτήματος είναι string. Μόνο για ανάγνωση. Παράδειγμα: `'GET'`, `'DELETE'`.
 
-### message.rawHeaders<!-- YAML
+### message.rawHeaders
+
+<!-- YAML
 added: v0.11.6
--->* {Array}
+-->
+
+* {Array}
 
 Η λίστα ανεπεξέργαστων κεφαλίδων αιτήματος/απόκρισης, όπως έχουν ληφθεί.
 
@@ -1068,54 +1381,82 @@ added: v0.11.6
 console.log(request.rawHeaders);
 ```
 
-### message.rawTrailers<!-- YAML
+### message.rawTrailers
+
+<!-- YAML
 added: v0.11.6
--->* {Array}
+-->
+
+* {Array}
 
 Τα κλειδιά ουράς και οι τιμές των ακατέργαστων αιτημάτων αίτησης/απόκρισης, ακριβώς όπως παραλήφθηκαν. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
-### message.setTimeout(msecs, callback)<!-- YAML
+### message.setTimeout(msecs, callback)
+
+<!-- YAML
 added: v0.5.9
--->* `msecs` {number}
+-->
+
+* `msecs` {number}
 * `callback` {Function}
 
 Καλεί το `message.connection.setTimeout(msecs, callback)`.
 
 Returns `message`.
 
-### message.socket<!-- YAML
+### message.socket
+
+<!-- YAML
 added: v0.3.0
--->* {net.Socket}
+-->
+
+* {net.Socket}
 
 Το αντικείμενο [`net.Socket`][] που σχετίζεται με την σύνδεση.
 
 Για συνδέσεις με υποστήριξη HTTPS, χρησιμοποιήστε το [`request.socket.getPeerCertificate()`][] για να αποκτήσετε τα στοιχεία ταυτοποίησης του πελάτη.
 
-### message.statusCode<!-- YAML
+### message.statusCode
+
+<!-- YAML
 added: v0.1.1
--->* {number}
+-->
+
+* {number}
 
 **Ισχύει μόνο για απόκριση που λήφθηκε από το [`http.ClientRequest`][].**
 
 Ο 3ψήφιος κωδικός κατάστασης της απόκρισης HTTP. Π.Χ. `404`.
 
-### message.statusMessage<!-- YAML
+### message.statusMessage
+
+<!-- YAML
 added: v0.11.10
--->* {string}
+-->
+
+* {string}
 
 **Ισχύει μόνο για απόκριση που λήφθηκε από το [`http.ClientRequest`][].**
 
 Το μήνυμα της κατάστασης απόκρισης HTTP (φράση). E.G. `OK` or `Internal Server Error`.
 
-### message.trailers<!-- YAML
+### message.trailers
+
+<!-- YAML
 added: v0.3.0
--->* {Object}
+-->
+
+* {Object}
 
 Το αντικείμενο ουράς αιτήματος/απόκρισης. Συμπληρώνονται μόνο κατά το συμβάν `'end'`.
 
-### message.url<!-- YAML
+### message.url
+
+<!-- YAML
 added: v0.1.90
--->* {string}
+-->
+
+* {string}
 
 **Είναι έγκυρο μόνο για αιτήματα που έχουν προέλθει από το [`http.Server`][].**
 
@@ -1128,6 +1469,9 @@ Accept: text/plain\r\n
 ```
 
 Τότε το `request.url` θα είναι:
+
+<!-- eslint-disable semi -->
+
 ```js
 '/status?name=ryan'
 ```
@@ -1172,22 +1516,34 @@ Url {
   href: '/status?name=ryan' }
 ```
 
-## http.METHODS<!-- YAML
+## http.METHODS
+
+<!-- YAML
 added: v0.11.8
--->* {Array}
+-->
+
+* {Array}
 
 Μια λίστα με μεθόδους HTTP που υποστηρίζονται από τον αναλυτή.
 
-## http.STATUS_CODES<!-- YAML
+## http.STATUS_CODES
+
+<!-- YAML
 added: v0.1.22
--->* {Object}
+-->
+
+* {Object}
 
 Μια συλλογή με όλους τους καθιερωμένους κωδικούς κατάστασης της απόκρισης HTTP, και μια μικρή περιγραφή για κάθε έναν από αυτούς. Για παράδειγμα, `http.STATUS_CODES[404] === 'Not
 Found'`.
 
-## http.createServer([requestListener])<!-- YAML
+## http.createServer([requestListener])
+
+<!-- YAML
 added: v0.1.13
--->- `requestListener` {Function}
+-->
+
+* `requestListener` {Function}
 
 * Επιστρέφει: {http.Server}
 
@@ -1195,13 +1551,18 @@ added: v0.1.13
 
 Το `requestListener` είναι μια συνάρτηση που προστίθεται αυτόματα στο αίτημα [`'request'`][].
 
-## http.get(options[, callback])<!-- YAML
+## http.get(options[, callback])
+
+<!-- YAML
 added: v0.3.6
 changes:
+
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
--->* `options` {Object | string | URL} Δέχεται τα ίδια `options` με το [`http.request()`][], με το `method` να είναι πάντα ορισμένο ως `GET`. Οι ιδιότητες που κληρονομούνται από την πρωτότυπη μέθοδο, αγνοούνται.
+-->
+
+* `options` {Object | string | URL} Δέχεται τα ίδια `options` με το [`http.request()`][], με το `method` να είναι πάντα ορισμένο ως `GET`. Οι ιδιότητες που κληρονομούνται από την πρωτότυπη μέθοδο, αγνοούνται.
 * `callback` {Function}
 * Επιστρέφει: {http.ClientRequest}
 
@@ -1247,28 +1608,38 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
 });
 ```
 
-## http.globalAgent<!-- YAML
+## http.globalAgent
+
+<!-- YAML
 added: v0.5.9
--->* {http.Agent}
+-->
+
+* {http.Agent}
 
 Καθολικό στιγμιότυπο του `Agent` που χρησιμοποιείται από προεπιλογή για όλα τα αιτήματα HTTP των πελατών.
 
-## http.maxHeaderSize<!-- YAML
+## http.maxHeaderSize
+
+<!-- YAML
 added: v8.15.0
--->* {number}
+-->
+
+* {number}
 
 Read-only property specifying the maximum allowed size of HTTP headers in bytes. Defaults to 8KB. Configurable using the [`--max-http-header-size`][] CLI option.
 
 ## http.request(options[, callback])
+
 <!-- YAML
 added: v0.3.6
 changes:
+
   - version: v7.5.0
     pr-url: https://github.com/nodejs/node/pull/10638
     description: The `options` parameter can be a WHATWG `URL` object.
 -->
 
-* `options` {Object | string | URL}
+* `options` {Object | string | URL} 
   * `protocol` {string} Το πρωτόκολλο που θα χρησιμοποιηθεί. **Default:** `http:`.
   * `host` {string} Ένα όνομα τομέα ή μια διεύθυνση IP εξυπηρετητή για τον οποίο θα εκδοθεί το αίτημα. **Default:** `localhost`.
   * `hostname` {string} Ψευδώνυμο για το `host`. Για υποστήριξη του [`url.parse()`][], το `hostname` προτιμάται από το `host`.
@@ -1280,10 +1651,10 @@ changes:
   * `path` {string} Διαδρομή αιτήματος. Θα πρέπει να συμπεριλαμβάνει το string ερωτήματος, αν υπάρχει. Π.Χ. `'/index.html?page=12'`. Ένα exception εμφανίζεται όταν η διαδρομή του αιτήματος περιλαμβάνει μη-έγκυρους χαρακτήρες. Επί του παρόντος, μόνο τα κενά απορρίπτονται, αλλά αυτό είναι κάτι που μπορεί να αλλάξει στο μέλλον. **Προεπιλογή:** `'/'`.
   * `headers` {Object} Ένα αντικείμενο που περιέχει τις κεφαλίδες του αιτήματος.
   * `auth` {string} Βασική ταυτοποίηση, όπως `'user:password'`, για τον υπολογισμό μιας κεφαλίδας Authorization.
-  * `agent` {http.Agent | boolean} Controls [`Agent`][] behavior. Possible values:
-   * `undefined` (προεπιλογή): χρησιμοποιήστε το [`http.globalAgent`][] για αυτόν τον υπολογιστή και αυτή τη θύρα.
-   * Αντικείμενο `Agent`: ρητή χρήση αυτού που μεταβιβάστηκε στο `Agent`.
-   * `false`: δημιουργεί έναν νέο `Agent` προς χρήση, με τις προεπιλεγμένες τιμές.
+  * `agent` {http.Agent | boolean} Ελέγχει την συμπεριφορά του [`Agent`][]. Possible values: 
+    * `undefined` (προεπιλογή): χρησιμοποιήστε το [`http.globalAgent`][] για αυτόν τον υπολογιστή και αυτή τη θύρα.
+    * Αντικείμενο `Agent`: ρητή χρήση αυτού που μεταβιβάστηκε στο `Agent`.
+    * `false`: δημιουργεί έναν νέο `Agent` προς χρήση, με τις προεπιλεγμένες τιμές.
   * `createConnection` {Function} Μια συνάρτηση που δημιουργεί ένα socket/μια ροή που θα χρησιμοποιείται κάθε φορά που δεν χρησιμοποιείται η επιλογή `agent`. Αυτή μπορεί να χρησιμοποιηθεί για την αποφυγή δημιουργίας μιας προσαρμοσμένης κλάσης `Agent` απλά και μόνο για την παράκαμψη της προεπιλεγμένης συνάρτησης `createConnection`. Δείτε το [`agent.createConnection()`][] για περισσότερες λεπτομέρειες. Οποιαδήποτε ροή [`Duplex`][] είναι έγκυρη τιμή επιστροφής.
   * `timeout` {number}: Ένας αριθμός που ορίζει την εξάντληση του χρονικού περιθωρίου του socket σε χιλιοστά του δευτερολέπτου. Αυτό ορίζει την εξάντληση του χρονικού περιθωρίου πριν γίνει η σύνδεση του socket.
 * `callback` {Function}
@@ -1365,7 +1736,7 @@ const req = http.request(options, (res) => {
 Σε ένα επιτυχημένο αίτημα, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `socket`
-* `response`
+* `response` 
   * `data` any number of times, on the `res` object (`data` will not be emitted at all if the response body is empty, for instance, in most redirects)
   * `end` on the `res` object
 * `close`
@@ -1387,11 +1758,11 @@ const req = http.request(options, (res) => {
 Αν κληθεί το `req.abort()` αφού ληφθεί η απόκριση, θα μεταδοθούν τα παρακάτω συμβάντα, με την ακόλουθη σειρά:
 
 * `socket`
-* `response`
+* `response` 
   * `data` any number of times, on the `res` object
 * (το `req.abort()` καλείται εδώ)
 * `abort`
-* `close`
+* `close` 
   * `aborted` on the `res` object
   * `end` on the `res` object
   * `close` on the `res` object

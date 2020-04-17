@@ -205,26 +205,6 @@ added: v8.5.0
 
 The high resolution millisecond timestamp at which the Node.js process completed bootstrapping. If bootstrapping has not yet finished, the property has the value of -1.
 
-### performanceNodeTiming.clusterSetupEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which cluster processing ended. If cluster processing has not yet ended, the property has the value of -1.
-
-### performanceNodeTiming.clusterSetupStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which cluster processing started. If cluster processing has not yet started, the property has the value of -1.
-
 ### performanceNodeTiming.loopExit
 
 <!-- YAML
@@ -245,26 +225,6 @@ added: v8.5.0
 
 The high resolution millisecond timestamp at which the Node.js event loop started. If the event loop has not yet started (e.g., in the first tick of the main script), the property has the value of -1.
 
-### performanceNodeTiming.moduleLoadEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which main module load ended.
-
-### performanceNodeTiming.moduleLoadStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which main module load started.
-
 ### performanceNodeTiming.nodeStart
 
 <!-- YAML
@@ -274,46 +234,6 @@ added: v8.5.0
 * {number}
 
 The high resolution millisecond timestamp at which the Node.js process was initialized.
-
-### performanceNodeTiming.preloadModuleLoadEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which preload module load ended.
-
-### performanceNodeTiming.preloadModuleLoadStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which preload module load started.
-
-### performanceNodeTiming.thirdPartyMainEnd
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which third\_party\_main processing ended. If third\_party\_main processing has not yet ended, the property has the value of -1.
-
-### performanceNodeTiming.thirdPartyMainStart
-
-<!-- YAML
-added: v8.5.0
--->
-
-* {number}
-
-The high resolution millisecond timestamp at which third\_party\_main processing started. If third\_party\_main processing has not yet started, the property has the value of -1.
 
 ### performanceNodeTiming.v8Start
 
@@ -362,7 +282,7 @@ The `callback` is invoked when a `PerformanceObserver` is notified about new `Pe
 
 <!-- YAML
 added: v8.5.0
---> Disconnects the 
+--> Disconnects the
 
 `PerformanceObserver` instance from all notifications.
 
@@ -498,8 +418,6 @@ setTimeout(() => {}, 1000);
 ### Measuring how long it takes to load dependencies
 
 The following example measures the duration of `require()` operations to load dependencies:
-
-<!-- eslint-disable no-global-assign -->
 
 ```js
 'use strict';

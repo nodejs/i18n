@@ -63,7 +63,7 @@ is provided below for reference.
     "osRelease": "3.10.0-862.el7.x86_64",
     "osVersion": "#1 SMP Wed Mar 21 18:14:51 EDT 2018",
     "osMachine": "x86_64",
-    "osCpus": [
+    "cpus": [
       {
         "model": "Intel(R) Core(TM) i7-6820HQ CPU @ 2.70GHz",
         "speed": 2700,
@@ -81,6 +81,16 @@ is provided below for reference.
         "sys": 50902570,
         "idle": 241732220,
         "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "en0",
+        "internal": false,
+        "mac": "13:10:de:ad:be:ef",
+        "address": "10.0.0.37",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
       }
     ],
     "host": "test_machine"
@@ -287,6 +297,7 @@ is provided below for reference.
       "address": "0x000055fc7b2cb180"
     }
   ],
+  "workers": [],
   "environmentVariables": {
     "REMOTEHOST": "REMOVED",
     "MANPATH": "/opt/rh/devtoolset-3/root/usr/share/man:",
@@ -436,11 +447,11 @@ the name of a file into which the report is written.
 process.report.writeReport('./foo.json');
 ```
 
-This function takes an optional additional argument `err` - an `Error` object
-that will be used as the context for the JavaScript stack printed in the report.
-When using report to handle errors in a callback or an exception handler, this
-allows the report to include the location of the original error as well
-as where it was handled.
+This function takes an optional additional argument `err` which is an `Error`
+object that will be used as the context for the JavaScript stack printed in the
+report. When using report to handle errors in a callback or an exception
+handler, this allows the report to include the location of the original error as
+well as where it was handled.
 
 ```js
 try {
@@ -463,20 +474,24 @@ try {
 // Any other code
 ```
 
-The content of the diagnostic report can be returned as a JSON-compatible object
+The content of the diagnostic report can be returned as a JavaScript Object
 via an API call from a JavaScript application:
 
 ```js
 const report = process.report.getReport();
-console.log(report);
+console.log(typeof report === 'object'); // true
+
+// Similar to process.report.writeReport() output
+console.log(JSON.stringify(report, null, 2));
 ```
 
-This function takes an optional additional argument `err` - an `Error` object
-that will be used as the context for the JavaScript stack printed in the report.
+This function takes an optional additional argument `err`, which is an `Error`
+object that will be used as the context for the JavaScript stack printed in the
+report.
 
 ```js
 const report = process.report.getReport(new Error('custom error'));
-console.log(report);
+console.log(typeof report === 'object'); // true
 ```
 
 The API versions are useful when inspecting the runtime state from within
@@ -498,7 +513,7 @@ Node.js report completed
 >
 ```
 
-When a report is triggered, start and end messages are issued to stderr
+When a report is written, start and end messages are issued to stderr
 and the filename of the report is returned to the caller. The default filename
 includes the date, time, PID and a sequence number. The sequence number helps
 in associating the report dump with the runtime state if generated multiple
@@ -564,4 +579,24 @@ NODE_OPTIONS="--experimental-report --report-uncaught-exception \
 Specific API documentation can be found under
 [`process API documentation`][] section.
 
+## Interaction with Workers
+<!-- YAML
+changes:
+  - version: v12.16.2
+    pr-url: https://github.com/nodejs/node/pull/31386
+    description: Workers are now included in the report.
+-->
+
+[`Worker`][] threads can create reports in the same way that the main thread
+does.
+
+Reports will include information on any Workers that are children of the current
+thread as part of the `workers` section, with each Worker generating a report
+in the standard report format.
+
+The thread which is generating the report will wait for the reports from Worker
+threads to finish. However, the latency for this will usually be low, as both
+running JavaScript and the event loop are interrupted to generate the report.
+
 [`process API documentation`]: process.html
+[`Worker`]: worker_threads.html

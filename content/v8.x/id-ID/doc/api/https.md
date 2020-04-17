@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> Stability: 2 - Stable
+> Stabilitas: 2 - Stabil
 
 HTTPS is the HTTP protocol over TLS/SSL. In Node.js this is implemented as a separate module.
 
@@ -36,13 +36,19 @@ See [`server.close()`][`http.close()`] from the HTTP module for details.
 
 Starts the HTTPS server listening for encrypted connections. This method is identical to [`server.listen()`][] from [`net.Server`][].
 
+### server.headersTimeout
+
+- {number} **Default:** `40000`
+
+See [`http.Server#headersTimeout`][].
+
 ### server.setTimeout(\[msecs\]\[, callback\])
 
 <!-- YAML
 added: v0.11.2
 -->
 
-- `msecs` {number} Defaults to 120000 (2 minutes).
+- `msecs` {number} **Default:** `120000` (2 minutes)
 - `callback` {Function}
 
 See [`http.Server#setTimeout()`][].
@@ -53,7 +59,7 @@ See [`http.Server#setTimeout()`][].
 added: v0.11.2
 -->
 
-- {number} Defaults to 120000 (2 minutes).
+- {number} **Default:** `120000` (2 minutes)
 
 See [`http.Server#timeout`][].
 
@@ -63,7 +69,7 @@ See [`http.Server#timeout`][].
 added: v8.0.0
 -->
 
-- {number} Defaults to 5000 (5 seconds).
+- {number} **Default:** `5000` (5 seconds)
 
 See [`http.Server#keepAliveTimeout`][].
 
@@ -73,7 +79,7 @@ See [`http.Server#keepAliveTimeout`][].
 added: v0.3.4
 -->
 
-- `options` {Object} Accepts `options` from [`tls.createServer()`][] and [`tls.createSecureContext()`][].
+- `options` {Object} Accepts `options` from [`tls.createServer()`][], [`tls.createSecureContext()`][] and [`http.createServer()`][].
 - `requestListener` {Function} A listener to be added to the `request` event.
 
 Example:
@@ -167,9 +173,9 @@ changes:
 -->
 
 - `options` {Object | string | URL} Accepts all `options` from [`http.request()`][], with some differences in default values: 
-    - `protocol` Defaults to `https:`
-    - `port` Defaults to `443`.
-    - `agent` Defaults to `https.globalAgent`.
+  - `protocol` **Default:** `https:`
+  - `port` **Default:** `443`
+  - `agent` **Default:** `https.globalAgent`
 - `callback` {Function}
 
 Makes a request to a secure web server.

@@ -291,7 +291,7 @@ rl.write(null, { ctrl: true, name: 'u' });
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 * `dir` {number} 
   * `-1` - to the left from cursor
   * `1` - to the right from cursor
@@ -305,7 +305,7 @@ The `readline.clearLine()` method clears current line of given [TTY](tty.html) s
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 
 The `readline.clearScreenDown()` method clears the given [TTY](tty.html) stream from the current position of the cursor down.
 
@@ -330,14 +330,14 @@ changes:
 -->
 
 * `options` {Object} 
-  * `input` {Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
-  * `output` {Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
+  * `input` {stream.Readable} The [Readable](stream.html#stream_readable_streams) stream to listen to. This option is *required*.
+  * `output` {stream.Writable} The [Writable](stream.html#stream_writable_streams) stream to write readline data to.
   * `completer` {Function} An optional function used for Tab autocompletion.
-  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. Defaults to checking `isTTY` on the `output` stream upon instantiation.
-  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`
-  * `prompt` {string} The prompt string to use. **Default:** `'> '`
-  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`
-  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`
+  * `terminal` {boolean} `true` if the `input` and `output` streams should be treated like a TTY, and have ANSI/VT100 escape codes written to it. **Default:** checking `isTTY` on the `output` stream upon instantiation.
+  * `historySize` {number} Maximum number of history lines retained. To disable the history set this value to `0`. This option makes sense only if `terminal` is set to `true` by the user or by an internal `output` check, otherwise the history caching mechanism is not initialized at all. **Default:** `30`.
+  * `prompt` {string} The prompt string to use. **Default:** `'> '`.
+  * `crlfDelay` {number} If the delay between `\r` and `\n` exceeds `crlfDelay` milliseconds, both `\r` and `\n` will be treated as separate end-of-line input. `crlfDelay` will be coerced to a number no less than `100`. It can be set to `Infinity`, in which case `\r` followed by `\n` will always be considered a single newline (which may be reasonable for [reading files](#readline_example_read_file_stream_line_by_line) with `\r\n` line delimiter). **Default:** `100`.
+  * `removeHistoryDuplicates` {boolean} If `true`, when a new input line added to the history list duplicates an older one, this removes the older line from the list. **Default:** `false`.
 
 The `readline.createInterface()` method creates a new `readline.Interface` instance.
 
@@ -393,7 +393,7 @@ function completer(linePartial, callback) {
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 * `x` {number}
 * `y` {number}
 
@@ -405,7 +405,7 @@ The `readline.cursorTo()` method moves cursor to the specified position in a giv
 added: v0.7.7
 -->
 
-* `stream` {Readable}
+* `stream` {stream.Readable}
 * `interface` {readline.Interface}
 
 The `readline.emitKeypressEvents()` method causes the given [Readable](stream.html#stream_readable_streams) `stream` to begin emitting `'keypress'` events corresponding to received input.
@@ -428,7 +428,7 @@ if (process.stdin.isTTY)
 added: v0.7.7
 -->
 
-* `stream` {Writable}
+* `stream` {stream.Writable}
 * `dx` {number}
 * `dy` {number}
 

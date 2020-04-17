@@ -1,6 +1,7 @@
 # ECMAScript Modülleri
 
 <!--introduced_in=v8.5.0-->
+
 <!-- type=misc -->
 
 > Kararlılık: 1 - Deneysel
@@ -177,16 +178,16 @@ export function resolve(specifier, parentModuleURL = baseURL, defaultResolve) {
     };
   }
   if (/^\.{0,2}[/]/.test(specifier) !== true && !specifier.startsWith('file:')) {
-    // For node_modules support:
-    // return defaultResolve(specifier, parentModuleURL);
+    // node_modules desteği için:
+    // dönüş defaultResolve(specifier, parentModuleURL);
     throw new Error(
-      `imports must begin with '/', './', or '../'; '${specifier}' does not`);
+      `içe aktarma  '${specifier}' ile değil, '/', './', veya '../'; ile başlamak zorundadır);
   }
   const resolved = new URL(specifier, parentModuleURL);
   const ext = path.extname(resolved.pathname);
   if (!JS_EXTENSIONS.has(ext)) {
     throw new Error(
-      `Cannot load file with non-JavaScript file extension ${ext}.`);
+      `JavaScript olmayan ${ext} dosya uzantısına sahip dosya yüklenemiyor.`);
   }
   return {
     url: resolved.href,

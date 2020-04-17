@@ -1,4 +1,4 @@
-# Console
+# कंसोल
 
 <!--introduced_in=v0.10.13-->
 
@@ -147,7 +147,7 @@ When `stdout` is a TTY, calling `console.clear()` will attempt to clear the TTY.
 
 The specific operation of `console.clear()` can vary across operating systems and terminal types. For most Linux operating systems, `console.clear()` operates similarly to the `clear` shell command. On Windows, `console.clear()` will clear only the output in the current terminal viewport for the Node.js binary.
 
-### console.count([label='default'])
+### console.count([label])
 
 <!-- YAML
 added: v8.3.0
@@ -181,7 +181,7 @@ undefined
 >
 ```
 
-### console.countReset([label='default'])
+### console.countReset([label])
 
 <!-- YAML
 added: v8.3.0
@@ -367,7 +367,7 @@ console.table([{ a: 1, b: 'Y' }, { a: 'Z', b: 2 }], ['a']);
 // └─────────┴─────┘
 ```
 
-### console.time(label)
+### console.time([label])
 
 <!-- YAML
 added: v0.1.104
@@ -377,7 +377,7 @@ added: v0.1.104
 
 Starts a timer that can be used to compute the duration of an operation. Timers are identified by a unique `label`. Use the same `label` when calling [`console.timeEnd()`][] to stop the timer and output the elapsed time in milliseconds to `stdout`. Timer durations are accurate to the sub-millisecond.
 
-### console.timeEnd(label)
+### console.timeEnd([label])
 
 <!-- YAML
 added: v0.1.104
@@ -398,6 +398,26 @@ console.time('100-elements');
 for (let i = 0; i < 100; i++) {}
 console.timeEnd('100-elements');
 // prints 100-elements: 225.438ms
+```
+
+### console.timeLog(\[label\]\[, ...data\])
+
+<!-- YAML
+added: v10.7.0
+-->
+
+* `label` {string} **Default:** `'default'`
+* `...data` {any}
+
+For a timer that was previously started by calling [`console.time()`][], prints the elapsed time and other `data` arguments to `stdout`:
+
+```js
+console.time('process');
+const value = expensiveProcess1(); // Returns 42
+console.timeLog('process', value);
+// Prints "process: 365.227ms 42".
+doExpensiveProcess2(value);
+console.timeEnd('process');
 ```
 
 ### console.trace(\[message\]\[, ...args\])
@@ -442,7 +462,7 @@ The `console.warn()` function is an alias for [`console.error()`][].
 
 The following methods are exposed by the V8 engine in the general API but do not display anything unless used in conjunction with the [inspector](debugger.html) (`--inspect` flag).
 
-### console.markTimeline(label)
+### console.markTimeline([label])
 
 <!-- YAML
 added: v8.0.0
@@ -465,17 +485,21 @@ This method does not display anything unless used in the inspector. The `console
 ```js
 console.profile('MyLabel');
 // Some code
-console.profileEnd();
+console.profileEnd('MyLabel');
 // Adds the profile 'MyLabel' to the Profiles panel of the inspector.
 ```
 
-### console.profileEnd()
+### console.profileEnd([label])
 
 <!-- YAML
 added: v8.0.0
 -->
 
+* `label` {string}
+
 This method does not display anything unless used in the inspector. Stops the current JavaScript CPU profiling session if one has been started and prints the report to the **Profiles** panel of the inspector. See [`console.profile()`][] for an example.
+
+If this method is called without a label, the most recently started profile is stopped.
 
 ### console.timeStamp([label])
 

@@ -6,7 +6,7 @@ The `require('internal/errors')` module is an internal-only module that can be u
 
 The intent of the module is to allow errors provided by Node.js to be assigned a permanent identifier. Without a permanent identifier, userland code may need to inspect error messages to distinguish one error from another. An unfortunate result of that practice is that changes to error messages result in broken code in the ecosystem. For that reason, Node.js has considered error message changes to be breaking changes. By providing a permanent identifier for a specific error, we reduce the need for userland code to inspect error messages.
 
-*Note*: Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
+Switching an existing error to use the `internal/errors` module must be considered a `semver-major` change.
 
 ## Using internal/errors.js
 
@@ -44,8 +44,6 @@ E('EXAMPLE_KEY2', (a, b) => `${a} ${b}`, RangeError);
 The first argument passed to `E()` is the static identifier. The second argument is either a String with optional `util.format()` style replacement tags (e.g. `%s`, `%d`), or a function returning a String. The optional additional arguments passed to the `errors.message()` function (which is used by the `errors.Error`, `errors.TypeError` and `errors.RangeError` classes), will be used to format the error message. The third argument is the base class that the new error will extend.
 
 It is possible to create multiple derived classes by providing additional arguments. The other ones will be exposed as properties of the main class:
-
-<!-- eslint-disable no-unreachable -->
 
 ```js
 E('EXAMPLE_KEY', 'Error message', TypeError, RangeError);

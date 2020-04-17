@@ -22,6 +22,7 @@ false
 在大多数情况下，应用程序几乎没有理由手工创建 `tty.ReadStream` 和 `tty.WriteStream` 类的实例。
 
 ## 类：tty.ReadStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -29,6 +30,7 @@ added: v0.5.8
 `tty.ReadStream` 类是 [`net.Socket`][] 的子类，用来表示和 TTY 读取相关的特性。 在正常情况下 [`process.stdin`][] 是 Node.js 进程中唯一的 `tty.ReadStream` 实例，且没有任何理由需要创建其他实例。
 
 ### readStream.isRaw
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -36,6 +38,7 @@ added: v0.7.7
 如果 TTY 被配置为原始设备，则该 `boolean` 值为 `true`。 默认值为 `false`。
 
 ### readStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -43,6 +46,7 @@ added: v0.5.8
 对于 `tty.ReadStream` 实例，该 `boolean` 值始终为 `true`。
 
 ### readStream.setRawMode(mode)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -55,6 +59,7 @@ added: v0.7.7
 在处于原始模式时，输入按字符逐个生效，但不包括修饰符。 此外，终端对字符的所有特殊处理都被禁用，包括回显输入字符。 注意在此模式下，`CTRL`+`C` 不再产生 `SIGINT`。
 
 ## 类：tty.WriteStream
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -62,6 +67,7 @@ added: v0.5.8
 The `tty.WriteStream` class is a subclass of [`net.Socket`][] that represents the writable side of a TTY. 在正常情况下，[`process.stdout`][] 和 [`process.stderr`][] 将会是为 Node.js 进程创建的唯一的 `tty.WriteStream` 实例，且没有任何理由需要创建其他实例。
 
 ### 事件：'resize'
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -76,11 +82,12 @@ process.stdout.on('resize', () => {
 ```
 
 ### writeStream.clearLine(dir)
+
 <!-- YAML
 added: v0.7.7
 -->
 
-* `dir` {number}
+* `dir` {number} 
   * `-1` - 从光标向左
   * `1` - 从光标向右
   * `0` - 整行
@@ -88,6 +95,7 @@ added: v0.7.7
 `writeStream.clearLine()` clears the current line of this `WriteStream` in a direction identified by `dir`.
 
 ### writeStream.clearScreenDown()
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -95,6 +103,7 @@ added: v0.7.7
 `writeStream.clearScreenDown()` clears this `WriteStream` from the current cursor down.
 
 ### writeStream.columns
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -102,6 +111,7 @@ added: v0.7.7
 用来表示当前 TTY 列数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
 
 ### writeStream.cursorTo(x, y)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -112,14 +122,16 @@ added: v0.7.7
 `writeStream.cursorTo()` moves this `WriteStream`'s cursor to the specified position.
 
 ### writeStream.getColorDepth([env])
+
 <!-- YAML
 added: v9.9.0
 -->
 
-* `env` {Object} An object containing the environment variables to check. **Default:** `process.env`.
+* `env` {Object} An object containing the environment variables to check. **默认值：** `process.env`.
 * 返回：{number}
 
-Returns:
+返回:
+
 * `1` for 2,
 * `4` for 16,
 * `8` for 256,
@@ -130,19 +142,22 @@ Use this to determine what colors the terminal supports. Due to the nature of co
 Use the `NODE_DISABLE_COLORS` environment variable to enforce this function to always return 1.
 
 ### writeStream.getWindowSize()
+
 <!-- YAML
 added: v0.7.7
 -->
+
 * Returns: {number[]}
 
 `writeStream.getWindowSize()` returns the size of the [TTY](tty.html) corresponding to this `WriteStream`. The array is of the type `[numColumns, numRows]` where `numColumns` and `numRows` represent the number of columns and rows in the corresponding [TTY](tty.html).
 
 ### writeStream.hasColors(\[count\]\[, env\])
+
 <!-- YAML
 added: v10.16.0
 -->
 
-* `count` {integer} The number of colors that are requested (minimum 2). **Default:** 16.
+* `count` {integer} The number of colors that are requested (minimum 2). **默认值：** 16.
 * `env` {Object} An object containing the environment variables to check. This enables simulating the usage of a specific terminal. **Default:** `process.env`.
 * 返回：{boolean}
 
@@ -162,6 +177,7 @@ process.stdout.hasColors(2 ** 24, { TMUX: '1' });
 ```
 
 ### writeStream.isTTY
+
 <!-- YAML
 added: v0.5.8
 -->
@@ -169,6 +185,7 @@ added: v0.5.8
 一个始终为 `true` 的 `boolean` 值。
 
 ### writeStream.moveCursor(dx, dy)
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -179,6 +196,7 @@ added: v0.7.7
 `writeStream.moveCursor()` moves this `WriteStream`'s cursor *relative* to its current position.
 
 ### writeStream.rows
+
 <!-- YAML
 added: v0.7.7
 -->
@@ -186,6 +204,7 @@ added: v0.7.7
 用来表示 TTY 当前行数的 `数字`。 当 `'resize'` 事件被触发时，此属性被更新。
 
 ## tty.isatty(fd)
+
 <!-- YAML
 added: v0.5.8
 -->

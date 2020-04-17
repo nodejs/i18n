@@ -1,14 +1,14 @@
 # Proceso de Lanzamiento de Node.js
 
-Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. La audiencia prevista son quienes han sido autorizados por el Comité de Dirección Técnica (TSC) de la Fundación Node.js para crear, promover y firmar versiones oficiales de lanzamiento para Node.js, alojadas en <https://nodejs.org/>.
+Este documento describe los aspectos técnicos del proceso de lanzamiento de Node.js. The intended audience is those who have been authorized by the Node.js Foundation Technical Steering Committee (TSC) to create, promote, and sign official release builds for Node.js, hosted on <https://nodejs.org/>.
 
 ## Tabla de Contenidos
 
-* [¿Quién puede realizar un lanzamiento?](#who-can-make-a-release)
+* [¿Quién puede realizar un lanzamiento?](#who-can-make-a-release) 
   * [1. Acceso de Lanzamiento Jenkins](#1-jenkins-release-access)
   * [2. <nodejs.org> Acceso](#2-nodejsorg-access)
   * [3. Una Clave GPG Públicamente Listada](#3-a-publicly-listed-gpg-key)
-* [Cómo crear un lanzamiento](#how-to-create-a-release)
+* [Cómo crear un lanzamiento](#how-to-create-a-release) 
   * [0. Pre-release steps](#0-pre-release-steps)
   * [1. Update the staging branch](#1-update-the-staging-branch)
   * [2. Create a new branch for the release](#2-create-a-new-branch-for-the-release)
@@ -17,7 +17,7 @@ Este documento describe los aspectos técnicos del proceso de lanzamiento de Nod
   * [5. Crear un Commit de Lanzamiento](#5-create-release-commit)
   * [6. Proponer Lanzamiento en GitHub](#6-propose-release-on-github)
   * [7. Asegurar que la Rama de Lanzamiento sea Estable](#7-ensure-that-the-release-branch-is-stable)
-  * [8. Producir una Compilación Nocturna _(opcional)_](#8-produce-a-nightly-build-optional)
+  * [8. Producir una Compilación Nocturna *(opcional)*](#8-produce-a-nightly-build-optional)
   * [9. Producir Compilaciones de Lanzamiento](#9-produce-release-builds)
   * [10. Probar la Compilación](#10-test-the-build)
   * [11. Etiquetar y Firmar el Commit de Lanzamiento](#11-tag-and-sign-the-release-commit)
@@ -34,55 +34,55 @@ Este documento describe los aspectos técnicos del proceso de lanzamiento de Nod
 
 La autorización de lanzamiento es otorgada por el TSC de Node.js. Once authorized, an individual must have the following:
 
-### 1. Acceso de Lanzamiento Jenkins
+### 1. Acceso del Lanzamiento Jenkins
 
-Hay tres trabajos relevantes de Jenkins que deben ser utilizados para un flujo de lanzamiento:
+Hay tres trabajos de Jenkins relevantes que deben ser usados para un flujo liberado:
 
 **a.** **Test runs:** **[node-test-pull-request](https://ci.nodejs.org/job/node-test-pull-request/)** is used for a final full-test run to ensure that the current *HEAD* is stable.
 
-**b.** **Nightly builds:** (optional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** can be used to create a nightly release for the current *HEAD* if public test releases are required. Las compilaciones activadas con este trabajo son publicadas directamente en <https://nodejs.org/download/nightly/> y se encuentran disponibles para su descarga pública.
+**b.** **Nightly builds:** (optional) **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** can be used to create a nightly release for the current *HEAD* if public test releases are required. Builds triggered with this job are published straight to <https://nodejs.org/download/nightly/> and are available for public download.
 
-**c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. La promoción de los archivos de lanzamiento es un paso manual una vez que están listos (véase a continuación).
+**c.** **Release builds:** **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** does all of the work to build all required release assets. Promotion of the release files is a manual step once they are ready (see below).
 
-El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el TSC.
+The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
 ### 2. <nodejs.org> Acceso
 
-The _dist_ user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
+The *dist* user on nodejs.org controls the assets available in <https://nodejs.org/download/>. <https://nodejs.org/dist/> is an alias for <https://nodejs.org/download/release/>.
 
-Los workers de la compilación del lanzamiento Jenkins workers sube los artefactos al servidor web como el usuario _staging_. El usuario _dist_ tiene acceso para mover estos activos a acceso público mientras que, por seguridad, no lo tiene el usuario _staging_.
+The Jenkins release build workers upload their artifacts to the web server as the *staging* user. The *dist* user has access to move these assets to public access while, for security, the *staging* user does not.
 
-Las compilaciones nocturnas son promovidas automáticamente en el servidor por una tarea cron para el usuario _dist_.
+Nightly builds are promoted automatically on the server by a cron task for the *dist* user.
 
-Las compilaciones liberadas requieren promoción manual por una persona individual con acceso SSH en el servidor como el usuario_dist_. El [equipo de compilación de Node.js](https://github.com/nodejs/build) es capaz de proveer este acceso a personas individuales autorizadas por el TSC.
+Release builds require manual promotion by an individual with SSH access to the server as the *dist* user. The [Node.js build team](https://github.com/nodejs/build) is able to provide this access to individuals authorized by the TSC.
 
-### 3. Una Clave GPG Públicamente Listada
+### 3. Una clave GPG pública
 
-Un archivo SHASUMS256.txt es producido por cada compilación promovida, cada noche, y lanzamientos. Adicionalmente para los lanzamientos, este archivo es firmado por la persona individual responsable de ese lanzamiento. Para poder verificar binarios descargados, el publico debería ser capaz de verificar que el archivo SHASUMS256.txt ha sido firmado por alguien que ha sido autorizado para crear un lanzamiento.
+A SHASUMS256.txt file is produced for every promoted build, nightly, and releases. Additionally for releases, this file is signed by the individual responsible for that release. In order to be able to verify downloaded binaries, the public should be able to check that the SHASUMS256.txt file has been signed by someone who has been authorized to create a release.
 
-Las claves GPG deberían ser rescatables de un keyserver conocido de terceros. Son recomendados los Keyservers SKS en <https://sks-keyservers.net>. Usa el formulario de [envío](https://pgp.mit.edu/) para enviar una nueva clave GPG. Las claves deberían ser rescatables usando:
+Las claves GPG deberían ser rescatables de un keyserver conocido de terceros. The SKS Keyservers at <https://sks-keyservers.net> are recommended. Use the [submission](https://pgp.mit.edu/) form to submit a new GPG key. Keys should be fetchable via:
 
 ```console
 $ gpg --keyserver pool.sks-keyservers.net --recv-keys <FINGERPRINT>
 ```
 
-La clave que usted utilice puede ser una clave secundaria/subclave de una clave existente.
+La clave que uses pudiera ser una clave secundaria/subclave de una clave existente.
 
-Además, huellas de clave GPG completas para individuos autorizados para hacer el lanzamiento deberían estar listadas en el archivo Node.js GitHub README.md.
+Additionally, full GPG key fingerprints for individuals authorized to release should be listed in the Node.js GitHub README.md file.
 
 ## Cómo crear un lanzamiento
 
 Notas:
 
-- Las fechas listadas a continuación como _"AAAA-MM-DD"_ deberían ser la fecha del lanzamiento **como UTC**. Utilice `date -u +'%Y-%m-%d'` para descubrir qué es esto.
-- Version strings are listed below as _"vx.y.z"_ or _"x.y.z"_. Substitute for the release version.
-- Examples will use the fictional release version `1.2.3`.
+* Dates listed below as *"YYYY-MM-DD"* should be the date of the release **as UTC**. Utilice `date -u +'%Y-%m-%d'` para descubrir qué es esto.
+* Version strings are listed below as *"vx.y.z"* or *"x.y.z"*. Substitute for the release version.
+* Examples will use the fictional release version `1.2.3`.
 
 ### 0. Pre-release steps
 
 Before preparing a Node.js release, the Build Working Group must be notified at least one business day in advance of the expected release. Coordinating with Build is essential to make sure that the CI works, release files are published, and the release blog post is available on the project website.
 
-Build can be contacted best by opening up an issue on the \[Build issue tracker\]\[\], and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
+Build can be contacted best by opening up an issue on the [Build issue tracker](https://github.com/nodejs/build/issues/new), and by posting in `#node-build` on [webchat.freenode.net](https://webchat.freenode.net/).
 
 When preparing a security release, contact Build at least two weekdays in advance of the expected release. To ensure that the security patch(es) can be properly tested, run a `node-test-pull-request` job against the `master` branch of the `nodejs-private/node-private` repository a day or so before the [CI lockdown procedure](https://github.com/nodejs/build/blob/master/doc/jenkins-guide.md#restricting-access-for-security-releases) begins. This is to confirm that Jenkins can properly access the private repository.
 
@@ -101,10 +101,11 @@ If the staging branch is not up to date relative to `master`, bring the appropri
 Go through PRs with the label `vN.x`. e.g. [PRs with the `v8.x` label](https://github.com/nodejs/node/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc+label%3Av8.x).
 
 For each PR:
-- Run or check that there is a passing CI.
-- Check approvals (you can approve yourself).
-- Check that the commit metadata was not changed from the `master` commit.
-- If there are merge conflicts, ask the PR author to rebase. Simple conflicts can be resolved when landing.
+
+* Run or check that there is a passing CI.
+* Check approvals (you can approve yourself).
+* Check that the commit metadata was not changed from the `master` commit.
+* If there are merge conflicts, ask the PR author to rebase. Simple conflicts can be resolved when landing.
 
 When landing the PR add the `Backport-PR-URL:` line to each commit. Close the backport PR with `Landed in ...`. Update the label on the original PR from `backport-requested-vN.x` to `backported-to-vN.x`.
 
@@ -119,9 +120,10 @@ $ branch-diff v1.x-staging master --exclude-label=semver-major,semver-minor,dont
 Previous release commits and version bumps do not need to be cherry-picked.
 
 Carefully review the list of commits:
-- Checking for errors (incorrect `PR-URL`)
-- Checking semver status - Commits labeled as `semver-minor` or `semver-major` should only be cherry-picked when appropriate for the type of release being made.
-- If you think it's risky so should wait for a while, add the `baking-for-lts` tag.
+
+* Checking for errors (incorrect `PR-URL`)
+* Checking semver status - Commits labeled as `semver-minor` or `semver-major` should only be cherry-picked when appropriate for the type of release being made.
+* If you think it's risky so should wait for a while, add the `baking-for-lts` tag.
 
 When cherry-picking commits, if there are simple conflicts you can resolve them. Otherwise, add the `backport-requested-vN.x` label to the original PR and post a comment stating that it does not land cleanly and will require a backport PR.
 
@@ -141,7 +143,7 @@ $ git checkout -b v1.2.3-proposal upstream/v1.x-staging
 
 ### 3. Actualizar `src/node_version.h`
 
-Establece la versión para el lanzamiento propuesto usando los siguientes macros, que ya están definidos en `src/node_version.h`:
+Set the version for the proposed release using the following macros, which are already defined in `src/node_version.h`:
 
 ```c
 #define NODE_MAJOR_VERSION x
@@ -149,7 +151,7 @@ Establece la versión para el lanzamiento propuesto usando los siguientes macros
 #define NODE_PATCH_VERSION z
 ```
 
-Establezca el valor del macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la compilación sea producida con una versión string que no tiene una etiqueta de pre-lanzamiento al final:
+Establezca el valor del macro `NODE_VERSION_IS_RELEASE` a `1`. This causes the build to be produced with a version string that does not have a trailing pre-release tag:
 
 ```c
 #define NODE_VERSION_IS_RELEASE 1
@@ -157,34 +159,34 @@ Establezca el valor del macro `NODE_VERSION_IS_RELEASE` a `1`. Esto causa que la
 
 **También considera si se debe saltar `NODE_MODULE_VERSION`**:
 
-Este macro es utilizado para señalar una versión de ABI para complementos nativos. Actualmente tiene dos usos comunes en la comunidad:
+Este macro es utilizado para señalar una versión de ABI para complementos nativos. It currently has two common uses in the community:
 
-- Determinar qué API funciona en contra para compilar complementos nativos, p. ej. [NAN](https://github.com/nodejs/nan) lo usa para formar una capa de compatibilidad para mucho de lo que envuelve.
-- Determinar el ABI para descargar binarios pre-compilados de complementos nativos, p. ej. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) usa este valor como fue expuesto por `process.versions.modules` para ayudar a determinar el binario apropiado para descargar en tiempo de instalación.
+* Determining what API to work against for compiling native addons, e.g. [NAN](https://github.com/nodejs/nan) uses it to form a compatibility-layer for much of what it wraps.
+* Determining the ABI for downloading pre-built binaries of native addons, e.g. [node-pre-gyp](https://github.com/mapbox/node-pre-gyp) uses this value as exposed via `process.versions.modules` to help determine the appropriate binary to download at install-time.
 
-La regla general es saltar esta versión cuando hay cambios de _rompimiento ABI_, y también si hay cambios API no-triviales. Las reglas aún no están estrictamente definidas, en caso de duda, por favor confiere con alguien que tendrá una perspectiva más informada, como un miembro del equipo NAN.
+The general rule is to bump this version when there are *breaking ABI* changes and also if there are non-trivial API changes. The rules are not yet strictly defined, so if in doubt, please confer with someone that will have a more informed perspective, such as a member of the NAN team.
 
-It is current TSC policy to bump major version when ABI changes. Si ves una necesidad de saltar `NODE_MODULE_VERSION`, entonces deberías consultar el TSC. Los commits pudieran necesitar ser revertidos, opudiera ser necesario que ocurra un salto de una versión mayor.
+It is current TSC policy to bump major version when ABI changes. If you see a need to bump `NODE_MODULE_VERSION` then you should consult the TSC. Los commits pudieran necesitar ser revertidos, opudiera ser necesario que ocurra un salto de una versión mayor.
 
 ### 4. Actualizar el Changelog
 
 #### Step 1: Collect the formatted list of changes
 
-Recolecte una lista formateada de commits desde el último lanzamiento. Usa [`changelog-maker`](https://github.com/nodejs/changelog-maker) para hacer esto:
+Recolecte una lista formateada de commits desde el último lanzamiento. Use [`changelog-maker`](https://github.com/nodejs/changelog-maker) to do this:
 
 ```console
 $ changelog-maker --group
 ```
 
-Ten en cuenta que, el creador de registro de cambios cuenta los commits desde la última etiqueta, y si la última etiqueta en el repositorio no estaba en el branch actual, puede ser que tengas que suministrar un argumento `--start-ref`:
+Note that changelog-maker counts commits since the last tag and if the last tag in the repository was not on the current branch you may have to supply a `--start-ref` argument:
 
 ```console
 $ changelog-maker --group --start-ref v1.2.2
 ```
 
-#### Paso 2: Actualizar el archivo doc/changelogs/CHANGELOG_*.md apropiado
+#### Paso 2:Actualizar el archivo doc/changelogs/CHANGELOG_*.md apropiado
 
-There is a separate `CHANGELOG_Vx.md` file for each major Node.js release line. Estos están localizados en el directorio `doc/changelogs/`. Una vez que la lista con formato de cambios es recolectada, debe añadirse a la cima de los archivos del registro de cambio en el branch lanzado (p. ej. un lanzamiento para Node.js v4 sería añadido al `/doc/changelogs/CHANGELOG_V4.md`).
+There is a separate `CHANGELOG_Vx.md` file for each major Node.js release line. Estos están localizados en el directorio `doc/changelogs/`. Once the formatted list of changes is collected, it must be added to the top of the relevant changelog file in the release branch (e.g. a release for Node.js v4 would be added to the `/doc/changelogs/CHANGELOG_V4.md`).
 
 **Por favor *no* agregue las entradas del registro de cambios a la raíz del archivo `CHANGELOG.md`.**
 
@@ -192,13 +194,13 @@ La nueva entrada debe tomar la siguiente forma:
 
 ```md
 <a id="x.y.x"></a>
-## YYYY-MM-DD, Version x.y.z (Release Type), @releaser
+## AAAA-MM-DD, Versión x.y.z (Tipo de Lanzamiento), @lanzador
 
-### Notable changes
+### Cambios notables
 
-* List interesting changes here
-* Particularly changes that are responsible for minor or major version bumps
-* Also be sure to look at any changes introduced by dependencies such as npm
+* Liste cambios interesantes aquí
+* Particularmente cambios que sean responsables de saltos de versión menores o mayores
+* También asegúrese de mirar cualquier cambio introducido por dependencias como npm
 * ... e incluya cualquier elemento notable de ahí
 
 ### Commits
@@ -206,7 +208,7 @@ La nueva entrada debe tomar la siguiente forma:
 * Incluya la lista completa de los commits desde el último lanzamiento aquí. No incluir commits "Working on X.Y.Z+1".
 ```
 
-El tipo de lanzamiento debe ser actual, LTS, o de mantenimiento, dependiendo del tipo de lanzamiento que se está produciendo.
+The release type should be either Current, LTS, or Maintenance, depending on the type of release being produced.
 
 You can use `branch-diff` to get a list of commits with the `notable-change` label:
 
@@ -214,7 +216,7 @@ You can use `branch-diff` to get a list of commits with the `notable-change` lab
 $ branch-diff upstream/v1.x v1.2.3-proposal --require-label=notable-change -format=simple
 ```
 
-Asegúrate que la etiqueta `<a>`, así como los dos encabezados, no sean para nada intencionales.
+Be sure that the `<a>` tag, as well as the two headings, are not indented at all.
 
 At the top of the root `CHANGELOG.md` file, there is a table indexing all releases in each major release line. A link to the new release needs to be added to it. Follow the existing examples and be sure to add the release to the *top* of the list. The most recent release for each release line is shown in **bold** in the index. When updating the index, please make sure to update the display accordingly by removing the bold styling from the previous release.
 
@@ -243,11 +245,11 @@ Cambios notables:
 
 ### 6. Proponer Lanzamiento en GitHub
 
-Empuja el branch lanzado a `nodejs/node`, no a tu bifurcación propia. Esto permite que los branches lanzados sean pasados más fácilmente entre miembros del equipo de lanzamiento si es necesario.
+Empuja el branch lanzado a `nodejs/node`, no a tu bifurcación propia. This allows release branches to more easily be passed between members of the release team if necessary.
 
-Cree un pull request seleccionando la línea de lanzamiento correcta. For example, a `v5.3.0-proposal` PR should target `v5.x`, not master. Pega las modificaciones CHANGELOG en el cuerpo del PR para que los colaboradores puedan ver qué está cambiando. Estos PRs deberían dejarse abiertos al menos por 24 horas, y pueden ser actualizados cuando lleguen nuevos commits.
+Cree un pull request seleccionando la línea de lanzamiento correcta. For example, a `v5.3.0-proposal` PR should target `v5.x`, not master. Paste the CHANGELOG modifications into the body of the PR so that collaborators can see what is changing. These PRs should be left open for at least 24 hours, and can be updated as new commits land.
 
-Si necesitas cualquier información adicional sobre cualquier commit, este PR es un buen lugar para @-mencionar los contribuyentes relevantes.
+If you need any additional information about any of the commits, this PR is a good place to @-mention the relevant contributors.
 
 After opening the PR, update the release commit to include `PR-URL` metadata and force-push the proposal.
 
@@ -259,35 +261,35 @@ Also run a **[`node-test-commit-v8-linux`](https://ci.nodejs.org/job/node-test-c
 
 Realice algunas pruebas de humo. There is the **[`citgm-smoker`](https://ci.nodejs.org/job/citgm-smoker/)** CI job for this purpose. Run it once with the base `vx.x` branch as a reference and with the proposal branch to check if new regressions could be introduced in the ecosystem.
 
-### 8. Producir una Compilación Nocturna _(opcional)_
+### 8. Producir una Compilación Nocturna *(opcional)*
 
-Si hay una razón para producir un lanzamiento de prueba para el propósito de hacer que otros lo prueben los instaladores o cosas específicas de las compilaciones, produce una compilación nocturna usando **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** y espera que aparezca en <https://nodejs.org/download/nightly/>. Sigue las instrucciones y coloca una longitud apropiada del commit SHA, coloca un string fecha, y selecciona "nightly" para "disttype".
+If there is a reason to produce a test release for the purpose of having others try out installers or specifics of builds, produce a nightly build using **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** and wait for it to drop in <https://nodejs.org/download/nightly/>. Follow the directions and enter a proper length commit SHA, enter a date string, and select "nightly" for "disttype".
 
-Esto es particularmente recomendado si ha existido trabajo reciente relacionado a los instaladores de macOS o Windows ya que no son probados de ninguna manera por el CI.
+This is particularly recommended if there has been recent work relating to the macOS or Windows installers as they are not tested in any way by CI.
 
 ### 9. Producir Compilaciones de Lanzamiento
 
-Usa **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** para producir el lanzamiento de artefactos. Ingresa el commit de donde quieres compilar y seleccione "release" para "disttype".
+Use **[iojs+release](https://ci-release.nodejs.org/job/iojs+release/)** to produce release artifacts. Enter the commit that you want to build from and select "release" for "disttype".
 
-Los artefactos de cada worker son subidos a Jenkins y están disponibles si se requieren pruebas adicionales. Usa esta oportunidad particularmente para probar los instaladores de macOS y Windows si hay alguna duda. Haz clic a través de los workers individuales para una ejecución para encontrar los artefactos.
+Artifacts from each worker are uploaded to Jenkins and are available if further testing is required. Use this opportunity particularly to test macOS and Windows installers if there are any concerns. Click through to the individual workers for a run to find the artifacts.
 
-Todos los trabajadores lanzados deberían lograr "SUCCESS" (y ser verdes, no rojos). Un lanzamientos con errores no debería ser promovido ya que probablemente hay problemas a ser investigados.
+Todos los trabajadores lanzados deberían lograr "SUCCESS" (y ser verdes, no rojos). A release with failures should not be promoted as there are likely problems to be investigated.
 
-Puedes recompilar el lanzamiento tantas veces como necesites antes de promoverlos si encuentras problemas.
+You can rebuild the release as many times as you need prior to promoting them if you encounter problems.
 
-Si tienes un error en Windows y necesitas comenzar de nuevo, ten en cuenta que tendrás una falla inmediata a menos que esperes 2 minutos para que el enlazador se detenga de los trabajos anteriores. Es decir, si una compilación falla después que empezó a compilar, ese worker aún va a tener un proceso enlazador que está en ejecución por otro par de minutos, que van a prevenir al Jenkins de limpiar el espacio de trabajo para comenzar uno nuevo. Esto no es un gran problema, es solo una molestia, ¡porque va a resultar en otra compilación fallida si empiezas de nuevo!
+If you have an error on Windows and need to start again, be aware that you'll get immediate failure unless you wait up to 2 minutes for the linker to stop from previous jobs. i.e. if a build fails after having started compiling, that worker will still have a linker process that's running for another couple of minutes which will prevent Jenkins from clearing the workspace to start a new one. This isn't a big deal, it's just a hassle because it'll result in another failed build if you start again!
 
-ARMv7 tarda más tiempo en compilar. Desafortunadamente ccache no es tan efectiva en compilaciones ya lanzadas, creo que es porque las configuraciones macro adicionales que están en una compilación lanzada que nulifica las compilaciones previas. También la mayoría de las máquinas de compilación lanzadas son separadas a las máquinas de compilación de pruebas, para que no obtengan ningún beneficio de compilaciones en curso entre lanzamientos. Puedes esperar 1.5 horas para que el compilador ARMv7 se complete y normalmente deberías esperar que esto termine. Es posible apresurar un lanzamiento si quieres y añadir compilaciones adicionales después pero normalmente proveemos ARMv7 desde una promoción inicial.
+ARMv7 tarda más tiempo en compilar. Unfortunately ccache isn't as effective on release builds, I think it's because of the additional macro settings that go in to a release build that nullify previous builds. Also most of the release build machines are separate to the test build machines so they don't get any benefit from ongoing compiles between releases. You can expect 1.5 hours for the ARMv7 builder to complete and you should normally wait for this to finish. It is possible to rush a release out if you want and add additional builds later but we normally provide ARMv7 from initial promotion.
 
-No tienes que esperar por el / las ARMv6 / compilaciones Raspberry PR si se toman más tiempo que los otros. Solo es necesario tener el Linux principal (x64 y x86), macOS .pkg y .tar.gs, Windows (x64 y x86) .msi y .exe, fuente, encabezados, y los documentos (ambos actualmente producidos por un worker de macOS). **If you promote builds _before_ ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. Si la compilación ARMv6 falló por alguna razón puedes usar la compilación [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) en el CI lanzado para volver a ejecutar la compilación solo para ARMv6. Cuando se esté lanzando la compilación asegúrate usar el mismo hash commit en cuanto al lanzamiento original.
+You do not have to wait for the ARMv6 / Raspberry PI builds if they take longer than the others. It is only necessary to have the main Linux (x64 and x86), macOS .pkg and .tar.gz, Windows (x64 and x86) .msi and .exe, source, headers, and docs (both produced currently by an macOS worker). **If you promote builds *before* ARM builds have finished, you must repeat the promotion step for the ARM builds when they are ready**. If the ARMv6 build failed for some reason you can use the [`iojs-release-arm6-only`](https://ci-release.nodejs.org/job/iojs+release-arm6-only/) build in the release CI to re-run the build only for ARMv6. When launching the build make sure to use the same commit hash as for the original release.
 
 ### 10. Probar la Compilación
 
-Jenkins recoge los artefactos de la compilación, permitiéndote descargar e instalar la nueva compilación. Asegúrese de que la compilación parezca correcta. Verifica los números de la versión, y haz algunas pruebas básicas para confirmar que todo está bien con la compilación antes de seguir adelante.
+Jenkins collects the artifacts from the builds, allowing you to download and install the new build. Asegúrese de que la compilación parezca correcta. Check the version numbers, and perform some basic checks to confirm that all is well with the build before moving forward.
 
 ### 11. Etiquetar y Firmar el Commit de Lanzamiento
 
-Una vez que haya producido compilaciones con las que esté feliz, cree una nueva etiqueta. Al esperar hasta esta etapa para crear etiquetas, puedes descartar un lanzamiento propuesto si algo sale mal, o si se requieren commits adicionales. Once you have created a tag and pushed it to GitHub, you ***must not*** delete and re-tag. Si cometes un error después de hacer el etiquetado, entonces deberías actualizar la versión y empezar de nuevo, y contar esa etiqueta/versión como perdida.
+Una vez que haya producido compilaciones con las que esté feliz, cree una nueva etiqueta. By waiting until this stage to create tags, you can discard a proposed release if something goes wrong or additional commits are required. Once you have created a tag and pushed it to GitHub, you ***must not*** delete and re-tag. If you make a mistake after tagging then you'll have to version-bump and start again and count that tag/version as lost.
 
 Los resúmenes de las etiquetas tienen un formato predecible, ve una etiqueta reciente para ver, `git tag
 -v v6.0.0`. El mensaje debería ser algo así `2016-04-26 Node.js v6.0.0
@@ -305,9 +307,9 @@ Cree una etiqueta utilizando el siguiente comando:
 $ git secure-tag <vx.y.z> <commit-sha> -sm 'YYYY-MM-DD Node.js vx.y.z (Release Type) Release'
 ```
 
-La etiqueta **debe** ser firmada usando una clave GPG que está listada para ti en el proyecto README.
+The tag **must** be signed using the GPG key that's listed for you on the project README.
 
-Empuja la etiqueta al repositorio antes que promuevas las compilaciones. Si no has empujado tu etiqueta primero, entonces la promoción de la compilación no funcionará correctamente. Empuja la etiqueta usando el siguiente comando:
+Empuja la etiqueta al repositorio antes que promuevas las compilaciones. If you haven't pushed your tag first, then build promotion won't work properly. Push the tag using the following command:
 
 ```console
 $ git push <remote> <vx.y.z>
@@ -319,8 +321,8 @@ $ git push <remote> <vx.y.z>
 
 En el branch de propuesta de lanzamiento, edite `src/node_version.h` nuevamente y:
 
-- Incremente `NODE_PATCH_VERSION` por uno
-- Cambie `NODE_VERSION_IS_RELEASE` de vuelta a `0`
+* Incremente `NODE_PATCH_VERSION` por uno
+* Cambie `NODE_VERSION_IS_RELEASE` de vuelta a `0`
 
 Realice un commit a este cambio con el siguiente formato de mensaje de commit:
 
@@ -330,7 +332,7 @@ Working on vx.y.z # where 'z' is the incremented patch number
 PR-URL: <full URL to your release proposal PR>
 ```
 
-Esto establece al branch para que las compilaciones nocturnas sean producidas con el siguiente número de versión _y_ una etiqueta de pre-lanzamiento.
+This sets up the branch so that nightly builds are produced with the next version number *and* a pre-release tag.
 
 Merge your release proposal branch into the stable branch that you are releasing from and rebase the corresponding staging branch on top of that.
 
@@ -343,67 +345,67 @@ $ git rebase v1.x
 $ git push upstream v1.x-staging
 ```
 
-Selecciona cuidadosamente el commit lanzado al `master`. Después de seleccionar, edita `src/node_version.h` para asegurar que los macros de la versión contengan todos los valores que tenían previamente en el `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`. **Do not** cherry-pick the "Working on vx.y.z" commit to `master`.
+Selecciona cuidadosamente el commit lanzado al `master`. After cherry-picking, edit `src/node_version.h` to ensure the version macros contain whatever values were previously on `master`. `NODE_VERSION_IS_RELEASE` debería ser `0`. **Do not** cherry-pick the "Working on vx.y.z" commit to `master`.
 
 Run `make lint` before pushing to `master`, to make sure the Changelog formatting passes the lint rules on `master`.
 
 ### 13. Promover y Firmar las Compilaciones de Lanzamiento
 
-**Es importante que los mismos individuos que firmaron las etiquetas lanzadas sean los que promuevan las compilaciones, como el archivo SHASUMS256.txt que necesita ser firmado ¡con la misma clave GPG!**
+**It is important that the same individual who signed the release tag be the one to promote the builds as the SHASUMS256.txt file needs to be signed with the same GPG key!**
 
-Usa `tools/release.sh` para promover y firmar la compilación. Cuando se ejecute, realizará las siguientes acciones:
+Usa `tools/release.sh` para promover y firmar la compilación. When run, it will perform the following actions:
 
-**a.** Seleccionar una clave GPG de tus claves privadas. Usará un comando similar a: `gpg --list-secret-keys` para listar tus claves. Si no tienes ninguna clave, no funcionará. (¿Por qué estás lanzando? ¡Tu etiqueta debería estar firmada!) Si solo tienes una clave, usará esa. Si tienes más de una clave, te preguntará para que selecciones una de la lista. Asegúrate de usar la misma clave con la que firmaste tu etiqueta git.
+**a.** Seleccionar una clave GPG de tus claves privadas. It will use a command similar to: `gpg --list-secret-keys` to list your keys. If you don't have any keys, it will bail. (¿Por qué estás lanzando? Your tag should be signed!) If you have only one key, it will use that. If you have more than one key it will ask you to select one from the list. Be sure to use the same key that you signed your git tag with.
 
-**b.** Inicia sesión en el servidor mediante SSH y verifica por lanzamientos que pueden ser promovidos, junto con la lista de artefactos. Usará el comando `dist-promotable` en el servidor para encontrarlo. Serás preguntado, por cada lanzamiento promocionable, si quieres proceder. Si hay más de un lanzamiento para promover (que no debería existir), asegúrate de solo promocionar el lanzamiento del que eres responsable.
+**b.** Log in to the server via SSH and check for releases that can be promoted, along with the list of artifacts. It will use the `dist-promotable` command on the server to find these. You will be asked, for each promotable release, whether you want to proceed. If there is more than one release to promote (there shouldn't be), be sure to only promote the release you are responsible for.
 
-**c.** Inicia sesión en el servidor mediante SSH y ejecuta el script promovido para el lanzamiento dado. El comando en el servidor será similar a: `dist-promote vx.y.z`. Después de este paso, los artefactos lanzados van a estar disponibles para descarga y un archivo SHASUMS256.txt estará presente. Sin embargo, el lanzamiento seguirá sin firmar.
+**c.** Log in to the server via SSH and run the promote script for the given release. El comando en el servidor será similar a: `dist-promote vx.y.z`. After this step, the release artifacts will be available for download and a SHASUMS256.txt file will be present. The release will still be unsigned, however.
 
-**d.** Usa `scp` para descargar SHASUMS256.txt a un directorio temporal en tu computadora.
+**d.** Use `scp` to download SHASUMS256.txt to a temporary directory on your computer.
 
 **e.** Firma el archivo SHASUMS256.txt usando un comando similar a: `gpg
---default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. El GPG te pedirá tu contraseña. El archivo firmado será nombrado SHASUMS256.txt.asc.
+--default-key YOURKEY --clearsign /path/to/SHASUMS256.txt`. You will be prompted by GPG for your password. El archivo firmado será nombrado SHASUMS256.txt.asc.
 
-**f.** Imprime una versión reforzada ASCII de tu clave pública GPG usando un comando similar a: `gpg --default-key YOURKEY --armor --export --output
-/path/to/SHASUMS256.txt.gpg`. Esto no requiere tu contraseña y es principalmente una conveniencia para los usuarios, aunque no es la manera recomendada para obtener una copia de tu clave.
+**f.** Output an ASCII armored version of your public GPG key using a command similar to: `gpg --default-key YOURKEY --armor --export --output
+/path/to/SHASUMS256.txt.gpg`. This does not require your password and is mainly a convenience for users, although not the recommended way to get a copy of your key.
 
-**g.** Sube los archivos SHASUMS256.txt de vuelta al servidor en el directorio del lanzamiento.
+**g.** Upload the SHASUMS256.txt files back to the server into the release directory.
 
-Si no esperaste por las compilaciones ARM en los pasos previos antes de promover el lanzamiento, deberías volver a ejecutar `tools/release.sh` después que las compilaciones ARM hayan terminado. Eso moverá los artefactos ARM a la locación correcta. Te será pedido que vuelvas a firmar SHASUMS256.txt.
+If you didn't wait for ARM builds in the previous step before promoting the release, you should re-run `tools/release.sh` after the ARM builds have finished. Eso moverá los artefactos ARM a la locación correcta. You will be prompted to re-sign SHASUMS256.txt.
 
 It is possible to only sign a release by running `./tools/release.sh -s
 vX.Y.Z`.
 
 ### 14. Verificar el Lanzamiento
 
-Tu lanzamiento debería estar disponible en `https://nodejs.org/dist/vx.y.z/` y en <https://nodejs.org/dist/latest/>. Verifica que los archivos apropiados están en su lugar. Puede que quieras verificar que los binarios están trabajando de manera apropiada y que tengan los strings de versión interna correctos. Verifica que los documentos API están disponibles en <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
+Your release should be available at `https://nodejs.org/dist/vx.y.z/` and <https://nodejs.org/dist/latest/>. Check that the appropriate files are in place. You may want to check that the binaries are working as appropriate and have the right internal version strings. Check that the API docs are available at <https://nodejs.org/api/>. Check that the release catalog files are correct at <https://nodejs.org/dist/index.tab> and <https://nodejs.org/dist/index.json>.
 
 ### 15. Crear una Entrada en el Blog
 
-Hay una compilación automática que es iniciada cuando promueves nuevas compilaciones, entonces en unos pocos minutos nodejs.org listará tu nueva versión como el último lanzamiento. Sin embargo, la entrada en el blog aún no es completamente automática.
+There is an automatic build that is kicked off when you promote new builds, so within a few minutes nodejs.org will be listing your new version as the latest release. Sin embargo, la entrada en el blog aún no es completamente automática.
 
-Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](https://github.com/nodejs/nodejs.org/blob/master/scripts/release-post.js). Este script usará las compilaciones promovidas y el registro de cambios para generar el post. Ejecuta `npm run serve` para ver previamente el post localmente antes de subirlo al repositorio [nodejs.org](https://github.com/nodejs/nodejs.org).
+Crea una nueva entrada del blog ejecutando [nodejs.org release-post.js script](https://github.com/nodejs/nodejs.org/blob/master/scripts/release-post.js). Este script usará las compilaciones promovidas y el registro de cambios para generar el post. Run `npm run serve` to preview the post locally before pushing to the [nodejs.org](https://github.com/nodejs/nodejs.org) repo.
 
-- Puedes añadir un blurb corto debajo del encabezado principal si quieres decir algo importante, de otra manera el texto debería estar listo para la publicación.
-- Los enlaces a los archivos descargados no serán completados a menos que hayas esperado por las compilaciones ARMv6. Cualquier descarga que falte tendrá `*Coming soon*` al lado. Es tu responsabilidad actualizar manualmente estos luego, cuando tengas compilaciones sobresalientes.
-- El contenido de SHASUMS256.txt.asc está en la parte inferior de la publicación. Cuando actualizas la lista de tarballs, necesitarás copiar/pegar los nuevos contenidos en este archivo para reflejar esos cambios.
-- Siempre usa pull-requests en el repositorio de nodejs.org. Se respetuoso con ese grupo de trabajo, pero no deberías tener que esperar a que el PR termine. Abrir un PR y fusionarlo inmediatamente _debería_ estar bien. Sin embargo, por favor sigue el siguiente formato del mensaje commit:
-
+* You can add a short blurb just under the main heading if you want to say something important, otherwise the text should be publication ready.
+* The links to the download files won't be complete unless you waited for the ARMv6 builds. Any downloads that are missing will have `*Coming soon*` next to them. It's your responsibility to manually update these later when you have the outstanding builds.
+* El contenido de SHASUMS256.txt.asc está en la parte inferior de la publicación. When you update the list of tarballs you'll need to copy/paste the new contents of this file to reflect those changes.
+* Siempre usa pull-requests en el repositorio de nodejs.org. Be respectful of that working group, but you shouldn't have to wait for PR sign-off. Opening a PR and merging it immediately *should* be fine. However, please follow the following commit message format:
+  
   ```console
   Blog: vX.Y.Z release post
-
+  
   Refs: <full URL to your release proposal PR>
   ```
 
-- Cambios al `master` en el repositorio de nodejs.org van a activar una nueva compilación de nodejs.org, entonces tus cambios deberían aparecer en unos minutos luego de empujar.
+* Changes to `master` on the nodejs.org repo will trigger a new build of nodejs.org so your changes should appear in a few minutes after pushing.
 
 ### 16. Create the release on GitHub
 
-- Go to the [New release page](https://github.com/nodejs/node/releases/new).
-- Select the tag version you pushed earlier.
-- For release title, copy the title from the changelog.
-- For the description, copy the rest of the changelog entry.
-- Click on the "Publish release" button.
+* Go to the [New release page](https://github.com/nodejs/node/releases/new).
+* Select the tag version you pushed earlier.
+* For release title, copy the title from the changelog.
+* For the description, copy the rest of the changelog entry.
+* Click on the "Publish release" button.
 
 ### 17. Limpiar
 
@@ -411,14 +413,14 @@ Close your release proposal PR and delete the proposal branch.
 
 ### 18. Anunciar
 
-El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. Para anunciar la compilación en Twitter a traves de la cuenta oficial @nodejs, envia un correo electrónico a [pr@nodejs.org](mailto:pr@nodejs.org) con un mensaje como:
+El sitio web nodejs.org va a recompilar automáticamente e incluir la nueva versión. To announce the build on Twitter through the official @nodejs account, email <pr@nodejs.org> with a message such as:
 
-> salió la v5.8.0 de @nodejs: https://nodejs.org/en/blog/release/v5.8.0/ … aqlgo aquí sobre los cambios notables
+> v5.8.0 of @nodejs is out: https://nodejs.org/en/blog/release/v5.8.0/ … something here about notable changes
 
-Para asegurar que la comunicación está sincronizada con la entrada del blog, por favor permite una notificación previa de 24 horas. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
+To ensure communication goes out with the timing of the blog post, please allow 24 hour prior notice. If known, please include the date and time the release will be shared with the community in the email to coordinate these announcements.
 
 Ping the IRC ops and the other [Partner Communities](https://github.com/nodejs/community-committee/blob/master/governance/PARTNER_COMMUNITIES.md) liaisons.
 
 ### 19. Celebrar
 
-_De cualquier forma que hagas esto..._
+*De cualquier forma que hagas esto...*

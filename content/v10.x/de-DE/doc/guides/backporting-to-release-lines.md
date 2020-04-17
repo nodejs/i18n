@@ -2,21 +2,21 @@
 
 ## Staging Branches
 
-Jeder Versionszweig hat einen Staging-Branch, der dem Releaser als Zwischenspeicher während der Präparierung einer neuen Version dient. Der Branchname ist wie folgt aufgebaut: `vN.x-staging` wobei `N` die Hauptversionsnummer ist.
+Each release line has a staging branch that the releaser will use as a scratch pad while preparing a release. The branch name is formatted as follows: `vN.x-staging` where `N` is the major release number.
 
 For the active staging branches see the [Release Schedule](https://github.com/nodejs/Release#release-schedule1).
 
 ## Was wird zurückportiert?
 
-Wenn ein Cherry-Pick aus dem master nicht fehlerfrei in einen Staging-Branch übernommen werden konnte, wird der Releaser den Pull-Request mit einem speziellen Label für diesen Versionszweig kennzeichnen (z.B. `backport-requested-vN.x`). Das bedeutet für unser Tooling, dass dieser Pull-Request nicht enthalten sein soll. Der Releaser wird dann in einem Kommentar einen Pull-Request für die Zurückportierung anfordern.
+If a cherry-pick from master does not land cleanly on a staging branch, the releaser will mark the pull request with a particular label for that release line (e.g. `backport-requested-vN.x`), specifying to our tooling that this pull request should not be included. The releaser will then add a comment requesting that a backport pull request be made.
 
 ## Was kann zurückportiert werden?
 
-Der aktuelle Versionszweig ist weniger strikt als die LTS-Versionszweige in Bezug auf, welche Pull-Requests übernommen werden können. Unsere LTS-Versionszweige (siehe im [Release-Plan](https://github.com/nodejs/Release#release-plan)) erfordern, dass Commits mindestens zwei Wochen im aktuellen Versionszweig heranreifen bevor sie in einen LTS-Staging-Branch übernommen werden können. Nur nach dieser "Reifephase" werden diese Commits zurückportiert oder gecherry-picked.
+The "Current" release line is much more lenient than the LTS release lines in what can be landed. Our LTS release lines (see the [Release Plan](https://github.com/nodejs/Release#release-plan)) require that commits mature in the Current release for at least 2 weeks before they can be landed in an LTS staging branch. Only after "maturation" will those commits be cherry-picked or backported.
 
 ## Wie reicht man einen Pull-Request für eine Zurückportierung ein?
 
-For the following steps, let's assume that a backport is needed for the v8.x release line. All commands will use the `v8.x-staging` branch as the target branch. Um einen Pull-Request für einen anderen Branch einzureichen, ersetze diesen einfach mit dem Namen des Staging-Branches des entsprechenden Versionszweiges.
+For the following steps, let's assume that a backport is needed for the v8.x release line. All commands will use the `v8.x-staging` branch as the target branch. In order to submit a backport pull request to another branch, simply replace that with the staging branch for the targeted release line.
 
 1. Checke den Staging-Branch für den Ziel-Versionszweig aus
 2. Stelle sicher, dass der lokale Staging-Branch ist auf dem aktuellen Stand ist
@@ -53,13 +53,13 @@ hint: and commit the result with 'git commit'
 6. Leave the commit message as is. If you think it should be modified, comment in the Pull Request. The `Backport-PR-URL` metadata does need to be added to the commit, but this will be done later.
 7. Make sure `make -j4 test` passes.
 8. Push the changes to your fork
-9. Open a pull request:
-   1. Be sure to target the `v8.x-staging` branch in the pull request.
-   1. Include the backport target in the pull request title in the following format — `[v8.x backport] <commit title>`. Example: `[v8.x backport] process: improve performance of nextTick`
-   1. Check the checkbox labeled "Allow edits from maintainers".
-   1. In the description add a reference to the original PR.
-   1. Amend the commit message and include a `Backport-PR-URL:` metadata and re-push the change to your fork.
-   1. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
+9. Open a pull request: 
+    1. Be sure to target the `v8.x-staging` branch in the pull request.
+    2. Include the backport target in the pull request title in the following format — `[v8.x backport] <commit title>`. Example: `[v8.x backport] process: improve performance of nextTick`
+    3. Check the checkbox labeled "Allow edits from maintainers".
+    4. In the description add a reference to the original PR.
+    5. Amend the commit message and include a `Backport-PR-URL:` metadata and re-push the change to your fork.
+    6. Run a [`node-test-pull-request`][] CI job (with `REBASE_ONTO` set to the default `<pr base branch>`)
 10. If during the review process conflicts arise, use the following to rebase: `git pull --rebase upstream v8.x-staging`
 
 After the PR lands replace the `backport-requested-v8.x` label on the original PR with `backported-to-v8.x`.

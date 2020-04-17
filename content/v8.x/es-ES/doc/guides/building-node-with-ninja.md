@@ -9,6 +9,7 @@ Para compilar Node con ninja, hay 3 pasos que se deben seguir:
 3. Por último, haga un enlace simbólico a `./node` usando `ln -fs out/Release/node node`.
 
 Al ejecutar `ninja -C out/Release` verá una impresión similar a la siguiente si la compilación tuvo éxito:
+
 ```txt
 ninja: Entering directory `out/Release`
 [4/4] LINK node, POSTBUILDS

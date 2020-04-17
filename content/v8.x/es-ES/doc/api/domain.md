@@ -1,6 +1,8 @@
 # Dominio
+
 <!-- YAML
 changes:
+
   - version: v8.8.0
     description: Any `Promise`s created in VM contexts no longer have a
                  `.domain` property. Their handlers are still executed in the
@@ -173,7 +175,7 @@ Cada vez que un objeto de `Error` se enruta a través de un dominio, se le agreg
 
 <!--type=misc-->
 
-Si los dominios están en uso, entonces todos los **nuevos** objetos Eventosemisores, tales como los objetos de flujo, solicitudes, respuestas, entre otros, estarán implícitamente añadidos al dominio activo en el momento de su creación.
+Si los dominios están en uso, entonces todos los **nuevos** objetos EventEmitter (incluyendo los objetos de Stream, solicitudes, respuestas, etc), estarán implícitamente enlazados al dominio activo en el momento de su creación.
 
 Asimismo, las callbacks pasadas a solicitudes de bucle de eventos de bajo nivel (como fs.open, u otros métodos de atender callbacks) serán automáticamente enlazadas al dominio activo. Si son arrojadas, entonces el dominio detectará el error.
 
@@ -233,7 +235,7 @@ Devuelve un nuevo objeto de Dominio.
 
 La clase de Dominio encapsula la funcionalidad de los errores de enrutamiento y las excepciones no detectadas al objeto de Dominio activo.
 
-El Dominio es una clase secundaria de [`EventEmitter`][]. Para gestionar los errores que identifica, atiende a su evento de `'error?`.
+El Dominio es una clase secundaria de [`EventEmitter`][]. Para manejar los errores que detecta, escuche a su evento de `'error'`.
 
 ### domain.members
 

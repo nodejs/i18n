@@ -6,13 +6,13 @@ Complementos Node.js são vinculados dinamicamente como objetos compartilhados, 
 
 No momento, a forma para implementar complementos é complicada, envolvendo conhecimento de vários componentes e APIs :
 
- - V8: biblioteca C++ que o Node.js usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamada de funções, etc. A API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
+* V8: biblioteca C++ que o Node.js usa atualmente para fornecer a implementação do JavaScript. V8 fornece os mecanismos para a criação de objetos, chamada de funções, etc. A API do V8 é documentada principalmente no arquivo de cabeçalho `v8.h` (`deps/v8/include/v8.h` na árvore do código fonte do Node.js), que também está disponível [on-line](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos do Node.js, suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração multi-plataforma, dando acesso fácil, no estilo POSIX, aos principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar assíncronos mais sofisticados, Complementos que precisam ir além do ciclo de eventos padrão. Autores de complementos são encorajados a pensar em como evitar o bloqueio do loop de eventos com E/S ou outras tarefas de uso intensivo, descarregando o trabalho via libuv para operações de sistema não-bloqueantes, worker threads ou uso personalizado de threads do libuv.
+* [libuv](https://github.com/libuv/libuv): biblioteca C que implementa o ciclo de eventos do Node.js, suas linhas de trabalho e todos os comportamentos assíncronos da plataforma. Serve também como uma biblioteca de abstração multi-plataforma, dando acesso fácil, no estilo POSIX, aos principais sistemas operacionais para muitas tarefas comuns de sistema, tais como interagir com os sistema de arquivos, soquetes, temporizadores e sistema de eventos. libuv também fornece uma abstração de segmentação de pthreads, como que pode ser utilizada para alimentar assíncronos mais sofisticados, Complementos que precisam ir além do ciclo de eventos padrão. Autores de complementos são encorajados a pensar em como evitar o bloqueio do loop de eventos com E/S ou outras tarefas de uso intensivo, descarregando o trabalho via libuv para operações de sistema não-bloqueantes, worker threads ou uso personalizado de threads do libuv.
 
- - Bibliotecas internas de Node.js. Node.js exporta para si um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
+* Bibliotecas internas de Node.js. Node.js exporta para si um número de APIs de C++ que Addons pode usar &mdash;, o mais importante dos quais é a classe de `node::ObjectWrap`.
 
- - Node.js inclui um grande número de outras bibliotecas estaticamente vinculadas, incluindo OpenSSL. Estas outras bibliotecas estão localizadas no diretório `deps` na árvore de código fonte do Node.js. Apenas os símbolos de libuv, OpenSSl, V8 e zlib são propositalmente reexportados e podem ser usados em fins diferentes por Complementos. Veja [Vinculando às próprias dependências do Node.js](#addons_linking_to_node_js_own_dependencies) para mais informações.
+* Node.js inclui um grande número de outras bibliotecas estaticamente vinculadas, incluindo OpenSSL. Estas outras bibliotecas estão localizadas no diretório `deps` na árvore de código fonte do Node.js. Apenas os símbolos de libuv, OpenSSl, V8 e zlib são propositalmente reexportados e podem ser usados em fins diferentes por Complementos. Veja [Vinculando às próprias dependências do Node.js](#addons_linking_to_node_js_own_dependencies) para mais informações.
 
 Todos os exemplos a seguir estão disponíveis para [download](https://github.com/nodejs/node-addon-examples) e podem ser usados como um ponto de partida para um Addon.
 
@@ -133,7 +133,6 @@ Cada um dos exemplos ilustrados neste documento fazem uso direto do node.js e da
 
 As [Native Abstractions for Node.js](https://github.com/nodejs/nan) (ou `nan`) providencia um conjunto de ferramentas recomendado a desenvolvedores de Complementos usarem para manter a compatibilidade entre lançamentos passados e futuros do V8 e do Node.js. Veja os [exemplos](https://github.com/nodejs/nan/tree/master/examples/) das `nan` que ilustram como podem ser usadas.
 
-
 ## N-API
 
 > Estabilidade: 1 - Experimental
@@ -205,7 +204,6 @@ Uma vez que o arquivo `binding.gyp` está pronto, os exemplos dos Complementos p
 $ node-gyp configure build
 ```
 
-
 ### Argumentos de função
 
 Complementos normalmente expõem objetos e funções que podem ser acessados a partir de JavaScript rodando dentro do Node.js. Quando as funções são invocadas do JavaScript, os argumentos de entrada e valor de retorno devem ser mapeados para e do código C/C++.
@@ -274,7 +272,6 @@ const addon = require('./build/Release/addon');
 
 console.log('This should be eight:', addon.add(3, 5));
 ```
-
 
 ### Callbacks
 
@@ -375,7 +372,6 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
 ### Fábrica de funções
 
 Outro cenário comum é criar funções JavaScript que envolvam funções C ++ e retornando de volta ao JavaScript:
@@ -431,7 +427,6 @@ const fn = addon();
 console.log(fn());
 // Prints: 'hello world'
 ```
-
 
 ### Agregando Objetos C ++
 
@@ -794,7 +789,6 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-
 ### Passando objetos agregados
 
 Além de agregar e retornar objetos C++, é possível passar objetos agregados ao desagrega-los com a função de ajuda do Node.js `node::ObjectWrap::Unwrap`. Os seguintes exemplos mostram uma função `add()` que pode levar dois objetos `MyObject` como argumentos de entrada:
@@ -969,7 +963,7 @@ An "AtExit" hook is a function that is invoked after the Node.js event loop has 
 
 #### void AtExit(callback, args)
 
-* `callback` {void (\*)(void\*)} A pointer to the function to call at exit.
+* `callback` {void (*)(void*)} A pointer to the function to call at exit.
 * `args` {void\*} A pointer to pass to the callback at exit.
 
 Registra exit hooks que são executados após o término do loop de eventos ser finalizado mas antes da VM ser encerrada.

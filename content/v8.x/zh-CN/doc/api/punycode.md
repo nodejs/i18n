@@ -1,6 +1,8 @@
 # 国际域名编码
+
 <!-- YAML
 changes:
+
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7941
     description: Accessing this module will now emit a deprecation warning.
@@ -25,6 +27,7 @@ const punycode = require('punycode');
 *注意*：`punycode` 模块是被 Node.js 使用的第三方依赖库，为方便起见，对开发人员开放。 任何对此模块的修复和更改都必须直接针对 [Punycode.js](https://mths.be/punycode) 项目进行。
 
 ## punycode.decode(string)
+
 <!-- YAML
 added: v0.5.1
 -->
@@ -39,6 +42,7 @@ punycode.decode('--dqo34k'); // '☃-⌘'
 ```
 
 ## punycode.encode(string)
+
 <!-- YAML
 added: v0.5.1
 -->
@@ -53,6 +57,7 @@ punycode.encode('☃-⌘'); // '--dqo34k'
 ```
 
 ## punycode.toASCII(domain)
+
 <!-- YAML
 added: v0.6.1
 -->
@@ -69,6 +74,7 @@ punycode.toASCII('example.com'); // 'example.com'
 ```
 
 ## punycode.toUnicode(domain)
+
 <!-- YAML
 added: v0.6.1
 -->
@@ -85,11 +91,13 @@ punycode.toUnicode('example.com');       // 'example.com'
 ```
 
 ## punycode.ucs2
+
 <!-- YAML
 added: v0.7.0
 -->
 
 ### punycode.ucs2.decode(string)
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -105,6 +113,7 @@ punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
 ```
 
 ### punycode.ucs2.encode(codePoints)
+
 <!-- YAML
 added: v0.7.0
 -->
@@ -119,6 +128,7 @@ punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
 ```
 
 ## punycode.version
+
 <!-- YAML
 added: v0.6.1
 -->

@@ -1,5 +1,7 @@
 # Contribution Guidelines
 
+All of the information above relates to the [nodejs/i18n](https://github.com/nodejs/i18n/) repository only. For localization guides, please see the [Getting started](./guides/GETTING_STARTED.md) guide.
+
 ## Code of Conduct
 
 The Node.js i18n Working Group adheres to the [Node.js Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).

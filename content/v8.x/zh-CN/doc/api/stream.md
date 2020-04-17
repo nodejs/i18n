@@ -2,7 +2,7 @@
 
 <!--introduced_in=v0.10.0-->
 
-> 稳定性：2 - 稳定
+> 稳定性：2 - 稳定的
 
 流是一个可用于处理 Node.js 中流数据的抽象接口。 `stream` 模块提供了一个基本的 API，通过它可以轻松构建实现流接口的对象。
 
@@ -33,7 +33,7 @@ While it is important to understand how streams work, the `stream` module itself
 
 ### 对象模式
 
-由 Node.js API 创建的所有流都只适用于字符串和 `Buffer` (或 `Uint8Array`) 对象。 然而，对于流的实现，仍有可能和其他类型的 JavaScript 值 (不包含 `null`，其在流中具有特殊用途) 协同工作。 这些流会以 “对象模式” 进行操作。
+All streams created by Node.js APIs operate exclusively on strings and `Buffer` (or `Uint8Array`) objects. It is possible, however, for stream implementations to work with other types of JavaScript values (with the exception of `null`, which serves a special purpose within streams). Such streams are considered to operate in "object mode".
 
 在创建流时，使用 `objectMode` 选项会将流实例切换到对象模式。 尝试将现有流切换到对象模式是不安全的。
 
@@ -43,7 +43,7 @@ While it is important to understand how streams work, the `stream` module itself
 
 [Writable](#stream_class_stream_writable) 和 [Readable](#stream_class_stream_readable) 的流都会将数据保存到内部缓冲区，该缓冲区可分别使用 `writable._writableState.getBuffer()` 或 `readable._readableState.buffer` 进行访问。
 
-可能被缓冲的数据量要取决于传递给流构造函数的 `highWaterMark` 选项。 对于正常的流，`highWaterMark` 选项指定了 [字节总数](#stream_highwatermark_discrepancy_after_calling_readable_setencoding)。 对于以对象模式操作的流，`highWaterMark` 指定了对象总数。
+可能被缓冲的数据量要取决于传递给流构造函数的 `highWaterMark` 选项。 For normal streams, the `highWaterMark` option specifies a [total number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding). 对于以对象模式操作的流，`highWaterMark` 指定了对象总数。
 
 当其实现调用 [`stream.push(chunk)`](#stream_readable_push_chunk_encoding) 时，数据将在 Readable 流中缓冲。 如果流的消费者没有调用 [`stream.read()`](#stream_readable_read_size)，数据将会一直处于内部队列中，直到它被消费为止。
 
@@ -53,7 +53,7 @@ While it is important to understand how streams work, the `stream` module itself
 
 `stream` API，尤其是 [`stream.pipe()`] 方法的一个关键目标就是，将数据的缓冲限制在可接受的水平，以便不同速度的源和目标流不会过度消耗可用内存。
 
-由于 [Duplex](#stream_class_stream_duplex) 和 [Transform](#stream_class_stream_transform) 都是 Readable 且 Writable 的流，所以它们各自维护 *两个* 独立的内部读写缓冲区，这样就使得它们在维护适当和高效的数据流时，读取和写入操作可以各自独立运作。 For example, [`net.Socket`][] instances are [Duplex](#stream_class_stream_duplex) streams whose Readable side allows consumption of data received *from* the socket and whose Writable side allows writing data *to* the socket. 因为相比于收到的数据，写入端的数据可能会以更快或较慢的速度写入到套接字，所以读取和写入端的彼此独立操作 (和缓冲) 就变得很重要了。
+由于 [Duplex](#stream_class_stream_duplex) 和 [Transform](#stream_class_stream_transform) 都是 Readable 且 Writable 的流，所以它们各自维护 *两个* 独立的内部读写缓冲区，这样就使得它们在维护适当和高效的数据流时，读取和写入操作可以各自独立运作。 例如：[`net.Socket`][] 实例是 [Duplex](#stream_class_stream_duplex) 流，其读取端允许消费 *从* 套接字收到的数据，同时其写入端允许将数据写入 *到* 套接字中。 因为相比于收到的数据，写入端的数据可能会以更快或较慢的速度写入到套接字，所以读取和写入端的彼此独立操作 (和缓冲) 就变得很重要了。
 
 ## 用于流消费者的 API
 
@@ -144,6 +144,7 @@ myStream.end('done writing data');
 ```
 
 #### 类：stream.Writable
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -151,6 +152,7 @@ added: v0.9.4
 <!--type=class-->
 
 ##### 事件：'close'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -160,6 +162,7 @@ added: v0.9.4
 不是所有的 Writable 流都会发出 `'close'` 事件。
 
 ##### 事件：'drain'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -195,6 +198,7 @@ function writeOneMillionTimes(writer, data, encoding, callback) {
 ```
 
 ##### 事件：'error'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -206,6 +210,7 @@ added: v0.9.4
 *注意*：当发出 `'error'` 事件时，流尚未被关闭。
 
 ##### 事件：'finish'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -224,6 +229,7 @@ writer.on('finish', () => {
 ```
 
 ##### 事件：'pipe'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -243,6 +249,7 @@ reader.pipe(writer);
 ```
 
 ##### 事件：'unpipe'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -265,6 +272,7 @@ reader.unpipe(writer);
 ```
 
 ##### writable.cork()
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -276,15 +284,17 @@ added: v0.11.2
 请参阅：[`writable.uncork()`][]。
 
 ##### writable.end(\[chunk\]\[, encoding\][, callback])
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 对于没有以对象模式运作的流，`chunk` 可能是一个字符串，`Buffer`，或者 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
+* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} 当 `chunk` 为字符串时的编码
 * `callback` {Function} 可选的当流结束时的回调函数
 
@@ -301,9 +311,11 @@ file.end('world!');
 ```
 
 ##### writable.setDefaultEncoding(encoding)
+
 <!-- YAML
 added: v0.11.15
 changes:
+
   - version: v6.1.0
     pr-url: https://github.com/nodejs/node/pull/5040
     description: This method now returns a reference to `writable`.
@@ -315,6 +327,7 @@ changes:
 `writable.setDefaultEncoding()` 方法为 [Writable](#stream_class_stream_writable) 流设置默认的 `encoding`。
 
 ##### writable.uncork()
+
 <!-- YAML
 added: v0.11.2
 -->
@@ -347,16 +360,19 @@ process.nextTick(() => {
 同时请参阅：[`writable.cork()`][]。
 
 ##### writable.writableHighWaterMark
+
 <!-- YAML
 added: v8.10.0
 -->
 
-返回在构造此 `Writable` 流时传入的 `highWaterMark` 值。
+Return the value of `highWaterMark` passed when constructing this `Writable`.
 
 ##### writable.write(chunk\[, encoding\]\[, callback\])
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
@@ -366,7 +382,7 @@ changes:
                  considered invalid now, even in object mode.
 -->
 
-* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 对于没有以对象模式运作的流，`chunk` 可能是一个字符串，`Buffer`，或者 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
+* `chunk` {string|Buffer|Uint8Array|any} 可选的要写入的数据。 For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value other than `null`.
 * `encoding` {string} 当 `chunk` 为字符串时的编码
 * `callback` {Function} 当此数据块被刷新时的回调函数
 * 返回：{boolean} 如果流需要等待发出 `'drain'` 事件后才能继续写入额外数据，则返回`false`；否则返回 `true`。
@@ -399,13 +415,14 @@ write('hello', () => {
 对象模式的 Writable 流会一直忽略 `encoding` 参数。
 
 ##### writable.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
 
 * 返回：{this}
 
-销毁流，并发出接收的错误。 在此调用后，可写入数据的流已结束。 实现者不应重写此方法，而是实现 [`writable._destroy`](#stream_writable_destroy_err_callback)。
+销毁流，并发出接收的错误。 After this call, the writable stream has ended. Implementors should not override this method, but instead implement [`writable._destroy`](#stream_writable_destroy_err_callback).
 
 ### Readable 流
 
@@ -445,7 +462,7 @@ Readable 流可通过如下方法切换回暂停模式：
 
 一个需要记住的重要概念就是：在提供了消费或忽略数据的机制之前，Readable 流不会产生数据。 如果消费机制被禁用或移除，Readable 流将会 *尝试* 停止生成数据。
 
-*Note*: For backwards compatibility reasons, removing [`'data'`][] event handlers will **not** automatically pause the stream. 同时，如果有管道目的地，则在那些目的地排空并请求更多数据时，调用 [`stream.pause()`](#stream_readable_pause) 将不会保证流 *保持* 暂停。
+*注意*：基于向后兼容性的原因，删除 [`'data'`][] 事件处理程序将 **不会** 自动暂停流。 同时，如果有管道目的地，则在那些目的地排空并请求更多数据时，调用 [`stream.pause()`](#stream_readable_pause) 将不会保证流 *保持* 暂停。
 
 *注意*：如果一个 [Readable](#stream_class_stream_readable) 流被切换为流动模式，同时没有能处理数据的可用消费者，数据将会丢失。 例如，当 `readable.resume()` 方法被调用，且在 `'data'` 事件中没有附加的监听器时，或者从流中移除 `'data'` 事件处理程序时，这种情况将会发生。
 
@@ -481,11 +498,12 @@ pass.resume(); // must be called to make 'data' being emitted
 
 #### 选择一种方法
 
-Readable 流 API 在不同的 Node.js 版本中不断演化，并提供了消费流数据的多种方法。 In general, developers should choose *one* of the methods of consuming data and *should never* use multiple methods to consume data from a single stream.
+Readable 流 API 在不同的 Node.js 版本中不断演化，并提供了消费流数据的多种方法。 通常情况下，开发人员需要选择 *一种* 消费数据的方法，且 *不应* 使用多种方法从单一的流中消费数据。
 
 对于大多数用户而言，建议使用 `readable.pipe()` 方法，其原因在于该方法的实现提供了消费流数据的最简易方式。 需要对数据传输和生成进行细粒度控制的开发人员可以使用 [`EventEmitter`][] 和 `readable.pause()`/`readable.resume()` API。
 
 #### 类：stream.Readable
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -493,6 +511,7 @@ added: v0.9.4
 <!--type=class-->
 
 ##### 事件：'close'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -502,6 +521,7 @@ added: v0.9.4
 并非所有 [Readable](#stream_class_stream_readable) 流会发出 `'close'` 事件。
 
 ##### 事件：'data'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -522,6 +542,7 @@ readable.on('data', (chunk) => {
 ```
 
 ##### 事件：'end'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -541,6 +562,7 @@ readable.on('end', () => {
 ```
 
 ##### 事件：'error'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -552,6 +574,7 @@ added: v0.9.4
 监听器回调函数会接收一个 `Error` 对象。
 
 ##### 事件：'readable'
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -564,6 +587,7 @@ readable.on('readable', () => {
   // there is some data to read now
 });
 ```
+
 当达到流中数据末尾，但在发出 `'end'` 事件之前，也会发出 `'readable'` 事件。
 
 实际上，`'readable'` 事件表明流中有新的信息：有新数据可用，或已达到流的末尾。 在前者中，[`stream.read()`](#stream_readable_read_size) 将会返回可用的数据。 在后者中，[`stream.read()`](#stream_readable_read_size) 将会返回 `null`。 例如：在下面的示例中，`foo.txt` 是一个空文件：
@@ -590,6 +614,7 @@ end
 *注意*：一般而言，`readable.pipe()` 和 `'data'` 事件机制比 `'readable'` 事件更容易理解。 但是，处理 `'readable'` 事件可能会导致吞吐量增加。
 
 ##### readable.isPaused()
+
 <!-- YAML
 added: v0.11.14
 -->
@@ -609,6 +634,7 @@ readable.isPaused(); // === false
 ```
 
 ##### readable.pause()
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -631,12 +657,13 @@ readable.on('data', (chunk) => {
 ```
 
 ##### readable.pipe(destination[, options])
+
 <!-- YAML
 added: v0.9.4
 -->
 
 * `destination` {stream.Writable} 写入数据的目的地
-* `options` {Object} Pipe options
+* `options` {Object} 管道选项 
   * `end` {boolean} 当读取器结束时，结束写入器。 **Default:** `true`.
 
 `readable.pipe()` 方法会将一个 [Writable](#stream_class_stream_writable) 流附加到 `readable`，并将导致它会自动切换到流动模式，同时将其所有数据推送到附加的 [Writable](#stream_class_stream_writable)。 数据流将被自动管理，这样即使 Readable 流的速度更快，目的地 Writable 流也不会超负荷。
@@ -649,6 +676,7 @@ const writable = fs.createWriteStream('file.txt');
 // All the data from readable goes into 'file.txt'
 readable.pipe(writable);
 ```
+
 可以将多个 Writable 流附加到一个 Readable 流上。
 
 `readable.pipe()` 方法返回一个 *destination* 流的引用，这就使得可以建立链式管道流：
@@ -674,13 +702,15 @@ reader.on('end', () => {
 *注意*：无论指定的选项如何，[`process.stderr`][] 和 [`process.stdout`][] Writable 流从不会被关闭，直到 Node.js 进程退出为止。
 
 ##### readable.readableHighWaterMark
+
 <!-- YAML
 added: v8.10.0
 -->
 
-返回构造此 `Readable` 时传入的 `highWaterMark` 值。
+Return the value of `highWaterMark` passed when constructing this `Readable`.
 
 ##### readable.read([size])
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -708,11 +738,12 @@ readable.on('readable', () => {
 
 以对象模式运作的 Readable 流，无论 `size` 参数的值如何，会一直从对 [`readable.read(size)`](#stream_readable_read_size) 的调用返回单一项目。
 
-*注意*：如果 `readable.read()` 方法返回一个数据块，也会发出 `'data'` 事件。
+*Note*: If the `readable.read()` method returns a chunk of data, a `'data'` event will also be emitted.
 
 *注意*：在 [`'end'`][] 事件结束后调用 [`stream.read([size])`](#stream_readable_read_size) 将会返回 `null`。 不会抛出运行时错误。
 
 ##### readable.resume()
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -732,6 +763,7 @@ getReadableStreamSomehow()
 ```
 
 ##### readable.setEncoding(encoding)
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -755,6 +787,7 @@ readable.on('data', (chunk) => {
 ```
 
 ##### readable.unpipe([destination])
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -782,15 +815,17 @@ setTimeout(() => {
 ```
 
 ##### readable.unshift(chunk)
+
 <!-- YAML
 added: v0.9.11
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|any} 要移回可读队列的数据块。 对于以非对象模式运作的流，`chunk` 必须为字符串, `Buffer` 或 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
+* `chunk` {Buffer|Uint8Array|string|any} 要移回可读队列的数据块。 For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. 对于对象模式的流，`chunk` 可以是任何 JavaScript 值，但不能为 `null`。
 
 `readable.unshift()` 方法将数据块压回内部缓冲区。 此方法在特定情况下非常有用，例如当正在通过代码消费的流需要 "un-consume(撤销消费) " 一定量已被从源中拉取的数据时，这样数据就可被传递给其他方。
 
@@ -834,9 +869,10 @@ function parseHeader(stream, callback) {
 }
 ```
 
-*Note*: Unlike [`stream.push(chunk)`](#stream_readable_push_chunk_encoding), `stream.unshift(chunk)` will not end the reading process by resetting the internal reading state of the stream. 如果在读取 (例如：在自定义流中的 [`stream._read()`](#stream_readable_read_size_1) 实现) 时调用了 `readable.unshift()`，将会导致不可预料的结果。 在调用 `readable.unshift()` 后立即调用 [`stream.push('')`](#stream_readable_push_chunk_encoding) 将会正确的重置读取状态，但最好的办法就是在读取过程中避免调用 `readable.unshift()`。
+*注意*：和 [`stream.push(chunk)`](#stream_readable_push_chunk_encoding) 不同，`stream.unshift(chunk)` 不会通过重置流内部读取状态的方式来结束读取操作。 如果在读取 (例如：在自定义流中的 [`stream._read()`](#stream_readable_read_size_1) 实现) 时调用了 `readable.unshift()`，将会导致不可预料的结果。 在调用 `readable.unshift()` 后立即调用 [`stream.push('')`](#stream_readable_push_chunk_encoding) 将会正确的重置读取状态，但最好的办法就是在读取过程中避免调用 `readable.unshift()`。
 
 ##### readable.wrap(stream)
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -863,18 +899,21 @@ myReader.on('readable', () => {
 ```
 
 ##### readable.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
 
-销毁流并发出 `'error'` 事件。 在此调用后，可读流将会释放所有内部资源。 实现者不应重写此方法，而应实现 [`readable._destroy`](#stream_readable_destroy_err_callback)。
+销毁流并发出 `'error'` 事件。 After this call, the readable stream will release any internal resources. Implementors should not override this method, but instead implement [`readable._destroy`](#stream_readable_destroy_err_callback).
 
 ### Duplex 及 Transform 流
 
 #### 类：stream.Duplex
+
 <!-- YAML
 added: v0.9.4
 changes:
+
   - version: v6.8.0
     pr-url: https://github.com/nodejs/node/pull/8834
     description: Instances of `Duplex` now return `true` when
@@ -892,6 +931,7 @@ Duplex 流的例子包括：
 * [crypto 流](crypto.html)
 
 #### 类：stream.Transform
+
 <!-- YAML
 added: v0.9.4
 -->
@@ -906,11 +946,12 @@ Transform 流的例子包括：
 * [crypto 流](crypto.html)
 
 ##### transform.destroy([error])
+
 <!-- YAML
 added: v8.0.0
 -->
 
-销毁流并发出 `'error'` 事件。 在此调用之后，转换流会释放任何内部资源。 实现者不应重写此方法，而应实现 [`readable._destroy`](#stream_readable_destroy_err_callback)。 `Transform` 中默认的 `_destroy` 实现也会发出 `'close'` 事件。
+销毁流并发出 `'error'` 事件。 After this call, the transform stream would release any internal resources. implementors should not override this method, but instead implement [`readable._destroy`](#stream_readable_destroy_err_callback). `Transform` 中默认的 `_destroy` 实现也会发出 `'close'` 事件。
 
 ## 流开发人员 API
 
@@ -993,9 +1034,10 @@ class MyWritable extends Writable {
   </tr>
 </table>
 
-*Note*: The implementation code for a stream should *never* call the "public" methods of a stream that are intended for use by consumers (as described in the [API for Stream Consumers](#stream_api_for_stream_consumers) section). 这样做的后果就会导致在消费流的应用程序代码中的副作用。
+*注意*：流的实现代码应该 *从不* 调用流的 "公共" 方法，这些方法被设计为供消费者 (在 [流消费者 API](#stream_api_for_stream_consumers) 部分进行了描述) 所使用。 这样做的后果就会导致在消费流的应用程序代码中的副作用。
 
 ### 简化的构建
+
 <!-- YAML
 added: v1.2.0
 -->
@@ -1022,14 +1064,14 @@ const myWritable = new Writable({
 
 #### 构造器：new stream.Writable([options])
 
-* `options` {Object}
+* `options` {Object} 
   * `highWaterMark` {number} 当 [`stream.write()`](#stream_writable_write_chunk_encoding_callback) 开始返回 `false` 时的缓冲区级别。 **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} 在传递给 [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) 之前，是否将字符串解码到缓冲区。 **Default:** `true`.
-  * `objectMode` {boolean} [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) 是否为合法操作。 如果流的实现支持，则当被设置时，就可能写入 JavaScript 值，而不是字符串，`Buffer` 或 `Uint8Array`。 **默认:** `false`.
+  * `objectMode` {boolean} [`stream.write(anyObj)`](#stream_writable_write_chunk_encoding_callback) 是否为合法操作。 When set, it becomes possible to write JavaScript values other than string, `Buffer` or `Uint8Array` if supported by the stream implementation. **默认:** `false`.
   * `write` {Function} [`stream._write()`](#stream_writable_write_chunk_encoding_callback_1) 方法的实现。
   * `writev` {Function} [`stream._writev()`](#stream_writable_writev_chunks_callback) 方法的实现。
-  * `destroy` {Function} [`stream._destroy()`](#stream_writable_destroy_err_callback) 方法的实现。
-  * `final` {Function} [`stream._final()`](#stream_writable_final_callback) 方法的实现。
+  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_writable_destroy_err_callback) method.
+  * `final` {Function} Implementation for the [`stream._final()`](#stream_writable_final_callback) method.
 
 例如：
 
@@ -1076,7 +1118,7 @@ const myWritable = new Writable({
 
 #### writable.\_write(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} 将被写入的数据块。 将会 **一直** 是缓冲区，除非 `decodeStrings` 选项被设置为 `false`，或当流以对象模式运作时。
+* `chunk` {Buffer|string|any} 将被写入的数据块。 Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
 * `encoding` {string} 如果数据块为字符串，则 `encoding` 为该字符串的字符编码。 如果数据块为 `Buffer`，或者当流以对象模式运作时，可以忽略 `encoding`。
 * `callback` {Function} 对提供的数据块处理结束后调用此函数 (有可选的 error 参数)。
 
@@ -1084,11 +1126,11 @@ const myWritable = new Writable({
 
 *注意*：[Transform](#stream_class_stream_transform) 流提供了它们自己的 [`writable._write()`](#stream_writable_write_chunk_encoding_callback_1) 实现。
 
-*注意*：此函数不能由应用程序代码直接调用。 它应由子类实现，且仅被内部 Writable 类的方法调用。
+*注意*：此函数不能由应用程序代码直接调用。 It should be implemented by child classes, and called by the internal Writable class methods only.
 
 必须调用 `callback` 方法，以发出写入成功结束，或失败并出错的消息。 如果调用失败，则传递给 `callback` 的首个参数必须为 `Error` 对象，如果写入成功，则首个参数为 `null`。
 
-在调用 `writable._write()` 和 `callback` 之间，所有对 `writable.write()` 的调用将会导致将被写入的数据被缓存。 When the `callback` is invoked, the stream might emit a [`'drain'`][] event. 如果流的实现有能力一次性处理多块数据，则应实现 `writable._writev()` 方法。
+All calls to `writable.write()` that occur between the time `writable._write()` is called and the `callback` is called will cause the written data to be buffered. When the `callback` is invoked, the stream might emit a [`'drain'`][] event. If a stream implementation is capable of processing multiple chunks of data at once, the `writable._writev()` method should be implemented.
 
 如果在构造函数的选项中设定了 `decodeStrings` 属性，则 `chunk` 可以是字符串，而不是 Buffer，`encoding` 则是字符串的字符编码。 这是为支持一些能对某些特定字符数据编码进行优化处理的实现。 如果 `decodeStrings` 属性被显式设定为 `false`，就可以安全的忽略 `encoding` 参数，`chunk` 会保留传递给 `.write()` 的同样对象。
 
@@ -1099,32 +1141,34 @@ const myWritable = new Writable({
 * `chunks` {Array} 将被写入的数据块。 每个数据块都具有如下格式：`{ chunk: ..., encoding: ... }`。
 * `callback` {Function} 对提供的数据块处理结束时要调用的回调函数 (具有可选的 error 参数)。
 
-*注意*：此函数不能由应用程序代码直接调用。 它应由子类实现，且仅被内部 Writable 类的方法调用。
+*注意*：此函数不能由应用程序代码直接调用。 It should be implemented by child classes, and called by the internal Writable class methods only.
 
 在具有一次性处理多块数据能力的流的实现中，除了实现 `writable._write()` 之外，还应实现 `writable._writev()` 方法。 如果实现了，将会调用该方法并将在写入队列中缓存的所有数据块传递给它。
 
 `writable._writev()` 具有下划线前缀，这是因为它是定义它的类的内部方法，因此不应被用户程序直接调用。
 
 #### writable.\_destroy(err, callback)
+
 <!-- YAML
 added: v8.0.0
 -->
 
 * `err` {Error} 可能的错误。
-* `callback` {Function} 具有可选 error 参数的回调函数。
+* `callback` {Function} A callback function that takes an optional error argument.
 
 `_destroy()` 方法被 [`writable.destroy()`](#stream_writable_destroy_error) 所调用。 It can be overridden by child classes but it **must not** be called directly.
 
 #### writable.\_final(callback)
+
 <!-- YAML
 added: v8.0.0
 -->
 
-* `callback` {Function} 结束写入任何剩余数据时调用此函数 (具有可选的 error 参数)。
+* `callback` {Function} Call this function (optionally with an error argument) when finished writing any remaining data.
 
-`_final()` 方法 **不能** 被直接调用。 它可被子类实现，如果是这样，它仅被内部 Writable 类的方法调用。
+`_final()` 方法 **不能** 被直接调用。 It may be implemented by child classes, and if so, will be called by the internal Writable class methods only.
 
-在流关闭前，此可选函数将被调用，它将会延迟 `finish` 事件，直到 `callback` 被调用为止。 这将有助于在流结束前关闭资源并将已缓存数据写入。
+This optional function will be called before the stream closes, delaying the `finish` event until `callback` is called. This is useful to close resources or write buffered data before a stream ends.
 
 #### 写入时错误
 
@@ -1211,16 +1255,16 @@ console.log(w.data); // currency: €
 
 `stream.Readable` 类继承并实现了 [Readable](#stream_class_stream_readable) 流。
 
-Custom Readable streams *must* call the `new stream.Readable([options])` constructor and implement the `readable._read()` method.
+自定义 Readable 流 *必须* 调用 `new stream.Readable([options])` 构造函数并实现 `readable._read()` 方法。
 
 #### new stream.Readable([options])
 
-* `options` {Object}
-  * `highWaterMark` {number} 在停止从底层资源中读取之前，能存储在内部缓冲区中的最大 [字节数](#stream_highwatermark_discrepancy_after_calling_readable_setencoding)。 **Default:** `16384` (16kb), or `16` for `objectMode` streams.
+* `options` {Object} 
+  * `highWaterMark` {number} The maximum [number of bytes](#stream_highwatermark_discrepancy_after_calling_readable_setencoding) to store in the internal buffer before ceasing to read from the underlying resource. **Default:** `16384` (16kb), or `16` for `objectMode` streams.
   * `encoding` {string} 如果指定，则会使用指定的编码将缓冲区解码为字符串。 **Default:** `null`.
   * `objectMode` {boolean} 此流是否应以对象流方式运作。 这就意味着 [`stream.read(n)`](#stream_readable_read_size) 返回单个值，而不是大小为 n 的 Buffer。 **默认:** `false`.
   * `read` {Function} [`stream._read()`](#stream_readable_read_size_1) 方法的实现。
-  * `destroy` {Function} [`stream._destroy()`](#stream_readable_destroy_err_callback) 方法的实现。
+  * `destroy` {Function} Implementation for the [`stream._destroy()`](#stream_readable_destroy_err_callback) method.
 
 例如：
 
@@ -1266,41 +1310,44 @@ const myReadable = new Readable({
 
 * `size` {number} 通过异步方式读取的字节数
 
-*注意*：此函数不能由应用程序代码直接调用。 它应由子类实现，且仅被内部 Readable 类的方法调用。
+*注意*：此函数不能由应用程序代码直接调用。 It should be implemented by child classes, and called by the internal Readable class methods only.
 
 所有 Readable 流的实现都必须提供 `readable._read()` 方法的实现，以便从底层资源中获取数据。
 
 当调用 `readable._read()` 时，如果在资源中有可用数据，该实现应开始使用 [`this.push(dataChunk)`](#stream_readable_push_chunk_encoding) 方法将数据压入到读取队列中。 `_read()` 应继续从资源中读取并推送数据，直到 `readable.push()` 返回 `false` 为止。 当 `_read()` 在停止后再次被调用时，它将会恢复推送额外数据到队列中。
 
-*Note*: Once the `readable._read()` method has been called, it will not be called again until the [`readable.push()`](#stream_readable_push_chunk_encoding) method is called.
+*注意*：一旦调用了 `readable._read()` 方法，它就不会被重复调用，直到调用了 [`readable.push()`](#stream_readable_push_chunk_encoding) 为止。
 
 建议提供 `size` 参数。 在某些实现中， "读取" 是返回数据的单一操作，这时可以使用 `size` 参数来决定有多少数据需要获取。 在其他的实现中，可以忽略此参数，并在数据可用时简单的提供数据。 在调用 [`stream.push(chunk)`](#stream_readable_push_chunk_encoding) 之前，没有必要 "等到" 有 `size` 个字节可用时再进行调用。
 
 `readable._read()` 具有下划线前缀，这是因为它是定义它的类的内部方法，因此不应被用户程序直接调用。
 
 #### readable.\_destroy(err, callback)
+
 <!-- YAML
 added: v8.0.0
 -->
 
 * `err` {Error} 可能的错误。
-* `callback` {Function} 具有可选 error 参数的回调函数。
+* `callback` {Function} A callback function that takes an optional error argument.
 
 `_destroy()` 方法被 [`readable.destroy()`](#stream_readable_destroy_error) 所调用。 It can be overridden by child classes but it **must not** be called directly.
 
 #### readable.push(chunk[, encoding])
+
 <!-- YAML
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11608
     description: The `chunk` argument can now be a `Uint8Array` instance.
 -->
 
-* `chunk` {Buffer|Uint8Array|string|null|any} 要压入读取队列的数据块。 对于以非对象模式运作的流，`chunk` 必须为字符串, `Buffer` 或 `Uint8Array`。 对于对象模式的流，`chunk` 可以是任何 JavaScript 值。
+* `chunk` {Buffer|Uint8Array|string|null|any} Chunk of data to push into the read queue. For streams not operating in object mode, `chunk` must be a string, `Buffer` or `Uint8Array`. For object mode streams, `chunk` may be any JavaScript value.
 * `encoding` {string} 字符串块的编码。 必须是一个有效的 Buffer 编码，例如：`'utf8'` 或 `'ascii'`
 * 返回：{boolean} 如果额外的数据块可用被继续压入，则返回 `true`；否则返回 `false`。
 
-当 `chunk` 是一个 `Buffer`, `Uint8Array` 或 `字符串` 时，`chunk` 参数中的数据将被添加到内部队列，以便流用户可以消费。 如果把 `null` 传递给 `chunk` 参数就传递了流结尾 (EOF) 的信号，之后数据不能再被写入。
+When `chunk` is a `Buffer`, `Uint8Array` or `string`, the `chunk` of data will be added to the internal queue for users of the stream to consume. Passing `chunk` as `null` signals the end of the stream (EOF), after which no more data can be written.
 
 当 Readable 流以暂停模式运作时，在发出 [`'readable'`][] 事件时，通过 `readable.push()` 添加的数据可以通过调用 [`readable.read()`](#stream_readable_read_size) 方法来读取。
 
@@ -1338,6 +1385,7 @@ class SourceWrapper extends Readable {
   }
 }
 ```
+
 *注意*：`readable.push()` 方法应仅由 Readable 流的实现者调用，且仅在 `readable._read()` 方法中被调用。
 
 For streams not operating in object mode, if the `chunk` parameter of `readable.push()` is `undefined`, it will be treated as empty string or buffer. See [`readable.push('')`][] for more information.
@@ -1345,6 +1393,9 @@ For streams not operating in object mode, if the `chunk` parameter of `readable.
 #### 读取时错误
 
 建议在 `readable._read()` 方法的处理过程中发生的错误应使用 `'error'` 事件进行发送，而不是将错误抛出。 在 `readable._read()` 中抛出错误会导致不可预料和不一致的行为，具体取决于流是以流动模式还是暂停模式运作的。 使用 `'error'` 事件能确保一致的，且可预测的错误处理。
+
+<!-- eslint-disable no-useless-return -->
+
 ```js
 const { Readable } = require('stream');
 
@@ -1359,7 +1410,11 @@ const myReadable = new Readable({
 });
 ```
 
-#### 一个计数流的示例<!--type=example-->如下是一个 Readable 流的示例，该流以升序方式发送 1 到 1,000,000 之间的数字，然后结束。
+#### 一个计数流的示例
+
+<!--type=example-->
+
+如下是一个 Readable 流的示例，该流以升序方式发送 1 到 1,000,000 之间的数字，然后结束。
 
 ```js
 const { Readable } = require('stream');
@@ -1390,22 +1445,27 @@ class Counter extends Readable {
 
 由于 JavaScript 不支持多重继承，因此可以通过继承 `stream.Duplex` 类来实现 [Duplex](#stream_class_stream_duplex) 流 (而不是同时继承 `stream.Readable` *和* `stream.Writable` 类)。
 
-*注意*：`stream.Duplex` 类的原型继承自 `stream.Readable`，并寄生自 `stream.Writable`，由于重写了 `stream.Writable` 的 [`Symbol.hasInstance`][] 方法， `instanceof` 对于这两个基础类都可用。
+*Note*: The `stream.Duplex` class prototypically inherits from `stream.Readable` and parasitically from `stream.Writable`, but `instanceof` will work properly for both base classes due to overriding [`Symbol.hasInstance`][] on `stream.Writable`.
 
-Custom Duplex streams *must* call the `new stream.Duplex([options])` constructor and implement *both* the `readable._read()` and `writable._write()` methods.
+自定义 Duplex 流 *必须* 调用 `new stream.Duplex([options])` 构造函数，且实现 `readable._read()` 和 `writable._write()` *两个* 方法。
 
-#### new stream.Duplex(options)<!-- YAML
+#### new stream.Duplex(options)
+
+<!-- YAML
 changes:
+
   - version: v8.4.0
     pr-url: https://github.com/nodejs/node/pull/14636
     description: The `readableHighWaterMark` and `writableHighWaterMark` options
                  are supported now.
--->* `options` {Object} Passed to both Writable and Readable constructors. 同时含有如下字段：
+-->
+
+* `options` {Object} 传递给 Writable 和 Readable 构造函数。 同时含有以下字段： 
   * `allowHalfOpen` {boolean} If set to `false`, then the stream will automatically end the writable side when the readable side ends. **Default:** `true`.
   * `readableObjectMode` {boolean} Sets `objectMode` for readable side of the stream. Has no effect if `objectMode` is `true`. **默认:** `false`.
   * `writableObjectMode` {boolean} Sets `objectMode` for writable side of the stream. Has no effect if `objectMode` is `true`. **默认:** `false`.
-  * `readableHighWaterMark` {number} 为流的读取端设置 `highWaterMark`。 如果提供了 `highWaterMark`，则不产生任何效果。
-  * `writableHighWaterMark` {number} 为流的写入端设置 `highWaterMark`。 如果提供了 `highWaterMark`，则不产生任何效果。
+  * `readableHighWaterMark` {number} Sets `highWaterMark` for the readable side of the stream. 如果提供了 `highWaterMark`，则不产生任何作用。
+  * `writableHighWaterMark` {number} Sets `highWaterMark` for the writable side of the stream. 如果提供了 `highWaterMark`，则不产生任何作用。
 
 例如：
 
@@ -1521,17 +1581,17 @@ myTransform.write(100);
 
 [Transform](#stream_class_stream_transform) 流是一个 [Duplex](#stream_class_stream_duplex) 流，其中的输出是将输入通过某种方式计算得到的。 例子包括进行压缩，加密，和解密数据的 [zlib](zlib.html) 流或 [crypto](crypto.html) 流。
 
-*Note*: There is no requirement that the output be the same size as the input, the same number of chunks, or arrive at the same time. 例如：一个 Hash 流在输入结束时将只含有一个单一的输出块。 `zlib` 流产生的输出将会比输入更小或更大。
+*注意*：这里并不要求输出和输入数据的长度相同，或包含同样数字的数据块，或在同时到达。 例如：一个 Hash 流在输入结束时将只含有一个单一的输出块。 `zlib` 流产生的输出将会比输入更小或更大。
 
 `stream.Transform` 继承并实现了 [Transform](#stream_class_stream_transform) 流。
 
-`stream.Transform` 类原型继承自 `stream.Duplex`，且实现了它自己版本的 `writable._write()` 和 `readable._read()` 方法。 Custom Transform implementations *must* implement the [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) method and *may* also implement the [`transform._flush()`](#stream_transform_flush_callback) method.
+`stream.Transform` 类原型继承自 `stream.Duplex`，且实现了它自己版本的 `writable._write()` 和 `readable._read()` 方法。 自定义 Transform 实现 *必须* 实现 [`transform._transform()`](#stream_transform_transform_chunk_encoding_callback) 方法，同时 *可以* 实现 [`transform._flush()`](#stream_transform_flush_callback) 方法。
 
-*Note*: Care must be taken when using Transform streams in that data written to the stream can cause the Writable side of the stream to become paused if the output on the Readable side is not consumed.
+*注意*：当在写入到流中的数据上使用 Transform 流时，必须格外注意，如果在 Readable 端的输出没有被消费，就能够导致流的 Writable 端暂停。
 
 #### new stream.Transform([options])
 
-* `options` {Object} Passed to both Writable and Readable constructors. 同时含有如下字段：
+* `options` {Object} 传递给 Writable 和 Readable 构造函数。 同时含有以下字段： 
   * `transform` {Function} [`stream._transform()`](#stream_transform_transform_chunk_encoding_callback) 方法的实现。
   * `flush` {Function} [`stream._flush()`](#stream_transform_flush_callback) 方法的实现。
 
@@ -1580,13 +1640,13 @@ const myTransform = new Transform({
 
 #### transform.\_flush(callback)
 
-* `callback` {Function} 当剩余数据被刷新时要调用的回调函数 (包含可选的 error 参数和数据)。
+* `callback` {Function} A callback function (optionally with an error argument and data) to be called when remaining data has been flushed.
 
-*注意*：此函数不能由应用程序代码直接调用。 它应由子类实现，且仅被内部 Readable 类的方法调用。
+*注意*：此函数不能由应用程序代码直接调用。 It should be implemented by child classes, and called by the internal Readable class methods only.
 
 在某些情况下，转换操作可能需要在流的尾部发送额外的数据。 例如：`zlib` 压缩流会存储一定量的，用于优化压缩输出的内部状态。 然而，当流结束时，该额外数据需要被刷新，以便完成压缩数据。
 
-Custom [Transform](#stream_class_stream_transform) implementations *may* implement the `transform._flush()` method. 当没有更多的可供消费的写入数据，但在发出 [`'end'`][] 事件之前，该方法就会被调用，以发出 [Readable](#stream_class_stream_readable) 流结尾的信号。
+自定义的 [Transform](#stream_class_stream_transform) 流 *可以* 实现 `transform._flush()` 方法。 当没有更多的可供消费的写入数据，但在发出 [`'end'`][] 事件之前，该方法就会被调用，以发出 [Readable](#stream_class_stream_readable) 流结尾的信号。
 
 在 `transform._flush()` 的实现中，`readable.push()` 方法可能会被酌情调用零次或多次。 当刷新操作完成时，必须调用 `callback` 函数。
 
@@ -1594,11 +1654,11 @@ Custom [Transform](#stream_class_stream_transform) implementations *may* impleme
 
 #### transform.\_transform(chunk, encoding, callback)
 
-* `chunk` {Buffer|string|any} 将被转换的数据块。 将会 **一直** 是缓冲区，除非 `decodeStrings` 选项被设置为 `false`，或当流以对象模式运作时。
+* `chunk` {Buffer|string|any} 将被转换的数据块。 Will **always** be a buffer unless the `decodeStrings` option was set to `false` or the stream is operating in object mode.
 * `encoding` {string} 如果数据块为字符串，则这是编码类型。 如果数据块为缓冲区，则 encoding 为特殊的值 - 'buffer'，在这种情况下忽略它。
 * `callback` {Function} 在提供的 `chunk` 被处理后要调用的回调函数 (具有可选的 error 参数和数据)。
 
-*注意*：此函数不能由应用程序代码直接调用。 它应由子类实现，且仅被内部 Readable 类的方法调用。
+*注意*：此函数不能由应用程序代码直接调用。 It should be implemented by child classes, and called by the internal Readable class methods only.
 
 所有 Transform 流的实现都必须提供一个 `_transform()` 方法来接受输入并产生输出。 `transform._transform()` 的实现会处理写入的字节，计算输出，并使用 `readable.push()` 方法传递输出到可读部分。
 
@@ -1627,14 +1687,18 @@ transform.prototype._transform = function(data, encoding, callback) {
 
 `stream.PassThrough` 类是 [Transform](#stream_class_stream_transform) 流的一个无关紧要的实现，它只是简单的将输入字节传递到输出端。 它的主要目的就是用于示例和测试，但在有些情况下 `stream.PassThrough` 可被用做新型流的组成部分。
 
-## 附注<!--type=misc-->### 和旧版本 Node.js 的兼容性
+## 附注
+
+<!--type=misc-->
+
+### 和旧版本 Node.js 的兼容性
 
 <!--type=misc-->
 
 在 Node.js v0.10 版本之前，Readable 流接口更简单，但即不怎么强大，也不太有用。
 
 * 无需等待调用 [`stream.read()`](#stream_readable_read_size) 方法，会立即发出 [`'data'`][] 事件。 对于需要完成一定量的工作才能决定如何处理数据的应用程序，需要将读取的数据存储到缓冲区中，这样数据就不会丢失。
-* [`stream.pause()`](#stream_readable_pause) 方法只是建议性的，而不能提供保证。 This meant that it was still necessary to be prepared to receive [`'data'`][] events *even when the stream was in a paused state*.
+* [`stream.pause()`](#stream_readable_pause) 方法只是建议性的，而不能提供保证。 这就意味着，*即使流处于暂停状态*，仍有必要做好准备接收 [`'data'`][] 事件。
 
 在 Node.js v0.10 中，增加了 [Readable](#stream_class_stream_readable) 类。 出于对较旧版本 Node.js 程序的向后兼容性考虑，当添加了 [`'data'`][] 事件处理程序，或调用 [`stream.resume()`](#stream_readable_resume) 方法时，Readable 流会切换为 "流动模式"。 其效果就是，即使当没有使用新的 [`stream.read()`](#stream_readable_read_size) 方法和 [`'readable'`][] 事件时，也无需担心丢失 [`'data'`][] 数据块。
 
@@ -1679,7 +1743,6 @@ net.createServer((socket) => {
 
 除了将新的 Readable 流切换为流动模式外，可通过使用 [`readable.wrap()`][`stream.wrap()`] 方法 将 pre-v0.10 风格的流包装在 Readable 类之中。
 
-
 ### `readable.read(0)`
 
 在某些情况下，有必要触发刷新底层可读流机制，而无需实际消费任何数据。 在这些情况下，可以调用 `readable.read(0)`，它会一直返回 `null`。
@@ -1692,12 +1755,12 @@ net.createServer((socket) => {
 
 不推荐使用 `readable.push('')`。
 
-压入一个零字节字符串，`Buffer` 或 `Uint8Array` 到非对象模式的流中具有有趣的副作用。 因为它 *是* 对 [`readable.push()`](#stream_readable_push_chunk_encoding) 的调用，该调用会终止读取过程。 然而，由于参数为空字符串，不会有数据被添加到可读缓冲区，这样用户就没有数据可以消费。
+Pushing a zero-byte string, `Buffer` or `Uint8Array` to a stream that is not in object mode has an interesting side effect. 因为它 *是* 对 [`readable.push()`](#stream_readable_push_chunk_encoding) 的调用，该调用会终止读取过程。 然而，由于参数为空字符串，不会有数据被添加到可读缓冲区，这样用户就没有数据可以消费。
 
 ### 调用 `readable.setEncoding()` 后 `highWaterMark` 的差异
 
 使用 `readable.setEncoding()` 将会改变 `highWaterMark` 在非对象模式下的运作行为。
 
-通常，当前缓冲区的大小是比照 `highWaterMark` 并以 _字节_ 为单位来测量的。 然而，在调用 `setEncoding()` 后，比较函数将会以 _字符_ 为单位来开始测量缓冲区大小。
+通常，当前缓冲区的大小是比照 `highWaterMark` 并以 *字节* 为单位来测量的。 然而，在调用 `setEncoding()` 后，比较函数将会以 *字符* 为单位来开始测量缓冲区大小。
 
 通常情况下，如果编码为 `latin1` 或 `ascii` ，这不会有问题。 但是当处理可能包含多字节字符的字符串时，建议留意这种行为。

@@ -31,6 +31,7 @@ servidor.bind(41234);
 ```
 
 ## Clase: dgram.Socket
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -40,6 +41,7 @@ El objeto `dgram.Socket` es un [` EventEmitter`][] que encapsula la funcionalida
 Las nuevas instancias de `dgram.Socket` son creadas usando [`dgram.createSocket()`][]. La palabra clave `new` no debe ser usada para crear instancias `dgram.Socket`.
 
 ### Evento: 'close'
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -47,6 +49,7 @@ added: v0.1.99
 El evento `'close'` se emite luego de que un socket es cerrado con [`close()`][]. Una vez activado, no se emitirán nuevos eventos `'message'` en este socket.
 
 ### Evento: 'error'
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -56,6 +59,7 @@ added: v0.1.99
 El evento `'error'` se emite cada vez que se produce un error. La función manejador de eventos pasa un solo objeto de error.
 
 ### Evento: 'listening'
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -63,19 +67,22 @@ added: v0.1.99
 El evento ` 'listening' ` se emite cada vez que un socket comienza a escuchar Mensajes de datagramas. Esto ocurre tan pronto como sockets UDP son creados.
 
 ### Evento: 'message'
+
 <!-- YAML
 added: v0.1.99
 -->
 
 El evento `'message'` se emite cuando un nuevo datagrama está disponible en un socket. El evento función del controlador pasa con dos argumentos: `msg` y `rinfo`.
+
 * `msg` {Buffer} El mensaje.
-* `rinfo` {Object} Remote address information.
+* `rinfo` {Object} Información de dirección remota. 
   * `address` {string} La dirección del remitente.
   * `family` {string} La familia de direcciones (` 'IPv4' ` o ` 'IPv6' `).
   * `port` {number} El puerto del remitente.
   * `size` {number} Tamaño del mensaje.
 
 ### socket.añadir miembro(multicastAddress [, multicastInterface])
+
 <!-- YAML
 added: v0.6.9
 -->
@@ -101,7 +108,8 @@ if (cluster.isMaster) {
 }
 ```
 
-### socket.dirección()
+### socket.address()
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -109,13 +117,14 @@ added: v0.1.99
 Devuelve un objeto incluyendo la información de la dirección para un socket. Para sockets UDP, este objeto contendrá `address`, `family` y propiedades de `port`.
 
 ### socket.bind(\[port\]\[, address\][, callback])
+
 <!-- YAML
 added: v0.1.99
 -->
 
 * `port` {number} Entero.
-* ` dirección ` {string}
-* ` devolución de llamada ` {Función} sin parámetros. Llamando cuando el enlace está completo.
+* `address` {string}
+* `callback` {Function} sin parámetros. Llamando cuando el enlace está completo.
 
 Para sockets UDP, causa que `dgram.Socket` escuche por mensajes datagrama en un `port` llamado y `address` optional. Si ` el puerto ` no es especificado o es ` 0 `, el sistema operativo intentará enlazarse a un puerto aleatorio. Si `address` no es especificada, el sistema operativo intentará escuchar en todas las direcciones. Una vez que el enlace está completado, `'listening'` un evento es emitido y la función opcional `callback` es llamada.
 
@@ -150,13 +159,14 @@ server.bind(41234);
 ```
 
 ### socket.bind(opciones[, callback])
+
 <!-- YAML
 added: v0.11.14
 -->
 
-* `options` {Object} Requerido. Soporta las siguientes propiedades:
+* `options` {Object} Required. Soporta las siguientes propiedades: 
   * `port` {integer}
-  * `dirección` {string}
+  * `address` {string}
   * `exclusivo` {boolean}
 * `callback` {Function}
 
@@ -181,6 +191,7 @@ socket.bind({
 ```
 
 ### socket.close([callback])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -188,6 +199,7 @@ added: v0.1.99
 Cierra el socket subyacente y deja de escuchar por datos en él. Si se provee un callback, es añadido como un listener para el evento [`'close'`][].
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
+
 <!-- YAML
 added: v0.6.9
 -->
@@ -200,6 +212,7 @@ Instruye al Kernel para que deje un grupo multicast en `multicastAddress` usando
 Si `multicastInterface` no es especificada, el sistema operativo intentará abandonar la membresía en todas las interfaces válidas.
 
 ### socket.getRecvBufferSize()
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -207,6 +220,7 @@ added: v8.7.0
 * Devuelve: {number} el socket `SO_RCVBUF` recibe el tamaño del búfer en bytes.
 
 ### socket.getSendBufferSize()
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -214,6 +228,7 @@ added: v8.7.0
 * Devuelve: {number} el socket `SO_SNDBUF` envía el tamaño del búfer en bytes.
 
 ### socket.ref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -225,9 +240,11 @@ Llamar a `socket.ref()` múltiples veces, no tendrá ningún efecto adicional.
 El método `socket.ref()` devuelve una referencia al socket para que las llamadas puedan ser encadenadas.
 
 ### socket.send(msg, \[offset, length,] port [, address\] \[, callback\])
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11985
     description: The `msg` parameter can be an Uint8Array now.
@@ -292,17 +309,18 @@ Enviar múltiples búferes puede ser más rápido o más lento dependiendo de la
 
 **Una nota sobre el tamaño de datagrama UDP**
 
-El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (_Unidad Máxima de Transmisión_), y del tamaño del campo de `Payload Length`.
+El tamaño máximo de un datagrama `IPv4/v6` depende del `MTU` (*Unidad Máxima de Transmisión*), y del tamaño del campo de `Payload Length`.
 
-- El campo de `Payload Length` tiene `16 bits` de ancho, lo que significa que una carga normal sobrepasa 64K octets _incluyendo_ el encabezado de internet y los datos (65,507 bytes = 65,535 − 8 bytes encabezado UDP − 20 bytes encabezado IP).
+* El campo de `Payload Length` tiene `16 bits` de ancho, lo que significa que una carga normal sobrepasa 64K octets *incluyendo* el encabezado de internet y los datos (65,507 bytes = 65,535 − 8 bytes encabezado UDP − 20 bytes encabezado IP).
 
-- El `MTU` es el tamaño más grande que una tecnología de capa de enlace puede soportar para mensajes de datagrama. Para cualquier enlace, `IPv4` exige un `MTU` mínimo de `68` octets, mientras que el `MTU` para IPv4 es `576` (recomendado comúnmente como el `MTU` para aplicaciones con un tipo de conexión por línea conmutada), ya bien si llegan completos o en fragmentos.
-
+* El `MTU` es el tamaño más grande que una tecnología de capa de enlace puede soportar para mensajes de datagrama. Para cualquier enlace, `IPv4` exige un `MTU` mínimo de `68` octets, mientras que el `MTU` para IPv4 es `576` (recomendado comúnmente como el `MTU` para aplicaciones con un tipo de conexión por línea conmutada), ya bien si llegan completos o en fragmentos.
+  
   Para `IPv6`, el `MTU` mínimo es `1280` octets, sin embargo, el tamaño mínimo obligatorio del búfer del reensamblaje de fragmento es `1500` octets. El valor de `68` octets es muy pequeño, puesto que las tecnologías de capa de enlace más recientes, como Ethernet, tienen un `MTU` mínimo de `1500`.
 
 Es imposible saber con anterioridad el MTU de cada enlace por medio del cual un paquete podría viajar. Enviar un datagrama mayor que el `MTU` del receptor no funcionará porque el paquete será abandonado silenciosamente sin informar a la fuente que los datos no llegaron al destinatario deseado.
 
 ### socket.setBroadcast(flag)
+
 <!-- YAML
 added: v0.6.9
 -->
@@ -312,6 +330,7 @@ added: v0.6.9
 Establece o borra la opción socket `SO_BROADCAST`. Cuando se establece como `true`, los paquetes UDP pudieran ser enviados a una dirección de transmisión de la interfaz local.
 
 ### socket.setMulticastInterface(multicastInterface)
+
 <!-- YAML
 added: v8.6.0
 -->
@@ -349,7 +368,9 @@ socket.bind(1234, () => {
 ```
 
 #### Ejemplo: IPv4 Interfaz de Multidifusión Saliente
+
 Todos los sistemas usan un IP del host en la interfaz física deseada:
+
 ```js
 const socket = dgram.createSocket('udp4');
 
@@ -370,8 +391,8 @@ En IPv6, la mayoría de los errores especificando u omitiendo el scope resultar�
 
 CUALQUIER dirección de la familia de la direcciones de un socket (IPv4 `'0.0.0.0'` or IPv6 `'::'`) puede ser usada para devolver el control de interfaz saliente predeterminada de los sockets al sistema para futuros paquetes multidifusores.
 
-
 ### socket.setMulticastLoopback(flag)
+
 <!-- YAML
 added: v0.3.8
 -->
@@ -381,6 +402,7 @@ added: v0.3.8
 Establece o borra la opción del socket `IP_MULTICAST_LOOP`. Cuando se establece como `true`, los paquetes de multidifusión también serán recibidos en la interfaz local.
 
 ### socket.setMulticastTTL(ttl)
+
 <!-- YAML
 added: v0.3.8
 -->
@@ -392,6 +414,7 @@ Establece la opción del socket `IP_MULTICAST_TTL`. Mientras que TTL generalment
 El argumento pasado a `socket.setMulticastTTL()` es un número que salta entre 0 y 255. El predeterminado en la mayoría de los sistemas es `1` pero puede variar.
 
 ### socket.setRecvBufferSize(size)
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -401,6 +424,7 @@ added: v8.7.0
 Establece la opción del socket `SO_RCVBUF`. Establece el búfer de recibir del máximo socket en bytes.
 
 ### socket.setSendBufferSize(size)
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -410,6 +434,7 @@ added: v8.7.0
 Establece la opción del socket `SO_SNDBUF`. Establece el búfer de enviar del máximo socket en bytes.
 
 ### socket.setTTL(ttl)
+
 <!-- YAML
 added: v0.1.101
 -->
@@ -421,6 +446,7 @@ Establece la opción del socket `IP_TTL`. Mientras que TTL generalmente signific
 El argumento para `socket.setTTL()` es un número que salta entre 1 y 255. El predeterminado en la mayoría de los sistemas es 64 pero puede variar.
 
 ### socket.unref()
+
 <!-- YAML
 added: v0.9.1
 -->
@@ -453,9 +479,11 @@ s.bind(1234, () => {
 ## `dgram` funciones del módulo
 
 ### dgram.createSocket(options[, callback])
+
 <!-- YAML
 added: v0.11.13
 changes:
+
   - version: v8.6.0
     pr-url: https://github.com/nodejs/node/pull/14560
     description: The `lookup` option is supported.
@@ -465,7 +493,7 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} Available options are:
+* `options` {Object} Las opciones disponibles son: 
   * `type` {string} La familia del socket. Debe ser `'udp4'` o `'udp6'`. Requerido.
   * `reuseAddr` {boolean} Cuando sea `true`, [`socket.bind()`][] reutilizará la dirección, incluso si otro proceso ya ha enlazado un socket. **Predeterminado:** `false`.
   * `recvBufferSize` {number} - Establece el valor del socket `SO_RCVBUF`.
@@ -477,6 +505,7 @@ changes:
 Crea un objeto `dgram.Socket`. Una vez que el socket es creado, llamar a [`socket.bind()`][] le dirá al socket que empiece a escuchar por mensajes de datagrama. Cuando `address` y `port` no son pasados a [`socket.bind()`][], el método enlazará el socket a la dirección "todas las interfaces" en un puerto aleatorio (hace lo correcto tanto para el socket `udp4` como para el socket `udp6`). La dirección y puerto enlazados pueden ser recuperados usando [`socket.address().address`][] y [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
+
 <!-- YAML
 added: v0.1.99
 -->

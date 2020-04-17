@@ -1,25 +1,26 @@
 # Расширения C++
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
-Расширения Node.js ― динамически связанные общие объекты, написанные на C++, которые могут быть загружены в Node.js посредством вызова функции [`require()`](modules.html#modules_require) и использоваться так, будто они были обычными модулями Node.js. Они используются главным образом для обеспечения интерфейса между JavaScript, исполняемого Node.js и библиотеками на С/С++.
+Node.js Addons are dynamically-linked shared objects, written in C++, that can be loaded into Node.js using the [`require()`](modules.html#modules_require) function, and used just as if they were an ordinary Node.js module. They are used primarily to provide an interface between JavaScript running in Node.js and C/C++ libraries.
 
-В настоящий момент, способ реализации расширений достаточно сложен, и требует знания нескольких компонентов и API:
+At the moment, the method for implementing Addons is rather complicated, involving knowledge of several components and APIs:
 
- - V8: библиотека C++, которую Node.js в настоящее время использует для обеспечения реализации JavaScript. V8 обеспечивает механизмы создания объектов, вызовов функций и т.д. API V8 задокументировано в основном в заглавном файле `v8.h` (`deps/v8/include/v8.h` в исходниках Node.js), который также доступен [онлайн](https://v8docs.nodesource.com/).
+* V8: the C++ library Node.js currently uses to provide the JavaScript implementation. V8 provides the mechanisms for creating objects, calling functions, etc. V8's API is documented mostly in the `v8.h` header file (`deps/v8/include/v8.h` in the Node.js source tree), which is also available [online](https://v8docs.nodesource.com/).
 
- - [libuv](https://github.com/libuv/libuv): Библиотека C, которая реализует цикл событий Node.js, его рабочие потоки и все асинхронные поведения платформы. Он также служит в качестве кроссплатформенной библиотеки абстракций, давая легкий, POSIX-подобный доступ через все основные операционные системы ко многим общим системным задачам, таким как как взаимодействие с файловой системой, сокетами, таймерами и системными событиями. libuv также предоставляет потоковую абстракцию типа pthreads, которая может быть использована для усиления более сложных асинхронных расширений, которым необходимо выйти за пределы стандартного цикла событий. Авторам расширения предлагается подумать о том, как избежать блокировки цикла событий ввода/вывода или других задач, которые занимают много времени, чтобы загрузить работу через libuv в неблокирующие системные операции, рабочие потоки или пользовательское использование потоков libuv.
+* [libuv](https://github.com/libuv/libuv): The C library that implements the Node.js event loop, its worker threads and all of the asynchronous behaviors of the platform. It also serves as a cross-platform abstraction library, giving easy, POSIX-like access across all major operating systems to many common system tasks, such as interacting with the filesystem, sockets, timers, and system events. libuv also provides a pthreads-like threading abstraction that may be used to power more sophisticated asynchronous Addons that need to move beyond the standard event loop. Addon authors are encouraged to think about how to avoid blocking the event loop with I/O or other time-intensive tasks by off-loading work via libuv to non-blocking system operations, worker threads or a custom use of libuv's threads.
 
- - Внутренние библиотеки Node.js. Node.js сам экспортирует некоторое количество API C++, которые могут быть использованы в расширениях. Наиболее важным из них является класс `node::ObjectWrap`.
+* Внутренние библиотеки Node.js. Node.js itself exports a number of C++ APIs that Addons can use &mdash; the most important of which is the `node::ObjectWrap` class.
 
- - Node.js включает в себя некоторые другие статически связанные библиотеки, включая OpenSSL. Эти другие библиотеки находятся в каталоге `deps/` в дереве исходного кода Node.js. Только символы libuv, OpenSSL, V8 и zlib целенаправленно реэкспортируются Node.js и могут быть использованы в различной степени аддонами. Для дополнительной информации смотрите [Связь с зависимостями Node.js](#addons_linking_to_node_js_own_dependencies).
+* Node.js includes a number of other statically linked libraries including OpenSSL. These other libraries are located in the `deps/` directory in the Node.js source tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully re-exported by Node.js and may be used to various extents by Addons. Для дополнительной информации смотрите [Связь с зависимостями Node.js](#addons_linking_to_node_js_own_dependencies).
 
-Все приведенные ниже примеры доступны для [скачивания](https://github.com/nodejs/node-addon-examples) и могут быть использованы в качестве начальной точки для аддона.
+All of the following examples are available for [download](https://github.com/nodejs/node-addon-examples) and may be used as the starting-point for an Addon.
 
 ## Hello world
 
-Пример "Hello world" - простое расширение, написанное на C++, что является эквивалентом следующего кода JavaScript:
+This "Hello world" example is a simple Addon, written in C++, that is the equivalent of the following JavaScript code:
 
 ```js
 module.exports.hello = () => 'world';
@@ -56,16 +57,16 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 }  // namespace demo
 ```
 
-Обратите внимание, что все расширения Node.js должны экспортировать функцию инициализации следуя следующему шаблону:
+Note that all Node.js Addons must export an initialization function following the pattern:
 
 ```cpp
 void Initialize(Local<Object> exports);
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 ```
 
-После `NODE_MODULE` нет точки с запятой, потому что это не функция (смотрите `node.h`).
+There is no semi-colon after `NODE_MODULE` as it's not a function (see `node.h`).
 
-`module_name` должно совпадать с именем файла конечного бинарного файла (исключая суффикс `node`).
+The `module_name` must match the filename of the final binary (excluding the `.node` suffix).
 
 In the `hello.cc` example, then, the initialization function is `Initialize` and the addon module name is `addon`.
 
@@ -91,6 +92,7 @@ NODE_MODULE_INITIALIZER(Local<Object> exports,
 Another option is to use the macro `NODE_MODULE_INIT()`, which will also construct a context-aware addon. Unlike `NODE_MODULE()`, which is used to construct an addon around a given addon initializer function, `NODE_MODULE_INIT()` serves as the declaration of such an initializer to be followed by a function body.
 
 The following three variables may be used inside the function body following an invocation of `NODE_MODULE_INIT()`:
+
 * `Local<Object> exports`,
 * `Local<Value> module`, and
 * `Local<Context> context`
@@ -98,6 +100,7 @@ The following three variables may be used inside the function body following an 
 The choice to build a context-aware addon carries with it the responsibility of carefully managing global static data. Since the addon may be loaded multiple times, potentially even from different threads, any global static data stored in the addon must be properly protected, and must not contain any persistent references to JavaScript objects. The reason for this is that JavaScript objects are only valid in one context, and will likely cause a crash when accessed from the wrong context or from a different thread than the one on which they were created.
 
 The context-aware addon can be structured to avoid global static data by performing the following steps:
+
 * defining a class which will hold per-addon-instance data. Such a class should include a `v8::Persistent<v8::Object>` which will hold a weak reference to the addon's `exports` object. The callback associated with the weak reference will then destroy the instance of the class.
 * constructing an instance of this class in the addon initializer such that the `v8::Persistent<v8::Object>` is set to the `exports` object.
 * storing the instance of the class in a `v8::External`, and
@@ -173,7 +176,7 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 
 ### Сборка
 
-Как только исходный код был записан, он должен быть скомпилирован в двоичный файл `addon.node`. Для этого создайте файл с именем `binding.gyp` в корне проекта, описывающего конфигурацию сборки модуля с использованием JSON-подобного формата. Этот файл используется [node-gyp](https://github.com/nodejs/node-gyp) - инструментом, написанным специально для компиляции расширений Node.js.
+Once the source code has been written, it must be compiled into the binary `addon.node` file. To do so, create a file called `binding.gyp` in the top-level of the project describing the build configuration of the module using a JSON-like format. This file is used by [node-gyp](https://github.com/nodejs/node-gyp) — a tool written specifically to compile Node.js Addons.
 
 ```json
 {
@@ -186,17 +189,15 @@ NODE_MODULE_INIT(/* exports, module, context */) {
 }
 ```
 
-Версия утилиты `node-gyp` поставляется в комплекте и распространяется вместе с Node.js как часть `npm`. Эта версия не предоставляется непосредственно для использования разработчиками и предназначена только для поддержки возможности использования команды `npm install` для компиляции и установки расширений. Разработчики, которые хотят напрямую использовать `node-gyp`, могут установить ее, используя команду `npm install -g node-gyp`. Для более подробной информации смотрите </a> инструкции по установке `node-gyp`, включая требования к платформе.</p> 
+A version of the `node-gyp` utility is bundled and distributed with Node.js as part of `npm`. This version is not made directly available for developers to use and is intended only to support the ability to use the `npm install` command to compile and install Addons. Developers who wish to use `node-gyp` directly can install it using the command `npm install -g node-gyp`. See the `node-gyp` [installation instructions](https://github.com/nodejs/node-gyp#installation) for more information, including platform-specific requirements.
 
-После создания файла `binding.gyp`, используйте `node-gyp configure`, чтобы создать файлы соответствующего проекта для текущей платформы. Это так же сгенерирует файл `Makefile` (в платформах Unix) или файл `vcxproj` (в системе Windows) в директории `build/`.
+Once the `binding.gyp` file has been created, use `node-gyp configure` to generate the appropriate project build files for the current platform. This will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file (on Windows) in the `build/` directory.
 
-Затем используйте команду `node-gyp build`, чтобы создать скомпилированный файл `addon.node`. Это будет помещено в директорию `build/Release/`.
+Next, invoke the `node-gyp build` command to generate the compiled `addon.node` file. Это будет помещено в директорию `build/Release/`.
 
-При использовании `npm install` для установки расширения Node.js, npm использует собственную версию `node-gyp` для выполнения того же набора действий, создавая скомпилированную версию Addon для платформы пользователя по запросу.
+When using `npm install` to install a Node.js Addon, npm uses its own bundled version of `node-gyp` to perform this same set of actions, generating a compiled version of the Addon for the user's platform on demand.
 
-После сборки бинарный аддон можно использовать внутри Node.js, указав [`require()`](modules.html#modules_require) на встроенный модуль `addon.node`:
-
-
+Once built, the binary Addon can be used from within Node.js by pointing [`require()`](modules.html#modules_require) to the built `addon.node` module:
 
 ```js
 // hello.js
@@ -206,14 +207,11 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
+Please see the examples below for further information or <https://github.com/arturadib/node-qt> for an example in production.
 
-Для получения дополнительной информации, пожалуйста, смотрите примеры, приведенные ниже, или <https://github.com/arturadib/node-qt> для примера при создании.
+Because the exact path to the compiled Addon binary can vary depending on how it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use the [bindings](https://github.com/TooTallNate/node-bindings) package to load the compiled module.
 
-Из-за того, что точный путь к скомпилированному бинарному расширению может варьироваться в зависимости от того, как он скомпилирован (например, иногда это может быть `./build/Debug/`) расширения могут использовать пакет [bindings](https://github.com/TooTallNate/node-bindings) для загрузки скомпилированного модуля.
-
-Обратите внимание, что хотя реализация пакета `bindings` более сложна в том, как он находит модули расширения, по существу используется модель try-catch, похожая на:
-
-
+Note that while the `bindings` package implementation is more sophisticated in how it locates Addon modules, it is essentially using a try-catch pattern similar to:
 
 ```js
 try {
@@ -223,48 +221,35 @@ try {
 }
 ```
 
-
-
-
 ### Ссылка на зависимости Node.js
 
-Node.js использует несколько статистически связанных библиотек, таких как V8, libuv и OpenSSL. Все расширения должны связываться с V8, и могут также связываться с любыми другими зависимостями. Обычно это так же просто как включение соответствующих операторов `#include <...>` (например, `#include <v8.h>`), и `node-gyp` автоматически найдет соответствующие заголовки. Однако имеются некоторые предостережения, о которых необходимо знать:
+Node.js uses a number of statically linked libraries such as V8, libuv and OpenSSL. All Addons are required to link to V8 and may link to any of the other dependencies as well. Typically, this is as simple as including the appropriate `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate the appropriate headers automatically. However, there are a few caveats to be aware of:
 
-* Когда выполняется `node-gyp`, он обнаруживает конкретную версию Node.js и извлекает либо полный исходный архив, либо только заголовки. Если загружен полный исходный код, расширения будут иметь полный доступ ко всем наборам зависимостей Node.js. Однако, если загружены только заголовки Node.js, будут доступны только символы, экспортированные Node.js.
+* When `node-gyp` runs, it will detect the specific release version of Node.js and download either the full source tarball or just the headers. If the full source is downloaded, Addons will have complete access to the full set of Node.js dependencies. However, if only the Node.js headers are downloaded, then only the symbols exported by Node.js will be available.
 
-* `node-gyp` может быть запущен с использованием флага `--nodedir`, указывающего исходное изображение локального Node.js. Использую эту опцию, расширения могут иметь доступ к полному набору зависимостей.
-
-
+* `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js source image. Using this option, the Addon will have access to the full set of dependencies.
 
 ### Загрузка расширений с помощью require()
 
-Расширением имени файла для скомпилированного бинарного файла расширения должно быть `.node` (в отличие от `.dll` or `.so`). Функция [`require()`](modules.html#modules_require) написана для поиска файлов с расширением `.node` и для инициализации их как динамически связанных библиотек.
+The filename extension of the compiled Addon binary is `.node` (as opposed to `.dll` or `.so`). The [`require()`](modules.html#modules_require) function is written to look for files with the `.node` file extension and initialize those as dynamically-linked libraries.
 
-При вызове [`require()`](modules.html#modules_require) расширение `.node` обычно может быть опущено, и Node.js все равно найдет и инициализирует аддон. Однако, имеется одно предостережение - Node.js сначала попытается найти и загрузить модули или файлы JavaScript, который имеют одно и то же базовое имя. Например, если есть файл `addon.js` в том же каталоге, что и бинарный `addon.node`, то [`require('addon')`](modules.html#modules_require) даст приоритет файлу `addon.js` и загрузит его.
-
-
+When calling [`require()`](modules.html#modules_require), the `.node` extension can usually be omitted and Node.js will still find and initialize the Addon. One caveat, however, is that Node.js will first attempt to locate and load modules or JavaScript files that happen to share the same base name. For instance, if there is a file `addon.js` in the same directory as the binary `addon.node`, then [`require('addon')`](modules.html#modules_require) will give precedence to the `addon.js` file and load it instead.
 
 ## Native Abstractions для Node.js
 
-Каждый из примеров, представленных в документе, напрямую использует API Node.js и V8 для реализации Расширений. Важно понимать, что API V8 может быть (и был) значительно изменен от одной версии V8 к следующей (и от одной важной версии Node.js к следующей). Расширения с каждым изменением должны обновляться и перекомпилироваться для продолжения функционирования. График выпуска Node.js разработан, чтобы минимизировать частоту и влияние таких изменений, но в настоящее время Node.js мало что может сделать для обеспечения стабильности API V8.
+Each of the examples illustrated in this document make direct use of the Node.js and V8 APIs for implementing Addons. It is important to understand that the V8 API can, and has, changed dramatically from one V8 release to the next (and one major Node.js release to the next). With each change, Addons may need to be updated and recompiled in order to continue functioning. The Node.js release schedule is designed to minimize the frequency and impact of such changes but there is little that Node.js can do currently to ensure stability of the V8 APIs.
 
-[Native Abstractions for Node.js](https://github.com/nodejs/nan) (или `nan`) предоставляют набор инструментов, который разработчики Расширения рекомендуют к использованию, чтобы обеспечить совместимость между прошлыми и будущими версиями V8 и Node.js. Смотрите [примеры](https://github.com/nodejs/nan/tree/master/examples/) `nan` для демонстрации, как он может быть использован.
-
-
+The [Native Abstractions for Node.js](https://github.com/nodejs/nan) (or `nan`) provide a set of tools that Addon developers are recommended to use to keep compatibility between past and future releases of V8 and Node.js. See the `nan` [examples](https://github.com/nodejs/nan/tree/master/examples/) for an illustration of how it can be used.
 
 ## N-API
 
-
-
 > Стабильность: 2 - Стабильно
 
-N-API - это API для создания собственных Расширений. Она независима от базовой среды выполнения JavaScript (ранее V8) и поддерживается как часть самого Node.js. Этот API будет стабильным двоичным интерфейсом приложения (Application Binary Interface - ABI) во всех версиях Node.js. Он предназначен для изоляции Расширений от изменений в базовом движке JavaScript и позволяет модулям, скомпилированным для одной версии, быть запущенными в более поздних версиях Node.js без перекомпиляции. Расширения созданы/упакованы с использованием тех же подходов/инструментов, которые описаны в этом документе (node-gyp и т.д). Единственное отличие - это набор API, которые используют собственный код. Вместо использования V8 или API [Native Abstractions for Node.js](https://github.com/nodejs/nan) используются функции, доступные в N-API.
+N-API - это API для создания собственных Расширений. It is independent from the underlying JavaScript runtime (e.g. V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one version to run on later versions of Node.js without recompilation. Addons are built/packaged with the same approach/tools outlined in this document (node-gyp, etc.). Единственное отличие - набор API, которые используются собственным кодом. Instead of using the V8 or [Native Abstractions for Node.js](https://github.com/nodejs/nan) APIs, the functions available in the N-API are used.
 
 Creating and maintaining an addon that benefits from the ABI stability provided by N-API carries with it certain [implementation considerations](n-api.html#n_api_implications_of_abi_stability).
 
-Чтобы использовать N-API в примере выше "Привет мир", замените содержимое `hello.cc` на следующее. Все остальные инструкции остаются прежними.
-
-
+To use N-API in the above "Hello world" example, replace the content of `hello.cc` with the following. Все остальные инструкции остаются прежними.
 
 ```cpp
 // hello.cc using N-API
@@ -298,18 +283,13 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-
-Доступные функции и способы их применения задокументированы в разделе [C/C++ Addons - N-API](n-api.html).
-
-
+The functions available and how to use them are documented in the section titled [C/C++ Addons - N-API](n-api.html).
 
 ## Примеры Расширения
 
-Ниже изложены примеры Расширений, которые помогут разработчикам приступить к работе. В примерах используются API V8. Обратитесь к онлайн [ссылка V8](https://v8docs.nodesource.com/) за помощью с различными вызовами V8 и V8 [Руководство для эмбеддера](https://github.com/v8/v8/wiki/Embedder's%20Guide) для объяснения некоторых используемых понятий, таких как дескрипторы, области действия, шаблоны функций и т.д.
+Ниже изложены примеры Расширений, которые помогут разработчикам приступить к работе. The examples make use of the V8 APIs. Refer to the online [V8 reference](https://v8docs.nodesource.com/) for help with the various V8 calls, and V8's [Embedder's Guide](https://github.com/v8/v8/wiki/Embedder's%20Guide) for an explanation of several concepts used such as handles, scopes, function templates, etc.
 
 Каждый из этих примеров использует следующий файл `binding.gyp`:
-
-
 
 ```json
 {
@@ -322,34 +302,23 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 }
 ```
 
-
 In cases where there is more than one `.cc` file, simply add the additional filename to the `sources` array:
-
-
 
 ```json
 "источники": ["addon.cc", "myexample.cc"]
 ```
 
-
-Когда файл `binding.gyp` готов, примеры Расширений могут быть настроены и созданы с использованием `node-gyp`:
-
-
+Once the `binding.gyp` file is ready, the example Addons can be configured and built using `node-gyp`:
 
 ```console
 $ node-gyp configure build
 ```
 
-
-
-
 ### Аргументы функций
 
-Расширения обычно отображают объекты и функции, которые можно получить из JavaScript, запущенных в Node.js. Когда функции вызываются из JavaScript, входные аргументы и возвращаемое значение должны быть сопоставимы с кодом C/C++.
+Addons will typically expose objects and functions that can be accessed from JavaScript running within Node.js. When functions are invoked from JavaScript, the input arguments and return value must be mapped to and from the C/C++ code.
 
-Следующий пример показывает, как читать аргументы функции, переданные из JavaScript, и как вернуть результат:
-
-
+The following example illustrates how to read function arguments passed from JavaScript and how to return a result:
 
 ```cpp
 // addon.cc
@@ -411,10 +380,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-
 После компиляции пример Расширения может быть затребован и использован из Node.js:
-
-
 
 ```js
 // test.js
@@ -423,14 +389,9 @@ const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
 
-
-
-
 ### Функции обратного вызова
 
-Обычная практика в Расширениях - передавать функции JavaScript функции C++ и выполнять их оттуда. Следующий пример показывает, как вызвать такие функции обратного вызова:
-
-
+It is common practice within Addons to pass JavaScript functions to a C++ function and execute them from there. The following example illustrates how to invoke such callbacks:
 
 ```cpp
 // addon.cc
@@ -470,12 +431,9 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-
-Обратите внимание, что в примере используется двухфакторная форма `Init()`, которая получает в качестве второго аргумента объект `модуль`. Это позволяет Расширению полностью переписать `экспорт` с помощью одной функции вместо добавления функции как свойства `экспорта`.
+Note that this example uses a two-argument form of `Init()` that receives the full `module` object as the second argument. This allows the Addon to completely overwrite `exports` with a single function instead of adding the function as a property of `exports`.
 
 Чтобы проверить это, запустите следующий код JavaScript:
-
-
 
 ```js
 // test.js
@@ -487,16 +445,11 @@ addon((msg) => {
 });
 ```
 
-
 Обратите внимание, что в этом примере функция обратного вызова вызывается синхронно.
-
-
 
 ### Фабрика объектов
 
-Расширения могут создавать и возвращать новые объекты из функции C++ как показано в следующем примере. Объект создается и возвращается с помощью свойства `msg`, которое отражается в строке, передаваемой в `createObject()`:
-
-
+Addons can create and return new objects from within a C++ function as illustrated in the following example. An object is created and returned with a property `msg` that echoes the string passed to `createObject()`:
 
 ```cpp
 // addon.cc
@@ -537,10 +490,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-
 Проверить его в JavaScript:
-
-
 
 ```js
 // test.js
@@ -552,14 +502,9 @@ console.log(obj1.msg, obj2.msg);
 // Prints: 'hello world'
 ```
 
-
-
-
 ### Фабрика функций
 
-Другой распространенный сценарий - создание функций JavaScript, которые включают функции из C++ и их возвращение в JavaScript:
-
-
+Another common scenario is creating JavaScript functions that wrap C++ functions and returning those back to JavaScript:
 
 ```cpp
 // addon.cc
@@ -607,10 +552,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-
 Для проверки:
-
-
 
 ```js
 // test.js
@@ -621,14 +563,9 @@ console.log(fn());
 // Prints: 'hello world'
 ```
 
-
-
-
 ### Обертывание объектов C++
 
-Также можно обернуть объекты/классы C++ таким образом, который позволит создавать новые образцы с помощью оператора JavaScript `new`:
-
-
+It is also possible to wrap C++ objects/classes in a way that allows new instances to be created using the JavaScript `new` operator:
 
 ```cpp
 // addon.cc
@@ -649,10 +586,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-
 Затем в `myobject.h` класс обертывания перенимается от `node::ObjectWrap`:
-
-
 
 ```cpp
 // myobject.h
@@ -683,10 +617,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-
-В `myobject.cc` реализуйте различные методы, которые должны быть показаны. Ниже приведен метод `plusOne()`, показанный с помощью добавления его в прототип конструктора:
-
-
+В `myobject.cc` реализуйте различные методы, которые должны быть показаны. Below, the method `plusOne()` is exposed by adding it to the constructor's prototype:
 
 ```cpp
 // myobject.cc
@@ -768,10 +699,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-
-Чтобы составить этот пример, нужно добавить `myobject.cc` в `binding.gyp`:
-
-
+To build this example, the `myobject.cc` file must be added to the `binding.gyp`:
 
 ```json
 {
@@ -787,10 +715,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }
 ```
 
-
 Проверьте это здесь:
-
-
 
 ```js
 // test.js
@@ -805,16 +730,11 @@ console.log(obj.plusOne());
 // Prints: 13
 ```
 
-
 The destructor for a wrapper object will run when the object is garbage-collected. For destructor testing, there are command-line flags that can be used to make it possible to force garbage collection. These flags are provided by the underlying V8 JavaScript engine. They are subject to change or removal at any time. They are not documented by Node.js or V8, and they should never be used outside of testing.
-
-
 
 ### Фабрика обернутых объектов
 
-Также возможно использовать образец фабрики, чтобы точно избежать создание примеров объектов, используя оператор JavaScript `new`:
-
-
+Alternatively, it is possible to use a factory pattern to avoid explicitly creating object instances using the JavaScript `new` operator:
 
 ```js
 const obj = addon.createObject();
@@ -822,10 +742,7 @@ const obj = addon.createObject();
 // const obj = new addon.Object();
 ```
 
-
 Сначала, метод `createObject()` реализуется в `addon.cc`:
-
-
 
 ```cpp
 // addon.cc
@@ -856,10 +773,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-
-В `myobject.h`, статический метод `NewInstance()` добавляется, для того чтобы проиллюстрировать обьект конкретными примерами. Этот метод применяется для использования `new` в JavaScript:
-
-
+In `myobject.h`, the static method `NewInstance()` is added to handle instantiating the object. This method takes the place of using `new` in JavaScript:
 
 ```cpp
 // myobject.h
@@ -891,10 +805,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-
 Реализация `myobject.cc` сходна с предыдущим примером:
-
-
 
 ```cpp
 // myobject.cc
@@ -985,10 +896,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-
-Чтобы составить этот пример, `myobject.cc` файл должен быть добавлен в `binding.gyp`:
-
-
+Once again, to build this example, the `myobject.cc` file must be added to the `binding.gyp`:
 
 ```json
 {
@@ -1004,10 +912,7 @@ void MyObject::PlusOne(const FunctionCallbackInfo<Value>& args) {
 }
 ```
 
-
 Проверьте это здесь:
-
-
 
 ```js
 // test.js
@@ -1030,14 +935,9 @@ console.log(obj2.plusOne());
 // Prints: 23
 ```
 
-
-
-
 ### Передача завернутых объектов
 
-В дополнение к обертыванию и возврату объектов C++ возможно передать завернутые объекты развернув их с помощью функции `node::ObjectWrap::Unwrap`. Следующие примеры показывают функцию `add()`, которая может иметь 2 объекта `MyObject` в виде встроенных аргументов:
-
-
+In addition to wrapping and returning C++ objects, it is possible to pass wrapped objects around by unwrapping them with the Node.js helper function `node::ObjectWrap::Unwrap`. The following examples shows a function `add()` that can take two `MyObject` objects as input arguments:
 
 ```cpp
 // addon.cc
@@ -1085,10 +985,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, InitAll)
 }  // namespace demo
 ```
 
-
-В `myobject.h` добавлен новый публичный метод, чтобы открыть доступ к приватным данным после распаковки обьекта.
-
-
+In `myobject.h`, a new public method is added to allow access to private values after unwrapping the object.
 
 ```cpp
 // myobject.h
@@ -1120,10 +1017,7 @@ class MyObject : public node::ObjectWrap {
 #endif
 ```
 
-
 Реализация `myobject.cc` сходна с предыдущим примером:
-
-
 
 ```cpp
 // myobject.cc
@@ -1201,10 +1095,7 @@ void MyObject::NewInstance(const FunctionCallbackInfo<Value>& args) {
 }  // namespace demo
 ```
 
-
 Проверьте это здесь:
-
-
 
 ```js
 // test.js
@@ -1218,30 +1109,22 @@ console.log(result);
 // Prints: 30
 ```
 
-
-
-
 ### AtExit хуки
 
 An `AtExit` hook is a function that is invoked after the Node.js event loop has ended but before the JavaScript VM is terminated and Node.js shuts down. `AtExit` hooks are registered using the `node::AtExit` API.
 
-
-
 #### void AtExit(функция обратного вызова, args)
 
-* `callback` <span class="type">&lt;void (\*)(void\*)&gt;</span> A pointer to the function to call at exit.
-
+* `callback` <span class="type">&lt;void (\<em>)(void\</em>)&gt;</span> A pointer to the function to call at exit.
 * `args` <span class="type">&lt;void\*&gt;</span> A pointer to pass to the callback at exit.
 
-Регистраторы выходят из хуков, которые запусткаются после того, как цикл событий окончен, но до того, как VM остановлен.
+Registers exit hooks that run after the event loop has ended but before the VM is killed.
 
 `AtExit` takes two parameters: a pointer to a callback function to run at exit, and a pointer to untyped context data to be passed to that callback.
 
 Функции обратного вызова запускаются в соответствии с принципом LIFO (когда последние добавленные данные обрабатываются первыми).
 
 The following `addon.cc` implements `AtExit`:
-
-
 
 ```cpp
 // addon.cc
@@ -1292,10 +1175,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, init)
 }  // namespace demo
 ```
 
-
 Тестируйте JavaScript запустив:
-
-
 
 ```js
 // test.js require('./build/Release/addon');

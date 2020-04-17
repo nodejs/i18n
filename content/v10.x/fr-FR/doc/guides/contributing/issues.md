@@ -9,7 +9,7 @@
 
 ## Comment contribuer dans les tickets
 
-Pour tout ticket, il y a fondamentalement trois façons de contribuer :
+For any issue, there are fundamentally three ways an individual can contribute:
 
 1. By opening the issue for discussion: For instance, if you believe that you have uncovered a bug in Node.js, creating a new issue in the `nodejs/node` issue tracker is the way to report it.
 2. By helping to triage the issue: This can be done either by providing supporting details (a test case that demonstrates a bug), or providing suggestions on how to address the issue.

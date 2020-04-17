@@ -1,6 +1,6 @@
 # Compilar Node.js con Ninja
 
-El propósito de esta guía es mostrar cómo compilar Node.js usando [Ninja](https://ninja-build.org/), ya que hacerlo puede ser significativamente más rápido que usar `make`. Por favor, consulte [el sitio de Ninja](https://ninja-build.org/) para obtener instrucciones de instalación (solo unix).
+The purpose of this guide is to show how to build Node.js using [Ninja](https://ninja-build.org/), as doing so can be significantly quicker than using `make`. Please see [Ninja's site](https://ninja-build.org/) for installation instructions (unix only).
 
 Para compilar Node.js con ninja, hay 3 pasos que se deben seguir:
 
@@ -8,20 +8,20 @@ Para compilar Node.js con ninja, hay 3 pasos que se deben seguir:
 2. Ejecute `ninja -C out/Release` para producir un binario de lanzamiento compilado.
 3. Por último, haga un enlace simbólico a `./node` usando `ln -fs out/Release/node node`.
 
-Al ejecutar `ninja -C out/Release` verá una impresión similar a la siguiente si la compilación tuvo éxito:
+When running `ninja -C out/Release` you will see output similar to the following if the build has succeeded:
 
 ```txt
 ninja: Entering directory `out/Release`
 [4/4] LINK node, POSTBUILDS
 ```
 
-La línea inferior cambiará durante la compilación, mostrando el progreso como pasos de compilación `[finished/total]`. Esta es una impresión útil que `make` no produce y es uno de los beneficios de usar Ninja. Además, es probable que Ninja compile mucho más rápido que incluso `make -j4` (o `-j<number of processor threads on your machine>`).
+The bottom line will change while building, showing the progress as `[finished/total]` build steps. This is useful output that `make` does not produce and is one of the benefits of using Ninja. Also, Ninja will likely compile much faster than even `make -j4` (or `-j<number of processor threads on your machine>`).
 
 ## Consideraciones
 
-Las compilaciones de Ninja varían ligeramente de las compilaciones de `make`. Si desea ejecutar `make test` después, es probable que `make` aún tenga que recompilar cierta cantidad de Node.js.
+Las compilaciones de Ninja varían ligeramente de las compilaciones de `make`. If you wish to run `make test` after, `make` will likely still need to rebuild some amount of Node.js.
 
-Como tal, si desea ejecutar las pruebas, puede ser útil invocar el corredor de prueba directamente, de este modo: `tools/test.py --mode=release message parallel sequential -J`
+As such, if you wish to run the tests, it can be helpful to invoke the test runner directly, like so: `tools/test.py --mode=release message parallel sequential -J`
 
 ## Alias
 
@@ -30,5 +30,5 @@ out/Release/node node'`
 
 ## Producir una compilación de depuración
 
-El alias anterior se puede modificar ligeramente para producir una compilación de depuración, en lugar de una compilación de lanzamiento, como se muestra a continuación: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs
+The above alias can be modified slightly to produce a debug build, rather than a release build as shown below: `alias nnodedebug='./configure --ninja && ninja -C out/Debug && ln -fs
 out/Debug/node node_g'`

@@ -26,7 +26,10 @@ Instances of [`repl.REPLServer`][] support automatic completion of inputs, simpl
 * `.help` - 显示此特殊命令的列表。
 * `.save` - 将当前 REPL 会话保存到文件：`> .save ./file/to/save.js`
 * `.load` - 载入一个文件到当前 REPL 会话。 `> .load ./file/to/load.js`
-* `.editor` - Enter editor mode (`<ctrl>-D` to finish, `<ctrl>-C` to cancel).
+* `.editor` - 进入编辑模式 (按 `<ctrl>-D` 完成, 按 `<ctrl>-C` 取消).
+
+<!-- eslint-skip -->
+
 ```js
 > .editor
 // Entering editor mode (^D to finish, ^C to cancel)
@@ -54,6 +57,9 @@ By default, all instances of [`repl.REPLServer`][] use an evaluation function th
 #### JavaScript 表达式
 
 默认的求值器支持对 JavaScript 表达式的直接求值：
+
+<!-- eslint-skip -->
+
 ```js
 > 1 + 1
 2
@@ -63,7 +69,7 @@ undefined
 3
 ```
 
-除非在块级作用域或函数中，否则不论变量是隐式声明的，还是使用 `const`, `let`, 或 `var` 关键字进行声明的，都是声明在全局作用域中。
+Unless otherwise scoped within blocks or functions, variables declared either implicitly or using the `const`, `let`, or `var` keywords are declared at the global scope.
 
 #### 全局与局部作用域
 
@@ -77,13 +83,16 @@ repl.start('> ').context.m = msg;
 ```
 
 `context` 对象中的属性在 REPL 中表现为局部变量：
+
+<!-- eslint-skip -->
+
 ```js
 $ node repl_test.js
 > m
 'message'
 ```
 
-默认情况下 context 属性不是只读的。 要指定只读的全局变量，必须通过 `Object.defineProperty()` 来定义 context 属性：
+默认情况下 context 属性不是只读的。 To specify read-only globals, context properties must be defined using `Object.defineProperty()`:
 
 ```js
 const repl = require('repl');
@@ -100,6 +109,9 @@ Object.defineProperty(r.context, 'm', {
 #### 访问 Node.js 核心模块
 
 当默认求值器被使用时，它将自动加载 Node.js 核心模块到 REPL 环境中。 例如：除非被声明为一个全局或具有作用域的变量，否则输入 `fs` 将在需要时被解释为：`global.fs = require('fs')`。
+
+<!-- eslint-skip -->
+
 ```js
 > fs.createReadStream('./some/file');
 ```
@@ -113,12 +125,20 @@ This use of the [`domain`][] module in the REPL has these side effects:
 * Uncaught exceptions do not emit the [`'uncaughtException'`][] event.
 * Trying to use [`process.setUncaughtExceptionCaptureCallback()`][] throws an [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`][] error.
 
-#### `_` (下划线) 变量的赋值<!-- YAML
+#### `_` (下划线) 变量的赋值
+
+<!-- YAML
 changes:
+
   - version: v9.8.0
     pr-url: https://github.com/nodejs/node/pull/18919
     description: Added `_error` support.
--->默认情况下，默认的求值器将会把最近的表达式求值结果赋予特殊变量 `_` (下划线)。 显式设置 `_` 为某个值将禁用此行为。
+-->
+
+默认情况下，默认的求值器将会把最近的表达式求值结果赋予特殊变量 `_` (下划线)。 显式设置 `_` 为某个值将禁用此行为。
+
+<!-- eslint-skip -->
+
 ```js
 > [ 'a', 'b', 'c' ]
 [ 'a', 'b', 'c' ]
@@ -134,6 +154,9 @@ Expression assignment to _ now disabled.
 ```
 
 Similarly, `_error` will refer to the last seen error, if there was any. Explicitly setting `_error` to a value will disable this behavior.
+
+<!-- eslint-skip -->
+
 ```js
 > throw new Error('foo');
 Error: foo
@@ -144,6 +167,9 @@ Error: foo
 #### `await` keyword
 
 With the [`--experimental-repl-await`][] command line option specified, experimental support for the `await` keyword is enabled.
+
+<!-- eslint-skip -->
+
 ```js
 > await Promise.resolve(123)
 123
@@ -221,13 +247,21 @@ function myWriter(output) {
 }
 ```
 
-## 类：REPLServer<!-- YAML
-added: v0.1.91
--->`repl.REPLServer` 类继承自 [`readline.Interface`][] 类。 `repl.REPLServer` 的实例由 `repl.start()` 方法创建，且 *不应* 使用 JavaScript `new` 关键字直接创建。
+## 类：REPLServer
 
-### 事件：'exit'<!-- YAML
+<!-- YAML
+added: v0.1.91
+-->
+
+`repl.REPLServer` 类继承自 [`readline.Interface`][] 类。 `repl.REPLServer` 的实例由 `repl.start()` 方法创建，且 *不应* 使用 JavaScript `new` 关键字直接创建。
+
+### 事件：'exit'
+
+<!-- YAML
 added: v0.7.7
--->当接收到 `.exit` 命令作为输入，或用户按下两次 `<ctrl>-C` 以发出 `SIGINT` 信号，或按下 `<ctrl>-D` 以在输入流上发出 `'end'` 信号而使 REPL 退出时，会发出 `'exit'` 事件。 监听器回调函数被调用时不带任何参数。
+-->
+
+当接收到 `.exit` 命令作为输入，或用户按下两次 `<ctrl>-C` 以发出 `SIGINT` 信号，或按下 `<ctrl>-D` 以在输入流上发出 `'end'` 信号而使 REPL 退出时，会发出 `'exit'` 事件。 监听器回调函数被调用时不带任何参数。
 
 ```js
 replServer.on('exit', () => {
@@ -236,9 +270,13 @@ replServer.on('exit', () => {
 });
 ```
 
-### 事件：'reset'<!-- YAML
+### 事件：'reset'
+
+<!-- YAML
 added: v0.11.0
--->当 REPL 的 context 属性被重置时，会发出 `'reset'` 事件。 当接收到 `.clear` 命令作为输入时会发出该事件，*除非* REPL 使用默认的求值器，且在 `useGlobal` 选项被设置为 `true` 时创建了 `repl.REPLServer` 实例。 监听器回调函数被调用时会接受 `context` 对象的引用作为唯一的参数。
+-->
+
+当 REPL 的 context 属性被重置时，会发出 `'reset'` 事件。 当接收到 `.clear` 命令作为输入时会发出该事件，*除非* REPL 使用默认的求值器，且在 `useGlobal` 选项被设置为 `true` 时创建了 `repl.REPLServer` 实例。 监听器回调函数被调用时会接受 `context` 对象的引用作为唯一的参数。
 
 This can be used primarily to re-initialize REPL context to some pre-defined state:
 
@@ -256,6 +294,9 @@ r.on('reset', initializeContext);
 ```
 
 当代码被执行时，全局 `'m'` 变量可被更改，但随后的 `.clear` 命令会将其重置为初始值。
+
+<!-- eslint-skip -->
+
 ```js
 $ ./node example.js
 > m
@@ -271,9 +312,13 @@ Clearing context...
 >
 ```
 
-### replServer.defineCommand(keyword, cmd)<!-- YAML
+### replServer.defineCommand(keyword, cmd)
+
+<!-- YAML
 added: v0.3.0
--->* `keyword` {string} 命令关键字 (*不包含* 起始的 `.` 字符)。
+-->
+
+* `keyword` {string} 命令关键字 (*不包含* 起始的 `.` 字符)。
 * `cmd` {Object|Function} 当命令被处理时要调用的函数。
 
 `replServer.defineCommand()` 方法被用于将新的 `.` 前缀命令添加到 REPL 实例。 这些命令可通过键入 `.` 加 `关键字` 来调用。 The `cmd` is either a `Function` or an `Object` with the following properties:
@@ -310,9 +355,13 @@ Hello, Node.js User!
 Goodbye!
 ```
 
-### replServer.displayPrompt([preserveCursor])<!-- YAML
+### replServer.displayPrompt([preserveCursor])
+
+<!-- YAML
 added: v0.1.91
--->* `preserveCursor` {boolean}
+-->
+
+* `preserveCursor` {boolean}
 
 `replServer.displayPrompt()` 方法让 REPL 实例准备就绪来接受用户输入，在 `output` 的新行中打印配置的 `提示符`，并返回 `input` 以接受新的输入。
 
@@ -322,14 +371,22 @@ added: v0.1.91
 
 `replServer.displayPrompt` 方法主要被使用 `replServer.defineCommand()` 方法注册的命令的执行函数所调用。
 
-### replServer.clearBufferedCommand()<!-- YAML
-added: v9.0.0
--->The `replServer.clearBufferedCommand()` method clears any command that has been buffered but not yet executed. This method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+### replServer.clearBufferedCommand()
 
-### replServer.parseREPLKeyword(keyword[, rest])<!-- YAML
+<!-- YAML
+added: v9.0.0
+-->
+
+The `replServer.clearBufferedCommand()` method clears any command that has been buffered but not yet executed. This method is primarily intended to be called from within the action function for commands registered using the `replServer.defineCommand()` method.
+
+### replServer.parseREPLKeyword(keyword[, rest])
+
+<!-- YAML
 added: v0.8.9
 deprecated: v9.0.0
--->* `keyword` {string} the potential keyword to parse and execute
+-->
+
+* `keyword` {string} the potential keyword to parse and execute
 * `rest` {any} any parameters to the keyword command
 * 返回：{boolean}
 
@@ -337,27 +394,32 @@ deprecated: v9.0.0
 
 An internal method used to parse and execute `REPLServer` keywords. Returns `true` if `keyword` is a valid keyword, otherwise `false`.
 
-## repl.start([options])<!-- YAML
+## repl.start([options])
+
+<!-- YAML
 added: v0.1.91
 changes:
+
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/19187
     description: The `REPL_MAGIC_MODE` `replMode` was removed.
   - version: v5.8.0
     pr-url: https://github.com/nodejs/node/pull/5388
     description: The `options` parameter is optional now.
--->* `options` {Object|string}
+-->
+
+* `options` {Object|string} 
   * `prompt` {string} 要显示的输入提示符。 **Default:** `'> '` (with a trailing space).
   * `input` {stream.Readable} The `Readable` stream from which REPL input will be read. **默认值：** `process.stdin`.
   * `output` {stream.Writable} The `Writable` stream to which REPL output will be written. **默认值：** `process.stdout`.
   * `terminal` {boolean} 如果值为 `true`，指定 `output` 应被视为一个 TTY 终端，且可以使用 ANSI/VT100 转义符写入。 **Default:** checking the value of the `isTTY` property on the `output` stream upon instantiation.
   * `eval` {Function} 在计算每个给定行输入时使用的函数。 **Default:** an async wrapper for the JavaScript `eval()` function. `eval` 函数出错时会返回 `repl.Recoverable`，来指示输入不完整，并提示需要额外的行。
   * `useColors` {boolean} 如果值为 `true`，指定默认的 `writer` 函数应在 REPL 输出中包含 ANSI 颜色风格。 如果提供了自定义的 `writer` 函数，则此选项不起作用。 **Default:** the REPL instances `terminal` value.
-  * `useGlobal` {boolean} 如果值为 `true`，指定默认求值函数将使用 JavaScript `global` 对象作为上下文，而不是为 REPL 实例创建一个新的独立上下文。 Node CLI REPL 将此值设为 `true`。 **默认:** `false`.
+  * `useGlobal` {boolean} 如果值为 `true`，指定默认求值函数将使用 JavaScript `global` 对象作为上下文，而不是为 REPL 实例创建一个新的独立上下文。 The node CLI REPL sets this value to `true`. **默认:** `false`.
   * `ignoreUndefined` {boolean} 如果值为 `true`，指定当命令的返回值为 `undefined` 时，默认 writer 不对该值进行输出。 **默认:** `false`.
   * `writer` {Function} 在写入到 `output` 之前，要调用的对每个命令输出进行格式化的函数。 **Default:** [`util.inspect()`][].
   * `completer` {Function} 用于 Tab 键自动完成的可选函数。 示例请参阅 [`readline.InterfaceCompleter`][] 。
-  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. 可接受的值为：
+  * `replMode` {symbol} A flag that specifies whether the default evaluator executes all JavaScript commands in strict mode or default (sloppy) mode. 可接受的值为： 
     * `repl.REPL_MODE_SLOPPY` - 以 sloppy 模式来计算表达式。
     * `repl.REPL_MODE_STRICT` - 以 strict 模式来计算表达式。 这就等同于在每个 repl 声明前加上 `'use strict'`。
   * `breakEvalOnSigint` - 当收到 `SIGINT`，即：按下 `Ctrl+C` 时，结束计算当前代码段。 这不能和自定义 `eval` 函数一起使用。 **默认:** `false`.
@@ -377,6 +439,9 @@ repl.start('$ ');
 ## Node.js 的 REPL
 
 Node.js 自身使用 `repl` 模块来提供它自己的，用于运行 JavaScript 代码的交互界面。 可以通过在运行 Node.js 二进制代码时不传递任何参数 (或传递 `-i` 参数) 的方式来进入交互界面。
+
+<!-- eslint-skip -->
+
 ```js
 $ node
 > const a = [1, 2, 3];
@@ -395,9 +460,9 @@ undefined
 
 Node.js REPL 的不同行为可通过如下环境变量来进行自定义：
 
- - `NODE_REPL_HISTORY` - When a valid path is given, persistent REPL history will be saved to the specified file rather than `.node_repl_history` in the user's home directory. Setting this value to `''` (an empty string) will disable persistent REPL history. 值中的空白将被去除。 On Windows platforms environment variables with empty values are invalid so set this variable to one or more spaces to disable persistent REPL history.
- - `NODE_REPL_HISTORY_SIZE` - Controls how many lines of history will be persisted if history is available. 必须为一个正数。 **Default:** `1000`.
- - `NODE_REPL_MODE` - May be either `'sloppy'` or `'strict'`. **Default:** `'sloppy'`, which will allow non-strict mode code to be run.
+* `NODE_REPL_HISTORY` - 当给出一个有效路径时，持久化的 REPL 历史记录将被保存到特定的文件中，而不是用户目录中的 `.node_repl_history` 文件中。 Setting this value to `''` (an empty string) will disable persistent REPL history. 值中的空白将被去除。 On Windows platforms environment variables with empty values are invalid so set this variable to one or more spaces to disable persistent REPL history.
+* `NODE_REPL_HISTORY_SIZE` - Controls how many lines of history will be persisted if history is available. 必须为一个正数。 **Default:** `1000`.
+* `NODE_REPL_MODE` - May be either `'sloppy'` or `'strict'`. **Default:** `'sloppy'`, which will allow non-strict mode code to be run.
 
 ### 历史纪录持久化
 
@@ -405,7 +470,7 @@ Node.js REPL 的不同行为可通过如下环境变量来进行自定义：
 
 ### 在高级行编辑器中使用 Node.js REPL
 
-对于高级行编辑器，可以使用环境变量 `NODE_NO_READLINE=1` 来启动 Node.js。 这会以标准的终端设置来启动主 REPL 和调试 REPL，同时这将允许使用 `rlwrap`。
+对于高级行编辑器，可以使用环境变量 `NODE_NO_READLINE=1` 来启动 Node.js。 This will start the main and debugger REPL in canonical terminal settings, which will allow use with `rlwrap`.
 
 例如：如下设置可被添加到 `.bashrc` 文件中：
 

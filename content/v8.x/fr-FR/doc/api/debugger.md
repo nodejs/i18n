@@ -23,6 +23,9 @@ debug>
 Le client de débogage Node.js n'est pas un debogueur complet, mais simple pas à pas et inspection sont possibles.
 
 Insérer l'instruction `debugger ;` dans le code source d’un script activera un point d’arrêt à cet emplacement dans le code:
+
+<!-- eslint-disable no-debugger -->
+
 ```js
 // myscript.js
 global.x = 5;

@@ -30,15 +30,17 @@ server.bind(41234);
 ```
 
 ## Класс: dgram.Socket
+
 <!-- YAML
 added: v0.1.99
 -->
 
-Объект `dgram.Socket` является [`EventEmitter`][], который включает функциональность datagram.
+The `dgram.Socket` object is an [`EventEmitter`][] that encapsulates the datagram functionality.
 
 Новые экземпляры `dgram.Socket` создаются с помощью [`dgram.createSocket()`][]. Ключ `new` не используется для создания экземпляров `dgram.Socket`.
 
 ### Событие: 'close'
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -46,6 +48,7 @@ added: v0.1.99
 Событие `'close'` выдается после закрытия сокета с помощью [`close()`][]. После срабатывания новые события `'message'` на этом сокете появляться не будут.
 
 ### Событие: 'error'
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -55,26 +58,30 @@ added: v0.1.99
 Событие `'error'` создается, когда появляется ошибка. The event handler function is passed a single `Error` object.
 
 ### Событие: 'listening'
+
 <!-- YAML
 added: v0.1.99
 -->
 
-Событие `'listening'` происходит, когда сокет начинает слушать сообщения datagram. Это происходит, как только создаются UDP сокеты.
+The `'listening'` event is emitted whenever a socket begins listening for datagram messages. Это происходит, как только создаются UDP сокеты.
 
 ### Событие: 'message'
+
 <!-- YAML
 added: v0.1.99
 -->
 
 Событие `'message'` выдается при наличии на сокете нового датаграма. Функция обработчика событий передает два аргумента: `msg` and `rinfo`.
+
 * `msg` {Buffer} Сообщение.
-* `rinfo` {Object} Remote address information.
+* `rinfo` {Object} Информация удаленного адреса. 
   * `address` {string} Адрес отправителя.
   * `family` {string} Семейство адресов (`'IPv4'` или `'IPv6'`).
   * `port` {number} Порт отправителя.
   * `size` {number} Размер сообщения.
 
 ### socket.addMembership(multicastAddress[, multicastInterface])
+
 <!-- YAML
 added: v0.6.9
 -->
@@ -82,7 +89,7 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Указывает ядру присоединиться к мультикастной группе на заданных `multicastAddress` и `multicastInterface`, используя параметр сокета `IP_ADD_MEMBERSHIP`. Если аргумент `multicastInterface` не указан, операционная система выберет один интерфейс и добавит в него членство. Чтобы добавить членство в каждый доступный интерфейс, несколько раз вызовите `addMembership`, один раз для каждого интерфейса.
+Tells the kernel to join a multicast group at the given `multicastAddress` and `multicastInterface` using the `IP_ADD_MEMBERSHIP` socket option. If the `multicastInterface` argument is not specified, the operating system will choose one interface and will add membership to it. To add membership to every available interface, call `addMembership` multiple times, once per interface.
 
 When sharing a UDP socket across multiple `cluster` workers, the `socket.addMembership()` function must be called only once or an `EADDRINUSE` error will occur:
 
@@ -101,15 +108,17 @@ if (cluster.isMaster) {
 ```
 
 ### socket.address()
+
 <!-- YAML
 added: v0.1.99
 -->
 
 * Возвращает: {Object}
 
-Возвращает объект, содержащий адресную информацию для сокета. Для сокетов UDP этот объект будет содержать свойства `адрес`, `семейство` и `порт`.
+Возвращает объект, содержащий адресную информацию для сокета. For UDP sockets, this object will contain `address`, `family` and `port` properties.
 
 ### socket.bind(\[port\]\[, address\][, callback])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -118,13 +127,13 @@ added: v0.1.99
 * `адрес` {string}
 * `обратный вызов` {Function} без параметров. Вызывается при завершении привязки.
 
-Для UDP-сокетов `dgram.Socket` вызывается для прослушивания сообщений датаграмм на указанный `порт` и опционально `адрес`. Если `порт` не указан или равен `0`, операционная система будет пытаться привязать к случайному порту. Если `адрес` не указан, операционная система будет пытаться прослушать все адреса. После завершения привязки событие `'listening'` возвращается и вызывается опциональная функция `callback`.
+For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address`. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
-Обратите внимание, что и указание слушателя событий `'listening'`, и прохождение `callback` для метода `socket.bind()` не вредно, но и не очень полезно.
+Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-Связанный сокет датаграмм содержит процесс Node.js, запущенный с целью принятия сообщения датаграмм.
+A bound datagram socket keeps the Node.js process running to receive datagram messages.
 
-Если привязка не удалась, генерируется событие `'error'`. В редких случаях (например, при попытке связаться с закрытым сокетом) может появиться [`Ошибка`][].
+Если привязка не удалась, генерируется событие `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
 Пример UDP-сервера, прослушивающего порт 41234:
 
@@ -143,32 +152,34 @@ server.on('message', (msg, rinfo) => {
 
 server.on('listening', () => {
    const address = server.address();
-   console.log(`server listening ${address.address}:${address.port}`); }); 
+   console.log(`server listening ${address.address}:${address.port}`);
+ }); 
 
 server.bind(41234);
  // server listening 0.0.0.0:41234
 ```
 
 ### socket.bind(options[, callback])
+
 <!-- YAML
 added: v0.11.14
 -->
 
-* `options` {Object} Required. Поддерживает следующие свойства:
+* `опции` Требуется {Object}. Поддерживает следующие свойства: 
   * `порт` {integer}
   * `адрес` {string}
   * `exclusive` {boolean}
 * `callback` {Function}
 
-Для сокетов UDP вызывается `dgram.Socket` для прослушивания сообщений датаграмм на указанный `порт` и опционально `адрес`, которые передаются как свойства `опций` объекта, преданного в качестве первого аргумента. Если `порт` не указан или не равен `0`, операционная система будет пытаться связаться со случайным портом. Если `адрес` не указан, операционная система будет пытаться прослушать все адреса. После завершения привязки событие `'listening'` возвращается и вызывается опциональная функция `callback`.
+For UDP sockets, causes the `dgram.Socket` to listen for datagram messages on a named `port` and optional `address` that are passed as properties of an `options` object passed as the first argument. If `port` is not specified or is `0`, the operating system will attempt to bind to a random port. If `address` is not specified, the operating system will attempt to listen on all addresses. Once binding is complete, a `'listening'` event is emitted and the optional `callback` function is called.
 
-Обратите внимание, что и указание слушателя событий `'listening'`, и прохождение `callback` для метода `socket.bind()` не вредно, но и не очень полезно.
+Note that specifying both a `'listening'` event listener and passing a `callback` to the `socket.bind()` method is not harmful but not very useful.
 
-Объект `опций` может содержать дополнительное `эксклюзивное` свойство, которе используется при использовании объектов `dgram.Socket` с модулем [`кластер`]. Если параметр `exclusive` установлен как `false` (по умолчанию), рабочие процессы кластера будут использовать тот же сокет дескриптор, позволяющий делить обязанности по обработке соединений. Если `exclusive` является `true`, дескриптор не является общим и попытка совместного использования порта приведет к ошибке.
+The `options` object may contain an additional `exclusive` property that is use when using `dgram.Socket` objects with the [`cluster`] module. When `exclusive` is set to `false` (the default), cluster workers will use the same underlying socket handle allowing connection handling duties to be shared. When `exclusive` is `true`, however, the handle is not shared and attempted port sharing results in an error.
 
-Связанный сокет датаграмм содержит процесс Node.js, запущенный с целью принятия сообщения датаграмм.
+A bound datagram socket keeps the Node.js process running to receive datagram messages.
 
-Если привязка не удалась, генерируется событие `'error'`. В редких случаях (например, при попытке связаться с закрытым сокетом) может появиться [`Ошибка`][].
+Если привязка не удалась, генерируется событие `'error'`. In rare case (e.g. attempting to bind with a closed socket), an [`Error`][] may be thrown.
 
 Ниже приведен пример прослушивания эксклюзивного порта.
 
@@ -181,14 +192,17 @@ socket.bind({
 ```
 
 ### socket.close([callback])
+
 <!-- YAML
 added: v0.1.99
 -->
+
 * `callback` {Function} Called when the socket has been closed.
 
-Закройте сокет и перестаньте слушать данные о нем. Если обратный вызов указан, он добавляется как слушатель в событие [`'close'`][].
+Закройте сокет и перестаньте слушать данные о нем. If a callback is provided, it is added as a listener for the [`'close'`][] event.
 
 ### socket.dropMembership(multicastAddress[, multicastInterface])
+
 <!-- YAML
 added: v0.6.9
 -->
@@ -196,11 +210,12 @@ added: v0.6.9
 * `multicastAddress` {string}
 * `multicastInterface` {string}
 
-Указывает ядру покинуть мультикастовую группу по опции `multicastAddress`Ю, используя сокет опцию `IP_DROP_MEMBERSHIP`. Этот метод вызывается ядром автоматически, когда закрыт сокет или завершается процесс, поэтому большинство приложений не нуждаются в этом вызове.
+Instructs the kernel to leave a multicast group at `multicastAddress` using the `IP_DROP_MEMBERSHIP` socket option. This method is automatically called by the kernel when the socket is closed or the process terminates, so most apps will never have reason to call this.
 
-Если `multicastInterface` не указан, операционная система будет пытаться удалить членство на всех доступных интерфейсах.
+If `multicastInterface` is not specified, the operating system will attempt to drop membership on all valid interfaces.
 
 ### socket.getRecvBufferSize()
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -208,6 +223,7 @@ added: v8.7.0
 * Returns: {number} the `SO_RCVBUF` socket receive buffer size in bytes.
 
 ### socket.getSendBufferSize()
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -215,20 +231,23 @@ added: v8.7.0
 * Returns: {number} the `SO_SNDBUF` socket send buffer size in bytes.
 
 ### socket.ref()
+
 <!-- YAML
 added: v0.9.1
 -->
 
-По умолчанию привязка сокета приведет к блокировке закрытия процесса Node.js, пока сокет остается открытым. Метод `socket.unref()` может использоваться для исключения сокета из подсчета ссылок, что сохраняет процесс Node.js в активном состоянии. Метод `socket.ref()` добавляет сокет обратно в подсчет ссылок и восстанавливает поведение по умолчанию.
+By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active. The `socket.ref()` method adds the socket back to the reference counting and restores the default behavior.
 
 Многократный вызов `socket.ref()` не будет иметь никакого дополнительного эффекта.
 
-Метод `socket.ref()` возвращает ссылку на сокет, поэтому вызовы могут быть связаны.
+The `socket.ref()` method returns a reference to the socket so calls can be chained.
 
 ### socket.send(msg\[, offset, length], port[, address\]\[, callback\])
+
 <!-- YAML
 added: v0.1.99
 changes:
+
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/11985
     description: The `msg` parameter can be an `Uint8Array` now.
@@ -252,17 +271,17 @@ changes:
 * `address` {string} Имя хоста назначения или IP адрес.
 * `callback` {Function} Вызывается при отправке сообщения.
 
-Передает датаграмм в сокете. `порт` и `адрес` назначения должны быть указаны.
+Передает датаграмм в сокете. The destination `port` and `address` must be specified.
 
-Аргумент `msg` содержит сообщение для отправки. В зависимости от типа может применяться разное поведение. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. Если `msg` является `String`, то оно автоматически конвертируется в `Buffer` с кодом `'utf8'`. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
+Аргумент `msg` содержит сообщение для отправки. В зависимости от типа может применяться разное поведение. If `msg` is a `Buffer` or `Uint8Array`, the `offset` and `length` specify the offset within the `Buffer` where the message begins and the number of bytes in the message, respectively. If `msg` is a `String`, then it is automatically converted to a `Buffer` with `'utf8'` encoding. With messages that contain multi-byte characters, `offset` and `length` will be calculated with respect to [byte length](buffer.html#buffer_class_method_buffer_bytelength_string_encoding) and not the character position. If `msg` is an array, `offset` and `length` must not be specified.
 
-Аргумент `адрес` является строкой. Если значение `адреса` является именем хоста, DNS будет использоваться для разрешения адреса хоста. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
+Аргумент `адрес` является строкой. If the value of `address` is a host name, DNS will be used to resolve the address of the host. If `address` is not provided or otherwise falsy, `'127.0.0.1'` (for `udp4` sockets) or `'::1'` (for `udp6` sockets) will be used by default.
 
-Если ранее сокет не был привязан с помощью вызова `bind`, то он получает произвольный номер порта и привязывается к общему адресу интерфейсов (`'0.0.0.0'` для сокетов `udp4`, `'::0'` для сокетов `udp6`).
+If the socket has not been previously bound with a call to `bind`, the socket is assigned a random port number and is bound to the "all interfaces" address (`'0.0.0.0'` for `udp4` sockets, `'::0'` for `udp6` sockets.)
 
-An optional `callback` function may be specified to as a way of reporting DNS errors or for determining when it is safe to reuse the `buf` object. Обратите внимание, что отправка обратного вызова DNS занимает, по крайней мере, один Node.js круг.
+An optional `callback` function may be specified to as a way of reporting DNS errors or for determining when it is safe to reuse the `buf` object. Note that DNS lookups delay the time to send for at least one tick of the Node.js event loop.
 
-Единственный способ узнать об отправке датаграмм - использовать `callback`. Если возникает ошибка и `callback`, ошибка передается в качестве первого аргумента `callback`. Если `callback` не выдается, ошибка появляется как событие `'error'` на объекте `socket`.
+The only way to know for sure that the datagram has been sent is by using a `callback`. If an error occurs and a `callback` is given, the error will be passed as the first argument to the `callback`. If a `callback` is not given, the error is emitted as an `'error'` event on the `socket` object.
 
 Offset and length are optional but both *must* be set if either are used. They are supported only when the first argument is a `Buffer` or `Uint8Array`.
 
@@ -293,26 +312,28 @@ Sending multiple buffers might be faster or slower depending on the application 
 
 **Примечание о размере датаграмм UDP**
 
-Максимальный размер датаграмма `IPv4/v6` зависит `MTU` (_Максимальный Блок Передачи_) и от размера поля `Payload Length`.
+The maximum size of an `IPv4/v6` datagram depends on the `MTU` (*Maximum Transmission Unit*) and on the `Payload Length` field size.
 
-- Поле `Payload Length` имеет размер `16 bits`, это означает, что обычная нагрузка превышает 64К октетов, _включая_ интернет заголовок и данные (65,507 байтов = 65,535 − 8 байтов UDP заголовок − 20 байтов IP заголовок); это обычно является правдой для интерфейсов, но такие длинные сообщения датаграмм являются непрактичными для многих хостов и сетей.
+* The `Payload Length` field is `16 bits` wide, which means that a normal payload exceed 64K octets *including* the internet header and data (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header); this is generally true for loopback interfaces, but such long datagram messages are impractical for most hosts and networks.
 
-- `MTU` - максимальная величина, которую способен поддерживать данный слой ссылок для сообщений датаграмм. Для любой ссылки `IPv4` требует минимум `MTU` октетов `68`, пока рекомендуемая `MTU` для IPv4 является `576` (обычно рекомендуется как `MTU` для приложений типа набора), приходят ли они целиком или фрагментами.
+* The `MTU` is the largest size a given link layer technology can support for datagram messages. For any link, `IPv4` mandates a minimum `MTU` of `68` octets, while the recommended `MTU` for IPv4 is `576` (typically recommended as the `MTU` for dial-up type applications), whether they arrive whole or in fragments.
+  
+  For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum fragment reassembly buffer size is `1500` octets. The value of `68` octets is very small, since most current link layer technologies, like Ethernet, have a minimum `MTU` of `1500`.
 
-  Для `IPv6` минимальный `MTU` является `1280` октетов, но обязательный минимальный размер перенаправляемого фрагмента `1500` октетов. Значение `68` октетов очень мало, так как современные технологии, например, Ethernet, имеют минимум `MTU` `1500`.
-
-Невозможно заранее узнать MTU по каждой ссылке, через которую пакет может путешествовать. Отправка датаграмм больше, чем получатель `MTU` не будет работать, потому что пакет будет сброшен, не информируя источник, что информация не достигла целевого получателя.
+It is impossible to know in advance the MTU of each link through which a packet might travel. Sending a datagram greater than the receiver `MTU` will not work because the packet will get silently dropped without informing the source that the data did not reach its intended recipient.
 
 ### socket.setBroadcast(flag)
+
 <!-- YAML
 added: v0.6.9
 -->
 
 * `флаг` {boolean}
 
-Устанавливает или очищает опцию сокета `SO_BROADCAST`. При значении `true`, UDP пакеты могут быть отправлены на адрес трансляции локального интерфейса.
+Устанавливает или очищает опцию сокета `SO_BROADCAST`. When set to `true`, UDP packets may be sent to a local interface's broadcast address.
 
 ### socket.setMulticastInterface(multicastInterface)
+
 <!-- YAML
 added: v8.6.0
 -->
@@ -321,11 +342,11 @@ added: v8.6.0
 
 *All references to scope in this section are referring to [IPv6 Zone Indices](https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses), which are defined by [RFC 4007](https://tools.ietf.org/html/rfc4007). In string form, an IP with a scope index is written as `'IP%scope'` where scope is an interface name or interface number.*
 
-Устанавливает исходящий многоадресный интерфейс сокета по умолчанию для выбранного интерфейса или возвращается в систему выбора интерфейса. `multicastInterface` должен быть корректным строковым представлением IP из семьи сокета.
+Sets the default outgoing multicast interface of the socket to a chosen interface or back to system interface selection. The `multicastInterface` must be a valid string representation of an IP from the socket's family.
 
-Для сокетов IPv4 это должен быть IP, настроенный для желаемого физического интерфейса. Все пакеты, отправленные на многоадресную рассылку через сокет, будут отправлены на интерфейс, который определяется последним успешным использованием этого вызова.
+For IPv4 sockets, this should be the IP configured for the desired physical interface. All packets sent to multicast on the socket will be sent on the interface determined by the most recent successful use of this call.
 
-Для сокетов IPv6 `multicastInterface` должен включать область действия для указания интерфейса, как показано в следующем примере. В IPv6 отдельные вызовы `send` могут также использовать явную область в адресах, поэтому последнее успешное использование этого вызова влияет только на пакеты, отправленные на адрес многоадресной рассылки без указания явной области.
+For IPv6 sockets, `multicastInterface` should include a scope to indicate the interface as in the examples that follow. In IPv6, individual `send` calls can also use explicit scope in addresses, so only packets sent to a multicast address without specifying an explicit scope are affected by the most recent successful use of this call.
 
 #### Примеры: интерфейс исходящей многоадресной рассылки IPv6
 
@@ -350,7 +371,9 @@ const socket = dgram.createSocket('udp6');
 ```
 
 #### Пример: IPv4 Исходящий Многоадресный Интерфейс
+
 Все системы используют IP хоста на желаемом физическом интерфейсе:
+
 ```js
 const socket = dgram.createSocket('udp4');
 
@@ -361,37 +384,40 @@ const socket = dgram.createSocket('udp4');
 
 #### Результаты вызовов
 
-Вызов сокета, который не готов к отправке или уже не открыт может вызвать *Not running* [`Error`][].
+A call on a socket that is not ready to send or no longer open may throw a *Not running* [`Error`][].
 
-Если `multicastInterface` не может быть обработан в IP, то появляется *EINVAL* [`System Error`][].
+If `multicastInterface` can not be parsed into an IP then an *EINVAL* [`System Error`][] is thrown.
 
-На IPv4, если `multicastInterface` является действительным адресом, но не соответствует никакому интерфейсу или адрес не соответствует семейству, то появится [`System Error`][] такая, как `EADDRNOTAVAIL` или `EPROTONOSUP`.
+On IPv4, if `multicastInterface` is a valid address but does not match any interface, or if the address does not match the family then a [`System Error`][] such as `EADDRNOTAVAIL` or `EPROTONOSUP` is thrown.
 
 On IPv6, most errors with specifying or omitting scope will result in the socket continuing to use (or returning to) the system's default interface selection.
 
-ЛЮБОЙ адрес семейства адресов сокетов (IPv4 `'0.0.0.0'` или IPv6 `'::'`) может использоваться для возвращения управления исходящим интерфейсом сокетов по умолчанию в систему для будущих многоадресных пакетов.
+A socket's address family's ANY address (IPv4 `'0.0.0.0'` or IPv6 `'::'`) can be used to return control of the sockets default outgoing interface to the system for future multicast packets.
 
 ### socket.setMulticastLoopback(flag)
+
 <!-- YAML
 added: v0.3.8
 -->
 
 * `флаг` {boolean}
 
-Устанавливает или очищает опцию сокета `IP_MULTICAST_LOOP`. При значении `true` многоадресные пакеты также будут получены на локальном интерфейсе.
+Устанавливает или очищает опцию сокета `IP_MULTICAST_LOOP`. When set to `true`, multicast packets will also be received on the local interface.
 
 ### socket.setMulticastTTL(ttl)
+
 <!-- YAML
 added: v0.3.8
 -->
 
 * `ttl` {integer}
 
-Устанавливает опцию сокета `IP_MULTICAST_TTL`. TTL расшифровывается как "Время жить", в данном контексте указывается количество IP-узлов, которые может пройти данный пакет, в частности, для мультикастного трафика. Каждый маршрутизатор или шлюз, через который проходит пакет, уменьшает значение TTL. Если TTL укажет на 0, он не будет перенаправлен.
+Устанавливает опцию сокета `IP_MULTICAST_TTL`. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through, specifically for multicast traffic. Each router or gateway that forwards a packet decrements the TTL. Если значение TTL не достигло 0 на маршрутизаторе, то пакет не будет перенаправлен.
 
 The argument passed to `socket.setMulticastTTL()` is a number of hops between 0 and 255. По умолчанию на большинстве систем равен `1`, но может отличаться.
 
 ### socket.setRecvBufferSize(size)
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -401,6 +427,7 @@ added: v8.7.0
 Sets the `SO_RCVBUF` socket option. Sets the maximum socket receive buffer in bytes.
 
 ### socket.setSendBufferSize(size)
+
 <!-- YAML
 added: v8.7.0
 -->
@@ -410,30 +437,32 @@ added: v8.7.0
 Sets the `SO_SNDBUF` socket option. Sets the maximum socket send buffer in bytes.
 
 ### socket.setTTL(ttl)
+
 <!-- YAML
 added: v0.1.101
 -->
 
 * `ttl` {integer}
 
-Устанавливает опцию сокета `IP_TTL`. Хотя TTL обычно означает «Время жизни», в этом контексте оно указывает количество IP-прыжков, через которые пакету дозволено пройти. Каждый маршрутизатор или шлюз, который перенаправляет пакет, уменьшает TTL. Если значение TTL не достигло 0 на маршрутизаторе, то пакет не будет перенаправлен. Изменение значения TTL обычно делается для типовых зондов или при мультикастинге.
+Устанавливает опцию сокета `IP_TTL`. While TTL generally stands for "Time to Live", in this context it specifies the number of IP hops that a packet is allowed to travel through. Each router or gateway that forwards a packet decrements the TTL. Если значение TTL не достигло 0 на маршрутизаторе, то пакет не будет перенаправлен. Изменение значения TTL обычно делается для типовых зондов или при мультикастинге.
 
 Аргумент `socket.setTTL()` является рядом узлов в промежутке от 1 до 255. На большинстве систем дефолт равен 64, но может отличаться.
 
 ### socket.unref()
+
 <!-- YAML
 added: v0.9.1
 -->
 
-По умолчанию привязка сокета приведет к блокировке закрытия процесса Node.js, пока сокет остается открытым. Метод `socket.unref()` может использоваться для исключения сокета из подсчета ссылок, что поддерживает процесс Node.js в активном состоянии, позволяя процессу завершиться, даже если сокет продолжает прослушивать.
+By default, binding a socket will cause it to block the Node.js process from exiting as long as the socket is open. The `socket.unref()` method can be used to exclude the socket from the reference counting that keeps the Node.js process active, allowing the process to exit even if the socket is still listening.
 
 Многократный вызов `socket.unref()` не будет иметь никакого дополнительного эффекта.
 
-Метод `socket.unref()` возвращает ссылку на сокет, поэтому вызовы могут быть связаны.
+The `socket.unref()` method returns a reference to the socket so calls can be chained.
 
 ### Изменить на асинхронное поведение `socket.bind()`
 
-На момент Node.js v0.10 [`dgram.Socket#bind()`][] изменился на асинхронную модель. Legacy code would use synchronous behavior:
+As of Node.js v0.10, [`dgram.Socket#bind()`][] changed to an asynchronous execution model. Legacy code would use synchronous behavior:
 
 ```js
 const s = dgram.createSocket('udp4');
@@ -453,9 +482,11 @@ s.bind(1234, () => {
 ## Функции модуля `dgram`
 
 ### dgram.createSocket(options[, callback])
+
 <!-- YAML
 added: v0.11.13
 changes:
+
   - version: v8.6.0
     pr-url: https://github.com/nodejs/node/pull/14560
     description: The `lookup` option is supported.
@@ -465,7 +496,7 @@ changes:
                  supported now.
 -->
 
-* `options` {Object} Available options are:
+* `опции` {Object} Available options are: 
   * `type` {string} The family of socket. Must be either `'udp4'` or `'udp6'`. Required.
   * `reuseAddr` {boolean} When `true` [`socket.bind()`][] will reuse the address, even if another process has already bound a socket on it. **По умолчанию:** `false`.
   * `recvBufferSize` {number} - Sets the `SO_RCVBUF` socket value.
@@ -477,6 +508,7 @@ changes:
 Создает объект `dgram.Socket`. Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].
 
 ### dgram.createSocket(type[, callback])
+
 <!-- YAML
 added: v0.1.99
 -->
@@ -487,4 +519,4 @@ added: v0.1.99
 
 Создает объект `dgram.Socket` заданного `type`. The `type` argument can be either `'udp4'` or `'udp6'`. An optional `callback` function can be passed which is added as a listener for `'message'` events.
 
-После создания сокета вызов [`socket.bind()`][] даст команду сокету прослушивать сообщения датаграммы. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). Связанный адрес и порт можно получить с помощью [`socket.address().address`][] и [`socket.address().port`][].
+Once the socket is created, calling [`socket.bind()`][] will instruct the socket to begin listening for datagram messages. When `address` and `port` are not passed to [`socket.bind()`][] the method will bind the socket to the "all interfaces" address on a random port (it does the right thing for both `udp4` and `udp6` sockets). The bound address and port can be retrieved using [`socket.address().address`][] and [`socket.address().port`][].

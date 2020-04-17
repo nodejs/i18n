@@ -2,7 +2,7 @@
 
 <!--introduced_in=v8.5.0-->
 
-> Stability: 1 - Experimental
+> Vakaus: 1 - Kokeellinen
 
 <!--name=esm-->
 

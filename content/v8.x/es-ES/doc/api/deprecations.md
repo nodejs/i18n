@@ -1,4 +1,4 @@
-# APIs Desaprobadas
+# APIs desaprobadas
 
 <!--introduced_in=v7.7.0-->
 
@@ -6,9 +6,9 @@ Node.js puede desaprobar APIs cuando: (a) el uso de la API es considerado como i
 
 Node.js utiliza tres tipos de Desaprobaciones:
 
-* Sólo Documentación
-* Duración
-* Final de Vida
+* Documentation-only
+* Runtime
+* End-of-Life
 
 Una desaprobación de tipo Sólo documentación es una que está expresada sólo dentro de los documentos de API de Node.js. Estas no generan ningún efecto secundario al ejecutar Node.js.
 
@@ -26,9 +26,9 @@ Ocasionalmente, la desaprobación de una API puede ser revertida. Such action ma
 
 ### DEP0001: http.OutgoingMessage.prototype.flush
 
-Tipo: Runtime
+Tipo: Tiempo de Ejecución
 
-El método `OutgoingMessage.prototype.flush()` está desaprobado. En cambio, use `OutgoingMessage.prototype.flushHeaders()`.
+El método `OutgoingMessage.prototype.flush()` está desaprobado. Utilice `OutgoingMessage.prototype.flushHeaders()` en su lugar.
 
 <a id="DEP0002"></a>
 
@@ -44,15 +44,15 @@ El módulo `_linklist` está desaprobado. Por favor use un espacio de usuario al
 
 Tipo: Runtime
 
-La propiedad `_writableState.buffer` está desaprobada. En cambio, use el método `_writableState.getBuffer()`.
+La propiedad `_writableState.buffer` está desaprobada. Utilice el método `_writableState.getBuffer()` en su lugar.
 
 <a id="DEP0004"></a>
 
 ### DEP0004: CryptoStream.prototype.readyState
 
-Tipo: Documentation-only
+Tipo: Sólo documentación
 
-La propiedad `CryptoStream.prototype.readyState` está desaprobada y no debería ser usada.
+La propiedad `CryptoStream.prototype.readyState` está desaprobada y no debería ser utilizada.
 
 <a id="DEP0005"></a>
 
@@ -66,10 +66,10 @@ Como alternativa, el uso de los siguientes métodos de construcción de objetos 
 
 * [`Buffer.alloc(size[, fill[, encoding]])`](buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding) - Crea un `Buffer` con memoria *inicializada*.
 * [`Buffer.allocUnsafe(size)`](buffer.html#buffer_class_method_buffer_allocunsafe_size) - Crea un `Buffer` con memoria *sin inicializar*.
-* [`Buffer.allocUnsafeSlow(size)`][] - Create a `Buffer` with *uninitialized* memory.
-* [`Buffer.from(array)`][] - Crea un `Buffer` con una copia de `array`
+* [`Buffer.allocUnsafeSlow(size)`][] - Crea un `Buffer` con memoria *sin inicializar*.
+* [`Buffer.from(array)`][] - Crear un `Buffer` con una copia de `array`
 * [`Buffer.from(arrayBuffer[, byteOffset[, length]])`](buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length) - Crea un `Buffer` que envuelve al `arrayBuffer` dado.
-* [`Buffer.from(buffer)`][] - Crea un `Buffer` que copia a `buffer`.
+* [`Buffer.from(buffer)`][] - Crear un `Buffer` que copie a `buffer`.
 * [`Buffer.from(string[, encoding])`](buffer.html#buffer_class_method_buffer_from_string_encoding) - Crea un `Buffer` que copia a `string`.
 
 <a id="DEP0006"></a>
@@ -78,7 +78,7 @@ Como alternativa, el uso de los siguientes métodos de construcción de objetos 
 
 Tipo: Runtime
 
-Dentro de [`child_process`][] los métodos de los módulos `spawn()`, `fork()`, y `exec()`, la opción `options.customFds` está desaprobada. La opción `options.stdio` debería ser usada en su lugar.
+Dentro de los métodos `spawn()`, `fork()` y `exec()` del módulo [`child_process`][], la opción `options.customFds` está desaprobada. La opción `options.stdio` debería ser utilizada en su lugar.
 
 <a id="DEP0007"></a>
 
@@ -102,7 +102,7 @@ El módulo `constants` ha sido desaprobado. Cuando se requiere acceso a constant
 
 Type: End-of-life
 
-El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobado en Node.js 6.0, porque el método usó de manera predeterminada el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue emitida. A partir de Node.js 8.0.0, llamar a `crypto.pbkdf2()` o `crypto.pbkdf2Sync()` con un `digest` indefinido dará como resultado un `TypeError`.
+El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobado en Node.js 6.0, porque el método usó de manera predeterminada el resumen no recomendado `'SHA1'`. Previamente, una advertencia de desaprobación fue emitida. A partir de Node.js 8.0.0, llamar a `crypto.pbkdf2()` o a `crypto.pbkdf2Sync()` con un `digest` indefinido, arrojará un `TypeError`.
 
 <a id="DEP0010"></a>
 
@@ -110,7 +110,7 @@ El uso de la API [`crypto.pbkdf2()`][] sin especificar un resumen fue desaprobad
 
 Tipo: Runtime
 
-La API [`crypto.createCredentials()`][] está desaprobada. En cambio, por favor use [`tls.createSecureContext()`][].
+La API [`crypto.createCredentials()`][] está desaprobada. Por favor utilice [`tls.createSecureContext()`][] en su lugar.
 
 <a id="DEP0011"></a>
 
@@ -118,7 +118,7 @@ La API [`crypto.createCredentials()`][] está desaprobada. En cambio, por favor 
 
 Tipo: Runtime
 
-La clase `crypto.Credentials` está desaprobada. En cambio, porfavor use [`tls.SecureContext`][].
+La clase `crypto.Credentials` está desaprobada. Por favor utilice [`tls.SecureContext`][] en su lugar.
 
 <a id="DEP0012"></a>
 
@@ -158,7 +158,7 @@ The [`fs.readSync()`][] legacy String interface is deprecated. En su lugar, util
 
 Tipo: Runtime
 
-Los alias `GLOBAL` y `root` para la propiedad `global` han sido desaprobados y no deberían seguir siendo usados.
+Los alias `GLOBAL` y `root` para la propiedad `global` han sido desaprobados y no deberían seguir siendo utilizados.
 
 <a id="DEP0017"></a>
 
@@ -182,7 +182,7 @@ Los rechazos de promesas sin gestionar están desaprobados. En el futuro, rechaz
 
 Tipo: Runtime
 
-En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes. Este comportamiento está desaprobado y será removido en una importante actualización futura de Node.js.
+En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes. Este comportamiento está desaprobado y será eliminado en una futura actualización importante de Node.js.
 
 <a id="DEP0020"></a>
 
@@ -190,7 +190,7 @@ En ciertos casos, `require('.')` puede resolver fuera del directorio de paquetes
 
 Tipo: Runtime
 
-La propiedad [`Server.connections`][] está desaprobada. En cambio, por favor use el método [`Server.getConnections()`][].
+La propiedad [`Server.connections`][] está desaprobada. Por favor utilice el método [`Server.getConnections()`][] en su lugar.
 
 <a id="DEP0021"></a>
 
@@ -198,7 +198,7 @@ La propiedad [`Server.connections`][] está desaprobada. En cambio, por favor us
 
 Tipo: Runtime
 
-El método `Server.listenFD()` está desaprobado. En cambio, por favor use [`Server.listen({fd: <number>})`][].
+El método `Server.listenFD()` está desaprobado. Por favor utilice [`Server.listen({fd: <number>})`][] en su lugar.
 
 <a id="DEP0022"></a>
 
@@ -206,7 +206,7 @@ El método `Server.listenFD()` está desaprobado. En cambio, por favor use [`Ser
 
 Tipo: Runtime
 
-La API `os.tmpDir()` está desaprobada. En cambio, por favor use [`os.tmpdir()`][].
+La API `os.tmpDir()` está desaprobada. Por favor utilice [`os.tmpdir()`][] en su lugar.
 
 <a id="DEP0023"></a>
 
@@ -214,7 +214,7 @@ La API `os.tmpDir()` está desaprobada. En cambio, por favor use [`os.tmpdir()`]
 
 Tipo: Runtime
 
-El método `os.getNetworkInterfaces()` está desaprobado. En cambio, por favor use [`os.networkInterfaces`][].
+El método `os.getNetworkInterfaces()` está desaprobado. Por favor utilice la propiedad [`os.networkInterfaces`][] en su lugar.
 
 <a id="DEP0024"></a>
 
@@ -222,7 +222,7 @@ El método `os.getNetworkInterfaces()` está desaprobado. En cambio, por favor u
 
 Tipo: Runtime
 
-La API `REPLServer.prototype.convertToContext()` está desaprobada y no debería ser usada.
+La API `REPLServer.prototype.convertToContext()` está desaprobada y no debería ser utilizada.
 
 <a id="DEP0025"></a>
 
@@ -230,7 +230,7 @@ La API `REPLServer.prototype.convertToContext()` está desaprobada y no debería
 
 Tipo: Runtime
 
-El módulo `sys` está desaprobado. En cambio, por favor use el módulo [`util`][].
+El módulo `sys` está desaprobado. Por favor utilice el módulo [`util`][] en su lugar.
 
 <a id="DEP0026"></a>
 
@@ -238,7 +238,7 @@ El módulo `sys` está desaprobado. En cambio, por favor use el módulo [`util`]
 
 Tipo: Runtime
 
-La API [`util.print()`][] está desaprobada. En cambio, por favor use [`console.log()`][].
+La API [`util.print()`][] está desaprobada. Por favor utilice [`console.log()`][] en su lugar.
 
 <a id="DEP0027"></a>
 
@@ -246,7 +246,7 @@ La API [`util.print()`][] está desaprobada. En cambio, por favor use [`console.
 
 Tipo: Runtime
 
-La API [`util.puts()`][] está desaprobada. En cambio, por favor use [`console.log()`][].
+La API [`util.puts()`][] está desaprobada. Por favor utilice [`console.log()`][] en su lugar.
 
 <a id="DEP0028"></a>
 
@@ -254,7 +254,7 @@ La API [`util.puts()`][] está desaprobada. En cambio, por favor use [`console.l
 
 Tipo: Runtime
 
-La API [`util.debug()`][] está desaprobada. En cambio, por favor use [`console.error()`][].
+La API [`util.debug()`][] está desaprobada. Por favor utilice [`console.error()`][] en su lugar.
 
 <a id="DEP0029"></a>
 
@@ -270,7 +270,7 @@ La API [`util.error()`][] está desaprobada. En cambio, por favor use [`console.
 
 Tipo: Documentation-only
 
-La clase [`SlowBuffer`][] ha sido desaprobada. En cambio, por favor use [`Buffer.allocUnsafeSlow(size)`][].
+La clase [`SlowBuffer`][] ha sido desaprobada. Por favor utilice [`Buffer.allocUnsafeSlow(size)`][] en su lugar.
 
 <a id="DEP0031"></a>
 
@@ -278,7 +278,7 @@ La clase [`SlowBuffer`][] ha sido desaprobada. En cambio, por favor use [`Buffer
 
 Tipo: Documentation-only
 
-El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusión en la API no es útil.
+El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que su inclusión en la API no es útil.
 
 <a id="DEP0032"></a>
 
@@ -286,7 +286,7 @@ El método [`ecdh.setPublicKey()`][] ahora está desaprobado ya que, su inclusi�
 
 Tipo: Documentation-only
 
-El módulo [`domain`][] está desaprobado y no debería ser usado.
+El módulo [`domain`][] está desaprobado y no debería ser utilizado.
 
 <a id="DEP0033"></a>
 
@@ -294,7 +294,7 @@ El módulo [`domain`][] está desaprobado y no debería ser usado.
 
 Tipo: Documentation-only
 
-La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada. En cambio, por favor use [`emitter.listenerCount(eventName)`][].
+La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada. Por favor utilice [`emitter.listenerCount(eventName)`][] en su lugar.
 
 <a id="DEP0034"></a>
 
@@ -302,7 +302,7 @@ La API [`EventEmitter.listenerCount(emitter, eventName)`][] ha sido desaprobada.
 
 Tipo: Documentation-only
 
-La API [`fs.exists(path, callback)`][] ha sido desaprobada. En cambio, por favor use [`fs.stat()`][] or [`fs.access()`][].
+La API [`fs.exists(path, callback)`][] ha sido desaprobada. Por favor utilice [`fs.stat()`][] o [`fs.access()`][] en su lugar.
 
 <a id="DEP0035"></a>
 
@@ -366,7 +366,7 @@ La variable de entorno `NODE_REPL_HISTORY_FILE` ha sido desaprobada.
 
 Tipo: Documentation-only
 
-La clase [`tls.CryptoStream`][] ha sido desaprobada. En cambio, por favor use [`tls.TLSSocket`][].
+La clase [`tls.CryptoStream`][] ha sido desaprobada. Por favor utilice [`tls.TLSSocket`][] en su lugar.
 
 <a id="DEP0043"></a>
 
@@ -382,7 +382,7 @@ La clase [`tls.SecurePair`][] ha sido desaprobada. En cambio, por favor use [`tl
 
 Tipo: Documentation-only
 
-La API [`util.isArray()`][] ha sido desaprobada. En cambio, por favor use `Array.isArray()`.
+La API [`util.isArray()`][] ha sido desaprobada. Por favor utilice `Array.isArray()` en su lugar.
 
 <a id="DEP0045"></a>
 
@@ -398,7 +398,7 @@ La API [`util.isBoolean()`][] ha sido desaprobada.
 
 Tipo: Documentation-only
 
-La API [`util.isBuffer()`][] ha sido desaprobada. En cambio, por favor use [`Buffer.isBuffer()`][].
+La API [`util.isBuffer()`][] ha sido desaprobada. Por favor utilice [`Buffer.isBuffer()`][] en su lugar.
 
 <a id="DEP0047"></a>
 
@@ -534,7 +534,7 @@ Tipo: Runtime
 
 Tipo: Documentation-only
 
-La API `ServerResponse.prototype.writeHeader()` del módulo `http` ha sido desaprobada. En cambio, por favor use `ServerResponse.prototype.writeHead()`.
+La API `ServerResponse.prototype.writeHeader()` del módulo `http` ha sido desaprobada. Por favor utilice `ServerResponse.prototype.writeHead()` en su lugar.
 
 *Nota*: El método `ServerResponse.prototype.writeHeader()` nunca fue documentado como una API oficialmente soportada.
 
@@ -544,7 +544,7 @@ La API `ServerResponse.prototype.writeHeader()` del módulo `http` ha sido desap
 
 Tipo: Runtime
 
-La API `tls.createSecurePair()` fue desaprobada en la documentación en Node.js 0.11.3. En cambio, los usuarios deberían usar `tls.Socket`.
+La API `tls.createSecurePair()` fue desaprobada en la documentación en Node.js 0.11.3. Los usuarios deben utilizar `tls.Socket` en su lugar.
 
 <a id="DEP0065"></a>
 
@@ -552,7 +552,7 @@ La API `tls.createSecurePair()` fue desaprobada en la documentación en Node.js 
 
 Tipo: Documentation-only
 
-La constante `REPL_MODE_MAGIC` del módulo `repl`, utilizada para la opción de `replMode`, ha sido desaprobada. Su comportamiento ha sido funcionalmente idéntico al de `REPL_MODE_SLOPPY` desde Node.js v6.0.0, cuando V8 5.0 fue importado. En cambio, por favor use `REPL_MODE_SLOPPY`.
+La constante `REPL_MODE_MAGIC` del módulo `repl`, utilizada para la opción de `replMode`, ha sido desaprobada. Su comportamiento ha sido funcionalmente idéntico al de `REPL_MODE_SLOPPY` desde Node.js v6.0.0, cuando V8 5.0 fue importado. Por favor utilice `REPL_MODE_SLOPPY` en su lugar.
 
 La variable de ambiente `NODE_REPL_MODE` es usada para fijar el `replMode` subyacente de una sesión interactiva `node`. Su valor predeterminado, `magic`, es semejantemente desaprobado en favor de `sloppy`.
 
@@ -600,7 +600,7 @@ El DebugContext será eliminado en V8 pronto y no estará disponible en Node 10+
 
 Tipo: Runtime
 
-`async_hooks.currentId()` fue renombrado a `async_hooks.executionAsyncId()` para mayor claridad.
+`async_hooks.currentId()` fue renombrado como `async_hooks.executionAsyncId()` para mayor claridad.
 
 *Nota*: se realizó el cambio mientras `async_hooks` era una API experimental.
 
@@ -610,7 +610,7 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-`async_hooks.triggerId()` fue renombrado a `async_hooks.triggerAsyncId()` para mayor claridad.
+`async_hooks.triggerId()` fue renombrado como `async_hooks.triggerAsyncId()` para mayor claridad.
 
 *Nota*: se realizó el cambio mientras `async_hooks` era una API experimental.
 
@@ -620,7 +620,7 @@ Tipo: Runtime
 
 Tipo: Runtime
 
-`async_hooks.AsyncResource.triggerId()` fue renombrado a `async_hooks.AsyncResource.triggerAsyncId()` para mayor claridad.
+`async_hooks.AsyncResource.triggerId()` fue renombrado como `async_hooks.AsyncResource.triggerAsyncId()` para mayor claridad.
 
 *Nota*: se realizó el cambio mientras `async_hooks` era una API experimental.
 
@@ -637,7 +637,7 @@ const querystring = require('querystring');
 querystring.parse(str, '\n', '=');
 ```
 
-*Nota*: Esta función no es completamente equivalente a `querystring.parse()`. Una diferencia es que `querystring.parse()` hace url decoding:
+*Nota*: Esta función no es completamente equivalente a `querystring.parse()`. Una diferencia es que `querystring.parse()` realiza decodificación de url:
 
 ```sh
 > querystring.parse('%E5%A5%BD=1', '\n', '=');
@@ -652,7 +652,7 @@ querystring.parse(str, '\n', '=');
 
 Tipo: Documentation-only
 
-Usar una propiedad llamada `inspect` en un objecto para especificar una función de inspección personalizada para [`util.inspect()`][] está desaprobado. En cambio, use [`util.inspect.custom`][]. For backwards compatibility with Node.js prior to version 6.4.0, both may be specified.
+Usar una propiedad llamada `inspect` en un objeto para especificar una función de inspección personalizada para [`util.inspect()`][] está desaprobado. Utilice [`util.inspect.custom`][] en su lugar. For backwards compatibility with Node.js prior to version 6.4.0, both may be specified.
 
 <a id="DEP0085"></a>
 

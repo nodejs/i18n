@@ -1,4 +1,4 @@
-# ECMAスクリプトモジュール
+# ECMAScriptモジュール
 
 <!--introduced_in=v8.5.0-->
 

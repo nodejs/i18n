@@ -1,6 +1,7 @@
 # Sobre esta documentação
 
 <!--introduced_in=v0.10.0-->
+
 <!-- type=misc -->
 
 O objetivo desta documentação é explicar de modo compreensível a API do Node.js, tanto do ponto de vista de referência quanto do ponto de vista conceitual. Cada seção descreve um módulo embutido ou um conceito de alto nível.
@@ -25,15 +26,16 @@ Os índices de estabilidade são os seguintes:
 
 <!-- separator -->
 
-> Stability: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Use of the feature is not recommended in production environments. Experimental features are not subject to the Node.js Semantic Versioning model.
+> Estabilidade: 1 - Experimental. This feature is still under active development and subject to non-backward compatible changes or removal in any future version. Não recomendado o uso dessa feature em ambiente de produção. Experimental features are not subject to the Node.js Semantic Versioning model.
 
 <!-- separator -->
 
-> Stability: 2 - Stable. Compatibility with the npm ecosystem is a high priority.
+> Estabilidade: 2 - Estável. Compatibility with the npm ecosystem is a high priority.
 
-É necessária tomar cuidado no uso de uma funcionalidades `Experimentais`, particularmente em módulos que podem ser usados como dependência (ou dependência de dependências) em uma aplicação Node.js. Usuários finais podem não estar cientes do uso de funcionalidades experimentais, e assim poderão sofrer com falhas inesperadas, ou mudança de comportamento quando ocorrerem modificações na API. Para evitar surpresas desagradáveis, uma feature `Experimental` deve ser marcada com uma linha de comando para habilitá-la explicitamente, ou então poderá emitir um alerta. Por padrão, esses alertas são exibidos num [`stderr`][] e devem ser tratados anexando um listener no evento [`'warning'`][].
+Caution must be used when making use of `Experimental` features, particularly within modules that may be used as dependencies (or dependencies of dependencies) within a Node.js application. Usuários finais podem não estar cientes do uso de funcionalidades experimentais, e assim poderão sofrer com falhas inesperadas, ou mudança de comportamento quando ocorrerem modificações na API. Para evitar surpresas desagradáveis, uma feature `Experimental` deve ser marcada com uma linha de comando para habilitá-la explicitamente, ou então poderá emitir um alerta. By default, such warnings are printed to [`stderr`][] and may be handled by attaching a listener to the [`'warning'`][] event.
 
 ## Saída de JSON
+
 <!-- YAML
 added: v0.6.12
 -->
