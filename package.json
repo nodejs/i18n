@@ -5,8 +5,7 @@
   "supportedVersions": [
     "v13.x",
     "v12.x",
-    "v10.x",
-    "v8.x"
+    "v10.x"
   ],
   "description": "The home of translated Node.js documentation",
   "repository": "https://github.com/nodejs/i18n",
