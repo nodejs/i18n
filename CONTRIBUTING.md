@@ -1,6 +1,6 @@
 # Contribution Guidelines
 
-All of the information above relates to the [nodejs/i18n](https://github.com/nodejs/i18n/) repository only. For localization guides, please see the [Getting started](./GETTING_STARTED.md) guide.
+All of the information above relates to the [nodejs/i18n](https://github.com/nodejs/i18n/) repository only. For localization guides, please see the [Getting started](./guides/GETTING_STARTED.md) guide.
 
 ## Code of Conduct
 
