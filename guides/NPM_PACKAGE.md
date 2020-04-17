@@ -18,6 +18,8 @@ Or install from a specific branch or tag:
 
 ```sh
 npm install nodejs/i18n#some-branch
+# or
+yarn add nodejs/i18n#some-branch
 ```
 
 ## Usage (raw Markdown files)
