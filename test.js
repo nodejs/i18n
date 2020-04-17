@@ -73,10 +73,6 @@ describe('npm module', () => {
     expect(allPages.length).toBeGreaterThan(1)
   })
 
-  test('exports `getPages` function', () => {
-    expect(typeof getPages).toBe('function')
-  })
-
   test('exports `locales` array', () => {
     expect(Array.isArray(locales)).toBe(true)
     expect(locales.length).toBeGreaterThan(1)
@@ -84,7 +80,32 @@ describe('npm module', () => {
     expect(locales).toContain('es-ES')
   })
 
-  test('exports `nodeVersions` object from package.json', () => {
-    expect(nodeVersions).toEqual(require('./package.json').nodeVersions)
+  test('exports `supportedVersions` object from package.json', () => {
+    expect(supportedVersions).toEqual(require('./package.json').supportedVersions)
+  })
+
+  describe('getPages function', () => {
+    test('is exported as a property of the module', () => {
+      expect(typeof getPages).toBe('function')
+    })
+
+    test('returns an array of objects, and does not require any arguments', async () => {
+      const pages = await getPages()
+      expect(Array.isArray(pages)).toBe(true)
+      expect(pages.length).toBeGreaterThan(0)
+      pages.every(page => {
+        expect(Object.keys(page)).toEqual(['locale', 'nodeVersion', 'filePath', 'fullPath'])
+      })
+    })
+
+    test('accepts arguments for nodeVersion and locale', async () => {
+      const pages = await getPages(supportedVersions[1], 'es-ES')
+      expect(Array.isArray(pages)).toBe(true)
+      expect(pages.length).toBeGreaterThan(0)
+      pages.every(page => {
+        expect(page.locale).toBe('es-ES')
+        expect(page.nodeVersion).toBe(supportedVersions[1])
+      })
+    })
   })
 })
