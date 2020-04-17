@@ -4,6 +4,10 @@
 
 Here you can find contribution guides, discuss ideas or join meetings. This repo also contains the source English Node.js API documentation as well as translated versions of the documentation. The source English is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our Crowdin integration.
 
+## Usage
+
+This repository can be installed as an npm package. See [guides/NPM_PACKAGE.md](guides/NPM_PACKAGE.md) for installation and usage instructions.
+
 ## Contributing
 
 Help us get Node.js translated into your native language and reach more people's hearts. Please read these guides to get started:
