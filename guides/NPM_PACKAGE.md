@@ -32,7 +32,6 @@ $ ls -A1 node_modules/node-i18n/content
 v10.x
 v12.x
 v13.x
-v8.x
 ```
 
 ---
