@@ -58,7 +58,7 @@ Require the module using its package.json `name`:
 const i18n = require('node-i18n')
 
 // or..
-const { allPages, getPages, locales, nodeVersions } = require('node-i18n')
+const { allPages, getPages, locales, supportedVersions } = require('node-i18n')
 ```
 
 ## Module API
