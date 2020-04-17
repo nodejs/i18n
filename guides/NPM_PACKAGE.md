@@ -1,6 +1,6 @@
 # npm package
 
-This repository can be installed as an npm package. The goal is to make all of the Node.js project's English and localized content more easily consumable and re-usable in different projects.
+This repository can be installed as an npm package. The goal is to make the English and localized Node.js docs more easily consumable and re-usable in different projects.
 
 ## Installation
 
