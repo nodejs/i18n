@@ -20,4 +20,12 @@ There is a lot of content to translate, and to manage priorities we're using [Cr
 
 ## Translation Memory
 
-Versioned documentation means that's some content is not changes between versions. As result, we have duplicates, which we pre-translate with [Translation Memory](https://support.crowdin.com/translation-memory/). In addition, TM can be shared between all projects inside Node.js organizations.
+[Translation Memory or TM](https://support.crowdin.com/translation-memory/) is collection of the source strings and their translations, that fills automatically after each translation was added. Can be used to speed up the translation of the same or similar strings in two ways:
+
+- suggestion tips for translators
+    ![image](https://user-images.githubusercontent.com/28801003/79671195-455b9800-81d1-11ea-996c-dc8025125d35.png)
+- pre-translation - process to apply these suggestions for all strings in a project, but can be triggered only by project manager
+
+By default, TM scoped by project, but can be shared inside organization, so translations from [api-docs](https://crowdin.com/project/nodejs) can be used in [nodejs-website](https://crowdin.com/project/nodejs-website). We recommend to use TM suggestions to make consistent translations and to speed up process in general. 
+
+In case of [api-docs](https://crowdin.com/project/nodejs) project we have a lot of duplicates between versions, and to not translate the same strings many times, we pre-translated it by TM.
