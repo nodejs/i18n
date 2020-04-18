@@ -3,17 +3,19 @@ const path = require('path')
 const walk = require('walk-sync')
 const { chain } = require('lodash')
 const { supportedVersions } = require('./package.json')
+
+const separator = "/"
 const contentDir = path.join(__dirname, 'content')
 const allPages = walk(contentDir, { directories: false })
   .filter(filename => filename.endsWith('.md'))
   .map(filename => {
     const fullPath = path.join(contentDir, filename)
-    const nodeVersion = filename.split(path.sep)[0]
-    const locale = filename.split(path.sep)[1]
+    const nodeVersion = filename.split(separator)[0]
+    const locale = filename.split(separator)[1]
     const filePath = filename
-      .split(path.sep)
+      .split(separator)
       .slice(2)
-      .join(path.sep)
+      .join(separator)
     return { locale, nodeVersion, filePath, fullPath }
   })
 

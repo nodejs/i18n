@@ -62,54 +62,53 @@ describe('translated content', () => {
   })
 })
 
-// TEMPORARY TURNED OFF
-// describe('npm module', () => {
-//   const {
-//     allPages,
-//     getPages,
-//     locales,
-//     supportedVersions
-//   } = require('.')
+describe('npm module', () => {
+  const {
+    allPages,
+    getPages,
+    locales,
+    supportedVersions
+  } = require('.')
 
-//   test('exports `allPages` array', () => {
-//     expect(Array.isArray(allPages)).toBe(true)
-//     expect(allPages.length).toBeGreaterThan(1)
-//   })
+  test('exports `allPages` array', () => {
+    expect(Array.isArray(allPages)).toBe(true)
+    expect(allPages.length).toBeGreaterThan(1)
+  })
 
-//   test('exports `locales` array', () => {
-//     expect(Array.isArray(locales)).toBe(true)
-//     expect(locales.length).toBeGreaterThan(1)
-//     expect(locales).toContain('en-US')
-//     expect(locales).toContain('es-ES')
-//   })
+  test('exports `locales` array', () => {
+    expect(Array.isArray(locales)).toBe(true)
+    expect(locales.length).toBeGreaterThan(1)
+    expect(locales).toContain('en-US')
+    expect(locales).toContain('es-ES')
+  })
 
-//   test('exports `supportedVersions` object from package.json', () => {
-//     expect(Array.isArray(supportedVersions)).toBe(true)
-//     expect(supportedVersions).toEqual(require('./package.json').supportedVersions)
-//   })
+  test('exports `supportedVersions` object from package.json', () => {
+    expect(Array.isArray(supportedVersions)).toBe(true)
+    expect(supportedVersions).toEqual(require('./package.json').supportedVersions)
+  })
 
-//   describe('getPages function', () => {
-//     test('is exported as a property of the module', () => {
-//       expect(typeof getPages).toBe('function')
-//     })
+  describe('getPages function', () => {
+    test('is exported as a property of the module', () => {
+      expect(typeof getPages).toBe('function')
+    })
 
-//     test('returns an array of objects, and does not require any arguments', async () => {
-//       const pages = await getPages()
-//       expect(Array.isArray(pages)).toBe(true)
-//       expect(pages.length).toBeGreaterThan(0)
-//       pages.every(page => {
-//         expect(Object.keys(page)).toEqual(['locale', 'nodeVersion', 'filePath', 'fullPath'])
-//       })
-//     })
+    test('returns an array of objects, and does not require any arguments', async () => {
+      const pages = await getPages()
+      expect(Array.isArray(pages)).toBe(true)
+      expect(pages.length).toBeGreaterThan(0)
+      pages.every(page => {
+        expect(Object.keys(page)).toEqual(['locale', 'nodeVersion', 'filePath', 'fullPath'])
+      })
+    })
 
-//     test('accepts arguments for nodeVersion and locale', async () => {
-//       const pages = await getPages(supportedVersions[1], 'es-ES')
-//       expect(Array.isArray(pages)).toBe(true)
-//       expect(pages.length).toBeGreaterThan(0)
-//       pages.every(page => {
-//         expect(page.locale).toBe('es-ES')
-//         expect(page.nodeVersion).toBe(supportedVersions[1])
-//       })
-//     })
-//   })
-// })
+    test('accepts arguments for nodeVersion and locale', async () => {
+      const pages = await getPages(supportedVersions[1], 'es-ES')
+      expect(Array.isArray(pages)).toBe(true)
+      expect(pages.length).toBeGreaterThan(0)
+      pages.every(page => {
+        expect(page.locale).toBe('es-ES')
+        expect(page.nodeVersion).toBe(supportedVersions[1])
+      })
+    })
+  })
+})
