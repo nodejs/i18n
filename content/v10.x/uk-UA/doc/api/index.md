@@ -55,7 +55,7 @@
 * [Утиліти](util.html)
 * [V8](v8.html)
 * [VM](vm.html)
-* [Worker Threads](worker_threads.html)
+* [Робочі потоки](worker_threads.html)
 * [Zlib](zlib.html)
 
 <div class="line"></div>
