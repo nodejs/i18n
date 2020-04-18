@@ -14,10 +14,10 @@ Crowdin pulling updates of original content, and on other side all approved tran
 
 ## Priorities
 
-There is a lot of content to translate, and to manage priorities we're using [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look on priority level mark:
+There is a lot of content to translate, and to manage priorities we're using [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look at the priority level mark:
 
 ![priorities](https://user-images.githubusercontent.com/28801003/79640499-9a2fec00-819a-11ea-8eb3-ce0343791b8f.png)
 
 ## Translation Memory
 
-Versioned documentation means that's some content is not changes between versions. As result, we have duplicates, which we pre-translate with [Translation Memory](https://support.crowdin.com/translation-memory/). In addition, TM can be shared between all projects inside Node.js organizations.
+Versioned documentation means that some content is not changed between versions. As result, we have duplicates, which are pre-translated with [Translation Memory](https://support.crowdin.com/translation-memory/). In addition, TM can be shared between all projects inside the Node.js organization.
