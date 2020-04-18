@@ -1,7 +1,7 @@
 const fs = require('fs-extra')
 const path = require('path')
 const walk = require('walk-sync')
-const difference = require('lodash.difference')
+const { difference } = require('lodash')
 const { supportedVersions } = require('./package.json')
 
 const contentDir = path.join(__dirname, 'content')
