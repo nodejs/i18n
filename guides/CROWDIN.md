@@ -14,7 +14,7 @@ Crowdin pulling updates of original content, and on other side all approved tran
 
 ## Priorities
 
-There is a lot of content to translate, and to manage priorities we're using [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look on priority level mark:
+There is a lot of content to translate, and to manage priorities we're using [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look at the priority level mark:
 
 ![priorities](https://user-images.githubusercontent.com/28801003/79640499-9a2fec00-819a-11ea-8eb3-ce0343791b8f.png)
 
