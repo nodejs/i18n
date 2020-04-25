@@ -1,6 +1,6 @@
 ---
 name: Language request
-about: Request adding not existed language to Crowdin
+about: Request adding a new language to our Crowdin projects
 labels: crowdin,language request
 ---
 
