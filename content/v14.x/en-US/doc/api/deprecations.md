@@ -2352,7 +2352,7 @@ The undocumented `net._setSimultaneousAccepts()` function was originally
 intended for debugging and performance tuning when using the `child_process`
 and `cluster` modules on Windows. The function is not generally useful and
 is being removed. See discussion here:
-https://github.com/nodejs/node/issues/18391
+<https://github.com/nodejs/node/issues/18391>
 
 <a id="DEP0122"></a>
 ### DEP0122: `tls` `Server.prototype.setOptions()`
@@ -2569,7 +2569,9 @@ and [`fs.createReadStream()`][]) or by passing a file descriptor in options.
 ### DEP0136: `http` `finished`
 <!-- YAML
 changes:
-  - version: v13.4.0
+  - version:
+     - v13.4.0
+     - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/28679
     description: Documentation-only deprecation.
 -->
@@ -2651,6 +2653,19 @@ written twice. This introduces a race condition between threads, and is a
 potential security vulnerability. There is no safe, cross-platform alternative
 API.
 
+<a id="DEP0140"></a>
+### DEP0140: Use `request.destroy()` instead of `request.abort()`
+<!-- YAML
+changes:
+  - version: v14.1.0
+    pr-url: https://github.com/nodejs/node/pull/32807
+    description: Documentation-only deprecation.
+-->
+
+Type: Documentation-only
+
+Use [`request.destroy()`][] instead of [`request.abort()`][].
+
 [`--pending-deprecation`]: cli.html#cli_pending_deprecation
 [`--throw-deprecation`]: cli.html#cli_throw_deprecation
 [`Buffer.allocUnsafeSlow(size)`]: buffer.html#buffer_class_method_buffer_allocunsafeslow_size
@@ -2712,8 +2727,10 @@ API.
 [`punycode`]: punycode.html
 [`require.extensions`]: modules.html#modules_require_extensions
 [`require.main`]: modules.html#modules_accessing_the_main_module
+[`request.abort()`]: http.html#http_request_abort
 [`request.socket`]: http.html#http_request_socket
 [`request.connection`]: http.html#http_request_connection
+[`request.destroy()`]: http.html#http_request_destroy_error
 [`response.socket`]: http.html#http_response_socket
 [`response.connection`]: http.html#http_response_connection
 [`response.end()`]: http.html#http_response_end_data_encoding_callback

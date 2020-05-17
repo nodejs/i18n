@@ -5,7 +5,7 @@ This document describes how to update `deps/openssl/`.
 ## Requirements
 * Linux environment
 * `perl` Only Perl version 5 is tested.
-* `nasm` (http://www.nasm.us/)  The version of 2.11 or higher is needed.
+* `nasm` (<http://www.nasm.us/>)  The version of 2.11 or higher is needed.
 * GNU `as` in binutils. The version of 2.26 or higher is needed.
 
 ## 0. Check Requirements
@@ -27,7 +27,7 @@ NASM version 2.11.08
 
 ## 1. Obtain and extract new OpenSSL sources
 
-Get a new source from  https://www.openssl.org/source/ and extract
+Get a new source from  <https://www.openssl.org/source/> and extract
 all files into `deps/openssl/openssl`. Then add all files and commit
 them.
 ```sh
@@ -57,7 +57,7 @@ This updates all sources in deps/openssl/openssl by:
 Use `make` to regenerate all platform dependent files in
 `deps/openssl/config/archs/`:
 ```sh
-% cd deps/openssl/config; make
+% make -C deps/openssl/config
 ```
 
 ## 3. Check diffs
@@ -66,8 +66,7 @@ Check diffs if updates are right. Even if no updates in openssl
 sources, `buildinf.h` files will be updated for they have a timestamp
 data in them.
 ```sh
-% cd deps/openssl/config
-% git diff
+% git diff -- deps/openssl
 ```
 
 *Note*: On Windows, OpenSSL Configure generates `makefile` that can be
@@ -95,8 +94,7 @@ The commit message can be (with the openssl version set to the relevant value):
 
  After an OpenSSL source update, all the config files need to be
  regenerated and committed by:
-    $ cd deps/openssl/config
-    $ make
+    $ make -C deps/openssl/config
     $ git add deps/openssl/config/archs
     $ git add deps/openssl/openssl/include/crypto/bn_conf.h
     $ git add deps/openssl/openssl/include/crypto/dso_conf.h

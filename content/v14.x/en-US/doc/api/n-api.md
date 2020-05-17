@@ -241,15 +241,16 @@ from version 3 with some additions. This means that it is not necessary
 to recompile for new versions of Node.js which are
 listed as supporting a later version.
 
-|       | 1       | 2        | 3        | 4        | 5         |
-|-------|---------|----------|----------|----------|-----------|
-| v6.x  |         |          | v6.14.2* |          |           |
-| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |
-| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |
-| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  |
-| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |
-| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |
-| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |
+|       | 1       | 2        | 3        | 4        | 5         | 6         |
+|-------|---------|----------|----------|----------|-----------|-----------|
+| v6.x  |         |          | v6.14.2* |          |           |           |
+| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |           |
+| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |           |
+| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  | v10.20.0  |
+| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |           |
+| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |           |
+| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |           |
+| v14.x | v14.0.0 | v14.0.0  | v14.0.0  | v14.0.0  | v14.0.0   | v14.0.0   |
 
 \* Indicates that the N-API version was released as experimental
 
@@ -373,7 +374,9 @@ tied to the life cycle of the Agent.
 
 ### napi_set_instance_data
 <!-- YAML
-added: v12.8.0
+added:
+ - v12.8.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -401,7 +404,9 @@ by the previous call, it will not be called.
 
 ### napi_get_instance_data
 <!-- YAML
-added: v12.8.0
+added:
+ - v12.8.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -457,6 +462,7 @@ typedef enum {
   napi_date_expected,
   napi_arraybuffer_expected,
   napi_detachable_arraybuffer_expected,
+  napi_would_deadlock,
 } napi_status;
 ```
 
@@ -1663,7 +1669,9 @@ the `napi_value` in question is of the JavaScript type expected by the API.
 ### Enum types
 #### napi_key_collection_mode
 <!-- YAML
-added: v13.7.0
+added:
+ - v13.7.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -1684,7 +1692,9 @@ of the objects's prototype chain as well.
 
 #### napi_key_filter
 <!-- YAML
-added: v13.7.0
+added:
+ - v13.7.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -1703,7 +1713,9 @@ Property filter bits. They can be or'ed to build a composite filter.
 
 #### napi_key_conversion
 <!-- YAML
-added: v13.7.0
+added:
+ - v13.7.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -1900,7 +1912,9 @@ structure, in most cases using a `TypedArray` will suffice.
 
 #### napi_create_date
 <!-- YAML
-added: v11.11.0
+added:
+ - v11.11.0
+ - v10.17.0
 napiVersion: 5
 -->
 
@@ -2581,7 +2595,9 @@ This API returns various properties of a `DataView`.
 
 #### napi_get_date_value
 <!-- YAML
-added: v11.11.0
+added:
+ - v11.11.0
+ - v10.17.0
 napiVersion: 5
 -->
 
@@ -3199,7 +3215,9 @@ This API checks if the `Object` passed in is a buffer.
 
 ### napi_is_date
 <!-- YAML
-added: v11.11.0
+added:
+ - v11.11.0
+ - v10.17.0
 napiVersion: 5
 -->
 
@@ -3295,7 +3313,9 @@ defined in [Section 7.2.14][] of the ECMAScript Language Specification.
 
 ### napi_detach_arraybuffer
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 > Stability: 1 - Experimental
@@ -3321,7 +3341,9 @@ defined in [Section 24.1.1.3][] of the ECMAScript Language Specification.
 
 ### napi_is_detached_arraybuffer
 <!-- YAML
-added: v13.3.0
+added:
+ - v13.3.0
+ - v12.16.0
 -->
 
 > Stability: 1 - Experimental
@@ -3590,7 +3612,9 @@ included.
 
 #### napi_get_all_property_names
 <!-- YAML
-added: v13.7.0
+added:
+ - v13.7.0
+ - v10.20.0
 napiVersion: 6
 -->
 
@@ -5095,6 +5119,19 @@ preventing data from being successfully added to the queue. If set to
 `napi_call_threadsafe_function()` never blocks if the thread-safe function was
 created with a maximum queue size of 0.
 
+As a special case, when `napi_call_threadsafe_function()` is called from a
+JavaScript thread, it will return `napi_would_deadlock` if the queue is full
+and it was called with `napi_tsfn_blocking`. The reason for this is that the
+JavaScript thread is responsible for removing items from the queue, thereby
+reducing their number. Thus, if it waits for room to become available on the
+queue, then it will deadlock.
+
+`napi_call_threadsafe_function()` will also return `napi_would_deadlock` if the
+thread-safe function created on one JavaScript thread is called from another
+JavaScript thread. The reason for this is to prevent a deadlock arising from the
+possibility that the two JavaScript threads end up waiting on one another,
+thereby both deadlocking.
+
 The actual call into JavaScript is controlled by the callback given via the
 `call_js_cb` parameter. `call_js_cb` is invoked on the main thread once for each
 value that was placed into the queue by a successful call to
@@ -5166,7 +5203,9 @@ prevent the event loop from exiting. The APIs `napi_ref_threadsafe_function` and
 added: v10.6.0
 napiVersion: 4
 changes:
-  - version: v12.6.0
+  - version:
+     - v12.6.0
+     - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/27791
     description: Made `func` parameter optional with custom `call_js_cb`.
 -->
@@ -5231,6 +5270,12 @@ This API may be called from any thread which makes use of `func`.
 <!-- YAML
 added: v10.6.0
 napiVersion: 4
+changes:
+  - version: v14.1.0
+    pr-url: https://github.com/nodejs/node/pull/32689
+    description: >
+      Return `napi_would_deadlock` when called with `napi_tsfn_blocking` from
+      the main thread or a worker thread and the queue is full.
 -->
 
 ```C
@@ -5248,9 +5293,13 @@ napi_call_threadsafe_function(napi_threadsafe_function func,
   `napi_tsfn_nonblocking` to indicate that the call should return immediately
   with a status of `napi_queue_full` whenever the queue is full.
 
+This API will return `napi_would_deadlock` if called with `napi_tsfn_blocking`
+from the main thread and the queue is full.
+
 This API will return `napi_closing` if `napi_release_threadsafe_function()` was
-called with `abort` set to `napi_tsfn_abort` from any thread. The value is only
-added to the queue if the API returns `napi_ok`.
+called with `abort` set to `napi_tsfn_abort` from any thread.
+
+The value is only added to the queue if the API returns `napi_ok`.
 
 This API may be called from any thread which makes use of `func`.
 

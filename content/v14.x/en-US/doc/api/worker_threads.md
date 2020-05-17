@@ -165,13 +165,16 @@ When this function is used, no `'message'` event will be emitted and the
 
 ## `worker.resourceLimits`
 <!-- YAML
-added: v13.2.0
+added:
+ - v13.2.0
+ - v12.16.0
 -->
 
 * {Object}
   * `maxYoungGenerationSizeMb` {number}
   * `maxOldGenerationSizeMb` {number}
   * `codeRangeSizeMb` {number}
+  * `stackSizeMb` {number}
 
 Provides the set of JS engine resource constraints inside this Worker thread.
 If the `resourceLimits` option was passed to the [`Worker`][] constructor,
@@ -520,10 +523,14 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/31664
     description: The `filename` parameter can be a WHATWG `URL` object using
                  `file:` protocol.
-  - version: v13.2.0
+  - version:
+     - v13.2.0
+     - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/26628
     description: The `resourceLimits` option was introduced.
-  - version: v13.4.0
+  - version:
+     - v13.4.0
+     - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/30559
     description: The `argv` option was introduced.
 -->
@@ -564,6 +571,10 @@ changes:
     occur as described in the [HTML structured clone algorithm][], and an error
     will be thrown if the object cannot be cloned (e.g. because it contains
     `function`s).
+  * `transferList` {Object[]} If one or more `MessagePort`-like objects
+    are passed in `workerData`, a `transferList` is required for those
+    items or [`ERR_MISSING_MESSAGE_PORT_IN_TRANSFER_LIST`][] will be thrown.
+    See [`port.postMessage()`][] for more information.
   * `resourceLimits` {Object} An optional set of resource limits for the new
     JS engine instance. Reaching these limits will lead to termination of the
     `Worker` instance. These limits only affect the JS engine, and no external
@@ -574,6 +585,8 @@ changes:
       recently created objects.
     * `codeRangeSizeMb` {number} The size of a pre-allocated memory range
       used for generated code.
+    * `stackSizeMb` {number} The default maximum stack size for the thread.
+      Small values may lead to unusable Worker instances. **Default:** `4`.
 
 ### Event: `'error'`
 <!-- YAML
@@ -660,13 +673,16 @@ no effect.
 
 ### `worker.resourceLimits`
 <!-- YAML
-added: v13.2.0
+added:
+ - v13.2.0
+ - v12.16.0
 -->
 
 * {Object}
   * `maxYoungGenerationSizeMb` {number}
   * `maxOldGenerationSizeMb` {number}
   * `codeRangeSizeMb` {number}
+  * `stackSizeMb` {number}
 
 Provides the set of JS engine resource constraints for this Worker thread.
 If the `resourceLimits` option was passed to the [`Worker`][] constructor,
@@ -751,6 +767,7 @@ active handle in the event system. If the worker is already `unref()`ed calling
 [`'exit'` event]: #worker_threads_event_exit
 [`AsyncResource`]: async_hooks.html#async_hooks_class_asyncresource
 [`Buffer`]: buffer.html
+[`ERR_MISSING_MESSAGE_PORT_IN_TRANSFER_LIST`]: errors.html#errors_err_missing_message_port_in_transfer_list
 [`ERR_WORKER_NOT_RUNNING`]: errors.html#ERR_WORKER_NOT_RUNNING
 [`EventEmitter`]: events.html
 [`EventTarget`]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
