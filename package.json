@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "supportedVersions": [
+    "v14.x",
     "v13.x",
     "v12.x",
     "v10.x"
@@ -36,7 +37,7 @@
     "globals": "^13.0.0",
     "jest": "^25.4.0",
     "semver": "^7.3.2",
-    "standard": "^14.3.3",
+    "standard": "^14.3.4",
     "superagent": "^5.2.2"
   },
   "standard": {
