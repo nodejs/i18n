@@ -1194,7 +1194,7 @@ is set for the `Http2Stream`.
 ### `ERR_INTERNAL_ASSERTION`
 
 There was a bug in Node.js or incorrect usage of Node.js internals.
-To fix the error, open an issue at https://github.com/nodejs/node/issues.
+To fix the error, open an issue at <https://github.com/nodejs/node/issues>.
 
 <a id="ERR_INCOMPATIBLE_OPTION_PAIR"></a>
 ### `ERR_INCOMPATIBLE_OPTION_PAIR`
@@ -1967,6 +1967,12 @@ A `Transform` stream finished with data still in the write buffer.
 
 The initialization of a TTY failed due to a system error.
 
+<a id="ERR_UNAVAILABLE_DURING_EXIT"></a>
+### `ERR_UNAVAILABLE_DURING_EXIT`
+
+Function was called within a [`process.on('exit')`][] handler that shouldn't be
+called within [`process.on('exit')`][] handler.
+
 <a id="ERR_UNCAUGHT_EXCEPTION_CAPTURE_ALREADY_SET"></a>
 ### `ERR_UNCAUGHT_EXCEPTION_CAPTURE_ALREADY_SET`
 
@@ -2145,7 +2151,9 @@ Creation of a [`zlib`][] object failed due to incorrect configuration.
 ### `HPE_HEADER_OVERFLOW`
 <!-- YAML
 changes:
-  - version: v11.4.0
+  - version:
+     - v11.4.0
+     - v10.15.0
     pr-url: https://github.com/nodejs/node/commit/186035243fad247e3955f
     description: Max header size in `http_parser` was set to 8KB.
 -->
@@ -2310,7 +2318,7 @@ added: v9.0.0
 removed: v14.0.0
 -->
 
-Data could be sent on a socket.
+Data could not be sent on a socket.
 
 <a id="ERR_STDERR_CLOSE"></a>
 ### `ERR_STDERR_CLOSE`
@@ -2543,6 +2551,7 @@ such as `process.stdout.on('data')`.
 [`net`]: net.html
 [`new URL(input)`]: url.html#url_constructor_new_url_input_base
 [`new URLSearchParams(iterable)`]: url.html#url_constructor_new_urlsearchparams_iterable
+[`process.on('exit')`]: process.html#Event:-`'exit'`
 [`process.send()`]: process.html#process_process_send_message_sendhandle_options_callback
 [`process.setUncaughtExceptionCaptureCallback()`]: process.html#process_process_setuncaughtexceptioncapturecallback_fn
 [`readable._read()`]: stream.html#stream_readable_read_size_1

@@ -1601,13 +1601,6 @@ The resolver can throw the following errors:
 >       1. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _mainExport_, _""_).
 >    1. Throw a _Package Path Not Exported_ error.
-> 1. If _pjson.main_ is a String, then
->    1. Let _resolvedMain_ be the URL resolution of _packageURL_, "/", and
->       _pjson.main_.
->    1. If the file at _resolvedMain_ exists, then
->       1. Return _resolvedMain_.
-> 1. If _pjson.type_ is equal to _"module"_, then
->    1. Throw a _Module Not Found_ error.
 > 1. Let _legacyMainURL_ be the result applying the legacy
 >    **LOAD_AS_DIRECTORY** CommonJS resolver to _packageURL_, throwing a
 >    _Module Not Found_ error for no resolution.
@@ -1661,13 +1654,15 @@ The resolver can throw the following errors:
 >             loop on any _Package Path Not Exported_ error.
 >    1. Throw a _Package Path Not Exported_ error.
 > 1. Otherwise, if _target_ is an Array, then
->    1. If _target.length is zero, throw an _Invalid Package Target_ error.
+>    1. If _target.length is zero, throw a _Package Path Not Exported_ error.
 >    1. For each item _targetValue_ in _target_, do
 >       1. If _targetValue_ is an Array, continue the loop.
 >       1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _targetValue_, _subpath_, _env_), continuing the loop on any
 >          _Package Path Not Exported_ or _Invalid Package Target_ error.
 >    1. Throw the last fallback resolution error.
+> 1. Otherwise, if _target_ is _null_, throw a _Package Path Not Exported_
+>    error.
 > 1. Otherwise throw an _Invalid Package Target_ error.
 
 **ESM_FORMAT**(_url_)

@@ -1194,7 +1194,7 @@ is set for the `Http2Stream`.
 ### `ERR_INTERNAL_ASSERTION`
 
 There was a bug in Node.js or incorrect usage of Node.js internals.
-To fix the error, open an issue at https://github.com/nodejs/node/issues.
+To fix the error, open an issue at <https://github.com/nodejs/node/issues>.
 
 <a id="ERR_INCOMPATIBLE_OPTION_PAIR"></a>
 ### `ERR_INCOMPATIBLE_OPTION_PAIR`
@@ -1745,7 +1745,7 @@ could not be determined.
 <a id="ERR_SOCKET_CANNOT_SEND"></a>
 ### `ERR_SOCKET_CANNOT_SEND`
 
-Data could be sent on a socket.
+Data could not be sent on a socket.
 
 <a id="ERR_SOCKET_CLOSED"></a>
 ### `ERR_SOCKET_CLOSED`

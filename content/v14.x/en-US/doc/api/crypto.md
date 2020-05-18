@@ -1674,7 +1674,9 @@ changes:
   - version: v11.6.0
     pr-url: https://github.com/nodejs/node/pull/24234
     description: The `key` argument can now be a `KeyObject`.
-  - version: v11.2.0
+  - version:
+     - v11.2.0
+     - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/24081
     description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
@@ -1768,7 +1770,9 @@ changes:
   - version: v11.6.0
     pr-url: https://github.com/nodejs/node/pull/24234
     description: The `key` argument can now be a `KeyObject`.
-  - version: v11.2.0
+  - version:
+     - v11.2.0
+     - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/24081
     description: The cipher `chacha20-poly1305` is now supported.
   - version: v10.10.0
@@ -2218,8 +2222,8 @@ behaves as if [`keyObject.export()`][] had been called on its result. Otherwise,
 the respective part of the key is returned as a [`KeyObject`][].
 
 When encoding public keys, it is recommended to use `'spki'`. When encoding
-private keys, it is recommended to use `'pks8'` with a strong passphrase, and to
-keep the passphrase confidential.
+private keys, it is recommended to use `'pkcs8'` with a strong passphrase,
+and to keep the passphrase confidential.
 
 ```js
 const { generateKeyPairSync } = require('crypto');
@@ -2781,7 +2785,9 @@ request.
 <!-- YAML
 added: v10.5.0
 changes:
-  - version: v12.8.0
+  - version:
+     - v12.8.0
+     - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/28799
     description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0
@@ -2839,7 +2845,9 @@ crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
 <!-- YAML
 added: v10.5.0
 changes:
-  - version: v12.8.0
+  - version:
+     - v12.8.0
+     - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/28799
     description: The `maxmem` value can now be any safe integer.
   - version: v10.9.0

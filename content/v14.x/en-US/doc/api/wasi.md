@@ -1,6 +1,6 @@
 # WebAssembly System Interface (WASI)
 
-<!--introduced_in=v13.3.0-->
+<!--introduced_in=v12.16.0-->
 
 > Stability: 1 - Experimental
 
@@ -34,7 +34,9 @@ CLI arguments are needed for the previous example to run.
 
 ## Class: `WASI`
 <!-- YAML
-added: v13.3.0
+added:
+ - v13.3.0
+ - v12.16.0
 -->
 
 The `WASI` class provides the WASI system call API and additional convenience
@@ -45,7 +47,9 @@ sandbox directory structure configured explicitly.
 
 ### `new WASI([options])`
 <!-- YAML
-added: v13.3.0
+added:
+ - v13.3.0
+ - v12.16.0
 -->
 
 * `options` {Object}
@@ -65,22 +69,27 @@ added: v13.3.0
 
 ### `wasi.start(instance)`
 <!-- YAML
-added: v13.3.0
+added:
+ - v13.3.0
+ - v12.16.0
 -->
 
 * `instance` {WebAssembly.Instance}
 
-Attempt to begin execution of `instance` by invoking its `_start()` export.
-If `instance` does not contain a `_start()` export, then `start()` attempts to
-invoke the `__wasi_unstable_reactor_start()` export. If neither of those exports
-is present on `instance`, then `start()` does nothing.
+Attempt to begin execution of `instance` as a WASI command by invoking its
+`_start()` export. If `instance` does not contain a `_start()` export, or if
+`instance` contains an `_initialize()` export, then an exception is thrown.
 
 `start()` requires that `instance` exports a [`WebAssembly.Memory`][] named
 `memory`. If `instance` does not have a `memory` export an exception is thrown.
 
+If `start()` is called more than once, an exception is thrown.
+
 ### `wasi.wasiImport`
 <!-- YAML
-added: v13.3.0
+added:
+ - v13.3.0
+ - v12.16.0
 -->
 
 * {Object}

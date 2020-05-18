@@ -170,6 +170,11 @@ provided by AsyncHooks itself. The logging should then be skipped when
 it was the logging itself that caused AsyncHooks callback to call. By
 doing this the otherwise infinite recursion is broken.
 
+### Class: `AsyncHook`
+
+The class `AsyncHook` exposes an interface for tracking lifetime events
+of asynchronous operations.
+
 #### `asyncHook.enable()`
 
 * Returns: {AsyncHook} A reference to `asyncHook`.
@@ -620,10 +625,12 @@ asyncResource.triggerAsyncId();
 * `options` {Object}
   * `triggerAsyncId` {number} The ID of the execution context that created this
   async event. **Default:** `executionAsyncId()`.
-  * `requireManualDestroy` {boolean} Disables automatic `emitDestroy` when the
-  object is garbage collected. This usually does not need to be set (even if
-  `emitDestroy` is called manually), unless the resource's `asyncId` is
-  retrieved and the sensitive API's `emitDestroy` is called with it.
+  * `requireManualDestroy` {boolean} If set to `true`, disables `emitDestroy`
+  when the object is garbage collected. This usually does not need to be set
+  (even if `emitDestroy` is called manually), unless the resource's `asyncId`
+  is retrieved and the sensitive API's `emitDestroy` is called with it.
+  When set to `false`, the `emitDestroy` call on garbage collection
+  will only take place if there is at least one active `destroy` hook.
   **Default:** `false`.
 
 Example usage:
