@@ -519,7 +519,9 @@ does not indicate whether the data has been flushed, for this use
 
 ##### `writable.writableCorked`
 <!-- YAML
-added: v13.2.0
+added:
+ - v13.2.0
+ - v12.16.0
 -->
 
 * {integer}
@@ -1440,7 +1442,7 @@ If the loop terminates with a `break` or a `throw`, the stream will be
 destroyed. In other terms, iterating over a stream will consume the stream
 fully. The stream will be read in chunks of size equal to the `highWaterMark`
 option. In the code example above, data will be in a single chunk if the file
-has less then 64kb of data because no `highWaterMark` option is provided to
+has less then 64KB of data because no `highWaterMark` option is provided to
 [`fs.createReadStream()`][].
 
 ### Duplex and Transform Streams
@@ -1503,6 +1505,21 @@ further errors except from `_destroy` may be emitted as `'error'`.
 ### `stream.finished(stream[, options], callback)`
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/32158
+    description: The `finished(stream, cb)` will wait for the `'close'` event
+                 before invoking the callback. The implementation tries to
+                 detect legacy streams and only apply this behavior to streams
+                 which are expected to emit `'close'`.
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/31545
+    description: Emitting `'close'` before `'end'` on a `Readable` stream
+                 will cause an `ERR_STREAM_PREMATURE_CLOSE` error.
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/31509
+    description: Callback will be invoked on streams which have already
+                 finished before the call to `finished(stream, cb)`.
 -->
 
 * `stream` {Stream} A readable and/or writable stream.
@@ -1580,6 +1597,12 @@ changes:
   - version: v13.10.0
     pr-url: https://github.com/nodejs/node/pull/31223
     description: Add support for async generators.
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/32158
+    description: The `pipeline(..., cb)` will wait for the `'close'` event
+                 before invoking the callback. The implementation tries to
+                 detect legacy streams and only apply this behavior to streams
+                 which are expected to emit `'close'`.
 -->
 
 * `source` {Stream|Iterable|AsyncIterable|Function}
@@ -1677,7 +1700,8 @@ added:
 -->
 
 * `iterable` {Iterable} Object implementing the `Symbol.asyncIterator` or
-  `Symbol.iterator` iterable protocol.
+  `Symbol.iterator` iterable protocol. Emits an 'error' event if a null
+   value is passed.
 * `options` {Object} Options provided to `new stream.Readable([options])`.
   By default, `Readable.from()` will set `options.objectMode` to `true`, unless
   this is explicitly opted out by setting `options.objectMode` to `false`.
@@ -1788,23 +1812,25 @@ method.
 #### Constructor: `new stream.Writable([options])`
 <!-- YAML
 changes:
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/30623
+    description: Change `autoDestroy` option default to `true`.
+  - version:
+     - v11.2.0
+     - v10.16.0
+    pr-url: https://github.com/nodejs/node/pull/22795
+    description: Add `autoDestroy` option to automatically `destroy()` the
+                 stream when it emits `'finish'` or errors.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/18438
     description: Add `emitClose` option to specify if `'close'` is emitted on
                  destroy.
-  - version: v11.2.0
-    pr-url: https://github.com/nodejs/node/pull/22795
-    description: Add `autoDestroy` option to automatically `destroy()` the
-                 stream when it emits `'finish'` or errors.
-  - version: v14.0.0
-    pr-url: https://github.com/nodejs/node/pull/30623
-    description: Change `autoDestroy` option default to `true`.
 -->
 
 * `options` {Object}
   * `highWaterMark` {number} Buffer level when
     [`stream.write()`][stream-write] starts returning `false`. **Default:**
-    `16384` (16kb), or `16` for `objectMode` streams.
+    `16384` (16KB), or `16` for `objectMode` streams.
   * `decodeStrings` {boolean} Whether to encode `string`s passed to
     [`stream.write()`][stream-write] to `Buffer`s (with the encoding
     specified in the [`stream.write()`][stream-write] call) before passing
@@ -2072,7 +2098,9 @@ constructor and implement the `readable._read()` method.
 #### `new stream.Readable([options])`
 <!-- YAML
 changes:
-  - version: v11.2.0
+  - version:
+     - v11.2.0
+     - v10.16.0
     pr-url: https://github.com/nodejs/node/pull/22795
     description: Add `autoDestroy` option to automatically `destroy()` the
                  stream when it emits `'end'` or errors.
@@ -2084,7 +2112,7 @@ changes:
 * `options` {Object}
   * `highWaterMark` {number} The maximum [number of bytes][hwm-gotcha] to store
     in the internal buffer before ceasing to read from the underlying resource.
-    **Default:** `16384` (16kb), or `16` for `objectMode` streams.
+    **Default:** `16384` (16KB), or `16` for `objectMode` streams.
   * `encoding` {string} If specified, then buffers will be decoded to
     strings using the specified encoding. **Default:** `null`.
   * `objectMode` {boolean} Whether this stream should behave
