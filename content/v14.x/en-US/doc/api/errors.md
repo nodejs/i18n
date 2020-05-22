@@ -855,6 +855,15 @@ An unknown Diffie-Hellman group name was given. See
 
 The [`fs.Dir`][] was previously closed.
 
+<a id="ERR_DIR_CONCURRENT_OPERATION"></a>
+### `ERR_DIR_CONCURRENT_OPERATION`
+<!-- YAML
+added: v14.3.0
+-->
+
+A synchronous read or close call was attempted on an [`fs.Dir`][] which has
+ongoing asynchronous operations.
+
 <a id="ERR_DNS_SET_SERVERS_FAILED"></a>
 ### `ERR_DNS_SET_SERVERS_FAILED`
 
@@ -888,6 +897,11 @@ provided.
 
 Encoding provided to `TextDecoder()` API was not one of the
 [WHATWG Supported Encodings][].
+
+<a id="ERR_EVAL_ESM_CANNOT_PRINT"></a>
+### `ERR_EVAL_ESM_CANNOT_PRINT`
+
+`--print` cannot be used with ESM input.
 
 <a id="ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE"></a>
 ### `ERR_EXECUTION_ENVIRONMENT_NOT_AVAILABLE`
@@ -2031,6 +2045,20 @@ An attempt was made to load a module with an unknown or unsupported format.
 An invalid or unknown process signal was passed to an API expecting a valid
 signal (such as [`subprocess.kill()`][]).
 
+<a id="ERR_UNSUPPORTED_DIR_IMPORT"></a>
+### `ERR_UNSUPPORTED_DIR_IMPORT`
+
+`import` a directory URL is unsupported. Instead, you can
+[self-reference a package using its name][] and [define a custom subpath][] in
+the `"exports"` field of the `package.json` file.
+
+<!-- eslint-skip -->
+```js
+import './'; // unsupported
+import './index.js'; // supported
+import 'package-name'; // supported
+```
+
 <a id="ERR_UNSUPPORTED_ESM_URL_SCHEME"></a>
 ### `ERR_UNSUPPORTED_ESM_URL_SCHEME`
 
@@ -2098,6 +2126,11 @@ meaning of the error depends on the specific function.
 ### `ERR_WASI_ALREADY_STARTED`
 
 The WASI instance has already started.
+
+<a id="ERR_WASI_NOT_STARTED"></a>
+### `ERR_WASI_NOT_STARTED`
+
+The WASI instance has not been started.
 
 <a id="ERR_WORKER_INIT_FAILED"></a>
 ### `ERR_WORKER_INIT_FAILED`
@@ -2585,3 +2618,5 @@ such as `process.stdout.on('data')`.
 [Subresource Integrity specification]: https://www.w3.org/TR/SRI/#the-integrity-attribute
 [try-catch]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
 [vm]: vm.html
+[self-reference a package using its name]: esm.html#esm_self_referencing_a_package_using_its_name
+[define a custom subpath]: esm.html#esm_subpath_exports

@@ -88,7 +88,7 @@ changes:
     This option is part of the experimental modules API, and should not be
     considered stable.
     * `specifier` {string} specifier passed to `import()`
-    * `script` {vm.Script}
+    * `module` {vm.Module}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
       recommended in order to take advantage of error tracking, and to avoid
       issues with namespaces that contain `then` function exports.
@@ -160,7 +160,6 @@ the value of another global variable, then execute the code multiple times.
 The globals are contained in the `context` object.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const context = {
@@ -235,7 +234,6 @@ the code multiple times in different contexts. The globals are set on and
 contained within each individual `context`.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const script = new vm.Script('globalVar = "set"');
@@ -404,7 +402,10 @@ support is planned.
 ```js
 const vm = require('vm');
 
-const contextifiedObject = vm.createContext({ secret: 42 });
+const contextifiedObject = vm.createContext({
+  secret: 42,
+  print: console.log,
+});
 
 (async () => {
   // Step 1
@@ -420,6 +421,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
   const bar = new vm.SourceTextModule(`
     import s from 'foo';
     s;
+    print(s);
   `, { context: contextifiedObject });
 
   // Step 2
@@ -462,16 +464,11 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 
   // Step 3
   //
-  // Evaluate the Module. The evaluate() method returns a Promise with a single
-  // property "result" that contains the result of the very last statement
-  // executed in the Module. In the case of `bar`, it is `s;`, which refers to
-  // the default export of the `foo` module, the `secret` we set in the
-  // beginning to 42.
+  // Evaluate the Module. The evaluate() method returns a promise which will
+  // resolve after the module has finished evaluating.
 
-  const { result } = await bar.evaluate();
-
-  console.log(result);
   // Prints 42.
+  await bar.evaluate();
 })();
 ```
 
@@ -514,17 +511,14 @@ in the ECMAScript specification.
 
 Evaluate the module.
 
-This must be called after the module has been linked; otherwise it will
-throw an error. It could be called also when the module has already been
-evaluated, in which case it will do one of the following two things:
-
-* return `undefined` if the initial evaluation ended in success (`module.status`
-  is `'evaluated'`)
-* rethrow the same exception the initial evaluation threw if the initial
-  evaluation ended in an error (`module.status` is `'errored'`)
+This must be called after the module has been linked; otherwise it will reject.
+It could be called also when the module has already been evaluated, in which
+case it will either do nothing if the initial evaluation ended in success
+(`module.status` is `'evaluated'`) or it will re-throw the exception that the
+initial evaluation resulted in (`module.status` is `'errored'`).
 
 This method cannot be called while the module is being evaluated
-(`module.status` is `'evaluating'`) to prevent infinite recursion.
+(`module.status` is `'evaluating'`).
 
 Corresponds to the [Evaluate() concrete method][] field of [Cyclic Module
 Record][]s in the ECMAScript specification.
@@ -811,6 +805,9 @@ changes:
   - version: v14.1.0
     pr-url: https://github.com/nodejs/node/pull/32985
     description: The `importModuleDynamically` option is now supported.
+  - version: v14.3.0
+    pr-url: https://github.com/nodejs/node/pull/33364
+    description: Removal of `importModuleDynamically` due to compatibility issues
 -->
 
 * `code` {string} The body of the function to compile.
@@ -833,16 +830,6 @@ changes:
   * `contextExtensions` {Object[]} An array containing a collection of context
     extensions (objects wrapping the current scope) to be applied while
     compiling. **Default:** `[]`.
-  * `importModuleDynamically` {Function} Called during evaluation of this module
-    when `import()` is called. If this option is not specified, calls to
-    `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][].
-    This option is part of the experimental modules API, and should not be
-    considered stable.
-    * `specifier` {string} specifier passed to `import()`
-    * `function` {Function}
-    * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
-      recommended in order to take advantage of error tracking, and to avoid
-      issues with namespaces that contain `then` function exports.
 * Returns: {Function}
 
 Compiles the given code into the provided context (if no context is
@@ -889,7 +876,6 @@ properties but also having the built-in objects and functions any standard
 will remain unchanged.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 global.globalVar = 3;
@@ -994,7 +980,6 @@ The following example compiles and executes different scripts using a single
 [contextified][] object:
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const contextObject = { globalVar: 1 };
@@ -1090,7 +1075,6 @@ The following example compiles and executes code that increments a global
 variable and sets a new one. These globals are contained in the `contextObject`.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const contextObject = {
