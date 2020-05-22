@@ -5,9 +5,11 @@ on:
     - cron: "0 0 * * 5" # run each Friday
 
 jobs:
-  steps:
-    - uses: JasonEtco/create-an-issue@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        filename: .github/ISSUE_TEMPLATE/meeting.md
+  create_meeting:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/meeting.md
