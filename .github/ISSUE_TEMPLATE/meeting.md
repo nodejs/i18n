@@ -8,7 +8,7 @@ about: Meeting issue template
 
 ### Links
 * [Zoom]({{ env.ZOOM_LINK | 'https://zoom.us/j/307660555' }})
-* [Google Docs Minutes]({{ env.ZOOM_LINK | 'https://docs.google.com/document/d/1996iPZqy_hVjiphgiICaDQZXg9ZU42QSdrkd6l1gS00' }})
+* [Google Docs Minutes]({{ env.DOCS_LINK | 'https://docs.google.com/document/d/1996iPZqy_hVjiphgiICaDQZXg9ZU42QSdrkd6l1gS00' }})
 
 ### Agenda
 
