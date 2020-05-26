@@ -4,7 +4,7 @@ const walk = require('walk-sync')
 const { chain } = require('lodash')
 const { supportedVersions } = require('./package.json')
 
-const separator = "/"
+const separator = '/'
 const contentDir = path.join(__dirname, 'content')
 const allPages = walk(contentDir, { directories: false })
   .filter(filename => filename.endsWith('.md'))
