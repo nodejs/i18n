@@ -167,7 +167,9 @@ Currently, overriding `Error.prepareStackTrace` is ignored when the
 
 ### `--experimental-import-meta-resolve`
 <!-- YAML
-added: v13.9.0
+added:
+  - v13.9.0
+  - v12.16.2
 -->
 
 Enable experimental `import.meta.resolve()` support.
@@ -210,7 +212,9 @@ Enable experimental top-level `await` keyword support in REPL.
 
 ### `--experimental-specifier-resolution=mode`
 <!-- YAML
-added: v13.4.0
+added:
+ - v13.4.0
+ - v12.16.0
 -->
 
 Sets the resolution algorithm for resolving ES module specifiers. Valid options
@@ -231,7 +235,9 @@ Enable experimental ES Module support in the `vm` module.
 
 ### `--experimental-wasi-unstable-preview1`
 <!-- YAML
-added: v13.3.0
+added:
+  - v13.3.0
+  - v12.16.0
 changes:
   - version: v13.6.0
     pr-url: https://github.com/nodejs/node/pull/30980
@@ -417,7 +423,10 @@ endpoint on `http://host:port/json/list`.
 
 ### `--insecure-http-parser`
 <!-- YAML
-added: v13.4.0
+added:
+ - v13.4.0
+ - v12.15.0
+ - v10.19.0
 -->
 
 Use an insecure HTTP parser that accepts invalid HTTP headers. This may allow
@@ -439,7 +448,9 @@ disappear in a non-semver-major release.
 
 ### `--max-http-header-size=size`
 <!-- YAML
-added: v11.6.0
+added:
+ - v11.6.0
+ - v10.15.0
 changes:
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/32520
@@ -737,7 +748,9 @@ with crypto support (default).
 
 ### `--tls-keylog=file`
 <!-- YAML
-added: v13.2.0
+added:
+ - v13.2.0
+ - v12.16.0
 -->
 
 Log TLS key material to a file. The key material is in NSS `SSLKEYLOGFILE`
@@ -746,7 +759,9 @@ traffic.
 
 ### `--tls-max-v1.2`
 <!-- YAML
-added: v12.0.0
+added:
+ - v12.0.0
+ - v10.20.0
 -->
 
 Set [`tls.DEFAULT_MAX_VERSION`][] to 'TLSv1.2'. Use to disable support for
@@ -762,7 +777,9 @@ for TLSv1.3.
 
 ### `--tls-min-v1.0`
 <!-- YAML
-added: v12.0.0
+added:
+ - v12.0.0
+ - v10.20.0
 -->
 
 Set default [`tls.DEFAULT_MIN_VERSION`][] to 'TLSv1'. Use for compatibility with
@@ -770,7 +787,9 @@ old TLS clients or servers.
 
 ### `--tls-min-v1.1`
 <!-- YAML
-added: v12.0.0
+added:
+ - v12.0.0
+ - v10.20.0
 -->
 
 Set default [`tls.DEFAULT_MIN_VERSION`][] to 'TLSv1.1'. Use for compatibility
@@ -778,7 +797,9 @@ with old TLS clients or servers.
 
 ### `--tls-min-v1.2`
 <!-- YAML
-added: v12.2.0
+added:
+ - v12.2.0
+ - v10.20.0
 -->
 
 Set default [`tls.DEFAULT_MIN_VERSION`][] to 'TLSv1.2'. This is the default for
@@ -792,6 +813,33 @@ added: v12.0.0
 
 Set default [`tls.DEFAULT_MIN_VERSION`][] to 'TLSv1.3'. Use to disable support
 for TLSv1.2, which is not as secure as TLSv1.3.
+
+### `--trace-atomics-wait`
+<!-- YAML
+added: v14.3.0
+-->
+
+Print short summaries of calls to [`Atomics.wait()`][] to stderr.
+The output could look like this:
+
+```text
+(node:15701) [Thread 0] Atomics.wait(<address> + 0, 1, inf) started
+(node:15701) [Thread 0] Atomics.wait(<address> + 0, 1, inf) did not wait because the values mismatched
+(node:15701) [Thread 0] Atomics.wait(<address> + 0, 0, 10) started
+(node:15701) [Thread 0] Atomics.wait(<address> + 0, 0, 10) timed out
+(node:15701) [Thread 0] Atomics.wait(<address> + 4, 0, inf) started
+(node:15701) [Thread 1] Atomics.wait(<address> + 4, -1, inf) started
+(node:15701) [Thread 0] Atomics.wait(<address> + 4, 0, inf) was woken up by another thread
+(node:15701) [Thread 1] Atomics.wait(<address> + 4, -1, inf) was woken up by another thread
+```
+
+The fields here correspond to:
+
+* The thread id as given by [`worker_threads.threadId`][]
+* The base address of the `SharedArrayBuffer` in question, as well as the
+  byte offset corresponding to the index passed to `Atomics.wait()`
+* The expected value that was passed to `Atomics.wait()`
+* The timeout passed to `Atomics.wait`
 
 ### `--trace-deprecation`
 <!-- YAML
@@ -825,7 +873,9 @@ Enables the collection of trace event tracing information.
 
 ### `--trace-exit`
 <!-- YAML
-added: v13.5.0
+added:
+ - v13.5.0
+ - v12.16.0
 -->
 
 Prints a stack trace whenever an environment is exited proactively,
@@ -882,7 +932,9 @@ Track heap object allocations for heap snapshots.
 
 ### `--unhandled-rejections=mode`
 <!-- YAML
-added: v12.0.0
+added:
+ - v12.0.0
+ - v10.17.0
 -->
 
 By default all unhandled rejections trigger a warning plus a deprecation warning
@@ -1178,6 +1230,7 @@ Node.js options that are allowed are:
 * `--tls-min-v1.1`
 * `--tls-min-v1.2`
 * `--tls-min-v1.3`
+* `--trace-atomics-wait`
 * `--trace-deprecation`
 * `--trace-event-categories`
 * `--trace-event-file-pattern`
@@ -1273,7 +1326,9 @@ to an empty string (`''` or `' '`) disables persistent REPL history.
 
 ### `NODE_REPL_EXTERNAL_MODULE=file`
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 Path to a Node.js module which will be loaded in place of the built-in REPL.
@@ -1445,12 +1500,14 @@ $ node --max-old-space-size=1536 index.js
 ```
 
 [`--openssl-config`]: #cli_openssl_config_file
+[`Atomics.wait()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Atomics/wait
 [`Buffer`]: buffer.html#buffer_class_buffer
 [`SlowBuffer`]: buffer.html#buffer_class_slowbuffer
 [`process.setUncaughtExceptionCaptureCallback()`]: process.html#process_process_setuncaughtexceptioncapturecallback_fn
 [`tls.DEFAULT_MAX_VERSION`]: tls.html#tls_tls_default_max_version
 [`tls.DEFAULT_MIN_VERSION`]: tls.html#tls_tls_default_min_version
 [`unhandledRejection`]: process.html#process_event_unhandledrejection
+[`worker_threads.threadId`]: worker_threads.html##worker_threads_worker_threadid
 [Chrome DevTools Protocol]: https://chromedevtools.github.io/devtools-protocol/
 [REPL]: repl.html
 [ScriptCoverage]: https://chromedevtools.github.io/devtools-protocol/tot/Profiler#type-ScriptCoverage

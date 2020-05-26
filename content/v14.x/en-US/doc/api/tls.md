@@ -372,7 +372,9 @@ Accepts encrypted connections using TLS or SSL.
 
 ### Event: `'keylog'`
 <!-- YAML
-added: v12.3.0
+added:
+ - v12.3.0
+ - v10.20.0
 -->
 
 * `line` {Buffer} Line of ASCII text, in NSS `SSLKEYLOGFILE` format.
@@ -692,12 +694,14 @@ Construct a new `tls.TLSSocket` object from an existing TCP socket.
 
 ### Event: `'keylog'`
 <!-- YAML
-added: v12.3.0
+added:
+ - v12.3.0
+ - v10.20.0
 -->
 
 * `line` {Buffer} Line of ASCII text, in NSS `SSLKEYLOGFILE` format.
 
-The `keylog` event is emitted on a client `tls.TLSSocket` when key material
+The `keylog` event is emitted on a `tls.TLSSocket` when key material
 is generated or received by the socket. This keying material can be stored
 for debugging, as it allows captured TLS traffic to be decrypted. It may
 be emitted multiple times, before or after the handshake completes.
@@ -857,13 +861,15 @@ socket has been destroyed, `null` will be returned.
 <!-- YAML
 added: v0.11.4
 changes:
+  - version:
+     - v13.4.0
+     - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/30637
+    description: Return the IETF cipher name as `standardName`.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26625
     description: Return the minimum cipher version, instead of a fixed string
       (`'TLSv1/SSLv3'`).
-  - version: v13.4.0
-    pr-url: https://github.com/nodejs/node/pull/30637
-    description: Return the IETF cipher name as `standardName`.
 -->
 
 * Returns: {Object}
@@ -1274,7 +1280,12 @@ being issued by trusted CA (`options.ca`).
 <!-- YAML
 added: v0.11.3
 changes:
-  - version: v13.6.0
+  - version: v14.1.0
+    pr-url: https://github.com/nodejs/node/pull/32786
+    description: The `highWaterMark` option is accepted now.
+  - version:
+     - v13.6.0
+     - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/23188
     description: The `pskCallback` option is now supported.
   - version: v12.9.0
@@ -1286,7 +1297,9 @@ changes:
   - version: v12.2.0
     pr-url: https://github.com/nodejs/node/pull/27497
     description: The `enableTrace` option is now supported.
-  - version: v11.8.0
+  - version:
+     - v11.8.0
+     - v10.16.0
     pr-url: https://github.com/nodejs/node/pull/25517
     description: The `timeout` option is supported now.
   - version: v8.0.0
@@ -1370,6 +1383,8 @@ changes:
     TLS connection. When a server offers a DH parameter with a size less
     than `minDHSize`, the TLS connection is destroyed and an error is thrown.
     **Default:** `1024`.
+  * `highWaterMark`: {number} Consistent with the readable stream `highWaterMark` parameter.
+    **Default:** `16 * 1024`.
   * `secureContext`: TLS context object created with
     [`tls.createSecureContext()`][]. If a `secureContext` is _not_ provided, one
     will be created by passing the entire `options` object to
@@ -1470,7 +1485,9 @@ changes:
   - version: v11.5.0
     pr-url: https://github.com/nodejs/node/pull/24733
     description: The `ca:` option now supports `BEGIN TRUSTED CERTIFICATE`.
-  - version: v11.4.0
+  - version:
+     - v11.4.0
+     - v10.16.0
     pr-url: https://github.com/nodejs/node/pull/24405
     description: The `minVersion` and `maxVersion` can be used to restrict
                  the allowed TLS protocol versions.

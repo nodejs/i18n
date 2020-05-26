@@ -568,6 +568,7 @@ server.listen(1337, '127.0.0.1', () => {
 ### `request.abort()`
 <!-- YAML
 added: v0.3.8
+deprecated: v13.14.0
 -->
 
 Marks the request as aborting. Calling this will cause remaining data
@@ -622,6 +623,31 @@ If `data` is specified, it is equivalent to calling
 
 If `callback` is specified, it will be called when the request stream
 is finished.
+
+### `request.destroy([error])`
+<!-- YAML
+added: v0.3.0
+-->
+
+* `error` {Error} Optional, an error to emit with `'error'` event.
+* Returns: {this}
+
+Destroy the request. Optionally emit an `'error'` event,
+and emit a `'close'` event. Calling this will cause remaining data
+in the response to be dropped and the socket to be destroyed.
+
+See [`writable.destroy()`][] for further details.
+
+#### `request.destroyed`
+<!-- YAML
+added: v13.14.0
+-->
+
+* {boolean}
+
+Is `true` after [`request.destroy()`][] has been called.
+
+See [`writable.destroyed`][] for further details.
 
 ### `request.finished`
 <!-- YAML
@@ -1713,12 +1739,10 @@ const server = http.createServer((req, res) => {
 });
 ```
 
-`Content-Length` is given in bytes not characters. The above example
-works because the string `'hello world'` contains only single byte characters.
-If the body contains higher coded characters then `Buffer.byteLength()`
-should be used to determine the number of bytes in a given encoding.
-And Node.js does not check whether `Content-Length` and the length of the body
-which has been transmitted are equal or not.
+`Content-Length` is given in bytes, not characters. Use
+[`Buffer.byteLength()`][] to determine the length of the body in bytes. Node.js
+does not check whether `Content-Length` and the length of the body which has
+been transmitted are equal or not.
 
 Attempting to set a header field name or value that contains invalid characters
 will result in a [`TypeError`][] being thrown.
@@ -2356,8 +2380,43 @@ the following events will be emitted in the following order:
 * `'close'`
 * `'close'` on the `res` object
 
-If `req.abort()` is called before the connection succeeds, the following events
-will be emitted in the following order:
+If `req.destroy()` is called before a socket is assigned, the following
+events will be emitted in the following order:
+
+* (`req.destroy()` called here)
+* `'error'` with an error with message `'Error: socket hang up'` and code
+  `'ECONNRESET'`
+* `'close'`
+
+If `req.destroy()` is called before the connection succeeds, the following
+events will be emitted in the following order:
+
+* `'socket'`
+* (`req.destroy()` called here)
+* `'error'` with an error with message `'Error: socket hang up'` and code
+  `'ECONNRESET'`
+* `'close'`
+
+If `req.destroy()` is called after the response is received, the following
+events will be emitted in the following order:
+
+* `'socket'`
+* `'response'`
+  * `'data'` any number of times, on the `res` object
+* (`req.destroy()` called here)
+* `'aborted'` on the `res` object
+* `'close'`
+* `'close'` on the `res` object
+
+If `req.abort()` is called before a socket is assigned, the following
+events will be emitted in the following order:
+
+* (`req.abort()` called here)
+* `'abort'`
+* `'close'`
+
+If `req.abort()` is called before the connection succeeds, the following
+events will be emitted in the following order:
 
 * `'socket'`
 * (`req.abort()` called here)
@@ -2366,8 +2425,8 @@ will be emitted in the following order:
   `'ECONNRESET'`
 * `'close'`
 
-If `req.abort()` is called after the response is received, the following events
-will be emitted in the following order:
+If `req.abort()` is called after the response is received, the following
+events will be emitted in the following order:
 
 * `'socket'`
 * `'response'`
@@ -2388,6 +2447,7 @@ not abort the request or do anything besides add a `'timeout'` event.
 [`'response'`]: #http_event_response
 [`'upgrade'`]: #http_event_upgrade
 [`Agent`]: #http_class_http_agent
+[`Buffer.byteLength()`]: buffer.html#buffer_class_method_buffer_bytelength_string_encoding
 [`Duplex`]: stream.html#stream_class_stream_duplex
 [`TypeError`]: errors.html#errors_class_typeerror
 [`URL`]: url.html#url_the_whatwg_url_api
@@ -2412,6 +2472,7 @@ not abort the request or do anything besides add a `'timeout'` event.
 [`new URL()`]: url.html#url_constructor_new_url_input_base
 [`removeHeader(name)`]: #http_request_removeheader_name
 [`request.end()`]: #http_request_end_data_encoding_callback
+[`request.destroy()`]: #http_request_destroy_error
 [`request.flushHeaders()`]: #http_request_flushheaders
 [`request.getHeader()`]: #http_request_getheader_name
 [`request.setHeader()`]: #http_request_setheader_name_value
@@ -2441,5 +2502,7 @@ not abort the request or do anything besides add a `'timeout'` event.
 [`socket.unref()`]: net.html#net_socket_unref
 [`url.parse()`]: url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost
 [`HPE_HEADER_OVERFLOW`]: errors.html#errors_hpe_header_overflow
+[`writable.destroy()`]: stream.html#stream_writable_destroy_error
+[`writable.destroyed`]: stream.html#stream_writable_destroyed
 [`writable.cork()`]: stream.html#stream_writable_cork
 [`writable.uncork()`]: stream.html#stream_writable_uncork

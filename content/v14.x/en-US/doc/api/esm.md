@@ -13,6 +13,27 @@ ECMAScript modules are [the official standard format][] to package JavaScript
 code for reuse. Modules are defined using a variety of [`import`][] and
 [`export`][] statements.
 
+The following example of an ES module exports a function:
+
+```js
+// addTwo.mjs
+function addTwo(num) {
+  return num + 2;
+}
+
+export { addTwo };
+```
+
+The following example of an ES module imports the function from `addTwo.mjs`:
+
+```js
+// app.mjs
+import { addTwo } from './addTwo.mjs';
+
+// Prints: 6
+console.log(addTwo(4));
+```
+
 Node.js fully supports ECMAScript modules as they are currently specified and
 provides limited interoperability between them and the existing module format,
 [CommonJS][].
@@ -36,8 +57,8 @@ initial input, or when referenced by `import` statements within ES module code:
 * Files ending in `.js` when the nearest parent `package.json` file contains a
   top-level field `"type"` with a value of `"module"`.
 
-* Strings passed in as an argument to `--eval` or `--print`, or piped to
-  `node` via `STDIN`, with the flag `--input-type=module`.
+* Strings passed in as an argument to `--eval`, or piped to `node` via `STDIN`,
+  with the flag `--input-type=module`.
 
 Node.js will treat as CommonJS all other forms of input, such as `.js` files
 where the nearest parent `package.json` file contains no top-level `"type"`
@@ -52,8 +73,8 @@ or when referenced by `import` statements within ES module code:
 * Files ending in `.js` when the nearest parent `package.json` file contains a
   top-level field `"type"` with a value of `"commonjs"`.
 
-* Strings passed in as an argument to `--eval` or `--print`, or piped to
-  `node` via `STDIN`, with the flag `--input-type=commonjs`.
+* Strings passed in as an argument to `--eval` or `--print`, or piped to `node`
+  via `STDIN`, with the flag `--input-type=commonjs`.
 
 ### `package.json` `"type"` field
 
@@ -159,9 +180,9 @@ package scope:
 
 ### `--input-type` flag
 
-Strings passed in as an argument to `--eval` or `--print` (or `-e` or `-p`), or
-piped to `node` via `STDIN`, will be treated as ES modules when the
-`--input-type=module` flag is set.
+Strings passed in as an argument to `--eval` (or `-e`), or piped to `node` via
+`STDIN`, will be treated as ES modules when the `--input-type=module` flag is
+set.
 
 ```sh
 node --input-type=module --eval "import { sep } from 'path'; console.log(sep);"
@@ -183,25 +204,75 @@ versions of Node.js, but its capabilities are limited: it only defines the main
 entry point of the package.
 
 The `"exports"` field provides an alternative to `"main"` where the package
-main entry point can be defined while also encapsulating the package, preventing
-any other entry points besides those defined in `"exports"`. If package entry
-points are defined in both `"main"` and `"exports"`, the latter takes precedence
-in versions of Node.js that support `"exports"`. [Conditional Exports][] can
-also be used within `"exports"` to define different package entry points per
-environment, including whether the package is referenced via `require` or via
-`import`.
+main entry point can be defined while also encapsulating the package,
+**preventing any other entry points besides those defined in `"exports"`**.
+This encapsulation allows module authors to define a public interface for
+their package.
 
 If both `"exports"` and `"main"` are defined, the `"exports"` field takes
-precedence over `"main"`.
+precedence over `"main"`. `"exports"` are not specific to ES modules or
+CommonJS; `"main"` will be overridden by `"exports"` if it exists. As such
+`"main"` cannot be used as a fallback for CommonJS but it can be used as a
+fallback for legacy versions of Node.js that do not support the `"exports"`
+field.
 
-Both `"main"` and `"exports"` entry points are not specific to ES modules or
-CommonJS; `"main"` will be overridden by `"exports"` in a `require` so it is
-not a CommonJS fallback.
+[Conditional Exports][] can be used within `"exports"` to define different
+package entry points per environment, including whether the package is
+referenced via `require` or via `import`. For more information about supporting
+both CommonJS and ES Modules in a single package please consult
+[the dual CommonJS/ES module packages section][].
 
-This is important with regard to `require`, since `require` of ES module files
-throws an error in all versions of Node.js. To create a package that works both
-in modern Node.js via `import` and `require` and also legacy Node.js versions,
-see [the dual CommonJS/ES module packages section][].
+**Warning**: Introducing the `"exports"` field prevents consumers of a package
+from using any entry points that are not defined, including the `package.json`
+(e.g. `require('your-package/package.json')`. **This will likely be a breaking
+change.**
+
+To make the introduction of `"exports"` non-breaking, ensure that every
+previously supported entry point is exported. It is best to explicitly specify
+entry points so that the package’s public API is well-defined. For example,
+a project that previous exported `main`, `lib`,
+`feature`, and the `package.json` could use the following `package.exports`:
+
+```json
+{
+  "name": "my-mod",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./lib/index": "./lib/index.js",
+    "./lib/index.js": "./lib/index.js",
+    "./feature": "./feature/index.js",
+    "./feature/index.js": "./feature/index.js",
+    "./package.json": "./package.json"
+  }
+}
+```
+
+Alternatively a project could choose to export entire folders:
+
+```json
+{
+  "name": "my-mod",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib": "./lib/index.js",
+    "./lib/": "./lib/",
+    "./feature": "./feature/index.js",
+    "./feature/": "./feature/",
+    "./package.json": "./package.json"
+  }
+}
+```
+
+As a last resort, package encapsulation can be disabled entirely by creating an
+export for the root of the package `"./": "./"`. This will expose every file in
+the package at the cost of disabling the encapsulation and potential tooling
+benefits this provides. As the ES Module loader in Node.js enforces the use of
+[the full specifier path][], exporting the root rather than being explicit
+about entry is less expressive than either of the prior examples. Not only
+will encapsulation be lost but module consumers will be unable to
+`import feature from 'my-mod/feature'` as they will need to provide the full
+path `import feature from 'my-mod/feature/index.js`.
 
 #### Main Entry Point Export
 
@@ -1026,6 +1097,32 @@ node --experimental-wasm-modules index.mjs
 
 would provide the exports interface for the instantiation of `module.wasm`.
 
+## Experimental Top-Level `await`
+
+When the `--experimental-top-level-await` flag is provided, `await` may be used
+in the top level (outside of async functions) within modules. This implements
+the [ECMAScript Top-Level `await` proposal][].
+
+Assuming an `a.mjs` with
+
+<!-- eslint-skip -->
+```js
+export const five = await Promise.resolve(5);
+```
+
+And a `b.mjs` with
+
+```js
+import { five } from './a.mjs';
+
+console.log(five); // Logs `5`
+```
+
+```bash
+node b.mjs # fails
+node --experimental-top-level-await b.mjs # works
+```
+
 ## Experimental Loaders
 
 **Note: This API is currently being redesigned and will still change.**
@@ -1506,8 +1603,9 @@ The resolver can throw the following errors:
 > 1. If _resolvedURL_ contains any percent encodings of _"/"_ or _"\\"_ (_"%2f"_
 >    and _"%5C"_ respectively), then
 >    1. Throw an _Invalid Module Specifier_ error.
-> 1. If _resolvedURL_ does not end with a trailing _"/"_ and the file at
->    _resolvedURL_ does not exist, then
+> 1. If the file at _resolvedURL_ is a directory, then
+>    1. Throw an _Unsupported Directory Import_ error.
+> 1. If the file at _resolvedURL_ does not exist, then
 >    1. Throw a _Module Not Found_ error.
 > 1. Set _resolvedURL_ to the real path of _resolvedURL_.
 > 1. Let _format_ be the result of **ESM_FORMAT**(_resolvedURL_).
@@ -1601,13 +1699,6 @@ The resolver can throw the following errors:
 >       1. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _mainExport_, _""_).
 >    1. Throw a _Package Path Not Exported_ error.
-> 1. If _pjson.main_ is a String, then
->    1. Let _resolvedMain_ be the URL resolution of _packageURL_, "/", and
->       _pjson.main_.
->    1. If the file at _resolvedMain_ exists, then
->       1. Return _resolvedMain_.
-> 1. If _pjson.type_ is equal to _"module"_, then
->    1. Throw a _Module Not Found_ error.
 > 1. Let _legacyMainURL_ be the result applying the legacy
 >    **LOAD_AS_DIRECTORY** CommonJS resolver to _packageURL_, throwing a
 >    _Module Not Found_ error for no resolution.
@@ -1661,13 +1752,15 @@ The resolver can throw the following errors:
 >             loop on any _Package Path Not Exported_ error.
 >    1. Throw a _Package Path Not Exported_ error.
 > 1. Otherwise, if _target_ is an Array, then
->    1. If _target.length is zero, throw an _Invalid Package Target_ error.
+>    1. If _target.length is zero, throw a _Package Path Not Exported_ error.
 >    1. For each item _targetValue_ in _target_, do
 >       1. If _targetValue_ is an Array, continue the loop.
 >       1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _targetValue_, _subpath_, _env_), continuing the loop on any
 >          _Package Path Not Exported_ or _Invalid Package Target_ error.
 >    1. Throw the last fallback resolution error.
+> 1. Otherwise, if _target_ is _null_, throw a _Package Path Not Exported_
+>    error.
 > 1. Otherwise throw an _Invalid Package Target_ error.
 
 **ESM_FORMAT**(_url_)
@@ -1734,6 +1827,7 @@ success!
 [Conditional Exports]: #esm_conditional_exports
 [Dynamic `import()`]: https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports
 [ECMAScript-modules implementation]: https://github.com/nodejs/modules/blob/master/doc/plan-for-new-modules-implementation.md
+[ECMAScript Top-Level `await` proposal]: https://github.com/tc39/proposal-top-level-await/
 [ES Module Integration Proposal for Web Assembly]: https://github.com/webassembly/esm-integration
 [Node.js EP for ES Modules]: https://github.com/nodejs/node-eps/blob/master/002-es-modules.md
 [Terminology]: #esm_terminology
@@ -1751,6 +1845,7 @@ success!
 [dynamic instantiate hook]: #esm_code_dynamicinstantiate_code_hook
 [import an ES or CommonJS module for its side effects only]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Import_a_module_for_its_side_effects_only
 [special scheme]: https://url.spec.whatwg.org/#special-scheme
+[the full specifier path]: #esm_mandatory_file_extensions
 [the official standard format]: https://tc39.github.io/ecma262/#sec-modules
 [the dual CommonJS/ES module packages section]: #esm_dual_commonjs_es_module_packages
 [transpiler loader example]: #esm_transpiler_loader

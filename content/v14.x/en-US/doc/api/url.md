@@ -105,6 +105,13 @@ const myURL = new URL('/foo', 'https://example.org/');
 // https://example.org/foo
 ```
 
+The URL constructor is accessible as a property on the global object.
+It can also be imported from the built-in url module:
+
+```js
+console.log(URL === require('url').URL); // Prints 'true'.
+```
+
 A `TypeError` will be thrown if the `input` or `base` are not valid URLs. Note
 that an effort will be made to coerce the given values into strings. For
 instance:
@@ -465,9 +472,27 @@ and [`url.format()`][] methods would produce.
 * {URLSearchParams}
 
 Gets the [`URLSearchParams`][] object representing the query parameters of the
-URL. This property is read-only; to replace the entirety of query parameters of
-the URL, use the [`url.search`][] setter. See [`URLSearchParams`][]
-documentation for details.
+URL. This property is read-only but the `URLSearchParams` object it provides
+can be used to mutate the URL instance; to replace the entirety of query
+parameters of the URL, use the [`url.search`][] setter. See
+[`URLSearchParams`][] documentation for details.
+
+Use care when using `.searchParams` to modify the `URL` because,
+per the WHATWG specification, the `URLSearchParams` object uses
+different rules to determine which characters to percent-encode. For
+instance, the `URL` object will not percent encode the ASCII tilde (`~`)
+character, while `URLSearchParams` will always encode it:
+
+```js
+const myUrl = new URL('https://example.org/abc?foo=~bar');
+
+console.log(myUrl.search);  // prints ?foo=~bar
+
+// Modify the URL via searchParams...
+myUrl.searchParams.sort();
+
+console.log(myUrl.search);  // prints ?foo=%7Ebar
+```
 
 #### `url.username`
 

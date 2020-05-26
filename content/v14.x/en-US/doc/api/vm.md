@@ -160,7 +160,6 @@ the value of another global variable, then execute the code multiple times.
 The globals are contained in the `context` object.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const context = {
@@ -235,7 +234,6 @@ the code multiple times in different contexts. The globals are set on and
 contained within each individual `context`.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const script = new vm.Script('globalVar = "set"');
@@ -303,15 +301,21 @@ added: v13.10.0
 
 > Stability: 1 - Experimental
 
-Measure the memory known to V8 and used by the current execution context
-or a specified context.
+Measure the memory known to V8 and used by all contexts known to the
+current V8 isolate, or the main context.
 
 * `options` {Object} Optional.
-  * `mode` {string} Either `'summary'` or `'detailed'`.
+  * `mode` {string} Either `'summary'` or `'detailed'`. In summary mode,
+    only the memory measured for the main context will be returned. In
+    detailed mode, the measure measured for all contexts known to the
+    current V8 isolate will be returned.
     **Default:** `'summary'`
-  * `context` {Object} Optional. A [contextified][] object returned
-    by `vm.createContext()`. If not specified, measure the memory
-    usage of the current context where `vm.measureMemory()` is invoked.
+  * `execution` {string} Either `'default'` or `'eager'`. With default
+    execution, the promise will not resolve until after the next scheduled
+    garbage collection starts, which may take a while (or never if the program
+    exits before the next GC). With eager execution, the GC will be started
+    right away to measure the memory.
+    **Default:** `'default'`
 * Returns: {Promise} If the memory is successfully measured the promise will
   resolve with an object containing information about the memory usage.
 
@@ -319,35 +323,57 @@ The format of the object that the returned Promise may resolve with is
 specific to the V8 engine and may change from one version of V8 to the next.
 
 The returned result is different from the statistics returned by
-`v8.getHeapSpaceStatistics()` in that `vm.measureMemory()` measures
-the memory reachable by V8 from a specific context, while
-`v8.getHeapSpaceStatistics()` measures the memory used by an instance
-of V8 engine, which can switch among multiple contexts that reference
-objects in the heap of one engine.
+`v8.getHeapSpaceStatistics()` in that `vm.measureMemory()` measure the
+memory reachable by each V8 specific contexts in the current instance of
+the V8 engine, while the result of `v8.getHeapSpaceStatistics()` measure
+the memory occupied by each heap space in the current V8 instance.
 
 ```js
 const vm = require('vm');
-// Measure the memory used by the current context and return the result
-// in summary.
+// Measure the memory used by the main context.
 vm.measureMemory({ mode: 'summary' })
-  // Is the same as vm.measureMemory()
+  // This is the same as vm.measureMemory()
   .then((result) => {
     // The current format is:
-    // { total: { jsMemoryEstimate: 2211728, jsMemoryRange: [ 0, 2211728 ] } }
+    // {
+    //   total: {
+    //      jsMemoryEstimate: 2418479, jsMemoryRange: [ 2418479, 2745799 ]
+    //    }
+    // }
     console.log(result);
   });
 
-const context = vm.createContext({});
-vm.measureMemory({ mode: 'detailed' }, context)
+const context = vm.createContext({ a: 1 });
+vm.measureMemory({ mode: 'detailed', execution: 'eager' })
   .then((result) => {
-    // At the moment the detailed format is the same as the summary one.
+    // Reference the context here so that it won't be GC'ed
+    // until the measurement is complete.
+    console.log(context.a);
+    // {
+    //   total: {
+    //     jsMemoryEstimate: 2574732,
+    //     jsMemoryRange: [ 2574732, 2904372 ]
+    //   },
+    //   current: {
+    //     jsMemoryEstimate: 2438996,
+    //     jsMemoryRange: [ 2438996, 2768636 ]
+    //   },
+    //   other: [
+    //     {
+    //       jsMemoryEstimate: 135736,
+    //       jsMemoryRange: [ 135736, 465376 ]
+    //     }
+    //   ]
+    // }
     console.log(result);
   });
 ```
 
 ## Class: `vm.Module`
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 > Stability: 1 - Experimental
@@ -376,7 +402,10 @@ support is planned.
 ```js
 const vm = require('vm');
 
-const contextifiedObject = vm.createContext({ secret: 42 });
+const contextifiedObject = vm.createContext({
+  secret: 42,
+  print: console.log,
+});
 
 (async () => {
   // Step 1
@@ -392,6 +421,7 @@ const contextifiedObject = vm.createContext({ secret: 42 });
   const bar = new vm.SourceTextModule(`
     import s from 'foo';
     s;
+    print(s);
   `, { context: contextifiedObject });
 
   // Step 2
@@ -434,16 +464,11 @@ const contextifiedObject = vm.createContext({ secret: 42 });
 
   // Step 3
   //
-  // Evaluate the Module. The evaluate() method returns a Promise with a single
-  // property "result" that contains the result of the very last statement
-  // executed in the Module. In the case of `bar`, it is `s;`, which refers to
-  // the default export of the `foo` module, the `secret` we set in the
-  // beginning to 42.
+  // Evaluate the Module. The evaluate() method returns a promise which will
+  // resolve after the module has finished evaluating.
 
-  const { result } = await bar.evaluate();
-
-  console.log(result);
   // Prints 42.
+  await bar.evaluate();
 })();
 ```
 
@@ -486,17 +511,14 @@ in the ECMAScript specification.
 
 Evaluate the module.
 
-This must be called after the module has been linked; otherwise it will
-throw an error. It could be called also when the module has already been
-evaluated, in which case it will do one of the following two things:
-
-* return `undefined` if the initial evaluation ended in success (`module.status`
-  is `'evaluated'`)
-* rethrow the same exception the initial evaluation threw if the initial
-  evaluation ended in an error (`module.status` is `'errored'`)
+This must be called after the module has been linked; otherwise it will reject.
+It could be called also when the module has already been evaluated, in which
+case it will either do nothing if the initial evaluation ended in success
+(`module.status` is `'evaluated'`) or it will re-throw the exception that the
+initial evaluation resulted in (`module.status` is `'errored'`).
 
 This method cannot be called while the module is being evaluated
-(`module.status` is `'evaluating'`) to prevent infinite recursion.
+(`module.status` is `'evaluating'`).
 
 Corresponds to the [Evaluate() concrete method][] field of [Cyclic Module
 Record][]s in the ECMAScript specification.
@@ -696,7 +718,9 @@ const module2 = new vm.SourceTextModule('const a = 1;', { cachedData });
 
 ## Class: `vm.SyntheticModule`
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 > Stability: 1 - Experimental
@@ -725,7 +749,9 @@ const module = new vm.SyntheticModule(['default'], function() {
 
 ### Constructor: `new vm.SyntheticModule(exportNames, evaluateCallback[, options])`
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 * `exportNames` {string[]} Array of names that will be exported from the module.
@@ -745,7 +771,9 @@ the module to access information outside the specified `context`. Use
 
 ### `syntheticModule.setExport(name, value)`
 <!-- YAML
-added: v13.0.0
+added:
+ - v13.0.0
+ - v12.16.0
 -->
 
 * `name` {string} Name of the export to set.
@@ -773,6 +801,13 @@ const vm = require('vm');
 ## `vm.compileFunction(code[, params[, options]])`
 <!-- YAML
 added: v10.10.0
+changes:
+  - version: v14.1.0
+    pr-url: https://github.com/nodejs/node/pull/32985
+    description: The `importModuleDynamically` option is now supported.
+  - version: v14.3.0
+    pr-url: https://github.com/nodejs/node/pull/33364
+    description: Removal of `importModuleDynamically` due to compatibility issues
 -->
 
 * `code` {string} The body of the function to compile.
@@ -841,7 +876,6 @@ properties but also having the built-in objects and functions any standard
 will remain unchanged.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 global.globalVar = 3;
@@ -946,7 +980,6 @@ The following example compiles and executes different scripts using a single
 [contextified][] object:
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const contextObject = { globalVar: 1 };
@@ -1042,7 +1075,6 @@ The following example compiles and executes code that increments a global
 variable and sets a new one. These globals are contained in the `contextObject`.
 
 ```js
-const util = require('util');
 const vm = require('vm');
 
 const contextObject = {
