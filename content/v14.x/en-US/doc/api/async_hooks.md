@@ -68,7 +68,7 @@ function before(asyncId) { }
 // After is called just after the resource's callback has finished.
 function after(asyncId) { }
 
-// Destroy is called when an AsyncWrap instance is destroyed.
+// Destroy is called when the resource is destroyed.
 function destroy(asyncId) { }
 
 // promiseResolve is called only for promise resources, when the
@@ -305,11 +305,6 @@ host in `net.Server.listen()`. The API for accessing this information is
 currently not considered public, but using the Embedder API, users can provide
 and document their own resource objects. For example, such a resource object
 could contain the SQL query being executed.
-
-In the case of Promises, the `resource` object will have an
-`isChainedPromise` property, set to `true` if the promise has a parent promise,
-and `false` otherwise. For example, in the case of `b = a.then(handler)`, `a` is
-considered a parent `Promise` of `b`. Here, `b` is considered a chained promise.
 
 In some cases the resource object is reused for performance reasons, it is
 thus not safe to use it as a key in a `WeakMap` or add properties to it.
@@ -635,7 +630,7 @@ see the details of the V8 [PromiseHooks][] API.
 
 Library developers that handle their own asynchronous resources performing tasks
 like I/O, connection pooling, or managing callback queues may use the
-`AsyncWrap` JavaScript API so that all the appropriate callbacks are called.
+`AsyncResource` JavaScript API so that all the appropriate callbacks are called.
 
 ### Class: `AsyncResource`
 
@@ -1085,6 +1080,21 @@ In this example, the store is only available in the callback function and the
 functions called by `foo`. Outside of `run`, calling `getStore` will return
 `undefined`.
 
+### Troubleshooting
+
+In most cases your application or library code should have no issues with
+`AsyncLocalStorage`. But in rare cases you may face situations when the
+current store is lost in one of asynchronous operations. Then you should
+consider the following options.
+
+If your code is callback-based, it is enough to promisify it with
+[`util.promisify()`][], so it starts working with native promises.
+
+If you need to keep using callback-based API, or your code assumes
+a custom thenable implementation, you should use [`AsyncResource`][] class
+to associate the asynchronous operation with the correct execution context.
+
+[`AsyncResource`]: #async_hooks_class_asyncresource
 [`after` callback]: #async_hooks_after_asyncid
 [`before` callback]: #async_hooks_before_asyncid
 [`destroy` callback]: #async_hooks_destroy_asyncid
@@ -1094,3 +1104,4 @@ functions called by `foo`. Outside of `run`, calling `getStore` will return
 [PromiseHooks]: https://docs.google.com/document/d/1rda3yKGHimKIhg5YeoAmCOtyURgsbTH_qaYR79FELlk/edit
 [`Worker`]: worker_threads.html#worker_threads_class_worker
 [promise execution tracking]: #async_hooks_promise_execution_tracking
+[`util.promisify()`]: util.html#util_util_promisify_original

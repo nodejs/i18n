@@ -1,7 +1,7 @@
 const fs = require('fs-extra')
 const path = require('path')
 const walk = require('walk-sync')
-const { difference } = require('lodash')
+const { difference, intersection } = require('lodash')
 const { supportedVersions } = require('./package.json')
 
 const contentDir = path.join(__dirname, 'content')
@@ -9,8 +9,10 @@ const versions = fs.readdirSync(contentDir)
 const originalSourceLocale = 'en-US'
 
 describe('original content', () => {
-  test('exist for all supported versions', () => {
-    expect(supportedVersions.sort()).toEqual(versions.sort())
+  test('all supported versions exist', () => {
+    expect(intersection(supportedVersions, versions).length).toEqual(supportedVersions.length)
+  })
+  test('all supported versions includes original source', () => {
     versions.forEach((major) => {
       const languages = fs.readdirSync(path.join(contentDir, major))
       expect(languages.includes(originalSourceLocale)).toBe(true)
