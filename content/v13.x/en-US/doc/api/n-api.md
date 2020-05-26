@@ -241,15 +241,16 @@ from version 3 with some additions. This means that it is not necessary
 to recompile for new versions of Node.js which are
 listed as supporting a later version.
 
-|       | 1       | 2        | 3        | 4        | 5         |
-|-------|---------|----------|----------|----------|-----------|
-| v6.x  |         |          | v6.14.2* |          |           |
-| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |
-| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |
-| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  |
-| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |
-| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |
-| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |
+|       | 1       | 2        | 3        | 4        | 5         | 6         |
+|-------|---------|----------|----------|----------|-----------|-----------|
+| v6.x  |         |          | v6.14.2* |          |           |           |
+| v8.x  | v8.0.0* | v8.10.0* | v8.11.2  | v8.16.0  |           |           |
+| v9.x  | v9.0.0* | v9.3.0*  | v9.11.0* |          |           |           |
+| v10.x | v10.0.0 | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  | v10.20.0  |
+| v11.x | v11.0.0 | v11.0.0  | v11.0.0  | v11.8.0  |           |           |
+| v12.x | v12.0.0 | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  |           |
+| v13.x | v13.0.0 | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |           |
+| v14.x | v14.0.0 | v14.0.0  | v14.0.0  | v14.0.0  | v14.0.0   | v14.0.0   |
 
 \* Indicates that the N-API version was released as experimental
 
@@ -861,7 +862,7 @@ SemVer applying. In order to support this model with N-API, both
 in internal functionality and for module specific functionality
 (as its good practice), the `throw_` and `create_` functions
 take an optional code parameter which is the string for the code
-to be added to the error object. If the optional parameter is NULL
+to be added to the error object. If the optional parameter is `NULL`
 then no code will be associated with the error. If a code is provided,
 the name associated with the error is also updated to be:
 
@@ -1059,7 +1060,7 @@ napi_status napi_get_and_clear_last_exception(napi_env env,
 ```
 
 * `[in] env`: The environment that the API is invoked under.
-* `[out] result`: The exception if one is pending, NULL otherwise.
+* `[out] result`: The exception if one is pending, `NULL` otherwise.
 
 Returns `napi_ok` if the API succeeded.
 
@@ -1351,7 +1352,7 @@ then be modified through [`napi_reference_ref`][] and
 [`napi_reference_unref`][]. If an object is collected while the count
 for a reference is 0, all subsequent calls to
 get the object associated with the reference [`napi_get_reference_value`][]
-will return NULL for the returned `napi_value`. An attempt to call
+will return `NULL` for the returned `napi_value`. An attempt to call
 [`napi_reference_ref`][] for a reference whose object has been collected
 will result in an error.
 
@@ -1474,7 +1475,7 @@ Returns `napi_ok` if the API succeeded.
 
 If still valid, this API returns the `napi_value` representing the
 JavaScript `Object` associated with the `napi_ref`. Otherwise, result
-will be NULL.
+will be `NULL`.
 
 ### Cleanup on exit of the current Node.js instance
 
@@ -1550,7 +1551,7 @@ napi_value Init(napi_env env, napi_value exports);
 
 The return value from `Init` is treated as the `exports` object for the module.
 The `Init` method is passed an empty object via the `exports` parameter as a
-convenience. If `Init` returns NULL, the parameter passed as `exports` is
+convenience. If `Init` returns `NULL`, the parameter passed as `exports` is
 exported by the module. N-API modules cannot modify the `module` object but can
 specify anything as the `exports` property of the module.
 
@@ -2828,7 +2829,7 @@ napi_status napi_get_value_string_latin1(napi_env env,
 
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
-* `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If NULL is
+* `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If `NULL` is
   passed in, the length of the string (in bytes) is returned.
 * `[in] bufsize`: Size of the destination buffer. When this value is
   insufficient, the returned string will be truncated.
@@ -2857,7 +2858,7 @@ napi_status napi_get_value_string_utf8(napi_env env,
 
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
-* `[in] buf`: Buffer to write the UTF8-encoded string into. If NULL is passed
+* `[in] buf`: Buffer to write the UTF8-encoded string into. If `NULL` is passed
   in, the length of the string (in bytes) is returned.
 * `[in] bufsize`: Size of the destination buffer. When this value is
   insufficient, the returned string will be truncated.
@@ -2885,7 +2886,7 @@ napi_status napi_get_value_string_utf16(napi_env env,
 
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
-* `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If NULL is
+* `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If `NULL` is
   passed in, the length of the string (in 2-byte code units) is returned.
 * `[in] bufsize`: Size of the destination buffer. When this value is
   insufficient, the returned string will be truncated.
@@ -5096,11 +5097,18 @@ preventing data from being successfully added to the queue. If set to
 `napi_call_threadsafe_function()` never blocks if the thread-safe function was
 created with a maximum queue size of 0.
 
-As a special case, when `napi_call_threadsafe_function()` is called from the
-main thread, it will return `napi_would_deadlock` if the queue is full and it
-was called with `napi_tsfn_blocking`. The reason for this is that the main
-thread is responsible for reducing the number of items in the queue so, if it
-waits for room to become available on the queue, then it will deadlock.
+As a special case, when `napi_call_threadsafe_function()` is called from a
+JavaScript thread, it will return `napi_would_deadlock` if the queue is full
+and it was called with `napi_tsfn_blocking`. The reason for this is that the
+JavaScript thread is responsible for removing items from the queue, thereby
+reducing their number. Thus, if it waits for room to become available on the
+queue, then it will deadlock.
+
+`napi_call_threadsafe_function()` will also return `napi_would_deadlock` if the
+thread-safe function created on one JavaScript thread is called from another
+JavaScript thread. The reason for this is to prevent a deadlock arising from the
+possibility that the two JavaScript threads end up waiting on one another,
+thereby both deadlocking.
 
 The actual call into JavaScript is controlled by the callback given via the
 `call_js_cb` parameter. `call_js_cb` is invoked on the main thread once for each
@@ -5243,7 +5251,7 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/32689
     description: >
       Return `napi_would_deadlock` when called with `napi_tsfn_blocking` from
-      the main thread and the queue is full.
+      the main thread or a worker thread and the queue is full.
 -->
 
 ```C

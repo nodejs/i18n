@@ -1,10 +1,24 @@
 preserve_hierarchy: true
 files:
+  - source: /content/v4.x/en-US/**/*.md
+    translation: /content/v4.x/%locale%/**/%original_file_name%
+  - source: /content/v5.x/en-US/**/*.md
+    translation: /content/v5.x/%locale%/**/%original_file_name%
+  - source: /content/v6.x/en-US/**/*.md
+    translation: /content/v6.x/%locale%/**/%original_file_name%
+  - source: /content/v7.x/en-US/**/*.md
+    translation: /content/v7.x/%locale%/**/%original_file_name%
   - source: /content/v8.x/en-US/**/*.md
     translation: /content/v8.x/%locale%/**/%original_file_name%
+  - source: /content/v9.x/en-US/**/*.md
+    translation: /content/v9.x/%locale%/**/%original_file_name%
   - source: /content/v10.x/en-US/**/*.md
     translation: /content/v10.x/%locale%/**/%original_file_name%
+  - source: /content/v11.x/en-US/**/*.md
+    translation: /content/v11.x/%locale%/**
   - source: /content/v12.x/en-US/**/*.md
     translation: /content/v12.x/%locale%/**/%original_file_name%
   - source: /content/v13.x/en-US/**/*.md
     translation: /content/v13.x/%locale%/**/%original_file_name%
+  - source: /content/v14.x/en-US/**/*.md
+    translation: /content/v14.x/%locale%/**/%original_file_name%
