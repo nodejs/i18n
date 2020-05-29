@@ -114,7 +114,7 @@ Emitted when the server has been bound after calling [`server.listen()`][].
 added: v0.1.90
 -->
 
-* Returns: {Object|string}
+* Returns: {Object|string|null}
 
 Returns the bound `address`, the address `family` name, and `port` of the server
 as reported by the operating system if listening on an IP socket
@@ -138,7 +138,8 @@ server.listen(() => {
 });
 ```
 
-Don't call `server.address()` until the `'listening'` event has been emitted.
+`server.address()` returns `null` before the `'listening'` event has been
+emitted or after calling `server.close()`.
 
 ### `server.close([callback])`
 <!-- YAML
@@ -588,7 +589,7 @@ Possible signatures:
 * [`socket.connect(options[, connectListener])`][`socket.connect(options)`]
 * [`socket.connect(path[, connectListener])`][`socket.connect(path)`]
   for [IPC][] connections.
-* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`]
+* [`socket.connect(port[, host][, connectListener])`][`socket.connect(port)`]
   for TCP connections.
 * Returns: {net.Socket} The socket itself.
 
@@ -1064,8 +1065,7 @@ client.on('end', () => {
 });
 ```
 
-To connect on the socket `/tmp/echo.sock` the second line would just be
-changed to:
+To connect on the socket `/tmp/echo.sock`:
 
 ```js
 const client = net.createConnection({ path: '/tmp/echo.sock' });
@@ -1098,21 +1098,21 @@ added: v0.1.90
 -->
 
 * `port` {number} Port the socket should connect to. Will be passed to
-  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port)`].
 * `host` {string} Host the socket should connect to. Will be passed to
-  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port)`].
    **Default:** `'localhost'`.
 * `connectListener` {Function} Common parameter of the
   [`net.createConnection()`][] functions, an "once" listener for the
   `'connect'` event on the initiating socket. Will be passed to
-  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`].
+  [`socket.connect(port[, host][, connectListener])`][`socket.connect(port)`].
 * Returns: {net.Socket} The newly created socket used to start the connection.
 
 Initiates a TCP connection.
 
 This function creates a new [`net.Socket`][] with all options set to default,
 immediately initiates connection with
-[`socket.connect(port[, host][, connectListener])`][`socket.connect(port, host)`],
+[`socket.connect(port[, host][, connectListener])`][`socket.connect(port)`],
 then returns the `net.Socket` that starts the connection.
 
 ## `net.createServer([options][, connectionListener])`
@@ -1174,8 +1174,7 @@ Test this by using `telnet`:
 $ telnet localhost 8124
 ```
 
-To listen on the socket `/tmp/echo.sock` the third line from the last would
-just be changed to:
+To listen on the socket `/tmp/echo.sock`:
 
 ```js
 server.listen('/tmp/echo.sock', () => {
@@ -1260,7 +1259,7 @@ Returns `true` if input is a version 6 IP address, otherwise returns `false`.
 [`socket.connect()`]: #net_socket_connect
 [`socket.connect(options)`]: #net_socket_connect_options_connectlistener
 [`socket.connect(path)`]: #net_socket_connect_path_connectlistener
-[`socket.connect(port, host)`]: #net_socket_connect_port_host_connectlistener
+[`socket.connect(port)`]: #net_socket_connect_port_host_connectlistener
 [`socket.connecting`]: #net_socket_connecting
 [`socket.destroy()`]: #net_socket_destroy_exception
 [`socket.end()`]: #net_socket_end_data_encoding_callback
