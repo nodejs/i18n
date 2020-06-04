@@ -33,7 +33,7 @@
     "crowdin-glossary": "^1.2.0",
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
-    "fs-extra": "^9.0.0",
+    "fs-extra": "^9.0.1",
     "globals": "^13.0.0",
     "jest": "^25.4.0",
     "semver": "^7.3.2",
