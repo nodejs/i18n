@@ -1,11 +1,11 @@
 ---
 name: WG Meeting
-title: i18n WG Meeting {{ date | date('MMMM Do') }}
+title: i18n WG Meeting
 about: Meeting issue template for autogenerate with GitHub Actions
 ---
 
 ### Date & Time
-* 6:00pm UTC on {{ date('MMMM Do YYYY') }}
+* 6:00pm UTC on
 
 ### Links
 * [Zoom](https://zoom.us/j/307660555)
