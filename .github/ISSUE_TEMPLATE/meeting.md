@@ -1,6 +1,6 @@
 ---
 name: WG Meeting
-title: i18n WG Meeting
+title: i18n WG Meeting {{ date | date('MMMM Do') }}
 about: Meeting issue template for autogenerate with GitHub Actions
 ---
 
