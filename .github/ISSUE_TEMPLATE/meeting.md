@@ -2,7 +2,6 @@
 name: i18n WG Meeting {{ date('MMMM Do') }}
 about: Meeting issue template
 ---
-
 ### Date & Time
 * 6:00pm UTC on {{ date('MMMM Do YYYY') }}
 
