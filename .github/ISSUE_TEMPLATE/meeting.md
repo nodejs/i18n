@@ -4,7 +4,7 @@ about: Meeting issue template
 ---
 
 ### Date & Time
-* 6:00pm UTC on {{ date('MMMM Do YYYY') }}
+* 6:00pm UTC on
 
 ### Links
 * [Zoom](https://zoom.us/j/307660555)
