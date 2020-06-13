@@ -398,6 +398,9 @@ stream.write('With ES6');
 <!-- YAML
 added: v0.3.0
 changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32392
+    description: The `maxStringLength` option is supported now.
   - version: v12.16.0
     pr-url: https://github.com/nodejs/node/pull/30768
     description: User defined prototype properties are inspected in case
@@ -480,6 +483,9 @@ changes:
     [`TypedArray`][], [`WeakMap`][] and [`WeakSet`][] elements to include when
     formatting. Set to `null` or `Infinity` to show all elements. Set to `0` or
     negative to show no elements. **Default:** `100`.
+  * `maxStringLength` {integer} Specifies the maximum number of characters to
+    include when formatting. Set to `null` or `Infinity` to show all elements.
+    Set to `0` or negative to show no characters. **Default:** `Infinity`.
   * `breakLength` {integer} The length at which input values are split across
     multiple lines. Set to `Infinity` to format the input as a single line
     (in combination with `compact` set to `true` or any number >= `1`).
@@ -1246,6 +1252,25 @@ See also [`util.types.isArrayBuffer()`][] and
 ```js
 util.types.isAnyArrayBuffer(new ArrayBuffer());  // Returns true
 util.types.isAnyArrayBuffer(new SharedArrayBuffer());  // Returns true
+```
+
+### `util.types.isArrayBufferView(value)`
+<!-- YAML
+added: v10.0.0
+-->
+
+* `value` {any}
+* Returns: {boolean}
+
+Returns `true` if the value is an instance of one of the [`ArrayBuffer`][]
+views, such as typed array objects or [`DataView`][].  Equivalent to
+[`ArrayBuffer.isView()`][].
+
+```js
+util.types.isArrayBufferView(new Int8Array());  // true
+util.types.isArrayBufferView(Buffer.from('hello world')); // true
+util.types.isArrayBufferView(new DataView(new ArrayBuffer(16)));  // true
+util.types.isArrayBufferView(new ArrayBuffer());  // false
 ```
 
 ### `util.types.isArgumentsObject(value)`
