@@ -1,9 +1,8 @@
 name: Create meeting issue
 
-# on:
-  # schedule:
-    # - cron: "0 0 * * 5" # run each Friday
-on: [issue_comment]
+on:
+  schedule:
+    - cron: "0 0 * * 5" # run each Friday
 
 jobs:
   create_meeting:
