@@ -27,12 +27,9 @@ specifier resolution, and default behavior.
 
 <!-- type=misc -->
 
-The `--experimental-modules` flag can be used to enable support for
-ECMAScript modules (ES modules).
-
-Once enabled, Node.js will treat the following as ES modules when passed to
-`node` as the initial input, or when referenced by `import` statements within
-ES module code:
+Experimental support for ECMAScript modules is enabled by default.
+Node.js will treat the following as ES modules when passed to `node` as the
+initial input, or when referenced by `import` statements within ES module code:
 
 * Files ending in `.mjs`.
 
@@ -78,7 +75,7 @@ until the root of the volume is reached.
 
 ```sh
 # In same folder as above package.json
-node --experimental-modules my-app.js # Runs as ES module
+node my-app.js # Runs as ES module
 ```
 
 If the nearest parent `package.json` lacks a `"type"` field, or contains
@@ -113,9 +110,8 @@ project’s `node_modules` folder contains its own `package.json` file, so each
 project’s dependencies have their own package scopes. A `package.json` lacking a
 `"type"` field is treated as if it contained `"type": "commonjs"`.
 
-The package scope applies not only to initial entry points (`node
---experimental-modules my-app.js`) but also to files referenced by `import`
-statements and `import()` expressions.
+The package scope applies not only to initial entry points (`node my-app.js`)
+but also to files referenced by `import` statements and `import()` expressions.
 
 ```js
 // my-app.js, in an ES module package scope because there is a package.json
@@ -168,11 +164,9 @@ piped to `node` via `STDIN`, will be treated as ES modules when the
 `--input-type=module` flag is set.
 
 ```sh
-node --experimental-modules --input-type=module --eval \
-  "import { sep } from 'path'; console.log(sep);"
+node --input-type=module --eval "import { sep } from 'path'; console.log(sep);"
 
-echo "import { sep } from 'path'; console.log(sep);" | \
-  node --experimental-modules --input-type=module
+echo "import { sep } from 'path'; console.log(sep);" | node --input-type=module
 ```
 
 For completeness there is also `--input-type=commonjs`, for explicitly running
@@ -1004,8 +998,8 @@ The `--experimental-json-modules` flag is needed for the module
 to work.
 
 ```bash
-node --experimental-modules index.mjs # fails
-node --experimental-modules --experimental-json-modules index.mjs # works
+node index.mjs # fails
+node --experimental-json-modules index.mjs # works
 ```
 
 ## Experimental Wasm Modules
@@ -1027,7 +1021,7 @@ console.log(M);
 executed under:
 
 ```bash
-node --experimental-modules --experimental-wasm-modules index.mjs
+node --experimental-wasm-modules index.mjs
 ```
 
 would provide the exports interface for the instantiation of `module.wasm`.
@@ -1056,11 +1050,22 @@ and parent URL. The module specifier is the string in an `import` statement or
 `import()` expression, and the parent URL is the URL of the module that imported
 this one, or `undefined` if this is the main entry point for the application.
 
+The `conditions` property on the `context` is an array of conditions for
+[Conditional Exports][] that apply to this resolution request. They can be used
+for looking up conditional mappings elsewhere or to modify the list when calling
+the default resolution logic.
+
+The [current set of Node.js default conditions][Conditional Exports] will always
+be in the `context.conditions` list passed to the hook. If the hook wants to
+ensure Node.js-compatible resolution logic, all items from this default
+condition list **must** be passed through to the `defaultResolve` function.
+
 ```js
 /**
  * @param {string} specifier
  * @param {object} context
  * @param {string} context.parentURL
+ * @param {string[]} context.conditions
  * @param {function} defaultResolve
  * @returns {object} response
  * @returns {string} response.url
@@ -1074,6 +1079,14 @@ export async function resolve(specifier, context, defaultResolve) {
       url: (parentURL) ?
         new URL(specifier, parentURL).href : new URL(specifier).href
     };
+  }
+  if (anotherCondition) {
+    // When calling the defaultResolve, the arguments can be modified. In this
+    // case it's adding another value for matching conditional exports.
+    return defaultResolve(specifier, {
+      ...context,
+      conditions: [...context.conditions, 'another-condition'],
+    });
   }
   // Defer to Node.js for all other specifiers.
   return defaultResolve(specifier, context, defaultResolve);
@@ -1154,7 +1167,7 @@ export async function getSource(url, context, defaultGetSource) {
 #### <code>transformSource</code> hook
 
 ```console
-NODE_OPTIONS='--experimental-modules --experimental-loader ./custom-loader.mjs' node x.js
+NODE_OPTIONS='--experimental-loader ./custom-loader.mjs' node x.js
 ```
 
 > Note: The loaders API is being redesigned. This hook may disappear or its
@@ -1222,7 +1235,7 @@ console.log('I just set some globals!');
 
 const { createRequire } = getBuiltin('module');
 
-const require = createRequire(process.cwd + '/<preload>');
+const require = createRequire(process.cwd() + '/<preload>');
 // [...]
 `;
 }
@@ -1592,13 +1605,6 @@ The resolver can throw the following errors:
 >       1. Return **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _mainExport_, _""_).
 >    1. Throw a _Package Path Not Exported_ error.
-> 1. If _pjson.main_ is a String, then
->    1. Let _resolvedMain_ be the URL resolution of _packageURL_, "/", and
->       _pjson.main_.
->    1. If the file at _resolvedMain_ exists, then
->       1. Return _resolvedMain_.
-> 1. If _pjson.type_ is equal to _"module"_, then
->    1. Throw a _Module Not Found_ error.
 > 1. Let _legacyMainURL_ be the result applying the legacy
 >    **LOAD_AS_DIRECTORY** CommonJS resolver to _packageURL_, throwing a
 >    _Module Not Found_ error for no resolution.
@@ -1652,13 +1658,15 @@ The resolver can throw the following errors:
 >             loop on any _Package Path Not Exported_ error.
 >    1. Throw a _Package Path Not Exported_ error.
 > 1. Otherwise, if _target_ is an Array, then
->    1. If _target.length is zero, throw an _Invalid Package Target_ error.
+>    1. If _target.length is zero, throw a _Package Path Not Exported_ error.
 >    1. For each item _targetValue_ in _target_, do
 >       1. If _targetValue_ is an Array, continue the loop.
 >       1. Return the result of **PACKAGE_EXPORTS_TARGET_RESOLVE**(_packageURL_,
 >          _targetValue_, _subpath_, _env_), continuing the loop on any
 >          _Package Path Not Exported_ or _Invalid Package Target_ error.
 >    1. Throw the last fallback resolution error.
+> 1. Otherwise, if _target_ is _null_, throw a _Package Path Not Exported_
+>    error.
 > 1. Otherwise throw an _Invalid Package Target_ error.
 
 **ESM_FORMAT**(_url_)
@@ -1712,11 +1720,11 @@ automatic extension resolution and importing from directories that include an
 index file use the `node` mode.
 
 ```bash
-$ node --experimental-modules index.mjs
+$ node index.mjs
 success!
-$ node --experimental-modules index #Failure!
+$ node index # Failure!
 Error: Cannot find module
-$ node --experimental-modules --experimental-specifier-resolution=node index
+$ node --experimental-specifier-resolution=node index
 success!
 ```
 

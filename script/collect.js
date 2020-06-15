@@ -9,7 +9,7 @@ const { difference } = require('lodash')
 const getVersions = require('./getVersions')
 const { supportedVersions } = require('../package.json')
 
-const contentDir = path.join(__dirname, 'content')
+const contentDir = path.join(__dirname, '../content')
 const originalSourceLocale = 'en-US'
 
 collect()

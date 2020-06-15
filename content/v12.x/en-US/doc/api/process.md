@@ -262,6 +262,10 @@ nonexistentFunc();
 console.log('This will not run.');
 ```
 
+It is possible to monitor `'uncaughtException'` events without overriding the
+default behavior to exit the process by installing a
+`'uncaughtExceptionMonitor'` listener.
+
 #### Warning: Using `'uncaughtException'` correctly
 
 `'uncaughtException'` is a crude mechanism for exception handling
@@ -288,6 +292,34 @@ To restart a crashed application in a more reliable way, whether
 `'uncaughtException'` is emitted or not, an external monitor should be employed
 in a separate process to detect application failures and recover or restart as
 needed.
+
+### Event: `'uncaughtExceptionMonitor'`
+<!-- YAML
+added: v12.17.0
+-->
+
+* `err` {Error} The uncaught exception.
+* `origin` {string} Indicates if the exception originates from an unhandled
+  rejection or from synchronous errors. Can either be `'uncaughtException'` or
+  `'unhandledRejection'`.
+
+The `'uncaughtExceptionMonitor'` event is emitted before an
+`'uncaughtException'` event is emitted or a hook installed via
+[`process.setUncaughtExceptionCaptureCallback()`][] is called.
+
+Installing an `'uncaughtExceptionMonitor'` listener does not change the behavior
+once an `'uncaughtException'` event is emitted. The process will
+still crash if no `'uncaughtException'` listener is installed.
+
+```js
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+  MyMonitoringTool.logSync(err, origin);
+});
+
+// Intentionally cause an exception, but don't catch it.
+nonexistentFunc();
+// Still crashes Node.js
+```
 
 ### Event: `'unhandledRejection'`
 <!-- YAML
@@ -1456,6 +1488,9 @@ is no entry script.
 <!-- YAML
 added: v0.1.16
 changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/31550
+    description: Added `arrayBuffers` to the returned object.
   - version: v7.2.0
     pr-url: https://github.com/nodejs/node/pull/9587
     description: Added `external` to the returned object.
@@ -1466,6 +1501,7 @@ changes:
   * `heapTotal` {integer}
   * `heapUsed` {integer}
   * `external` {integer}
+  * `arrayBuffers` {integer}
 
 The `process.memoryUsage()` method returns an object describing the memory usage
 of the Node.js process measured in bytes.
@@ -1484,19 +1520,22 @@ Will generate:
   rss: 4935680,
   heapTotal: 1826816,
   heapUsed: 650472,
-  external: 49879
+  external: 49879,
+  arrayBuffers: 9386
 }
 ```
 
-`heapTotal` and `heapUsed` refer to V8's memory usage.
-`external` refers to the memory usage of C++ objects bound to JavaScript
-objects managed by V8. `rss`, Resident Set Size, is the amount of space
-occupied in the main memory device (that is a subset of the total allocated
-memory) for the process, which includes the _heap_, _code segment_ and _stack_.
-
-The _heap_ is where objects, strings, and closures are stored. Variables are
-stored in the _stack_ and the actual JavaScript code resides in the
-_code segment_.
+* `heapTotal` and `heapUsed` refer to V8's memory usage.
+* `external` refers to the memory usage of C++ objects bound to JavaScript
+  objects managed by V8.
+* `rss`, Resident Set Size, is the amount of space occupied in the main
+  memory device (that is a subset of the total allocated memory) for the
+  process, including all C++ and JavaScript objects and code.
+* `arrayBuffers` refers to memory allocated for `ArrayBuffer`s and
+  `SharedArrayBuffer`s, including all Node.js [`Buffer`][]s.
+  This is also included in the `external` value. When Node.js is used as an
+  embedded library, this value may be `0` because allocations for `ArrayBuffer`s
+  may not be tracked in that case.
 
 When using [`Worker`][] threads, `rss` will be a value that is valid for the
 entire process, while the other fields will only refer to the current thread.
@@ -1716,9 +1755,11 @@ relied upon to exist.
 ## `process.report`
 <!-- YAML
 added: v11.8.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {Object}
 
@@ -1726,12 +1767,29 @@ added: v11.8.0
 reports for the current process. Additional documentation is available in the
 [report documentation][].
 
+### `process.report.compact`
+<!-- YAML
+added: v12.17.0
+-->
+
+* {boolean}
+
+Write reports in a compact format, single-line JSON, more easily consumable
+by log processing systems than the default multi-line format designed for
+human consumption.
+
+```js
+console.log(`Reports are compact? ${process.report.compact}`);
+```
+
 ### `process.report.directory`
 <!-- YAML
 added: v11.12.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {string}
 
@@ -1746,9 +1804,11 @@ console.log(`Report directory is ${process.report.directory}`);
 ### `process.report.filename`
 <!-- YAML
 added: v11.12.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {string}
 
@@ -1763,9 +1823,11 @@ console.log(`Report filename is ${process.report.filename}`);
 ### `process.report.getReport([err])`
 <!-- YAML
 added: v11.8.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * `err` {Error} A custom error used for reporting the JavaScript stack.
 * Returns: {Object}
@@ -1804,9 +1866,11 @@ console.log(`Report on fatal error: ${process.report.reportOnFatalError}`);
 ### `process.report.reportOnSignal`
 <!-- YAML
 added: v11.12.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1820,9 +1884,11 @@ console.log(`Report on signal: ${process.report.reportOnSignal}`);
 ### `process.report.reportOnUncaughtException`
 <!-- YAML
 added: v11.12.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {boolean}
 
@@ -1835,9 +1901,11 @@ console.log(`Report on exception: ${process.report.reportOnUncaughtException}`);
 ### `process.report.signal`
 <!-- YAML
 added: v11.12.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * {string}
 
@@ -1851,9 +1919,11 @@ console.log(`Report signal: ${process.report.signal}`);
 ### `process.report.writeReport([filename][, err])`
 <!-- YAML
 added: v11.8.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32242
+    description: This API is no longer considered experimental.
 -->
-
-> Stability: 1 - Experimental
 
 * `filename` {string} Name of the file where the report is written. This
   should be a relative path, that will be appended to the directory specified in
@@ -2465,6 +2535,7 @@ cases:
 [`'exit'`]: #process_event_exit
 [`'message'`]: child_process.html#child_process_event_message
 [`'uncaughtException'`]: #process_event_uncaughtexception
+[`Buffer`]: buffer.html
 [`ChildProcess.disconnect()`]: child_process.html#child_process_subprocess_disconnect
 [`ChildProcess.send()`]: child_process.html#child_process_subprocess_send_message_sendhandle_options_callback
 [`ChildProcess`]: child_process.html#child_process_class_childprocess
