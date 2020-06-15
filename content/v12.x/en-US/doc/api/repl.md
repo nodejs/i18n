@@ -21,9 +21,12 @@ result. Input and output may be from `stdin` and `stdout`, respectively, or may
 be connected to any Node.js [stream][].
 
 Instances of [`repl.REPLServer`][] support automatic completion of inputs,
-simplistic Emacs-style line editing, multi-line inputs, ANSI-styled output,
-saving and restoring current REPL session state, error recovery, and
-customizable evaluation functions.
+completion preview, simplistic Emacs-style line editing, multi-line inputs,
+[ZSH][]-like reverse-i-search, [ZSH][]-like substring-based history search,
+ANSI-styled output, saving and restoring current REPL session state, error
+recovery, and customizable evaluation functions. Terminals that do not support
+ANSI styles and Emacs-style line editing automatically fall back to a limited
+feature set.
 
 ### Commands and Special Keys
 
@@ -65,6 +68,9 @@ The following key combinations in the REPL have these special effects:
 * `<tab>`: When pressed on a blank line, displays global and local (scope)
   variables. When pressed while entering other input, displays relevant
   autocompletion options.
+
+For key bindings related to the reverse-i-search, see [`reverse-i-search`][].
+For all other key bindings, see [TTY keybindings][].
 
 ### Default Evaluation
 
@@ -231,6 +237,24 @@ undefined
 1002
 undefined
 ```
+
+### Reverse-i-search
+<!-- YAML
+added: v12.17.0
+-->
+
+The REPL supports bi-directional reverse-i-search similar to [ZSH][]. It is
+triggered with `<ctrl> + R` to search backwards and `<ctrl> + S` to search
+forwards.
+
+Duplicated history entires will be skipped.
+
+Entries are accepted as soon as any button is pressed that doesn't correspond
+with the reverse search. Cancelling is possible by pressing `escape` or
+`<ctrl> + C`.
+
+Changing the direction immediately searches for the next entry in the expected
+direction from the current position on.
 
 ### Custom Evaluation Functions
 
@@ -520,6 +544,9 @@ with REPL instances programmatically.
 <!-- YAML
 added: v0.1.91
 changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/30811
+    description: The `preview` option is now available.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26518
     description: The `terminal` option now follows the default description in
@@ -572,6 +599,10 @@ changes:
   * `breakEvalOnSigint` {boolean} Stop evaluating the current piece of code when
     `SIGINT` is received, such as when `Ctrl+C` is pressed. This cannot be used
     together with a custom `eval` function. **Default:** `false`.
+  * `preview` {boolean} Defines if the repl prints autocomplete and output
+    previews or not. **Default:** `true` with the default eval function and
+    `false` in case a custom eval function is used. If `terminal` is falsy, then
+    there are no previews and the value of `preview` has no effect.
 * Returns: {repl.REPLServer}
 
 The `repl.start()` method creates and starts a [`repl.REPLServer`][] instance.
@@ -699,6 +730,7 @@ a `net.Server` and `net.Socket` instance, see:
 For an example of running a REPL instance over [curl(1)][], see:
 <https://gist.github.com/TooTallNate/2053342>.
 
+[ZSH]: https://en.wikipedia.org/wiki/Z_shell
 [`'uncaughtException'`]: process.html#process_event_uncaughtexception
 [`--experimental-repl-await`]: cli.html#cli_experimental_repl_await
 [`ERR_DOMAIN_CANNOT_SET_UNCAUGHT_EXCEPTION_CAPTURE`]: errors.html#errors_err_domain_cannot_set_uncaught_exception_capture
@@ -709,5 +741,7 @@ For an example of running a REPL instance over [curl(1)][], see:
 [`repl.ReplServer`]: #repl_class_replserver
 [`repl.start()`]: #repl_repl_start_options
 [`util.inspect()`]: util.html#util_util_inspect_object_options
+[`reverse-i-search`]: #repl_reverse_i_search
+[TTY keybindings]: readline.html#readline_tty_keybindings
 [curl(1)]: https://curl.haxx.se/docs/manpage.html
 [stream]: stream.html

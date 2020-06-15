@@ -430,8 +430,9 @@ included in the iteration results.
 added: v10.10.0
 -->
 
-A representation of a directory entry, as returned by reading from an
-[`fs.Dir`][].
+A representation of a directory entry, which can be a file or a subdirectory
+within the directory, as returned by reading from an [`fs.Dir`][]. The
+directory entry is a combination of the file name and file type pairs.
 
 Additionally, when [`fs.readdir()`][] or [`fs.readdirSync()`][] is called with
 the `withFileTypes` option set to `true`, the resulting array is filled with
@@ -1674,6 +1675,10 @@ changes:
   - version: v2.3.0
     pr-url: https://github.com/nodejs/node/pull/1845
     description: The passed `options` object can be a string now.
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/29083
+    description: The `fs` options allow overriding the used `fs`
+                 implementation.
 -->
 
 * `path` {string|Buffer|URL}
@@ -1688,7 +1693,8 @@ changes:
   * `start` {integer}
   * `end` {integer} **Default:** `Infinity`
   * `highWaterMark` {integer} **Default:** `64 * 1024`
-* Returns: {fs.ReadStream}
+  * `fs` {Object|null} **Default:** `null`
+* Returns: {fs.ReadStream} See [Readable Stream][].
 
 Unlike the 16 kb default `highWaterMark` for a readable stream, the stream
 returned by this method has a default `highWaterMark` of 64 kb.
@@ -1714,6 +1720,10 @@ closing naturally.
 By default, the stream will not emit a `'close'` event after it has been
 destroyed. This is the opposite of the default for other `Readable` streams.
 Set the `emitClose` option to `true` to change this behavior.
+
+By providing the `fs` option, it is possible to override the corresponding `fs`
+implementations for `open`, `read`, and `close`. When providing the `fs` option,
+overrides for `open`, `read`, and `close` are required.
 
 ```js
 const fs = require('fs');
@@ -1768,6 +1778,10 @@ changes:
   - version: v2.3.0
     pr-url: https://github.com/nodejs/node/pull/1845
     description: The passed `options` object can be a string now.
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/v12.17.0
+    description: The `fs` options allow overriding the used `fs`
+                 implementation.
 -->
 
 * `path` {string|Buffer|URL}
@@ -1780,7 +1794,8 @@ changes:
   * `autoClose` {boolean} **Default:** `true`
   * `emitClose` {boolean} **Default:** `false`
   * `start` {integer}
-* Returns: {fs.WriteStream}
+  * `fs` {Object|null} **Default:** `null`
+* Returns: {fs.WriteStream} See [Writable Stream][].
 
 `options` may also include a `start` option to allow writing data at
 some position past the beginning of the file, allowed values are in the
@@ -1798,6 +1813,12 @@ file descriptor leak.
 By default, the stream will not emit a `'close'` event after it has been
 destroyed. This is the opposite of the default for other `Writable` streams.
 Set the `emitClose` option to `true` to change this behavior.
+
+By providing the `fs` option it is possible to override the corresponding `fs`
+implementations for `open`, `write`, `writev` and `close`. Overriding `write()`
+without `writev()` can reduce performance as some optimizations (`_writev()`)
+will be disabled. When providing the `fs` option,  overrides for `open`,
+`close`, and at least one of `write` and `writev` are required.
 
 Like [`ReadStream`][], if `fd` is specified, [`WriteStream`][] will ignore the
 `path` argument and will use the specified file descriptor. This means that no
@@ -2418,6 +2439,10 @@ Synchronous lstat(2).
 <!-- YAML
 added: v0.1.8
 changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/31530
+    description: In `recursive` mode, the callback now receives the first
+                 created path as an argument.
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/21875
     description: The second argument can now be an `options` object with
@@ -2443,12 +2468,14 @@ changes:
 * `callback` {Function}
   * `err` {Error}
 
-Asynchronously creates a directory. No arguments other than a possible exception
-are given to the completion callback.
+Asynchronously creates a directory.
+
+The callback is given a possible exception and, if `recursive` is `true`, the
+first directory path created, `(err, [path])`.
 
 The optional `options` argument can be an integer specifying mode (permission
 and sticky bits), or an object with a `mode` property and a `recursive`
-property indicating whether parent folders should be created. Calling
+property indicating whether parent directories should be created. Calling
 `fs.mkdir()` when `path` is a directory that exists results in an error only
 when `recursive` is false.
 
@@ -2474,6 +2501,9 @@ See also: mkdir(2).
 <!-- YAML
 added: v0.1.21
 changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/31530
+    description: In `recursive` mode, the first created path is returned now.
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/21875
     description: The second argument can now be an `options` object with
@@ -2488,8 +2518,10 @@ changes:
 * `options` {Object|integer}
   * `recursive` {boolean} **Default:** `false`
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
+* Returns: {string|undefined}
 
-Synchronously creates a directory. Returns `undefined`.
+Synchronously creates a directory. Returns `undefined`, or if `recursive` is
+`true`, the first directory path created.
 This is the synchronous version of [`fs.mkdir()`][].
 
 See also: mkdir(2).
@@ -2516,7 +2548,7 @@ changes:
   * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
   * `err` {Error}
-  * `folder` {string}
+  * `directory` {string}
 
 Creates a unique temporary directory.
 
@@ -2526,16 +2558,16 @@ inconsistencies, avoid trailing `X` characters in `prefix`. Some platforms,
 notably the BSDs, can return more than six random characters, and replace
 trailing `X` characters in `prefix` with random characters.
 
-The created folder path is passed as a string to the callback's second
+The created directory path is passed as a string to the callback's second
 parameter.
 
 The optional `options` argument can be a string specifying an encoding, or an
 object with an `encoding` property specifying the character encoding to use.
 
 ```js
-fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, folder) => {
+fs.mkdtemp(path.join(os.tmpdir(), 'foo-'), (err, directory) => {
   if (err) throw err;
-  console.log(folder);
+  console.log(directory);
   // Prints: /tmp/foo-itXde2 or C:\Users\...\AppData\Local\Temp\foo-itXde2
 });
 ```
@@ -2551,9 +2583,9 @@ must end with a trailing platform-specific path separator
 const tmpDir = os.tmpdir();
 
 // This method is *INCORRECT*:
-fs.mkdtemp(tmpDir, (err, folder) => {
+fs.mkdtemp(tmpDir, (err, directory) => {
   if (err) throw err;
-  console.log(folder);
+  console.log(directory);
   // Will print something similar to `/tmpabc123`.
   // A new temporary directory is created at the file system root
   // rather than *within* the /tmp directory.
@@ -2561,9 +2593,9 @@ fs.mkdtemp(tmpDir, (err, folder) => {
 
 // This method is *CORRECT*:
 const { sep } = require('path');
-fs.mkdtemp(`${tmpDir}${sep}`, (err, folder) => {
+fs.mkdtemp(`${tmpDir}${sep}`, (err, directory) => {
   if (err) throw err;
-  console.log(folder);
+  console.log(directory);
   // Will print something similar to `/tmp/abc123`.
   // A new temporary directory is created within
   // the /tmp directory.
@@ -2580,7 +2612,7 @@ added: v5.10.0
   * `encoding` {string} **Default:** `'utf8'`
 * Returns: {string}
 
-Returns the created folder path.
+Returns the created directory path.
 
 For detailed information, see the documentation of the asynchronous version of
 this API: [`fs.mkdtemp()`][].
@@ -2750,6 +2782,29 @@ The callback is given the three arguments, `(err, bytesRead, buffer)`.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns
 a `Promise` for an `Object` with `bytesRead` and `buffer` properties.
+
+## `fs.read(fd, [options,] callback)`
+<!-- YAML
+added: v12.17.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/31402
+    description: Options object can be passed in
+                 to make Buffer, offset, length and position optional
+-->
+* `fd` {integer}
+* `options` {Object}
+  * `buffer` {Buffer|TypedArray|DataView} **Default:** `Buffer.alloc(16384)`
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* `callback` {Function}
+  * `err` {Error}
+  * `bytesRead` {integer}
+  * `buffer` {Buffer}
+
+Similar to the above `fs.read` function, this version takes an optional `options` object.
+If no `options` object is specified, it will default with the above values.
 
 ## `fs.readdir(path[, options], callback)`
 <!-- YAML
@@ -3025,6 +3080,68 @@ Returns the number of `bytesRead`.
 
 For detailed information, see the documentation of the asynchronous version of
 this API: [`fs.read()`][].
+
+## `fs.readSync(fd, buffer, [options])`
+<!-- YAML
+added: v12.17.0
+changes:
+  - version: v12.17.0
+    pr-url: https://github.com/nodejs/node/pull/32460
+    description: Options object can be passed in
+                 to make offset, length and position optional
+-->
+
+* `fd` {integer}
+* `buffer` {Buffer|TypedArray|DataView}
+* `options` {Object}
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* Returns: {number}
+
+Returns the number of `bytesRead`.
+
+Similar to the above `fs.readSync` function, this version takes an optional `options` object.
+If no `options` object is specified, it will default with the above values.
+
+For detailed information, see the documentation of the asynchronous version of
+this API: [`fs.read()`][].
+
+## `fs.readv(fd, buffers[, position], callback)`
+<!-- YAML
+added: v12.17.0
+-->
+
+* `fd` {integer}
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* `callback` {Function}
+  * `err` {Error}
+  * `bytesRead` {integer}
+  * `buffers` {ArrayBufferView[]}
+
+Read from a file specified by `fd` and write to an array of `ArrayBufferView`s
+using `readv()`.
+
+`position` is the offset from the beginning of the file from where data
+should be read. If `typeof position !== 'number'`, the data will be read
+from the current position.
+
+The callback will be given three arguments: `err`, `bytesRead`, and
+`buffers`. `bytesRead` is how many bytes were read from the file.
+
+## `fs.readvSync(fd, buffers[, position])`
+<!-- YAML
+added: v12.17.0
+-->
+
+* `fd` {integer}
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* Returns: {number} The number of bytes read.
+
+For detailed information, see the documentation of the asynchronous version of
+this API: [`fs.readv()`][].
 
 ## `fs.realpath(path[, options], callback)`
 <!-- YAML
@@ -3360,7 +3477,7 @@ error raised if the file is not available.
 To check if a file exists without manipulating it afterwards, [`fs.access()`][]
 is recommended.
 
-For example, given the following folder structure:
+For example, given the following directory structure:
 
 ```fundamental
 - txtDir
@@ -4220,8 +4337,8 @@ in that they provide an object oriented API for working with files.
 If a `FileHandle` is not closed using the
 `filehandle.close()` method, it might automatically close the file descriptor
 and will emit a process warning, thereby helping to prevent memory leaks.
-Please do not rely on this behavior in your code because it is unreliable and
-your file may not be closed. Instead, always explicitly close `FileHandle`s.
+Please do not rely on this behavior because it is unreliable and
+the file may not be closed. Instead, always explicitly close `FileHandle`s.
 Node.js may change this behavior in the future.
 
 Instances of the `FileHandle` object are created internally by the
@@ -4341,6 +4458,17 @@ Following successful read, the `Promise` is resolved with an object with a
 `bytesRead` property specifying the number of bytes read, and a `buffer`
 property that is a reference to the passed in `buffer` argument.
 
+#### `filehandle.read(options)`
+<!-- YAML
+added: v12.17.0
+-->
+* `options` {Object}
+  * `buffer` {Buffer|Uint8Array} **Default:** `Buffer.alloc(16384)`
+  * `offset` {integer} **Default:** `0`
+  * `length` {integer} **Default:** `buffer.length`
+  * `position` {integer} **Default:** `null`
+* Returns: {Promise}
+
 #### `filehandle.readFile(options)`
 <!-- YAML
 added: v10.0.0
@@ -4364,6 +4492,25 @@ If one or more `filehandle.read()` calls are made on a file handle and then a
 `filehandle.readFile()` call is made, the data will be read from the current
 position till the end of the file. It doesn't always read from the beginning
 of the file.
+
+#### `filehandle.readv(buffers[, position])`
+<!-- YAML
+added: v12.17.0
+-->
+
+* `buffers` {ArrayBufferView[]}
+* `position` {integer}
+* Returns: {Promise}
+
+Read from a file and write to an array of `ArrayBufferView`s
+
+The `Promise` is resolved with an object containing a `bytesRead` property
+identifying the number of bytes read, and a `buffers` property containing
+a reference to the `buffers` input.
+
+`position` is the offset from the beginning of the file where this data
+should be read from. If `typeof position !== 'number'`, the data will be read
+from the current position.
 
 #### `filehandle.stat([options])`
 <!-- YAML
@@ -4798,12 +4945,12 @@ added: v10.0.0
   * `mode` {string|integer} Not supported on Windows. **Default:** `0o777`.
 * Returns: {Promise}
 
-Asynchronously creates a directory then resolves the `Promise` with no
-arguments upon success.
+Asynchronously creates a directory then resolves the `Promise` with either no
+arguments, or the first directory path created if `recursive` is `true`.
 
 The optional `options` argument can be an integer specifying mode (permission
 and sticky bits), or an object with a `mode` property and a `recursive`
-property indicating whether parent folders should be created. Calling
+property indicating whether parent directories should be created. Calling
 `fsPromises.mkdir()` when `path` is a directory that exists results in a
 rejection only when `recursive` is false.
 
@@ -4818,7 +4965,7 @@ added: v10.0.0
 * Returns: {Promise}
 
 Creates a unique temporary directory and resolves the `Promise` with the created
-folder path. A unique directory name is generated by appending six random
+directory path. A unique directory name is generated by appending six random
 characters to the end of the provided `prefix`. Due to platform
 inconsistencies, avoid trailing `X` characters in `prefix`. Some platforms,
 notably the BSDs, can return more than six random characters, and replace
@@ -5528,6 +5675,7 @@ the file contents.
 [`Number.MAX_SAFE_INTEGER`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
 [`ReadDirectoryChangesW`]: https://docs.microsoft.com/en-us/windows/desktop/api/winbase/nf-winbase-readdirectorychangesw
 [`ReadStream`]: #fs_class_fs_readstream
+[Readable Stream]: #stream_class_stream_readable
 [`URL`]: url.html#url_the_whatwg_url_api
 [`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
 [`WriteStream`]: #fs_class_fs_writestream
@@ -5557,6 +5705,7 @@ the file contents.
 [`fs.readFileSync()`]: #fs_fs_readfilesync_path_options
 [`fs.readdir()`]: #fs_fs_readdir_path_options_callback
 [`fs.readdirSync()`]: #fs_fs_readdirsync_path_options
+[`fs.readv()`]: #fs_fs_readv_fd_buffers_position_callback
 [`fs.realpath()`]: #fs_fs_realpath_path_options_callback
 [`fs.rmdir()`]: #fs_fs_rmdir_path_options_callback
 [`fs.stat()`]: #fs_fs_stat_path_options_callback
@@ -5587,3 +5736,4 @@ the file contents.
 [chcp]: https://ss64.com/nt/chcp.html
 [inode]: https://en.wikipedia.org/wiki/Inode
 [support of file system `flags`]: #fs_file_system_flags
+[Writable Stream]: #stream_class_stream_writable

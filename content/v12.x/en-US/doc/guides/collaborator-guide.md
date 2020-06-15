@@ -177,8 +177,10 @@ All pull requests must pass continuous integration tests. Code changes must pass
 on [project CI server](https://ci.nodejs.org/). Pull requests that only change
 documentation and comments can use GitHub Actions results.
 
-Do not land any pull requests without passing (green or yellow) CI runs. If
-there are CI failures unrelated to the change in the pull request, try "Resume
+Do not land any pull requests without a passing (green or yellow) CI run.
+For documentation-only changes, GitHub Actions CI is sufficient.
+For all other code changes, Jenkins CI must pass as well. If there are
+Jenkins CI failures unrelated to the change in the pull request, try "Resume
 Build". It is in the left navigation of the relevant `node-test-pull-request`
 job. It will preserve all the green results from the current job but re-run
 everything else. Start a fresh CI if more than seven days have elapsed since
@@ -332,8 +334,8 @@ For pull requests introducing new core modules:
 ### Additions to N-API
 
 N-API provides an ABI-stable API guaranteed for future Node.js versions. N-API
-additions call for unusual care and scrutiny. If a change adds to `node_api.h`
-or `node_api_types.h`, consult [the relevant
+additions call for unusual care and scrutiny. If a change adds to `node_api.h`,
+`js_native_api.h`, `node_api_types.h`, or `js_native_api_types.h`, consult [the relevant
 guide](https://github.com/nodejs/node/blob/master/doc/guides/adding-new-napi-api.md).
 
 ### Deprecations

@@ -58,6 +58,10 @@ added: v12.16.0
     sandbox directory structure. The string keys of `preopens` are treated as
     directories within the sandbox. The corresponding values in `preopens` are
     the real paths to those directories on the host machine.
+  * `returnOnExit` {boolean} By default, WASI applications terminate the Node.js
+    process via the `__wasi_proc_exit()` function. Setting this option to `true`
+    causes `wasi.start()` to return the exit code rather than terminate the
+    process. **Default:** `false`.
 
 ### `wasi.start(instance)`
 <!-- YAML
@@ -66,13 +70,14 @@ added: v12.16.0
 
 * `instance` {WebAssembly.Instance}
 
-Attempt to begin execution of `instance` by invoking its `_start()` export.
-If `instance` does not contain a `_start()` export, then `start()` attempts to
-invoke the `__wasi_unstable_reactor_start()` export. If neither of those exports
-is present on `instance`, then `start()` does nothing.
+Attempt to begin execution of `instance` as a WASI command by invoking its
+`_start()` export. If `instance` does not contain a `_start()` export, or if
+`instance` contains an `_initialize()` export, then an exception is thrown.
 
 `start()` requires that `instance` exports a [`WebAssembly.Memory`][] named
 `memory`. If `instance` does not have a `memory` export an exception is thrown.
+
+If `start()` is called more than once, an exception is thrown.
 
 ### `wasi.wasiImport`
 <!-- YAML
