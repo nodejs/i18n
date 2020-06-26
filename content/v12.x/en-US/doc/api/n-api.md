@@ -369,7 +369,7 @@ Native addons may need to allocate global state of which they make use during
 their entire life cycle such that the state must be unique to each instance of
 the addon.
 
-To this env, N-API provides a way to allocate data such that its life cycle is
+To this end, N-API provides a way to allocate data such that its life cycle is
 tied to the life cycle of the Agent.
 
 ### napi_set_instance_data
@@ -1233,7 +1233,7 @@ NAPI_EXTERN napi_status napi_open_handle_scope(napi_env env,
 
 Returns `napi_ok` if the API succeeded.
 
-This API open a new scope.
+This API opens a new scope.
 
 #### napi_close_handle_scope
 <!-- YAML
@@ -1273,7 +1273,7 @@ NAPI_EXTERN napi_status
 
 Returns `napi_ok` if the API succeeded.
 
-This API open a new scope from which one object can be promoted
+This API opens a new scope from which one object can be promoted
 to the outer scope.
 
 #### napi_close_escapable_handle_scope
@@ -4649,8 +4649,13 @@ napi_status napi_async_init(napi_env env,
 ```
 
 * `[in] env`: The environment that the API is invoked under.
-* `[in] async_resource`: An optional object associated with the async work
+* `[in] async_resource`: Object associated with the async work
   that will be passed to possible `async_hooks` [`init` hooks][].
+  In order to retain ABI compatibility with previous versions,
+  passing `NULL` for `async_resource` will not result in an error, however,
+  this will result incorrect operation of async hooks for the
+  napi_async_context created. Potential issues include
+  loss of async context when using the AsyncLocalStorage API.
 * `[in] async_resource_name`: Identifier for the kind of resource
   that is being provided for diagnostic information exposed by the
   `async_hooks` API.
