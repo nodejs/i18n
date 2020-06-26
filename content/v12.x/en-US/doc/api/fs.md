@@ -3789,8 +3789,8 @@ Change the file system timestamps of the object referenced by `path`.
 
 The `atime` and `mtime` arguments follow these rules:
 
-* Values can be either numbers representing Unix epoch time, `Date`s, or a
-  numeric string like `'123456789.0'`.
+* Values can be either numbers representing Unix epoch time in seconds,
+  `Date`s, or a numeric string like `'123456789.0'`.
 * If the value can not be converted to a number, or is `NaN`, `Infinity` or
   `-Infinity`, an `Error` will be thrown.
 
@@ -5320,6 +5320,24 @@ without waiting for the `Promise` to be resolved (or rejected).
 The following constants are exported by `fs.constants`.
 
 Not every constant will be available on every operating system.
+
+To use more than one constant, use the bitwise OR `|` operator.
+
+Example:
+
+```js
+const fs = require('fs');
+
+const {
+  O_RDWR,
+  O_CREAT,
+  O_EXCL
+} = fs.constants;
+
+fs.open('/path/to/my/file', O_RDWR | O_CREAT | O_EXCL, (err, fd) => {
+  // ...
+});
+```
 
 ### File Access Constants
 
