@@ -19,7 +19,7 @@ about: Meeting issue template
 ### Invited Members
 * @nodejs/i18n
 * @nodejs/i18n-api
-* @nodejs/website-redesign
+* @nodejs/nodejs-dev
 * @nodejs/community-committee
 * @nodejs/tsc
 * @nodejs/website
