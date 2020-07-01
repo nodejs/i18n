@@ -493,7 +493,7 @@ _additional authenticated data_ (AAD) input parameter.
 
 The `options` argument is optional for `GCM`. When using `CCM`, the
 `plaintextLength` option must be specified and its value must match the length
-of the plaintext in bytes. See [CCM mode][].
+of the ciphertext in bytes. See [CCM mode][].
 
 The `decipher.setAAD()` method must be called before [`decipher.update()`][].
 
@@ -1214,6 +1214,10 @@ This can be called many times with new data as it is streamed.
 <!-- YAML
 added: v11.6.0
 changes:
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/33360
+    description: Instances of this class can now be passed to worker threads
+                 using `postMessage`.
   - version: v11.13.0
     pr-url: https://github.com/nodejs/node/pull/26438
     description: This class is now exported.
@@ -1228,6 +1232,10 @@ keyword.
 
 Most applications should consider using the new `KeyObject` API instead of
 passing keys as strings or `Buffer`s due to improved security features.
+
+`KeyObject` instances can be passed to other threads via [`postMessage()`][].
+The receiver obtains a cloned `KeyObject`, and the `KeyObject` does not need to
+be listed in the `transferList` argument.
 
 ### `keyObject.asymmetricKeyType`
 <!-- YAML
@@ -2064,7 +2072,7 @@ added: v0.1.92
 * `options` {Object} [`stream.Writable` options][]
 * Returns: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`.  Use
+Creates and returns a `Sign` object that uses the given `algorithm`. Use
 [`crypto.getHashes()`][] to obtain the names of the available digest algorithms.
 Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -3037,7 +3045,7 @@ key may be passed for `key`.
 
 ## Notes
 
-### Legacy Streams API (pre Node.js v0.10)
+### Legacy Streams API (prior to Node.js 0.10)
 
 The Crypto module was added to Node.js before there was the concept of a
 unified Stream API, and before there were [`Buffer`][] objects for handling
@@ -3104,7 +3112,12 @@ mode must adhere to certain restrictions when using the cipher API:
   mode might fail as CCM cannot handle more than one chunk of data per instance.
 * When passing additional authenticated data (AAD), the length of the actual
   message in bytes must be passed to `setAAD()` via the `plaintextLength`
-  option. This is not necessary if no AAD is used.
+  option.
+  Many crypto libraries include the authentication tag in the ciphertext,
+  which means that they produce ciphertexts of the length
+  `plaintextLength + authTagLength`. Node.js does not include the authentication
+  tag, so the ciphertext length is always `plaintextLength`.
+  This is not necessary if no AAD is used.
 * As CCM processes the whole message at once, `update()` can only be called
   once.
 * Even though calling `update()` is sufficient to encrypt/decrypt the message,
@@ -3505,9 +3518,10 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 [`hmac.digest()`]: #crypto_hmac_digest_encoding
 [`hmac.update()`]: #crypto_hmac_update_data_inputencoding
 [`keyObject.export()`]: #crypto_keyobject_export_options
+[`postMessage()`]: worker_threads.html#worker_threads_port_postmessage_value_transferlist
 [`sign.sign()`]: #crypto_sign_sign_privatekey_outputencoding
 [`sign.update()`]: #crypto_sign_update_data_inputencoding
-[`stream.Writable` options]: stream.html#stream_constructor_new_stream_writable_options
+[`stream.Writable` options]: stream.html#stream_new_stream_writable_options
 [`stream.transform` options]: stream.html#stream_new_stream_transform_options
 [`util.promisify()`]: util.html#util_util_promisify_original
 [`verify.update()`]: #crypto_verify_update_data_inputencoding
