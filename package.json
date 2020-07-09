@@ -25,7 +25,7 @@
     "lint:fix": "standard --fix"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
