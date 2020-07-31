@@ -35,7 +35,7 @@
     "download": "^8.0.0",
     "fs-extra": "^9.0.1",
     "globals": "^13.1.0",
-    "jest": "^26.1.0",
+    "jest": "^26.2.1",
     "semver": "^7.3.2",
     "standard": "^14.3.4",
     "superagent": "^5.3.1"
