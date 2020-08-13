@@ -16,7 +16,7 @@ jobs:
           node-version: "12.x"
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -34,4 +34,7 @@ jobs:
         with:
           commit-message: 'feat: Original content updates'
           title: Original content updates
-          body: Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo. Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/master/docs/concepts-guidelines.md#triggering-further-workflow-runs).\n\n@nodejs/i18n
+          body: |
+            Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo.
+            Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/master/docs/concepts-guidelines.md#triggering-further-workflow-runs).
+            cc @nodejs/i18n
