@@ -11,7 +11,7 @@ accessed using:
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## URL strings and URL objects
 
 A URL string is a structured string containing multiple meaningful components.
 When parsed, a URL object is returned containing properties for each of these
@@ -29,7 +29,7 @@ properties of a WHATWG `URL` object.
 WHATWG URL's `origin` property includes `protocol` and `host`, but not
 `username` or `password`.
 
-```txt
+```text
 ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                              href                                              │
 ├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
@@ -406,7 +406,7 @@ console.log(myURL.href);
 
 Invalid URL protocol values assigned to the `protocol` property are ignored.
 
-##### Special Schemes
+##### Special schemes
 
 The [WHATWG URL Standard][] considers a handful of URL protocol schemes to be
 _special_ in terms of how they are parsed and serialized. When a URL is
@@ -999,8 +999,8 @@ pathToFileURL(__filename);          // Correct:   file:///C:/... (Windows)
 new URL('/foo#1', 'file:');         // Incorrect: file:///foo#1
 pathToFileURL('/foo#1');            // Correct:   file:///foo%231 (POSIX)
 
-new URL('/some/path%.js', 'file:'); // Incorrect: file:///some/path%
-pathToFileURL('/some/path%.js');    // Correct:   file:///some/path%25 (POSIX)
+new URL('/some/path%.c', 'file:'); // Incorrect: file:///some/path%.c
+pathToFileURL('/some/path%.c');    // Correct:   file:///some/path%25.c (POSIX)
 ```
 
 ## Legacy URL API
@@ -1276,7 +1276,7 @@ url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 ```
 
 <a id="whatwg-percent-encoding"></a>
-## Percent-Encoding in URLs
+## Percent-encoding in URLs
 
 URLs are permitted to only contain a certain range of characters. Any character
 falling outside of that range must be encoded. How such characters are encoded,
@@ -1288,7 +1288,7 @@ located within the structure of the URL.
 Within the Legacy API, spaces (`' '`) and the following characters will be
 automatically escaped in the properties of URL objects:
 
-```txt
+```text
 < > " ` \r \n \t { } | \ ^ '
 ```
 
