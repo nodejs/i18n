@@ -1,18 +1,18 @@
-# C++ Addons
+# C++ addons
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
 
-Addons are dynamically-linked shared objects written in C++. The
-[`require()`][require] function can load Addons as ordinary Node.js modules.
+_Addons_ are dynamically-linked shared objects written in C++. The
+[`require()`][require] function can load addons as ordinary Node.js modules.
 Addons provide an interface between JavaScript and C/C++ libraries.
 
-There are three options for implementing Addons: N-API, nan, or direct
+There are three options for implementing addons: N-API, nan, or direct
 use of internal V8, libuv and Node.js libraries. Unless there is a need for
 direct access to functionality which is not exposed by N-API, use N-API.
-Refer to [C/C++ Addons with N-API](n-api.html) for more information on N-API.
+Refer to [C/C++ addons with N-API](n-api.html) for more information on N-API.
 
-When not using N-API, implementing Addons is complicated,
+When not using N-API, implementing addons is complicated,
 involving knowledge of several components and APIs:
 
 * V8: the C++ library Node.js uses to provide the
@@ -27,27 +27,27 @@ involving knowledge of several components and APIs:
   access across all major operating systems to many common system tasks, such
   as interacting with the filesystem, sockets, timers, and system events. libuv
   also provides a pthreads-like threading abstraction that may be used to
-  power more sophisticated asynchronous Addons that need to move beyond the
+  power more sophisticated asynchronous addons that need to move beyond the
   standard event loop. Addon authors are encouraged to think about how to
   avoid blocking the event loop with I/O or other time-intensive tasks by
   off-loading work via libuv to non-blocking system operations, worker threads
   or a custom use of libuv's threads.
 
-* Internal Node.js libraries. Node.js itself exports C++ APIs that Addons can
+* Internal Node.js libraries. Node.js itself exports C++ APIs that addons can
   use, the most important of which is the `node::ObjectWrap` class.
 
 * Node.js includes other statically linked libraries including OpenSSL. These
   other libraries are located in the `deps/` directory in the Node.js source
   tree. Only the libuv, OpenSSL, V8 and zlib symbols are purposefully
-  re-exported by Node.js and may be used to various extents by Addons. See
+  re-exported by Node.js and may be used to various extents by addons. See
   [Linking to libraries included with Node.js][] for additional information.
 
 All of the following examples are available for [download][] and may
-be used as the starting-point for an Addon.
+be used as the starting-point for an addon.
 
 ## Hello world
 
-This "Hello world" example is a simple Addon, written in C++, that is the
+This "Hello world" example is a simple addon, written in C++, that is the
 equivalent of the following JavaScript code:
 
 ```js
@@ -65,7 +65,6 @@ namespace demo {
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
@@ -73,7 +72,7 @@ using v8::Value;
 void Method(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   args.GetReturnValue().Set(String::NewFromUtf8(
-      isolate, "world", NewStringType::kNormal).ToLocalChecked());
+      isolate, "world").ToLocalChecked());
 }
 
 void Initialize(Local<Object> exports) {
@@ -85,7 +84,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
 }  // namespace demo
 ```
 
-All Node.js Addons must export an initialization function following
+All Node.js addons must export an initialization function following
 the pattern:
 
 ```cpp
@@ -226,14 +225,19 @@ NODE_MODULE_INIT(/* exports, module, context */) {
   // per-addon-instance data we created above by passing `external` as the
   // third parameter to the `FunctionTemplate` constructor.
   exports->Set(context,
-               String::NewFromUtf8(isolate, "method", NewStringType::kNormal)
-                  .ToLocalChecked(),
+               String::NewFromUtf8(isolate, "method").ToLocalChecked(),
                FunctionTemplate::New(isolate, Method, external)
                   ->GetFunction(context).ToLocalChecked()).FromJust();
 }
 ```
 
 #### Worker support
+<!-- YAML
+changes:
+  - version: v14.8.0
+    pr-url: https://github.com/nodejs/node/pull/34572
+    description: Cleanup hooks may now be asynchronous.
+-->
 
 In order to be loaded from multiple Node.js environments,
 such as a main thread and a Worker thread, an add-on needs to either:
@@ -252,9 +256,14 @@ void AddEnvironmentCleanupHook(v8::Isolate* isolate,
 ```
 
 This function adds a hook that will run before a given Node.js instance shuts
-down. If necessary, such hooks can be removed using
-`RemoveEnvironmentCleanupHook()` before they are run, which has the same
-signature. Callbacks are run in last-in first-out order.
+down. If necessary, such hooks can be removed before they are run using
+`RemoveEnvironmentCleanupHook()`, which has the same signature. Callbacks are
+run in last-in first-out order.
+
+If necessary, there is an additional pair of `AddEnvironmentCleanupHook()`
+and `RemoveEnvironmentCleanupHook()` overloads, where the cleanup hook takes a
+callback function. This can be used for shutting down asynchronous resources,
+such as any libuv handles registered by the addon.
 
 The following `addon.cc` uses `AddEnvironmentCleanupHook`:
 
@@ -317,7 +326,7 @@ Once the source code has been written, it must be compiled into the binary
 `addon.node` file. To do so, create a file called `binding.gyp` in the
 top-level of the project describing the build configuration of the module
 using a JSON-like format. This file is used by [node-gyp][], a tool written
-specifically to compile Node.js Addons.
+specifically to compile Node.js addons.
 
 ```json
 {
@@ -333,7 +342,7 @@ specifically to compile Node.js Addons.
 A version of the `node-gyp` utility is bundled and distributed with
 Node.js as part of `npm`. This version is not made directly available for
 developers to use and is intended only to support the ability to use the
-`npm install` command to compile and install Addons. Developers who wish to
+`npm install` command to compile and install addons. Developers who wish to
 use `node-gyp` directly can install it using the command
 `npm install -g node-gyp`. See the `node-gyp` [installation instructions][] for
 more information, including platform-specific requirements.
@@ -346,11 +355,11 @@ will generate either a `Makefile` (on Unix platforms) or a `vcxproj` file
 Next, invoke the `node-gyp build` command to generate the compiled `addon.node`
 file. This will be put into the `build/Release/` directory.
 
-When using `npm install` to install a Node.js Addon, npm uses its own bundled
+When using `npm install` to install a Node.js addon, npm uses its own bundled
 version of `node-gyp` to perform this same set of actions, generating a
-compiled version of the Addon for the user's platform on demand.
+compiled version of the addon for the user's platform on demand.
 
-Once built, the binary Addon can be used from within Node.js by pointing
+Once built, the binary addon can be used from within Node.js by pointing
 [`require()`][require] to the built `addon.node` module:
 
 ```js
@@ -361,12 +370,12 @@ console.log(addon.hello());
 // Prints: 'world'
 ```
 
-Because the exact path to the compiled Addon binary can vary depending on how
-it is compiled (i.e. sometimes it may be in `./build/Debug/`), Addons can use
+Because the exact path to the compiled addon binary can vary depending on how
+it is compiled (i.e. sometimes it may be in `./build/Debug/`), addons can use
 the [bindings][] package to load the compiled module.
 
 While the `bindings` package implementation is more sophisticated in how it
-locates Addon modules, it is essentially using a `try…catch` pattern similar to:
+locates addon modules, it is essentially using a `try…catch` pattern similar to:
 
 ```js
 try {
@@ -379,7 +388,7 @@ try {
 ### Linking to libraries included with Node.js
 
 Node.js uses statically linked libraries such as V8, libuv and OpenSSL. All
-Addons are required to link to V8 and may link to any of the other dependencies
+addons are required to link to V8 and may link to any of the other dependencies
 as well. Typically, this is as simple as including the appropriate
 `#include <...>` statements (e.g. `#include <v8.h>`) and `node-gyp` will locate
 the appropriate headers automatically. However, there are a few caveats to be
@@ -387,41 +396,41 @@ aware of:
 
 * When `node-gyp` runs, it will detect the specific release version of Node.js
 and download either the full source tarball or just the headers. If the full
-source is downloaded, Addons will have complete access to the full set of
+source is downloaded, addons will have complete access to the full set of
 Node.js dependencies. However, if only the Node.js headers are downloaded, then
 only the symbols exported by Node.js will be available.
 
 * `node-gyp` can be run using the `--nodedir` flag pointing at a local Node.js
-source image. Using this option, the Addon will have access to the full set of
+source image. Using this option, the addon will have access to the full set of
 dependencies.
 
-### Loading Addons using `require()`
+### Loading addons using `require()`
 
-The filename extension of the compiled Addon binary is `.node` (as opposed
+The filename extension of the compiled addon binary is `.node` (as opposed
 to `.dll` or `.so`). The [`require()`][require] function is written to look for
 files with the `.node` file extension and initialize those as dynamically-linked
 libraries.
 
 When calling [`require()`][require], the `.node` extension can usually be
-omitted and Node.js will still find and initialize the Addon. One caveat,
+omitted and Node.js will still find and initialize the addon. One caveat,
 however, is that Node.js will first attempt to locate and load modules or
 JavaScript files that happen to share the same base name. For instance, if
 there is a file `addon.js` in the same directory as the binary `addon.node`,
 then [`require('addon')`][require] will give precedence to the `addon.js` file
 and load it instead.
 
-## Native Abstractions for Node.js
+## Native abstractions for Node.js
 
 Each of the examples illustrated in this document make direct use of the
-Node.js and V8 APIs for implementing Addons. The V8 API can, and has, changed
+Node.js and V8 APIs for implementing addons. The V8 API can, and has, changed
 dramatically from one V8 release to the next (and one major Node.js release to
-the next). With each change, Addons may need to be updated and recompiled in
+the next). With each change, addons may need to be updated and recompiled in
 order to continue functioning. The Node.js release schedule is designed to
 minimize the frequency and impact of such changes but there is little that
 Node.js can do to ensure stability of the V8 APIs.
 
 The [Native Abstractions for Node.js][] (or `nan`) provide a set of tools that
-Addon developers are recommended to use to keep compatibility between past and
+addon developers are recommended to use to keep compatibility between past and
 future releases of V8 and Node.js. See the `nan` [examples][] for an
 illustration of how it can be used.
 
@@ -429,10 +438,10 @@ illustration of how it can be used.
 
 > Stability: 2 - Stable
 
-N-API is an API for building native Addons. It is independent from
+N-API is an API for building native addons. It is independent from
 the underlying JavaScript runtime (e.g. V8) and is maintained as part of
 Node.js itself. This API will be Application Binary Interface (ABI) stable
-across versions of Node.js. It is intended to insulate Addons from
+across versions of Node.js. It is intended to insulate addons from
 changes in the underlying JavaScript engine and allow modules
 compiled for one version to run on later versions of Node.js without
 recompilation. Addons are built/packaged with the same approach/tools
@@ -481,11 +490,11 @@ NAPI_MODULE(NODE_GYP_MODULE_NAME, init)
 ```
 
 The functions available and how to use them are documented in
-[C/C++ Addons with N-API](n-api.html).
+[C/C++ addons with N-API](n-api.html).
 
 ## Addon examples
 
-Following are some example Addons intended to help developers get started. The
+Following are some example addons intended to help developers get started. The
 examples make use of the V8 APIs. Refer to the online [V8 reference][v8-docs]
 for help with the various V8 calls, and V8's [Embedder's Guide][] for an
 explanation of several concepts used such as handles, scopes, function
@@ -511,7 +520,7 @@ filename to the `sources` array:
 "sources": ["addon.cc", "myexample.cc"]
 ```
 
-Once the `binding.gyp` file is ready, the example Addons can be configured and
+Once the `binding.gyp` file is ready, the example addons can be configured and
 built using `node-gyp`:
 
 ```console
@@ -538,7 +547,6 @@ using v8::Exception;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::String;
@@ -555,8 +563,7 @@ void Add(const FunctionCallbackInfo<Value>& args) {
     // Throw an Error that is passed back to JavaScript
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate,
-                            "Wrong number of arguments",
-                            NewStringType::kNormal).ToLocalChecked()));
+                            "Wrong number of arguments").ToLocalChecked()));
     return;
   }
 
@@ -564,8 +571,7 @@ void Add(const FunctionCallbackInfo<Value>& args) {
   if (!args[0]->IsNumber() || !args[1]->IsNumber()) {
     isolate->ThrowException(Exception::TypeError(
         String::NewFromUtf8(isolate,
-                            "Wrong arguments",
-                            NewStringType::kNormal).ToLocalChecked()));
+                            "Wrong arguments").ToLocalChecked()));
     return;
   }
 
@@ -588,7 +594,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 }  // namespace demo
 ```
 
-Once compiled, the example Addon can be required and used from within Node.js:
+Once compiled, the example addon can be required and used from within Node.js:
 
 ```js
 // test.js
@@ -599,7 +605,7 @@ console.log('This should be eight:', addon.add(3, 5));
 
 ### Callbacks
 
-It is common practice within Addons to pass JavaScript functions to a C++
+It is common practice within addons to pass JavaScript functions to a C++
 function and execute them from there. The following example illustrates how
 to invoke such callbacks:
 
@@ -614,7 +620,6 @@ using v8::Function;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Null;
 using v8::Object;
 using v8::String;
@@ -627,8 +632,7 @@ void RunCallback(const FunctionCallbackInfo<Value>& args) {
   const unsigned argc = 1;
   Local<Value> argv[argc] = {
       String::NewFromUtf8(isolate,
-                          "hello world",
-                          NewStringType::kNormal).ToLocalChecked() };
+                          "hello world").ToLocalChecked() };
   cb->Call(context, Null(isolate), argc, argv).ToLocalChecked();
 }
 
@@ -642,7 +646,7 @@ NODE_MODULE(NODE_GYP_MODULE_NAME, Init)
 ```
 
 This example uses a two-argument form of `Init()` that receives the full
-`module` object as the second argument. This allows the Addon to completely
+`module` object as the second argument. This allows the addon to completely
 overwrite `exports` with a single function instead of adding the function as a
 property of `exports`.
 
@@ -676,7 +680,6 @@ using v8::Context;
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
@@ -688,8 +691,7 @@ void CreateObject(const FunctionCallbackInfo<Value>& args) {
   Local<Object> obj = Object::New(isolate);
   obj->Set(context,
            String::NewFromUtf8(isolate,
-                               "msg",
-                               NewStringType::kNormal).ToLocalChecked(),
+                               "msg").ToLocalChecked(),
                                args[0]->ToString(context).ToLocalChecked())
            .FromJust();
 
@@ -734,7 +736,6 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
@@ -742,7 +743,7 @@ using v8::Value;
 void MyFunction(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   args.GetReturnValue().Set(String::NewFromUtf8(
-      isolate, "hello world", NewStringType::kNormal).ToLocalChecked());
+      isolate, "hello world").ToLocalChecked());
 }
 
 void CreateFunction(const FunctionCallbackInfo<Value>& args) {
@@ -754,7 +755,7 @@ void CreateFunction(const FunctionCallbackInfo<Value>& args) {
 
   // omit this to make it anonymous
   fn->SetName(String::NewFromUtf8(
-      isolate, "theFunction", NewStringType::kNormal).ToLocalChecked());
+      isolate, "theFunction").ToLocalChecked());
 
   args.GetReturnValue().Set(fn);
 }
@@ -850,7 +851,6 @@ using v8::FunctionCallbackInfo;
 using v8::FunctionTemplate;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::ObjectTemplate;
@@ -874,8 +874,7 @@ void MyObject::Init(Local<Object> exports) {
 
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New, addon_data);
-  tpl->SetClassName(String::NewFromUtf8(
-      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
+  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
@@ -884,8 +883,8 @@ void MyObject::Init(Local<Object> exports) {
   Local<Function> constructor = tpl->GetFunction(context).ToLocalChecked();
   addon_data->SetInternalField(0, constructor);
   exports->Set(context, String::NewFromUtf8(
-      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked(),
-               constructor).FromJust();
+      isolate, "MyObject").ToLocalChecked(),
+      constructor).FromJust();
 }
 
 void MyObject::New(const FunctionCallbackInfo<Value>& args) {
@@ -1055,7 +1054,6 @@ using v8::FunctionTemplate;
 using v8::Global;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Number;
 using v8::Object;
 using v8::String;
@@ -1074,8 +1072,7 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(
-      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
+  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   // Prototype
@@ -1279,7 +1276,6 @@ using v8::FunctionTemplate;
 using v8::Global;
 using v8::Isolate;
 using v8::Local;
-using v8::NewStringType;
 using v8::Object;
 using v8::String;
 using v8::Value;
@@ -1297,8 +1293,7 @@ MyObject::~MyObject() {
 void MyObject::Init(Isolate* isolate) {
   // Prepare constructor template
   Local<FunctionTemplate> tpl = FunctionTemplate::New(isolate, New);
-  tpl->SetClassName(String::NewFromUtf8(
-      isolate, "MyObject", NewStringType::kNormal).ToLocalChecked());
+  tpl->SetClassName(String::NewFromUtf8(isolate, "MyObject").ToLocalChecked());
   tpl->InstanceTemplate()->SetInternalFieldCount(1);
 
   Local<Context> context = isolate->GetCurrentContext();

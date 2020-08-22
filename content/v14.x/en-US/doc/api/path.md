@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/path.js -->
+
 The `path` module provides utilities for working with file and directory paths.
 It can be accessed using:
 
@@ -547,7 +549,7 @@ On Windows systems only, returns an equivalent [namespace-prefixed path][] for
 the given `path`. If `path` is not a string, `path` will be returned without
 modifications.
 
-This method is meaningful only on Windows system. On POSIX systems, the
+This method is meaningful only on Windows systems. On POSIX systems, the
 method is non-operational and always returns `path` without modifications.
 
 ## `path.win32`

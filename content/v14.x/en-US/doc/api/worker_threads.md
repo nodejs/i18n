@@ -1,8 +1,10 @@
-# Worker Threads
+# Worker threads
 
 <!--introduced_in=v10.5.0-->
 
 > Stability: 2 - Stable
+
+<!-- source_link=lib/worker_threads.js -->
 
 The `worker_threads` module enables the use of threads that execute JavaScript
 in parallel. To access it:
@@ -107,9 +109,10 @@ markAsUntransferable(pooledBuffer);
 const { port1 } = new MessageChannel();
 port1.postMessage(typedArray1, [ typedArray1.buffer ]);
 
-// The following line prints the contents of typedArray1 -- it still owns its
-// memory and has been cloned, not transfered. Without `markAsUntransferable()`,
-// this would print an empty Uint8Array. typedArray2 is intact as well.
+// The following line prints the contents of typedArray1 -- it still owns
+// its memory and has been cloned, not transferred. Without
+// `markAsUntransferable()`, this would print an empty Uint8Array.
+// typedArray2 is intact as well.
 console.log(typedArray1);
 console.log(typedArray2);
 ```
@@ -618,6 +621,10 @@ if (isMainThread) {
 <!-- YAML
 added: v10.5.0
 changes:
+  - version:
+    - v14.6.0
+    pr-url: https://github.com/nodejs/node/pull/34303
+    description: The `trackUnmanagedFds` option was introduced.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/32278
     description: The `transferList` option was introduced.
@@ -673,6 +680,12 @@ changes:
     occur as described in the [HTML structured clone algorithm][], and an error
     will be thrown if the object cannot be cloned (e.g. because it contains
     `function`s).
+  * `trackUnmanagedFds` {boolean} If this is set to `true`, then the Worker will
+    track raw file descriptors managed through [`fs.open()`][] and
+    [`fs.close()`][], and close them when the Worker exits, similar to other
+    resources like network sockets or file descriptors managed through
+    the [`FileHandle`][] API. This option is automatically inherited by all
+    nested `Worker`s. **Default**: `false`.
   * `transferList` {Object[]} If one or more `MessagePort`-like objects
     are passed in `workerData`, a `transferList` is required for those
     items or [`ERR_MISSING_MESSAGE_PORT_IN_TRANSFER_LIST`][] will be thrown.
@@ -879,7 +892,7 @@ active handle in the event system. If the worker is already `unref()`ed calling
 [`ArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
 [`AsyncResource`]: async_hooks.html#async_hooks_class_asyncresource
 [`Buffer`]: buffer.html
-[`Buffer.allocUnsafe()`]: buffer.html#buffer_class_method_buffer_allocunsafe_size
+[`Buffer.allocUnsafe()`]: buffer.html#buffer_static_method_buffer_allocunsafe_size
 [`ERR_MISSING_MESSAGE_PORT_IN_TRANSFER_LIST`]: errors.html#errors_err_missing_message_port_in_transfer_list
 [`ERR_WORKER_NOT_RUNNING`]: errors.html#ERR_WORKER_NOT_RUNNING
 [`EventEmitter`]: events.html
@@ -892,6 +905,8 @@ active handle in the event system. If the worker is already `unref()`ed calling
 [`WebAssembly.Module`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module
 [`Worker`]: #worker_threads_class_worker
 [`cluster` module]: cluster.html
+[`fs.open()`]: fs.html#fs_fs_open_path_flags_mode_callback
+[`fs.close()`]: fs.html#fs_fs_close_fd_callback
 [`markAsUntransferable()`]: #worker_threads_worker_markasuntransferable_object
 [`port.on('message')`]: #worker_threads_event_message
 [`port.onmessage()`]: https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/onmessage

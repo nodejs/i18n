@@ -1,4 +1,4 @@
-# VM (Executing JavaScript)
+# VM (executing JavaScript)
 
 <!--introduced_in=v0.10.0-->
 
@@ -318,7 +318,7 @@ linking, and evaluation. These three steps are illustrated in the following
 example.
 
 This implementation lies at a lower level than the [ECMAScript Module
-loader][]. There is also currently no way to interact with the Loader, though
+loader][]. There is also no way to interact with the Loader yet, though
 support is planned.
 
 ```js
@@ -1081,7 +1081,7 @@ local scope, so the value `localVar` is changed. In this way
 `vm.runInThisContext()` is much like an [indirect `eval()` call][], e.g.
 `(0,eval)('code')`.
 
-## Example: Running an HTTP Server within a VM
+## Example: Running an HTTP server within a VM
 
 When using either [`script.runInThisContext()`][] or
 [`vm.runInThisContext()`][], the code is executed within the current V8 global
@@ -1131,7 +1131,7 @@ within which it can operate. The process of creating the V8 Context and
 associating it with the `contextObject` is what this document refers to as
 "contextifying" the object.
 
-## Timeout limitations when using `process.nextTick()`, Promises, and `queueMicrotask()`
+## Timeout limitations when using `process.nextTick()`, promises, and `queueMicrotask()`
 
 Because of the internal mechanics of how the `process.nextTick()` queue and
 the microtask queue that underlies Promises are implemented within V8 and
