@@ -8,7 +8,7 @@
 * [About this documentation](documentation.html)
 * [Usage and example](synopsis.html)
 
-<div class="line"></div>
+<hr class="line"/>
 
 * [Assertion testing](assert.html)
 * [Async hooks](async_hooks.html)
@@ -25,7 +25,6 @@
 * [Deprecated APIs](deprecations.html)
 * [DNS](dns.html)
 * [Domain](domain.html)
-* [ECMAScript modules](esm.html)
 * [Errors](errors.html)
 * [Events](events.html)
 * [File system](fs.html)
@@ -35,7 +34,9 @@
 * [HTTPS](https.html)
 * [Inspector](inspector.html)
 * [Internationalization](intl.html)
-* [Modules](modules.html)
+* [Modules: CommonJS modules](modules.html)
+* [Modules: ECMAScript modules](esm.html)
+* [Modules: `module` API](module.html)
 * [Net](net.html)
 * [OS](os.html)
 * [Path](path.html)
@@ -62,6 +63,6 @@
 * [Worker threads](worker_threads.html)
 * [Zlib](zlib.html)
 
-<div class="line"></div>
+<hr class="line"/>
 
 * [Code repository and issue tracker](https://github.com/nodejs/node)

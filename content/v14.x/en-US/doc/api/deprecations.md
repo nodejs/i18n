@@ -3,13 +3,13 @@
 <!--introduced_in=v7.7.0-->
 <!-- type=misc -->
 
-Node.js may deprecate APIs for any of the following reasons:
+Node.js APIs might be deprecated for any of the following reasons:
 
 * Use of the API is unsafe.
 * An improved alternative API is available.
 * Breaking changes to the API are expected in a future major release.
 
-Node.js utilizes three kinds of Deprecations:
+Node.js uses three kinds of Deprecations:
 
 * Documentation-only
 * Runtime
@@ -34,7 +34,7 @@ from Node.js.
 
 ## Revoking deprecations
 
-Occasionally, the deprecation of an API may be reversed. In such situations,
+Occasionally, the deprecation of an API might be reversed. In such situations,
 this document will be updated with information relevant to the decision.
 However, the deprecation identifier will not be modified.
 
@@ -1651,7 +1651,7 @@ Type: End-of-Life
 Using a property named `inspect` on an object to specify a custom inspection
 function for [`util.inspect()`][] is deprecated. Use [`util.inspect.custom`][]
 instead. For backward compatibility with Node.js prior to version 6.4.0, both
-may be specified.
+can be specified.
 
 <a id="DEP0080"></a>
 ### DEP0080: `path._makeLong()`
@@ -1752,7 +1752,7 @@ The `v8/*` modules do not have any exports, and if not imported in a specific
 order would in fact throw errors. As such there are virtually no legitimate use
 cases for importing them through `require()`.
 
-On the other hand, `node-inspect` may be installed locally through a package
+On the other hand, `node-inspect` can be installed locally through a package
 manager, as it is published on the npm registry under the same name. No source
 code modification is necessary if that is done.
 
@@ -2053,7 +2053,7 @@ Type: Documentation-only (supports [`--pending-deprecation`][])
 
 When assigning a non-string property to [`process.env`][], the assigned value is
 implicitly converted to a string. This behavior is deprecated if the assigned
-value is not a string, boolean, or number. In the future, such assignment may
+value is not a string, boolean, or number. In the future, such assignment might
 result in a thrown error. Please convert the property to a string before
 assigning it to `process.env`.
 
@@ -2249,7 +2249,7 @@ Type: Documentation-only (supports [`--pending-deprecation`][])
 In recent versions of Node.js, there is no difference between
 [`crypto.randomBytes()`][] and `crypto.pseudoRandomBytes()`. The latter is
 deprecated along with the undocumented aliases `crypto.prng()` and
-`crypto.rng()` in favor of [`crypto.randomBytes()`][] and may be removed in a
+`crypto.rng()` in favor of [`crypto.randomBytes()`][] and might be removed in a
 future release.
 
 <a id="DEP0116"></a>
@@ -2600,7 +2600,7 @@ changes:
 Type: Runtime
 
 Allowing a [`fs.FileHandle`][] object to be closed on garbage collection is
-deprecated. In the future, doing so may result in a thrown error that will
+deprecated. In the future, doing so might result in a thrown error that will
 terminate the process.
 
 Please ensure that all `fs.FileHandle` objects are explicitly closed using
@@ -2753,6 +2753,20 @@ Type: Documentation-only
 
 [`socket.bufferSize`][] is just an alias for [`writable.writableLength`][].
 
+<a id="DEP0146"></a>
+### DEP0146: `new crypto.Certificate()`
+<!-- YAML
+changes:
+  - version: v14.9.0
+    pr-url: https://github.com/nodejs/node/pull/34697
+    description: Documentation-only deprecation.
+-->
+
+Type: Documentation-only
+
+The [`crypto.Certificate()` constructor][] is deprecated. Use
+[static methods of `crypto.Certificate()`][] instead.
+
 [`--pending-deprecation`]: cli.html#cli_pending_deprecation
 [`--throw-deprecation`]: cli.html#cli_throw_deprecation
 [`Buffer.allocUnsafeSlow(size)`]: buffer.html#buffer_static_method_buffer_allocunsafeslow_size
@@ -2776,6 +2790,7 @@ Type: Documentation-only
 [`clearTimeout()`]: timers.html#timers_cleartimeout_timeout
 [`console.error()`]: console.html#console_console_error_data_args
 [`console.log()`]: console.html#console_console_log_data_args
+[`crypto.Certificate()` constructor]: crypto.html#crypto_legacy_api
 [`crypto.DEFAULT_ENCODING`]: crypto.html#crypto_crypto_default_encoding
 [`crypto.createCipher()`]: crypto.html#crypto_crypto_createcipher_algorithm_password_options
 [`crypto.createCipheriv()`]: crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv_options
@@ -2806,7 +2821,7 @@ Type: Documentation-only
 [`http.request()`]: http.html#http_http_request_options_callback
 [`https.get()`]: https.html#https_https_get_options_callback
 [`https.request()`]: https.html#https_https_request_options_callback
-[`module.createRequire()`]: modules.html#modules_module_createrequire_filename
+[`module.createRequire()`]: module.html#module_module_createrequire_filename
 [`os.networkInterfaces()`]: os.html#os_os_networkinterfaces
 [`os.tmpdir()`]: os.html#os_os_tmpdir
 [`process.env`]: process.html#process_process_env
@@ -2831,9 +2846,9 @@ Type: Documentation-only
 [`timeout.ref()`]: timers.html#timers_timeout_ref
 [`timeout.refresh()`]: timers.html#timers_timeout_refresh
 [`timeout.unref()`]: timers.html#timers_timeout_unref
-[`tls.CryptoStream`]: tls.html#tls_class_cryptostream
+[`tls.CryptoStream`]: tls.html#tls_class_tls_cryptostream
 [`tls.SecureContext`]: tls.html#tls_tls_createsecurecontext_options
-[`tls.SecurePair`]: tls.html#tls_class_securepair
+[`tls.SecurePair`]: tls.html#tls_class_tls_securepair
 [`tls.TLSSocket`]: tls.html#tls_class_tls_tlssocket
 [`tls.checkServerIdentity()`]: tls.html#tls_tls_checkserveridentity_hostname_cert
 [`tls.createSecureContext()`]: tls.html#tls_tls_createsecurecontext_options
@@ -2875,3 +2890,4 @@ Type: Documentation-only
 [from_arraybuffer]: buffer.html#buffer_static_method_buffer_from_arraybuffer_byteoffset_length
 [from_string_encoding]: buffer.html#buffer_static_method_buffer_from_string_encoding
 [legacy `urlObject`]: url.html#url_legacy_urlobject
+[static methods of `crypto.Certificate()`]: crypto.html#crypto_class_certificate
