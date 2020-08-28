@@ -2083,11 +2083,6 @@ import 'package-name'; // supported
 
 `import` with URL schemes other than `file` and `data` is unsupported.
 
-<a id="ERR_V8BREAKITERATOR"></a>
-### `ERR_V8BREAKITERATOR`
-
-The V8 `BreakIterator` API was used but the full ICU data set is not installed.
-
 <a id="ERR_VALID_PERFORMANCE_ENTRY_TYPE"></a>
 ### `ERR_VALID_PERFORMANCE_ENTRY_TYPE`
 
@@ -2214,6 +2209,17 @@ Too much HTTP header data was received. In order to protect against malicious or
 malconfigured clients, if more than 8KB of HTTP header data is received then
 HTTP parsing will abort without a request or response object being created, and
 an `Error` with this code will be emitted.
+
+<a id="HPE_UNEXPECTED_CONTENT_LENGTH"></a>
+### `HPE_UNEXPECTED_CONTENT_LENGTH`
+
+Server is sending both a `Content-Length` header and `Transfer-Encoding: chunked`.
+
+`Transfer-Encoding: chunked` allows the server to maintain an HTTP persistent
+connection for dynamically generated content.
+In this case, the `Content-Length` HTTP header cannot be used.
+
+Use `Content-Length` or `Transfer-Encoding: chunked`.
 
 <a id="MODULE_NOT_FOUND"></a>
 ### `MODULE_NOT_FOUND`
@@ -2468,6 +2474,11 @@ removed: v11.7.0
 An attempt was made to launch a Node.js process with an unknown `stdout` or
 `stderr` file type. This error is usually an indication of a bug within Node.js
 itself, although it is possible for user code to trigger it.
+
+<a id="ERR_V8BREAKITERATOR"></a>
+### `ERR_V8BREAKITERATOR`
+
+The V8 `BreakIterator` API was used but the full ICU data set is not installed.
 
 <a id="ERR_VALUE_OUT_OF_RANGE"></a>
 ### `ERR_VALUE_OUT_OF_RANGE`
