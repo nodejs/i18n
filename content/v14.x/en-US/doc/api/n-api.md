@@ -36,7 +36,7 @@ properties:
 The N-API is a C API that ensures ABI stability across Node.js versions
 and different compiler levels. A C++ API can be easier to use.
 To support using C++, the project maintains a
-C++ wrapper module called [node-addon-api][].
+C++ wrapper module called [`node-addon-api`][].
 This wrapper provides an inlineable C++ API. Binaries built
 with `node-addon-api` will depend on the symbols for the N-API C-based
 functions exported by Node.js. `node-addon-api` is a more
@@ -80,7 +80,7 @@ for `node-addon-api`.
 
 The [N-API Resource](https://nodejs.github.io/node-addon-examples/) offers an
 excellent orientation and tips for developers just getting started with N-API
-and node-addon-api.
+and `node-addon-api`.
 
 ## Implications of ABI stability
 
@@ -111,7 +111,7 @@ versions:
     ```
 
 Thus, for an addon to remain ABI-compatible across Node.js major versions, it
-must make use exclusively of N-API by restricting itself to using
+must use N-API exclusively by restricting itself to using
 
 ```c
 #include <node_api.h>
@@ -147,7 +147,7 @@ tools. However, it is not necessary to install the entire Visual Studio
 IDE. The following command installs the necessary toolchain:
 
 ```bash
-npm install --global --production windows-build-tools
+npm install --global windows-build-tools
 ```
 
 The sections below describe the additional tools available for developing
@@ -370,7 +370,7 @@ From the perspective of a native addon this means that the bindings it provides
 may be called multiple times, from multiple contexts, and even concurrently from
 multiple threads.
 
-Native addons may need to allocate global state of which they make use during
+Native addons may need to allocate global state which they use during
 their entire life cycle such that the state must be unique to each instance of
 the addon.
 
@@ -623,6 +623,15 @@ typedef struct {
 } napi_type_tag;
 ```
 
+#### napi_async_cleanup_hook_handle
+<!-- YAML
+added: v14.10.0
+-->
+
+An opaque value returned by [`napi_add_async_cleanup_hook`][]. It must be passed
+to [`napi_remove_async_cleanup_hook`][] when the chain of asynchronous cleanup
+events completes.
+
 ### N-API callback types
 
 #### napi_callback_info
@@ -750,6 +759,30 @@ typedef void (*napi_threadsafe_function_call_js)(napi_env env,
 
 Unless for reasons discussed in [Object Lifetime Management][], creating a
 handle and/or callback scope inside the function body is not necessary.
+
+#### napi_async_cleanup_hook
+<!-- YAML
+added: v14.10.0
+-->
+
+Function pointer used with [`napi_add_async_cleanup_hook`][]. It will be called
+when the environment is being torn down.
+
+Callback functions must satisfy the following signature:
+
+```c
+typedef void (*napi_async_cleanup_hook)(napi_async_cleanup_hook_handle handle,
+                                        void* data);
+```
+
+* `[in] handle`: The handle that must be passed to
+[`napi_remove_async_cleanup_hook`][] after completion of the asynchronous
+cleanup.
+* `[in] data`: The data that was passed to [`napi_add_async_cleanup_hook`][].
+
+The body of the function should initiate the asynchronous cleanup actions at the
+end of which `handle` must be passed in a call to
+[`napi_remove_async_cleanup_hook`][].
 
 ## Error handling
 
@@ -1580,6 +1613,10 @@ with `napi_add_env_cleanup_hook`, otherwise the process will abort.
 #### napi_add_async_cleanup_hook
 <!-- YAML
 added: v14.8.0
+changes:
+  - version: v14.10.0
+    pr-url: https://github.com/nodejs/node/pull/34819
+    description: Changed signature of the `hook` callback.
 -->
 
 > Stability: 1 - Experimental
@@ -1587,15 +1624,22 @@ added: v14.8.0
 ```c
 NAPI_EXTERN napi_status napi_add_async_cleanup_hook(
     napi_env env,
-    void (*fun)(void* arg, void(* cb)(void*), void* cbarg),
+    napi_async_cleanup_hook hook,
     void* arg,
     napi_async_cleanup_hook_handle* remove_handle);
 ```
 
-Registers `fun` as a function to be run with the `arg` parameter once the
-current Node.js environment exits. Unlike [`napi_add_env_cleanup_hook`][],
-the hook is allowed to be asynchronous in this case, and must invoke the passed
-`cb()` function with `cbarg` once all asynchronous activity is finished.
+* `[in] env`: The environment that the API is invoked under.
+* `[in] hook`: The function pointer to call at environment teardown.
+* `[in] arg`: The pointer to pass to `hook` when it gets called.
+* `[out] remove_handle`: Optional handle that refers to the asynchronous cleanup
+hook.
+
+Registers `hook`, which is a function of type [`napi_async_cleanup_hook`][], as
+a function to be run with the `remove_handle` and `arg` parameters once the
+current Node.js environment exits.
+
+Unlike [`napi_add_env_cleanup_hook`][], the hook is allowed to be asynchronous.
 
 Otherwise, behavior generally matches that of [`napi_add_env_cleanup_hook`][].
 
@@ -1608,19 +1652,25 @@ is being torn down anyway.
 #### napi_remove_async_cleanup_hook
 <!-- YAML
 added: v14.8.0
+changes:
+  - version: v14.10.0
+    pr-url: https://github.com/nodejs/node/pull/34819
+    description: Removed `env` parameter.
 -->
 
 > Stability: 1 - Experimental
 
 ```c
 NAPI_EXTERN napi_status napi_remove_async_cleanup_hook(
-    napi_env env,
     napi_async_cleanup_hook_handle remove_handle);
 ```
 
+* `[in] remove_handle`: The handle to an asynchronous cleanup hook that was
+created with [`napi_add_async_cleanup_hook`][].
+
 Unregisters the cleanup hook corresponding to `remove_handle`. This will prevent
 the hook from being executed, unless it has already started executing.
-This must be called on any `napi_async_cleanup_hook_handle` value retrieved
+This must be called on any `napi_async_cleanup_hook_handle` value obtained
 from [`napi_add_async_cleanup_hook`][].
 
 ## Module registration
@@ -2332,8 +2382,8 @@ This API is used to convert from the C `int64_t` type to the JavaScript
 The JavaScript `Number` type is described in [Section 6.1.6][]
 of the ECMAScript Language Specification. Note the complete range of `int64_t`
 cannot be represented with full precision in JavaScript. Integer values
-outside the range of [`Number.MIN_SAFE_INTEGER`][] `-(2^53 - 1)` -
-[`Number.MAX_SAFE_INTEGER`][] `(2^53 - 1)` will lose precision.
+outside the range of [`Number.MIN_SAFE_INTEGER`][] `-(2**53 - 1)` -
+[`Number.MAX_SAFE_INTEGER`][] `(2**53 - 1)` will lose precision.
 
 #### napi_create_double
 <!-- YAML
@@ -2879,7 +2929,7 @@ of the given JavaScript `Number`.
 
 If the number exceeds the range of the 32 bit integer, then the result is
 truncated to the equivalent of the bottom 32 bits. This can result in a large
-positive number becoming a negative number if the value is > 2^31 -1.
+positive number becoming a negative number if the value is > 2<sup>31</sup> - 1.
 
 Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the
 result to zero.
@@ -2908,7 +2958,8 @@ This API returns the C `int64` primitive equivalent of the given JavaScript
 `Number`.
 
 `Number` values outside the range of [`Number.MIN_SAFE_INTEGER`][]
-`-(2^53 - 1)` - [`Number.MAX_SAFE_INTEGER`][] `(2^53 - 1)` will lose precision.
+`-(2**53 - 1)` - [`Number.MAX_SAFE_INTEGER`][] `(2**53 - 1)` will lose
+precision.
 
 Non-finite number values (`NaN`, `+Infinity`, or `-Infinity`) set the
 result to zero.
@@ -5454,7 +5505,7 @@ return status of `napi_closing` in response to a call to
 should be the last API call made in conjunction with a given
 `napi_threadsafe_function`, because after the call completes, there is no
 guarantee that the `napi_threadsafe_function` is still allocated. For the same
-reason, do not make use of a thread-safe function
+reason, do not use a thread-safe function
 after receiving a return value of `napi_closing` in response to a call to
 `napi_call_threadsafe_function`. Data associated with the
 `napi_threadsafe_function` can be freed in its `napi_finalize` callback which
@@ -5477,8 +5528,8 @@ reference count reaches zero. In particular, `napi_call_threadsafe_function()`
 will return `napi_closing`, thus informing the threads that it is no longer
 possible to make asynchronous calls to the thread-safe function. This can be
 used as a criterion for terminating the thread. **Upon receiving a return value
-of `napi_closing` from `napi_call_threadsafe_function()` a thread must make no
-further use of the thread-safe function because it is no longer guaranteed to
+of `napi_closing` from `napi_call_threadsafe_function()` a thread must not use
+the thread-safe function anymore because it is no longer guaranteed to
 be allocated.**
 
 ### Deciding whether to keep the process running
@@ -5757,6 +5808,7 @@ This API may only be called from the main thread.
 [`napi_add_async_cleanup_hook`]: #n_api_napi_add_async_cleanup_hook
 [`napi_add_env_cleanup_hook`]: #n_api_napi_add_env_cleanup_hook
 [`napi_add_finalizer`]: #n_api_napi_add_finalizer
+[`napi_async_cleanup_hook`]: #n_api_napi_async_cleanup_hook
 [`napi_async_complete_callback`]: #n_api_napi_async_complete_callback
 [`napi_async_init`]: #n_api_napi_async_init
 [`napi_callback`]: #n_api_napi_callback
@@ -5806,6 +5858,7 @@ This API may only be called from the main thread.
 [`napi_throw`]: #n_api_napi_throw
 [`napi_unwrap`]: #n_api_napi_unwrap
 [`napi_wrap`]: #n_api_napi_wrap
+[`node-addon-api`]: https://github.com/nodejs/node-addon-api
 [`node_api.h`]: https://github.com/nodejs/node/blob/master/src/node_api.h
 [`process.release`]: process.html#process_process_release
 [`uv_ref`]: https://docs.libuv.org/en/v1.x/handle.html#c.uv_ref
@@ -5815,7 +5868,6 @@ This API may only be called from the main thread.
 [docs]: https://github.com/nodejs/node-addon-api#api-documentation
 [global scope]: globals.html
 [module scope]: modules.html#modules_the_module_scope
-[node-addon-api]: https://github.com/nodejs/node-addon-api
 [node-gyp]: https://github.com/nodejs/node-gyp
 [node-pre-gyp]: https://github.com/mapbox/node-pre-gyp
 [prebuild]: https://github.com/prebuild/prebuild
