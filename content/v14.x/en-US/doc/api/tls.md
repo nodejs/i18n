@@ -1077,7 +1077,8 @@ For EC keys, the following properties may be defined:
 
 Example certificate:
 
-```text
+<!-- eslint-skip -->
+```js
 { subject:
    { OU: [ 'Domain Control Validated', 'PositiveSSL Wildcard' ],
      CN: '*.nodejs.org' },
@@ -1718,7 +1719,7 @@ The `tls.createSecureContext()` method creates a `SecureContext` object. It is
 usable as an argument to several `tls` APIs, such as [`tls.createServer()`][]
 and [`server.addContext()`][], but has no public methods.
 
-A key is *required* for ciphers that make use of certificates. Either `key` or
+A key is *required* for ciphers that use certificates. Either `key` or
 `pfx` can be used to provide it.
 
 If the `ca` option is not given, then Node.js will default to using
