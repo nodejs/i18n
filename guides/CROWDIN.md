@@ -10,22 +10,22 @@ We have a [Crowdin Glossary](../crowdin-glossary.json) that contains terms which
 
 ## GitHub integration
 
-Crowdin pulling updates of original content, and on other side all approved translations going to be pushed to connected repository automatically and well formatted.
+Crowdin pulls updates of original content from GitHub. On the other side, all approved translations are automatically pushed to the connected repository with the correct formats.
 
 ## Priorities
 
-There is a lot of content to translate, and to manage priorities we're using [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look at the priority level mark:
+There is a lot of content to translate. To manage priorities, we're using the [Crowdin Prioritizing Files](https://support.crowdin.com/files-management/#prioritizing-files) system. Before translating something, please take a look at the priority level mark:
 
-![priorities](https://user-images.githubusercontent.com/28801003/79640499-9a2fec00-819a-11ea-8eb3-ce0343791b8f.png)
+![Picture showing a column with up and down arrows to indicate higher or lower priority](https://user-images.githubusercontent.com/28801003/79640499-9a2fec00-819a-11ea-8eb3-ce0343791b8f.png)
 
 ## Translation Memory
 
-[Translation Memory or TM](https://support.crowdin.com/translation-memory/) is collection of the source strings and their translations, that fills automatically after each translation was added. Can be used to speed up the translation of the same or similar strings in two ways:
+[Translation Memory (TM)](https://support.crowdin.com/translation-memory/) is a collection of source strings and their translations which is filled in automatically after each translation. This can be used to speed up the translation of the same (or similar) strings in two ways:
 
-- suggestion tips for translators
-    ![image](https://user-images.githubusercontent.com/28801003/79671195-455b9800-81d1-11ea-996c-dc8025125d35.png)
-- pre-translation - process to apply these suggestions for all strings in a project, but can be triggered only by project manager
+- **pre-translation** - These suggestions can be applied for all strings in a project. This is triggered only by a project manager.
+- **suggestion tips for translators**
+    ![Picture showing translated text with a pop-up recommendation for translators](https://user-images.githubusercontent.com/28801003/79671195-455b9800-81d1-11ea-996c-dc8025125d35.png)
 
-By default, TM scoped by project, but can be shared inside organization, so translations from [api-docs](https://crowdin.com/project/nodejs) can be used in [nodejs-website](https://crowdin.com/project/nodejs-website). We recommend to use TM suggestions to make consistent translations and to speed up process in general. 
+By default, TM is scoped to a project, but it can be shared within an entire organization, such that translations from [api-docs](https://crowdin.com/project/nodejs) can be used in [nodejs-website](https://crowdin.com/project/nodejs-website). We recommend using TM suggestions to ensure consistent terminology across the project, as well as for the speed and effort improvements.
 
-In case of [api-docs](https://crowdin.com/project/nodejs) project we have a lot of duplicates between versions, and to not translate the same strings many times, we pre-translated it by TM.
+In the case of the [api-docs](https://crowdin.com/project/nodejs) project, for example, we have a lot of duplicates between versions. To avoid translating the same strings many times, we pre-translated them using the Translation Memory.

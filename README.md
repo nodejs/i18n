@@ -2,20 +2,11 @@
 
 [![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
 
-Here you can find contribution guides, discuss ideas or join meetings. This repo also contains the source English Node.js API documentation as well as translated versions of the documentation. The source English is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our Crowdin integration.
+Here you can find contribution guides, discuss ideas, and find out how to join meetings. This repo also contains the source for the English Node.js API documentation as well as translated versions of the documentation. The source English contnet is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our [Crowdin](./guides/CROWDIN.md) integration.
 
 ## Usage
 
 This repository can be installed as an npm package. See [guides/NPM_PACKAGE.md](guides/NPM_PACKAGE.md) for installation and usage instructions.
-
-## Contributing
-
-Help us get Node.js translated into your native language and reach more people's hearts. Please read these guides to get started:
-
-- [Getting started](./guides/GETTING_STARTED.md) - basic understanding about translation process
-- [Roles](./guides/ROLES.md) - information about roles and hierarchy in Node.js localization process
-- [Teams](./guides/TEAMS.md) - explain the structure of localization teams and their goals
-- [Crowdin](./guides/CROWDIN.md) - review functionality of Crowdin that we're using for Node.js
 
 ## About
 
@@ -25,7 +16,7 @@ The Node.js i18n Working Group is dedicated to the support and improvement of bo
 
 - The ongoing translation of the [Node.js](https://github.com/nodejs/node) project's textual content into every language of its users.
 - The implementation of i18n support including [ECMA-402](https://tc39.github.io/ecma402/) within [Node.js](https://github.com/nodejs/node).
-- Ensuring Node.js is compliant with common standards like [Unicode](https://unicode.org/), [CLDR](http://cldr.unicode.org/), and harmonized with other globalization efforts.
+- Ensuring Node.js is compliant with common standards such as [Unicode](https://unicode.org/), [CLDR](http://cldr.unicode.org/), and harmonized with other globalization efforts.
 
 ### What i18n (Internationalization) means to us
 
@@ -35,12 +26,16 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 - APIs and implementations which support the specific cultural & socio-linguistic preferences, such as localized methods for displaying dates & times.
 - The ability for [Node.js](https://github.com/nodejs/node) and its related modules & applications to be translated into distinct human languages.
 
+For details on these aspects, see the [i18n API](./guides/I18N-API.md) guide.
+
 ### What l10n (Localization) means to us
 
 - Making the Node.js project's API documentation, site, and tutorial content available in every language.
-- The responsibility to provide translators with a useful platform to work in.
-- The responsibility to provision Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors.
-- Members of this group are not responsible for performing the act of translation itself.
+- Providing translators with a useful and productive platform to work in.
+- Provisioning Node.js with all l10n assets, through coordination with [Node.js](https://github.com/nodejs/node) core contributors.
+
+Members of this group are not responsible for performing the actual translations,
+but of coordinating the translation among the language-specific l10n groups.
 
 ### Summary of our Responsibilities
 
@@ -49,7 +44,25 @@ Maintaining the ability for Node.js to [effectively support](https://nodejs.org/
 3. Ensuring i18n compliance with all relevant standards such as [Unicode](https://unicode.org) and [ECMA-402](https://github.com/tc39/ecma402).
 4. Continual refinement and maintenance of the i18n Working Group's processes, platform service accounts, and related module repositories & source code.
 
-> NOTE: Still confused with "i18n" and "l10n" terms? Read ["i18n vs l10n — what’s the diff?"](https://blog.mozilla.org/l10n/2011/12/14/i18n-vs-l10n-whats-the-diff/) article to find answers.
+> NOTE: Still confused about the "i18n" versus "l10n" distinction? Read ["i18n vs l10n — what’s the diff?"](https://blog.mozilla.org/l10n/2011/12/14/i18n-vs-l10n-whats-the-diff/) article to find some answers.
+
+## Contributing
+
+There are many ways to get involved, and your help is wanted and appreciated.
+
+### Translations
+
+Help us get Node.js translated into your native language and reach more people's hearts. Please read these guides to get started:
+
+- [Getting started](./guides/GETTING_STARTED.md) - basic understanding about the translation process
+- [Roles](./guides/ROLES.md) - information about roles and hierarchy in Node.js localization process
+- [Teams](./guides/TEAMS.md) - explains the structure of localization teams and their goals
+- [Crowdin](./guides/CROWDIN.md) - reviews the functionality of Crowdin which is used to translate Node.js
+
+### Internationalization
+
+Help make sure Node.js applications continue to support all the world’s
+languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 
 ## Current Members
 
