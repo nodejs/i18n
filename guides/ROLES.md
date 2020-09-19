@@ -4,7 +4,7 @@ The Localization process is based on two environments – GitHub and Crowdin. Bo
 
 ## Crowdin
 
-Per the [official docs](https://support.crowdin.com/modifying-project-participants-roles/#project-roles) of Crowdin, the project has different levels of responsiblities:
+Per the [official docs](https://support.crowdin.com/modifying-project-participants-roles/#project-roles) of Crowdin, the project has different levels of responsibilities:
 
 1. Owner – a person who created a project. Project ownership can not be changed.
 2. Manager – has the same rights as a project owner except that they cannot delete the project.
