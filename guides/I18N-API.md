@@ -38,7 +38,7 @@ ECMAScript language, and includes specification for international-related
 functionality in the core language.
 
 - [ECMA-402](https://tc39.github.io/ecma402/) is the specification for
-complementary langauge-sensitive functionality in ECMAScript, such as the
+complementary language-sensitive functionality in ECMAScript, such as the
 `Intl` object.
 
 - The [International Components for Unicode (ICU)](http://site.icu-project.org/)
@@ -131,4 +131,3 @@ an ICU and/or CLDR issue may also need to be filed.
 
 None of this is intended to discourage you from filing an issue,
 but the intent is to guide the interaction between different issues.
-
