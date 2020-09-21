@@ -1,6 +1,6 @@
 # Teams
 
-Our localization process structure is based on language community, so we have one l10n team for each target locale. Read the guide below to understand the goals of these teams and discover how to find and join your own.
+Our localization process structure is based on language communities, and so we have one l10n team for each target locale. Read the guide below to understand the goals of these teams and discover how to find and join your own.
 
 ## l10n teams
 
@@ -50,20 +50,20 @@ All these teams exist to simplify communication and management processes for eac
 
 The repositories for your locale group is a good place to host some language-specific documentation and guidelines in markdown files. You can collaborate to work on docs like this or just read. On the other hand, repository issues are a great place to discuss some questions related to translations like glossary, style guide, and team management on both GitHub and Crowdin.
 
-> NOTE: Feel free to use your native language under this repo
+> NOTE: Feel free to communicate in your native language in these repositories!
 
 ### Team
 
-Teams are groups of organization members that reflect your company or group's structure with cascading access permissions and mentions. Generally it's used for group mentions like `@nodejs/nodejs-es` in issues/PRs, or for target announcements in team feed.
+Teams are groups of organization members that reflect your company or group's structure with cascading access permissions and mentions. Generally it's used for group mentions such as `@nodejs/nodejs-es` in issues/PRs, or for target announcements in team feed.
 
-If you want to receive notification after someone mentioned your team, join it by creating a new issue in related repo ([see table](/#l10n-teams)), or:
+If you want to receive notifications when someone mentions your team, join the team by creating a new issue in the related repo ([see table](/#l10n-teams)), or:
 
 1. Open team page
 2. Switch to "Members" tab
 3. Click "Request to join"
 
-![image](https://user-images.githubusercontent.com/28801003/78789904-70b2db80-79b6-11ea-91f4-3e5c10a823ee.png)
+![GitHub “Request to Join” page](https://user-images.githubusercontent.com/28801003/78789904-70b2db80-79b6-11ea-91f4-3e5c10a823ee.png)
 
 ---
 
-Check next guideline about [crowdin](./CROWDIN.md) features that used in Node.js localization.
+Now, see the next guideline concerning [Crowdin](./CROWDIN.md) features used in Node.js localization.
