@@ -1650,6 +1650,11 @@ operations. The specific constants currently defined are described in
 ## `fs.copyFile(src, dest[, mode], callback)`
 <!-- YAML
 added: v8.5.0
+changes:
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/27044
+    description: Changed 'flags' argument to 'mode' and imposed
+                 stricter type validation.
 -->
 
 * `src` {string|Buffer|URL} source filename to copy
@@ -1696,6 +1701,11 @@ fs.copyFile('source.txt', 'destination.txt', COPYFILE_EXCL, callback);
 ## `fs.copyFileSync(src, dest[, mode])`
 <!-- YAML
 added: v8.5.0
+changes:
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/27044
+    description: Changed 'flags' argument to 'mode' and imposed
+                 stricter type validation.
 -->
 
 * `src` {string|Buffer|URL} source filename to copy
@@ -2389,6 +2399,8 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/7897
     description: The `callback` parameter is no longer optional. Not passing
                  it will emit a deprecation warning with id DEP0013.
+  - version: v0.4.7
+    description: Documentation-only deprecation.
 -->
 
 * `path` {string|Buffer|URL}
@@ -2406,6 +2418,8 @@ changes:
   - version: v10.6.0
     pr-url: https://github.com/nodejs/node/pull/21498
     description: This API is no longer deprecated.
+  - version: v0.4.7
+    description: Documentation-only deprecation.
 -->
 
 * `path` {string|Buffer|URL}
@@ -2416,7 +2430,7 @@ Synchronous lchown(2). Returns `undefined`.
 
 ## `fs.lutimes(path, atime, mtime, callback)`
 <!-- YAML
-addded: v14.5.0
+added: v14.5.0
 -->
 
 * `path` {string|Buffer|URL}
@@ -2894,6 +2908,9 @@ and the file position will be updated.
 If `position` is an integer, the file position will remain unchanged.
 
 The callback is given the three arguments, `(err, bytesRead, buffer)`.
+
+If the file is not modified concurrently, the end-of-file is reached when the
+number of bytes read is zero.
 
 If this method is invoked as its [`util.promisify()`][]ed version, it returns
 a `Promise` for an `Object` with `bytesRead` and `buffer` properties.
@@ -3488,8 +3505,6 @@ changes:
                  it will emit a deprecation warning with id DEP0013.
 -->
 
-> Stability: 1 - Recursive removal is experimental.
-
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
@@ -3511,6 +3526,12 @@ to the completion callback.
 
 Using `fs.rmdir()` on a file (not a directory) results in an `ENOENT` error on
 Windows and an `ENOTDIR` error on POSIX.
+
+Setting `recursive` to `true` results in behavior similar to the Unix command
+`rm -rf`: an error will not be raised for paths that do not exist, and paths
+that represent files will be deleted. The permissive behavior of the
+`recursive` option is deprecated, `ENOTDIR` and `ENOENT` will be thrown in
+the future.
 
 ## `fs.rmdirSync(path[, options])`
 <!-- YAML
@@ -3535,8 +3556,6 @@ changes:
                  `file:` protocol. Support is currently still *experimental*.
 -->
 
-> Stability: 1 - Recursive removal is experimental.
-
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
@@ -3555,6 +3574,12 @@ Synchronous rmdir(2). Returns `undefined`.
 
 Using `fs.rmdirSync()` on a file (not a directory) results in an `ENOENT` error
 on Windows and an `ENOTDIR` error on POSIX.
+
+Setting `recursive` to `true` results in behavior similar to the Unix command
+`rm -rf`: an error will not be raised for paths that do not exist, and paths
+that represent files will be deleted. The permissive behavior of the
+`recursive` option is deprecated, `ENOTDIR` and `ENOENT` will be thrown in
+the future.
 
 ## `fs.stat(path[, options], callback)`
 <!-- YAML
@@ -4133,6 +4158,10 @@ This happens when:
 <!-- YAML
 added: v0.0.2
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `buffer` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `buffer` parameter won't coerce unsupported input to
@@ -4158,7 +4187,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `buffer` {Buffer|TypedArray|DataView}
+* `buffer` {Buffer|TypedArray|DataView|string|Object}
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
@@ -4167,7 +4196,8 @@ changes:
   * `bytesWritten` {integer}
   * `buffer` {Buffer|TypedArray|DataView}
 
-Write `buffer` to the file specified by `fd`.
+Write `buffer` to the file specified by `fd`. If `buffer` is a normal object, it
+must have an own `toString` function property.
 
 `offset` determines the part of the buffer to be written, and `length` is
 an integer specifying the number of bytes to write.
@@ -4194,6 +4224,10 @@ the end of the file.
 <!-- YAML
 added: v0.11.5
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `string` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `string` parameter won't coerce unsupported input to
@@ -4212,7 +4246,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `string` {string}
+* `string` {string|Object}
 * `position` {integer}
 * `encoding` {string} **Default:** `'utf8'`
 * `callback` {Function}
@@ -4220,8 +4254,8 @@ changes:
   * `written` {integer}
   * `string` {string}
 
-Write `string` to the file specified by `fd`. If `string` is not a string, then
-an exception will be thrown.
+Write `string` to the file specified by `fd`. If `string` is not a string, or an
+object with an own `toString` function property, then an exception is thrown.
 
 `position` refers to the offset from the beginning of the file where this data
 should be written. If `typeof position !== 'number'` the data will be written at
@@ -4253,6 +4287,10 @@ details.
 <!-- YAML
 added: v0.1.29
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `data` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `data` parameter won't coerce unsupported input to
@@ -4278,7 +4316,7 @@ changes:
 -->
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
-* `data` {string|Buffer|TypedArray|DataView}
+* `data` {string|Buffer|TypedArray|DataView|Object}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
@@ -4294,6 +4332,7 @@ When `file` is a file descriptor, the behavior is similar to calling
 a file descriptor.
 
 The `encoding` option is ignored if `data` is a buffer.
+If `data` is a normal object, it must have an own `toString` function property.
 
 ```js
 const data = new Uint8Array(Buffer.from('Hello Node.js'));
@@ -4343,6 +4382,10 @@ to contain only `', World'`.
 <!-- YAML
 added: v0.1.29
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `data` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `data` parameter won't coerce unsupported input to
@@ -4360,7 +4403,7 @@ changes:
 -->
 
 * `file` {string|Buffer|URL|integer} filename or file descriptor
-* `data` {string|Buffer|TypedArray|DataView}
+* `data` {string|Buffer|TypedArray|DataView|Object}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
@@ -4375,6 +4418,10 @@ this API: [`fs.writeFile()`][].
 <!-- YAML
 added: v0.1.21
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `buffer` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `buffer` parameter won't coerce unsupported input to
@@ -4392,7 +4439,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `buffer` {Buffer|TypedArray|DataView}
+* `buffer` {Buffer|TypedArray|DataView|string|Object}
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
@@ -4405,6 +4452,10 @@ this API: [`fs.write(fd, buffer...)`][].
 <!-- YAML
 added: v0.11.5
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `string` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `string` parameter won't coerce unsupported input to
@@ -4415,7 +4466,7 @@ changes:
 -->
 
 * `fd` {integer}
-* `string` {string}
+* `string` {string|Object}
 * `position` {integer}
 * `encoding` {string}
 * Returns: {number} The number of bytes written.
@@ -4609,6 +4660,9 @@ Following successful read, the `Promise` is resolved with an object with a
 `bytesRead` property specifying the number of bytes read, and a `buffer`
 property that is a reference to the passed in `buffer` argument.
 
+If the file is not modified concurrently, the end-of-file is reached when the
+number of bytes read is zero.
+
 #### `filehandle.read(options)`
 <!-- YAML
 added: v13.11.0
@@ -4778,13 +4832,17 @@ This function does not work on AIX versions before 7.1, it will resolve the
 <!-- YAML
 added: v10.0.0
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `buffer` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `buffer` parameter won't coerce unsupported input to
                  buffers anymore.
 -->
 
-* `buffer` {Buffer|Uint8Array}
+* `buffer` {Buffer|Uint8Array|string|Object}
 * `offset` {integer}
 * `length` {integer}
 * `position` {integer}
@@ -4815,19 +4873,23 @@ the end of the file.
 <!-- YAML
 added: v10.0.0
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `string` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `string` parameter won't coerce unsupported input to
                  strings anymore.
 -->
 
-* `string` {string}
+* `string` {string|Object}
 * `position` {integer}
 * `encoding` {string} **Default:** `'utf8'`
 * Returns: {Promise}
 
-Write `string` to the file. If `string` is not a string, then
-an exception will be thrown.
+Write `string` to the file. If `string` is not a string, or an
+object with an own `toString` function property, then an exception is thrown.
 
 The `Promise` is resolved with an object containing a `bytesWritten` property
 identifying the number of bytes written, and a `buffer` property containing
@@ -4851,20 +4913,24 @@ the end of the file.
 <!-- YAML
 added: v10.0.0
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `data` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `data` parameter won't coerce unsupported input to
                  strings anymore.
 -->
 
-* `data` {string|Buffer|Uint8Array}
+* `data` {string|Buffer|Uint8Array|Object}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
 * Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists.
-`data` can be a string or a buffer. The `Promise` will be resolved with no
-arguments upon success.
+`data` can be a string, a buffer, or an object with an own `toString` function
+property. The `Promise` is resolved with no arguments upon success.
 
 The `encoding` option is ignored if `data` is a buffer.
 
@@ -4991,6 +5057,11 @@ upon success.
 ### `fsPromises.copyFile(src, dest[, mode])`
 <!-- YAML
 added: v10.0.0
+changes:
+  - version: v14.0.0
+    pr-url: https://github.com/nodejs/node/pull/27044
+    description: Changed 'flags' argument to 'mode' and imposed
+                 stricter type validation.
 -->
 
 * `src` {string|Buffer|URL} source filename to copy
@@ -5394,6 +5465,12 @@ Using `fsPromises.rmdir()` on a file (not a directory) results in the
 `Promise` being rejected with an `ENOENT` error on Windows and an `ENOTDIR`
 error on POSIX.
 
+Setting `recursive` to `true` results in behavior similar to the Unix command
+`rm -rf`: an error will not be raised for paths that do not exist, and paths
+that represent files will be deleted. The permissive behavior of the
+`recursive` option is deprecated, `ENOTDIR` and `ENOENT` will be thrown in
+the future.
+
 ### `fsPromises.stat(path[, options])`
 <!-- YAML
 added: v10.0.0
@@ -5477,6 +5554,10 @@ The `atime` and `mtime` arguments follow these rules:
 <!-- YAML
 added: v10.0.0
 changes:
+  - version: v14.12.0
+    pr-url: https://github.com/nodejs/node/pull/34993
+    description: The `data` parameter will stringify an object with an
+                 explicit `toString` function.
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/31030
     description: The `data` parameter won't coerce unsupported input to
@@ -5484,7 +5565,7 @@ changes:
 -->
 
 * `file` {string|Buffer|URL|FileHandle} filename or `FileHandle`
-* `data` {string|Buffer|Uint8Array}
+* `data` {string|Buffer|Uint8Array|Object}
 * `options` {Object|string}
   * `encoding` {string|null} **Default:** `'utf8'`
   * `mode` {integer} **Default:** `0o666`
@@ -5492,8 +5573,8 @@ changes:
 * Returns: {Promise}
 
 Asynchronously writes data to a file, replacing the file if it already exists.
-`data` can be a string or a buffer. The `Promise` will be resolved with no
-arguments upon success.
+`data` can be a string, a buffer, or an object with an own `toString` function
+property. The `Promise` is resolved with no arguments upon success.
 
 The `encoding` option is ignored if `data` is a buffer.
 
@@ -5875,16 +5956,26 @@ through `fs.open()` or `fs.writeFile()` or `fsPromises.open()`) will fail with
 A call to `fs.ftruncate()` or `filehandle.truncate()` can be used to reset
 the file contents.
 
+[Caveats]: #fs_caveats
+[Common System Errors]: errors.md#errors_common_system_errors
+[FS constants]: #fs_fs_constants_1
+[File access constants]: #fs_file_access_constants
+[MDN-Date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+[MDN-Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type
+[MSDN-Rel-Path]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths
+[MSDN-Using-Streams]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/using-streams
+[Naming Files, Paths, and Namespaces]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+[Readable Stream]: stream.md#stream_class_stream_readable
+[Writable Stream]: stream.md#stream_class_stream_writable
 [`AHAFS`]: https://www.ibm.com/developerworks/aix/library/au-aix_event_infrastructure/
-[`Buffer.byteLength`]: buffer.html#buffer_static_method_buffer_bytelength_string_encoding
-[`Buffer`]: buffer.html#buffer_buffer
+[`Buffer.byteLength`]: buffer.md#buffer_static_method_buffer_bytelength_string_encoding
+[`Buffer`]: buffer.md#buffer_buffer
 [`FSEvents`]: https://developer.apple.com/documentation/coreservices/file_system_events
 [`Number.MAX_SAFE_INTEGER`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
 [`ReadDirectoryChangesW`]: https://docs.microsoft.com/en-us/windows/desktop/api/winbase/nf-winbase-readdirectorychangesw
 [`ReadStream`]: #fs_class_fs_readstream
-[Readable Stream]: #stream_class_stream_readable
-[`URL`]: url.html#url_the_whatwg_url_api
-[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
+[`URL`]: url.md#url_the_whatwg_url_api
+[`UV_THREADPOOL_SIZE`]: cli.md#cli_uv_threadpool_size_size
 [`WriteStream`]: #fs_class_fs_writestream
 [`event ports`]: https://illumos.org/man/port_create
 [`filehandle.writeFile()`]: #fs_filehandle_writefile_data_options
@@ -5898,7 +5989,7 @@ the file contents.
 [`fs.copyFile()`]: #fs_fs_copyfile_src_dest_mode_callback
 [`fs.createReadStream()`]: #fs_fs_createreadstream_path_options
 [`fs.createWriteStream()`]: #fs_fs_createwritestream_path_options
-[`fs.exists()`]: fs.html#fs_fs_exists_path_callback
+[`fs.exists()`]: fs.md#fs_fs_exists_path_callback
 [`fs.fstat()`]: #fs_fs_fstat_fd_options_callback
 [`fs.ftruncate()`]: #fs_fs_ftruncate_fd_len_callback
 [`fs.futimes()`]: #fs_fs_futimes_fd_atime_mtime_callback
@@ -5930,20 +6021,10 @@ the file contents.
 [`fsPromises.utimes()`]: #fs_fspromises_utimes_path_atime_mtime
 [`inotify(7)`]: https://man7.org/linux/man-pages/man7/inotify.7.html
 [`kqueue(2)`]: https://www.freebsd.org/cgi/man.cgi?query=kqueue&sektion=2
-[`net.Socket`]: net.html#net_class_net_socket
-[`stat()`]: fs.html#fs_fs_stat_path_options_callback
-[`util.promisify()`]: util.html#util_util_promisify_original
-[Caveats]: #fs_caveats
-[Common System Errors]: errors.html#errors_common_system_errors
-[FS constants]: #fs_fs_constants_1
-[File access constants]: #fs_file_access_constants
-[MDN-Date]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-[MDN-Number]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type
-[MSDN-Rel-Path]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths
-[MSDN-Using-Streams]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/using-streams
-[Naming Files, Paths, and Namespaces]: https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file
+[`net.Socket`]: net.md#net_class_net_socket
+[`stat()`]: fs.md#fs_fs_stat_path_options_callback
+[`util.promisify()`]: util.md#util_util_promisify_original
 [bigints]: https://tc39.github.io/proposal-bigint
 [chcp]: https://ss64.com/nt/chcp.html
 [inode]: https://en.wikipedia.org/wiki/Inode
 [support of file system `flags`]: #fs_file_system_flags
-[Writable Stream]: stream.html#stream_class_stream_writable

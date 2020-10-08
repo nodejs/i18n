@@ -1304,19 +1304,8 @@ inside a `vm.Context`, functions passed to them will be added to global queues,
 which are shared by all contexts. Therefore, callbacks passed to those functions
 are not controllable through the timeout either.
 
-[`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`]: errors.html#ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING
-[`ERR_VM_MODULE_STATUS`]: errors.html#ERR_VM_MODULE_STATUS
-[`Error`]: errors.html#errors_class_error
-[`URL`]: url.html#url_class_url
-[`eval()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
-[`script.runInContext()`]: #vm_script_runincontext_contextifiedobject_options
-[`script.runInThisContext()`]: #vm_script_runinthiscontext_options
-[`url.origin`]: url.html#url_url_origin
-[`vm.createContext()`]: #vm_vm_createcontext_contextobject_options
-[`vm.runInContext()`]: #vm_vm_runincontext_code_contextifiedobject_options
-[`vm.runInThisContext()`]: #vm_vm_runinthiscontext_code_options
 [Cyclic Module Record]: https://tc39.es/ecma262/#sec-cyclic-module-records
-[ECMAScript Module Loader]: esm.html#esm_modules_ecmascript_modules
+[ECMAScript Module Loader]: esm.md#esm_modules_ecmascript_modules
 [Evaluate() concrete method]: https://tc39.es/ecma262/#sec-moduleevaluation
 [GetModuleNamespace]: https://tc39.es/ecma262/#sec-getmodulenamespace
 [HostResolveImportedModule]: https://tc39.es/ecma262/#sec-hostresolveimportedmodule
@@ -1325,6 +1314,17 @@ are not controllable through the timeout either.
 [Source Text Module Record]: https://tc39.es/ecma262/#sec-source-text-module-records
 [Synthetic Module Record]: https://heycam.github.io/webidl/#synthetic-module-records
 [V8 Embedder's Guide]: https://v8.dev/docs/embed#contexts
+[`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`]: errors.md#ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING
+[`ERR_VM_MODULE_STATUS`]: errors.md#ERR_VM_MODULE_STATUS
+[`Error`]: errors.md#errors_class_error
+[`URL`]: url.md#url_class_url
+[`eval()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval
+[`script.runInContext()`]: #vm_script_runincontext_contextifiedobject_options
+[`script.runInThisContext()`]: #vm_script_runinthiscontext_options
+[`url.origin`]: url.md#url_url_origin
+[`vm.createContext()`]: #vm_vm_createcontext_contextobject_options
+[`vm.runInContext()`]: #vm_vm_runincontext_code_contextifiedobject_options
+[`vm.runInThisContext()`]: #vm_vm_runinthiscontext_code_options
 [contextified]: #vm_what_does_it_mean_to_contextify_an_object
 [global object]: https://es5.github.io/#x15.1
 [indirect `eval()` call]: https://es5.github.io/#x10.4.2

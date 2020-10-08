@@ -1158,9 +1158,14 @@ processing that happens on libuv's threadpool that [`dns.lookup()`][] can have.
 They do not use the same set of configuration files than what [`dns.lookup()`][]
 uses. For instance, _they do not use the configuration from `/etc/hosts`_.
 
-[`Error`]: errors.html#errors_class_error
-[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
-[`dgram.createSocket()`]: dgram.html#dgram_dgram_createsocket_options_callback
+[DNS error codes]: #dns_error_codes
+[Domain Name System (DNS)]: https://en.wikipedia.org/wiki/Domain_Name_System
+[Implementation considerations section]: #dns_implementation_considerations
+[RFC 5952]: https://tools.ietf.org/html/rfc5952#section-6
+[RFC 8482]: https://tools.ietf.org/html/rfc8482
+[`Error`]: errors.md#errors_class_error
+[`UV_THREADPOOL_SIZE`]: cli.md#cli_uv_threadpool_size_size
+[`dgram.createSocket()`]: dgram.md#dgram_dgram_createsocket_options_callback
 [`dns.getServers()`]: #dns_dns_getservers
 [`dns.lookup()`]: #dns_dns_lookup_hostname_options_callback
 [`dns.resolve()`]: #dns_dns_resolve_hostname_rrtype_callback
@@ -1193,11 +1198,6 @@ uses. For instance, _they do not use the configuration from `/etc/hosts`_.
 [`dnsPromises.resolveTxt()`]: #dns_dnspromises_resolvetxt_hostname
 [`dnsPromises.reverse()`]: #dns_dnspromises_reverse_ip
 [`dnsPromises.setServers()`]: #dns_dnspromises_setservers_servers
-[`socket.connect()`]: net.html#net_socket_connect_options_connectlistener
-[`util.promisify()`]: util.html#util_util_promisify_original
-[DNS error codes]: #dns_error_codes
-[Domain Name System (DNS)]: https://en.wikipedia.org/wiki/Domain_Name_System
-[Implementation considerations section]: #dns_implementation_considerations
-[RFC 5952]: https://tools.ietf.org/html/rfc5952#section-6
-[RFC 8482]: https://tools.ietf.org/html/rfc8482
+[`socket.connect()`]: net.md#net_socket_connect_options_connectlistener
+[`util.promisify()`]: util.md#util_util_promisify_original
 [supported `getaddrinfo` flags]: #dns_supported_getaddrinfo_flags
