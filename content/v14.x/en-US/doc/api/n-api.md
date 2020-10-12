@@ -244,22 +244,119 @@ from version 3 with some additions. This means that it is not necessary
 to recompile for new versions of Node.js which are
 listed as supporting a later version.
 
-|       | 1        | 2        | 3        | 4        | 5         | 6         |
-|-------|----------|----------|----------|----------|-----------|-----------|
-| v6.x  |          |          | v6.14.2* |          |           |           |
-| v8.x  | v8.6.0** | v8.10.0* | v8.11.2  | v8.16.0  |           |           |
-| v9.x  | v9.0.0*  | v9.3.0*  | v9.11.0* |          |           |           |
-| v10.x | v10.0.0  | v10.0.0  | v10.0.0  | v10.16.0 | v10.17.0  | v10.20.0  |
-| v11.x | v11.0.0  | v11.0.0  | v11.0.0  | v11.8.0  |           |           |
-| v12.x | v12.0.0  | v12.0.0  | v12.0.0  | v12.0.0  | v12.11.0  | v12.17.0  |
-| v13.x | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0  | v13.0.0   |           |
-| v14.x | v14.0.0  | v14.0.0  | v14.0.0  | v14.0.0  | v14.0.0   | v14.0.0   |
+<!-- For accessibility purposes, this table needs row headers. That means we
+     can't do it in markdown. Hence, the raw HTML. -->
+
+<table>
+  <tr>
+    <td></td>
+    <th scope="col">1</th>
+    <th scope="col">2</th>
+    <th scope="col">3</th>
+    <th scope="col">4</th>
+    <th scope="col">5</th>
+    <th scope="col">6</th>
+    <th scope="col">7</th>
+  </tr>
+  <tr>
+    <th scope="row">v6.x</th>
+    <td></td>
+    <td></td>
+    <td>v6.14.2*</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v8.x</th>
+    <td>v8.6.0**</td>
+    <td>v8.10.0*</td>
+    <td>v8.11.2</td>
+    <td>v8.16.0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v9.x</th>
+    <td>v9.0.0*</td>
+    <td>v9.3.0*</td>
+    <td>v9.11.0*</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v10.x</th>
+    <td>v10.0.0</td>
+    <td>v10.0.0</td>
+    <td>v10.0.0</td>
+    <td>v10.16.0</td>
+    <td>v10.17.0</td>
+    <td>v10.20.0</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v11.x</th>
+    <td>v11.0.0</td>
+    <td>v11.0.0</td>
+    <td>v11.0.0</td>
+    <td>v11.8.0</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v12.x</th>
+    <td>v12.0.0</td>
+    <td>v12.0.0</td>
+    <td>v12.0.0</td>
+    <td>v12.0.0</td>
+    <td>v12.11.0</td>
+    <td>v12.17.0</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v13.x</th>
+    <td>v13.0.0</td>
+    <td>v13.0.0</td>
+    <td>v13.0.0</td>
+    <td>v13.0.0</td>
+    <td>v13.0.0</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th scope="row">v14.x</th>
+    <td>v14.0.0</td>
+    <td>v14.0.0</td>
+    <td>v14.0.0</td>
+    <td>v14.0.0</td>
+    <td>v14.0.0</td>
+    <td>v14.0.0</td>
+    <td>v14.12.0</td>
+  </tr>
+</table>
 
 \* N-API was experimental.
 
 \*\* Node.js 8.0.0 included N-API as experimental. It was released as N-API
 version 1 but continued to evolve until Node.js 8.6.0. The API is different in
 versions prior to Node.js 8.6.0. We recommend N-API version 3 or later.
+
+Each API documented for N-API will have a header named `added in:`, and APIs
+which are stable will have the additional header `N-API version:`.
+APIs are directly usable when using a Node.js version which supports
+the N-API version shown in `N-API version:` or higher.
+When using a Node.js version that does not support the
+`N-API version:` listed or if there is no `N-API version:` listed,
+then the API will only be available if
+`#define NAPI_EXPERIMENTAL` precedes the inclusion of `node_api.h`
+or `js_native_api.h`. If an API appears not to be available on
+a version of Node.js which is later than the one shown in `added in:` then
+this is most likely the reason for the apparent absence.
 
 The N-APIs associated strictly with accessing ECMAScript features from native
 code can be found separately in `js_native_api.h` and `js_native_api_types.h`.
@@ -1429,11 +1526,11 @@ for a reference is 0, all subsequent calls to
 get the object associated with the reference [`napi_get_reference_value`][]
 will return `NULL` for the returned `napi_value`. An attempt to call
 [`napi_reference_ref`][] for a reference whose object has been collected
-will result in an error.
+results in an error.
 
 References must be deleted once they are no longer required by the addon. When
-a reference is deleted it will no longer prevent the corresponding object from
-being collected. Failure to delete a persistent reference will result in
+a reference is deleted, it will no longer prevent the corresponding object from
+being collected. Failure to delete a persistent reference results in
 a 'memory leak' with both the native memory for the persistent reference and
 the corresponding object on the heap being retained forever.
 
@@ -1701,8 +1798,16 @@ provided by the addon:
 ```c
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
-  napi_property_descriptor desc =
-    {"hello", NULL, Method, NULL, NULL, NULL, napi_default, NULL};
+  napi_property_descriptor desc = {
+    "hello",
+    NULL,
+    Method,
+    NULL,
+    NULL,
+    NULL,
+    napi_writable | napi_enumerable | napi_configurable,
+    NULL
+  };
   status = napi_define_properties(env, exports, 1, &desc);
   if (status != napi_ok) return NULL;
   return exports;
@@ -1729,7 +1834,7 @@ To define a class so that new instances can be created (often used with
 napi_value Init(napi_env env, napi_value exports) {
   napi_status status;
   napi_property_descriptor properties[] = {
-    { "value", NULL, NULL, GetValue, SetValue, NULL, napi_default, NULL },
+    { "value", NULL, NULL, GetValue, SetValue, NULL, napi_writable | napi_configurable, NULL },
     DECLARE_NAPI_METHOD("plusOne", PlusOne),
     DECLARE_NAPI_METHOD("multiply", Multiply),
   };
@@ -2981,9 +3086,10 @@ napi_status napi_get_value_string_latin1(napi_env env,
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
 * `[in] buf`: Buffer to write the ISO-8859-1-encoded string into. If `NULL` is
-  passed in, the length of the string (in bytes) is returned.
+  passed in, the length of the string in bytes and excluding the null terminator
+  is returned in `result`.
 * `[in] bufsize`: Size of the destination buffer. When this value is
-  insufficient, the returned string will be truncated.
+  insufficient, the returned string is truncated and null-terminated.
 * `[out] result`: Number of bytes copied into the buffer, excluding the null
   terminator.
 
@@ -3010,9 +3116,10 @@ napi_status napi_get_value_string_utf8(napi_env env,
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
 * `[in] buf`: Buffer to write the UTF8-encoded string into. If `NULL` is passed
-  in, the length of the string (in bytes) is returned.
+  in, the length of the string in bytes and excluding the null terminator is
+  returned in `result`.
 * `[in] bufsize`: Size of the destination buffer. When this value is
-  insufficient, the returned string will be truncated.
+  insufficient, the returned string is truncated and null-terminated.
 * `[out] result`: Number of bytes copied into the buffer, excluding the null
   terminator.
 
@@ -3038,9 +3145,10 @@ napi_status napi_get_value_string_utf16(napi_env env,
 * `[in] env`: The environment that the API is invoked under.
 * `[in] value`: `napi_value` representing JavaScript string.
 * `[in] buf`: Buffer to write the UTF16-LE-encoded string into. If `NULL` is
-  passed in, the length of the string (in 2-byte code units) is returned.
+  passed in, the length of the string in 2-byte code units and excluding the
+  null terminator is returned.
 * `[in] bufsize`: Size of the destination buffer. When this value is
-  insufficient, the returned string will be truncated.
+  insufficient, the returned string is truncated and null-terminated.
 * `[out] result`: Number of 2-byte code units copied into the buffer, excluding
   the null terminator.
 
@@ -3458,9 +3566,9 @@ defined in [Section 7.2.14][] of the ECMAScript Language Specification.
 added:
  - v13.0.0
  - v12.16.0
+ - v10.22.0
+napiVersion: 7
 -->
-
-> Stability: 1 - Experimental
 
 ```c
 napi_status napi_detach_arraybuffer(napi_env env,
@@ -3486,9 +3594,9 @@ defined in [Section 24.1.1.3][] of the ECMAScript Language Specification.
 added:
  - v13.3.0
  - v12.16.0
+ - v10.22.0
+napiVersion: 7
 -->
-
-> Stability: 1 - Experimental
 
 ```c
 napi_status napi_is_detached_arraybuffer(napi_env env,
@@ -3638,8 +3746,8 @@ if (status != napi_ok) return status;
 
 // Set the properties
 napi_property_descriptor descriptors[] = {
-  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_default, NULL },
-  { "bar", NULL, NULL, NULL, NULL, barValue, napi_default, NULL }
+  { "foo", NULL, NULL, NULL, NULL, fooValue, napi_writable | napi_configurable, NULL },
+  { "bar", NULL, NULL, NULL, NULL, barValue, napi_writable | napi_configurable, NULL }
 }
 status = napi_define_properties(env,
                                 obj,
@@ -3650,6 +3758,12 @@ if (status != napi_ok) return status;
 
 ### Structures
 #### napi_property_attributes
+<!-- YAML
+changes:
+ - version: v14.12.0
+   pr-url: https://github.com/nodejs/node/pull/35214
+   description: added `napi_default_method` and `napi_default_property`
+-->
 
 ```c
 typedef enum {
@@ -3661,6 +3775,14 @@ typedef enum {
   // Used with napi_define_class to distinguish static properties
   // from instance properties. Ignored by napi_define_properties.
   napi_static = 1 << 10,
+
+  // Default for class methods.
+  napi_default_method = napi_writable | napi_configurable,
+
+  // Default for object properties, like in JS obj[prop].
+  napi_default_property = napi_writable |
+                          napi_enumerable |
+                          napi_configurable,
 } napi_property_attributes;
 ```
 
@@ -3679,6 +3801,10 @@ They can be one or more of the following bitflags:
 * `napi_static`: The property will be defined as a static property on a class as
   opposed to an instance property, which is the default. This is used only by
   [`napi_define_class`][]. It is ignored by `napi_define_properties`.
+* `napi_default_method`: Like a method in a JS class, the property is
+  configurable and writeable, but not enumerable.
+* `napi_default_property`: Like a property set via assignment in JavaScript, the
+  property is writable, enumerable, and configurable.
 
 #### napi_property_descriptor
 
@@ -4274,8 +4400,8 @@ napi_status napi_get_cb_info(napi_env env,
 
 * `[in] env`: The environment that the API is invoked under.
 * `[in] cbinfo`: The callback info passed into the callback function.
-* `[in-out] argc`: Specifies the size of the provided `argv` array and receives
-  the actual count of arguments.
+* `[in-out] argc`: Specifies the length of the provided `argv` array and
+  receives the actual count of arguments.
 * `[out] argv`: Buffer to which the `napi_value` representing the arguments are
   copied. If there are more arguments than the provided count, only the
   requested number of arguments are copied. If there are fewer arguments
@@ -5011,8 +5137,8 @@ napi_status napi_async_init(napi_env env,
 * `[in] async_resource`: Object associated with the async work
   that will be passed to possible `async_hooks` [`init` hooks][].
   In order to retain ABI compatibility with previous versions,
-  passing `NULL` for `async_resource` will not result in an error, however,
-  this will result incorrect operation of async hooks for the
+  passing `NULL` for `async_resource` does not result in an error. However,
+  this results in incorrect operation of async hooks for the
   napi_async_context created. Potential issues include
   loss of async context when using the AsyncLocalStorage API.
 * `[in] async_resource_name`: Identifier for the kind of resource
@@ -5062,9 +5188,11 @@ NAPI_EXTERN napi_status napi_make_callback(napi_env env,
 * `[in] env`: The environment that the API is invoked under.
 * `[in] async_context`: Context for the async operation that is
    invoking the callback. This should normally be a value previously
-   obtained from [`napi_async_init`][]. However `NULL` is also allowed,
-   which indicates the current async context (if any) is to be used
-   for the callback.
+   obtained from [`napi_async_init`][].
+   In order to retain ABI compatibility with previous versions, passing `NULL`
+   for `async_context` does not result in an error. However, this results
+   in incorrect operation of async hooks. Potential issues include loss of
+   async context when using the `AsyncLocalStorage` API.
 * `[in] recv`: The `this` object passed to the called function.
 * `[in] func`: `napi_value` representing the JavaScript function to be invoked.
 * `[in] argc`: The count of elements in the `argv` array.
@@ -5757,9 +5885,9 @@ This API may only be called from the main thread.
 
 [ABI Stability]: https://nodejs.org/en/docs/guides/abi-stability/
 [AppVeyor]: https://www.appveyor.com
-[C++ Addons]: addons.html
-[CMake.js]: https://github.com/cmake-js/cmake-js
+[C++ Addons]: addons.md
 [CMake]: https://cmake.org
+[CMake.js]: https://github.com/cmake-js/cmake-js
 [ECMAScript Language Specification]: https://tc39.github.io/ecma262/
 [Error handling]: #n_api_error_handling
 [GCC]: https://gcc.gnu.org
@@ -5774,37 +5902,37 @@ This API may only be called from the main thread.
 [Section 19.2]: https://tc39.github.io/ecma262/#sec-function-objects
 [Section 19.4]: https://tc39.github.io/ecma262/#sec-symbol-objects
 [Section 20.3]: https://tc39.github.io/ecma262/#sec-date-objects
-[Section 22.1.4.1]: https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length
 [Section 22.1]: https://tc39.github.io/ecma262/#sec-array-objects
+[Section 22.1.4.1]: https://tc39.github.io/ecma262/#sec-properties-of-array-instances-length
 [Section 22.2]: https://tc39.github.io/ecma262/#sec-typedarray-objects
-[Section 24.1.1.3]: https://tc39.es/ecma262/#sec-detacharraybuffer
 [Section 24.1]: https://tc39.github.io/ecma262/#sec-arraybuffer-objects
+[Section 24.1.1.2]: https://tc39.es/ecma262/#sec-isdetachedbuffer
+[Section 24.1.1.3]: https://tc39.es/ecma262/#sec-detacharraybuffer
 [Section 24.3]: https://tc39.github.io/ecma262/#sec-dataview-objects
 [Section 25.4]: https://tc39.github.io/ecma262/#sec-promise-objects
+[Section 6]: https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values
+[Section 6.1]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types
 [Section 6.1.4]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types-string-type
 [Section 6.1.6]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types-number-type
-[Section 6.1.7.1]: https://tc39.github.io/ecma262/#table-2
 [Section 6.1.7]: https://tc39.github.io/ecma262/#sec-object-type
-[Section 6.1]: https://tc39.github.io/ecma262/#sec-ecmascript-language-types
-[Section 6]: https://tc39.github.io/ecma262/#sec-ecmascript-data-types-and-values
+[Section 6.1.7.1]: https://tc39.github.io/ecma262/#table-2
+[Section 7]: https://tc39.github.io/ecma262/#sec-abstract-operations
 [Section 7.1.13]: https://tc39.github.io/ecma262/#sec-toobject
 [Section 7.1.2]: https://tc39.github.io/ecma262/#sec-toboolean
 [Section 7.1.3]: https://tc39.github.io/ecma262/#sec-tonumber
 [Section 7.2.14]: https://tc39.github.io/ecma262/#sec-strict-equality-comparison
 [Section 7.2.2]: https://tc39.github.io/ecma262/#sec-isarray
-[Section 7]: https://tc39.github.io/ecma262/#sec-abstract-operations
 [Section 8.7]: https://tc39.es/ecma262/#sec-agents
 [Section 9.1.6]: https://tc39.github.io/ecma262/#sec-ordinary-object-internal-methods-and-internal-slots-defineownproperty-p-desc
-[Section 24.1.1.2]: https://tc39.es/ecma262/#sec-isdetachedbuffer
 [Travis CI]: https://travis-ci.org
 [Visual Studio]: https://visualstudio.microsoft.com
 [Working with JavaScript properties]: #n_api_working_with_javascript_properties
 [Xcode]: https://developer.apple.com/xcode/
 [`Number.MAX_SAFE_INTEGER`]: https://tc39.github.io/ecma262/#sec-number.max_safe_integer
 [`Number.MIN_SAFE_INTEGER`]: https://tc39.github.io/ecma262/#sec-number.min_safe_integer
-[`Worker`]: worker_threads.html#worker_threads_class_worker
-[`global`]: globals.html#globals_global
-[`init` hooks]: async_hooks.html#async_hooks_init_asyncid_type_triggerasyncid_resource
+[`Worker`]: worker_threads.md#worker_threads_class_worker
+[`global`]: globals.md#globals_global
+[`init` hooks]: async_hooks.md#async_hooks_init_asyncid_type_triggerasyncid_resource
 [`napi_add_async_cleanup_hook`]: #n_api_napi_add_async_cleanup_hook
 [`napi_add_env_cleanup_hook`]: #n_api_napi_add_env_cleanup_hook
 [`napi_add_finalizer`]: #n_api_napi_add_finalizer
@@ -5860,14 +5988,14 @@ This API may only be called from the main thread.
 [`napi_wrap`]: #n_api_napi_wrap
 [`node-addon-api`]: https://github.com/nodejs/node-addon-api
 [`node_api.h`]: https://github.com/nodejs/node/blob/master/src/node_api.h
-[`process.release`]: process.html#process_process_release
+[`process.release`]: process.md#process_process_release
 [`uv_ref`]: https://docs.libuv.org/en/v1.x/handle.html#c.uv_ref
 [`uv_unref`]: https://docs.libuv.org/en/v1.x/handle.html#c.uv_unref
-[async_hooks `type`]: async_hooks.html#async_hooks_type
-[context-aware addons]: addons.html#addons_context_aware_addons
+[async_hooks `type`]: async_hooks.md#async_hooks_type
+[context-aware addons]: addons.md#addons_context_aware_addons
 [docs]: https://github.com/nodejs/node-addon-api#api-documentation
-[global scope]: globals.html
-[module scope]: modules.html#modules_the_module_scope
+[global scope]: globals.md
+[module scope]: modules.md#modules_the_module_scope
 [node-gyp]: https://github.com/nodejs/node-gyp
 [node-pre-gyp]: https://github.com/mapbox/node-pre-gyp
 [prebuild]: https://github.com/prebuild/prebuild

@@ -1030,7 +1030,7 @@ const fs = require('fs');
 const hash = crypto.createHash('sha256');
 
 const input = fs.createReadStream('test.js');
-input.pipe(hash).pipe(process.stdout);
+input.pipe(hash).setEncoding('hex').pipe(process.stdout);
 ```
 
 Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
@@ -1602,7 +1602,7 @@ The default encoding to use for functions that can take either strings
 or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods
 default to [`Buffer`][] objects.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility
+The `crypto.DEFAULT_ENCODING` mechanism is provided for backward compatibility
 with legacy programs that expect `'latin1'` to be the default encoding.
 
 New applications should expect the default to be `'buffer'`.
@@ -2060,7 +2060,7 @@ and it will be impossible to extract the private key from the returned object.
 added: v11.6.0
 -->
 
-* `key` {Buffer}
+* `key` {Buffer | TypedArray | DataView}
 * Returns: {KeyObject}
 
 Creates and returns a new key object containing a secret key for symmetric
@@ -2880,12 +2880,12 @@ or types.
 ```js
 const crypto = require('crypto');
 // Using the factory defaults.
-crypto.scrypt('secret', 'salt', 64, (err, derivedKey) => {
+crypto.scrypt('password', 'salt', 64, (err, derivedKey) => {
   if (err) throw err;
   console.log(derivedKey.toString('hex'));  // '3745e48...08d59ae'
 });
 // Using a custom N parameter. Must be a power of two.
-crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
+crypto.scrypt('password', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
   if (err) throw err;
   console.log(derivedKey.toString('hex'));  // '3745e48...aa39b34'
 });
@@ -2937,10 +2937,10 @@ or types.
 ```js
 const crypto = require('crypto');
 // Using the factory defaults.
-const key1 = crypto.scryptSync('secret', 'salt', 64);
+const key1 = crypto.scryptSync('password', 'salt', 64);
 console.log(key1.toString('hex'));  // '3745e48...08d59ae'
 // Using a custom N parameter. Must be a power of two.
-const key2 = crypto.scryptSync('secret', 'salt', 64, { N: 1024 });
+const key2 = crypto.scryptSync('password', 'salt', 64, { N: 1024 });
 console.log(key2.toString('hex'));  // '3745e48...aa39b34'
 ```
 
@@ -3544,11 +3544,28 @@ See the [list of SSL OP Flags][] for details.
   </tr>
 </table>
 
-[`Buffer`]: buffer.html
+[AEAD algorithms]: https://en.wikipedia.org/wiki/Authenticated_encryption
+[CCM mode]: #crypto_ccm_mode
+[Caveats]: #crypto_support_for_weak_or_compromised_algorithms
+[Crypto constants]: #crypto_crypto_constants_1
+[HTML 5.2]: https://www.w3.org/TR/html52/changes.html#features-removed
+[HTML5's `keygen` element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen
+[NIST SP 800-131A]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf
+[NIST SP 800-132]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
+[NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
+[Nonce-Disrespecting Adversaries]: https://github.com/nonce-disrespect/nonce-disrespect
+[OpenSSL's SPKAC implementation]: https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html
+[RFC 1421]: https://www.rfc-editor.org/rfc/rfc1421.txt
+[RFC 2412]: https://www.rfc-editor.org/rfc/rfc2412.txt
+[RFC 3526]: https://www.rfc-editor.org/rfc/rfc3526.txt
+[RFC 3610]: https://www.rfc-editor.org/rfc/rfc3610.txt
+[RFC 4055]: https://www.rfc-editor.org/rfc/rfc4055.txt
+[RFC 5208]: https://www.rfc-editor.org/rfc/rfc5208.txt
+[`Buffer`]: buffer.md
 [`EVP_BytesToKey`]: https://www.openssl.org/docs/man1.1.0/crypto/EVP_BytesToKey.html
 [`KeyObject`]: #crypto_class_keyobject
 [`Sign`]: #crypto_class_sign
-[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
+[`UV_THREADPOOL_SIZE`]: cli.md#cli_uv_threadpool_size_size
 [`Verify`]: #crypto_class_verify
 [`cipher.final()`]: #crypto_cipher_final_outputencoding
 [`cipher.update()`]: #crypto_cipher_update_data_inputencoding_outputencoding
@@ -3586,36 +3603,19 @@ See the [list of SSL OP Flags][] for details.
 [`hmac.digest()`]: #crypto_hmac_digest_encoding
 [`hmac.update()`]: #crypto_hmac_update_data_inputencoding
 [`keyObject.export()`]: #crypto_keyobject_export_options
-[`postMessage()`]: worker_threads.html#worker_threads_port_postmessage_value_transferlist
+[`postMessage()`]: worker_threads.md#worker_threads_port_postmessage_value_transferlist
 [`sign.sign()`]: #crypto_sign_sign_privatekey_outputencoding
 [`sign.update()`]: #crypto_sign_update_data_inputencoding
-[`stream.Writable` options]: stream.html#stream_new_stream_writable_options
-[`stream.transform` options]: stream.html#stream_new_stream_transform_options
-[`util.promisify()`]: util.html#util_util_promisify_original
+[`stream.Writable` options]: stream.md#stream_new_stream_writable_options
+[`stream.transform` options]: stream.md#stream_new_stream_transform_options
+[`util.promisify()`]: util.md#util_util_promisify_original
 [`verify.update()`]: #crypto_verify_update_data_inputencoding
 [`verify.verify()`]: #crypto_verify_verify_object_signature_signatureencoding
-[AEAD algorithms]: https://en.wikipedia.org/wiki/Authenticated_encryption
-[CCM mode]: #crypto_ccm_mode
-[Caveats]: #crypto_support_for_weak_or_compromised_algorithms
-[Crypto constants]: #crypto_crypto_constants_1
-[HTML 5.2]: https://www.w3.org/TR/html52/changes.html#features-removed
-[HTML5's `keygen` element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen
-[NIST SP 800-131A]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf
-[NIST SP 800-132]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
-[NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
-[modulo bias]: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias
-[Nonce-Disrespecting Adversaries]: https://github.com/nonce-disrespect/nonce-disrespect
-[OpenSSL's SPKAC implementation]: https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html
-[RFC 1421]: https://www.rfc-editor.org/rfc/rfc1421.txt
-[RFC 2412]: https://www.rfc-editor.org/rfc/rfc2412.txt
-[RFC 3526]: https://www.rfc-editor.org/rfc/rfc3526.txt
-[RFC 3610]: https://www.rfc-editor.org/rfc/rfc3610.txt
-[RFC 4055]: https://www.rfc-editor.org/rfc/rfc4055.txt
-[RFC 5208]: https://www.rfc-editor.org/rfc/rfc5208.txt
-[encoding]: buffer.html#buffer_buffers_and_character_encodings
+[encoding]: buffer.md#buffer_buffers_and_character_encodings
 [initialization vector]: https://en.wikipedia.org/wiki/Initialization_vector
-[list of SSL OP Flags]: wiki.openssl.org/index.php/List_of_SSL_OP_Flags#Table_of_Options
+[list of SSL OP Flags]: https://wiki.openssl.org/index.php/List_of_SSL_OP_Flags#Table_of_Options
+[modulo bias]: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias
 [safe integers]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
 [scrypt]: https://en.wikipedia.org/wiki/Scrypt
-[stream]: stream.html
-[stream-writable-write]: stream.html#stream_writable_write_chunk_encoding_callback
+[stream]: stream.md
+[stream-writable-write]: stream.md#stream_writable_write_chunk_encoding_callback

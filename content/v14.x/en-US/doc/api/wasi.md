@@ -83,7 +83,7 @@ added:
 The `WASI` class provides the WASI system call API and additional convenience
 methods for working with WASI-based applications. Each `WASI` instance
 represents a distinct sandbox environment. For security purposes, each `WASI`
-instance must have its command line arguments, environment variables, and
+instance must have its command-line arguments, environment variables, and
 sandbox directory structure configured explicitly.
 
 ### `new WASI([options])`
@@ -95,7 +95,7 @@ added:
 
 * `options` {Object}
   * `args` {Array} An array of strings that the WebAssembly application will
-    see as command line arguments. The first argument is the virtual path to the
+    see as command-line arguments. The first argument is the virtual path to the
     WASI command itself. **Default:** `[]`.
   * `env` {Object} An object similar to `process.env` that the WebAssembly
     application will see as its environment. **Default:** `{}`.
@@ -162,6 +162,6 @@ added:
 should be passed as the `wasi_snapshot_preview1` import during the instantiation
 of a [`WebAssembly.Instance`][].
 
+[WebAssembly System Interface]: https://wasi.dev/
 [`WebAssembly.Instance`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Instance
 [`WebAssembly.Memory`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Memory
-[WebAssembly System Interface]: https://wasi.dev/

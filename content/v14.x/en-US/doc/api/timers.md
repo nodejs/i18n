@@ -130,15 +130,14 @@ of the Node.js application.
 added: v14.9.0
 -->
 
-* Returns: {integer} number that can be used to reference this `timeout`
+* Returns: {integer} a number that can be used to reference this `timeout`
 
-Coerce a `Timeout` to a primitive, a primitive will be generated that
-can be used to clear the `Timeout`.
-The generated number can only be used in the same thread where timeout
-was created. Therefore to use it cross [`worker_threads`][] it has
-to first be passed to a correct thread.
-This allows enhanced compatibility with browser's `setTimeout()`, and
-`setInterval()` implementations.
+Coerce a `Timeout` to a primitive. The primitive can be used to
+clear the `Timeout`. The primitive can only be used in the
+same thread where the timeout was created. Therefore, to use it
+across [`worker_threads`][] it must first be passed to the correct
+thread. This allows enhanced compatibility with browser
+`setTimeout()` and `setInterval()` implementations.
 
 ## Scheduling timers
 
@@ -281,12 +280,12 @@ added: v0.0.1
 Cancels a `Timeout` object created by [`setTimeout()`][].
 
 [Event Loop]: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout
-[`TypeError`]: errors.html#errors_class_typeerror
-[`clearImmediate()`]: timers.html#timers_clearimmediate_immediate
-[`clearInterval()`]: timers.html#timers_clearinterval_timeout
-[`clearTimeout()`]: timers.html#timers_cleartimeout_timeout
-[`setImmediate()`]: timers.html#timers_setimmediate_callback_args
-[`setInterval()`]: timers.html#timers_setinterval_callback_delay_args
-[`setTimeout()`]: timers.html#timers_settimeout_callback_delay_args
-[`util.promisify()`]: util.html#util_util_promisify_original
-[`worker_threads`]: worker_threads.html
+[`TypeError`]: errors.md#errors_class_typeerror
+[`clearImmediate()`]: timers.md#timers_clearimmediate_immediate
+[`clearInterval()`]: timers.md#timers_clearinterval_timeout
+[`clearTimeout()`]: timers.md#timers_cleartimeout_timeout
+[`setImmediate()`]: timers.md#timers_setimmediate_callback_args
+[`setInterval()`]: timers.md#timers_setinterval_callback_delay_args
+[`setTimeout()`]: timers.md#timers_settimeout_callback_delay_args
+[`util.promisify()`]: util.md#util_util_promisify_original
+[`worker_threads`]: worker_threads.md

@@ -305,7 +305,7 @@ The `'removeListener'` event is emitted *after* the `listener` is removed.
 ### `EventEmitter.listenerCount(emitter, eventName)`
 <!-- YAML
 added: v0.9.12
-deprecated: v4.0.0
+deprecated: v3.2.0
 -->
 
 > Stability: 0 - Deprecated: Use [`emitter.listenerCount()`][] instead.
@@ -333,7 +333,7 @@ By default, a maximum of `10` listeners can be registered for any single
 event. This limit can be changed for individual `EventEmitter` instances
 using the [`emitter.setMaxListeners(n)`][] method. To change the default
 for *all* `EventEmitter` instances, the `EventEmitter.defaultMaxListeners`
-property can be used. If this value is not a positive number, a `TypeError`
+property can be used. If this value is not a positive number, a `RangeError`
 is thrown.
 
 Take caution when setting the `EventEmitter.defaultMaxListeners` because the
@@ -355,7 +355,7 @@ emitter.once('event', () => {
 });
 ```
 
-The [`--trace-warnings`][] command line flag can be used to display the
+The [`--trace-warnings`][] command-line flag can be used to display the
 stack trace for such warnings.
 
 The emitted warning can be inspected with [`process.on('warning')`][] and will
@@ -1467,19 +1467,19 @@ and `removeEventListener()` is that `removeListener()` will return a reference
 to the `EventTarget`.
 
 [WHATWG-EventTarget]: https://dom.spec.whatwg.org/#interface-eventtarget
-[`--trace-warnings`]: cli.html#cli_trace_warnings
+[`--trace-warnings`]: cli.md#cli_trace_warnings
 [`EventEmitter.defaultMaxListeners`]: #events_eventemitter_defaultmaxlisteners
-[`domain`]: domain.html
+[`EventTarget` Web API]: https://dom.spec.whatwg.org/#eventtarget
+[`EventTarget` error handling]: #events_eventtarget_error_handling
+[`Event` Web API]: https://dom.spec.whatwg.org/#event
+[`domain`]: domain.md
 [`emitter.listenerCount()`]: #events_emitter_listenercount_eventname
 [`emitter.removeListener()`]: #events_emitter_removelistener_eventname_listener
 [`emitter.setMaxListeners(n)`]: #events_emitter_setmaxlisteners_n
-[`Event` Web API]: https://dom.spec.whatwg.org/#event
-[`EventTarget` error handling]: #events_eventtarget_error_handling
-[`EventTarget` Web API]: https://dom.spec.whatwg.org/#eventtarget
-[`fs.ReadStream`]: fs.html#fs_class_fs_readstream
-[`net.Server`]: net.html#net_class_net_server
-[`process.on('warning')`]: process.html#process_event_warning
-[stream]: stream.html
+[`fs.ReadStream`]: fs.md#fs_class_fs_readstream
+[`net.Server`]: net.md#net_class_net_server
+[`process.on('warning')`]: process.md#process_event_warning
+[stream]: stream.md
 [capturerejections]: #events_capture_rejections_of_promises
 [rejection]: #events_emitter_symbol_for_nodejs_rejection_err_eventname_args
 [rejectionsymbol]: #events_events_capturerejectionsymbol

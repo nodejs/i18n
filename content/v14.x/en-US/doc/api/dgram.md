@@ -520,25 +520,25 @@ client.connect(41234, 'localhost', (err) => {
 
 #### Note about UDP datagram size
 
-The maximum size of an `IPv4/v6` datagram depends on the `MTU`
-(_Maximum Transmission Unit_) and on the `Payload Length` field size.
+The maximum size of an IPv4/v6 datagram depends on the `MTU`
+(Maximum Transmission Unit) and on the `Payload Length` field size.
 
-* The `Payload Length` field is `16 bits` wide, which means that a normal
-  payload exceed 64K octets _including_ the internet header and data
+* The `Payload Length` field is 16 bits wide, which means that a normal
+  payload cannot exceed 64K octets including the internet header and data
   (65,507 bytes = 65,535 − 8 bytes UDP header − 20 bytes IP header);
   this is generally true for loopback interfaces, but such long datagram
   messages are impractical for most hosts and networks.
 
 * The `MTU` is the largest size a given link layer technology can support for
-  datagram messages. For any link, `IPv4` mandates a minimum `MTU` of `68`
-  octets, while the recommended `MTU` for IPv4 is `576` (typically recommended
+  datagram messages. For any link, IPv4 mandates a minimum `MTU` of 68
+  octets, while the recommended `MTU` for IPv4 is 576 (typically recommended
   as the `MTU` for dial-up type applications), whether they arrive whole or in
   fragments.
 
-  For `IPv6`, the minimum `MTU` is `1280` octets, however, the mandatory minimum
-  fragment reassembly buffer size is `1500` octets. The value of `68` octets is
+  For IPv6, the minimum `MTU` is 1280 octets. However, the mandatory minimum
+  fragment reassembly buffer size is 1500 octets. The value of 68 octets is
   very small, since most current link layer technologies, like Ethernet, have a
-  minimum `MTU` of `1500`.
+  minimum `MTU` of 1500.
 
 It is impossible to know in advance the MTU of each link through which
 a packet might travel. Sending a datagram greater than the receiver `MTU` will
@@ -785,21 +785,21 @@ interfaces" address on a random port (it does the right thing for both `udp4`
 and `udp6` sockets). The bound address and port can be retrieved using
 [`socket.address().address`][] and [`socket.address().port`][].
 
+[IPv6 Zone Indices]: https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses
+[RFC 4007]: https://tools.ietf.org/html/rfc4007
 [`'close'`]: #dgram_event_close
-[`ERR_SOCKET_BAD_PORT`]: errors.html#errors_err_socket_bad_port
-[`ERR_SOCKET_BUFFER_SIZE`]: errors.html#errors_err_socket_buffer_size
-[`ERR_SOCKET_DGRAM_IS_CONNECTED`]: errors.html#errors_err_socket_dgram_is_connected
-[`ERR_SOCKET_DGRAM_NOT_CONNECTED`]: errors.html#errors_err_socket_dgram_not_connected
-[`Error`]: errors.html#errors_class_error
-[`System Error`]: errors.html#errors_class_systemerror
+[`ERR_SOCKET_BAD_PORT`]: errors.md#errors_err_socket_bad_port
+[`ERR_SOCKET_BUFFER_SIZE`]: errors.md#errors_err_socket_buffer_size
+[`ERR_SOCKET_DGRAM_IS_CONNECTED`]: errors.md#errors_err_socket_dgram_is_connected
+[`ERR_SOCKET_DGRAM_NOT_CONNECTED`]: errors.md#errors_err_socket_dgram_not_connected
+[`Error`]: errors.md#errors_class_error
+[`System Error`]: errors.md#errors_class_systemerror
 [`close()`]: #dgram_socket_close_callback
-[`cluster`]: cluster.html
+[`cluster`]: cluster.md
 [`connect()`]: #dgram_socket_connect_port_address_callback
 [`dgram.createSocket()`]: #dgram_dgram_createsocket_options_callback
-[`dns.lookup()`]: dns.html#dns_dns_lookup_hostname_options_callback
+[`dns.lookup()`]: dns.md#dns_dns_lookup_hostname_options_callback
 [`socket.address().address`]: #dgram_socket_address
 [`socket.address().port`]: #dgram_socket_address
 [`socket.bind()`]: #dgram_socket_bind_port_address_callback
-[IPv6 Zone Indices]: https://en.wikipedia.org/wiki/IPv6_address#Scoped_literal_IPv6_addresses
-[RFC 4007]: https://tools.ietf.org/html/rfc4007
-[byte length]: buffer.html#buffer_static_method_buffer_bytelength_string_encoding
+[byte length]: buffer.md#buffer_static_method_buffer_bytelength_string_encoding
