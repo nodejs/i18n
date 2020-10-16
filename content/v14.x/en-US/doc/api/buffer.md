@@ -386,9 +386,9 @@ A `TypeError` will be thrown if `size` is not a number.
 The `Buffer` module pre-allocates an internal `Buffer` instance of
 size [`Buffer.poolSize`][] that is used as a pool for the fast allocation of new
 `Buffer` instances created using [`Buffer.allocUnsafe()`][],
-[`Buffer.from(array)`][], and the deprecated `new Buffer(size)` constructor only
-when `size` is less than or equal to `Buffer.poolSize >> 1` (floor of
-[`Buffer.poolSize`][] divided by two).
+[`Buffer.from(array)`][], [`Buffer.concat()`][], and the deprecated
+`new Buffer(size)` constructor only when `size` is less than or equal
+to `Buffer.poolSize >> 1` (floor of [`Buffer.poolSize`][] divided by two).
 
 Use of this pre-allocated internal memory pool is a key difference between
 calling `Buffer.alloc(size, fill)` vs. `Buffer.allocUnsafe(size).fill(fill)`.
@@ -559,6 +559,9 @@ console.log(bufA);
 console.log(bufA.length);
 // Prints: 42
 ```
+
+`Buffer.concat()` may also use the internal `Buffer` pool like
+[`Buffer.allocUnsafe()`][] does.
 
 ### Static method: `Buffer.from(array)`
 <!-- YAML
@@ -752,7 +755,7 @@ console.log(Buffer.isEncoding(''));
 // Prints: false
 ```
 
-### Class Property: `Buffer.poolSize`
+### Class property: `Buffer.poolSize`
 <!-- YAML
 added: v0.11.3
 -->
@@ -763,10 +766,6 @@ This is the size (in bytes) of pre-allocated internal `Buffer` instances used
 for pooling. This value may be modified.
 
 ### `buf[index]`
-<!-- YAML
-type: property
-name: [index]
--->
 
 * `index` {integer}
 
@@ -1132,7 +1131,9 @@ changes:
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10236
     description: The `value` can now be a `Uint8Array`.
-  - version: v5.7.0, v4.4.0
+  - version:
+    - v5.7.0
+    - v4.4.0
     pr-url: https://github.com/nodejs/node/pull/4803
     description: When `encoding` is being passed, the `byteOffset` parameter
                  is no longer required.
@@ -1405,7 +1406,9 @@ added:
  - v12.0.0
  - v10.20.0
 changes:
-  - version: v14.10.0
+  - version:
+    - v14.10.0
+    - v12.19.0
     pr-url: https://github.com/nodejs/node/pull/34960
     description: This function is also available as `buf.readBigUint64LE()`.
 -->
@@ -1987,7 +1990,9 @@ console.log(buf.subarray(-5, -2).toString());
 <!-- YAML
 added: v0.3.0
 changes:
-  - version: v7.1.0, v6.9.2
+  - version:
+    - v7.1.0
+    - v6.9.2
     pr-url: https://github.com/nodejs/node/pull/9341
     description: Coercing the offsets to integers now handles values outside
                  the 32-bit integer range properly.
@@ -2754,7 +2759,9 @@ console.log(buf);
 <!-- YAML
 added: v0.5.5
 changes:
-  - version: v14.9.0
+  - version:
+    - v14.9.0
+    - v12.19.0
     pr-url: https://github.com/nodejs/node/pull/34729
     description: This function is also available as `buf.writeUint16LE()`.
   - version: v10.0.0
@@ -3272,6 +3279,7 @@ introducing security vulnerabilities into an application.
 [`Buffer.alloc()`]: #buffer_static_method_buffer_alloc_size_fill_encoding
 [`Buffer.allocUnsafe()`]: #buffer_static_method_buffer_allocunsafe_size
 [`Buffer.allocUnsafeSlow()`]: #buffer_static_method_buffer_allocunsafeslow_size
+[`Buffer.concat()`]: #buffer_static_method_buffer_concat_list_totallength
 [`Buffer.from(array)`]: #buffer_static_method_buffer_from_array
 [`Buffer.from(arrayBuf)`]: #buffer_static_method_buffer_from_arraybuffer_byteoffset_length
 [`Buffer.from(buffer)`]: #buffer_static_method_buffer_from_buffer

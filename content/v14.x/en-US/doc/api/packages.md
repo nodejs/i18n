@@ -282,13 +282,53 @@ import submodule from 'es-module-package/private-module.js';
 // Throws ERR_PACKAGE_PATH_NOT_EXPORTED
 ```
 
-### Subpath export patterns
+### Subpath imports
 
 > Stability: 1 - Experimental
 
-For packages with a small number of exports, we recommend explicitly listing
-each exports subpath entry. But for packages that have large numbers of
-subpaths, this might cause `package.json` bloat and maintenance issues.
+In addition to the [`"exports"`][] field, it is possible to define internal
+package import maps that only apply to import specifiers from within the package
+itself.
+
+Entries in the imports field must always start with `#` to ensure they are
+disambiguated from package specifiers.
+
+For example, the imports field can be used to gain the benefits of conditional
+exports for internal modules:
+
+```json
+// package.json
+{
+  "imports": {
+    "#dep": {
+      "node": "dep-node-native",
+      "default": "./dep-polyfill.js"
+    }
+  },
+  "dependencies": {
+    "dep-node-native": "^1.0.0"
+  }
+}
+```
+
+where `import '#dep'` does not get the resolution of the external package
+`dep-node-native` (including its exports in turn), and instead gets the local
+file `./dep-polyfill.js` relative to the package in other environments.
+
+Unlike the `"exports"` field, the `"imports"` field permits mapping to external
+packages.
+
+The resolution rules for the imports field are otherwise
+analogous to the exports field.
+
+### Subpath patterns
+
+> Stability: 1 - Experimental
+
+For packages with a small number of exports or imports, we recommend
+explicitly listing each exports subpath entry. But for packages that have
+large numbers of subpaths, this might cause `package.json` bloat and
+maintenance issues.
 
 For these use cases, subpath export patterns can be used instead:
 
@@ -297,6 +337,9 @@ For these use cases, subpath export patterns can be used instead:
 {
   "exports": {
     "./features/*": "./src/features/*.js"
+  },
+  "imports": {
+    "#internal/*": "./src/internal/*.js"
   }
 }
 ```
@@ -311,6 +354,9 @@ import featureX from 'es-module-package/features/x';
 
 import featureY from 'es-module-package/features/y/y';
 // Loads ./node_modules/es-module-package/src/features/y/y.js
+
+import internalZ from '#internal/z';
+// Loads ./node_modules/es-module-package/src/internal/z.js
 ```
 
 This is a direct static replacement without any special handling for file
@@ -800,12 +846,12 @@ The following fields in `package.json` files are used in Node.js:
 ### `"name"`
 <!-- YAML
 added:
-  - v12.16.0
   - v13.1.0
+  - v12.16.0
 changes:
   - version:
-    - v12.16.0
     - v13.6.0
+    - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/31002
     description: Remove the `--experimental-resolve-self` option.
 -->
@@ -830,8 +876,8 @@ The `"name"` field can be used in addition to the [`"exports"`][] field to
 added: v12.0.0
 changes:
   - version:
-    - v12.17.0
     - v13.2.0
+    - v12.17.0
     pr-url: https://github.com/nodejs/node/pull/29866
     description: Unflag `--experimental-modules`.
 -->
@@ -882,20 +928,24 @@ as ES modules and `.cjs` files are always treated as CommonJS.
 added: v12.7.0
 changes:
   - version:
-    - v12.16.0
-    - v13.2.0
-    pr-url: https://github.com/nodejs/node/pull/29978
-    description: Implement conditional exports.
+    - v14.13.0
+    pr-url: https://github.com/nodejs/node/pull/34718
+    description: Add support for `"exports"` patterns.
   - version:
-    - v12.16.0
     - v13.7.0
+    - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/31008
+    description: Implement logical conditional exports ordering.
+  - version:
+    - v13.7.0
+    - v12.16.0
     pr-url: https://github.com/nodejs/node/pull/31001
     description: Remove the `--experimental-conditional-exports` option.
   - version:
+    - v13.2.0
     - v12.16.0
-    - v13.7.0
-    pr-url: https://github.com/nodejs/node/pull/31008
-    description: Implement logical conditional exports ordering.
+    pr-url: https://github.com/nodejs/node/pull/29978
+    description: Implement conditional exports.
 -->
 
 * Type: {Object} | {string} | {string[]}
@@ -952,16 +1002,6 @@ added: v14.6.0
 
 * Type: {Object}
 
-In addition to the [`"exports"`][] field it is possible to define internal
-package import maps that only apply to import specifiers from within the package
-itself.
-
-Entries in the imports field must always start with `#` to ensure they are
-clearly disambiguated from package specifiers.
-
-For example, the imports field can be used to gain the benefits of conditional
-exports for internal modules:
-
 ```json
 // package.json
 {
@@ -977,15 +1017,11 @@ exports for internal modules:
 }
 ```
 
-where `import '#dep'` would now get the resolution of the external package
-`dep-node-native` (including its exports in turn), and instead get the local
-file `./dep-polyfill.js` relative to the package in other environments.
+Entries in the imports field must be strings starting with `#`.
 
-Unlike the `"exports"` field, import maps permit mapping to external packages,
-providing an important use case for conditional loading scenarios.
+Import maps permit mapping to external packages.
 
-Apart from the above, the resolution rules for the imports field are otherwise
-analogous to the exports field.
+This field defines [subpath imports][] for the current package.
 
 [Babel]: https://babeljs.io/
 [Conditional exports]: #packages_conditional_exports
@@ -1003,5 +1039,6 @@ analogous to the exports field.
 [entry points]: #packages_package_entry_points
 [self-reference]: #packages_self_referencing_a_package_using_its_name
 [subpath exports]: #packages_subpath_exports
+[subpath imports]: #packages_subpath_imports
 [the full specifier path]: esm.md#esm_mandatory_file_extensions
 [the dual CommonJS/ES module packages section]: #packages_dual_commonjs_es_module_packages
