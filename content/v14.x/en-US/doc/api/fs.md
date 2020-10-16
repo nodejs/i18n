@@ -384,7 +384,7 @@ an [`fs.Dirent`][], or `null` if there are no more directory entries to read.
 
 Directory entries returned by this function are in no particular order as
 provided by the operating system's underlying directory mechanisms.
-Entries added or removed while iterating over the directory may or may not be
+Entries added or removed while iterating over the directory might not be
 included in the iteration results.
 
 ### `dir.read(callback)`
@@ -404,7 +404,7 @@ After the read is completed, the `callback` will be called with an
 
 Directory entries returned by this function are in no particular order as
 provided by the operating system's underlying directory mechanisms.
-Entries added or removed while iterating over the directory may or may not be
+Entries added or removed while iterating over the directory might not be
 included in the iteration results.
 
 ### `dir.readSync()`
@@ -421,7 +421,7 @@ If there are no more directory entries to read, `null` will be returned.
 
 Directory entries returned by this function are in no particular order as
 provided by the operating system's underlying directory mechanisms.
-Entries added or removed while iterating over the directory may or may not be
+Entries added or removed while iterating over the directory might not be
 included in the iteration results.
 
 ### `dir[Symbol.asyncIterator]()`
@@ -441,7 +441,7 @@ See [`fs.Dir`][] for an example.
 
 Directory entries returned by this iterator are in no particular order as
 provided by the operating system's underlying directory mechanisms.
-Entries added or removed while iterating over the directory may or may not be
+Entries added or removed while iterating over the directory might not be
 included in the iteration results.
 
 ## Class: `fs.Dirent`
@@ -1919,12 +1919,12 @@ If `options` is a string, then it specifies the encoding.
 ## `fs.exists(path, callback)`
 <!-- YAML
 added: v0.0.2
+deprecated: v1.0.0
 changes:
   - version: v7.6.0
     pr-url: https://github.com/nodejs/node/pull/10739
     description: The `path` parameter can be a WHATWG `URL` object using
                  `file:` protocol. Support is currently still *experimental*.
-deprecated: v1.0.0
 -->
 
 > Stability: 0 - Deprecated: Use [`fs.stat()`][] or [`fs.access()`][] instead.
@@ -2154,6 +2154,10 @@ Synchronous fdatasync(2). Returns `undefined`.
 <!-- YAML
 added: v0.1.95
 changes:
+  - version: v10.5.0
+    pr-url: https://github.com/nodejs/node/pull/20220
+    description: Accepts an additional `options` object to specify whether
+                 the numeric values returned should be bigint.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -2162,10 +2166,6 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/7897
     description: The `callback` parameter is no longer optional. Not passing
                  it will emit a deprecation warning with id DEP0013.
-  - version: v10.5.0
-    pr-url: https://github.com/nodejs/node/pull/20220
-    description: Accepts an additional `options` object to specify whether
-                 the numeric values returned should be bigint.
 -->
 
 * `fd` {integer}
@@ -2507,6 +2507,10 @@ Synchronous link(2). Returns `undefined`.
 <!-- YAML
 added: v0.1.30
 changes:
+  - version: v10.5.0
+    pr-url: https://github.com/nodejs/node/pull/20220
+    description: Accepts an additional `options` object to specify whether
+                 the numeric values returned should be bigint.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -2519,10 +2523,6 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/7897
     description: The `callback` parameter is no longer optional. Not passing
                  it will emit a deprecation warning with id DEP0013.
-  - version: v10.5.0
-    pr-url: https://github.com/nodejs/node/pull/20220
-    description: Accepts an additional `options` object to specify whether
-                 the numeric values returned should be bigint.
 -->
 
 * `path` {string|Buffer|URL}
@@ -2542,14 +2542,14 @@ not the file that it refers to.
 <!-- YAML
 added: v0.1.30
 changes:
-  - version: v7.6.0
-    pr-url: https://github.com/nodejs/node/pull/10739
-    description: The `path` parameter can be a WHATWG `URL` object using `file:`
-                 protocol. Support is currently still *experimental*.
   - version: v10.5.0
     pr-url: https://github.com/nodejs/node/pull/20220
     description: Accepts an additional `options` object to specify whether
                  the numeric values returned should be bigint.
+  - version: v7.6.0
+    pr-url: https://github.com/nodejs/node/pull/10739
+    description: The `path` parameter can be a WHATWG `URL` object using `file:`
+                 protocol. Support is currently still *experimental*.
 -->
 
 * `path` {string|Buffer|URL}
@@ -2922,7 +2922,7 @@ changes:
   - version: v13.11.0
     pr-url: https://github.com/nodejs/node/pull/31402
     description: Options object can be passed in
-                 to make Buffer, offset, length and position optional
+                 to make Buffer, offset, length and position optional.
 -->
 * `fd` {integer}
 * `options` {Object}
@@ -3220,7 +3220,7 @@ changes:
   - version: v14.0.0
     pr-url: https://github.com/nodejs/node/pull/32460
     description: Options object can be passed in
-                 to make offset, length and position optional
+                 to make offset, length and position optional.
 -->
 
 * `fd` {integer}
@@ -3508,10 +3508,10 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
-    `EPERM` error is encountered, Node.js will retry the operation with a linear
-    backoff wait of `retryDelay` ms longer on each try. This option represents
-    the number of retries. This option is ignored if the `recursive` option is
-    not `true`. **Default:** `0`.
+    `EPERM` error is encountered, Node.js retries the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
   * `recursive` {boolean} If `true`, perform a recursive directory removal. In
     recursive mode, errors are not reported if `path` does not exist, and
     operations are retried on failure. **Default:** `false`.
@@ -3559,10 +3559,10 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
-    `EPERM` error is encountered, Node.js will retry the operation with a linear
-    backoff wait of `retryDelay` ms longer on each try. This option represents
-    the number of retries. This option is ignored if the `recursive` option is
-    not `true`. **Default:** `0`.
+    `EPERM` error is encountered, Node.js retries the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
   * `recursive` {boolean} If `true`, perform a recursive directory removal. In
     recursive mode, errors are not reported if `path` does not exist, and
     operations are retried on failure. **Default:** `false`.
@@ -3581,10 +3581,63 @@ that represent files will be deleted. The permissive behavior of the
 `recursive` option is deprecated, `ENOTDIR` and `ENOENT` will be thrown in
 the future.
 
+## `fs.rm(path[, options], callback)`
+<!-- YAML
+added: v14.14.0
+-->
+
+* `path` {string|Buffer|URL}
+* `options` {Object}
+  * `force` {boolean} When `true`, exceptions will be ignored if `path` does
+    not exist. **Default:** `false`.
+  * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
+    `EPERM` error is encountered, Node.js will retry the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
+  * `recursive` {boolean} If `true`, perform a recursive removal. In
+    recursive mode operations are retried on failure. **Default:** `false`.
+  * `retryDelay` {integer} The amount of time in milliseconds to wait between
+    retries. This option is ignored if the `recursive` option is not `true`.
+    **Default:** `100`.
+* `callback` {Function}
+  * `err` {Error}
+
+Asynchronously removes files and directories (modeled on the standard POSIX `rm`
+utility). No arguments other than a possible exception are given to the
+completion callback.
+
+## `fs.rmSync(path[, options])`
+<!-- YAML
+added: v14.14.0
+-->
+
+* `path` {string|Buffer|URL}
+* `options` {Object}
+  * `force` {boolean} When `true`, exceptions will be ignored if `path` does
+    not exist. **Default:** `false`.
+  * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
+    `EPERM` error is encountered, Node.js will retry the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
+  * `recursive` {boolean} If `true`, perform a recursive directory removal. In
+    recursive mode operations are retried on failure. **Default:** `false`.
+  * `retryDelay` {integer} The amount of time in milliseconds to wait between
+    retries. This option is ignored if the `recursive` option is not `true`.
+    **Default:** `100`.
+
+Synchronously removes files and directories (modeled on the standard POSIX `rm`
+utility). Returns `undefined`.
+
 ## `fs.stat(path[, options], callback)`
 <!-- YAML
 added: v0.0.2
 changes:
+  - version: v10.5.0
+    pr-url: https://github.com/nodejs/node/pull/20220
+    description: Accepts an additional `options` object to specify whether
+                 the numeric values returned should be bigint.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -3597,10 +3650,6 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/7897
     description: The `callback` parameter is no longer optional. Not passing
                  it will emit a deprecation warning with id DEP0013.
-  - version: v10.5.0
-    pr-url: https://github.com/nodejs/node/pull/20220
-    description: Accepts an additional `options` object to specify whether
-                 the numeric values returned should be bigint.
 -->
 
 * `path` {string|Buffer|URL}
@@ -3698,14 +3747,14 @@ Stats {
 <!-- YAML
 added: v0.1.21
 changes:
-  - version: v7.6.0
-    pr-url: https://github.com/nodejs/node/pull/10739
-    description: The `path` parameter can be a WHATWG `URL` object using `file:`
-                 protocol. Support is currently still *experimental*.
   - version: v10.5.0
     pr-url: https://github.com/nodejs/node/pull/20220
     description: Accepts an additional `options` object to specify whether
                  the numeric values returned should be bigint.
+  - version: v7.6.0
+    pr-url: https://github.com/nodejs/node/pull/10739
+    description: The `path` parameter can be a WHATWG `URL` object using `file:`
+                 protocol. Support is currently still *experimental*.
 -->
 
 * `path` {string|Buffer|URL}
@@ -3720,15 +3769,15 @@ Synchronous stat(2).
 <!-- YAML
 added: v0.1.31
 changes:
+  - version: v12.0.0
+    pr-url: https://github.com/nodejs/node/pull/23724
+    description: If the `type` argument is left undefined, Node will autodetect
+                 `target` type and automatically select `dir` or `file`.
   - version: v7.6.0
     pr-url: https://github.com/nodejs/node/pull/10739
     description: The `target` and `path` parameters can be WHATWG `URL` objects
                  using `file:` protocol. Support is currently still
                  *experimental*.
-  - version: v12.0.0
-    pr-url: https://github.com/nodejs/node/pull/23724
-    description: If the `type` argument is left undefined, Node will autodetect
-                 `target` type and automatically select `dir` or `file`
 -->
 
 * `target` {string|Buffer|URL}
@@ -3768,15 +3817,15 @@ example/
 <!-- YAML
 added: v0.1.31
 changes:
+  - version: v12.0.0
+    pr-url: https://github.com/nodejs/node/pull/23724
+    description: If the `type` argument is left undefined, Node will autodetect
+                 `target` type and automatically select `dir` or `file`.
   - version: v7.6.0
     pr-url: https://github.com/nodejs/node/pull/10739
     description: The `target` and `path` parameters can be WHATWG `URL` objects
                  using `file:` protocol. Support is currently still
                  *experimental*.
-  - version: v12.0.0
-    pr-url: https://github.com/nodejs/node/pull/23724
-    description: If the `type` argument is left undefined, Node will autodetect
-                 `target` type and automatically select `dir` or `file`
 -->
 
 * `target` {string|Buffer|URL}
@@ -4169,7 +4218,7 @@ changes:
   - version: v10.10.0
     pr-url: https://github.com/nodejs/node/pull/22150
     description: The `buffer` parameter can now be any `TypedArray` or a
-                 `DataView`
+                 `DataView`.
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/12562
     description: The `callback` parameter is no longer optional. Not passing
@@ -4362,8 +4411,8 @@ fs.write(fd, Buffer.from(data, options.encoding), callback);
 ```
 
 The difference from directly calling `fs.write()` is that under some unusual
-conditions, `fs.write()` may write only part of the buffer and will need to be
-retried to write the remaining data, whereas `fs.writeFile()` will retry until
+conditions, `fs.write()` might write only part of the buffer and need to be
+retried to write the remaining data, whereas `fs.writeFile()` retries until
 the data is entirely written (or an error occurs).
 
 The implications of this are a common source of confusion. In
@@ -5446,10 +5495,10 @@ changes:
 * `path` {string|Buffer|URL}
 * `options` {Object}
   * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
-    `EPERM` error is encountered, Node.js will retry the operation with a linear
-    backoff wait of `retryDelay` ms longer on each try. This option represents
-    the number of retries. This option is ignored if the `recursive` option is
-    not `true`. **Default:** `0`.
+    `EPERM` error is encountered, Node.js retries the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
   * `recursive` {boolean} If `true`, perform a recursive directory removal. In
     recursive mode, errors are not reported if `path` does not exist, and
     operations are retried on failure. **Default:** `false`.
@@ -5470,6 +5519,29 @@ Setting `recursive` to `true` results in behavior similar to the Unix command
 that represent files will be deleted. The permissive behavior of the
 `recursive` option is deprecated, `ENOTDIR` and `ENOENT` will be thrown in
 the future.
+
+## `fsPromises.rm(path[, options])`
+<!-- YAML
+added: v14.14.0
+-->
+
+* `path` {string|Buffer|URL}
+* `options` {Object}
+  * `force` {boolean} When `true`, exceptions will be ignored if `path` does
+    not exist. **Default:** `false`.
+  * `maxRetries` {integer} If an `EBUSY`, `EMFILE`, `ENFILE`, `ENOTEMPTY`, or
+    `EPERM` error is encountered, Node.js will retry the operation with a linear
+    backoff wait of `retryDelay` milliseconds longer on each try. This option
+    represents the number of retries. This option is ignored if the `recursive`
+    option is not `true`. **Default:** `0`.
+  * `recursive` {boolean} If `true`, perform a recursive directory removal. In
+    recursive mode operations are retried on failure. **Default:** `false`.
+  * `retryDelay` {integer} The amount of time in milliseconds to wait between
+    retries. This option is ignored if the `recursive` option is not `true`.
+    **Default:** `100`.
+
+Removes files and directories (modeled on the standard POSIX `rm` utility).
+Resolves the `Promise` with no arguments on success.
 
 ### `fsPromises.stat(path[, options])`
 <!-- YAML
@@ -5923,7 +5995,7 @@ or `O_EXCL|O_CREAT` to `CREATE_NEW`, as accepted by `CreateFileW`.
 The exclusive flag `'x'` (`O_EXCL` flag in open(2)) causes the operation to
 return an error if the path already exists. On POSIX, if the path is a symbolic
 link, using `O_EXCL` returns an error even if the link is to a path that does
-not exist. The exclusive flag may or may not work with network file systems.
+not exist. The exclusive flag might not work with network file systems.
 
 On Linux, positional writes don't work when the file is opened in append mode.
 The kernel ignores the position argument and always appends the data to

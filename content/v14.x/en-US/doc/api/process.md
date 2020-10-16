@@ -509,11 +509,12 @@ process.on('SIGTERM', handle);
   installed its default behavior will be removed.
 * `'SIGTERM'` is not supported on Windows, it can be listened on.
 * `'SIGINT'` from the terminal is supported on all platforms, and can usually be
-  generated with `<Ctrl>+C` (though this may be configurable). It is not
-  generated when [terminal raw mode][] is enabled and `<Ctrl>+C` is used.
-* `'SIGBREAK'` is delivered on Windows when `<Ctrl>+<Break>` is pressed, on
-  non-Windows platforms it can be listened on, but there is no way to send or
-  generate it.
+  generated with <kbd>Ctrl</kbd>+<kbd>C</kbd> (though this may be configurable).
+  It is not generated when [terminal raw mode][] is enabled and
+  <kbd>Ctrl</kbd>+<kbd>C</kbd> is used.
+* `'SIGBREAK'` is delivered on Windows when <kbd>Ctrl</kbd>+<kbd>Break</kbd> is
+  pressed. On non-Windows platforms, it can be listened on, but there is no way
+  to send or generate it.
 * `'SIGWINCH'` is delivered when the console has been resized. On Windows, this
   will only happen on write to the console when the cursor is being moved, or
   when a readable tty is used in raw mode.
@@ -1184,7 +1185,7 @@ added: v0.1.100
 * {string}
 
 The `process.execPath` property returns the absolute pathname of the executable
-that started the Node.js process.
+that started the Node.js process. Symbolic links, if any, are resolved.
 
 <!-- eslint-disable semi -->
 ```js
@@ -1454,7 +1455,7 @@ Use care when dropping privileges:
 
 ```js
 console.log(process.getgroups());         // [ 0 ]
-process.initgroups('bnoordhuis', 1000);   // switch user
+process.initgroups('nodeuser', 1000);     // switch user
 console.log(process.getgroups());         // [ 27, 30, 46, 1000, 0 ]
 process.setgid(1000);                     // drop root gid
 console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
@@ -1734,7 +1735,8 @@ added:
 
 * {integer}
 
-The `process.ppid` property returns the PID of the current parent process.
+The `process.ppid` property returns the PID of the parent of the
+current process.
 
 ```js
 console.log(`The parent process is pid ${process.ppid}`);
@@ -2428,7 +2430,9 @@ flag's behavior.
 <!-- YAML
 added: v0.1.19
 changes:
-  - version: v14.0.0
+  - version:
+    - v14.0.0
+    - v12.19.0
     pr-url: https://github.com/nodejs/node/pull/32499
     description: Calling `process.umask()` with no arguments is deprecated.
 
@@ -2496,12 +2500,12 @@ To get the version string without the prepended _v_, use
 <!-- YAML
 added: v0.2.0
 changes:
-  - version: v4.2.0
-    pr-url: https://github.com/nodejs/node/pull/3102
-    description: The `icu` property is now supported.
   - version: v9.0.0
     pr-url: https://github.com/nodejs/node/pull/15785
     description: The `v8` property now includes a Node.js specific suffix.
+  - version: v4.2.0
+    pr-url: https://github.com/nodejs/node/pull/3102
+    description: The `icu` property is now supported.
 -->
 
 * {Object}

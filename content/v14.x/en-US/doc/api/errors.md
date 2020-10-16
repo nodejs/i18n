@@ -928,6 +928,11 @@ added: v14.0.0
 Used when a feature that is not available
 to the current platform which is running Node.js is used.
 
+<a id="ERR_FS_EISDIR"></a>
+### `ERR_FS_EISDIR`
+
+Path is a directory.
+
 <a id="ERR_FS_FILE_TOO_LARGE"></a>
 ### `ERR_FS_FILE_TOO_LARGE`
 
@@ -1735,8 +1740,8 @@ An attempt was made to `require()` an [ES Module][].
 <a id="ERR_SCRIPT_EXECUTION_INTERRUPTED"></a>
 ### `ERR_SCRIPT_EXECUTION_INTERRUPTED`
 
-Script execution was interrupted by `SIGINT` (For example, when Ctrl+C was
-pressed).
+Script execution was interrupted by `SIGINT` (For example,
+<kbd>Ctrl</kbd>+<kbd>C</kbd> was pressed.)
 
 <a id="ERR_SCRIPT_EXECUTION_TIMEOUT"></a>
 ### `ERR_SCRIPT_EXECUTION_TIMEOUT`
@@ -2203,7 +2208,8 @@ changes:
   - version:
      - v11.4.0
      - v10.15.0
-    pr-url: https://github.com/nodejs/node/commit/186035243fad247e3955f
+    commit: 186035243fad247e3955f
+    pr-url: https://github.com/nodejs-private/node-private/pull/143
     description: Max header size in `http_parser` was set to 8KB.
 -->
 

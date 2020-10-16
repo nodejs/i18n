@@ -253,46 +253,43 @@ listed as supporting a later version.
     <th scope="col">1</th>
     <th scope="col">2</th>
     <th scope="col">3</th>
-    <th scope="col">4</th>
-    <th scope="col">5</th>
-    <th scope="col">6</th>
-    <th scope="col">7</th>
   </tr>
   <tr>
     <th scope="row">v6.x</th>
     <td></td>
     <td></td>
     <td>v6.14.2*</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
   <tr>
     <th scope="row">v8.x</th>
     <td>v8.6.0**</td>
     <td>v8.10.0*</td>
     <td>v8.11.2</td>
-    <td>v8.16.0</td>
-    <td></td>
-    <td></td>
-    <td></td>
   </tr>
   <tr>
     <th scope="row">v9.x</th>
     <td>v9.0.0*</td>
     <td>v9.3.0*</td>
     <td>v9.11.0*</td>
+  </tr>
+  <tr>
+    <th scope="row">≥ v10.x</th>
+    <td>all releases</td>
+    <td>all releases</td>
+    <td>all releases</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
     <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
+    <th scope="col">4</th>
+    <th scope="col">5</th>
+    <th scope="col">6</th>
+    <th scope="col">7</th>
   </tr>
   <tr>
     <th scope="row">v10.x</th>
-    <td>v10.0.0</td>
-    <td>v10.0.0</td>
-    <td>v10.0.0</td>
     <td>v10.16.0</td>
     <td>v10.17.0</td>
     <td>v10.20.0</td>
@@ -300,9 +297,6 @@ listed as supporting a later version.
   </tr>
   <tr>
     <th scope="row">v11.x</th>
-    <td>v11.0.0</td>
-    <td>v11.0.0</td>
-    <td>v11.0.0</td>
     <td>v11.8.0</td>
     <td></td>
     <td></td>
@@ -311,18 +305,12 @@ listed as supporting a later version.
   <tr>
     <th scope="row">v12.x</th>
     <td>v12.0.0</td>
-    <td>v12.0.0</td>
-    <td>v12.0.0</td>
-    <td>v12.0.0</td>
     <td>v12.11.0</td>
     <td>v12.17.0</td>
-    <td></td>
+    <td>v12.19.0</td>
   </tr>
   <tr>
     <th scope="row">v13.x</th>
-    <td>v13.0.0</td>
-    <td>v13.0.0</td>
-    <td>v13.0.0</td>
     <td>v13.0.0</td>
     <td>v13.0.0</td>
     <td></td>
@@ -330,9 +318,6 @@ listed as supporting a later version.
   </tr>
   <tr>
     <th scope="row">v14.x</th>
-    <td>v14.0.0</td>
-    <td>v14.0.0</td>
-    <td>v14.0.0</td>
     <td>v14.0.0</td>
     <td>v14.0.0</td>
     <td>v14.0.0</td>
@@ -3762,7 +3747,7 @@ if (status != napi_ok) return status;
 changes:
  - version: v14.12.0
    pr-url: https://github.com/nodejs/node/pull/35214
-   description: added `napi_default_method` and `napi_default_property`
+   description: added `napi_default_method` and `napi_default_property`.
 -->
 
 ```c
@@ -4208,6 +4193,53 @@ object. The properties are defined using property descriptors (see
 this API will set the properties on the object one at a time, as defined by
 `DefineOwnProperty()` (described in [Section 9.1.6][] of the ECMA-262
 specification).
+
+#### napi_object_freeze
+<!-- YAML
+added: v14.14.0
+-->
+
+> Stability: 1 - Experimental
+
+```c
+napi_status napi_object_freeze(napi_env env,
+                               napi_value object);
+```
+
+* `[in] env`: The environment that the N-API call is invoked under.
+* `[in] object`: The object to freeze.
+
+Returns `napi_ok` if the API succeeded.
+
+This method freezes a given object. This prevents new properties from
+being added to it, existing properties from being removed, prevents
+changing the enumerability, configurability, or writability of existing
+properties, and prevents the values of existing properties from being changed.
+It also prevents the object's prototype from being changed. This is described
+in [Section 19.1.2.6](https://tc39.es/ecma262/#sec-object.freeze) of the
+ECMA-262 specification.
+
+#### napi_object_seal
+<!-- YAML
+added: v14.14.0
+-->
+
+> Stability: 1 - Experimental
+
+```c
+napi_status napi_object_seal(napi_env env,
+                             napi_value object);
+```
+
+* `[in] env`: The environment that the N-API call is invoked under.
+* `[in] object`: The object to seal.
+
+Returns `napi_ok` if the API succeeded.
+
+This method seals a given object. This prevents new properties from being
+added to it, as well as marking all existing properties as non-configurable.
+This is described in [Section 19.1.2.20](https://tc39.es/ecma262/#sec-object.seal)
+of the ECMA-262 specification.
 
 ## Working with JavaScript functions
 
@@ -5172,6 +5204,7 @@ added: v8.0.0
 napiVersion: 1
 changes:
   - version: v8.6.0
+    pr-url: https://github.com/nodejs/node/pull/15189
     description: Added `async_context` parameter.
 -->
 
@@ -5536,8 +5569,8 @@ a specific `napi_env`.
 ### napi_get_uv_event_loop
 <!-- YAML
 added:
-  - v8.10.0
   - v9.3.0
+  - v8.10.0
 napiVersion: 2
 -->
 
@@ -5751,13 +5784,12 @@ napiVersion: 4
 changes:
   - version: v14.5.0
     pr-url: https://github.com/nodejs/node/pull/33453
-    description: >
-      Support for `napi_would_deadlock` has been reverted.
+    description: Support for `napi_would_deadlock` has been reverted.
   - version: v14.1.0
     pr-url: https://github.com/nodejs/node/pull/32689
-    description: >
-      Return `napi_would_deadlock` when called with `napi_tsfn_blocking` from
-      the main thread or a worker thread and the queue is full.
+    description: Return `napi_would_deadlock` when called with
+                 `napi_tsfn_blocking` from the main thread or a worker thread
+                 and the queue is full.
 -->
 
 ```c
