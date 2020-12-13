@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2.1.2
+      - uses: actions/setup-node@v2.1.3
         with:
           node-version: "12.x"
 
@@ -30,7 +30,7 @@ jobs:
         run: npm run collect
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.5.1
+        uses: peter-evans/create-pull-request@v3.5.2
         with:
           commit-message: 'feat: Original content updates'
           title: Original content updates
