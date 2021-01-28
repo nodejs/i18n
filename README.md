@@ -2,7 +2,7 @@
 
 [![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
 
-Here you can find contribution guides, discuss ideas, and find out how to join meetings. This repo also contains the source for the English Node.js API documentation as well as translated versions of the documentation. The source English contnet is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our [Crowdin](./guides/CROWDIN.md) integration.
+Here you can find contribution guides, discuss ideas, and find out how to join meetings. This repo also contains the source for the English Node.js API documentation as well as translated versions of the documentation. The source English content is copied on a schedule from its canonical home in the [doc](https://github.com/nodejs/node/tree/master/doc) directory of the nodejs/node repository. The translated files are added by pull requests from our [Crowdin](./guides/CROWDIN.md) integration.
 
 ## Usage
 
