@@ -2,11 +2,11 @@ name: Nightly Sync of content
 
 on:
   schedule:
-  - cron: '0 3 * * *' # run daily at 3am
+  - cron: '*/30 * * * *' # run daily at 3am
 
 jobs:
   sync:
-    if: github.repository == 'nodejs/i18n'
+    if: github.repository == 'benhalverson/i18n'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
