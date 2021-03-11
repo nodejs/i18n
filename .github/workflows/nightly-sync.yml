@@ -2,7 +2,7 @@ name: Nightly Sync of content
 
 on:
   schedule:
-  - cron: '*/30 * * * *' # run daily at 3am
+  - cron: '*/30 * * * *' # run every 30 mins
 
 jobs:
   sync:
@@ -29,12 +29,12 @@ jobs:
       - name: Collect latest releases
         run: npm run collect
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.5.2
-        with:
-          commit-message: 'feat: Original content updates'
-          title: Original content updates
-          body: |
-            Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo.
-            Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/master/docs/concepts-guidelines.md#triggering-further-workflow-runs).
-            cc @nodejs/i18n
+      # - name: Create Pull Request
+      #   uses: peter-evans/create-pull-request@v3.5.2
+      #   with:
+      #     commit-message: 'feat: Original content updates'
+      #     title: Original content updates
+      #     body: |
+      #       Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo.
+      #       Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/master/docs/concepts-guidelines.md#triggering-further-workflow-runs).
+      #       cc @nodejs/i18n

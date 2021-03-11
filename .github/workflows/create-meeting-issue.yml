@@ -1,16 +1,16 @@
-name: Create meeting issue
+# name: Create meeting issue
 
-on:
-  schedule:
-    - cron: "0 0 * * 5" # run each Friday
+# on:
+#   schedule:
+#     - cron: "0 0 * * 5" # run each Friday
 
-jobs:
-  create_meeting:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: .github/ISSUE_TEMPLATE/meeting.md
+# jobs:
+#   create_meeting:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: JasonEtco/create-an-issue@v2
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         with:
+#           filename: .github/ISSUE_TEMPLATE/meeting.md
