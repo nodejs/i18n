@@ -25,7 +25,7 @@
     "lint:fix": "standard --fix"
   },
   "dependencies": {
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
@@ -33,7 +33,7 @@
     "crowdin-glossary": "^1.2.0",
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
-    "fs-extra": "^9.0.1",
+    "fs-extra": "^9.1.0",
     "globals": "^13.6.0",
     "jest": "^26.6.3",
     "semver": "^7.3.4",

@@ -87,10 +87,10 @@ changes:
   * `importModuleDynamically` {Function} Called during evaluation of this module
     when `import()` is called. If this option is not specified, calls to
     `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][].
-    This option is part of the experimental modules API, and should not be
-    considered stable.
+    This option is part of the experimental modules API. We do not recommend
+    using it in a production environment.
     * `specifier` {string} specifier passed to `import()`
-    * `module` {vm.Module}
+    * `script` {vm.Script}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
       recommended in order to take advantage of error tracking, and to avoid
       issues with namespaces that contain `then` function exports.
@@ -146,11 +146,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
 * Returns: {any} the result of the very last statement executed in the script.
 
 Runs the compiled code contained by the `vm.Script` object within the given
@@ -208,11 +208,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
   * `contextName` {string} Human-readable name of the newly created context.
     **Default:** `'VM Context i'`, where `i` is an ascending numerical index of
     the created context.
@@ -272,11 +272,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
 * Returns: {any} the result of the very last statement executed in the script.
 
 Runs the compiled code contained by the `vm.Script` within the context of the
@@ -511,11 +511,11 @@ in the ECMAScript specification.
   * `timeout` {integer} Specifies the number of milliseconds to evaluate
     before terminating execution. If execution is interrupted, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the event that have
-    been attached via `process.on('SIGINT')` will be disabled during script
-    execution, but will continue to work after that. If execution is
-    interrupted, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
 * Returns: {Promise}
 
 Evaluate the module.
@@ -959,11 +959,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or
     `TypedArray`, or `DataView` with V8's code cache data for the supplied
      source. When supplied, the `cachedDataRejected` value will be set to
@@ -979,10 +979,10 @@ changes:
   * `importModuleDynamically` {Function} Called during evaluation of this module
     when `import()` is called. If this option is not specified, calls to
     `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][].
-    This option is part of the experimental modules API, and should not be
-    considered stable.
+    This option is part of the experimental modules API. We do not recommend
+    using it in a production environment.
     * `specifier` {string} specifier passed to `import()`
-    * `module` {vm.Module}
+    * `script` {vm.Script}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
       recommended in order to take advantage of error tracking, and to avoid
       issues with namespaces that contain `then` function exports.
@@ -1042,11 +1042,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
   * `contextName` {string} Human-readable name of the newly created context.
     **Default:** `'VM Context i'`, where `i` is an ascending numerical index of
     the created context.
@@ -1077,10 +1077,10 @@ changes:
   * `importModuleDynamically` {Function} Called during evaluation of this module
     when `import()` is called. If this option is not specified, calls to
     `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][].
-    This option is part of the experimental modules API, and should not be
-    considered stable.
+    This option is part of the experimental modules API. We do not recommend
+    using it in a production environment.
     * `specifier` {string} specifier passed to `import()`
-    * `module` {vm.Module}
+    * `script` {vm.Script}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
       recommended in order to take advantage of error tracking, and to avoid
       issues with namespaces that contain `then` function exports.
@@ -1136,11 +1136,11 @@ changes:
   * `timeout` {integer} Specifies the number of milliseconds to execute `code`
     before terminating execution. If execution is terminated, an [`Error`][]
     will be thrown. This value must be a strictly positive integer.
-  * `breakOnSigint` {boolean} If `true`, the execution will be terminated when
-    `SIGINT` (Ctrl+C) is received. Existing handlers for the
-    event that have been attached via `process.on('SIGINT')` will be disabled
-    during script execution, but will continue to work after that. If execution
-    is terminated, an [`Error`][] will be thrown. **Default:** `false`.
+  * `breakOnSigint` {boolean} If `true`, receiving `SIGINT`
+    (<kbd>Ctrl</kbd>+<kbd>C</kbd>) will terminate execution and throw an
+    [`Error`][]. Existing handlers for the event that have been attached via
+    `process.on('SIGINT')` are disabled during script execution, but continue to
+    work after that. **Default:** `false`.
   * `cachedData` {Buffer|TypedArray|DataView} Provides an optional `Buffer` or
     `TypedArray`, or `DataView` with V8's code cache data for the supplied
      source. When supplied, the `cachedDataRejected` value will be set to
@@ -1156,10 +1156,10 @@ changes:
   * `importModuleDynamically` {Function} Called during evaluation of this module
     when `import()` is called. If this option is not specified, calls to
     `import()` will reject with [`ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`][].
-    This option is part of the experimental modules API, and should not be
-    considered stable.
+    This option is part of the experimental modules API. We do not recommend
+    using it in a production environment.
     * `specifier` {string} specifier passed to `import()`
-    * `module` {vm.Module}
+    * `script` {vm.Script}
     * Returns: {Module Namespace Object|vm.Module} Returning a `vm.Module` is
       recommended in order to take advantage of error tracking, and to avoid
       issues with namespaces that contain `then` function exports.
@@ -1269,7 +1269,7 @@ vm.runInNewContext(
   { loop, console },
   { timeout: 5 }
 );
-// This prints *before* 'entering loop' (!)
+// This is printed *before* 'entering loop' (!)
 console.log('done executing');
 ```
 
