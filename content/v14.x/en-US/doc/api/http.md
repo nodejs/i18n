@@ -251,8 +251,8 @@ Destroy any sockets that are currently in use by the agent.
 
 It is usually not necessary to do this. However, if using an
 agent with `keepAlive` enabled, then it is best to explicitly shut down
-the agent when it will no longer be used. Otherwise,
-sockets may hang open for quite a long time before the server
+the agent when it is no longer needed. Otherwise,
+sockets might stay open for quite a long time before the server
 terminates them.
 
 ### `agent.freeSockets`
@@ -1984,9 +1984,9 @@ Duplicates in raw headers are handled in the following ways, depending on the
 header name:
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`,
-`etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`,
-`last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`,
-`retry-after`, `server`, or `user-agent` are discarded.
+  `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`,
+  `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`,
+  `retry-after`, `server`, or `user-agent` are discarded.
 * `set-cookie` is always an array. Duplicates are added to the array.
 * For duplicate `cookie` headers, the values are joined together with '; '.
 * For all other headers, the values are joined together with ', '.
