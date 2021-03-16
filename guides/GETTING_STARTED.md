@@ -59,7 +59,7 @@ We have several ways to communicate:
   - [comments](https://support.crowdin.com/online-editor/#communicating-with-other-project-members) - discuss translation directly
 - GitHub:
   - [nodejs/i18n](https://github.com/nodejs/i18n) - create issue/PR if you have not language specific question
-  - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](https://github.com/nodejs/i18n/blob/master/TEAMS.md)
+  - l10n repositories and teams - for language/team specific questions, find full list in [teams guideline](./TEAMS.md)
 
 Feel free to choose the method that is most comfortable for you, but we recommend using GitHub issues for most cases as it is managed by the i18n-WG community.
 
