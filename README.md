@@ -95,7 +95,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 | Vanessa Yuen        | [vanessayuenn](https://github.com/vanessayuenn)           | [vanessayuenn](https://twitter.com/vanessayuenn)         |
 | Volkan Nazmi Metin  | [Volem](https://github.com/Volem)                         | [volemnic](https://twitter.com/volemnic)                 |
 | Wexpo Lyu           | [laosb](https://github.com/laosb)                         | [it99p](https://twitter.com/it99p)                       |
-| Yuki Okushi         | [JohnTitor](https://github.com/JohnTitor)                 | [JustM0nik4](https://twitter.com/JustM0nik4)             |
+| Yuki Okushi         | [JohnTitor](https://github.com/JohnTitor)                 | [fr4ternite](https://twitter.com/fr4ternite)             |
 | Zeke Sikelianos     | [zeke](https://github.com/zeke)                           | [zeke](https://twitter.com/zeke)                         |
 
 ## Joining
