@@ -523,10 +523,8 @@ process.on('SIGTERM', handle);
 * `'SIGSTOP'` cannot have a listener installed.
 * `'SIGBUS'`, `'SIGFPE'`, `'SIGSEGV'` and `'SIGILL'`, when not raised
    artificially using kill(2), inherently leave the process in a state from
-   which it is not safe to attempt to call JS listeners. Doing so might lead to
-   the process hanging in an endless loop, since listeners attached using
-   `process.on()` are called asynchronously and therefore unable to correct the
-   underlying problem.
+   which it is not safe to call JS listeners. Doing so might cause the process
+   to stop responding.
 * `0` can be sent to test for the existence of a process, it has no effect if
    the process exists, but will throw an error if the process does not exist.
 
@@ -883,31 +881,29 @@ changes:
 * `filename` {string}
 * `flags` {os.constants.dlopen} **Default:** `os.constants.dlopen.RTLD_LAZY`
 
-The `process.dlopen()` method allows to dynamically load shared
-objects. It is primarily used by `require()` to load
-C++ Addons, and should not be used directly, except in special
-cases. In other words, [`require()`][] should be preferred over
-`process.dlopen()`, unless there are specific reasons.
+The `process.dlopen()` method allows dynamically loading shared objects. It is
+primarily used by `require()` to load C++ Addons, and should not be used
+directly, except in special cases. In other words, [`require()`][] should be
+preferred over `process.dlopen()` unless there are specific reasons such as
+custom dlopen flags or loading from ES modules.
 
 The `flags` argument is an integer that allows to specify dlopen
 behavior. See the [`os.constants.dlopen`][] documentation for details.
 
-If there are specific reasons to use `process.dlopen()` (for instance,
-to specify dlopen flags), it's often useful to use [`require.resolve()`][]
-to look up the module's path.
+An important requirement when calling `process.dlopen()` is that the `module`
+instance must be passed. Functions exported by the C++ Addon are then
+accessible via `module.exports`.
 
-An important drawback when calling `process.dlopen()` is that the `module`
-instance must be passed. Functions exported by the C++ Addon will be accessible
-via `module.exports`.
-
-The example below shows how to load a C++ Addon, named as `binding`,
-that exports a `foo` function. All the symbols will be loaded before
+The example below shows how to load a C++ Addon, named `local.node`,
+that exports a `foo` function. All the symbols are loaded before
 the call returns, by passing the `RTLD_NOW` constant. In this example
 the constant is assumed to be available.
 
 ```js
 const os = require('os');
-process.dlopen(module, require.resolve('binding'),
+const path = require('path');
+const module = { exports: {} };
+process.dlopen(module, path.join(__dirname, 'local.node'),
                os.constants.dlopen.RTLD_NOW);
 module.exports.foo();
 ```
@@ -1177,6 +1173,9 @@ And `process.argv`:
 ['/usr/local/bin/node', 'script.js', '--version']
 ```
 
+Refer to [`Worker` constructor][] for the detailed behavior of worker
+threads with this property.
+
 ## `process.execPath`
 <!-- YAML
 added: v0.1.100
@@ -1339,6 +1338,12 @@ added: v0.9.4
 The `process.getgroups()` method returns an array with the supplementary group
 IDs. POSIX leaves it unspecified if the effective group ID is included but
 Node.js ensures it always is.
+
+```js
+if (process.getgroups) {
+  console.log(process.getgroups()); // [ 16, 21, 297 ]
+}
+```
 
 This function is only available on POSIX platforms (i.e. not Windows or
 Android).
@@ -1759,8 +1764,7 @@ tarball.
 
 `process.release` contains the following properties:
 
-* `name` {string} A value that will always be `'node'` for Node.js. For
-  legacy io.js releases, this will be `'io.js'`.
+* `name` {string} A value that will always be `'node'`.
 * `sourceUrl` {string} an absolute URL pointing to a _`.tar.gz`_ file containing
   the source code of the current release.
 * `headersUrl`{string} an absolute URL pointing to a _`.tar.gz`_ file containing
@@ -1882,7 +1886,7 @@ present.
 
 ```js
 const data = process.report.getReport();
-console.log(data.header.nodeJsVersion);
+console.log(data.header.nodejsVersion);
 
 // Similar to process.report.writeReport()
 const fs = require('fs');
@@ -2180,7 +2184,18 @@ The `process.setgroups()` method sets the supplementary group IDs for the
 Node.js process. This is a privileged operation that requires the Node.js
 process to have `root` or the `CAP_SETGID` capability.
 
-The `groups` array can contain numeric group IDs, group names or both.
+The `groups` array can contain numeric group IDs, group names, or both.
+
+```js
+if (process.getgroups && process.setgroups) {
+  try {
+    process.setgroups([501]);
+    console.log(process.getgroups()); // new groups
+  } catch (err) {
+    console.log(`Failed to set groups: ${err}`);
+  }
+}
+```
 
 This function is only available on POSIX platforms (i.e. not Windows or
 Android).
@@ -2228,7 +2243,8 @@ exception value itself as its first argument.
 If such a function is set, the [`'uncaughtException'`][] event will
 not be emitted. If `--abort-on-uncaught-exception` was passed from the
 command line or set through [`v8.setFlagsFromString()`][], the process will
-not abort.
+not abort. Actions configured to take place on exceptions such as report
+generations will be affected too
 
 To unset the capture function,
 `process.setUncaughtExceptionCaptureCallback(null)` may be used. Calling this
@@ -2613,6 +2629,7 @@ cases:
 [`NODE_OPTIONS`]: cli.md#cli_node_options_options
 [`Promise.race()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race
 [`Worker`]: worker_threads.md#worker_threads_class_worker
+[`Worker` constructor]: worker_threads.md#worker_threads_new_worker_filename_options
 [`console.error()`]: console.md#console_console_error_data_args
 [`console.log()`]: console.md#console_console_log_data_args
 [`domain`]: domain.md
@@ -2632,7 +2649,6 @@ cases:
 [`readable.read()`]: stream.md#stream_readable_read_size
 [`require()`]: globals.md#globals_require
 [`require.main`]: modules.md#modules_accessing_the_main_module
-[`require.resolve()`]: modules.md#modules_require_resolve_request_options
 [`subprocess.kill()`]: child_process.md#child_process_subprocess_kill_signal
 [`v8.setFlagsFromString()`]: v8.md#v8_v8_setflagsfromstring_flags
 [debugger]: debugger.md

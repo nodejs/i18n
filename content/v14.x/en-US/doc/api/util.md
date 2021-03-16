@@ -78,7 +78,7 @@ added: v0.11.3
 * `section` {string} A string identifying the portion of the application for
   which the `debuglog` function is being created.
 * `callback` {Function} A callback invoked the first time the logging function
-is called with a function argument that is a more optimized logging function.
+  is called with a function argument that is a more optimized logging function.
 * Returns: {Function} The logging function
 
 The `util.debuglog()` method is used to create a function that conditionally
@@ -1073,7 +1073,7 @@ changes:
 -->
 
 * {symbol} that can be used to declare custom promisified variants of functions,
-see [Custom promisified functions][].
+  see [Custom promisified functions][].
 
 In addition to being accessible through `util.promisify.custom`, this
 symbol is [registered globally][global symbol registry] and can be
@@ -1159,18 +1159,18 @@ Different Node.js build configurations support different sets of encodings.
 
 #### Encodings supported when Node.js is built with the `small-icu` option
 
-| Encoding     | Aliases                           |
-| -----------  | --------------------------------- |
-| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'`   |
-| `'utf-16le'` | `'utf-16'`                        |
-| `'utf-16be'` |                                   |
+| Encoding     | Aliases                         |
+| -----------  | ------------------------------- |
+| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
+| `'utf-16le'` | `'utf-16'`                      |
+| `'utf-16be'` |                                 |
 
 #### Encodings supported when ICU is disabled
 
-| Encoding     | Aliases                           |
-| -----------  | --------------------------------- |
-| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'`   |
-| `'utf-16le'` | `'utf-16'`                        |
+| Encoding     | Aliases                         |
+| -----------  | ------------------------------- |
+| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
+| `'utf-16le'` | `'utf-16'`                      |
 
 The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard][]
 is not supported.

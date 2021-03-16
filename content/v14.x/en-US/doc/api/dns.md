@@ -226,13 +226,13 @@ changes:
 The following flags can be passed as hints to [`dns.lookup()`][].
 
 * `dns.ADDRCONFIG`: Limits returned address types to the types of non-loopback
-addresses configured on the system. For example, IPv4 addresses are only
-returned if the current system has at least one IPv4 address configured.
+  addresses configured on the system. For example, IPv4 addresses are only
+  returned if the current system has at least one IPv4 address configured.
 * `dns.V4MAPPED`: If the IPv6 family was specified, but no IPv6 addresses were
-found, then return IPv4 mapped IPv6 addresses. It is not supported
-on some operating systems (e.g FreeBSD 10.1).
+  found, then return IPv4 mapped IPv6 addresses. It is not supported
+  on some operating systems (e.g FreeBSD 10.1).
 * `dns.ALL`: If `dns.V4MAPPED` is specified, return resolved IPv6 addresses as
-well as IPv4 mapped IPv6 addresses.
+  well as IPv4 mapped IPv6 addresses.
 
 ## `dns.lookupService(address, port, callback)`
 <!-- YAML
@@ -558,10 +558,12 @@ be an array of objects with the following properties:
 added: v0.1.27
 -->
 
+<!--lint disable no-undefined-references list-item-bullet-indent-->
 * `hostname` {string}
 * `callback` {Function}
   * `err` {Error}
   * `records` <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type" class="type">&lt;string[][]&gt;</a>
+<!--lint enable no-undefined-references list-item-bullet-indent-->
 
 Uses the DNS protocol to resolve text queries (`TXT` records) for the
 `hostname`. The `records` argument passed to the `callback` function is a
