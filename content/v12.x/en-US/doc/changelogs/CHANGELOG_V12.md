@@ -11,6 +11,9 @@
 </tr>
 <tr>
 <td valign="top">
+<a href="#12.21.0">12.21.0</a><br/>
+<a href="#12.20.2">12.20.2</a><br/>
+<a href="#12.20.1">12.20.1</a><br/>
 <a href="#12.20.0">12.20.0</a><br/>
 <a href="#12.19.1">12.19.1</a><br/>
 <a href="#12.19.0">12.19.0</a><br/>
@@ -65,6 +68,84 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
+<a id="12.21.0"></a>
+## 2021-02-23, Version 12.21.0 'Erbium' (LTS), @richardlau
+
+This is a security release.
+
+### Notable changes
+
+Vulnerabilities fixed:
+
+* **CVE-2021-22883**: HTTP2 'unknownProtocol' cause Denial of Service by resource exhaustion
+  * Affected Node.js versions are vulnerable to denial of service attacks when too many connection attempts with an 'unknownProtocol' are established. This leads to a leak of file descriptors. If a file descriptor limit is configured on the system, then the server is unable to accept new connections and prevent the process also from opening, e.g. a file. If no file descriptor limit is configured, then this lead to an excessive memory usage and cause the system to run out of memory.
+* **CVE-2021-22884**: DNS rebinding in --inspect
+  * Affected Node.js versions are vulnerable to denial of service attacks when the whitelist includes “localhost6”. When “localhost6” is not present in /etc/hosts, it is just an ordinary domain that is resolved via DNS, i.e., over network. If the attacker controls the victim's DNS server or can spoof its responses, the DNS rebinding protection can be bypassed by using the “localhost6” domain. As long as the attacker uses the “localhost6” domain, they can still apply the attack described in CVE-2018-7160.
+* **CVE-2021-23840**: OpenSSL - Integer overflow in CipherUpdate
+  * This is a vulnerability in OpenSSL which may be exploited through Node.js. You can read more about it in https://www.openssl.org/news/secadv/20210216.txt
+
+### Commits
+
+* [[`e69177a088`](https://github.com/nodejs/node/commit/e69177a088)] - **deps**: update archs files for OpenSSL-1.1.1j (Daniel Bevenius) [#37413](https://github.com/nodejs/node/pull/37413)
+* [[`0633ae77e6`](https://github.com/nodejs/node/commit/0633ae77e6)] - **deps**: upgrade openssl sources to 1.1.1j (Daniel Bevenius) [#37413](https://github.com/nodejs/node/pull/37413)
+* [[`922ada7713`](https://github.com/nodejs/node/commit/922ada7713)] - **(SEMVER-MINOR)** **http2**: add unknownProtocol timeout (Daniel Bevenius) [nodejs-private/node-private#246](https://github.com/nodejs-private/node-private/pull/246)
+* [[`1564752d55`](https://github.com/nodejs/node/commit/1564752d55)] - **src**: drop localhost6 as allowed host for inspector (Matteo Collina) [nodejs-private/node-private#244](https://github.com/nodejs-private/node-private/pull/244)
+
+<a id="12.20.2"></a>
+## 2021-02-10, Version 12.20.2 'Erbium' (LTS), @ruyadorno
+
+### Notable changes
+
+* **deps**:
+  * upgrade npm to 6.14.11 (Ruy Adorno) [#37173](https://github.com/nodejs/node/pull/37173)
+
+### Commits
+
+* [[`e8a4e560ea`](https://github.com/nodejs/node/commit/e8a4e560ea)] - **async_hooks**: fix leak in AsyncLocalStorage exit (Stephen Belanger) [#35779](https://github.com/nodejs/node/pull/35779)
+* [[`427968d266`](https://github.com/nodejs/node/commit/427968d266)] - **deps**: upgrade npm to 6.14.11 (Ruy Adorno) [#37173](https://github.com/nodejs/node/pull/37173)
+* [[`cd9a8106be`](https://github.com/nodejs/node/commit/cd9a8106be)] - **http**: do not loop over prototype in Agent (Michaël Zasso) [#36410](https://github.com/nodejs/node/pull/36410)
+* [[`4ac8f37800`](https://github.com/nodejs/node/commit/4ac8f37800)] - **http2**: check write not scheduled in scope destructor (David Halls) [#36241](https://github.com/nodejs/node/pull/36241)
+
+<a id="12.20.1"></a>
+## 2021-01-04, Version 12.20.1 'Erbium' (LTS), @richardlau
+
+### Notable changes
+
+This is a security release.
+
+Vulnerabilities fixed:
+
+* **CVE-2020-8265**: use-after-free in TLSWrap (High)
+Affected Node.js versions are vulnerable to a use-after-free bug in its
+TLS implementation. When writing to a TLS enabled socket,
+node::StreamBase::Write calls node::TLSWrap::DoWrite with a freshly
+allocated WriteWrap object as first argument. If the DoWrite method does
+not return an error, this object is passed back to the caller as part of
+a StreamWriteResult structure. This may be exploited to corrupt memory
+leading to a Denial of Service or potentially other exploits
+* **CVE-2020-8287**: HTTP Request Smuggling in nodejs
+Affected versions of Node.js allow two copies of a header field in a
+http request. For example, two Transfer-Encoding header fields. In this
+case Node.js identifies the first header field and ignores the second.
+This can lead to HTTP Request Smuggling
+(https://cwe.mitre.org/data/definitions/444.html).
+* **CVE-2020-1971**: OpenSSL - EDIPARTYNAME NULL pointer de-reference (High)
+This is a vulnerability in OpenSSL which may be exploited through Node.js.
+You can read more about it in
+https://www.openssl.org/news/secadv/20201208.txt
+
+### Commits
+
+* [[`5de5354918`](https://github.com/nodejs/node/commit/5de5354918)] - **deps**: update http-parser to http-parser@ec8b5ee63f (Richard Lau) [nodejs-private/node-private#236](https://github.com/nodejs-private/node-private/pull/236)
+* [[`2eacfbec68`](https://github.com/nodejs/node/commit/2eacfbec68)] - **deps**: upgrade npm to 6.14.10 (Ruy Adorno) [#36571](https://github.com/nodejs/node/pull/36571)
+* [[`96ec482d90`](https://github.com/nodejs/node/commit/96ec482d90)] - **deps**: update archs files for OpenSSL-1.1.1i (Myles Borins) [#36521](https://github.com/nodejs/node/pull/36521)
+* [[`7ec0eb408b`](https://github.com/nodejs/node/commit/7ec0eb408b)] - **deps**: upgrade openssl sources to 1.1.1i (Myles Borins) [#36521](https://github.com/nodejs/node/pull/36521)
+* [[`76ea9c5a7a`](https://github.com/nodejs/node/commit/76ea9c5a7a)] - **deps**: upgrade npm to 6.14.9 (Myles Borins) [#36450](https://github.com/nodejs/node/pull/36450)
+* [[`420244e4d9`](https://github.com/nodejs/node/commit/420244e4d9)] - **http**: unset `F_CHUNKED` on new `Transfer-Encoding` (Matteo Collina) [nodejs-private/node-private#236](https://github.com/nodejs-private/node-private/pull/236)
+* [[`4a30ac8c75`](https://github.com/nodejs/node/commit/4a30ac8c75)] - **http**: add test for http transfer encoding smuggling (Richard Lau) [nodejs-private/node-private#236](https://github.com/nodejs-private/node-private/pull/236)
+* [[`92d430917a`](https://github.com/nodejs/node/commit/92d430917a)] - **http**: unset `F_CHUNKED` on new `Transfer-Encoding` (Fedor Indutny) [nodejs-private/node-private#236](https://github.com/nodejs-private/node-private/pull/236)
+* [[`5b00de7d67`](https://github.com/nodejs/node/commit/5b00de7d67)] - **src**: retain pointers to WriteWrap/ShutdownWrap (James M Snell) [nodejs-private/node-private#230](https://github.com/nodejs-private/node-private/pull/230)
 
 <a id="12.20.0"></a>
 ## 2020-11-24, Version 12.20.0 'Erbium' (LTS), @mylesborins
