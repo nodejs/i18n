@@ -29,7 +29,7 @@
     "walk-sync": "^2.2.0"
   },
   "devDependencies": {
-    "builtins": "^3.0.1",
+    "builtins": "^4.0.0",
     "crowdin-glossary": "^1.2.0",
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
