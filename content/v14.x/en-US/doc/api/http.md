@@ -113,6 +113,9 @@ http.get({
 <!-- YAML
 added: v0.3.4
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36685
+    description: Change the default scheduling from 'fifo' to 'lifo'.
   - version: v14.5.0
     pr-url: https://github.com/nodejs/node/pull/33617
     description: Add `maxTotalSockets` option to agent constructor.
@@ -136,8 +139,14 @@ changes:
     the [initial delay](net.md#net_socket_setkeepalive_enable_initialdelay)
     for TCP Keep-Alive packets. Ignored when the
     `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
-  * `maxSockets` {number} Maximum number of sockets to allow per
-    host. Each request will use a new socket until the maximum is reached.
+  * `maxSockets` {number} Maximum number of sockets to allow per host.
+     If the same host opens multiple concurrent connections, each request
+     will use new socket until the `maxSockets` value is reached.
+     If the host attempts to open more connections than `maxSockets`,
+     the additional requests will enter into a pending request queue, and
+     will enter active connection state when an existing connection terminates.
+     This makes sure there are at most `maxSockets` active connections at
+     any point in time, from a given host.
     **Default:** `Infinity`.
   * `maxTotalSockets` {number} Maximum number of sockets allowed for
     all hosts in total. Each request will use a new socket
@@ -157,7 +166,7 @@ changes:
     In case of a high rate of request per second,
     the `'fifo'` scheduling will maximize the number of open sockets,
     while the `'lifo'` scheduling will keep it as low as possible.
-    **Default:** `'fifo'`.
+    **Default:** `'lifo'`.
   * `timeout` {number} Socket timeout in milliseconds.
     This will set the timeout when the socket is created.
 
@@ -747,6 +756,24 @@ const cookie = request.getHeader('Cookie');
 // 'cookie' is of type string[]
 ```
 
+### `request.getRawHeaderNames()`
+<!-- YAML
+added: v14.17.0
+-->
+
+* Returns: {string[]}
+
+Returns an array containing the unique names of the current outgoing raw
+headers. Header names are returned with their exact casing being set.
+
+```js
+request.setHeader('Foo', 'bar');
+request.setHeader('Set-Cookie', ['foo=bar', 'bar=baz']);
+
+const headerNames = request.getRawHeaderNames();
+// headerNames === ['Foo', 'Set-Cookie']
+```
+
 ### `request.maxHeadersCount`
 
 * {number} **Default:** `2000`
@@ -1268,7 +1295,7 @@ the client.
 If the timeout expires, the server responds with status 408 without
 forwarding the request to the request listener and then closes the connection.
 
-It must be set to a non-zero value (e.g. 120 seconds) to proctect against
+It must be set to a non-zero value (e.g. 120 seconds) to protect against
 potential Denial-of-Service attacks in case the server is deployed without a
 reverse proxy in front.
 
@@ -1351,7 +1378,7 @@ passed as the second parameter to the [`'request'`][] event.
 added: v0.6.7
 -->
 
-Indicates that the the response is completed, or its underlying connection was
+Indicates that the response is completed, or its underlying connection was
 terminated prematurely (before the response completion).
 
 ### Event: `'finish'`
@@ -1584,13 +1611,17 @@ added: v0.4.0
 
 * `name` {string}
 * `value` {any}
+* Returns: {http.ServerResponse}
+
+Returns the response object.
 
 Sets a single header value for implicit headers. If this header already exists
 in the to-be-sent headers, its value will be replaced. Use an array of strings
 here to send multiple headers with the same name. Non-string values will be
 stored without modification. Therefore, [`response.getHeader()`][] may return
 non-string values. However, the non-string values will be converted to strings
-for network transmission.
+for network transmission. The same response object is returned to the caller,
+to enable call chaining.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -2256,7 +2287,7 @@ The `callback` is invoked with a single argument that is an instance of
 JSON fetching example:
 
 ```js
-http.get('http://nodejs.org/dist/index.json', (res) => {
+http.get('http://localhost:8000/', (res) => {
   const { statusCode } = res;
   const contentType = res.headers['content-type'];
 
@@ -2291,6 +2322,16 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
 }).on('error', (e) => {
   console.error(`Got error: ${e.message}`);
 });
+
+// Create a local server to receive data from
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({
+    data: 'Hello World!'
+  }));
+});
+
+server.listen(8000);
 ```
 
 ## `http.globalAgent`
@@ -2323,6 +2364,9 @@ This can be overridden for servers and client requests by passing the
 <!-- YAML
 added: v0.3.6
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36048
+    description: It is possible to abort a request with an AbortSignal.
   - version:
      - v13.8.0
      - v12.15.0
@@ -2361,6 +2405,7 @@ changes:
     `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and
     v6 will be used.
   * `headers` {Object} An object containing request headers.
+  * `hints` {number} Optional [`dns.lookup()` hints][].
   * `host` {string} A domain name or IP address of the server to issue the
     request to. **Default:** `'localhost'`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][],
@@ -2370,6 +2415,7 @@ changes:
     avoided. See [`--insecure-http-parser`][] for more information.
     **Default:** `false`
   * `localAddress` {string} Local interface to bind for network connections.
+  * `localPort` {number} Local port to connect from.
   * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
   * `maxHeaderSize` {number} Optionally overrides the value of
     [`--max-http-header-size`][] for requests received from the server, i.e.
@@ -2390,6 +2436,8 @@ changes:
      or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds.
     This will set the timeout before the socket is connected.
+  * `signal` {AbortSignal}: An AbortSignal that may be used to abort an ongoing
+    request.
 * `callback` {Function}
 * Returns: {http.ClientRequest}
 
@@ -2577,6 +2625,10 @@ events will be emitted in the following order:
 Setting the `timeout` option or using the `setTimeout()` function will
 not abort the request or do anything besides add a `'timeout'` event.
 
+Passing an `AbortSignal` and then calling `abort` on the corresponding
+`AbortController` will behave the same way as calling `.destroy()` on the
+request itself.
+
 ## `http.validateHeaderName(name)`
 <!-- YAML
 added: v14.3.0
@@ -2664,6 +2716,7 @@ try {
 [`agent.getName()`]: #http_agent_getname_options
 [`destroy()`]: #http_agent_destroy
 [`dns.lookup()`]: dns.md#dns_dns_lookup_hostname_options_callback
+[`dns.lookup()` hints]: dns.md#dns_supported_getaddrinfo_flags
 [`getHeader(name)`]: #http_request_getheader_name
 [`http.Agent`]: #http_class_http_agent
 [`http.ClientRequest`]: #http_class_http_clientrequest

@@ -197,6 +197,13 @@ Enable experimental Source Map v3 support for stack traces.
 Currently, overriding `Error.prepareStackTrace` is ignored when the
 `--enable-source-maps` flag is set.
 
+### `--experimental-abortcontroller`
+<!-- YAML
+added: v14.17.0
+-->
+
+Enable experimental `AbortController` and `AbortSignal` support.
+
 ### `--experimental-import-meta-resolve`
 <!-- YAML
 added:
@@ -284,14 +291,14 @@ Enable experimental WebAssembly System Interface (WASI) support.
 added: v12.3.0
 -->
 
+Enable experimental WebAssembly module support.
+
 ### `--force-context-aware`
 <!-- YAML
 added: v12.12.0
 -->
 
 Disable loading native addons that are not [context-aware][].
-
-Enable experimental WebAssembly module support.
 
 ### `--force-fips`
 <!-- YAML
@@ -1121,6 +1128,9 @@ Preload the specified module at startup.
 Follows `require()`'s module resolution
 rules. `module` may be either a path to a file, or a node module name.
 
+Only CommonJS modules are supported. Attempting to preload a
+ES6 Module using `--require` will fail with an error.
+
 ### `-v`, `--version`
 <!-- YAML
 added: v0.1.3
@@ -1164,6 +1174,10 @@ options property is explicitly specified for a TLS or HTTPS client or server.
 
 This environment variable is ignored when `node` runs as setuid root or
 has Linux file capabilities set.
+
+The `NODE_EXTRA_CA_CERTS` environment variable is only read when the Node.js
+process is first launched. Changing the value at runtime using
+`process.env.NODE_EXTRA_CA_CERTS` has no effect on the current process.
 
 ### `NODE_ICU_DATA=file`
 <!-- YAML
@@ -1222,6 +1236,7 @@ Node.js options that are allowed are:
 * `--disable-proto`
 * `--enable-fips`
 * `--enable-source-maps`
+* `--experimental-abortcontroller`
 * `--experimental-import-meta-resolve`
 * `--experimental-json-modules`
 * `--experimental-loader`

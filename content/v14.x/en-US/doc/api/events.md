@@ -383,6 +383,29 @@ Installing a listener using this symbol does not change the behavior once an
 `'error'` event is emitted, therefore the process will still crash if no
 regular `'error'` listener is installed.
 
+### `EventEmitter.setMaxListeners(n[, ...eventTargets])`
+<!-- YAML
+added: v14.17.0
+-->
+
+* `n` {number} A non-negative number. The maximum number of listeners per
+  `EventTarget` event.
+* `...eventsTargets` {EventTarget[]|EventEmitter[]} Zero or more {EventTarget}
+  or {EventEmitter} instances. If none are specified, `n` is set as the default
+  max for all newly created {EventTarget} and {EventEmitter} objects.
+
+```js
+const {
+  setMaxListeners,
+  EventEmitter
+} = require('events');
+
+const target = new EventTarget();
+const emitter = new EventEmitter();
+
+setMaxListeners(5, target, emitter);
+```
+
 ### `emitter.addListener(eventName, listener)`
 <!-- YAML
 added: v0.1.26
@@ -829,7 +852,41 @@ class MyClass extends EventEmitter {
 }
 ```
 
-## `events.once(emitter, name)`
+## `events.getEventListeners(emitterOrTarget, eventName)`
+<!-- YAML
+added:
+ - v14.17.0
+-->
+* `emitterOrTarget` {EventEmitter|EventTarget}
+* `eventName` {string|symbol}
+* Returns: {Function[]}
+
+Returns a copy of the array of listeners for the event named `eventName`.
+
+For `EventEmitter`s this behaves exactly the same as calling `.listeners` on
+the emitter.
+
+For `EventTarget`s this is the only way to get the event listeners for the
+event target. This is useful for debugging and diagnostic purposes.
+
+```js
+const { getEventListeners, EventEmitter } = require('events');
+
+{
+  const ee = new EventEmitter();
+  const listener = () => console.log('Events are fun');
+  ee.on('foo', listener);
+  getEventListeners(ee, 'foo'); // [listener]
+}
+{
+  const et = new EventTarget();
+  const listener = () => console.log('Events are fun');
+  et.addEventListener('foo', listener);
+  getEventListeners(et, 'foo'); // [listener]
+}
+```
+
+## `events.once(emitter, name[, options])`
 <!-- YAML
 added:
  - v11.13.0
@@ -838,6 +895,8 @@ added:
 
 * `emitter` {EventEmitter}
 * `name` {string}
+* `options` {Object}
+  * `signal` {AbortSignal} Can be used to cancel waiting for the event.
 * Returns: {Promise}
 
 Creates a `Promise` that is fulfilled when the `EventEmitter` emits the given
@@ -894,6 +953,32 @@ once(ee, 'error')
 ee.emit('error', new Error('boom'));
 
 // Prints: ok boom
+```
+
+An {AbortSignal} can be used to cancel waiting for the event:
+
+```js
+const { EventEmitter, once } = require('events');
+
+const ee = new EventEmitter();
+const ac = new AbortController();
+
+async function foo(emitter, event, signal) {
+  try {
+    await once(emitter, event, { signal });
+    console.log('event emitted!');
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      console.error('Waiting for the event was canceled!');
+    } else {
+      console.error('There was an error', error.message);
+    }
+  }
+}
+
+foo(ee, 'foo', ac.signal);
+ac.abort(); // Abort waiting for the event
+ee.emit('foo'); // Prints: Waiting for the event was canceled!
 ```
 
 ### Awaiting multiple events emitted on `process.nextTick()`
@@ -976,7 +1061,7 @@ Value: `Symbol.for('nodejs.rejection')`
 
 See how to write a custom [rejection handler][rejection].
 
-## `events.on(emitter, eventName)`
+## `events.on(emitter, eventName[, options])`
 <!-- YAML
 added:
  - v13.6.0
@@ -985,6 +1070,8 @@ added:
 
 * `emitter` {EventEmitter}
 * `eventName` {string|symbol} The name of the event being listened for
+* `options` {Object}
+  * `signal` {AbortSignal} Can be used to cancel awaiting events.
 * Returns: {AsyncIterator} that iterates `eventName` events emitted by the `emitter`
 
 ```js
@@ -1013,6 +1100,33 @@ Returns an `AsyncIterator` that iterates `eventName` events. It will throw
 if the `EventEmitter` emits `'error'`. It removes all listeners when
 exiting the loop. The `value` returned by each iteration is an array
 composed of the emitted event arguments.
+
+An {AbortSignal} can be used to cancel waiting on events:
+
+```js
+const { on, EventEmitter } = require('events');
+const ac = new AbortController();
+
+(async () => {
+  const ee = new EventEmitter();
+
+  // Emit later on
+  process.nextTick(() => {
+    ee.emit('foo', 'bar');
+    ee.emit('foo', 42);
+  });
+
+  for await (const event of on(ee, 'foo', { signal: ac.signal })) {
+    // The execution of this inner block is synchronous and it
+    // processes one event at a time (even with await). Do not use
+    // if concurrent execution is required.
+    console.log(event); // prints ['bar'] [42]
+  }
+  // Unreachable here
+})();
+
+process.nextTick(() => ac.abort());
+```
 
 ## `EventTarget` and `Event` API
 <!-- YAML
@@ -1124,12 +1238,21 @@ target.addEventListener('foo', handler4, { once: true });
 ### `EventTarget` error handling
 
 When a registered event listener throws (or returns a Promise that rejects),
-by default the error is forwarded to the `process.on('error')` event
-on `process.nextTick()`. Throwing within an event listener will *not* stop
-the other registered handlers from being invoked.
+by default the error is treated as an uncaught exception on
+`process.nextTick()`. This means uncaught exceptions in `EventTarget`s will
+terminate the Node.js process by default.
 
-The `EventTarget` does not implement any special default handling for
-`'error'` type events.
+Throwing within an event listener will *not* stop the other registered handlers
+from being invoked.
+
+The `EventTarget` does not implement any special default handling for `'error'`
+type events like `EventEmitter`.
+
+Currently errors are first forwarded to the `process.on('error')` event
+before reaching `process.on('uncaughtException')`. This behavior is
+deprecated and will change in a future release to align `EventTarget` with
+other Node.js APIs. Any code relying on the `process.on('error')` event should
+be aligned with the new behavior.
 
 ### Class: `Event`
 <!-- YAML
@@ -1215,9 +1338,10 @@ This is not used in Node.js and is provided purely for completeness.
 added: v14.5.0
 -->
 
-* Type: {boolean} Always returns `false`.
+* Type: {boolean} True for Node.js internal events, false otherwise.
 
-This is not used in Node.js and is provided purely for completeness.
+Currently only `AbortSignal`s' `"abort"` event is fired with `isTrusted`
+set to `true`.
 
 #### `event.preventDefault()`
 <!-- YAML
@@ -1356,10 +1480,12 @@ added: v14.5.0
 
 Removes the `listener` from the list of handlers for event `type`.
 
-### Class: `NodeEventTarget extends EventTarget`
+### Class: `NodeEventTarget`
 <!-- YAML
 added: v14.5.0
 -->
+
+* Extends: {EventTarget}
 
 The `NodeEventTarget` is a Node.js-specific extension to `EventTarget`
 that emulates a subset of the `EventEmitter` API.
@@ -1413,7 +1539,7 @@ added: v14.5.0
 
 * Returns: {EventTarget} this
 
-Node.js-speciic alias for `eventTarget.removeListener()`.
+Node.js-specific alias for `eventTarget.removeListener()`.
 
 #### `nodeEventTarget.on(type, listener[, options])`
 <!-- YAML
