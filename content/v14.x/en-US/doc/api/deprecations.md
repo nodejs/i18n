@@ -173,7 +173,7 @@ changes:
     description: A deprecation code has been assigned.
   - version: v0.11.14
     description: Runtime deprecation.
-  - version: v0.5.11
+  - version: v0.5.10
     description: Documentation-only deprecation.
 -->
 
@@ -1340,6 +1340,7 @@ The `http` module `OutgoingMessage.prototype._headers` and
 the public methods (e.g. `OutgoingMessage.prototype.getHeader()`,
 `OutgoingMessage.prototype.getHeaders()`,
 `OutgoingMessage.prototype.getHeaderNames()`,
+`OutgoingMessage.prototype.getRawHeaderNames()`,
 `OutgoingMessage.prototype.hasHeader()`,
 `OutgoingMessage.prototype.removeHeader()`,
 `OutgoingMessage.prototype.setHeader()`) for working with outgoing headers.
@@ -2147,12 +2148,15 @@ future release.
 ### DEP0116: Legacy URL API
 <!-- YAML
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22715
     description: Documentation-only deprecation.
 -->
 
-Type: Documentation-only
+Type: Deprecation revoked
 
 The [Legacy URL API][] is deprecated. This includes [`url.format()`][],
 [`url.parse()`][], [`url.resolve()`][], and the [legacy `urlObject`][]. Please
@@ -2455,7 +2459,7 @@ called, not whether `'finish'` has been emitted and the underlying data
 is flushed.
 
 Use [`response.writableFinished`][] or [`response.writableEnded`][]
-accordingly instead to avoid the ambigiuty.
+accordingly instead to avoid the ambiguity.
 
 To maintain existing behaviour `response.finished` should be replaced with
 `response.writableEnded`.
