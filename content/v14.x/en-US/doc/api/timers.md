@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/timers.js -->
+
 The `timer` module exposes a global API for scheduling functions to
 be called at some future period of time. Because the timer functions are
 globals, there is no need to call `require('timers')` to use the API.
@@ -123,7 +125,21 @@ Calling `timeout.unref()` creates an internal timer that will wake the Node.js
 event loop. Creating too many of these can adversely impact performance
 of the Node.js application.
 
-## Scheduling Timers
+### `timeout[Symbol.toPrimitive]()`
+<!-- YAML
+added: v14.9.0
+-->
+
+* Returns: {integer} a number that can be used to reference this `timeout`
+
+Coerce a `Timeout` to a primitive. The primitive can be used to
+clear the `Timeout`. The primitive can only be used in the
+same thread where the timeout was created. Therefore, to use it
+across [`worker_threads`][] it must first be passed to the correct
+thread. This allows enhanced compatibility with browser
+`setTimeout()` and `setInterval()` implementations.
+
+## Scheduling timers
 
 A timer in Node.js is an internal construct that calls a given function after
 a certain period of time. When a timer's function is called varies depending on
@@ -172,14 +188,14 @@ async function timerExample() {
 timerExample();
 ```
 
-### `setInterval(callback, delay[, ...args])`
+### `setInterval(callback[, delay[, ...args]])`
 <!-- YAML
 added: v0.0.1
 -->
 
 * `callback` {Function} The function to call when the timer elapses.
 * `delay` {number} The number of milliseconds to wait before calling the
-  `callback`.
+  `callback`. **Default**: `1`.
 * `...args` {any} Optional arguments to pass when the `callback` is called.
 * Returns: {Timeout} for use with [`clearInterval()`][]
 
@@ -190,14 +206,14 @@ set to `1`. Non-integer delays are truncated to an integer.
 
 If `callback` is not a function, a [`TypeError`][] will be thrown.
 
-### `setTimeout(callback, delay[, ...args])`
+### `setTimeout(callback[, delay[, ...args]])`
 <!-- YAML
 added: v0.0.1
 -->
 
 * `callback` {Function} The function to call when the timer elapses.
 * `delay` {number} The number of milliseconds to wait before calling the
-  `callback`.
+  `callback`. **Default**: `1`.
 * `...args` {any} Optional arguments to pass when the `callback` is called.
 * Returns: {Timeout} for use with [`clearTimeout()`][]
 
@@ -226,14 +242,53 @@ setTimeoutPromise(40, 'foobar').then((value) => {
 });
 ```
 
-## Cancelling Timers
+## Cancelling timers
 
 The [`setImmediate()`][], [`setInterval()`][], and [`setTimeout()`][] methods
 each return objects that represent the scheduled timers. These can be used to
 cancel the timer and prevent it from triggering.
 
-It is not possible to cancel timers that were created using the promisified
-variants of [`setImmediate()`][], [`setTimeout()`][].
+For the promisified variants of [`setImmediate()`][] and [`setTimeout()`][],
+an [`AbortController`][] may be used to cancel the timer. When canceled, the
+returned Promises will be rejected with an `'AbortError'`.
+
+For `setImmediate()`:
+
+```js
+const util = require('util');
+const setImmediatePromise = util.promisify(setImmediate);
+
+const ac = new AbortController();
+const signal = ac.signal;
+
+setImmediatePromise('foobar', { signal })
+  .then(console.log)
+  .catch((err) => {
+    if (err.name === 'AbortError')
+      console.log('The immediate was aborted');
+  });
+
+ac.abort();
+```
+
+For `setTimeout()`:
+
+```js
+const util = require('util');
+const setTimeoutPromise = util.promisify(setTimeout);
+
+const ac = new AbortController();
+const signal = ac.signal;
+
+setTimeoutPromise(1000, 'foobar', { signal })
+  .then(console.log)
+  .catch((err) => {
+    if (err.name === 'AbortError')
+      console.log('The timeout was aborted');
+  });
+
+ac.abort();
+```
 
 ### `clearImmediate(immediate)`
 <!-- YAML
@@ -264,11 +319,13 @@ added: v0.0.1
 Cancels a `Timeout` object created by [`setTimeout()`][].
 
 [Event Loop]: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/#setimmediate-vs-settimeout
-[`TypeError`]: errors.html#errors_class_typeerror
-[`clearImmediate()`]: timers.html#timers_clearimmediate_immediate
-[`clearInterval()`]: timers.html#timers_clearinterval_timeout
-[`clearTimeout()`]: timers.html#timers_cleartimeout_timeout
-[`setImmediate()`]: timers.html#timers_setimmediate_callback_args
-[`setInterval()`]: timers.html#timers_setinterval_callback_delay_args
-[`setTimeout()`]: timers.html#timers_settimeout_callback_delay_args
-[`util.promisify()`]: util.html#util_util_promisify_original
+[`AbortController`]: globals.md#globals_class_abortcontroller
+[`TypeError`]: errors.md#errors_class_typeerror
+[`clearImmediate()`]: timers.md#timers_clearimmediate_immediate
+[`clearInterval()`]: timers.md#timers_clearinterval_timeout
+[`clearTimeout()`]: timers.md#timers_cleartimeout_timeout
+[`setImmediate()`]: timers.md#timers_setimmediate_callback_args
+[`setInterval()`]: timers.md#timers_setinterval_callback_delay_args
+[`setTimeout()`]: timers.md#timers_settimeout_callback_delay_args
+[`util.promisify()`]: util.md#util_util_promisify_original
+[`worker_threads`]: worker_threads.md
