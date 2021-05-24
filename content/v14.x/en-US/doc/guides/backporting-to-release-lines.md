@@ -1,4 +1,4 @@
-# How to Backport a Pull Request to a Release Line
+# How to backport a pull request to a release line
 
 ## Staging branches
 
@@ -35,7 +35,7 @@ replace that with the staging branch for the targeted release line.
 2. Make sure that the local staging branch is up to date with the remote.
 3. Create a new branch off of the staging branch, as shown below.
 
-    ```shell
+    ```bash
     # Assuming your fork of Node.js is checked out in $NODE_DIR,
     # the origin remote points to your fork, and the upstream remote points
     # to git://github.com/nodejs/node
@@ -55,7 +55,7 @@ replace that with the staging branch for the targeted release line.
    will likely fail due to conflicts. In that case, you will see something
    like this:
 
-    ```shell
+    ```console
     # Say the $SHA is 773cdc31ef
     $ git cherry-pick $SHA # Use your commit hash
     error: could not apply 773cdc3... <commit title>
@@ -89,6 +89,6 @@ replace that with the staging branch for the targeted release line.
 After the pull request lands, replace the `backport-requested-v10.x` label
 on the original pull request with `backported-to-v10.x`.
 
-[Release Schedule]: https://github.com/nodejs/Release#release-schedule1
 [Release Plan]: https://github.com/nodejs/Release#release-plan
+[Release Schedule]: https://github.com/nodejs/Release#release-schedule
 [`node-test-pull-request`]: https://ci.nodejs.org/job/node-test-pull-request/build
