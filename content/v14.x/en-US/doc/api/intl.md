@@ -1,4 +1,4 @@
-# Internationalization Support
+# Internationalization support
 
 <!--introduced_in=v8.2.0-->
 <!-- type=misc -->
@@ -22,7 +22,8 @@ programs. Some of them are:
 * [`require('util').TextDecoder`][]
 * [`RegExp` Unicode Property Escapes][]
 
-Node.js (and its underlying V8 engine) uses [ICU][] to implement these features
+Node.js and the underlying V8 engine use
+[International Components for Unicode (ICU)][ICU] to implement these features
 in native C/C++ code. The full ICU data set is provided by Node.js by default.
 However, due to the size of the ICU data file, several
 options are provided for customizing the ICU data set either when
@@ -42,7 +43,7 @@ in [BUILDING.md][].
 An overview of available Node.js and JavaScript features for each `configure`
 option:
 
-|                                         | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
+| Feature                                 | `none`                            | `system-icu`                 | `small-icu`            | `full-icu` |
 |-----------------------------------------|-----------------------------------|------------------------------|------------------------|------------|
 | [`String.prototype.normalize()`][]      | none (function is no-op)          | full                         | full                   | full       |
 | `String.prototype.to*Case()`            | full                              | full                         | full                   | full       |
@@ -115,13 +116,13 @@ through either:
 
 * The [`NODE_ICU_DATA`][] environment variable:
 
-  ```shell
+  ```bash
   env NODE_ICU_DATA=/some/directory node
   ```
 
 * The [`--icu-data-dir`][] CLI parameter:
 
-  ```shell
+  ```bash
   node --icu-data-dir=/some/directory
   ```
 
@@ -189,26 +190,26 @@ to be helpful:
   dedicated to ECMA-402.
 
 ["ICU Data"]: http://userguide.icu-project.org/icudata
-[`--icu-data-dir`]: cli.html#cli_icu_data_dir_file
+[BUILDING.md]: https://github.com/nodejs/node/blob/HEAD/BUILDING.md
+[ECMA-262]: https://tc39.github.io/ecma262/
+[ECMA-402]: https://tc39.github.io/ecma402/
+[ICU]: http://site.icu-project.org/
+[REPL]: repl.md#repl_repl
+[Test262]: https://github.com/tc39/test262/tree/HEAD/test/intl402
+[WHATWG URL parser]: url.md#url_the_whatwg_url_api
+[`--icu-data-dir`]: cli.md#cli_icu_data_dir_file
 [`Date.prototype.toLocaleString()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
 [`Intl.DateTimeFormat`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat
 [`Intl`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl
-[`NODE_ICU_DATA`]: cli.html#cli_node_icu_data_file
+[`NODE_ICU_DATA`]: cli.md#cli_node_icu_data_file
 [`Number.prototype.toLocaleString()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString
 [`RegExp` Unicode Property Escapes]: https://github.com/tc39/proposal-regexp-unicode-property-escapes
 [`String.prototype.localeCompare()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare
 [`String.prototype.normalize()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
 [`String.prototype.toLowerCase()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase
 [`String.prototype.toUpperCase()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase
-[`require('buffer').transcode()`]: buffer.html#buffer_buffer_transcode_source_fromenc_toenc
-[`require('util').TextDecoder`]: util.html#util_class_util_textdecoder
-[BUILDING.md]: https://github.com/nodejs/node/blob/master/BUILDING.md
-[ECMA-262]: https://tc39.github.io/ecma262/
-[ECMA-402]: https://tc39.github.io/ecma402/
-[ICU]: http://site.icu-project.org/
-[REPL]: repl.html#repl_repl
-[Test262]: https://github.com/tc39/test262/tree/master/test/intl402
-[WHATWG URL parser]: url.html#url_the_whatwg_url_api
+[`require('buffer').transcode()`]: buffer.md#buffer_buffer_transcode_source_fromenc_toenc
+[`require('util').TextDecoder`]: util.md#util_class_util_textdecoder
 [btest402]: https://github.com/srl295/btest402
 [full-icu]: https://www.npmjs.com/package/full-icu
 [internationalized domain names]: https://en.wikipedia.org/wiki/Internationalized_domain_name
