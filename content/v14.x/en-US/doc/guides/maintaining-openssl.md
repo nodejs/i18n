@@ -5,12 +5,12 @@ This document describes how to update `deps/openssl/`.
 ## Requirements
 * Linux environment.
 * `perl` Only Perl version 5 is tested.
-* `nasm` (<http://www.nasm.us/>) Version 2.11 or higher is needed.
+* `nasm` (<https://www.nasm.us/>) Version 2.11 or higher is needed.
 * GNU `as` in binutils. Version 2.26 or higher is needed.
 
-## 0. Check Requirements
+## 0. Check requirements
 
-```sh
+```console
 % perl -v
 
 This is perl 5, version 22, subversion 1 (v5.22.1) built for
@@ -30,14 +30,14 @@ NASM version 2.11.08
 Get a new source from  <https://www.openssl.org/source/> and extract
 all files into `deps/openssl/openssl`. Then add all files and commit
 them.
-```sh
+```console
 % cd deps/openssl/
 % rm -rf openssl
 % tar zxf ~/tmp/openssl-1.1.0h.tar.gz
 % mv openssl-1.1.0h openssl
 % git add --all openssl
 % git commit openssl
-````
+```
 
 The commit message can be written as (with the openssl version set
 to the relevant value):
@@ -57,7 +57,11 @@ This updates all sources in deps/openssl/openssl by:
 
 Use `make` to regenerate all platform dependent files in
 `deps/openssl/config/archs/`:
-```sh
+```console
+# On non-Linux machines
+% make gen-openssl
+
+# On Linux machines
 % make -C deps/openssl/config
 ```
 
@@ -66,7 +70,7 @@ Use `make` to regenerate all platform dependent files in
 Check diffs to ensure updates are right. Even if there are no updates in openssl
 sources, `buildinf.h` files will be updated because they have timestamp
 data in them.
-```sh
+```console
 % git diff -- deps/openssl
 ```
 
@@ -81,7 +85,7 @@ please ask @shigeki for details.
 
 Update all architecture dependent files. Do not forget to git add or remove
 files if they are changed before committing:
-```sh
+```console
 % git add deps/openssl/config/archs
 % git add deps/openssl/openssl/include/crypto/bn_conf.h
 % git add deps/openssl/openssl/include/crypto/dso_conf.h
