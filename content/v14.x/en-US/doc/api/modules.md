@@ -1,4 +1,4 @@
-# Modules
+# Modules: CommonJS modules
 
 <!--introduced_in=v0.10.0-->
 
@@ -78,7 +78,7 @@ Because `module` provides a `filename` property (normally equivalent to
 `__filename`), the entry point of the current application can be obtained
 by checking `require.main.filename`.
 
-## Addenda: Package Manager Tips
+## Addenda: Package manager tips
 
 <!-- type=misc -->
 
@@ -98,10 +98,9 @@ may be necessary to install a specific version of package `bar`. The `bar`
 package may itself have dependencies, and in some cases, these may even collide
 or form cyclic dependencies.
 
-Since Node.js looks up the `realpath` of any modules it loads (that is,
-resolves symlinks), and then looks for their dependencies in the `node_modules`
-folders as described [here](#modules_loading_from_node_modules_folders), this
-situation is very simple to resolve with the following architecture:
+Because Node.js looks up the `realpath` of any modules it loads (that is, it
+resolves symlinks) and then [looks for their dependencies in `node_modules` folders](#modules_loading_from_node_modules_folders),
+this situation can be resolved with the following architecture:
 
 * `/usr/lib/node/foo/1.2.3/`: Contents of the `foo` package, version 1.2.3.
 * `/usr/lib/node/bar/4.3.2/`: Contents of the `bar` package that `foo` depends
@@ -139,7 +138,7 @@ Attempting to do so will throw [an error][]. The `.mjs` extension is
 reserved for [ECMAScript Modules][] which cannot be loaded via `require()`.
 See [ECMAScript Modules][] for more details.
 
-## All Together...
+## All together...
 
 <!-- type=misc -->
 
@@ -149,7 +148,7 @@ the `require.resolve()` function.
 Putting together all of the above, here is the high-level algorithm
 in pseudocode of what `require()` does:
 
-```txt
+<pre>
 require(X) from module at path Y
 1. If X is a core module,
    a. return the core module
@@ -160,20 +159,22 @@ require(X) from module at path Y
    a. LOAD_AS_FILE(Y + X)
    b. LOAD_AS_DIRECTORY(Y + X)
    c. THROW "not found"
-4. LOAD_SELF_REFERENCE(X, dirname(Y))
-5. LOAD_NODE_MODULES(X, dirname(Y))
-6. THROW "not found"
+4. If X begins with '#'
+   a. LOAD_PACKAGE_IMPORTS(X, dirname(Y))
+5. LOAD_PACKAGE_SELF(X, dirname(Y))
+6. LOAD_NODE_MODULES(X, dirname(Y))
+7. THROW "not found"
 
 LOAD_AS_FILE(X)
-1. If X is a file, load X as its file extension format.  STOP
-2. If X.js is a file, load X.js as JavaScript text.  STOP
-3. If X.json is a file, parse X.json to a JavaScript Object.  STOP
-4. If X.node is a file, load X.node as binary addon.  STOP
+1. If X is a file, load X as its file extension format. STOP
+2. If X.js is a file, load X.js as JavaScript text. STOP
+3. If X.json is a file, parse X.json to a JavaScript Object. STOP
+4. If X.node is a file, load X.node as binary addon. STOP
 
 LOAD_INDEX(X)
-1. If X/index.js is a file, load X/index.js as JavaScript text.  STOP
+1. If X/index.js is a file, load X/index.js as JavaScript text. STOP
 2. If X/index.json is a file, parse X/index.json to a JavaScript object. STOP
-3. If X/index.node is a file, load X/index.node as binary addon.  STOP
+3. If X/index.node is a file, load X/index.node as binary addon. STOP
 
 LOAD_AS_DIRECTORY(X)
 1. If X/package.json is a file,
@@ -189,7 +190,7 @@ LOAD_AS_DIRECTORY(X)
 LOAD_NODE_MODULES(X, START)
 1. let DIRS = NODE_MODULES_PATHS(START)
 2. for each DIR in DIRS:
-   a. LOAD_PACKAGE_EXPORTS(DIR, X)
+   a. LOAD_PACKAGE_EXPORTS(X, DIR)
    b. LOAD_AS_FILE(DIR/X)
    c. LOAD_AS_DIRECTORY(DIR/X)
 
@@ -204,39 +205,46 @@ NODE_MODULES_PATHS(START)
    d. let I = I - 1
 5. return DIRS
 
-LOAD_SELF_REFERENCE(X, START)
-1. Find the closest package scope to START.
+LOAD_PACKAGE_IMPORTS(X, DIR)
+1. Find the closest package scope SCOPE to DIR.
 2. If no scope was found, return.
-3. If the `package.json` has no "exports", return.
-4. If the name in `package.json` isn't a prefix of X, throw "not found".
-5. Otherwise, load the remainder of X relative to this package as if it
-  was loaded via `LOAD_NODE_MODULES` with a name in `package.json`.
+3. If the SCOPE/package.json "imports" is null or undefined, return.
+4. let MATCH = PACKAGE_IMPORTS_RESOLVE(X, pathToFileURL(SCOPE),
+  ["node", "require"]) <a href="esm.md#resolver-algorithm-specification">defined in the ESM resolver</a>.
+5. RESOLVE_ESM_MATCH(MATCH).
 
-LOAD_PACKAGE_EXPORTS(DIR, X)
-1. Try to interpret X as a combination of name and subpath where the name
+LOAD_PACKAGE_EXPORTS(X, DIR)
+1. Try to interpret X as a combination of NAME and SUBPATH where the name
    may have a @scope/ prefix and the subpath begins with a slash (`/`).
-2. If X does not match this pattern or DIR/name/package.json is not a file,
+2. If X does not match this pattern or DIR/NAME/package.json is not a file,
    return.
-3. Parse DIR/name/package.json, and look for "exports" field.
+3. Parse DIR/NAME/package.json, and look for "exports" field.
 4. If "exports" is null or undefined, return.
-5. If "exports" is an object with some keys starting with "." and some keys
-  not starting with ".", throw "invalid config".
-6. If "exports" is a string, or object with no keys starting with ".", treat
-  it as having that value as its "." object property.
-7. If subpath is "." and "exports" does not have a "." entry, return.
-8. Find the longest key in "exports" that the subpath starts with.
-9. If no such key can be found, throw "not found".
-10. let RESOLVED =
-    fileURLToPath(PACKAGE_EXPORTS_TARGET_RESOLVE(pathToFileURL(DIR/name),
-    exports[key], subpath.slice(key.length), ["node", "require"])), as defined
-    in the ESM resolver.
-11. If key ends with "/":
-    a. LOAD_AS_FILE(RESOLVED)
-    b. LOAD_AS_DIRECTORY(RESOLVED)
-12. Otherwise
-   a. If RESOLVED is a file, load it as its file extension format.  STOP
-13. Throw "not found"
-```
+5. let MATCH = PACKAGE_EXPORTS_RESOLVE(pathToFileURL(DIR/NAME), "." + SUBPATH,
+   `package.json` "exports", ["node", "require"]) <a href="esm.md#resolver-algorithm-specification">defined in the ESM resolver</a>.
+6. RESOLVE_ESM_MATCH(MATCH)
+
+LOAD_PACKAGE_SELF(X, DIR)
+1. Find the closest package scope SCOPE to DIR.
+2. If no scope was found, return.
+3. If the SCOPE/package.json "exports" is null or undefined, return.
+4. If the SCOPE/package.json "name" is not the first segment of X, return.
+5. let MATCH = PACKAGE_EXPORTS_RESOLVE(pathToFileURL(SCOPE),
+   "." + X.slice("name".length), `package.json` "exports", ["node", "require"])
+   <a href="esm.md#resolver-algorithm-specification">defined in the ESM resolver</a>.
+6. RESOLVE_ESM_MATCH(MATCH)
+
+RESOLVE_ESM_MATCH(MATCH)
+1. let { RESOLVED, EXACT } = MATCH
+2. let RESOLVED_PATH = fileURLToPath(RESOLVED)
+3. If EXACT is true,
+   a. If the file at RESOLVED_PATH exists, load RESOLVED_PATH as its extension
+      format. STOP
+4. Otherwise, if EXACT is false,
+   a. LOAD_AS_FILE(RESOLVED_PATH)
+   b. LOAD_AS_DIRECTORY(RESOLVED_PATH)
+5. THROW "not found"
+</pre>
 
 ## Caching
 
@@ -254,7 +262,7 @@ allowing transitive dependencies to be loaded even when they would cause cycles.
 To have a module execute code multiple times, export a function, and call that
 function.
 
-### Module Caching Caveats
+### Module caching caveats
 
 <!--type=misc-->
 
@@ -269,7 +277,7 @@ them as different modules and will reload the file multiple times. For example,
 `require('./foo')` and `require('./FOO')` return two different objects,
 irrespective of whether or not `./foo` and `./FOO` are the same file.
 
-## Core Modules
+## Core modules
 
 <!--type=misc-->
 
@@ -347,7 +355,7 @@ in main, a.done = true, b.done = true
 Careful planning is required to allow cyclic module dependencies to work
 correctly within an application.
 
-## File Modules
+## File modules
 
 <!--type=misc-->
 
@@ -373,7 +381,7 @@ either be a core module or is loaded from a `node_modules` folder.
 If the given path does not exist, `require()` will throw an [`Error`][] with its
 `code` property set to `'MODULE_NOT_FOUND'`.
 
-## Folders as Modules
+## Folders as modules
 
 <!--type=misc-->
 
@@ -382,8 +390,8 @@ directories, and then provide a single entry point to those directories.
 There are three ways in which a folder may be passed to `require()` as
 an argument.
 
-The first is to create a `package.json` file in the root of the folder,
-which specifies a `main` module. An example `package.json` file might
+The first is to create a [`package.json`][] file in the root of the folder,
+which specifies a `main` module. An example [`package.json`][] file might
 look like this:
 
 ```json
@@ -397,10 +405,10 @@ If this was in a folder at `./some-library`, then
 
 This is the extent of the awareness of `package.json` files within Node.js.
 
-If there is no `package.json` file present in the directory, or if the
-`'main'` entry is missing or cannot be resolved, then Node.js
+If there is no [`package.json`][] file present in the directory, or if the
+[`"main"`][] entry is missing or cannot be resolved, then Node.js
 will attempt to load an `index.js` or `index.node` file out of that
-directory. For example, if there was no `package.json` file in the above
+directory. For example, if there was no [`package.json`][] file in the previous
 example, then `require('./some-library')` would attempt to load:
 
 * `./some-library/index.js`
@@ -409,11 +417,11 @@ example, then `require('./some-library')` would attempt to load:
 If these attempts fail, then Node.js will report the entire module as missing
 with the default error:
 
-```txt
+```console
 Error: Cannot find module 'some-library'
 ```
 
-## Loading from `node_modules` Folders
+## Loading from `node_modules` folders
 
 <!--type=misc-->
 
@@ -495,7 +503,7 @@ wrapper that looks like the following:
 By doing this, Node.js achieves a few things:
 
 * It keeps top-level variables (defined with `var`, `const` or `let`) scoped to
-the module rather than the global object.
+  the module rather than the global object.
 * It helps to provide some global-looking variables that are actually specific
   to the module, such as:
   * The `module` and `exports` objects that the implementor can use to export
@@ -680,7 +688,7 @@ In `entry.js` script:
 console.log(require.main);
 ```
 
-```sh
+```bash
 node entry.js
 ```
 
@@ -688,6 +696,7 @@ node entry.js
 ```js
 Module {
   id: '.',
+  path: '/absolute/path/to',
   exports: {},
   parent: null,
   filename: '/absolute/path/to/entry.js',
@@ -736,7 +745,7 @@ Returns an array containing the paths searched during resolution of `request` or
 `null` if the `request` string references a core module, for example `http` or
 `fs`.
 
-## The `module` Object
+## The `module` object
 <!-- YAML
 added: v0.1.16
 -->
@@ -880,6 +889,14 @@ added: v0.1.16
 The identifier for the module. Typically this is the fully resolved
 filename.
 
+### `module.isPreloading`
+<!-- YAML
+added: v14.17.0
+-->
+
+* Type: {boolean} `true` if the module is running during the Node.js preload
+  phase.
+
 ### `module.loaded`
 <!-- YAML
 added: v0.1.16
@@ -893,11 +910,29 @@ loading.
 ### `module.parent`
 <!-- YAML
 added: v0.1.16
+deprecated:
+  - v14.6.0
+  - v12.19.0
 -->
 
-* {module}
+> Stability: 0 - Deprecated: Please use [`require.main`][] and
+> [`module.children`][] instead.
 
-The module that first required this one.
+* {module | null | undefined}
+
+The module that first required this one, or `null` if the current module is the
+entry point of the current process, or `undefined` if the module was loaded by
+something that is not a CommonJS module (E.G.: REPL or `import`).
+
+### `module.path`
+<!-- YAML
+added: v11.14.0
+-->
+
+* {string}
+
+The directory name of the module. This is usually the same as the
+[`path.dirname()`][] of the [`module.id`][].
 
 ### `module.paths`
 <!-- YAML
@@ -924,202 +959,42 @@ Since `require()` returns the `module.exports`, and the `module` is typically
 *only* available within a specific module's code, it must be explicitly exported
 in order to be used.
 
-## The `Module` Object
+## The `Module` object
 
-<!-- YAML
-added: v0.3.7
--->
+This section was moved to
+[Modules: `module` core module](module.md#module_the_module_object).
 
-* {Object}
+<!-- Anchors to make sure old links find a target -->
+* <a id="modules_module_builtinmodules" href="module.html#module_module_builtinmodules">`module.builtinModules`</a>
+* <a id="modules_module_createrequire_filename" href="module.html#module_module_createrequire_filename">`module.createRequire(filename)`</a>
+* <a id="modules_module_createrequirefrompath_filename" href="module.html#module_module_createrequirefrompath_filename">`module.createRequireFromPath(filename)`</a>
+* <a id="modules_module_syncbuiltinesmexports" href="module.html#module_module_syncbuiltinesmexports">`module.syncBuiltinESMExports()`</a>
 
-Provides general utility methods when interacting with instances of
-`Module`, the `module` variable often seen in file modules. Accessed
-via `require('module')`.
+## Source map v3 support
 
-### `module.builtinModules`
-<!-- YAML
-added:
-  - v9.3.0
-  - v8.10.0
-  - v6.13.0
--->
+This section was moved to
+[Modules: `module` core module](module.md#module_source_map_v3_support).
 
-* {string[]}
+<!-- Anchors to make sure old links find a target -->
+* <a id="modules_module_findsourcemap_path_error" href="module.html#module_module_findsourcemap_path_error">`module.findSourceMap(path[, error])`</a>
+* <a id="modules_class_module_sourcemap" href="module.html#module_class_module_sourcemap">Class: `module.SourceMap`</a>
+  * <a id="modules_new_sourcemap_payload" href="module.html#module_new_sourcemap_payload">`new SourceMap(payload)`</a>
+  * <a id="modules_sourcemap_payload" href="module.html#module_sourcemap_payload">`sourceMap.payload`</a>
+  * <a id="modules_sourcemap_findentry_linenumber_columnnumber" href="module.html#module_sourcemap_findentry_linenumber_columnnumber">`sourceMap.findEntry(lineNumber, columnNumber)`</a>
 
-A list of the names of all modules provided by Node.js. Can be used to verify
-if a module is maintained by a third party or not.
-
-`module` in this context isn't the same object that's provided
-by the [module wrapper][]. To access it, require the `Module` module:
-
-```js
-const builtin = require('module').builtinModules;
-```
-
-### `module.createRequire(filename)`
-<!-- YAML
-added: v12.2.0
--->
-
-* `filename` {string|URL} Filename to be used to construct the require
-  function. Must be a file URL object, file URL string, or absolute path
-  string.
-* Returns: {require} Require function
-
-```js
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-
-// sibling-module.js is a CommonJS module.
-const siblingModule = require('./sibling-module');
-```
-
-### `module.createRequireFromPath(filename)`
-<!-- YAML
-added: v10.12.0
-deprecated: v12.2.0
--->
-
-> Stability: 0 - Deprecated: Please use [`createRequire()`][] instead.
-
-* `filename` {string} Filename to be used to construct the relative require
-  function.
-* Returns: {require} Require function
-
-```js
-const { createRequireFromPath } = require('module');
-const requireUtil = createRequireFromPath('../src/utils/');
-
-// Require `../src/utils/some-tool`
-requireUtil('./some-tool');
-```
-
-### `module.syncBuiltinESMExports()`
-<!-- YAML
-added: v12.12.0
--->
-
-The `module.syncBuiltinESMExports()` method updates all the live bindings for
-builtin ES Modules to match the properties of the CommonJS exports. It does
-not add or remove exported names from the ES Modules.
-
-```js
-const fs = require('fs');
-const { syncBuiltinESMExports } = require('module');
-
-fs.readFile = null;
-
-delete fs.readFileSync;
-
-fs.newAPI = function newAPI() {
-  // ...
-};
-
-syncBuiltinESMExports();
-
-import('fs').then((esmFS) => {
-  assert.strictEqual(esmFS.readFile, null);
-  assert.strictEqual('readFileSync' in fs, true);
-  assert.strictEqual(esmFS.newAPI, undefined);
-});
-```
-
-## Source Map V3 Support
-<!-- YAML
-added: v13.7.0
--->
-
-> Stability: 1 - Experimental
-
-Helpers for interacting with the source map cache. This cache is
-populated when source map parsing is enabled and
-[source map include directives][] are found in a modules' footer.
-
-To enable source map parsing, Node.js must be run with the flag
-[`--enable-source-maps`][], or with code coverage enabled by setting
-[`NODE_V8_COVERAGE=dir`][].
-
-```js
-const { findSourceMap, SourceMap } = require('module');
-```
-
-### `module.findSourceMap(path[, error])`
-<!-- YAML
-added: v13.7.0
--->
-
-* `path` {string}
-* `error` {Error}
-* Returns: {module.SourceMap}
-
-`path` is the resolved path for the file for which a corresponding source map
-should be fetched.
-
-The `error` instance should be passed as the second parameter to `findSourceMap`
-in exceptional flows, e.g., when an overridden
-[`Error.prepareStackTrace(error, trace)`][] is invoked. Modules are not added to
-the module cache until they are successfully loaded, in these cases source maps
-will be associated with the `error` instance along with the `path`.
-
-### Class: `module.SourceMap`
-<!-- YAML
-added: v13.7.0
--->
-
-#### `new SourceMap(payload)`
-
-* `payload` {Object}
-
-Creates a new `sourceMap` instance.
-
-`payload` is an object with keys matching the [Source Map V3 format][]:
-
-* `file`: {string}
-* `version`: {number}
-* `sources`: {string[]}
-* `sourcesContent`: {string[]}
-* `names`: {string[]}
-* `mappings`: {string}
-* `sourceRoot`: {string}
-
-#### `sourceMap.payload`
-
-* Returns: {Object}
-
-Getter for the payload used to construct the [`SourceMap`][] instance.
-
-#### `sourceMap.findEntry(lineNumber, columnNumber)`
-
-* `lineNumber` {number}
-* `columnNumber` {number}
-* Returns: {Object}
-
-Given a line number and column number in the generated source file, returns
-an object representing the position in the original file. The object returned
-consists of the following keys:
-
-* generatedLine: {number}
-* generatedColumn: {number}
-* originalSource: {string}
-* originalLine: {number}
-* originalColumn: {number}
-
+[ECMAScript Modules]: esm.md
 [GLOBAL_FOLDERS]: #modules_loading_from_the_global_folders
-[`Error`]: errors.html#errors_class_error
+[`"main"`]: packages.md#packages_main
+[`Error`]: errors.md#errors_class_error
 [`__dirname`]: #modules_dirname
 [`__filename`]: #modules_filename
-[`createRequire()`]: #modules_module_createrequire_filename
 [`module` object]: #modules_the_module_object
-[`path.dirname()`]: path.html#path_path_dirname_path
-[ECMAScript Modules]: esm.html
-[an error]: errors.html#errors_err_require_esm
+[`module.id`]: #modules_module_id
+[`module.children`]: #modules_module_children
+[`package.json`]: packages.md#packages_node_js_package_json_field_definitions
+[`path.dirname()`]: path.md#path_path_dirname_path
+[`require.main`]: #modules_require_main
+[an error]: errors.md#errors_err_require_esm
 [exports shortcut]: #modules_exports_shortcut
 [module resolution]: #modules_all_together
-[module wrapper]: #modules_the_module_wrapper
-[native addons]: addons.html
-[source map include directives]: https://sourcemaps.info/spec.html#h.lmz475t4mvbx
-[`--enable-source-maps`]: cli.html#cli_enable_source_maps
-[`NODE_V8_COVERAGE=dir`]: cli.html#cli_node_v8_coverage_dir
-[`Error.prepareStackTrace(error, trace)`]: https://v8.dev/docs/stack-trace-api#customizing-stack-traces
-[`SourceMap`]: modules.html#modules_class_module_sourcemap
-[Source Map V3 format]: https://sourcemaps.info/spec.html#h.mofvlxcwqzej
+[native addons]: addons.md
