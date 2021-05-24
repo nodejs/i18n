@@ -1,10 +1,12 @@
-# Child Process
+# Child process
 
 <!--introduced_in=v0.10.0-->
 
 > Stability: 2 - Stable
 
-The `child_process` module provides the ability to spawn child processes in
+<!-- source_link=lib/child_process.js -->
+
+The `child_process` module provides the ability to spawn subprocesses in
 a manner that is similar, but not identical, to popen(3). This capability
 is primarily provided by the [`child_process.spawn()`][] function:
 
@@ -26,20 +28,23 @@ ls.on('close', (code) => {
 ```
 
 By default, pipes for `stdin`, `stdout`, and `stderr` are established between
-the parent Node.js process and the spawned child. These pipes have
-limited (and platform-specific) capacity. If the child process writes to
-stdout in excess of that limit without the output being captured, the child
-process will block waiting for the pipe buffer to accept more data. This is
+the parent Node.js process and the spawned subprocess. These pipes have
+limited (and platform-specific) capacity. If the subprocess writes to
+stdout in excess of that limit without the output being captured, the
+subprocess blocks waiting for the pipe buffer to accept more data. This is
 identical to the behavior of pipes in the shell. Use the `{ stdio: 'ignore' }`
 option if the output will not be consumed.
 
-The command lookup will be performed using `options.env.PATH` environment
-variable if passed in `options` object, otherwise `process.env.PATH` will be
-used. To account for the fact that Windows environment variables are
-case-insensitive Node.js will lexicographically sort all `env` keys and choose
-the first one case-insensitively matching `PATH` to perform command lookup.
-This may lead to issues on Windows when passing objects to `env` option that
-have multiple variants of `PATH` variable.
+The command lookup is performed using the `options.env.PATH` environment
+variable if it is in the `options` object. Otherwise, `process.env.PATH` is
+used.
+
+On Windows, environment variables are case-insensitive. Node.js
+lexicographically sorts the `env` keys and uses the first one that
+case-insensitively matches. Only first (in lexicographic order) entry will be
+passed to the subprocess. This might lead to issues on Windows when passing
+objects to the `env` option that have multiple variants of the same key, such as
+`PATH` and `Path`.
 
 The [`child_process.spawn()`][] method spawns the child process asynchronously,
 without blocking the Node.js event loop. The [`child_process.spawnSync()`][]
@@ -70,7 +75,7 @@ For certain use cases, such as automating shell scripts, the
 the synchronous methods can have significant impact on performance due to
 stalling the event loop while spawned processes complete.
 
-## Asynchronous Process Creation
+## Asynchronous process creation
 
 The [`child_process.spawn()`][], [`child_process.fork()`][], [`child_process.exec()`][],
 and [`child_process.execFile()`][] methods all follow the idiomatic asynchronous
@@ -149,11 +154,11 @@ changes:
 * `command` {string} The command to run, with space-separated arguments.
 * `options` {Object}
   * `cwd` {string} Current working directory of the child process.
-    **Default:** `null`.
+    **Default:** `process.cwd()`.
   * `env` {Object} Environment key-value pairs. **Default:** `process.env`.
   * `encoding` {string} **Default:** `'utf8'`
   * `shell` {string} Shell to execute the command with. See
-    [Shell Requirements][] and [Default Windows Shell][]. **Default:**
+    [Shell requirements][] and [Default Windows shell][]. **Default:**
     `'/bin/sh'` on Unix, `process.env.ComSpec` on Windows.
   * `timeout` {number} **Default:** `0`
   * `maxBuffer` {number} Largest amount of data in bytes allowed on stdout or
@@ -192,9 +197,9 @@ metacharacters may be used to trigger arbitrary command execution.**
 If a `callback` function is provided, it is called with the arguments
 `(error, stdout, stderr)`. On success, `error` will be `null`. On error,
 `error` will be an instance of [`Error`][]. The `error.code` property will be
-the exit code of the child process while `error.signal` will be set to the
-signal that terminated the process. Any exit code other than `0` is considered
-to be an error.
+the exit code of the process. By convention, any exit code other than `0`
+indicates an error. `error.signal` will be the signal that terminated the
+process.
 
 The `stdout` and `stderr` arguments passed to the callback will contain the
 stdout and stderr output of the child process. By default, Node.js will decode
@@ -245,6 +250,9 @@ lsExample();
 <!-- YAML
 added: v0.1.91
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36308
+    description: AbortSignal support was added.
   - version: v8.8.0
     pr-url: https://github.com/nodejs/node/pull/15380
     description: The `windowsHide` option is supported now.
@@ -270,8 +278,9 @@ changes:
     done on Windows. Ignored on Unix. **Default:** `false`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
     `'/bin/sh'` on Unix, and `process.env.ComSpec` on Windows. A different
-    shell can be specified as a string. See [Shell Requirements][] and
-    [Default Windows Shell][]. **Default:** `false` (no shell).
+    shell can be specified as a string. See [Shell requirements][] and
+    [Default Windows shell][]. **Default:** `false` (no shell).
+  * `signal` {AbortSignal} allows aborting the execFile using an AbortSignal.
 * `callback` {Function} Called with the output when process terminates.
   * `error` {Error}
   * `stdout` {string|Buffer}
@@ -325,10 +334,26 @@ getVersion();
 function. Any input containing shell metacharacters may be used to trigger
 arbitrary command execution.**
 
+If the `signal` option is enabled, calling `.abort()` on the corresponding
+`AbortController` is similar to calling `.kill()` on the child process except
+the error passed to the callback will be an `AbortError`:
+
+```js
+const controller = new AbortController();
+const { signal } = controller;
+const child = execFile('node', ['--version'], { signal }, (error) => {
+  console.log(error); // an AbortError
+});
+controller.abort();
+```
+
 ### `child_process.fork(modulePath[, args][, options])`
 <!-- YAML
 added: v0.5.0
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36603
+    description: AbortSignal support was added.
   - version:
       - v13.2.0
       - v12.16.0
@@ -349,13 +374,15 @@ changes:
   * `detached` {boolean} Prepare child to run independently of its parent
     process. Specific behavior depends on the platform, see
     [`options.detached`][]).
-  * `env` {Object} Environment key-value pairs.  **Default:** `process.env`.
+  * `env` {Object} Environment key-value pairs. **Default:** `process.env`.
   * `execPath` {string} Executable used to create the child process.
   * `execArgv` {string[]} List of string arguments passed to the executable.
     **Default:** `process.execArgv`.
+  * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `serialization` {string} Specify the kind of serialization used for sending
     messages between processes. Possible values are `'json'` and `'advanced'`.
-    See [Advanced Serialization][] for more details. **Default:** `'json'`.
+    See [Advanced serialization][] for more details. **Default:** `'json'`.
+  * `signal` {AbortSignal} Allows closing the subprocess using an AbortSignal.
   * `silent` {boolean} If `true`, stdin, stdout, and stderr of the child will be
     piped to the parent, otherwise they will be inherited from the parent, see
     the `'pipe'` and `'inherit'` options for [`child_process.spawn()`][]'s
@@ -364,10 +391,9 @@ changes:
     When this option is provided, it overrides `silent`. If the array variant
     is used, it must contain exactly one item with value `'ipc'` or an error
     will be thrown. For instance `[0, 1, 2, 'ipc']`.
+  * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is
     done on Windows. Ignored on Unix. **Default:** `false`.
-  * `uid` {number} Sets the user identity of the process (see setuid(2)).
-  * `gid` {number} Sets the group identity of the process (see setgid(2)).
 * Returns: {ChildProcess}
 
 The `child_process.fork()` method is a special case of
@@ -398,10 +424,16 @@ current process.
 The `shell` option available in [`child_process.spawn()`][] is not supported by
 `child_process.fork()` and will be ignored if set.
 
+The `signal` option works exactly the same way it does in
+[`child_process.spawn()`][].
+
 ### `child_process.spawn(command[, args][, options])`
 <!-- YAML
 added: v0.1.90
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36432
+    description: AbortSignal support was added.
   - version:
       - v13.2.0
       - v12.16.0
@@ -434,20 +466,22 @@ changes:
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `serialization` {string} Specify the kind of serialization used for sending
     messages between processes. Possible values are `'json'` and `'advanced'`.
-    See [Advanced Serialization][] for more details. **Default:** `'json'`.
+    See [Advanced serialization][] for more details. **Default:** `'json'`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
     `'/bin/sh'` on Unix, and `process.env.ComSpec` on Windows. A different
-    shell can be specified as a string. See [Shell Requirements][] and
-    [Default Windows Shell][]. **Default:** `false` (no shell).
+    shell can be specified as a string. See [Shell requirements][] and
+    [Default Windows shell][]. **Default:** `false` (no shell).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is
     done on Windows. Ignored on Unix. This is set to `true` automatically
     when `shell` is specified and is CMD. **Default:** `false`.
   * `windowsHide` {boolean} Hide the subprocess console window that would
     normally be created on Windows systems. **Default:** `false`.
+  * `signal` {AbortSignal} allows aborting the execFile using an AbortSignal.
+
 * Returns: {ChildProcess}
 
 The `child_process.spawn()` method spawns a new process using the given
-`command`, with command line arguments in `args`. If omitted, `args` defaults
+`command`, with command-line arguments in `args`. If omitted, `args` defaults
 to an empty array.
 
 **If the `shell` option is enabled, do not pass unsanitized user input to this
@@ -464,7 +498,10 @@ const defaults = {
 ```
 
 Use `cwd` to specify the working directory from which the process is spawned.
-If not given, the default is to inherit the current working directory.
+If not given, the default is to inherit the current working directory. If given,
+but the path does not exist, the child process emits an `ENOENT` error
+and exits immediately. `ENOENT` is also emitted when the command
+does not exist.
 
 Use `env` to specify environment variables that will be visible to the new
 process, the default is [`process.env`][].
@@ -546,6 +583,20 @@ Node.js currently overwrites `argv[0]` with `process.execPath` on startup, so
 `process.argv[0]` in a Node.js child process will not match the `argv0`
 parameter passed to `spawn` from the parent, retrieve it with the
 `process.argv0` property instead.
+
+If the `signal` option is enabled, calling `.abort()` on the corresponding
+`AbortController` is similar to calling `.kill()` on the child process except
+the error passed to the callback will be an `AbortError`:
+
+```js
+const controller = new AbortController();
+const { signal } = controller;
+const grep = spawn('grep', ['ssh'], { signal });
+grep.on('error', (err) => {
+  // This will be called with err being an AbortError if the controller aborts
+});
+controller.abort(); // stops the process
+```
 
 #### `options.detached`
 <!-- YAML
@@ -699,7 +750,7 @@ see [V8 issue 7381](https://bugs.chromium.org/p/v8/issues/detail?id=7381).
 
 See also: [`child_process.exec()`][] and [`child_process.fork()`][].
 
-## Synchronous Process Creation
+## Synchronous process creation
 
 The [`child_process.spawnSync()`][], [`child_process.execSync()`][], and
 [`child_process.execFileSync()`][] methods are synchronous and will block the
@@ -724,7 +775,9 @@ changes:
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10653
     description: The `input` option can now be a `Uint8Array`.
-  - version: v6.2.1, v4.5.0
+  - version:
+    - v6.2.1
+    - v4.5.0
     pr-url: https://github.com/nodejs/node/pull/6939
     description: The `encoding` option can now explicitly be set to `buffer`.
 -->
@@ -739,7 +792,7 @@ changes:
   * `stdio` {string|Array} Child's stdio configuration. `stderr` by default will
     be output to the parent process' stderr unless `stdio` is specified.
     **Default:** `'pipe'`.
-  * `env` {Object} Environment key-value pairs.  **Default:** `process.env`.
+  * `env` {Object} Environment key-value pairs. **Default:** `process.env`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `timeout` {number} In milliseconds the maximum amount of time the process
@@ -755,8 +808,8 @@ changes:
     normally be created on Windows systems. **Default:** `false`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
     `'/bin/sh'` on Unix, and `process.env.ComSpec` on Windows. A different
-    shell can be specified as a string. See [Shell Requirements][] and
-    [Default Windows Shell][]. **Default:** `false` (no shell).
+    shell can be specified as a string. See [Shell requirements][] and
+    [Default Windows shell][]. **Default:** `false` (no shell).
 * Returns: {Buffer|string} The stdout from the command.
 
 The `child_process.execFileSync()` method is generally identical to
@@ -804,7 +857,7 @@ changes:
     **Default:** `'pipe'`.
   * `env` {Object} Environment key-value pairs. **Default:** `process.env`.
   * `shell` {string} Shell to execute the command with. See
-    [Shell Requirements][] and [Default Windows Shell][]. **Default:**
+    [Shell requirements][] and [Default Windows shell][]. **Default:**
     `'/bin/sh'` on Unix, `process.env.ComSpec` on Windows.
   * `uid` {number} Sets the user identity of the process. (See setuid(2)).
   * `gid` {number} Sets the group identity of the process. (See setgid(2)).
@@ -851,7 +904,9 @@ changes:
   - version: v8.0.0
     pr-url: https://github.com/nodejs/node/pull/10653
     description: The `input` option can now be a `Uint8Array`.
-  - version: v6.2.1, v4.5.0
+  - version:
+    - v6.2.1
+    - v4.5.0
     pr-url: https://github.com/nodejs/node/pull/6939
     description: The `encoding` option can now explicitly be set to `buffer`.
   - version: v5.7.0
@@ -869,7 +924,7 @@ changes:
   * `argv0` {string} Explicitly set the value of `argv[0]` sent to the child
     process. This will be set to `command` if not specified.
   * `stdio` {string|Array} Child's stdio configuration.
-  * `env` {Object} Environment key-value pairs.  **Default:** `process.env`.
+  * `env` {Object} Environment key-value pairs. **Default:** `process.env`.
   * `uid` {number} Sets the user identity of the process (see setuid(2)).
   * `gid` {number} Sets the group identity of the process (see setgid(2)).
   * `timeout` {number} In milliseconds the maximum amount of time the process
@@ -884,8 +939,8 @@ changes:
     **Default:** `'buffer'`.
   * `shell` {boolean|string} If `true`, runs `command` inside of a shell. Uses
     `'/bin/sh'` on Unix, and `process.env.ComSpec` on Windows. A different
-    shell can be specified as a string. See [Shell Requirements][] and
-    [Default Windows Shell][]. **Default:** `false` (no shell).
+    shell can be specified as a string. See [Shell requirements][] and
+    [Default Windows shell][]. **Default:** `false` (no shell).
   * `windowsVerbatimArguments` {boolean} No quoting or escaping of arguments is
     done on Windows. Ignored on Unix. This is set to `true` automatically
     when `shell` is specified and is CMD. **Default:** `false`.
@@ -936,9 +991,11 @@ added: v0.7.7
 * `code` {number} The exit code if the child exited on its own.
 * `signal` {string} The signal by which the child process was terminated.
 
-The `'close'` event is emitted when the stdio streams of a child process have
-been closed. This is distinct from the [`'exit'`][] event, since multiple
-processes might share the same stdio streams.
+The `'close'` event is emitted after a process has ended _and_ the stdio
+streams of a child process have been closed. This is distinct from the
+[`'exit'`][] event, since multiple processes might share the same stdio
+streams. The `'close'` event will always emit after [`'exit'`][] was
+already emitted, or [`'error'`][] if the child failed to spawn.
 
 ```js
 const { spawn } = require('child_process');
@@ -1025,7 +1082,24 @@ message might not be the same as what is originally sent.
 If the `serialization` option was set to `'advanced'` used when spawning the
 child process, the `message` argument can contain data that JSON is not able
 to represent.
-See [Advanced Serialization][] for more details.
+See [Advanced serialization][] for more details.
+
+### Event: `'spawn'`
+<!-- YAML
+added: v14.17.0
+-->
+
+The `'spawn'` event is emitted once the child process has spawned successfully.
+If the child process does not spawn successfully, the `'spawn'` event is not
+emitted and the `'error'` event is emitted instead.
+
+If emitted, the `'spawn'` event comes before all other events and before any
+data is received via `stdout` or `stderr`.
+
+The `'spawn'` event will fire regardless of whether an error occurs **within**
+the spawned process. For example, if `bash some-command` spawns successfully,
+the `'spawn'` event will fire, though `bash` may fail to spawn `some-command`.
+This caveat also applies when using `{ shell: true }`.
 
 ### `subprocess.channel`
 <!-- YAML
@@ -1131,6 +1205,11 @@ may not actually terminate the process.
 
 See kill(2) for reference.
 
+On Windows, where POSIX signals do not exist, the `signal` argument will be
+ignored, and the process will be killed forcefully and abruptly (similar to
+`'SIGKILL'`).
+See [Signal Events][] for more details.
+
 On Linux, child processes of child processes will not be terminated
 when attempting to kill their parent. This is likely to happen when running a
 new process in a shell or with the use of the `shell` option of `ChildProcess`:
@@ -1173,9 +1252,11 @@ does not indicate that the child process has been terminated.
 added: v0.1.90
 -->
 
-* {integer}
+* {integer|undefined}
 
-Returns the process identifier (PID) of the child process.
+Returns the process identifier (PID) of the child process. If the child process
+fails to spawn due to errors, then the value is `undefined` and `error` is
+emitted.
 
 ```js
 const { spawn } = require('child_process');
@@ -1378,27 +1459,25 @@ process.on('message', (m, socket) => {
 });
 ```
 
-Once a socket has been passed to a child, the parent is no longer capable of
-tracking when the socket is destroyed. To indicate this, the `.connections`
-property becomes `null`. It is recommended not to use `.maxConnections` when
-this occurs.
+Do not use `.maxConnections` on a socket that has been passed to a subprocess.
+The parent cannot track when the socket is destroyed.
 
-It is also recommended that any `'message'` handlers in the child process
-verify that `socket` exists, as the connection may have been closed during the
-time it takes to send the connection to the child.
+Any `'message'` handlers in the subprocess should verify that `socket` exists,
+as the connection may have been closed during the time it takes to send the
+connection to the child.
 
 ### `subprocess.signalCode`
 
-* {integer}
+* {string|null}
 
-The `subprocess.signalCode` property indicates the signal number received by
+The `subprocess.signalCode` property indicates the signal received by
 the child process if any, else `null`.
 
 ### `subprocess.spawnargs`
 
 * {Array}
 
-The `subprocess.spawnargs` property represents the full list of command line
+The `subprocess.spawnargs` property represents the full list of command-line
 arguments the child process was launched with.
 
 ### `subprocess.spawnfile`
@@ -1430,6 +1509,9 @@ then this will be `null`.
 `subprocess.stderr` is an alias for `subprocess.stdio[2]`. Both properties will
 refer to the same value.
 
+The `subprocess.stderr` property can be `null` if the child process could
+not be successfully spawned.
+
 ### `subprocess.stdin`
 <!-- YAML
 added: v0.1.90
@@ -1447,6 +1529,9 @@ then this will be `null`.
 
 `subprocess.stdin` is an alias for `subprocess.stdio[0]`. Both properties will
 refer to the same value.
+
+The `subprocess.stdin` property can be `undefined` if the child process could
+not be successfully spawned.
 
 ### `subprocess.stdio`
 <!-- YAML
@@ -1488,6 +1573,9 @@ assert.strictEqual(subprocess.stdio[2], null);
 assert.strictEqual(subprocess.stdio[2], subprocess.stderr);
 ```
 
+The `subprocess.stdio` property can be `undefined` if the child process could
+not be successfully spawned.
+
 ### `subprocess.stdout`
 <!-- YAML
 added: v0.1.90
@@ -1512,6 +1600,9 @@ subprocess.stdout.on('data', (data) => {
   console.log(`Received chunk ${data}`);
 });
 ```
+
+The `subprocess.stdout` property can be `null` if the child process could
+not be successfully spawned.
 
 ### `subprocess.unref()`
 <!-- YAML
@@ -1544,13 +1635,13 @@ This impacts output that includes multibyte character encodings such as UTF-8 or
 UTF-16. For instance, `console.log('中文测试')` will send 13 UTF-8 encoded bytes
 to `stdout` although there are only 4 characters.
 
-## Shell Requirements
+## Shell requirements
 
 The shell should understand the `-c` switch. If the shell is `'cmd.exe'`, it
-should understand the `/d /s /c` switches and command line parsing should be
+should understand the `/d /s /c` switches and command-line parsing should be
 compatible.
 
-## Default Windows Shell
+## Default Windows shell
 
 Although Microsoft specifies `%COMSPEC%` must contain the path to
 `'cmd.exe'` in the root environment, child processes are not always subject to
@@ -1558,7 +1649,7 @@ the same requirement. Thus, in `child_process` functions where a shell can be
 spawned, `'cmd.exe'` is used as a fallback if `process.env.ComSpec` is
 unavailable.
 
-## Advanced Serialization
+## Advanced serialization
 <!-- YAML
 added:
  - v13.2.0
@@ -1579,14 +1670,18 @@ Therefore, this feature requires opting in by setting the
 `serialization` option to `'advanced'` when calling [`child_process.spawn()`][]
 or [`child_process.fork()`][].
 
-[Advanced Serialization]: #child_process_advanced_serialization
-[`'disconnect'`]: process.html#process_event_disconnect
+[Advanced serialization]: #child_process_advanced_serialization
+[Default Windows shell]: #child_process_default_windows_shell
+[HTML structured clone algorithm]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
+[Shell requirements]: #child_process_shell_requirements
+[Signal Events]: process.md#process_signal_events
+[`'disconnect'`]: process.md#process_event_disconnect
 [`'error'`]: #child_process_event_error
 [`'exit'`]: #child_process_event_exit
-[`'message'`]: process.html#process_event_message
-[`ChildProcess`]: #child_process_child_process
-[`Error`]: errors.html#errors_class_error
-[`EventEmitter`]: events.html#events_class_eventemitter
+[`'message'`]: process.md#process_event_message
+[`ChildProcess`]: #child_process_class_childprocess
+[`Error`]: errors.md#errors_class_error
+[`EventEmitter`]: events.md#events_class_eventemitter
 [`child_process.exec()`]: #child_process_child_process_exec_command_options_callback
 [`child_process.execFile()`]: #child_process_child_process_execfile_file_args_options_callback
 [`child_process.execFileSync()`]: #child_process_child_process_execfilesync_file_args_options
@@ -1595,13 +1690,13 @@ or [`child_process.fork()`][].
 [`child_process.spawn()`]: #child_process_child_process_spawn_command_args_options
 [`child_process.spawnSync()`]: #child_process_child_process_spawnsync_command_args_options
 [`maxBuffer` and Unicode]: #child_process_maxbuffer_and_unicode
-[`net.Server`]: net.html#net_class_net_server
-[`net.Socket`]: net.html#net_class_net_socket
+[`net.Server`]: net.md#net_class_net_server
+[`net.Socket`]: net.md#net_class_net_socket
 [`options.detached`]: #child_process_options_detached
-[`process.disconnect()`]: process.html#process_process_disconnect
-[`process.env`]: process.html#process_process_env
-[`process.execPath`]: process.html#process_process_execpath
-[`process.send()`]: process.html#process_process_send_message_sendhandle_options_callback
+[`process.disconnect()`]: process.md#process_process_disconnect
+[`process.env`]: process.md#process_process_env
+[`process.execPath`]: process.md#process_process_execpath
+[`process.send()`]: process.md#process_process_send_message_sendhandle_options_callback
 [`stdio`]: #child_process_options_stdio
 [`subprocess.connected`]: #child_process_subprocess_connected
 [`subprocess.disconnect()`]: #child_process_subprocess_disconnect
@@ -1611,9 +1706,6 @@ or [`child_process.fork()`][].
 [`subprocess.stdin`]: #child_process_subprocess_stdin
 [`subprocess.stdio`]: #child_process_subprocess_stdio
 [`subprocess.stdout`]: #child_process_subprocess_stdout
-[`util.promisify()`]: util.html#util_util_promisify_original
-[Default Windows Shell]: #child_process_default_windows_shell
-[HTML structured clone algorithm]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm
-[Shell Requirements]: #child_process_shell_requirements
+[`util.promisify()`]: util.md#util_util_promisify_original
 [synchronous counterparts]: #child_process_synchronous_process_creation
-[v8.serdes]: v8.html#v8_serialization_api
+[v8.serdes]: v8.md#v8_serialization_api
