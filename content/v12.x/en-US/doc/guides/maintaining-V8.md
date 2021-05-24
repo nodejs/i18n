@@ -324,7 +324,7 @@ that Node.js may be floating (or else cause a merge conflict).
 
 The rough outline of the process is:
 
-```shell
+```bash
 # Assuming your fork of Node.js is checked out in $NODE_DIR
 # and you want to update the Node.js master branch.
 # Find the current (OLD) version in
@@ -363,7 +363,7 @@ above. A better strategy is to
 
 To audit for floating patches:
 
-```shell
+```bash
 git log --oneline deps/v8
 ```
 
@@ -371,7 +371,7 @@ To replace the copy of V8 in Node.js, use the [`git-node`][] tool. For example,
 if you want to replace the copy of V8 in Node.js with the branch-head for V8 5.1
 branch:
 
-```shell
+```bash
 cd $NODE_DIR
 git node v8 major --branch=5.1-lkgr
 ```
@@ -411,8 +411,8 @@ This would require some tooling to:
 as their support has ended.
 
 [ChromiumReleaseCalendar]: https://www.chromium.org/developers/calendar
-[Node.js `canary` branch]: https://github.com/nodejs/node-v8/tree/canary
 [Node.js CI]: https://ci.nodejs.org/job/node-test-pull-request/
+[Node.js `canary` branch]: https://github.com/nodejs/node-v8/tree/canary
 [NodeJS-Backport-Approved-Chromium]: https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Approved
 [NodeJS-Backport-Approved-V8]: https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Approved
 [NodeJS-Backport-Done-Chromium]: https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Done
@@ -421,10 +421,10 @@ as their support has ended.
 [NodeJS-Backport-Rejected-V8]: https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Rejected
 [NodeJS-Backport-Review-Chromium]: https://bugs.chromium.org/p/chromium/issues/list?can=1&q=label%3ANodeJS-Backport-Review
 [NodeJS-Backport-Review-V8]: https://bugs.chromium.org/p/v8/issues/list?can=1&q=label%3ANodeJS-Backport-Review
-[`git-node`]: https://github.com/nodejs/node-core-utils/blob/master/docs/git-node.md#git-node-v8
 [V8 CI]: https://ci.nodejs.org/job/node-test-commit-v8-linux/
 [V8ActiveBranches]: https://build.chromium.org/p/client.v8.branches/console
 [V8Contributing]: https://github.com/v8/v8/wiki/Contributing
 [V8MergingPatching]: https://github.com/v8/v8/wiki/Merging%20&%20Patching
 [V8TemplateMergeRequest]: https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20merge%20request
 [V8TemplateUpstreamBug]: https://bugs.chromium.org/p/v8/issues/entry?template=Node.js%20upstream%20bug
+[`git-node`]: https://github.com/nodejs/node-core-utils/blob/master/docs/git-node.md#git-node-v8
