@@ -1,10 +1,12 @@
-# Query String
+# Query string
 
 <!--introduced_in=v0.1.25-->
 
 > Stability: 2 - Stable
 
 <!--name=querystring-->
+
+<!-- source_link=lib/querystring.js -->
 
 The `querystring` module provides utilities for parsing and formatting URL
 query strings. It can be accessed using:
@@ -53,7 +55,9 @@ changes:
   - version: v6.0.0
     pr-url: https://github.com/nodejs/node/pull/6055
     description: The returned object no longer inherits from `Object.prototype`.
-  - version: v6.0.0, v4.2.4
+  - version:
+    - v6.0.0
+    - v4.2.4
     pr-url: https://github.com/nodejs/node/pull/3807
     description: The `eq` parameter may now have a length of more than `1`.
 -->
@@ -118,8 +122,9 @@ The `querystring.stringify()` method produces a URL query string from a
 given `obj` by iterating through the object's "own properties".
 
 It serializes the following types of values passed in `obj`:
-{string|number|boolean|string[]|number[]|boolean[]}
-Any other input values will be coerced to empty strings.
+{string|number|bigint|boolean|string[]|number[]|bigint[]|boolean[]}
+The numeric values must be finite. Any other input values will be coerced to
+empty strings.
 
 ```js
 querystring.stringify({ foo: 'bar', baz: ['qux', 'quux'], corge: '' });
