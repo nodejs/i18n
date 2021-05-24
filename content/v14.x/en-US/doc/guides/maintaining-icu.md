@@ -21,7 +21,7 @@ ICU consumes and includes:
 
 The current versions of these items can be viewed for node with `node -p process.versions`:
 
-```shell
+```console
 $ node -p process.versions
 
 {
@@ -33,7 +33,41 @@ $ node -p process.versions
 }
 ```
 
-## Release Schedule
+### Time zone data
+
+Time zone data files are updated independently of ICU CLDR data.  ICU and its
+main data files do not need to be upgraded in order to apply time zone data file
+fixes.
+
+The [IANA tzdata][tz] project releases new versions and announces them on the
+[`tz-announce`](https://mm.icann.org/pipermail/tz-announce/) mailing list.
+
+The Unicode project takes new releases and publishes
+[updated time zone data files](https://github.com/unicode-org/icu-data/tree/HEAD/tzdata/icunew)
+in the icu/icu-data repository.
+
+All modern versions of Node.js use the version 44 ABI of the time zone data
+files.
+
+#### Example: updating the ICU `.dat` file
+
+* Decompress `deps/icu/source/data/in/icudt##l.dat.bz2`, where `##` is
+  the ICU major version number.
+* Clone the icu/icu-data repository and copy the latest `tzdata` release `le`
+  files into the `source/data/in` directory.
+* Follow the upstream [ICU instructions](https://unicode-org.github.io/icu/userguide/datetime/timezone/)
+  to patch the ICU `.dat` file:
+  > `for i in zoneinfo64.res windowsZones.res timezoneTypes.res metaZones.res;
+  > do icupkg -a $i icudt*l.dat`
+* Optionally, verify that there is only one of the above files listed when using
+  `icupkg -l`.
+* Optionally, extract each file using `icupkg -x` and verify the `shasum`
+  matches the desired value.
+* Compress the `.dat` file with the same filename as in the first step.
+* Build, test, verifying `process.versions.tz` matches the desired version.
+* Create a new minor version release.
+
+## Release schedule
 
 ICU typically has >1 release a year, particularly coinciding with a major
 release of [Unicode][]. The current release schedule is available on the [ICU][]
@@ -48,7 +82,7 @@ V8 will not compile.
 
 ```c
 // deps/v8/src/objects/intl-objects.h
-#define V8_MINIMUM_ICU_VERSION 64
+#define V8_MINIMUM_ICU_VERSION 65
 ```
 
 V8 in Node.js depends on the ICU version supplied by Node.js.
@@ -63,13 +97,13 @@ Node.js is built.
 
 * Make sure your Node.js workspace is clean (`git status`
 should be sufficient).
-* Configure Node.js with the specific [ICU version](http://icu-project.org/download)
+* Configure Node.js with the specific [ICU version](http://site.icu-project.org/download)
   you want to upgrade to, for example:
 
-```shell
+```bash
 ./configure \
     --with-intl=full-icu \
-    --with-icu-source=http://download.icu-project.org/files/icu4c/58.1/icu4c-58_1-src.tgz
+    --with-icu-source=https://github.com/unicode-org/icu/releases/download/release-67-1/icu4c-67_1-src.tgz
 make
 ```
 
@@ -83,7 +117,7 @@ make
 
 * Verify the Node.js build works:
 
-```shell
+```bash
 make test-ci
 ```
 
@@ -102,13 +136,13 @@ new Intl.DateTimeFormat('es', { month: 'long' }).format(new Date(9E8));
 > :warning: Do not modify any source code in `deps/icu-small` !
 > See section below about floating patches to ICU.
 
-```shell
+```bash
 python tools/icu/shrink-icu-src.py
 ```
 
 * Now, do a clean rebuild of Node.js to test:
 
-```shell
+```bash
 make -k distclean
 ./configure
 make
@@ -123,7 +157,7 @@ process.versions.icu;
 new Intl.DateTimeFormat('es', { month: 'long' }).format(new Date(9E8));
 ```
 
-(This should print your updated ICU version number, and also `January` again.)
+(This should print your updated ICU version number, and also `enero` again.)
 
 You are ready to check in the updated `deps/icu-small`. This is a big commit,
 so make this a separate commit from the smaller changes.
@@ -133,7 +167,7 @@ so make this a separate commit from the smaller changes.
 
 * Now, rebuild the Node.js license.
 
-```shell
+```bash
 # clean up - remove deps/icu
 make clean
 tools/license-builder.sh
@@ -143,7 +177,7 @@ tools/license-builder.sh
 It should match the ICU URL used in the first step.  When this is done, the
 following should build with small ICU.
 
-```shell
+```bash
 # clean up
 rm -rf out deps/icu deps/icu4c*
 ./configure --with-intl=small-icu --download=all
@@ -175,7 +209,7 @@ version.
 For example, to patch `source/tools/toolutil/pkg_genc.cpp` for
 ICU version 63:
 
-```shell
+```bash
 # go to your Node.js source directory
 cd <node>
 
@@ -198,11 +232,11 @@ make clean && ./configure && make
 
 You should see a message such as:
 
-```shell
+```console
 INFO: Using floating patch "tools/icu/patches/63/source/tools/toolutil/pkg_genc.cpp" from "tools/icu"
 ```
 
-### Clean Up
+### Clean up
 
 Any patches older than the minimum version given in `tools/icu/icu_versions.json`
 ought to be deleted, because they will never be used.
@@ -226,8 +260,8 @@ Node.js (see the top level README.md). Only modifying `icu-small` would cause
 the patch not to be landed in case the user specifies the ICU source code
 another way.
 
-[ICU]: http://icu-project.org
-[Unicode]: https://unicode.org
-[tz]: https://www.iana.org/time-zones
-[CLDR]: https://unicode.org/cldr
+[CLDR]: http://cldr.unicode.org/
 [Ecma402]: https://github.com/tc39/ecma402
+[ICU]: http://site.icu-project.org/
+[Unicode]: https://home.unicode.org/
+[tz]: https://www.iana.org/time-zones
