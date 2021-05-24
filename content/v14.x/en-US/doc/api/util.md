@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/util.js -->
+
 The `util` module supports the needs of Node.js internal APIs. Many of the
 utilities are useful for application and module developers as well. To access
 it:
@@ -42,7 +44,7 @@ callbackFunction((err, ret) => {
 
 Will print:
 
-```txt
+```text
 hello world
 ```
 
@@ -68,13 +70,15 @@ callbackFunction((err, ret) => {
 });
 ```
 
-## `util.debuglog(section)`
+## `util.debuglog(section[, callback])`
 <!-- YAML
 added: v0.11.3
 -->
 
 * `section` {string} A string identifying the portion of the application for
   which the `debuglog` function is being created.
+* `callback` {Function} A callback invoked the first time the logging function
+  is called with a function argument that is a more optimized logging function.
 * Returns: {Function} The logging function
 
 The `util.debuglog()` method is used to create a function that conditionally
@@ -93,7 +97,7 @@ debuglog('hello from foo [%d]', 123);
 If this program is run with `NODE_DEBUG=foo` in the environment, then
 it will output something like:
 
-```txt
+```console
 FOO 3245: hello from foo [123]
 ```
 
@@ -112,12 +116,61 @@ debuglog('hi there, it\'s foo-bar [%d]', 2333);
 if it is run with `NODE_DEBUG=foo*` in the environment, then it will output
 something like:
 
-```txt
+```console
 FOO-BAR 3257: hi there, it's foo-bar [2333]
 ```
 
 Multiple comma-separated `section` names may be specified in the `NODE_DEBUG`
 environment variable: `NODE_DEBUG=fs,net,tls`.
+
+The optional `callback` argument can be used to replace the logging function
+with a different function that doesn't have any initialization or
+unnecessary wrapping.
+
+```js
+const util = require('util');
+let debuglog = util.debuglog('internals', (debug) => {
+  // Replace with a logging function that optimizes out
+  // testing if the section is enabled
+  debuglog = debug;
+});
+```
+
+### `debuglog().enabled`
+<!-- YAML
+added: v14.9.0
+-->
+
+* {boolean}
+
+The `util.debuglog().enabled` getter is used to create a test that can be used
+in conditionals based on the existence of the `NODE_DEBUG` environment variable.
+If the `section` name appears within the value of that environment variable,
+then the returned value will be `true`. If not, then the returned value will be
+`false`.
+
+```js
+const util = require('util');
+const enabled = util.debuglog('foo').enabled;
+if (enabled) {
+  console.log('hello from foo [%d]', 123);
+}
+```
+
+If this program is run with `NODE_DEBUG=foo` in the environment, then it will
+output something like:
+
+```console
+hello from foo [123]
+```
+
+## `util.debug(section)`
+<!-- YAML
+added: v14.9.0
+-->
+
+Alias for `util.debuglog`. Usage allows for readability of that doesn't imply
+logging when only using `util.debuglog().enabled`.
 
 ## `util.deprecate(fn, msg[, code])`
 <!-- YAML
@@ -164,20 +217,20 @@ fn1(); // Emits a deprecation warning with code DEP0001
 fn2(); // Does not emit a deprecation warning because it has the same code
 ```
 
-If either the `--no-deprecation` or `--no-warnings` command line flags are
+If either the `--no-deprecation` or `--no-warnings` command-line flags are
 used, or if the `process.noDeprecation` property is set to `true` *prior* to
 the first deprecation warning, the `util.deprecate()` method does nothing.
 
-If the `--trace-deprecation` or `--trace-warnings` command line flags are set,
+If the `--trace-deprecation` or `--trace-warnings` command-line flags are set,
 or the `process.traceDeprecation` property is set to `true`, a warning and a
 stack trace are printed to `stderr` the first time the deprecated function is
 called.
 
-If the `--throw-deprecation` command line flag is set, or the
+If the `--throw-deprecation` command-line flag is set, or the
 `process.throwDeprecation` property is set to `true`, then an exception will be
 thrown when the deprecated function is called.
 
-The `--throw-deprecation` command line flag and `process.throwDeprecation`
+The `--throw-deprecation` command-line flag and `process.throwDeprecation`
 property take precedence over `--trace-deprecation` and
 `process.traceDeprecation`.
 
@@ -188,10 +241,6 @@ changes:
   - version: v12.11.0
     pr-url: https://github.com/nodejs/node/pull/29606
     description: The `%c` specifier is ignored now.
-  - version: v11.4.0
-    pr-url: https://github.com/nodejs/node/pull/23708
-    description: The `%d`, `%f` and `%i` specifiers now support Symbols
-                 properly.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/23162
     description: The `format` argument is now only taken as such if it actually
@@ -203,6 +252,10 @@ changes:
                  first argument. This change removes previously present quotes
                  from strings that were being output when the first argument
                  was not a string.
+  - version: v11.4.0
+    pr-url: https://github.com/nodejs/node/pull/23708
+    description: The `%d`, `%f` and `%i` specifiers now support Symbols
+                 properly.
   - version: v11.4.0
     pr-url: https://github.com/nodejs/node/pull/24806
     description: The `%o` specifier's `depth` has default depth of 4 again.
@@ -243,8 +296,7 @@ corresponding argument. Supported specifiers are:
 * `%O`: `Object`. A string representation of an object with generic JavaScript
   object formatting. Similar to `util.inspect()` without options. This will show
   the full object not including non-enumerable properties and proxies.
-* `%c`: `CSS`. This specifier is currently ignored, and will skip any CSS
-  passed in.
+* `%c`: `CSS`. This specifier is ignored and will skip any CSS passed in.
 * `%%`: single percent sign (`'%'`). This does not consume an argument.
 * Returns: {string} The formatted string
 
@@ -324,6 +376,25 @@ fs.access('file/that/does/not/exist', (err) => {
 });
 ```
 
+## `util.getSystemErrorMap()`
+<!-- YAML
+added: v14.17.0
+-->
+
+* Returns: {Map}
+
+Returns a Map of all system error codes available from the Node.js API.
+The mapping between error codes and error names is platform-dependent.
+See [Common System Errors][] for the names of common errors.
+
+```js
+fs.access('file/that/does/not/exist', (err) => {
+  const errorMap = util.getSystemErrorMap();
+  const name = errorMap.get(err.errno);
+  console.error(name);  // ENOENT
+});
+```
+
 ## `util.inherits(constructor, superConstructor)`
 <!-- YAML
 added: v0.3.0
@@ -398,7 +469,16 @@ stream.write('With ES6');
 <!-- YAML
 added: v0.3.0
 changes:
-  - version: v14.0.0
+  - version:
+    - v14.6.0
+    - v12.19.0
+    pr-url: https://github.com/nodejs/node/pull/33690
+    description: If `object` is from a different `vm.Context` now, a custom
+                 inspection function on it will not receive context-specific
+                 arguments anymore.
+  - version:
+     - v13.13.0
+     - v12.17.0
     pr-url: https://github.com/nodejs/node/pull/32392
     description: The `maxStringLength` option is supported now.
   - version:
@@ -414,13 +494,13 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/27109
     description: The `compact` options default is changed to `3` and the
                  `breakLength` options default is changed to `80`.
-  - version: v11.11.0
-    pr-url: https://github.com/nodejs/node/pull/26269
-    description: The `compact` option accepts numbers for a new output mode.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/24971
     description: Internal properties no longer appear in the context argument
                  of a custom inspection function.
+  - version: v11.11.0
+    pr-url: https://github.com/nodejs/node/pull/26269
+    description: The `compact` option accepts numbers for a new output mode.
   - version: v11.7.0
     pr-url: https://github.com/nodejs/node/pull/25006
     description: ArrayBuffers now also show their binary contents.
@@ -433,13 +513,13 @@ changes:
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22846
     description: The `depth` default changed to `20`.
-  - version: v10.12.0
-    pr-url: https://github.com/nodejs/node/pull/22788
-    description: The `sorted` option is supported now.
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22756
     description: The inspection output is now limited to about 128 MB. Data
                  above that size will not be fully inspected.
+  - version: v10.12.0
+    pr-url: https://github.com/nodejs/node/pull/22788
+    description: The `sorted` option is supported now.
   - version: v10.6.0
     pr-url: https://github.com/nodejs/node/pull/20725
     description: Inspecting linked lists and similar objects is now possible
@@ -757,7 +837,7 @@ ignored, if not supported.
 * `bgCyanBright`
 * `bgWhiteBright`
 
-### Custom inspection functions on Objects
+### Custom inspection functions on objects
 
 <!-- type=misc -->
 
@@ -1012,7 +1092,7 @@ changes:
 -->
 
 * {symbol} that can be used to declare custom promisified variants of functions,
-see [Custom promisified functions][].
+  see [Custom promisified functions][].
 
 In addition to being accessible through `util.promisify.custom`, this
 symbol is [registered globally][global symbol registry] and can be
@@ -1048,7 +1128,7 @@ while (buffer = getNextChunkSomehow()) {
 string += decoder.decode(); // end-of-stream
 ```
 
-### WHATWG Supported Encodings
+### WHATWG supported encodings
 
 Per the [WHATWG Encoding Standard][], the encodings supported by the
 `TextDecoder` API are outlined in the tables below. For each encoding,
@@ -1057,7 +1137,7 @@ one or more aliases may be used.
 Different Node.js build configurations support different sets of encodings.
 (see [Internationalization][])
 
-#### Encodings Supported by Default (With Full ICU Data)
+#### Encodings supported by default (with full ICU data)
 
 | Encoding           | Aliases                          |
 | -----------------  | -------------------------------- |
@@ -1096,20 +1176,20 @@ Different Node.js build configurations support different sets of encodings.
 | `'shift_jis'`      | `'csshiftjis'`, `'ms932'`, `'ms_kanji'`, `'shift-jis'`, `'sjis'`, `'windows-31j'`, `'x-sjis'` |
 | `'euc-kr'`         | `'cseuckr'`, `'csksc56011987'`, `'iso-ir-149'`, `'korean'`, `'ks_c_5601-1987'`, `'ks_c_5601-1989'`, `'ksc5601'`, `'ksc_5601'`, `'windows-949'` |
 
-#### Encodings Supported when Node.js is built with the `small-icu` option
+#### Encodings supported when Node.js is built with the `small-icu` option
 
-| Encoding     | Aliases                           |
-| -----------  | --------------------------------- |
-| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'`   |
-| `'utf-16le'` | `'utf-16'`                        |
-| `'utf-16be'` |                                   |
+| Encoding     | Aliases                         |
+| -----------  | ------------------------------- |
+| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
+| `'utf-16le'` | `'utf-16'`                      |
+| `'utf-16be'` |                                 |
 
-#### Encodings Supported when ICU is disabled
+#### Encodings supported when ICU is disabled
 
-| Encoding     | Aliases                           |
-| -----------  | --------------------------------- |
-| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'`   |
-| `'utf-16le'` | `'utf-16'`                        |
+| Encoding     | Aliases                         |
+| -----------  | ------------------------------- |
+| `'utf-8'`    | `'unicode-1-1-utf-8'`, `'utf8'` |
+| `'utf-16le'` | `'utf-16'`                      |
 
 The `'iso-8859-16'` encoding listed in the [WHATWG Encoding Standard][]
 is not supported.
@@ -1119,7 +1199,7 @@ is not supported.
 added: v8.3.0
 changes:
   - version: v11.0.0
-    pr-url: v11.0.0
+    pr-url: https://github.com/nodejs/node/pull/22281
     description: The class is now available on the global object.
 -->
 
@@ -1180,7 +1260,7 @@ mark.
 added: v8.3.0
 changes:
   - version: v11.0.0
-    pr-url: v11.0.0
+    pr-url: https://github.com/nodejs/node/pull/22281
     description: The class is now available on the global object.
 -->
 
@@ -1268,7 +1348,7 @@ added: v10.0.0
 * Returns: {boolean}
 
 Returns `true` if the value is an instance of one of the [`ArrayBuffer`][]
-views, such as typed array objects or [`DataView`][].  Equivalent to
+views, such as typed array objects or [`DataView`][]. Equivalent to
 [`ArrayBuffer.isView()`][].
 
 ```js
@@ -2386,15 +2466,22 @@ const util = require('util');
 util.log('Timestamped message.');
 ```
 
-[`'uncaughtException'`]: process.html#process_event_uncaughtexception
-[`'warning'`]: process.html#process_event_warning
+[Common System Errors]: errors.md#errors_common_system_errors
+[Custom inspection functions on objects]: #util_custom_inspection_functions_on_objects
+[Custom promisified functions]: #util_custom_promisified_functions
+[Customizing `util.inspect` colors]: #util_customizing_util_inspect_colors
+[Internationalization]: intl.md
+[Module Namespace Object]: https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects
+[WHATWG Encoding Standard]: https://encoding.spec.whatwg.org/
+[`'uncaughtException'`]: process.md#process_event_uncaughtexception
+[`'warning'`]: process.md#process_event_warning
 [`Array.isArray()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray
 [`ArrayBuffer.isView()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/isView
 [`ArrayBuffer`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer
-[`Buffer.isBuffer()`]: buffer.html#buffer_class_method_buffer_isbuffer_obj
+[`Buffer.isBuffer()`]: buffer.md#buffer_static_method_buffer_isbuffer_obj
 [`DataView`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView
 [`Date`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
-[`Error`]: errors.html#errors_class_error
+[`Error`]: errors.md#errors_class_error
 [`Float32Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array
 [`Float64Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
 [`Int16Array`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array
@@ -2415,10 +2502,11 @@ util.log('Timestamped message.');
 [`WeakMap`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap
 [`WeakSet`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet
 [`WebAssembly.Module`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WebAssembly/Module
-[`assert.deepStrictEqual()`]: assert.html#assert_assert_deepstrictequal_actual_expected_message
-[`console.error()`]: console.html#console_console_error_data_args
+[`assert.deepStrictEqual()`]: assert.md#assert_assert_deepstrictequal_actual_expected_message
+[`console.error()`]: console.md#console_console_error_data_args
+[`napi_create_external()`]: n-api.md#n_api_napi_create_external
 [`target` and `handler`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy#Terminology
-[`tty.hasColors()`]: tty.html#tty_writestream_hascolors_count_env
+[`tty.hasColors()`]: tty.md#tty_writestream_hascolors_count_env
 [`util.format()`]: #util_util_format_format_args
 [`util.inspect()`]: #util_util_inspect_object_options
 [`util.promisify()`]: #util_util_promisify_original
@@ -2427,19 +2515,11 @@ util.log('Timestamped message.');
 [`util.types.isDate()`]: #util_util_types_isdate_value
 [`util.types.isNativeError()`]: #util_util_types_isnativeerror_value
 [`util.types.isSharedArrayBuffer()`]: #util_util_types_issharedarraybuffer_value
-[Common System Errors]: errors.html#errors_common_system_errors
-[Custom inspection functions on Objects]: #util_custom_inspection_functions_on_objects
-[Custom promisified functions]: #util_custom_promisified_functions
-[Customizing `util.inspect` colors]: #util_customizing_util_inspect_colors
-[Internationalization]: intl.html
-[Module Namespace Object]: https://tc39.github.io/ecma262/#sec-module-namespace-exotic-objects
-[WHATWG Encoding Standard]: https://encoding.spec.whatwg.org/
 [async function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
 [compare function]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters
 [constructor]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/constructor
 [default sort]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 [global symbol registry]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol/for
-[list of deprecated APIS]: deprecations.html#deprecations_list_of_deprecated_apis
-[`napi_create_external()`]: n-api.html#n_api_napi_create_external
+[list of deprecated APIS]: deprecations.md#deprecations_list_of_deprecated_apis
 [semantically incompatible]: https://github.com/nodejs/node/issues/4179
 [util.inspect.custom]: #util_util_inspect_custom
