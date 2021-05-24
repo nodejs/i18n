@@ -10,6 +10,15 @@
 </tr>
 <tr>
 <td valign="top">
+<a href="#10.24.1">10.24.1</a><br/>
+<a href="#10.24.0">10.24.0</a><br/>
+<a href="#10.23.3">10.23.3</a><br/>
+<a href="#10.23.2">10.23.2</a><br/>
+<a href="#10.23.1">10.23.1</a><br/>
+<a href="#10.23.0">10.23.0</a><br/>
+<a href="#10.22.1">10.22.1</a><br/>
+<a href="#10.22.0">10.22.0</a><br/>
+<a href="#10.21.0">10.21.0</a><br/>
 <a href="#10.20.1">10.20.1</a><br/>
 <a href="#10.20.0">10.20.0</a><br/>
 <a href="#10.19.0">10.19.0</a><br/>
@@ -60,6 +69,232 @@
   * [0.10.x](CHANGELOG_V010.md)
   * [io.js](CHANGELOG_IOJS.md)
   * [Archive](CHANGELOG_ARCHIVE.md)
+
+<a id="10.24.1"></a>
+## 2021-04-06, Version 10.24.1 'Dubnium' (LTS), @mylesborins
+
+This is a security release.
+
+### Notable Changes
+
+Vulerabilties fixed:
+
+* **CVE-2021-3450**: OpenSSL - CA certificate check bypass with X509_V_FLAG_X509_STRICT (High)
+  * This is a vulnerability in OpenSSL which may be exploited through Node.js. You can read more about it in https://www.openssl.org/news/secadv/20210325.txt
+  * Impacts:
+    * All versions of the 15.x, 14.x, 12.x and 10.x releases lines
+* **CVE-2021-3449**: OpenSSL - NULL pointer deref in signature_algorithms processing (High)
+  * This is a vulnerability in OpenSSL which may be exploited through Node.js. You can read more about it in https://www.openssl.org/news/secadv/20210325.txt
+  * Impacts:
+    * All versions of the 15.x, 14.x, 12.x and 10.x releases lines
+* **CVE-2020-7774**: npm upgrade - Update y18n to fix Prototype-Pollution (High)
+  * This is a vulnerability in the y18n npm module which may be exploited by prototype pollution. You can read more about it in https://github.com/advisories/GHSA-c4w7-xm78-47vh
+  * Impacts:
+    * All versions of the 14.x, 12.x and 10.x releases lines
+
+### Commits
+
+* [[`5e526b96ce`](https://github.com/nodejs/node/commit/5e526b96ce)] - **deps**: upgrade npm to 6.14.12 (Ruy Adorno) [#37918](https://github.com/nodejs/node/pull/37918)
+* [[`781cb6df5c`](https://github.com/nodejs/node/commit/781cb6df5c)] - **deps**: update archs files for OpenSSL-1.1.1k (Tobias Nießen) [#37940](https://github.com/nodejs/node/pull/37940)
+* [[`5db0a05a90`](https://github.com/nodejs/node/commit/5db0a05a90)] - **deps**: upgrade openssl sources to 1.1.1k (Tobias Nießen) [#37940](https://github.com/nodejs/node/pull/37940)
+
+<a id="10.24.0"></a>
+## 2021-02-23, Version 10.24.0 'Dubnium' (LTS), @richardlau
+
+This is a security release.
+
+### Notable changes
+
+Vulnerabilities fixed:
+
+* **CVE-2021-22883**: HTTP2 'unknownProtocol' cause Denial of Service by resource exhaustion
+  * Affected Node.js versions are vulnerable to denial of service attacks when too many connection attempts with an 'unknownProtocol' are established. This leads to a leak of file descriptors. If a file descriptor limit is configured on the system, then the server is unable to accept new connections and prevent the process also from opening, e.g. a file. If no file descriptor limit is configured, then this lead to an excessive memory usage and cause the system to run out of memory.
+* **CVE-2021-22884**: DNS rebinding in --inspect
+  * Affected Node.js versions are vulnerable to denial of service attacks when the whitelist includes “localhost6”. When “localhost6” is not present in /etc/hosts, it is just an ordinary domain that is resolved via DNS, i.e., over network. If the attacker controls the victim's DNS server or can spoof its responses, the DNS rebinding protection can be bypassed by using the “localhost6” domain. As long as the attacker uses the “localhost6” domain, they can still apply the attack described in CVE-2018-7160.
+* **CVE-2021-23840**: OpenSSL - Integer overflow in CipherUpdate
+  * This is a vulnerability in OpenSSL which may be exploited through Node.js. You can read more about it in https://www.openssl.org/news/secadv/20210216.txt
+
+### Commits
+
+* [[`0afcb4f6bb`](https://github.com/nodejs/node/commit/0afcb4f6bb)] - **deps**: update archs files for OpenSSL-1.1.1j (Daniel Bevenius) [#37415](https://github.com/nodejs/node/pull/37415)
+* [[`447be941cd`](https://github.com/nodejs/node/commit/447be941cd)] - **deps**: upgrade openssl sources to 1.1.1j (Daniel Bevenius) [#37415](https://github.com/nodejs/node/pull/37415)
+* [[`3f2e9dc40c`](https://github.com/nodejs/node/commit/3f2e9dc40c)] - **(SEMVER-MINOR)** **http2**: add unknownProtocol timeout (Daniel Bevenius) [nodejs-private/node-private#246](https://github.com/nodejs-private/node-private/pull/246)
+* [[`d1cf6a9b0f`](https://github.com/nodejs/node/commit/d1cf6a9b0f)] - **src**: drop localhost6 as allowed host for inspector (Matteo Collina) [nodejs-private/node-private#244](https://github.com/nodejs-private/node-private/pull/244)
+
+<a id="10.23.3"></a>
+## 2021-02-09, Version 10.23.3 'Dubnium' (LTS), @richardlau
+
+### Notable changes
+
+The update to npm 6.14.11 has been relanded so that npm correctly reports its version.
+
+### Commits
+
+* [[`953a85035d`](https://github.com/nodejs/node/commit/953a85035d)] - **crypto**: fix crash when calling digest after piping (Tobias Nießen) [#28251](https://github.com/nodejs/node/pull/28251)
+* [[`fe2c98003e`](https://github.com/nodejs/node/commit/fe2c98003e)] - **deps**: upgrade npm to 6.14.11 (Ruy Adorno) [#37173](https://github.com/nodejs/node/pull/37173)
+* [[`7b7fb43b8a`](https://github.com/nodejs/node/commit/7b7fb43b8a)] - ***Revert*** "**deps**: upgrade npm to 6.14.11" (Richard Lau) [#37278](https://github.com/nodejs/node/pull/37278)
+* [[`1c6fbd6ffe`](https://github.com/nodejs/node/commit/1c6fbd6ffe)] - **test**: add test that verifies crypto stream pipeline (Evan Lucas) [#37009](https://github.com/nodejs/node/pull/37009)
+
+<a id="10.23.2"></a>
+## 2021-01-26, Version 10.23.2 'Dubnium' (LTS), @richardlau
+
+### Notable changes
+
+Release keys have been synchronized with the main branch.
+
+* **deps**:
+  * upgrade npm to 6.14.11 (Darcy Clarke) [#36838](https://github.com/nodejs/node/pull/36838)
+
+### Commits
+
+* [[`cc6b69557a`](https://github.com/nodejs/node/commit/cc6b69557a)] - **deps**: upgrade npm to 6.14.11 (Darcy Clarke) [#36838](https://github.com/nodejs/node/pull/36838)
+* [[`aefb66528a`](https://github.com/nodejs/node/commit/aefb66528a)] - **doc**: update contact information for @BethGriggs (Beth Griggs) [#35451](https://github.com/nodejs/node/pull/35451)
+* [[`08931481d8`](https://github.com/nodejs/node/commit/08931481d8)] - **doc**: update contact information for richardlau (Richard Lau) [#35450](https://github.com/nodejs/node/pull/35450)
+* [[`bc0617f4ea`](https://github.com/nodejs/node/commit/bc0617f4ea)] - **doc**: update release key for Danielle Adams (Danielle Adams) [#36793](https://github.com/nodejs/node/pull/36793)
+* [[`d7c09fcfd3`](https://github.com/nodejs/node/commit/d7c09fcfd3)] - **doc**: add release key for Danielle Adams (Danielle Adams) [#35545](https://github.com/nodejs/node/pull/35545)
+* [[`ac49d415b0`](https://github.com/nodejs/node/commit/ac49d415b0)] - **doc**: add release key for Ruy Adorno (Ruy Adorno) [#34628](https://github.com/nodejs/node/pull/34628)
+* [[`b8426ae3ce`](https://github.com/nodejs/node/commit/b8426ae3ce)] - **doc**: add release key for Richard Lau (Richard Lau) [#34397](https://github.com/nodejs/node/pull/34397)
+
+<a id="10.23.1"></a>
+## 2021-01-04, Version 10.23.1 'Dubnium' (LTS), @richardlau
+
+### Notable changes
+
+This is a security release.
+
+Vulnerabilities fixed:
+
+* **CVE-2020-8265**: use-after-free in TLSWrap (High)
+Affected Node.js versions are vulnerable to a use-after-free bug in its
+TLS implementation. When writing to a TLS enabled socket, 
+node::StreamBase::Write calls node::TLSWrap::DoWrite with a freshly
+allocated WriteWrap object as first argument. If the DoWrite method does
+not return an error, this object is passed back to the caller as part of
+a StreamWriteResult structure. This may be exploited to corrupt memory
+leading to a Denial of Service or potentially other exploits
+* **CVE-2020-8287**: HTTP Request Smuggling in nodejs
+Affected versions of Node.js allow two copies of a header field in a
+http request. For example, two Transfer-Encoding header fields. In this
+case Node.js identifies the first header field and ignores the second.
+This can lead to HTTP Request Smuggling
+(https://cwe.mitre.org/data/definitions/444.html).
+* **CVE-2020-1971**: OpenSSL - EDIPARTYNAME NULL pointer de-reference (High)
+This is a vulnerability in OpenSSL which may be exploited through Node.js.
+You can read more about it in
+https://www.openssl.org/news/secadv/20201208.txt
+
+### Commits
+
+* [[`bd44b0ee7f`](https://github.com/nodejs/node/commit/bd44b0ee7f)] - **build,win**: accept Python 3 if 2 is not available (João Reis) [#29236](https://github.com/nodejs/node/pull/29236)
+* [[`d5c9b09bdc`](https://github.com/nodejs/node/commit/d5c9b09bdc)] - **build,win**: find Python in paths with spaces (João Reis) [#29236](https://github.com/nodejs/node/pull/29236)
+* [[`323a6f114a`](https://github.com/nodejs/node/commit/323a6f114a)] - **deps**: update http-parser to http-parser@ec8b5ee63f (Richard Lau) [nodejs-private/node-private#235](https://github.com/nodejs-private/node-private/pull/235)
+* [[`f08d0fef64`](https://github.com/nodejs/node/commit/f08d0fef64)] - **deps**: upgrade npm to 6.14.10 (Ruy Adorno) [#36571](https://github.com/nodejs/node/pull/36571)
+* [[`b0608b574a`](https://github.com/nodejs/node/commit/b0608b574a)] - **deps**: update archs files for OpenSSL-1.1.1i (Richard Lau) [#36541](https://github.com/nodejs/node/pull/36541)
+* [[`d936e1833f`](https://github.com/nodejs/node/commit/d936e1833f)] - **deps**: upgrade openssl sources to 1.1.1i (Myles Borins) [#36541](https://github.com/nodejs/node/pull/36541)
+* [[`9c4970715c`](https://github.com/nodejs/node/commit/9c4970715c)] - **deps**: upgrade npm to 6.14.9 (Myles Borins) [#36450](https://github.com/nodejs/node/pull/36450)
+* [[`aa6b97fb99`](https://github.com/nodejs/node/commit/aa6b97fb99)] - **http**: add test for http transfer encoding smuggling (Richard Lau) [nodejs-private/node-private#235](https://github.com/nodejs-private/node-private/pull/235)
+* [[`fc70ce08f5`](https://github.com/nodejs/node/commit/fc70ce08f5)] - **http**: unset `F_CHUNKED` on new `Transfer-Encoding` (Fedor Indutny) [nodejs-private/node-private#235](https://github.com/nodejs-private/node-private/pull/235)
+* [[`7f178663eb`](https://github.com/nodejs/node/commit/7f178663eb)] - **src**: use unique\_ptr for WriteWrap (Daniel Bevenius) [nodejs-private/node-private#238](https://github.com/nodejs-private/node-private/pull/238)
+* [[`357e2857c8`](https://github.com/nodejs/node/commit/357e2857c8)] - **test**: add test-tls-use-after-free-regression (Daniel Bevenius) [nodejs-private/node-private#238](https://github.com/nodejs-private/node-private/pull/238)
+
+<a id="10.23.0"></a>
+## 2020-10-27, Version 10.23.0 'Dubnium' (LTS), @richardlau
+
+### Notable changes
+
+* **deps**:
+  * upgrade npm to 6.14.8 (Ruy Adorno) [#34834](https://github.com/nodejs/node/pull/34834)
+* **n-api**:
+  * create N-API version 7 (Gabriel Schulhof) [#35199](https://github.com/nodejs/node/pull/35199)
+  * expose napi_build_version variable (NickNaso) [#27835](https://github.com/nodejs/node/pull/27835)
+* **tools**:
+  * add debug entitlements for macOS 10.15+ (Gabriele Greco) [#34378](https://github.com/nodejs/node/pull/34378)
+
+### Commits
+
+* [[`b83f9a56fc`](https://github.com/nodejs/node/commit/b83f9a56fc)] - **build**: expose napi_build_version variable (NickNaso) [#27835](https://github.com/nodejs/node/pull/27835)
+* [[`020ba1a2b8`](https://github.com/nodejs/node/commit/020ba1a2b8)] - **build**: enable backtrace when V8 is built for PPC and S390x (Michaël Zasso) [#32113](https://github.com/nodejs/node/pull/32113)
+* [[`eee9412a8c`](https://github.com/nodejs/node/commit/eee9412a8c)] - **deps**: upgrade npm to 6.14.8 (Ruy Adorno) [#34834](https://github.com/nodejs/node/pull/34834)
+* [[`038593d5ff`](https://github.com/nodejs/node/commit/038593d5ff)] - **deps**: upgrade npm to 6.14.7 (claudiahdz) [#34468](https://github.com/nodejs/node/pull/34468)
+* [[`3564424625`](https://github.com/nodejs/node/commit/3564424625)] - **deps**: V8: cherry-pick eec10a2fd8fa (Stephen Belanger) [#33778](https://github.com/nodejs/node/pull/33778)
+* [[`e9e86e1b60`](https://github.com/nodejs/node/commit/e9e86e1b60)] - **http2**: support non-empty DATA frame with END_STREAM flag (Carlos Lopez) [#33875](https://github.com/nodejs/node/pull/33875)
+* [[`751820b6c2`](https://github.com/nodejs/node/commit/751820b6c2)] - **http2,doc**: minor fixes (Alba Mendez) [#28044](https://github.com/nodejs/node/pull/28044)
+* [[`54c2bc2e62`](https://github.com/nodejs/node/commit/54c2bc2e62)] - **(SEMVER-MINOR)** **n-api**: create N-API version 7 (Gabriel Schulhof) [#35199](https://github.com/nodejs/node/pull/35199)
+* [[`2eb627301c`](https://github.com/nodejs/node/commit/2eb627301c)] - **src**: allows escaping NODE_OPTIONS with backslashes (Maël Nison) [#24065](https://github.com/nodejs/node/pull/24065)
+* [[`5170d14b36`](https://github.com/nodejs/node/commit/5170d14b36)] - **test**: fix test-linux-perf flakiness (Matheus Marchini) [#27615](https://github.com/nodejs/node/pull/27615)
+* [[`21b86d7f19`](https://github.com/nodejs/node/commit/21b86d7f19)] - **test,v8**: skip less and stabilize test-linux-perf.js (Refael Ackermann) [#27364](https://github.com/nodejs/node/pull/27364)
+* [[`ee11ab50a7`](https://github.com/nodejs/node/commit/ee11ab50a7)] - **tools**: add debug entitlements for macOS 10.15+ (Gabriele Greco) [#34378](https://github.com/nodejs/node/pull/34378)
+
+<a id="10.22.1"></a>
+## 2020-09-15, Version 10.22.1 'Dubnium' (LTS), @BethGriggs
+
+### Notable changes
+
+This is a security release.
+
+Vulnerabilities fixed:
+
+* **CVE-2020-8252**: fs.realpath.native on may cause buffer overflow (Medium).
+
+### Commits
+
+* [[`57badcf93e`](https://github.com/nodejs/node/commit/57badcf93e)] - **deps**: libuv: cherry-pick 0e6e8620 (Colin Ihrig) [libuv/libuv#2966](https://github.com/libuv/libuv/pull/2966)
+
+<a id="10.22.0"></a>
+## 2020-07-21, Version 10.22.0 'Dubnium' (LTS), @BethGriggs prepared by @richardlau
+
+### Notable changes
+
+* **deps**:
+  * upgrade npm to 6.14.6 (claudiahdz) [#34246](https://github.com/nodejs/node/pull/34246)
+  * upgrade openssl sources to 1.1.1g (Hassaan Pasha) [#32982](https://github.com/nodejs/node/pull/32982)
+* **n-api**:
+  * add `napi_detach_arraybuffer` (legendecas) [#29768](https://github.com/nodejs/node/pull/29768)
+
+### Commits
+
+* [[`9915774d18`](https://github.com/nodejs/node/commit/9915774d18)] - **build**: log detected compilers in --verbose mode (Richard Lau) [#32715](https://github.com/nodejs/node/pull/32715)
+* [[`145dcc2c1c`](https://github.com/nodejs/node/commit/145dcc2c1c)] - **build**: move doc versions JSON file out of out/doc (Richard Lau) [#32728](https://github.com/nodejs/node/pull/32728)
+* [[`24b927ab66`](https://github.com/nodejs/node/commit/24b927ab66)] - **build**: allow clang 10+ in configure.py (Kamil Rytarowski) [#29541](https://github.com/nodejs/node/pull/29541)
+* [[`97b59527c7`](https://github.com/nodejs/node/commit/97b59527c7)] - **deps**: upgrade npm to 6.14.6 (claudiahdz) [#34246](https://github.com/nodejs/node/pull/34246)
+* [[`84fca3c691`](https://github.com/nodejs/node/commit/84fca3c691)] - **deps**: upgrade npm to 6.14.5 (Ruy Adorno) [#33239](https://github.com/nodejs/node/pull/33239)
+* [[`745b329260`](https://github.com/nodejs/node/commit/745b329260)] - **deps**: update archs files for OpenSSL-1.1.1g (Hassaan Pasha) [#32982](https://github.com/nodejs/node/pull/32982)
+* [[`94702c1560`](https://github.com/nodejs/node/commit/94702c1560)] - **deps**: upgrade openssl sources to 1.1.1g (Hassaan Pasha) [#32982](https://github.com/nodejs/node/pull/32982)
+* [[`ef9413be1a`](https://github.com/nodejs/node/commit/ef9413be1a)] - **deps**: upgrade openssl sources to 1.1.1f (Hassaan Pasha) [#32583](https://github.com/nodejs/node/pull/32583)
+* [[`3acc89f8f2`](https://github.com/nodejs/node/commit/3acc89f8f2)] - **deps**: V8: backport cd21f71f9cb5 (Michaël Zasso) [#33862](https://github.com/nodejs/node/pull/33862)
+* [[`89a306bca9`](https://github.com/nodejs/node/commit/89a306bca9)] - **deps**: fix V8 compiler error with clang++-11 (Sam Roberts) [#33094](https://github.com/nodejs/node/pull/33094)
+* [[`00f04e3b79`](https://github.com/nodejs/node/commit/00f04e3b79)] - **doc**: fix quotes in tls.md (Sparsh Garg) [#33641](https://github.com/nodejs/node/pull/33641)
+* [[`193d1d0e84`](https://github.com/nodejs/node/commit/193d1d0e84)] - **doc**: document fs.watchFile() bigint option (cjihrig) [#32128](https://github.com/nodejs/node/pull/32128)
+* [[`5dab101b03`](https://github.com/nodejs/node/commit/5dab101b03)] - **doc,n-api**: mark napi_detach_arraybuffer as experimental (legendecas) [#30703](https://github.com/nodejs/node/pull/30703)
+* [[`069b6e14a4`](https://github.com/nodejs/node/commit/069b6e14a4)] - **http**: disable headersTimeout check when set to zero (Paolo Insogna) [#33307](https://github.com/nodejs/node/pull/33307)
+* [[`aaf2f827c6`](https://github.com/nodejs/node/commit/aaf2f827c6)] - **inspector**: more conservative minimum stack size (Ben Noordhuis) [#27855](https://github.com/nodejs/node/pull/27855)
+* [[`b744ffd586`](https://github.com/nodejs/node/commit/b744ffd586)] - **(SEMVER-MINOR)** **n-api**: implement napi_is_detached_arraybuffer (Denys Otrishko) [#30613](https://github.com/nodejs/node/pull/30613)
+* [[`961598b9be`](https://github.com/nodejs/node/commit/961598b9be)] - **(SEMVER-MINOR)** **n-api**: add `napi_detach_arraybuffer` (legendecas) [#29768](https://github.com/nodejs/node/pull/29768)
+* [[`7a109febc4`](https://github.com/nodejs/node/commit/7a109febc4)] - **test**: remove timers-blocking-callback (Jeremiah Senkpiel) [#32870](https://github.com/nodejs/node/pull/32870)
+* [[`3dbd8cd3a9`](https://github.com/nodejs/node/commit/3dbd8cd3a9)] - ***Revert*** "**test**: mark empty udp tests flaky on OS X" (Luigi Pinca) [#32489](https://github.com/nodejs/node/pull/32489)
+* [[`543656928c`](https://github.com/nodejs/node/commit/543656928c)] - **test**: flaky test-stdout-close-catch on freebsd (Sam Roberts) [#32849](https://github.com/nodejs/node/pull/32849)
+* [[`74b00cca64`](https://github.com/nodejs/node/commit/74b00cca64)] - **tls**: allow empty subject even with altNames defined (Jason Macgowan) [#22906](https://github.com/nodejs/node/pull/22906)
+
+<a id="10.21.0"></a>
+## 2020-06-02, Version 10.21.0 'Dubnium' (LTS), @BethGriggs
+
+### Notable changes
+
+This is a security release.
+
+Vulnerabilities fixed:
+
+* **CVE-2020-8174**: napi_get_value_string_*() allows various kinds of memory corruption (High).
+* **CVE-2020-10531**: ICU-20958 Prevent SEGV_MAPERR in append (High).
+* **CVE-2020-11080**: HTTP/2 Large Settings Frame DoS (Low).
+
+### Commits
+
+* [[`0ad7970256`](https://github.com/nodejs/node/commit/0ad7970256)] - **deps**: fix OPENSSLDIR on Windows (Shigeki Ohtsu) [#29456](https://github.com/nodejs/node/pull/29456)
+* [[`bd78c6ea46`](https://github.com/nodejs/node/commit/bd78c6ea46)] - **deps**: backport ICU-20958 to fix CVE-2020-10531 (Richard Lau) [#33572](https://github.com/nodejs/node/pull/33572)
+* [[`33e9a12241`](https://github.com/nodejs/node/commit/33e9a12241)] - **(SEMVER-MINOR)** **deps**: update nghttp2 to 1.41.0 (James M Snell) [nodejs-private/node-private#204](https://github.com/nodejs-private/node-private/pull/204)
+* [[`881c244a4e`](https://github.com/nodejs/node/commit/881c244a4e)] - **(SEMVER-MINOR)** **http2**: implement support for max settings entries (James M Snell) [nodejs-private/node-private#204](https://github.com/nodejs-private/node-private/pull/204)
+* [[`cd9827f105`](https://github.com/nodejs/node/commit/cd9827f105)] - **napi**: fix memory corruption vulnerability (Tobias Nießen) [nodejs-private/node-private#203](https://github.com/nodejs-private/node-private/pull/203)
 
 <a id="10.20.1"></a>
 ## 2020-04-12, Version 10.20.1 'Dubnium' (LTS), @BethGriggs
