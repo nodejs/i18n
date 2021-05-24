@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/url.js -->
+
 The `url` module provides utilities for URL resolution and parsing. It can be
 accessed using:
 
@@ -11,7 +13,7 @@ accessed using:
 const url = require('url');
 ```
 
-## URL Strings and URL Objects
+## URL strings and URL objects
 
 A URL string is a structured string containing multiple meaningful components.
 When parsed, a URL object is returned containing properties for each of these
@@ -22,14 +24,14 @@ Node.js specific, and a newer API that implements the same
 [WHATWG URL Standard][] used by web browsers.
 
 A comparison between the WHATWG and Legacy APIs is provided below. Above the URL
-`'http://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`, properties
+`'https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash'`, properties
 of an object returned by the legacy `url.parse()` are shown. Below it are
 properties of a WHATWG `URL` object.
 
 WHATWG URL's `origin` property includes `protocol` and `host`, but not
 `username` or `password`.
 
-```txt
+```text
 ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                              href                                              │
 ├──────────┬──┬─────────────────────┬────────────────────────┬───────────────────────────┬───────┤
@@ -65,6 +67,31 @@ const myURL =
   url.parse('https://user:pass@sub.example.com:8080/p/a/t/h?query=string#hash');
 ```
 
+### Constructing a URL from component parts and getting the constructed string
+
+It is possible to construct a WHATWG URL from component parts using either the
+property setters or a template literal string:
+
+```js
+const myURL = new URL('https://example.org');
+myURL.pathname = '/a/b/c';
+myURL.search = '?d=e';
+myURL.hash = '#fgh';
+```
+
+```js
+const pathname = '/a/b/c';
+const search = '?d=e';
+const hash = '#fgh';
+const myURL = new URL(`https://example.org${pathname}${search}${hash}`);
+```
+
+To get the constructed URL string, use the `href` property accessor:
+
+```js
+console.log(myURL.href);
+```
+
 ## The WHATWG URL API
 
 ### Class: `URL`
@@ -89,7 +116,7 @@ using the `delete` keyword on any properties of `URL` objects (e.g. `delete
 myURL.protocol`, `delete myURL.pathname`, etc) has no effect but will still
 return `true`.
 
-#### Constructor: `new URL(input[, base])`
+#### `new URL(input[, base])`
 
 * `input` {string} The absolute or relative input URL to parse. If `input`
   is relative, then `base` is required. If `input` is absolute, the `base`
@@ -208,9 +235,15 @@ const myURL = new URL('https://example.org:81/foo');
 console.log(myURL.hostname);
 // Prints example.org
 
+// Setting the hostname does not change the port
 myURL.hostname = 'example.com:82';
 console.log(myURL.href);
 // Prints https://example.com:81/foo
+
+// Use myURL.host to change the hostname and port
+myURL.host = 'example.org:82';
+console.log(myURL.href);
+// Prints https://example.org:82/foo
 ```
 
 Invalid host name values assigned to the `hostname` property are ignored.
@@ -406,7 +439,7 @@ console.log(myURL.href);
 
 Invalid URL protocol values assigned to the `protocol` property are ignored.
 
-##### Special Schemes
+##### Special schemes
 
 The [WHATWG URL Standard][] considers a handful of URL protocol schemes to be
 _special_ in terms of how they are parsed and serialized. When a URL is
@@ -600,11 +633,11 @@ console.log(myURL.href);
 // Prints https://example.org/?a=b&a=c
 ```
 
-#### Constructor: `new URLSearchParams()`
+#### `new URLSearchParams()`
 
 Instantiate a new empty `URLSearchParams` object.
 
-#### Constructor: `new URLSearchParams(string)`
+#### `new URLSearchParams(string)`
 
 * `string` {string} A query string
 
@@ -625,7 +658,7 @@ console.log(params.toString());
 // Prints 'user=abc&query=xyz'
 ```
 
-#### Constructor: `new URLSearchParams(obj)`
+#### `new URLSearchParams(obj)`
 <!-- YAML
 added:
   - v7.10.0
@@ -652,7 +685,7 @@ console.log(params.toString());
 // Prints 'user=abc&query=first%2Csecond'
 ```
 
-#### Constructor: `new URLSearchParams(iterable)`
+#### `new URLSearchParams(iterable)`
 <!-- YAML
 added:
   - v7.10.0
@@ -999,21 +1032,35 @@ pathToFileURL(__filename);          // Correct:   file:///C:/... (Windows)
 new URL('/foo#1', 'file:');         // Incorrect: file:///foo#1
 pathToFileURL('/foo#1');            // Correct:   file:///foo%231 (POSIX)
 
-new URL('/some/path%.js', 'file:'); // Incorrect: file:///some/path%
-pathToFileURL('/some/path%.js');    // Correct:   file:///some/path%25 (POSIX)
+new URL('/some/path%.c', 'file:'); // Incorrect: file:///some/path%.c
+pathToFileURL('/some/path%.c');    // Correct:   file:///some/path%25.c (POSIX)
 ```
 
 ## Legacy URL API
+<!-- YAML
+changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
+  - version: v11.0.0
+    pr-url: https://github.com/nodejs/node/pull/22715
+    description: This API is deprecated.
+-->
 
-> Stability: 0 - Deprecated: Use the WHATWG URL API instead.
+> Stability: 3 - Legacy: Use the WHATWG URL API instead.
 
 ### Legacy `urlObject`
 <!-- YAML
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22715
     description: The Legacy URL API is deprecated. Use the WHATWG URL API.
 -->
+
+> Stability: 3 - Legacy: Use the WHATWG URL API instead.
 
 The legacy `urlObject` (`require('url').Url`) is created and returned by the
 `url.parse()` function.
@@ -1119,16 +1166,21 @@ forward-slash characters (`/`) are required following the colon in the
 <!-- YAML
 added: v0.1.25
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22715
     description: The Legacy URL API is deprecated. Use the WHATWG URL API.
   - version: v7.0.0
     pr-url: https://github.com/nodejs/node/pull/7234
     description: URLs with a `file:` scheme will now always use the correct
-                 number of slashes regardless of `slashes` option. A false-y
+                 number of slashes regardless of `slashes` option. A falsy
                  `slashes` option with no protocol is now also respected at all
                  times.
 -->
+
+> Stability: 3 - Legacy: Use the WHATWG URL API instead.
 
 * `urlObject` {Object|string} A URL object (as returned by `url.parse()` or
   constructed otherwise). If a string, it is converted to an object by passing
@@ -1210,6 +1262,9 @@ The formatting process operates as follows:
 <!-- YAML
 added: v0.1.25
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
   - version: v11.14.0
     pr-url: https://github.com/nodejs/node/pull/26941
     description: The `pathname` property on the returned URL object is now `/`
@@ -1223,6 +1278,8 @@ changes:
     description: The `search` property on the returned URL object is now `null`
                  when no query string is present.
 -->
+
+> Stability: 3 - Legacy: Use the WHATWG URL API instead.
 
 * `urlString` {string} The URL string to parse.
 * `parseQueryString` {boolean} If `true`, the `query` property will always
@@ -1242,10 +1299,19 @@ A `TypeError` is thrown if `urlString` is not a string.
 
 A `URIError` is thrown if the `auth` property is present but cannot be decoded.
 
+Use of the legacy `url.parse()` method is discouraged. Users should
+use the WHATWG `URL` API. Because the `url.parse()` method uses a
+lenient, non-standard algorithm for parsing URL strings, security
+issues can be introduced. Specifically, issues with [host name spoofing][] and
+incorrect handling of usernames and passwords have been identified.
+
 ### `url.resolve(from, to)`
 <!-- YAML
 added: v0.1.25
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/37784
+    description: Deprecation revoked. Status changed to "Legacy".
   - version: v11.0.0
     pr-url: https://github.com/nodejs/node/pull/22715
     description: The Legacy URL API is deprecated. Use the WHATWG URL API.
@@ -1253,7 +1319,9 @@ changes:
     pr-url: https://github.com/nodejs/node/pull/8215
     description: The `auth` fields are now kept intact when `from` and `to`
                  refer to the same host.
-  - version: v6.5.0, v4.6.2
+  - version:
+    - v6.5.0
+    - v4.6.2
     pr-url: https://github.com/nodejs/node/pull/8214
     description: The `port` field is copied correctly now.
   - version: v6.0.0
@@ -1261,6 +1329,8 @@ changes:
     description: The `auth` fields is cleared now the `to` parameter
                  contains a hostname.
 -->
+
+> Stability: 3 - Legacy: Use the WHATWG URL API instead.
 
 * `from` {string} The Base URL being resolved against.
 * `to` {string} The HREF URL being resolved.
@@ -1275,8 +1345,26 @@ url.resolve('http://example.com/', '/one');    // 'http://example.com/one'
 url.resolve('http://example.com/one', '/two'); // 'http://example.com/two'
 ```
 
+You can achieve the same result using the WHATWG URL API:
+
+```js
+function resolve(from, to) {
+  const resolvedUrl = new URL(to, new URL(from, 'resolve://'));
+  if (resolvedUrl.protocol === 'resolve:') {
+    // `from` is a relative URL.
+    const { pathname, search, hash } = resolvedUrl;
+    return pathname + search + hash;
+  }
+  return resolvedUrl.toString();
+}
+
+resolve('/one/two/three', 'four');         // '/one/two/four'
+resolve('http://example.com/', '/one');    // 'http://example.com/one'
+resolve('http://example.com/one', '/two'); // 'http://example.com/two'
+```
+
 <a id="whatwg-percent-encoding"></a>
-## Percent-Encoding in URLs
+## Percent-encoding in URLs
 
 URLs are permitted to only contain a certain range of characters. Any character
 falling outside of that range must be encoded. How such characters are encoded,
@@ -1288,7 +1376,7 @@ located within the structure of the URL.
 Within the Legacy API, spaces (`' '`) and the following characters will be
 automatically escaped in the properties of URL objects:
 
-```txt
+```text
 < > " ` \r \n \t { } | \ ^ '
 ```
 
@@ -1335,14 +1423,18 @@ console.log(myURL.origin);
 // Prints https://xn--1xa.example.com
 ```
 
-[`Error`]: errors.html#errors_class_error
+[ICU]: intl.md#intl_options_for_building_node_js
+[Punycode]: https://tools.ietf.org/html/rfc5891#section-4.4
+[WHATWG URL Standard]: https://url.spec.whatwg.org/
+[WHATWG URL]: #url_the_whatwg_url_api
+[`Error`]: errors.md#errors_class_error
 [`JSON.stringify()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify
 [`Map`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
-[`TypeError`]: errors.html#errors_class_typeerror
+[`TypeError`]: errors.md#errors_class_typeerror
 [`URLSearchParams`]: #url_class_urlsearchparams
 [`array.toString()`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toString
-[`new URL()`]: #url_constructor_new_url_input_base
-[`querystring`]: querystring.html
+[`new URL()`]: #url_new_url_input_base
+[`querystring`]: querystring.md
 [`require('url').format()`]: #url_url_format_url_options
 [`url.domainToASCII()`]: #url_url_domaintoascii_domain
 [`url.domainToUnicode()`]: #url_url_domaintounicode_domain
@@ -1354,11 +1446,8 @@ console.log(myURL.origin);
 [`url.toString()`]: #url_url_tostring
 [`urlSearchParams.entries()`]: #url_urlsearchparams_entries
 [`urlSearchParams@@iterator()`]: #url_urlsearchparams_symbol_iterator
-[ICU]: intl.html#intl_options_for_building_node_js
-[Punycode]: https://tools.ietf.org/html/rfc5891#section-4.4
-[WHATWG URL Standard]: https://url.spec.whatwg.org/
-[WHATWG URL]: #url_the_whatwg_url_api
 [examples of parsed URLs]: https://url.spec.whatwg.org/#example-url-parsing
+[host name spoofing]: https://hackerone.com/reports/678487
 [legacy `urlObject`]: #url_legacy_urlobject
 [percent-encoded]: #whatwg-percent-encoding
 [stable sorting algorithm]: https://en.wikipedia.org/wiki/Sorting_algorithm#Stability
