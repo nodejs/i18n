@@ -1,11 +1,11 @@
-# C++ Style Guide
+# C++ style guide
 
 See also the [C++ codebase README](../../src/README.md) for C++ idioms in the
 Node.js codebase not related to stylistic issues.
 
-## Table of Contents
+## Table of contents
 
-* [Guides and References](#guides-and-references)
+* [Guides and references](#guides-and-references)
 * [Formatting](#formatting)
   * [Left-leaning (C++ style) asterisks for pointer declarations](#left-leaning-c-style-asterisks-for-pointer-declarations)
   * [C++ style comments](#c-style-comments)
@@ -18,11 +18,11 @@ Node.js codebase not related to stylistic issues.
   * [`snake_case_` for private class fields](#snake_case_-for-private-class-fields)
   * [`snake_case` for C-like structs](#snake_case-for-c-like-structs)
   * [Space after `template`](#space-after-template)
-* [Memory Management](#memory-management)
+* [Memory management](#memory-management)
   * [Memory allocation](#memory-allocation)
   * [Use `nullptr` instead of `NULL` or `0`](#use-nullptr-instead-of-null-or-0)
   * [Use explicit pointer comparisons](#use-explicit-pointer-comparisons)
-  * [Ownership and Smart Pointers](#ownership-and-smart-pointers)
+  * [Ownership and smart pointers](#ownership-and-smart-pointers)
   * [Avoid non-const references](#avoid-non-const-references)
   * [Use AliasedBuffers to manipulate TypedArrays](#use-aliasedbuffers-to-manipulate-typedarrays)
 * [Others](#others)
@@ -32,7 +32,7 @@ Node.js codebase not related to stylistic issues.
   * [Avoid throwing JavaScript errors in C++ methods](#avoid-throwing-javascript-errors-in-c)
     * [Avoid throwing JavaScript errors in nested C++ methods](#avoid-throwing-javascript-errors-in-nested-c-methods)
 
-## Guides and References
+## Guides and references
 
 The Node.js C++ codebase strives to be consistent in its use of language
 features and idioms, as well as have some specific guidelines for the use of
@@ -67,7 +67,7 @@ Comments should also start with uppercase and finish with a dot.
 
 Examples:
 
-```c++
+```cpp
 // A single-line comment.
 
 // Multi-line comments
@@ -82,14 +82,14 @@ comments.
 
 ### 2 spaces of indentation for blocks or bodies of conditionals
 
-```c++
+```cpp
 if (foo)
   bar();
 ```
 
 or
 
-```c++
+```cpp
 if (foo) {
   bar();
   baz();
@@ -102,7 +102,7 @@ Braces are optional if the statement body only has one line.
 
 ### 4 spaces of indentation for statement continuations
 
-```c++
+```cpp
 VeryLongTypeName very_long_result = SomeValueWithAVeryLongName +
     SomeOtherValueWithAVeryLongName;
 ```
@@ -111,7 +111,7 @@ Operators are before the line break in these cases.
 
 ### Align function arguments vertically
 
-```c++
+```cpp
 void FunctionWithAVeryLongName(int parameter_with_a_very_long_name,
                                double other_parameter_with_a_very_long_name,
                                ...);
@@ -119,7 +119,7 @@ void FunctionWithAVeryLongName(int parameter_with_a_very_long_name,
 
 If that doesn’t work, break after the `(` and use 4 spaces of indentation:
 
-```c++
+```cpp
 void FunctionWithAReallyReallyReallyLongNameSeriouslyStopIt(
     int okay_there_is_no_space_left_in_the_previous_line,
     ...);
@@ -129,7 +129,7 @@ void FunctionWithAReallyReallyReallyLongNameSeriouslyStopIt(
 
 Long initialization lists are formatted like this:
 
-```c++
+```cpp
 HandleWrap::HandleWrap(Environment* env,
                        Local<Object> object,
                        uv_handle_t* handle,
@@ -144,7 +144,7 @@ HandleWrap::HandleWrap(Environment* env,
 Exceptions are simple getters/setters, which are named `property_name()` and
 `set_property_name()`, respectively.
 
-```c++
+```cpp
 class FooBar {
  public:
   void DoSomething();
@@ -157,7 +157,7 @@ class FooBar {
 
 ### `snake_case` for local variables and parameters
 
-```c++
+```cpp
 int FunctionThatDoesSomething(const char* important_string) {
   const char* pointer_into_string = important_string;
 }
@@ -165,7 +165,7 @@ int FunctionThatDoesSomething(const char* important_string) {
 
 ### `snake_case_` for private class fields
 
-```c++
+```cpp
 class Foo {
  private:
   int counter_ = 0;
@@ -176,7 +176,7 @@ class Foo {
 
 For plain C-like structs snake_case can be used.
 
-```c++
+```cpp
 struct foo_bar {
   int name;
 }
@@ -184,14 +184,14 @@ struct foo_bar {
 
 ### Space after `template`
 
-```c++
+```cpp
 template <typename T>
 class FancyContainer {
  ...
 }
 ```
 
-## Memory Management
+## Memory management
 
 ### Memory allocation
 
@@ -208,7 +208,7 @@ Use explicit comparisons to `nullptr` when testing pointers, i.e.
 `if (foo == nullptr)` instead of `if (foo)` and
 `foo != nullptr` instead of `!foo`.
 
-### Ownership and Smart Pointers
+### Ownership and smart pointers
 
 * [R.20][]: Use `std::unique_ptr` or `std::shared_ptr` to represent ownership
 * [R.21][]: Prefer `unique_ptr` over `shared_ptr` unless you need to share
@@ -232,7 +232,7 @@ Using non-const references often obscures which values are changed by an
 assignment. Consider using a pointer instead, which requires more explicit
 syntax to indicate that modifications take place.
 
-```c++
+```cpp
 class ExampleClass {
  public:
   explicit ExampleClass(OtherClass* other_ptr) : pointer_to_other_(other_ptr) {}
@@ -269,7 +269,7 @@ When working with typed arrays that involve direct data modification
 from C++, use an `AliasedBuffer` when possible. The API abstraction and
 the usage scope of `AliasedBuffer` are documented in [aliased_buffer.h][].
 
-```c++
+```cpp
 // Create an AliasedBuffer.
 AliasedBuffer<uint32_t, v8::Uint32Array> data;
 ...
@@ -391,16 +391,16 @@ side effects.
 Node.js is built [without C++ exception handling][], so code using `throw` or
 even `try` and `catch` **will** break.
 
-[C++ Core Guidelines]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+[C++ Core Guidelines]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+[ES.47]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-nullptr
+[ES.48]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-casts
+[ES.49]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-casts-named
 [Google C++ Style Guide]: https://google.github.io/styleguide/cppguide.html
 [Google’s `cpplint`]: https://github.com/google/styleguide
-[errors]: https://github.com/nodejs/node/blob/master/doc/guides/using-internal-errors.md
-[ES.47]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-nullptr
-[ES.48]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-casts
-[ES.49]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Res-casts-named
-[R.20]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-owner
-[R.21]: http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-unique
+[R.20]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-owner
+[R.21]: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rr-unique
 [Run Time Type Information]: https://en.wikipedia.org/wiki/Run-time_type_information
+[aliased_buffer.h]: https://github.com/nodejs/node/blob/HEAD/src/aliased_buffer.h#L12
 [cppref_auto_ptr]: https://en.cppreference.com/w/cpp/memory/auto_ptr
+[errors]: https://github.com/nodejs/node/blob/HEAD/doc/guides/using-internal-errors.md
 [without C++ exception handling]: https://gcc.gnu.org/onlinedocs/libstdc++/manual/using_exceptions.html#intro.using.exception.no
-[aliased_buffer.h]: https://github.com/nodejs/node/blob/master/src/aliased_buffer.h#L12
