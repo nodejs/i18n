@@ -903,8 +903,9 @@ the value is `undefined`, the stream is not yet ready for use.
 All [`Http2Stream`][] instances are destroyed either when:
 
 * An `RST_STREAM` frame for the stream is received by the connected peer,
-  and pending data has been read.
-* The `http2stream.close()` method is called, and pending data has been read.
+  and (for client streams only) pending data has been read.
+* The `http2stream.close()` method is called, and (for client streams only)
+  pending data has been read.
 * The `http2stream.destroy()` or `http2session.destroy()` methods are called.
 
 When an `Http2Stream` instance is destroyed, an attempt will be made to send an
@@ -1864,7 +1865,9 @@ added: v8.4.0
 The `'unknownProtocol'` event is emitted when a connecting client fails to
 negotiate an allowed protocol (i.e. HTTP/2 or HTTP/1.1). The event handler
 receives the socket for handling. If no listener is registered for this event,
-the connection is terminated. See the [Compatibility API][].
+the connection is terminated. A timeout may be specified using the
+`'unknownProtocolTimeout'` option passed to [`http2.createSecureServer()`][].
+See the [Compatibility API][].
 
 #### server.close([callback])
 <!-- YAML
@@ -1900,6 +1903,12 @@ error will be thrown.
 <!-- YAML
 added: v8.4.0
 changes:
+  - version: v10.24.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/248
+    description: Added `unknownProtocolTimeout` option with a default of 10000.
+  - version: v10.21.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/204
+    description: Added `maxSettings` option with a default of 32.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
@@ -1917,6 +1926,8 @@ changes:
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size
     for deflating header fields. **Default:** `4Kib`.
+  * `maxSettings` {number} Sets the maximum number of settings entries per
+    `SETTINGS` frame. The minimum value allowed is `1`. **Default:** `32`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session`
     is permitted to use. The value is expressed in terms of number of megabytes,
     e.g. `1` equal 1 megabyte. The minimum value allowed is `1`.
@@ -1975,6 +1986,10 @@ changes:
     `Http2ServerResponse` class to use.
     Useful for extending the original `Http2ServerResponse`.
     **Default:** `Http2ServerResponse`.
+  * `unknownProtocolTimeout` {number} Specifies a timeout in milliseconds that
+    a server should wait when an [`'unknownProtocol'`][] is emitted. If the
+    socket has not been destroyed by that time the server will destroy it.
+    **Default:** `10000`.
 * `onRequestHandler` {Function} See [Compatibility API][]
 * Returns: {Http2Server}
 
@@ -2010,6 +2025,12 @@ server.listen(80);
 <!-- YAML
 added: v8.4.0
 changes:
+  - version: v10.24.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/248
+    description: Added `unknownProtocolTimeout` option with a default of 10000.
+  - version: v10.21.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/204
+    description: Added `maxSettings` option with a default of 32.
   - version: v10.12.0
     pr-url: https://github.com/nodejs/node/pull/22956
     description: Added the `origins` option to automatically send an `ORIGIN`
@@ -2031,6 +2052,8 @@ changes:
     **Default:** `false`.
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size
     for deflating header fields. **Default:** `4Kib`.
+  * `maxSettings` {number} Sets the maximum number of settings entries per
+    `SETTINGS` frame. The minimum value allowed is `1`. **Default:** `32`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session`
     is permitted to use. The value is expressed in terms of number of megabytes,
     e.g. `1` equal 1 megabyte. The minimum value allowed is `1`. This is a
@@ -2079,6 +2102,10 @@ changes:
     servers, the identity options (`pfx` or `key`/`cert`) are usually required.
   * `origins` {string[]} An array of origin strings to send within an `ORIGIN`
     frame immediately following creation of a new server `Http2Session`.
+  * `unknownProtocolTimeout` {number} Specifies a timeout in milliseconds that
+    a server should wait when an [`'unknownProtocol'`][] event is emitted. If
+    the socket has not been destroyed by that time the server will destroy it.
+    **Default:** `10000`.
 * `onRequestHandler` {Function} See [Compatibility API][]
 * Returns: {Http2SecureServer}
 
@@ -2112,6 +2139,12 @@ server.listen(80);
 <!-- YAML
 added: v8.4.0
 changes:
+  - version: v10.24.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/248
+    description: Added `unknownProtocolTimeout` option with a default of 10000.
+  - version: v10.21.0
+    pr-url: https://github.com/nodejs-private/node-private/pull/204
+    description: Added `maxSettings` option with a default of 32.
   - version: v8.9.3
     pr-url: https://github.com/nodejs/node/pull/17105
     description: Added the `maxOutstandingPings` option with a default limit of
@@ -2126,6 +2159,8 @@ changes:
 * `options` {Object}
   * `maxDeflateDynamicTableSize` {number} Sets the maximum dynamic table size
     for deflating header fields. **Default:** `4Kib`.
+  * `maxSettings` {number} Sets the maximum number of settings entries per
+    `SETTINGS` frame. The minimum value allowed is `1`. **Default:** `32`.
   * `maxSessionMemory`{number} Sets the maximum memory that the `Http2Session`
     is permitted to use. The value is expressed in terms of number of megabytes,
     e.g. `1` equal 1 megabyte. The minimum value allowed is `1`.
@@ -2178,6 +2213,10 @@ changes:
     instance passed to `connect` and the `options` object, and returns any
     [`Duplex`][] stream that is to be used as the connection for this session.
   * ...: Any [`net.connect()`][] or [`tls.connect()`][] options can be provided.
+  * `unknownProtocolTimeout` {number} Specifies a timeout in milliseconds that
+    a server should wait when an [`'unknownProtocol'`][] event is emitted. If
+    the socket has not been destroyed by that time the server will destroy it.
+    **Default:** `10000`.
 * `listener` {Function}
 * Returns: {ClientHttp2Session}
 
