@@ -1,4 +1,4 @@
-# About this Documentation
+# About this documentation
 
 <!--introduced_in=v0.10.0-->
 <!-- type=misc -->
@@ -12,7 +12,7 @@ Node.js is a JavaScript runtime built on the [V8 JavaScript engine][].
 Report errors in this documentation in [the issue tracker][]. See
 [the contributing guide][] for directions on how to submit pull requests.
 
-## Stability Index
+## Stability index
 
 <!--type=misc-->
 
@@ -37,13 +37,23 @@ The stability indices are as follows:
 > Stability: 2 - Stable. Compatibility with the npm ecosystem is a high
 > priority.
 
+<!-- separator -->
+
+> Stability: 3 - Legacy. The feature is no longer recommended for use. While it
+> likely will not be removed, and is still covered by semantic-versioning
+> guarantees, use of the feature should be avoided.
+
 Use caution when making use of Experimental features, particularly within
-modules. End users may not be aware that experimental features are being used.
-Bugs or behavior changes may surprise end users when Experimental API
+modules. Users may not be aware that experimental features are being used.
+Bugs or behavior changes may surprise users when Experimental API
 modifications occur. To avoid surprises, use of an Experimental feature may need
 a command-line flag. Experimental features may also emit a [warning][].
 
-## JSON Output
+## Stability overview
+<!-- STABILITY_OVERVIEW_SLOT_BEGIN -->
+<!-- STABILITY_OVERVIEW_SLOT_END -->
+
+## JSON output
 <!-- YAML
 added: v0.6.12
 -->
@@ -60,7 +70,7 @@ Most Unix system calls have Windows analogues. Still, behavior differences may
 be unavoidable.
 
 [Semantic Versioning]: https://semver.org/
-[the contributing guide]: https://github.com/nodejs/node/blob/master/CONTRIBUTING.md
-[the issue tracker]: https://github.com/nodejs/node/issues/new
 [V8 JavaScript engine]: https://v8.dev/
-[warning]: process.html#process_event_warning
+[the contributing guide]: https://github.com/nodejs/node/blob/HEAD/CONTRIBUTING.md
+[the issue tracker]: https://github.com/nodejs/node/issues/new
+[warning]: process.md#process_event_warning
