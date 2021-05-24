@@ -1,4 +1,4 @@
-# C++ Embedder API
+# C++ embedder API
 
 <!--introduced_in=v14.0.0-->
 
@@ -33,8 +33,9 @@ Node.js requires some per-process state management in order to run:
 The following example shows how these can be set up. Some class names are from
 the `node` and `v8` C++ namespaces, respectively.
 
-```c++
+```cpp
 int main(int argc, char** argv) {
+  argv = uv_setup_args(argc, argv);
   std::vector<std::string> args(argv, argv + argc);
   std::vector<std::string> exec_args;
   std::vector<std::string> errors;
@@ -93,7 +94,7 @@ The `node::NewIsolate()` helper function creates a `v8::Isolate`,
 sets it up with some Node.js-specific hooks (e.g. the Node.js error handler),
 and registers it with the platform automatically.
 
-```c++
+```cpp
 int RunNodeInstance(MultiIsolatePlatform* platform,
                     const std::vector<std::string>& args,
                     const std::vector<std::string>& exec_args) {
@@ -219,8 +220,8 @@ int RunNodeInstance(MultiIsolatePlatform* platform,
 }
 ```
 
-[`process.memoryUsage()`]: process.html#process_process_memoryusage
-[CLI options]: cli.html
-[deprecation policy]: deprecations.html
-[embedtest.cc]: https://github.com/nodejs/node/blob/master/test/embedding/embedtest.cc
-[src/node.h]: https://github.com/nodejs/node/blob/master/src/node.h
+[CLI options]: cli.md
+[`process.memoryUsage()`]: process.md#process_process_memoryusage
+[deprecation policy]: deprecations.md
+[embedtest.cc]: https://github.com/nodejs/node/blob/HEAD/test/embedding/embedtest.cc
+[src/node.h]: https://github.com/nodejs/node/blob/HEAD/src/node.h
