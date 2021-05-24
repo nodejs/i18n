@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/http.js -->
+
 To use the HTTP server and client one must `require('http')`.
 
 The HTTP interfaces in Node.js are designed to support many features
@@ -110,6 +112,17 @@ http.get({
 ### `new Agent([options])`
 <!-- YAML
 added: v0.3.4
+changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36685
+    description: Change the default scheduling from 'fifo' to 'lifo'.
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/33617
+    description: Add `maxTotalSockets` option to agent constructor.
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/33278
+    description: Add `scheduling` option to specify the free socket
+                 scheduling strategy.
 -->
 
 * `options` {Object} Set of configurable options to set on the agent.
@@ -123,15 +136,37 @@ added: v0.3.4
     options are respectively set to `false` and `Infinity`, in which case
     `Connection: close` will be used. **Default:** `false`.
   * `keepAliveMsecs` {number} When using the `keepAlive` option, specifies
-    the [initial delay](net.html#net_socket_setkeepalive_enable_initialdelay)
+    the [initial delay](net.md#net_socket_setkeepalive_enable_initialdelay)
     for TCP Keep-Alive packets. Ignored when the
     `keepAlive` option is `false` or `undefined`. **Default:** `1000`.
-  * `maxSockets` {number} Maximum number of sockets to allow per
-    host. Each request will use a new socket until the maximum is reached.
+  * `maxSockets` {number} Maximum number of sockets to allow per host.
+     If the same host opens multiple concurrent connections, each request
+     will use new socket until the `maxSockets` value is reached.
+     If the host attempts to open more connections than `maxSockets`,
+     the additional requests will enter into a pending request queue, and
+     will enter active connection state when an existing connection terminates.
+     This makes sure there are at most `maxSockets` active connections at
+     any point in time, from a given host.
+    **Default:** `Infinity`.
+  * `maxTotalSockets` {number} Maximum number of sockets allowed for
+    all hosts in total. Each request will use a new socket
+    until the maximum is reached.
     **Default:** `Infinity`.
   * `maxFreeSockets` {number} Maximum number of sockets to leave open
     in a free state. Only relevant if `keepAlive` is set to `true`.
     **Default:** `256`.
+  * `scheduling` {string} Scheduling strategy to apply when picking
+    the next free socket to use. It can be `'fifo'` or `'lifo'`.
+    The main difference between the two scheduling strategies is that `'lifo'`
+    selects the most recently used socket, while `'fifo'` selects
+    the least recently used socket.
+    In case of a low rate of request per second, the `'lifo'` scheduling
+    will lower the risk of picking a socket that might have been closed
+    by the server due to inactivity.
+    In case of a high rate of request per second,
+    the `'fifo'` scheduling will maximize the number of open sockets,
+    while the `'lifo'` scheduling will keep it as low as possible.
+    **Default:** `'lifo'`.
   * `timeout` {number} Socket timeout in milliseconds.
     This will set the timeout when the socket is created.
 
@@ -225,8 +260,8 @@ Destroy any sockets that are currently in use by the agent.
 
 It is usually not necessary to do this. However, if using an
 agent with `keepAlive` enabled, then it is best to explicitly shut down
-the agent when it will no longer be used. Otherwise,
-sockets may hang open for quite a long time before the server
+the agent when it is no longer needed. Otherwise,
+sockets might stay open for quite a long time before the server
 terminates them.
 
 ### `agent.freeSockets`
@@ -282,6 +317,16 @@ added: v0.3.6
 
 By default set to `Infinity`. Determines how many concurrent sockets the agent
 can have open per origin. Origin is the returned value of [`agent.getName()`][].
+
+### `agent.maxTotalSockets`
+<!-- YAML
+added: v14.5.0
+-->
+
+* {number}
+
+By default set to `Infinity`. Determines how many concurrent sockets the agent
+can have open. Unlike `maxSockets`, this parameter applies across all origins.
 
 ### `agent.requests`
 <!-- YAML
@@ -629,6 +674,11 @@ is finished.
 ### `request.destroy([error])`
 <!-- YAML
 added: v0.3.0
+changes:
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/32789
+    description: The function returns `this` for consistency with other Readable
+                 streams.
 -->
 
 * `error` {Error} Optional, an error to emit with `'error'` event.
@@ -706,6 +756,24 @@ const cookie = request.getHeader('Cookie');
 // 'cookie' is of type string[]
 ```
 
+### `request.getRawHeaderNames()`
+<!-- YAML
+added: v14.17.0
+-->
+
+* Returns: {string[]}
+
+Returns an array containing the unique names of the current outgoing raw
+headers. Header names are returned with their exact casing being set.
+
+```js
+request.setHeader('Foo', 'bar');
+request.setHeader('Set-Cookie', ['foo=bar', 'bar=baz']);
+
+const headerNames = request.getRawHeaderNames();
+// headerNames === ['Foo', 'Set-Cookie']
+```
+
 ### `request.maxHeadersCount`
 
 * {number} **Default:** `2000`
@@ -718,6 +786,27 @@ added: v0.4.0
 -->
 
 * {string} The request path.
+
+### `request.method`
+<!-- YAML
+added: v0.1.97
+-->
+
+* {string} The request method.
+
+### `request.host`
+<!-- YAML
+added: v14.5.0
+-->
+
+* {string} The request host.
+
+### `request.protocol`
+<!-- YAML
+added: v14.5.0
+-->
+
+* {string} The request protocol.
 
 ### `request.removeHeader(name)`
 <!-- YAML
@@ -861,8 +950,7 @@ added: v0.3.0
 
 Reference to the underlying socket. Usually users will not want to access
 this property. In particular, the socket will not emit `'readable'` events
-because of how the protocol parser attaches to the socket. The `socket`
-may also be accessed via `request.connection`.
+because of how the protocol parser attaches to the socket.
 
 ```js
 const http = require('http');
@@ -979,20 +1067,20 @@ not be emitted.
 <!-- YAML
 added: v0.1.94
 changes:
-  - version: v6.0.0
-    pr-url: https://github.com/nodejs/node/pull/4557
-    description: The default action of calling `.destroy()` on the `socket`
-                 will no longer take place if there are listeners attached
-                 for `'clientError'`.
+  - version: v12.0.0
+    pr-url: https://github.com/nodejs/node/pull/25605
+    description: The default behavior will return a 431 Request Header
+                 Fields Too Large if a HPE_HEADER_OVERFLOW error occurs.
   - version: v9.4.0
     pr-url: https://github.com/nodejs/node/pull/17672
     description: The `rawPacket` is the current buffer that just parsed. Adding
                  this buffer to the error object of `'clientError'` event is to
                  make it possible that developers can log the broken packet.
-  - version: v12.0.0
-    pr-url: https://github.com/nodejs/node/pull/25605
-    description: The default behavior will return a 431 Request Header
-                 Fields Too Large if a HPE_HEADER_OVERFLOW error occurs.
+  - version: v6.0.0
+    pr-url: https://github.com/nodejs/node/pull/4557
+    description: The default action of calling `.destroy()` on the `socket`
+                 will no longer take place if there are listeners attached
+                 for `'clientError'`.
 -->
 
 * `exception` {Error}
@@ -1009,8 +1097,8 @@ type other than {net.Socket}.
 
 Default behavior is to try close the socket with a HTTP '400 Bad Request',
 or a HTTP '431 Request Header Fields Too Large' in the case of a
-[`HPE_HEADER_OVERFLOW`][] error. If the socket is not writable it is
-immediately destroyed.
+[`HPE_HEADER_OVERFLOW`][] error. If the socket is not writable or has already
+written data it is immediately destroyed.
 
 `socket` is the [`net.Socket`][] object that the error originated from.
 
@@ -1092,7 +1180,7 @@ This event is emitted when a new TCP stream is established. `socket` is
 typically an object of type [`net.Socket`][]. Usually users will not want to
 access this event. In particular, the socket will not emit `'readable'` events
 because of how the protocol parser attaches to the socket. The `socket` can
-also be accessed at `request.connection`.
+also be accessed at `request.socket`.
 
 This event can also be explicitly emitted by users to inject connections
 into the HTTP server. In that case, any [`Duplex`][] stream can be passed.
@@ -1121,7 +1209,7 @@ per connection (in the case of HTTP Keep-Alive connections).
 added: v0.1.94
 changes:
   - version: v10.0.0
-    pr-url: v10.0.0
+    pr-url: https://github.com/nodejs/node/pull/19981
     description: Not listening to this event no longer causes the socket
                  to be destroyed if a client sends an Upgrade header.
 -->
@@ -1193,6 +1281,23 @@ added: v0.7.0
 * {number} **Default:** `2000`
 
 Limits maximum incoming headers count. If set to 0, no limit will be applied.
+
+### `server.requestTimeout`
+<!-- YAML
+added: v14.11.0
+-->
+
+* {number} **Default:** `0`
+
+Sets the timeout value in milliseconds for receiving the entire request from
+the client.
+
+If the timeout expires, the server responds with status 408 without
+forwarding the request to the request listener and then closes the connection.
+
+It must be set to a non-zero value (e.g. 120 seconds) to protect against
+potential Denial-of-Service attacks in case the server is deployed without a
+reverse proxy in front.
 
 ### `server.setTimeout([msecs][, callback])`
 <!-- YAML
@@ -1273,7 +1378,8 @@ passed as the second parameter to the [`'request'`][] event.
 added: v0.6.7
 -->
 
-Indicates that the underlying connection was terminated.
+Indicates that the response is completed, or its underlying connection was
+terminated prematurely (before the response completion).
 
 ### Event: `'finish'`
 <!-- YAML
@@ -1505,13 +1611,17 @@ added: v0.4.0
 
 * `name` {string}
 * `value` {any}
+* Returns: {http.ServerResponse}
+
+Returns the response object.
 
 Sets a single header value for implicit headers. If this header already exists
 in the to-be-sent headers, its value will be replaced. Use an array of strings
 here to send multiple headers with the same name. Non-string values will be
 stored without modification. Therefore, [`response.getHeader()`][] may return
 non-string values. However, the non-string values will be converted to strings
-for network transmission.
+for network transmission. The same response object is returned to the caller,
+to enable call chaining.
 
 ```js
 response.setHeader('Content-Type', 'text/html');
@@ -1575,8 +1685,7 @@ added: v0.3.0
 Reference to the underlying socket. Usually users will not want to access
 this property. In particular, the socket will not emit `'readable'` events
 because of how the protocol parser attaches to the socket. After
-`response.end()`, the property is nulled. The `socket` may also be accessed
-via `response.connection`.
+`response.end()`, the property is nulled.
 
 ```js
 const http = require('http');
@@ -1708,13 +1817,18 @@ the request body should be sent. See the [`'checkContinue'`][] event on
 <!-- YAML
 added: v0.1.30
 changes:
+  - version: v14.14.0
+    pr-url: https://github.com/nodejs/node/pull/35274
+    description: Allow passing headers as an array.
   - version:
      - v11.10.0
      - v10.17.0
     pr-url: https://github.com/nodejs/node/pull/25974
     description: Return `this` from `writeHead()` to allow chaining with
                  `end()`.
-  - version: v5.11.0, v4.4.5
+  - version:
+    - v5.11.0
+    - v4.4.5
     pr-url: https://github.com/nodejs/node/pull/6291
     description: A `RangeError` is thrown if `statusCode` is not a number in
                  the range `[100, 999]`.
@@ -1722,13 +1836,18 @@ changes:
 
 * `statusCode` {number}
 * `statusMessage` {string}
-* `headers` {Object}
+* `headers` {Object|Array}
 * Returns: {http.ServerResponse}
 
 Sends a response header to the request. The status code is a 3-digit HTTP
 status code, like `404`. The last argument, `headers`, are the response headers.
 Optionally one can give a human-readable `statusMessage` as the second
 argument.
+
+`headers` may be an `Array` where the keys and values are in the same list.
+It is *not* a list of tuples. So, the even-numbered offsets are key values,
+and the odd-numbered offsets are the associated values. The array is in the same
+format as `request.rawHeaders`.
 
 Returns a reference to the `ServerResponse`, so that calls can be chained.
 
@@ -1858,9 +1977,15 @@ const req = http.request({
 ### `message.destroy([error])`
 <!-- YAML
 added: v0.3.0
+changes:
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/32789
+    description: The function returns `this` for consistency with other Readable
+                 streams.
 -->
 
 * `error` {Error}
+* Returns: {this}
 
 Calls `destroy()` on the socket that received the `IncomingMessage`. If `error`
 is provided, an `'error'` event is emitted on the socket and `error` is passed
@@ -1890,9 +2015,9 @@ Duplicates in raw headers are handled in the following ways, depending on the
 header name:
 
 * Duplicates of `age`, `authorization`, `content-length`, `content-type`,
-`etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`,
-`last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`,
-`retry-after`, `server`, or `user-agent` are discarded.
+  `etag`, `expires`, `from`, `host`, `if-modified-since`, `if-unmodified-since`,
+  `last-modified`, `location`, `max-forwards`, `proxy-authorization`, `referer`,
+  `retry-after`, `server`, or `user-agent` are discarded.
 * `set-cookie` is always an array. Duplicates are added to the array.
 * For duplicate `cookie` headers, the values are joined together with '; '.
 * For all other headers, the values are joined together with ', '.
@@ -1970,7 +2095,7 @@ added: v0.5.9
 * `callback` {Function}
 * Returns: {http.IncomingMessage}
 
-Calls `message.connection.setTimeout(msecs, callback)`.
+Calls `message.socket.setTimeout(msecs, callback)`.
 
 ### `message.socket`
 <!-- YAML
@@ -2029,13 +2154,12 @@ added: v0.1.90
 
 **Only valid for request obtained from [`http.Server`][].**
 
-Request URL string. This contains only the URL that is
-present in the actual HTTP request. If the request is:
+Request URL string. This contains only the URL that is present in the actual
+HTTP request. Take the following request:
 
-```txt
-GET /status?name=ryan HTTP/1.1\r\n
-Accept: text/plain\r\n
-\r\n
+```http
+GET /status?name=ryan HTTP/1.1
+Accept: text/plain
 ```
 
 To parse the URL into its parts:
@@ -2099,7 +2223,9 @@ changes:
   - version: v13.3.0
     pr-url: https://github.com/nodejs/node/pull/30570
     description: The `maxHeaderSize` option is supported now.
-  - version: v9.6.0, v8.12.0
+  - version:
+    - v9.6.0
+    - v8.12.0
     pr-url: https://github.com/nodejs/node/pull/15752
     description: The `options` argument is supported now.
 -->
@@ -2161,11 +2287,13 @@ The `callback` is invoked with a single argument that is an instance of
 JSON fetching example:
 
 ```js
-http.get('http://nodejs.org/dist/index.json', (res) => {
+http.get('http://localhost:8000/', (res) => {
   const { statusCode } = res;
   const contentType = res.headers['content-type'];
 
   let error;
+  // Any 2xx status code signals a successful response but
+  // here we're only checking for 200.
   if (statusCode !== 200) {
     error = new Error('Request Failed.\n' +
                       `Status Code: ${statusCode}`);
@@ -2194,6 +2322,16 @@ http.get('http://nodejs.org/dist/index.json', (res) => {
 }).on('error', (e) => {
   console.error(`Got error: ${e.message}`);
 });
+
+// Create a local server to receive data from
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({
+    data: 'Hello World!'
+  }));
+});
+
+server.listen(8000);
 ```
 
 ## `http.globalAgent`
@@ -2226,6 +2364,9 @@ This can be overridden for servers and client requests by passing the
 <!-- YAML
 added: v0.3.6
 changes:
+  - version: v14.17.0
+    pr-url: https://github.com/nodejs/node/pull/36048
+    description: It is possible to abort a request with an AbortSignal.
   - version:
      - v13.8.0
      - v12.15.0
@@ -2264,6 +2405,7 @@ changes:
     `hostname`. Valid values are `4` or `6`. When unspecified, both IP v4 and
     v6 will be used.
   * `headers` {Object} An object containing request headers.
+  * `hints` {number} Optional [`dns.lookup()` hints][].
   * `host` {string} A domain name or IP address of the server to issue the
     request to. **Default:** `'localhost'`.
   * `hostname` {string} Alias for `host`. To support [`url.parse()`][],
@@ -2273,6 +2415,7 @@ changes:
     avoided. See [`--insecure-http-parser`][] for more information.
     **Default:** `false`
   * `localAddress` {string} Local interface to bind for network connections.
+  * `localPort` {number} Local port to connect from.
   * `lookup` {Function} Custom lookup function. **Default:** [`dns.lookup()`][].
   * `maxHeaderSize` {number} Optionally overrides the value of
     [`--max-http-header-size`][] for requests received from the server, i.e.
@@ -2293,6 +2436,8 @@ changes:
      or `port` is specified, those specify a TCP Socket).
   * `timeout` {number}: A number specifying the socket timeout in milliseconds.
     This will set the timeout before the socket is connected.
+  * `signal` {AbortSignal}: An AbortSignal that may be used to abort an ongoing
+    request.
 * `callback` {Function}
 * Returns: {http.ClientRequest}
 
@@ -2480,6 +2625,10 @@ events will be emitted in the following order:
 Setting the `timeout` option or using the `setTimeout()` function will
 not abort the request or do anything besides add a `'timeout'` event.
 
+Passing an `AbortSignal` and then calling `abort` on the corresponding
+`AbortController` will behave the same way as calling `.destroy()` on the
+request itself.
+
 ## `http.validateHeaderName(name)`
 <!-- YAML
 added: v14.3.0
@@ -2550,22 +2699,24 @@ try {
 }
 ```
 
-[`--insecure-http-parser`]: cli.html#cli_insecure_http_parser
-[`--max-http-header-size`]: cli.html#cli_max_http_header_size_size
+[`--insecure-http-parser`]: cli.md#cli_insecure_http_parser
+[`--max-http-header-size`]: cli.md#cli_max_http_header_size_size
 [`'checkContinue'`]: #http_event_checkcontinue
+[`'finish'`]: #http_event_finish
 [`'request'`]: #http_event_request
 [`'response'`]: #http_event_response
 [`'upgrade'`]: #http_event_upgrade
 [`Agent`]: #http_class_http_agent
-[`Buffer.byteLength()`]: buffer.html#buffer_class_method_buffer_bytelength_string_encoding
-[`Duplex`]: stream.html#stream_class_stream_duplex
-[`TypeError`]: errors.html#errors_class_typeerror
-[`URL`]: url.html#url_the_whatwg_url_api
+[`Buffer.byteLength()`]: buffer.md#buffer_static_method_buffer_bytelength_string_encoding
+[`Duplex`]: stream.md#stream_class_stream_duplex
+[`HPE_HEADER_OVERFLOW`]: errors.md#errors_hpe_header_overflow
+[`TypeError`]: errors.md#errors_class_typeerror
+[`URL`]: url.md#url_the_whatwg_url_api
 [`agent.createConnection()`]: #http_agent_createconnection_options_callback
 [`agent.getName()`]: #http_agent_getname_options
 [`destroy()`]: #http_agent_destroy
-[`dns.lookup()`]: dns.html#dns_dns_lookup_hostname_options_callback
-[`'finish'`]: #http_event_finish
+[`dns.lookup()`]: dns.md#dns_dns_lookup_hostname_options_callback
+[`dns.lookup()` hints]: dns.md#dns_supported_getaddrinfo_flags
 [`getHeader(name)`]: #http_request_getheader_name
 [`http.Agent`]: #http_class_http_agent
 [`http.ClientRequest`]: #http_class_http_clientrequest
@@ -2575,11 +2726,11 @@ try {
 [`http.globalAgent`]: #http_http_globalagent
 [`http.request()`]: #http_http_request_options_callback
 [`message.headers`]: #http_message_headers
-[`net.Server.close()`]: net.html#net_server_close_callback
-[`net.Server`]: net.html#net_class_net_server
-[`net.Socket`]: net.html#net_class_net_socket
-[`net.createConnection()`]: net.html#net_net_createconnection_options_connectlistener
-[`new URL()`]: url.html#url_constructor_new_url_input_base
+[`net.Server.close()`]: net.md#net_server_close_callback
+[`net.Server`]: net.md#net_class_net_server
+[`net.Socket`]: net.md#net_class_net_socket
+[`net.createConnection()`]: net.md#net_net_createconnection_options_connectlistener
+[`new URL()`]: url.md#url_new_url_input_base
 [`removeHeader(name)`]: #http_request_removeheader_name
 [`request.end()`]: #http_request_end_data_encoding_callback
 [`request.destroy()`]: #http_request_destroy_error
@@ -2587,7 +2738,7 @@ try {
 [`request.getHeader()`]: #http_request_getheader_name
 [`request.setHeader()`]: #http_request_setheader_name_value
 [`request.setTimeout()`]: #http_request_settimeout_timeout_callback
-[`request.socket.getPeerCertificate()`]: tls.html#tls_tlssocket_getpeercertificate_detailed
+[`request.socket.getPeerCertificate()`]: tls.md#tls_tlssocket_getpeercertificate_detailed
 [`request.socket`]: #http_request_socket
 [`request.writableFinished`]: #http_request_writablefinished
 [`request.writableEnded`]: #http_request_writableended
@@ -2602,17 +2753,16 @@ try {
 [`response.write(data, encoding)`]: #http_response_write_chunk_encoding_callback
 [`response.writeContinue()`]: #http_response_writecontinue
 [`response.writeHead()`]: #http_response_writehead_statuscode_statusmessage_headers
-[`server.listen()`]: net.html#net_server_listen
+[`server.listen()`]: net.md#net_server_listen
 [`server.timeout`]: #http_server_timeout
 [`setHeader(name, value)`]: #http_request_setheader_name_value
-[`socket.connect()`]: net.html#net_socket_connect_options_connectlistener
-[`socket.setKeepAlive()`]: net.html#net_socket_setkeepalive_enable_initialdelay
-[`socket.setNoDelay()`]: net.html#net_socket_setnodelay_nodelay
-[`socket.setTimeout()`]: net.html#net_socket_settimeout_timeout_callback
-[`socket.unref()`]: net.html#net_socket_unref
-[`url.parse()`]: url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost
-[`HPE_HEADER_OVERFLOW`]: errors.html#errors_hpe_header_overflow
-[`writable.destroy()`]: stream.html#stream_writable_destroy_error
-[`writable.destroyed`]: stream.html#stream_writable_destroyed
-[`writable.cork()`]: stream.html#stream_writable_cork
-[`writable.uncork()`]: stream.html#stream_writable_uncork
+[`socket.connect()`]: net.md#net_socket_connect_options_connectlistener
+[`socket.setKeepAlive()`]: net.md#net_socket_setkeepalive_enable_initialdelay
+[`socket.setNoDelay()`]: net.md#net_socket_setnodelay_nodelay
+[`socket.setTimeout()`]: net.md#net_socket_settimeout_timeout_callback
+[`socket.unref()`]: net.md#net_socket_unref
+[`url.parse()`]: url.md#url_url_parse_urlstring_parsequerystring_slashesdenotehost
+[`writable.cork()`]: stream.md#stream_writable_cork
+[`writable.destroy()`]: stream.md#stream_writable_destroy_error
+[`writable.destroyed`]: stream.md#stream_writable_destroyed
+[`writable.uncork()`]: stream.md#stream_writable_uncork
