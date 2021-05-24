@@ -4,6 +4,8 @@
 
 > Stability: 2 - Stable
 
+<!-- source_link=lib/crypto.js -->
+
 The `crypto` module provides cryptographic functionality that includes a set of
 wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign, and verify functions.
 
@@ -104,9 +106,10 @@ console.log(Certificate.verifySpkac(Buffer.from(spkac)));
 
 ### Legacy API
 
-As a still supported legacy interface, it is possible (but not recommended) to
-create new instances of the `crypto.Certificate` class as illustrated in the
-examples below.
+> Stability: 0 - Deprecated
+
+As a legacy interface, it is possible to create new instances of
+the `crypto.Certificate` class as illustrated in the examples below.
 
 #### `new crypto.Certificate()`
 
@@ -279,6 +282,19 @@ Once the `cipher.final()` method has been called, the `Cipher` object can no
 longer be used to encrypt data. Attempts to call `cipher.final()` more than
 once will result in an error being thrown.
 
+### `cipher.getAuthTag()`
+<!-- YAML
+added: v1.0.0
+-->
+
+* Returns: {Buffer} When using an authenticated encryption mode (`GCM`, `CCM`
+  and `OCB` are currently supported), the `cipher.getAuthTag()` method returns a
+  [`Buffer`][] containing the _authentication tag_ that has been computed from
+  the given data.
+
+The `cipher.getAuthTag()` method should only be called after encryption has
+been completed using the [`cipher.final()`][] method.
+
 ### `cipher.setAAD(buffer[, options])`
 <!-- YAML
 added: v1.0.0
@@ -298,19 +314,6 @@ The `options` argument is optional for `GCM` and `OCB`. When using `CCM`, the
 of the plaintext in bytes. See [CCM mode][].
 
 The `cipher.setAAD()` method must be called before [`cipher.update()`][].
-
-### `cipher.getAuthTag()`
-<!-- YAML
-added: v1.0.0
--->
-
-* Returns: {Buffer} When using an authenticated encryption mode (`GCM`, `CCM`
-  and `OCB` are currently supported), the `cipher.getAuthTag()` method returns a
-  [`Buffer`][] containing the _authentication tag_ that has been computed from
-  the given data.
-
-The `cipher.getAuthTag()` method should only be called after encryption has
-been completed using the [`cipher.final()`][] method.
 
 ### `cipher.setAutoPadding([autoPadding])`
 <!-- YAML
@@ -493,7 +496,7 @@ _additional authenticated data_ (AAD) input parameter.
 
 The `options` argument is optional for `GCM`. When using `CCM`, the
 `plaintextLength` option must be specified and its value must match the length
-of the plaintext in bytes. See [CCM mode][].
+of the ciphertext in bytes. See [CCM mode][].
 
 The `decipher.setAAD()` method must be called before [`decipher.update()`][].
 
@@ -785,7 +788,7 @@ assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
 // OK
 ```
 
-### Class Method: `ECDH.convertKey(key, curve[, inputEncoding[, outputEncoding[, format]]])`
+### Static method: `ECDH.convertKey(key, curve[, inputEncoding[, outputEncoding[, format]]])`
 <!-- YAML
 added: v10.0.0
 -->
@@ -837,13 +840,13 @@ console.log(uncompressedKey === ecdh.getPublicKey('hex'));
 <!-- YAML
 added: v0.11.14
 changes:
-  - version: v6.0.0
-    pr-url: https://github.com/nodejs/node/pull/5522
-    description: The default `inputEncoding` changed from `binary` to `utf8`
   - version: v10.0.0
     pr-url: https://github.com/nodejs/node/pull/16849
     description: Changed error format to better support invalid public key
-                 error
+                 error.
+  - version: v6.0.0
+    pr-url: https://github.com/nodejs/node/pull/5522
+    description: The default `inputEncoding` changed from `binary` to `utf8`.
 -->
 
 * `otherPublicKey` {string | Buffer | TypedArray | DataView}
@@ -866,7 +869,7 @@ If `outputEncoding` is given a string will be returned; otherwise a
 `ERR_CRYPTO_ECDH_INVALID_PUBLIC_KEY` error when `otherPublicKey`
 lies outside of the elliptic curve. Since `otherPublicKey` is
 usually supplied from a remote user over an insecure network,
-its recommended for developers to handle this exception accordingly.
+be sure to handle this exception accordingly.
 
 ### `ecdh.generateKeys([encoding[, format]])`
 <!-- YAML
@@ -1027,7 +1030,7 @@ const fs = require('fs');
 const hash = crypto.createHash('sha256');
 
 const input = fs.createReadStream('test.js');
-input.pipe(hash).pipe(process.stdout);
+input.pipe(hash).setEncoding('hex').pipe(process.stdout);
 ```
 
 Example: Using the [`hash.update()`][] and [`hash.digest()`][] methods:
@@ -1214,6 +1217,10 @@ This can be called many times with new data as it is streamed.
 <!-- YAML
 added: v11.6.0
 changes:
+  - version: v14.5.0
+    pr-url: https://github.com/nodejs/node/pull/33360
+    description: Instances of this class can now be passed to worker threads
+                 using `postMessage`.
   - version: v11.13.0
     pr-url: https://github.com/nodejs/node/pull/26438
     description: This class is now exported.
@@ -1229,6 +1236,10 @@ keyword.
 Most applications should consider using the new `KeyObject` API instead of
 passing keys as strings or `Buffer`s due to improved security features.
 
+`KeyObject` instances can be passed to other threads via [`postMessage()`][].
+The receiver obtains a cloned `KeyObject`, and the `KeyObject` does not need to
+be listed in the `transferList` argument.
+
 ### `keyObject.asymmetricKeyType`
 <!-- YAML
 added: v11.6.0
@@ -1238,14 +1249,14 @@ changes:
     description: Added support for `'dh'`.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26960
-    description: Added support for `'rsa-pss'`
+    description: Added support for `'rsa-pss'`.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26786
     description: This property now returns `undefined` for KeyObject
                  instances of unrecognized type instead of aborting.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26774
-    description: Added support for `'x25519'` and `'x448'`
+    description: Added support for `'x25519'` and `'x448'`.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26319
     description: Added support for `'ed25519'` and `'ed448'`.
@@ -1398,6 +1409,11 @@ console.log(verify.verify(publicKey, signature));
 <!-- YAML
 added: v0.1.92
 changes:
+  - version:
+     - v13.2.0
+     - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/29292
+    description: This function now supports IEEE-P1363 DSA and ECDSA signatures.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26960
     description: This function now supports RSA-PSS keys.
@@ -1511,6 +1527,11 @@ This can be called many times with new data as it is streamed.
 <!-- YAML
 added: v0.1.92
 changes:
+  - version:
+     - v13.2.0
+     - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/29292
+    description: This function now supports IEEE-P1363 DSA and ECDSA signatures.
   - version: v12.0.0
     pr-url: https://github.com/nodejs/node/pull/26960
     description: This function now supports RSA-PSS keys.
@@ -1577,7 +1598,7 @@ added: v6.3.0
 
 * Returns: {Object} An object containing commonly used constants for crypto and
   security related operations. The specific constants currently defined are
-  described in [Crypto Constants][].
+  described in [Crypto constants][].
 
 ### `crypto.DEFAULT_ENCODING`
 <!-- YAML
@@ -1591,7 +1612,7 @@ The default encoding to use for functions that can take either strings
 or [buffers][`Buffer`]. The default value is `'buffer'`, which makes methods
 default to [`Buffer`][] objects.
 
-The `crypto.DEFAULT_ENCODING` mechanism is provided for backwards compatibility
+The `crypto.DEFAULT_ENCODING` mechanism is provided for backward compatibility
 with legacy programs that expect `'latin1'` to be the default encoding.
 
 New applications should expect the default to be `'buffer'`.
@@ -2049,7 +2070,7 @@ and it will be impossible to extract the private key from the returned object.
 added: v11.6.0
 -->
 
-* `key` {Buffer}
+* `key` {Buffer | TypedArray | DataView}
 * Returns: {KeyObject}
 
 Creates and returns a new key object containing a secret key for symmetric
@@ -2064,7 +2085,7 @@ added: v0.1.92
 * `options` {Object} [`stream.Writable` options][]
 * Returns: {Sign}
 
-Creates and returns a `Sign` object that uses the given `algorithm`.  Use
+Creates and returns a `Sign` object that uses the given `algorithm`. Use
 [`crypto.getHashes()`][] to obtain the names of the available digest algorithms.
 Optional `options` argument controls the `stream.Writable` behavior.
 
@@ -2782,6 +2803,59 @@ threadpool request. To minimize threadpool task length variation, partition
 large `randomFill` requests when doing so as part of fulfilling a client
 request.
 
+### `crypto.randomInt([min, ]max[, callback])`
+<!-- YAML
+added: v14.10.0
+-->
+
+* `min` {integer} Start of random range (inclusive). **Default**: `0`.
+* `max` {integer} End of random range (exclusive).
+* `callback` {Function} `function(err, n) {}`.
+
+Return a random integer `n` such that `min <= n < max`.  This
+implementation avoids [modulo bias][].
+
+The range (`max - min`) must be less than 2<sup>48</sup>. `min` and `max` must
+be [safe integers][].
+
+If the `callback` function is not provided, the random integer is
+generated synchronously.
+
+```js
+// Asynchronous
+crypto.randomInt(3, (err, n) => {
+  if (err) throw err;
+  console.log(`Random number chosen from (0, 1, 2): ${n}`);
+});
+```
+
+```js
+// Synchronous
+const n = crypto.randomInt(3);
+console.log(`Random number chosen from (0, 1, 2): ${n}`);
+```
+
+```js
+// With `min` argument
+const n = crypto.randomInt(1, 7);
+console.log(`The dice rolled: ${n}`);
+```
+
+### `crypto.randomUUID([options])`
+<!-- YAML
+added: v14.17.0
+-->
+
+* `options` {Object}
+  * `disableEntropyCache` {boolean} By default, to improve performance,
+    Node.js generates and caches enough random data to generate up to
+    128 random UUIDs. To generate a UUID without using the cache, set
+    `disableEntropyCache` to `true`. **Defaults**: `false`.
+* Returns: {string}
+
+Generates a random [RFC 4122][] Version 4 UUID. The UUID is generated using a
+cryptographic pseudorandom number generator.
+
 ### `crypto.scrypt(password, salt, keylen[, options], callback)`
 <!-- YAML
 added: v10.5.0
@@ -2831,12 +2905,12 @@ or types.
 ```js
 const crypto = require('crypto');
 // Using the factory defaults.
-crypto.scrypt('secret', 'salt', 64, (err, derivedKey) => {
+crypto.scrypt('password', 'salt', 64, (err, derivedKey) => {
   if (err) throw err;
   console.log(derivedKey.toString('hex'));  // '3745e48...08d59ae'
 });
 // Using a custom N parameter. Must be a power of two.
-crypto.scrypt('secret', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
+crypto.scrypt('password', 'salt', 64, { N: 1024 }, (err, derivedKey) => {
   if (err) throw err;
   console.log(derivedKey.toString('hex'));  // '3745e48...aa39b34'
 });
@@ -2888,10 +2962,10 @@ or types.
 ```js
 const crypto = require('crypto');
 // Using the factory defaults.
-const key1 = crypto.scryptSync('secret', 'salt', 64);
+const key1 = crypto.scryptSync('password', 'salt', 64);
 console.log(key1.toString('hex'));  // '3745e48...08d59ae'
 // Using a custom N parameter. Must be a power of two.
-const key2 = crypto.scryptSync('secret', 'salt', 64, { N: 1024 });
+const key2 = crypto.scryptSync('password', 'salt', 64, { N: 1024 });
 console.log(key2.toString('hex'));  // '3745e48...aa39b34'
 ```
 
@@ -2942,6 +3016,12 @@ Throws an error if FIPS mode is not available.
 ### `crypto.sign(algorithm, data, key)`
 <!-- YAML
 added: v12.0.0
+changes:
+  - version:
+     - v13.2.0
+     - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/29292
+    description: This function now supports IEEE-P1363 DSA and ECDSA signatures.
 -->
 
 * `algorithm` {string | null | undefined}
@@ -2989,7 +3069,11 @@ comparing HMAC digests or secret values like authentication cookies or
 [capability urls](https://www.w3.org/TR/capability-urls/).
 
 `a` and `b` must both be `Buffer`s, `TypedArray`s, or `DataView`s, and they
-must have the same length.
+must have the same byte length.
+
+If at least one of `a` and `b` is a `TypedArray` with more than one byte per
+entry, such as `Uint16Array`, the result will be computed using the platform
+byte order.
 
 Use of `crypto.timingSafeEqual` does not guarantee that the *surrounding* code
 is timing-safe. Care should be taken to ensure that the surrounding code does
@@ -2998,6 +3082,12 @@ not introduce timing vulnerabilities.
 ### `crypto.verify(algorithm, data, key, signature)`
 <!-- YAML
 added: v12.0.0
+changes:
+  - version:
+     - v13.2.0
+     - v12.16.0
+    pr-url: https://github.com/nodejs/node/pull/29292
+    description: This function now supports IEEE-P1363 DSA and ECDSA signatures.
 -->
 
 * `algorithm` {string | null | undefined}
@@ -3037,7 +3127,7 @@ key may be passed for `key`.
 
 ## Notes
 
-### Legacy Streams API (pre Node.js v0.10)
+### Legacy streams API (prior to Node.js 0.10)
 
 The Crypto module was added to Node.js before there was the concept of a
 unified Stream API, and before there were [`Buffer`][] objects for handling
@@ -3048,7 +3138,7 @@ and returned `'latin1'` encoded strings by default rather than `Buffer`s. This
 default was changed after Node.js v0.8 to use [`Buffer`][] objects by default
 instead.
 
-### Recent ECDH Changes
+### Recent ECDH changes
 
 Usage of `ECDH` with non-dynamically generated key pairs has been simplified.
 Now, [`ecdh.setPrivateKey()`][] can be called with a preselected private key
@@ -3104,7 +3194,12 @@ mode must adhere to certain restrictions when using the cipher API:
   mode might fail as CCM cannot handle more than one chunk of data per instance.
 * When passing additional authenticated data (AAD), the length of the actual
   message in bytes must be passed to `setAAD()` via the `plaintextLength`
-  option. This is not necessary if no AAD is used.
+  option.
+  Many crypto libraries include the authentication tag in the ciphertext,
+  which means that they produce ciphertexts of the length
+  `plaintextLength + authTagLength`. Node.js does not include the authentication
+  tag, so the ciphertext length is always `plaintextLength`.
+  This is not necessary if no AAD is used.
 * As CCM processes the whole message at once, `update()` can only be called
   once.
 * Even though calling `update()` is sufficient to encrypt/decrypt the message,
@@ -3151,12 +3246,12 @@ try {
 console.log(receivedPlaintext);
 ```
 
-## Crypto Constants
+## Crypto constants
 
 The following constants exported by `crypto.constants` apply to various uses of
 the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 
-### OpenSSL Options
+### OpenSSL options
 
 <table>
   <tr>
@@ -3168,6 +3263,11 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
     <td>Applies multiple bug workarounds within OpenSSL. See
     <a href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html</a>
     for detail.</td>
+  </tr>
+  <tr>
+    <td><code>SSL_OP_ALLOW_NO_DHE_KEX</code></td>
+    <td>Instructs OpenSSL to allow a non-[EC]DHE-based key exchange mode
+    for TLS v1.3</td>
   </tr>
   <tr>
     <td><code>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</code></td>
@@ -3242,8 +3342,16 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
     <td>Instructs OpenSSL to disable support for SSL/TLS compression.</td>
   </tr>
   <tr>
+    <td><code>SSL_OP_NO_ENCRYPT_THEN_MAC</code></td>
+    <td>Instructs OpenSSL to disable encrypt-then-MAC.</td>
+  </tr>
+  <tr>
     <td><code>SSL_OP_NO_QUERY_MTU</code></td>
     <td></td>
+  </tr>
+  <tr>
+    <td><code>SSL_OP_NO_RENEGOTIATION</code></td>
+    <td>Instructs OpenSSL to disable renegotiation.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</code></td>
@@ -3274,12 +3382,24 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
     <td><code>SSL_OP_NO_TLSv1_2</code></td>
     <td>Instructs OpenSSL to turn off TLS v1.2</td>
   </tr>
+  <tr>
+    <td><code>SSL_OP_NO_TLSv1_3</code></td>
+    <td>Instructs OpenSSL to turn off TLS v1.3</td>
+  </tr>
     <td><code>SSL_OP_PKCS1_CHECK_1</code></td>
     <td></td>
   </tr>
   <tr>
     <td><code>SSL_OP_PKCS1_CHECK_2</code></td>
     <td></td>
+  </tr>
+  <tr>
+    <td><code>SSL_OP_PRIORITIZE_CHACHA</code></td>
+    <td>Instructs OpenSSL server to prioritize ChaCha20Poly1305
+    when client does.
+    This option has no effect if
+    <code>SSL_OP_CIPHER_SERVER_PREFERENCE</code>
+    is not enabled.</td>
   </tr>
   <tr>
     <td><code>SSL_OP_SINGLE_DH_USE</code></td>
@@ -3312,7 +3432,7 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
   </tr>
 </table>
 
-### OpenSSL Engine Constants
+### OpenSSL engine constants
 
 <table>
   <tr>
@@ -3365,7 +3485,9 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
   </tr>
 </table>
 
-### Other OpenSSL Constants
+### Other OpenSSL constants
+
+See the [list of SSL OP Flags][] for details.
 
 <table>
   <tr>
@@ -3445,7 +3567,7 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
   </tr>
 </table>
 
-### Node.js Crypto Constants
+### Node.js crypto constants
 
 <table>
   <tr>
@@ -3463,11 +3585,29 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
   </tr>
 </table>
 
-[`Buffer`]: buffer.html
+[AEAD algorithms]: https://en.wikipedia.org/wiki/Authenticated_encryption
+[CCM mode]: #crypto_ccm_mode
+[Caveats]: #crypto_support_for_weak_or_compromised_algorithms
+[Crypto constants]: #crypto_crypto_constants_1
+[HTML 5.2]: https://www.w3.org/TR/html52/changes.html#features-removed
+[HTML5's `keygen` element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen
+[NIST SP 800-131A]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf
+[NIST SP 800-132]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
+[NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
+[Nonce-Disrespecting Adversaries]: https://github.com/nonce-disrespect/nonce-disrespect
+[OpenSSL's SPKAC implementation]: https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html
+[RFC 1421]: https://www.rfc-editor.org/rfc/rfc1421.txt
+[RFC 2412]: https://www.rfc-editor.org/rfc/rfc2412.txt
+[RFC 3526]: https://www.rfc-editor.org/rfc/rfc3526.txt
+[RFC 3610]: https://www.rfc-editor.org/rfc/rfc3610.txt
+[RFC 4055]: https://www.rfc-editor.org/rfc/rfc4055.txt
+[RFC 4122]: https://www.rfc-editor.org/rfc/rfc4122.txt
+[RFC 5208]: https://www.rfc-editor.org/rfc/rfc5208.txt
+[`Buffer`]: buffer.md
 [`EVP_BytesToKey`]: https://www.openssl.org/docs/man1.1.0/crypto/EVP_BytesToKey.html
 [`KeyObject`]: #crypto_class_keyobject
 [`Sign`]: #crypto_class_sign
-[`UV_THREADPOOL_SIZE`]: cli.html#cli_uv_threadpool_size_size
+[`UV_THREADPOOL_SIZE`]: cli.md#cli_uv_threadpool_size_size
 [`Verify`]: #crypto_class_verify
 [`cipher.final()`]: #crypto_cipher_final_outputencoding
 [`cipher.update()`]: #crypto_cipher_update_data_inputencoding_outputencoding
@@ -3505,32 +3645,19 @@ the `crypto`, `tls`, and `https` modules and are generally specific to OpenSSL.
 [`hmac.digest()`]: #crypto_hmac_digest_encoding
 [`hmac.update()`]: #crypto_hmac_update_data_inputencoding
 [`keyObject.export()`]: #crypto_keyobject_export_options
+[`postMessage()`]: worker_threads.md#worker_threads_port_postmessage_value_transferlist
 [`sign.sign()`]: #crypto_sign_sign_privatekey_outputencoding
 [`sign.update()`]: #crypto_sign_update_data_inputencoding
-[`stream.Writable` options]: stream.html#stream_constructor_new_stream_writable_options
-[`stream.transform` options]: stream.html#stream_new_stream_transform_options
-[`util.promisify()`]: util.html#util_util_promisify_original
+[`stream.Writable` options]: stream.md#stream_new_stream_writable_options
+[`stream.transform` options]: stream.md#stream_new_stream_transform_options
+[`util.promisify()`]: util.md#util_util_promisify_original
 [`verify.update()`]: #crypto_verify_update_data_inputencoding
 [`verify.verify()`]: #crypto_verify_verify_object_signature_signatureencoding
-[AEAD algorithms]: https://en.wikipedia.org/wiki/Authenticated_encryption
-[CCM mode]: #crypto_ccm_mode
-[Caveats]: #crypto_support_for_weak_or_compromised_algorithms
-[Crypto Constants]: #crypto_crypto_constants_1
-[HTML 5.2]: https://www.w3.org/TR/html52/changes.html#features-removed
-[HTML5's `keygen` element]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/keygen
-[NIST SP 800-131A]: https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf
-[NIST SP 800-132]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-132.pdf
-[NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
-[Nonce-Disrespecting Adversaries]: https://github.com/nonce-disrespect/nonce-disrespect
-[OpenSSL's SPKAC implementation]: https://www.openssl.org/docs/man1.1.0/apps/openssl-spkac.html
-[RFC 1421]: https://www.rfc-editor.org/rfc/rfc1421.txt
-[RFC 2412]: https://www.rfc-editor.org/rfc/rfc2412.txt
-[RFC 3526]: https://www.rfc-editor.org/rfc/rfc3526.txt
-[RFC 3610]: https://www.rfc-editor.org/rfc/rfc3610.txt
-[RFC 4055]: https://www.rfc-editor.org/rfc/rfc4055.txt
-[RFC 5208]: https://www.rfc-editor.org/rfc/rfc5208.txt
-[encoding]: buffer.html#buffer_buffers_and_character_encodings
+[encoding]: buffer.md#buffer_buffers_and_character_encodings
 [initialization vector]: https://en.wikipedia.org/wiki/Initialization_vector
+[list of SSL OP Flags]: https://wiki.openssl.org/index.php/List_of_SSL_OP_Flags#Table_of_Options
+[modulo bias]: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#Modulo_bias
+[safe integers]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
 [scrypt]: https://en.wikipedia.org/wiki/Scrypt
-[stream-writable-write]: stream.html#stream_writable_write_chunk_encoding_callback
-[stream]: stream.html
+[stream]: stream.md
+[stream-writable-write]: stream.md#stream_writable_write_chunk_encoding_callback
