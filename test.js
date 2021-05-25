@@ -96,7 +96,7 @@ describe('npm module', () => {
       const pages = await getPages()
       expect(Array.isArray(pages)).toBe(true)
       expect(pages.length).toBeGreaterThan(0)
-      pages.every(page => {
+      pages.forEach(page => {
         expect(Object.keys(page)).toEqual(['locale', 'nodeVersion', 'filePath', 'fullPath'])
       })
     })
@@ -105,7 +105,7 @@ describe('npm module', () => {
       const pages = await getPages(supportedVersions[1], 'es-ES')
       expect(Array.isArray(pages)).toBe(true)
       expect(pages.length).toBeGreaterThan(0)
-      pages.every(page => {
+      pages.forEach(page => {
         expect(page.locale).toBe('es-ES')
         expect(page.nodeVersion).toBe(supportedVersions[1])
       })

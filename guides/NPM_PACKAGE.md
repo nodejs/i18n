@@ -41,12 +41,12 @@ v13.x
 ```sh
 # locales
 $ ls -A1 node_modules/node-i18n/content/v10.x
-af-ZA
 ar-SA
 bg-BG
-ca-ES
 cs-CZ
 da-DK
+de-DE
+el-GR
 ...
 ```
 
@@ -70,10 +70,10 @@ const { allPages, getPages, locales, supportedVersions } = require('node-i18n')
 An array of page objects in all languages and all supported Node.js versions. Each object looks like this:
 
 ```yml
-locale: 'af-ZA',
+locale: 'ar-SA',
 nodeVersion: 'v10.x',
 filePath: 'doc/STYLE_GUIDE.md',
-fullPath: '/Users/z/git/nodejs/i18n/content/v10.x/af-ZA/doc/STYLE_GUIDE.md'
+fullPath: '/Users/z/git/nodejs/i18n/content/v10.x/ar-SA/doc/STYLE_GUIDE.md'
 ```
 
 ### `getPages([nodeMajor, locale])`
