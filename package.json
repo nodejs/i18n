@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "walk-sync": "^2.2.0"
+    "walk-sync": "^3.0.0"
   },
   "devDependencies": {
     "builtins": "^4.0.0",
