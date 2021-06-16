@@ -221,7 +221,6 @@ const server = http.createServer(common.mustCall((req, res) => {
     server.close();
   }));
 }));
-
 ```
 
 **Note:** Many functions invoke their callback with an `err` value as the first
@@ -286,6 +285,15 @@ require('../common');
 const assert = require('assert');
 const freelist = require('internal/freelist');
 ```
+
+In specific scenarios it may be useful to get a hold of `primordials` or
+`internalBinding()`. You can do so using
+
+```console
+node --expose-internals -r internal/test/binding lib/fs.js
+```
+
+This only works if you preload `internal/test/binding` by command line flag.
 
 ### Assertions
 
