@@ -271,6 +271,11 @@ const buffer = readFileSync(new URL('./data.proto', import.meta.url));
 ```
 
 ### `import.meta.resolve(specifier[, parent])`
+<!--
+added:
+  - v13.9.0
+  - v12.16.2
+-->
 
 > Stability: 1 - Experimental
 
@@ -278,7 +283,7 @@ This feature is only available with the `--experimental-import-meta-resolve`
 command flag enabled.
 
 * `specifier` {string} The module specifier to resolve relative to `parent`.
-* `parent` {string|URL} The absolute parent module URL to resolve from. If none
+* `parent` {string} The absolute parent module URL to resolve from. If none
   is specified, the value of `import.meta.url` is used as the default.
 * Returns: {Promise}
 
@@ -1327,7 +1332,7 @@ success!
 [`transformSource` hook]: #esm_transformsource_source_context_defaulttransformsource
 [`string`]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 [`util.TextDecoder`]: util.md#util_class_util_textdecoder
-[cjs-module-lexer]: https://github.com/guybedford/cjs-module-lexer/tree/1.1.1
+[cjs-module-lexer]: https://github.com/guybedford/cjs-module-lexer/tree/1.2.1
 [custom https loader]: #esm_https_loader
 [special scheme]: https://url.spec.whatwg.org/#special-scheme
 [the official standard format]: https://tc39.github.io/ecma262/#sec-modules

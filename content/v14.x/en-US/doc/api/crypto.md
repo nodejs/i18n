@@ -735,8 +735,10 @@ module):
 added: v0.7.5
 -->
 
-The `DiffieHellmanGroup` class takes a well-known modp group as its argument but
-otherwise works the same as `DiffieHellman`.
+The `DiffieHellmanGroup` class takes a well-known modp group as its argument.
+It works the same as `DiffieHellman`, except that it does not allow changing
+its keys after creation. In other words, it does not implement `setPublicKey()`
+or `setPrivateKey()` methods.
 
 ```js
 const name = 'modp1';
@@ -1559,7 +1561,7 @@ If `object` is not a [`KeyObject`][], this function behaves as if
 object, the following additional properties can be passed:
 
 * `dsaEncoding` {string} For DSA and ECDSA, this option specifies the
-  format of the generated signature. It can be one of the following:
+  format of the signature. It can be one of the following:
   * `'der'` (default): DER-encoded ASN.1 signature structure encoding `(r, s)`.
   * `'ieee-p1363'`: Signature format `r || s` as proposed in IEEE-P1363.
 * `padding` {integer} Optional padding value for RSA, one of the following:
@@ -3105,7 +3107,7 @@ passed to [`crypto.createPublicKey()`][]. If it is an object, the following
 additional properties can be passed:
 
 * `dsaEncoding` {string} For DSA and ECDSA, this option specifies the
-  format of the generated signature. It can be one of the following:
+  format of the signature. It can be one of the following:
   * `'der'` (default): DER-encoded ASN.1 signature structure encoding `(r, s)`.
   * `'ieee-p1363'`: Signature format `r || s` as proposed in IEEE-P1363.
 * `padding` {integer} Optional padding value for RSA, one of the following:
