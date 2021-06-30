@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v2.2.0
         with:
-          node-version: "12.x"
+          node-version: "14"
 
       - name: Cache node modules
         uses: actions/cache@v2.1.6
