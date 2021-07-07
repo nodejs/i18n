@@ -16,13 +16,16 @@ collect()
 
 async function collect () {
   const nodeVersions = await getVersions(supportedVersions)
+
+  // Add all the versions into a group and run parallelly to
+  // improve the speed of download
+  const parallelDownloadVersions = new Array(nodeVersions.length)
   for (const major in nodeVersions) {
     const version = nodeVersions[major]
-    await getDocsForNodeVersion(major, version).catch((err) => {
-      console.error(`problem fetching version: ${version}`)
-      console.error(err)
-    })
+    parallelDownloadVersions.push(getDocsForNodeVersion(major, version))
   }
+
+  await Promise.all(parallelDownloadVersions)
 }
 
 async function getDocsForNodeVersion (major, version) {
@@ -34,18 +37,24 @@ async function getDocsForNodeVersion (major, version) {
       path.extname(file.path) === '.md' && file.path.startsWith('doc')
   }
 
-  // clean out english translations to ensure old files are removed
-  fs.remove(docDir)
+  try {
+    // clean out english translations to ensure old files are removed
+    await fs.remove(docDir)
 
-  // download repo bundle and extract
-  const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
-  console.log('downloading', tarballUrl)
-  await download(tarballUrl, docDir, downloadOptions)
-  await cleanupTranslations(major)
+    // download repo bundle and extract
+    const tarballUrl = `https://github.com/nodejs/node/archive/${version}.tar.gz`
+    console.log('\x1B[93mDownloading', tarballUrl, '\x1B')
+    await download(tarballUrl, docDir, downloadOptions)
+    await cleanupTranslations(major)
+    console.log('\x1B[92m ✓ Successfully', tarballUrl, 'Downloaded.\x1B')
+  } catch (error) {
+    console.error('\x1B[91m ✘ Problem fetching version:', version, '\x1B')
+    console.error(error)
+  }
 }
 
 const cleanupTranslations = async (version) => {
-  const languages = fs.readdirSync(path.join(contentDir, version))
+  const languages = await fs.readFile(path.join(contentDir, version))
   const originalPath = path.join(
     contentDir,
     version,
@@ -63,7 +72,7 @@ const cleanupTranslations = async (version) => {
       return Promise.all(
         translatedOriginDiff.map((filePath) => {
           const fileToRemovePath = path.join(translatedPath, filePath)
-          console.log('Removed:', fileToRemovePath)
+          console.log('\x1B[96m Removed:', fileToRemovePath, '\x1B')
           return fs.remove(fileToRemovePath)
         })
       )
