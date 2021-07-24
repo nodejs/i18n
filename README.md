@@ -82,6 +82,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 | Ilyes Chouia        | [Ilyes Chouia](https://github.com/celyes)                 | [Ilyes Chouia](https://twitter.com/celyes01)             |
 | Jonathan Cardoso    | [JCMais](https://github.com/JCMais)                       | [\_jonathancardos](https://twitter.com/_jonathancardos)  |
 |José J. Pérez Rivas  | [JoseJPR](https://github.com/JoseJPR)                     | [JoseJ_PR](https://twitter.com/JoseJ_PR)                 |
+| Justin              | [J-Human](https://github.com/J-Human)                     | 
 | Laurent Goderre     | [LaurentGoderre](https://github.com/LaurentGoderre)       | [LaurentGoderre](https://twitter.com/LaurentGoderre)     |
 | Łukasz Szewczak     | [lukaszewczak](https://github.com/lukaszewczak)           | [lukaszewczak](https://twitter.com/lukaszewczak)         |
 | Nick Schonning      | [nschonni](https://github.com/nschonni)                   | [nschonni](https://twitter.com/nschonni)                 |
