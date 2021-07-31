@@ -27,8 +27,7 @@ async function getPages (nodeMajor, locale) {
   assert(supportedVersions.includes(nodeMajor), `Invalid major version of Node.js: ${nodeMajor}. Valid versions are ${supportedVersions.join(', ')}`)
 
   return allPages
-    .filter(page => page.nodeVersion === nodeMajor)
-    .filter(page => page.locale === locale)
+    .filter(page => page.nodeVersion === nodeMajor && page.locale === locale)
 }
 
 const locales = chain(allPages)

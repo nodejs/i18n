@@ -13,8 +13,8 @@ describe('original content', () => {
     expect(intersection(supportedVersions, versions).length).toEqual(supportedVersions.length)
   })
   test('all supported versions includes original source', () => {
-    versions.forEach((major) => {
-      const languages = fs.readdirSync(path.join(contentDir, major))
+    versions.forEach(async (major) => {
+      const languages = await fs.readdir(path.join(contentDir, major))
       expect(languages.includes(originalSourceLocale)).toBe(true)
     })
   })
@@ -36,9 +36,9 @@ describe('original content', () => {
 })
 
 describe('translated content', () => {
-  test('saves original structure', () => {
-    versions.forEach((version) => {
-      const languages = fs.readdirSync(path.join(contentDir, version))
+  test('saves original structure', async () => {
+    versions.forEach(async (version) => {
+      const languages = await fs.readdir(path.join(contentDir, version))
       const originalPath = path.join(
         contentDir,
         version,
@@ -52,9 +52,6 @@ describe('translated content', () => {
           directories: false
         })
         const translatedOriginDiff = difference(translatedFiles, originalFiles)
-
-        // can be used to remove mismatch files
-        // translatedOriginDiff.map(filePath => fs.remove(path.join(translatedPath, filePath)))
 
         expect(translatedOriginDiff).toEqual([])
       })

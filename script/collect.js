@@ -62,20 +62,21 @@ const cleanupTranslations = async (version) => {
     'doc'
   )
   const originalFiles = walk(originalPath, { directories: false })
-  await Promise.all(
-    languages.map((language) => {
-      const translatedPath = path.join(contentDir, version, language, 'doc')
-      const translatedFiles = walk(translatedPath, {
-        directories: false
-      })
-      const translatedOriginDiff = difference(translatedFiles, originalFiles)
-      return Promise.all(
-        translatedOriginDiff.map((filePath) => {
-          const fileToRemovePath = path.join(translatedPath, filePath)
-          console.log('\x1B[96m Removed:', fileToRemovePath, '\x1B')
-          return fs.remove(fileToRemovePath)
-        })
-      )
+
+  languages.map((language) => {
+    const translatedPath = path.join(contentDir, version, language, 'doc')
+    const translatedFiles = walk(translatedPath, {
+      directories: false
     })
-  )
+
+    const translatedOriginDiff = difference(translatedFiles, originalFiles)
+
+    return Promise.all(
+      translatedOriginDiff.map((filePath) => {
+        const fileToRemovePath = path.join(translatedPath, filePath)
+        console.log('\x1B[96m Removed:', fileToRemovePath, '\x1B')
+        return fs.remove(fileToRemovePath)
+      })
+    )
+  })
 }
