@@ -54,7 +54,7 @@ async function getDocsForNodeVersion (major, version) {
 }
 
 const cleanupTranslations = async (version) => {
-  const languages = await fs.readFile(path.join(contentDir, version))
+  const languages = await fs.readdir(path.join(contentDir, version))
   const originalPath = path.join(
     contentDir,
     version,
