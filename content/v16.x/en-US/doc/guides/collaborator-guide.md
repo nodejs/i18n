@@ -185,7 +185,7 @@ delay. For example:
   * Regressions that happen right before a release, or reported soon after.
 
 To propose fast-tracking a pull request, apply the `fast-track` label. Then a
-GitHub Action will add a comment that collaborators can upvote.
+GitHub Actions workflow will add a comment that collaborators can upvote.
 
 If someone disagrees with the fast-tracking request, remove the label. Do not
 fast-track the pull request in that case.
@@ -242,8 +242,8 @@ files also qualify as affecting the `node` binary:
 </details>
 
 If there are GitHub Actions CI failures unrelated to the change in the pull
-request, try "Re-run all jobs". It's under the "🔄 Re-run jobs" button, on the
-right-hand side of "Checks" tab.
+request, try the "🔄 Re-run all jobs" button, on the right-hand side of the
+"Checks" tab.
 
 If there are Jenkins CI failures unrelated to the change in the pull request,
 try "Resume Build". It is in the left navigation of the relevant
