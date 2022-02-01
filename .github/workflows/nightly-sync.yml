@@ -23,7 +23,7 @@ jobs:
         run: npm run collect
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.12.0
+        uses: peter-evans/create-pull-request@v3.12.1
         with:
           commit-message: 'feat: Original content updates'
           title: Original content updates
