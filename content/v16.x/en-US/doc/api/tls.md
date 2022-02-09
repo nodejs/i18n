@@ -17,7 +17,7 @@ const tls = require('tls');
 ## TLS/SSL concepts
 
 The TLS/SSL is a public/private key infrastructure (PKI). For most common
-cases, each client and server must have a _private key_.
+cases, each server must have a _private key_.
 
 Private keys can be generated in multiple ways. The example below illustrates
 use of the OpenSSL command-line interface to generate a 2048-bit RSA private
@@ -1010,7 +1010,7 @@ const keyingMaterial = tlsSocket.exportKeyingMaterial(
   128,
   'client finished');
 
-/**
+/*
  Example return value of keyingMaterial:
  <Buffer 76 26 af 99 c5 56 8e 42 09 91 ef 9f 93 cb ad 6c 7b 65 f8 53 f1 d8 d9
     12 5a 33 b8 b5 25 df 7b 37 9f e0 e2 4f b8 67 83 a3 2f cd 5d 41 42 4c 91
@@ -1073,7 +1073,7 @@ For example:
 ```
 
 See
-[SSL\_CIPHER\_get\_name](https://www.openssl.org/docs/man1.1.1/man3/SSL\_CIPHER\_get\_name.html)
+[SSL\_CIPHER\_get\_name](https://www.openssl.org/docs/man1.1.1/man3/SSL_CIPHER_get_name.html)
 for more information.
 
 ### `tlsSocket.getEphemeralKeyInfo()`
@@ -1133,6 +1133,9 @@ certificate.
 
 <!-- YAML
 changes:
+  - version: v16.14.0
+    pr-url: https://github.com/nodejs/node/pull/39809
+    description: Add fingerprint512.
   - version: v11.4.0
     pr-url: https://github.com/nodejs/node/pull/24358
     description: Support Elliptic Curve public key info.
@@ -1143,7 +1146,7 @@ certificate.
 
 * `raw` {Buffer} The DER encoded X.509 certificate data.
 * `subject` {Object} The certificate subject, described in terms of
-  Country (`C:`), StateOrProvince (`ST`), Locality (`L`), Organization (`O`),
+  Country (`C`), StateOrProvince (`ST`), Locality (`L`), Organization (`O`),
   OrganizationalUnit (`OU`), and CommonName (`CN`). The CommonName is typically
   a DNS name with TLS certificates. Example:
   `{C: 'UK', ST: 'BC', L: 'Metro', O: 'Node Fans', OU: 'Docs', CN: 'example.com'}`.
@@ -1156,6 +1159,9 @@ certificate.
 * `fingerprint` {string} The SHA-1 digest of the DER encoded certificate. It is
   returned as a `:` separated hexadecimal string. Example: `'2A:7A:C2:DD:...'`.
 * `fingerprint256` {string} The SHA-256 digest of the DER encoded certificate.
+  It is returned as a `:` separated hexadecimal string. Example:
+  `'2A:7A:C2:DD:...'`.
+* `fingerprint512` {string} The SHA-512 digest of the DER encoded certificate.
   It is returned as a `:` separated hexadecimal string. Example:
   `'2A:7A:C2:DD:...'`.
 * `ext_key_usage` {Array} (Optional) The extended key usage, a set of OIDs.
@@ -1216,6 +1222,7 @@ Example certificate:
   valid_to: 'Nov 20 23:59:59 2019 GMT',
   fingerprint: '01:02:59:D9:C3:D2:0D:08:F7:82:4E:44:A4:B4:53:C5:E2:3A:87:4D',
   fingerprint256: '69:AE:1A:6A:D4:3D:C6:C1:1B:EA:C6:23:DE:BA:2A:14:62:62:93:5C:7A:EA:06:41:9B:0B:BC:87:CE:48:4E:02',
+  fingerprint512: '19:2B:3E:C3:B3:5B:32:E8:AE:BB:78:97:27:E4:BA:6C:39:C9:92:79:4F:31:46:39:E2:70:E5:5F:89:42:17:C9:E8:64:CA:FF:BB:72:56:73:6E:28:8A:92:7E:A3:2A:15:8B:C2:E0:45:CA:C3:BC:EA:40:52:EC:CA:A2:68:CB:32',
   ext_key_usage: [ '1.3.6.1.5.5.7.3.1', '1.3.6.1.5.5.7.3.2' ],
   serialNumber: '66593D57F20CBC573E433381B5FEC280',
   raw: <Buffer ... > }
@@ -1303,7 +1310,7 @@ added: v12.11.0
   the client in the order of decreasing preference.
 
 See
-[SSL\_get\_shared\_sigalgs](https://www.openssl.org/docs/man1.1.1/man3/SSL\_get\_shared\_sigalgs.html)
+[SSL\_get\_shared\_sigalgs](https://www.openssl.org/docs/man1.1.1/man3/SSL_get_shared_sigalgs.html)
 for more information.
 
 ### `tlsSocket.getTLSTicket()`
@@ -1470,8 +1477,8 @@ Verifies the certificate `cert` is issued to `hostname`.
 Returns {Error} object, populating it with `reason`, `host`, and `cert` on
 failure. On success, returns {undefined}.
 
-This function can be overwritten by providing alternative function as part of
-the `options.checkServerIdentity` option passed to `tls.connect()`. The
+This function can be overwritten by providing an alternative function as the
+`options.checkServerIdentity` option that is passed to `tls.connect()`. The
 overwriting function can call `tls.checkServerIdentity()` of course, to augment
 the checks done with additional verification.
 
@@ -1776,7 +1783,7 @@ changes:
     The list can contain digest algorithms (`SHA256`, `MD5` etc.), public key
     algorithms (`RSA-PSS`, `ECDSA` etc.), combination of both (e.g
     'RSA+SHA384') or TLS v1.3 scheme names (e.g. `rsa_pss_pss_sha512`).
-    See [OpenSSL man pages](https://www.openssl.org/docs/man1.1.1/man3/SSL\_CTX\_set1\_sigalgs\_list.html)
+    See [OpenSSL man pages](https://www.openssl.org/docs/man1.1.1/man3/SSL_CTX_set1_sigalgs_list.html)
     for more info.
   * `ciphers` {string} Cipher suite specification, replacing the default. For
     more information, see [modifying the default cipher suite][]. Permitted
