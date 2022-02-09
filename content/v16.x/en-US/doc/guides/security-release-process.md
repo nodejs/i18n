@@ -21,6 +21,7 @@ information described.
     the date in the slug so that it will move to the top of the blog list.)
   * [ ] pre-release: _**LINK TO PR**_
   * [ ] post-release: _**LINK TO PR**_
+    * List vulnerabilities in order of descending severity
     * Ask the HackerOne reporter if they would like to be credited on the
       security release blog page:
       ```text
@@ -47,6 +48,10 @@ information described.
       having duplicate CVEs for the same vulnerability.
   * Described in the pre/post announcements
 
+* [ ] Pre-release announcement to nodejs.org blog: _**LINK TO BLOG**_
+  (Re-PR the pre-approved branch from nodejs-private/nodejs.org-private to
+  nodejs/nodejs.org)
+
 * [ ] Pre-release announcement [email][]: _**LINK TO EMAIL**_
   * Subject: `Node.js security updates for all active release lines, Month Year`
   * Body:
@@ -54,17 +59,14 @@ information described.
   The Node.js project will release new versions of all supported release lines on or shortly after Day of week, Month Day of Month, Year
   For more information see: https://nodejs.org/en/blog/vulnerability/month-year-security-releases/
   ```
-  (Get access from existing manager: Ben Noordhuis, Rod Vagg, Michael Dawson)
+  (Get access from existing manager: Matteo Collina, Rodd Vagg, Michael Dawson,
+  Bryan English, Vladimir de Turckheim)
 
 * [ ] CC `oss-security@lists.openwall.com` on pre-release
 
 The google groups UI does not support adding a CC, until we figure
 out a better way, forward the email you receive to
 `oss-security@lists.openwall.com` as a CC.
-
-* [ ] Pre-release announcement to nodejs.org blog: _**LINK TO BLOG**_
-  (Re-PR the pre-approved branch from nodejs-private/nodejs.org-private to
-  nodejs/nodejs.org)
 
 * [ ] Create a new issue in [nodejs/tweet][]
   ```text
@@ -104,6 +106,10 @@ out a better way, forward the email you receive to
 
 * [ ] [Unlock CI](https://github.com/nodejs/build/blob/HEAD/doc/jenkins-guide.md#after-the-release)
 
+* [ ] Post-release announcement to Nodejs.org blog: _**LINK TO BLOG POST**_
+  * (Re-PR the pre-approved branch from nodejs-private/nodejs.org-private to
+    nodejs/nodejs.org)
+
 * [ ] Post-release announcement in reply [email][]: _**LINK TO EMAIL**_
   * CC: `oss-security@lists.openwall.com`
   * Subject: `Node.js security updates for all active release lines, Month Year`
@@ -112,10 +118,6 @@ out a better way, forward the email you receive to
   The Node.js project has now released new versions of all supported release lines.
   For more information see: https://nodejs.org/en/blog/vulnerability/month-year-security-releases/
   ```
-
-* [ ] Post-release announcement to Nodejs.org blog: _**LINK TO BLOG POST**_
-  * (Re-PR the pre-approved branch from nodejs-private/nodejs.org-private to
-    nodejs/nodejs.org)
 
 * [ ] Create a new issue in [nodejs/tweet][]
   ```text

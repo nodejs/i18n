@@ -245,19 +245,6 @@ effort to report stack traces relative to the original source file.
 Overriding `Error.prepareStackTrace` prevents `--enable-source-maps` from
 modifying the stack trace.
 
-### `--experimental-abortcontroller`
-
-<!-- YAML
-added: v15.0.0
-changes:
-  - version: v15.0.0
-    pr-url: https://github.com/nodejs/node/pull/33527
-    description: --experimental-abortcontroller is no longer required.
--->
-
-`AbortController` and `AbortSignal` support is enabled by default.
-Use of this command-line flag is no longer required.
-
 ### `--experimental-import-meta-resolve`
 
 <!-- YAML
@@ -376,12 +363,11 @@ added: v11.12.0
 
 Enable experimental frozen intrinsics like `Array` and `Object`.
 
-Support is currently only provided for the root context and no guarantees are
-currently provided that `global.Array` is indeed the default intrinsic
-reference. Code may break under this flag.
+Only the root context is supported. There is no guarantee that
+`globalThis.Array` is indeed the default intrinsic reference. Code may break
+under this flag.
 
-`--require` runs prior to freezing intrinsics in order to allow polyfills to
-be added.
+To allow polyfills to be added, `--require` runs before freezing intrinsics.
 
 ### `--heapsnapshot-near-heap-limit=max_count`
 
@@ -1238,12 +1224,16 @@ occurs. One of the following modes can be chosen:
 
 * `throw`: Emit [`unhandledRejection`][]. If this hook is not set, raise the
   unhandled rejection as an uncaught exception. This is the default.
-* `strict`: Raise the unhandled rejection as an uncaught exception.
+* `strict`: Raise the unhandled rejection as an uncaught exception. If the
+  exception is handled, [`unhandledRejection`][] is emitted.
 * `warn`: Always trigger a warning, no matter if the [`unhandledRejection`][]
   hook is set or not but do not print the deprecation warning.
 * `warn-with-error-code`: Emit [`unhandledRejection`][]. If this hook is not
   set, trigger a warning, and set the process exit code to 1.
 * `none`: Silence all warnings.
+
+If a rejection happens during the command line entry point's ES module static
+loading phase, it will always raise it as an uncaught exception.
 
 ### `--use-bundled-ca`, `--use-openssl-ca`
 

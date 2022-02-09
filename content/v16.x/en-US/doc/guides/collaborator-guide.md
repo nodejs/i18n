@@ -26,6 +26,7 @@
   * [Deprecations](#deprecations)
   * [Involving the TSC](#involving-the-tsc)
 * [Landing pull requests](#landing-pull-requests)
+  * [Using the commit queue GitHub labels](#using-the-commit-queue-github-labels)
   * [Using `git-node`](#using-git-node)
   * [Technical HOWTO](#technical-howto)
   * [Troubleshooting](#troubleshooting)
@@ -51,7 +52,7 @@ request. See [Who to CC in the issue tracker](#who-to-cc-in-the-issue-tracker).
 
 Always show courtesy to individuals submitting issues and pull requests. Be
 welcoming to first-time contributors, identified by the GitHub
-![First-time contributor](../first\_timer\_badge.png) badge.
+![First-time contributor](../first_timer_badge.png) badge.
 
 For first-time contributors, check if the commit author is the same as the pull
 request author. This way, once their pull request lands, GitHub will show them
@@ -512,6 +513,10 @@ settings are to their liking.
 All commits should be self-contained, meaning every commit should pass all
 tests. This makes it much easier when bisecting to find a breaking change.
 
+### Using the commit queue GitHub labels
+
+See the [commit queue guide][commit-queue.md].
+
 ### Using `git-node`
 
 In most cases, using [the `git-node` command][git-node] of [`node-core-utils`][]
@@ -809,7 +814,7 @@ might impact an LTS release.
 | `lib/util`                                                                 | @nodejs/util                                                          |
 | `lib/zlib`                                                                 | @nodejs/zlib                                                          |
 | `src/async_wrap.*`                                                         | @nodejs/async\_hooks                                                  |
-| `src/node_api.*`                                                           | @nodejs/n-api                                                         |
+| `src/node_api.*`                                                           | @nodejs/node-api                                                      |
 | `src/node_crypto.*`                                                        | @nodejs/crypto                                                        |
 | `test/*`                                                                   | @nodejs/testing                                                       |
 | `tools/node_modules/eslint`, `.eslintrc`                                   | @nodejs/linting                                                       |
@@ -922,6 +927,7 @@ need to be attached anymore, as only important bugfixes will be included.
 [backporting guide]: backporting-to-release-lines.md
 [commit message guidelines]: contributing/pull-requests.md#commit-message-guidelines
 [commit-example]: https://github.com/nodejs/node/commit/b636ba8186
+[commit-queue.md]: ./commit-queue.md
 [git-email]: https://help.github.com/articles/setting-your-commit-email-address-in-git/
 [git-node]: https://github.com/nodejs/node-core-utils/blob/HEAD/docs/git-node.md
 [git-node-metadata]: https://github.com/nodejs/node-core-utils/blob/HEAD/docs/git-node.md#git-node-metadata
