@@ -74,9 +74,8 @@ run directly by testing `require.main === module`.
 For a file `foo.js`, this will be `true` if run via `node foo.js`, but
 `false` if run by `require('./foo')`.
 
-Because `module` provides a `filename` property (normally equivalent to
-`__filename`), the entry point of the current application can be obtained
-by checking `require.main.filename`.
+When the entry point is not a CommonJS module, `require.main` is `undefined`,
+and the main module is out of reach.
 
 ## Package manager tips
 
@@ -99,7 +98,7 @@ package may itself have dependencies, and in some cases, these may even collide
 or form cyclic dependencies.
 
 Because Node.js looks up the `realpath` of any modules it loads (that is, it
-resolves symlinks) and then [looks for their dependencies in `node_modules` folders](#loading-from-node\_modules-folders),
+resolves symlinks) and then [looks for their dependencies in `node_modules` folders](#loading-from-node_modules-folders),
 this situation can be resolved with the following architecture:
 
 * `/usr/lib/node/foo/1.2.3/`: Contents of the `foo` package, version 1.2.3.
@@ -133,10 +132,13 @@ relative, and based on the real path of the files making the calls to
 
 ## The `.mjs` extension
 
-It is not possible to `require()` files that have the `.mjs` extension.
-Attempting to do so will throw [an error][]. The `.mjs` extension is
-reserved for [ECMAScript Modules][] which cannot be loaded via `require()`.
-See [ECMAScript Modules][] for more details.
+Due to the synchronous nature of `require()`, it is not possible to use it to
+load ECMAScript module files. Attempting to do so will throw a
+[`ERR_REQUIRE_ESM`][] error. Use [`import()`][] instead.
+
+The `.mjs` extension is reserved for [ECMAScript Modules][] which cannot be
+loaded via `require()`. See [Determining module system][] section for more info
+regarding which files are parsed as ECMAScript modules.
 
 ## All together...
 
@@ -197,13 +199,13 @@ LOAD_NODE_MODULES(X, START)
 NODE_MODULES_PATHS(START)
 1. let PARTS = path split(START)
 2. let I = count of PARTS - 1
-3. let DIRS = [GLOBAL_FOLDERS]
+3. let DIRS = []
 4. while I >= 0,
    a. if PARTS[I] = "node_modules" CONTINUE
    b. DIR = path join(PARTS[0 .. I] + "node_modules")
-   c. DIRS = DIRS + DIR
+   c. DIRS = DIR + DIRS
    d. let I = I - 1
-5. return DIRS
+5. return DIRS + GLOBAL_FOLDERS
 
 LOAD_PACKAGE_IMPORTS(X, DIR)
 1. Find the closest package scope SCOPE to DIR.
@@ -373,11 +375,15 @@ correctly within an application.
 
 If the exact filename is not found, then Node.js will attempt to load the
 required filename with the added extensions: `.js`, `.json`, and finally
-`.node`.
+`.node`. When loading a file that has a different extension (e.g. `.cjs`), its
+full name must be passed to `require()`, including its file extension (e.g.
+`require('./file.cjs')`).
 
-`.js` files are interpreted as JavaScript text files, and `.json` files are
-parsed as JSON text files. `.node` files are interpreted as compiled addon
-modules loaded with `process.dlopen()`.
+`.json` files are parsed as JSON text files, `.node` files are interpreted as
+compiled addon modules loaded with `process.dlopen()`. Files using any other
+extension (or no extension at all) are parsed as JavaScript text files. Refer to
+the [Determining module system][] section to understand what parse goal will be
+used.
 
 A required module prefixed with `'/'` is an absolute path to the file. For
 example, `require('/home/marco/foo.js')` will load the file at
@@ -709,10 +715,11 @@ extensions gets slower with each registered extension.
 added: v0.1.17
 -->
 
-* {module}
+* {module | undefined}
 
 The `Module` object representing the entry script loaded when the Node.js
-process launched.
+process launched, or `undefined` if the entry point of the program is not a
+CommonJS module.
 See ["Accessing the main module"](#accessing-the-main-module).
 
 In `entry.js` script:
@@ -1032,19 +1039,21 @@ This section was moved to
   * <a id="modules_sourcemap_payload" href="module.html#sourcemappayload">`sourceMap.payload`</a>
   * <a id="modules_sourcemap_findentry_linenumber_columnnumber" href="module.html#sourcemapfindentrylinenumber-columnnumber">`sourceMap.findEntry(lineNumber, columnNumber)`</a>
 
+[Determining module system]: packages.md#determining-module-system
 [ECMAScript Modules]: esm.md
 [GLOBAL_FOLDERS]: #loading-from-the-global-folders
 [`"main"`]: packages.md#main
+[`ERR_REQUIRE_ESM`]: errors.md#err_require_esm
 [`Error`]: errors.md#class-error
 [`__dirname`]: #__dirname
 [`__filename`]: #__filename
+[`import()`]: https://wiki.developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports
 [`module.children`]: #modulechildren
 [`module.id`]: #moduleid
 [`module` object]: #the-module-object
 [`package.json`]: packages.md#nodejs-packagejson-field-definitions
 [`path.dirname()`]: path.md#pathdirnamepath
 [`require.main`]: #requiremain
-[an error]: errors.md#err_require_esm
 [exports shortcut]: #exports-shortcut
 [module resolution]: #all-together
 [native addons]: addons.md
