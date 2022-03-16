@@ -16,8 +16,9 @@ const tls = require('tls');
 
 ## TLS/SSL concepts
 
-The TLS/SSL is a public/private key infrastructure (PKI). For most common
-cases, each server must have a _private key_.
+TLS/SSL is a set of protocols that rely on a public key infrastructure (PKI) to
+enable secure communication between a client and a server. For most common
+cases, each server must have a private key.
 
 Private keys can be generated in multiple ways. The example below illustrates
 use of the OpenSSL command-line interface to generate a 2048-bit RSA private
@@ -89,9 +90,6 @@ the character "E" appended to the traditional abbreviations):
 * [ECDHE][]: An ephemeral version of the Elliptic Curve Diffie-Hellman
   key-agreement protocol.
 
-Ephemeral methods may have some performance drawbacks, because key generation
-is expensive.
-
 To use perfect forward secrecy using `DHE` with the `tls` module, it is required
 to generate Diffie-Hellman parameters and specify them with the `dhparam`
 option to [`tls.createSecureContext()`][]. The following illustrates the use of
@@ -118,7 +116,7 @@ SNI (Server Name Indication) are TLS handshake extensions:
 
 * ALPN: Allows the use of one TLS server for multiple protocols (HTTP, HTTP/2)
 * SNI: Allows the use of one TLS server for multiple hostnames with different
-  SSL certificates.
+  certificates.
 
 ### Pre-shared keys
 
@@ -132,8 +130,8 @@ servers can accommodate both, choosing either of them during the normal cipher
 negotiation step.
 
 TLS-PSK is only a good choice where means exist to securely share a
-key with every connecting machine, so it does not replace PKI
-(Public Key Infrastructure) for the majority of TLS uses.
+key with every connecting machine, so it does not replace the public key
+infrastructure (PKI) for the majority of TLS uses.
 The TLS-PSK implementation in OpenSSL has seen many security flaws in
 recent years, mostly because it is used only by a minority of applications.
 Please consider all alternative solutions before switching to PSK ciphers.
@@ -359,7 +357,7 @@ the default configuration. If these clients _must_ be supported, the
 [TLS recommendations][] may offer a compatible cipher suite. For more details
 on the format, see the OpenSSL [cipher list format][] documentation.
 
-There are only 5 TLSv1.3 cipher suites:
+There are only five TLSv1.3 cipher suites:
 
 * `'TLS_AES_256_GCM_SHA384'`
 * `'TLS_CHACHA20_POLY1305_SHA256'`
@@ -367,11 +365,11 @@ There are only 5 TLSv1.3 cipher suites:
 * `'TLS_AES_128_CCM_SHA256'`
 * `'TLS_AES_128_CCM_8_SHA256'`
 
-The first 3 are enabled by default. The last 2 `CCM`-based suites are supported
+The first three are enabled by default. The two `CCM`-based suites are supported
 by TLSv1.3 because they may be more performant on constrained systems, but they
 are not enabled by default since they offer less security.
 
-## X509 Certificate Error codes
+## X509 certificate error codes
 
 Multiple functions can fail due to certificate errors that are reported by
 OpenSSL. In such a case, the function provides an {Error} via its callback that
@@ -1367,7 +1365,7 @@ Returns the string representation of the local IP address.
 added: v0.11.4
 -->
 
-* {number}
+* {integer}
 
 Returns the numeric representation of the local port.
 
@@ -1398,7 +1396,7 @@ Returns the string representation of the remote IP family. `'IPv4'` or `'IPv6'`.
 added: v0.11.4
 -->
 
-* {number}
+* {integer}
 
 Returns the numeric representation of the remote port. For example, `443`.
 

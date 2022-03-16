@@ -202,7 +202,7 @@ When cherry-picking commits, if there are simple conflicts you can resolve
 them. Otherwise, add the `backport-requested-vN.x` label to the original PR
 and post a comment stating that it does not land cleanly and will require a
 backport PR. You can refer the owner of the PR to the "[Backporting to Release
-Lines](https://github.com/nodejs/node/blob/HEAD/doc/guides/backporting-to-release-lines.md)" guide.
+Lines](https://github.com/nodejs/node/blob/HEAD/doc/contributing/backporting-to-release-lines.md)" guide.
 
 If commits were cherry-picked in this step, check that the test still pass.
 
@@ -311,6 +311,9 @@ to it. Follow the existing examples and be sure to add the release to the _top_
 of the list. The most recent release for each release line is shown in **bold**
 in the index. When updating the index, please make sure to update the display
 accordingly by removing the bold styling from the previous release.
+
+Run `make format-md` to ensure the `CHANGELOG_Vx.md` and `CHANGELOG.md` files
+are formatted correctly.
 
 #### Step 3: Update any REPLACEME and DEP00XX tags in the docs
 
@@ -851,7 +854,7 @@ reflect the newly used value. Ensure that the release commit removes the
 `-pre` suffix for the major version being prepared.
 
 It is current TSC policy to bump major version when ABI changes. If you
-see a need to bump `NODE_MODULE_VERSION` outside of a majore release then
+see a need to bump `NODE_MODULE_VERSION` outside of a major release then
 you should consult the TSC. Commits may need to be reverted or a major
 version bump may need to happen.
 

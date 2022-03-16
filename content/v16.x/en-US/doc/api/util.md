@@ -67,7 +67,7 @@ const callbackFunction = util.callbackify(fn);
 callbackFunction((err, ret) => {
   // When the Promise was rejected with `null` it is wrapped with an Error and
   // the original value is stored in `reason`.
-  err && err.hasOwnProperty('reason') && err.reason === null;  // true
+  err && Object.hasOwn(err, 'reason') && err.reason === null;  // true
 });
 ```
 
@@ -1185,13 +1185,9 @@ added: v8.3.0
 An implementation of the [WHATWG Encoding Standard][] `TextDecoder` API.
 
 ```js
-const decoder = new TextDecoder('shift_jis');
-let string = '';
-let buffer;
-while (buffer = getNextChunkSomehow()) {
-  string += decoder.decode(buffer, { stream: true });
-}
-string += decoder.decode(); // end-of-stream
+const decoder = new TextDecoder();
+const u8arr = new Uint8Array([72, 101, 108, 108, 111]);
+console.log(decoder.decode(u8arr)); // Hello
 ```
 
 ### WHATWG supported encodings
