@@ -1000,7 +1000,7 @@ readable.on('readable', function() {
   // There is some data to read now.
   let data;
 
-  while (data = this.read()) {
+  while ((data = this.read()) !== null) {
     console.log(data);
   }
 });
@@ -1716,7 +1716,7 @@ for await (const item of Readable.from([1, 2, 3, 4]).map((x) => x * 2)) {
 }
 // With an asynchronous mapper, making at most 2 queries at a time.
 const resolver = new Resolver();
-const dnsResults = await Readable.from([
+const dnsResults = Readable.from([
   'nodejs.org',
   'openjsf.org',
   'www.linuxfoundation.org',
@@ -1761,7 +1761,7 @@ for await (const item of Readable.from([1, 2, 3, 4]).filter((x) => x > 2)) {
 }
 // With an asynchronous predicate, making at most 2 queries at a time.
 const resolver = new Resolver();
-const dnsResults = await Readable.from([
+const dnsResults = Readable.from([
   'nodejs.org',
   'openjsf.org',
   'www.linuxfoundation.org',
@@ -2106,6 +2106,28 @@ run().catch(console.error);
 `stream.pipeline()` leaves dangling event listeners on the streams
 after the `callback` has been invoked. In the case of reuse of streams after
 failure, this can cause event listener leaks and swallowed errors.
+
+`stream.pipeline()` closes all the streams when an error is raised.
+The `IncomingRequest` usage with `pipeline` could lead to an unexpected behavior
+once it would destroy the socket without sending the expected response.
+See the example below:
+
+```js
+const fs = require('fs');
+const http = require('http');
+const { pipeline } = require('stream');
+
+const server = http.createServer((req, res) => {
+  const fileStream = fs.createReadStream('./fileNotExist.txt');
+  pipeline(fileStream, res, (err) => {
+    if (err) {
+      console.log(err); // No such file
+      // this message can't be sent once `pipeline` already destroyed the socket
+      return res.end('error!!!');
+    }
+  });
+});
+```
 
 ### `stream.compose(...streams)`
 
