@@ -70,6 +70,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 | :------------------- | :-------------------------------------------------------- | :------------------------------------------------------- |
 | Adam Miller          | [amiller-gh](https://github.com/amiller-gh)               | [millea9](https://twitter.com/millea9)                   |
 | Aissaoui Ahmed       | [Aissaoui Ahmed](https://github.com/Aissaoui-Ahmed)       | [Aissaoui Ahmed](https://twitter.com/3issaoui_Ahmed)     |
+| Aleksandar Marinkovic| [lxmarinkovic](https://github.com/lxmarinkovic)           | [lxmarinkovic](https://twitter.com/lxmarinkovic)         |
 | Alexandr Tovmach     | [alexandrtovmach](https://github.com/alexandrtovmach)     | [alexandrtovmach](https://twitter.com/alexandrtovmach)   |
 | Alexey Temnykov      | [Alex-Temny](https://github.com/Alex-Temny)               | [temnykov](https://twitter.com/temnykov)                 |
 | Amor                 | [amorist](https://github.com/amorist)                     | [amor90s](https://twitter.com/amor90s)                   |
