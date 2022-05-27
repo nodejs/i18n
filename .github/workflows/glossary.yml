@@ -3,7 +3,7 @@ name: Upload Crowdin Glossary
 on:
   push:
     branches:
-    - master
+    - main
     paths:
     - "crowdin-glossary.json"
     - "script/upload-crowdin-glossary.js"
