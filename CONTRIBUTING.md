@@ -4,7 +4,7 @@ All of the information above relates to the [nodejs/i18n](https://github.com/nod
 
 ## Code of Conduct
 
-The Node.js i18n Working Group adheres to the [Node.js Code of Conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md).
+The Node.js i18n Working Group adheres to the [Node.js Code of Conduct](https://github.com/nodejs/admin/blob/main/CODE_OF_CONDUCT.md).
 
 **For the sake of explicit clarity, we will restate some relevant standards here that help create a positive environment in which to contribute:**
 * Use welcoming and inclusive language
