@@ -39,7 +39,7 @@
     "jest": "^28.1.1",
     "semver": "^7.3.7",
     "standard": "^17.0.0",
-    "superagent": "^7.1.6"
+    "superagent": "^8.0.0"
   },
   "standard": {
     "env": [
