@@ -320,6 +320,10 @@ internally.
 
 <!-- YAML
 added: v18.0.0
+changes:
+  - version: v18.7.0
+    pr-url: https://github.com/nodejs/node/pull/43505
+    description: Add a `timeout` option.
 -->
 
 * `name` {string} The name of the test, which is displayed when reporting test
@@ -327,18 +331,27 @@ added: v18.0.0
   does not have a name.
 * `options` {Object} Configuration options for the test. The following
   properties are supported:
-  * `concurrency` {number} The number of tests that can be run at the same time.
+  * `concurrency` {number|boolean} If a number is provided,
+    then that many tests would run in parallel.
+    If truthy, it would run (number of cpu cores - 1)
+    tests in parallel.
+    For subtests, it will be `Infinity` tests in parallel.
+    If falsy, it would only run one test at a time.
     If unspecified, subtests inherit this value from their parent.
-    **Default:** `1`.
+    **Default:** `false`.
   * `only` {boolean} If truthy, and the test context is configured to run
     `only` tests, then this test will be run. Otherwise, the test is skipped.
     **Default:** `false`.
+  * `signal` {AbortSignal} Allows aborting an in-progress test
   * `skip` {boolean|string} If truthy, the test is skipped. If a string is
     provided, that string is displayed in the test results as the reason for
     skipping the test. **Default:** `false`.
   * `todo` {boolean|string} If truthy, the test marked as `TODO`. If a string
     is provided, that string is displayed in the test results as the reason why
     the test is `TODO`. **Default:** `false`.
+  * `timeout` {number} A number of milliseconds the test will fail after.
+    If unspecified, subtests inherit this value from their parent.
+    **Default:** `Infinity`.
 * `fn` {Function|AsyncFunction} The function under test. The first argument
   to this function is a [`TestContext`][] object. If the test uses callbacks,
   the callback function is passed as the second argument. **Default:** A no-op
@@ -371,6 +384,11 @@ test('top level test', async (t) => {
 });
 ```
 
+The `timeout` option can be used to fail the test if it takes longer than
+`timeout` milliseconds to complete. However, it is not a reliable mechanism for
+canceling tests because a running test might block the application thread and
+thus prevent the scheduled cancellation.
+
 ## `describe([name][, options][, fn])`
 
 * `name` {string} The name of the suite, which is displayed when reporting test
@@ -378,8 +396,9 @@ test('top level test', async (t) => {
   does not have a name.
 * `options` {Object} Configuration options for the suite.
   supports the same options as `test([name][, options][, fn])`
-* `fn` {Function} The function under suite.
-  a synchronous function declaring all subtests and subsuites.
+* `fn` {Function|AsyncFunction} The function under suite
+  declaring all subtests and subsuites.
+  The first argument to this function is a [`SuiteContext`][] object.
   **Default:** A no-op function.
 * Returns: `undefined`.
 
@@ -476,6 +495,20 @@ test('top level test', (t) => {
 });
 ```
 
+### `context.signal`
+
+<!-- YAML
+added: v18.7.0
+-->
+
+* <AbortSignal> Can be used to abort test subtasks when the test has been aborted.
+
+```js
+test('top level test', async (t) => {
+  await fetch('some/uri', { signal: t.signal });
+});
+```
+
 ### `context.skip([message])`
 
 <!-- YAML
@@ -519,6 +552,10 @@ test('top level test', (t) => {
 
 <!-- YAML
 added: v18.0.0
+changes:
+  - version: v18.7.0
+    pr-url: https://github.com/nodejs/node/pull/43505
+    description: Add a `timeout` option.
 -->
 
 * `name` {string} The name of the subtest, which is displayed when reporting
@@ -538,6 +575,9 @@ added: v18.0.0
   * `todo` {boolean|string} If truthy, the test marked as `TODO`. If a string
     is provided, that string is displayed in the test results as the reason why
     the test is `TODO`. **Default:** `false`.
+  * `timeout` {number} A number of milliseconds the test will fail after.
+    If unspecified, subtests inherit this value from their parent.
+    **Default:** `Infinity`.
 * `fn` {Function|AsyncFunction} The function under test. The first argument
   to this function is a [`TestContext`][] object. If the test uses callbacks,
   the callback function is passed as the second argument. **Default:** A no-op
@@ -559,9 +599,28 @@ test('top level test', async (t) => {
 });
 ```
 
+## Class: `SuiteContext`
+
+<!-- YAML
+added: v18.7.0
+-->
+
+An instance of `SuiteContext` is passed to each suite function in order to
+interact with the test runner. However, the `SuiteContext` constructor is not
+exposed as part of the API.
+
+### `context.signal`
+
+<!-- YAML
+added: v18.7.0
+-->
+
+* <AbortSignal> Can be used to abort test subtasks when the test has been aborted.
+
 [TAP]: https://testanything.org/
 [`--test-only`]: cli.md#--test-only
 [`--test`]: cli.md#--test
+[`SuiteContext`]: #class-suitecontext
 [`TestContext`]: #class-testcontext
 [`test()`]: #testname-options-fn
 [describe options]: #describename-options-fn

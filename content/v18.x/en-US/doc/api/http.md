@@ -872,7 +872,7 @@ request.setHeader('Foo', 'bar');
 request.setHeader('Cookie', ['foo=bar', 'bar=baz']);
 
 const headerNames = request.getHeaderNames();
-// headerNames === ['foo', 'Cookie']
+// headerNames === ['foo', 'cookie']
 ```
 
 ### `request.getHeaders()`
@@ -1403,6 +1403,20 @@ If `socket.setTimeout()` is called here, the timeout will be replaced with
 This event is guaranteed to be passed an instance of the {net.Socket} class,
 a subclass of {stream.Duplex}, unless the user specifies a socket
 type other than {net.Socket}.
+
+### Event: `'dropRequest'`
+
+<!-- YAML
+added: v18.7.0
+-->
+
+* `request` {http.IncomingMessage} Arguments for the HTTP request, as it is in
+  the [`'request'`][] event
+* `socket` {stream.Duplex} Network socket between the server and client
+
+When the number of requests on a socket reaches the threshold of
+`server.maxRequestsPerSocket`, the server will drop new requests
+and emit `'dropRequest'` event instead, then send `503` to client.
 
 ### Event: `'request'`
 
