@@ -36,6 +36,7 @@ The available categories are:
 * `node.vm.script`: Enables capture of trace data for the `node:vm` module's
   `runInNewContext()`, `runInContext()`, and `runInThisContext()` methods.
 * `v8`: The [V8][] events are GC, compiling, and execution related.
+* `node.http`: Enables capture of trace data for http request / response.
 
 By default the `node`, `node.async_hooks`, and `v8` categories are enabled.
 
@@ -225,6 +226,48 @@ t1.enable();
 t2.enable();
 
 console.log(trace_events.getEnabledCategories());
+```
+
+## Examples
+
+### Collect trace events data by inspector
+
+```js
+'use strict';
+
+const { Session } = require('inspector');
+const session = new Session();
+session.connect();
+
+function post(message, data) {
+  return new Promise((resolve, reject) => {
+    session.post(message, data, (err, result) => {
+      if (err)
+        reject(new Error(JSON.stringify(err)));
+      else
+        resolve(result);
+    });
+  });
+}
+
+async function collect() {
+  const data = [];
+  session.on('NodeTracing.dataCollected', (chunk) => data.push(chunk));
+  session.on('NodeTracing.tracingComplete', () => {
+    // done
+  });
+  const traceConfig = { includedCategories: ['v8'] };
+  await post('NodeTracing.start', { traceConfig });
+  // do something
+  setTimeout(() => {
+    post('NodeTracing.stop').then(() => {
+      session.disconnect();
+      console.log(data);
+    });
+  }, 1000);
+}
+
+collect();
 ```
 
 [Performance API]: perf_hooks.md

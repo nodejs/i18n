@@ -308,6 +308,17 @@ added: v8.5.0
 Returns the current high resolution millisecond timestamp, where 0 represents
 the start of the current `node` process.
 
+### `performance.setResourceTimingBufferSize(maxSize)`
+
+<!-- YAML
+added: v18.8.0
+-->
+
+Sets the global performance resource timing buffer size to the specified number
+of "resource" type performance entry objects.
+
+By default the max buffer size is set to 250.
+
 ### `performance.timeOrigin`
 
 <!-- YAML
@@ -382,6 +393,18 @@ added: v16.1.0
 
 An object which is JSON representation of the `performance` object. It
 is similar to [`window.performance.toJSON`][] in browsers.
+
+#### Event: `'resourcetimingbufferfull'`
+
+<!-- YAML
+added: v18.8.0
+-->
+
+The `'resourcetimingbufferfull'` event is fired when the global performance
+resource timing buffer is full. Adjust resource timing buffer size with
+`performance.setResourceTimingBufferSize()` or clear the buffer with
+`performance.clearResourceTimings()` in the event listener to allow
+more entries to be added to the performance timeline buffer.
 
 ## Class: `PerformanceEntry`
 
@@ -602,13 +625,15 @@ When `performanceEntry.type` is equal to `'dns'`, the
 additional information.
 
 If `performanceEntry.name` is equal to `lookup`, the `detail`
-will contain the following properties: `hostname`, `family`, `hints`, `verbatim`.
+will contain the following properties: `hostname`, `family`, `hints`, `verbatim`,
+`addresses`.
 
 If `performanceEntry.name` is equal to `lookupService`, the `detail` will
-contain the following properties: `host`, `port`.
+contain the following properties: `host`, `port`, `hostname`, `service`.
 
 If `performanceEntry.name` is equal to `queryxxx` or `getHostByAddr`, the `detail` will
-contain the following properties: `host`, `ttl`.
+contain the following properties: `host`, `ttl`, `result`. The value of `result` is
+same as the result of `queryxxx` or `getHostByAddr`.
 
 ## Class: `PerformanceNodeTiming`
 
