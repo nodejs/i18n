@@ -3,6 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "supportedVersions": [
+    "v18.x",
+    "v16.x",
     "v14.x",
     "v13.x",
     "v12.x",
@@ -29,16 +31,16 @@
     "walk-sync": "^3.0.0"
   },
   "devDependencies": {
-    "builtins": "^4.0.0",
+    "builtins": "^5.0.1",
     "crowdin-glossary": "^1.2.0",
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
-    "fs-extra": "^10.0.0",
-    "globals": "^13.11.0",
-    "jest": "^27.3.1",
-    "semver": "^7.3.5",
-    "standard": "^16.0.4",
-    "superagent": "^6.1.0"
+    "fs-extra": "^10.1.0",
+    "globals": "^13.17.0",
+    "jest": "^29.0.2",
+    "semver": "^7.3.7",
+    "standard": "^17.0.0",
+    "superagent": "^8.0.0"
   },
   "standard": {
     "env": [

@@ -9,7 +9,7 @@ Thank you so much for volunteering your time!
 (Note: If you want to help with the _translation_ of Node.js and its documentation,
 see instead [this guide](./GETTING_STARTED.md).)
 
-This project adheres to the Contributor Covenant [code of conduct](https://github.com/nodejs/admin/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to report@nodejs.org.
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/nodejs/admin/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to report@nodejs.org.
 
 ## GitHub Team and Label
 

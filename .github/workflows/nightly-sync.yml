@@ -9,9 +9,9 @@ jobs:
     if: github.repository == 'nodejs/i18n'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v2.4.1
+      - uses: actions/setup-node@v3
         with:
           node-version: "14"
           cache: "npm"
@@ -23,11 +23,11 @@ jobs:
         run: npm run collect
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3.10.1
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: 'feat: Original content updates'
           title: Original content updates
           body: |
             Auto-generated PR with content updates from [nodejs/node](https://github.com/nodejs/node) repo.
-            Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/master/docs/concepts-guidelines.md#triggering-further-workflow-runs).
+            Please close this PR and immediately re-open it to trigger check run. More details in ["Triggering further workflow runs"](https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs).
             cc @nodejs/i18n
