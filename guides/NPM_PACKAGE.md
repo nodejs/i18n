@@ -6,7 +6,7 @@ This repository can be installed as an npm package. The goal is to make the Engl
 
 This package is not published to the npm registry, but can be installed directly from GitHub.
 
-You can install from the repo's master branch:
+You can install from the repo's main branch:
 
 ```sh
 npm install nodejs/i18n

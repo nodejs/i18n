@@ -104,13 +104,13 @@ describe('npm module', () => {
     test('accepts arguments for nodeVersion and locale', async () => {
       // When you add a new version, update the index to get the `v13.x` dir,
       // which has the `es-ES` sub-dir.
-      const pages = await getPages(supportedVersions[2], 'es-ES')
+      const pages = await getPages(supportedVersions[3], 'es-ES')
 
       expect(Array.isArray(pages)).toBe(true)
       expect(pages.length).toBeGreaterThan(0)
       pages.forEach(page => {
         expect(page.locale).toBe('es-ES')
-        expect(page.nodeVersion).toBe(supportedVersions[2])
+        expect(page.nodeVersion).toBe(supportedVersions[3])
       })
     })
   })

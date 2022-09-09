@@ -24,3 +24,5 @@ files:
     translation: /content/v14.x/%locale%/**/%original_file_name%
   - source: /content/v16.x/en-US/**/*.md
     translation: /content/v16.x/%locale%/**/%original_file_name%
+  - source: /content/v18.x/en-US/**/*.md
+    translation: /content/v18.x/%locale%/**/%original_file_name%
