@@ -2114,10 +2114,10 @@ changes:
 
 Type: Runtime
 
-Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] should be
+Using [`crypto.createCipher()`][] and [`crypto.createDecipher()`][] must be
 avoided as they use a weak key derivation function (MD5 with no salt) and static
 initialization vectors. It is recommended to derive a key using
-[`crypto.pbkdf2()`][] or [`crypto.scrypt()`][] and to use
+[`crypto.pbkdf2()`][] or [`crypto.scrypt()`][] with random salts and to use
 [`crypto.createCipheriv()`][] and [`crypto.createDecipheriv()`][] to obtain the
 [`Cipher`][] and [`Decipher`][] objects respectively.
 
@@ -2889,12 +2889,15 @@ Prefer [`message.socket`][] over [`message.connection`][].
 
 <!-- YAML
 changes:
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/43627
+    description: End-of-Life.
   - version: v16.0.0
     pr-url: https://github.com/nodejs/node/pull/36902
     description: Runtime deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
 The `process.config` property provides access to Node.js compile-time settings.
 However, the property is mutable and therefore subject to tampering. The ability
@@ -3057,7 +3060,9 @@ const w = new Writable({
 
 <!-- YAML
 changes:
-  - version: v17.5.0
+  - version:
+    - v17.5.0
+    - v16.15.0
     pr-url: https://github.com/nodejs/node/pull/41596
     description: Documentation-only deprecation.
 -->
@@ -3090,7 +3095,9 @@ changes:
   - version: v18.0.0
     pr-url: https://github.com/nodejs/node/pull/41896
     description: Runtime deprecation.
-  - version: v17.6.0
+  - version:
+    - v17.6.0
+    - v16.15.0
     pr-url: https://github.com/nodejs/node/pull/41872
     description: Documentation-only deprecation.
 -->
@@ -3104,7 +3111,9 @@ which diminished its usefulness.
 
 <!-- YAML
 changes:
-  - version: v17.6.0
+  - version:
+    - v17.6.0
+    - v16.15.0
     pr-url: https://github.com/nodejs/node/pull/41587
     description: Documentation-only deprecation.
 -->
@@ -3122,15 +3131,20 @@ resources and not the actual references.
 
 <!-- YAML
 changes:
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/42796
+    description: End-of-Life.
   - version: v18.0.0
     pr-url: https://github.com/nodejs/node/pull/42607
     description: Runtime deprecation.
-  - version: v17.8.0
+  - version:
+    - v17.8.0
+    - v16.15.0
     pr-url: https://github.com/nodejs/node/pull/42149
     description: Documentation-only deprecation.
 -->
 
-Type: Runtime
+Type: End-of-Life
 
 Implicit coercion of objects with own `toString` property, passed as second
 parameter in [`fs.write()`][], [`fs.writeFile()`][], [`fs.appendFile()`][],
@@ -3141,7 +3155,9 @@ Convert them to primitive strings.
 
 <!-- YAML
 changes:
-  - version: v18.7.0
+  - version:
+    - v18.7.0
+    - v16.17.0
     pr-url: https://github.com/nodejs/node/pull/42714
     description: Documentation-only deprecation.
 -->
@@ -3155,19 +3171,27 @@ Use [`diagnostics_channel.subscribe(name, onMessage)`][] or
 [`diagnostics_channel.unsubscribe(name, onMessage)`][] which does the same
 thing instead.
 
-### DEP0164: `process.exit([code])` coercion to integer
+### DEP0164: `process.exit(code)`, `process.exitCode` coercion to integer
 
 <!-- YAML
 changes:
-  - version: v18.7.0
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/44714
+    description: Documentation-only deprecation of `process.exitCode` integer
+                 coercion.
+  - version:
+    - v18.7.0
+    - v16.17.0
     pr-url: https://github.com/nodejs/node/pull/43738
-    description: Documentation-only deprecation.
+    description: Documentation-only deprecation of `process.exit(code)` integer
+                 coercion.
 -->
 
 Type: Documentation-only
 
-`code` values other than `undefined`, `null`, integer numbers and integer
-strings (e.g., '1') are deprecated as parameter in [`process.exit()`][].
+Values other than `undefined`, `null`, integer numbers, and integer strings
+(e.g., `'1'`) are deprecated as value for the `code` parameter in
+[`process.exit()`][] and as value to assign to [`process.exitCode`][].
 
 ### DEP0165: `--trace-atomics-wait`
 
@@ -3182,11 +3206,72 @@ Type: Documentation-only
 
 The [`--trace-atomics-wait`][] flag is deprecated.
 
+### DEP0166: Double slashes in imports and exports targets
+
+<!-- YAML
+changes:
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/44495
+    description: Runtime deprecation.
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/44477
+    description: Documentation-only deprecation
+                 with `--pending-deprecation` support.
+-->
+
+Type: Runtime
+
+Package imports and exports targets mapping into paths including a double slash
+(of _"/"_ or _"\\"_) are deprecated and will fail with a resolution validation
+error in a future release. This same deprecation also applies to pattern matches
+starting or ending in a slash.
+
+### DEP0167: Weak `DiffieHellmanGroup` instances (`modp1`, `modp2`, `modp5`)
+
+<!-- YAML
+changes:
+  - version: v18.10.0
+    pr-url: https://github.com/nodejs/node/pull/44588
+    description: Documentation-only deprecation.
+-->
+
+Type: Documentation-only
+
+The well-known MODP groups `modp1`, `modp2`, and `modp5` are deprecated because
+they are not secure against practical attacks. See [RFC 8247 Section 2.4][] for
+details.
+
+These groups might be removed in future versions of Node.js. Applications that
+rely on these groups should evaluate using stronger MODP groups instead.
+
+### DEP0168: Unhandled exception in Node-API callbacks
+
+<!-- YAML
+changes:
+  - version:
+    - v18.3.0
+    - v16.17.0
+    pr-url: https://github.com/nodejs/node/pull/36510
+    description: Runtime deprecation.
+-->
+
+Type: Runtime.
+
+The implicit suppression of uncaught exceptions in Node-API callbacks is now
+deprecated.
+
+Set the flag [`--force-node-api-uncaught-exceptions-policy`][] to force Node.js
+to emit an [`'uncaughtException'`][] event if the exception is not handled in
+Node-API callbacks.
+
 [Legacy URL API]: url.md#legacy-url-api
 [NIST SP 800-38D]: https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf
 [RFC 6066]: https://tools.ietf.org/html/rfc6066#section-3
+[RFC 8247 Section 2.4]: https://www.rfc-editor.org/rfc/rfc8247#section-2.4
 [WHATWG URL API]: url.md#the-whatwg-url-api
 [`"exports"` or `"main"` entry]: packages.md#main-entry-point-export
+[`'uncaughtException'`]: process.md#event-uncaughtexception
+[`--force-node-api-uncaught-exceptions-policy`]: cli.md#--force-node-api-uncaught-exceptions-policy
 [`--pending-deprecation`]: cli.md#--pending-deprecation
 [`--throw-deprecation`]: cli.md#--throw-deprecation
 [`--trace-atomics-wait`]: cli.md#--trace-atomics-wait
@@ -3262,6 +3347,7 @@ The [`--trace-atomics-wait`][] flag is deprecated.
 [`os.tmpdir()`]: os.md#ostmpdir
 [`process.env`]: process.md#processenv
 [`process.exit()`]: process.md#processexitcode
+[`process.exitCode`]: process.md#processexitcode_1
 [`process.getActiveResourcesInfo()`]: process.md#processgetactiveresourcesinfo
 [`process.mainModule`]: process.md#processmainmodule
 [`punycode`]: punycode.md
