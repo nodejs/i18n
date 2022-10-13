@@ -25,4 +25,3 @@ jobs:
             We are translating content with Crowdin and not doing manual updates with GitHub. Please check our guidelines in [i18n Contribution section](https://github.com/nodejs/i18n#contributing).
             
             Ping @nodejs/i18n if you have any questions.
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
