@@ -3,6 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "supportedVersions": [
+    "v19.x",
+    "v18.x",
     "v18.x",
     "v16.x",
     "v14.x",
