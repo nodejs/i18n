@@ -36,7 +36,7 @@
     "dotenv-safe": "^8.2.0",
     "download": "^8.0.0",
     "fs-extra": "^11.1.0",
-    "globals": "^13.18.0",
+    "globals": "^13.19.0",
     "jest": "^29.3.1",
     "semver": "^7.3.8",
     "standard": "^17.0.0",
