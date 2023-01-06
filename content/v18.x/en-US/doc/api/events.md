@@ -68,10 +68,11 @@ myEmitter.on('event', function(a, b) {
   console.log(a, b, this, this === myEmitter);
   // Prints:
   //   a b MyEmitter {
-  //     domain: null,
-  //     _events: { event: [Function] },
+  //     _events: [Object: null prototype] { event: [Function (anonymous)] },
   //     _eventsCount: 1,
-  //     _maxListeners: undefined } true
+  //     _maxListeners: undefined,
+  //     [Symbol(kCapture)]: false
+  //   } true
 });
 myEmitter.emit('event', 'a', 'b');
 ```
@@ -1041,7 +1042,7 @@ process.nextTick(() => {
 try {
   await once(ee, 'myevent');
 } catch (err) {
-  console.log('error happened', err);
+  console.error('error happened', err);
 }
 ```
 
@@ -1066,7 +1067,7 @@ async function run() {
   try {
     await once(ee, 'myevent');
   } catch (err) {
-    console.log('error happened', err);
+    console.error('error happened', err);
   }
 }
 
@@ -1085,7 +1086,7 @@ const ee = new EventEmitter();
 
 once(ee, 'error')
   .then(([err]) => console.log('ok', err.message))
-  .catch((err) => console.log('error', err.message));
+  .catch((err) => console.error('error', err.message));
 
 ee.emit('error', new Error('boom'));
 
@@ -1099,7 +1100,7 @@ const ee = new EventEmitter();
 
 once(ee, 'error')
   .then(([err]) => console.log('ok', err.message))
-  .catch((err) => console.log('error', err.message));
+  .catch((err) => console.error('error', err.message));
 
 ee.emit('error', new Error('boom'));
 
@@ -1465,7 +1466,7 @@ setMaxListeners(5, target, emitter);
 ```cjs
 const {
   setMaxListeners,
-  EventEmitter
+  EventEmitter,
 } = require('node:events');
 
 const target = new EventTarget();
@@ -1688,13 +1689,13 @@ async function handler2(event) {
 const handler3 = {
   handleEvent(event) {
     console.log(event.type);  // Prints 'foo'
-  }
+  },
 };
 
 const handler4 = {
   async handleEvent(event) {
     console.log(event.type);  // Prints 'foo'
-  }
+  },
 };
 
 const target = new EventTarget();
@@ -1974,7 +1975,7 @@ Dispatches the `event` to the list of handlers for `event.type`.
 The registered event listeners is synchronously invoked in the order they
 were registered.
 
-#### `eventTarget.removeEventListener(type, listener)`
+#### `eventTarget.removeEventListener(type, listener[, options])`
 
 <!-- YAML
 added: v14.5.0
