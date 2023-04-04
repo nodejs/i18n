@@ -13,7 +13,7 @@ The WG has final authority over this project including:
 * Maintaining the list of additional Collaborators
 
 For the current list of WG members, see the project
-[README.md](./README.md#current-project-team-members).
+[README.md](./README.md#current-members).
 
 ### Collaborators
 
