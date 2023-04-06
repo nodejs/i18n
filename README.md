@@ -50,7 +50,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 - [amiller-gh](https://github.com/amiller-gh) - Adam Miller
 - [amorist](https://github.com/amorist) - Amor
 - [AugustinMauroy](https://github.com/AugustinMauroy) - Augustin Mauroy
-- [bnb](htps://github.com/bnb) - Tierney Cyren
+- [bnb](https://github.com/bnb) - Tierney Cyren
 - [FranzDeCopenhague](https://github.com/FranzDeCopenhague) - Franz de Copenhague
 - [JCMais](https://github.com/JCMais) - Jonathan Cardoso
 - [laosb](https://github.com/laosb) - Shibo Lyu
