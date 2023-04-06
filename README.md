@@ -61,7 +61,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 - [obensource](https://github.com/obensource) - Ben Michel
 - [JohnTitor](https://github.com/JohnTitor) - Yuki Okushi
 - [ryzokuken](https://github.com/ryzokuken) - Ujjwal Sharma
-- [sotayamashita](https//github.com/sotayamashita) - Sam Yamashita
+- [sotayamashita](https://github.com/sotayamashita) - Sam Yamashita
 - [srl295](https://github.com/srl295) - Steven R. Loomis
 - [TiagoDanin](https://github.com/TiagoDanin) - Tiago Danin
 - [Toinane](https://github.com/Toinane) - Toinane
