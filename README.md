@@ -59,7 +59,7 @@ languages and cultures. See [i18n API](./guides/I18N-API.md) to get started.
 - [maddhruv](https://github.com/maddhruv) - Dhruv Jain
 - [nschonni](https://github.com/nschonni) - Nick Schonning
 - [obensource](https://github.com/obensource) - Ben Michel
-- [ohnTitor](https://github.com/JohnTitor) - Yuki Okushi
+- [JohnTitor](https://github.com/JohnTitor) - Yuki Okushi
 - [ryzokuken](https://github.com/ryzokuken) - Ujjwal Sharma
 - [sotayamashita](https//github.com/sotayamashita) - Sam Yamashita
 - [srl295](https://github.com/srl295) - Steven R. Loomis
