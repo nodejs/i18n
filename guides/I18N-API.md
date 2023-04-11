@@ -6,9 +6,6 @@ By helping Node.js APIs maintain world-class internationalization support,
 you are impacting developers and users around the world.
 Thank you so much for volunteering your time!
 
-(Note: If you want to help with the _translation_ of Node.js and its documentation,
-see instead [this guide](./GETTING_STARTED.md).)
-
 This project adheres to the Contributor Covenant [code of conduct](https://github.com/nodejs/admin/blob/main/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to report@nodejs.org.
 
 ## GitHub Team and Label
@@ -20,12 +17,6 @@ GitHub team is responsible for the international APIs in Node.js. Please
 The [`i18n-api`](https://github.com/nodejs/node/labels/i18n-api) label is
 used in the main Node.js repository for i18n-related issues and PRs.
 You can help by watching these issues and participating.
-
-## Docs
-
-<https://nodejs.org/dist/latest/docs/api/intl.html> and its versions/translations
-is the main internationalization documentation for Node.js.
-You can help by keeping this content up to date (and translated!)
 
 ## Related Standards / Projects
 
