@@ -1,0 +1,59 @@
+# Stil Klavuzu
+
+* Dokümantasyon, `lowercase-with-dashes.md` olarak biçimlendirilmiş isimlerle markdown'da yazılmıştır. 
+  * Dosya adlarında altçizgilerin bulunmasına yalnızca belgenin açıklayacağı konu içerisinde bulunduklarında izin verilir(ör. `child_process`).
+  * Üst düzey markdown dosyaları gibi bazı dosyalar istisnadır.
+* Dokümanlar satır sonuna kadar 80 karakterle sınırlı olmalıdır.
+* `.editorconfig` 'da açıklanan formatlama tercih edilir. 
+  * Bazı editörlerin bu kuralları otomatik olarak uygulayabilmeleri için bir [eklenti](http://editorconfig.org/#download) bulunmaktadır.
+* Belgelerdeki değişiklikler `make lint-md` ile kontrol edilmelidir.
+* Amerikan İngilizcesi yazımı tercih edilir. "Capitalize" vs. "Capitalise", "color" vs. "colour", vb.
+* [Seri virgül](https://en.wikipedia.org/wiki/Serial_comma) kullanın.
+* Referans belgelerinde kişi zamirlerden kaçının (“Ben”, “sen”, “biz”). 
+  * Kişi zamirlerinin kullanımı günlük konuşma diline özgü klavuzlar gibi belgelerde kabul edilir.
+  * Cinsiyet belirtmeyen zamirleri ve cinsiyet belirtmeyen çoğul isimleri kullanın. 
+    * EVET: "onlar", "onların", "onlar", "millet", "insanlar", "geliştiriciler"
+    * TAMAM DEĞİL: "onun", "onunki", "o", "beyler", "ahbaplar"
+* Sarma elemanlarını (parantezler ve tırnak işaretleri) birleştirirken, terminal noktalama işaretleri yerleştirilmelidir: 
+  * Sarma elemanı tam bir cümle içeriyorsa, sarma öğesinin içinde — bir özne, fiil ve bir nesne.
+  * Paketleme elemanı, sarma elemanının dışında, sadece bir maddenin bir parçasını içeriyorsa.
+* Belgeler birinci seviye bir başlıkla başlamalıdır.
+* Bağlantıları satır içi bağlantılara yapıştırmayı tercih edin — `[bir bağlantı][]`'ya `[bir bağlantı](http://example.com)` seçin.
+* API'leri belgelerken, bölümün sonunda API'nin tanıtıldığı sürümü not edin. Bir API kullanımdan kaldırılmışsa, ayrıca API'nin kullanımdan kaldırıldığı ilk sürümünü de not alın.
+* Çizgileri kullanırken, [New York Times Stil ve Kullanım Kılavuzu](https://en.wikipedia.org/wiki/The_New_York_Times_Manual_of_Style_and_Usage)'na göre boşluklarla çevrili [Em çizgileri](https://en.wikipedia.org/wiki/Dash#Em_dash) ("—" veya `Seçenek+Shift+"-"`'yi macOS üzerinde) kullanın.
+* Varlıklar dahil olmak üzere: 
+  * Bir örnek veya tam program eklemek istiyorsanız, onu dir içindeki `varlıklar/<0> uygun alt dizine ekleyin.</li>
+<li>Şu şekilde bağlayın: <code>[Asset](/varlıklar/{subdir}/{filename})` dosya tabanlı varlıklar için ve `![Asset](/varlıklar{subdir}/{filename})` görüntü tabanlı varlıklar için.
+  * Resimler için, SVG'yi diğer varlıklara tercih edin. SVG uygun olmadığında, lütfen tanıtmakta olduğunuz varlığın dosya boyutuna dikkat edin.
+* Kod blokları için: 
+  * Dil farkında çitleri kullanın. ("```js")
+  * Kodun eksiksiz olması gerekmez — kod bloklarını tam çalışan programlar olarak değil, bir örnek olarak kabul edin veya amacınıza yardım edin. Eğer tam bir çalışma programı gerekliyse, onu `varlıklar/kod-örnekleri`'nde bir öğe olarak ekleyin ve ona bağlayın.
+* Alt çizgi, yıldız işareti ve geri tepme çubukları kullanılırken, lütfen uygun şekilde kaçma kullanın (`\_`, `\*` ve `` \` `` yerine `_`, `*` ve `` ` ``).
+* Yapıcı işlevlerine yapılan başvurular PascalCase kullanmalıdır.
+* Yapıcı örneklerine yapılan referanslar camelCase kullanmalıdır.
+* Metotlara referanslar parantez içinde kullanılmalıdır: örneğin, `socket.end()` yerine `socket.end`.
+* İşlev argümanları veya nesne özellikleri aşağıdaki formatı kullanmalıdır:
+  
+  *     * `name` {type|type2} Optional description. **Default:** `value`.
+    
+    <!--lint disable maximum-line-length remark-lint-->
+  
+  * For example: `* <code>byteOffset` {integer} Index of first byte to expose. **Varsayılan:** `0`.</code> <!--lint enable maximum-line-length remark-lint-->
+  
+  * `Tür`, bir Node.js türüne veya bir [JavaScript türüne](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Data_structures_and_types) bakmalıdır.
+
+* Fonksiyon dönüşleri aşağıdaki formatı kullanmalıdır: 
+  * `* Dönüşler: {type|type2} İsteğe bağlı açıklama.`
+  * Örneğin `* Dönüşler: {AsyncHook} <code>asyncHook`'a bir referans.</code>
+
+* Use official styling for capitalization in products and projects.
+  
+  * OK: JavaScript, Google's V8 <!--lint disable prohibited-strings remark-lint-->
+  
+  * NOT OK: Javascript, Google's v8 <!-- lint enable prohibited-strings remark-lint-->
+
+* Use *Node.js* and not *Node*, *NodeJS*, or similar variants.
+  
+  * When referring to the executable, *`node`* is acceptable.
+
+See also API documentation structure overview in [doctools README](../tools/doc/README.md).
