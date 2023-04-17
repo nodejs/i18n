@@ -1,7 +1,5 @@
 # The Node.js Internationalization (i18n) Working Group
 
-[![Crowdin](https://badges.crowdin.net/nodejs/localized.svg)](https://crowdin.com/project/nodejs)
-
 Here you can find contribution guides, discuss ideas, and find out how to join meetings. This repo also contains the source for the English Node.js API documentation.
 
 ## Usage
